@@ -1,0 +1,185 @@
+@font-face {
+	font-family: 'Genshin Impact';
+	src: url('./assets/fonts/optimized-genshin-font.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+:root {
+	font-family: 'Genshin Impact', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--pure-white: #ffffff;
+	--primary-color: #b9c6d2;
+	--secondary-color: #4f6d95;
+	--tertiary-color: #f7f3d8;
+	--accent-color: #ff3e00;
+	--heading-color: rgba(0, 0, 0, 0.7);
+	--text-color: #444444;
+	--background-without-opacity: rgba(255, 255, 255, 0.7);
+	--column-width: 42rem;
+	--column-margin-top: 4rem;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-image: url('./assets/images/utility/wish-background.webp');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: var(--primary-color);
+}
+
+.loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	color: #000;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	z-index: 9999;
+}
+.content {
+	width: max-content;
+	position: relative;
+}
+.blend {
+	mix-blend-mode: lighten;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.unfilled, .filled {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+.unfilled {
+	width: 100%;
+	background-color: #f7f7f7;
+}
+.filled {
+	background-color: #666666;
+	width: 10%;
+	transition: all .2s;
+}
+.animate {
+	width: 95%;
+	animation: loader forwards 4s;
+}
+
+#svelte {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+h1,
+h2,
+p {
+	font-weight: 400;
+	color: var(--heading-color);
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(255, 255, 255, 0.45);
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+	padding: 0.5em;
+	overflow-x: auto;
+	color: var(--text-color);
+}
+
+img {
+	object-fit: cover;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+button {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	font-size: 1rem;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
+
+@keyframes loader {
+	0% {
+		width: 0%;
+	}
+
+	10% {
+		width: 0%
+	}
+
+	20% {
+		width: 30%;
+	}
+	25% {
+		width: 60%
+	}
+
+	75% {
+		width: 90%;
+	}
+
+	100% {
+		width: 100%;
+	}
+}

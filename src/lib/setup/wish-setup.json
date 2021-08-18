@@ -1,0 +1,62 @@
+{
+  "version": "2.0",
+  "bannerNumber": 2,
+  "banner": {
+    "beginner": {
+      "character": {
+        "name": "noelle",
+        "style": {
+          "main": "width: 110px;bottom: -15px;",
+          "active": "width: 110px;bottom: -5px;"
+        }
+      }
+    },
+    "standard": {
+      "character": {
+        "name": "qiqi",
+        "style": {
+          "main": "width: 110px;bottom: -35px;",
+          "active": "width: 110px;bottom: -25px;"
+        }
+      },
+      "characters": [
+        "qiqi",
+        "keqing",
+        "diluc",
+        "mona",
+        "jean"
+      ]
+    },
+    "limited": {
+      "character": {
+        "name": "yoimiya",
+        "style": {
+          "main": "width: 160px; bottom: -30px",
+          "active": "width: 160px; bottom: -20px"
+        }
+      },
+      "rateup": [
+        "sayu",
+        "xinyian",
+        "diona",
+        "ninguang"
+      ]
+    },
+    "weapons": [
+      {
+        "name": "thundering-pulse",
+        "style": {
+          "main": "bottom: -70px;width: 70px;left: 40%;",
+          "active": "bottom: -60px;width: 70px;left: 40%;"
+        }
+      },
+      {
+        "name": "skyward-blade",
+        "style": {
+          "main": "bottom: -65px;width: 80px;left: 30%;transform: rotate(-20deg);",
+          "active": "bottom: -55px;width: 80px;left: 30%;transform: rotate(-20deg);"
+        }
+      }
+    ]
+  }
+}
