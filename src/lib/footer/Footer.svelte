@@ -1,9 +1,7 @@
 <script>
-	import { bannerActive, mobileMode } from '$lib/stores';
+	import { mobileMode } from '$lib/stores';
 	import Icon from '$lib/utility/Icon.svelte';
-
-	$: fateType =
-		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
+	import RollButton from '$lib/banner/RollButton.svelte';
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
@@ -27,20 +25,7 @@
 			<button> History </button>
 		</div>
 		<div class="right">
-			<button class="single">
-				<div class="top">Wish x1</div>
-				<div class="bottom">
-					<Icon type={fateType} />
-					<span style="margin-left: 7px"> x 1</span>
-				</div>
-			</button>
-			<button class="ten">
-				<div class="top">Wish x10</div>
-				<div class="bottom">
-					<Icon type={fateType} />
-					<span style="margin-left: 7px"> x 10</span>
-				</div>
-			</button>
+			<RollButton />
 		</div>
 	</div>
 </div>
@@ -102,25 +87,6 @@
 	.right {
 		text-align: right;
 	}
-	.right button {
-		background-image: url('./assets/images/utility/button.svg');
-		background-size: contain;
-		background-position: center;
-		background-repeat: no-repeat;
-		width: 230px;
-		height: 60px;
-		margin: 0 5px;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		color: #a49a90;
-	}
-
-	.right button .bottom {
-		display: flex;
-		align-items: center;
-	}
 
 	/* mobile */
 	:global(.mobile) .row {
@@ -134,18 +100,6 @@
 	:global(.mobile) .right {
 		margin-right: 40px !important;
 	}
-	:global(.mobile) .right button {
-		width: 150px;
-		height: 35px;
-		margin: 0;
-		font-size: 0.75rem;
-	}
-	:global(.mobile .right img, .mobile .wish img) {
-		transform: scale(0.7);
-	}
-	:global(.mobile) .right .bottom {
-		margin-top: -3px;
-	}
 
 	/* Mwedia Query */
 
@@ -154,14 +108,6 @@
 		.left button {
 			padding: 2px 15px;
 			margin: 2px 5px;
-		}
-		.right button {
-			width: 180px;
-			height: 40px;
-			margin: 0;
-		}
-		:global(.right img, .wish img) {
-			transform: scale(0.8);
 		}
 	}
 
@@ -183,17 +129,6 @@
 		.left button {
 			padding: 1px 10px;
 			margin: 1px 2px;
-		}
-		.right button {
-			width: 140px;
-			height: 30px;
-			margin: 0;
-		}
-		:global(.right img, .wish img) {
-			transform: scale(0.7);
-		}
-		.right .bottom {
-			margin-top: -3px;
 		}
 	}
 </style>
