@@ -6,8 +6,8 @@
       "character": {
         "name": "noelle",
         "style": {
-          "main": "width: 110px;bottom: -15px;",
-          "active": "width: 110px;bottom: -5px;"
+          "main": "width: 110px;bottom: -20px;",
+          "active": "width: 110px;bottom: -10px;"
         }
       }
     },
@@ -31,8 +31,8 @@
       "character": {
         "name": "yoimiya",
         "style": {
-          "main": "width: 160px; bottom: -30px",
-          "active": "width: 160px; bottom: -20px"
+          "main": "width: 150px; bottom: -30px",
+          "active": "width: 150px; bottom: -20px"
         }
       },
       "rateup": [

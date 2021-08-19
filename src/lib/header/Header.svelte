@@ -2,27 +2,50 @@
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 	import setup from '$lib/setup/wish-setup.json';
-	import { bannerActive } from '$lib/stores';
+	import { bannerActive, mobileMode } from '$lib/stores';
 
 	const { beginner, limited, weapons, standard } = setup.banner;
 
 	let showBeginner = true;
 	const acquaint = 80;
 	const intertwined = 102;
+	const stardust = 200;
+	const starglitter = 30;
 </script>
 
 <div id="header">
 	<div class="top">
-		<div class="wish-title">
+		<h1 class="wish-title">
 			<img src="./assets/images/utility/brand.svg" alt="Brand" />
 			<span>{$bannerActive} Wish </span>
-		</div>
+		</h1>
 		<div class="budget">
 			<div class="fates">
+				{#if $mobileMode}
+					<button class="starglitter">
+						<Icon
+							type="starglitter"
+							height="80%"
+							width="auto"
+							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
+						/>
+						{starglitter}
+					</button>
+					<button class="stardust">
+						<Icon
+							type="stardust"
+							height="80%"
+							width="auto"
+							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
+						/>
+						{stardust}
+					</button>
+				{/if}
+
 				<button class="primogem">
 					<Icon
 						type="primogem"
-						height="20px"
+						height="80%"
 						width="auto"
 						style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 					/>
@@ -32,7 +55,7 @@
 				<button class="fate">
 					{#if $bannerActive === 'beginner' || $bannerActive === 'standard'}
 						<Icon
-							height="20px"
+							height="70%"
 							width="auto"
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 							type="acquaint"
@@ -40,7 +63,7 @@
 						{acquaint}
 					{:else}
 						<Icon
-							height="20px"
+							height="70%"
 							width="auto"
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 							type="intertwined"
@@ -57,6 +80,9 @@
 	</div>
 
 	<div class="banner-button">
+		<div class="bg">
+			<img src="./assets/images/utility/brand.svg" alt="Brand" />
+		</div>
 		{#if showBeginner}
 			<BannerButton
 				type="beginner"
@@ -93,6 +119,10 @@
 		width: 100%;
 		padding: 30px 2%;
 	}
+
+	.bg {
+		display: none;
+	}
 	.top {
 		display: flex;
 		justify-content: space-between;
@@ -107,6 +137,7 @@
 		text-transform: capitalize;
 		display: flex;
 		align-items: center;
+		text-align: left;
 	}
 
 	.wish-title img {
@@ -122,13 +153,15 @@
 	}
 
 	.close {
-		display: inline-block;
-		padding: 4px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 		width: 35px;
 		height: 35px;
 		color: rgba(0, 0, 0, 0.7);
 		background-color: #fff;
 		border: 3.5px solid #abbcc6;
+		padding: 0;
 	}
 
 	button {
@@ -142,14 +175,17 @@
 		vertical-align: middle;
 		text-align: center;
 		position: relative;
-		font-size: 0.95rem;
 		margin: 0 8px;
 	}
 
+	.fates button {
+		padding: 0 15px 0 30px;
+	}
+
 	.gi-plus {
-		display: inline-block;
-		font-size: 0.8em;
-		padding: 1px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 		width: 18px;
 		height: 18px;
 		color: #000;
@@ -158,13 +194,11 @@
 		position: absolute;
 		right: 3px;
 		top: 50%;
+		font-size: 0.8rem;
 		transform: translateY(-50%);
 	}
 	.primogem {
-		padding: 0 35px;
-	}
-	.fate {
-		padding: 0 15px 0 35px;
+		padding-right: 30px !important;
 	}
 
 	.banner-button {
@@ -176,6 +210,54 @@
 		z-index: 10;
 	}
 
+	/* mobile */
+
+	:global(.mobile #header) {
+		padding: 0 !important;
+		height: 100vh;
+	}
+	:global(.mobile) .top {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: calc(100% - 100px);
+		display: flex;
+		justify-content: space-between;
+	}
+
+	:global(.mobile) .wish-title img {
+		display: none;
+	}
+
+	:global(.mobile) .banner-button {
+		flex-direction: column;
+		align-items: center;
+		width: 120px;
+		margin-top: 0;
+		height: 100%;
+		justify-content: flex-start;
+		padding-top: 50px;
+	}
+
+	:global(.mobile) .bg {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 40px;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.4);
+		z-index: -1;
+		transform: translateX(-50%);
+		text-align: center;
+		border: solid rgba(207, 186, 143, 0.5);
+		border-width: 0 2px;
+	}
+	.bg > img {
+		width: 60%;
+		margin-top: 3px;
+	}
+
 	@media screen and (min-width: 1100px) {
 		.banner-button {
 			position: absolute;
@@ -183,6 +265,35 @@
 			left: 50%;
 			transform: translateX(-50%);
 			margin-top: 0;
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		button {
+			height: 20px;
+			margin: 0 3px;
+		}
+		.close {
+			width: 30px;
+			height: 30px;
+			margin: 3px;
+		}
+	}
+	@media screen and (max-width: 400px) {
+		button {
+			max-width: 80px;
+		}
+		.primogem {
+			margin-bottom: 2px;
+			padding: 0 30px;
+		}
+		.fate {
+			padding: 0 10px 0 30px;
+		}
+
+		.gi-plus {
+			right: 2px;
+			transform: translateY(-50%) scale(0.9);
 		}
 	}
 </style>

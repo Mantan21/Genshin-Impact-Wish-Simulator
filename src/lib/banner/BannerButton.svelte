@@ -51,7 +51,7 @@
 		display: block;
 		background-color: var(--secondary-color);
 		border-radius: 7px;
-		width: 120px;
+		width: 100px;
 		height: 45px;
 		margin: 10px;
 		position: relative;
@@ -146,5 +146,15 @@
 		color: #fff;
 		transform: scale(0.65) translateX(-50%);
 		padding: 3px 5px;
+	}
+
+	/* mobile */
+	:global(.mobile) button {
+		transform: scale(0.85);
+		margin: 3px 0;
+	}
+
+	:global(.mobile) button.active {
+		transform: scale(0.95);
 	}
 </style>

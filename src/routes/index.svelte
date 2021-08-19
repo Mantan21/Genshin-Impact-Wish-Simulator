@@ -65,4 +65,20 @@
 	.button {
 		height: 120px;
 	}
+
+	/* Mobile */
+	:global(.mobile) section {
+		flex-direction: row;
+	}
+	:global(.mobile) .top {
+		height: 100%;
+		width: min-content;
+	}
+	:global(.mobile) .banner {
+		width: 120%;
+		margin-left: -20px;
+	}
+	:global(.mobile) .button {
+		height: 50px;
+	}
 </style>

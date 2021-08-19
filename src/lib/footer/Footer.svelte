@@ -1,5 +1,5 @@
 <script>
-	import { bannerActive } from '$lib/stores';
+	import { bannerActive, mobileMode } from '$lib/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 
 	$: fateType =
@@ -7,16 +7,18 @@
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
-	<div class="wish">
-		<div class="starglitter">
-			<Icon type="starglitter" />
-			<span> 20</span>
+	{#if !$mobileMode}
+		<div class="wish">
+			<div class="starglitter">
+				<Icon type="starglitter" />
+				<span> 20</span>
+			</div>
+			<div class="stardust">
+				<Icon type="stardust" />
+				<span> 1500</span>
+			</div>
 		</div>
-		<div class="stardust">
-			<Icon type="stardust" />
-			<span> 1500</span>
-		</div>
-	</div>
+	{/if}
 
 	<div class="row">
 		<div class="left">
@@ -87,7 +89,6 @@
 		border-radius: 50px;
 		background-color: #fff;
 		border: 3px solid #fff;
-		font-size: 0.9em;
 		padding: 3px 20px;
 		margin: 2px 5px;
 		transition: all 0.2s;
@@ -113,12 +114,86 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		font-size: 0.9em;
 		color: #a49a90;
 	}
 
 	.right button .bottom {
 		display: flex;
 		align-items: center;
+	}
+
+	/* mobile */
+	:global(.mobile) .row {
+		padding: 0;
+	}
+	:global(.mobile) .left button {
+		padding: 2px 13px;
+		margin: 1px 2px;
+		font-size: 0.8rem;
+	}
+	:global(.mobile) .right {
+		margin-right: 40px !important;
+	}
+	:global(.mobile) .right button {
+		width: 150px;
+		height: 35px;
+		margin: 0;
+		font-size: 0.75rem;
+	}
+	:global(.mobile .right img, .mobile .wish img) {
+		transform: scale(0.7);
+	}
+	:global(.mobile) .right .bottom {
+		margin-top: -3px;
+	}
+
+	/* Mwedia Query */
+
+	@media screen and (max-width: 900px) {
+		button,
+		.left button {
+			padding: 2px 15px;
+			margin: 2px 5px;
+		}
+		.right button {
+			width: 180px;
+			height: 40px;
+			margin: 0;
+		}
+		:global(.right img, .wish img) {
+			transform: scale(0.8);
+		}
+	}
+
+	@media screen and (max-width: 700px) {
+		.right {
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 550px) {
+		.left {
+			width: 100%;
+		}
+		.right {
+			width: auto;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		.left button {
+			padding: 1px 10px;
+			margin: 1px 2px;
+		}
+		.right button {
+			width: 140px;
+			height: 30px;
+			margin: 0;
+		}
+		:global(.right img, .wish img) {
+			transform: scale(0.7);
+		}
+		.right .bottom {
+			margin-top: -3px;
+		}
 	}
 </style>

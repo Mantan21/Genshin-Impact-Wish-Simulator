@@ -41,7 +41,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2em;
+	font-size: 32px;
 	color: #000;
 	width: 100%;
 	height: 100vh;
@@ -153,9 +153,25 @@ button {
 	font-size: 1rem;
 }
 
-@media (min-width: 720px) {
+h1 {
+	font-size: 1.3rem;
+}
+
+.mobile, .mobile button {
+	font-size: .85rem;
+}
+
+@media screen and (max-width: 900px) {
+	body, html {
+		font-size: 0.8rem;
+	}
+}
+@media screen and (max-width: 400px) {
+	body, html {
+		font-size: .7rem;
+	}
 	h1 {
-		font-size: 2.4rem;
+		font-size: 1.5rem;
 	}
 }
 
