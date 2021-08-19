@@ -6,10 +6,14 @@
 	const { version, bannerNumber } = setup;
 
 	$: style =
-		$viewportHeight > $viewportWidth ? 'width: 80vw; height: auto' : 'height: 75vh; width: auto';
+		$viewportHeight > 800 ||
+		$viewportHeight > $viewportWidth ||
+		$viewportHeight / $viewportWidth > 0.5
+			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);'
+			: '';
 </script>
 
-<div class="banner" style="width:80%">
+<div class="banner" {style}>
 	{#if $bannerActive === 'beginner'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="./assets/images/banner/beginner.webp" alt="Beginner Banner" />
@@ -46,5 +50,12 @@
 	img {
 		max-height: 100%;
 		max-width: 100%;
+	}
+
+	:global(.mobile) .banner {
+		padding: 0;
+		width: 88%;
+		max-width: 155vh;
+		margin-bottom: -10px;
 	}
 </style>

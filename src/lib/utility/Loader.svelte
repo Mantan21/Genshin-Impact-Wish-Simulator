@@ -11,7 +11,7 @@
 </script>
 
 {#if !$isLoaded}
-	<div class="loader" out:fade={{ delay: 5500, duration: 1000 }}>
+	<div class="loader" out:fade={{ delay: 5500, duration: 500 }}>
 		<div class="content">
 			<div class="icon">
 				<i class="gi-pyro" />
