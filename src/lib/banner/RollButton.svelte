@@ -15,25 +15,37 @@
 	let v5star;
 	let showOutput = false;
 
-	const showOutputHandle = (rarity) => {
+	const showOutputHandle = (rarity, rolltype = 'tenroll') => {
 		showOutput = true;
+		if (rolltype === 'single') {
+			if (rarity === 5) {
+				v5starSingle.style.display = 'unset';
+				return v5starSingle.play();
+			}
+			if (rarity === 4) {
+				v4starSingle.style.display = 'unset';
+				return v4starSingle.play();
+			}
+			v3star.style.display = 'unset';
+			return v3star.play();
+		}
+
+		// Multiple Roll
 		if (rarity === 5) {
-			v5starSingle.style.display = 'unset';
-			return v5starSingle.play();
+			v5star.style.display = 'unset';
+			return v5star.play();
 		}
 		if (rarity === 4) {
-			v4starSingle.style.display = 'unset';
-			return v4starSingle.play();
+			v4star.style.display = 'unset';
+			return v4star.play();
 		}
-		v3star.style.display = 'unset';
-		return v3star.play();
 	};
 
 	const singleRoll = () => {
 		audio.currentTime = 0;
 		audio.play();
-		const wish = roll();
-		showOutputHandle(wish.rarity);
+		const wish = roll($bannerActive);
+		showOutputHandle(wish.rarity, 'single');
 	};
 
 	const tenRoll = () => {
@@ -41,7 +53,7 @@
 		audio.play();
 		const wishStar = [];
 		for (let i = 0; i < 10; i++) {
-			const wish = roll();
+			const wish = roll($bannerActive);
 			wishStar.push(wish.rarity);
 		}
 
@@ -150,6 +162,7 @@
 		align-items: center;
 		flex-direction: column;
 		color: #a49a90;
+		transition: all 0.2s;
 	}
 
 	button:active {

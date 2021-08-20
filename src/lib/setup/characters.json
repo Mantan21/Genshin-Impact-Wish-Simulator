@@ -1,0 +1,30 @@
+{
+  "star5": {
+    "keqing": {
+      "vision": "electro",
+      "style": ""
+    },
+    "yoimiya": {
+      "vision": "pyro",
+      "style": ""
+    },
+    "qiqi":{
+      "vision": "cryo",
+      "style": ""
+    }
+  },
+  "star4": {
+    "noelle": {
+      "vision": "geo",
+      "style": ""
+    },
+    "yanfei": {
+      "vision": "pyro",
+      "style": ""
+    },
+    "lisa": {
+      "vision": "electro",
+      "style": ""
+    }
+  }
+}
