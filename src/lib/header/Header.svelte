@@ -2,7 +2,7 @@
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 	import setup from '$lib/setup/wish-setup.json';
-	import { bannerActive, mobileMode } from '$lib/stores';
+	import { bannerActive, mobileMode } from '$lib/store/stores';
 
 	const { beginner, limited, weapons, standard } = setup.banner;
 

@@ -1,6 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { bannerActive, viewportHeight, viewportWidth } from '$lib/stores';
+	import { bannerActive, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import setup from '$lib/setup/wish-setup.json';
 
 	const { version, bannerNumber } = setup;

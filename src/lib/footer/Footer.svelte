@@ -1,5 +1,5 @@
 <script>
-	import { mobileMode } from '$lib/stores';
+	import { mobileMode } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
 </script>

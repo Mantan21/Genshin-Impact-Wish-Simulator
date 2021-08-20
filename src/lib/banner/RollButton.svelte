@@ -1,14 +1,11 @@
 <script>
-	import { bannerActive } from '$lib/stores';
-	import Icon from '$lib/utility/Icon.svelte';
-	import { base4StarChance, base5StarChance } from '$lib/setup/probability';
 	import { onMount } from 'svelte';
+	import { bannerActive } from '$lib/store/stores';
+	import roll from '$lib/functions/roll';
+	import Icon from '$lib/utility/Icon.svelte';
 
 	$: fateType =
 		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
-
-	let pity4star = 0;
-	let pity5star = 0;
 
 	let v3star;
 	let v4starSingle;
@@ -16,52 +13,6 @@
 	let v5starSingle;
 	let v5star;
 	let showOutput = false;
-
-	const prob = (items) => {
-		let chances = [];
-		for (let i = 0; i < items.length; i++) {
-			chances[i] = items[i].chance + (chances[i - 1] || 0);
-		}
-		const random = Math.random() * chances[chances.length - 1];
-		const result = items[chances.findIndex((chance) => chance > random)];
-		return result;
-	};
-
-	const roll = () => {
-		const chance5star = base5StarChance[pity5star];
-		let chance4star = base4StarChance[pity4star];
-		let chance3star = 100 - base4StarChance[pity4star] - base5StarChance[pity5star];
-
-		if (chance3star < 0 && pity5star > 89) chance4star = 0;
-		if (chance3star < 0) chance3star = 0;
-
-		const item = [
-			{
-				rarity: 3,
-				chance: chance3star
-			},
-			{
-				rarity: 4,
-				chance: chance4star
-			},
-			{
-				rarity: 5,
-				chance: chance5star
-			}
-		];
-		const result = prob(item);
-		if (result.rarity === 5) {
-			pity4star++;
-			pity5star = 0;
-		} else if (result.rarity === 4) {
-			pity4star = 0;
-			pity5star++;
-		} else {
-			pity4star++;
-			pity5star++;
-		}
-		return result;
-	};
 
 	const showOutputHandle = (rarity) => {
 		showOutput = true;
@@ -79,7 +30,6 @@
 
 	const singleRoll = () => {
 		const wish = roll();
-		console.log(wish, pity4star, pity5star);
 		showOutputHandle(wish.rarity);
 	};
 

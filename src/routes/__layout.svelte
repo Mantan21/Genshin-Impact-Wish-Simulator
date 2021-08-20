@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
-	import { isLoaded, viewportHeight, viewportWidth, isMobile, mobileMode } from '$lib/stores';
+	import { isLoaded, viewportHeight, viewportWidth, isMobile, mobileMode } from '$lib/store/stores';
 	import '../app.css';
 
 	$: onMount(() => {
