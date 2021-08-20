@@ -2,11 +2,10 @@
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 	import setup from '$lib/setup/wish-setup.json';
-	import { bannerActive, mobileMode } from '$lib/store/stores';
+	import { bannerActive, mobileMode, showBeginner } from '$lib/store/stores';
 
 	const { beginner, limited, weapons, standard } = setup.banner;
 
-	let showBeginner = true;
 	const acquaint = 80;
 	const intertwined = 102;
 	const stardust = 200;
@@ -95,7 +94,7 @@
 		<div class="bg">
 			<img src="./assets/images/utility/brand.svg" alt="Brand" />
 		</div>
-		{#if showBeginner}
+		{#if $showBeginner}
 			<BannerButton
 				type="beginner"
 				character={beginner.character}
