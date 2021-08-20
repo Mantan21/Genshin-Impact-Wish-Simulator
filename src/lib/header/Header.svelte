@@ -11,7 +11,19 @@
 	const intertwined = 102;
 	const stardust = 200;
 	const starglitter = 30;
+
+	let audio;
+
+	const buttonClick = (bannerType) => {
+		bannerActive.set(bannerType);
+		audio.currentTime = 0;
+		audio.play();
+	};
 </script>
+
+<audio bind:this={audio}>
+	<source src="./assets/sfx/banner-button-click.ogg" type="audio/ogg" />
+</audio>
 
 <div id="header">
 	<div class="top">
@@ -88,26 +100,26 @@
 				type="beginner"
 				character={beginner.character}
 				active={$bannerActive === 'beginner'}
-				on:click={() => bannerActive.set('beginner')}
+				on:click={() => buttonClick('beginner')}
 			/>
 		{/if}
 		<BannerButton
 			type="limited"
 			character={limited.character}
 			active={$bannerActive === 'limited'}
-			on:click={() => bannerActive.set('limited')}
+			on:click={() => buttonClick('limited')}
 		/>
 		<BannerButton
 			type="weapon"
 			weaponID={weapons}
 			active={$bannerActive === 'weapon'}
-			on:click={() => bannerActive.set('weapon')}
+			on:click={() => buttonClick('weapon')}
 		/>
 		<BannerButton
 			type="standard"
 			character={standard.character}
 			active={$bannerActive === 'standard'}
-			on:click={() => bannerActive.set('standard')}
+			on:click={() => buttonClick('standard')}
 		/>
 	</div>
 </div>
@@ -120,7 +132,8 @@
 		padding: 30px 2%;
 	}
 
-	.bg {
+	.bg,
+	audio {
 		display: none;
 	}
 	.top {

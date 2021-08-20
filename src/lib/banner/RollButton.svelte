@@ -7,6 +7,7 @@
 	$: fateType =
 		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
 
+	let audio;
 	let v3star;
 	let v4starSingle;
 	let v4star;
@@ -29,11 +30,15 @@
 	};
 
 	const singleRoll = () => {
+		audio.currentTime = 0;
+		audio.play();
 		const wish = roll();
 		showOutputHandle(wish.rarity);
 	};
 
 	const tenRoll = () => {
+		audio.currentTime = 0;
+		audio.play();
 		const wishStar = [];
 		for (let i = 0; i < 10; i++) {
 			const wish = roll();
@@ -55,6 +60,10 @@
 		});
 	});
 </script>
+
+<audio bind:this={audio}>
+	<source src="./assets/sfx/roll-button-click.ogg" type="audio/ogg" />
+</audio>
 
 <div class="wish-output" class:show={showOutput}>
 	<div class="video">
@@ -141,6 +150,10 @@
 		align-items: center;
 		flex-direction: column;
 		color: #a49a90;
+	}
+
+	button:active {
+		transform: scale(0.95);
 	}
 
 	button .bottom {
