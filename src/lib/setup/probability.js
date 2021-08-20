@@ -1,4 +1,4 @@
-const base4StarChance = [5.18, 4.88, 4.68, 5.67, 6.78, 4.6, 6.13, 12.28, 41.29, 100];
+const base4StarChance = [5.18, 4.88, 4.68, 5.67, 6.78, 4.6, 6.13, 12.28, 41.29, 100, 100];
 const base5StarChance = [0.6];
 
 for (let i = 0; i < 4; i++) base5StarChance.push(1.11); // 2-5

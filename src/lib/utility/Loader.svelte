@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { bannerActive, isLoaded } from '$lib/stores';
+	import { bannerActive, isLoaded } from '$lib/store/stores';
 
 	$: if ($isLoaded) {
 		const showBanner = setTimeout(() => {
