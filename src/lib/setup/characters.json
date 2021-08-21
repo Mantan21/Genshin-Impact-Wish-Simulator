@@ -25,6 +25,10 @@
     "lisa": {
       "vision": "electro",
       "style": ""
+    },
+    "sayu": {
+      "limited": true,
+      "style": ""
     }
   }
 }
