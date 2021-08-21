@@ -22,7 +22,12 @@
     "skyward-spine": {
       "style": ""
     },
+    "skyward-blade": {
+      "limited": true,
+      "style": ""
+    },
     "thundering-pulse": {
+      "limited": true,
       "style": ""
     }
   }

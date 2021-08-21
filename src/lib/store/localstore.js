@@ -34,13 +34,13 @@ const beginnerRoll = {
   }
 }
 
-const beginnerGuaranteed = {
+const beginnerAlreadyGuaranteed = {
   set (opt) {
-    localStorage.setItem('beginnerGuaranteed', opt)
+    localStorage.setItem('beginnerAlreadyGuaranteed', opt)
     return opt
   },
   get() {
-    let isGuaranteed = localStorage.getItem('beginnerGuaranteed');
+    let isGuaranteed = localStorage.getItem('beginnerAlreadyGuaranteed');
     return isGuaranteed;
   }
 }
@@ -67,4 +67,4 @@ const nextWeaponGuaranteed = {
   }
 }
 
-export { pity4star, pity5star, beginnerRoll, beginnerGuaranteed, nextGuaranteed, nextWeaponGuaranteed };
+export { pity4star, pity5star, beginnerRoll, beginnerAlreadyGuaranteed, nextGuaranteed, nextWeaponGuaranteed };
