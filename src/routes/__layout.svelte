@@ -5,17 +5,20 @@
 	import { isLoaded, viewportHeight, viewportWidth, isMobile, mobileMode } from '$lib/store/stores';
 	import '../app.css';
 
-	$: onMount(() => {
+	$: if ($isLoaded) {
+		window.addEventListener('orientationchange', () => {
+			const { angle } = screen.orientation;
+			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
+		});
+	}
+
+	onMount(() => {
 		isLoaded.set(true);
 		const md = new MobileDetect(navigator.userAgent);
 		isMobile.set(!!md.mobile());
 
 		const { angle } = screen.orientation;
 		mobileMode.set(angle === 90 || angle === 270);
-		window.addEventListener('orientationchange', () => {
-			const { angle } = screen.orientation;
-			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
-		});
 
 		viewportWidth.set(window.innerWidth);
 		viewportHeight.set(window.innerHeight);

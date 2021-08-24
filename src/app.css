@@ -35,6 +35,9 @@ body {
 	background-position: center;
 	background-size: cover;
 	background-color: var(--primary-color);
+}
+
+	body, button:hover {
 	    cursor: url(data:image/png;base64,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), auto;
 }
 
@@ -79,12 +82,38 @@ body {
 }
 .filled {
 	background-color: #666666;
-	width: 10%;
-	transition: all .2s;
 }
 .animate {
-	width: 95%;
-	animation: loader forwards 4s;
+	animation: loader forwards 6s;
+}
+
+.wish-result .gi-hydro, .wish-result .gi-cryo, .wish-result .gi-electro, .wish-result .gi-geo, .wish-result .gi-pyro, .wish-result .gi-anemo {
+	-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+}
+.wish-result .gi-hydro {
+	background-image: linear-gradient(to right, #06bbff, #06bbff, #10e2ff, #06bbff, #06bbff);
+	filter: drop-shadow(0 0 6px rgba(6, 187, 255, 0.6));
+}
+.wish-result .gi-geo {
+	background-image: linear-gradient(to right, #f9aa02, #f9aa02, #fcd260, #f9aa02, #f9aa02);
+	filter: drop-shadow(0 0 6px rgba(249, 170, 2, 0.6));
+}
+.wish-result .gi-pyro {
+	background-image: linear-gradient(to right, #fe6606, #fe6606, #fea76b, #fe6606, #fe6606);
+	filter: drop-shadow(0 0 6px rgba(254, 102, 6, 0.6));
+}
+.wish-result .gi-anemo {
+	background-image: linear-gradient(to right, #32d9a1, #32d9a1, #aef2cd, #32d9a1, #32d9a1);
+	filter: drop-shadow(0 0 6px rgba(50, 217, 161, 0.6));
+}
+.wish-result .gi-electro {
+	background-image: linear-gradient(to right, #ca82fc, #ca82fc, #deb5fe, #ca82fc, #ca82fc);
+	filter: drop-shadow(0 0 6px rgba(202, 130, 252, 0.6));
+}
+.wish-result .gi-cryo {
+	background-image: linear-gradient(to right, #7cfeff, #7cfeff, #c6fffd, #7cfeff, #7cfeff);
+	filter: drop-shadow(0 0 6px rgba(124, 254, 255, 0.6));
 }
 
 #svelte {
@@ -197,6 +226,6 @@ h1 {
 	}
 
 	100% {
-		width: 100%;
+		width: 95%;
 	}
 }

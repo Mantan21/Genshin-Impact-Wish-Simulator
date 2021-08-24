@@ -12,7 +12,6 @@
 	const starglitter = 30;
 
 	let audio;
-
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
 		audio.currentTime = 0;
@@ -110,7 +109,7 @@
 		/>
 		<BannerButton
 			type="weapon"
-			weaponID={weapons}
+			weaponID={weapons.featured}
 			active={$bannerActive === 'weapon'}
 			on:click={() => buttonClick('weapon')}
 		/>

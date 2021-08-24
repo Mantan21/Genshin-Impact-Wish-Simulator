@@ -1,19 +1,20 @@
 <script>
+	import { onMount } from 'svelte';
 	import { mobileMode } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
 
 	let audio;
 
+	onMount(() => {
+		audio = document.querySelector('#button-sfx');
+	});
+
 	const buttonCLick = () => {
 		audio.currentTime = 0;
 		audio.play();
 	};
 </script>
-
-<audio bind:this={audio}>
-	<source src="./assets/sfx/button-click.ogg" type="audio/ogg" />
-</audio>
 
 <div id="footer" style="width: 100%; height: 100%">
 	{#if !$mobileMode}
