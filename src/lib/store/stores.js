@@ -1,5 +1,6 @@
 import { writable }  from 'svelte/store';
 
+const backsound = writable('notLoaded');
 const isLoaded = writable(false);
 
 const bannerActive = writable('');
@@ -11,6 +12,15 @@ const viewportHeight = writable(0)
 
 // Mobile Detect
 const isMobile = writable(false);
-const mobileMode = writable(false); //false
+const mobileMode = writable(false);
 
-export { bannerActive, isLoaded, viewportWidth, viewportHeight, isMobile, mobileMode, showBeginner };
+// Wish
+const wishes = writable([]);
+const showWish = writable(false); // false
+
+export {
+  bannerActive, isLoaded, backsound,
+  viewportWidth, viewportHeight,
+  isMobile, mobileMode,
+  showBeginner, wishes, showWish,
+};

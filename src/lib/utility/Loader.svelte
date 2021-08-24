@@ -9,16 +9,13 @@
 	});
 
 	$: if ($isLoaded) {
-		const showBanner = setTimeout(() => {
-			if ($showBeginner) bannerActive.set('beginner');
-			else bannerActive.set('limited');
-			clearTimeout(showBanner);
-		}, 3000);
+		if ($showBeginner) bannerActive.set('beginner');
+		else bannerActive.set('limited');
 	}
 </script>
 
 {#if !$isLoaded}
-	<div class="loader" out:fade={{ delay: 5500, duration: 500 }}>
+	<div class="loader" out:fade={{ duration: 100 }}>
 		<div class="content">
 			<div class="icon">
 				<i class="gi-pyro" />

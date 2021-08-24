@@ -5,14 +5,17 @@ import { beginnerRoll, beginnerAlreadyGuaranteed, nextGuaranteed, nextWeaponGuar
 import { showBeginner } from '$lib/store/stores';
 import prob from './prob';
 
+
+const { standard, beginner, limited } = wishSetup.banner;
+
 const weap3 = Object.keys(weapons.star3).map((name) => ({type: 'weapon', rarity: 3, name}));
 const weap4 = Object.keys(weapons.star4).map((name) => ({type: 'weapon', rarity: 4, name}));
-const stdChar4 = Object.keys(chars.star4).filter((name) => {
-  if (!chars.star4[name].limited) return { type: 'character', rarity: 4, name }
-});
-const stdWeap5 = Object.keys(weapons.star5).filter((name) => {
-  if (!weapons.star5[name].limited) return { type: 'weapon', rarity: 5, name }
-});
+const stdChar4 = Object.keys(chars.star4)
+  .filter((name) => (!chars.star4[name].limited))
+  .map((name) => ({ type: 'character', rarity: 4, name }));
+const stdWeap5 = Object.keys(weapons.star5)
+  .filter((name) => (!weapons.star5[name].limited))
+  .map((name) => ({ type: 'weapon', rarity: 5, name }));
 
 const rand = (array) => array[Math.floor(Math.random() * array.length)]
 
@@ -27,7 +30,7 @@ const get4Star = (opt = 'withCharacter') => {
 
 const get5Star = (opt = 'complete') => {
   let items = [];
-  const char = wishSetup.banner.standard.characters.map((name) => ({type: 'character', rarity: 5, name}))
+  const char = standard.characters.map((name) => ({type: 'character', rarity: 5, name}))
   const itemType = rand(['weap', 'char']);
 
   if (itemType === 'weap' || opt === 'noCharacter') items = stdWeap5
@@ -36,7 +39,7 @@ const get5Star = (opt = 'complete') => {
 }
 
 const beginnerWish = (rarity) => {
-  const rateup = wishSetup.banner.beginner.character.name;
+  const rateup = beginner.character.name;
   const rollCount = beginnerRoll.get() || 0;
   beginnerRoll.set(rollCount + 1)
 
@@ -78,7 +81,7 @@ const beginnerWish = (rarity) => {
 }
 
 const limitedWish = (rarity) => {
-  const { character, rateup } = wishSetup.banner.limited
+  const { character, rateup } = limited;
 
   if (rarity === 3) return get3Star();
   if (rarity === 4) {
@@ -120,11 +123,18 @@ const standardWish = (rarity) => {
 
 const weaponWish = (rarity) => {
   const { weapons } = wishSetup.banner;
-  const weap = weapons.map(({ name }) => name);
+  const weap = weapons.featured.map(({ name }) => name);
 
   if (rarity === 3) return get3Star();
-  if (rarity === 4) return get4Star('noCharacter');
-  if (rarity === 5) {  
+  if (rarity === 4) {
+    const resultType = rand(['rateup', 'std']);
+    if (resultType === 'std') return get4Star();
+
+    // If rate up character
+    let weapResult = weapons.rateup.map((name) => ({ type: 'weapon', rarity: 4, name }));
+    return rand(weapResult);
+  }
+  if (rarity === 5) {
   const weaponName = rand(weap);
   const weaponResultGuaranteed = { type: 'weapon', rarity: 5, name: weaponName };
   if (nextWeaponGuaranteed.get() === 'yes') return weaponResultGuaranteed;

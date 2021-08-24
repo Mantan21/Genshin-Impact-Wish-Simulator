@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { bannerActive } from '$lib/store/stores';
+	import { bannerActive, showWish, wishes, backsound } from '$lib/store/stores';
 	import roll from '$lib/functions/roll';
 	import Icon from '$lib/utility/Icon.svelte';
 
@@ -42,22 +42,28 @@
 	};
 
 	const singleRoll = () => {
+		backsound.set(false);
 		audio.currentTime = 0;
 		audio.play();
 		const wish = roll($bannerActive);
+		wishes.set([wish]);
 		showOutputHandle(wish.rarity, 'single');
 	};
 
 	const tenRoll = () => {
+		backsound.set(false);
 		audio.currentTime = 0;
 		audio.play();
 		const wishStar = [];
+		const wishOutput = [];
 		for (let i = 0; i < 10; i++) {
 			const wish = roll($bannerActive);
 			wishStar.push(wish.rarity);
+			wishOutput.push(wish);
 		}
 
 		console.log(wishStar);
+		wishes.set(wishOutput);
 		if (wishStar.includes(5)) return showOutputHandle(5);
 		if (wishStar.includes(4)) return showOutputHandle(4);
 		return showOutputHandle(3);
@@ -68,6 +74,7 @@
 			video.addEventListener('ended', () => {
 				showOutput = false;
 				video.style.display = 'none';
+				showWish.set(true);
 			});
 		});
 	});
