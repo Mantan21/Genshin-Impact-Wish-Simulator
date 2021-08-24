@@ -6,29 +6,93 @@
     },
     "yoimiya": {
       "vision": "pyro",
+      "limited": true,
       "style": ""
     },
     "qiqi":{
       "vision": "cryo",
-      "style": ""
+      "style": "top: 55%;"
+    },
+    "diluc": {
+      "vision":"pyro"
+    },
+    "jean": {
+      "vision": "anemo"
+    },
+    "mona": {
+      "vision": "hydro"
     }
   },
   "star4": {
+    "sayu": {
+      "limited": true,
+      "vision": "anemo",
+      "style": "transform: translate(-80%, -55%); width: 350%;"
+    },
     "noelle": {
       "vision": "geo",
-      "style": ""
+      "style": "left: 20%;width: 200%;"
     },
-    "yanfei": {
+    "amber": {
       "vision": "pyro",
-      "style": ""
+      "style": "width: 200%;top: 65%;left: 60%;"
+    },
+    "kaeya": {
+      "vision": "cryo",
+      "style": "width: 200%; left: 30%;top: 80%;"
     },
     "lisa": {
       "vision": "electro",
       "style": ""
     },
-    "sayu": {
-      "limited": true,
-      "style": ""
+    "yanfei": {
+      "vision": "pyro",
+      "style": "left: 170%;width: 400%;height: 170%;top: 90%;"
+    },
+    "sucrose": {
+      "vision": "anemo"
+    },
+    "fischl": {
+      "vision": "electro"
+    },
+    "bennet": {
+      "vision":"pyro",
+      "style": "width: 300%;left: -35%;top: 60%;"
+    },
+    "barbara": {
+      "vision":"hydro"
+    },
+    "beidou": {
+      "vision": "electro"
+    },
+    "chongyun": {
+      "vision": "cryo",
+      "style": "top: 70%;"
+    },
+    "diona": {
+      "vision": "cryo",
+      "style": "transform: translate(-30%, -60%);width: 200%;"
+    },
+    "ningguang": {
+      "vision":"geo"
+    },
+    "razor": {
+      "vision": "electro",
+      "style": "left: -0%;width: 200%;top: 70%;"
+    },
+    "rosaria": {
+      "vision": "cryo"
+    },
+    "xiangling": {
+      "vision": "pyro",
+      "style": "width: 250%;left: 120%;top: 70%;"
+    },
+    "xingqiu": {
+      "vision": "hydro"
+    },
+    "xinyan": {
+      "vision": "pyro",
+      "style": "height: 200%"
     }
   }
 }

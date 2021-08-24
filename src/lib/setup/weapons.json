@@ -1,34 +1,147 @@
 {
   "star3": {
-    "billet": {
+    "raven-bow": {
+      "type": "bow",
       "style": ""
     },
-    "entah": {
+    "sharpshooter_s-oath": {
+      "type": "bow",
       "style": ""
+    },
+    "emerald-orb": {
+      "type": "catalyst"
+    },
+    "magic-guide": {
+      "type": "catalyst"
+    },
+    "thrilling-tales-of-dragon-slayers": {
+      "type": "catalyst"
+    },
+    "bloodtained-greatsword": {
+      "type": "claymore"
+    },
+    "debate-club": {
+      "type": "claymore"
+    },
+    "ferrous-shadow": {
+      "type": "claymore"
+    },
+    "black-tassel": {
+      "type": "polearm"
+    },
+    "cool-steel": {
+      "type": "sword"
+    },
+    "skyrider-sword": {
+      "type": "sword"
+    },
+    "harbinger-of-dawn":{
+      "type": "sword"
     }
   },
   "star4": {
-    "bintang4": {
+    "favonius-warbow": {
+      "type": "bow",
       "style": ""
     },
-    "haiya": {
+    "favonius-greatsword": {
+      "type": "claymore"
+    },
+    "rust": {
+      "type": "bow",
       "style": ""
+    },
+    "sacrificial-bow": {
+      "type": "bow"
+    },
+    "sacrificial-greatsword": {
+      "type": "claymore"
+    },
+    "the-stringless": {
+      "type": "bow"
+    },
+    "favonius-codex": {
+      "type": "catalyst"
+    },
+    "sacrificial-fragments": {
+      "type": "catalyst"
+    },
+    "eye-of-perception": {
+      "type": "catalyst"
+    },
+    "the-widsith": {
+      "type": "catalyst"
+    },
+    "rainslasher": {
+      "type": "claymore"
+    },
+    "the-bell":{
+      "type": "claymore"
+    },
+    "whiteblind":{
+      "type": "claymore"
+    },
+    "dragon_s-bane": {
+      "type": "polearm"
+    },
+    "favonius-lance": {
+      "type": "polearm"
+    },
+    "favonius-sword": {
+      "type": "sword"
+    },
+    "lions-roar": {
+      "type": "sword"
+    },
+    "sacrificial-sword":{
+      "type": "sword"
+    },
+    "the-flute": {
+      "type": "sword"
     }
   },
   "star5": {
     "skyward-harp": {
+      "type": "bow",
       "style": ""
     },
     "skyward-spine": {
+      "type": "polearm",
       "style": ""
     },
     "skyward-blade": {
-      "limited": true,
+      "type": "sword",
       "style": ""
+    },
+    "skyward-atlas": {
+      "type": "sword",
+      "style": "catalyst"
+    },
+    "skyward-pride": {
+      "type": "claymore"
+    },
+    "elegy-for-the-end": {
+      "type":"bow"
+    },
+    "amos-bow": {
+      "type": "bow"
     },
     "thundering-pulse": {
       "limited": true,
+      "type": "bow",
       "style": ""
+    },
+    "lost-prayer-to-the-sacred-winds": {
+      "type": "catalyst"
+    },
+    "wolf_s-gravestone": {
+      "type": "claymore"
+    },
+    "primordial-jade-winged-spear": {
+      "type": "polearm"
+    },
+    "aquila-favonia": {
+      "type": "sword"
     }
   }
 }

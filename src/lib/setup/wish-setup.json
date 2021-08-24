@@ -37,26 +37,34 @@
       },
       "rateup": [
         "sayu",
-        "xinyian",
-        "diona",
-        "ninguang"
+        "xinyan",
+        "diona"
       ]
     },
-    "weapons": [
-      {
-        "name": "thundering-pulse",
-        "style": {
-          "main": "bottom: -70px;width: 70px;left: 40%;",
-          "active": "bottom: -60px;width: 70px;left: 40%;"
+    "weapons": {
+      "featured": [
+        {
+          "name": "thundering-pulse",
+          "style": {
+            "main": "bottom: -70px;width: 70px;left: 40%;",
+            "active": "bottom: -60px;width: 70px;left: 40%;"
+          }
+        },
+        {
+          "name": "skyward-blade",
+          "style": {
+            "main": "bottom: -65px;width: 80px;left: 30%;transform: rotate(-20deg);",
+            "active": "bottom: -55px;width: 80px;left: 30%;transform: rotate(-20deg);"
+          }
         }
-      },
-      {
-        "name": "skyward-blade",
-        "style": {
-          "main": "bottom: -65px;width: 80px;left: 30%;transform: rotate(-20deg);",
-          "active": "bottom: -55px;width: 80px;left: 30%;transform: rotate(-20deg);"
-        }
-      }
-    ]
+      ],
+      "rateup": [
+        "sacrificial-sword",
+        "sacrificial-fragments",
+        "favonius-warbow",
+        "rainslasher",
+        "dragon_s-bane"
+      ]
+    }
   }
 }
