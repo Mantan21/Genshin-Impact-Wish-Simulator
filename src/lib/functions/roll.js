@@ -1,7 +1,10 @@
-import { base4StarChance, base5StarChance } from '$lib/setup/probability';
+import HistoryIDB from '$lib/store/historyIdb'
 import { pity4star, pity5star } from '$lib/store/localstore';
+import { base4StarChance, base5StarChance } from '$lib/setup/probability';
 import prob from './prob';
 import getWishItem from './getWishItem';
+
+const { addHistory } = HistoryIDB;
 
 const roll = (banner) => {
   const pity4 = pity4star.get(banner);
@@ -46,7 +49,9 @@ const roll = (banner) => {
 
   const wishResult = getWishItem(banner, result.rarity)
   wishResult.pity = pity;
-  console.log(wishResult)
+  wishResult.banner = banner
+  
+  addHistory(wishResult)
   return wishResult;
 
 }

@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Genshin Impact';
-	src: url('./assets/fonts/optimized-genshin-font.woff') format('woff');
+	src: url('/assets/fonts/optimized-genshin-font.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -29,12 +29,8 @@
 
 body {
 	min-height: 100vh;
+	overflow: hidden;
 	margin: 0;
-	background-image: url('./assets/images/utility/wish-background.webp');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	background-color: var(--primary-color);
 }
 
 	body, button:hover {

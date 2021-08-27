@@ -112,10 +112,10 @@
 			</div>
 		{/each}
 	</div>
-	<div class="share">
-		<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
-		<button> Share </button>
-	</div>
+</div>
+<div class="share">
+	<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
+	<button> Share </button>
 </div>
 
 <style>
@@ -382,7 +382,7 @@
 		align-items: center;
 		position: absolute;
 		bottom: 5%;
-		right: 10%;
+		right: 8%;
 		color: #fff;
 		font-size: 0.8rem;
 	}
