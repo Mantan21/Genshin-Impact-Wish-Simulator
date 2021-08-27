@@ -127,6 +127,7 @@
 		bottom: 0;
 		left: 0;
 		overflow: hidden;
+		pointer-events: none;
 	}
 	img {
 		position: absolute;

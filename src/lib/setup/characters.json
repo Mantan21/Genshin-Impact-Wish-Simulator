@@ -31,7 +31,7 @@
     },
     "noelle": {
       "vision": "geo",
-      "style": "left: 20%;width: 200%;"
+      "style": "width: 200%;"
     },
     "amber": {
       "vision": "pyro",

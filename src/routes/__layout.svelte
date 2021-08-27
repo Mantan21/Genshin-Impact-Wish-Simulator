@@ -31,6 +31,7 @@
 
 <Loader />
 
+<audio src="./assets/sfx/button-click.ogg" type="audio/ogg" id="button-sfx" />
 <main class:mobile={$mobileMode}>
 	<slot />
 
@@ -43,6 +44,10 @@
 		width: 100%;
 		height: 100vh;
 		overflow: hidden;
+	}
+
+	:global(audio) {
+		visibility: hidden;
 	}
 
 	.uid {

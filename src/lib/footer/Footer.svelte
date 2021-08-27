@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { mobileMode } from '$lib/store/stores';
+	import { bannerActive, mobileMode } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
 
@@ -34,7 +34,7 @@
 		<div class="left">
 			<button on:click={buttonCLick}> Shop </button>
 			<button on:click={buttonCLick}> Details </button>
-			<button on:click={buttonCLick}> History </button>
+			<a href="/history/{$bannerActive}" sveltekit:prefetch on:click={buttonCLick}> History </a>
 		</div>
 		<div class="right">
 			<RollButton />
@@ -65,11 +65,15 @@
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 	}
 
-	button {
+	button,
+	a {
 		transform: scale(1);
 		transition: all 0.2s;
+		color: #4a5265;
+		text-decoration: none;
 	}
-	button:active {
+	button:active,
+	a:active {
 		transform: scale(0.95);
 	}
 
@@ -82,7 +86,8 @@
 		align-items: center;
 	}
 
-	.left button {
+	.left button,
+	.left a {
 		border-radius: 50px;
 		background-color: #fff;
 		border: 3px solid #fff;
@@ -92,7 +97,9 @@
 	}
 
 	.left button:active,
-	.left button:hover {
+	.left button:hover,
+	.left a:active,
+	.left a:hover {
 		background-color: #eee2c8;
 	}
 
@@ -104,7 +111,8 @@
 	:global(.mobile) .row {
 		padding: 0;
 	}
-	:global(.mobile) .left button {
+	:global(.mobile) .left button,
+	:global(.mobile) .left a {
 		padding: 2px 13px;
 		margin: 1px 2px;
 		font-size: 0.8rem;
@@ -117,7 +125,9 @@
 
 	@media screen and (max-width: 900px) {
 		button,
-		.left button {
+		.left button,
+		a,
+		.left a {
 			padding: 2px 15px;
 			margin: 2px 5px;
 		}
@@ -138,7 +148,8 @@
 	}
 
 	@media screen and (max-width: 400px) {
-		.left button {
+		.left button,
+		.left a {
 			padding: 1px 10px;
 			margin: 1px 2px;
 		}

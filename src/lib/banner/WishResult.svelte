@@ -148,6 +148,13 @@
 					</div>
 				{/if}
 			{/each}
+
+			{#if wish.length === 1}
+				<div class="share">
+					<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
+					<button> Share </button>
+				</div>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -524,6 +531,34 @@
 	}
 	.star3 .out3 {
 		box-shadow: 0 0 200px rgb(85 93 255 / 60%), inset 0 0 170px rgb(85 93 255 / 60%);
+	}
+
+	.share {
+		display: flex;
+		width: 100%;
+		text-align: right;
+		justify-content: flex-end;
+		align-items: center;
+		position: absolute;
+		bottom: 5%;
+		right: 8%;
+		color: #fff;
+		font-size: 0.8rem;
+	}
+	.share span {
+		display: flex;
+		align-items: center;
+	}
+
+	.share button {
+		background-color: #d9d2c8;
+		color: #000;
+		border-radius: 30px;
+		/* height: 20px; */
+		font-size: 0.8rem;
+		/* width: 70px; */
+		padding: 0.3rem 2rem;
+		margin-left: 10px;
 	}
 
 	@keyframes revealIcon {

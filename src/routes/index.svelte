@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import { onMount } from 'svelte';
 	import { showWish, backsound } from '$lib/store/stores';
 	import Header from '$lib/header/Header.svelte';
 	import Footer from '$lib/footer/Footer.svelte';
@@ -11,10 +10,10 @@
 	import WishResult from '$lib/banner/WishResult.svelte';
 
 	let audio;
-	onMount(() => backsound.set(true));
 	$: if ($backsound !== 'notLoaded') {
-		if ($backsound) audio.play();
-		else audio.pause();
+		if ($backsound) {
+			if (audio) audio.play();
+		} else audio.pause();
 	}
 </script>
 
@@ -27,7 +26,6 @@
 {/if}
 
 <audio src="./assets/sfx/wish-backsound.ogg" bind:this={audio} id="backsound" loop />
-<audio src="./assets/sfx/button-click.ogg" type="audio/ogg" id="button-sfx" />
 <section>
 	<div class="col top">
 		<Header />
@@ -52,6 +50,10 @@
 		justify-content: flex-end;
 		align-items: center;
 		overflow: hidden;
+		background-image: url('/assets/images/utility/wish-background.webp');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
 	}
 
 	.top,

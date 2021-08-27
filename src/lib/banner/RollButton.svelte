@@ -62,18 +62,27 @@
 			wishOutput.push(wish);
 		}
 
-		console.log(wishStar);
 		wishes.set(wishOutput);
 		if (wishStar.includes(5)) return showOutputHandle(5);
 		if (wishStar.includes(4)) return showOutputHandle(4);
 		return showOutputHandle(3);
 	};
 
+	const skip = () => {
+		[v3star, v4starSingle, v4star, v5starSingle, v5star].forEach((video) => {
+			video.pause();
+			video.currentTime = 0;
+			video.style.display = 'none';
+		});
+		showOutput = false;
+		showWish.set(true);
+	};
+
 	onMount(() => {
 		[v3star, v4starSingle, v4star, v5starSingle, v5star].forEach((video) => {
 			video.addEventListener('ended', () => {
-				showOutput = false;
 				video.style.display = 'none';
+				showOutput = false;
 				showWish.set(true);
 			});
 		});
@@ -106,6 +115,7 @@
 			<source src="./assets/videos/5star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
+		<button class="skip" on:click={skip}>Skip</button>
 	</div>
 </div>
 
@@ -143,6 +153,20 @@
 		width: 100vw;
 		height: 100vh;
 	}
+
+	.skip {
+		position: absolute;
+		top: 2%;
+		right: 2%;
+		color: #fff;
+		font-size: 1.5rem;
+	}
+
+	:global(.mobile) .skip {
+		font-size: 1.4rem;
+		right: 0;
+	}
+
 	video {
 		display: none;
 		position: absolute;
@@ -156,7 +180,7 @@
 	}
 
 	/* Button */
-	button {
+	button:not(.skip) {
 		background-image: url('./assets/images/utility/button.svg');
 		background-size: contain;
 		background-position: center;
@@ -195,7 +219,7 @@
 	}
 
 	@media screen and (max-width: 900px) {
-		button {
+		button:not(.skip) {
 			width: 180px;
 			height: 40px;
 			margin: 0;
@@ -205,7 +229,7 @@
 		}
 	}
 	@media screen and (max-width: 400px) {
-		button {
+		button:not(.skip) {
 			width: 140px;
 			height: 30px;
 			margin: 0;
