@@ -11,6 +11,7 @@ if (globalThis.window) {
     upgrade(db) {
       const store = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement:true });
       store.createIndex('banner', 'banner', { unique: false });
+      store.createIndex('name', 'name', { unique: false });
     },
   });
 }

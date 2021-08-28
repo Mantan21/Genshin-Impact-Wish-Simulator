@@ -173,6 +173,7 @@
 		background-color: #fff;
 		border: 3.5px solid #abbcc6;
 		padding: 0;
+		line-height: 0;
 	}
 
 	button {
