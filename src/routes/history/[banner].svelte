@@ -8,6 +8,7 @@
 	import { page } from '$app/stores';
 	import { beginnerRoll, pity4star, pity5star } from '$lib/store/localstore';
 	import { showBeginner } from '$lib/store/stores';
+	import { getName } from '$lib/functions/nameText';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import PopUp from '$lib/utility/PopUp.svelte';
 
@@ -183,7 +184,7 @@
 								<div class="row">
 									<div class="cell cell1">{type}</div>
 									<div class="cell cell2 star{rarity}">
-										{name}
+										{getName(name)}
 										{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
 									</div>
 									<div class="cell cell3">{time}</div>
