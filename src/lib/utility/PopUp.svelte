@@ -4,6 +4,7 @@
 
 	export let show = false;
 	export let title;
+	export let confirm = true;
 
 	const dispatch = createEventDispatcher();
 	const confirmClick = () => dispatch('confirm');
@@ -11,7 +12,7 @@
 </script>
 
 {#if show}
-	<div class="popup" transition:fade={{ duration: 100 }}>
+	<div class="popup" transition:fade={{ duration: 80 }}>
 		<div class="popup-content">
 			<i class="gi-primo-star top-left" />
 			<i class="gi-primo-star top-right" />
@@ -22,19 +23,22 @@
 				{#if title}
 					<div class="pop-header">{title}</div>
 				{/if}
-				<div class="pop-body">
+				<div class="pop-body" class:large={!title && !confirm}>
 					<slot />
 				</div>
-				<div class="pop-footer">
-					<button class="cancel" on:click={cancelClik}>
-						<i class="gi-times" />
-						<span> Cancel </span>
-					</button>
-					<button class="confirm" on:click={confirmClick}>
-						<i class="gi-circle-o" />
-						<span> Confirm </span>
-					</button>
-				</div>
+
+				{#if confirm}
+					<div class="pop-footer">
+						<button class="cancel" on:click={cancelClik}>
+							<i class="gi-times" />
+							<span> Cancel </span>
+						</button>
+						<button class="confirm" on:click={confirmClick}>
+							<i class="gi-circle-o" />
+							<span> Confirm </span>
+						</button>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -47,11 +51,12 @@
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		background-color: rgba(0, 0, 0, 0.25);
+		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 997;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		backdrop-filter: blur(2px);
 	}
 
 	.popup-content {
@@ -115,7 +120,7 @@
 	}
 	.pop-body {
 		height: 15rem;
-		max-height: 40vh;
+		max-height: 50vh;
 		overflow-y: auto;
 		position: relative;
 		z-index: +1;
@@ -123,6 +128,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.pop-body.large {
+		height: 25rem;
+		max-height: 70vh;
 	}
 
 	.pop-footer {
@@ -142,6 +152,11 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
+
+	:global(.mobile) .pop-footer {
+		padding: 8px 0;
+	}
+
 	.pop-footer button {
 		border-radius: 40px;
 		color: white;

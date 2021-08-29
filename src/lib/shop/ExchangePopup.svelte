@@ -1,0 +1,366 @@
+<script>
+	import { onMount } from 'svelte';
+	import { acquaint, intertwined, primogem, stardust, starglitter } from '$lib/store/stores';
+	import { myFunds } from '$lib/store/localstore';
+	import Icon from '$lib/utility/Icon.svelte';
+	import PopUp from '$lib/utility/PopUp.svelte';
+	import { createEventDispatcher } from 'svelte';
+
+	export let show = false;
+	export let itemToBuy = 'intertwined';
+	export let fundType = 'primogem';
+
+	const data = {
+		intertwined: {
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellendus minus delectus error laudantium optio nisi reiciendis provident, expedita iste dignissimos quibusdam vel nihil! Blanditiis ipsam expedita aperiam facere obcaecati ea, harum dolorem recusandae error vero veritatis deserunt quo vitae?',
+			star: 5
+		},
+		acquaint: {
+			description:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellendus minus delectus error laudantium optio nisi reiciendis provident, expedita iste dignissimos quibusdam vel nihil! Blanditiis ipsam expedita aperiam facere obcaecati ea, harum dolorem recusandae error vero veritatis deserunt quo vitae?',
+			star: 5
+		}
+	};
+
+	const base = {
+		starglitter: 5,
+		stardust: 125,
+		primogem: 160
+	};
+
+	let audio;
+	let contentHeight;
+	let rangeVal = 1;
+	let maxRange = 1;
+
+	let fundQty = 0;
+	let fateQty = 0;
+
+	$: {
+		if (fundType === 'starglitter') {
+			fateQty = $starglitter - ($starglitter % base.starglitter) / base.starglitter;
+			fundQty = $starglitter;
+		}
+
+		if (fundType === 'stardust') {
+			fateQty = $stardust - ($stardust % base.stardust) / base.stardust;
+			fundQty = $stardust;
+		}
+
+		if (fundType === 'primogem') {
+			fateQty = ($primogem - ($primogem % base.primogem)) / base.primogem;
+			fundQty = $primogem;
+		}
+
+		maxRange = fateQty > 0 ? fateQty : 1;
+	}
+	$: rangeStyle = `--min: 0; --max: ${maxRange}; --val: ${rangeVal}`;
+
+	$: itemFieldStyle = `height:${(45 / 100) * contentHeight}px`;
+	$: pictureWidthStyle = `height:${(45 / 100) * contentHeight}px; width:${
+		(45 / 100) * contentHeight
+	}px`;
+	$: descriptionStyle = `max-width:calc(100% - ${(45 / 100) * contentHeight}px)`;
+
+	onMount(() => {
+		audio = document.querySelector('#button-sfx');
+	});
+
+	const dispatch = createEventDispatcher();
+	const cancelBuy = () => {
+		dispatch('cancel');
+	};
+
+	const buyHandle = () => {
+		if (fateQty < 1) {
+			dispatch('confirm', { status: 'failed' });
+			return;
+		}
+
+		let fundAfterBuy;
+		let itemAfterBuy;
+		const pay = rangeVal * base[fundType];
+		if (fundType === 'starglitter') {
+			fundAfterBuy = $starglitter - pay;
+			starglitter.set(fundAfterBuy);
+		}
+		if (fundType === 'stardust') {
+			fundAfterBuy = $stardust - pay;
+			stardust.set(fundAfterBuy);
+		}
+		if (fundType === 'primogem') {
+			fundAfterBuy = $primogem - pay;
+			primogem.set(fundAfterBuy);
+		}
+
+		if (itemToBuy === 'intertwined') {
+			itemAfterBuy = rangeVal + $intertwined;
+			intertwined.set(itemAfterBuy);
+		}
+		if (itemToBuy === 'acquaint') {
+			itemAfterBuy = rangeVal + $acquaint;
+			acquaint.set(itemAfterBuy);
+		}
+		myFunds.set(itemToBuy, itemAfterBuy);
+		myFunds.set(fundType, fundAfterBuy);
+		dispatch('confirm', {
+			fundAfterBuy,
+			fundType,
+			itemToBuy
+		});
+	};
+</script>
+
+<PopUp {show} title="Item To Exchange" on:cancel={cancelBuy} on:confirm={buyHandle}>
+	<div class="content" bind:clientHeight={contentHeight}>
+		<div class="item" style={itemFieldStyle}>
+			<div class="primo">
+				<span class="primogem" class:red={fateQty < 1}>
+					<Icon
+						type={fundType}
+						height="80%"
+						width="auto"
+						style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
+					/>
+					{fundQty}
+				</span>
+			</div>
+			<picture style={pictureWidthStyle}>
+				<Icon type={itemToBuy} width="70%" />
+			</picture>
+			<div class="description" style={descriptionStyle}>
+				<div class="title">{itemToBuy} Fate</div>
+				<div class="star">
+					{#each Array(data[itemToBuy].star) as _, i}
+						<i class="gi-star" />
+					{/each}
+				</div>
+
+				<p>
+					{data[itemToBuy].description}
+				</p>
+			</div>
+		</div>
+		<div class="slider">
+			<div class="rangeNumber">
+				<span>Qty :</span>
+				<span>{rangeVal}</span>
+			</div>
+			<div class="rangeInput">
+				<div class="input">
+					<button
+						class="min"
+						on:click={() => {
+							if (rangeVal > 1) rangeVal--;
+							audio.currentTime = 0;
+							audio.play();
+						}}
+					>
+						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
+					</button>
+					<input
+						class="range"
+						type="range"
+						max={maxRange}
+						min="0"
+						bind:value={rangeVal}
+						style={rangeStyle}
+					/>
+					<button
+						class="plus"
+						on:click={() => {
+							if (rangeVal < maxRange) rangeVal++;
+							audio.currentTime = 0;
+							audio.play();
+						}}
+					>
+						<i class="gi-plus" />
+					</button>
+				</div>
+				{#if fateQty < 1}
+					<div class="error red">Insufficient Funds</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+</PopUp>
+
+<style>
+	.red {
+		color: #de2f22 !important;
+	}
+
+	.content {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.item {
+		display: flex;
+		width: 100%;
+		background-image: linear-gradient(-15deg, #e0b466, #817874);
+	}
+	.primo {
+		position: absolute;
+		top: 0.2rem;
+		right: 0.2rem;
+	}
+	.primogem {
+		padding: 2px 15px 0 30px;
+		display: inline-flex;
+		align-itmes: center;
+		max-width: 112px;
+		height: 25px;
+		position: relative;
+		overflow: hidden;
+		background-color: rgba(0, 0, 0, 0.3);
+		border-radius: 50px;
+		color: #fff;
+		text-align: center;
+		margin: 0 8px;
+		font-size: 0.8rem;
+	}
+
+	picture {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.description {
+		color: #fff;
+		font-size: 0.7rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: left;
+		padding: 0.3rem;
+	}
+	.title {
+		font-size: 1.1rem;
+		text-transform: capitalize;
+	}
+	.gi-star {
+		color: #eac343;
+		font-size: 0.9rem;
+		padding-top: 2px;
+	}
+
+	.description p {
+		height: 100%;
+		overflow-y: auto;
+		color: #fff;
+	}
+
+	.slider,
+	.rangeNumber,
+	.rangeInput,
+	.input {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		position: relative;
+		font-size: 1rem;
+	}
+	.slider {
+		height: 100%;
+	}
+
+	/* range */
+	[type='range'] {
+		--range: calc(var(--max) - var(--min));
+		--ratio: calc((var(--val) - var(--min)) / var(--range));
+		--sx: calc(0.5 * 1.5em + var(--ratio) * (100% - 1.5em));
+		margin: 0;
+		padding: 0;
+		width: 70%;
+		height: 1.5em;
+		background: transparent;
+		font: 1em/1 arial, sans-serif;
+	}
+	[type='range'],
+	[type='range']::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+	[type='range']::-webkit-slider-runnable-track {
+		box-sizing: border-box;
+		border: none;
+		width: 100%;
+		height: 0.4em;
+		background: #ccc;
+	}
+	[type='range']::-webkit-slider-runnable-track {
+		background: linear-gradient(#4a5265, #4a5265) 0 / var(--sx) 100% no-repeat #ccc;
+		border-radius: 10px;
+	}
+	[type='range']::-moz-range-track,
+	[type='range']::-ms-track {
+		box-sizing: border-box;
+		border: none;
+		width: 100%;
+		height: 0.4em;
+		background: #ccc;
+	}
+	[type='range']::-moz-range-progress,
+	[type='range']::-ms-fill-lower {
+		height: 0.4em;
+		background: #ccc;
+	}
+	[type='range']::-webkit-slider-thumb {
+		box-sizing: border-box;
+		border: none;
+		width: 0.75em;
+		height: 0.75em;
+		background: #4a5265;
+		margin-top: -0.22rem;
+		transform: rotate(45deg);
+		border: 0.15em solid #ece6de;
+		outline: 0.15em solid #4a5265;
+		box-shadow: 0 0 6px #ece6de;
+	}
+
+	[type='range']::-ms-tooltip {
+		display: none;
+	}
+
+	button.plus,
+	button.min {
+		background-color: #4a5265;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 0;
+		position: absolute;
+		width: 2rem;
+		height: 2rem;
+		padding: 0.5rem;
+		color: #fff;
+		border-radius: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	button.plus {
+		right: 7%;
+	}
+	button.min {
+		left: 7%;
+	}
+
+	@media screen and (max-width: 890px) {
+		.primogem {
+			height: 20px;
+			margin: 0 3px;
+		}
+	}
+	@media screen and (max-width: 400px) {
+		.primogem {
+			max-width: 80px;
+		}
+	}
+</style>

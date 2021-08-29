@@ -18,9 +18,19 @@ const mobileMode = writable(false);
 const wishes = writable([]);
 const showWish = writable(false); // false
 
+const genesis = writable(0);
+const stardust = writable(0);
+const starglitter = writable(0);
+const primogem = writable(1600);
+
+const intertwined = writable(0);
+const acquaint = writable(0);
+
 export {
   bannerActive, isLoaded, backsound,
   viewportWidth, viewportHeight,
   isMobile, mobileMode,
   showBeginner, wishes, showWish,
+  genesis, stardust, starglitter, primogem,
+  intertwined, acquaint
 };

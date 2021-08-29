@@ -105,11 +105,44 @@
   content: "\6a";
 }
 .gi-cryo:before {
-  content: "\6b";
+  content: "\6e";
 }
 .gi-polearm:before {
-  content: "\6e";
+  content: "\50";
 }
 .gi-sword:before {
   content: "\75";
+}
+.gi-angle-right:before {
+  content: "\76";
+}
+.gi-angle-left:before {
+  content: "\77";
+}
+.gi-caret-down:before {
+  content: "\78";
+}
+.gi-caret-up:before {
+  content: "\79";
+}
+.gi-reply:before {
+  content: "\6b";
+}
+.gi-delete:before {
+  content: "\7a";
+}
+.gi-cancel:before {
+  content: "\42";
+}
+.gi-recomended:before {
+  content: "\43";
+}
+.gi-gift-shop:before {
+  content: "\45";
+}
+.gi-paimon-bargains:before {
+  content: "\46";
+}
+.gi-genesis:before {
+  content: "\47";
 }

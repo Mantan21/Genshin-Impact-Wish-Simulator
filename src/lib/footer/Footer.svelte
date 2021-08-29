@@ -14,6 +14,12 @@
 		audio.currentTime = 0;
 		audio.play();
 	};
+
+	const shopButtonCLick = () => {
+		audio.src = '/assets/sfx/shop-button.ogg';
+		audio.currentTime = 0;
+		audio.play();
+	};
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
@@ -32,7 +38,7 @@
 
 	<div class="row">
 		<div class="left">
-			<button on:click={buttonCLick}> Shop </button>
+			<a href="/shop" sveltekit:prefetch on:click={shopButtonCLick}> Shop </a>
 			<button on:click={buttonCLick}> Details </button>
 			<a href="/history/{$bannerActive}" sveltekit:prefetch on:click={buttonCLick}> History </a>
 		</div>
