@@ -2,7 +2,20 @@
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
-	import { isLoaded, viewportHeight, viewportWidth, isMobile, mobileMode } from '$lib/store/stores';
+	import {
+		isLoaded,
+		viewportHeight,
+		viewportWidth,
+		isMobile,
+		mobileMode,
+		primogem,
+		genesis,
+		stardust,
+		starglitter,
+		intertwined,
+		acquaint
+	} from '$lib/store/stores';
+	import { myFunds } from '$lib/store/localstore';
 	import '../app.css';
 
 	$: if ($isLoaded) {
@@ -12,6 +25,27 @@
 		});
 	}
 
+	const setBudget = () => {
+		const localGenesis = myFunds.get('genesis');
+		if (localGenesis !== null) genesis.set(localGenesis);
+
+		const localPrimo = myFunds.get('primogem');
+		if (localPrimo === null) myFunds.set('primogem', $primogem);
+		else primogem.set(localPrimo);
+
+		const localStardust = myFunds.get('stardust');
+		if (localStardust !== null) stardust.set(localStardust);
+
+		const localStarglitter = myFunds.get('starglitter');
+		if (localStarglitter !== null) starglitter.set(localStarglitter);
+
+		const localIntertwined = myFunds.get('intertwined');
+		if (localIntertwined !== null) intertwined.set(localIntertwined);
+
+		const localAcquaint = myFunds.get('acquaint');
+		if (localAcquaint !== null) acquaint.set(localAcquaint);
+	};
+
 	onMount(() => {
 		isLoaded.set(true);
 		const md = new MobileDetect(navigator.userAgent);
@@ -19,6 +53,8 @@
 
 		const { angle } = screen.orientation;
 		mobileMode.set(angle === 90 || angle === 270);
+
+		setBudget();
 
 		viewportWidth.set(window.innerWidth);
 		viewportHeight.set(window.innerHeight);

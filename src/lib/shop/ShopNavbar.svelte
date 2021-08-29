@@ -4,11 +4,12 @@
 
 	export let show;
 	let activeShop = 'genesis';
+
 	const dispatch = createEventDispatcher();
 
 	const handleClick = (shop) => {
-		dispatch('select', { selected: shop });
 		activeShop = shop;
+		dispatch('select', { selected: shop });
 	};
 	const handleClose = () => dispatch('close');
 </script>

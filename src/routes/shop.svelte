@@ -1,29 +1,44 @@
 <script context="module">
-	import Icon from '$lib/utility/Icon.svelte';
-	import ShopNavbar from '$lib/utility/ShopNavbar.svelte';
-
 	export const prerender = true;
 </script>
 
 <script>
-	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
+	import Icon from '$lib/utility/Icon.svelte';
+	import ShopNavbar from '$lib/shop/ShopNavbar.svelte';
+	import ShopHeader from '$lib/shop/ShopHeader.svelte';
+	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
+	import PaymentPopup from '$lib/shop/PaymentPopup.svelte';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
-	let activeShop;
+	let audio;
+	let activeShop = 'genesis';
 	let activeFateShop = 'starglitter';
 	let showNavbar = true;
 	let showNavbarButton = false;
 	let columnWidth = '';
 
+	let activeGenesisIndexforPopup; // undefined
+	let showPaymentPopup = false; //false
+	let showExchangePopup = false;
+	let itemToBuy;
+
+	onMount(() => {
+		audio = document.querySelector('#button-sfx');
+	});
+
+	const buttonCLick = () => {
+		audio.src = '/assets/sfx/button-click.ogg';
+		audio.play();
+	};
 	const selectShop = (e) => {
 		const { selected } = e.detail;
 		activeShop = selected;
-		console.log(activeShop);
+		buttonCLick();
 		if ($viewportWidth < 500) showNavbar = false;
 	};
-
-	$: console.log(!mobileMode);
 
 	$: if (!$mobileMode) {
 		if ($viewportWidth < 745) {
@@ -44,121 +59,184 @@
 		}px`;
 	}
 	$: if ($mobileMode) {
-		columnWidth = `width: ${(30 / 100) * $viewportHeight - 0.1}px; height:${
-			(30 / 100) * $viewportHeight
+		columnWidth = `width: ${(37 / 100) * $viewportHeight - 0.1}px; height:${
+			(37 / 100) * $viewportHeight
 		}px`;
 	}
+
+	const genesisList = [
+		{ qty: 60, price: 0.99 },
+		{ qty: 300, price: 4.99 },
+		{ qty: 980, price: 14.99 },
+		{ qty: 1980, price: 29.99 },
+		{ qty: 3280, price: 49.99 },
+		{ qty: 6480, price: 99.99 }
+	];
+
+	const genesisButtonClick = () => {
+		audio.src = '/assets/sfx/genesis-click.ogg';
+		audio.play();
+	};
+	const selectGenesis = (i) => {
+		activeGenesisIndexforPopup = i;
+		showPaymentPopup = true;
+		genesisButtonClick();
+	};
+	const handleClosePaymentPopup = () => {
+		showPaymentPopup = false;
+		genesisButtonClick();
+	};
+
+	const openExchangePopup = (fate) => {
+		showExchangePopup = true;
+		itemToBuy = fate;
+		buttonCLick();
+	};
+
+	const handleCloseExchangePopup = () => {
+		showExchangePopup = false;
+		buttonCLick();
+	};
+
+	const paimonNavClick = (shop) => {
+		activeFateShop = shop;
+		buttonCLick();
+	};
 </script>
+
+<svelte:head>
+	{#if activeShop === 'genesis'}
+		<title>Buy Genesis Crystal | Wish Simulator</title>
+	{:else}
+		<title>Paimon's Bargains | Wish Simulator</title>
+	{/if}
+</svelte:head>
+
+<!-- Genesisn Pop up -->
+{#if showPaymentPopup}
+	<PaymentPopup
+		show={showPaymentPopup}
+		price={genesisList[activeGenesisIndexforPopup].price}
+		qty={genesisList[activeGenesisIndexforPopup].qty}
+		on:confirm={handleClosePaymentPopup}
+		on:cancel={handleClosePaymentPopup}
+	/>
+{/if}
+<!-- Genesis Pop Up End -->
+
+<!-- Fates Popup -->
+<ExchangePopup
+	show={showExchangePopup}
+	fundType={activeFateShop}
+	{itemToBuy}
+	on:cancel={handleCloseExchangePopup}
+	on:confirm={handleCloseExchangePopup}
+/>
+<!-- Fates Popup End -->
 
 <section>
 	<img class="bg" src="/assets/images/utility/bg{rand([1, 2, 3, 4, 5, 6])}.webp" alt="background" />
 	<div class="container">
 		<ShopNavbar
+			show={showNavbar}
 			on:select={selectShop}
 			on:close={() => {
 				showNavbar = false;
+				buttonCLick();
 			}}
-			show={showNavbar}
 		/>
 		<div class="items-container">
-			<div class="item-header" transition:fly={{ y: -20 }}>
-				<div class="info" style="display: flex; align-items: center">
-					{#if showNavbarButton}
-						<button
-							class="toggle"
-							on:click={() => {
-								showNavbar = !showNavbar;
-							}}
-						>
-							<span />
-						</button>
-					{/if}
-					<span> Refresed at 300 days </span>
-				</div>
-				<div class="fates">
-					<button class="stardust">
-						<Icon
-							type="stardust"
-							height="80%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-						/>
-						300
-					</button>
-					<button class="starglitter">
-						<Icon
-							type="starglitter"
-							height="80%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-						/>
-						200
-					</button>
-					<button class="primogem">
-						<Icon
-							type="primogem"
-							height="80%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-						/>
-						3200
-					</button>
-					<a href="/" class="close">
-						<i class="gi-close" />
-					</a>
-				</div>
-			</div>
+			<ShopHeader
+				{activeShop}
+				{showNavbar}
+				{showNavbarButton}
+				on:showNavbar={({ detail }) => {
+					showNavbar = detail.showNavbar;
+					buttonCLick();
+				}}
+			/>
 
-			<div class="item-body">
-				<div class="nav-item-list">
-					<button
-						class="nav-link-item"
-						class:active={activeFateShop === 'starglitter'}
-						on:click={() => {
-							activeFateShop = 'starglitter';
-						}}
-					>
-						<div class="border">
-							<i class="gi-primo-star left" />
-							<i class="gi-primo-star right" />
-							Starglitter Exchange
+			<div class="item-body" transition:fade={{ duration: 300 }}>
+				{#if activeShop === 'genesis'}
+					<div class="item-list genesis">
+						<div class="list-body">
+							{#each genesisList as { qty }, i}
+								<div class="column" style={columnWidth}>
+									<button class="content" on:click={() => selectGenesis(i)}>
+										<img src="/assets/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
+									</button>
+								</div>
+							{/each}
 						</div>
-					</button>
-					<button
-						class="nav-link-item"
-						class:active={activeFateShop === 'stardust'}
-						on:click={() => {
-							activeFateShop = 'stardust';
-						}}
-					>
-						<div class="border">
-							<i class="gi-primo-star left" />
-							<i class="gi-primo-star right" />
-							Stardust Exchange
-						</div>
-					</button>
-					<button
-						class="nav-link-item"
-						class:active={activeFateShop === 'primogem'}
-						on:click={() => {
-							activeFateShop = 'primogem';
-						}}
-					>
-						<div class="border">
-							<i class="gi-primo-star left" />
-							<i class="gi-primo-star right" />
-							Exchange with Primogem
-						</div>
-					</button>
-				</div>
-
-				<div class="item-list">
-					<div class="list-body">
-						{#each Array(12) as _, i}
-							<div class="column" style={columnWidth}>ok</div>
-						{/each}
 					</div>
-				</div>
+
+					<!-- PAIMON BARGAINS -->
+				{:else if activeShop === 'paimon-bargains'}
+					<div class="nav-item-list">
+						<button
+							class="nav-link-item"
+							class:active={activeFateShop === 'starglitter'}
+							on:click={() => paimonNavClick('starglitter')}
+						>
+							<div class="border">
+								<i class="gi-primo-star left" />
+								<i class="gi-primo-star right" />
+								Starglitter Exchange
+							</div>
+						</button>
+						<button
+							class="nav-link-item"
+							class:active={activeFateShop === 'stardust'}
+							on:click={() => paimonNavClick('stardust')}
+						>
+							<div class="border">
+								<i class="gi-primo-star left" />
+								<i class="gi-primo-star right" />
+								Stardust Exchange
+							</div>
+						</button>
+						<button
+							class="nav-link-item"
+							class:active={activeFateShop === 'primogem'}
+							on:click={() => paimonNavClick('primogem')}
+						>
+							<div class="border">
+								<i class="gi-primo-star left" />
+								<i class="gi-primo-star right" />
+								Exchange with Primogem
+							</div>
+						</button>
+					</div>
+
+					<div class="item-list paimon-bargains">
+						<div class="list-body">
+							{#each ['intertwined', 'acquaint'] as fate, i}
+								<button class="column" style={columnWidth} on:click={() => openExchangePopup(fate)}>
+									<div class="content">
+										<picture>
+											<Icon type={fate} width="60%" />
+											<span> {fate} Fate </span>
+										</picture>
+										<div class="price">
+											{#if activeFateShop === 'starglitter'}
+												<Icon type="starglitter" width="15%" />
+												<span style="margin-left: 5px">5</span>
+											{/if}
+											{#if activeFateShop === 'stardust'}
+												<Icon type="stardust" width="15%" />
+												<span style="margin-left: 5px">125</span>
+											{/if}
+											{#if activeFateShop === 'primogem'}
+												<Icon type="primogem" width="15%" />
+												<span style="margin-left: 5px">160</span>
+											{/if}
+										</div>
+									</div>
+								</button>
+							{/each}
+						</div>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -211,42 +289,6 @@
 		padding: 0 2%;
 	}
 
-	.toggle {
-		display: inline-block;
-		width: 40px;
-		height: 40px;
-		border: 1px solid #d2c69c;
-		margin-right: 5px;
-		position: relative;
-	}
-
-	.toggle span {
-		display: block;
-		width: 60%;
-		height: 2px;
-		top: 50%;
-		left: 50%;
-		position: absolute;
-		transform: translate(-50%, -50%);
-		background-color: #d2c69c;
-	}
-	.toggle span::after,
-	.toggle span::before {
-		display: block;
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 2px;
-		content: '';
-		background-color: #d2c69c;
-	}
-	.toggle span::before {
-		top: -300%;
-	}
-	.toggle span::after {
-		bottom: -300%;
-	}
-
 	/*  */
 	.border i {
 		font-size: 2rem;
@@ -268,54 +310,6 @@
 
 	.items-container {
 		width: 100%;
-	}
-	.item-header {
-		height: 80px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		color: #d2c69c;
-	}
-	:global(.mobile) .item-header {
-		height: 40px;
-	}
-
-	.fates {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-	}
-	.fates button {
-		padding: 0 15px 0 30px;
-		display: inline-block;
-		max-width: 112px;
-		height: 25px;
-		position: relative;
-		overflow: hidden;
-		background-color: rgba(0, 0, 0, 0.3);
-		border-radius: 50px;
-		color: #fff;
-		vertical-align: middle;
-		text-align: center;
-		margin: 0 8px;
-	}
-	.fates .close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		line-height: 0rem;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		border-radius: 100%;
-		text-decoration: none;
-	}
-	:global(.mobile) .fates .close {
-		width: 28px;
-		height: 28px;
 	}
 
 	/*  */
@@ -401,6 +395,11 @@
 	}
 	:global(.mobile) .item-list {
 		height: calc(100vh - 90px);
+		margin: 5px 0 0;
+		padding: 0;
+	}
+	:global(.mobile) .item-list.genesis {
+		height: calc(100vh - 60px);
 	}
 	.list-body {
 		display: flex;
@@ -411,49 +410,84 @@
 		height: 10vh;
 		min-width: 190px;
 		min-height: 190px;
-		background-color: #fff;
-		margin: 0.3rem;
+		margin: 0.4rem;
 		display: block;
+	}
+	button {
+		transition: all 0.2s;
+		transform: scale(1);
+	}
+	button:active {
+		transform: scale(0.95);
+	}
+
+	.genesis .column img,
+	.genesis .column button {
+		width: 100%;
+		transition: all 0.2s;
+	}
+	.genesis .column button:hover img,
+	.paimon-bargains button:hover {
+		filter: drop-shadow(0 0 5px #d2c69c);
+	}
+
+	.paimon-bargains .content {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		background-image: url('/assets/images/utility/shop-item-bg.webp');
+		background-size: cover;
+		border-radius: 10px;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	.paimon-bargains .content picture {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-top: -10%;
+		align-items: center;
+		position: relative;
+	}
+	.content picture span {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		color: #fff;
+		transform: scale(0.9);
+		-webkit-text-stroke: 0.2px black;
+		text-transform: capitalize;
+	}
+	.paimon-bargains .content .price {
+		width: 100%;
+		height: 25%;
+		background-color: #596982;
+		color: #fff;
+		padding: 0.5rem;
+		-webkit-text-stroke: 0.2px black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	@media screen and (max-width: 890px) {
-		.fates button {
-			height: 20px;
-			margin: 0 3px;
-		}
-		.close {
-			width: 30px;
-			height: 30px;
-			margin: 3px;
-		}
 		.column {
 			min-width: 150px;
 			min-height: 150px;
 		}
 
 		:global(.mobile) .column {
-			min-width: 105px;
-			min-height: 105px;
-		}
-	}
-	@media screen and (max-width: 500px) {
-		.item-header {
-			flex-direction: column;
-			justify-content: center;
-		}
-		.info {
-			width: 100%;
-		}
-		.fates .close {
-			position: fixed;
-			top: 2%;
-			right: 5%;
+			min-width: 130px;
+			min-height: 130px;
 		}
 	}
 	@media screen and (max-width: 400px) {
-		.fates button {
-			max-width: 80px;
-		}
 		.list-body {
 			justify-content: space-between;
 		}

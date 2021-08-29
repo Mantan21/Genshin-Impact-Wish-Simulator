@@ -67,4 +67,20 @@ const nextWeaponGuaranteed = {
   }
 }
 
-export { pity4star, pity5star, beginnerRoll, beginnerAlreadyGuaranteed, nextGuaranteed, nextWeaponGuaranteed };
+const myFunds = {
+  set(type, qty) {
+    localStorage.setItem(type, qty);
+    return qty;
+  },
+  get(type) {
+    const qty = localStorage.getItem(type);
+    if (qty !== null && qty !== 'undefined') return parseInt(qty);
+    return null;
+  }
+}
+export {
+  pity4star, pity5star,
+  beginnerRoll, beginnerAlreadyGuaranteed,
+  nextGuaranteed, nextWeaponGuaranteed,
+  myFunds
+};
