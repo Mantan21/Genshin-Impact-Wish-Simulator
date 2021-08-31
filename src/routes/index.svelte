@@ -50,7 +50,7 @@
 		justify-content: flex-end;
 		align-items: center;
 		overflow: hidden;
-		background-image: url('/assets/images/utility/wish-background.webp');
+		background-image: url('/assets/images/background/wish-background.webp');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;

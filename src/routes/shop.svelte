@@ -135,7 +135,7 @@
 <!-- Fates Popup End -->
 
 <section>
-	<img class="bg" src="/assets/images/utility/bg{rand([1, 2, 3, 4, 5, 6])}.webp" alt="background" />
+	<img class="bg" src="/assets/images/background{rand([1, 2, 3, 4, 5, 6])}.webp" alt="background" />
 	<div class="container">
 		<ShopNavbar
 			show={showNavbar}
@@ -417,7 +417,7 @@
 		transition: all 0.2s;
 		transform: scale(1);
 	}
-	button:active {
+	button:not(.nav-link-item):active {
 		transform: scale(0.95);
 	}
 
