@@ -284,7 +284,7 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: #fff;
-		background-image: url('./assets/images/utility/splash-background.webp');
+		background-image: url('./assets/images/background/splash-background.webp');
 		background-size: cover;
 	}
 	.container {

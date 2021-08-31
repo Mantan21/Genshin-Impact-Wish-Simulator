@@ -33,6 +33,7 @@
 	let contentHeight;
 	let rangeVal = 1;
 	let maxRange = 1;
+	let minRange = 0;
 
 	let fundQty = 0;
 	let fateQty = 0;
@@ -54,8 +55,9 @@
 		}
 
 		maxRange = fateQty > 0 ? fateQty : 1;
+		minRange = fateQty > 1 ? 1 : 0;
 	}
-	$: rangeStyle = `--min: 0; --max: ${maxRange}; --val: ${rangeVal}`;
+	$: rangeStyle = `--min: ${minRange}; --max: ${maxRange}; --val: ${rangeVal}`;
 
 	$: itemFieldStyle = `height:${(45 / 100) * contentHeight}px`;
 	$: pictureWidthStyle = `height:${(45 / 100) * contentHeight}px; width:${
@@ -151,6 +153,7 @@
 				<div class="input">
 					<button
 						class="min"
+						disabled={rangeVal <= 1}
 						on:click={() => {
 							if (rangeVal > 1) rangeVal--;
 							audio.currentTime = 0;
@@ -163,12 +166,13 @@
 						class="range"
 						type="range"
 						max={maxRange}
-						min="0"
+						min={minRange}
 						bind:value={rangeVal}
 						style={rangeStyle}
 					/>
 					<button
 						class="plus"
+						disabled={rangeVal >= maxRange}
 						on:click={() => {
 							if (rangeVal < maxRange) rangeVal++;
 							audio.currentTime = 0;
@@ -326,6 +330,11 @@
 
 	[type='range']::-ms-tooltip {
 		display: none;
+	}
+
+	button.plus:disabled,
+	button.min:disabled {
+		background-color: rgb(173, 179, 192);
 	}
 
 	button.plus,
