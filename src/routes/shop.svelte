@@ -12,7 +12,11 @@
 	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
 	import PaymentPopup from '$lib/shop/PaymentPopup.svelte';
 
-	const rand = (array) => array[Math.floor(Math.random() * array.length)];
+	const random = (min, max) => {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	};
 	let audio;
 	let activeShop = 'genesis';
 	let activeFateShop = 'starglitter';
@@ -135,7 +139,7 @@
 <!-- Fates Popup End -->
 
 <section>
-	<img class="bg" src="/assets/images/background{rand([1, 2, 3, 4, 5, 6])}.webp" alt="background" />
+	<img class="bg" src="/assets/images/background/bg{random(1, 16)}.webp" alt="background" />
 	<div class="container">
 		<ShopNavbar
 			show={showNavbar}
@@ -438,7 +442,7 @@
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
-		background-image: url('/assets/images/utility/shop-item-bg.webp');
+		background-image: url('/assets/images/utility/5star-bg.webp');
 		background-size: cover;
 		border-radius: 10px;
 		overflow: hidden;
