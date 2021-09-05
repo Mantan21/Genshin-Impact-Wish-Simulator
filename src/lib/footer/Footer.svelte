@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="left">
 			<a href="/shop" sveltekit:prefetch on:click={shopButtonCLick}> Shop </a>
-			<button on:click={buttonCLick}> Details </button>
+			<a href="/inventory" on:click={buttonCLick}> Inventory </a>
 			<a href="/history/{$bannerActive}" sveltekit:prefetch on:click={buttonCLick}> History </a>
 		</div>
 		<div class="right">
@@ -71,14 +71,12 @@
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 	}
 
-	button,
 	a {
 		transform: scale(1);
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
 	}
-	button:active,
 	a:active {
 		transform: scale(0.95);
 	}
@@ -92,7 +90,6 @@
 		align-items: center;
 	}
 
-	.left button,
 	.left a {
 		border-radius: 50px;
 		background-color: #fff;
@@ -102,8 +99,6 @@
 		transition: all 0.2s;
 	}
 
-	.left button:active,
-	.left button:hover,
 	.left a:active,
 	.left a:hover {
 		background-color: #eee2c8;
@@ -117,7 +112,6 @@
 	:global(.mobile) .row {
 		padding: 0;
 	}
-	:global(.mobile) .left button,
 	:global(.mobile) .left a {
 		padding: 2px 13px;
 		margin: 1px 2px;
@@ -130,8 +124,6 @@
 	/* Mwedia Query */
 
 	@media screen and (max-width: 900px) {
-		button,
-		.left button,
 		a,
 		.left a {
 			padding: 2px 15px;
@@ -154,7 +146,6 @@
 	}
 
 	@media screen and (max-width: 400px) {
-		.left button,
 		.left a {
 			padding: 1px 10px;
 			margin: 1px 2px;
