@@ -41,17 +41,17 @@
 	$: {
 		if (fundType === 'starglitter') {
 			fateQty = $starglitter - ($starglitter % base.starglitter) / base.starglitter;
-			fundQty = $starglitter;
+			fundQty = base.starglitter * rangeVal;
 		}
 
 		if (fundType === 'stardust') {
 			fateQty = $stardust - ($stardust % base.stardust) / base.stardust;
-			fundQty = $stardust;
+			fundQty = base.stardust * rangeVal;
 		}
 
 		if (fundType === 'primogem') {
 			fateQty = ($primogem - ($primogem % base.primogem)) / base.primogem;
-			fundQty = $primogem;
+			fundQty = base.primogem * rangeVal;
 		}
 
 		maxRange = fateQty > 0 ? fateQty : 1;
@@ -72,6 +72,7 @@
 	const dispatch = createEventDispatcher();
 	const cancelBuy = () => {
 		dispatch('cancel');
+		rangeVal = 1;
 	};
 
 	const buyHandle = () => {
@@ -82,6 +83,7 @@
 
 		let fundAfterBuy;
 		let itemAfterBuy;
+		rangeVal = 1;
 		const pay = rangeVal * base[fundType];
 		if (fundType === 'starglitter') {
 			fundAfterBuy = $starglitter - pay;
@@ -147,7 +149,7 @@
 		<div class="slider">
 			<div class="rangeNumber">
 				<span>Qty :</span>
-				<span>{rangeVal}</span>
+				<span style="font-size: larger">{rangeVal}</span>
 			</div>
 			<div class="rangeInput">
 				<div class="input">
@@ -162,14 +164,18 @@
 					>
 						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
 					</button>
-					<input
-						class="range"
-						type="range"
-						max={maxRange}
-						min={minRange}
-						bind:value={rangeVal}
-						style={rangeStyle}
-					/>
+					<div class="control">
+						<span>{minRange}</span>
+						<input
+							class="range"
+							type="range"
+							max={maxRange}
+							min={minRange}
+							bind:value={rangeVal}
+							style={rangeStyle}
+						/>
+						<span>{maxRange}</span>
+					</div>
 					<button
 						class="plus"
 						disabled={rangeVal >= maxRange}
@@ -262,6 +268,7 @@
 	.slider,
 	.rangeNumber,
 	.rangeInput,
+	.control,
 	.input {
 		display: flex;
 		justify-content: center;
@@ -275,6 +282,21 @@
 		height: 100%;
 	}
 
+	.control {
+		flex-direction: row;
+		margin: 0 3rem;
+	}
+
+	.control > span {
+		width: 2.2em;
+		height: 2em;
+		line-height: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: larger;
+	}
+
 	/* range */
 	[type='range'] {
 		--range: calc(var(--max) - var(--min));
@@ -282,7 +304,7 @@
 		--sx: calc(0.5 * 1.5em + var(--ratio) * (100% - 1.5em));
 		margin: 0;
 		padding: 0;
-		width: 70%;
+		width: 55%;
 		height: 1.5em;
 		background: transparent;
 		font: 1em/1 arial, sans-serif;
