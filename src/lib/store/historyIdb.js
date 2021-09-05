@@ -24,6 +24,10 @@ const HistoryIDB = {
     return (await IndexedDB).getAllFromIndex(storeName, 'banner', banner)
   },
 
+  async countItem(name) {
+    return (await IndexedDB).countFromIndex(storeName, 'name', name)
+  },
+
   async resetHistory(banner) {
     try {
       const idb = await IndexedDB;
@@ -34,20 +38,12 @@ const HistoryIDB = {
       return 'failed';
     }
   },
-  // async RestoDetails(banner, id) {
-  //   if (!id) return;
-  //   const historyData = await this.getHistoryDetail(id);
-  //   const errorMsg = 'No Data Found';
-  //   const NotFound = { error: true, errorMsg };
-  //   return historyData || NotFound;
-  // },
-  // async getHistoryDetail(id) {
-  //   if (!id) return;
-  //   return (await IndexedDB).get(storeName, id);
-  // },
-  // async getAllHistories() {
-  //   return (await IndexedDB).getAll(storeName);
-  // },
+  async clearIDB () {
+    return (await IndexedDB).clear(storeName)
+  },
+  async getAllHistories() {
+    return (await IndexedDB).getAll(storeName);
+  },
   async addHistory(data) {
     // eslint-disable-next-line no-prototype-builtins
     if (!data.hasOwnProperty('banner')) return;
