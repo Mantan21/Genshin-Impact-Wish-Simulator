@@ -1,6 +1,6 @@
 import { writable }  from 'svelte/store';
 
-const backsound = writable('notLoaded');
+const backsound = writable(false);
 const isLoaded = writable(false);
 
 const bannerActive = writable('');

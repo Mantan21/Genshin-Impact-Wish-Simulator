@@ -10,10 +10,10 @@
 	import WishResult from '$lib/banner/WishResult.svelte';
 
 	let audio;
-	$: if ($backsound !== 'notLoaded') {
-		if ($backsound) {
-			if (audio) audio.play();
-		} else audio.pause();
+	$: if ($backsound) {
+		if (audio) audio.play();
+	} else {
+		if (audio) audio.pause();
 	}
 </script>
 
