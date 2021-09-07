@@ -104,14 +104,14 @@
 									class="weaponbg"
 								/>
 								<img
-									src="./assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+									src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 									alt={name}
 									class={weaponType}
 								/>
 							</div>
 						{:else}
 							<img
-								src="./assets/images/characters/splash-art/{rarity}star/{name}.webp"
+								src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
 								alt={name}
 								class="splash-art"
 							/>

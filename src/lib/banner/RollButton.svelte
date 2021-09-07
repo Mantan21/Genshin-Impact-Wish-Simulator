@@ -182,7 +182,7 @@
 	on:confirm={handleExchangePopup}
 >
 	<div class="exchange">
-		An Aditional <span class="yellow">1</span>
+		An Aditional <span class="yellow">{rollCount}</span>
 		{fateType}
 		Fate are needed. <br />
 		Purchase with
