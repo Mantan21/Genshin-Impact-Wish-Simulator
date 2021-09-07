@@ -1,19 +1,36 @@
 <script>
 	import { onMount } from 'svelte';
-	import { bannerActive, showWish, wishes, backsound } from '$lib/store/stores';
+	import {
+		bannerActive,
+		showWish,
+		wishes,
+		backsound,
+		acquaint,
+		intertwined,
+		starglitter,
+		stardust,
+		primogem
+	} from '$lib/store/stores';
+	import { myFunds } from '$lib/store/localstore';
 	import roll from '$lib/functions/roll';
+	import PopUp from '$lib/utility/PopUp.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 
 	$: fateType =
 		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
+	$: fateQty =
+		$bannerActive === 'beginner' || $bannerActive === 'standard' ? $acquaint : $intertwined;
 
 	let audio;
+	let audioClick;
 	let v3star;
 	let v4starSingle;
 	let v4star;
 	let v5starSingle;
 	let v5star;
 	let showOutput = false;
+	let showExchangePopup = false;
+	let rollCount = 0;
 
 	const showOutputHandle = (rarity, rolltype = 'tenroll') => {
 		showOutput = true;
@@ -41,25 +58,57 @@
 		}
 	};
 
-	const singleRoll = () => {
-		backsound.set(false);
-		audio.currentTime = 0;
-		audio.play();
-		const wish = roll($bannerActive);
-		wishes.set([wish]);
-		showOutputHandle(wish.rarity, 'single');
+	const updateFunds = (fateType, fateQty) => {
+		let funds;
+		if (fateType === 'starglitter') funds = starglitter;
+		if (fateType === 'stardust') funds = stardust;
+		if (fateType === 'acquaint') funds = acquaint;
+		if (fateType === 'intertwined') funds = intertwined;
+		if (!funds) return;
+		funds.update((v) => {
+			const q = v + fateQty;
+			myFunds.set(fateType, q);
+			return q;
+		});
 	};
 
-	const tenRoll = () => {
-		backsound.set(false);
+	const updateFates = (banner, qty) => {
+		const fateQty = banner === 'standard' || banner === 'beginner' ? $acquaint : $intertwined;
+		if (fateQty < qty) {
+			showExchangePopup = true;
+			return false;
+		}
+		updateFunds(fateType, qty * -1);
+		return true;
+	};
+
+	const singleRoll = async () => {
 		audio.currentTime = 0;
 		audio.play();
+		rollCount = 1;
+		if (!updateFates($bannerActive, 1)) return;
+
+		backsound.set(false);
+		const wish = await roll($bannerActive);
+		wishes.set([wish]);
+		showOutputHandle(wish.rarity, 'single');
+		updateFunds(wish.fateType, wish.fateQty);
+	};
+
+	const tenRoll = async () => {
+		audio.currentTime = 0;
+		audio.play();
+		rollCount = 10;
+		if (!updateFates($bannerActive, 10)) return;
+		backsound.set(false);
+
 		const wishStar = [];
 		const wishOutput = [];
 		for (let i = 0; i < 10; i++) {
-			const wish = roll($bannerActive);
+			const wish = await roll($bannerActive);
 			wishStar.push(wish.rarity);
 			wishOutput.push(wish);
+			updateFunds(wish.fateType, wish.fateQty);
 		}
 
 		wishes.set(wishOutput);
@@ -86,8 +135,69 @@
 				showWish.set(true);
 			});
 		});
+		audioClick = document.querySelector('#button-sfx');
 	});
+
+	const closeExchangePopup = () => {
+		showExchangePopup = false;
+		audioClick.currentTime = 0;
+		audioClick.play();
+	};
+
+	const handleExchangePopup = () => {
+		showExchangePopup = false;
+		console.log(rollCount);
+		if ($primogem < rollCount * 160) return;
+		primogem.update((n) => {
+			const q = n - rollCount * 160;
+			myFunds.set('primogem', q);
+			return q;
+		});
+
+		if ($bannerActive === 'standard' || $bannerActive === 'beginner') {
+			acquaint.update((n) => {
+				const q = n + rollCount;
+				myFunds.set('acquaint', q);
+				return q;
+			});
+			if (rollCount === 1) singleRoll();
+			if (rollCount === 10) tenRoll();
+			return;
+		}
+
+		intertwined.update((n) => {
+			const q = n + rollCount;
+			myFunds.set('intertwined', q);
+			return q;
+		});
+		if (rollCount === 1) singleRoll();
+		if (rollCount === 10) tenRoll();
+	};
 </script>
+
+<PopUp
+	title="Paimon Bargains"
+	show={showExchangePopup}
+	on:cancel={closeExchangePopup}
+	on:confirm={handleExchangePopup}
+>
+	<div class="exchange">
+		An Aditional <span class="yellow">1</span>
+		{fateType}
+		Fate are needed. <br />
+		Purchase with
+		<span class="yellow" class:red={$primogem < rollCount * 160}>
+			{rollCount * 160}
+		</span>
+		Primogem ?
+
+		{#if $primogem < rollCount * 160}
+			<br />
+			<br />
+			<span class="red">Infsufficient Funds</span>
+		{/if}
+	</div>
+</PopUp>
 
 <audio bind:this={audio}>
 	<source src="./assets/sfx/roll-button-click.ogg" type="audio/ogg" />
@@ -123,7 +233,7 @@
 	<div class="top">Wish x1</div>
 	<div class="bottom">
 		<Icon type={fateType} />
-		<span style="margin-left: 7px"> x 1</span>
+		<span style="margin-left: 7px"> x <span class:red={fateQty < 1}> 1 </span>'</span>
 	</div>
 </button>
 
@@ -131,11 +241,21 @@
 	<div class="top">Wish x10</div>
 	<div class="bottom">
 		<Icon type={fateType} />
-		<span style="margin-left: 7px"> x 10</span>
+		<span style="margin-left: 7px">
+			x
+			<span class:red={fateQty < 10}> 10 </span>
+		</span>
 	</div>
 </button>
 
 <style>
+	.red {
+		color: #de2f22 !important;
+	}
+	.yellow {
+		color: rgb(218, 177, 45);
+	}
+
 	.wish-output {
 		position: fixed;
 		z-index: 998;

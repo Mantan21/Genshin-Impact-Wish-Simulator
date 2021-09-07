@@ -16,11 +16,17 @@
 	// 	{ name: 'xingqiu', rarity: 4, type: 'character', vision: 'hydro' }
 	// ];
 
-	const fiveStar = $wishes.filter(({ rarity }) => rarity === 5).sort((a, b) => a.type - b.type);
-	const fourStar = $wishes.filter(({ rarity }) => rarity === 4).sort((a, b) => a.type - b.type);
+	const sort = (a, b) => {
+		if (a > b) return -1;
+		if (b > a) return 1;
+		return 0;
+	};
+	const fiveStar = $wishes.filter(({ rarity }) => rarity === 5).sort(sort);
+	const fourStar = $wishes.filter(({ rarity }) => rarity === 4).sort(sort);
 	const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
 	const sortedWish = [...fiveStar, ...fourStar, ...threeStar];
 
+	console.log(sortedWish);
 	let audio;
 	let wishHeight;
 
@@ -48,13 +54,15 @@
 <audio src="./assets/sfx/result-list.ogg" bind:this={audio} />
 <div class="container">
 	<div class="wishlist" bind:clientHeight={wishHeight}>
-		{#each sortedWish as { name, rarity, weaponType, type, vision, style }, i (i)}
+		{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
 			<div
 				id="wish{i}"
 				class="item star{rarity} {type}"
 				style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
 			>
-				<div class="new">new</div>
+				{#if isNew}
+					<div class="new">new</div>
+				{/if}
 				<div class="item-body">
 					<div class="item-content">
 						<i class="gi-primo-star primo1" />
@@ -84,27 +92,33 @@
 										alt="{weaponType} icon"
 										style="width: 60%; height: auto"
 									/>
-								{:else}
+								{:else if isNew}
 									<i class="gi-{vision} vision" />
 								{/if}
 
-								<div class="star">
-									{#each Array(rarity) as _, i}
-										<div class="i gi-star" />
-									{/each}
-								</div>
+								{#if (isNew && type === 'character') || type === 'weapon'}
+									<div class="star">
+										{#each Array(rarity) as _, i}
+											<div class="i gi-star" />
+										{/each}
+									</div>
+								{/if}
 
-								<!-- <div class="masterless starglitter">
-									<Icon type="starglitter" width="80%" />
-									<span>10</span>
-								</div>
+								{#if type === 'character' && fateType}
+									<div class="masterless {fateType}">
+										<Icon type={fateType} width="80%" />
+										<span>{fateQty}</span>
+									</div>
+								{/if}
 
-								<div class="stella stella{rarity}">
-									<img
-										src="./assets/images/utility/stella-fortuna-{rarity}star.webp"
-										alt="Stella Formula"
-									/>
-								</div> -->
+								{#if stelaFortuna}
+									<div class="stella stella{rarity}">
+										<img
+											src="./assets/images/utility/stella-fortuna-{rarity}star.webp"
+											alt="Stella Formula"
+										/>
+									</div>
+								{/if}
 							</div>
 						</div>
 					</div>

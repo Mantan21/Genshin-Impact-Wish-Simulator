@@ -82,7 +82,7 @@
 		<WishListResult />
 	{:else}
 		<div class="container" bind:this={wishResult}>
-			{#each wish as { name, rarity, weaponType, type, vision }, i}
+			{#each wish as { name, rarity, weaponType, type, vision, fateType, fateQty }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						<div class="orbs orb5" />
@@ -131,16 +131,18 @@
 							</div>
 						</div>
 
-						<div class="starfate stardust">
-							<div class="icon">
-								<Icon type="stardust" width={isMobile ? '50px' : '60px'} />
+						{#if type === 'weapon'}
+							<div class="starfate {fateType}">
+								<div class="icon">
+									<Icon type={fateType} width={isMobile ? '50px' : '60px'} />
+								</div>
+								<div class="text">
+									<span>Extra</span>
+									Masterless {fateType}
+									<br /> x{fateQty}
+								</div>
 							</div>
-							<div class="text">
-								<span>Extra</span>
-								Masterless Starglitter
-								<br /> x10
-							</div>
-						</div>
+						{/if}
 
 						<div class="orbs out1" />
 						<div class="orbs out2" />
@@ -149,7 +151,7 @@
 				{/if}
 			{/each}
 
-			{#if wish.length === 1}
+			{#if wish.length === 1 || wish[activeIndex].type === 'character'}
 				<div class="share">
 					<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
 					<button> Share </button>
@@ -165,6 +167,7 @@
 		justify-content: flex-end;
 		right: 0;
 		transform: translateY(-50%);
+		text-transform: capitalize;
 	}
 	.starfate > .icon {
 		margin-right: -25px;

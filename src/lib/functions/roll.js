@@ -4,9 +4,9 @@ import { base4StarChance, base5StarChance } from '$lib/setup/probability';
 import prob from './prob';
 import getWishItem from './getWishItem';
 
-const { addHistory } = HistoryIDB;
+const { addHistory, countItem } = HistoryIDB;
 
-const roll = (banner) => {
+const roll = async (banner) => {
   const pity4 = pity4star.get(banner);
   const pity5 = pity5star.get(banner);
   
@@ -34,15 +34,27 @@ const roll = (banner) => {
   
   const result = prob(item);
   let pity = 1;
+  let fateType = 'stardust'
+  let fateQty = 15;
+
   if (result.rarity === 5) {
     pity4star.set(banner, pity4 + 1);
     pity5star.set(banner, 0);
+    fateQty = 10;
+    fateType = 'starglitter';
     pity = pity5 + 1;
-  } else if (result.rarity === 4) {
+
+  }
+  
+  if (result.rarity === 4) {
     pity4star.set(banner, 0);
     pity5star.set(banner, pity5 + 1);
+    fateQty = 10
+    fateType = 'starglitter';
     pity = pity4 + 1;
-  } else {
+  } 
+
+  if (result.rarity === 3) {
     pity4star.set(banner, pity4 + 1);
     pity5star.set(banner, pity5 + 1);
   }
@@ -51,7 +63,16 @@ const roll = (banner) => {
   wishResult.pity = pity;
   wishResult.banner = banner
   
+  const numberOfItemOfHistory = await countItem(wishResult.name);
   addHistory(wishResult)
+  
+  wishResult.isNew = (numberOfItemOfHistory < 1)
+  if (wishResult.type === 'character'){
+    if (numberOfItemOfHistory < 1) return wishResult;
+    wishResult.stelaFortuna = (numberOfItemOfHistory < 8)
+  }
+  wishResult.fateType = fateType;
+  wishResult.fateQty = fateQty;
   return wishResult;
 
 }

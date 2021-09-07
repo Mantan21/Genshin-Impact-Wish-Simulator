@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Icon from '$lib/utility/Icon.svelte';
 	import { genesis, primogem, stardust, starglitter } from '$lib/store/stores';
@@ -8,11 +8,20 @@
 	export let showNavbarButton = true;
 	export let activeShop = 'genesis';
 
+	let audio;
 	const dispatch = createEventDispatcher();
 
+	onMount(() => {
+		audio = document.querySelector('#button-sfx');
+	});
 	const handleClick = () => {
 		showNavbar = !showNavbar;
 		dispatch('showNavbar', { showNavbar });
+	};
+
+	const handleClose = () => {
+		audio.src = '/assets/sfx/button-click.ogg';
+		audio.play();
 	};
 </script>
 
@@ -75,7 +84,7 @@
 			</button>
 		{/if}
 
-		<a href="/" class="close" sveltekit:prefetch>
+		<a href="/" class="close" sveltekit:prefetch on:click={handleClose}>
 			<i class="gi-close" />
 		</a>
 	</div>

@@ -29,6 +29,11 @@
 		{/if}
 	</picture>
 	<div class="caption">
+		<div class="star">
+			{#each Array(rarity) as _, i}
+				<i class="gi-star" />
+			{/each}
+		</div>
 		<span>
 			{getName(name)}
 		</span>
@@ -87,6 +92,16 @@
 		background-image: url('/assets/images/utility/5star-bg.webp');
 	}
 
+	.star {
+		position: absolute;
+		left: 50%;
+		top: -0.7rem;
+		transform: translateX(-50%);
+	}
+	.gi-star {
+		color: #eac343;
+		font-size: 1rem;
+	}
 	.caption {
 		display: flex;
 		justify-content: center;
@@ -94,6 +109,7 @@
 		width: 100%;
 		height: 25px;
 		padding: 0 0.2rem;
+		position: relative;
 	}
 	.caption span {
 		display: block;
