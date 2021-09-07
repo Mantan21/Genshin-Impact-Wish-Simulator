@@ -1,23 +1,50 @@
 <script>
 	import BannerButton from '$lib/banner/BannerButton.svelte';
+	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 	import setup from '$lib/setup/wish-setup.json';
-	import { bannerActive, mobileMode, showBeginner } from '$lib/store/stores';
+	import {
+		acquaint,
+		bannerActive,
+		intertwined,
+		mobileMode,
+		primogem,
+		showBeginner,
+		stardust,
+		starglitter
+	} from '$lib/store/stores';
+	import { onMount } from 'svelte';
 
 	const { beginner, limited, weapons, standard } = setup.banner;
 
-	const acquaint = 80;
-	const intertwined = 102;
-	const stardust = 200;
-	const starglitter = 30;
-
+	let showExchangePopup = false;
 	let audio;
+	let clickAudio;
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
 		audio.currentTime = 0;
 		audio.play();
 	};
+
+	onMount(() => {
+		clickAudio = document.querySelector('#button-sfx');
+	});
+	const handlePopup = () => {
+		showExchangePopup = !showExchangePopup;
+		clickAudio.currentTime = 0;
+		clickAudio.play();
+	};
 </script>
+
+<!-- Exchange -->
+<ExchangePopup
+	fundType="genesis"
+	itemToBuy="primogem"
+	show={showExchangePopup}
+	on:cancel={handlePopup}
+	on:confirm={handlePopup}
+/>
+<!-- Exchange -->
 
 <audio bind:this={audio}>
 	<source src="./assets/sfx/banner-button-click.ogg" type="audio/ogg" />
@@ -39,7 +66,7 @@
 							width="auto"
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 						/>
-						{starglitter}
+						{$starglitter}
 					</button>
 					<button class="stardust">
 						<Icon
@@ -48,18 +75,18 @@
 							width="auto"
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 						/>
-						{stardust}
+						{$stardust}
 					</button>
 				{/if}
 
-				<button class="primogem">
+				<button class="primogem" on:click={handlePopup}>
 					<Icon
 						type="primogem"
 						height="80%"
 						width="auto"
 						style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 					/>
-					3200
+					{$primogem}
 					<i class="gi-plus" />
 				</button>
 				<button class="fate">
@@ -70,7 +97,7 @@
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 							type="acquaint"
 						/>
-						{acquaint}
+						{$acquaint}
 					{:else}
 						<Icon
 							height="70%"
@@ -78,7 +105,7 @@
 							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 							type="intertwined"
 						/>
-						{intertwined}
+						{$intertwined}
 					{/if}
 				</button>
 			</div>
@@ -128,6 +155,7 @@
 		display: block;
 		width: 100%;
 		padding: 30px 2%;
+		z-index: 5;
 	}
 
 	.bg,
@@ -139,8 +167,6 @@
 		justify-content: space-between;
 		width: 100%;
 		position: relative;
-		z-index: +100;
-		pointer-events: none;
 	}
 
 	.wish-title {

@@ -1,6 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	import { acquaint, intertwined, primogem, stardust, starglitter } from '$lib/store/stores';
+	import {
+		acquaint,
+		genesis,
+		intertwined,
+		primogem,
+		stardust,
+		starglitter
+	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
 	import Icon from '$lib/utility/Icon.svelte';
 	import PopUp from '$lib/utility/PopUp.svelte';
@@ -40,18 +47,23 @@
 
 	$: {
 		if (fundType === 'starglitter') {
-			fateQty = $starglitter - ($starglitter % base.starglitter) / base.starglitter;
+			fateQty = ($starglitter - ($starglitter % base.starglitter)) / base.starglitter;
 			fundQty = base.starglitter * rangeVal;
 		}
 
 		if (fundType === 'stardust') {
-			fateQty = $stardust - ($stardust % base.stardust) / base.stardust;
+			fateQty = ($stardust - ($stardust % base.stardust)) / base.stardust;
 			fundQty = base.stardust * rangeVal;
 		}
 
 		if (fundType === 'primogem') {
 			fateQty = ($primogem - ($primogem % base.primogem)) / base.primogem;
 			fundQty = base.primogem * rangeVal;
+		}
+
+		if (fundType === 'genesis') {
+			fateQty = $genesis;
+			fundQty = rangeVal;
 		}
 
 		maxRange = fateQty > 0 ? fateQty : 1;
@@ -83,8 +95,9 @@
 
 		let fundAfterBuy;
 		let itemAfterBuy;
-		rangeVal = 1;
 		const pay = rangeVal * base[fundType];
+
+		// Control Currency
 		if (fundType === 'starglitter') {
 			fundAfterBuy = $starglitter - pay;
 			starglitter.set(fundAfterBuy);
@@ -97,7 +110,12 @@
 			fundAfterBuy = $primogem - pay;
 			primogem.set(fundAfterBuy);
 		}
+		if (fundType === 'genesis') {
+			fundAfterBuy = $genesis - rangeVal;
+			genesis.set(fundAfterBuy);
+		}
 
+		// Control Item that want to buy
 		if (itemToBuy === 'intertwined') {
 			itemAfterBuy = rangeVal + $intertwined;
 			intertwined.set(itemAfterBuy);
@@ -106,6 +124,12 @@
 			itemAfterBuy = rangeVal + $acquaint;
 			acquaint.set(itemAfterBuy);
 		}
+
+		if (itemToBuy === 'primogem') {
+			itemAfterBuy = rangeVal + $primogem;
+			primogem.set(itemAfterBuy);
+		}
+		rangeVal = 1;
 		myFunds.set(itemToBuy, itemAfterBuy);
 		myFunds.set(fundType, fundAfterBuy);
 		dispatch('confirm', {
@@ -118,34 +142,58 @@
 
 <PopUp {show} title="Item To Exchange" on:cancel={cancelBuy} on:confirm={buyHandle}>
 	<div class="content" bind:clientHeight={contentHeight}>
-		<div class="item" style={itemFieldStyle}>
-			<div class="primo">
-				<span class="primogem" class:red={fateQty < 1}>
-					<Icon
-						type={fundType}
-						height="80%"
-						width="auto"
-						style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-					/>
-					{fundQty}
-				</span>
-			</div>
-			<picture style={pictureWidthStyle}>
-				<Icon type={itemToBuy} width="70%" />
-			</picture>
-			<div class="description" style={descriptionStyle}>
-				<div class="title">{itemToBuy} Fate</div>
-				<div class="star">
-					{#each Array(data[itemToBuy].star) as _, i}
-						<i class="gi-star" />
-					{/each}
+		{#if fundType === 'genesis'}
+			<!-- Genesis Exchange -->
+			<div class="row genesis-exchange" style={itemFieldStyle}>
+				<div class="col genesis">
+					<picture>
+						<Icon type="genesis" width="50%" />
+						<span>Genesis Crystal</span>
+					</picture>
 				</div>
 
-				<p>
-					{data[itemToBuy].description}
-				</p>
+				<div class="col primo-exchange">
+					<picture>
+						<Icon type="primogem" width="50%" />
+						<span>Primogem</span>
+					</picture>
+				</div>
+
+				<div class="divider">
+					<i class="gi-arrow-right" />
+				</div>
 			</div>
-		</div>
+			<!-- End Genesis Exchange -->
+		{:else}
+			<div class="item" style={itemFieldStyle}>
+				<div class="primo">
+					<span class="primogem" class:red={fateQty < 1}>
+						<Icon
+							type={fundType}
+							height="80%"
+							width="auto"
+							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
+						/>
+						{fundQty}
+					</span>
+				</div>
+				<picture style={pictureWidthStyle}>
+					<Icon type={itemToBuy} width="70%" />
+				</picture>
+				<div class="description" style={descriptionStyle}>
+					<div class="title">{itemToBuy} Fate</div>
+					<div class="star">
+						{#each Array(data[itemToBuy].star) as _, i}
+							<i class="gi-star" />
+						{/each}
+					</div>
+
+					<p>
+						{data[itemToBuy].description}
+					</p>
+				</div>
+			</div>
+		{/if}
 		<div class="slider">
 			<div class="rangeNumber">
 				<span>Qty :</span>
@@ -165,7 +213,7 @@
 						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
 					</button>
 					<div class="control">
-						<span>{minRange}</span>
+						<span style="pointer-events:none">{minRange}</span>
 						<input
 							class="range"
 							type="range"
@@ -174,7 +222,7 @@
 							bind:value={rangeVal}
 							style={rangeStyle}
 						/>
-						<span>{maxRange}</span>
+						<span style="pointer-events:none">{maxRange}</span>
 					</div>
 					<button
 						class="plus"
@@ -188,6 +236,14 @@
 						<i class="gi-plus" />
 					</button>
 				</div>
+
+				{#if fundType === 'genesis'}
+					<div class="consume" style="display: inline-flex; align-items:center">
+						Consume
+						<Icon type="genesis" />
+						<span class:red={$genesis < 1}> {rangeVal}</span>
+					</div>
+				{/if}
 				{#if fateQty < 1}
 					<div class="error red">Insufficient Funds</div>
 				{/if}
@@ -263,6 +319,48 @@
 		height: 100%;
 		overflow-y: auto;
 		color: #fff;
+	}
+
+	.genesis-exchange {
+		display: flex;
+		width: 80%;
+		height: 100%;
+		position: relative;
+		margin: 0 auto;
+	}
+
+	.col {
+		width: 100%;
+		flex-basis: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		padding: 0.1em 0 0.7em;
+	}
+
+	.col span {
+		width: 100%;
+		position: absolute;
+		bottom: 0.3rem;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 0.7rem;
+	}
+
+	.divider {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: x-large;
+		color: #fff;
+	}
+	.genesis-exchange .genesis {
+		background-color: #d1c8bb;
+	}
+	.genesis-exchange .primo-exchange {
+		background-color: #ecd7a5;
 	}
 
 	.slider,
@@ -381,6 +479,7 @@
 	}
 	button.min {
 		left: 7%;
+		z-index: +3;
 	}
 
 	@media screen and (max-width: 890px) {

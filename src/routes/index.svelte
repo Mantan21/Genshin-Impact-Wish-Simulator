@@ -4,8 +4,8 @@
 
 <script>
 	import { showWish, backsound } from '$lib/store/stores';
-	import Header from '$lib/header/Header.svelte';
-	import Footer from '$lib/footer/Footer.svelte';
+	import Header from '$lib/banner/Header.svelte';
+	import Footer from '$lib/banner/Footer.svelte';
 	import BannerItem from '$lib/banner/BannerItem.svelte';
 	import WishResult from '$lib/banner/WishResult.svelte';
 
@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title> Genshin Impact Wish Simulator </title>
 </svelte:head>
 
 {#if $showWish}
