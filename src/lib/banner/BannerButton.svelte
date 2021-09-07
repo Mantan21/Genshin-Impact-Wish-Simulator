@@ -12,9 +12,7 @@
 		}
 	};
 
-	console.log(character);
 	const { style, name } = character;
-
 	const dispatch = createEventDispatcher();
 	const buttonClick = () => {
 		dispatch('click');
@@ -23,12 +21,12 @@
 
 <button class="button {type}" class:active on:click={buttonClick}>
 	<i class="gi-primo-star" />
-	<i class="gi-domain" />
+	<i class="gi-companion" />
 	<div class="picture">
 		{#if type === 'weapon'}
-			{#each weaponID as { name, style }}
+			{#each weaponID as { name, style, type }}
 				<img
-					src="./assets/images/weapons/{name}.webp"
+					src="./assets/images/weapons/{type}/5star/{name}.webp"
 					alt="Weapon Wish"
 					style={active ? style.active : style.main}
 				/>
@@ -99,13 +97,15 @@
 		left: 15px;
 		font-size: 0.7rem;
 	}
-	.gi-domain {
+	.gi-companion {
 		right: 5px;
-		font-size: 2rem;
+		font-size: 3rem;
+		line-height: 0;
+		top: 55% !important;
 	}
 
 	.gi-primo-star,
-	.gi-domain {
+	.gi-companion {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -114,9 +114,9 @@
 	}
 
 	.active .gi-primo-star,
-	.active .gi-domain,
+	.active .gi-companion,
 	button:hover .gi-primo-star,
-	button:hover .gi-domain {
+	button:hover .gi-companion {
 		color: #eee2c8;
 	}
 

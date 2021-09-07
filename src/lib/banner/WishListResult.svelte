@@ -3,22 +3,9 @@
 	import { showWish, wishes, backsound } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 
-	// const sortedWish = [
-	// 	{ name: 'jean', rarity: 5, type: 'character', vision: 'anemo' },
-	// 	{ name: 'ningguang', rarity: 4, type: 'character', vision: 'geo' },
-	// 	{ name: 'qiqi', rarity: 5, type: 'character', vision: 'cryo' },
-	// 	{ name: 'chongyun', rarity: 4, type: 'character', vision: 'cryo' },
-	// 	{ name: 'xinyan', rarity: 4, type: 'character', vision: 'pyro' },
-	// 	{ name: 'noelle', rarity: 4, type: 'character', vision: 'geo' },
-	// 	{ name: 'beidou', rarity: 4, type: 'character', vision: 'electro' },
-	// 	{ name: 'xiangling', rarity: 4, type: 'character', vision: 'pyro' },
-	// 	{ name: 'bennet', rarity: 4, type: 'character', vision: 'pyro' },
-	// 	{ name: 'xingqiu', rarity: 4, type: 'character', vision: 'hydro' }
-	// ];
-
 	const sort = (a, b) => {
-		if (a > b) return -1;
-		if (b > a) return 1;
+		if (a > b) return 1;
+		if (b > a) return -1;
 		return 0;
 	};
 	const fiveStar = $wishes.filter(({ rarity }) => rarity === 5).sort(sort);

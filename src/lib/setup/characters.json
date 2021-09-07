@@ -1,5 +1,10 @@
 {
   "star5": {
+    "raiden-shogun": {
+      "limited": true,
+      "vision": "electro",
+      "style": "top: 80%;left: 95%;width: 210%;height: 200%;"
+    },
     "keqing": {
       "vision": "electro",
       "style": ""
@@ -24,8 +29,12 @@
     }
   },
   "star4": {
-    "sayu": {
+    "kujou-sara": {
       "limited": true,
+      "vision": "electro",
+      "style": "height: 210%; top: 85%;"
+    },
+    "sayu": {
       "vision": "anemo",
       "style": "transform: translate(-80%, -55%); width: 350%;"
     },
