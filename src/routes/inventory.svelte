@@ -23,6 +23,8 @@
 	$: itemStyle = `width: ${itemWidth}px; height:${itemWidth + 20}px`;
 
 	let activeItem = 'Character';
+	let showOrder = false;
+	let orderby = 'rarity';
 
 	const buttonCLick = () => {
 		audio.src = '/assets/sfx/button-click.ogg';
@@ -31,6 +33,7 @@
 
 	const select = (item) => {
 		activeItem = item;
+		orderby = 'rarity';
 		buttonCLick();
 	};
 
@@ -81,15 +84,26 @@
 
 	$: proccessData(activeItem);
 
-	let showOrder = false;
-	let orderby = 'rarity';
-
 	const sort = (order) => {
 		if (order === 'rarity') {
 			dataToShow = dataToShow.sort((a, b) => b.rarity - a.rarity);
 		}
 		if (order === 'quantity') {
 			dataToShow = dataToShow.sort((a, b) => b.qty - a.qty);
+		}
+		if (order === 'element') {
+			dataToShow = dataToShow.sort((a, b) => {
+				if (a.vision > b.vision) return 1;
+				if (a.vision < b.vision) return -1;
+				return 0;
+			});
+		}
+		if (order === 'type') {
+			dataToShow = dataToShow.sort((a, b) => {
+				if (a.weaponType > b.weaponType) return 1;
+				if (a.weaponType < b.weaponType) return -1;
+				return 0;
+			});
 		}
 	};
 
@@ -217,6 +231,26 @@
 								>
 									Quantity
 								</a>
+
+								{#if activeItem === 'Character'}
+									<a
+										href="##"
+										class:selected={orderby == 'element'}
+										on:click|preventDefault={() => selectOrder('element', false)}
+									>
+										Element
+									</a>
+								{/if}
+
+								{#if activeItem === 'Weapon'}
+									<a
+										href="##"
+										class:selected={orderby == 'type'}
+										on:click|preventDefault={() => selectOrder('type', false)}
+									>
+										Type
+									</a>
+								{/if}
 							</div>
 						{/if}
 					</div>

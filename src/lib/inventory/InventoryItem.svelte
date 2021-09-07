@@ -100,8 +100,18 @@
 	}
 	.gi-star {
 		color: #eac343;
+		font-size: 1.3rem;
+	}
+
+	:global(.mobile) .gi-star {
 		font-size: 1rem;
 	}
+	@media screen and (max-width: 500px) {
+		.gi-star {
+			font-size: 1rem;
+		}
+	}
+
 	.caption {
 		display: flex;
 		justify-content: center;
@@ -129,7 +139,7 @@
 	}
 
 	img.polearm {
-		transform: rotate(10deg) scale(1.5) translate(-2em, 3em);
+		transform: rotate(10deg) scale(1.5) translate(-12%, 12%);
 	}
 
 	img.sword {
