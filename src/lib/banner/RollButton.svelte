@@ -200,29 +200,29 @@
 </PopUp>
 
 <audio bind:this={audio}>
-	<source src="./assets/sfx/roll-button-click.ogg" type="audio/ogg" />
+	<source src="/assets/sfx/roll-button-click.ogg" type="audio/ogg" />
 </audio>
 
 <div class="wish-output" class:show={showOutput}>
 	<div class="video">
 		<video bind:this={v3star} preload="auto">
-			<source src="./assets/videos/3star-single.webm" type="video/webm" />
+			<source src="/assets/videos/3star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v4starSingle} preload="auto">
-			<source src="./assets/videos/4star-single.webm" type="video/webm" />
+			<source src="/assets/videos/4star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v4star} preload="auto">
-			<source src="./assets/videos/4star.webm" type="video/webm" />
+			<source src="/assets/videos/4star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v5starSingle} preload="auto">
-			<source src="./assets/videos/5star-single.webm" type="video/webm" />
+			<source src="/assets/videos/5star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v5star} preload="auto">
-			<source src="./assets/videos/5star.webm" type="video/webm" />
+			<source src="/assets/videos/5star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<button class="skip" on:click={skip}>Skip</button>
@@ -301,7 +301,7 @@
 
 	/* Button */
 	button:not(.skip) {
-		background-image: url('./assets/images/utility/button.svg');
+		background-image: url('/assets/images/utility/button.svg');
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;

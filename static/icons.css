@@ -143,6 +143,21 @@
 .gi-paimon-bargains:before {
   content: "\46";
 }
+.gi-character:before {
+  content: "\48";
+}
+.gi-companion:before {
+  content: "\49";
+}
+.gi-weapon:before {
+  content: "\4b";
+}
+.gi-rotate-phone:before {
+  content: "\4a";
+}
 .gi-genesis:before {
   content: "\47";
+}
+.gi-exchange:before {
+  content: "\4d";
 }

@@ -4,12 +4,18 @@
 	import Icon from '$lib/utility/Icon.svelte';
 
 	const sort = (a, b) => {
-		if (a > b) return 1;
-		if (b > a) return -1;
+		if (a.type > b.type) return 1;
+		if (b.type > a.type) return -1;
 		return 0;
 	};
-	const fiveStar = $wishes.filter(({ rarity }) => rarity === 5).sort(sort);
-	const fourStar = $wishes.filter(({ rarity }) => rarity === 4).sort(sort);
+	const fiveStar = $wishes
+		.filter(({ rarity }) => rarity === 5)
+		.sort((a, b) => b.isNew - a.isNew)
+		.sort(sort);
+	const fourStar = $wishes
+		.filter(({ rarity }) => rarity === 4)
+		.sort((a, b) => b.isNew - a.isNew)
+		.sort(sort);
 	const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
 	const sortedWish = [...fiveStar, ...fourStar, ...threeStar];
 
@@ -38,7 +44,7 @@
 <button class="close" on:click={closeHandle}>
 	<i class="gi-close" />
 </button>
-<audio src="./assets/sfx/result-list.ogg" bind:this={audio} />
+<audio src="/assets/sfx/result-list.ogg" bind:this={audio} />
 <div class="container">
 	<div class="wishlist" bind:clientHeight={wishHeight}>
 		{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
@@ -58,14 +64,14 @@
 						<div class="pic">
 							{#if type === 'weapon'}
 								<img
-									src="./assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+									src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 									alt={name}
 									class="wishpic {weaponType}-item"
 									{style}
 								/>
 							{:else}
 								<img
-									src="./assets/images/characters/splash-art/{rarity}star/{name}.webp"
+									src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
 									alt={name}
 									class="wishpic"
 									{style}
@@ -75,7 +81,7 @@
 							<div class="info">
 								{#if type === 'weapon'}
 									<img
-										src="./assets/images/utility/{weaponType}-white.svg"
+										src="/assets/images/utility/{weaponType}-white.svg"
 										alt="{weaponType} icon"
 										style="width: 60%; height: auto"
 									/>
@@ -101,7 +107,7 @@
 								{#if stelaFortuna}
 									<div class="stella stella{rarity}">
 										<img
-											src="./assets/images/utility/stella-fortuna-{rarity}star.webp"
+											src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
 											alt="Stella Formula"
 										/>
 									</div>

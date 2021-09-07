@@ -47,13 +47,13 @@
 <!-- Exchange -->
 
 <audio bind:this={audio}>
-	<source src="./assets/sfx/banner-button-click.ogg" type="audio/ogg" />
+	<source src="/assets/sfx/banner-button-click.ogg" type="audio/ogg" />
 </audio>
 
 <div id="header">
 	<div class="top">
 		<h1 class="wish-title">
-			<img src="./assets/images/utility/brand.svg" alt="Brand" />
+			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 			<span>{$bannerActive} Wish </span>
 		</h1>
 		<div class="budget">
@@ -118,7 +118,7 @@
 
 	<div class="banner-button">
 		<div class="bg">
-			<img src="./assets/images/utility/brand.svg" alt="Brand" />
+			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 		</div>
 		{#if $showBeginner}
 			<BannerButton

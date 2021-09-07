@@ -18,14 +18,14 @@
 </script>
 
 <svelte:head>
-	<title> Genshin Impact Wish Simulator </title>
+	<title>Genshin Impact Wish Simulator</title>
 </svelte:head>
 
 {#if $showWish}
 	<WishResult />
 {/if}
 
-<audio src="./assets/sfx/wish-backsound.ogg" bind:this={audio} id="backsound" loop />
+<audio src="/assets/sfx/wish-backsound.ogg" bind:this={audio} id="backsound" loop />
 <section>
 	<div class="col top">
 		<Header />

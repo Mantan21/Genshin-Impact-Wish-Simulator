@@ -26,14 +26,14 @@
 		{#if type === 'weapon'}
 			{#each weaponID as { name, style, type }}
 				<img
-					src="./assets/images/weapons/{type}/5star/{name}.webp"
+					src="/assets/images/weapons/{type}/5star/{name}.webp"
 					alt="Weapon Wish"
 					style={active ? style.active : style.main}
 				/>
 			{/each}
 		{:else}
 			<img
-				src="./assets/images/characters/banner-button/{name}.webp"
+				src="/assets/images/characters/banner-button/{name}.webp"
 				alt="{type} Wish"
 				style={active ? style.active : style.main}
 			/>

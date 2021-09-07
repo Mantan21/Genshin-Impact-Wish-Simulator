@@ -1,5 +1,5 @@
 {
-  "name": "~TODO~",
+  "name": "genshin-wish-simulator",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -19,7 +19,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
     "cookie": "^0.4.1",
     "idb": "^6.1.2",
