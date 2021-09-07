@@ -5,12 +5,12 @@
 	export let style = '';
 
 	const pic = {
-		acquaint: './assets/images/utility/acquaint-fate.webp',
-		intertwined: './assets/images/utility/intertwined-fate.webp',
-		stardust: './assets/images/utility/masterless-stardust.webp',
-		starglitter: './assets/images/utility/masterless-starglitter.webp',
-		primogem: './assets/images/utility/primogem.webp',
-		genesis: './assets/images/utility/genesis.webp'
+		acquaint: '/assets/images/utility/acquaint-fate.webp',
+		intertwined: '/assets/images/utility/intertwined-fate.webp',
+		stardust: '/assets/images/utility/masterless-stardust.webp',
+		starglitter: '/assets/images/utility/masterless-starglitter.webp',
+		primogem: '/assets/images/utility/primogem.webp',
+		genesis: '/assets/images/utility/genesis.webp'
 	};
 </script>
 

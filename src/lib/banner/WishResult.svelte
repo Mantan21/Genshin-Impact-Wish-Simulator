@@ -38,7 +38,7 @@
 
 	const playAudio = () => {
 		const star = wish[activeIndex].rarity;
-		audio.src = `./assets/sfx/reveal-${star}star.ogg`;
+		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
 		audio.currentTime = 0;
 		audio.play();
 	};
@@ -91,7 +91,7 @@
 						<div class="orbs orb3" />
 						<div class="orbs orb4" />
 						<img
-							src="./assets/images/utility/splatter-{rarity}star.svg"
+							src="/assets/images/utility/splatter-{rarity}star.svg"
 							alt="splatter"
 							class="sprite"
 						/>
@@ -99,7 +99,7 @@
 						{#if type === 'weapon'}
 							<div class="splash-art weapon {weaponType}-parent">
 								<img
-									src="./assets/images/utility/bg-{weaponType}.svg"
+									src="/assets/images/utility/bg-{weaponType}.svg"
 									alt={weaponType}
 									class="weaponbg"
 								/>
@@ -287,7 +287,7 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: #fff;
-		background-image: url('./assets/images/background/splash-background.webp');
+		background-image: url('/assets/images/background/splash-background.webp');
 		background-size: cover;
 	}
 	.container {
