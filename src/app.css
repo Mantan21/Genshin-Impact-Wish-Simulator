@@ -13,11 +13,8 @@
 	--primary-color: #b9c6d2;
 	--secondary-color: #4f6d95;
 	--tertiary-color: #f7f3d8;
-	--accent-color: #ff3e00;
 	--heading-color: rgba(0, 0, 0, 0.7);
 	--text-color: #444444;
-	--background-without-opacity: rgba(255, 255, 255, 0.7);
-	--column-width: 42rem;
 	--column-margin-top: 4rem;
 }
 
@@ -73,6 +70,28 @@ body, button:hover, a:hover {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.rotate {
+	position: fixed;
+	width: 100%;
+	left: 50%;
+	bottom: 20%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.rotate span{
+	font-size: .8rem;
+	margin-top: 1rem
+}
+
+.rotate i {
+	animation: rotatePhone 1s infinite alternate;
+	transform-origin: center;
+	line-height: 1rem;
 }
 
 .unfilled, .filled {
@@ -234,5 +253,14 @@ h1 {
 
 	100% {
 		width: 95%;
+	}
+}
+
+@keyframes rotatePhone {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-90deg);
 	}
 }

@@ -1,6 +1,13 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { bannerActive, isLoaded, showBeginner, backsound } from '$lib/store/stores';
+	import {
+		bannerActive,
+		isLoaded,
+		showBeginner,
+		backsound,
+		mobileMode,
+		isMobile
+	} from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
 	import { onMount } from 'svelte';
 
@@ -34,6 +41,13 @@
 				<div class="unfilled" />
 				<div class="filled animate" />
 			</div>
+
+			{#if $isMobile && !$mobileMode}
+				<div class="rotate">
+					<i class="gi-rotate-phone" />
+					<span>Rotate for better experience </span>
+				</div>
+			{/if}
 		</div>
 	</div>
 {/if}

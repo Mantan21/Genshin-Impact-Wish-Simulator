@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
 	import {
@@ -17,6 +18,13 @@
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
 	import '../app.css';
+
+	const { title, description, keywords, protocol } = {
+		title: 'Genshin Impact Wish Simulator',
+		description: 'W',
+		keywords: '',
+		protocol: 'https'
+	};
 
 	$: if ($isLoaded) {
 		window.addEventListener('orientationchange', () => {
@@ -64,6 +72,39 @@
 		});
 	});
 </script>
+
+<svelte:head>
+	<meta name="title" content={title} />
+	<meta property="og:title" content={title} />
+	<meta property="profile:username" content="Mantan" />
+	<meta property="og:type" content="profile" />
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="{protocol}://{$page.host}" />
+	<meta property="twitter:title" content={title} />
+	<meta name="robots" content="index, follow" />
+	<meta name="language" content="English, Indonesian" />
+	<meta name="revisit-after" content="15 days" />
+	<meta name="author" content="Mantan" />
+
+	<meta name="keywords" content={keywords} />
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content="{protocol}://{$page.host}" />
+	<meta property="og:image" content="{protocol}://{$page.host}/assets/images/meta-picture.webp" />
+
+	<meta property="twitter:description" content={description} />
+	<meta
+		name="twitter:image:src"
+		content="{protocol}://{$page.host}/assets/images/meta-picture.webp"
+	/>
+	<meta
+		property="twitter:image"
+		content="{protocol}://{$page.host}/assets/images/meta-picture.webp"
+	/>
+
+	<meta property="al:web:url" content="{protocol}://{$page.host}" />
+	<link rel="fluid-icon" href="{protocol}://{$page.host}/assets/images/meta-picture.webp" {title} />
+</svelte:head>
 
 <Loader />
 
