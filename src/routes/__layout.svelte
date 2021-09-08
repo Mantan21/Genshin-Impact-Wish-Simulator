@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
 	import {
@@ -17,14 +16,8 @@
 		acquaint
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
+	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import '../app.css';
-
-	const { title, description, keywords, protocol } = {
-		title: 'Genshin Impact Wish Simulator',
-		description: 'W',
-		keywords: '',
-		protocol: 'https'
-	};
 
 	$: if ($isLoaded) {
 		window.addEventListener('orientationchange', () => {
@@ -74,36 +67,27 @@
 </script>
 
 <svelte:head>
-	<meta name="title" content={title} />
-	<meta property="og:title" content={title} />
-	<meta property="profile:username" content="Mantan" />
-	<meta property="og:type" content="profile" />
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="{protocol}://{$page.host}" />
-	<meta property="twitter:title" content={title} />
-	<meta name="robots" content="index, follow" />
-	<meta name="language" content="English, Indonesian" />
-	<meta name="revisit-after" content="15 days" />
-	<meta name="author" content="Mantan" />
+	<meta name="title" content={APP_TITLE} />
+	<meta property="og:title" content={APP_TITLE} />
+	<meta property="twitter:url" content="{PROTOCOL}://{HOST}" />
+	<meta property="twitter:title" content={APP_TITLE} />
 
-	<meta name="keywords" content={keywords} />
-	<meta name="description" content={description} />
-	<meta property="og:description" content={description} />
-	<meta property="og:url" content="{protocol}://{$page.host}" />
-	<meta property="og:image" content="{protocol}://{$page.host}/assets/images/meta-picture.webp" />
+	<meta name="keywords" content={KEYWORDS} />
+	<meta name="description" content={DESCRIPTION} />
+	<meta property="og:description" content={DESCRIPTION} />
+	<meta property="og:url" content="{PROTOCOL}://{HOST}" />
+	<meta property="og:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
 
-	<meta property="twitter:description" content={description} />
-	<meta
-		name="twitter:image:src"
-		content="{protocol}://{$page.host}/assets/images/meta-picture.webp"
+	<meta property="twitter:description" content={DESCRIPTION} />
+	<meta name="twitter:image:src" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
+	<meta property="twitter:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
+
+	<meta property="al:web:url" content="{PROTOCOL}://{HOST}" />
+	<link
+		rel="fluid-icon"
+		href="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp"
+		title={APP_TITLE}
 	/>
-	<meta
-		property="twitter:image"
-		content="{protocol}://{$page.host}/assets/images/meta-picture.webp"
-	/>
-
-	<meta property="al:web:url" content="{protocol}://{$page.host}" />
-	<link rel="fluid-icon" href="{protocol}://{$page.host}/assets/images/meta-picture.webp" {title} />
 </svelte:head>
 
 <Loader />
