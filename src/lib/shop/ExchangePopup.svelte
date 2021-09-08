@@ -20,12 +20,12 @@
 	const data = {
 		intertwined: {
 			description:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellendus minus delectus error laudantium optio nisi reiciendis provident, expedita iste dignissimos quibusdam vel nihil! Blanditiis ipsam expedita aperiam facere obcaecati ea, harum dolorem recusandae error vero veritatis deserunt quo vitae?',
+				"A fateful stone that connects dreams. Its glimmers can entwine fates and connect dreams, just as how its glimmer links stars into the shapes of a heart's desires.",
 			star: 5
 		},
 		acquaint: {
 			description:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellendus minus delectus error laudantium optio nisi reiciendis provident, expedita iste dignissimos quibusdam vel nihil! Blanditiis ipsam expedita aperiam facere obcaecati ea, harum dolorem recusandae error vero veritatis deserunt quo vitae?',
+				"A seed that lights up the night. No matter the distance apart, guided by the stone's glimmer, the fated will meet under the stars.",
 			star: 5
 		}
 	};
