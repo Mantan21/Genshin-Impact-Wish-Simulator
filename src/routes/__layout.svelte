@@ -19,13 +19,6 @@
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import '../app.css';
 
-	$: if ($isLoaded) {
-		window.addEventListener('orientationchange', () => {
-			const { angle } = screen.orientation;
-			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
-		});
-	}
-
 	const setBudget = () => {
 		const localGenesis = myFunds.get('genesis');
 		if (localGenesis !== null) genesis.set(localGenesis);
@@ -48,12 +41,20 @@
 	};
 
 	onMount(() => {
-		isLoaded.set(true);
+		const t = setTimeout(() => {
+			isLoaded.set(true);
+			clearTimeout(t);
+		}, 4000);
+
 		const md = new MobileDetect(navigator.userAgent);
 		isMobile.set(!!md.mobile());
 
 		const { angle } = screen.orientation;
 		mobileMode.set(angle === 90 || angle === 270);
+		window.addEventListener('orientationchange', () => {
+			const { angle } = screen.orientation;
+			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
+		});
 
 		setBudget();
 
@@ -76,16 +77,16 @@
 	<meta name="description" content={DESCRIPTION} />
 	<meta property="og:description" content={DESCRIPTION} />
 	<meta property="og:url" content="{PROTOCOL}://{HOST}" />
-	<meta property="og:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
+	<meta property="og:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
 
 	<meta property="twitter:description" content={DESCRIPTION} />
-	<meta name="twitter:image:src" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
-	<meta property="twitter:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp" />
+	<meta name="twitter:image:src" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
+	<meta property="twitter:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
 
 	<meta property="al:web:url" content="{PROTOCOL}://{HOST}" />
 	<link
 		rel="fluid-icon"
-		href="{PROTOCOL}://{HOST}/assets/images/meta-picture.webp"
+		href="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg"
 		title={APP_TITLE}
 	/>
 </svelte:head>
