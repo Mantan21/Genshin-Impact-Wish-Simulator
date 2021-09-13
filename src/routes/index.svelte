@@ -3,6 +3,7 @@
 </script>
 
 <script>
+	import { onMount } from 'svelte';
 	import { showWish, backsound } from '$lib/store/stores';
 	import Header from '$lib/banner/Header.svelte';
 	import Footer from '$lib/banner/Footer.svelte';
@@ -15,6 +16,15 @@
 	} else {
 		if (audio) audio.pause();
 	}
+
+	onMount(() => {
+		window.addEventListener('blur', () => {
+			audio.pause();
+		});
+		window.addEventListener('focus', () => {
+			if ($backsound) audio.play();
+		});
+	});
 </script>
 
 <svelte:head>
