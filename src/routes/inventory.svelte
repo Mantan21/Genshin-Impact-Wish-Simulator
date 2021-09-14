@@ -149,7 +149,11 @@
 	on:confirm={confirmReset}
 	on:cancel={cancelReset}
 >
-	Clear All data and Restore to Default ?
+	<div class="confirmation">
+		<div>
+			Clear <strong> All Data </strong> and Restore to Default ?
+		</div>
+	</div>
 </PopUp>
 
 <section>
@@ -273,6 +277,14 @@
 </section>
 
 <style>
+	.confirmation {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+
 	section {
 		display: block;
 		width: 100%;

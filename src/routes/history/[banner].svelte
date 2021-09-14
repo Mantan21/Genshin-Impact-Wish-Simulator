@@ -92,7 +92,9 @@
 	on:confirm={confirmReset}
 >
 	<div class="confirmation">
-		Are you sure to delete all data for <strong>{bannerList[selected].name}</strong> Banner ?
+		<p>
+			Are you sure to delete all data for <strong>{bannerList[selected].name}</strong> Banner ?
+		</p>
 	</div>
 </PopUp>
 
@@ -219,6 +221,13 @@
 </section>
 
 <style>
+	.confirmation {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
 	a {
 		text-decoration: none;
 		display: inline-block;
