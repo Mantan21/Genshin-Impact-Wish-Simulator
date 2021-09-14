@@ -1,28 +1,12 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import {
-		bannerActive,
-		isLoaded,
-		showBeginner,
-		backsound,
-		mobileMode,
-		isMobile
-	} from '$lib/store/stores';
+	import { isLoaded, showBeginner, mobileMode, isMobile } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		if (beginnerRoll.get() > 19) showBeginner.set(false);
 	});
-
-	$: if ($isLoaded) {
-		const bs = setTimeout(() => {
-			clearTimeout(bs);
-			backsound.set(true);
-		}, 3000);
-		if ($showBeginner) bannerActive.set('beginner');
-		else bannerActive.set('limited');
-	}
 </script>
 
 {#if !$isLoaded}

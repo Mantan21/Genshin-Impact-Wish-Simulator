@@ -173,29 +173,34 @@
 		if (rollCount === 1) singleRoll();
 		if (rollCount === 10) tenRoll();
 	};
+
+	$: popupButton = $primogem < rollCount * 160 ? 'cancel' : 'all';
 </script>
 
 <PopUp
 	title="Paimon Bargains"
+	button={popupButton}
 	show={showExchangePopup}
 	on:cancel={closeExchangePopup}
 	on:confirm={handleExchangePopup}
 >
 	<div class="exchange">
-		An Aditional <span class="yellow">{rollCount}</span>
-		{fateType}
-		Fate are needed. <br />
-		Purchase with
-		<span class="yellow" class:red={$primogem < rollCount * 160}>
-			{rollCount * 160}
-		</span>
-		Primogem ?
+		<div>
+			An Aditional <span class="yellow">{rollCount}</span>
+			{fateType}
+			Fate are needed. <br />
+			Purchase with
+			<span class="yellow" class:red={$primogem < rollCount * 160}>
+				{rollCount * 160}
+			</span>
+			Primogem ?
 
-		{#if $primogem < rollCount * 160}
-			<br />
-			<br />
-			<span class="red">Infsufficient Funds</span>
-		{/if}
+			{#if $primogem < rollCount * 160}
+				<br />
+				<br />
+				<span class="red">Infsufficient Funds</span>
+			{/if}
+		</div>
 	</div>
 </PopUp>
 
@@ -254,6 +259,13 @@
 	}
 	.yellow {
 		color: rgb(218, 177, 45);
+	}
+	.exchange {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.wish-output {
