@@ -1,8 +1,8 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import Icon from '$lib/utility/Icon.svelte';
 	import { genesis, primogem, stardust, starglitter } from '$lib/store/stores';
+	import MyFund from '$lib/utility/MyFund.svelte';
 
 	export let showNavbar = true;
 	export let showNavbarButton = true;
@@ -36,52 +36,22 @@
 	</div>
 	<div class="fates">
 		{#if activeShop === 'genesis'}
-			<button class="primogem">
-				<Icon
-					type="primogem"
-					height="80%"
-					width="auto"
-					style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-				/>
+			<MyFund type="primogem">
 				{$primogem}
-			</button>
-			<button class="genesis-crystal">
-				<Icon
-					type="genesis"
-					height="80%"
-					width="auto"
-					style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-				/>
+			</MyFund>
+			<MyFund type="genesis">
 				{$genesis}
-			</button>
+			</MyFund>
 		{:else if activeShop === 'paimon-bargains'}
-			<button class="stardust">
-				<Icon
-					type="stardust"
-					height="80%"
-					width="auto"
-					style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-				/>
+			<MyFund type="stardust">
 				{$stardust}
-			</button>
-			<button class="starglitter">
-				<Icon
-					type="starglitter"
-					height="80%"
-					width="auto"
-					style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-				/>
+			</MyFund>
+			<MyFund type="starglitter">
 				{$starglitter}
-			</button>
-			<button class="primogem">
-				<Icon
-					type="primogem"
-					height="80%"
-					width="auto"
-					style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-				/>
+			</MyFund>
+			<MyFund type="primogem">
 				{$primogem}
-			</button>
+			</MyFund>
 		{/if}
 
 		<a href="/" class="close" sveltekit:prefetch on:click={handleClose}>
@@ -143,20 +113,6 @@
 		justify-content: flex-end;
 		align-items: center;
 	}
-	.fates button {
-		padding: 0 15px 0 30px;
-		display: inline-block;
-		max-width: 112px;
-		height: 25px;
-		position: relative;
-		overflow: hidden;
-		background-color: rgba(0, 0, 0, 0.3);
-		border-radius: 50px;
-		color: #fff;
-		vertical-align: middle;
-		text-align: center;
-		margin: 0 8px;
-	}
 	.fates .close {
 		display: inline-flex;
 		justify-content: center;
@@ -177,10 +133,6 @@
 	}
 
 	@media screen and (max-width: 890px) {
-		.fates button {
-			height: 20px;
-			margin: 0 3px;
-		}
 		.close {
 			width: 30px;
 			height: 30px;
@@ -199,11 +151,6 @@
 			position: fixed;
 			top: 2%;
 			right: 5%;
-		}
-	}
-	@media screen and (max-width: 400px) {
-		.fates button {
-			max-width: 80px;
 		}
 	}
 </style>
