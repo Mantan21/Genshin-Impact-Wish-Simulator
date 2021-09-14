@@ -1,7 +1,6 @@
 <script>
 	import BannerButton from '$lib/banner/BannerButton.svelte';
-	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
-	import Icon from '$lib/utility/Icon.svelte';
+	import MyFund from '$lib/utility/MyFund.svelte';
 	import setup from '$lib/setup/wish-setup.json';
 	import {
 		acquaint,
@@ -13,38 +12,16 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
-	import { onMount } from 'svelte';
 
 	const { beginner, limited, weapons, standard } = setup.banner;
 
-	let showExchangePopup = false;
 	let audio;
-	let clickAudio;
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
 		audio.currentTime = 0;
 		audio.play();
 	};
-
-	onMount(() => {
-		clickAudio = document.querySelector('#button-sfx');
-	});
-	const handlePopup = () => {
-		showExchangePopup = !showExchangePopup;
-		clickAudio.currentTime = 0;
-		clickAudio.play();
-	};
 </script>
-
-<!-- Exchange -->
-<ExchangePopup
-	fundType="genesis"
-	itemToBuy="primogem"
-	show={showExchangePopup}
-	on:cancel={handlePopup}
-	on:confirm={handlePopup}
-/>
-<!-- Exchange -->
 
 <audio bind:this={audio}>
 	<source src="/assets/sfx/banner-button-click.ogg" type="audio/ogg" />
@@ -59,55 +36,26 @@
 		<div class="budget">
 			<div class="fates">
 				{#if $mobileMode}
-					<button class="starglitter">
-						<Icon
-							type="starglitter"
-							height="80%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-						/>
+					<MyFund type="starglitter">
 						{$starglitter}
-					</button>
-					<button class="stardust">
-						<Icon
-							type="stardust"
-							height="80%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-						/>
+					</MyFund>
+					<MyFund type="stardust">
 						{$stardust}
-					</button>
+					</MyFund>
 				{/if}
 
-				<button class="primogem" on:click={handlePopup}>
-					<Icon
-						type="primogem"
-						height="80%"
-						width="auto"
-						style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-					/>
+				<MyFund type="primogem">
 					{$primogem}
-					<i class="gi-plus" />
-				</button>
-				<button class="fate">
-					{#if $bannerActive === 'beginner' || $bannerActive === 'standard'}
-						<Icon
-							height="70%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-							type="acquaint"
-						/>
+				</MyFund>
+				{#if $bannerActive === 'beginner' || $bannerActive === 'standard'}
+					<MyFund type="acquaint">
 						{$acquaint}
-					{:else}
-						<Icon
-							height="70%"
-							width="auto"
-							style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-							type="intertwined"
-						/>
+					</MyFund>
+				{:else}
+					<MyFund type="intertwined">
 						{$intertwined}
-					{/if}
-				</button>
+					</MyFund>
+				{/if}
 			</div>
 
 			<button class="close">
@@ -200,43 +148,8 @@
 		border: 3.5px solid #abbcc6;
 		padding: 0;
 		line-height: 0;
-	}
-
-	button {
-		display: inline-block;
-		max-width: 112px;
-		height: 25px;
 		overflow: hidden;
-		background-color: rgba(0, 0, 0, 0.3);
 		border-radius: 50px;
-		color: #fff;
-		vertical-align: middle;
-		text-align: center;
-		position: relative;
-		margin: 0 8px;
-	}
-
-	.fates button {
-		padding: 0 15px 0 30px;
-	}
-
-	.gi-plus {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 18px;
-		height: 18px;
-		color: #000;
-		background-color: #fff;
-		border-radius: 100%;
-		position: absolute;
-		right: 3px;
-		top: 50%;
-		font-size: 0.8rem;
-		transform: translateY(-50%);
-	}
-	.primogem {
-		padding-right: 30px !important;
 	}
 
 	.banner-button {
@@ -307,31 +220,10 @@
 	}
 
 	@media screen and (max-width: 900px) {
-		button {
-			height: 20px;
-			margin: 0 3px;
-		}
 		.close {
 			width: 30px;
 			height: 30px;
 			margin: 3px;
-		}
-	}
-	@media screen and (max-width: 400px) {
-		button {
-			max-width: 80px;
-		}
-		.primogem {
-			margin-bottom: 2px;
-			padding: 0 30px;
-		}
-		.fate {
-			padding: 0 10px 0 30px;
-		}
-
-		.gi-plus {
-			right: 2px;
-			transform: translateY(-50%) scale(0.9);
 		}
 	}
 </style>

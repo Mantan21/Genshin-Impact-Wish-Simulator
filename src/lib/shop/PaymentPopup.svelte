@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { myFunds } from '$lib/store/localstore';
-	import { genesis } from '$lib/store/stores';
+	import { genesis, primogem } from '$lib/store/stores';
 	import PopUp from '$lib/utility/PopUp.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 
@@ -9,11 +9,22 @@
 	export let qty;
 	export let price;
 
+	let autoConvert = false;
+
 	const dispatch = createEventDispatcher();
 	const handleClose = () => {
 		dispatch('cancel');
 	};
+
+	const convertToPrimogem = () => {
+		const afterBuy = $primogem + qty;
+		primogem.set(afterBuy);
+		myFunds.set('primogem', afterBuy);
+		dispatch('confirm', { primogem: afterBuy });
+	};
+
 	const genesisBuy = () => {
+		if (autoConvert) return convertToPrimogem();
 		const afterBuy = $genesis + qty;
 		genesis.set(afterBuy);
 		myFunds.set('genesis', afterBuy);
@@ -47,6 +58,15 @@
 				<div class="list">
 					<div class="item">UnReal Wallet</div>
 				</div>
+			</div>
+			<div class="auto-convert">
+				<input
+					type="checkbox"
+					bind:checked={autoConvert}
+					style="margin-right: .4rem"
+					id="convert"
+				/>
+				<label for="convert"> Auto convert to primogem ? </label>
 			</div>
 			<div class="button" on:click={genesisBuy}>
 				<button>Proceed Payment</button>
@@ -168,6 +188,12 @@
 		padding: 0.3rem;
 	}
 
+	.auto-convert {
+		font-size: 0.97rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	.button button {
 		background-color: #353533;
 		color: #ffc107;
