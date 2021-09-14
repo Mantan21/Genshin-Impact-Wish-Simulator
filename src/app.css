@@ -110,7 +110,7 @@ body, button:hover, a:hover {
 	background-color: #666666;
 }
 .animate {
-	animation: loader forwards 4s;
+	animation: loader forwards 2s;
 }
 
 .wish-result .gi-hydro, .wish-result .gi-cryo, .wish-result .gi-electro, .wish-result .gi-geo, .wish-result .gi-pyro, .wish-result .gi-anemo {

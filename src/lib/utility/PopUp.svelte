@@ -22,7 +22,7 @@
 			<i class="gi-inazuma bg" />
 			<div class="container">
 				{#if title}
-					<div class="pop-header">{title}</div>
+					<h1 class="pop-header">{title}</h1>
 				{/if}
 				<div class="pop-body" class:large={!title && !confirm}>
 					<slot />

@@ -45,7 +45,7 @@
 		const t = setTimeout(() => {
 			isLoaded.set(true);
 			clearTimeout(t);
-		}, 4000);
+		}, 2000);
 
 		const md = new MobileDetect(navigator.userAgent);
 		isMobile.set(!!md.mobile());
