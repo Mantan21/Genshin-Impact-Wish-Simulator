@@ -82,7 +82,7 @@
 		<WishListResult />
 	{:else}
 		<div class="container" bind:this={wishResult}>
-			{#each wish as { name, rarity, weaponType, type, vision, fateType, fateQty }, i}
+			{#each wish as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						<div class="orbs orb5" />
@@ -128,6 +128,24 @@
 										<i class="gi-star" style={`animation-delay: ${2.3 + i * 0.15}s`} />
 									{/each}
 								</div>
+							</div>
+
+							<div class="bonus">
+								{#if type === 'character' && fateType}
+									<div class="masterless {fateType}">
+										<Icon type={fateType} width="80%" />
+										<span> {fateQty} </span>
+									</div>
+								{/if}
+
+								{#if stelaFortuna}
+									<div class="stella stella{rarity}">
+										<img
+											src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
+											alt="Stella Formula"
+										/>
+									</div>
+								{/if}
 							</div>
 						</div>
 
@@ -535,6 +553,55 @@
 	.star3 .out3 {
 		box-shadow: 0 0 200px rgb(85 93 255 / 60%), inset 0 0 170px rgb(85 93 255 / 60%);
 	}
+	.bonus {
+		position: absolute;
+		display: flex;
+		bottom: -95%;
+		left: 50%;
+		transform: translateX(-50%);
+		animation: weaponbg forwards 2s;
+	}
+	.stella,
+	.bonus .masterless {
+		width: 3.5rem;
+		border-radius: 10%;
+		overflow: hidden;
+		display: block;
+		text-align: center;
+		position: relative;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+		padding-bottom: 0.5rem;
+		box-shadow: 0 0 7px rgba(255, 255, 255, 0.5), 0 0 14px rgba(255, 255, 255, 0.3),
+			0 0 30px rgba(255, 255, 255, 0.2);
+	}
+	.stella::after,
+	.bonus .masterless span {
+		width: 100%;
+		font-size: 0.6rem;
+		content: '1';
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		color: #fff;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	.stella img,
+	.bonus .masterless img {
+		width: 80%;
+		height: auto;
+	}
+
+	.stella5,
+	.bonus .starglitter {
+		background-image: linear-gradient(to top, #ca8937, #a47853);
+	}
+
+	.stella4 {
+		background-image: linear-gradient(to top, #a47ab9, #7e78a9);
+	}
 
 	.share {
 		display: flex;
@@ -547,6 +614,7 @@
 		right: 8%;
 		color: #fff;
 		font-size: 0.8rem;
+		animation: weaponbg forwards 2s;
 	}
 	.share span {
 		display: flex;
@@ -557,9 +625,7 @@
 		background-color: #d9d2c8;
 		color: #000;
 		border-radius: 30px;
-		/* height: 20px; */
 		font-size: 0.8rem;
-		/* width: 70px; */
 		padding: 0.3rem 2rem;
 		margin-left: 10px;
 	}
