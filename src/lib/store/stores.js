@@ -2,7 +2,7 @@ import { writable }  from 'svelte/store';
 
 const backsound = writable(false);
 const isLoaded = writable(false);
-
+const showDisclaimer = writable(true);
 const bannerActive = writable('');
 const showBeginner = writable(true);
 
@@ -27,7 +27,7 @@ const intertwined = writable(0);
 const acquaint = writable(0);
 
 export {
-  bannerActive, isLoaded, backsound,
+  bannerActive, isLoaded, backsound, showDisclaimer,
   viewportWidth, viewportHeight,
   isMobile, mobileMode,
   showBeginner, wishes, showWish,

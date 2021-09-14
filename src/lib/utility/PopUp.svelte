@@ -5,6 +5,7 @@
 	export let show = false;
 	export let title;
 	export let confirm = true;
+	export let button = 'all';
 
 	const dispatch = createEventDispatcher();
 	const confirmClick = () => dispatch('confirm');
@@ -29,14 +30,18 @@
 
 				{#if confirm}
 					<div class="pop-footer">
-						<button class="cancel" on:click={cancelClik}>
-							<i class="gi-times" />
-							<span> Cancel </span>
-						</button>
-						<button class="confirm" on:click={confirmClick}>
-							<i class="gi-circle-o" />
-							<span> Confirm </span>
-						</button>
+						{#if ['cancel', 'all'].indexOf(button) > -1}
+							<button class="cancel" on:click={cancelClik}>
+								<i class="gi-times" />
+								<span> Cancel </span>
+							</button>
+						{/if}
+						{#if ['confirm', 'all'].indexOf(button) > -1}
+							<button class="confirm" on:click={confirmClick}>
+								<i class="gi-circle-o" />
+								<span> Confirm </span>
+							</button>
+						{/if}
 					</div>
 				{/if}
 			</div>
@@ -127,7 +132,6 @@
 		font-size: 1.2rem;
 		display: flex;
 		justify-content: center;
-		align-items: center;
 	}
 
 	.pop-body.large {

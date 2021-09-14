@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
+	import Disclaimer from '$lib/utility/Disclaimer.svelte';
 	import {
 		isLoaded,
 		viewportHeight,
@@ -92,6 +93,7 @@
 </svelte:head>
 
 <Loader />
+<Disclaimer />
 
 <audio src="/assets/sfx/button-click.ogg" type="audio/ogg" id="button-sfx" />
 <main class:mobile={$mobileMode}>
