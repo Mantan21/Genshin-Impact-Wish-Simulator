@@ -1,0 +1,147 @@
+{
+  "data": [
+    {
+      "version": "2.1",
+      "banner": [
+        {
+          "limited": {
+            "character": {
+              "name": "raiden-shogun",
+              "style": {
+                "main": "width: 180px; bottom: -45%;",
+                "active": "width: 180px; bottom: -35%;"
+              }
+            },
+            "rateup": [
+              "xiangling",
+              "sucrose",
+              "kujou-sara"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "engulfing-lightning",
+                "type": "polearm",
+                "style": {
+                  "main": "bottom: -120%;width: 70px;left: 35%;",
+                  "active": "bottom: -110%;width: 70px;left: 35%;"
+                }
+              },
+              {
+                "name": "the-unforged",
+                "type": "claymore",
+                "style": {
+                  "main": "bottom: -110%;width: 65px;left: 60%;",
+                  "active": "bottom: -100%;width: 65px;left: 60%;"
+                }
+              }
+            ],
+            "rateup": [
+              "the-bell",
+              "sacrificial-bow",
+              "favonius-lance",
+              "the-widsith",
+              "lion_s-roar"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "version" : "2.0",
+      "banner": [
+        {
+          "limited": {
+            "character": {
+              "name": "kamisato-ayaka",
+              "style": {
+                "main": "",
+                "active": ""
+              }
+            },
+            "rateup": [
+              "sayu",
+              "xinyan",
+              "diona"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "thundering-pulse",
+                "type": "bow",
+                "style": {
+                  "main": "bottom: -70px;width: 70px;left: 40%;",
+                  "active": "bottom: -60px;width: 70px;left: 40%;"
+                }
+              },
+              {
+                "name": "skyward-blade",
+                "type": "sword",
+                "style": {
+                  "main": "bottom: -130%;width: 80px;left: 60%;",
+                  "active": "bottom: -120%;width: 80px;left: 60%;"
+                }
+              }
+            ],
+            "rateup": [
+              "sacrificial-sword",
+              "sacrificial-fragments",
+              "favonius-warbow",
+              "rainslasher",
+              "dragon_s-bane"
+            ]
+          }
+        },
+        {
+          "limited": {
+            "character": {
+              "name": "yoimiya",
+              "style": {
+                "main": "width: 150px; bottom: -50%; left: 40%",
+                "active": "width: 150px; bottom: -40%;left: 40%"
+              }
+            },
+            "rateup": [
+              "sayu",
+              "xinyan",
+              "diona"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "thundering-pulse",
+                "type": "bow",
+                "style": {
+                  "main": "bottom: -70px;width: 70px;left: 40%;",
+                  "active": "bottom: -60px;width: 70px;left: 40%;"
+                }
+              },
+              {
+                "name": "skyward-blade",
+                "type": "sword",
+                "style": {
+                  "main": "bottom: -130%;width: 80px;left: 60%;",
+                  "active": "bottom: -120%;width: 80px;left: 60%;"
+                }
+              }
+            ],
+            "rateup": [
+              "sacrificial-sword",
+              "sacrificial-fragments",
+              "favonius-warbow",
+              "rainslasher",
+              "dragon_s-bane"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "version": "1.6",
+      "banner": []
+    }
+  ]
+}

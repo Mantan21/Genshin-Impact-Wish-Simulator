@@ -78,9 +78,18 @@ const myFunds = {
     return null;
   }
 }
+
+const bnversion = {
+  set(patch, banner) {
+    localStorage.setItem('version', `${patch}-${banner}`);
+  },
+  get() {
+    return localStorage.getItem('version');
+  }
+}
 export {
   pity4star, pity5star,
   beginnerRoll, beginnerAlreadyGuaranteed,
   nextGuaranteed, nextWeaponGuaranteed,
-  myFunds
+  myFunds, bnversion
 };

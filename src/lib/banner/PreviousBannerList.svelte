@@ -1,0 +1,379 @@
+<script>
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import OverlayScrollbars from 'overlayscrollbars';
+	import { bannerVersion, patchVersion, pageActive } from '$lib/store/stores';
+	import { bnversion } from '$lib/store/localstore';
+	import { getName } from '$lib/functions/nameText';
+	import banners from '$lib/setup/previous.json';
+	import { APP_TITLE } from '$lib/env';
+
+	const { data } = banners;
+	const tempData = [];
+	data.forEach(({ version, banner }) => {
+		banner = banner.map((bn, i) => {
+			bn.patch = version;
+			bn.version = i;
+			return bn;
+		});
+		tempData.push([version, banner]);
+	});
+	let dataToShow = tempData;
+
+	const reverse = () => {
+		dataToShow = dataToShow.reverse();
+	};
+
+	let showGroup = false;
+	let groupby = 'version';
+
+	const sort = (arr) =>
+		arr.sort((a, b) => {
+			if (a[0] > b[0]) return 1;
+			if (a[0] < b[0]) return -1;
+			return 0;
+		});
+
+	const groupData = (group) => {
+		if (group === 'version') {
+			dataToShow = tempData;
+			return;
+		}
+
+		if (group === 'character') {
+			const char = {};
+			data.forEach(({ banner, version }) =>
+				banner.forEach((d, i) => {
+					const { name } = d.limited.character;
+					d.patch = version;
+					d.version = i;
+					char[name] = [...(char[name] || []), d];
+				})
+			);
+			dataToShow = sort(Object.entries(char));
+			return;
+		}
+
+		if (group === 'weapon') {
+			const weap = {};
+			data.forEach(({ banner, version }) =>
+				banner.forEach((wp, i) => {
+					const { name } = wp.weapons.featured[0];
+					wp.patch = version;
+					wp.version = i;
+					weap[name] = [...(weap[name] || []), wp];
+				})
+			);
+			dataToShow = sort(Object.entries(weap));
+			return;
+		}
+	};
+
+	const selectGroup = (group = null, value = null) => {
+		showGroup = value !== null ? value : !showGroup;
+		if (!group) return;
+		groupby = group;
+		groupData(group);
+	};
+
+	const selectBanner = (patch, banner) => {
+		patchVersion.set(patch);
+		bannerVersion.set(banner);
+		bnversion.set(patch, banner);
+		pageActive.set('index');
+	};
+
+	let content;
+	onMount(() => {
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
+</script>
+
+<svelte:head>
+	<title>All Banners | {APP_TITLE}</title>
+</svelte:head>
+
+<section>
+	<header transition:fly={{ y: -20 }}>
+		<h1>Previous Banner</h1>
+		<button class="close" on:click={() => pageActive.set('index')}> <i class="gi-close" /> </button>
+	</header>
+
+	<div class="body" transition:fade={{ duration: 300 }}>
+		<div class="filter">
+			<div class="row">
+				<span>Group By : </span>
+				<div class="sort-selector">
+					<div
+						class="selected-filter"
+						on:click={() => {
+							showGroup = !showGroup;
+						}}
+					>
+						{groupby}
+
+						{#if showGroup}
+							<i class="gi-caret-up" />
+						{:else}
+							<i class="gi-caret-down" />
+						{/if}
+					</div>
+
+					{#if showGroup}
+						<div class="filter-list" transition:fade={{ duration: 200 }}>
+							<a
+								href="##"
+								class:selected={groupby == 'version'}
+								on:click|preventDefault={() => selectGroup('version', false)}
+							>
+								Version
+							</a>
+							<a
+								href="##"
+								class:selected={groupby == 'character'}
+								on:click|preventDefault={() => selectGroup('character', false)}
+							>
+								Character
+							</a>
+							<a
+								href="##"
+								class:selected={groupby == 'weapon'}
+								on:click|preventDefault={() => selectGroup('weapon', false)}
+							>
+								Weapon
+							</a>
+						</div>
+					{/if}
+				</div>
+				<button class="sort-button" title="Reverse Group" on:click={reverse}>
+					<i class="gi-exchange" />
+				</button>
+			</div>
+		</div>
+		<div class="content" bind:this={content}>
+			<div id="content">
+				{#each dataToShow as [key, banner], i (i)}
+					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }} transition:fade>
+						<div class="group-title">
+							<h2>
+								{groupby === 'version' ? 'Version' : ''}
+								{getName(key)} <i class="gi-primo-star" />
+							</h2>
+						</div>
+						{#each banner as { limited, weapons, patch, version }, i (i)}
+							<a
+								class="item"
+								href="/"
+								on:click|preventDefault={() => selectBanner(patch, version + 1)}
+								title="{getName(limited.character.name)} & {getName(weapons.featured[0].name)}"
+								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
+								transition:fade
+							>
+								<div class="banner">
+									<img
+										src="/assets/images/banner/{patch}/limited-{version + 1}.webp"
+										alt={getName(limited.character.name)}
+									/>
+									<img
+										src="/assets/images/banner/{patch}/weapon-{version + 1}.webp"
+										alt={getName(weapons.featured[0].name)}
+									/>
+								</div>
+								<h3 class="name">
+									{getName(limited.character.name)}
+									&
+									{getName(weapons.featured[0].name)}
+								</h3>
+							</a>
+						{/each}
+					</div>
+				{/each}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		background-image: url('/assets/images/background/constellation.webp');
+		background-size: cover;
+		color: #d2c69c;
+		font-size: 0.97rem;
+	}
+	h1 {
+		color: #d2c69c;
+	}
+	h2 {
+		font-size: 1.1rem;
+		padding: 0.2rem 2rem 0.2rem 6rem;
+		margin-left: -5rem;
+		margin-top: 1rem;
+		border-radius: 40px;
+		background-color: #ede5d8;
+		display: inline-block;
+		position: relative;
+		text-transform: capitalize;
+	}
+
+	h2 .gi-primo-star {
+		color: #ede5d8;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		line-height: 0;
+		transform: translate(80%, -50%);
+	}
+
+	header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px 2%;
+	}
+	:global(.mobile) header {
+		padding: 5px 2%;
+	}
+
+	button {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 35px;
+		height: 35px;
+		color: rgba(0, 0, 0, 0.7);
+		background-color: #fff;
+		padding: 0;
+		line-height: 0;
+		border-radius: 40px;
+	}
+	.close {
+		border: 3.5px solid #abbcc6;
+		margin-left: auto;
+	}
+
+	.body {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+
+	.filter {
+		height: 3rem;
+		width: 100%;
+	}
+
+	:global(.mobile) .filter {
+		height: 2rem;
+		margin-top: -0.5rem;
+	}
+
+	.filter .row {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding: 0 2%;
+	}
+
+	.sort-selector {
+		color: #3a4156;
+		font-size: 1rem;
+		margin: 0 0.5rem;
+		display: inline-block;
+		width: 200px;
+		max-width: 35%;
+		position: relative;
+		text-transform: capitalize;
+	}
+	.selected-filter {
+		background-color: #ede5d8;
+		padding: 0.05rem 1rem;
+		border-radius: 10px;
+	}
+	.selected-filter i {
+		display: inline-block;
+		position: absolute;
+		right: 1rem;
+	}
+
+	.filter-list {
+		position: absolute;
+		bottom: -30%;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		background-color: #ede5d8;
+		transform: translateY(100%);
+		border-radius: 0.3rem;
+		padding: 0.2rem 0;
+		z-index: +1;
+	}
+
+	.filter-list a {
+		padding: 0.2rem 1rem;
+		text-decoration: none;
+		color: #3a4156;
+	}
+	.filter-list a.selected {
+		background-color: rgb(218, 202, 177);
+	}
+
+	.filter button {
+		width: 2rem;
+		height: 2rem;
+		font-size: 1.2rem;
+	}
+
+	.gi-exchange {
+		transform: rotate(90deg);
+	}
+
+	.content {
+		padding: 1rem 2%;
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.item {
+		display: inline-flex;
+		flex-direction: column;
+		width: 60vh;
+		max-width: 46%;
+		margin: 0.5rem 0.5rem 1rem;
+		text-align: center;
+	}
+
+	:global(.mobile) .item {
+		width: 65vh;
+	}
+
+	.item img {
+		width: 48%;
+	}
+
+	.item .name {
+		width: 100%;
+		padding: 0.3rem;
+		font-weight: 400;
+		font-size: 0.97rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-transform: capitalize;
+	}
+	@media screen and (max-width: 900px) {
+		.close {
+			width: 30px;
+			height: 30px;
+			margin: 3px;
+		}
+	}
+</style>

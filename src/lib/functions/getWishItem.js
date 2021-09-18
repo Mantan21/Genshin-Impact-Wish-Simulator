@@ -1,20 +1,30 @@
 import chars from '$lib/setup/characters.json';
-import weapons from '$lib/setup/weapons.json';
+import weaponsDB from '$lib/setup/weapons.json';
 import wishSetup from '$lib/setup/wish-setup.json';
-import { beginnerRoll, beginnerAlreadyGuaranteed, nextGuaranteed, nextWeaponGuaranteed } from '$lib/store/localstore';
+import previous from '$lib/setup/previous.json';
+import {
+  bnversion, beginnerRoll, beginnerAlreadyGuaranteed, nextGuaranteed, nextWeaponGuaranteed
+} from '$lib/store/localstore';
 import { showBeginner } from '$lib/store/stores';
 import prob from './prob';
 
 
-const { standard, beginner, limited } = wishSetup.banner;
+let { standard, beginner, limited, weapons } = wishSetup.banner;
+// eslint-disable-next-line
+const localVersion = globalThis.window ? bnversion.get() : null
+if (localVersion) {
+  const [ patch, versionBanner ] = localVersion.split('-');
+  const { banner } = previous.data.filter(({ version }) => version === patch)[0];
+  ({ limited, weapons } = banner[parseInt(versionBanner) - 1]);
+}
 
-const weap3 = Object.keys(weapons.star3).map((name) => ({type: 'weapon', rarity: 3, name}));
-const weap4 = Object.keys(weapons.star4).map((name) => ({type: 'weapon', rarity: 4, name}));
+const weap3 = Object.keys(weaponsDB.star3).map((name) => ({type: 'weapon', rarity: 3, name}));
+const weap4 = Object.keys(weaponsDB.star4).map((name) => ({type: 'weapon', rarity: 4, name}));
 const stdChar4 = Object.keys(chars.star4)
   .filter((name) => (!chars.star4[name].limited))
   .map((name) => ({ type: 'character', rarity: 4, name }));
-const stdWeap5 = Object.keys(weapons.star5)
-  .filter((name) => (!weapons.star5[name].limited))
+const stdWeap5 = Object.keys(weaponsDB.star5)
+  .filter((name) => (!weaponsDB.star5[name].limited))
   .map((name) => ({ type: 'weapon', rarity: 5, name }));
 
 const rand = (array) => array[Math.floor(Math.random() * array.length)]
@@ -122,7 +132,6 @@ const standardWish = (rarity) => {
 };
 
 const weaponWish = (rarity) => {
-  const { weapons } = wishSetup.banner;
   const weap = weapons.featured.map(({ name }) => name);
 
   if (rarity === 3) return get3Star();

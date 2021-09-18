@@ -1,9 +1,17 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { bannerActive, viewportHeight, viewportWidth } from '$lib/store/stores';
+	import {
+		bannerActive,
+		viewportHeight,
+		viewportWidth,
+		patchVersion,
+		bannerVersion
+	} from '$lib/store/stores';
 	import setup from '$lib/setup/wish-setup.json';
 
-	const { version, bannerNumber } = setup;
+	let { version, bannerNumber } = setup;
+	$: if ($patchVersion !== '0.0') version = $patchVersion;
+	$: if ($bannerVersion !== 0) bannerNumber = $bannerVersion;
 
 	$: style =
 		$viewportHeight > 800 ||

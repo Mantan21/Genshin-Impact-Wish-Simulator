@@ -14,11 +14,21 @@
 		stardust,
 		starglitter,
 		intertwined,
-		acquaint
+		acquaint,
+		bannerVersion,
+		patchVersion
 	} from '$lib/store/stores';
-	import { myFunds } from '$lib/store/localstore';
+	import { bnversion, myFunds } from '$lib/store/localstore';
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import '../app.css';
+
+	const setBannerVersion = () => {
+		const localVersion = bnversion.get();
+		if (!localVersion) return;
+		const [patch, version] = localVersion.split('-');
+		bannerVersion.set(parseInt(version));
+		patchVersion.set(patch);
+	};
 
 	const setBudget = () => {
 		const localGenesis = myFunds.get('genesis');
@@ -57,6 +67,7 @@
 			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
 		});
 
+		setBannerVersion();
 		setBudget();
 
 		viewportWidth.set(window.innerWidth);
@@ -103,6 +114,19 @@
 </main>
 
 <style>
+	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
+
+	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle) {
+		background-color: #d2c69c;
+		opacity: 0.7;
+	}
+	:global(.os-theme-light > .os-scrollbar-vertical) {
+		width: 8px;
+	}
+	:global(.os-theme-light > .os-scrollbar-horizontal) {
+		height: 8px;
+	}
+
 	main {
 		display: block;
 		width: 100%;

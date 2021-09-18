@@ -1,8 +1,13 @@
 import { writable }  from 'svelte/store';
 
+const pageActive = writable('index');
 const backsound = writable(false);
 const isLoaded = writable(false);
 const showDisclaimer = writable(true);
+
+// Banner
+const patchVersion = writable('0.0');
+const bannerVersion = writable(0);
 const bannerActive = writable('');
 const showBeginner = writable(true);
 
@@ -27,7 +32,9 @@ const intertwined = writable(0);
 const acquaint = writable(0);
 
 export {
-  bannerActive, isLoaded, backsound, showDisclaimer,
+  pageActive,
+  patchVersion, bannerVersion, bannerActive,
+  isLoaded, backsound, showDisclaimer,
   viewportWidth, viewportHeight,
   isMobile, mobileMode,
   showBeginner, wishes, showWish,
