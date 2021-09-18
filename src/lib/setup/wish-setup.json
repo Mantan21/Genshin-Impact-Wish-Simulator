@@ -1,6 +1,7 @@
 {
   "version": "2.1",
   "bannerNumber": 1,
+  "storageVersion": "1",
   "banner": {
     "beginner": {
       "character": {

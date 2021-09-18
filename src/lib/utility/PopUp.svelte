@@ -1,11 +1,18 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import OverlayScrollbars from 'overlayscrollbars';
 
 	export let show = false;
 	export let title;
 	export let confirm = true;
 	export let button = 'all';
+
+	let content;
+
+	onMount(() =>
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' })
+	);
 
 	const dispatch = createEventDispatcher();
 	const confirmClick = () => dispatch('confirm');
@@ -24,7 +31,7 @@
 				{#if title}
 					<h1 class="pop-header">{title}</h1>
 				{/if}
-				<div class="pop-body" class:large={!title && !confirm}>
+				<div class="pop-body" class:large={!title && !confirm} bind:this={content}>
 					<slot />
 				</div>
 
@@ -126,7 +133,6 @@
 	.pop-body {
 		height: 15rem;
 		max-height: 50vh;
-		overflow-y: auto;
 		position: relative;
 		z-index: +1;
 		font-size: 1.2rem;

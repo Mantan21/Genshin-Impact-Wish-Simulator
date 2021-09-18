@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { bannerActive, mobileMode } from '$lib/store/stores';
+	import { mobileMode, pageActive } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
 
@@ -20,6 +20,12 @@
 		audio.currentTime = 0;
 		audio.play();
 	};
+
+	const changePage = (page) => {
+		pageActive.set(page);
+		if (page === 'shop') return shopButtonCLick();
+		return buttonCLick();
+	};
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
@@ -38,9 +44,9 @@
 
 	<div class="row">
 		<div class="left">
-			<a href="/shop" sveltekit:prefetch on:click={shopButtonCLick}> Shop </a>
-			<a href="/inventory" on:click={buttonCLick}> Inventory </a>
-			<a href="/history/{$bannerActive}" sveltekit:prefetch on:click={buttonCLick}> History </a>
+			<button on:click={() => changePage('shop')}> Shop </button>
+			<button on:click={() => changePage('inventory')}> Inventory </button>
+			<button on:click={() => changePage('history')}> History </button>
 		</div>
 		<div class="right">
 			<RollButton />
@@ -71,13 +77,13 @@
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 	}
 
-	a {
+	button {
 		transform: scale(1);
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
 	}
-	a:active {
+	button:active {
 		transform: scale(0.95);
 	}
 
@@ -90,7 +96,7 @@
 		align-items: center;
 	}
 
-	.left a {
+	.left button {
 		border-radius: 50px;
 		background-color: #fff;
 		border: 3px solid #fff;
@@ -99,8 +105,8 @@
 		transition: all 0.2s;
 	}
 
-	.left a:active,
-	.left a:hover {
+	.left button:active,
+	.left button:hover {
 		background-color: #eee2c8;
 	}
 
@@ -112,7 +118,7 @@
 	:global(.mobile) .row {
 		padding: 0;
 	}
-	:global(.mobile) .left a {
+	:global(.mobile) .left button {
 		padding: 2px 13px;
 		margin: 1px 2px;
 		font-size: 0.8rem;
@@ -124,8 +130,8 @@
 	/* Mwedia Query */
 
 	@media screen and (max-width: 900px) {
-		a,
-		.left a {
+		button,
+		.left button {
 			padding: 2px 15px;
 			margin: 2px 5px;
 		}
@@ -146,7 +152,7 @@
 	}
 
 	@media screen and (max-width: 400px) {
-		.left a {
+		.left button {
 			padding: 1px 10px;
 			margin: 1px 2px;
 		}
