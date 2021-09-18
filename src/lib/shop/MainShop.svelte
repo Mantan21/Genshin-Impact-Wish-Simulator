@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
+	import { APP_TITLE } from '$lib/env';
 
 	// Components
 	import Icon from '$lib/utility/Icon.svelte';
@@ -124,9 +125,9 @@
 
 <svelte:head>
 	{#if activeShop === 'genesis'}
-		<title>Buy Genesis Crystal | Wish Simulator</title>
+		<title>Buy Genesis Crystal | {APP_TITLE}</title>
 	{:else}
-		<title>Paimon's Bargains | Wish Simulator</title>
+		<title>Paimon's Bargains | {APP_TITLE}</title>
 	{/if}
 </svelte:head>
 

@@ -20,7 +20,6 @@
 	const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
 	const sortedWish = [...fiveStar, ...fourStar, ...threeStar];
 
-	console.log(sortedWish);
 	let audio;
 	let container;
 	let wishHeight;

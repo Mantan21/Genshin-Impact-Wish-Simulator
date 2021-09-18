@@ -31,6 +31,7 @@
 	let showOutput = false;
 	let showExchangePopup = false;
 	let rollCount = 0;
+	$: multiRollPrice = $bannerActive === 'beginner' ? 8 : 10;
 
 	const showOutputHandle = (rarity, rolltype = 'tenroll') => {
 		showOutput = true;
@@ -98,8 +99,8 @@
 	const tenRoll = async () => {
 		audio.currentTime = 0;
 		audio.play();
-		rollCount = 10;
-		if (!updateFates($bannerActive, 10)) return;
+		rollCount = multiRollPrice;
+		if (!updateFates($bannerActive, multiRollPrice)) return;
 		backsound.set(false);
 
 		const wishStar = [];
@@ -146,7 +147,6 @@
 
 	const handleExchangePopup = () => {
 		showExchangePopup = false;
-		console.log(rollCount);
 		if ($primogem < rollCount * 160) return;
 		primogem.update((n) => {
 			const q = n - rollCount * 160;
@@ -161,7 +161,7 @@
 				return q;
 			});
 			if (rollCount === 1) singleRoll();
-			if (rollCount === 10) tenRoll();
+			if (rollCount > 7) tenRoll();
 			return;
 		}
 
@@ -248,7 +248,11 @@
 		<Icon type={fateType} />
 		<span style="margin-left: 7px">
 			x
-			<span class:red={fateQty < 10}> 10 </span>
+			{#if $bannerActive === 'beginner'}
+				<span class:red={fateQty < 8}> 8 </span>
+			{:else}
+				<span class:red={fateQty < 10}> 10 </span>
+			{/if}
 		</span>
 	</div>
 </button>

@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { showWish, backsound } from '$lib/store/stores';
+	import { APP_TITLE } from '$lib/env';
 	import Header from '$lib/banner/Header.svelte';
 	import Footer from '$lib/banner/Footer.svelte';
 	import BannerItem from '$lib/banner/BannerItem.svelte';
@@ -24,7 +25,7 @@
 </script>
 
 <svelte:head>
-	<title>Genshin Impact Wish Simulator</title>
+	<title>{APP_TITLE}</title>
 </svelte:head>
 
 {#if $showWish}

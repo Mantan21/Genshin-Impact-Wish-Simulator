@@ -34,14 +34,10 @@ const roll = async (banner) => {
   
   const result = prob(item);
   let pity = 1;
-  let fateType = 'stardust'
-  let fateQty = 15;
 
   if (result.rarity === 5) {
     pity4star.set(banner, pity4 + 1);
     pity5star.set(banner, 0);
-    fateQty = 10;
-    fateType = 'starglitter';
     pity = pity5 + 1;
 
   }
@@ -49,8 +45,6 @@ const roll = async (banner) => {
   if (result.rarity === 4) {
     pity4star.set(banner, 0);
     pity5star.set(banner, pity5 + 1);
-    fateQty = 10
-    fateType = 'starglitter';
     pity = pity4 + 1;
   } 
 
@@ -71,8 +65,8 @@ const roll = async (banner) => {
     if (numberOfItemOfHistory < 1) return wishResult;
     wishResult.stelaFortuna = (numberOfItemOfHistory < 8)
   }
-  wishResult.fateType = fateType;
-  wishResult.fateQty = fateQty;
+  wishResult.fateType = wishResult.rarity === 3 ? 'stardust' : 'starglitter';
+  wishResult.fateQty = wishResult.rarity === 3 ? 15 : 10;;
   return wishResult;
 
 }
