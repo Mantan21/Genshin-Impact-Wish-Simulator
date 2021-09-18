@@ -85,6 +85,9 @@ const bnversion = {
   },
   get() {
     return localStorage.getItem('version');
+  },
+  clear() {
+    return localStorage.removeItem('version')
   }
 }
 export {
