@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { showWish, wishes, backsound } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 
@@ -21,9 +22,13 @@
 
 	console.log(sortedWish);
 	let audio;
+	let container;
 	let wishHeight;
 
-	onMount(() => audio.play());
+	onMount(() => {
+		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
+		audio.play();
+	});
 	const closeHandle = () => {
 		backsound.set(true);
 		showWish.set(false);
@@ -45,79 +50,81 @@
 	<i class="gi-close" />
 </button>
 <audio src="/assets/sfx/result-list.ogg" bind:this={audio} />
-<div class="container">
-	<div class="wishlist" bind:clientHeight={wishHeight}>
-		{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
-			<div
-				id="wish{i}"
-				class="item star{rarity} {type}"
-				style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
-			>
-				{#if isNew}
-					<div class="new">new</div>
-				{/if}
-				<div class="item-body">
-					<div class="item-content">
-						<i class="gi-primo-star primo1" />
-						<i class="gi-primo-star primo2" />
-						<i class="gi-primo-star primo3" />
-						<div class="pic">
-							{#if type === 'weapon'}
-								<img
-									src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
-									alt={name}
-									class="wishpic {weaponType}-item"
-									{style}
-								/>
-							{:else}
-								<img
-									src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
-									alt={name}
-									class="wishpic"
-									{style}
-								/>
-							{/if}
-
-							<div class="info">
+<div class="scroll" bind:this={container}>
+	<div class="container">
+		<div class="wishlist" bind:clientHeight={wishHeight}>
+			{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
+				<div
+					id="wish{i}"
+					class="item star{rarity} {type}"
+					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
+				>
+					{#if isNew}
+						<div class="new">new</div>
+					{/if}
+					<div class="item-body">
+						<div class="item-content">
+							<i class="gi-primo-star primo1" />
+							<i class="gi-primo-star primo2" />
+							<i class="gi-primo-star primo3" />
+							<div class="pic">
 								{#if type === 'weapon'}
 									<img
-										src="/assets/images/utility/{weaponType}-white.svg"
-										alt="{weaponType} icon"
-										style="width: 60%; height: auto"
+										src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+										alt={name}
+										class="wishpic {weaponType}-item"
+										{style}
 									/>
-								{:else if isNew}
-									<i class="gi-{vision} vision" />
+								{:else}
+									<img
+										src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
+										alt={name}
+										class="wishpic"
+										{style}
+									/>
 								{/if}
 
-								{#if (isNew && type === 'character') || type === 'weapon'}
-									<div class="star">
-										{#each Array(rarity) as _, i}
-											<div class="i gi-star" />
-										{/each}
-									</div>
-								{/if}
-
-								{#if type === 'character' && fateType}
-									<div class="masterless {fateType}">
-										<Icon type={fateType} width="80%" />
-										<span>{fateQty}</span>
-									</div>
-								{/if}
-
-								{#if stelaFortuna}
-									<div class="stella stella{rarity}">
+								<div class="info">
+									{#if type === 'weapon'}
 										<img
-											src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
-											alt="Stella Formula"
+											src="/assets/images/utility/{weaponType}-white.svg"
+											alt="{weaponType} icon"
+											style="width: 60%; height: auto"
 										/>
-									</div>
-								{/if}
+									{:else if isNew}
+										<i class="gi-{vision} vision" />
+									{/if}
+
+									{#if (isNew && type === 'character') || type === 'weapon'}
+										<div class="star">
+											{#each Array(rarity) as _, i}
+												<div class="i gi-star" />
+											{/each}
+										</div>
+									{/if}
+
+									{#if type === 'character' && fateType}
+										<div class="masterless {fateType}">
+											<Icon type={fateType} width="80%" />
+											<span>{fateQty}</span>
+										</div>
+									{/if}
+
+									{#if stelaFortuna}
+										<div class="stella stella{rarity}">
+											<img
+												src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
+												alt="Stella Formula"
+											/>
+										</div>
+									{/if}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </div>
 <div class="share">
@@ -126,14 +133,17 @@
 </div>
 
 <style>
+	.scroll {
+		width: 100%;
+		height: 100%;
+		transform: translateY(-5%);
+	}
 	.container {
 		width: 100%;
 		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transform: translateY(-5%);
-		overflow: auto;
 	}
 	.container::after {
 		content: '';

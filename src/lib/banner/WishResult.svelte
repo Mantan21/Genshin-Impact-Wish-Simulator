@@ -36,7 +36,7 @@
 	let wishResult;
 	let activeIndex = 0;
 
-	const playAudio = () => {
+	const playRevealAudio = () => {
 		const star = wish[activeIndex].rarity;
 		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
 		audio.currentTime = 0;
@@ -45,28 +45,30 @@
 
 	const showItem = (startIndex) => {
 		// Single Pull
-		if (wish.length === 1 && startIndex === 'start') {
-			playAudio();
+		if (wish.length === 1) {
+			if (startIndex === 'start') {
+				playRevealAudio();
+			}
 			return;
 		}
 
 		// Multi Pull
 		if (activeIndex > wish.length - 2) {
-			if (wish.length < 2) {
-				showWish.set(false);
-				const buttonSfx = document.querySelector('#button-sfx');
-				buttonSfx.currentTime = 0;
-				buttonSfx.play();
-				backsound.set(true);
-				return;
-			}
 			showWishList = true;
 			return;
 		}
 		if (startIndex !== 'start') {
 			activeIndex = activeIndex + 1;
 		}
-		playAudio();
+		playRevealAudio();
+	};
+
+	const closeHandle = () => {
+		showWish.set(false);
+		const buttonSfx = document.querySelector('#button-sfx');
+		buttonSfx.play();
+		backsound.set(true);
+		return;
 	};
 
 	onMount(() => {
@@ -82,6 +84,12 @@
 		<WishListResult />
 	{:else}
 		<div class="container" bind:this={wishResult}>
+			{#if wish.length === 1}
+				<button class="close" on:click={closeHandle}>
+					<i class="gi-close" />
+				</button>
+			{/if}
+
 			{#each wish as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
@@ -131,19 +139,19 @@
 							</div>
 
 							<div class="bonus">
-								{#if type === 'character' && fateType}
-									<div class="masterless {fateType}">
-										<Icon type={fateType} width="80%" />
-										<span> {fateQty} </span>
-									</div>
-								{/if}
-
 								{#if stelaFortuna}
 									<div class="stella stella{rarity}">
 										<img
 											src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
 											alt="Stella Formula"
 										/>
+									</div>
+								{/if}
+
+								{#if type === 'character' && fateType}
+									<div class="masterless starglitter">
+										<Icon type="starglitter" width="80%" />
+										<span> {fateQty} </span>
 									</div>
 								{/if}
 							</div>
@@ -169,7 +177,7 @@
 				{/if}
 			{/each}
 
-			{#if wish.length === 1 || wish[activeIndex].type === 'character'}
+			{#if wish[activeIndex].type === 'character'}
 				<div class="share">
 					<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
 					<button> Share </button>
@@ -180,6 +188,31 @@
 </div>
 
 <style>
+	.close {
+		display: block;
+		justify-content: center;
+		align-items: center;
+		width: 35px;
+		height: 35px;
+		color: rgba(0, 0, 0, 0.7);
+		background-color: #fff;
+		border: 3.5px solid #abbcc6;
+		padding: 0;
+		border-radius: 100%;
+		position: fixed;
+		top: 10px;
+		right: 10px;
+		font-size: 1.5rem;
+		line-height: 1rem;
+		z-index: 10;
+		opacity: 0;
+		animation: weaponbg forwards 2s;
+	}
+
+	:global(.mobile) .close {
+		transform: scale(0.7);
+	}
+
 	/* Fate */
 	.starfate {
 		justify-content: flex-end;

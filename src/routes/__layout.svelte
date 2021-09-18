@@ -85,6 +85,8 @@
 			viewportWidth.set(window.innerWidth);
 			viewportHeight.set(window.innerHeight);
 		});
+
+		document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>
 
@@ -119,7 +121,7 @@
 <main class:mobile={$mobileMode}>
 	<slot />
 
-	<div class="uid">UID: wishSimulator</div>
+	<div class="uid">UID: WishSimulator.vercel.app</div>
 </main>
 
 <style>
@@ -150,11 +152,11 @@
 	.uid {
 		display: block;
 		position: fixed;
-		bottom: 5px;
+		bottom: 0px;
 		right: 5px;
 		z-index: 998;
 		color: #fff;
-		text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
 	}
 </style>

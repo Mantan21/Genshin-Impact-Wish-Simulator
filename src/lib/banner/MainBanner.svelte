@@ -104,5 +104,6 @@
 	}
 	:global(.mobile) .button {
 		height: 50px;
+		margin-bottom: 0.2rem;
 	}
 </style>

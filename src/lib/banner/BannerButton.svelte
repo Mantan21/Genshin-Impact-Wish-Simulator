@@ -128,6 +128,8 @@
 		left: 0;
 		overflow: hidden;
 		pointer-events: none;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 7px;
 	}
 	img {
 		position: absolute;

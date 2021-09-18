@@ -296,7 +296,8 @@
 
 	:global(.mobile) .skip {
 		font-size: 1.4rem;
-		right: 0;
+		right: 1rem;
+		top: 1rem;
 	}
 
 	video {
@@ -337,12 +338,13 @@
 		align-items: center;
 	}
 
-	:global(.mobile) button {
-		width: 150px;
-		height: 35px;
-		margin: 0;
+	:global(.mobile) button:not(.skip) {
+		margin-right: -0.7rem !important;
+		margin-left: -0.7rem !important;
 		font-size: 0.75rem;
+		transform: scale(0.87);
 	}
+
 	:global(.mobile .right img, .mobile .wish img) {
 		transform: scale(0.7);
 	}
