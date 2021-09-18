@@ -1,11 +1,10 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
+
+	// Components
 	import Icon from '$lib/utility/Icon.svelte';
 	import ShopNavbar from '$lib/shop/ShopNavbar.svelte';
 	import ShopHeader from '$lib/shop/ShopHeader.svelte';
@@ -17,6 +16,7 @@
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
+
 	let audio;
 	let activeShop = 'genesis';
 	let activeFateShop = 'starglitter';
@@ -67,6 +67,20 @@
 			(37 / 100) * $viewportHeight
 		}px`;
 	}
+
+	let contentGenesis;
+	let contentPaimon;
+
+	const scrollBar = (activeShop) => {
+		// eslint-disable-next-line
+		if (!globalThis.window) return;
+		let content = activeShop === 'genesis' ? contentGenesis : contentPaimon;
+		OverlayScrollbars(content, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light'
+		});
+	};
+	$: scrollBar(activeShop);
 
 	const genesisList = [
 		{ qty: 60, price: 0.99 },
@@ -162,7 +176,7 @@
 
 			<div class="item-body" transition:fade={{ duration: 300 }}>
 				{#if activeShop === 'genesis'}
-					<div class="item-list genesis">
+					<div class="item-list genesis" bind:this={contentGenesis}>
 						<div class="list-body">
 							{#each genesisList as { qty }, i}
 								<div class="column" style={columnWidth}>
@@ -212,7 +226,7 @@
 						</button>
 					</div>
 
-					<div class="item-list paimon-bargains">
+					<div class="item-list paimon-bargains" bind:this={contentPaimon}>
 						<div class="list-body">
 							{#each ['intertwined', 'acquaint'] as fate, i}
 								<button class="column" style={columnWidth} on:click={() => openExchangePopup(fate)}>
@@ -394,7 +408,6 @@
 	/* List */
 	.item-list {
 		height: calc(100vh - 155px);
-		overflow-y: auto;
 		margin: 15px 0;
 	}
 	:global(.mobile) .item-list {

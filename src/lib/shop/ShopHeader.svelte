@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { genesis, primogem, stardust, starglitter } from '$lib/store/stores';
+	import { genesis, pageActive, primogem, stardust, starglitter } from '$lib/store/stores';
 	import MyFund from '$lib/utility/MyFund.svelte';
 
 	export let showNavbar = true;
@@ -22,6 +22,7 @@
 	const handleClose = () => {
 		audio.src = '/assets/sfx/button-click.ogg';
 		audio.play();
+		pageActive.set('index');
 	};
 </script>
 
@@ -54,9 +55,9 @@
 			</MyFund>
 		{/if}
 
-		<a href="/" class="close" sveltekit:prefetch on:click={handleClose}>
+		<button class="close" on:click={handleClose}>
 			<i class="gi-close" />
-		</a>
+		</button>
 	</div>
 </div>
 

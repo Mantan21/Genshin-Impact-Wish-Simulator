@@ -1,21 +1,19 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { page } from '$app/stores';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { beginnerRoll, pity4star, pity5star } from '$lib/store/localstore';
-	import { showBeginner } from '$lib/store/stores';
+	import { bannerActive, pageActive, showBeginner } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import PopUp from '$lib/utility/PopUp.svelte';
 
 	let audio;
+	let content;
 
 	onMount(() => {
 		audio = document.querySelector('#button-sfx');
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
 
 	const buttonCLickSfx = () => {
@@ -40,7 +38,7 @@
 			path: 'weapon'
 		}
 	];
-	$: banner = $page.params.banner;
+	$: banner = $bannerActive;
 	$: nowOpen = bannerList.findIndex((b) => b.path === banner.toLocaleLowerCase());
 	$: selected = nowOpen < 0 ? 2 : nowOpen;
 	// eslint-disable-next-line
@@ -53,12 +51,19 @@
 	let data = [];
 
 	const { getList, resetHistory } = HistoryIDB;
-	const readData = async (banner) => {
+	const readData = async () => {
 		// eslint-disable-next-line
 		if (!globalThis.window) return [];
 		const list = await getList(banner);
 		data = list.map((d) => d).reverse();
 		return data;
+	};
+
+	const selectBanner = (path) => {
+		showSelectList = !showSelectList;
+		activepage = 1;
+		banner = path;
+		readData();
 	};
 
 	const confirmReset = async () => {
@@ -93,16 +98,25 @@
 >
 	<div class="confirmation">
 		<p>
-			Are you sure to delete all data for <strong>{bannerList[selected].name}</strong> Banner ?
+			It's also remove all Characters and Weapons related to <strong
+				>{bannerList[selected].name}</strong
+			>
+			Banner from your Inventory. <br />
+			Are You Sure to Reset ?
 		</p>
 	</div>
 </PopUp>
 
-<section>
+<section bind:this={content}>
 	<div class="header">
-		<a href="/" sveltekit:prefetch on:click={buttonCLickSfx}>
+		<button
+			on:click={() => {
+				buttonCLickSfx();
+				pageActive.set('index');
+			}}
+		>
 			<i class="gi-reply" />
-		</a>
+		</button>
 	</div>
 	<div class="history-content">
 		<div class="wish-type">
@@ -124,12 +138,9 @@
 						{#each bannerList as { name, path }, i}
 							<a
 								class="item"
-								href="/history/{path}"
+								href="/"
 								class:active={selected === i}
-								on:click={() => {
-									showSelectList = !showSelectList;
-									activepage = 1;
-								}}
+								on:click|preventDefault={() => selectBanner(path)}
 							>
 								{name}
 							</a>
@@ -171,7 +182,7 @@
 			</div>
 
 			<div class="body">
-				{#await readData(banner)}
+				{#await readData()}
 					<div class="row" style="justify-content: center">
 						<div class="cell">Waiting ...</div>
 					</div>
@@ -237,7 +248,6 @@
 		background-color: #ebebeb;
 		width: 100%;
 		height: 100%;
-		overflow-y: auto;
 		color: #757575;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}

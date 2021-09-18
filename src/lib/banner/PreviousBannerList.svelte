@@ -153,22 +153,21 @@
 		</div>
 		<div class="content" bind:this={content}>
 			<div id="content">
-				{#each dataToShow as [key, banner], i (i)}
-					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }} transition:fade>
+				{#each dataToShow as dt (dt)}
+					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
 						<div class="group-title">
 							<h2>
 								{groupby === 'version' ? 'Version' : ''}
-								{getName(key)} <i class="gi-primo-star" />
+								{getName(dt[0])} <i class="gi-primo-star" />
 							</h2>
 						</div>
-						{#each banner as { limited, weapons, patch, version }, i (i)}
+						{#each dt[1] as { limited, weapons, patch, version }, i (i)}
 							<a
 								class="item"
 								href="/"
-								on:click|preventDefault={() => selectBanner(patch, version + 1)}
 								title="{getName(limited.character.name)} & {getName(weapons.featured[0].name)}"
-								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
-								transition:fade
+								on:click|preventDefault={() => selectBanner(patch, version + 1)}
+								in:fade
 							>
 								<div class="banner">
 									<img

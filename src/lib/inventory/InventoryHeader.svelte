@@ -1,14 +1,15 @@
 <script>
+	import { onMount } from 'svelte';
 	import {
 		acquaint,
 		genesis,
 		intertwined,
+		pageActive,
 		primogem,
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
-	import { onMount } from 'svelte';
 
 	export let activeItem = '';
 	let audio;
@@ -16,6 +17,7 @@
 	const buttonCLick = () => {
 		audio.src = '/assets/sfx/button-click.ogg';
 		audio.play();
+		pageActive.set('index');
 	};
 
 	onMount(() => {
@@ -80,9 +82,9 @@
 		{$genesis}
 	</button>
 </div>
-<a class="close" href="/" sveltekit:prefetch on:click={buttonCLick}>
+<button class="close" on:click={buttonCLick}>
 	<i class="gi-close" />
-</a>
+</button>
 
 <style>
 	.title {
@@ -103,8 +105,7 @@
 		margin-left: auto;
 	}
 
-	button,
-	a {
+	button {
 		display: inline-block;
 		max-width: 112px;
 		height: 25px;
@@ -136,8 +137,7 @@
 		.title {
 			font-size: small;
 		}
-		button,
-		a {
+		button {
 			height: 20px;
 			margin: 0 3px;
 		}
@@ -152,8 +152,7 @@
 		}
 	}
 	@media screen and (max-width: 400px) {
-		button,
-		a {
+		button {
 			max-width: 80px;
 		}
 	}

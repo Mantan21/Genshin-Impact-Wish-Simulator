@@ -1,12 +1,21 @@
 <script>
+	// library
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
-	import factoryReset from '$lib/functions/factoryReset';
+	import { fade, fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+	import OverlayScrollbars from 'overlayscrollbars';
+
+	// Components
 	import PopUp from '$lib/utility/PopUp.svelte';
-	import HistoryIDB from '$lib/store/historyIdb';
 	import InventoryHeader from '$lib/inventory/InventoryHeader.svelte';
 	import InventoryItem from '$lib/inventory/InventoryItem.svelte';
+
+	// Store
+	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
+	import HistoryIDB from '$lib/store/historyIdb';
+	import { APP_TITLE } from '$lib/env';
+
+	import factoryReset from '$lib/functions/factoryReset';
 	import charDB from '$lib/setup/characters.json';
 	import weaps from '$lib/setup/weapons.json';
 
@@ -42,6 +51,7 @@
 	let dataToShow = [];
 	let dataQty = 0;
 	let audio;
+	let content;
 
 	const { getAllHistories, countItem } = HistoryIDB;
 
@@ -78,6 +88,7 @@
 
 	onMount(async () => {
 		audio = document.querySelector('#button-sfx');
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
 		await proccessData(activeItem);
 	});
@@ -90,6 +101,13 @@
 		}
 		if (order === 'quantity') {
 			dataToShow = dataToShow.sort((a, b) => b.qty - a.qty);
+		}
+		if (order === 'name') {
+			dataToShow = dataToShow.sort((a, b) => {
+				if (a.name > b.name) return 1;
+				if (a.name < b.name) return -1;
+				return 0;
+			});
 		}
 		if (order === 'element') {
 			dataToShow = dataToShow.sort((a, b) => {
@@ -139,19 +157,20 @@
 </script>
 
 <svelte:head>
-	<title>Inventory | Wish Simulator</title>
+	<title>Inventory | {APP_TITLE}</title>
 </svelte:head>
 
 <PopUp
 	title="Factory Reset"
 	show={showPopup}
-	confirm
+	button="all"
 	on:confirm={confirmReset}
 	on:cancel={cancelReset}
 >
 	<div class="confirmation">
-		<div>
-			Clear <strong> All Data </strong> and Restore to Default ?
+		<div style="padding: 1rem">
+			Are You sure to clear <strong> All Data </strong> and restore to default ?
+			<br /> <small> Note : It includes History, Pity, Funds and all items from Inventory.</small>
 		</div>
 	</div>
 </PopUp>
@@ -159,10 +178,10 @@
 <section>
 	<img src="/assets/images/background/element-{rand(bg)}-bg.webp" alt="Background" class="bg" />
 
-	<div class="header">
+	<div class="header" transition:fly={{ y: -20 }}>
 		<InventoryHeader {activeItem} />
 	</div>
-	<div class="body">
+	<div class="body" transition:fade={{ duration: 400 }}>
 		<div class="navigation">
 			<nav>
 				<button
@@ -182,21 +201,25 @@
 			</nav>
 		</div>
 		<div class="body-content">
-			<div class="container">
+			<div class="container" bind:this={content}>
 				<div class="list-item">
 					{#if dataToShow.length < 1}
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">No data Found </span>
 					{:else}
-						{#each dataToShow as { name, type, rarity, vision, weaponType, qty }, i}
-							<div class="item" style={itemStyle}>
+						{#each dataToShow as d (d)}
+							<div
+								class="item"
+								style={itemStyle}
+								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
+							>
 								<InventoryItem
 									width={itemWidth}
-									{name}
-									{rarity}
-									{type}
-									{vision}
-									{weaponType}
-									{qty}
+									name={d.name}
+									rarity={d.rarity}
+									type={d.type}
+									vision={d.vision}
+									weaponType={d.weaponType}
+									qty={d.qty}
 								/>
 							</div>
 						{/each}
@@ -227,6 +250,13 @@
 									on:click|preventDefault={() => selectOrder('rarity', false)}
 								>
 									Rarity
+								</a>
+								<a
+									href="##"
+									class:selected={orderby == 'name'}
+									on:click|preventDefault={() => selectOrder('name', false)}
+								>
+									Name
 								</a>
 								<a
 									href="##"
@@ -445,7 +475,6 @@
 		width: 100%;
 		padding: 0 2%;
 		margin-top: 2px;
-		overflow-y: auto;
 	}
 	.list-item {
 		display: flex;
@@ -460,6 +489,7 @@
 	}
 	.item {
 		margin: 0.5rem;
+		will-change: auto;
 	}
 
 	.filter {
