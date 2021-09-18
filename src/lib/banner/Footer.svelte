@@ -119,9 +119,9 @@
 		padding: 0;
 	}
 	:global(.mobile) .left button {
-		padding: 2px 13px;
+		padding: 1.5px 11px;
 		margin: 1px 2px;
-		font-size: 0.8rem;
+		font-size: 0.75rem;
 	}
 	:global(.mobile) .right {
 		margin-right: 40px !important;

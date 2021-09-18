@@ -150,19 +150,16 @@
 			</div>
 		</div>
 		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, tenetur. Fuga blanditiis neque
-			distinctio rerum veritatis porro impedit quisquam laudantium saepe! Quia ex aspernatur
-			consequatur quae adipisci? Veritatis, amet, nobis quasi ipsam, cumque pariatur dolores
-			corrupti officiis laudantium dignissimos nulla temporibus sequi itaque. Pariatur blanditiis
-			nobis, vel, ullam magnam aut id amet commodi eos ut a facere placeat soluta nostrum, fuga
-			earum quae. Mollitia quibusdam rem, suscipit aliquid hic amet error sunt adipisci dolores
-			fugit dolorem, quaerat animi cupiditate unde officia, voluptatum sed ab possimus.
+			We Never save your data on cloud storage. All data was stored to IndexedDB, it means the data
+			is saved on your browser storage. It will never delete till you delete it manualy throught
+			delete/reset button or clear the browser data.
 		</p>
 
 		<div class="info row">
 			<div class="cell">Pity : <span class="lighted"> <strong> {pity} </strong> </span></div>
 			<div class="cell">
-				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span>
+				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span> ~
+				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
 			</div>
 			<div class="cell">
 				<button
