@@ -10,9 +10,12 @@ import prob from './prob';
 
 
 let { standard, beginner, limited, weapons } = wishSetup.banner;
-// eslint-disable-next-line
-const localVersion = globalThis.window ? bnversion.get() : null
-if (localVersion) {
+
+const checkBanner = () => {
+  // eslint-disable-next-line
+  const localVersion = globalThis.window ? bnversion.get() : null
+  if (!localVersion) return;
+
   const [ patch, versionBanner ] = localVersion.split('-');
   const { banner } = previous.data.filter(({ version }) => version === patch)[0];
   ({ limited, weapons } = banner[parseInt(versionBanner) - 1]);
@@ -166,6 +169,7 @@ const weaponWish = (rarity) => {
 }
 
 const getWishItem = (banner, rarity) => {
+  checkBanner();
   let result
   const date = new Date();
   const time  = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;

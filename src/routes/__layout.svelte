@@ -20,11 +20,20 @@
 	} from '$lib/store/stores';
 	import { bnversion, myFunds } from '$lib/store/localstore';
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
+	import setup from '$lib/setup/wish-setup.json';
 	import '../app.css';
 
 	const setBannerVersion = () => {
 		const localVersion = bnversion.get();
 		if (!localVersion) return;
+
+		const { storageVersion } = setup;
+		if (localStorage.getItem('storageVersion') !== storageVersion) {
+			bnversion.clear();
+			localStorage.setItem('storageVersion', storageVersion);
+			return;
+		}
+
 		const [patch, version] = localVersion.split('-');
 		bannerVersion.set(parseInt(version));
 		patchVersion.set(patch);
