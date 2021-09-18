@@ -2,7 +2,10 @@
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import MyFund from '$lib/utility/MyFund.svelte';
 	import setup from '$lib/setup/wish-setup.json';
+	import previous from '$lib/setup/previous.json';
 	import {
+		patchVersion,
+		bannerVersion,
 		acquaint,
 		bannerActive,
 		intertwined,
@@ -10,10 +13,15 @@
 		primogem,
 		showBeginner,
 		stardust,
-		starglitter
+		starglitter,
+		pageActive
 	} from '$lib/store/stores';
 
-	const { beginner, limited, weapons, standard } = setup.banner;
+	let { beginner, limited, weapons, standard } = setup.banner;
+	$: if ($patchVersion !== '0.0') {
+		const { banner } = previous.data.filter(({ version }) => version === $patchVersion)[0];
+		({ limited, weapons } = banner[$bannerVersion - 1]);
+	}
 
 	let audio;
 	const buttonClick = (bannerType) => {
@@ -58,7 +66,7 @@
 				{/if}
 			</div>
 
-			<button class="close">
+			<button class="close" on:click={() => pageActive.set('previous-banner')}>
 				<i class="gi-close" />
 			</button>
 		</div>
@@ -188,6 +196,7 @@
 		height: 100%;
 		justify-content: flex-start;
 		padding-top: 50px;
+		z-index: -10;
 	}
 
 	:global(.mobile) .bg {

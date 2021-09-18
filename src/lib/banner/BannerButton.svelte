@@ -12,7 +12,7 @@
 		}
 	};
 
-	const { style, name } = character;
+	$: ({ style, name } = character);
 	const dispatch = createEventDispatcher();
 	const buttonClick = () => {
 		dispatch('click');

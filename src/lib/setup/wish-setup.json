@@ -68,54 +68,5 @@
         "lion_s-roar"
       ]
     }
-  },
-  "older": [
-    {
-      "version" : "2.0",
-      "bannerNumber": 2,
-      "banner": {
-        "limited": {
-          "character": {
-            "name": "yoimiya",
-            "style": {
-              "main": "width: 150px; bottom: -50%; left: 40%",
-              "active": "width: 150px; bottom: -40%;left: 40%"
-            }
-          },
-          "rateup": [
-            "sayu",
-            "xinyan",
-            "diona"
-          ]
-        },
-        "weapons": {
-          "featured": [
-            {
-              "name": "thundering-pulse",
-              "type": "bow",
-              "style": {
-                "main": "bottom: -70px;width: 70px;left: 40%;",
-                "active": "bottom: -60px;width: 70px;left: 40%;"
-              }
-            },
-            {
-              "name": "skyward-blade",
-              "type": "sword",
-              "style": {
-                "main": "bottom: -130%;width: 80px;left: 60%;",
-                "active": "bottom: -120%;width: 80px;left: 60%;"
-              }
-            }
-          ],
-          "rateup": [
-            "sacrificial-sword",
-            "sacrificial-fragments",
-            "favonius-warbow",
-            "rainslasher",
-            "dragon_s-bane"
-          ]
-        }
-      }
-    }
-  ]
+  }
 }
