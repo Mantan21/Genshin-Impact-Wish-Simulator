@@ -37,11 +37,23 @@
 				</span>
 				{#each description as txt} <p>{@html txt}</p> {/each}
 			{/each}
+			<div style="height: .5rem" />
 		</div>
 		<p class="sp">
 			If you find any bugs or problems, please email me <br />
 			( <a href="mailto:lockagz@gmail.com"> lockagz@gmail.com </a> )
 		</p>
+		<span style="font-size: 1rem">Support</span>
+		<div class="support">
+			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">
+				<img src="/assets/images/utility/donate-kofi.png" alt="ko-fi icon" />
+				<span> Ko-fi </span>
+			</a>
+			<a class="trakteer" href="https://trakteer.id/GenshinWishSimulator" target="_blank">
+				<img src="https://cdn.trakteer.id/images/embed/trbtn-icon.png" alt="trakteer icon" />
+				<span> Trakteer </span>
+			</a>
+		</div>
 		<p class="credit">All assets used in this site are owned by Mihoyo.</p>
 	</section>
 </PopUp>
@@ -99,5 +111,42 @@
 	.sp {
 		font-size: 0.97rem;
 		padding: 0.5rem 0 1rem;
+	}
+
+	.support {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.support a {
+		width: 10rem;
+		height: 2.2rem;
+		margin: 0.5rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 40px;
+		transition: all 0.2s;
+		color: #fff;
+		font-size: 1rem;
+	}
+
+	a.kofi {
+		background-color: #00b9fe;
+	}
+	a.trakteer {
+		background-color: #be1e2d;
+	}
+
+	a:active {
+		transform: scale(0.9);
+		background-color: #fff;
+		color: #000;
+	}
+
+	a img {
+		height: 80%;
+		margin-right: 0.5rem;
 	}
 </style>

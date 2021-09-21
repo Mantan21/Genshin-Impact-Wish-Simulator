@@ -6,6 +6,7 @@
 	import { PROTOCOL, HOST } from '$lib/env';
 	import { primogem } from '$lib/store/stores';
 	import { firstShare, myFunds } from '$lib/store/localstore';
+	import { copy } from '$lib/functions/nameText';
 	import Icon from '$lib/utility/Icon.svelte';
 
 	export let encodedData;
@@ -61,23 +62,9 @@
 		addFunds();
 	};
 
-	const copy = () => {
-		const textArea = document.createElement('textarea');
-		textArea.setAttribute('style', 'position: fixed; top: -200%');
-		textArea.value = shareLink;
-		document.body.appendChild(textArea);
-		textArea.focus();
-		textArea.select();
-		return new Promise((res, rej) => {
-			document.execCommand('copy') ? res() : rej();
-			textArea.remove();
-		});
-	};
-
 	const copyHandle = async () => {
 		audio.play();
-		if (navigator.clipboard) navigator.clipboard.writeText(shareLink);
-		else await copy();
+		copy();
 		showToast = true;
 		const t = setTimeout(() => {
 			showToast = false;

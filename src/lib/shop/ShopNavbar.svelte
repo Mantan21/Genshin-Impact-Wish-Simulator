@@ -45,6 +45,16 @@
 				<i class="gi-caret-up" />
 				<div class="border"><i class="gi-genesis" /> Crystal Top-Up</div>
 			</a>
+			<a
+				href="#donate"
+				class="link"
+				class:active={activeShop === 'donate'}
+				on:click|preventDefault={() => handleClick('donate')}
+			>
+				<i class="gi-primo-star" />
+				<i class="gi-caret-up" />
+				<div class="border"><i class="gi-companion" /> Donate</div>
+			</a>
 		</div>
 	</div>
 {/if}
