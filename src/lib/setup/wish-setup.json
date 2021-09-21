@@ -1,7 +1,7 @@
 {
   "version": "2.1",
-  "bannerNumber": 1,
-  "storageVersion": "1",
+  "bannerNumber": 2,
+  "storageVersion": "2.1.2",
   "banner": {
     "beginner": {
       "character": {
@@ -30,43 +30,43 @@
     },
     "limited": {
       "character": {
-        "name": "raiden-shogun",
+        "name": "sagonomiya-kokomi",
         "style": {
-          "main": "width: 180px; bottom: -45%;",
-          "active": "width: 180px; bottom: -35%;"
+          "main": "width: 180%;top: 25%;left: 55%;",
+          "active": "width: 180%;top: 15%;left: 55%;"
         }
       },
       "rateup": [
-        "xiangling",
-        "sucrose",
-        "kujou-sara"
+        "rosaria",
+        "xingqiu",
+        "beidou"
       ]
     },
     "weapons": {
       "featured": [
         {
-          "name": "engulfing-lightning",
-          "type": "polearm",
+          "name": "primordial-jade-cutter",
+          "type": "sword",
           "style": {
-            "main": "bottom: -120%;width: 70px;left: 35%;",
-            "active": "bottom: -110%;width: 70px;left: 35%;"
+            "main": "top: -14%;width: 100%;left: 30%;",
+            "active": "top: -24%;width: 100%;left: 30%;"
           }
         },
         {
-          "name": "the-unforged",
-          "type": "claymore",
+          "name": "everlasting-moonglow",
+          "type": "catalyst",
           "style": {
-            "main": "bottom: -110%;width: 65px;left: 60%;",
-            "active": "bottom: -100%;width: 65px;left: 60%;"
+            "main": "top: 20%;width: 80%;left: 60%;",
+            "active": "top: 10%;width: 80%;left: 60%;"
           }
         }
       ],
       "rateup": [
-        "the-bell",
-        "sacrificial-bow",
-        "favonius-lance",
-        "the-widsith",
-        "lion_s-roar"
+        "dragon_s-bane",
+        "the-stringless",
+        "favonius-codex",
+        "favonius-greatsword",
+        "the-flute"
       ]
     }
   }

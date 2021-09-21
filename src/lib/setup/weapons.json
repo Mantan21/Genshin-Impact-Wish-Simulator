@@ -150,6 +150,14 @@
     "engulfing-lightning": {
       "type": "polearm",
       "limited": true
+    },
+    "primordial-jade-cutter": {
+      "type":"sword",
+      "limited":true
+    },
+    "everlasting-moonglow": {
+      "type": "catalyst",
+      "limited":true
     }
   }
 }

@@ -64,7 +64,7 @@
 
 	const copyHandle = async () => {
 		audio.play();
-		copy();
+		copy(shareLink);
 		showToast = true;
 		const t = setTimeout(() => {
 			showToast = false;

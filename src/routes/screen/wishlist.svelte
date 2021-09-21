@@ -7,11 +7,10 @@
 	let wishlist = [
 		{
 			type: 'character',
-			rarity: 5,
-			name: 'yoimiya',
-			isNew: false,
-			stelaFortuna: true,
-			fateType: 'starglitter',
+			rarity: 4,
+			name: 'yanfei',
+			isNew: true,
+			stelaFortuna: false,
 			fateQty: 10,
 			vision: 'pyro',
 			style: ''
@@ -19,11 +18,11 @@
 		{
 			type: 'weapon',
 			rarity: 3,
-			name: 'emerald-orb',
+			name: '',
 			isNew: false,
-			fateType: 'stardust',
+			fateType: '',
 			fateQty: 15,
-			weaponType: 'catalyst',
+			weaponType: 'claymore',
 			style: ''
 		}
 	];

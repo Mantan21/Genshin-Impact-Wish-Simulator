@@ -26,11 +26,15 @@
     },
     "mona": {
       "vision": "hydro"
+    },
+    "sagonomiya-kokomi": {
+      "vision": "hydro",
+      "limited": true,
+      "style": "height: 190%;width: 200%;left: 65%;"
     }
   },
   "star4": {
     "kujou-sara": {
-      "limited": true,
       "vision": "electro",
       "style": "height: 210%; top: 85%;"
     },
@@ -56,7 +60,7 @@
     },
     "yanfei": {
       "vision": "pyro",
-      "style": "left: 170%;width: 400%;height: 170%;top: 90%;"
+      "style": "left: 160%;width: 400%;height: 170%;top: 70%;"
     },
     "sucrose": {
       "vision": "anemo"
