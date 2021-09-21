@@ -1,13 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { showBeginner, bannerActive, backsound, showDisclaimer } from '$lib/store/stores';
+	import updates from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
 
+	let audio;
+	let content;
 	const confirm = () => {
+		audio.play();
 		showDisclaimer.set(false);
 		backsound.set(true);
 		if ($showBeginner) bannerActive.set('beginner');
 		else bannerActive.set('limited');
 	};
+
+	onMount(() => {
+		audio = document.querySelector('#button-sfx');
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
 <PopUp
@@ -18,18 +29,18 @@
 >
 	<section>
 		<p class="sp">This is purely a fan made Application, enjoy it !</p>
-		<div class="updates">
-			<span>
-				Latest Update <i class="tgl">( 01-Sep-2021 )</i> :
-			</span>
-			<p><strong> Raiden Shogun and Kujou Sara </strong> Banner was here !</p>
-			<p><strong> Engulfing Lightning Weapon Banner </strong> has been added .</p>
-			<p>Mobile App soon.</p>
+		<div class="updates" bind:this={content}>
+			{#each updates.data.reverse() as { date, description }, i}
+				<span>
+					<i class="tgl"> {date} </i>
+					{#if i === 0} ( Latest Update ) {/if}
+				</span>
+				{#each description as txt} <p>{@html txt}</p> {/each}
+			{/each}
 		</div>
 		<p class="sp">
-			If you find any bugs or problems, please email me ( <a href="mailto:lockagz@gmail.com">
-				lockagz@gmail.com
-			</a> )
+			If you find any bugs or problems, please email me <br />
+			( <a href="mailto:lockagz@gmail.com"> lockagz@gmail.com </a> )
 		</p>
 		<p class="credit">All assets used in this site are owned by Mihoyo.</p>
 	</section>
@@ -38,7 +49,7 @@
 <style>
 	section {
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0 1.5rem 1rem;
 	}
 	.credit {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -48,14 +59,19 @@
 	.updates {
 		text-align: left;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		padding: 1rem 2rem;
 		background-color: #fff;
 		font-size: 0.97rem;
+		height: 8rem;
+		padding: 0 1rem;
+		display: block;
+		overflow: hidden;
 	}
 
-	.updates > span {
+	.updates span {
 		font-weight: bold;
 		color: #f7cf33;
+		display: block;
+		padding-top: 0.5rem;
 	}
 	.updates .tgl {
 		color: #bd6932;
@@ -82,6 +98,6 @@
 
 	.sp {
 		font-size: 0.97rem;
-		padding: 1rem 0;
+		padding: 0.5rem 0 1rem;
 	}
 </style>

@@ -22,6 +22,8 @@
   "dependencies": {
     "@lukeed/uuid": "^2.0.0",
     "cookie": "^0.4.1",
+    "file-saver": "^2.0.5",
+    "html-to-image": "^1.8.5",
     "idb": "^6.1.2",
     "mobile-detect": "^1.4.5",
     "overlayscrollbars": "^1.13.1"

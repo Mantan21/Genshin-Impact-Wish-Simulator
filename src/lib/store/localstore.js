@@ -90,9 +90,23 @@ const bnversion = {
     return localStorage.removeItem('version')
   }
 }
+
+const firstShare = {
+  set(value) {
+    return localStorage.setItem('firstshare', value)
+  },
+  get() {
+    return localStorage.getItem('firstshare')
+  },
+  check() {
+    return localStorage.getItem('firstshare') !== 'yes'
+  }
+}
+
 export {
   pity4star, pity5star,
   beginnerRoll, beginnerAlreadyGuaranteed,
   nextGuaranteed, nextWeaponGuaranteed,
-  myFunds, bnversion
+  myFunds, bnversion,
+  firstShare
 };

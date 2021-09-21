@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
@@ -22,6 +23,8 @@
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import setup from '$lib/setup/wish-setup.json';
 	import '../app.css';
+
+	let preview = $page.path.split('/')[1] === 'screen';
 
 	const setBannerVersion = () => {
 		const localVersion = bnversion.get();
@@ -114,14 +117,17 @@
 	/>
 </svelte:head>
 
-<Loader />
-<Disclaimer />
+{#if !preview}
+	<Loader />
+	<Disclaimer />
+{/if}
 
 <audio src="/assets/sfx/button-click.ogg" type="audio/ogg" id="button-sfx" />
-<main class:mobile={$mobileMode}>
+<main class:mobile={$mobileMode} class:preview>
 	<slot />
 
 	<div class="uid">UID: WishSimulator.vercel.app</div>
+	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
 
 <style>
@@ -158,5 +164,22 @@
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
+	}
+
+	.preview .uid {
+		right: unset;
+		left: 1rem;
+		bottom: 1rem;
+	}
+	.logo {
+		display: none;
+	}
+	.preview .logo {
+		display: block;
+		width: 30vh;
+		max-width: 30%;
+		position: fixed;
+		bottom: 0px;
+		right: 5px;
 	}
 </style>

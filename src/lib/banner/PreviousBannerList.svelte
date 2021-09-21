@@ -9,6 +9,12 @@
 	import banners from '$lib/setup/previous.json';
 	import { APP_TITLE } from '$lib/env';
 
+	let audio;
+	const playAudio = () => {
+		audio.currentTime = 0;
+		audio.play();
+	};
+
 	const { data } = banners;
 	const tempData = [];
 	data.forEach(({ version, banner }) => {
@@ -22,6 +28,7 @@
 	let dataToShow = tempData;
 
 	const reverse = () => {
+		playAudio();
 		dataToShow = dataToShow.reverse();
 	};
 
@@ -71,6 +78,7 @@
 	};
 
 	const selectGroup = (group = null, value = null) => {
+		playAudio();
 		showGroup = value !== null ? value : !showGroup;
 		if (!group) return;
 		groupby = group;
@@ -78,6 +86,7 @@
 	};
 
 	const selectBanner = (patch, banner) => {
+		playAudio();
 		patchVersion.set(patch);
 		bannerVersion.set(banner);
 		bnversion.set(patch, banner);
@@ -87,6 +96,7 @@
 	let content;
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+		audio = document.querySelector('#button-sfx');
 	});
 </script>
 
@@ -97,7 +107,15 @@
 <section>
 	<header transition:fly={{ y: -20 }}>
 		<h1>Previous Banner</h1>
-		<button class="close" on:click={() => pageActive.set('index')}> <i class="gi-close" /> </button>
+		<button
+			class="close"
+			on:click={() => {
+				playAudio();
+				pageActive.set('index');
+			}}
+		>
+			<i class="gi-close" />
+		</button>
 	</header>
 
 	<div class="body" transition:fade={{ duration: 300 }}>
@@ -109,6 +127,7 @@
 						class="selected-filter"
 						on:click={() => {
 							showGroup = !showGroup;
+							playAudio();
 						}}
 					>
 						{groupby}
