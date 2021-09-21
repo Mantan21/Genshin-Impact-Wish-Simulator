@@ -48,8 +48,8 @@
 	button {
 		display: block;
 		background-color: var(--secondary-color);
-		border-radius: 7px;
-		width: 100px;
+		border-radius: 0.4rem;
+		width: 90px;
 		height: 45px;
 		margin: 10px;
 		position: relative;
@@ -70,11 +70,11 @@
 	}
 
 	button::after {
-		border-radius: 7px;
+		border-radius: 0.4rem;
 	}
 
 	button::before {
-		border-radius: 40%;
+		border-radius: 40px;
 	}
 
 	button.active,
@@ -154,10 +154,10 @@
 	/* mobile */
 	:global(.mobile) button {
 		transform: scale(0.85);
-		margin: 3px 0;
+		margin: 0.17rem 0;
 	}
 
 	:global(.mobile) button.active {
-		transform: scale(0.95);
+		transform: scale(0.9);
 	}
 </style>
