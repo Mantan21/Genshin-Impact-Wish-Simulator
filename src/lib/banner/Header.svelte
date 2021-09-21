@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import MyFund from '$lib/utility/MyFund.svelte';
 	import setup from '$lib/setup/wish-setup.json';
@@ -24,11 +25,21 @@
 	}
 
 	let audio;
+	let buttonSfx;
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
 		audio.currentTime = 0;
 		audio.play();
 	};
+
+	const previousClick = () => {
+		pageActive.set('previous-banner');
+		buttonSfx.play();
+	};
+
+	onMount(() => {
+		buttonSfx = document.querySelector('#button-sfx');
+	});
 </script>
 
 <audio bind:this={audio}>
@@ -66,7 +77,7 @@
 				{/if}
 			</div>
 
-			<button class="close" on:click={() => pageActive.set('previous-banner')}>
+			<button class="close" on:click={previousClick}>
 				<i class="gi-close" />
 			</button>
 		</div>
@@ -195,7 +206,7 @@
 		margin-top: 0;
 		height: 100%;
 		justify-content: flex-start;
-		padding-top: 50px;
+		padding-top: 3.5rem;
 		z-index: -10;
 	}
 
