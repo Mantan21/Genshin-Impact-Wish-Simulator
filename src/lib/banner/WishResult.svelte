@@ -9,10 +9,13 @@
 		backsound
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
+	import chars from '$lib/setup/characters.json';
+	import weapons from '$lib/setup/weapons.json';
+
+	// Component
 	import Icon from '$lib/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
-	import weapons from '$lib/setup/weapons.json';
-	import chars from '$lib/setup/characters.json';
+	import Share from '$lib/utility/ShareScreenshot.svelte';
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -41,6 +44,11 @@
 		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
 		audio.currentTime = 0;
 		audio.play();
+	};
+
+	const getEncoded = (index) => {
+		const { fateQty, fateType, vision, rarity, name, stelaFortuna } = wish[index];
+		return btoa(`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}`);
 	};
 
 	const showItem = (startIndex) => {
@@ -80,6 +88,9 @@
 <audio bind:this={audio} />
 
 <div class="wish-result">
+	<div class="uid">WishSimulator.vercel.app</div>
+	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
+
 	{#if showWishList}
 		<WishListResult />
 	{:else}
@@ -126,7 +137,15 @@
 						{/if}
 
 						<div class="info">
-							<i class="elemen gi-{vision || weaponType}" />
+							{#if vision}
+								<img
+									src="/assets/images/utility/icon-{vision}.svg"
+									alt="Vision {vision}"
+									class="vision vision-{vision}"
+								/>
+							{:else}
+								<i class="elemen gi-{weaponType}" />
+							{/if}
 							<div class="name">
 								<div class="text">
 									{getName(name)}
@@ -179,8 +198,7 @@
 
 			{#if wish[activeIndex].type === 'character'}
 				<div class="share">
-					<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
-					<button> Share </button>
+					<Share page="chars" encodedData={getEncoded(activeIndex)} />
 				</div>
 			{/if}
 		</div>
@@ -269,7 +287,6 @@
 	.starfate {
 		position: fixed;
 		top: 60%;
-		z-index: 10;
 		text-transform: capitalize;
 		display: flex;
 		align-items: center;
@@ -301,17 +318,24 @@
 		-webkit-text-stroke: 0.2px #000;
 	}
 	.info i.elemen {
-		font-size: 5.2em;
-		margin-right: -7px;
-		margin-top: -5px;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		font-size: 5.2em;
+	}
+	.info i.elemen,
+	.vision {
+		margin-right: -7px;
+		margin-top: -5px;
 		position: relative;
 		z-index: -2;
 		opacity: 0;
 		animation-delay: 1.5s !important;
 		animation: revealIcon forwards 1.5s;
 	}
+	.vision {
+		width: 4rem;
+	}
+
 	.gi-star {
 		color: #f7cf33;
 		font-size: 1.525em;
@@ -405,6 +429,10 @@
 
 	.bow {
 		height: 100%;
+	}
+
+	.claymore {
+		height: 105% !important;
 	}
 
 	.catalyst-parent .weaponbg {
@@ -589,7 +617,7 @@
 	.bonus {
 		position: absolute;
 		display: flex;
-		bottom: -95%;
+		bottom: -25vh;
 		left: 50%;
 		transform: translateX(-50%);
 		animation: weaponbg forwards 2s;
@@ -649,18 +677,27 @@
 		font-size: 0.8rem;
 		animation: weaponbg forwards 2s;
 	}
-	.share span {
-		display: flex;
-		align-items: center;
-	}
 
-	.share button {
-		background-color: #d9d2c8;
-		color: #000;
-		border-radius: 30px;
-		font-size: 0.8rem;
-		padding: 0.3rem 2rem;
-		margin-left: 10px;
+	:global(.preview) .uid {
+		position: fixed;
+		left: 1rem;
+		bottom: 1rem;
+		display: block !important;
+		color: #fff;
+		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
+	}
+	.logo,
+	.uid {
+		display: none;
+		transition: all 0.2s;
+	}
+	:global(.preview) .logo {
+		display: block;
+		width: 30vh;
+		max-width: 30%;
+		position: fixed;
+		bottom: 0px;
+		right: 5px;
 	}
 
 	@keyframes revealIcon {

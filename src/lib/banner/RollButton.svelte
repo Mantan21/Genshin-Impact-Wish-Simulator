@@ -238,7 +238,7 @@
 	<div class="top">Wish x1</div>
 	<div class="bottom">
 		<Icon type={fateType} />
-		<span style="margin-left: 7px"> x <span class:red={fateQty < 1}> 1 </span>'</span>
+		<span style="margin-left: 7px"> x <span class:red={fateQty < 1}> 1 </span></span>
 	</div>
 </button>
 
@@ -283,6 +283,7 @@
 	}
 	.wish-output.show {
 		display: block;
+		background-color: #fff;
 	}
 	.video {
 		position: relative;

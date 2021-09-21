@@ -3,31 +3,56 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { showWish, wishes, backsound } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
+	import Share from '$lib/utility/ShareScreenshot.svelte';
+
+	export let preview = false;
+	export let wishlist = [];
 
 	const sort = (a, b) => {
 		if (a.type > b.type) return 1;
 		if (b.type > a.type) return -1;
 		return 0;
 	};
-	const fiveStar = $wishes
-		.filter(({ rarity }) => rarity === 5)
-		.sort((a, b) => b.isNew - a.isNew)
-		.sort(sort);
-	const fourStar = $wishes
-		.filter(({ rarity }) => rarity === 4)
-		.sort((a, b) => b.isNew - a.isNew)
-		.sort(sort);
-	const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
-	const sortedWish = [...fiveStar, ...fourStar, ...threeStar];
+
+	let sortedWish = [];
+	const getList = (preview, wishlist) => {
+		if (preview) {
+			sortedWish = wishlist;
+			return;
+		}
+
+		const fiveStar = $wishes
+			.filter(({ rarity }) => rarity === 5)
+			.sort((a, b) => b.isNew - a.isNew)
+			.sort(sort);
+		const fourStar = $wishes
+			.filter(({ rarity }) => rarity === 4)
+			.sort((a, b) => b.isNew - a.isNew)
+			.sort(sort);
+		const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
+		sortedWish = [...fiveStar, ...fourStar, ...threeStar];
+	};
+
+	$: getList(preview, wishlist);
 
 	let audio;
 	let container;
 	let wishHeight;
+	let encoded;
 
 	onMount(() => {
 		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
-		audio.play();
+		if (audio) audio.play();
+		if (preview) return;
+
+		const data = sortedWish
+			.map(({ name, rarity, type, isNew, fateType, stelaFortuna }) => {
+				return `${name}/${rarity}/${type}/${+isNew}/${fateType}/${+stelaFortuna}`;
+			})
+			.join('|');
+		encoded = btoa(data);
 	});
+
 	const closeHandle = () => {
 		backsound.set(true);
 		showWish.set(false);
@@ -45,17 +70,21 @@
 	</clipPath>
 </svg>
 
-<button class="close" on:click={closeHandle}>
-	<i class="gi-close" />
-</button>
-<audio src="/assets/sfx/result-list.ogg" bind:this={audio} />
+{#if !preview}
+	<button class="close" on:click={closeHandle}>
+		<i class="gi-close" />
+	</button>
+	<audio src="/assets/sfx/result-list.ogg" bind:this={audio} />
+{/if}
+
 <div class="scroll" bind:this={container}>
-	<div class="container">
+	<div class="container" class:animate={!preview}>
 		<div class="wishlist" bind:clientHeight={wishHeight}>
 			{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
 				<div
 					id="wish{i}"
 					class="item star{rarity} {type}"
+					class:animate={!preview}
 					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
 				>
 					{#if isNew}
@@ -91,7 +120,12 @@
 											style="width: 60%; height: auto"
 										/>
 									{:else if isNew}
-										<i class="gi-{vision} vision" />
+										<img
+											src="/assets/images/utility/icon-{vision}.svg"
+											alt="Vision {vision}"
+											class="vision-{vision}"
+											style="width: 60%; height: auto"
+										/>
 									{/if}
 
 									{#if (isNew && type === 'character') || type === 'weapon'}
@@ -126,25 +160,28 @@
 		</div>
 	</div>
 </div>
-<div class="share">
-	<span> Reward for first share : 1600 <Icon type="primogem" width="18px" /> </span>
-	<button> Share </button>
-</div>
+
+{#if !preview}
+	<div class="share">
+		<Share encodedData={encoded} page="wishlist" />
+	</div>
+{/if}
 
 <style>
 	.scroll {
 		width: 100%;
 		height: 100%;
-		transform: translateY(-5%);
+		display: block;
 	}
 	.container {
-		width: 100%;
+		transform: translateY(-5%);
+		width: 100% !important;
 		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-	.container::after {
+	.container.animate::after {
 		content: '';
 		display: block;
 		width: 100%;
@@ -198,8 +235,10 @@
 		border-radius: 100%;
 		filter: drop-shadow(0px 0px 6px rgb(101, 187, 246));
 		position: relative;
+	}
+	.item.animate {
 		transform: scale(0);
-		animation: wishReveal forwards 1s;
+		animation: wishReveal forwards 0.8s;
 	}
 	.item::before {
 		content: '';
@@ -366,10 +405,6 @@
 		display: inline-block;
 		font-size: 0.8rem;
 	}
-	.vision {
-		font-size: 3rem;
-		line-height: 1rem;
-	}
 
 	.gi-primo-star {
 		color: #fff;
@@ -407,24 +442,10 @@
 		align-items: center;
 	}
 
-	.share button {
-		background-color: #d9d2c8;
-		color: #000;
-		border-radius: 30px;
-		/* height: 20px; */
-		font-size: 0.8rem;
-		/* width: 70px; */
-		padding: 0.3rem 2rem;
-		margin-left: 10px;
-	}
-
 	@keyframes wishReveal {
 		0% {
 			transform: translateX(200%) scale(0);
 		}
-		/* 70% {
-			transform: translateX(200%) scale(0.6);
-		} */
 		100% {
 			transform: translateX(0) scale(1);
 		}
