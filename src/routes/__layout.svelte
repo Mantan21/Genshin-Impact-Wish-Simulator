@@ -117,8 +117,8 @@
 	/>
 </svelte:head>
 
+<Loader />
 {#if !preview}
-	<Loader />
 	<Disclaimer />
 {/if}
 
