@@ -7,8 +7,8 @@
       "character": {
         "name": "noelle",
         "style": {
-          "main": "width: 110px;bottom: -20px;",
-          "active": "width: 110px;bottom: -10px;"
+          "main": "width: 120%;top: 30%;",
+          "active": "width: 120%;top: 20%;"
         }
       }
     },
@@ -16,8 +16,8 @@
       "character": {
         "name": "qiqi",
         "style": {
-          "main": "width: 110px;bottom: -35px;",
-          "active": "width: 110px;bottom: -25px;"
+          "main": "width: 100%;top: 30%;",
+          "active": "width: 100%;top: 20%;"
         }
       },
       "characters": [

@@ -8,8 +8,8 @@
             "character": {
               "name": "raiden-shogun",
               "style": {
-                "main": "width: 180px; bottom: -45%;",
-                "active": "width: 180px; bottom: -35%;"
+                "main": "width: 180%;top: 10%;",
+                "active": "width: 180%;top: 0;"
               }
             },
             "rateup": [
@@ -24,16 +24,16 @@
                 "name": "engulfing-lightning",
                 "type": "polearm",
                 "style": {
-                  "main": "bottom: -120%;width: 70px;left: 35%;",
-                  "active": "bottom: -110%;width: 70px;left: 35%;"
+                  "main": "width: 80%;top: 20%;left: 30%;",
+                  "active": "width: 80%;top: 10%;left: 30%;"
                 }
               },
               {
                 "name": "the-unforged",
                 "type": "claymore",
                 "style": {
-                  "main": "bottom: -110%;width: 65px;left: 60%;",
-                  "active": "bottom: -100%;width: 65px;left: 60%;"
+                  "main": "width: 60%;top: 20%;left: 60%;",
+                  "active": "width: 60%;top: 10%;left: 60%;"
                 }
               }
             ],
@@ -99,41 +99,41 @@
             "character": {
               "name": "kamisato-ayaka",
               "style": {
-                "main": "",
-                "active": ""
+                "main": "width: 95%;top: 32%;",
+                "active": "width: 95%;top: 22%;"
               }
             },
             "rateup": [
-              "sayu",
-              "xinyan",
-              "diona"
+              "yanfei",
+              "chongyun",
+              "ningguang"
             ]
           },
           "weapons": {
             "featured": [
               {
-                "name": "thundering-pulse",
-                "type": "bow",
+                "name": "mistsplitter-reforged",
+                "type": "sword",
                 "style": {
-                  "main": "bottom: -70px;width: 70px;left: 40%;",
-                  "active": "bottom: -60px;width: 70px;left: 40%;"
+                  "main": "top: -20%;width: 100%;left: 30%;",
+                  "active": "top: -30%;width: 100%;left: 30%;"
                 }
               },
               {
-                "name": "skyward-blade",
-                "type": "sword",
+                "name": "skyward-spine",
+                "type": "polearm",
                 "style": {
-                  "main": "bottom: -130%;width: 80px;left: 60%;",
-                  "active": "bottom: -120%;width: 80px;left: 60%;"
+                  "main": "top: 10%;width: 80%;left: 60%;",
+                  "active": "top: 0;width: 80%;left: 60%;"
                 }
               }
             ],
             "rateup": [
-              "sacrificial-sword",
-              "sacrificial-fragments",
-              "favonius-warbow",
-              "rainslasher",
-              "dragon_s-bane"
+              "the-stringless",
+              "favonius-codex",
+              "sacrificial-greatsword",
+              "favonius-lance",
+              "favonius-sword"
             ]
           }
         },
@@ -142,8 +142,8 @@
             "character": {
               "name": "yoimiya",
               "style": {
-                "main": "width: 150px; bottom: -50%; left: 40%",
-                "active": "width: 150px; bottom: -40%;left: 40%"
+                "main": "width: 150%;left: 40%;top: 20%;",
+                "active": "width: 150%;left: 40%;top: 10%;"
               }
             },
             "rateup": [
@@ -158,16 +158,16 @@
                 "name": "thundering-pulse",
                 "type": "bow",
                 "style": {
-                  "main": "bottom: -70px;width: 70px;left: 40%;",
-                  "active": "bottom: -60px;width: 70px;left: 40%;"
+                  "main": "width: 70%;left: 35%;top: 10%;",
+                  "active": "width: 70%;left: 35%;top: 0;"
                 }
               },
               {
                 "name": "skyward-blade",
                 "type": "sword",
                 "style": {
-                  "main": "bottom: -130%;width: 80px;left: 60%;",
-                  "active": "bottom: -120%;width: 80px;left: 60%;"
+                  "main": "width: 80%;top: 5%;left: 60%;",
+                  "active": "width: 80%;top: -5%;left: 60%;"
                 }
               }
             ],
@@ -184,7 +184,94 @@
     },
     {
       "version": "1.6",
-      "banner": []
+      "banner": [
+        {
+          "limited": {
+            "character": {
+              "name": "klee",
+              "style": {
+                "main": "width: 110%;top: 32%;",
+                "active": "width: 110%;top: 22%;"
+              }
+            },
+            "rateup": [
+              "fischl",
+              "barbara",
+              "sucrose"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "lost-prayer-to-the-sacred-winds",
+                "type": "catalyst",
+                "style": {
+                  "main": "top: 40%;width: 60%;left: 40%;",
+                  "active": "top: 30%;width: 60%;left: 40%;"
+                }
+              },
+              {
+                "name": "skyward-pride",
+                "type": "claymore",
+                "style": {
+                  "main": "top: 10%;width: 70%;left: 65%;",
+                  "active": "top: 0%;width: 70%;left: 65%;"
+                }
+              }
+            ],
+            "rateup": [
+              "mitternachts-waltz",
+              "the-widsith",
+              "the-bell",
+              "favonius-lance",
+              "lion_s-roar"
+            ]
+          }
+        },
+        {
+          "limited": {
+            "character": {
+              "name": "kaedehara-kazuha",
+              "style": {
+                "main": "width: 110%;top: 32%;",
+                "active": "width: 110%;top: 22%;"
+              }
+            },
+            "rateup": [
+              "rosaria",
+              "bennett",
+              "razor"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "freedom-sworn",
+                "type": "sword",
+                "style": {
+                  "main": "top: -10%;width: 100%;left: 25%;",
+                  "active": "top: -20%;width: 100%;left: 25%;"
+                }
+              },
+              {
+                "name": "skyward-atlas",
+                "type": "catalyst",
+                "style": {
+                  "main": "top: 50%;width: 75%;left: 72%;",
+                  "active": "top: 40%;width: 75%;left: 72%;"
+                }
+              }
+            ],
+            "rateup": [
+              "alley-hunter",
+              "wine-and-song",
+              "favonius-greatsword",
+              "dragon_s-bane",
+              "the-alley-flash"
+            ]
+          }
+        }
+      ]
     }
   ]
 }

@@ -22,7 +22,9 @@ const checkBanner = () => {
 }
 
 const weap3 = Object.keys(weaponsDB.star3).map((name) => ({type: 'weapon', rarity: 3, name}));
-const weap4 = Object.keys(weaponsDB.star4).map((name) => ({type: 'weapon', rarity: 4, name}));
+const weap4 = Object.keys(weaponsDB.star4)
+  .filter((name) => (!weaponsDB.star4[name].limited))
+  .map((name) => ({type: 'weapon', rarity: 4, name}));
 const stdChar4 = Object.keys(chars.star4)
   .filter((name) => (!chars.star4[name].limited))
   .map((name) => ({ type: 'character', rarity: 4, name }));
@@ -42,13 +44,11 @@ const get4Star = (opt = 'withCharacter') => {
 }
 
 const get5Star = (opt = 'complete') => {
-  let items = [];
   const char = standard.characters.map((name) => ({type: 'character', rarity: 5, name}))
   const itemType = rand(['weap', 'char']);
 
-  if (itemType === 'weap' || opt === 'noCharacter') items = stdWeap5
-  if (itemType === 'char' || opt === 'noWeapon') items = char
-  return rand(items);
+  if (itemType === 'weap' || opt === 'noCharacter') return rand(stdWeap5);
+  if (itemType === 'char' || opt === 'noWeapon') return rand(char);
 }
 
 const beginnerWish = (rarity) => {
