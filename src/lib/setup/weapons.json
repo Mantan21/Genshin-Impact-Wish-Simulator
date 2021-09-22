@@ -98,6 +98,22 @@
     },
     "the-flute": {
       "type": "sword"
+    },
+    "alley-hunter": {
+      "type": "bow",
+      "limited": true
+    },
+    "mitternachts-waltz": {
+      "type": "bow",
+      "limited": true
+    },
+    "wine-and-song": {
+      "type": "catalyst",
+      "limited":true
+    },
+    "the-alley-flash": {
+      "type":"sword",
+      "limited":true
     }
   },
   "star5": {
@@ -157,6 +173,14 @@
     },
     "everlasting-moonglow": {
       "type": "catalyst",
+      "limited":true
+    },
+    "freedom-sworn": {
+      "type": "sword",
+      "limited":true
+    },
+    "mistsplitter-reforged": {
+      "type": "sword",
       "limited":true
     }
   }
