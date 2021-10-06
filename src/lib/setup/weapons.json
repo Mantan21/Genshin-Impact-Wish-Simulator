@@ -167,8 +167,7 @@
       "limited":true
     },
     "skyward-atlas": {
-      "type": "sword",
-      "style": "catalyst"
+      "type": "catalyst"
     },
     "skyward-blade": {
       "type": "sword",
