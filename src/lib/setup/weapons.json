@@ -1,5 +1,29 @@
 {
   "star3": {
+    "black-tassel": {
+      "type": "polearm"
+    },
+    "bloodtained-greatsword": {
+      "type": "claymore"
+    },
+    "cool-steel": {
+      "type": "sword"
+    },
+    "debate-club": {
+      "type": "claymore"
+    },
+    "emerald-orb": {
+      "type": "catalyst"
+    },
+    "ferrous-shadow": {
+      "type": "claymore"
+    },
+    "harbinger-of-dawn":{
+      "type": "sword"
+    },
+    "magic-guide": {
+      "type": "catalyst"
+    },
     "raven-bow": {
       "type": "bow",
       "style": ""
@@ -8,44 +32,73 @@
       "type": "bow",
       "style": ""
     },
-    "emerald-orb": {
-      "type": "catalyst"
-    },
-    "magic-guide": {
-      "type": "catalyst"
-    },
-    "thrilling-tales-of-dragon-slayers": {
-      "type": "catalyst"
-    },
-    "bloodtained-greatsword": {
-      "type": "claymore"
-    },
-    "debate-club": {
-      "type": "claymore"
-    },
-    "ferrous-shadow": {
-      "type": "claymore"
-    },
-    "black-tassel": {
-      "type": "polearm"
-    },
-    "cool-steel": {
-      "type": "sword"
-    },
     "skyrider-sword": {
       "type": "sword"
     },
-    "harbinger-of-dawn":{
-      "type": "sword"
+    "thrilling-tales-of-dragon-slayers": {
+      "type": "catalyst"
     }
   },
   "star4": {
+    "alley-hunter": {
+      "type": "bow",
+      "limited": true
+    },
+    "dragon_s-bane": {
+      "type": "polearm"
+    },
+    "eye-of-perception": {
+      "type": "catalyst"
+    },
+    "favonius-codex": {
+      "type": "catalyst"
+    },
+    "favonius-greatsword": {
+      "type": "claymore"
+    },
+    "favonius-lance": {
+      "type": "polearm"
+    },
+    "favonius-sword": {
+      "type": "sword"
+    },
     "favonius-warbow": {
       "type": "bow",
       "style": ""
     },
-    "favonius-greatsword": {
+    "lion_s-roar": {
+      "type": "sword"
+    },
+    "lithic-blade": {
+      "type": "claymore",
+      "limited": true
+    },
+    "lithic-spear": {
+      "type": "polearm",
+      "limited": true
+    },
+    "mitternachts-waltz": {
+      "type": "bow",
+      "limited": true
+    },
+    "rainslasher": {
       "type": "claymore"
+    },
+    "the-alley-flash": {
+      "type":"sword",
+      "limited":true
+    },
+    "the-bell":{
+      "type": "claymore"
+    },
+    "the-flute": {
+      "type": "sword"
+    },
+    "the-stringless": {
+      "type": "bow"
+    },
+    "the-widsith": {
+      "type": "catalyst"
     },
     "rust": {
       "type": "bow",
@@ -54,122 +107,37 @@
     "sacrificial-bow": {
       "type": "bow"
     },
-    "sacrificial-greatsword": {
-      "type": "claymore"
-    },
-    "the-stringless": {
-      "type": "bow"
-    },
-    "favonius-codex": {
-      "type": "catalyst"
-    },
     "sacrificial-fragments": {
       "type": "catalyst"
     },
-    "eye-of-perception": {
-      "type": "catalyst"
-    },
-    "the-widsith": {
-      "type": "catalyst"
-    },
-    "rainslasher": {
+    "sacrificial-greatsword": {
       "type": "claymore"
-    },
-    "the-bell":{
-      "type": "claymore"
-    },
-    "whiteblind":{
-      "type": "claymore"
-    },
-    "dragon_s-bane": {
-      "type": "polearm"
-    },
-    "favonius-lance": {
-      "type": "polearm"
-    },
-    "favonius-sword": {
-      "type": "sword"
-    },
-    "lion_s-roar": {
-      "type": "sword"
     },
     "sacrificial-sword":{
       "type": "sword"
     },
-    "the-flute": {
-      "type": "sword"
-    },
-    "alley-hunter": {
-      "type": "bow",
-      "limited": true
-    },
-    "mitternachts-waltz": {
-      "type": "bow",
-      "limited": true
+    "whiteblind":{
+      "type": "claymore"
     },
     "wine-and-song": {
       "type": "catalyst",
       "limited":true
-    },
-    "the-alley-flash": {
-      "type":"sword",
-      "limited":true
     }
   },
   "star5": {
-    "skyward-harp": {
-      "type": "bow",
-      "style": ""
-    },
-    "skyward-spine": {
-      "type": "polearm",
-      "style": ""
-    },
-    "skyward-blade": {
-      "type": "sword",
-      "style": ""
-    },
-    "skyward-atlas": {
-      "type": "sword",
-      "style": "catalyst"
-    },
-    "skyward-pride": {
-      "type": "claymore"
-    },
-    "elegy-for-the-end": {
-      "type":"bow"
-    },
     "amos-bow": {
       "type": "bow"
-    },
-    "thundering-pulse": {
-      "limited": true,
-      "type": "bow",
-      "style": ""
-    },
-    "lost-prayer-to-the-sacred-winds": {
-      "type": "catalyst"
-    },
-    "wolf_s-gravestone": {
-      "type": "claymore"
-    },
-    "primordial-jade-winged-spear": {
-      "type": "polearm"
     },
     "aquila-favonia": {
       "type": "sword"
     },
-    "the-unforged": {
-      "type": "claymore",
+    "elegy-for-the-end": {
+      "type":"bow",
       "limited": true
     },
     "engulfing-lightning": {
       "type": "polearm",
       "limited": true
-    },
-    "primordial-jade-cutter": {
-      "type":"sword",
-      "limited":true
     },
     "everlasting-moonglow": {
       "type": "catalyst",
@@ -179,9 +147,71 @@
       "type": "sword",
       "limited":true
     },
+    "lost-prayer-to-the-sacred-winds": {
+      "type": "catalyst"
+    },
+    "memory-of-dust": {
+      "type": "catalyst",
+      "limited": true
+    },
     "mistsplitter-reforged": {
       "type": "sword",
       "limited":true
+    },
+    "primordial-jade-cutter": {
+      "type":"sword",
+      "limited":true
+    },
+    "primordial-jade-winged-spear": {
+      "type": "polearm",
+      "limited":true
+    },
+    "skyward-atlas": {
+      "type": "sword",
+      "style": "catalyst"
+    },
+    "skyward-blade": {
+      "type": "sword",
+      "style": ""
+    },
+    "skyward-harp": {
+      "type": "bow",
+      "style": ""
+    },
+    "skyward-pride": {
+      "type": "claymore"
+    },
+    "skyward-spine": {
+      "type": "polearm",
+      "style": ""
+    },
+    "song-of-broken-pines": {
+      "type":"claymore",
+      "limited":true
+    },
+    "staff-of-homa": {
+      "type": "polearm",
+      "limited": true
+    },
+    "summit-shaper": {
+      "type": "sword",
+      "limited": true
+    },
+    "the-unforged": {
+      "type": "claymore",
+      "limited": true
+    },
+    "thundering-pulse": {
+      "limited": true,
+      "type": "bow",
+      "style": ""
+    },
+    "vortex-vanquisher": {
+      "type":"polearm",
+      "limited": true
+    },
+    "wolf_s-gravestone": {
+      "type": "claymore"
     }
   }
 }
