@@ -7,6 +7,7 @@
 	import { getName } from '$lib/functions/nameText';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import PopUp from '$lib/utility/PopUp.svelte';
+	import { APP_TITLE } from '$lib/env';
 
 	let audio;
 	let content;
@@ -83,7 +84,7 @@
 
 <svelte:head>
 	<title>
-		{bannerList[selected].name}
+		{bannerList[selected].name} | {APP_TITLE}
 	</title>
 </svelte:head>
 
