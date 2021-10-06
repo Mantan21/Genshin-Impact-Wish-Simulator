@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { mobileMode, pageActive } from '$lib/store/stores';
+	import { mobileMode, pageActive, stardust, starglitter } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
 
@@ -33,11 +33,11 @@
 		<div class="wish">
 			<div class="starglitter">
 				<Icon type="starglitter" />
-				<span> 20</span>
+				<span> {$starglitter}</span>
 			</div>
 			<div class="stardust">
 				<Icon type="stardust" />
-				<span> 1500</span>
+				<span> {$stardust}</span>
 			</div>
 		</div>
 	{/if}

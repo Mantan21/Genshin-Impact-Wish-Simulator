@@ -233,7 +233,7 @@
 					</button>
 					<div class="sort-selector">
 						<div class="selected-order" on:click={() => selectOrder()}>
-							{orderby}
+							Sort / {orderby}
 
 							{#if showOrder}
 								<i class="gi-caret-up" />
