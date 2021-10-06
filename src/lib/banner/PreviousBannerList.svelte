@@ -42,39 +42,44 @@
 			return 0;
 		});
 
+	const groupByChars = () => {
+		const char = {};
+		data.forEach(({ banner, version }) =>
+			banner.forEach((d, i) => {
+				const { name } = d.limited.character;
+				d.patch = version;
+				d.version = i;
+				char[name] = [...(char[name] || []), d];
+			})
+		);
+		dataToShow = sort(Object.entries(char));
+		return;
+	};
+
+	const groupByWeapon = () => {
+		const weap = {};
+		data.forEach(({ banner, version }) =>
+			banner.forEach((wp, i) => {
+				const weapon1 = wp.weapons.featured[0].name;
+				const weapon2 = wp.weapons.featured[1].name;
+				wp.patch = version;
+				wp.version = i;
+				weap[weapon1] = [...(weap[weapon1] || []), wp];
+				weap[weapon2] = [...(weap[weapon2] || []), wp];
+			})
+		);
+		dataToShow = sort(Object.entries(weap));
+		return;
+	};
+
 	const groupData = (group) => {
 		if (group === 'version') {
 			dataToShow = tempData;
 			return;
 		}
 
-		if (group === 'character') {
-			const char = {};
-			data.forEach(({ banner, version }) =>
-				banner.forEach((d, i) => {
-					const { name } = d.limited.character;
-					d.patch = version;
-					d.version = i;
-					char[name] = [...(char[name] || []), d];
-				})
-			);
-			dataToShow = sort(Object.entries(char));
-			return;
-		}
-
-		if (group === 'weapon') {
-			const weap = {};
-			data.forEach(({ banner, version }) =>
-				banner.forEach((wp, i) => {
-					const { name } = wp.weapons.featured[0];
-					wp.patch = version;
-					wp.version = i;
-					weap[name] = [...(weap[name] || []), wp];
-				})
-			);
-			dataToShow = sort(Object.entries(weap));
-			return;
-		}
+		if (group === 'character') return groupByChars();
+		if (group === 'weapon') return groupByWeapon();
 	};
 
 	const selectGroup = (group = null, value = null) => {
