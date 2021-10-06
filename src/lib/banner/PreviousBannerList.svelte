@@ -121,7 +121,6 @@
 	<div class="body" transition:fade={{ duration: 300 }}>
 		<div class="filter">
 			<div class="row">
-				<span>Group By : </span>
 				<div class="sort-selector">
 					<div
 						class="selected-filter"
@@ -130,7 +129,7 @@
 							playAudio();
 						}}
 					>
-						{groupby}
+						Group / {groupby}
 
 						{#if showGroup}
 							<i class="gi-caret-up" />
