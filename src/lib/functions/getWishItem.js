@@ -47,7 +47,10 @@ const get5Star = (opt = 'complete') => {
   const char = standard.characters.map((name) => ({type: 'character', rarity: 5, name}))
   const itemType = rand(['weap', 'char']);
 
-  if (itemType === 'weap' || opt === 'noCharacter') return rand(stdWeap5);
+  // only Weapon
+  if ((itemType === 'weap' && opt !== 'noWeapon') || opt === 'noCharacter') return rand(stdWeap5);
+
+  // only Character
   if (itemType === 'char' || opt === 'noWeapon') return rand(char);
 }
 
