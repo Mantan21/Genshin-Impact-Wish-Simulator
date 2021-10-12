@@ -2,11 +2,13 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
+	import playSfx from '$lib/functions/audio';
 
 	export let show = false;
 	export let title;
 	export let confirm = true;
 	export let button = 'all';
+	export let sfx = true;
 
 	let content;
 
@@ -15,8 +17,14 @@
 	);
 
 	const dispatch = createEventDispatcher();
-	const confirmClick = () => dispatch('confirm');
-	const cancelClik = () => dispatch('cancel');
+	const confirmClick = () => {
+		dispatch('confirm');
+		if (sfx) playSfx();
+	};
+	const cancelClik = () => {
+		dispatch('cancel');
+		if (sfx) playSfx();
+	};
 </script>
 
 {#if show}

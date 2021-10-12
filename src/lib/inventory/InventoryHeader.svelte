@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import {
 		acquaint,
 		genesis,
@@ -9,20 +8,15 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/utility/Icon.svelte';
 
 	export let activeItem = '';
-	let audio;
 
 	const buttonCLick = () => {
-		audio.src = '/assets/sfx/button-click.ogg';
-		audio.play();
+		playSfx('close');
 		pageActive.set('index');
 	};
-
-	onMount(() => {
-		audio = document.querySelector('#button-sfx');
-	});
 </script>
 
 <h1 class="title">Inventory / {activeItem}s</h1>

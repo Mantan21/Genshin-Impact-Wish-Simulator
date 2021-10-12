@@ -1,9 +1,9 @@
 <script>
-	import { onMount } from 'svelte';
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import MyFund from '$lib/utility/MyFund.svelte';
 	import setup from '$lib/setup/wish-setup.json';
 	import previous from '$lib/setup/previous.json';
+	import playSfx from '$lib/functions/audio';
 	import {
 		patchVersion,
 		bannerVersion,
@@ -24,27 +24,16 @@
 		({ limited, weapons } = banner[$bannerVersion - 1]);
 	}
 
-	let audio;
-	let buttonSfx;
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
-		audio.currentTime = 0;
-		audio.play();
+		playSfx('changebanner');
 	};
 
 	const previousClick = () => {
 		pageActive.set('previous-banner');
-		buttonSfx.play();
+		playSfx('popup');
 	};
-
-	onMount(() => {
-		buttonSfx = document.querySelector('#button-sfx');
-	});
 </script>
-
-<audio bind:this={audio}>
-	<source src="/assets/sfx/banner-button-click.ogg" type="audio/ogg" />
-</audio>
 
 <div id="header">
 	<div class="top">
@@ -125,8 +114,7 @@
 		z-index: 5;
 	}
 
-	.bg,
-	audio {
+	.bg {
 		display: none;
 	}
 	.top {

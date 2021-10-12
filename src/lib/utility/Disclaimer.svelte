@@ -5,10 +5,8 @@
 	import updates from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
 
-	let audio;
 	let content;
 	const confirm = () => {
-		audio.play();
 		showDisclaimer.set(false);
 		backsound.set(true);
 		if ($showBeginner) bannerActive.set('beginner');
@@ -16,7 +14,6 @@
 	};
 
 	onMount(() => {
-		audio = document.querySelector('#button-sfx');
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
 </script>

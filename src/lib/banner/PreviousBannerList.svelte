@@ -6,14 +6,9 @@
 	import { bannerVersion, patchVersion, pageActive } from '$lib/store/stores';
 	import { bnversion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 	import banners from '$lib/setup/previous.json';
 	import { APP_TITLE } from '$lib/env';
-
-	let audio;
-	const playAudio = () => {
-		audio.currentTime = 0;
-		audio.play();
-	};
 
 	const { data } = banners;
 	const tempData = [];
@@ -28,7 +23,7 @@
 	let dataToShow = tempData;
 
 	const reverse = () => {
-		playAudio();
+		playSfx();
 		dataToShow = dataToShow.reverse();
 	};
 
@@ -83,7 +78,7 @@
 	};
 
 	const selectGroup = (group = null, value = null) => {
-		playAudio();
+		playSfx();
 		showGroup = value !== null ? value : !showGroup;
 		if (!group) return;
 		groupby = group;
@@ -91,7 +86,7 @@
 	};
 
 	const selectBanner = (patch, banner) => {
-		playAudio();
+		playSfx();
 		patchVersion.set(patch);
 		bannerVersion.set(banner);
 		bnversion.set(patch, banner);
@@ -101,7 +96,6 @@
 	let content;
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-		audio = document.querySelector('#button-sfx');
 	});
 </script>
 
@@ -115,7 +109,7 @@
 		<button
 			class="close"
 			on:click={() => {
-				playAudio();
+				playSfx('close');
 				pageActive.set('index');
 			}}
 		>
@@ -131,7 +125,7 @@
 						class="selected-filter"
 						on:click={() => {
 							showGroup = !showGroup;
-							playAudio();
+							playSfx();
 						}}
 					>
 						Group / {groupby}

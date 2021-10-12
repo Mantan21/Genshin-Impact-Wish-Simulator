@@ -1,26 +1,24 @@
 <script>
+	// Library
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
+
+	// store
 	import { beginnerRoll, pity4star, pity5star } from '$lib/store/localstore';
 	import { bannerActive, pageActive, showBeginner } from '$lib/store/stores';
-	import { getName } from '$lib/functions/nameText';
 	import HistoryIDB from '$lib/store/historyIdb';
+
+	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 	import PopUp from '$lib/utility/PopUp.svelte';
 	import { APP_TITLE } from '$lib/env';
 
-	let audio;
 	let content;
-
 	onMount(() => {
-		audio = document.querySelector('#button-sfx');
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
 
-	const buttonCLickSfx = () => {
-		audio.currentTime = 0;
-		audio.play();
-	};
 	const bannerList = [
 		{
 			name: 'Standard Wish',
@@ -68,7 +66,7 @@
 	};
 
 	const confirmReset = async () => {
-		buttonCLickSfx();
+		playSfx();
 		await resetHistory(banner);
 		pity5star.set(banner, 0);
 		pity4star.set(banner, 0);
@@ -93,7 +91,7 @@
 	title="Reset History ?"
 	on:cancel={() => {
 		showPopup = false;
-		buttonCLickSfx();
+		playSfx();
 	}}
 	on:confirm={confirmReset}
 >
@@ -112,7 +110,7 @@
 	<div class="header">
 		<button
 			on:click={() => {
-				buttonCLickSfx();
+				playSfx('close');
 				pageActive.set('index');
 			}}
 		>

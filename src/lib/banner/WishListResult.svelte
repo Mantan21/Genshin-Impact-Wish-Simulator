@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { showWish, wishes, backsound } from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/utility/Icon.svelte';
 	import Share from '$lib/utility/ShareScreenshot.svelte';
 
@@ -56,9 +57,7 @@
 	const closeHandle = () => {
 		backsound.set(true);
 		showWish.set(false);
-		const buttonSfx = document.querySelector('#button-sfx');
-		buttonSfx.currentTime = 0;
-		buttonSfx.play();
+		playSfx('close');
 	};
 </script>
 

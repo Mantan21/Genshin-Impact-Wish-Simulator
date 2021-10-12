@@ -7,12 +7,12 @@
 	import { primogem } from '$lib/store/stores';
 	import { firstShare, myFunds } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/utility/Icon.svelte';
 
 	export let encodedData;
 	export let page;
 
-	let audio;
 	let show = false;
 	let showToast = false;
 	let width = 873;
@@ -25,7 +25,6 @@
 
 	onMount(() => {
 		isFirstShare = firstShare.check();
-		audio = document.querySelector('#button-sfx');
 	});
 
 	const addFunds = () => {
@@ -40,7 +39,7 @@
 	};
 
 	const takeShot = async (e) => {
-		audio.play();
+		playSfx();
 		e.target.innerText = 'wait..';
 		const filter = (node) => {
 			const notIncluded = ['close', 'share'];
@@ -57,13 +56,13 @@
 	};
 
 	const saveHandler = () => {
-		audio.play();
+		playSfx();
 		saveAs(blob, `WishSimulator.vercel.app - ${new Date().toLocaleString()}.png`);
 		addFunds();
 	};
 
 	const copyHandle = async () => {
-		audio.play();
+		playSfx();
 		copy(shareLink);
 		showToast = true;
 		const t = setTimeout(() => {
@@ -74,7 +73,7 @@
 	};
 
 	const closehandle = () => {
-		audio.play();
+		playSfx('close');
 		show = false;
 	};
 </script>

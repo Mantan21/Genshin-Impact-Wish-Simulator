@@ -1,23 +1,17 @@
 <script>
-	import { onMount } from 'svelte';
 	import Icon from '$lib/utility/Icon.svelte';
 	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
+	import playSfx from '$lib/functions/audio';
 
 	export let type = 'primogem';
 
-	let clickAudio;
 	let showExchangePopup = false;
 
 	const handlePopup = () => {
 		if (type !== 'primogem') return;
+		if (!showExchangePopup) playSfx('popup');
 		showExchangePopup = !showExchangePopup;
-		clickAudio.currentTime = 0;
-		clickAudio.play();
 	};
-
-	onMount(() => {
-		clickAudio = document.querySelector('#button-sfx');
-	});
 </script>
 
 <!-- Exchange -->
