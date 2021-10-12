@@ -29,7 +29,7 @@
     "kaedehara-kazuha": {
       "vision":"anemo",
       "limited": true,
-      "style": "top: 100%; width: 150%; left: 70%"
+      "style": "width: 150%;height: 230%;top: 90%;left: 70%;"
     },
     "kamisato-ayaka": {
       "vision": "cryo",
