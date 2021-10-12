@@ -1,27 +1,23 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { genesis, pageActive, primogem, stardust, starglitter } from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
 	import MyFund from '$lib/utility/MyFund.svelte';
 
 	export let showNavbar = true;
 	export let showNavbarButton = true;
 	export let activeShop = 'genesis';
 
-	let audio;
 	const dispatch = createEventDispatcher();
 
-	onMount(() => {
-		audio = document.querySelector('#button-sfx');
-	});
 	const handleClick = () => {
 		showNavbar = !showNavbar;
 		dispatch('showNavbar', { showNavbar });
 	};
 
 	const handleClose = () => {
-		audio.src = '/assets/sfx/button-click.ogg';
-		audio.play();
+		playSfx('close');
 		pageActive.set('index');
 	};
 </script>

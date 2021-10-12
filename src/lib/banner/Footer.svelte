@@ -1,30 +1,13 @@
 <script>
-	import { onMount } from 'svelte';
 	import { mobileMode, pageActive, stardust, starglitter } from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
-
-	let audio;
-
-	onMount(() => {
-		audio = document.querySelector('#button-sfx');
-	});
-
-	const buttonCLick = () => {
-		audio.currentTime = 0;
-		audio.play();
-	};
-
-	const shopButtonCLick = () => {
-		audio.src = '/assets/sfx/shop-button.ogg';
-		audio.currentTime = 0;
-		audio.play();
-	};
+	import playSfx from '$lib/functions/audio';
 
 	const changePage = (page) => {
 		pageActive.set(page);
-		if (page === 'shop') return shopButtonCLick();
-		return buttonCLick();
+		if (page === 'shop') return playSfx('shop');
+		return playSfx();
 	};
 </script>
 

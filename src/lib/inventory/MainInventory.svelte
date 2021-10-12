@@ -16,6 +16,7 @@
 	import { APP_TITLE } from '$lib/env';
 
 	import factoryReset from '$lib/functions/factoryReset';
+	import playSfx from '$lib/functions/audio';
 	import charDB from '$lib/setup/characters.json';
 	import weaps from '$lib/setup/weapons.json';
 
@@ -35,22 +36,16 @@
 	let showOrder = false;
 	let orderby = 'rarity';
 
-	const buttonCLick = () => {
-		audio.src = '/assets/sfx/button-click.ogg';
-		audio.play();
-	};
-
 	const select = (item) => {
 		activeItem = item;
 		orderby = 'rarity';
-		buttonCLick();
+		playSfx();
 	};
 
 	let weapons = [];
 	let characters = [];
 	let dataToShow = [];
 	let dataQty = 0;
-	let audio;
 	let content;
 
 	const { getAllHistories, countItem } = HistoryIDB;
@@ -87,7 +82,6 @@
 	};
 
 	onMount(async () => {
-		audio = document.querySelector('#button-sfx');
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
 		await proccessData(activeItem);
@@ -127,7 +121,7 @@
 
 	const selectOrder = (order = null, value = null) => {
 		showOrder = value !== null ? value : !showOrder;
-		buttonCLick();
+		playSfx();
 		if (!order) return;
 		orderby = order;
 		sort(order);
@@ -135,7 +129,7 @@
 
 	const reverse = () => {
 		dataToShow = dataToShow.reverse();
-		buttonCLick();
+		playSfx();
 	};
 
 	let showPopup = false;
@@ -145,14 +139,10 @@
 		dataToShow = [];
 		weapons = [];
 		characters = [];
-		audio.currentTime = 0;
-		audio.play();
 	};
 
 	const cancelReset = () => {
 		showPopup = false;
-		audio.currentTime = 0;
-		audio.play();
 	};
 </script>
 
@@ -293,8 +283,7 @@
 						title="Reset All Data"
 						on:click={() => {
 							showPopup = true;
-							audio.currentTime = 0;
-							audio.play();
+							playSfx('popup');
 						}}
 					>
 						<i class="gi-delete" />

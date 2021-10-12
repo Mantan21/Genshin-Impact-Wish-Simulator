@@ -1,8 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import { copy } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 	import { APP_TITLE } from '$lib/env';
 
 	// Components
@@ -20,7 +20,6 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 
-	let audio;
 	let activeShop = 'genesis';
 	let activeFateShop = 'starglitter';
 	let showNavbar = true;
@@ -35,12 +34,8 @@
 	let showCryptoPopup = false;
 	let showToast = false;
 
-	onMount(() => {
-		audio = document.querySelector('#button-sfx');
-	});
-
 	const copyHandle = (text) => {
-		audio.play();
+		playSfx();
 		copy(text);
 		showToast = true;
 		const t = setTimeout(() => {
@@ -49,14 +44,10 @@
 		}, 2000);
 	};
 
-	const buttonCLick = () => {
-		audio.src = '/assets/sfx/button-click.ogg';
-		audio.play();
-	};
 	const selectShop = (e) => {
 		const { selected } = e.detail;
 		activeShop = selected;
-		buttonCLick();
+		playSfx();
 		if ($viewportWidth < 500) showNavbar = false;
 	};
 
@@ -93,34 +84,28 @@
 		{ qty: 6480, price: 99.99 }
 	];
 
-	const genesisButtonClick = () => {
-		audio.src = '/assets/sfx/genesis-click.ogg';
-		audio.play();
-	};
 	const selectGenesis = (i) => {
 		activeGenesisIndexforPopup = i;
 		showPaymentPopup = true;
-		genesisButtonClick();
+		playSfx('exchange');
 	};
 	const handleClosePaymentPopup = () => {
 		showPaymentPopup = false;
-		genesisButtonClick();
 	};
 
 	const openExchangePopup = (fate) => {
 		showExchangePopup = true;
 		itemToBuy = fate;
-		buttonCLick();
+		playSfx();
 	};
 
 	const handleCloseExchangePopup = () => {
 		showExchangePopup = false;
-		buttonCLick();
 	};
 
 	const paimonNavClick = (shop) => {
 		activeFateShop = shop;
-		buttonCLick();
+		playSfx('exchange');
 	};
 </script>
 
@@ -161,7 +146,6 @@
 	title="Support With Crypto"
 	on:confirm={() => {
 		showCryptoPopup = false;
-		audio.play();
 	}}
 >
 	<div class="popup-donate">
@@ -224,7 +208,7 @@
 			on:select={selectShop}
 			on:close={() => {
 				showNavbar = false;
-				buttonCLick();
+				playSfx();
 			}}
 		/>
 		<div class="items-container">
@@ -234,7 +218,7 @@
 				{showNavbarButton}
 				on:showNavbar={({ detail }) => {
 					showNavbar = detail.showNavbar;
-					buttonCLick();
+					playSfx();
 				}}
 			/>
 
@@ -294,7 +278,6 @@
 								<button
 									class="content crypto"
 									on:click={() => {
-										audio.play();
 										showCryptoPopup = true;
 									}}
 								>

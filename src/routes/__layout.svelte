@@ -122,7 +122,6 @@
 	<Disclaimer />
 {/if}
 
-<audio src="/assets/sfx/button-click.ogg" type="audio/ogg" id="button-sfx" />
 <main class:mobile={$mobileMode} class:preview>
 	<slot />
 

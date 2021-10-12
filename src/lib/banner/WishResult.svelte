@@ -9,6 +9,7 @@
 		backsound
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 	import chars from '$lib/setup/characters.json';
 	import weapons from '$lib/setup/weapons.json';
 
@@ -73,8 +74,7 @@
 
 	const closeHandle = () => {
 		showWish.set(false);
-		const buttonSfx = document.querySelector('#button-sfx');
-		buttonSfx.play();
+		playSfx('close');
 		backsound.set(true);
 		return;
 	};

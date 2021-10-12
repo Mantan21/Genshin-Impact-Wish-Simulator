@@ -15,6 +15,7 @@
 	import roll from '$lib/functions/roll';
 	import PopUp from '$lib/utility/PopUp.svelte';
 	import Icon from '$lib/utility/Icon.svelte';
+	import playSfx from '$lib/functions/audio';
 
 	$: fateType =
 		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
@@ -22,7 +23,6 @@
 		$bannerActive === 'beginner' || $bannerActive === 'standard' ? $acquaint : $intertwined;
 
 	let audio;
-	let audioClick;
 	let v3star;
 	let v4starSingle;
 	let v4star;
@@ -136,13 +136,11 @@
 				showWish.set(true);
 			});
 		});
-		audioClick = document.querySelector('#button-sfx');
 	});
 
 	const closeExchangePopup = () => {
 		showExchangePopup = false;
-		audioClick.currentTime = 0;
-		audioClick.play();
+		playSfx();
 	};
 
 	const handleExchangePopup = () => {
@@ -179,6 +177,7 @@
 
 <PopUp
 	title="Paimon Bargains"
+	sfx={false}
 	button={popupButton}
 	show={showExchangePopup}
 	on:cancel={closeExchangePopup}
