@@ -40,6 +40,10 @@
     }
   },
   "star4": {
+    "akuoumaru": {
+      "type": "claymore",
+      "limited": true
+    },
     "alley-hunter": {
       "type": "bow",
       "limited": true
@@ -157,6 +161,10 @@
     "mistsplitter-reforged": {
       "type": "sword",
       "limited":true
+    },
+    "polar-star": {
+      "type": "bow",
+      "limited": true
     },
     "primordial-jade-cutter": {
       "type":"sword",

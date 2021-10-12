@@ -1,6 +1,54 @@
 {
   "data": [
     {
+      "version": "2.2",
+      "banner": [
+        {
+          "limited": {
+            "character": {
+              "name": "tartaglia",
+              "style": {
+                "main": "width: 160%;top: 22%;",
+                "active": "width: 160%;top: 12%;"
+              }
+            },
+            "rateup": [
+              "yanfei",
+              "chongyun",
+              "ningguang"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "polar-star",
+                "type": "bow",
+                "style": {
+                  "main": "width: 70%;left: 35%;top: 2%;",
+                  "active": "width: 70%;left: 35%;top: -8%;"
+                }
+              },
+              {
+                "name": "memory-of-dust",
+                "type": "catalyst",
+                "style": {
+                  "main": "top: 30%;width: 65%;left: 65%;",
+                  "active": "top: 20%;width: 65%;left: 65%;"
+                }
+              }
+            ],
+            "rateup": [
+              "favonius-lance",
+              "rust",
+              "eye-of-perception",
+              "akuoumaru",
+              "favonius-sword"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "version": "2.1",
       "banner": [
         {
