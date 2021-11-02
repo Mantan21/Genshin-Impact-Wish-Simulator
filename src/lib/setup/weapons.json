@@ -85,6 +85,10 @@
       "type": "bow",
       "limited": true
     },
+    "mouun_s-moon": {
+      "type": "bow",
+      "limited": true
+    },
     "rainslasher": {
       "type": "claymore"
     },
@@ -119,6 +123,10 @@
     },
     "sacrificial-sword":{
       "type": "sword"
+    },
+    "wavebreaker_s-fin": {
+      "type": "polearm",
+      "limited":true
     },
     "whiteblind":{
       "type": "claymore"
