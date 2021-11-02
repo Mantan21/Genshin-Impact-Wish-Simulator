@@ -1,7 +1,7 @@
 {
   "version": "2.2",
-  "bannerNumber": 1,
-  "storageVersion": "2.2.1",
+  "bannerNumber": 2,
+  "storageVersion": "2.2.2",
   "banner": {
     "beginner": {
       "character": {
@@ -30,43 +30,43 @@
     },
     "limited": {
       "character": {
-        "name": "tartaglia",
+        "name": "hu-tao",
         "style": {
           "main": "width: 160%;top: 22%;",
           "active": "width: 160%;top: 12%;"
         }
       },
       "rateup": [
-        "yanfei",
-        "chongyun",
-        "ningguang"
+        "thoma",
+        "diona",
+        "sayu"
       ]
     },
     "weapons": {
       "featured": [
         {
-          "name": "polar-star",
+          "name": "elegy-for-the-end",
           "type": "bow",
           "style": {
-            "main": "width: 70%;left: 35%;top: 2%;",
-            "active": "width: 70%;left: 35%;top: -8%;"
+            "main": "width: 70%;left: 35%;top: 10%;",
+            "active": "width: 70%;left: 35%;top: 0;"
           }
         },
         {
-          "name": "memory-of-dust",
-          "type": "catalyst",
+          "name": "staff-of-homa",
+          "type": "polearm",
           "style": {
-            "main": "top: 30%;width: 65%;left: 65%;",
-            "active": "top: 20%;width: 65%;left: 65%;"
+            "main": "width: 90%;top: 15%;left: 60%;",
+            "active": "width: 90%;top: 5%;left: 60%;"
           }
         }
       ],
       "rateup": [
-        "favonius-lance",
-        "rust",
-        "eye-of-perception",
-        "akuoumaru",
-        "favonius-sword"
+        "wavebreaker_s-fin",
+        "mouun_s-moon",
+        "the-widsith",
+        "rainslasher",
+        "sacrificial-sword"
       ]
     }
   }

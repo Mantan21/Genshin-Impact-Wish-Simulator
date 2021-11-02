@@ -147,6 +147,10 @@
     "sucrose": {
       "vision": "anemo"
     },
+    "thoma": {
+      "vision": "pyro",
+      "style": "width: 200%;left: 90%;height: 170%;"
+    },
     "xiangling": {
       "vision": "pyro",
       "style": "width: 250%;left: 120%;top: 70%;"
