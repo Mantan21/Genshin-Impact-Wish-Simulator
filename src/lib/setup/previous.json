@@ -45,6 +45,49 @@
               "favonius-sword"
             ]
           }
+        },
+        {
+          "limited": {
+            "character": {
+              "name": "hu-tao",
+              "style": {
+                "main": "width: 160%;top: 22%;",
+                "active": "width: 160%;top: 12%;"
+              }
+            },
+            "rateup": [
+              "thoma",
+              "diona",
+              "sayu"
+            ]
+          },
+          "weapons": {
+            "featured": [
+              {
+                "name": "elegy-for-the-end",
+                "type": "bow",
+                "style": {
+                  "main": "width: 70%;left: 35%;top: 10%;",
+                  "active": "width: 70%;left: 35%;top: 0;"
+                }
+              },
+              {
+                "name": "staff-of-homa",
+                "type": "polearm",
+                "style": {
+                  "main": "width: 90%;top: 15%;left: 60%;",
+                  "active": "width: 90%;top: 5%;left: 60%;"
+                }
+              }
+            ],
+            "rateup": [
+              "wavebreaker_s-fin",
+              "mouun_s-moon",
+              "the-widsith",
+              "rainslasher",
+              "sacrificial-sword"
+            ]
+          }
         }
       ]
     },
