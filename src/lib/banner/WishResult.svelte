@@ -152,7 +152,7 @@
 								</div>
 								<div class="star">
 									{#each Array(rarity) as _, i (i)}
-										<i class="gi-star" style={`animation-delay: ${2.3 + i * 0.15}s`} />
+										<i class="gi-star" style={`animation-delay: ${2 + i * 0.15}s`} />
 									{/each}
 								</div>
 							</div>
@@ -803,7 +803,7 @@
 			filter: brightness(0);
 		}
 
-		40% {
+		30% {
 			transform: scale(1);
 			opacity: 1;
 			filter: brightness(0);
@@ -813,7 +813,7 @@
 			opacity: 1;
 			filter: brightness(0);
 		}
-		90% {
+		95% {
 			transform: scale(1) translate(2%, 0);
 			opacity: 1;
 			filter: brightness(1);
