@@ -1,7 +1,7 @@
 {
-  "version": "2.2",
-  "bannerNumber": 2,
-  "storageVersion": "2.2.2",
+  "version": "2.3",
+  "bannerNumber": 1,
+  "storageVersion": "2.3.0",
   "banner": {
     "beginner": {
       "character": {
@@ -29,44 +29,53 @@
       ]
     },
     "limited": {
-      "character": {
-        "name": "hu-tao",
-        "style": {
-          "main": "width: 160%;top: 22%;",
-          "active": "width: 160%;top: 12%;"
+      "character": [
+        {
+          "name": "albedo",
+          "style": {
+            "main": "width: 170%;top: 28%;left: 50%;",
+            "active": "width: 170%;top: 18%;left: 50%;"
+          }
+        },
+        {
+          "name": "eula",
+          "style": {
+            "main": "width: 140%;top: 32%;",
+            "active": "width: 140%;top: 22%;"
+          }
         }
-      },
+      ],
       "rateup": [
-        "thoma",
-        "diona",
-        "sayu"
+        "bennett",
+        "noelle",
+        "rosaria"
       ]
     },
     "weapons": {
       "featured": [
         {
-          "name": "elegy-for-the-end",
-          "type": "bow",
+          "name": "freedom-sworn",
+          "type": "sword",
           "style": {
-            "main": "width: 70%;left: 35%;top: 10%;",
-            "active": "width: 70%;left: 35%;top: 0;"
+            "main": "top: -10%;width: 100%;left: 30%;",
+            "active": "top: -20%;width: 100%;left: 30%;"
           }
         },
         {
-          "name": "staff-of-homa",
-          "type": "polearm",
+          "name": "song-of-broken-pines",
+          "type": "claymore",
           "style": {
-            "main": "width: 90%;top: 15%;left: 60%;",
-            "active": "width: 90%;top: 5%;left: 60%;"
+            "main": "top: 10%;width: 80%;;left: 60%;",
+            "active": "top: 0%;width: 80%;left: 60%;"
           }
         }
       ],
       "rateup": [
-        "wavebreaker_s-fin",
-        "mouun_s-moon",
-        "the-widsith",
-        "rainslasher",
-        "sacrificial-sword"
+        "lion_s-roar",
+        "alley-hunter",
+        "wine-and-song",
+        "dragon_s-bane",
+        "sacrificial-greatsword"
       ]
     }
   }

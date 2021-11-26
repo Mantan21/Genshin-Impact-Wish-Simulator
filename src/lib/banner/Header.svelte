@@ -19,9 +19,11 @@
 	} from '$lib/store/stores';
 
 	let { beginner, limited, weapons, standard } = setup.banner;
+	let limitedChar = limited.character;
 	$: if ($patchVersion !== '0.0') {
 		const { banner } = previous.data.filter(({ version }) => version === $patchVersion)[0];
 		({ limited, weapons } = banner[$bannerVersion - 1]);
+		limitedChar = limited.character;
 	}
 
 	const buttonClick = (bannerType) => {
@@ -39,7 +41,7 @@
 	<div class="top">
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
-			<span>{$bannerActive} Wish </span>
+			<span>{$bannerActive.replace(/\d{1}/, '')} Wish </span>
 		</h1>
 		<div class="budget">
 			<div class="fates">
@@ -84,12 +86,24 @@
 				on:click={() => buttonClick('beginner')}
 			/>
 		{/if}
-		<BannerButton
-			type="limited"
-			character={limited.character}
-			active={$bannerActive === 'limited'}
-			on:click={() => buttonClick('limited')}
-		/>
+
+		{#if limitedChar.length}
+			{#each limitedChar as char, i}
+				<BannerButton
+					type="limited"
+					character={char}
+					active={$bannerActive === `limited${i}`}
+					on:click={() => buttonClick(`limited${i}`)}
+				/>
+			{/each}
+		{:else}
+			<BannerButton
+				type="limited"
+				character={limited.character}
+				active={$bannerActive === 'limited'}
+				on:click={() => buttonClick('limited')}
+			/>
+		{/if}
 		<BannerButton
 			type="weapon"
 			weaponID={weapons.featured}

@@ -37,7 +37,7 @@
 			path: 'weapon'
 		}
 	];
-	$: banner = $bannerActive;
+	$: banner = $bannerActive.replace(/\d{1}/, '');
 	$: nowOpen = bannerList.findIndex((b) => b.path === banner.toLocaleLowerCase());
 	$: selected = nowOpen < 0 ? 2 : nowOpen;
 	// eslint-disable-next-line

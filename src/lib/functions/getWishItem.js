@@ -96,8 +96,17 @@ const beginnerWish = (rarity) => {
   return null;
 }
 
-const limitedWish = (rarity) => {
-  const { character, rateup } = limited;
+const limitedWish = (rarity, banner) => {
+  let { character, rateup } = limited;
+
+  // Check is it double banner or not 
+  const bannerNumberOnThisPeriod = parseInt(banner.replace('limited', ''));
+  // console.log(banner);
+  if ( bannerNumberOnThisPeriod + 1 > 0) {
+    character = character[bannerNumberOnThisPeriod]
+  }
+
+  // console.log(character)
 
   if (rarity === 3) return get3Star();
   if (rarity === 4) {
@@ -178,7 +187,7 @@ const getWishItem = (banner, rarity) => {
   const time  = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
   if (banner === 'beginner') result = beginnerWish(rarity);
-  if (banner === 'limited') result = limitedWish(rarity);
+  if (banner.includes('limited')) result = limitedWish(rarity, banner);
   if (banner === 'standard') result = standardWish(rarity);
   if (banner === 'weapon') result = weaponWish(rarity);
 

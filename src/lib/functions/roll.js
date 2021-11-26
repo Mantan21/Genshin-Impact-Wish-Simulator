@@ -6,7 +6,8 @@ import getWishItem from './getWishItem';
 
 const { addHistory, countItem } = HistoryIDB;
 
-const roll = async (banner) => {
+const roll = async (bannerToRoll) => {
+  const banner = bannerToRoll.replace(/\d{1}/, '');
   const pity4 = pity4star.get(banner);
   const pity5 = pity5star.get(banner);
   
@@ -53,7 +54,7 @@ const roll = async (banner) => {
     pity5star.set(banner, pity5 + 1);
   }
 
-  const wishResult = getWishItem(banner, result.rarity)
+  const wishResult = getWishItem(bannerToRoll, result.rarity)
   wishResult.pity = pity;
   wishResult.banner = banner
   
@@ -67,6 +68,8 @@ const roll = async (banner) => {
   }
   wishResult.fateType = wishResult.rarity === 3 ? 'stardust' : 'starglitter';
   wishResult.fateQty = wishResult.rarity === 3 ? 15 : 10;;
+
+  // console.log(wishResult)
   return wishResult;
 
 }
