@@ -3,7 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { bannerVersion, patchVersion, pageActive } from '$lib/store/stores';
+	import { bannerVersion, patchVersion, pageActive, bannerActive } from '$lib/store/stores';
 	import { bnversion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
@@ -41,10 +41,20 @@
 		const char = {};
 		data.forEach(({ banner, version }) =>
 			banner.forEach((d, i) => {
-				const { name } = d.limited.character;
-				d.patch = version;
-				d.version = i;
-				char[name] = [...(char[name] || []), d];
+				if (d.limited.character.length) {
+					d.limited.character.forEach((chr) => {
+						const { name } = chr;
+						d.patch = version;
+						d.version = i;
+						char[name] = [...(char[name] || []), d];
+					});
+					return;
+				} else {
+					const { name } = d.limited.character;
+					d.patch = version;
+					d.version = i;
+					char[name] = [...(char[name] || []), d];
+				}
 			})
 		);
 		dataToShow = sort(Object.entries(char));
@@ -88,6 +98,7 @@
 	const selectBanner = (patch, banner) => {
 		playSfx();
 		patchVersion.set(patch);
+		bannerActive.set('beginner');
 		bannerVersion.set(banner);
 		bnversion.set(patch, banner);
 		pageActive.set('index');
@@ -182,24 +193,39 @@
 							<a
 								class="item"
 								href="/"
-								title="{getName(limited.character.name)} & {getName(weapons.featured[0].name)}"
+								title="banner event {patch}"
 								on:click|preventDefault={() => selectBanner(patch, version + 1)}
 								in:fade
 							>
 								<div class="banner">
-									<img
-										src="/assets/images/banner/{patch}/limited-{version + 1}.webp"
-										alt={getName(limited.character.name)}
-									/>
+									{#if limited.character.length}
+										{#each limited.character as limitedChar, i}
+											<img
+												src="/assets/images/banner/{patch}/limited{i}-{version + 1}.webp"
+												alt={getName(limitedChar.name)}
+											/>
+										{/each}
+									{:else}
+										<img
+											src="/assets/images/banner/{patch}/limited-{version + 1}.webp"
+											alt={getName(limited.character.name)}
+										/>
+									{/if}
 									<img
 										src="/assets/images/banner/{patch}/weapon-{version + 1}.webp"
 										alt={getName(weapons.featured[0].name)}
 									/>
 								</div>
 								<h3 class="name">
-									{getName(limited.character.name)}
+									{#if limited.character.length}
+										{getName(limited.character[0].name)},
+										{getName(limited.character[1].name)}
+									{:else}
+										{getName(limited.character.name)}
+									{/if}
 									&
-									{getName(weapons.featured[0].name)}
+									{getName(weapons.featured[0].name)},
+									{getName(weapons.featured[1].name)}
 								</h3>
 							</a>
 						{/each}

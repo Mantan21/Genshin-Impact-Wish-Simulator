@@ -26,10 +26,6 @@
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
 		</div>
-	{:else if $bannerActive === 'limited'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<img src="/assets/images/banner/{version}/limited-{bannerNumber}.webp" alt="Limited Banner" />
-		</div>
 	{:else if $bannerActive === 'weapon'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/{version}/weapon-{bannerNumber}.webp" alt="Weapon Banner" />
@@ -37,6 +33,13 @@
 	{:else if $bannerActive === 'standard'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/standard.webp" alt="Standard Banner" />
+		</div>
+	{:else if $bannerActive.includes('limited')}
+		<div in:fly={{ x: 50, duration: 1000 }}>
+			<img
+				src="/assets/images/banner/{version}/{$bannerActive}-{bannerNumber}.webp"
+				alt="Limited Banner"
+			/>
 		</div>
 	{/if}
 </div>

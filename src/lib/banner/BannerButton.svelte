@@ -148,11 +148,11 @@
 		border-radius: 20px;
 		color: #fff;
 		transform: scale(0.65) translateX(-50%);
-		padding: .2rem .5rem;
+		padding: 0.2rem 0.5rem;
 	}
 	@media screen and (min-width: 750px) {
 		.discount {
-			font-size: .7rem;
+			font-size: 0.7rem;
 		}
 	}
 

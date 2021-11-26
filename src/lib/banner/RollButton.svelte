@@ -99,7 +99,10 @@
 	const tenRoll = async () => {
 		audio.currentTime = 0;
 		audio.play();
-		rollCount = multiRollPrice;
+		rollCount =
+			$bannerActive === 'standard' || $bannerActive === 'beginner'
+				? multiRollPrice - $acquaint
+				: multiRollPrice - $intertwined;
 		if (!updateFates($bannerActive, multiRollPrice)) return;
 		backsound.set(false);
 
@@ -169,7 +172,7 @@
 			return q;
 		});
 		if (rollCount === 1) singleRoll();
-		if (rollCount === 10) tenRoll();
+		if (rollCount > 1) tenRoll();
 	};
 
 	$: popupButton = $primogem < rollCount * 160 ? 'cancel' : 'all';
