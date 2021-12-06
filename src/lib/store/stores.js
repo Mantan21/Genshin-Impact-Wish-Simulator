@@ -11,6 +11,8 @@ const bannerVersion = writable(0);
 const bannerActive = writable('');
 const showBeginner = writable(true);
 
+const isAcquaintUsed = writable(true);
+
 // viewport 
 const viewportWidth = writable(0)
 const viewportHeight = writable(0)
@@ -39,5 +41,5 @@ export {
   isMobile, mobileMode,
   showBeginner, wishes, showWish,
   genesis, stardust, starglitter, primogem,
-  intertwined, acquaint
+  intertwined, acquaint, isAcquaintUsed
 };
