@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import {
 		acquaint,
 		genesis,
@@ -12,6 +11,7 @@
 	import Icon from '$lib/utility/Icon.svelte';
 	import PopUp from '$lib/utility/PopUp.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import playSfx from '$lib/functions/audio';
 
 	export let show = false;
 	export let itemToBuy = 'intertwined';
@@ -36,7 +36,6 @@
 		primogem: 160
 	};
 
-	let audio;
 	let contentHeight;
 	let rangeVal = 1;
 	let maxRange = 1;
@@ -76,10 +75,6 @@
 		(45 / 100) * contentHeight
 	}px`;
 	$: descriptionStyle = `max-width:calc(100% - ${(45 / 100) * contentHeight}px)`;
-
-	onMount(() => {
-		audio = document.querySelector('#button-sfx');
-	});
 
 	const dispatch = createEventDispatcher();
 	const cancelBuy = () => {
@@ -206,8 +201,7 @@
 						disabled={rangeVal <= 1}
 						on:click={() => {
 							if (rangeVal > 1) rangeVal--;
-							audio.currentTime = 0;
-							audio.play();
+							playSfx();
 						}}
 					>
 						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
@@ -229,8 +223,7 @@
 						disabled={rangeVal >= maxRange}
 						on:click={() => {
 							if (rangeVal < maxRange) rangeVal++;
-							audio.currentTime = 0;
-							audio.play();
+							playSfx();
 						}}
 					>
 						<i class="gi-plus" />

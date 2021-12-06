@@ -157,7 +157,6 @@
 				myFunds.set('acquaint', q);
 				return q;
 			});
-			console.log(rollCount);
 			if (rollCount > 1 || $acquaint > 1) tenRoll();
 			if (rollCount === 1) singleRoll();
 			return;

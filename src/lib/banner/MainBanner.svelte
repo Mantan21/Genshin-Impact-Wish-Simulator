@@ -16,10 +16,10 @@
 
 	onMount(() => {
 		window.addEventListener('blur', () => {
-			audio.pause();
+			if (audio) audio.pause();
 		});
 		window.addEventListener('focus', () => {
-			if ($backsound) audio.play();
+			if ($backsound && audio) audio.play();
 		});
 	});
 </script>
