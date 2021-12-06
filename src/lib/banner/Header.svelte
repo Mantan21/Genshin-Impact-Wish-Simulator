@@ -15,7 +15,8 @@
 		showBeginner,
 		stardust,
 		starglitter,
-		pageActive
+		pageActive,
+		isAcquaintUsed
 	} from '$lib/store/stores';
 
 	let { beginner, limited, weapons, standard } = setup.banner;
@@ -28,6 +29,7 @@
 
 	const buttonClick = (bannerType) => {
 		bannerActive.set(bannerType);
+		isAcquaintUsed.set($bannerActive === 'beginner' || $bannerActive === 'standard');
 		playSfx('changebanner');
 	};
 
@@ -57,7 +59,7 @@
 				<MyFund type="primogem">
 					{$primogem}
 				</MyFund>
-				{#if $bannerActive === 'beginner' || $bannerActive === 'standard'}
+				{#if $isAcquaintUsed}
 					<MyFund type="acquaint">
 						{$acquaint}
 					</MyFund>

@@ -9,7 +9,8 @@
 		intertwined,
 		starglitter,
 		stardust,
-		primogem
+		primogem,
+		isAcquaintUsed
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
 	import roll from '$lib/functions/roll';
@@ -17,10 +18,8 @@
 	import Icon from '$lib/utility/Icon.svelte';
 	import playSfx from '$lib/functions/audio';
 
-	$: fateType =
-		$bannerActive === 'beginner' || $bannerActive === 'standard' ? 'acquaint' : 'intertwined';
-	$: fateQty =
-		$bannerActive === 'beginner' || $bannerActive === 'standard' ? $acquaint : $intertwined;
+	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
+	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 
 	let audio;
 	let v3star;
@@ -99,10 +98,7 @@
 	const tenRoll = async () => {
 		audio.currentTime = 0;
 		audio.play();
-		rollCount =
-			$bannerActive === 'standard' || $bannerActive === 'beginner'
-				? multiRollPrice - $acquaint
-				: multiRollPrice - $intertwined;
+		rollCount = $isAcquaintUsed ? multiRollPrice - $acquaint : multiRollPrice - $intertwined;
 		if (!updateFates($bannerActive, multiRollPrice)) return;
 		backsound.set(false);
 
@@ -155,14 +151,15 @@
 			return q;
 		});
 
-		if ($bannerActive === 'standard' || $bannerActive === 'beginner') {
+		if ($isAcquaintUsed) {
 			acquaint.update((n) => {
 				const q = n + rollCount;
 				myFunds.set('acquaint', q);
 				return q;
 			});
+			console.log(rollCount);
+			if (rollCount > 1 || $acquaint > 1) tenRoll();
 			if (rollCount === 1) singleRoll();
-			if (rollCount > 7) tenRoll();
 			return;
 		}
 
@@ -171,8 +168,8 @@
 			myFunds.set('intertwined', q);
 			return q;
 		});
+		if (rollCount > 1 || $intertwined > 1) tenRoll();
 		if (rollCount === 1) singleRoll();
-		if (rollCount > 1) tenRoll();
 	};
 
 	$: popupButton = $primogem < rollCount * 160 ? 'cancel' : 'all';
