@@ -1,6 +1,6 @@
 import HistoryIDB from '$lib/store/historyIdb'
 import { pity4star, pity5star } from '$lib/store/localstore';
-import { base4StarChance, base5StarChance } from '$lib/setup/probability';
+import { base4StarChance, base5StarCharBanner, base5StarWeaponBanner } from '$lib/setup/probability';
 import prob from './prob';
 import getWishItem from './getWishItem';
 
@@ -10,12 +10,13 @@ const roll = async (bannerToRoll) => {
   const banner = bannerToRoll.replace(/\d{1}/, '');
   const pity4 = pity4star.get(banner);
   const pity5 = pity5star.get(banner);
-  
-  const chance5star = base5StarChance[pity5];
+  const maxPity = banner === 'weapon' ? 80 : 90;
+
+  const chance5star = banner === 'weapon' ? base5StarWeaponBanner[pity5] : base5StarCharBanner[pity5];
   let chance4star = base4StarChance[pity4];
-  let chance3star = 100 - base4StarChance[pity4] - base5StarChance[pity5];
+  let chance3star = 100 - base4StarChance[pity4] - chance5star;
   
-  if (chance3star < 0 && pity5 > 89) chance4star = 0;
+  if (chance3star < 0 && pity5 > (maxPity - 1)) chance4star = 0;
   if (chance3star < 0) chance3star = 0;
   
   const item = [
