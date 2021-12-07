@@ -1,4 +1,5 @@
 {
+  "onlyStandard": ["amber", "kaeya", "lisa"],
   "star5": {
     "albedo": {
       "vision": "geo",
