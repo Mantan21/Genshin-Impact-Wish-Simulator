@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { showBeginner, bannerActive, backsound, showDisclaimer } from '$lib/store/stores';
+	import { bannerActive, backsound, showDisclaimer } from '$lib/store/stores';
 	import updates from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
 
@@ -9,8 +9,7 @@
 	const confirm = () => {
 		showDisclaimer.set(false);
 		backsound.set(true);
-		if ($showBeginner) bannerActive.set('beginner');
-		else bannerActive.set('limited');
+		bannerActive.set(0);
 	};
 
 	onMount(() => {
@@ -37,8 +36,12 @@
 			<div style="height: .5rem" />
 		</div>
 		<p class="sp">
-			If you find any bugs or problems, please email me <br />
-			( <a href="mailto:lockagz@gmail.com"> lockagz@gmail.com </a> )
+			If you find any bugs or problems, please report an issue to <a
+				href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
+				target="_blank"
+			>
+				Github here
+			</a>
 		</p>
 		<span style="font-size: 1rem">Support</span>
 		<div class="support">

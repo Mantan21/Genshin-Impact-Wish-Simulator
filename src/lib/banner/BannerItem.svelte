@@ -5,7 +5,8 @@
 		viewportHeight,
 		viewportWidth,
 		patchVersion,
-		bannerVersion
+		bannerVersion,
+		bannerList
 	} from '$lib/store/stores';
 	import setup from '$lib/setup/wish-setup.json';
 
@@ -19,25 +20,33 @@
 		$viewportHeight / $viewportWidth > 0.5
 			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);'
 			: '';
+
+	$: list = $bannerList[$bannerActive];
+	$: limitedlist = $bannerList.filter(({ type }) => type === 'limited');
+	$: limitedBannerIndex = limitedlist.findIndex(({ character }) => {
+		const nm = list.character;
+		if (nm) return character.name === nm.name;
+	});
+	$: limitedBannerName = limitedlist.length > 1 ? `limited${limitedBannerIndex}` : 'limited';
 </script>
 
 <div class="banner" {style}>
-	{#if $bannerActive === 'beginner'}
+	{#if list.type === 'beginner'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
 		</div>
-	{:else if $bannerActive === 'weapon'}
+	{:else if list.type === 'weapon'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/{version}/weapon-{bannerNumber}.webp" alt="Weapon Banner" />
 		</div>
-	{:else if $bannerActive === 'standard'}
+	{:else if list.type === 'standard'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/standard.webp" alt="Standard Banner" />
 		</div>
-	{:else if $bannerActive.includes('limited')}
+	{:else if list.type === 'limited'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img
-				src="/assets/images/banner/{version}/{$bannerActive}-{bannerNumber}.webp"
+				src="/assets/images/banner/{version}/{limitedBannerName}-{bannerNumber}.webp"
 				alt="Limited Banner"
 			/>
 		</div>

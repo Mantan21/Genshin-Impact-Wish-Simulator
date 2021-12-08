@@ -17,8 +17,6 @@
 
 	import factoryReset from '$lib/functions/factoryReset';
 	import playSfx from '$lib/functions/audio';
-	import charDB from '$lib/setup/characters.json';
-	import weaps from '$lib/setup/weapons.json';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
@@ -56,7 +54,6 @@
 		weapons = filtered
 			.filter(({ type }) => type === 'weapon')
 			.map(async (w) => {
-				w.weaponType = weaps[`star${w.rarity}`][w.name].type;
 				w.qty = await countItem(w.name);
 				return w;
 			});
@@ -64,7 +61,6 @@
 		characters = filtered
 			.filter(({ type }) => type === 'character')
 			.map(async (d) => {
-				d.vision = charDB[`star${d.rarity}`][d.name].vision;
 				d.qty = await countItem(d.name);
 				return d;
 			});

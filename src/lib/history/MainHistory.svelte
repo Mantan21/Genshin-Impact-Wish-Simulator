@@ -6,7 +6,7 @@
 
 	// store
 	import { beginnerRoll, pity4star, pity5star } from '$lib/store/localstore';
-	import { bannerActive, pageActive, showBeginner } from '$lib/store/stores';
+	import { bannerActive, bannerList, pageActive, showBeginner } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 
 	import { getName } from '$lib/functions/nameText';
@@ -19,27 +19,13 @@
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
 
-	const bannerList = [
-		{
-			name: 'Standard Wish',
-			path: 'standard'
-		},
-		{
-			name: 'Beginner Wish',
-			path: 'beginner'
-		},
-		{
-			name: 'Character Event Wish',
-			path: 'limited'
-		},
-		{
-			name: 'Weapon Wish',
-			path: 'weapon'
-		}
-	];
-	$: banner = $bannerActive.replace(/\d{1}/, '');
-	$: nowOpen = bannerList.findIndex((b) => b.path === banner.toLocaleLowerCase());
-	$: selected = nowOpen < 0 ? 2 : nowOpen;
+	$: list = $bannerList.filter((item, i, arr) => i === arr.findIndex((v) => v.type === item.type));
+	$: if (list.findIndex(({ type }) => type === 'beginner') < 0) list.unshift({ type: 'beginner' });
+
+	$: banner = $bannerList.find((v, i) => i === $bannerActive).type;
+	$: nowOpenIndex = list.findIndex(({ type }) => type === banner.toLocaleLowerCase());
+	$: selected = nowOpenIndex < 0 ? 2 : nowOpenIndex;
+
 	// eslint-disable-next-line
 	$: pity = globalThis.window ? pity5star.get(banner) || 0 : 0;
 
@@ -53,8 +39,8 @@
 	const readData = async () => {
 		// eslint-disable-next-line
 		if (!globalThis.window) return [];
-		const list = await getList(banner);
-		data = list.map((d) => d).reverse();
+		const bannerList = await getList(banner);
+		data = bannerList.map((d) => d).reverse();
 		return data;
 	};
 
@@ -66,7 +52,6 @@
 	};
 
 	const confirmReset = async () => {
-		playSfx();
 		await resetHistory(banner);
 		pity5star.set(banner, 0);
 		pity4star.set(banner, 0);
@@ -82,7 +67,7 @@
 
 <svelte:head>
 	<title>
-		{bannerList[selected].name} | {APP_TITLE}
+		{getName(banner)} Wish | {APP_TITLE}
 	</title>
 </svelte:head>
 
@@ -91,15 +76,14 @@
 	title="Reset History ?"
 	on:cancel={() => {
 		showPopup = false;
-		playSfx();
 	}}
 	on:confirm={confirmReset}
 >
 	<div class="confirmation">
 		<p>
-			It's also remove all Characters and Weapons related to <strong
-				>{bannerList[selected].name}</strong
-			>
+			It's also remove all Characters and Weapons related to <strong>
+				{banner === 'limited' ? 'Character Event' : getName(banner)}
+			</strong>
 			Banner from your Inventory. <br />
 			Are You Sure to Reset ?
 		</p>
@@ -110,8 +94,8 @@
 	<div class="header">
 		<button
 			on:click={() => {
-				playSfx('close');
 				pageActive.set('index');
+				playSfx('close');
 			}}
 		>
 			<i class="gi-reply" />
@@ -127,21 +111,21 @@
 						showSelectList = !showSelectList;
 					}}
 				>
-					{bannerList[selected].name}
+					{banner === 'limited' ? 'Character Event' : getName(banner)} Wish
 
 					<i class="gi-caret-{showSelectList ? 'up' : 'down'}" />
 				</div>
 
 				{#if showSelectList}
 					<div class="select-list" transition:fade={{ duration: 200 }}>
-						{#each bannerList as { name, path }, i}
+						{#each list as { type }, i}
 							<a
 								class="item"
 								href="/"
 								class:active={selected === i}
-								on:click|preventDefault={() => selectBanner(path)}
+								on:click|preventDefault={() => selectBanner(type)}
 							>
-								{name}
+								{type === 'limited' ? 'Character Event' : getName(type)} Wish
 							</a>
 						{/each}
 					</div>
@@ -165,6 +149,7 @@
 					class="reset"
 					on:click={() => {
 						showPopup = true;
+						playSfx();
 					}}><i class="gi-delete" /> Reset</button
 				>
 			</div>
@@ -172,6 +157,7 @@
 
 		<div class="table">
 			<div class="row head">
+				<div class="cell cell0">Pity</div>
 				<div class="cell cell1">Item Type</div>
 				<div class="cell cell2">Item Name</div>
 				<div class="cell cell3">Time Received</div>
@@ -182,15 +168,16 @@
 					<div class="row" style="justify-content: center">
 						<div class="cell">Waiting ...</div>
 					</div>
-				{:then list}
+				{:then ls}
 					{#if data.length < 1}
 						<div class="row" style="justify-content: center">
 							<div class="cell">No data available .</div>
 						</div>
 					{:else}
-						{#each data as { name, type, rarity, time }, i}
+						{#each data as { name, type, rarity, time, pity }, i}
 							{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
 								<div class="row">
+									<div class="cell cell0 star{rarity}">{pity}</div>
 									<div class="cell cell1">{type}</div>
 									<div class="cell cell2 star{rarity}">
 										{getName(name)}
@@ -333,20 +320,26 @@
 	.body .row {
 		border-top: 0;
 	}
-	.cell1 {
+
+	.cell0 {
 		flex: 1;
-		min-width: 100px;
-		width: calc(1 / 6 * 100%);
+		width: calc(1 / 12 * 100%);
+		border-right: 0.2px solid #b5b2ae;
+	}
+	.cell1 {
+		flex: 2;
+		min-width: 80px;
+		width: calc(3 / 12 * 100%);
 		border-right: 0.2px solid #b5b2ae;
 	}
 	.cell2 {
-		flex: 3;
-		width: calc(3 / 6 * 100%);
+		flex: 6;
+		width: calc(6 / 12 * 100%);
 		border-right: 0.2px solid #b5b2ae;
 	}
 	.cell3 {
-		width: calc(2 / 6 * 100%);
-		flex: 2;
+		width: 100%;
+		flex: 3;
 	}
 	.cell {
 		display: block;

@@ -1,54 +1,62 @@
 {
-  "data": [
-    {
-      "date": "01-Sep-2021",
-      "description": [
-        "<strong> Raiden Shogun and Kujou Sara </strong> Banner was here !",
-        "<strong> Engulfing Lightning </strong> Weapon Banner has been added"
-      ]
-    },
-    {
-      "date": "10-Sep-2021",
-      "description": [
-        "Now you can <strong>wishing on previous banner</strong> by clicking <strong>(x)</strong> button on the top right of the page",
-        "Now you can <strong>create screenshot and link to share</strong> when wishing"
-      ]
-    },
-    {
-      "date": "21-Sep-2021",
-      "description": [
-        "<strong> Sagonomia Kokomi </strong> is ready to pull !",
-        "<strong> Everlasting Moonglow </strong> Weapon Banner has been added"
-      ]
-    },
-    {
-      "date": "30-Sep-2021",
-      "description": [
-        "Add more previous banner, <strong> Eula, Zhongli, Tartaglia/Childe, Albedo, Ganyu, Xiao, Hu Tao, Venti </strong> is ready to pull ! <br/> Click <strong>(x)</strong> button on the top right of the page to change the banner"
-      ]
-    },
-    {
-      "date": "13-Oct-2021",
-      "description": [
-        "<strong> Tartaglia </strong> is ready to pull !",
-        "<strong> Polar Star </strong> Weapon Banner has been added"
-      ]
-    },
-    {
-      "date": "2-Nov-2021",
-      "description": [
-        "<strong> Hu Tao </strong> Character Banner has been added !",
-        "<strong> Thoma </strong> is ready to pull !",
-        "<strong> Staff of Homma </strong> & <strong>Elegy for The End</strong> Weapon Banner has been added"
-      ]
-    },
-    {
-      "date": "24-Nov-2021",
-      "description": [
-        "<strong> Albedo </strong> Banner was here !",
-        "<strong> Eula </strong> Banner also here !",
-        "<strong> Freedom Sworn & Song of Broken Pines </strong> Weapon Banner has been added"
-      ]
-    }
-  ]
+	"data": [
+		{
+			"date": "01-Sep-2021",
+			"description": [
+				"<strong> Raiden Shogun and Kujou Sara </strong> Banner was here !",
+				"<strong> Engulfing Lightning </strong> Weapon Banner has been added"
+			]
+		},
+		{
+			"date": "10-Sep-2021",
+			"description": [
+				"Now you can <strong>wishing on previous banner</strong> by clicking <strong>(x)</strong> button on the top right of the page",
+				"Now you can <strong>create screenshot and link to share</strong> when wishing"
+			]
+		},
+		{
+			"date": "21-Sep-2021",
+			"description": [
+				"<strong> Sagonomia Kokomi </strong> is ready to pull !",
+				"<strong> Everlasting Moonglow </strong> Weapon Banner has been added"
+			]
+		},
+		{
+			"date": "30-Sep-2021",
+			"description": [
+				"Add more previous banner, <strong> Eula, Zhongli, Tartaglia/Childe, Albedo, Ganyu, Xiao, Hu Tao, Venti </strong> is ready to pull ! <br/> Click <strong>(x)</strong> button on the top right of the page to change the banner"
+			]
+		},
+		{
+			"date": "13-Oct-2021",
+			"description": [
+				"<strong> Tartaglia </strong> is ready to pull !",
+				"<strong> Polar Star </strong> Weapon Banner has been added"
+			]
+		},
+		{
+			"date": "2-Nov-2021",
+			"description": [
+				"<strong> Hu Tao </strong> Character Banner has been added !",
+				"<strong> Thoma </strong> is ready to pull !",
+				"<strong> Staff of Homma </strong> & <strong>Elegy for The End</strong> Weapon Banner has been added"
+			]
+		},
+		{
+			"date": "24-Nov-2021",
+			"description": [
+				"<strong> Albedo </strong> Banner was here !",
+				"<strong> Eula </strong> Banner also here !",
+				"<strong> Freedom Sworn & Song of Broken Pines </strong> Weapon Banner has been added"
+			]
+		},
+		{
+			"date": "08-Des-2021",
+			"description": [
+				"<strong>Fixing Bugs</strong> of History. You need to reset your gacha history to apply change",
+				"You need to <strong>Reset</strong> your history by clicking  Reset Button or open Inpect ELement ( CTRL + Shift i ) -> Application -> Storage -> Click on \"Clear Site Data\" Button",
+				"Ignore this if this is the first time you visit this site or if you already do reset"
+			]
+		}
+	]
 }

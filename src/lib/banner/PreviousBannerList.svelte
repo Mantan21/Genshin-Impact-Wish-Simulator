@@ -97,8 +97,8 @@
 
 	const selectBanner = (patch, banner) => {
 		playSfx();
+		bannerActive.set(0);
 		patchVersion.set(patch);
-		bannerActive.set('beginner');
 		bannerVersion.set(banner);
 		bnversion.set(patch, banner);
 		pageActive.set('index');

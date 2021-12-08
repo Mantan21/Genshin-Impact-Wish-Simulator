@@ -10,8 +10,6 @@
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
-	import chars from '$lib/setup/characters.json';
-	import weapons from '$lib/setup/weapons.json';
 
 	// Component
 	import Icon from '$lib/utility/Icon.svelte';
@@ -21,40 +19,26 @@
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
 
-	const wish = $wishes.map((w) => {
-		if (w.type === 'weapon') {
-			w.weaponType = weapons[`star${w.rarity}`][w.name].type;
-			w.style = weapons[`star${w.rarity}`][w.name].style || '';
-		}
-		if (w.type === 'character') {
-			w.vision = chars[`star${w.rarity}`][w.name].vision;
-			w.style = chars[`star${w.rarity}`][w.name].style || '';
-		}
-		return w;
-	});
-
-	wishes.set(wish);
-
-	let showWishList = false; //false
+	let showWishList = false;
 	let audio;
 	let wishResult;
 	let activeIndex = 0;
 
 	const playRevealAudio = () => {
-		const star = wish[activeIndex].rarity;
+		const star = $wishes[activeIndex].rarity;
 		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
 		audio.currentTime = 0;
 		audio.play();
 	};
 
 	const getEncoded = (index) => {
-		const { fateQty, fateType, vision, rarity, name, stelaFortuna } = wish[index];
+		const { fateQty, fateType, vision, rarity, name, stelaFortuna } = $wishes[index];
 		return btoa(`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}`);
 	};
 
 	const showItem = (startIndex) => {
 		// Single Pull
-		if (wish.length === 1) {
+		if ($wishes.length === 1) {
 			if (startIndex === 'start') {
 				playRevealAudio();
 			}
@@ -62,7 +46,7 @@
 		}
 
 		// Multi Pull
-		if (activeIndex > wish.length - 2) {
+		if (activeIndex > $wishes.length - 2) {
 			showWishList = true;
 			return;
 		}
@@ -95,13 +79,13 @@
 		<WishListResult />
 	{:else}
 		<div class="container" bind:this={wishResult}>
-			{#if wish.length === 1}
+			{#if $wishes.length === 1}
 				<button class="close" on:click={closeHandle}>
 					<i class="gi-close" />
 				</button>
 			{/if}
 
-			{#each wish as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
+			{#each $wishes as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						<div class="orbs orb5" />
@@ -196,7 +180,7 @@
 				{/if}
 			{/each}
 
-			{#if wish[activeIndex].type === 'character'}
+			{#if $wishes[activeIndex].type === 'character'}
 				<div class="share">
 					<Share page="chars" encodedData={getEncoded(activeIndex)} />
 				</div>
