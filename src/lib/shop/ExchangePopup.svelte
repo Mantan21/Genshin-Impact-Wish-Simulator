@@ -135,7 +135,13 @@
 	};
 </script>
 
-<PopUp {show} title="Item To Exchange" on:cancel={cancelBuy} on:confirm={buyHandle}>
+<PopUp
+	{show}
+	title="Item To Exchange"
+	on:cancel={cancelBuy}
+	on:confirm={buyHandle}
+	button={fateQty < 1 ? 'cancel' : 'all'}
+>
 	<div class="content" bind:clientHeight={contentHeight}>
 		{#if fundType === 'genesis'}
 			<!-- Genesis Exchange -->

@@ -24,46 +24,100 @@ const checkBanner = () => {
 	({ limited, weapons } = banner[parseInt(versionBanner) - 1]);
 };
 
-const weapons3Star = Object.keys(weaponsDB.star3).map((name) => ({
-	type: 'weapon',
-	rarity: 3,
-	name
-}));
-const standardWeapons4Star = Object.keys(weaponsDB.star4)
-	.filter((name) => !weaponsDB.star4[name].limited)
-	.map((name) => ({ type: 'weapon', rarity: 4, name }));
-const standardWeapons5Star = Object.keys(weaponsDB.star5)
-	.filter((name) => !weaponsDB.star5[name].limited)
-	.map((name) => ({ type: 'weapon', rarity: 5, name }));
+// WEAPONS DATA
+const standardWeapons = (star) =>
+	weaponsDB.data
+		.filter(({ rarity }) => rarity === star)[0]
+		.list.filter(({ limited }) => !limited)
+		.map((arr) => {
+			arr.type = 'weapon';
+			arr.rarity = star;
+			return arr;
+		});
 
-const standardChars4Star = Object.keys(charsDB.star4)
-	.filter((name) => !charsDB.star4[name].limited)
-	.map((name) => ({ type: 'character', rarity: 4, name }));
+const rateupWeapons = () =>
+	weaponsDB.data
+		.filter(({ rarity }) => rarity === 4)[0]
+		.list.filter(({ name }) => weapons.rateup.includes(name))
+		.map((arr) => {
+			arr.type = 'weapon';
+			arr.rarity = 4;
+			return arr;
+		});
+
+const featuredWeaponsName = () => weapons.featured.map(({ name }) => name);
+const featuredWeapons = () =>
+	weaponsDB.data
+		.filter(({ rarity }) => rarity === 5)[0]
+		.list.filter(({ name }) => featuredWeaponsName().includes(name))
+		.map((arr) => {
+			arr.type = 'weapon';
+			arr.rarity = 5;
+			return arr;
+		});
+
+// CHARACTER DATA
+const standardChars4Star = charsDB.data
+	.filter(({ rarity }) => rarity === 4)[0]
+	.list.map((arr) => {
+		arr.type = 'character';
+		arr.rarity = 4;
+		return arr;
+	});
+
 const limitedChars4Star = standardChars4Star.filter(
 	({ name }) => !charsDB.onlyStandard.includes(name)
 );
+
 const standardChars5Star = standard.characters.map((name) => ({
 	type: 'character',
 	rarity: 5,
 	name
 }));
 
+const rateupChars = () =>
+	charsDB.data
+		.filter(({ rarity }) => rarity === 4)[0]
+		.list.filter(({ name }) => limited.rateup.includes(name))
+		.map((arr) => {
+			arr.type = 'character';
+			arr.rarity = 4;
+			return arr;
+		});
+
+const featuredChars = (banner) => {
+	let { character } = limited;
+	// Check is it double banner or not
+	const bannerNumberOnThisPeriod = parseInt(banner.replace('limited', ''));
+	if (bannerNumberOnThisPeriod + 1 > 0) {
+		character = character[bannerNumberOnThisPeriod];
+	}
+	return charsDB.data
+		.filter(({ rarity }) => rarity === 5)[0]
+		.list.filter(({ name }) => name === character.name)
+		.map((arr) => {
+			arr.type = 'character';
+			arr.rarity = 5;
+			return arr;
+		})[0];
+};
+
 const rand = (array) => array[Math.floor(Math.random() * array.length)];
 
-const get3StarItem = () => rand(weapons3Star);
+const get3StarItem = () => rand(standardWeapons(3));
 
 const get4StarItem = (bannerToRoll = 'allExcludeStandard') => {
 	const itemType = rand(['weap', 'char']);
 	const charList = bannerToRoll === 'standard' ? standardChars4Star : limitedChars4Star;
-	const items = itemType === 'weap' ? standardWeapons4Star : charList;
+	const items = itemType === 'weap' ? standardWeapons(4) : charList;
 	return rand(items);
 };
 
 const getStandard5StarChar = () => rand(standardChars5Star);
-const getStandard5StarWeapon = () => rand(standardWeapons5Star);
+const getStandard5StarWeapon = () => rand(standardWeapons(5));
 const getStandard5StarItem = () => {
 	const itemType = rand(['weap', 'char']);
-	const items = itemType === 'weap' ? standardWeapons5Star : standardChars5Star;
+	const items = itemType === 'weap' ? standardWeapons(5) : standardChars5Star;
 	return rand(items);
 };
 
@@ -111,27 +165,18 @@ const beginnerWish = (rarity) => {
 };
 
 const limitedWish = (rarity, banner) => {
-	let { character, rateup } = limited;
-
-	// Check is it double banner or not
-	const bannerNumberOnThisPeriod = parseInt(banner.replace('limited', ''));
-	if (bannerNumberOnThisPeriod + 1 > 0) {
-		character = character[bannerNumberOnThisPeriod];
-	}
-
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 4) {
 		const resultType = rand(['rateup', 'std']);
 		if (resultType === 'std') return get4StarItem();
 
 		// If rate up character
-		let chars = rateup.map((name) => ({ type: 'character', rarity: 4, name }));
-		return rand(chars);
+		return rand(rateupChars());
 	}
 
 	if (rarity === 5) {
 		// Guaranteed
-		const limitedResult = { type: 'character', rarity: 5, name: character.name, limited: true };
+		const limitedResult = featuredChars(banner);
 		if (nextGuaranteed.get() === 'yes') {
 			nextGuaranteed.set('no');
 			return limitedResult;
@@ -158,22 +203,23 @@ const standardWish = (rarity) => {
 };
 
 const weaponWish = (rarity) => {
-	const weap = weapons.featured.map(({ name }) => name);
-
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 4) {
 		const resultType = rand(['rateup', 'std']);
 		if (resultType === 'std') return get4StarItem();
 
 		// If rate up character
-		let weapResult = weapons.rateup.map((name) => ({ type: 'weapon', rarity: 4, name }));
-		return rand(weapResult);
+		return rand(rateupWeapons());
 	}
 	if (rarity === 5) {
-		const weaponName = rand(weap);
-		const weaponResultGuaranteed = { type: 'weapon', rarity: 5, name: weaponName };
-		if (nextWeaponGuaranteed.get() === 'yes') return weaponResultGuaranteed;
+		// Rate On
+		const weaponResultGuaranteed = rand(featuredWeapons());
+		if (nextWeaponGuaranteed.get() === 'yes') {
+			nextWeaponGuaranteed.set('no');
+			return weaponResultGuaranteed;
+		}
 
+		// Rate Off
 		const item = [
 			{ type: 'featured', chance: 75 },
 			{ type: 'std', chance: 25 }
@@ -181,11 +227,12 @@ const weaponWish = (rarity) => {
 		const { type } = prob(item);
 		if (type === 'std') {
 			const result = getStandard5StarWeapon();
-			if (weap.includes(result.name)) nextWeaponGuaranteed.set('no');
+			if (featuredWeaponsName().includes(result.name)) nextWeaponGuaranteed.set('no');
+			else nextWeaponGuaranteed.set('yes');
 			return result;
 		}
 
-		// Win Weapon
+		// Win 50:50
 		nextWeaponGuaranteed.set('no');
 		return weaponResultGuaranteed;
 	}

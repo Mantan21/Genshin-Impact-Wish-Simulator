@@ -3,7 +3,7 @@
 
 	export let active = false;
 	export let type = 'limited';
-	export let weaponID = [];
+	export let weapon = [];
 	export let character = {
 		name: '',
 		style: {
@@ -24,7 +24,7 @@
 	<i class="gi-companion" />
 	<div class="picture">
 		{#if type === 'weapon'}
-			{#each weaponID as { name, style, type }}
+			{#each weapon as { name, style, type }}
 				<img
 					src="/assets/images/weapons/{type}/5star/{name}.webp"
 					alt="Weapon Wish"

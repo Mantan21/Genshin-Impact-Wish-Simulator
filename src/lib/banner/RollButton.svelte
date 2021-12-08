@@ -10,7 +10,8 @@
 		starglitter,
 		stardust,
 		primogem,
-		isAcquaintUsed
+		isAcquaintUsed,
+		bannerList
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
 	import roll from '$lib/functions/roll';
@@ -30,7 +31,9 @@
 	let showOutput = false;
 	let showExchangePopup = false;
 	let rollCount = 0;
-	$: multiRollPrice = $bannerActive === 'beginner' ? 8 : 10;
+
+	$: bannerActiveType = $bannerList[$bannerActive].type;
+	$: multiRollPrice = bannerActiveType === 'beginner' ? 8 : 10;
 
 	const showOutputHandle = (rarity, rolltype = 'tenroll') => {
 		showOutput = true;
@@ -86,10 +89,10 @@
 		audio.currentTime = 0;
 		audio.play();
 		rollCount = 1;
-		if (!updateFates($bannerActive, 1)) return;
+		if (!updateFates(bannerActiveType, 1)) return;
 
 		backsound.set(false);
-		const wish = await roll($bannerActive);
+		const wish = await roll(bannerActiveType);
 		wishes.set([wish]);
 		showOutputHandle(wish.rarity, 'single');
 		updateFunds(wish.fateType, wish.fateQty);
@@ -99,13 +102,13 @@
 		audio.currentTime = 0;
 		audio.play();
 		rollCount = $isAcquaintUsed ? multiRollPrice - $acquaint : multiRollPrice - $intertwined;
-		if (!updateFates($bannerActive, multiRollPrice)) return;
+		if (!updateFates(bannerActiveType, multiRollPrice)) return;
 		backsound.set(false);
 
 		const wishStar = [];
 		const wishOutput = [];
 		for (let i = 0; i < 10; i++) {
-			const wish = await roll($bannerActive);
+			const wish = await roll(bannerActiveType);
 			wishStar.push(wish.rarity);
 			wishOutput.push(wish);
 			updateFunds(wish.fateType, wish.fateQty);
@@ -246,11 +249,7 @@
 		<Icon type={fateType} />
 		<span style="margin-left: 7px">
 			x
-			{#if $bannerActive === 'beginner'}
-				<span class:red={fateQty < 8}> 8 </span>
-			{:else}
-				<span class:red={fateQty < 10}> 10 </span>
-			{/if}
+			<span class:red={fateQty < multiRollPrice}> {multiRollPrice} </span>
 		</span>
 	</div>
 </button>

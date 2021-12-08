@@ -7,53 +7,52 @@ const storeName = 'history';
 let IndexedDB;
 // eslint-disable-next-line
 if (globalThis.window) {
-  IndexedDB = openDB(DBName, version, {
-    upgrade(db) {
-      const store = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement:true });
-      store.createIndex('banner', 'banner', { unique: false });
-      store.createIndex('name', 'name', { unique: false });
-    },
-  });
+	IndexedDB = openDB(DBName, version, {
+		upgrade(db) {
+			const store = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+			store.createIndex('banner', 'banner', { unique: false });
+			store.createIndex('name', 'name', { unique: false });
+		}
+	});
 }
 
 const HistoryIDB = {
-  async historyCount() {
-    return (await IndexedDB).count(storeName);
-  },
-  async getList(banner) {
-    return (await IndexedDB).getAllFromIndex(storeName, 'banner', banner)
-  },
+	async historyCount() {
+		return (await IndexedDB).count(storeName);
+	},
+	async getList(banner) {
+		return (await IndexedDB).getAllFromIndex(storeName, 'banner', banner);
+	},
 
-  async countItem(name) {
-    return (await IndexedDB).countFromIndex(storeName, 'name', name)
-  },
+	async countItem(name) {
+		return (await IndexedDB).countFromIndex(storeName, 'name', name);
+	},
 
-  async resetHistory(banner) {
-    try {
-      const idb = await IndexedDB;
-      const keys = await idb.getAllKeysFromIndex(storeName, 'banner', banner);
-      keys.forEach((key) => idb.delete(storeName, key));
-      return 'success';
-    } catch(e) {
-      return 'failed';
-    }
-  },
-  async clearIDB () {
-    return (await IndexedDB).clear(storeName)
-  },
-  async getAllHistories() {
-    return (await IndexedDB).getAll(storeName);
-  },
-  async addHistory(data) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!data.hasOwnProperty('banner')) return;
-    return (await IndexedDB).put(storeName, data);
-  },
-  async delete(id) {
-    if (!id) return;
-    return (await IndexedDB).delete(storeName, id);
-  },
-}
+	async resetHistory(banner) {
+		try {
+			const idb = await IndexedDB;
+			const keys = await idb.getAllKeysFromIndex(storeName, 'banner', banner);
+			keys.forEach((key) => idb.delete(storeName, key));
+			return 'success';
+		} catch (e) {
+			return 'failed';
+		}
+	},
+	async clearIDB() {
+		return (await IndexedDB).clear(storeName);
+	},
+	async getAllHistories() {
+		return (await IndexedDB).getAll(storeName);
+	},
+	async addHistory(data) {
+		// eslint-disable-next-line no-prototype-builtins
+		if (!data.hasOwnProperty('banner')) return;
+		return (await IndexedDB).put(storeName, data);
+	},
+	async delete(id) {
+		if (!id) return;
+		return (await IndexedDB).delete(storeName, id);
+	}
+};
 
 export default HistoryIDB;
-

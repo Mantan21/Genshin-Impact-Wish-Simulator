@@ -16,7 +16,8 @@
 		stardust,
 		starglitter,
 		pageActive,
-		isAcquaintUsed
+		isAcquaintUsed,
+		bannerList
 	} from '$lib/store/stores';
 
 	let { beginner, limited, weapons, standard } = setup.banner;
@@ -27,9 +28,20 @@
 		limitedChar = limited.character;
 	}
 
-	const buttonClick = (bannerType) => {
-		bannerActive.set(bannerType);
-		isAcquaintUsed.set($bannerActive === 'beginner' || $bannerActive === 'standard');
+	let list;
+	$: {
+		list = $showBeginner ? [{ type: 'beginner', character: beginner.character }] : [];
+		if (limitedChar.length) {
+			limitedChar.forEach((character) => list.push({ type: 'limited', character }));
+		} else list.push({ type: 'limited', character: limitedChar });
+		list.push({ type: 'weapon', weapons: weapons.featured });
+		list.push({ type: 'standard', character: standard.character });
+
+		bannerList.set(list);
+	}
+
+	const buttonClick = (banner) => {
+		bannerActive.set(banner);
 		playSfx('changebanner');
 	};
 
@@ -43,7 +55,7 @@
 	<div class="top">
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
-			<span>{$bannerActive.replace(/\d{1}/, '')} Wish </span>
+			<span>{$bannerList[$bannerActive] ? $bannerList[$bannerActive].type : 0} Wish </span>
 		</h1>
 		<div class="budget">
 			<div class="fates">
@@ -80,44 +92,16 @@
 		<div class="bg">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 		</div>
-		{#if $showBeginner}
-			<BannerButton
-				type="beginner"
-				character={beginner.character}
-				active={$bannerActive === 'beginner'}
-				on:click={() => buttonClick('beginner')}
-			/>
-		{/if}
 
-		{#if limitedChar.length}
-			{#each limitedChar as char, i}
-				<BannerButton
-					type="limited"
-					character={char}
-					active={$bannerActive === `limited${i}`}
-					on:click={() => buttonClick(`limited${i}`)}
-				/>
-			{/each}
-		{:else}
+		{#each $bannerList as { type, character, weapons }, i}
 			<BannerButton
-				type="limited"
-				character={limited.character}
-				active={$bannerActive === 'limited'}
-				on:click={() => buttonClick('limited')}
+				{type}
+				character={character || ''}
+				weapon={weapons || []}
+				active={$bannerActive === i}
+				on:click={() => buttonClick(i)}
 			/>
-		{/if}
-		<BannerButton
-			type="weapon"
-			weaponID={weapons.featured}
-			active={$bannerActive === 'weapon'}
-			on:click={() => buttonClick('weapon')}
-		/>
-		<BannerButton
-			type="standard"
-			character={standard.character}
-			active={$bannerActive === 'standard'}
-			on:click={() => buttonClick('standard')}
-		/>
+		{/each}
 	</div>
 </div>
 

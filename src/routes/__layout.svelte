@@ -16,8 +16,11 @@
 		starglitter,
 		intertwined,
 		acquaint,
+		isAcquaintUsed,
+		bannerActive,
 		bannerVersion,
-		patchVersion
+		patchVersion,
+		bannerList
 	} from '$lib/store/stores';
 	import { bnversion, myFunds } from '$lib/store/localstore';
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
@@ -41,6 +44,11 @@
 		bannerVersion.set(parseInt(version));
 		patchVersion.set(patch);
 	};
+
+	$: if ($bannerList.length > 0) {
+		const { type } = $bannerList[$bannerActive];
+		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
+	}
 
 	const setBudget = () => {
 		const localGenesis = myFunds.get('genesis');
@@ -163,6 +171,7 @@
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
+		pointer-events: none;
 	}
 
 	.preview .uid {

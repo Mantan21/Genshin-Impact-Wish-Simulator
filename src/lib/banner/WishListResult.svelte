@@ -194,7 +194,7 @@
 	}
 
 	.close {
-		display: block;
+		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 		width: 35px;
@@ -207,8 +207,7 @@
 		position: fixed;
 		top: 10px;
 		right: 10px;
-		font-size: 1.5rem;
-		line-height: 1rem;
+		line-height: 0;
 		z-index: 10;
 		opacity: 0;
 		animation: fadeIn forwards 1s;
