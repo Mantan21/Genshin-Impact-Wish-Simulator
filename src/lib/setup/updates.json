@@ -53,9 +53,16 @@
 		{
 			"date": "08-Des-2021",
 			"description": [
-				"<strong>Fixing Bugs</strong> of History. You need to reset your gacha history to apply change",
-				"You need to <strong>Reset</strong> your history by clicking  Reset Button or open Inpect ELement ( CTRL + Shift i ) -> Application -> Storage -> Click on \"Clear Site Data\" Button",
-				"Ignore this if this is the first time you visit this site or if you already do reset"
+				"<strong>Fixing Bugs</strong> of History.",
+				"if you find any error, follow this steps to reset browser cache specialy only for WIsh Simulator Site . Open Inpect ELement ( CTRL + Shift i ) -> Application -> Storage -> Click on \"Clear Site Data\" Button",
+				"Ignore the steps above if this is the first time you visit this site or if you already do reset"
+			]
+		},
+		{
+			"date": "14-Des-2021",
+			"description": [
+				"<strong> Arrataki Itto </strong> character Banner is ready to pull",
+				"<strong> Redhorn Stonethresher </strong> Weapon Banner has been added !"
 			]
 		}
 	]

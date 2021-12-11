@@ -20,16 +20,14 @@
 		const localstoreVersion = localStorage.getItem('storageVersion');
 		if (localstoreVersion) updateSite(localstoreVersion);
 
-		const localVersion = bnversion.get();
-		if (!localVersion) return;
-
 		const { storageVersion } = setup;
 		if (localstoreVersion !== storageVersion) {
 			bnversion.clear();
 			localStorage.setItem('storageVersion', storageVersion);
-			return;
 		}
 
+		const localVersion = bnversion.get();
+		if (!localVersion) return;
 		const [patch, version] = localVersion.split('-');
 		bannerVersion.set(parseInt(version));
 		patchVersion.set(patch);
