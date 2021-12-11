@@ -18,32 +18,13 @@
 		acquaint,
 		isAcquaintUsed,
 		bannerActive,
-		bannerVersion,
-		patchVersion,
 		bannerList
 	} from '$lib/store/stores';
-	import { bnversion, myFunds } from '$lib/store/localstore';
+	import { myFunds } from '$lib/store/localstore';
 	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
-	import setup from '$lib/setup/wish-setup.json';
 	import '../app.css';
 
 	let preview = $page.path.split('/')[1] === 'screen';
-
-	const setBannerVersion = () => {
-		const localVersion = bnversion.get();
-		if (!localVersion) return;
-
-		const { storageVersion } = setup;
-		if (localStorage.getItem('storageVersion') !== storageVersion) {
-			bnversion.clear();
-			localStorage.setItem('storageVersion', storageVersion);
-			return;
-		}
-
-		const [patch, version] = localVersion.split('-');
-		bannerVersion.set(parseInt(version));
-		patchVersion.set(patch);
-	};
 
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
@@ -87,7 +68,6 @@
 			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
 		});
 
-		setBannerVersion();
 		setBudget();
 
 		viewportWidth.set(window.innerWidth);
