@@ -61,6 +61,11 @@
 					"limited": true
 				},
 				{
+					"name": "redhorn-stonethresher",
+					"weaponType": "claymore",
+					"limited": true
+				},
+				{
 					"name": "skyward-atlas",
 					"weaponType": "catalyst"
 				},

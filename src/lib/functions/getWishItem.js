@@ -25,65 +25,45 @@ const checkBanner = () => {
 };
 
 // WEAPONS DATA
-const standardWeapons = (star) =>
+const getAllWeapons = (star) =>
 	weaponsDB.data
 		.filter(({ rarity }) => rarity === star)[0]
-		.list.filter(({ limited }) => !limited)
-		.map((arr) => {
+		.list.map((arr) => {
 			arr.type = 'weapon';
 			arr.rarity = star;
 			return arr;
 		});
 
-const rateupWeapons = () =>
-	weaponsDB.data
-		.filter(({ rarity }) => rarity === 4)[0]
-		.list.filter(({ name }) => weapons.rateup.includes(name))
-		.map((arr) => {
-			arr.type = 'weapon';
-			arr.rarity = 4;
-			return arr;
-		});
+const standardWeapons = (star) => getAllWeapons(star).filter(({ limited }) => !limited);
+
+const rateupWeapons = () => getAllWeapons(4).filter(({ name }) => weapons.rateup.includes(name));
 
 const featuredWeaponsName = () => weapons.featured.map(({ name }) => name);
 const featuredWeapons = () =>
-	weaponsDB.data
-		.filter(({ rarity }) => rarity === 5)[0]
-		.list.filter(({ name }) => featuredWeaponsName().includes(name))
-		.map((arr) => {
-			arr.type = 'weapon';
-			arr.rarity = 5;
+	getAllWeapons(5).filter(({ name }) => featuredWeaponsName().includes(name));
+
+// CHARACTER DATA
+const getAllChars = (star) =>
+	charsDB.data
+		.filter(({ rarity }) => rarity === star)[0]
+		.list.map((arr) => {
+			arr.type = 'character';
+			arr.rarity = star;
 			return arr;
 		});
 
-// CHARACTER DATA
-const standardChars4Star = charsDB.data
-	.filter(({ rarity }) => rarity === 4)[0]
-	.list.map((arr) => {
-		arr.type = 'character';
-		arr.rarity = 4;
-		return arr;
-	});
-
-const limitedChars4Star = standardChars4Star.filter(
+const standardChars4Star = getAllChars(4).filter(({ limited }) => !limited);
+const commonChar4Star = standardChars4Star.filter(
 	({ name }) => !charsDB.onlyStandard.includes(name)
 );
 
-const standardChars5Star = standard.characters.map((name) => ({
-	type: 'character',
-	rarity: 5,
-	name
-}));
+const limitedBannerChars4Star = getAllChars(4).filter(
+	({ name }) => !charsDB.onlyStandard.includes(name)
+);
 
-const rateupChars = () =>
-	charsDB.data
-		.filter(({ rarity }) => rarity === 4)[0]
-		.list.filter(({ name }) => limited.rateup.includes(name))
-		.map((arr) => {
-			arr.type = 'character';
-			arr.rarity = 4;
-			return arr;
-		});
+const standardChars5Star = getAllChars(5).filter(({ name }) => standard.characters.includes(name));
+
+const rateupChars = () => getAllChars(4).filter(({ name }) => limited.rateup.includes(name));
 
 const featuredChars = (banner) => {
 	let { character } = limited;
@@ -92,14 +72,7 @@ const featuredChars = (banner) => {
 	if (bannerNumberOnThisPeriod + 1 > 0) {
 		character = character[bannerNumberOnThisPeriod];
 	}
-	return charsDB.data
-		.filter(({ rarity }) => rarity === 5)[0]
-		.list.filter(({ name }) => name === character.name)
-		.map((arr) => {
-			arr.type = 'character';
-			arr.rarity = 5;
-			return arr;
-		})[0];
+	return getAllChars(5).filter(({ name }) => name === character.name)[0];
 };
 
 const rand = (array) => array[Math.floor(Math.random() * array.length)];
@@ -108,7 +81,18 @@ const get3StarItem = () => rand(standardWeapons(3));
 
 const get4StarItem = (bannerToRoll = 'allExcludeStandard') => {
 	const itemType = rand(['weap', 'char']);
-	const charList = bannerToRoll === 'standard' ? standardChars4Star : limitedChars4Star;
+	let charList;
+	switch (bannerToRoll) {
+		case 'standard':
+			charList = standardChars4Star;
+			break;
+		case 'limited':
+			charList = limitedBannerChars4Star;
+			break;
+		default:
+			charList = commonChar4Star;
+			break;
+	}
 	const items = itemType === 'weap' ? standardWeapons(4) : charList;
 	return rand(items);
 };
@@ -153,7 +137,7 @@ const beginnerWish = (rarity) => {
 		if (rng.name === 'rateup') {
 			// guaranteed probability
 			beginnerAlreadyGuaranteed.set('yes');
-			return limitedChars4Star.find((c) => c.name === rateup);
+			return limitedBannerChars4Star.find((c) => c.name === rateup);
 		}
 
 		// get Random item
@@ -168,7 +152,7 @@ const limitedWish = (rarity, banner) => {
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 4) {
 		const resultType = rand(['rateup', 'std']);
-		if (resultType === 'std') return get4StarItem();
+		if (resultType === 'std') return get4StarItem('limited');
 
 		// If rate up character
 		return rand(rateupChars());

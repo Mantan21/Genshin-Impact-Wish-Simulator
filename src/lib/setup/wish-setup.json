@@ -1,82 +1,63 @@
 {
-  "version": "2.3",
-  "bannerNumber": 1,
-  "storageVersion": "2.3.0",
-  "banner": {
-    "beginner": {
-      "character": {
-        "name": "noelle",
-        "style": {
-          "main": "width: 120%;top: 30%;",
-          "active": "width: 120%;top: 20%;"
-        }
-      }
-    },
-    "standard": {
-      "character": {
-        "name": "qiqi",
-        "style": {
-          "main": "width: 100%;top: 30%;",
-          "active": "width: 100%;top: 20%;"
-        }
-      },
-      "characters": [
-        "qiqi",
-        "keqing",
-        "diluc",
-        "mona",
-        "jean"
-      ]
-    },
-    "limited": {
-      "character": [
-        {
-          "name": "albedo",
-          "style": {
-            "main": "width: 170%;top: 28%;left: 50%;",
-            "active": "width: 170%;top: 18%;left: 50%;"
-          }
-        },
-        {
-          "name": "eula",
-          "style": {
-            "main": "width: 140%;top: 32%;",
-            "active": "width: 140%;top: 22%;"
-          }
-        }
-      ],
-      "rateup": [
-        "bennett",
-        "noelle",
-        "rosaria"
-      ]
-    },
-    "weapons": {
-      "featured": [
-        {
-          "name": "freedom-sworn",
-          "type": "sword",
-          "style": {
-            "main": "top: -10%;width: 100%;left: 30%;",
-            "active": "top: -20%;width: 100%;left: 30%;"
-          }
-        },
-        {
-          "name": "song-of-broken-pines",
-          "type": "claymore",
-          "style": {
-            "main": "top: 10%;width: 80%;;left: 60%;",
-            "active": "top: 0%;width: 80%;left: 60%;"
-          }
-        }
-      ],
-      "rateup": [
-        "lion_s-roar",
-        "alley-hunter",
-        "wine-and-song",
-        "dragon_s-bane",
-        "sacrificial-greatsword"
-      ]
-    }
-  }
+	"version": "2.3",
+	"bannerNumber": 2,
+	"storageVersion": "2.3.1",
+	"banner": {
+		"beginner": {
+			"character": {
+				"name": "noelle",
+				"style": {
+					"main": "width: 120%;top: 30%;",
+					"active": "width: 120%;top: 20%;"
+				}
+			}
+		},
+		"standard": {
+			"character": {
+				"name": "qiqi",
+				"style": {
+					"main": "width: 100%;top: 30%;",
+					"active": "width: 100%;top: 20%;"
+				}
+			},
+			"characters": ["qiqi", "keqing", "diluc", "mona", "jean"]
+		},
+		"limited": {
+			"character": {
+				"name": "arataki-itto",
+				"style": {
+					"main": "width: 190%;top: 30%;left: 50%;",
+					"active": "width: 190%;top: 20%;left: 50%;"
+				}
+			},
+			"rateup": ["barbara", "xiangling", "gorou"]
+		},
+		"weapons": {
+			"featured": [
+				{
+					"name": "skyward-harp",
+					"type": "bow",
+					"style": {
+						"main": "top: 10%;width: 80%;;left: 35%;",
+						"active": "top: 0%;width: 80%;left: 35%;"
+					}
+				},
+				{
+					"name": "redhorn-stonethresher",
+					"type": "claymore",
+					"style": {
+						"main": "top: 10%;width: 80%;;left: 60%;",
+						"active": "top: 0%;width: 80%;left: 60%;"
+					}
+				}
+			],
+			"rateup": [
+				"the-alley-flash",
+				"mitternachts-waltz",
+				"sacrificial-fragments",
+				"favonius-lance",
+				"the-bell"
+			]
+		}
+	}
 }
