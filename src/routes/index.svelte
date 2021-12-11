@@ -3,7 +3,11 @@
 </script>
 
 <script>
-	import { pageActive } from '$lib/store/stores';
+	import { onMount } from 'svelte';
+	import { pageActive, bannerVersion, patchVersion } from '$lib/store/stores';
+	import { updateSite } from '$lib/export-import/import';
+	import { bnversion } from '$lib/store/localstore';
+	import setup from '$lib/setup/wish-setup.json';
 
 	// Components
 	import MainBanner from '$lib/banner/MainBanner.svelte';
@@ -11,6 +15,27 @@
 	import History from '$lib/history/MainHistory.svelte';
 	import Inventory from '$lib/inventory/MainInventory.svelte';
 	import Shop from '$lib/shop/MainShop.svelte';
+
+	const setBannerVersion = () => {
+		const localstoreVersion = localStorage.getItem('storageVersion');
+		if (localstoreVersion) updateSite(localstoreVersion);
+
+		const localVersion = bnversion.get();
+		if (!localVersion) return;
+
+		const { storageVersion } = setup;
+		if (localstoreVersion !== storageVersion) {
+			bnversion.clear();
+			localStorage.setItem('storageVersion', storageVersion);
+			return;
+		}
+
+		const [patch, version] = localVersion.split('-');
+		bannerVersion.set(parseInt(version));
+		patchVersion.set(patch);
+	};
+
+	onMount(setBannerVersion);
 </script>
 
 {#if $pageActive === 'index'}

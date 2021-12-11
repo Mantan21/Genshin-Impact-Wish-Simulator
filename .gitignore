@@ -11,3 +11,5 @@ sitemap.xml
 .env
 
 README.html
+
+/src/lib/export-import/old.json
