@@ -105,6 +105,14 @@ const getStandard5StarItem = () => {
 	return rand(items);
 };
 
+const dualBannerIdentifier = (wishResult, banner) => {
+	let [, num] = banner.split('limited');
+	num = num !== '' ? parseInt(num) : 0;
+	wishResult.dualBanner = num + 1;
+	console.log(wishResult);
+	return wishResult;
+};
+
 const beginnerWish = (rarity) => {
 	const rateup = beginner.character.name;
 	const rollCount = beginnerRoll.get() || 0;
@@ -228,8 +236,10 @@ const getWishItem = (banner, rarity) => {
 	const date = new Date();
 	const time = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
+	if (banner.includes('limited')) {
+		result = dualBannerIdentifier(limitedWish(rarity, banner), banner);
+	}
 	if (banner === 'beginner') result = beginnerWish(rarity);
-	if (banner.includes('limited')) result = limitedWish(rarity, banner);
 	if (banner === 'standard') result = standardWish(rarity);
 	if (banner === 'weapon') result = weaponWish(rarity);
 
