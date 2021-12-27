@@ -30,19 +30,23 @@
 	const getList = (decoded) => {
 		let list = [];
 		const arr = decoded.split('|');
+
 		arr.forEach((v) => {
-			let [name, rarity, tipe, isNew, fateType, stelaFortuna] = v.split('/');
+			let [name, rarity, type, isNew, fateType, stelaFortuna] = v.split('/');
 			let fateQty = rarity > 3 ? 10 : 15;
 			isNew = !(isNew === '0');
 			stelaFortuna = stelaFortuna === '1';
 			rarity = parseInt(rarity, 10);
 			fateType = fateType !== 'undefined' ? fateType : false;
 
-			if (tipe === 'weapon') {
-				const { type, style } = weapons[`star${rarity}`][name];
+			if (type === 'weapon') {
+				const { weaponType, style } = weapons.data
+					.filter((d) => d.rarity === rarity)[0]
+					.list.filter((d) => d.name === name)[0];
+
 				list.push({
-					type: tipe,
-					weaponType: type,
+					type,
+					weaponType,
 					name,
 					rarity,
 					isNew,
@@ -54,10 +58,13 @@
 				return;
 			}
 
-			if (tipe === 'character') {
-				const { vision, style } = characters[`star${rarity}`][name];
+			if (type === 'character') {
+				const { vision, style } = characters.data
+					.filter((d) => d.rarity === rarity)[0]
+					.list.filter((d) => d.name === name)[0];
+
 				list.push({
-					type: tipe,
+					type,
 					vision,
 					name,
 					rarity,
