@@ -77,7 +77,7 @@
 			viewportHeight.set(window.innerHeight);
 		});
 
-		document.addEventListener('contextmenu', (e) => e.preventDefault());
+		// document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>
 

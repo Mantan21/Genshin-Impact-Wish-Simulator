@@ -64,6 +64,10 @@
 				"<strong> Arrataki Itto </strong> character Banner is ready to pull",
 				"<strong> Redhorn Stonethresher </strong> Weapon Banner has been added !"
 			]
+		},
+		{
+			"date": "29-Des-2021",
+			"description": ["Implement Epitomized Path System to Weapon Banner for patch 2.0 and above"]
 		}
 	]
 }
