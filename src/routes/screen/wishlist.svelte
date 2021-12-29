@@ -41,8 +41,8 @@
 
 			if (type === 'weapon') {
 				const { weaponType, style } = weapons.data
-					.filter((d) => d.rarity === rarity)[0]
-					.list.filter((d) => d.name === name)[0];
+					.find((d) => d.rarity === rarity)
+					.list.find((d) => d.name === name);
 
 				list.push({
 					type,
@@ -60,8 +60,8 @@
 
 			if (type === 'character') {
 				const { vision, style } = characters.data
-					.filter((d) => d.rarity === rarity)[0]
-					.list.filter((d) => d.name === name)[0];
+					.find((d) => d.rarity === rarity)
+					.list.find((d) => d.name === name);
 
 				list.push({
 					type,

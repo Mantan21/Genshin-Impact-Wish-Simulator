@@ -24,6 +24,7 @@
 						"rateup": ["bennett", "noelle", "rosaria"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "freedom-sworn",
@@ -63,6 +64,7 @@
 						"rateup": ["barbara", "xiangling", "gorou"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "skyward-harp",
@@ -107,6 +109,7 @@
 						"rateup": ["yanfei", "chongyun", "ningguang"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "polar-star",
@@ -140,6 +143,7 @@
 						"rateup": ["thoma", "diona", "sayu"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "elegy-for-the-end",
@@ -184,6 +188,7 @@
 						"rateup": ["xiangling", "sucrose", "kujou-sara"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "engulfing-lightning",
@@ -223,6 +228,7 @@
 						"rateup": ["rosaria", "xingqiu", "beidou"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "primordial-jade-cutter",
@@ -267,6 +273,7 @@
 						"rateup": ["yanfei", "chongyun", "ningguang"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "mistsplitter-reforged",
@@ -306,6 +313,7 @@
 						"rateup": ["sayu", "xinyan", "diona"]
 					},
 					"weapons": {
+						"fatepointsystem": true,
 						"featured": [
 							{
 								"name": "thundering-pulse",

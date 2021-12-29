@@ -1,6 +1,9 @@
 <script>
 	import BannerButton from '$lib/banner/BannerButton.svelte';
 	import MyFund from '$lib/utility/MyFund.svelte';
+	import FatepointButton from './fatepoint/FatepointButton.svelte';
+	import FatepointPopup from './fatepoint/FatepointPopup.svelte';
+
 	import setup from '$lib/setup/wish-setup.json';
 	import previous from '$lib/setup/previous.json';
 	import playSfx from '$lib/functions/audio';
@@ -17,13 +20,14 @@
 		starglitter,
 		pageActive,
 		isAcquaintUsed,
-		bannerList
+		bannerList,
+		isFatepointSystem
 	} from '$lib/store/stores';
 
 	let { beginner, limited, weapons, standard } = setup.banner;
 	let limitedChar = limited.character;
 	$: if ($patchVersion !== '0.0') {
-		const { banner } = previous.data.filter(({ version }) => version === $patchVersion)[0];
+		const { banner } = previous.data.find(({ version }) => version === $patchVersion);
 		({ limited, weapons } = banner[$bannerVersion - 1]);
 		limitedChar = limited.character;
 	}
@@ -38,6 +42,7 @@
 		list.push({ type: 'standard', character: standard.character });
 
 		bannerList.set(list);
+		isFatepointSystem.set(!!weapons.fatepointsystem);
 	}
 
 	const buttonClick = (banner) => {
@@ -50,6 +55,8 @@
 		playSfx('popup');
 	};
 </script>
+
+<FatepointPopup />
 
 <div id="header">
 	<div class="top">
@@ -102,6 +109,10 @@
 				on:click={() => buttonClick(i)}
 			/>
 		{/each}
+
+		{#if $mobileMode}
+			<FatepointButton />
+		{/if}
 	</div>
 </div>
 
@@ -194,7 +205,7 @@
 		margin-top: 0;
 		height: 100%;
 		justify-content: flex-start;
-		padding-top: 3.5rem;
+		padding-top: 2.5rem;
 		z-index: -10;
 	}
 

@@ -7,27 +7,31 @@ import {
 	beginnerRoll,
 	beginnerAlreadyGuaranteed,
 	nextGuaranteed,
-	nextWeaponGuaranteed
+	nextWeaponGuaranteed,
+	localFatePoint
 } from '$lib/store/localstore';
-import { showBeginner } from '$lib/store/stores';
+import { fatePoint, fatepointCounterActive, showBeginner } from '$lib/store/stores';
 import prob from './prob';
 
 let { standard, beginner, limited, weapons } = wishSetup.banner;
+let versionPatch;
+let bannerPhase;
 
 const checkBanner = () => {
-	// eslint-disable-next-line
-	const localVersion = globalThis.window ? bnversion.get() : null;
+	const localVersion = bnversion.get();
 	if (!localVersion) return;
 
-	const [patch, versionBanner] = localVersion.split('-');
-	const { banner } = previous.data.filter(({ version }) => version === patch)[0];
-	({ limited, weapons } = banner[parseInt(versionBanner) - 1]);
+	const [patch, phase] = localVersion.split('-');
+	const { banner } = previous.data.find(({ version }) => version === patch);
+	({ limited, weapons } = banner[parseInt(phase) - 1]);
+	versionPatch = patch;
+	bannerPhase = parseInt(phase);
 };
 
 // WEAPONS DATA
 const getAllWeapons = (star) =>
 	weaponsDB.data
-		.filter(({ rarity }) => rarity === star)[0]
+		.find(({ rarity }) => rarity === star)
 		.list.map((arr) => {
 			arr.type = 'weapon';
 			arr.rarity = star;
@@ -45,7 +49,7 @@ const featuredWeapons = () =>
 // CHARACTER DATA
 const getAllChars = (star) =>
 	charsDB.data
-		.filter(({ rarity }) => rarity === star)[0]
+		.find(({ rarity }) => rarity === star)
 		.list.map((arr) => {
 			arr.type = 'character';
 			arr.rarity = star;
@@ -72,7 +76,7 @@ const featuredChars = (banner) => {
 	if (bannerNumberOnThisPeriod + 1 > 0) {
 		character = character[bannerNumberOnThisPeriod];
 	}
-	return getAllChars(5).filter(({ name }) => name === character.name)[0];
+	return getAllChars(5).find(({ name }) => name === character.name);
 };
 
 const rand = (array) => array[Math.floor(Math.random() * array.length)];
@@ -109,7 +113,6 @@ const dualBannerIdentifier = (wishResult, banner) => {
 	let [, num] = banner.split('limited');
 	num = num !== '' ? parseInt(num) : 0;
 	wishResult.dualBanner = num + 1;
-	console.log(wishResult);
 	return wishResult;
 };
 
@@ -194,6 +197,45 @@ const standardWish = (rarity) => {
 	return null;
 };
 
+/**
+ * Weapon Banner Wish
+ */
+const fatepoint = {
+	init() {
+		this.localFate = localFatePoint.init(versionPatch, bannerPhase);
+		return this;
+	},
+
+	check() {
+		const selectedCourse = this.localFate.getSelected();
+		if (selectedCourse === null) return { selectedCourse };
+		this.localFate = localFatePoint.init(versionPatch, bannerPhase, selectedCourse);
+		const localPoint = this.localFate.getPoint();
+		this.localPoint = localPoint;
+		if (localPoint !== 2) return { selectedCourse: null, localPoint };
+
+		/** Reset when Full Point */
+		this.localFate.remove();
+		return { selectedCourse, localPoint };
+	},
+
+	updater(obj) {
+		const selectedCourse = this.localFate.getSelected();
+		if (selectedCourse === null) return;
+		const resultIndex = weapons.featured.findIndex(({ name }) => obj.name === name);
+
+		if (selectedCourse === resultIndex) {
+			fatePoint.set(0);
+			fatepointCounterActive.set(false);
+			return this.localFate.remove();
+		}
+
+		const point = this.localPoint + 1;
+		fatePoint.set(point);
+		return this.localFate.set(point);
+	}
+};
+
 const weaponWish = (rarity) => {
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 4) {
@@ -203,15 +245,35 @@ const weaponWish = (rarity) => {
 		// If rate up character
 		return rand(rateupWeapons());
 	}
+
 	if (rarity === 5) {
-		// Rate On
+		const course = fatepoint.init();
+		/**
+		 * When user has 2 fatepoint, guaranteed to get weapon that already selected
+		 */
+		const { selectedCourse, localPoint } = course.check();
+		if (localPoint === 2) {
+			nextWeaponGuaranteed.set('no');
+			const result = featuredWeapons().find(
+				({ name }) => weapons.featured[selectedCourse].name === name
+			);
+			course.updater(result);
+			return result;
+		}
+
+		/**
+		 * Rate On Condition
+		 */
 		const weaponResultGuaranteed = rand(featuredWeapons());
 		if (nextWeaponGuaranteed.get() === 'yes') {
 			nextWeaponGuaranteed.set('no');
+			course.updater(weaponResultGuaranteed);
 			return weaponResultGuaranteed;
 		}
 
-		// Rate Off
+		/**
+		 * Rate Off Condition
+		 */
 		const item = [
 			{ type: 'featured', chance: 75 },
 			{ type: 'std', chance: 25 }
@@ -221,11 +283,13 @@ const weaponWish = (rarity) => {
 			const result = getStandard5StarWeapon();
 			if (featuredWeaponsName().includes(result.name)) nextWeaponGuaranteed.set('no');
 			else nextWeaponGuaranteed.set('yes');
+			course.updater(result);
 			return result;
 		}
 
 		// Win 50:50
 		nextWeaponGuaranteed.set('no');
+		course.updater(weaponResultGuaranteed);
 		return weaponResultGuaranteed;
 	}
 };
