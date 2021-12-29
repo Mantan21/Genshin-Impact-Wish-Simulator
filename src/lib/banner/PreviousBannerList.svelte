@@ -260,6 +260,7 @@
 		display: inline-block;
 		position: relative;
 		text-transform: capitalize;
+		color: #383b40;
 	}
 
 	h2 .gi-primo-star {
