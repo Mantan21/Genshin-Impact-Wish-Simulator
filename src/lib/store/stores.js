@@ -10,6 +10,11 @@ const patchVersion = writable('0.0');
 const bannerVersion = writable(0);
 const bannerActive = writable(0);
 const showBeginner = writable(true);
+const isFatepointSystem = writable(false);
+const fatePoint = writable(0);
+
+const showFatepointCounter = writable(0);
+const fatepointCounterActive = writable(false);
 
 const isAcquaintUsed = writable(true);
 
@@ -39,6 +44,10 @@ export {
 	patchVersion,
 	bannerVersion,
 	bannerActive,
+	isFatepointSystem,
+	fatePoint,
+	showFatepointCounter,
+	fatepointCounterActive,
 	isLoaded,
 	backsound,
 	showDisclaimer,

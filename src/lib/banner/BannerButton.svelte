@@ -158,11 +158,11 @@
 
 	/* mobile */
 	:global(.mobile) button {
-		transform: scale(0.85);
-		margin: 0.17rem 0;
+		transform: scale(0.83);
+		margin: 0.08rem 0;
 	}
 
 	:global(.mobile) button.active {
-		transform: scale(0.9);
+		transform: scale(0.86);
 	}
 </style>

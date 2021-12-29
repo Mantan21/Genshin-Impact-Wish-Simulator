@@ -1,7 +1,16 @@
 <script>
-	import { mobileMode, pageActive, stardust, starglitter } from '$lib/store/stores';
+	import {
+		bannerActive,
+		bannerList,
+		isFatepointSystem,
+		mobileMode,
+		pageActive,
+		stardust,
+		starglitter
+	} from '$lib/store/stores';
 	import Icon from '$lib/utility/Icon.svelte';
 	import RollButton from '$lib/banner/RollButton.svelte';
+	import FatepointButton from './fatepoint/FatepointButton.svelte';
 	import playSfx from '$lib/functions/audio';
 
 	const changePage = (page) => {
@@ -12,18 +21,24 @@
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
-	{#if !$mobileMode}
-		<div class="wish">
-			<div class="starglitter">
-				<Icon type="starglitter" />
-				<span> {$starglitter}</span>
+	<div
+		class="footer-info"
+		class:weapon={$bannerList[$bannerActive].type === 'weapon' && $isFatepointSystem}
+	>
+		{#if !$mobileMode}
+			<FatepointButton />
+			<div class="wish">
+				<div class="starglitter">
+					<Icon type="starglitter" />
+					<span> {$starglitter} </span>
+				</div>
+				<div class="stardust">
+					<Icon type="stardust" />
+					<span> {$stardust} </span>
+				</div>
 			</div>
-			<div class="stardust">
-				<Icon type="stardust" />
-				<span> {$stardust}</span>
-			</div>
-		</div>
-	{/if}
+		{/if}
+	</div>
 
 	<div class="row">
 		<div class="left">
@@ -42,11 +57,19 @@
 		position: relative;
 	}
 
-	.wish {
+	.footer-info {
 		position: absolute;
 		left: 5%;
-		top: -5px;
+		top: -5%;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
 	}
+
+	.footer-info.weapon {
+		top: -120%;
+	}
+
 	.wish > div {
 		display: inline-flex;
 		align-items: center;
@@ -126,6 +149,9 @@
 		}
 	}
 	@media screen and (max-width: 550px) {
+		.footer-info.weapon {
+			top: -87%;
+		}
 		.left {
 			width: 100%;
 		}

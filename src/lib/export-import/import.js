@@ -7,14 +7,14 @@ const { addHistory, clearIDB } = HistoryIDB;
 const { rows } = IDBdata.data.data[0];
 
 const getDatafromDB = (type, star) =>
-	(type === 'weapon' ? weaponsDB : charsDB).data.filter(({ rarity }) => rarity === star)[0].list;
+	(type === 'weapon' ? weaponsDB : charsDB).data.find(({ rarity }) => rarity === star).list;
 
 /**
  * restore old idb for debuging
  */
 export const importAndReplace = async () => {
 	await clearIDB();
-	rows.forEach((d) => addHistory(d));
+	await rows.forEach(async (d) => await addHistory(d));
 };
 
 /**
@@ -22,12 +22,12 @@ export const importAndReplace = async () => {
  */
 const updateIDBfromVersion = {
 	2.3: function () {
-		rows.forEach((data) => {
+		rows.forEach(async (data) => {
 			const { name, rarity, type } = data;
 			const { vision, weaponType } = getDatafromDB(type, rarity).find((item) => item.name === name);
 			if (vision) data.vision = vision;
 			if (weaponType) data.weaponType = weaponType;
-			addHistory(data);
+			await addHistory(data);
 		});
 	}
 };

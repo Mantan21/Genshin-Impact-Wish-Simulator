@@ -33,6 +33,7 @@
 			"rateup": ["barbara", "xiangling", "gorou"]
 		},
 		"weapons": {
+			"fatepointsystem": true,
 			"featured": [
 				{
 					"name": "skyward-harp",
