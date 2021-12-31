@@ -1,7 +1,7 @@
 {
-	"version": "2.3",
-	"bannerNumber": 2,
-	"storageVersion": "2.3.1",
+	"version": "2.4",
+	"wishPhase": 1,
+	"storageVersion": "2.4.0",
 	"banner": {
 		"beginner": {
 			"character": {
@@ -21,44 +21,6 @@
 				}
 			},
 			"characters": ["qiqi", "keqing", "diluc", "mona", "jean"]
-		},
-		"limited": {
-			"character": {
-				"name": "arataki-itto",
-				"style": {
-					"main": "width: 190%;top: 30%;left: 50%;",
-					"active": "width: 190%;top: 20%;left: 50%;"
-				}
-			},
-			"rateup": ["barbara", "xiangling", "gorou"]
-		},
-		"weapons": {
-			"fatepointsystem": true,
-			"featured": [
-				{
-					"name": "skyward-harp",
-					"type": "bow",
-					"style": {
-						"main": "top: 10%;width: 80%;;left: 35%;",
-						"active": "top: 0%;width: 80%;left: 35%;"
-					}
-				},
-				{
-					"name": "redhorn-stonethresher",
-					"type": "claymore",
-					"style": {
-						"main": "top: 10%;width: 80%;;left: 60%;",
-						"active": "top: 0%;width: 80%;left: 60%;"
-					}
-				}
-			],
-			"rateup": [
-				"the-alley-flash",
-				"mitternachts-waltz",
-				"sacrificial-fragments",
-				"favonius-lance",
-				"the-bell"
-			]
 		}
 	}
 }

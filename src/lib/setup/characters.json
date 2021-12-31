@@ -87,6 +87,12 @@
 					"style": "height: 190%;left: 65%;"
 				},
 				{
+					"name": "shenhe",
+					"limited": true,
+					"vision": "cryo",
+					"style": "height: 190%;left: -15%;top: 78%;"
+				},
+				{
 					"name": "tartaglia",
 					"vision": "hydro",
 					"limited": true,
@@ -224,6 +230,12 @@
 					"name": "yanfei",
 					"vision": "pyro",
 					"style": "left: 160%;height: 170%;top: 70%;"
+				},
+				{
+					"name": "yunjin",
+					"vision": "geo",
+					"style": "height: 165%;left: 70%;",
+					"limited": true
 				}
 			]
 		}

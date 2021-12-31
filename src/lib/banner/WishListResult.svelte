@@ -9,9 +9,15 @@
 	export let preview = false;
 	export let wishlist = [];
 
-	const sort = (a, b) => {
+	const sortByType = (a, b) => {
 		if (a.type > b.type) return 1;
 		if (b.type > a.type) return -1;
+		return 0;
+	};
+
+	const sortByName = (a, b) => {
+		if (a.name > b.name) return 1;
+		if (a.name < b.name) return -1;
 		return 0;
 	};
 
@@ -22,16 +28,14 @@
 			return;
 		}
 
-		const fiveStar = $wishes
-			.filter(({ rarity }) => rarity === 5)
-			.sort((a, b) => b.isNew - a.isNew)
-			.sort(sort);
-		const fourStar = $wishes
-			.filter(({ rarity }) => rarity === 4)
-			.sort((a, b) => b.isNew - a.isNew)
-			.sort(sort);
+		const item = (star) =>
+			$wishes
+				.filter(({ rarity }) => rarity === star)
+				.sort((a, b) => b.isNew - a.isNew)
+				.sort(sortByType)
+				.sort(sortByName);
 		const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
-		sortedWish = [...fiveStar, ...fourStar, ...threeStar];
+		sortedWish = [...item(5), ...item(4), ...threeStar];
 	};
 
 	$: getList(preview, wishlist);

@@ -12,6 +12,11 @@
 					"weaponType": "sword"
 				},
 				{
+					"name": "calamity-queller",
+					"weaponType": "polearm",
+					"limited": true
+				},
+				{
 					"name": "elegy-for-the-end",
 					"weaponType": "bow",
 					"limited": true

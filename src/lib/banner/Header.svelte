@@ -5,7 +5,7 @@
 	import FatepointPopup from './fatepoint/FatepointPopup.svelte';
 
 	import setup from '$lib/setup/wish-setup.json';
-	import previous from '$lib/setup/previous.json';
+	import previous from '$lib/setup/wishlist.json';
 	import playSfx from '$lib/functions/audio';
 	import {
 		patchVersion,
@@ -24,10 +24,14 @@
 		isFatepointSystem
 	} from '$lib/store/stores';
 
-	let { beginner, limited, weapons, standard } = setup.banner;
+	const { data } = previous;
+
+	const listOfWishBanner = data.find(({ version }) => version === setup.version);
+	let { limited, weapons } = listOfWishBanner.banner[setup.wishPhase - 1];
+	let { beginner, standard } = setup.banner;
 	let limitedChar = limited.character;
 	$: if ($patchVersion !== '0.0') {
-		const { banner } = previous.data.find(({ version }) => version === $patchVersion);
+		const { banner } = data.find(({ version }) => version === $patchVersion);
 		({ limited, weapons } = banner[$bannerPhase - 1]);
 		limitedChar = limited.character;
 	}
@@ -36,7 +40,7 @@
 	$: {
 		list = $showBeginner ? [{ type: 'beginner', character: beginner.character }] : [];
 		if (limitedChar.length) {
-			limitedChar.forEach((character) => list.push({ type: 'limited', character }));
+			limitedChar.forEach((character, i) => list.push({ type: 'limited', character, index: i }));
 		} else list.push({ type: 'limited', character: limitedChar });
 		list.push({ type: 'weapon', weapons: weapons.featured });
 		list.push({ type: 'standard', character: standard.character });

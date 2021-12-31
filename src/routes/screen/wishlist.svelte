@@ -4,6 +4,7 @@
 	import weapons from '$lib/setup/weapons.json';
 	import characters from '$lib/setup/characters.json';
 	import WishListResult from '$lib/banner/WishListResult.svelte';
+	import { APP_TITLE } from '$lib/env';
 	let wishlist = [
 		{
 			type: 'character',
@@ -93,6 +94,8 @@
 		}
 	});
 </script>
+
+<title> Wish List Result | {APP_TITLE} </title>
 
 <div class="wish-result">
 	<WishListResult preview {wishlist} />
