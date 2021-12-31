@@ -2,7 +2,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		bannerList,
-		bannerVersion,
+		bannerPhase,
 		fatePoint,
 		fatepointCounterActive,
 		patchVersion,
@@ -39,7 +39,7 @@
 
 	const setCourse = () => {
 		if (targetActive === null) return;
-		const localFate = localFatePoint.init($patchVersion, $bannerVersion, targetActive);
+		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
 		localFate.set(0);
 		playSfx();
 		handleClose();
@@ -51,7 +51,7 @@
 	};
 
 	const confirmCancel = () => {
-		const localFate = localFatePoint.init($patchVersion, $bannerVersion, targetActive);
+		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
 		targetActive = null;
 		fatepointCounterActive.set(false);
 		fatePoint.set(0);
@@ -62,7 +62,7 @@
 	};
 
 	const checkSelected = () => {
-		const localFate = localFatePoint.init($patchVersion, $bannerVersion, targetActive);
+		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
 		const selected = localFate.getSelected();
 		if (selected === null) return;
 		targetActive = selected;

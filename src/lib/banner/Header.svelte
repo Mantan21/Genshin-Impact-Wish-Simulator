@@ -9,7 +9,7 @@
 	import playSfx from '$lib/functions/audio';
 	import {
 		patchVersion,
-		bannerVersion,
+		bannerPhase,
 		acquaint,
 		bannerActive,
 		intertwined,
@@ -28,7 +28,7 @@
 	let limitedChar = limited.character;
 	$: if ($patchVersion !== '0.0') {
 		const { banner } = previous.data.find(({ version }) => version === $patchVersion);
-		({ limited, weapons } = banner[$bannerVersion - 1]);
+		({ limited, weapons } = banner[$bannerPhase - 1]);
 		limitedChar = limited.character;
 	}
 

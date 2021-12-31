@@ -2,7 +2,7 @@
 	import {
 		bannerActive,
 		bannerList,
-		bannerVersion,
+		bannerPhase,
 		fatePoint,
 		isFatepointSystem,
 		patchVersion,
@@ -25,7 +25,7 @@
 		fatePoint.set(point);
 	};
 
-	$: checkFatepoint($patchVersion, $bannerVersion);
+	$: checkFatepoint($patchVersion, $bannerPhase);
 </script>
 
 {#if $isFatepointSystem && $bannerList[$bannerActive].type === 'weapon'}
