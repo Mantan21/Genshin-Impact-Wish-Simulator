@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { dev } from '$app/env';
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 	import Loader from '$lib/utility/Loader.svelte';
@@ -77,7 +78,7 @@
 			viewportHeight.set(window.innerHeight);
 		});
 
-		// document.addEventListener('contextmenu', (e) => e.preventDefault());
+		if (!dev) document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>
 

@@ -3,7 +3,7 @@ import weaponsDB from '$lib/setup/weapons.json';
 import wishSetup from '$lib/setup/wish-setup.json';
 import previous from '$lib/setup/previous.json';
 import {
-	bnversion,
+	localBannerVersion,
 	beginnerRoll,
 	beginnerAlreadyGuaranteed,
 	nextGuaranteed,
@@ -18,7 +18,7 @@ let versionPatch;
 let bannerPhase;
 
 const checkBanner = () => {
-	const localVersion = bnversion.get();
+	const localVersion = localBannerVersion.get();
 	if (!localVersion) return;
 
 	const [patch, phase] = localVersion.split('-');
