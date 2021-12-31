@@ -79,7 +79,7 @@ const myFunds = {
 	}
 };
 
-const bnversion = {
+const localBannerVersion = {
 	set(patch, phase) {
 		localStorage.setItem('version', `${patch}-${phase}`);
 	},
@@ -155,7 +155,7 @@ export {
 	nextGuaranteed,
 	nextWeaponGuaranteed,
 	myFunds,
-	bnversion,
+	localBannerVersion,
 	firstShare,
 	localFatePoint
 };

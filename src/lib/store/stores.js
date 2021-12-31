@@ -7,7 +7,7 @@ const showDisclaimer = writable(true);
 
 // Banner
 const patchVersion = writable('0.0');
-const bannerVersion = writable(0);
+const bannerPhase = writable(0);
 const bannerActive = writable(0);
 const showBeginner = writable(true);
 const isFatepointSystem = writable(false);
@@ -42,7 +42,7 @@ const acquaint = writable(0);
 export {
 	pageActive,
 	patchVersion,
-	bannerVersion,
+	bannerPhase,
 	bannerActive,
 	isFatepointSystem,
 	fatePoint,
