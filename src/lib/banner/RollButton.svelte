@@ -32,7 +32,8 @@
 	let showExchangePopup = false;
 	let rollCount = 0;
 
-	$: bannerActiveType = $bannerList[$bannerActive].type;
+	$: activeBanner = $bannerList[$bannerActive];
+	$: bannerActiveType = activeBanner.type + (isNaN(activeBanner.index) ? '' : activeBanner.index);
 	$: multiRollPrice = bannerActiveType === 'beginner' ? 8 : 10;
 
 	const showOutputHandle = (rarity, rolltype = 'tenroll') => {

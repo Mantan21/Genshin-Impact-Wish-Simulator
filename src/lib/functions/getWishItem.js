@@ -1,7 +1,7 @@
 import charsDB from '$lib/setup/characters.json';
 import weaponsDB from '$lib/setup/weapons.json';
 import wishSetup from '$lib/setup/wish-setup.json';
-import previous from '$lib/setup/previous.json';
+import previous from '$lib/setup/wishlist.json';
 import {
 	localBannerVersion,
 	beginnerRoll,
@@ -13,7 +13,9 @@ import {
 import { fatePoint, fatepointCounterActive, showBeginner } from '$lib/store/stores';
 import prob from './prob';
 
-let { standard, beginner, limited, weapons } = wishSetup.banner;
+const listOfWishBanner = previous.data.find(({ version }) => version === wishSetup.version);
+let { weapons, limited } = listOfWishBanner.banner[wishSetup.wishPhase - 1];
+let { standard, beginner } = wishSetup.banner;
 let versionPatch;
 let bannerPhase;
 
@@ -73,7 +75,7 @@ const featuredChars = (banner) => {
 	let { character } = limited;
 	// Check is it double banner or not
 	const bannerNumberOnThisPeriod = parseInt(banner.replace('limited', ''));
-	if (bannerNumberOnThisPeriod + 1 > 0) {
+	if (!isNaN(bannerNumberOnThisPeriod)) {
 		character = character[bannerNumberOnThisPeriod];
 	}
 	return getAllChars(5).find(({ name }) => name === character.name);

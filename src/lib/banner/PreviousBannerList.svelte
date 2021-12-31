@@ -8,7 +8,7 @@
 	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
-	import banners from '$lib/setup/previous.json';
+	import banners from '$lib/setup/wishlist.json';
 	import { APP_TITLE } from '$lib/env';
 
 	const { data } = banners;
@@ -194,7 +194,11 @@
 							<a
 								class="item"
 								href="/"
-								title="banner event {patch}"
+								title="{limited.character.length
+									? getName(limited.character[0].name) + ', ' + getName(limited.character[1].name)
+									: getName(limited.character.name)} & {getName(weapons.featured[0].name) +
+									', ' +
+									getName(weapons.featured[1].name)}"
 								on:click|preventDefault={() => selectBanner(patch, version + 1)}
 								in:fade
 							>

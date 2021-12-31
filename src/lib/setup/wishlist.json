@@ -1,6 +1,60 @@
 {
 	"data": [
 		{
+			"version": "2.4",
+			"banner": [
+				{
+					"limited": {
+						"character": [
+							{
+								"name": "shenhe",
+								"style": {
+									"main": "width: 180%;top: 20%;left: 30%;",
+									"active": "width: 180%;top: 10%;left: 30%;"
+								}
+							},
+							{
+								"name": "xiao",
+								"style": {
+									"main": "width: 140%;top: 30%;left: 50%;",
+									"active": "width: 140%;top: 20%;left: 50%;"
+								}
+							}
+						],
+						"rateup": ["yunjin", "ningguang", "chongyun"]
+					},
+					"weapons": {
+						"fatepointsystem": true,
+						"featured": [
+							{
+								"name": "calamity-queller",
+								"type": "polearm",
+								"style": {
+									"main": "width: 80%;top: 10%;left: 30%;",
+									"active": "width: 80%;top: 0;left: 30%;"
+								}
+							},
+							{
+								"name": "primordial-jade-winged-spear",
+								"type": "polearm",
+								"style": {
+									"main": "width: 80%;top: 10%;left: 60%;",
+									"active": "width: 80%;top: 0;left: 60%;"
+								}
+							}
+						],
+						"rateup": [
+							"favonius-warbow",
+							"the-widsith",
+							"favonius-greatsword",
+							"lithic-spear",
+							"the-flute"
+						]
+					}
+				}
+			]
+		},
+		{
 			"version": "2.3",
 			"banner": [
 				{

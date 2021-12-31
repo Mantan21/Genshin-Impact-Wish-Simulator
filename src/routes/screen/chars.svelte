@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 
@@ -41,6 +42,8 @@
 		}
 	});
 </script>
+
+<title> Character Result | {APP_TITLE} </title>
 
 <div class="wish-result">
 	<div class="container">
