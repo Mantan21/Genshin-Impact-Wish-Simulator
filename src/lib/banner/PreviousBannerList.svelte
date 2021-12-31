@@ -3,8 +3,9 @@
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { bannerVersion, patchVersion, pageActive, bannerActive } from '$lib/store/stores';
-	import { bnversion } from '$lib/store/localstore';
+
+	import { bannerPhase, patchVersion, pageActive, bannerActive } from '$lib/store/stores';
+	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import banners from '$lib/setup/previous.json';
@@ -99,8 +100,8 @@
 		playSfx();
 		bannerActive.set(0);
 		patchVersion.set(patch);
-		bannerVersion.set(banner);
-		bnversion.set(patch, banner);
+		bannerPhase.set(banner);
+		localBannerVersion.set(patch, banner);
 		pageActive.set('index');
 	};
 
