@@ -1,8 +1,10 @@
 # Realistic Genshin Impact Wish Simulator
 
-Most Realistic Genshin Impact Wish Simulator for web version. Include starfall and reveal animation. Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
+Most Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
 
 ![Screenshot](static/assets/images/meta-picture.jpg)
+![Screenshot](static/assets/images/mobile-landing.jpeg)
+![Screenshot](static/assets/images/mobile-mobile-weapon.jpeg)
 ![Screenshot](static/assets/images/epitomized-path.jpg)
 
 ## Developing
@@ -39,9 +41,10 @@ npm run build
 9. Shared Pity with previous banner, so user can continuously gacha on diferent banner without reset pity.
 10. Different banner type has different **Gacha History**
 11. **Inventory** to show all items ( characters and weapons ) that already owned by gacha
-12. All user data will saves to localstorage and IndexedDB.
-13. Screenshot and download wish result localy.
-14. Link generator if user want to share their gacha result throught internet.
+12. Responsive Layout and mobile friendly both landscape or portrait orientation.
+13. All user data will saves to localstorage and IndexedDB.
+14. Screenshot and download wish result localy.
+15. Link generator if user want to share their gacha result throught internet.
 
 ---
 
