@@ -72,7 +72,8 @@
 				},
 				{
 					"name": "skyward-atlas",
-					"weaponType": "catalyst"
+					"weaponType": "catalyst",
+					"style": "left: 80%"
 				},
 				{
 					"name": "skyward-blade",
