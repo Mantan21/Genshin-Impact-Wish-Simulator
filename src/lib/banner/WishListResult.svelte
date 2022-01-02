@@ -346,7 +346,7 @@
 		height: 100%;
 	}
 	.pic > .wishpic.catalyst-item {
-		height: 40% !important;
+		height: 35% !important;
 	}
 
 	.stella {
