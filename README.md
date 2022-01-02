@@ -2,10 +2,16 @@
 
 Most Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
 
+## Desktop
+
 ![Screenshot](static/assets/images/meta-picture.jpg)
-![Screenshot](static/assets/images/mobile-landing.jpeg)
-![Screenshot](static/assets/images/mobile-mobile-weapon.jpeg)
 ![Screenshot](static/assets/images/epitomized-path.jpg)
+
+## Mobile
+
+![Screenshot](static/assets/images/mobile-weapon.jpeg)
+
+---
 
 ## Developing
 
