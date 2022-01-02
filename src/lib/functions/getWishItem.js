@@ -13,11 +13,12 @@ import {
 import { fatePoint, fatepointCounterActive, showBeginner } from '$lib/store/stores';
 import prob from './prob';
 
-const listOfWishBanner = previous.data.find(({ version }) => version === wishSetup.version);
-let { weapons, limited } = listOfWishBanner.banner[wishSetup.wishPhase - 1];
-let { standard, beginner } = wishSetup.banner;
-let versionPatch;
-let bannerPhase;
+let { wishPhase, banner } = wishSetup;
+let versionPatch = wishSetup.version;
+
+let { standard, beginner } = banner;
+const listOfWishBanner = previous.data.find(({ version }) => version === versionPatch);
+let { weapons, limited } = listOfWishBanner.banner[wishPhase - 1];
 
 const checkBanner = () => {
 	const localVersion = localBannerVersion.get();
@@ -27,7 +28,7 @@ const checkBanner = () => {
 	const { banner } = previous.data.find(({ version }) => version === patch);
 	({ limited, weapons } = banner[parseInt(phase) - 1]);
 	versionPatch = patch;
-	bannerPhase = parseInt(phase);
+	wishPhase = parseInt(phase);
 };
 
 // WEAPONS DATA
@@ -204,14 +205,14 @@ const standardWish = (rarity) => {
  */
 const fatepoint = {
 	init() {
-		this.localFate = localFatePoint.init(versionPatch, bannerPhase);
+		this.localFate = localFatePoint.init(versionPatch, wishPhase);
 		return this;
 	},
 
 	check() {
 		const selectedCourse = this.localFate.getSelected();
 		if (selectedCourse === null) return { selectedCourse };
-		this.localFate = localFatePoint.init(versionPatch, bannerPhase, selectedCourse);
+		this.localFate = localFatePoint.init(versionPatch, wishPhase, selectedCourse);
 		const localPoint = this.localFate.getPoint();
 		this.localPoint = localPoint;
 		if (localPoint !== 2) return { selectedCourse: null, localPoint };

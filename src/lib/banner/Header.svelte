@@ -4,8 +4,8 @@
 	import FatepointButton from './fatepoint/FatepointButton.svelte';
 	import FatepointPopup from './fatepoint/FatepointPopup.svelte';
 
-	import setup from '$lib/setup/wish-setup.json';
-	import previous from '$lib/setup/wishlist.json';
+	import { version, wishPhase, banner } from '$lib/setup/wish-setup.json';
+	import { data } from '$lib/setup/wishlist.json';
 	import playSfx from '$lib/functions/audio';
 	import {
 		patchVersion,
@@ -24,14 +24,12 @@
 		isFatepointSystem
 	} from '$lib/store/stores';
 
-	const { data } = previous;
-
-	const listOfWishBanner = data.find(({ version }) => version === setup.version);
-	let { limited, weapons } = listOfWishBanner.banner[setup.wishPhase - 1];
-	let { beginner, standard } = setup.banner;
+	const listOfWishBanner = data.find((d) => d.version === version);
+	let { limited, weapons } = listOfWishBanner.banner[wishPhase - 1];
+	let { beginner, standard } = banner;
 	let limitedChar = limited.character;
-	$: if ($patchVersion !== '0.0') {
-		const { banner } = data.find(({ version }) => version === $patchVersion);
+	$: if ($patchVersion !== version) {
+		const { banner } = data.find((d) => d.version === $patchVersion);
 		({ limited, weapons } = banner[$bannerPhase - 1]);
 		limitedChar = limited.character;
 	}

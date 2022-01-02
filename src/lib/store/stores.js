@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import { version, wishPhase } from '$lib/setup/wish-setup.json';
 
 const pageActive = writable('index');
 const backsound = writable(false);
@@ -6,8 +7,8 @@ const isLoaded = writable(false);
 const showDisclaimer = writable(true);
 
 // Banner
-const patchVersion = writable('0.0');
-const bannerPhase = writable(0);
+const patchVersion = writable(version);
+const bannerPhase = writable(wishPhase);
 const bannerActive = writable(0);
 const showBeginner = writable(true);
 const isFatepointSystem = writable(false);

@@ -7,7 +7,7 @@
 	import { pageActive, bannerPhase, patchVersion } from '$lib/store/stores';
 	import { updateSite } from '$lib/export-import/import';
 	import { localBannerVersion } from '$lib/store/localstore';
-	import setup from '$lib/setup/wish-setup.json';
+	import { storageVersion } from '$lib/setup/wish-setup.json';
 
 	// Components
 	import MainBanner from '$lib/banner/MainBanner.svelte';
@@ -20,7 +20,6 @@
 		const localstoreVersion = localStorage.getItem('storageVersion');
 		if (localstoreVersion) updateSite(localstoreVersion);
 
-		const { storageVersion } = setup;
 		if (localstoreVersion !== storageVersion) {
 			localBannerVersion.clear();
 			localStorage.setItem('storageVersion', storageVersion);
@@ -28,8 +27,8 @@
 
 		const localVersion = localBannerVersion.get();
 		if (!localVersion) return;
-		const [patch, version] = localVersion.split('-');
-		bannerPhase.set(parseInt(version));
+		const [patch, phase] = localVersion.split('-');
+		bannerPhase.set(parseInt(phase));
 		patchVersion.set(patch);
 	};
 
