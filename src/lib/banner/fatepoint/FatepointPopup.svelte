@@ -72,10 +72,14 @@
 	};
 
 	let content;
-	// eslint-disable-next-line no-undef
-	$: if ($showFatepointCounter && globalThis.window) {
-		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-		checkSelected();
+	$: if ($showFatepointCounter) {
+		// eslint-disable-next-line no-undef
+		if (globalThis.window) {
+			OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+			checkSelected();
+		}
+	} else {
+		fatepointCounterActive.set(false);
 	}
 
 	/**
