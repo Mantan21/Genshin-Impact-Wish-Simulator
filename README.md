@@ -1,6 +1,6 @@
 # Realistic Genshin Impact Wish Simulator
 
-Most Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
+I'm not expert, I can't write clean code, but I try to create this Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Please Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
 
 ## Desktop
 
@@ -33,6 +33,10 @@ Before creating a production version of your app, install an [adapter](https://k
 ```bash
 npm run build
 ```
+
+## Deploying
+
+Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env`, please change the variables if needed. After that, if you want to serving some assets throught cdn, you can go to `svelte.config.js` provide your Github Username, Repositories that you use to save your assets and which branch it is the site will use free cdn service for free, if you want to use another cdn service, please do setup yourself
 
 ## Features
 
