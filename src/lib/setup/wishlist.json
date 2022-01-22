@@ -51,6 +51,55 @@
 							"the-flute"
 						]
 					}
+				},
+				{
+					"limited": {
+						"character": [
+							{
+								"name": "zhongli",
+								"style": {
+									"main": "width: 120%;top: 25%;left: 70%;",
+									"active": "width: 120%;top: 15%;left: 70%;"
+								}
+							},
+							{
+								"name": "ganyu",
+								"style": {
+									"main": "width: 200%;top: 25%;",
+									"active": "width: 200%;top: 15%;"
+								}
+							}
+						],
+						"rateup": ["xingqiu", "yanfei", "beidou"]
+					},
+					"weapons": {
+						"fatepointsystem": true,
+						"featured": [
+							{
+								"name": "vortex-vanquisher",
+								"type": "polearm",
+								"style": {
+									"main": "width: 80%;top: 20%;left: 25%;",
+									"active": "width: 80%;top: 10%;left: 25%;"
+								}
+							},
+							{
+								"name": "amos-bow",
+								"type": "bow",
+								"style": {
+									"main": "width: 70%;left: 68%;top: 0;",
+									"active": "width: 70%;left: 68%;top: -10%;"
+								}
+							}
+						],
+						"rateup": [
+							"sacrificial-bow",
+							"lithic-blade",
+							"favonius-codex",
+							"favonius-sword",
+							"dragon_s-bane"
+						]
+					}
 				}
 			]
 		},
