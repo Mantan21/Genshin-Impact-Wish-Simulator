@@ -28,7 +28,7 @@
 	let { limited, weapons } = listOfWishBanner.banner[wishPhase - 1];
 	let { beginner, standard } = banner;
 	let limitedChar = limited.character;
-	$: if ($patchVersion !== version) {
+	$: if ($patchVersion !== version || $bannerPhase !== wishPhase) {
 		const { banner } = data.find((d) => d.version === $patchVersion);
 		({ limited, weapons } = banner[$bannerPhase - 1]);
 		limitedChar = limited.character;
@@ -91,7 +91,7 @@
 				{/if}
 			</div>
 
-			<button class="close" on:click={previousClick}>
+			<button class="close" on:click={previousClick} title="Change Banner">
 				<i class="gi-close" />
 			</button>
 		</div>
