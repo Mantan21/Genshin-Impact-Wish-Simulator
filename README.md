@@ -2,14 +2,27 @@
 
 I'm not expert, I can't write clean code, but I try to create this Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Please Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
 
-## Desktop
+## Screenshots
 
-![Screenshot](static/assets/images/meta-picture.jpg)
-![Screenshot](static/assets/images/epitomized-path.jpg)
+#### Main Banner
 
-## Mobile
+![Main Banner](static/assets/images/meta-picture.jpg)
 
-![Screenshot](static/assets/images/mobile-weapon.jpeg)
+#### Layout on Mobile Version
+
+![Weapon Banner](static/assets/images/mobile-weapon.jpeg)
+
+#### Epitomized Path
+
+![Epitomized Path](static/assets/images/epitomized-path.jpg)
+
+#### Inventory
+
+![Weapon Banner](static/assets/images/inventory.jpg)
+
+#### Switch banner
+
+![Weapon Banner](static/assets/images/switch-banner.jpg)
 
 ---
 
