@@ -1,7 +1,7 @@
 {
 	"version": "2.4",
-	"wishPhase": 1,
-	"storageVersion": "2.4.0",
+	"wishPhase": 2,
+	"storageVersion": "2.4.2",
 	"banner": {
 		"beginner": {
 			"character": {
