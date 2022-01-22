@@ -1,6 +1,6 @@
 # Realistic Genshin Impact Wish Simulator
 
-I'm not expert, I can't write clean code, but I try to create this Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation. Please Visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
+I'm not expert, I can't write clean code, but I try to create this Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation.
 
 ## Screenshots
 
@@ -23,6 +23,8 @@ I'm not expert, I can't write clean code, but I try to create this Realistic Gen
 #### Switch banner
 
 ![Weapon Banner](static/assets/images/switch-banner.jpg)
+
+> For more preview, please visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
 
 ---
 
