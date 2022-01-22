@@ -22,7 +22,7 @@
 		bannerList
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
-	import { HOST, PROTOCOL, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
+	import { HOST, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import '../app.css';
 
 	let preview = $page.path.split('/')[1] === 'screen';
@@ -85,25 +85,21 @@
 <svelte:head>
 	<meta name="title" content={APP_TITLE} />
 	<meta property="og:title" content={APP_TITLE} />
-	<meta property="twitter:url" content="{PROTOCOL}://{HOST}" />
+	<meta property="twitter:url" content={HOST} />
 	<meta property="twitter:title" content={APP_TITLE} />
 
 	<meta name="keywords" content={KEYWORDS} />
 	<meta name="description" content={DESCRIPTION} />
 	<meta property="og:description" content={DESCRIPTION} />
-	<meta property="og:url" content="{PROTOCOL}://{HOST}" />
-	<meta property="og:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
+	<meta property="og:url" content={HOST} />
+	<meta property="og:image" content="/assets/images/meta-picture.jpg" />
 
 	<meta property="twitter:description" content={DESCRIPTION} />
-	<meta name="twitter:image:src" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
-	<meta property="twitter:image" content="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg" />
+	<meta name="twitter:image:src" content="/assets/images/meta-picture.jpg" />
+	<meta property="twitter:image" content="/assets/images/meta-picture.jpg" />
 
-	<meta property="al:web:url" content="{PROTOCOL}://{HOST}" />
-	<link
-		rel="fluid-icon"
-		href="{PROTOCOL}://{HOST}/assets/images/meta-picture.jpg"
-		title={APP_TITLE}
-	/>
+	<meta property="al:web:url" content={HOST} />
+	<link rel="fluid-icon" href="/assets/images/meta-picture.jpg" title={APP_TITLE} />
 </svelte:head>
 
 <Loader />
