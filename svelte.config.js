@@ -12,9 +12,7 @@ const githubRepo = '';
 const githubBranch = '';
 
 const cdn_on = process.env.NODE_ENV !== 'development' && statically;
-const cdn = cdn_on
-	? `https://cdn.statically.io/gh/${githubUser}/${githubRepo}/${githubBranch}/`
-	: '';
+const cdn_url = `https://cdn.statically.io/gh/${githubUser}/${githubRepo}/${githubBranch}/static/assets/`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -22,9 +20,11 @@ const config = {
 		adapter: vercel(),
 		target: '#svelte'
 	},
-	preprocess: preprocess({
-		replace: [[new RegExp('/assets/', 'gi'), `${cdn}static/assets/`]]
-	})
+	preprocess: cdn_on
+		? preprocess({
+				replace: [[new RegExp('/assets/', 'gi'), `${cdn_url}`]]
+		  })
+		: null
 };
 
 export default config;
