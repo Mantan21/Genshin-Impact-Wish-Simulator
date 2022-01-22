@@ -3,7 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { toBlob } from 'html-to-image';
 	import { saveAs } from 'file-saver';
-	import { PROTOCOL, HOST } from '$lib/env';
+	import { HOST } from '$lib/env';
 	import { primogem } from '$lib/store/stores';
 	import { firstShare, myFunds } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
@@ -21,7 +21,7 @@
 
 	let blob;
 	let url = '/assets/images/meta-picture.jpg';
-	$: shareLink = `${PROTOCOL}://${HOST}/screen/${page}/?a=${encodedData}`;
+	$: shareLink = `${HOST}/screen/${page}/?a=${encodedData}`;
 
 	onMount(() => {
 		isFirstShare = firstShare.check();
