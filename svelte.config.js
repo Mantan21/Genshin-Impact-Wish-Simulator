@@ -6,10 +6,10 @@ import preprocess from 'svelte-preprocess';
  */
 
 // Statically Configuration
-const statically = false; // set true to use CDN
-const githubUser = '';
-const githubRepo = '';
-const githubBranch = '';
+const statically = true; // set true to use CDN
+const githubUser = 'AguzzTN54';
+const githubRepo = 'Genshin-Impact-Wish-Simulator';
+const githubBranch = 'master';
 
 const cdn_on = process.env.NODE_ENV !== 'development' && statically;
 const cdn_url = `https://cdn.statically.io/gh/${githubUser}/${githubRepo}/${githubBranch}/static/assets/`;
