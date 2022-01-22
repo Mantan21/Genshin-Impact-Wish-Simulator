@@ -36,10 +36,10 @@
 			<div style="height: .5rem" />
 		</div>
 		<p class="sp">
-			If you find any bugs or problems, please report an issue to <a
-				href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
-				target="_blank"
-			>
+			If You want to Switch to previous banner, you can click on <span> (x)</span> button on the top
+			Right of the page. <br />
+			ND If you find any bugs or problems, please report an issue to
+			<a href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator" target="_blank">
 				Github here
 			</a>
 		</p>
