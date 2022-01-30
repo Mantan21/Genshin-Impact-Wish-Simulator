@@ -421,7 +421,19 @@
 		background: linear-gradient(#4a5265, #4a5265) 0 / var(--sx) 100% no-repeat #ccc;
 		border-radius: 10px;
 	}
-	[type='range']::-moz-range-track,
+	[type='range']::-moz-range-track {
+		box-sizing: border-box;
+		border-radius: 10px;
+		width: 100%;
+		height: 0.4em;
+		background: #ccc;
+	}
+
+	/* duplicated because browsers ignore
+	 * the whole selector when they see
+	 * non-standard rules
+	 * (FF 96, Chrome 97)
+	 */
 	[type='range']::-ms-track {
 		box-sizing: border-box;
 		border: none;
@@ -429,14 +441,36 @@
 		height: 0.4em;
 		background: #ccc;
 	}
-	[type='range']::-moz-range-progress,
+	
+	[type='range']::-moz-range-progress {
+		height: 0.4em;
+		border-radius: 10px;
+		background: #4a5265;
+	}
+
 	[type='range']::-ms-fill-lower {
 		height: 0.4em;
 		background: #ccc;
 	}
+
 	[type='range']::-webkit-slider-thumb {
 		box-sizing: border-box;
 		border: none;
+		border-radius: 0;
+		width: 0.75em;
+		height: 0.75em;
+		background: #4a5265;
+		margin-top: -0.22rem;
+		transform: rotate(45deg);
+		border: 0.15em solid #ece6de;
+		outline: 0.15em solid #4a5265;
+		box-shadow: 0 0 6px #ece6de;
+	}
+
+	[type='range']::-moz-range-thumb {
+		box-sizing: border-box;
+		border: none;
+		border-radius: 0;
 		width: 0.75em;
 		height: 0.75em;
 		background: #4a5265;
