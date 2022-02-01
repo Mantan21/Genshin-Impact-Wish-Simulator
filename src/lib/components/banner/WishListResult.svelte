@@ -3,8 +3,8 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { showWish, wishes, backsound } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import Icon from '$lib/utility/Icon.svelte';
-	import Share from '$lib/utility/ShareScreenshot.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
+	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let preview = false;
 	export let wishlist = [];

@@ -12,9 +12,9 @@
 	import playSfx from '$lib/functions/audio';
 
 	// Component
-	import Icon from '$lib/utility/Icon.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
-	import Share from '$lib/utility/ShareScreenshot.svelte';
+	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;

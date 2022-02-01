@@ -6,9 +6,9 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// Components
-	import PopUp from '$lib/utility/PopUp.svelte';
-	import InventoryHeader from '$lib/inventory/InventoryHeader.svelte';
-	import InventoryItem from '$lib/inventory/InventoryItem.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import InventoryHeader from './InventoryHeader.svelte';
+	import InventoryItem from './InventoryItem.svelte';
 
 	// Store
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';

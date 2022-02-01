@@ -1,6 +1,6 @@
 <script>
-	import BannerButton from '$lib/banner/BannerButton.svelte';
-	import MyFund from '$lib/utility/MyFund.svelte';
+	import BannerButton from '$lib/components/banner/BannerButton.svelte';
+	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import FatepointButton from './fatepoint/FatepointButton.svelte';
 	import FatepointPopup from './fatepoint/FatepointPopup.svelte';
 

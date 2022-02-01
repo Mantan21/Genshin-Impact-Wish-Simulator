@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { genesis, pageActive, primogem, stardust, starglitter } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import MyFund from '$lib/utility/MyFund.svelte';
+	import MyFund from '$lib/components/utility/MyFund.svelte';
 
 	export let showNavbar = true;
 	export let showNavbarButton = true;

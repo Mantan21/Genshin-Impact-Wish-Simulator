@@ -15,8 +15,8 @@
 	import { localFatePoint } from '$lib/store/localstore';
 
 	import FatepointTribal from './FatepointTribal.svelte';
-	import InventoryItem from '$lib/inventory/InventoryItem.svelte';
-	import PopUp from '$lib/utility/PopUp.svelte';
+	import InventoryItem from '$lib/components/inventory/InventoryItem.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
 
 	$: half = $viewportWidth < 500;
 

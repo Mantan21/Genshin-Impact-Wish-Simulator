@@ -10,11 +10,11 @@
 	import { storageVersion } from '$lib/setup/wish-setup.json';
 
 	// Components
-	import MainBanner from '$lib/banner/MainBanner.svelte';
-	import PreviousBannerList from '$lib/banner/PreviousBannerList.svelte';
-	import History from '$lib/history/MainHistory.svelte';
-	import Inventory from '$lib/inventory/MainInventory.svelte';
-	import Shop from '$lib/shop/MainShop.svelte';
+	import MainBanner from '$lib/components/banner/MainBanner.svelte';
+	import PreviousBannerList from '$lib/components/banner/PreviousBannerList.svelte';
+	import History from '$lib/components/history/MainHistory.svelte';
+	import Inventory from '$lib/components/inventory/MainInventory.svelte';
+	import Shop from '$lib/components/shop/MainShop.svelte';
 
 	const setBannerPhase = () => {
 		const localstoreVersion = localStorage.getItem('storageVersion');

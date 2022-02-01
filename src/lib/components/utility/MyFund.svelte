@@ -1,6 +1,6 @@
 <script>
-	import Icon from '$lib/utility/Icon.svelte';
-	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
+	import Icon from './Icon.svelte';
+	import ExchangePopup from '$lib/components/shop/ExchangePopup.svelte';
 	import playSfx from '$lib/functions/audio';
 
 	export let type = 'primogem';

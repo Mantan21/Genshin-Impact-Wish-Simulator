@@ -11,7 +11,7 @@
 
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
-	import PopUp from '$lib/utility/PopUp.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { APP_TITLE } from '$lib/env';
 
 	let content;

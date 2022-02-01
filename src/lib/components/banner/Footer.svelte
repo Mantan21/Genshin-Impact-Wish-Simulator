@@ -8,8 +8,8 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
-	import Icon from '$lib/utility/Icon.svelte';
-	import RollButton from '$lib/banner/RollButton.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
+	import RollButton from './RollButton.svelte';
 	import FatepointButton from './fatepoint/FatepointButton.svelte';
 	import playSfx from '$lib/functions/audio';
 

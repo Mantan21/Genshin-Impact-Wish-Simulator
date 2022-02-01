@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { showWish, backsound } from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
-	import Header from '$lib/banner/Header.svelte';
-	import Footer from '$lib/banner/Footer.svelte';
-	import BannerItem from '$lib/banner/BannerItem.svelte';
-	import WishResult from '$lib/banner/WishResult.svelte';
+	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
+	import BannerItem from './BannerItem.svelte';
+	import WishResult from './WishResult.svelte';
 
 	let audio;
 	$: if ($backsound) {

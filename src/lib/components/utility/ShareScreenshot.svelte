@@ -8,7 +8,7 @@
 	import { firstShare, myFunds } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
-	import Icon from '$lib/utility/Icon.svelte';
+	import Icon from './Icon.svelte';
 
 	export let encodedData;
 	export let page;
