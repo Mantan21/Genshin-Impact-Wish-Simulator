@@ -1,8 +1,12 @@
 <script>
+	// Packagae
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
+
+	import { importLocalBalance } from '$lib/functions/importLocalData';
+
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import {
@@ -11,17 +15,10 @@
 		viewportWidth,
 		isMobile,
 		mobileMode,
-		primogem,
-		genesis,
-		stardust,
-		starglitter,
-		intertwined,
-		acquaint,
 		isAcquaintUsed,
 		bannerActive,
 		bannerList
 	} from '$lib/store/stores';
-	import { myFunds } from '$lib/store/localstore';
 	import { HOST, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import '../app.css';
 
@@ -31,27 +28,6 @@
 		const { type } = $bannerList[$bannerActive];
 		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
 	}
-
-	const setBudget = () => {
-		const localGenesis = myFunds.get('genesis');
-		if (localGenesis !== null) genesis.set(localGenesis);
-
-		const localPrimo = myFunds.get('primogem');
-		if (localPrimo === null) myFunds.set('primogem', $primogem);
-		else primogem.set(localPrimo);
-
-		const localStardust = myFunds.get('stardust');
-		if (localStardust !== null) stardust.set(localStardust);
-
-		const localStarglitter = myFunds.get('starglitter');
-		if (localStarglitter !== null) starglitter.set(localStarglitter);
-
-		const localIntertwined = myFunds.get('intertwined');
-		if (localIntertwined !== null) intertwined.set(localIntertwined);
-
-		const localAcquaint = myFunds.get('acquaint');
-		if (localAcquaint !== null) acquaint.set(localAcquaint);
-	};
 
 	onMount(() => {
 		const t = setTimeout(() => {
@@ -69,7 +45,7 @@
 			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
 		});
 
-		setBudget();
+		importLocalBalance();
 
 		viewportWidth.set(window.innerWidth);
 		viewportHeight.set(window.innerHeight);
@@ -78,6 +54,9 @@
 			viewportHeight.set(window.innerHeight);
 		});
 
+		/**
+		 * Prevent Right Click on production
+		 */
 		if (!dev) document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>
@@ -110,7 +89,7 @@
 <main class:mobile={$mobileMode} class:preview>
 	<slot />
 
-	<div class="uid">UID: WishSimulator.vercel.app</div>
+	<div class="uid">WishSimulator.vercel.app</div>
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
 

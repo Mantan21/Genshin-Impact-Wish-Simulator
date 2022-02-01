@@ -67,7 +67,7 @@ const nextWeaponGuaranteed = {
 	}
 };
 
-const myFunds = {
+const localBalance = {
 	set(type, qty) {
 		localStorage.setItem(type, qty);
 		return qty;
@@ -154,7 +154,7 @@ export {
 	beginnerAlreadyGuaranteed,
 	nextGuaranteed,
 	nextWeaponGuaranteed,
-	myFunds,
+	localBalance,
 	localBannerVersion,
 	firstShare,
 	localFatePoint

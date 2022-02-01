@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { myFunds } from '$lib/store/localstore';
+	import { localBalance } from '$lib/store/localstore';
 	import { genesis, primogem } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
@@ -21,7 +21,7 @@
 	const convertToPrimogem = () => {
 		const afterBuy = $primogem + qty;
 		primogem.set(afterBuy);
-		myFunds.set('primogem', afterBuy);
+		localBalance.set('primogem', afterBuy);
 		dispatch('confirm', { primogem: afterBuy });
 	};
 
@@ -30,7 +30,7 @@
 		if (autoConvert) return convertToPrimogem();
 		const afterBuy = $genesis + qty;
 		genesis.set(afterBuy);
-		myFunds.set('genesis', afterBuy);
+		localBalance.set('genesis', afterBuy);
 		dispatch('confirm', { genesis: afterBuy });
 	};
 </script>
