@@ -3,8 +3,8 @@
 	import { myFunds } from '$lib/store/localstore';
 	import { genesis, primogem } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import PopUp from '$lib/utility/PopUp.svelte';
-	import Icon from '$lib/utility/Icon.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let show;
 	export let qty;

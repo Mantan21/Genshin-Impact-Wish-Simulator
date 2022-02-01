@@ -6,13 +6,13 @@
 	import { APP_TITLE } from '$lib/env';
 
 	// Components
-	import Icon from '$lib/utility/Icon.svelte';
-	import ShopNavbar from '$lib/shop/ShopNavbar.svelte';
-	import ShopHeader from '$lib/shop/ShopHeader.svelte';
-	import ExchangePopup from '$lib/shop/ExchangePopup.svelte';
-	import PaymentPopup from '$lib/shop/PaymentPopup.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
+	import ShopNavbar from './ShopNavbar.svelte';
+	import ShopHeader from './ShopHeader.svelte';
+	import ExchangePopup from './ExchangePopup.svelte';
+	import PaymentPopup from './PaymentPopup.svelte';
 
-	import PopUp from '$lib/utility/PopUp.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);

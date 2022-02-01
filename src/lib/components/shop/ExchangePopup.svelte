@@ -8,8 +8,8 @@
 		starglitter
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
-	import Icon from '$lib/utility/Icon.svelte';
-	import PopUp from '$lib/utility/PopUp.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import playSfx from '$lib/functions/audio';
 
@@ -441,7 +441,7 @@
 		height: 0.4em;
 		background: #ccc;
 	}
-	
+
 	[type='range']::-moz-range-progress {
 		height: 0.4em;
 		border-radius: 10px;

@@ -15,8 +15,8 @@
 	} from '$lib/store/stores';
 	import { myFunds } from '$lib/store/localstore';
 	import roll from '$lib/functions/roll';
-	import PopUp from '$lib/utility/PopUp.svelte';
-	import Icon from '$lib/utility/Icon.svelte';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 	import playSfx from '$lib/functions/audio';
 
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';

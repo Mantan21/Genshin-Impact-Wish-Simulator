@@ -3,8 +3,8 @@
 	import { dev } from '$app/env';
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
-	import Loader from '$lib/utility/Loader.svelte';
-	import Disclaimer from '$lib/utility/Disclaimer.svelte';
+	import Loader from '$lib/components/utility/Loader.svelte';
+	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import {
 		isLoaded,
 		viewportHeight,

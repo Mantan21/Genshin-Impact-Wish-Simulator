@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import weapons from '$lib/setup/weapons.json';
 	import characters from '$lib/setup/characters.json';
-	import WishListResult from '$lib/banner/WishListResult.svelte';
+	import WishListResult from '$lib/components/banner/WishListResult.svelte';
 	import { APP_TITLE } from '$lib/env';
 	let wishlist = [
 		{
