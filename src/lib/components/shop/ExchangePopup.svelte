@@ -7,7 +7,7 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
-	import { myFunds } from '$lib/store/localstore';
+	import { localBalance } from '$lib/store/localstore';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { createEventDispatcher } from 'svelte';
@@ -125,8 +125,8 @@
 			primogem.set(itemAfterBuy);
 		}
 		rangeVal = 1;
-		myFunds.set(itemToBuy, itemAfterBuy);
-		myFunds.set(fundType, fundAfterBuy);
+		localBalance.set(itemToBuy, itemAfterBuy);
+		localBalance.set(fundType, fundAfterBuy);
 		dispatch('confirm', {
 			fundAfterBuy,
 			fundType,

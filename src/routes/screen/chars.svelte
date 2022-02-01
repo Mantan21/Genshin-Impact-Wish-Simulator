@@ -5,8 +5,7 @@
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 
-	// import Share from '$lib/utility/ShareScreenshot.svelte'
-	import Icon from '$lib/utility/Icon.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 
 	let data = {
 		rarity: 0,

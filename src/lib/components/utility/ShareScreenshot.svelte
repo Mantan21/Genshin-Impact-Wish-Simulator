@@ -5,7 +5,7 @@
 	import { saveAs } from 'file-saver';
 	import { HOST } from '$lib/env';
 	import { primogem } from '$lib/store/stores';
-	import { firstShare, myFunds } from '$lib/store/localstore';
+	import { firstShare, localBalance } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import Icon from './Icon.svelte';
@@ -31,7 +31,7 @@
 		if (!isFirstShare) return;
 		primogem.update((n) => {
 			const settled = n + 16000;
-			myFunds.set('primogem', settled);
+			localBalance.set('primogem', settled);
 			return settled;
 		});
 		firstShare.set('yes');

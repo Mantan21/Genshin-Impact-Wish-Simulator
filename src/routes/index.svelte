@@ -4,10 +4,8 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import { pageActive, bannerPhase, patchVersion } from '$lib/store/stores';
-	import { updateSite } from '$lib/export-import/import';
-	import { localBannerVersion } from '$lib/store/localstore';
-	import { storageVersion } from '$lib/setup/wish-setup.json';
+	import { pageActive } from '$lib/store/stores';
+	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
 
 	// Components
 	import MainBanner from '$lib/components/banner/MainBanner.svelte';
@@ -16,23 +14,7 @@
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
 
-	const setBannerPhase = () => {
-		const localstoreVersion = localStorage.getItem('storageVersion');
-		if (localstoreVersion) updateSite(localstoreVersion);
-
-		if (localstoreVersion !== storageVersion) {
-			localBannerVersion.clear();
-			localStorage.setItem('storageVersion', storageVersion);
-		}
-
-		const localVersion = localBannerVersion.get();
-		if (!localVersion) return;
-		const [patch, phase] = localVersion.split('-');
-		bannerPhase.set(parseInt(phase));
-		patchVersion.set(patch);
-	};
-
-	onMount(setBannerPhase);
+	onMount(setBannerVersionAndPhase);
 </script>
 
 {#if $pageActive === 'index'}

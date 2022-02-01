@@ -13,7 +13,7 @@
 		isAcquaintUsed,
 		bannerList
 	} from '$lib/store/stores';
-	import { myFunds } from '$lib/store/localstore';
+	import { localBalance } from '$lib/store/localstore';
 	import roll from '$lib/functions/roll';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -71,7 +71,7 @@
 		if (!funds) return;
 		funds.update((v) => {
 			const q = v + fateQty;
-			myFunds.set(fateType, q);
+			localBalance.set(fateType, q);
 			return q;
 		});
 	};
@@ -151,14 +151,14 @@
 		if ($primogem < rollCount * 160) return;
 		primogem.update((n) => {
 			const q = n - rollCount * 160;
-			myFunds.set('primogem', q);
+			localBalance.set('primogem', q);
 			return q;
 		});
 
 		if ($isAcquaintUsed) {
 			acquaint.update((n) => {
 				const q = n + rollCount;
-				myFunds.set('acquaint', q);
+				localBalance.set('acquaint', q);
 				return q;
 			});
 			if (rollCount > 1 || $acquaint > 1) tenRoll();
@@ -168,7 +168,7 @@
 
 		intertwined.update((n) => {
 			const q = n + rollCount;
-			myFunds.set('intertwined', q);
+			localBalance.set('intertwined', q);
 			return q;
 		});
 		if (rollCount > 1 || $intertwined > 1) tenRoll();
