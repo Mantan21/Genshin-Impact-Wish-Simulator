@@ -1,27 +1,25 @@
 <script>
-	import { onMount } from 'svelte';
-	import { showWish, backsound } from '$lib/store/stores';
+	import { showWish } from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
-	import Header from './Header.svelte';
-	import Footer from './Footer.svelte';
+	import Header from './parts/Header.svelte';
+	import Footer from './parts/Footer.svelte';
+	import Meteor from './parts/Meteor.svelte';
 	import BannerItem from './BannerItem.svelte';
 	import WishResult from './WishResult.svelte';
 
-	let audio;
-	$: if ($backsound) {
-		if (audio) audio.play();
-	} else {
-		if (audio) audio.pause();
-	}
+	let showMeteor = false;
+	const rollHandle = (e) => {
+		const { qty, banner } = e.detail;
+		if (qty === 1) return singleRoll(banner);
+		return multiRoll(banner);
+	};
 
-	onMount(() => {
-		window.addEventListener('blur', () => {
-			if (audio) audio.pause();
-		});
-		window.addEventListener('focus', () => {
-			if ($backsound && audio) audio.play();
-		});
-	});
+	const singleRoll = () => {
+		console.log('single');
+	};
+	const multiRoll = () => {
+		console.log('multi');
+	};
 </script>
 
 <svelte:head>
@@ -32,18 +30,18 @@
 	<WishResult />
 {/if}
 
-<audio src="/assets/sfx/wish-backsound.ogg" bind:this={audio} id="backsound" loop />
 <section>
 	<div class="col top">
 		<Header />
 	</div>
 
+	<Meteor show={showMeteor} />
 	<div class="col banner">
 		<div class="item">
 			<BannerItem />
 		</div>
 		<div class="col button">
-			<Footer />
+			<Footer on:roll={rollHandle} />
 		</div>
 	</div>
 </section>
