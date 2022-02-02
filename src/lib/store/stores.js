@@ -29,7 +29,6 @@ const mobileMode = writable(false);
 
 // Wish
 const bannerList = writable([]);
-const wishes = writable([]);
 const showWish = writable(false); // false
 
 const genesis = writable(0);
@@ -58,7 +57,6 @@ export {
 	mobileMode,
 	showBeginner,
 	bannerList,
-	wishes,
 	showWish,
 	genesis,
 	stardust,
