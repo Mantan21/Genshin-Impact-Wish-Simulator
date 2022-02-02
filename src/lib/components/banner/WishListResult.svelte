@@ -7,7 +7,7 @@
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let preview = false;
-	export let wishlist = [];
+	export let previewlist = [];
 	export let list = [];
 
 	const sortByType = (a, b) => {
@@ -23,9 +23,9 @@
 	};
 
 	let sortedWish = [];
-	const getList = (preview, wishlist) => {
+	const getList = (preview, previewlist) => {
 		if (preview) {
-			sortedWish = wishlist;
+			sortedWish = previewlist;
 			return;
 		}
 
@@ -33,22 +33,21 @@
 			list
 				.filter(({ rarity }) => rarity === star)
 				.sort((a, b) => b.isNew - a.isNew)
-				.sort(sortByType)
-				.sort(sortByName);
+				.sort(sortByName)
+				.sort(sortByType);
 		const threeStar = list.filter(({ rarity }) => rarity === 3);
 		sortedWish = [...item(5), ...item(4), ...threeStar];
 	};
 
-	$: getList(preview, wishlist);
+	$: getList(preview, previewlist);
 
-	let audio;
 	let container;
 	let wishHeight;
 	let encoded;
 
 	onMount(() => {
 		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
-		audio?.play();
+		playSfx('resultList');
 		if (preview) return;
 
 		const data = sortedWish
@@ -78,7 +77,6 @@
 	<button class="close" on:click={closeHandle}>
 		<i class="gi-close" />
 	</button>
-	<audio src="/assets/sfx/result-list.ogg" bind:this={audio} />
 {/if}
 
 <div class="scroll" bind:this={container}>

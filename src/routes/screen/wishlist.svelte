@@ -98,7 +98,7 @@
 <title> Wish List Result | {APP_TITLE} </title>
 
 <div class="wish-result">
-	<WishListResult preview {wishlist} />
+	<WishListResult preview previewlist={wishlist} />
 </div>
 
 <style>
