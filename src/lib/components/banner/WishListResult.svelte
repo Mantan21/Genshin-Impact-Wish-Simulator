@@ -1,13 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { showWish, wishes, backsound } from '$lib/store/stores';
+	import { showWish, backsound } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let preview = false;
 	export let wishlist = [];
+	export let list = [];
 
 	const sortByType = (a, b) => {
 		if (a.type > b.type) return 1;
@@ -29,12 +30,12 @@
 		}
 
 		const item = (star) =>
-			$wishes
+			list
 				.filter(({ rarity }) => rarity === star)
 				.sort((a, b) => b.isNew - a.isNew)
 				.sort(sortByType)
 				.sort(sortByName);
-		const threeStar = $wishes.filter(({ rarity }) => rarity === 3);
+		const threeStar = list.filter(({ rarity }) => rarity === 3);
 		sortedWish = [...item(5), ...item(4), ...threeStar];
 	};
 

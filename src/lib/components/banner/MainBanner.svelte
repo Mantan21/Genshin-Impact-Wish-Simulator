@@ -1,24 +1,101 @@
 <script>
-	import { showWish } from '$lib/store/stores';
+	import {
+		acquaint,
+		intertwined,
+		isAcquaintUsed,
+		showWish,
+		bannerList,
+		bannerActive,
+		stardust,
+		starglitter,
+		backsound
+	} from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
 	import Header from './parts/Header.svelte';
 	import Footer from './parts/Footer.svelte';
 	import Meteor from './parts/Meteor.svelte';
 	import BannerItem from './BannerItem.svelte';
 	import WishResult from './WishResult.svelte';
+	import roll from '$lib/functions/wish/roll';
+	import playSfx from '$lib/functions/audio';
+	import { localBalance } from '$lib/store/localstore';
 
 	let showMeteor = false;
-	const rollHandle = (e) => {
-		const { qty, banner } = e.detail;
-		if (qty === 1) return singleRoll(banner);
-		return multiRoll(banner);
+	let singleMeteor = true;
+	let meteorStar = 3;
+	let showConvertPopup = false;
+	let rollCount = 0;
+	let wishResult = [];
+
+	$: activeBanner = $bannerList[$bannerActive];
+	$: bannerActiveType = activeBanner
+		? activeBanner.type + (isNaN(activeBanner.index) ? '' : activeBanner.index)
+		: 'beginner';
+	$: balance = $isAcquaintUsed ? $acquaint : $intertwined;
+
+	const doRoll = async (count) => {
+		playSfx();
+		rollCount = count;
+		const bannerToRoll = bannerActiveType;
+		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : rollCount;
+		wishResult = [];
+		if (balance < balanceNeededToRoll) {
+			showConvertPopup = true;
+			return;
+		}
+		for (let i = 0; i < rollCount; i++) {
+			const result = await roll(bannerActiveType);
+			wishResult.push(result);
+			updateMilestones(result.fateType, result.fateQty);
+		}
+		handleMeteorAnimation();
+		updateFatesBalance(bannerToRoll);
 	};
 
-	const singleRoll = () => {
-		console.log('single');
+	const updateFatesBalance = (banner) => {
+		const isAcquaint = ['beginner', 'standard'].includes(banner);
+		const funds = isAcquaint ? acquaint : intertwined;
+		funds.update((n) => {
+			const afterUpdate = n - (banner === 'beginner' && rollCount > 1 ? 8 : rollCount);
+			localBalance.set(isAcquaint ? 'acquaint' : 'intertwined', afterUpdate);
+			return afterUpdate;
+		});
 	};
-	const multiRoll = () => {
-		console.log('multi');
+
+	const updateMilestones = (type, qty) => {
+		if (!type && !qty) return;
+		const milestone = type === 'stardust' ? stardust : starglitter;
+		milestone.update((n) => {
+			const afterUpdate = n + qty;
+			localBalance.set(type, afterUpdate);
+			return afterUpdate;
+		});
+	};
+
+	const handleMeteorAnimation = () => {
+		backsound.set(false);
+		const star = wishResult.map(({ rarity }) => rarity);
+		singleMeteor = star.length === 1;
+		meteorStar = 3;
+		if (star.includes(4)) meteorStar = 4;
+		if (star.includes(5)) meteorStar = 5;
+		showMeteor = true;
+	};
+
+	const cancelExchange = () => {
+		showConvertPopup = false;
+		playSfx();
+	};
+
+	const confirmPopup = () => {
+		doRoll(rollCount);
+		showConvertPopup = false;
+		playSfx();
+	};
+
+	const showSplashResult = () => {
+		showMeteor = false;
+		showWish.set(true);
 	};
 </script>
 
@@ -27,7 +104,7 @@
 </svelte:head>
 
 {#if $showWish}
-	<WishResult />
+	<WishResult list={wishResult} />
 {/if}
 
 <section>
@@ -35,13 +112,22 @@
 		<Header />
 	</div>
 
-	<Meteor show={showMeteor} />
+	<Meteor
+		{showMeteor}
+		{singleMeteor}
+		{meteorStar}
+		{showConvertPopup}
+		{rollCount}
+		on:cancelPopup={cancelExchange}
+		on:confirmPopup={confirmPopup}
+		on:endAnimation={showSplashResult}
+	/>
 	<div class="col banner">
 		<div class="item">
 			<BannerItem />
 		</div>
 		<div class="col button">
-			<Footer on:roll={rollHandle} />
+			<Footer on:multiRoll={() => doRoll(10)} on:singleRoll={() => doRoll(1)} />
 		</div>
 	</div>
 </section>

@@ -10,6 +10,11 @@ import getWishItem from './getWishItem';
 
 const { addHistory, countItem } = HistoryIDB;
 
+/**
+ *
+ * @param {string} bannerToRoll
+ * @returns {Object}
+ */
 const roll = async (bannerToRoll) => {
 	const banner = bannerToRoll.replace(/\d{1}/, '');
 	const pity4 = pity4star.get(banner);

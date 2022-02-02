@@ -29,8 +29,11 @@
 	};
 
 	const dispatch = createEventDispatcher();
-	const handleRollClick = (qty) => {
-		dispatch('roll', { banner: bannerActiveType, qty });
+	const handleSingleRollClick = () => {
+		dispatch('singleRoll');
+	};
+	const handleMultiRollClick = () => {
+		dispatch('multiRoll');
 	};
 </script>
 
@@ -61,7 +64,7 @@
 			<button on:click={() => changePage('history')}> History </button>
 		</div>
 		<div class="right roll-button">
-			<button class="single" on:click={() => handleRollClick(1)}>
+			<button class="single" on:click={handleSingleRollClick}>
 				<div class="top">Wish x1</div>
 				<div class="bottom">
 					<Icon type={fateType} />
@@ -69,7 +72,7 @@
 				</div>
 			</button>
 
-			<button class="ten" on:click={() => handleRollClick(multiRollPrice)}>
+			<button class="ten" on:click={handleMultiRollClick}>
 				<div class="top">Wish x10</div>
 				<div class="bottom">
 					<Icon type={fateType} />
