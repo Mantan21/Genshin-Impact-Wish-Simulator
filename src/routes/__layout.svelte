@@ -5,8 +5,6 @@
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 
-	import { importLocalBalance } from '$lib/functions/importLocalData';
-
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import {
@@ -20,6 +18,7 @@
 		bannerList
 	} from '$lib/store/stores';
 	import { HOST, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
+	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import '../app.css';
 
 	let preview = $page.path.split('/')[1] === 'screen';
@@ -54,9 +53,7 @@
 			viewportHeight.set(window.innerHeight);
 		});
 
-		/**
-		 * Prevent Right Click on production
-		 */
+		// prevent Righ click (hold on android) on production mode
 		if (!dev) document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>

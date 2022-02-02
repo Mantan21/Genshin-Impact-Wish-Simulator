@@ -1,8 +1,8 @@
 <script>
-	import BannerButton from '$lib/components/banner/BannerButton.svelte';
+	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
-	import FatepointButton from './fatepoint/FatepointButton.svelte';
-	import FatepointPopup from './fatepoint/FatepointPopup.svelte';
+	import FatepointButton from '../fatepoint/FatepointButton.svelte';
+	import FatepointPopup from '../fatepoint/FatepointPopup.svelte';
 
 	import { version, wishPhase, banner } from '$lib/setup/wish-setup.json';
 	import { data } from '$lib/setup/wishlist.json';

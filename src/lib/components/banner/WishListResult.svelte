@@ -47,7 +47,7 @@
 
 	onMount(() => {
 		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
-		if (audio) audio.play();
+		audio?.play();
 		if (preview) return;
 
 		const data = sortedWish
