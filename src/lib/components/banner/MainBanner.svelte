@@ -18,7 +18,7 @@
 	import Header from './parts/Header.svelte';
 	import Footer from './parts/Footer.svelte';
 	import Meteor from './parts/Meteor.svelte';
-	import ObtainedMilestone from '$lib/components/utility/ObtainedMilestone.svelte';
+	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import BannerItem from './BannerItem.svelte';
 	import WishResult from './WishResult.svelte';
 
@@ -130,7 +130,7 @@
 </svelte:head>
 
 {#if showObtainedMilestone}
-	<ObtainedMilestone
+	<Obtained
 		items={{ starglitter: starglitterObtained, stardust: stardustObtained }}
 		on:close={closeMilestone}
 	/>

@@ -1,18 +1,39 @@
 <script>
 	import Icon from './Icon.svelte';
 	import ExchangePopup from '$lib/components/shop/ExchangePopup.svelte';
+	import Obtained from './Obtained.svelte';
 	import playSfx from '$lib/functions/audio';
 
 	export let type = 'primogem';
 
 	let showExchangePopup = false;
+	let showObtained = false;
+	let obtainedItem = {};
 
 	const handlePopup = () => {
 		if (type !== 'primogem') return;
 		if (!showExchangePopup) playSfx('popup');
 		showExchangePopup = !showExchangePopup;
 	};
+
+	const handleConfirmExchange = (e) => {
+		showExchangePopup = false;
+		const { item } = e.detail;
+		obtainedItem[item.itemToBuy] = item.value;
+		showObtained = true;
+	};
+
+	const closeObtained = () => {
+		showObtained = false;
+		playSfx('close');
+	};
 </script>
+
+<!-- Obtain -->
+{#if showObtained}
+	<Obtained items={obtainedItem} on:close={closeObtained} />
+{/if}
+<!-- Obtain end -->
 
 <!-- Exchange -->
 <ExchangePopup
@@ -20,7 +41,7 @@
 	itemToBuy="primogem"
 	show={showExchangePopup}
 	on:cancel={handlePopup}
-	on:confirm={handlePopup}
+	on:confirm={handleConfirmExchange}
 />
 <!-- Exchange -->
 
