@@ -22,7 +22,7 @@
 		const afterBuy = $primogem + qty;
 		primogem.set(afterBuy);
 		localBalance.set('primogem', afterBuy);
-		dispatch('confirm', { primogem: afterBuy });
+		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'primogem', value: qty } });
 	};
 
 	const genesisBuy = () => {
@@ -31,7 +31,7 @@
 		const afterBuy = $genesis + qty;
 		genesis.set(afterBuy);
 		localBalance.set('genesis', afterBuy);
-		dispatch('confirm', { genesis: afterBuy });
+		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'genesis', value: qty } });
 	};
 </script>
 

@@ -11,8 +11,8 @@
 	import ShopHeader from './ShopHeader.svelte';
 	import ExchangePopup from './ExchangePopup.svelte';
 	import PaymentPopup from './PaymentPopup.svelte';
-
 	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Obtained from '$lib/components/utility/Obtained.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -30,6 +30,9 @@
 	let showPaymentPopup = false; //false
 	let showExchangePopup = false;
 	let itemToBuy;
+
+	let showObtained = false;
+	let obtainedItems = {};
 
 	let showCryptoPopup = false;
 	let showToast = false;
@@ -89,8 +92,9 @@
 		showPaymentPopup = true;
 		playSfx('exchange');
 	};
-	const handleClosePaymentPopup = () => {
+	const handleClosePopup = () => {
 		showPaymentPopup = false;
+		showExchangePopup = false;
 	};
 
 	const openExchangePopup = (fate) => {
@@ -99,8 +103,19 @@
 		playSfx();
 	};
 
-	const handleCloseExchangePopup = () => {
+	const handleConfirmPopup = (e) => {
 		showExchangePopup = false;
+		showPaymentPopup = false;
+		const { status, item } = e.detail;
+		if (status === 'failed') return;
+		obtainedItems[item.itemToBuy] = item.value;
+		showObtained = true;
+	};
+
+	const handleCloseObtained = () => {
+		showObtained = false;
+		obtainedItems = {};
+		playSfx('close');
 	};
 
 	const paimonNavClick = (shop) => {
@@ -117,14 +132,20 @@
 	{/if}
 </svelte:head>
 
+<!-- Obtained Items -->
+{#if showObtained}
+	<Obtained items={obtainedItems} on:close={handleCloseObtained} />
+{/if}
+<!-- Obtained Items End -->
+
 <!-- Genesisn Pop up -->
 {#if showPaymentPopup}
 	<PaymentPopup
 		show={showPaymentPopup}
 		price={genesisList[activeGenesisIndexforPopup].price}
 		qty={genesisList[activeGenesisIndexforPopup].qty}
-		on:confirm={handleClosePaymentPopup}
-		on:cancel={handleClosePaymentPopup}
+		on:confirm={handleConfirmPopup}
+		on:cancel={handleClosePopup}
 	/>
 {/if}
 <!-- Genesis Pop Up End -->
@@ -134,8 +155,8 @@
 	show={showExchangePopup}
 	fundType={activeFateShop}
 	{itemToBuy}
-	on:cancel={handleCloseExchangePopup}
-	on:confirm={handleCloseExchangePopup}
+	on:cancel={handleClosePopup}
+	on:confirm={handleConfirmPopup}
 />
 <!-- Fates Popup End -->
 

@@ -84,7 +84,7 @@
 
 	const buyHandle = () => {
 		if (fateQty < 1) {
-			dispatch('confirm', { status: 'failed' });
+			dispatch('confirm', { status: 'failed', items: {} });
 			return;
 		}
 
@@ -124,14 +124,17 @@
 			itemAfterBuy = rangeVal + $primogem;
 			primogem.set(itemAfterBuy);
 		}
-		rangeVal = 1;
+
 		localBalance.set(itemToBuy, itemAfterBuy);
 		localBalance.set(fundType, fundAfterBuy);
 		dispatch('confirm', {
 			fundAfterBuy,
 			fundType,
-			itemToBuy
+			itemToBuy,
+			item: { itemToBuy, value: rangeVal }
 		});
+
+		rangeVal = 1;
 	};
 
 	let timeout;

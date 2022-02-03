@@ -1,4 +1,5 @@
 <script>
+	import { cubicOut } from 'svelte/easing';
 	import playSfx from '$lib/functions/audio';
 	import { getName } from '$lib/functions/nameText';
 
@@ -7,6 +8,8 @@
 
 	export let items = {
 		genesis: 0,
+		intertwined: 0,
+		acquaint: 0,
 		primogem: 0,
 		starglitter: 0,
 		stardust: 0
@@ -27,12 +30,23 @@
 		if (cekItem() < 1) return closeHandle();
 		playSfx('obtain');
 	});
+
+	// Custom Transition
+	function scaleFade(node, params) {
+		const existingTransform = getComputedStyle(node).transform.replace('none', '');
+		return {
+			delay: params.delay || 0,
+			duration: params.duration || 400,
+			easing: params.easing || cubicOut,
+			css: (t) => `transform: ${existingTransform} scale(${t}); opacity: ${t};`
+		};
+	}
 </script>
 
 <section on:click={closeHandle}>
 	<div class="container">
 		<div class="bg" />
-		<div class="content" on:click|stopPropagation>
+		<div class="content" in:scaleFade={{ duration: 200 }}>
 			<h3 class="title">
 				Obtained
 				<i class="gi-primo-star" />
@@ -42,7 +56,7 @@
 			<div class="milestone">
 				{#each Object.keys(items) as key}
 					{#if items[key] > 0}
-						<div class="item {key}">
+						<div class="item {key} rarity{key === 'stardust' ? 4 : 5}" on:click|stopPropagation>
 							<div class="body">
 								<div class="pic">
 									<Icon width="100%" type={key} />
@@ -141,10 +155,10 @@
 		background-color: #fff;
 	}
 
-	.starglitter .pic {
+	.rarity5 .pic {
 		background-image: url('/assets/images/utility/5star-bg.webp');
 	}
-	.stardust .pic {
+	.rarity4 .pic {
 		background-image: url('/assets/images/utility/4star-bg.webp');
 	}
 
