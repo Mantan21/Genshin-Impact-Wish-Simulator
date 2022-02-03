@@ -133,6 +133,29 @@
 			itemToBuy
 		});
 	};
+
+	let timeout;
+	let interval;
+	const rangeControl = (plusOrMinus = 'plus') => {
+		const change = plusOrMinus === 'plus' ? plus : min;
+		change();
+		timeout = setTimeout(() => {
+			interval = setInterval(change, 50);
+		}, 400);
+		playSfx();
+	};
+	const plus = () => {
+		if (rangeVal >= maxRange) return clearTimers();
+		rangeVal++;
+	};
+	const min = () => {
+		if (rangeVal <= 1) return clearTimers();
+		rangeVal--;
+	};
+	const clearTimers = () => {
+		clearTimeout(timeout);
+		clearInterval(interval);
+	};
 </script>
 
 <PopUp
@@ -164,6 +187,7 @@
 					<i class="gi-arrow-right" />
 				</div>
 			</div>
+
 			<!-- End Genesis Exchange -->
 		{:else}
 			<div class="item" style={itemFieldStyle}>
@@ -195,6 +219,7 @@
 				</div>
 			</div>
 		{/if}
+
 		<div class="slider">
 			<div class="rangeNumber">
 				<span>Qty :</span>
@@ -205,10 +230,9 @@
 					<button
 						class="min"
 						disabled={rangeVal <= 1}
-						on:click={() => {
-							if (rangeVal > 1) rangeVal--;
-							playSfx();
-						}}
+						on:mousedown={() => rangeControl('min')}
+						on:mouseleave={clearTimers}
+						on:mouseup={clearTimers}
 					>
 						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
 					</button>
@@ -226,11 +250,10 @@
 					</div>
 					<button
 						class="plus"
+						on:mousedown={() => rangeControl('plus')}
+						on:mouseleave={clearTimers}
+						on:mouseup={clearTimers}
 						disabled={rangeVal >= maxRange}
-						on:click={() => {
-							if (rangeVal < maxRange) rangeVal++;
-							playSfx();
-						}}
 					>
 						<i class="gi-plus" />
 					</button>
