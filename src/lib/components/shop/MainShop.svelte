@@ -257,11 +257,7 @@
 								</a>
 							</div>
 							<div class="column" style={columnWidth}>
-								<a
-									class="content trakteer"
-									href="https://trakteer.id/GenshinWishSimulator"
-									target="_blank"
-								>
+								<a class="content saweria" href="https://saweria.co/mantan21" target="_blank">
 									<div
 										style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 									>
@@ -271,7 +267,7 @@
 											{/each}
 										</div>
 									</div>
-									<span> Support me on Trakteer </span>
+									<span> Support me on Saweria </span>
 								</a>
 							</div>
 							<div class="column" style={columnWidth}>
