@@ -122,6 +122,7 @@
 		font-size: 0.8rem;
 		padding: 0.3rem 2rem;
 		margin-left: 10px;
+		transition: all 0.2s;
 	}
 	button:not(.close, .save):active {
 		transform: scale(0.9);

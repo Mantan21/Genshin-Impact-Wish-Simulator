@@ -3,7 +3,6 @@
 		acquaint,
 		intertwined,
 		isAcquaintUsed,
-		showWish,
 		bannerList,
 		bannerActive,
 		stardust,
@@ -11,16 +10,21 @@
 		backsound
 	} from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
-	import Header from './parts/Header.svelte';
-	import Footer from './parts/Footer.svelte';
-	import Meteor from './parts/Meteor.svelte';
-	import BannerItem from './BannerItem.svelte';
-	import WishResult from './WishResult.svelte';
 	import roll from '$lib/functions/wish/roll';
 	import playSfx from '$lib/functions/audio';
 	import { localBalance } from '$lib/store/localstore';
 
+	// Components
+	import Header from './parts/Header.svelte';
+	import Footer from './parts/Footer.svelte';
+	import Meteor from './parts/Meteor.svelte';
+	import ObtainedMilestone from '$lib/components/utility/ObtainedMilestone.svelte';
+	import BannerItem from './BannerItem.svelte';
+	import WishResult from './WishResult.svelte';
+
+	let showWish = false;
 	let showMeteor = false;
+	let showObtainedMilestone = false;
 	let singleMeteor = true;
 	let meteorStar = 3;
 	let showConvertPopup = false;
@@ -34,7 +38,6 @@
 	$: balance = $isAcquaintUsed ? $acquaint : $intertwined;
 
 	const doRoll = async (count) => {
-		playSfx();
 		rollCount = count;
 		const bannerToRoll = bannerActiveType;
 		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : rollCount;
@@ -72,6 +75,12 @@
 		});
 	};
 
+	const countMilestone = (fate) => {
+		return wishResult.reduce((a, { fateType, fateQty }) => {
+			return a + (fateType === fate ? fateQty : 0);
+		}, 0);
+	};
+
 	const handleMeteorAnimation = () => {
 		backsound.set(false);
 		const star = wishResult.map(({ rarity }) => rarity);
@@ -95,7 +104,24 @@
 
 	const showSplashResult = () => {
 		showMeteor = false;
-		showWish.set(true);
+		showWish = true;
+	};
+
+	let stardustObtained = 0;
+	let starglitterObtained = 0;
+
+	const checkObtained = () => {
+		stardustObtained = countMilestone('stardust');
+		starglitterObtained = countMilestone('starglitter');
+		if (stardust < 1 && starglitter < 1) backsound.set(true);
+		else showObtainedMilestone = true;
+		showWish = false;
+	};
+
+	const closeMilestone = () => {
+		showObtainedMilestone = false;
+		playSfx('close');
+		backsound.set(true);
 	};
 </script>
 
@@ -103,8 +129,14 @@
 	<title>{APP_TITLE}</title>
 </svelte:head>
 
-{#if $showWish}
-	<WishResult list={wishResult} />
+{#if showObtainedMilestone}
+	<ObtainedMilestone
+		items={{ starglitter: starglitterObtained, stardust: stardustObtained }}
+		on:close={closeMilestone}
+	/>
+{/if}
+{#if showWish}
+	<WishResult list={wishResult} on:wishEnd={checkObtained} />
 {/if}
 
 <section>

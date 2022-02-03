@@ -30,9 +30,11 @@
 
 	const dispatch = createEventDispatcher();
 	const handleSingleRollClick = () => {
+		playSfx('roll');
 		dispatch('singleRoll');
 	};
 	const handleMultiRollClick = () => {
+		playSfx('roll');
 		dispatch('multiRoll');
 	};
 </script>

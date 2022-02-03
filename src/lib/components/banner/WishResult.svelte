@@ -1,6 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-	import { viewportHeight, viewportWidth, isMobile, showWish, backsound } from '$lib/store/stores';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { viewportHeight, viewportWidth, isMobile } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 
@@ -51,10 +51,10 @@
 		playRevealAudio();
 	};
 
+	const dispatch = createEventDispatcher();
 	const closeHandle = () => {
-		showWish.set(false);
+		dispatch('wishEnd');
 		playSfx('close');
-		backsound.set(true);
 		return;
 	};
 
@@ -71,7 +71,7 @@
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 
 	{#if showWishList}
-		<WishListResult {list} />
+		<WishListResult {list} on:wishEnd={closeHandle} />
 	{:else}
 		<div class="container" bind:this={wishResult}>
 			{#if list.length === 1}
@@ -256,7 +256,6 @@
 		position: absolute;
 		top: -45%;
 		left: 25px;
-		/* transform: translateX(-50%); */
 		font-size: smaller;
 	}
 
