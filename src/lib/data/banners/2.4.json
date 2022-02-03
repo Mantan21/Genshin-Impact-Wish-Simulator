@@ -1,0 +1,122 @@
+{
+	"patch": 2.4,
+	"data": [
+		{
+			"phase": 1,
+			"banner": {
+				"events": {
+					"item": [
+						{
+							"name": "",
+							"character": "shenhe",
+							"buttonBoxPosition": {
+								"w": 180,
+								"t": 20,
+								"l": 30
+							}
+						},
+						{
+							"name": "",
+							"character": "xiao",
+							"buttonBoxPosition": {
+								"w": 140,
+								"t": 30,
+								"l": 50
+							}
+						}
+					],
+					"rateup": ["yunjin", "ningguang", "chongyun"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-20",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "calamity-queller",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 10,
+								"l": 30
+							}
+						},
+						{
+							"name": "primordial-jade-winged-spear",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 10,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"favonius-warbow",
+						"the-widsith",
+						"favonius-greatsword",
+						"lithic-spear",
+						"the-flute"
+					]
+				}
+			}
+		},
+		{
+			"phase": 2,
+			"banner": {
+				"events": {
+					"item": [
+						{
+							"name": "gentry-of-hermitage-3",
+							"character": "zhongli",
+							"buttonBoxPosition": {
+								"w": 120,
+								"t": 25,
+								"l": 70
+							}
+						},
+						{
+							"name": "adrift-in-the-harbor-2",
+							"character": "ganyu",
+							"buttonBoxPosition": {
+								"w": 200,
+								"t": 25
+							}
+						}
+					],
+					"rateup": ["xingqiu", "yanfei", "beidou"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-20",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "vortex-vanquisher",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 20,
+								"l": 25
+							}
+						},
+						{
+							"name": "amos-bow",
+							"type": "bow",
+							"buttonBoxPosition": {
+								"w": 70,
+								"l": 68,
+								"t": 0
+							}
+						}
+					],
+					"rateup": [
+						"sacrificial-bow",
+						"lithic-blade",
+						"favonius-codex",
+						"favonius-sword",
+						"dragon_s-bane"
+					]
+				}
+			}
+		}
+	]
+}

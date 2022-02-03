@@ -1,0 +1,178 @@
+<script>
+	import playSfx from '$lib/functions/audio';
+	import { getName } from '$lib/functions/nameText';
+
+	import { createEventDispatcher, onMount } from 'svelte';
+	import Icon from './Icon.svelte';
+
+	export let items = {
+		genesis: 0,
+		primogem: 0,
+		starglitter: 0,
+		stardust: 0
+	};
+
+	const dispatch = createEventDispatcher();
+	const closeHandle = () => {
+		dispatch('close');
+	};
+
+	const cekItem = () => {
+		return Object.keys(items).reduce((a, key) => {
+			return a + items[key];
+		}, 0);
+	};
+
+	onMount(() => {
+		if (cekItem() < 1) return closeHandle();
+		playSfx('obtain');
+	});
+</script>
+
+<section on:click={closeHandle}>
+	<div class="container">
+		<div class="bg" />
+		<div class="content" on:click|stopPropagation>
+			<h3 class="title">
+				Obtained
+				<i class="gi-primo-star" />
+			</h3>
+
+			<h4>Extra</h4>
+			<div class="milestone">
+				{#each Object.keys(items) as key}
+					{#if items[key] > 0}
+						<div class="item {key}">
+							<div class="body">
+								<div class="pic">
+									<Icon width="100%" type={key} />
+									<div class="star">
+										{#each Array(key === 'stardust' ? 4 : 5) as i}
+											<i class="gi-star" />
+										{/each}
+									</div>
+								</div>
+								<span>{items[key]}</span>
+							</div>
+							<div class="name">
+								{['stardust', 'starglitter'].includes(key) ? 'Masterless' : ''}
+								{getName(key)}
+							</div>
+						</div>
+					{/if}
+				{/each}
+			</div>
+
+			<h4 class="msg">Press anywhere in the blank area to continue</h4>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 99;
+	}
+	.container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.bg {
+		min-width: 100vw;
+		min-height: 100vh;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-image: linear-gradient(to top, rgba(136, 132, 133, 0.93), rgba(39, 34, 54, 0.93));
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		max-width: 80%;
+		width: 35rem;
+		text-align: center;
+	}
+	h3 {
+		color: #beb99c;
+		font-weight: 100;
+		padding: 0.5rem;
+		border-bottom: 0.01rem solid #959187;
+	}
+	h4 {
+		color: #ede5d8;
+		padding: 0.8rem;
+		font-weight: 100;
+	}
+	h4.msg {
+		border-top: 0.01rem solid #959187;
+		margin-top: 1.5rem;
+	}
+	i.gi-primo-star {
+		font-size: 0.7rem;
+		vertical-align: top;
+	}
+
+	.milestone {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.item {
+		margin: 0.25rem;
+	}
+	.item,
+	.body {
+		display: block;
+		border-radius: 0.4rem;
+		overflow: hidden;
+		width: 5rem;
+	}
+	.body {
+		background-color: #fff;
+	}
+
+	.starglitter .pic {
+		background-image: url('/assets/images/utility/5star-bg.webp');
+	}
+	.stardust .pic {
+		background-image: url('/assets/images/utility/4star-bg.webp');
+	}
+
+	.pic {
+		background-size: cover;
+		position: relative;
+	}
+	.star {
+		position: absolute;
+		left: 50%;
+		bottom: -0.6rem;
+		transform: translateX(-50%);
+	}
+	.gi-star {
+		color: #eac343;
+		font-size: 0.9rem;
+	}
+	span {
+		font-size: 0.7rem;
+		display: block;
+		line-height: 1rem;
+	}
+	.name {
+		font-size: 0.7rem;
+		white-space: pre-wrap;
+		width: 5rem;
+		color: #ede5d8;
+		line-height: 0.9rem;
+		margin-top: 0.3rem;
+	}
+</style>

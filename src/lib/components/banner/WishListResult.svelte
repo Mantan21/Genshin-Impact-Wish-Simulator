@@ -1,7 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { showWish, backsound } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
@@ -58,10 +57,9 @@
 		encoded = btoa(data);
 	});
 
+	const dispatch = createEventDispatcher();
 	const closeHandle = () => {
-		backsound.set(true);
-		showWish.set(false);
-		playSfx('close');
+		dispatch('wishEnd');
 	};
 </script>
 
@@ -242,12 +240,17 @@
 	.shadows {
 		display: block;
 		height: 40vw;
-		max-height: 75vh;
+		max-height: 67vh;
 		min-height: 50vh;
 		width: 100%;
 		padding: 0 20px;
 		white-space: nowrap;
 		text-align: center;
+	}
+
+	:global(.mobile) .wishlist,
+	:global(.mobile) .shadows {
+		max-height: 72.5vh;
 	}
 
 	.item,
@@ -295,6 +298,10 @@
 		-webkit-text-stroke: 0.3px #000;
 	}
 
+	:global(.mobile) .shadow span {
+		font-size: 0.6rem;
+	}
+
 	.shadow.shadow5 {
 		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.5), 0 0 1rem rgb(249, 170, 2),
 			0 0 1.4rem rgb(249, 170, 2), 0 0 2rem rgb(249, 121, 2);
@@ -312,8 +319,8 @@
 
 	.shadow.shadow4 {
 		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.6), 0 0 1rem rgb(138, 3, 161),
-			0 0 1.4rem rgb(160, 5, 187), 0 0 2rem rgb(29, 4, 255);
-		background-color: rgb(201, 19, 233);
+			0 0 1.4rem rgb(217, 0, 255), 0 0 2rem rgb(29, 4, 255);
+		background-color: rgb(185, 18, 214);
 	}
 	.star4 .item-body {
 		background-image: linear-gradient(
