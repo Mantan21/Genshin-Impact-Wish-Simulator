@@ -154,9 +154,26 @@
 										</div>
 									{/if}
 								</div>
+
+								{#if type === 'character' && fateType}
+									<div class="cover" />
+								{/if}
 							</div>
 						</div>
 					</div>
+				</div>
+			{/each}
+		</div>
+		<div class="shadows">
+			{#each sortedWish as { rarity, type, fateType }, i}
+				<div
+					class="shadow shadow{rarity}"
+					class:animate={!preview}
+					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
+				>
+					{#if fateType && type === 'character'}
+						<span> Convertion </span>
+					{/if}
 				</div>
 			{/each}
 		</div>
@@ -220,7 +237,9 @@
 		transform: scale(0.7);
 	}
 
-	.wishlist {
+	/* Wish List */
+	.wishlist,
+	.shadows {
 		display: block;
 		height: 40vw;
 		max-height: 75vh;
@@ -230,32 +249,57 @@
 		white-space: nowrap;
 		text-align: center;
 	}
-	.item {
+
+	.item,
+	.shadow {
 		height: 100%;
 		display: inline-block;
 		border-radius: 100%;
 		filter: drop-shadow(0px 0px 6px rgb(101, 187, 246));
 		position: relative;
+		transition: all 0.1s;
 	}
-	.item.animate {
-		transform: scale(0);
-		animation: wishReveal forwards 0.8s;
+
+	.shadow5,
+	.shadow4,
+	.item.star4,
+	.item.star5 {
+		filter: unset;
 	}
-	.item::before {
-		content: '';
-		width: 100%;
-		height: 97%;
+
+	.shadows {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		border-radius: 100%;
-		/* filter: drop-shadow(0 0 10px rgb(249, 121, 2)); */
-		background-image: linear-gradient(to bottom, #aac8f1, #fff, #aac8f1);
+		z-index: -1;
 	}
-	.star5.item::before {
-		box-shadow: 0 0 7px rgb(255, 255, 255), 0 0 10px rgb(249, 170, 2), 0 0 21px rgb(249, 170, 2),
-			0 0 35px rgb(249, 121, 2);
+
+	.item.animate,
+	.shadow.animate {
+		transform: scale(0);
+		animation: wishReveal forwards 0.8s;
+	}
+
+	.shadow {
+		height: 100%;
+		border-radius: 100%;
+	}
+	.shadow span {
+		position: absolute;
+		left: 50%;
+		bottom: -5%;
+		color: #fff;
+		transform: translateX(-50%);
+		font-size: small;
+		-webkit-text-stroke: 0.3px #000;
+	}
+
+	.shadow.shadow5 {
+		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.5), 0 0 1rem rgb(249, 170, 2),
+			0 0 1.4rem rgb(249, 170, 2), 0 0 2rem rgb(249, 121, 2);
+		background-color: rgb(249, 170, 2);
+		filter: unset;
 	}
 	.star5 .item-body {
 		background-image: linear-gradient(
@@ -266,9 +310,10 @@
 		);
 	}
 
-	.star4.item::before {
-		box-shadow: 0 0 7px rgb(255, 255, 255), 0 0 10px rgb(255, 255, 255), 0 0 21px rgb(156, 39, 176),
-			0 0 35px rgb(70, 57, 190);
+	.shadow.shadow4 {
+		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.6), 0 0 1rem rgb(138, 3, 161),
+			0 0 1.4rem rgb(160, 5, 187), 0 0 2rem rgb(29, 4, 255);
+		background-color: rgb(201, 19, 233);
 	}
 	.star4 .item-body {
 		background-image: linear-gradient(
@@ -292,6 +337,16 @@
 		background-color: #c3882a;
 		border: 1px solid #fffa66;
 		font-size: 0.7rem;
+	}
+
+	.cover {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.15);
 	}
 
 	.item-body {
