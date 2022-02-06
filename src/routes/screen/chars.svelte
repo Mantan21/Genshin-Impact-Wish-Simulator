@@ -1,96 +1,141 @@
 <script>
+	import { browser } from '$app/env';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
-	import { APP_TITLE } from '$lib/env';
+
+	import { APP_TITLE, HOST } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
-
 	import Icon from '$lib/components/utility/Icon.svelte';
 
+	let isError;
 	let data = {
 		rarity: 0,
-		name: '',
+		name: 'No Name',
 		stelaFortuna: false,
 		fateType: '',
 		fateQty: 0,
 		vision: ''
 	};
 
+	$: title = getName(data.name);
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
 
 	const getData = (decoded) => {
-		console.log(decoded);
-		let [name, rarity, vision, stelaFortuna, fateQty, fateType] = decoded.split('/');
+		const splited = decoded.split('/');
+		if (splited.length < 6) return { name: 'No Name' };
+		let [name, rarity, vision, stelaFortuna, fateQty, fateType] = splited;
 		stelaFortuna = stelaFortuna === '1';
 		rarity = parseInt(rarity, 10);
 		fateType = fateType !== 'undefined' ? fateType : false;
-		data = { name, rarity, vision, stelaFortuna, fateQty, fateType };
+		return { name, rarity, vision, stelaFortuna, fateQty, fateType };
 	};
 
 	const encoded = $page.query.get('a');
-	onMount(() => {
+	const resolveData = () => {
 		try {
 			if (encoded) {
-				let decoded = atob(encoded);
-				return getData(decoded);
+				const decoded = browser ? atob(encoded) : Buffer.from(encoded, 'base64').toString('utf8');
+				data = getData(decoded);
+				if (data.name !== 'No Name' || data.rarity) return;
 			}
-			window.location.href = '/';
+			throw new Error('No Data to show');
 		} catch (e) {
-			window.location.href = '/';
+			isError = true;
+			if (browser) window.location.replace('/');
 		}
-	});
+	};
+
+	resolveData();
 </script>
 
-<title> Character Result | {APP_TITLE} </title>
+<svelte:head>
+	<title>{title} | {APP_TITLE}</title>
 
-<div class="wish-result">
-	<div class="container">
-		<div class="splatter" style={splatterStyle}>
-			<img
-				src="/assets/images/characters/splash-art/{data.rarity}star/{data.name}.webp"
-				alt={data.name}
-				class="splash-art"
-			/>
+	<meta name="title" content="Yeay, I just got {title} Genshin Impact" />
+	<meta property="og:title" content="Yeay, I just got {title} Genshin Impact" />
 
-			<div class="info">
-				<i class="elemen gi-{data.vision}" />
-				<div class="name">
-					<div class="text">
-						{getName(data.name)}
-					</div>
-					<div class="star">
-						{#each Array(data.rarity) as _, i (i)}
-							<i class="gi-star" style={`animation-delay: ${2.3 + i * 0.15}s`} />
-						{/each}
-					</div>
-				</div>
+	<meta
+		name="twitter:image:src"
+		content="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
+	/>
+	<meta
+		property="twitter:image"
+		content="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
+	/>
+	<meta
+		property="og:image"
+		content="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
+	/>
+	<link
+		rel="fluid-icon"
+		href="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
+		title={APP_TITLE}
+	/>
+</svelte:head>
 
-				<div class="bonus">
-					{#if data.stelaFortuna}
-						<div class="stella stella{data.rarity}">
-							<img
-								src="/assets/images/utility/stella-fortuna-{data.rarity}star.webp"
-								alt="Stella Formula"
-							/>
+{#if isError}
+	<div class="error">
+		<h1>You're going to unresolved page, redirecting to index ...</h1>
+	</div>
+{:else}
+	<div class="wish-result">
+		<div class="container">
+			<div class="splatter" style={splatterStyle}>
+				<img
+					src="/assets/images/characters/splash-art/{data.rarity}star/{data.name}.webp"
+					alt={data.name}
+					class="splash-art"
+				/>
+
+				<div class="info">
+					<i class="elemen gi-{data.vision}" />
+					<div class="name">
+						<div class="text">
+							{title}
 						</div>
-					{/if}
-
-					{#if data.fateType}
-						<div class="masterless starglitter">
-							<Icon type="starglitter" width="80%" />
-							<span> {data.fateQty} </span>
+						<div class="star">
+							{#each Array(data.rarity) as _, i (i)}
+								<i class="gi-star" />
+							{/each}
 						</div>
-					{/if}
-				</div>
+					</div>
 
-				<!-- <Share page="chars" /> -->
+					<div class="bonus">
+						{#if data.stelaFortuna}
+							<div class="stella stella{data.rarity}">
+								<img
+									src="/assets/images/utility/stella-fortuna-{data.rarity}star.webp"
+									alt="Stella Formula"
+								/>
+							</div>
+						{/if}
+
+						{#if data.fateType}
+							<div class="masterless starglitter">
+								<Icon type="starglitter" width="80%" />
+								<span> {data.fateQty} </span>
+							</div>
+						{/if}
+					</div>
+
+					<!-- <Share page="chars" /> -->
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
+	.error {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		background-color: #fff;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.wish-result {
 		width: 100vw;
 		height: 100vh;

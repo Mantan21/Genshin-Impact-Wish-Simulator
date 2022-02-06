@@ -5,7 +5,7 @@
 	import playSfx from '$lib/functions/audio';
 
 	export let show = false;
-	export let title;
+	export let title = '';
 	export let confirm = true;
 	export let button = 'all';
 	export let sfx = true;

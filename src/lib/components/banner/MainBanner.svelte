@@ -7,20 +7,22 @@
 		bannerActive,
 		stardust,
 		starglitter,
-		backsound
+		backsound,
+		patchVersion,
+		bannerPhase
 	} from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
-	import roll from '$lib/functions/wish/roll';
-	import playSfx from '$lib/functions/audio';
+	import Wish, { roll } from '$lib/functions/wish/wish';
 	import { localBalance } from '$lib/store/localstore';
+	import playSfx from '$lib/functions/audio';
 
 	// Components
+	import WishResult from '$lib/components/utility/wishresult/WishResult.svelte';
+	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import Header from './parts/Header.svelte';
 	import Footer from './parts/Footer.svelte';
 	import Meteor from './parts/Meteor.svelte';
-	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import BannerItem from './BannerItem.svelte';
-	import WishResult from './WishResult.svelte';
 
 	let showWish = false;
 	let showMeteor = false;
@@ -30,27 +32,42 @@
 	let showConvertPopup = false;
 	let rollCount = 0;
 	let wishResult = [];
+	let WishFunction;
 
-	$: activeBanner = $bannerList[$bannerActive];
-	$: bannerActiveType = activeBanner
-		? activeBanner.type + (isNaN(activeBanner.index) ? '' : activeBanner.index)
-		: 'beginner';
+	$: nowBanner = $bannerList[$bannerActive];
+	$: bannerToRoll = nowBanner.type;
 	$: balance = $isAcquaintUsed ? $acquaint : $intertwined;
+
+	// Load Wish Configuration When changing banner Version
+	const preloadWish = (version, phase) => {
+		if (!version || !phase) return;
+		WishFunction = Wish.init(version, phase);
+	};
+	$: preloadWish($patchVersion, $bannerPhase);
+
+	// ============================================ //
+	const getIndexOfEventBanner = () => {
+		const events = $bannerList.filter(({ type }) => type === 'events');
+		const index = events.findIndex(({ character }) => character.name === nowBanner.character.name);
+		return index;
+	};
 
 	const doRoll = async (count) => {
 		rollCount = count;
-		const bannerToRoll = bannerActiveType;
-		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : rollCount;
-		wishResult = [];
-		if (balance < balanceNeededToRoll) {
-			showConvertPopup = true;
-			return;
+		const tmp = [];
+
+		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : count;
+		const indexOfEventBanner = bannerToRoll === 'events' ? getIndexOfEventBanner() : 0;
+
+		if (balance < balanceNeededToRoll) return (showConvertPopup = true);
+		for (let i = 0; i < count; i++) {
+			const result = roll(bannerToRoll, indexOfEventBanner, WishFunction);
+			tmp.push(result);
 		}
-		for (let i = 0; i < rollCount; i++) {
-			const result = await roll(bannerActiveType);
-			wishResult.push(result);
-			updateMilestones(result.fateType, result.fateQty);
-		}
+
+		const promise = await Promise.all(tmp);
+		wishResult = promise;
+		updateMilestones();
 		handleMeteorAnimation();
 		updateFatesBalance(bannerToRoll);
 	};
@@ -65,14 +82,22 @@
 		});
 	};
 
-	const updateMilestones = (type, qty) => {
-		if (!type && !qty) return;
-		const milestone = type === 'stardust' ? stardust : starglitter;
-		milestone.update((n) => {
-			const afterUpdate = n + qty;
-			localBalance.set(type, afterUpdate);
-			return afterUpdate;
-		});
+	const updateMilestones = () => {
+		const update = (type) => {
+			const qty = wishResult.reduce((prev, { fateQty, fateType }) => {
+				return prev + (fateType === type ? fateQty : 0);
+			}, 0);
+
+			const milestone = type === 'stardust' ? stardust : starglitter;
+			milestone.update((n) => {
+				const afterUpdate = n + qty;
+				localBalance.set(type, afterUpdate);
+				return afterUpdate;
+			});
+		};
+
+		update('starglitter');
+		update('stardust');
 	};
 
 	const countMilestone = (fate) => {

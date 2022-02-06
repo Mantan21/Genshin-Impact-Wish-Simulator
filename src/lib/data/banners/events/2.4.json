@@ -3,11 +3,12 @@
 	"data": [
 		{
 			"phase": 1,
-			"banner": {
+			"banners": {
+				"standardVersion": 2,
 				"events": {
 					"item": [
 						{
-							"name": "",
+							"name": "the-transcendent-one-returns-1",
 							"character": "shenhe",
 							"buttonBoxPosition": {
 								"w": 180,
@@ -16,7 +17,7 @@
 							}
 						},
 						{
-							"name": "",
+							"name": "invitation-to-mundane-life-2",
 							"character": "xiao",
 							"buttonBoxPosition": {
 								"w": 140,
@@ -28,7 +29,7 @@
 					"rateup": ["yunjin", "ningguang", "chongyun"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-20",
+					"name": "epitome-invocation-23",
 					"fatepointsystem": true,
 					"featured": [
 						{
@@ -62,7 +63,8 @@
 		},
 		{
 			"phase": 2,
-			"banner": {
+			"banners": {
+				"standardVersion": 2,
 				"events": {
 					"item": [
 						{
@@ -86,7 +88,7 @@
 					"rateup": ["xingqiu", "yanfei", "beidou"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-20",
+					"name": "epitome-invocation-24",
 					"fatepointsystem": true,
 					"featured": [
 						{

@@ -8,26 +8,11 @@
 	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
-	import banners from '$lib/setup/wishlist.json';
+	import { allPatch } from '$lib/setup/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
 
-	const { data } = banners;
-	const tempData = [];
-	data.forEach(({ version, banner }) => {
-		banner = banner.map((bn, i) => {
-			bn.patch = version;
-			bn.version = i;
-			return bn;
-		});
-		tempData.push([version, banner]);
-	});
-	let dataToShow = tempData;
-
-	const reverse = () => {
-		playSfx();
-		dataToShow = dataToShow.reverse();
-	};
-
+	let allBanners = [];
+	let dataToShow = [];
 	let showGroup = false;
 	let groupby = 'version';
 
@@ -40,50 +25,42 @@
 
 	const groupByChars = () => {
 		const char = {};
-		data.forEach(({ banner, version }) =>
-			banner.forEach((d, i) => {
-				if (d.limited.character.length) {
-					d.limited.character.forEach((chr) => {
-						const { name } = chr;
-						d.patch = version;
-						d.version = i;
-						char[name] = [...(char[name] || []), d];
+		allBanners.forEach((data) => {
+			data[1].forEach((dt) => {
+				if (Array.isArray(dt.chars)) {
+					dt.chars.forEach(({ character }) => {
+						char[character] = [...(char[character] || []), dt];
 					});
-					return;
 				} else {
-					const { name } = d.limited.character;
-					d.patch = version;
-					d.version = i;
-					char[name] = [...(char[name] || []), d];
+					const { character } = dt.chars;
+					char[character] = [...(char[character] || []), dt];
 				}
-			})
-		);
+			});
+		});
 		dataToShow = sort(Object.entries(char));
 		return;
 	};
 
 	const groupByWeapon = () => {
 		const weap = {};
-		data.forEach(({ banner, version }) =>
-			banner.forEach((wp, i) => {
-				const weapon1 = wp.weapons.featured[0].name;
-				const weapon2 = wp.weapons.featured[1].name;
-				wp.patch = version;
-				wp.version = i;
+		allBanners.forEach((data) => {
+			data[1].forEach((wp) => {
+				const { weapons } = wp;
+				const weapon1 = weapons.list[0].name;
+				const weapon2 = weapons.list[1].name;
 				weap[weapon1] = [...(weap[weapon1] || []), wp];
 				weap[weapon2] = [...(weap[weapon2] || []), wp];
-			})
-		);
+			});
+		});
 		dataToShow = sort(Object.entries(weap));
 		return;
 	};
 
 	const groupData = (group) => {
 		if (group === 'version') {
-			dataToShow = tempData;
+			dataToShow = allBanners;
 			return;
 		}
-
 		if (group === 'character') return groupByChars();
 		if (group === 'weapon') return groupByWeapon();
 	};
@@ -96,13 +73,42 @@
 		groupData(group);
 	};
 
-	const selectBanner = (patch, banner) => {
+	const reverse = () => {
 		playSfx();
+		dataToShow = dataToShow.reverse();
+	};
+
+	const checkAllBanner = async () => {
+		const patchList = [];
+		allPatch.forEach((patch) => {
+			const json = import(`../../data/banners/events/${patch.toFixed(1)}.json`);
+			patchList.push(json);
+		});
+		const promise = await Promise.all(patchList);
+		const data = promise.map(({ data, patch }) => {
+			patch = patch.toFixed(1);
+			data = data.map(({ phase, banners }) => {
+				let { events, weapons } = banners;
+				weapons = { name: weapons.name, list: weapons.featured };
+				return { patch, phase, chars: events.item, weapons };
+			});
+			return [patch.toString(), data];
+		});
+		allBanners = dataToShow = data.reverse();
+		return data;
+	};
+	checkAllBanner();
+
+	const selectBanner = (patch, phase) => {
+		playSfx();
+		// If select the same banner with the active one, change nothing just back to index
+		if ($bannerPhase === phase && $patchVersion === patch) return pageActive.set('index');
+
+		// Select a banner
 		bannerActive.set(0);
 		patchVersion.set(patch);
-		bannerPhase.set(banner);
-		localBannerVersion.set(patch, banner);
-		pageActive.set('index');
+		bannerPhase.set(phase);
+		localBannerVersion.set(patch, phase);
 	};
 
 	let content;
@@ -182,55 +188,56 @@
 		</div>
 		<div class="content" bind:this={content}>
 			<div id="content">
-				{#each dataToShow as dt (dt)}
+				{#each dataToShow as [group, data], i (i)}
 					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
 						<div class="group-title">
 							<h2>
-								{groupby === 'version' ? 'Version' : ''}
-								{getName(dt[0])} <i class="gi-primo-star" />
+								{groupby === 'version' ? `Version ${group}` : getName(group)}
+								<i class="gi-primo-star" />
 							</h2>
 						</div>
-						{#each dt[1] as { limited, weapons, patch, version }, i (i)}
+						{#each data as { patch, phase, chars, weapons }, i (i)}
 							<a
-								class="item"
-								href="/"
-								title="{limited.character.length
-									? getName(limited.character[0].name) + ', ' + getName(limited.character[1].name)
-									: getName(limited.character.name)} & {getName(weapons.featured[0].name) +
-									', ' +
-									getName(weapons.featured[1].name)}"
-								on:click|preventDefault={() => selectBanner(patch, version + 1)}
 								in:fade
+								href="/"
+								class="item"
+								on:click|preventDefault={() => selectBanner(patch, phase)}
+								title="{Array.isArray(chars)
+									? getName(chars.map(({ character }) => character).join(', '))
+									: getName(chars.character)} & {getName(
+									weapons.list.map(({ name }) => name).join(', ')
+								)}"
 							>
 								<div class="banner">
-									{#if limited.character.length}
-										{#each limited.character as limitedChar, i}
-											<img
-												src="/assets/images/banner/{patch}/limited{i}-{version + 1}.webp"
-												alt={getName(limitedChar.name)}
-											/>
-										{/each}
+									{#if Array.isArray(chars)}
+										<div class:dual={chars.length > 1}>
+											{#each chars as { character, name }, i}
+												<img
+													src="/assets/images/banner/{patch}/{name}.webp"
+													alt={getName(character)}
+													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
+												/>
+											{/each}
+										</div>
 									{:else}
 										<img
-											src="/assets/images/banner/{patch}/limited-{version + 1}.webp"
-											alt={getName(limited.character.name)}
+											src="/assets/images/banner/{patch}/{chars.name}.webp"
+											alt={getName(chars.name)}
 										/>
 									{/if}
 									<img
-										src="/assets/images/banner/{patch}/weapon-{version + 1}.webp"
-										alt={getName(weapons.featured[0].name)}
+										src="/assets/images/banner/{patch}/{weapons.name}.webp"
+										alt={getName(weapons.name)}
 									/>
 								</div>
 								<h3 class="name">
-									{#if limited.character.length}
-										{getName(limited.character[0].name)},
-										{getName(limited.character[1].name)}
+									{#if Array.isArray(chars)}
+										{getName(chars.map(({ character }) => character).join(', '))}
 									{:else}
-										{getName(limited.character.name)}
+										{getName(chars.character)}
 									{/if}
 									&
-									{getName(weapons.featured[0].name)},
-									{getName(weapons.featured[1].name)}
+									{getName(weapons.list.map(({ name }) => name).join(', '))}
 								</h3>
 							</a>
 						{/each}
@@ -403,8 +410,17 @@
 		width: 65vh;
 	}
 
+	.banner {
+		display: flex;
+		justify-content: space-between;
+	}
 	.item img {
-		width: 48%;
+		width: 49.5%;
+		object-position: 88%;
+	}
+	.dual {
+		width: 50%;
+		display: flex;
 	}
 
 	.item .name {

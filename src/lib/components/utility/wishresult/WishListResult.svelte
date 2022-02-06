@@ -4,6 +4,7 @@
 	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
+	import positionToStyle from '$lib/functions/cssPosition';
 
 	export let preview = false;
 	export let previewlist = [];
@@ -41,7 +42,7 @@
 	$: getList(preview, previewlist);
 
 	let container;
-	let wishHeight;
+	let wishHeight = 400;
 	let encoded;
 
 	onMount(() => {
@@ -80,7 +81,7 @@
 <div class="scroll" bind:this={container}>
 	<div class="container" class:animate={!preview}>
 		<div class="wishlist" bind:clientHeight={wishHeight}>
-			{#each sortedWish as { name, rarity, weaponType, type, vision, style, stelaFortuna, isNew, fateType, fateQty }, i (i)}
+			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty }, i (i)}
 				<div
 					id="wish{i}"
 					class="item star{rarity} {type}"
@@ -101,14 +102,14 @@
 										src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 										alt={name}
 										class="wishpic {weaponType}-item"
-										{style}
+										style={positionToStyle(wishBoxPosition)}
 									/>
 								{:else}
 									<img
 										src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
 										alt={name}
 										class="wishpic"
-										{style}
+										style={positionToStyle(wishBoxPosition)}
 									/>
 								{/if}
 

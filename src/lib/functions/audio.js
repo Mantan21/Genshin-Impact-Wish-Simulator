@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import { Howl } from 'howler';
 
 const source = {
@@ -23,8 +24,7 @@ const source = {
 
 const sounds = {};
 const soundInit = () => {
-	// eslint-disable-next-line
-	if (!('window' in globalThis)) return;
+	if (!browser) return;
 	Object.keys(source).forEach((key) => {
 		sounds[key] = new Howl({
 			src: [source[key]]

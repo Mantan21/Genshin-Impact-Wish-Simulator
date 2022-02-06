@@ -1,51 +1,22 @@
 <script>
+	import { fly } from 'svelte/transition';
 	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 	import FatepointPopup from '../fatepoint/FatepointPopup.svelte';
-
-	import { version, wishPhase, banner } from '$lib/setup/wish-setup.json';
-	import { data } from '$lib/setup/wishlist.json';
 	import playSfx from '$lib/functions/audio';
 	import {
-		patchVersion,
-		bannerPhase,
 		acquaint,
 		bannerActive,
 		intertwined,
 		mobileMode,
 		primogem,
-		showBeginner,
 		stardust,
 		starglitter,
 		pageActive,
 		isAcquaintUsed,
-		bannerList,
-		isFatepointSystem
+		bannerList
 	} from '$lib/store/stores';
-
-	const listOfWishBanner = data.find((d) => d.version === version);
-	let { limited, weapons } = listOfWishBanner.banner[wishPhase - 1];
-	let { beginner, standard } = banner;
-	let limitedChar = limited.character;
-	$: if ($patchVersion !== version || $bannerPhase !== wishPhase) {
-		const { banner } = data.find((d) => d.version === $patchVersion);
-		({ limited, weapons } = banner[$bannerPhase - 1]);
-		limitedChar = limited.character;
-	}
-
-	let list;
-	$: {
-		list = $showBeginner ? [{ type: 'beginner', character: beginner.character }] : [];
-		if (limitedChar.length) {
-			limitedChar.forEach((character, i) => list.push({ type: 'limited', character, index: i }));
-		} else list.push({ type: 'limited', character: limitedChar });
-		list.push({ type: 'weapon', weapons: weapons.featured });
-		list.push({ type: 'standard', character: standard.character });
-
-		bannerList.set(list);
-		isFatepointSystem.set(!!weapons.fatepointsystem);
-	}
 
 	const buttonClick = (banner) => {
 		bannerActive.set(banner);
@@ -60,11 +31,11 @@
 
 <FatepointPopup />
 
-<div id="header">
+<div id="header" in:fly={{ y: -20, duration: 800 }}>
 	<div class="top">
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
-			<span>{$bannerList[$bannerActive] ? $bannerList[$bannerActive].type : 0} Wish </span>
+			<span>{$bannerList[$bannerActive]?.type || ''} Wish </span>
 		</h1>
 		<div class="budget">
 			<div class="fates">
@@ -106,7 +77,7 @@
 			<BannerButton
 				{type}
 				character={character || ''}
-				weapon={weapons || []}
+				weapons={weapons || []}
 				active={$bannerActive === i}
 				on:click={() => buttonClick(i)}
 			/>

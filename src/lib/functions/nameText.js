@@ -1,4 +1,5 @@
 const getName = (name) => {
+	if (!name) return name;
 	const removedDelimiter = name.replace(/-/g, ' ').replace(new RegExp('_'), "'");
 	return removedDelimiter
 		.split(' ')

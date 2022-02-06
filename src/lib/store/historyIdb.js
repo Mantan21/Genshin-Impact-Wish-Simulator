@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import { openDB } from 'idb';
 
 const version = 1;
@@ -5,8 +6,7 @@ const DBName = 'WishSimulator';
 const storeName = 'history';
 
 let IndexedDB;
-// eslint-disable-next-line
-if (globalThis.window) {
+if (browser) {
 	IndexedDB = openDB(DBName, version, {
 		upgrade(db) {
 			const store = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
