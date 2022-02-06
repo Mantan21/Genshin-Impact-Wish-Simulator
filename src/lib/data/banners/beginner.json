@@ -1,0 +1,11 @@
+{
+	"beginner": {
+		"name": "beginner",
+		"character": "noelle",
+		"vision": "geo",
+		"buttonBoxPosition": {
+			"w": 120,
+			"t": 30
+		}
+	}
+}

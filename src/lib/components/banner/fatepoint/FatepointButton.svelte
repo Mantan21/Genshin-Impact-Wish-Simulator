@@ -1,4 +1,5 @@
 <script>
+	import { browser } from '$app/env';
 	import {
 		bannerActive,
 		bannerList,
@@ -6,29 +7,40 @@
 		fatePoint,
 		isFatepointSystem,
 		patchVersion,
-		showFatepointCounter
+		selectedCourse,
+		showFatepointPopup
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import FatepointIcon from './FatepointIcon.svelte';
 	import { localFatePoint } from '$lib/store/localstore';
 
-	const handleClick = () => {
-		playSfx();
-		showFatepointCounter.set(!$showFatepointCounter);
+	$: isWeapon = $bannerList[$bannerActive].type === 'weapons';
+
+	const getSelectedCourse = (banners, course) => {
+		if (!course) return selectedCourse.set({ name: null, index: null });
+		const selected = banners.find(({ type }) => type === 'weapons');
+		const selectedName = selected.weapons.featured[course - 1].name;
+		selectedCourse.set({ name: selectedName, index: course - 1 });
 	};
 
-	const checkFatepoint = (patch, banner) => {
-		// eslint-disable-next-line
-		if (!globalThis.window) return;
-		const localFate = localFatePoint.init(patch, banner);
+	const checkFatepoint = (banners) => {
+		if (!browser) return;
+		const localFate = localFatePoint.init($patchVersion, $bannerPhase);
 		const point = localFate.getPoint();
+		let course = localFate.getSelected();
+		getSelectedCourse(banners, course);
 		fatePoint.set(point);
 	};
 
-	$: checkFatepoint($patchVersion, $bannerPhase);
+	const handleClick = () => {
+		playSfx();
+		showFatepointPopup.set(true);
+	};
+
+	$: checkFatepoint($bannerList);
 </script>
 
-{#if $isFatepointSystem && $bannerList[$bannerActive].type === 'weapon'}
+{#if $isFatepointSystem && isWeapon}
 	<button class="container" on:click={handleClick}>
 		<FatepointIcon active={$fatePoint === 2} />
 		<div class="point-number">

@@ -9,7 +9,7 @@ import {
 	patchVersion
 } from '$lib/store/stores';
 import { localBalance, localBannerVersion } from '$lib/store/localstore';
-import { storageVersion } from '$lib/setup/wish-setup.json';
+import { storageVersion, version } from '$lib/setup/wish-setup.json';
 
 /**
  * Read Balance From LocalStorage
@@ -54,7 +54,7 @@ const setBannerVersionAndPhase = () => {
 	}
 
 	const localVersion = localBannerVersion.get();
-	if (!localVersion) return;
+	if (!localVersion) return patchVersion.set(version);
 	const [patch, phase] = localVersion.split('-');
 	bannerPhase.set(parseInt(phase));
 	patchVersion.set(patch);

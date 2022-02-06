@@ -1,12 +1,13 @@
 <script>
+	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		bannerList,
 		bannerPhase,
 		fatePoint,
-		fatepointCounterActive,
 		patchVersion,
-		showFatepointCounter,
+		selectedCourse,
+		showFatepointPopup,
 		viewportWidth
 	} from '$lib/store/stores';
 	import { fade } from 'svelte/transition';
@@ -18,19 +19,18 @@
 	import InventoryItem from '$lib/components/inventory/InventoryItem.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 
-	$: half = $viewportWidth < 500;
-
-	$: weapons = $bannerList.find(({ type }) => type === 'weapon').weapons;
-
 	let weaponHeight;
+	$: half = $viewportWidth < 500;
 	$: itemWidth = (60 / 100) * weaponHeight;
 	$: itemStyle = `width: ${itemWidth}px; height:${itemWidth + 20}px`;
 
+	$: weaponName = $selectedCourse.name;
+	$: weaponIndex = $selectedCourse.index;
+	$: weapons = $bannerList.find(({ type }) => type === 'weapons')?.weapons.featured || [];
+
 	let showCancelConfirmation = false;
 
-	/**
-	 * Weapon Target
-	 */
+	// Target Course
 	let targetActive = null;
 	const select = (i) => {
 		playSfx();
@@ -39,8 +39,10 @@
 
 	const setCourse = () => {
 		if (targetActive === null) return;
-		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
+		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive + 1);
 		localFate.set(0);
+		const { name } = weapons[targetActive];
+		selectedCourse.set({ name, index: targetActive });
 		playSfx();
 		handleClose();
 	};
@@ -53,7 +55,7 @@
 	const confirmCancel = () => {
 		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
 		targetActive = null;
-		fatepointCounterActive.set(false);
+		selectedCourse.set({ name: null, index: null });
 		fatePoint.set(0);
 		localFate.remove();
 		handleClose();
@@ -61,34 +63,14 @@
 		return;
 	};
 
-	const checkSelected = () => {
-		const localFate = localFatePoint.init($patchVersion, $bannerPhase, targetActive);
-		const selected = localFate.getSelected();
-		if (selected === null) return;
-		targetActive = selected;
-		fatepointCounterActive.set(true);
-		fatePoint.set(localFatePoint.getPoint());
-		return;
+	const handleClose = () => {
+		showFatepointPopup.set(false);
 	};
 
 	let content;
-	$: if ($showFatepointCounter) {
-		// eslint-disable-next-line no-undef
-		if (globalThis.window) {
-			OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-			checkSelected();
-		}
-	} else {
-		fatepointCounterActive.set(false);
-	}
-
-	/**
-	 *
-	 */
-
-	const handleClose = () => {
-		showFatepointCounter.set(false);
-	};
+	afterUpdate(() => {
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
 <PopUp
@@ -112,7 +94,7 @@
 	</div>
 </PopUp>
 
-{#if $showFatepointCounter}
+{#if $showFatepointPopup}
 	<section class="popup" transition:fade={{ duration: 80 }}>
 		<div class="popup-content">
 			<img
@@ -165,18 +147,18 @@
 						</div>
 					</div>
 				{/if}
-				<div class="selector" class:counter={$fatepointCounterActive}>
+				<div class="selector" class:counter={weaponName}>
 					<div class="bg">
-						<FatepointTribal mode={$fatepointCounterActive ? 'counter' : 'bg'} />
+						<FatepointTribal mode={weaponName ? 'counter' : 'bg'} />
 					</div>
 					<div class="top">Select Weapon</div>
 					<div class="weapon-item">
 						<div class="weapon-list" bind:clientHeight={weaponHeight}>
-							{#if $fatepointCounterActive}
+							{#if weaponName}
 								<button class="weapon-content" style={itemStyle}>
 									<InventoryItem
-										name={weapons[targetActive].name}
-										weaponType={weapons[targetActive].type}
+										name={weaponName}
+										weaponType={weapons[weaponIndex].type}
 										type="weapon"
 										rarity={5}
 										width={itemWidth}
@@ -203,7 +185,7 @@
 						</div>
 						<div class="text">
 							<div>
-								{#if $fatepointCounterActive}
+								{#if weaponName}
 									Fate Points : <span>{$fatePoint}</span>/2
 								{:else if targetActive === null}
 									Select Weapon
@@ -214,7 +196,7 @@
 						</div>
 					</div>
 					<div class="button">
-						{#if $fatepointCounterActive}
+						{#if weaponName}
 							<button on:click={cancelCourse}>
 								<i class="gi-times" /> Cancel Course
 							</button>

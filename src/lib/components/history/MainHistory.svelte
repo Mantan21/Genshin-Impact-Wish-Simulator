@@ -1,5 +1,6 @@
 <script>
 	// Library
+	import { browser } from '$app/env';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -20,14 +21,14 @@
 	});
 
 	$: list = $bannerList.filter((item, i, arr) => i === arr.findIndex((v) => v.type === item.type));
+	//  check if beginner banner already gone, push it to hostory list
 	$: if (list.findIndex(({ type }) => type === 'beginner') < 0) list.unshift({ type: 'beginner' });
 
 	$: banner = $bannerList.find((v, i) => i === $bannerActive).type;
 	$: nowOpenIndex = list.findIndex(({ type }) => type === banner.toLocaleLowerCase());
 	$: selected = nowOpenIndex < 0 ? 2 : nowOpenIndex;
 
-	// eslint-disable-next-line
-	$: pity = globalThis.window ? pity5star.get(banner) || 0 : 0;
+	$: pity = browser ? pity5star.get(banner) || 0 : 0;
 
 	let showSelectList = false;
 	let activepage = 1;
@@ -37,9 +38,11 @@
 
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
-		// eslint-disable-next-line
-		if (!globalThis.window) return [];
-		const bannerList = await getList(banner);
+		if (!browser) return [];
+		const bannerList =
+			banner === 'events'
+				? [...(await getList('limited')), ...(await getList(banner))]
+				: await getList(banner);
 		data = bannerList.map((d) => d).reverse();
 		return data;
 	};
@@ -82,7 +85,7 @@
 	<div class="confirmation">
 		<p>
 			It's also remove all Characters and Weapons related to <strong>
-				{banner === 'limited' ? 'Character Event' : getName(banner)}
+				{banner === 'events' ? 'Character Event' : getName(banner)}
 			</strong>
 			Banner from your Inventory. <br />
 			Are You Sure to Reset ?
@@ -90,7 +93,7 @@
 	</div>
 </PopUp>
 
-<section bind:this={content}>
+<section bind:this={content} transition:fade={{ duration: 200 }}>
 	<div class="header">
 		<button
 			on:click={() => {
@@ -111,7 +114,7 @@
 						showSelectList = !showSelectList;
 					}}
 				>
-					{banner === 'limited' ? 'Character Event' : getName(banner)} Wish
+					{banner === 'events' ? 'Character Event' : getName(banner)} Wish
 
 					<i class="gi-caret-{showSelectList ? 'up' : 'down'}" />
 				</div>
@@ -125,7 +128,7 @@
 								class:active={selected === i}
 								on:click|preventDefault={() => selectBanner(type)}
 							>
-								{type === 'limited' ? 'Character Event' : getName(type)} Wish
+								{type === 'events' ? 'Character Event' : getName(type)} Wish
 							</a>
 						{/each}
 					</div>

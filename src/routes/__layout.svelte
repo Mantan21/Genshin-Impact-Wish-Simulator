@@ -29,10 +29,13 @@
 	}
 
 	onMount(() => {
-		const t = setTimeout(() => {
-			isLoaded.set(true);
-			clearTimeout(t);
-		}, 2000);
+		const t = setTimeout(
+			() => {
+				isLoaded.set(true);
+				clearTimeout(t);
+			},
+			preview ? 10 : 2000
+		);
 
 		const md = new MobileDetect(navigator.userAgent);
 		isMobile.set(!!md.mobile());
@@ -86,7 +89,8 @@
 <main class:mobile={$mobileMode} class:preview>
 	<slot />
 
-	<div class="uid">WishSimulator.vercel.app</div>
+	<a href="/" class="uid" class:preview> WishSimulator.vercel.app </a>
+
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
 
@@ -124,6 +128,8 @@
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
+	}
+	.uid:not(.preview) {
 		pointer-events: none;
 	}
 

@@ -5,18 +5,11 @@
 		viewportHeight,
 		viewportWidth,
 		patchVersion,
-		bannerPhase,
 		bannerList,
 		fatePoint,
-		showFatepointCounter
+		selectedCourse
 	} from '$lib/store/stores';
-	import setup from '$lib/setup/wish-setup.json';
-	import { localFatePoint } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
-
-	let { version, wishPhase } = setup;
-	$: if ($patchVersion !== '0.0') version = $patchVersion;
-	$: if ($bannerPhase !== 0) wishPhase = $bannerPhase;
 
 	$: style =
 		$viewportHeight > 800 ||
@@ -25,55 +18,41 @@
 			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);'
 			: '';
 
-	$: list = $bannerList[$bannerActive];
-	$: limitedlist = $bannerList.filter(({ type }) => type === 'limited');
-	$: limitedBannerIndex = limitedlist.findIndex(({ character }) => {
-		const nm = list.character;
-		if (nm) return character.name === nm.name;
-	});
-	$: limitedBannerName = limitedlist.length > 1 ? `limited${limitedBannerIndex}` : 'limited';
-
-	/**
-	 * Check Fate Point
-	 */
-	let selectedCourse;
-	const checkFatepoint = (patch, banner) => {
-		// eslint-disable-next-line
-		if (!globalThis.window) return;
-		const localFate = localFatePoint.init(patch, banner);
-		const { weapons } = $bannerList.find(({ type }) => type === 'weapon');
-		const selectedData = weapons[localFate.getSelected()];
-		selectedCourse = selectedData ? getName(selectedData.name) : null;
-		return selectedCourse;
-	};
+	$: activeBanner = $bannerList[$bannerActive];
 </script>
 
 <div class="banner" {style}>
-	{#if list.type === 'beginner'}
+	{#if activeBanner.type === 'beginner'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
 		</div>
-	{:else if list.type === 'weapon'}
+	{:else if activeBanner.type === 'weapons'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="weapon-banner">
-				<img src="/assets/images/banner/{version}/weapon-{wishPhase}.webp" alt="Weapon Banner" />
+				<img
+					src="/assets/images/banner/{$patchVersion}/{activeBanner.weapons.name}.webp"
+					alt="Weapon Banner"
+				/>
 
-				{#if checkFatepoint($patchVersion, $bannerPhase, /** to trigger when course selected */ $showFatepointCounter)}
+				{#if $selectedCourse.name}
 					<div class="selected" class:fill={$fatePoint === 2}>
-						Course Set For: {selectedCourse}
+						Course Set For: {getName($selectedCourse.name)}
 					</div>
 				{/if}
 			</div>
 		</div>
-	{:else if list.type === 'standard'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<img src="/assets/images/banner/standard.webp" alt="Standard Banner" />
-		</div>
-	{:else if list.type === 'limited'}
+	{:else if activeBanner.type === 'standard'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<img
-				src="/assets/images/banner/{version}/{limitedBannerName}-{wishPhase}.webp"
-				alt="Limited Banner"
+				src="/assets/images/banner/standard/{activeBanner.character.name}.webp"
+				alt="Standard Banner"
+			/>
+		</div>
+	{:else if activeBanner.type === 'events'}
+		<div in:fly={{ x: 50, duration: 1000 }}>
+			<img
+				src="/assets/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
+				alt="Character Events Banner"
 			/>
 		</div>
 	{/if}

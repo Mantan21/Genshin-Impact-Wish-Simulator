@@ -1,18 +1,21 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import positionToStyle from '$lib/functions/cssPosition';
 
 	export let active = false;
-	export let type = 'limited';
-	export let weapon = [];
-	export let character = {
-		name: '',
-		style: {
-			main: '',
-			active: ''
-		}
+	export let type = 'events';
+	export let weapons = [];
+	export let character = {};
+
+	const buttonStyle = (position, isActive = false) => {
+		if (!position) return;
+		const tempPosition = { ...position };
+		if (!tempPosition.t) tempPosition.t = 0;
+		if (isActive) tempPosition.t = tempPosition.t - 10;
+		return positionToStyle(tempPosition);
 	};
 
-	$: ({ style, name } = character);
 	const dispatch = createEventDispatcher();
 	const buttonClick = () => {
 		dispatch('click');
@@ -23,19 +26,21 @@
 	<i class="gi-primo-star" />
 	<i class="gi-companion" />
 	<div class="picture">
-		{#if type === 'weapon'}
-			{#each weapon as { name, style, type }}
+		{#if type === 'weapons'}
+			{#each weapons.featured as { name, buttonBoxPosition, type }}
 				<img
+					in:fade
 					src="/assets/images/weapons/{type}/5star/{name}.webp"
 					alt="Weapon Wish"
-					style={active ? style.active : style.main}
+					style={buttonStyle(buttonBoxPosition, active)}
 				/>
 			{/each}
 		{:else}
 			<img
-				src="/assets/images/characters/banner-button/{name}.webp"
+				in:fade
+				src="/assets/images/characters/banner-button/{character.character}.webp"
 				alt="{type} Wish"
-				style={active ? style.active : style.main}
+				style={buttonStyle(character.buttonBoxPosition, active)}
 			/>
 		{/if}
 	</div>
@@ -150,6 +155,7 @@
 		transform: scale(0.65) translateX(-50%);
 		padding: 0.2rem 0.5rem;
 	}
+
 	@media screen and (min-width: 750px) {
 		.discount {
 			font-size: 0.7rem;

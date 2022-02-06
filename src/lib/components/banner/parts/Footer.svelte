@@ -3,7 +3,6 @@
 	import {
 		bannerActive,
 		bannerList,
-		isFatepointSystem,
 		mobileMode,
 		pageActive,
 		stardust,
@@ -40,10 +39,7 @@
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
-	<div
-		class="footer-info"
-		class:weapon={$bannerList[$bannerActive].type === 'weapon' && $isFatepointSystem}
-	>
+	<div class="footer-info">
 		{#if !$mobileMode}
 			<FatepointButton />
 			<div class="wish">
@@ -100,14 +96,10 @@
 	.footer-info {
 		position: absolute;
 		left: 5%;
-		top: -5%;
+		bottom: 75%;
 		align-items: center;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.footer-info.weapon {
-		top: -120%;
 	}
 
 	.wish > div {
@@ -230,9 +222,6 @@
 		}
 	}
 	@media screen and (max-width: 550px) {
-		.footer-info.weapon {
-			top: -87%;
-		}
 		.menu-button {
 			width: 100%;
 		}

@@ -4,8 +4,17 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import { pageActive, backsound } from '$lib/store/stores';
+	import {
+		pageActive,
+		bannerList,
+		backsound,
+		patchVersion,
+		bannerPhase,
+		showBeginner,
+		isFatepointSystem
+	} from '$lib/store/stores';
 	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
+	import { beginner } from '$lib/data/banners/beginner.json';
 
 	// Components
 	import MainBanner from '$lib/components/banner/MainBanner.svelte';
@@ -19,6 +28,43 @@
 	$: audioActive = $backsound && $pageActive === 'index';
 	$: if (audioActive) playSfx('wishBacksound');
 	else if (isMount) playSfx('wishBacksound', true);
+
+	const beginnerBanner = beginner;
+	let eventBanner;
+	let weaponBanner;
+	let standardBanner;
+	let list = [];
+
+	const updateBannerListToShow = () => {
+		list = $showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
+		if (Array.isArray(eventBanner)) {
+			eventBanner.forEach((bn) => list.push({ type: 'events', character: bn }));
+		} else list.push({ type: 'events', character: eventBanner });
+		list.push({ type: 'weapons', weapons: weaponBanner });
+		list.push({ type: 'standard', character: standardBanner });
+		bannerList.set(list);
+		isFatepointSystem.set(!!weaponBanner.fatepointsystem);
+		pageActive.set('index');
+		return;
+	};
+
+	const switchBanner = async (patch, bannerPhase) => {
+		try {
+			if (!patch) return;
+			const { data } = await import(`../lib/data/banners/events/${patch}.json`);
+			const { banners } = data.find(({ phase }) => phase === bannerPhase);
+			const { events, weapons, standardVersion } = banners;
+			const { standard } = await import(`../lib/data/banners/standard/${standardVersion}.json`);
+			eventBanner = events.item;
+			weaponBanner = weapons;
+			standardBanner = standard.featured;
+			return updateBannerListToShow();
+		} catch (e) {
+			console.error(`Can't Switch banner because it unavailable !`, e);
+		}
+	};
+
+	$: switchBanner($patchVersion, $bannerPhase);
 
 	onMount(async () => {
 		isMount = true;

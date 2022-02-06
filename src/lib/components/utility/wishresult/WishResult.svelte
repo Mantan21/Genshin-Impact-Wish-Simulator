@@ -5,9 +5,9 @@
 	import playSfx from '$lib/functions/audio';
 
 	// Component
+	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
-	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let list = [];
 
@@ -16,7 +16,7 @@
 
 	let showWishList = false;
 	let audio;
-	let wishResult;
+	let wishResultContainer;
 	let activeIndex = 0;
 
 	const playRevealAudio = () => {
@@ -60,7 +60,7 @@
 
 	onMount(() => {
 		showItem('start');
-		wishResult.addEventListener('click', showItem);
+		wishResultContainer.addEventListener('click', showItem);
 	});
 </script>
 
@@ -73,7 +73,7 @@
 	{#if showWishList}
 		<WishListResult {list} on:wishEnd={closeHandle} />
 	{:else}
-		<div class="container" bind:this={wishResult}>
+		<div class="container" bind:this={wishResultContainer}>
 			{#if list.length === 1}
 				<button class="close" on:click={closeHandle}>
 					<i class="gi-close" />
