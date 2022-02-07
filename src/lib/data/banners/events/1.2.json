@@ -4,7 +4,7 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"item": {
 						"name": "secretum-secretorum-1",
@@ -53,7 +53,7 @@
 		{
 			"phase": 2,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"item": {
 						"name": "adrift-in-the-harbor-1",

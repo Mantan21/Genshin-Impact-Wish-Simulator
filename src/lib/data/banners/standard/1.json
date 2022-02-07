@@ -1,0 +1,14 @@
+{
+	"version": 2,
+	"standard": {
+		"featured": {
+			"name": "wanderlust-invocation-1",
+			"character": "jean",
+			"buttonBoxPosition": {
+				"w": 140,
+				"t": 27
+			}
+		},
+		"characters": ["qiqi", "keqing", "diluc", "mona", "jean"]
+	}
+}
