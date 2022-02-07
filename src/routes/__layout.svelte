@@ -21,7 +21,7 @@
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import '../app.css';
 
-	let preview = $page.path.split('/')[1] === 'screen';
+	$: preview = $page.path.split('/')[1] === 'screen';
 
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];

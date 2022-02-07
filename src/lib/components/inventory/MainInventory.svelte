@@ -455,7 +455,7 @@
 		height: 100%;
 	}
 	.container {
-		height: calc(100vh - 150px);
+		height: calc(100vh - 10.5rem);
 		display: block;
 		width: 100%;
 		padding: 0 2%;
@@ -567,6 +567,16 @@
 		nav .nav-link {
 			width: 40px;
 			height: 40px;
+		}
+		.container {
+			height: calc(100vh - 12rem);
+			margin-top: 0;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		.container {
+			height: calc(100vh - 13rem);
 		}
 	}
 </style>

@@ -354,7 +354,7 @@
 		top: 0;
 		height: 100%;
 		width: 100%;
-		background-color: rgba(0, 0, 0, 0.15);
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 
 	.item-body {
