@@ -18,7 +18,10 @@
 
 	const getSelectedCourse = (banners, course) => {
 		if (!course) return selectedCourse.set({ name: null, index: null });
+
 		const selected = banners.find(({ type }) => type === 'weapons');
+		if (!selected) return selectedCourse.set({ name: null, index: null });
+
 		const selectedName = selected.weapons.featured[course - 1].name;
 		selectedCourse.set({ name: selectedName, index: course - 1 });
 	};
