@@ -4,7 +4,7 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"item": {
 						"name": "farewell-of-snezhnaya-1",
@@ -46,7 +46,7 @@
 		{
 			"phase": 2,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"item": {
 						"name": "gentry-of-hermitage-1",
