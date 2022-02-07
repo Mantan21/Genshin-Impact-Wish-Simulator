@@ -129,6 +129,7 @@ const beginerWish = (rarity, beginnerData, standardData) => {
 		showBeginner.set(false);
 		return { type: 'character', rarity: 4, name: character, vision };
 	}
+
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 5) return getStandard5StarItem({ exclude: standardData.characters });
 

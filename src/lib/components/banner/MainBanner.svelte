@@ -52,7 +52,7 @@
 		return index;
 	};
 
-	const doRoll = async (count) => {
+	const doRoll = async (count, bannerToRoll) => {
 		rollCount = count;
 		const tmp = [];
 
@@ -61,12 +61,11 @@
 
 		if (balance < balanceNeededToRoll) return (showConvertPopup = true);
 		for (let i = 0; i < count; i++) {
-			const result = roll(bannerToRoll, indexOfEventBanner, WishFunction);
+			const result = await roll(bannerToRoll, indexOfEventBanner, WishFunction);
 			tmp.push(result);
 		}
 
-		const promise = await Promise.all(tmp);
-		wishResult = promise;
+		wishResult = tmp;
 		updateMilestones();
 		handleMeteorAnimation();
 		updateFatesBalance(bannerToRoll);
@@ -122,7 +121,7 @@
 	};
 
 	const confirmPopup = () => {
-		doRoll(rollCount);
+		doRoll(rollCount, bannerToRoll);
 		showConvertPopup = false;
 		playSfx();
 	};
@@ -184,7 +183,10 @@
 			<BannerItem />
 		</div>
 		<div class="col button">
-			<Footer on:multiRoll={() => doRoll(10)} on:singleRoll={() => doRoll(1)} />
+			<Footer
+				on:multiRoll={() => doRoll(10, bannerToRoll)}
+				on:singleRoll={() => doRoll(1, bannerToRoll)}
+			/>
 		</div>
 	</div>
 </section>

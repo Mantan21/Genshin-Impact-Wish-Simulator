@@ -35,8 +35,21 @@
 	let standardBanner;
 	let list = [];
 
-	const updateBannerListToShow = () => {
-		list = $showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
+	const showBeginnerCheck = (showBeginner) => {
+		if ($bannerList.length < 2) return;
+		if (!showBeginner) {
+			return bannerList.update((bn) => {
+				return bn.filter(({ type }) => type !== 'beginner');
+			});
+		}
+		return bannerList.update((bn) => {
+			bn.unshift({ type: 'beginner', character: beginnerBanner });
+			return bn;
+		});
+	};
+
+	const updateBannerListToShow = (showBeginner) => {
+		list = showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
 		if (Array.isArray(eventBanner)) {
 			eventBanner.forEach((bn) => list.push({ type: 'events', character: bn }));
 		} else list.push({ type: 'events', character: eventBanner });
@@ -58,13 +71,14 @@
 			eventBanner = events.item;
 			weaponBanner = weapons;
 			standardBanner = standard.featured;
-			return updateBannerListToShow();
+			return updateBannerListToShow($showBeginner);
 		} catch (e) {
 			console.error(`Can't Switch banner because it unavailable !`, e);
 		}
 	};
 
 	$: switchBanner($patchVersion, $bannerPhase);
+	$: showBeginnerCheck($showBeginner);
 
 	onMount(async () => {
 		isMount = true;
