@@ -202,7 +202,7 @@
 		line-height: 0;
 		z-index: 10;
 		opacity: 0;
-		animation: weaponbg forwards 2s;
+		animation: weaponbg forwards 1.5s;
 	}
 
 	:global(.mobile) .close {
@@ -221,7 +221,7 @@
 		position: relative;
 		z-index: +1;
 		opacity: 0;
-		animation-delay: 1.5s !important;
+		animation-delay: 1.3s !important;
 		animation: starfateIcon forwards 0.4s;
 	}
 	.starfate.starglitter :global(img) {
@@ -245,7 +245,7 @@
 		position: relative;
 		z-index: -1;
 		opacity: 0;
-		animation-delay: 1.5s !important;
+		animation-delay: 1.3s !important;
 		animation: starfateText forwards 0.7s;
 	}
 	:global(.mobile) .starfate .text {
@@ -267,7 +267,7 @@
 		text-transform: capitalize;
 		display: flex;
 		align-items: center;
-		width: 1100px;
+		width: 1200px;
 		max-width: 95%;
 	}
 	.info {
@@ -285,14 +285,14 @@
 	}
 
 	.name .text {
-		animation-delay: 1.5s !important;
-		animation: revealName forwards 1s;
+		animation-delay: 1.3s !important;
+		animation: revealName forwards 0.8s;
 		max-width: 38%;
 		font-size: 2.5em;
 		line-height: 1.2em;
 		opacity: 0;
 		color: #fff;
-		-webkit-text-stroke: 0.2px #000;
+		-webkit-text-stroke: 0.04rem #000;
 	}
 	.info i.elemen {
 		-webkit-background-clip: text;
@@ -306,8 +306,8 @@
 		position: relative;
 		z-index: -2;
 		opacity: 0;
-		animation-delay: 1.5s !important;
-		animation: revealIcon forwards 1.5s;
+		animation-delay: 1.2s !important;
+		animation: revealIcon forwards 1.3s;
 	}
 	.vision {
 		width: 4rem;
@@ -366,14 +366,14 @@
 		transform-origin: 0 0;
 		width: 140%;
 		height: auto;
-		animation-delay: 0.3s;
-		animation: sprite forwards linear 1.8s;
+		animation-delay: 0.25s;
+		animation: sprite forwards linear 1.3s;
 	}
 
 	.splash-art {
 		height: 120%;
 		filter: brightness(0);
-		animation: splashart forwards 2s;
+		animation: splashart forwards 1.5s;
 	}
 
 	.splash-art.weapon {
@@ -392,7 +392,7 @@
 	.splash-art.weapon img.weaponbg {
 		height: 80%;
 		opacity: 0;
-		animation: weaponbg forwards 2s;
+		animation: weaponbg forwards 1.5s;
 	}
 
 	.bow,
@@ -401,7 +401,7 @@
 	.claymore,
 	.catalyst {
 		animation: weaponShadow forwards 0.1s;
-		animation-delay: 1.5s;
+		animation-delay: 1.2s;
 	}
 
 	.bow {
@@ -441,7 +441,7 @@
 		opacity: 0;
 	}
 	.orb1 {
-		animation: orbs forwards 1s;
+		animation: orbs forwards 0.7s;
 		width: 300%;
 		height: 300%;
 	}
@@ -449,11 +449,11 @@
 	.orb2 {
 		width: 180%;
 		height: 180%;
-		animation: orbs forwards 1.5s;
+		animation: orbs forwards 1.2s;
 	}
 
 	.orb3 {
-		animation: orbs forwards 1.8s;
+		animation: orbs forwards 1.4s;
 		width: 80%;
 		height: 80%;
 	}
@@ -461,7 +461,7 @@
 	.orb4 {
 		width: 120%;
 		height: 120%;
-		animation: orbs forwards 1s;
+		animation: orbs forwards 0.75s;
 	}
 
 	.orb5 {
@@ -470,29 +470,29 @@
 		bottom: -40%;
 		width: 160vw;
 		height: 70%;
-		animation: orbs2 forwards 1.5s;
+		animation: orbs2 forwards 1s;
 	}
 
 	.out1 {
 		width: 50%;
 		height: 50%;
 		background-color: rgb(254 133 63 / 5%);
-		animation: outOrbs forwards 1s;
-		animation-delay: 1.5s;
+		animation: outOrbs forwards 0.8s;
+		animation-delay: 1s;
 	}
 
 	.out2 {
 		width: 100%;
 		height: 100%;
-		animation: outOrbs forwards 1.5s;
-		animation-delay: 1.5s;
+		animation: outOrbs forwards 1.2s;
+		animation-delay: 1s;
 	}
 
 	.out3 {
 		width: 150%;
 		height: 150%;
-		animation-delay: 1.5s;
-		animation: outOrbs forwards 1.5s;
+		animation-delay: 0.78s;
+		animation: outOrbs forwards 1.2s;
 		transform: scale(0) translate(-50%, -50%);
 	}
 
@@ -597,7 +597,7 @@
 		bottom: -25vh;
 		left: 50%;
 		transform: translateX(-50%);
-		animation: weaponbg forwards 2s;
+		animation: weaponbg forwards 1.5s;
 	}
 	.stella,
 	.bonus .masterless {
@@ -652,7 +652,7 @@
 		right: 8%;
 		color: #fff;
 		font-size: 0.8rem;
-		animation: weaponbg forwards 2s;
+		animation: weaponbg forwards 1.5s;
 	}
 
 	:global(.preview) .uid {
@@ -666,7 +666,9 @@
 	.logo,
 	.uid {
 		display: none;
-		transition: all 0.2s;
+		transition: all 0.1.5s;
+		z-index: 999;
+		pointer-events: none;
 	}
 	:global(.preview) .logo {
 		display: block;
@@ -780,12 +782,12 @@
 			filter: brightness(0);
 		}
 
-		30% {
+		20% {
 			transform: scale(1);
 			opacity: 1;
 			filter: brightness(0);
 		}
-		70% {
+		75% {
 			transform: scale(1);
 			opacity: 1;
 			filter: brightness(0);

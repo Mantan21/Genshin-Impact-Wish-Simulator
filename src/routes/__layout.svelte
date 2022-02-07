@@ -89,7 +89,7 @@
 <main class:mobile={$mobileMode} class:preview>
 	<slot />
 
-	<a href="/" class="uid" class:preview> WishSimulator.vercel.app </a>
+	<a href="/" class="uid"> WishSimulator.vercel.app </a>
 
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
@@ -128,12 +128,11 @@
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
-	}
-	.uid:not(.preview) {
 		pointer-events: none;
 	}
 
 	.preview .uid {
+		pointer-events: unset;
 		right: unset;
 		left: 1rem;
 		bottom: 1rem;
