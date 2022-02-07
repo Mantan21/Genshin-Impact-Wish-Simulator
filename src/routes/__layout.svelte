@@ -5,10 +5,7 @@
 	import { onMount } from 'svelte';
 	import MobileDetect from 'mobile-detect';
 
-	import Loader from '$lib/components/utility/Loader.svelte';
-	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import {
-		isLoaded,
 		viewportHeight,
 		viewportWidth,
 		isMobile,
@@ -17,8 +14,9 @@
 		bannerActive,
 		bannerList
 	} from '$lib/store/stores';
-	import { HOST, APP_TITLE, DESCRIPTION, KEYWORDS } from '$lib/env';
+	import { HOST, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
+	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import '../app.css';
 
 	$: preview = $page.path.split('/')[1] === 'screen';
@@ -29,14 +27,6 @@
 	}
 
 	onMount(() => {
-		const t = setTimeout(
-			() => {
-				isLoaded.set(true);
-				clearTimeout(t);
-			},
-			preview ? 10 : 2000
-		);
-
 		const md = new MobileDetect(navigator.userAgent);
 		isMobile.set(!!md.mobile());
 
@@ -62,26 +52,15 @@
 </script>
 
 <svelte:head>
-	<meta name="title" content={APP_TITLE} />
-	<meta property="og:title" content={APP_TITLE} />
 	<meta property="twitter:url" content={HOST} />
-	<meta property="twitter:title" content={APP_TITLE} />
-
 	<meta name="keywords" content={KEYWORDS} />
 	<meta name="description" content={DESCRIPTION} />
 	<meta property="og:description" content={DESCRIPTION} />
 	<meta property="og:url" content={HOST} />
-	<meta property="og:image" content="/assets/images/meta-picture.jpg" />
-
 	<meta property="twitter:description" content={DESCRIPTION} />
-	<meta name="twitter:image:src" content="/assets/images/meta-picture.jpg" />
-	<meta property="twitter:image" content="/assets/images/meta-picture.jpg" />
-
 	<meta property="al:web:url" content={HOST} />
-	<link rel="fluid-icon" href="/assets/images/meta-picture.jpg" title={APP_TITLE} />
 </svelte:head>
 
-<Loader />
 {#if !preview}
 	<Disclaimer />
 {/if}

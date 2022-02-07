@@ -11,7 +11,8 @@
 		patchVersion,
 		bannerPhase,
 		showBeginner,
-		isFatepointSystem
+		isFatepointSystem,
+		isLoaded
 	} from '$lib/store/stores';
 	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
 	import { beginner } from '$lib/data/banners/beginner.json';
@@ -23,6 +24,8 @@
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
 	import playSfx from '$lib/functions/audio';
+	import { APP_TITLE } from '$lib/env';
+	import Loader from '$lib/components/utility/Loader.svelte';
 
 	let isMount = false;
 	$: audioActive = $backsound && $pageActive === 'index';
@@ -58,7 +61,7 @@
 		bannerList.set(list);
 		isFatepointSystem.set(!!weaponBanner.fatepointsystem);
 		pageActive.set('index');
-		return;
+		return isLoaded.set(true); // remove progress loader
 	};
 
 	const switchBanner = async (patch, bannerPhase) => {
@@ -89,6 +92,18 @@
 		});
 	});
 </script>
+
+<svelte:head>
+	<meta name="title" content={APP_TITLE} />
+	<meta property="og:title" content={APP_TITLE} />
+	<meta property="twitter:title" content={APP_TITLE} />
+	<meta property="og:image" content="/assets/images/meta-picture.jpg" />
+	<meta name="twitter:image:src" content="/assets/images/meta-picture.jpg" />
+	<meta property="twitter:image" content="/assets/images/meta-picture.jpg" />
+	<link rel="fluid-icon" href="/assets/images/meta-picture.jpg" title={APP_TITLE} />
+</svelte:head>
+
+<Loader />
 
 {#if $pageActive === 'index'}
 	<MainBanner />

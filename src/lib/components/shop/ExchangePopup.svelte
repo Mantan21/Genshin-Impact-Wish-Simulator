@@ -144,7 +144,7 @@
 		change();
 		timeout = setTimeout(() => {
 			interval = setInterval(change, 50);
-		}, 400);
+		}, 500);
 		playSfx();
 	};
 	const plus = () => {
@@ -233,9 +233,11 @@
 					<button
 						class="min"
 						disabled={rangeVal <= 1}
-						on:mousedown={() => rangeControl('min')}
+						on:touchstart|preventDefault={() => rangeControl('min')}
+						on:mousedown|preventDefault={() => rangeControl('min')}
 						on:mouseleave={clearTimers}
 						on:mouseup={clearTimers}
+						on:touchend={clearTimers}
 					>
 						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
 					</button>
@@ -253,9 +255,11 @@
 					</div>
 					<button
 						class="plus"
-						on:mousedown={() => rangeControl('plus')}
+						on:touchstart|preventDefault={() => rangeControl('plus')}
+						on:mousedown|preventDefault={() => rangeControl('plus')}
 						on:mouseleave={clearTimers}
 						on:mouseup={clearTimers}
+						on:touchend={clearTimers}
 						disabled={rangeVal >= maxRange}
 					>
 						<i class="gi-plus" />

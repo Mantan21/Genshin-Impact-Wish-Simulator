@@ -47,8 +47,8 @@
 
 	onMount(() => {
 		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
-		playSfx('resultList');
 		if (preview) return;
+		playSfx('resultList');
 
 		const data = sortedWish
 			.map(({ name, rarity, type, isNew, fateType, stelaFortuna }) => {

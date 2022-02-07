@@ -90,6 +90,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 99;
+		color: #000;
 	}
 	.container {
 		width: 100%;
@@ -103,7 +104,7 @@
 		min-width: 100vw;
 		min-height: 100vh;
 		position: absolute;
-		top: 0;
+		z-index: -1;
 		left: 0;
 		background-image: linear-gradient(to top, rgba(136, 132, 133, 0.93), rgba(39, 34, 54, 0.93));
 	}
