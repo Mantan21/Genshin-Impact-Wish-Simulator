@@ -67,15 +67,16 @@ const roll = async (banner, indexOfBanner, WishInstance) => {
 	const numberOfItemOfHistory = await countItem(wishResult.name);
 	await addHistory(wishResult);
 
-	wishResult.isNew = numberOfItemOfHistory < 1;
-	if (wishResult.type === 'character') {
-		if (numberOfItemOfHistory < 1) return wishResult;
-		wishResult.stelaFortuna = numberOfItemOfHistory < 8;
+	const result = { ...wishResult, isNew: numberOfItemOfHistory < 1 };
+	if (result.type === 'character') {
+		if (numberOfItemOfHistory < 1) return result;
+		result.stelaFortuna = numberOfItemOfHistory < 7;
 	}
-	wishResult.fateType = wishResult.rarity === 3 ? 'stardust' : 'starglitter';
-	wishResult.fateQty = wishResult.rarity === 3 ? 15 : 10;
+	result.fateType = result.rarity === 3 ? 'stardust' : 'starglitter';
+	const glitterqty = result.type === 'character' && numberOfItemOfHistory < 7 ? 2 : 5;
+	result.fateQty = result.rarity === 3 ? 15 : glitterqty;
 
-	return wishResult;
+	return result;
 };
 
 export default roll;
