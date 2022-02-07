@@ -7,6 +7,9 @@
 	import WishListResult from '$lib/components/utility/wishresult/WishListResult.svelte';
 	import { getName } from '$lib/functions/nameText';
 	import Error from '../__error.svelte';
+	import Loader from '$lib/components/utility/Loader.svelte';
+	import { onMount } from 'svelte';
+	import { isLoaded } from '$lib/store/stores';
 
 	let title = 'No Name';
 	let isError;
@@ -63,6 +66,7 @@
 	};
 
 	resolveData();
+	onMount(() => isLoaded.set(true));
 </script>
 
 <svelte:head>
@@ -70,6 +74,7 @@
 
 	<meta name="title" content="Yeay, I just got {title} Genshin Impact" />
 	<meta property="og:title" content="Yeay, I just got {title} Genshin Impact" />
+	<meta property="twitter:title" content="Yeay, I just got {title} Genshin Impact" />
 
 	<meta
 		name="twitter:image:src"
@@ -90,6 +95,7 @@
 	/>
 </svelte:head>
 
+<Loader />
 {#if isError}
 	<div class="error">
 		<h1>You're going to unresolved page, redirecting to index ...</h1>
