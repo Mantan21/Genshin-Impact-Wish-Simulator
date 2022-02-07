@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 /**
- * Copy and paste to Console Dev Tools.
+ * Copy and paste to Console Dev Tools to import IndexedDB to JSON file
  */
 
 const script1 = document.createElement('script');
