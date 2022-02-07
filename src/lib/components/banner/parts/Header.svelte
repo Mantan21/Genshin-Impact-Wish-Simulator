@@ -18,6 +18,12 @@
 		bannerList
 	} from '$lib/store/stores';
 
+	const inTransition = (node, args) => {
+		return args.mobile
+			? fly(node, { x: -20, duration: 1000 })
+			: fly(node, { y: -20, duration: 1000 });
+	};
+
 	const buttonClick = (banner) => {
 		bannerActive.set(banner);
 		playSfx('changebanner');
@@ -31,8 +37,8 @@
 
 <FatepointPopup />
 
-<div id="header" in:fly={{ y: -20, duration: 800 }}>
-	<div class="top">
+<div id="header">
+	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 			<span>{$bannerList[$bannerActive]?.type || ''} Wish </span>
@@ -68,7 +74,7 @@
 		</div>
 	</div>
 
-	<div class="banner-button">
+	<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
 		<div class="bg">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 		</div>
