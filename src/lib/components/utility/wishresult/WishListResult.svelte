@@ -83,80 +83,81 @@
 		<div class="wishlist" bind:clientHeight={wishHeight}>
 			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty }, i (i)}
 				<div
-					id="wish{i}"
-					class="item star{rarity} {type}"
+					class="item-box"
 					class:animate={!preview}
 					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
 				>
-					{#if isNew}
-						<div class="new">new</div>
-					{/if}
-					<div class="item-body">
-						<div class="item-content">
-							<i class="gi-primo-star primo1" />
-							<i class="gi-primo-star primo2" />
-							<i class="gi-primo-star primo3" />
-							<div class="pic">
-								{#if type === 'weapon'}
-									<img
-										src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
-										alt={name}
-										class="wishpic {weaponType}-item"
-										style={positionToStyle(wishBoxPosition)}
-									/>
-								{:else}
-									<img
-										src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
-										alt={name}
-										class="wishpic"
-										style={positionToStyle(wishBoxPosition)}
-									/>
-								{/if}
-
-								<div class="info">
+					<div id="wish{i}" class="item star{rarity} {type}" on:click={() => playSfx()}>
+						{#if isNew}
+							<div class="new">new</div>
+						{/if}
+						<div class="item-body">
+							<div class="item-content">
+								<i class="gi-primo-star primo1" />
+								<i class="gi-primo-star primo2" />
+								<i class="gi-primo-star primo3" />
+								<div class="pic">
 									{#if type === 'weapon'}
 										<img
-											src="/assets/images/utility/{weaponType}-white.svg"
-											alt="{weaponType} icon"
-											style="width: 60%; height: auto"
+											src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+											alt={name}
+											class="wishpic {weaponType}-item"
+											style={positionToStyle(wishBoxPosition)}
 										/>
-									{:else if isNew}
+									{:else}
 										<img
-											src="/assets/images/utility/icon-{vision}.svg"
-											alt="Vision {vision}"
-											class="vision-{vision}"
-											style="width: 60%; height: auto"
+											src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
+											alt={name}
+											class="wishpic"
+											style={positionToStyle(wishBoxPosition)}
 										/>
 									{/if}
 
-									{#if (isNew && type === 'character') || type === 'weapon'}
-										<div class="star">
-											{#each Array(rarity) as _, i}
-												<div class="i gi-star" />
-											{/each}
-										</div>
-									{/if}
+									<div class="info">
+										{#if type === 'weapon'}
+											<img
+												src="/assets/images/utility/{weaponType}-white.svg"
+												alt="{weaponType} icon"
+												style="width: 60%; height: auto"
+											/>
+										{:else if isNew}
+											<img
+												src="/assets/images/utility/icon-{vision}.svg"
+												alt="Vision {vision}"
+												class="vision-{vision}"
+												style="width: 60%; height: auto"
+											/>
+										{/if}
+
+										{#if (isNew && type === 'character') || type === 'weapon'}
+											<div class="star">
+												{#each Array(rarity) as _, i}
+													<div class="i gi-star" />
+												{/each}
+											</div>
+										{/if}
+
+										{#if type === 'character' && fateType}
+											<div class="masterless {fateType}">
+												<Icon type={fateType} width="80%" />
+												<span>{fateQty}</span>
+											</div>
+										{/if}
+
+										{#if stelaFortuna}
+											<div class="stella stella{rarity}">
+												<img
+													src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
+													alt="Stella Formula"
+												/>
+											</div>
+										{/if}
+									</div>
 
 									{#if type === 'character' && fateType}
-										<div class="masterless {fateType}">
-											<Icon type={fateType} width="80%" />
-											<span>{fateQty}</span>
-										</div>
-									{/if}
-
-									{#if stelaFortuna}
-										<div class="stella stella{rarity}">
-											<img
-												src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
-												alt="Stella Formula"
-											/>
-										</div>
+										<div class="cover" />
 									{/if}
 								</div>
-
-								{#if type === 'character' && fateType}
-									<div class="cover" />
-								{/if}
 							</div>
 						</div>
 					</div>
@@ -257,11 +258,20 @@
 	.item,
 	.shadow {
 		height: 100%;
-		display: inline-block;
 		border-radius: 100%;
 		filter: drop-shadow(0px 0px 6px rgb(101, 187, 246));
 		position: relative;
-		transition: all 0.1s;
+	}
+
+	.item {
+		transition: all 0.2s;
+	}
+	.item:hover {
+		transform: scale(1.05);
+		z-index: +10;
+	}
+	.item:hover .cover {
+		background-color: rgba(0, 0, 0, 0);
 	}
 
 	.shadow5,
@@ -271,6 +281,10 @@
 		filter: unset;
 	}
 
+	.item-box {
+		height: 100%;
+		display: inline-block;
+	}
 	.shadows {
 		position: absolute;
 		top: 50%;
@@ -279,13 +293,14 @@
 		z-index: -1;
 	}
 
-	.item.animate,
+	.item-box.animate,
 	.shadow.animate {
 		transform: scale(0);
 		animation: wishReveal forwards 0.8s;
 	}
 
 	.shadow {
+		display: inline-block;
 		height: 100%;
 		border-radius: 100%;
 	}
@@ -354,6 +369,7 @@
 		top: 0;
 		height: 100%;
 		width: 100%;
+		transition: all 0.2s;
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 
