@@ -138,8 +138,8 @@
 			margin: 0 3px;
 		}
 		.close {
-			width: 30px;
-			height: 30px;
+			width: 2rem;
+			height: 2rem;
 			margin: 3px;
 		}
 

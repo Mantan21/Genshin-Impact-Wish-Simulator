@@ -155,7 +155,6 @@
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		margin-top: 20px;
 		position: relative;
 		z-index: 10;
 	}
@@ -166,10 +165,15 @@
 		padding: 0 !important;
 		height: 100vh;
 	}
+
+	:global(.mobile) .close {
+		width: 2rem;
+		height: 2rem;
+	}
 	:global(.mobile) .top {
 		position: fixed;
 		top: 0;
-		right: 0;
+		right: 2%;
 		width: calc(100% - 100px);
 		display: flex;
 		justify-content: space-between;
@@ -209,7 +213,7 @@
 		margin-top: 3px;
 	}
 
-	@media screen and (min-width: 1100px) {
+	@media screen and (min-width: 975px) {
 		.banner-button {
 			position: absolute;
 			top: 20px;
@@ -221,8 +225,8 @@
 
 	@media screen and (max-width: 900px) {
 		.close {
-			width: 30px;
-			height: 30px;
+			width: 2.5rem;
+			height: 2.5rem;
 			margin: 3px;
 		}
 	}

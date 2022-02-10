@@ -64,6 +64,7 @@
 		dipslay: block;
 		width: 80%;
 		max-width: 850px;
+		max-height: 75vh;
 		position: absolute;
 		bottom: 0;
 		left: 50%;
@@ -82,6 +83,7 @@
 		padding: 0;
 		width: 88%;
 		max-width: 155vh;
+		max-height: unset;
 		margin-bottom: -10px;
 	}
 

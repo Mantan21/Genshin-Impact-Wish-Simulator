@@ -102,7 +102,7 @@
 
 	const selectBanner = (patch, phase) => {
 		playSfx();
-		browserState.reset();
+		browserState.back();
 		// If select the same banner with the active one, change nothing just back to index
 		if ($bannerPhase === phase && $patchVersion === patch) return pageActive.set('index');
 
@@ -437,8 +437,8 @@
 	}
 	@media screen and (max-width: 900px) {
 		.close {
-			width: 30px;
-			height: 30px;
+			width: 2rem;
+			height: 2rem;
 			margin: 3px;
 		}
 	}
