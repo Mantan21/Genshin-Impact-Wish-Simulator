@@ -10,6 +10,7 @@
 	import playSfx from '$lib/functions/audio';
 	import { allPatch } from '$lib/setup/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
+	import browserState from '$lib/functions/browserState';
 
 	let allBanners = [];
 	let dataToShow = [];
@@ -101,6 +102,7 @@
 
 	const selectBanner = (patch, phase) => {
 		playSfx();
+		browserState.reset();
 		// If select the same banner with the active one, change nothing just back to index
 		if ($bannerPhase === phase && $patchVersion === patch) return pageActive.set('index');
 
@@ -109,6 +111,12 @@
 		patchVersion.set(patch);
 		bannerPhase.set(phase);
 		localBannerVersion.set(patch, phase);
+	};
+
+	const handleCLose = () => {
+		browserState.back();
+		playSfx('close');
+		pageActive.set('index');
 	};
 
 	let content;
@@ -124,13 +132,7 @@
 <section>
 	<header transition:fly={{ y: -20 }}>
 		<h1>Previous Banner</h1>
-		<button
-			class="close"
-			on:click={() => {
-				playSfx('close');
-				pageActive.set('index');
-			}}
-		>
+		<button class="close" on:click={handleCLose}>
 			<i class="gi-close" />
 		</button>
 	</header>

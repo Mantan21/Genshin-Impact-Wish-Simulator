@@ -8,12 +8,14 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
+	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let activeItem = '';
 
-	const buttonCLick = () => {
+	const handleCLose = () => {
+		browserState.back();
 		playSfx('close');
 		pageActive.set('index');
 	};
@@ -76,7 +78,7 @@
 		{$genesis}
 	</button>
 </div>
-<button class="close" on:click={buttonCLick}>
+<button class="close" on:click={handleCLose}>
 	<i class="gi-close" />
 </button>
 
