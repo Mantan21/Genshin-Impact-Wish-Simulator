@@ -92,7 +92,7 @@
 		});
 
 		window.addEventListener('popstate', (e) => {
-			if (e.state.page !== 'index') return;
+			if (e.state.page) return;
 			pageActive.set('index');
 		});
 	});
