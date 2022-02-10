@@ -3,11 +3,9 @@
 	import { page } from '$app/stores';
 
 	import { APP_TITLE, HOST } from '$lib/env';
-	import { viewportWidth, viewportHeight, isLoaded } from '$lib/store/stores';
+	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import Loader from '$lib/components/utility/Loader.svelte';
-	import { onMount } from 'svelte';
 
 	let isError;
 	let data = {
@@ -49,7 +47,6 @@
 	};
 
 	resolveData();
-	onMount(() => isLoaded.set(true));
 </script>
 
 <svelte:head>
@@ -77,8 +74,6 @@
 		title={APP_TITLE}
 	/>
 </svelte:head>
-
-<Loader />
 
 {#if isError}
 	<div class="error">
