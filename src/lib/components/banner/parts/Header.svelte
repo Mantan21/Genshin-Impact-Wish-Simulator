@@ -5,6 +5,7 @@
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 	import FatepointPopup from '../fatepoint/FatepointPopup.svelte';
 	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/functions/browserState';
 	import {
 		acquaint,
 		bannerActive,
@@ -30,6 +31,7 @@
 	};
 
 	const previousClick = () => {
+		browserState.set('previous');
 		pageActive.set('previous-banner');
 		playSfx('popup');
 	};

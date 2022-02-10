@@ -14,6 +14,7 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/functions/browserState';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
@@ -23,6 +24,7 @@
 
 	const changePage = (page) => {
 		pageActive.set(page);
+		browserState.set(page);
 		if (page === 'shop') return playSfx('shop');
 		return playSfx();
 	};

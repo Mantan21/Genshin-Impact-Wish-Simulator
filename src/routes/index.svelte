@@ -14,6 +14,8 @@
 		isFatepointSystem,
 		isLoaded
 	} from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
+	import { APP_TITLE } from '$lib/env';
 	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
 	import { beginner } from '$lib/data/banners/beginner.json';
 
@@ -23,8 +25,6 @@
 	import History from '$lib/components/history/MainHistory.svelte';
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
-	import playSfx from '$lib/functions/audio';
-	import { APP_TITLE } from '$lib/env';
 	import Loader from '$lib/components/utility/Loader.svelte';
 
 	let isMount = false;
@@ -89,6 +89,11 @@
 		window.addEventListener('blur', () => playSfx('wishBacksound', true));
 		window.addEventListener('focus', () => {
 			if (audioActive) playSfx('wishBacksound');
+		});
+
+		window.addEventListener('popstate', (e) => {
+			if (e.state.page !== 'index') return;
+			pageActive.set('index');
 		});
 	});
 </script>

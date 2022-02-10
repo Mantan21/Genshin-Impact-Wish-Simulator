@@ -10,10 +10,11 @@
 	import { bannerActive, bannerList, pageActive, showBeginner } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 
+	import { APP_TITLE } from '$lib/env';
+	import browserState from '$lib/functions/browserState';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import { APP_TITLE } from '$lib/env';
 
 	let content;
 	onMount(() => {
@@ -66,6 +67,12 @@
 		data = [];
 		showPopup = false;
 	};
+
+	const handleCLose = () => {
+		browserState.back();
+		pageActive.set('index');
+		playSfx('close');
+	};
 </script>
 
 <svelte:head>
@@ -95,12 +102,7 @@
 
 <section bind:this={content} transition:fade={{ duration: 200 }}>
 	<div class="header">
-		<button
-			on:click={() => {
-				pageActive.set('index');
-				playSfx('close');
-			}}
-		>
+		<button on:click={handleCLose}>
 			<i class="gi-reply" />
 		</button>
 	</div>

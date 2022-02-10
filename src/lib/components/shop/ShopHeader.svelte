@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { genesis, pageActive, primogem, stardust, starglitter } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/functions/browserState';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 
 	export let showNavbar = true;
@@ -17,6 +18,7 @@
 	};
 
 	const handleClose = () => {
+		browserState.back();
 		playSfx('close');
 		pageActive.set('index');
 	};
