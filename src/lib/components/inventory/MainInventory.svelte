@@ -164,10 +164,10 @@
 <section>
 	<img src="/assets/images/background/element-{rand(bg)}-bg.webp" alt="Background" class="bg" />
 
-	<div class="header" transition:fly={{ y: -20 }}>
+	<div class="header" in:fly={{ y: -20 }}>
 		<InventoryHeader {activeItem} />
 	</div>
-	<div class="body" transition:fade={{ duration: 400 }}>
+	<div class="body" in:fade={{ duration: 400 }}>
 		<div class="navigation">
 			<nav>
 				<button

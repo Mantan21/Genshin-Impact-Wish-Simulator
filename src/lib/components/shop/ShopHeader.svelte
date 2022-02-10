@@ -24,7 +24,7 @@
 	};
 </script>
 
-<div class="item-header" transition:fly={{ y: -20 }}>
+<div class="item-header" in:fly={{ y: -20 }}>
 	<div class="info" style="display: flex; align-items: center">
 		{#if showNavbarButton}
 			<button class="toggle" on:click={handleClick}>
@@ -102,6 +102,7 @@
 		justify-content: space-between;
 		align-items: center;
 		color: #d2c69c;
+		position: relative;
 	}
 	:global(.mobile) .item-header {
 		height: 40px;
@@ -127,8 +128,8 @@
 		text-decoration: none;
 	}
 	:global(.mobile) .fates .close {
-		width: 28px;
-		height: 28px;
+		width: 2rem;
+		height: 2rem;
 	}
 
 	@media screen and (max-width: 890px) {
@@ -147,8 +148,10 @@
 			width: 100%;
 		}
 		.fates .close {
-			position: fixed;
-			top: 2%;
+			width: 2.5rem;
+			height: 2.5rem;
+			position: absolute;
+			top: 20%;
 			right: 5%;
 		}
 	}
