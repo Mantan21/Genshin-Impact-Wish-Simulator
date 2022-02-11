@@ -12,16 +12,22 @@
 	let isError;
 	let wishlist = [];
 
+	const getMilestoneQty = (rarity, stelaFortuna) => {
+		let stdqty = rarity === 4 ? 2 : 5;
+		let fullqty = rarity === 4 ? 5 : 10;
+		return stelaFortuna ? stdqty : fullqty;
+	};
+
 	const getList = (decoded) => {
 		let list = [];
 		const arr = decoded.split('|');
 
 		arr.forEach((v, i) => {
 			let [name, rarity, type, isNew, fateType, stelaFortuna] = v.split('/');
-			let fateQty = rarity > 3 ? 10 : 15;
-			isNew = !(isNew === '0');
 			stelaFortuna = stelaFortuna === '1';
 			rarity = parseInt(rarity, 10);
+			isNew = !(isNew === '0');
+			let fateQty = getMilestoneQty(rarity, stelaFortuna);
 			fateType = fateType !== 'undefined' ? fateType : false;
 			if (i === 0) title = getName(name);
 
