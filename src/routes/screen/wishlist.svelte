@@ -14,7 +14,7 @@
 
 	const getMilestoneQty = (rarity, stelaFortuna) => {
 		let stdqty = rarity === 4 ? 2 : 5;
-		let fullqty = rarity === 4 ? 5 : 10;
+		let fullqty = rarity === 4 ? 10 : 25;
 		return stelaFortuna ? stdqty : fullqty;
 	};
 
