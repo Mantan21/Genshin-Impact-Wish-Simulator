@@ -146,15 +146,15 @@
 			<track kind="captions" />
 		</video>
 		<video bind:this={v4starSingle} preload="auto">
-			<source src="/assets/videos/4star-single.mp4" type="video/mp4" />
+			<source src="/assets/videos/4star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v4star} preload="auto">
-			<source src="/assets/videos/4star.mp4" type="video/mp4" />
+			<source src="/assets/videos/4star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v5starSingle} preload="auto">
-			<source src="/assets/videos/5star-single.mp4" type="video/mp4" />
+			<source src="/assets/videos/5star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
 		<video bind:this={v5star} preload="auto">

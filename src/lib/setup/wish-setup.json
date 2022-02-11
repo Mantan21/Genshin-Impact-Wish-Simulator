@@ -2,17 +2,5 @@
 	"version": "2.4",
 	"wishPhase": 2,
 	"storageVersion": "2.4.3",
-	"banner": {
-		"standard": {
-			"character": {
-				"name": "qiqi",
-				"style": {
-					"main": "width: 100%;top: 30%;",
-					"active": "width: 100%;top: 20%;"
-				}
-			},
-			"characters": ["qiqi", "keqing", "diluc", "mona", "jean"]
-		}
-	},
 	"allPatch": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 2.0, 2.1, 2.2, 2.3, 2.4]
 }

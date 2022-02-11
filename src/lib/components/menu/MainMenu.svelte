@@ -191,7 +191,7 @@
 							</a>. You can submit an issue if you find something wrong !
 						</div>
 						<div class="update-item" bind:this={updatesContainer}>
-							{#each updates.data.reverse() as { description, date }, i (i)}
+							{#each [...updates.data].reverse() as { description, date }, i (i)}
 								<h2>
 									<i class="tgl"> {date} </i>
 									{#if i === 0} ( Latest Update ) {/if}
