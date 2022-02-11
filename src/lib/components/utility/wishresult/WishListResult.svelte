@@ -521,6 +521,14 @@
 		align-items: center;
 	}
 
+	@media screen and (max-width: 900px) {
+		.close {
+			width: 2rem;
+			height: 2rem;
+			margin: 3px;
+		}
+	}
+
 	@keyframes wishReveal {
 		0% {
 			transform: translateX(200%) scale(0);

@@ -218,6 +218,14 @@
 		right: 10px;
 	}
 
+	@media screen and (max-width: 900px) {
+		.close {
+			width: 2rem;
+			height: 2rem;
+			margin: 3px;
+		}
+	}
+
 	:global(.mobile) .close {
 		transform: scale(0.87);
 	}

@@ -205,6 +205,14 @@
 		animation: weaponbg forwards 1.5s;
 	}
 
+	@media screen and (max-width: 900px) {
+		.close {
+			width: 2rem;
+			height: 2rem;
+			margin: 3px;
+		}
+	}
+
 	:global(.mobile) .close {
 		transform: scale(0.7);
 	}

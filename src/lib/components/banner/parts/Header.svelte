@@ -2,8 +2,10 @@
 	import { fly } from 'svelte/transition';
 	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
+	import MainMenu from '$lib/components/menu/MainMenu.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 	import FatepointPopup from '../fatepoint/FatepointPopup.svelte';
+
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
 	import {
@@ -35,15 +37,24 @@
 		pageActive.set('previous-banner');
 		playSfx('popup');
 	};
+
+	let showMenu = false;
+	const handleMenu = () => {
+		history.pushState({ page: 'menu' }, null, null);
+		playSfx(!showMenu ? 'click' : 'close');
+		showMenu = !showMenu;
+	};
 </script>
 
 <FatepointPopup />
+<MainMenu show={showMenu} on:close={handleMenu} />
 
 <div id="header">
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 			<span>{$bannerList[$bannerActive]?.type || ''} Wish </span>
+			<button class="help" on:click={handleMenu}> <i class="gi-help" /> </button>
 		</h1>
 		<div class="budget">
 			<div class="fates">
@@ -106,6 +117,25 @@
 		z-index: 5;
 	}
 
+	.help {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50px;
+		border: 0.15rem solid #fff;
+		color: #fff;
+		margin-left: 1rem;
+		width: 1.7rem;
+		height: 1.7rem;
+		line-height: 0;
+		transition: all 0.2s;
+	}
+
+	.help:hover {
+		background-color: var(--tertiary-color);
+		color: #3a4156;
+	}
+
 	.bg {
 		display: none;
 	}
@@ -149,6 +179,11 @@
 		line-height: 0;
 		overflow: hidden;
 		border-radius: 50px;
+		transition: all 0.2s;
+	}
+
+	.close:hover {
+		background-color: var(--tertiary-color);
 	}
 
 	.banner-button {
@@ -216,6 +251,7 @@
 	@media screen and (min-width: 975px) {
 		.banner-button {
 			position: absolute;
+			max-width: 50%;
 			top: 20px;
 			left: 50%;
 			transform: translateX(-50%);

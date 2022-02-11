@@ -308,6 +308,11 @@
 		padding: 0;
 		line-height: 0;
 		border-radius: 40px;
+		transition: all 0.2s;
+	}
+
+	button:hover {
+		background-color: var(--tertiary-color);
 	}
 	.close {
 		border: 3.5px solid #abbcc6;
