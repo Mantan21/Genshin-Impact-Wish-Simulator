@@ -79,9 +79,15 @@
 		{
 			"date": "25-Jan-2022",
 			"description": [
-				"<strong>Gong Xi Fa Cai</strong>. Wish you lucky on lantern rite event",
+				"<strong>Gong Xi Fa Cai</strong>. Wish you luck on Lantern Rite event",
 				"<strong> Zhongli and Ganyu Rerun Banner </strong> Already out here !",
 				"<strong> Vortex and Amos </strong> Weapon Rerun Banner is ready to pull too !"
+			]
+		},
+		{
+			"date": "11-Feb-2022",
+			"description": [
+				"Now you can pull without worry about running out of fate, just activate the <b>Unlimited Fates Option</b> in Menu by clicking the <b>(?)</b> button on top of the page"
 			]
 		}
 	]

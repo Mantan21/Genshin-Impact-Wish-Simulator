@@ -6,9 +6,12 @@ import {
 	stardust,
 	starglitter,
 	showBeginner,
-	unlimitedFates
+	unlimitedFates,
+	bannerPhase,
+	patchVersion
 } from '$lib/store/stores';
 import HistoryIDB from '$lib/store/historyIdb';
+import { wishPhase, version } from '$lib/setup/wish-setup.json';
 
 const { clearIDB } = HistoryIDB;
 const factoryReset = async () => {
@@ -26,6 +29,8 @@ const factoryReset = async () => {
 	unlimitedFates.set(false);
 
 	showBeginner.set(true);
+	bannerPhase.set(wishPhase);
+	patchVersion.set(version);
 };
 
 export default factoryReset;
