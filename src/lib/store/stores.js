@@ -39,6 +39,7 @@ const primogem = writable(1600);
 
 const intertwined = writable(0);
 const acquaint = writable(0);
+const unlimitedFates = writable(false);
 
 export {
 	pageActive,
@@ -65,5 +66,6 @@ export {
 	primogem,
 	intertwined,
 	acquaint,
+	unlimitedFates,
 	isAcquaintUsed
 };

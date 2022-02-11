@@ -18,7 +18,8 @@
 		starglitter,
 		pageActive,
 		isAcquaintUsed,
-		bannerList
+		bannerList,
+		unlimitedFates
 	} from '$lib/store/stores';
 
 	const inTransition = (node, args) => {
@@ -40,7 +41,6 @@
 
 	let showMenu = false;
 	const handleMenu = () => {
-		history.pushState({ page: 'menu' }, null, null);
 		playSfx(!showMenu ? 'click' : 'close');
 		showMenu = !showMenu;
 	};
@@ -68,15 +68,15 @@
 				{/if}
 
 				<MyFund type="primogem">
-					{$primogem}
+					{$unlimitedFates ? '∞' : $primogem}
 				</MyFund>
 				{#if $isAcquaintUsed}
 					<MyFund type="acquaint">
-						{$acquaint}
+						{$unlimitedFates ? '∞' : $acquaint}
 					</MyFund>
 				{:else}
 					<MyFund type="intertwined">
-						{$intertwined}
+						{$unlimitedFates ? '∞' : $intertwined}
 					</MyFund>
 				{/if}
 			</div>

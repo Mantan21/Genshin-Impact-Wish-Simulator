@@ -32,8 +32,8 @@
 		const item = (star) =>
 			list
 				.filter(({ rarity }) => rarity === star)
-				.sort((a, b) => b.isNew - a.isNew)
 				.sort(sortByName)
+				.sort((a, b) => b.isNew - a.isNew)
 				.sort(sortByType);
 		const threeStar = list.filter(({ rarity }) => rarity === 3);
 		sortedWish = [...item(5), ...item(4), ...threeStar];
@@ -231,10 +231,6 @@
 		z-index: 10;
 		opacity: 0;
 		animation: fadeIn forwards 1s;
-	}
-
-	:global(.mobile) .close {
-		transform: scale(0.7);
 	}
 
 	/* Wish List */

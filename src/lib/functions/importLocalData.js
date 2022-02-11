@@ -6,9 +6,10 @@ import {
 	intertwined,
 	acquaint,
 	bannerPhase,
-	patchVersion
+	patchVersion,
+	unlimitedFates
 } from '$lib/store/stores';
-import { localBalance, localBannerVersion } from '$lib/store/localstore';
+import { localBalance, localBannerVersion, localUnlimitedFates } from '$lib/store/localstore';
 import { storageVersion, version } from '$lib/setup/wish-setup.json';
 
 /**
@@ -38,6 +39,8 @@ const importLocalBalance = () => {
 
 	const localAcquaint = localBalance.get('acquaint');
 	if (localAcquaint !== null) acquaint.set(localAcquaint);
+
+	if (localUnlimitedFates.check()) unlimitedFates.set(true);
 
 	console.log('Balance Updated');
 };
