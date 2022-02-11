@@ -9,7 +9,8 @@
 		starglitter,
 		backsound,
 		patchVersion,
-		bannerPhase
+		bannerPhase,
+		unlimitedFates
 	} from '$lib/store/stores';
 	import { APP_TITLE } from '$lib/env';
 	import Wish, { roll } from '$lib/functions/wish/wish';
@@ -59,15 +60,16 @@
 		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : count;
 		const indexOfEventBanner = bannerToRoll === 'events' ? getIndexOfEventBanner() : 0;
 
-		if (balance < balanceNeededToRoll) return (showConvertPopup = true);
+		if (balance < balanceNeededToRoll && !$unlimitedFates) return (showConvertPopup = true);
 		for (let i = 0; i < count; i++) {
 			const result = await roll(bannerToRoll, indexOfEventBanner, WishFunction);
 			tmp.push(result);
 		}
 
 		wishResult = tmp;
-		updateMilestones();
 		handleMeteorAnimation();
+		if ($unlimitedFates) return;
+		updateMilestones();
 		updateFatesBalance(bannerToRoll);
 	};
 
@@ -135,6 +137,11 @@
 	let starglitterObtained = 0;
 
 	const checkObtained = () => {
+		if ($unlimitedFates) {
+			showWish = false;
+			return backsound.set(true);
+		}
+
 		stardustObtained = countMilestone('stardust');
 		starglitterObtained = countMilestone('starglitter');
 		if (stardust < 1 && starglitter < 1) backsound.set(true);

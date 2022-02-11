@@ -1,25 +1,46 @@
 <script>
-	import { browser } from '$app/env';
-	import { createEventDispatcher } from 'svelte';
+	import { afterUpdate, createEventDispatcher } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-
-	import { getName } from '$lib/functions/nameText';
 	import OverlayScrollbars from 'overlayscrollbars';
+
+	import { bannerPhase, pageActive, patchVersion, unlimitedFates } from '$lib/store/stores';
 	import updates from '$lib/setup/updates.json';
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import { getName } from '$lib/functions/nameText';
 	import factoryReset from '$lib/functions/factoryReset';
+	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
-	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
+	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import { localUnlimitedFates } from '$lib/store/localstore';
 
 	export let show = false;
 	let showResetPopup = false;
 	let showToast = false;
 	let activeContent = 'options';
+	let showUnlimitedOptions = false;
+
+	const selectMenu = (menu) => {
+		activeContent = menu;
+		playSfx();
+	};
+
+	const selectUnlimitedOptions = (val = null) => {
+		showUnlimitedOptions = !showUnlimitedOptions;
+		playSfx();
+		if (val === 'yes') {
+			localUnlimitedFates.set('yes');
+			return unlimitedFates.set(true);
+		}
+		if (val === 'no') {
+			localUnlimitedFates.set('no');
+			return unlimitedFates.set(false);
+		}
+	};
 
 	const reset = () => {
 		showResetPopup = true;
 		playSfx('popup');
 	};
+
 	const confirmReset = async () => {
 		showResetPopup = false;
 		await factoryReset();
@@ -34,38 +55,47 @@
 		showResetPopup = false;
 	};
 
+	const openPrevious = () => {
+		playSfx();
+		browserState.set('previous');
+		pageActive.set('previous-banner');
+	};
+
 	const dispatch = createEventDispatcher();
 	const handleClose = () => {
 		dispatch('close');
-		history.back();
+		playSfx('close');
 	};
 
-	let content;
-	$: if (activeContent === 'updates') {
-		if (browser)
-			OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-	}
+	let updatesContainer;
+	let optionsContainer;
+	afterUpdate(() => {
+		const content = updatesContainer || optionsContainer;
+		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
-<PopUp
-	title="Factory Reset"
-	show={showResetPopup}
-	button="all"
-	on:confirm={confirmReset}
-	on:cancel={cancelReset}
->
-	<div class="confirmation">
-		<div style="padding: 1rem">
-			Are You sure to clear <strong> All Data </strong> and restore to default ?
-			<br />
-			<small> It also remove your History, Pity Count, Balance and all items from Inventory.</small>
-		</div>
-	</div>
-</PopUp>
-
 {#if show}
+	<PopUp
+		title="Factory Reset"
+		show={showResetPopup}
+		button="all"
+		on:confirm={confirmReset}
+		on:cancel={cancelReset}
+	>
+		<div class="confirmation">
+			<div style="padding: 1rem">
+				Are You sure to clear <strong> All Data </strong> and restore to default ?
+				<br />
+				<small>
+					It also remove your History, Pity Count, Balance and all items from Inventory.</small
+				>
+			</div>
+		</div>
+	</PopUp>
+
 	{#if showToast}
-		<div class="toast" transition:fly={{ y: -20 }}>Reset Successfull</div>
+		<div class="toast" transition:fly={{ y: -20 }}>Reset Successful</div>
 	{/if}
 
 	<section transition:fade={{ duration: 200 }}>
@@ -79,24 +109,46 @@
 			<div class="sidebar">
 				<div class="menu-list">
 					<div class="menu-item" class:active={activeContent === 'options'}>
-						<button on:click={() => (activeContent = 'options')}> Options </button>
+						<button on:click={() => selectMenu('options')}> Options </button>
 					</div>
 					<div class="menu-item" class:active={activeContent === 'updates'}>
-						<button on:click={() => (activeContent = 'updates')}> Update History </button>
+						<button on:click={() => selectMenu('updates')}> Update History </button>
 					</div>
 				</div>
 			</div>
 
 			<div class="content">
 				{#if activeContent === 'options'}
-					<div in:fade={{ duration: 200 }}>
+					<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
 						<div class="option">
 							<div class="option-name">Unlimited Fates</div>
-							<div class="option-select">No</div>
+							<div class="option-select">
+								<button
+									class="selected"
+									style="width: 100%; height:100%"
+									on:click={selectUnlimitedOptions}>{$unlimitedFates ? 'Yes' : 'No'}</button
+								>
+								{#if showUnlimitedOptions}
+									<div class="select" in:fly={{ duration: 200, y: -10 }}>
+										<button
+											class:selected={!$unlimitedFates}
+											on:click={() => selectUnlimitedOptions('no')}
+										>
+											No
+										</button>
+										<button
+											class:selected={$unlimitedFates}
+											on:click={() => selectUnlimitedOptions('yes')}
+										>
+											Yes
+										</button>
+									</div>
+								{/if}
+							</div>
 						</div>
 						<div class="option">
 							<div class="option-name">Switch Banner</div>
-							<button class="option-select" on:click={() => pageActive.set('previous-banner')}>
+							<button class="option-select" on:click={openPrevious}>
 								{$patchVersion} - {$bannerPhase}
 							</button>
 						</div>
@@ -129,7 +181,7 @@
 				{/if}
 
 				{#if activeContent === 'updates'}
-					<div class="updates" in:fade={{ duration: 200 }}>
+					<div class="updates content-container" in:fade={{ duration: 200 }}>
 						<div class="text">
 							You can Check what are changes we made on <a
 								href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
@@ -138,7 +190,7 @@
 								Github Repository
 							</a>. You can submit an issue if you find something wrong !
 						</div>
-						<div class="update-item" bind:this={content}>
+						<div class="update-item" bind:this={updatesContainer}>
 							{#each updates.data.reverse() as { description, date }, i (i)}
 								<h2>
 									<i class="tgl"> {date} </i>
@@ -220,6 +272,10 @@
 		height: calc(100% - 7rem);
 	}
 
+	:global(.mobile) .container {
+		height: calc(100% - 5rem);
+	}
+
 	.sidebar {
 		width: 30%;
 		max-width: 20rem;
@@ -297,8 +353,26 @@
 		transition: all 0.2s;
 	}
 
-	.option-select:hover {
+	button.option-select:hover,
+	.select button:hover,
+	.select button.selected {
 		background-color: #f0e0c7;
+	}
+
+	.select {
+		position: absolute;
+		top: 110%;
+		left: 0;
+		width: 100%;
+		background-color: var(--tertiary-color);
+		z-index: +1;
+		border-radius: 0.3rem;
+		overflow: hidden;
+	}
+	.select button {
+		display: block;
+		width: 100%;
+		padding: 0.15rem;
 	}
 
 	.text {
@@ -323,7 +397,7 @@
 		font-size: 0.87rem;
 		border-radius: 0.3rem;
 	}
-	.updates {
+	.content-container {
 		display: flex;
 		flex-direction: column;
 		height: 100%;

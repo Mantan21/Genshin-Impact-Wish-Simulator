@@ -147,6 +147,15 @@ const localFatePoint = {
 	}
 };
 
+const localUnlimitedFates = {
+	set(value) {
+		return localStorage.setItem('unlimitedFates', value);
+	},
+	check() {
+		return localStorage.getItem('unlimitedFates') === 'yes';
+	}
+};
+
 export {
 	pity4star,
 	pity5star,
@@ -157,5 +166,6 @@ export {
 	localBalance,
 	localBannerVersion,
 	firstShare,
-	localFatePoint
+	localFatePoint,
+	localUnlimitedFates
 };

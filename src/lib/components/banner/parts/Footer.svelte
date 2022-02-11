@@ -9,7 +9,8 @@
 		starglitter,
 		isAcquaintUsed,
 		acquaint,
-		intertwined
+		intertwined,
+		unlimitedFates
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
@@ -68,7 +69,10 @@
 				<div class="top">Wish x1</div>
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px"> x <span class:red={fateQty < 1}> 1 </span></span>
+					<span style="margin-left: 7px">
+						x
+						<span class:red={fateQty < 1 && !$unlimitedFates}> 1 </span></span
+					>
 				</div>
 			</button>
 
@@ -78,7 +82,7 @@
 					<Icon type={fateType} />
 					<span style="margin-left: 7px">
 						x
-						<span class:red={fateQty < multiRollPrice}> {multiRollPrice} </span>
+						<span class:red={fateQty < multiRollPrice && !$unlimitedFates}> {multiRollPrice} </span>
 					</span>
 				</div>
 			</button>
