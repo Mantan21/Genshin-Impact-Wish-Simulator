@@ -6,7 +6,6 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// Components
-	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import InventoryHeader from './InventoryHeader.svelte';
 	import InventoryItem from './InventoryItem.svelte';
 
@@ -14,8 +13,6 @@
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { APP_TITLE } from '$lib/env';
-
-	import factoryReset from '$lib/functions/factoryReset';
 	import playSfx from '$lib/functions/audio';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
@@ -127,39 +124,11 @@
 		dataToShow = dataToShow.reverse();
 		playSfx();
 	};
-
-	let showPopup = false;
-	const confirmReset = () => {
-		factoryReset();
-		showPopup = false;
-		dataToShow = [];
-		weapons = [];
-		characters = [];
-	};
-
-	const cancelReset = () => {
-		showPopup = false;
-	};
 </script>
 
 <svelte:head>
 	<title>Inventory | {APP_TITLE}</title>
 </svelte:head>
-
-<PopUp
-	title="Factory Reset"
-	show={showPopup}
-	button="all"
-	on:confirm={confirmReset}
-	on:cancel={cancelReset}
->
-	<div class="confirmation">
-		<div style="padding: 1rem">
-			Are You sure to clear <strong> All Data </strong> and restore to default ?
-			<br /> <small> Note : It includes History, Pity, Funds and all items from Inventory.</small>
-		</div>
-	</div>
-</PopUp>
 
 <section>
 	<img src="/assets/images/background/element-{rand(bg)}-bg.webp" alt="Background" class="bg" />
@@ -274,16 +243,6 @@
 							</div>
 						{/if}
 					</div>
-					<button
-						class="reset"
-						title="Reset All Data"
-						on:click={() => {
-							showPopup = true;
-							playSfx('popup');
-						}}
-					>
-						<i class="gi-delete" />
-					</button>
 					<div class="total">{dataQty} Items</div>
 				</div>
 			</div>
@@ -292,14 +251,6 @@
 </section>
 
 <style>
-	.confirmation {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-	}
-
 	section {
 		display: block;
 		width: 100%;
@@ -490,8 +441,7 @@
 		padding: 0 2%;
 	}
 
-	.sort-button,
-	.reset {
+	.sort-button {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -503,12 +453,6 @@
 		transform: rotate(90deg);
 		font-size: 1.2rem;
 		border-radius: 100%;
-	}
-
-	.reset {
-		transform: unset;
-		margin-right: 0.5rem;
-		color: #bd6932;
 	}
 
 	.sort-selector {

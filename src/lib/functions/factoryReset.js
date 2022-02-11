@@ -10,11 +10,11 @@ import {
 import HistoryIDB from '$lib/store/historyIdb';
 
 const { clearIDB } = HistoryIDB;
-const factoryReset = () => {
+const factoryReset = async () => {
 	localStorage.clear();
 	localStorage.setItem('primogem', 1600);
 
-	clearIDB();
+	await clearIDB();
 
 	acquaint.set(0);
 	genesis.set(0);

@@ -12,6 +12,8 @@
 		bannerActive.set(0);
 	};
 
+	const { date, description } = updates.data.reverse()[0];
+
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
@@ -26,23 +28,12 @@
 	<section>
 		<p class="sp">This is purely a fan made Application, enjoy it !</p>
 		<div class="updates" bind:this={content}>
-			{#each updates.data.reverse() as { date, description }, i}
-				<span>
-					<i class="tgl"> {date} </i>
-					{#if i === 0} ( Latest Update ) {/if}
-				</span>
-				{#each description as txt} <p>{@html txt}</p> {/each}
-			{/each}
+			<span>
+				Latest Update ( <i class="tgl"> {date} </i> )
+			</span>
+			{#each description as txt} <p>{@html txt}</p> {/each}
 			<div style="height: .5rem" />
 		</div>
-		<p class="sp">
-			If You want to Switch to previous banner, you can click on <span> (x)</span> button on the top
-			Right of the page. <br />
-			ND If you find any bugs or problems, please report an issue to
-			<a href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator" target="_blank">
-				Github here
-			</a>
-		</p>
 		<span style="font-size: 1rem">Support</span>
 		<div class="support">
 			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">

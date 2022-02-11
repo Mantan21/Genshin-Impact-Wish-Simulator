@@ -147,7 +147,7 @@
 
 	.menu-button button:active,
 	.menu-button button:hover {
-		background-color: #eee2c8;
+		background-color: var(--tertiary-color);
 	}
 
 	.roll-button {
