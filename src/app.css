@@ -196,12 +196,3 @@ h1 {
 		font-size: 1.5rem;
 	}
 }
-
-@keyframes rotatePhone {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(-90deg);
-	}
-}

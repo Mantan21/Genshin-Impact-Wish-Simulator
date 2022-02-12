@@ -119,6 +119,10 @@
 		pageActive.set('index');
 	};
 
+	const handleCancelSelect = () => {
+		showGroup = false;
+	};
+
 	let content;
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
@@ -137,13 +141,17 @@
 		</button>
 	</header>
 
-	<div class="body" transition:fade={{ duration: 300 }}>
+	<div
+		class="body"
+		transition:fade={{ duration: 300 }}
+		on:click|preventDefault={handleCancelSelect}
+	>
 		<div class="filter">
 			<div class="row">
 				<div class="sort-selector">
 					<div
 						class="selected-filter"
-						on:click={() => {
+						on:click|stopPropagation={() => {
 							showGroup = !showGroup;
 							playSfx();
 						}}
@@ -442,8 +450,8 @@
 	}
 	@media screen and (max-width: 900px) {
 		.close {
-			width: 2rem;
-			height: 2rem;
+			width: 2.5rem;
+			height: 2.5rem;
 			margin: 3px;
 		}
 	}

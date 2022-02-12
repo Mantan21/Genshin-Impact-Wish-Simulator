@@ -42,7 +42,6 @@
 	$: getList(preview, previewlist);
 
 	let container;
-	let wishHeight = 400;
 	let encoded;
 
 	onMount(() => {
@@ -80,13 +79,9 @@
 
 <div class="scroll" bind:this={container}>
 	<div class="container" class:animate={!preview}>
-		<div class="wishlist" bind:clientHeight={wishHeight}>
+		<div class="wishlist">
 			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty }, i (i)}
-				<div
-					class="item-box"
-					class:animate={!preview}
-					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
-				>
+				<div class="item-box" class:animate={!preview} style="animation-delay: {0.5 + i * 0.1}s">
 					<div id="wish{i}" class="item star{rarity} {type}" on:click={() => playSfx()}>
 						{#if isNew}
 							<div class="new">new</div>
@@ -169,7 +164,7 @@
 				<div
 					class="shadow shadow{rarity}"
 					class:animate={!preview}
-					style={`width:${wishHeight / 4.41}px;animation-delay: ${0.5 + i * 0.1}s`}
+					style="animation-delay: {0.5 + i * 0.1}s"
 				>
 					{#if fateType && type === 'character'}
 						<span> Convertion </span>
@@ -254,6 +249,7 @@
 	.item,
 	.shadow {
 		height: 100%;
+		aspect-ratio: 1/4.5;
 		border-radius: 100%;
 		filter: drop-shadow(0px 0px 6px rgb(101, 187, 246));
 		position: relative;
@@ -262,11 +258,13 @@
 	.item {
 		transition: all 0.2s;
 	}
-	.item:hover {
+	.item:hover,
+	.item.hover {
 		transform: scale(1.05);
 		z-index: +10;
 	}
-	.item:hover .cover {
+	.item:hover .cover,
+	.item.hover .cover {
 		background-color: rgba(0, 0, 0, 0);
 	}
 
@@ -292,7 +290,7 @@
 	.item-box.animate,
 	.shadow.animate {
 		transform: scale(0);
-		animation: wishReveal forwards 0.8s;
+		animation: wishReveal forwards 0.5s;
 	}
 
 	.shadow {
@@ -519,18 +517,20 @@
 
 	@media screen and (max-width: 900px) {
 		.close {
-			width: 2rem;
-			height: 2rem;
+			width: 2.5rem;
+			height: 2.5rem;
 			margin: 3px;
 		}
 	}
 
 	@keyframes wishReveal {
 		0% {
-			transform: translateX(200%) scale(0);
+			transform: translateX(200%);
+			opacity: 0;
 		}
 		100% {
-			transform: translateX(0) scale(1);
+			transform: translateX(0);
+			opacity: 1;
 		}
 	}
 

@@ -155,7 +155,7 @@
 							</div>
 						</div>
 
-						{#if type === 'weapon'}
+						{#if type === 'weapon' && fateQty > 1}
 							<div class="starfate {fateType}">
 								<div class="icon">
 									<Icon type={fateType} width={isMobile ? '50px' : '60px'} />
@@ -207,8 +207,8 @@
 
 	@media screen and (max-width: 900px) {
 		.close {
-			width: 2rem;
-			height: 2rem;
+			width: 2.5rem;
+			height: 2.5rem;
 			margin: 3px;
 		}
 	}

@@ -124,13 +124,17 @@
 		dataToShow = dataToShow.reverse();
 		playSfx();
 	};
+
+	const handleCancelSelect = () => {
+		showOrder = false;
+	};
 </script>
 
 <svelte:head>
 	<title>Inventory | {APP_TITLE}</title>
 </svelte:head>
 
-<section>
+<section on:click={handleCancelSelect}>
 	<img src="/assets/images/background/element-{rand(bg)}-bg.webp" alt="Background" class="bg" />
 
 	<div class="header" in:fly={{ y: -20 }}>
@@ -187,7 +191,7 @@
 						<i class="gi-exchange" />
 					</button>
 					<div class="sort-selector">
-						<div class="selected-order" on:click={() => selectOrder()}>
+						<div class="selected-order" on:click|stopPropagation={() => selectOrder()}>
 							Sort / {orderby}
 
 							{#if showOrder}
