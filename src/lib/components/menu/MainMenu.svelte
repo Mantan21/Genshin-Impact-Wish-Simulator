@@ -3,14 +3,22 @@
 	import { fade, fly } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { bannerPhase, pageActive, patchVersion, unlimitedFates } from '$lib/store/stores';
+	import {
+		bannerPhase,
+		isMobile,
+		mobileMode,
+		pageActive,
+		patchVersion,
+		unlimitedFates
+	} from '$lib/store/stores';
+	import { localUnlimitedFates } from '$lib/store/localstore';
 	import updates from '$lib/setup/updates.json';
 	import { getName } from '$lib/functions/nameText';
 	import factoryReset from '$lib/functions/factoryReset';
 	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import { localUnlimitedFates } from '$lib/store/localstore';
+	import Toast from '$lib/components/utility/Toast.svelte';
 
 	export let show = false;
 	let showResetPopup = false;
@@ -45,10 +53,6 @@
 		showResetPopup = false;
 		await factoryReset();
 		showToast = true;
-		const t = setTimeout(() => {
-			showToast = false;
-			clearTimeout(t);
-		}, 3000);
 	};
 
 	const cancelReset = () => {
@@ -59,6 +63,10 @@
 		playSfx();
 		browserState.set('previous');
 		pageActive.set('previous-banner');
+	};
+
+	const handleCancelSelect = () => {
+		showUnlimitedOptions = false;
 	};
 
 	const dispatch = createEventDispatcher();
@@ -95,10 +103,10 @@
 	</PopUp>
 
 	{#if showToast}
-		<div class="toast" transition:fly={{ y: -20 }}>Reset Successful</div>
+		<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
 	{/if}
 
-	<section transition:fade={{ duration: 200 }}>
+	<section transition:fade={{ duration: 200 }} on:click|preventDefault={handleCancelSelect}>
 		<div class="head">
 			<h1>Menu / {getName(activeContent)}</h1>
 			<button class="close" on:click={handleClose} title="Change Banner">
@@ -109,10 +117,10 @@
 			<div class="sidebar">
 				<div class="menu-list">
 					<div class="menu-item" class:active={activeContent === 'options'}>
-						<button on:click={() => selectMenu('options')}> Options </button>
+						<button on:click|stopPropagation={() => selectMenu('options')}> Options </button>
 					</div>
 					<div class="menu-item" class:active={activeContent === 'updates'}>
-						<button on:click={() => selectMenu('updates')}> Update History </button>
+						<button on:click|stopPropagation={() => selectMenu('updates')}> Update History </button>
 					</div>
 				</div>
 			</div>
@@ -126,19 +134,21 @@
 								<button
 									class="selected"
 									style="width: 100%; height:100%"
-									on:click={selectUnlimitedOptions}>{$unlimitedFates ? 'Yes' : 'No'}</button
+									on:click|stopPropagation={selectUnlimitedOptions}
+									>{$unlimitedFates ? 'Yes' : 'No'}</button
 								>
+								<i class="gi-caret-{showUnlimitedOptions ? 'up' : 'down'}" />
 								{#if showUnlimitedOptions}
 									<div class="select" in:fly={{ duration: 200, y: -10 }}>
 										<button
 											class:selected={!$unlimitedFates}
-											on:click={() => selectUnlimitedOptions('no')}
+											on:click|stopPropagation={() => selectUnlimitedOptions('no')}
 										>
 											No
 										</button>
 										<button
 											class:selected={$unlimitedFates}
-											on:click={() => selectUnlimitedOptions('yes')}
+											on:click|stopPropagation={() => selectUnlimitedOptions('yes')}
 										>
 											Yes
 										</button>
@@ -148,13 +158,14 @@
 						</div>
 						<div class="option">
 							<div class="option-name">Switch Banner</div>
-							<button class="option-select" on:click={openPrevious}>
+							<button class="option-select" on:click|stopPropagation={openPrevious}>
+								<i class="gi-caret-down" />
 								{$patchVersion} - {$bannerPhase}
 							</button>
 						</div>
 						<div class="option">
 							<div class="option-name">Clear Data and Restore Default</div>
-							<button class="option-select" on:click={reset}>
+							<button class="option-select" on:click|stopPropagation={reset}>
 								<i
 									class="gi-delete"
 									style="vertical-align: bottom; line-height: 0; margin-right: .2rem"
@@ -191,7 +202,7 @@
 							</a>. You can submit an issue if you find something wrong !
 						</div>
 						<div class="update-item" bind:this={updatesContainer}>
-							{#each [...updates.data].reverse() as { description, date }, i (i)}
+							{#each [...updates.data] as { description, date }, i (i)}
 								<h2>
 									<i class="tgl"> {date} </i>
 									{#if i === 0} ( Latest Update ) {/if}
@@ -199,6 +210,13 @@
 								{#each description as txt} <p>{@html txt}</p> {/each}
 							{/each}
 						</div>
+					</div>
+				{/if}
+
+				{#if $isMobile && !$mobileMode}
+					<div class="rotate">
+						<i class="gi-rotate-phone" />
+						<span>Rotate for better experience </span>
 					</div>
 				{/if}
 			</div>
@@ -326,6 +344,7 @@
 
 	.content {
 		width: 70%;
+		position: relative;
 	}
 	.option {
 		display: flex;
@@ -342,7 +361,8 @@
 
 	.option-select {
 		background-color: var(--tertiary-color);
-		width: 25%;
+		width: 40%;
+		max-width: 14rem;
 		text-align: center;
 		position: relative;
 		display: inline-flex;
@@ -351,6 +371,20 @@
 		border-top-right-radius: 5rem;
 		border-bottom-right-radius: 5rem;
 		transition: all 0.2s;
+	}
+
+	.option-select i {
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		font-size: 1rem;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+
+	.option-select button,
+	.option-select {
+		font-size: 0.8rem !important;
 	}
 
 	button.option-select:hover,
@@ -442,25 +476,29 @@
 		margin-bottom: 1rem;
 	}
 
-	.toast {
-		padding: 0.5rem 1rem;
+	.rotate {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		color: #fff;
+		display: flex;
+		flex-direction: column;
 		text-align: center;
-		border-radius: 0.3rem;
-		width: 10rem;
-		color: var(--tertiary-color);
-		background-color: #4a5265;
-		position: fixed;
-		z-index: 102;
-		left: 50%;
-		top: 1rem;
-		transform: translateX(-50%);
-		font-size: 0.7rem;
+	}
+
+	.gi-rotate-phone {
+		font-size: 3rem;
+		animation: rotatePhone 1s infinite alternate;
 	}
 	@media screen and (max-width: 900px) {
 		.close {
 			width: 2.5rem;
 			height: 2.5rem;
 			margin: 3px;
+		}
+
+		.option {
+			padding: 0.3rem 0;
 		}
 
 		:global(main):not(.mobile) .container {
@@ -493,6 +531,15 @@
 			background-color: var(--tertiary-color);
 			color: #4a5265;
 			transform: unset;
+		}
+	}
+
+	@keyframes rotatePhone {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(-90deg);
 		}
 	}
 </style>
