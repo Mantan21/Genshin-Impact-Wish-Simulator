@@ -10,6 +10,7 @@
 	} from '$lib/store/stores';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { localBalance } from '$lib/store/localstore';
+	import Toast from '$lib/components/utility/Toast.svelte';
 
 	export let showMeteor = false;
 	export let meteorStar = 3;
@@ -22,6 +23,7 @@
 	let v4star;
 	let v5starSingle;
 	let v5star;
+	let showToast = false;
 
 	const dispatch = createEventDispatcher();
 	$: balance = $isAcquaintUsed ? $acquaint : $intertwined;
@@ -74,28 +76,21 @@
 	};
 
 	const showVideoHandle = (rarity, single = true) => {
-		if (single) {
-			if (rarity === 5) {
-				v5starSingle.style.display = 'unset';
-				return v5starSingle.play();
-			}
-			if (rarity === 4) {
-				v4starSingle.style.display = 'unset';
-				return v4starSingle.play();
-			}
-			v3star.style.display = 'unset';
-			return v3star.play();
+		let videoContent = v3star;
+		if (single && rarity !== 3) {
+			videoContent = rarity === 5 ? v5starSingle : v4starSingle;
+		}
+		if (!single) {
+			videoContent = rarity === 5 ? v5star : v4star;
 		}
 
-		// Multiple Roll
-		if (rarity === 5) {
-			v5star.style.display = 'unset';
-			return v5star.play();
+		if (isNaN(videoContent.duration)) {
+			showToast = true;
+			console.error("Can't play Meteor Animation because it cannot be loaded");
+			return dispatch('endAnimation');
 		}
-		if (rarity === 4) {
-			v4star.style.display = 'unset';
-			return v4star.play();
-		}
+		videoContent.style.display = 'unset';
+		return videoContent.play();
 	};
 
 	onMount(() => {
@@ -138,6 +133,10 @@
 		</div>
 	</div>
 </PopUp>
+
+{#if showToast}
+	<Toast on:close={() => (showToast = false)}>Meteor Animation Failed to Load</Toast>
+{/if}
 
 <div class="wish-output" class:show={showMeteor}>
 	<div class="video">
