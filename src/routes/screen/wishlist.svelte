@@ -6,7 +6,6 @@
 	import characters from '$lib/data/characters.json';
 	import WishListResult from '$lib/components/utility/wishresult/WishListResult.svelte';
 	import { getName } from '$lib/functions/nameText';
-	import Error from '../__error.svelte';
 
 	let title = 'No Name';
 	let isError;
