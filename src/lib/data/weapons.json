@@ -37,6 +37,11 @@
 					"limited": true
 				},
 				{
+					"name": "kagura_s-verity",
+					"weaponType": "catalyst",
+					"limited": true
+				},
+				{
 					"name": "lost-prayer-to-the-sacred-winds",
 					"weaponType": "catalyst"
 				},

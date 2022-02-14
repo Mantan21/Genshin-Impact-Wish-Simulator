@@ -175,6 +175,15 @@
 					}
 				},
 				{
+					"name": "yae-miko",
+					"vision": "electro",
+					"wishBoxPosition": {
+						"h": 210,
+						"t": 87,
+						"l": 10
+					}
+				},
+				{
 					"name": "yoimiya",
 					"vision": "pyro",
 					"limited": true,
