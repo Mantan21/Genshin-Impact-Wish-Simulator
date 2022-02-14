@@ -57,6 +57,7 @@
 
 	const confirmReset = async () => {
 		await resetHistory(banner);
+		await resetHistory('limited');
 		pity5star.set(banner, 0);
 		pity4star.set(banner, 0);
 		if (banner === 'beginner') {
