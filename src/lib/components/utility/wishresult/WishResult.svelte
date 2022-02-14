@@ -214,7 +214,8 @@
 	}
 
 	:global(.mobile) .close {
-		transform: scale(0.7);
+		width: 2rem;
+		height: 2rem;
 	}
 
 	/* Fate */

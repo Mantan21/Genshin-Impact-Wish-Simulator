@@ -93,6 +93,7 @@
 
 		window.addEventListener('popstate', (e) => {
 			if (e.state.page) return;
+			if ($pageActive === 'index') return;
 			pageActive.set('index');
 		});
 	});

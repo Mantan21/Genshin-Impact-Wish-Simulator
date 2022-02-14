@@ -202,7 +202,7 @@
 							</a>. You can submit an issue if you find something wrong !
 						</div>
 						<div class="update-item" bind:this={updatesContainer}>
-							{#each [...updates.data] as { description, date }, i (i)}
+							{#each [...updates.data].reverse() as { description, date }, i (i)}
 								<h2>
 									<i class="tgl"> {date} </i>
 									{#if i === 0} ( Latest Update ) {/if}
@@ -399,6 +399,7 @@
 		left: 0;
 		width: 100%;
 		background-color: var(--tertiary-color);
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 		z-index: +1;
 		border-radius: 0.3rem;
 		overflow: hidden;

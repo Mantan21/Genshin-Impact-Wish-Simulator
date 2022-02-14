@@ -326,6 +326,10 @@
 		border: 3.5px solid #abbcc6;
 		margin-left: auto;
 	}
+	:global(.mobile) .close {
+		width: 2rem;
+		height: 2rem;
+	}
 
 	.body {
 		display: flex;
