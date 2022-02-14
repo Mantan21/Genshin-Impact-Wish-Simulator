@@ -45,6 +45,11 @@
 	let encoded;
 
 	onMount(() => {
+		const itemBox = container.querySelectorAll('.item-box');
+		itemBox.forEach((el) => {
+			el.addEventListener('animationend', () => el.classList.remove('animate'));
+		});
+
 		OverlayScrollbars(container, { sizeAutoCapable: false, className: 'os-theme-light' });
 		if (preview) return;
 		playSfx('resultList');
@@ -82,7 +87,11 @@
 		<div class="wishlist">
 			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty }, i (i)}
 				<div class="item-box" class:animate={!preview} style="animation-delay: {0.5 + i * 0.1}s">
-					<div id="wish{i}" class="item star{rarity} {type}" on:click={() => playSfx()}>
+					<div
+						id="wish{i}"
+						class="item star{rarity} {type}"
+						on:click|preventDefault={() => playSfx()}
+					>
 						{#if isNew}
 							<div class="new">new</div>
 						{/if}
@@ -204,7 +213,8 @@
 		top: 0;
 		left: 0;
 		background-color: #fff;
-		animation: reveal forwards 1s;
+		opacity: 1;
+		animation: reveal forwards 1s 1;
 		pointer-events: none;
 	}
 
@@ -225,7 +235,7 @@
 		line-height: 0;
 		z-index: 10;
 		opacity: 0;
-		animation: fadeIn forwards 1s;
+		animation: fadeIn forwards 1s 1;
 	}
 	:global(.mobile) .close {
 		width: 2rem;
@@ -261,11 +271,12 @@
 
 	.item {
 		transition: all 0.2s;
+		will-change: transform;
 	}
 	.item:hover,
 	.item.hover {
-		transform: scale(1.05);
-		z-index: +10;
+		transform: scale(1.04);
+		/* z-index: +10; */
 	}
 	.item:hover .cover,
 	.item.hover .cover {
@@ -293,8 +304,9 @@
 
 	.item-box.animate,
 	.shadow.animate {
-		transform: scale(0);
-		animation: wishReveal forwards 0.5s;
+		opacity: 0;
+		animation: wishReveal forwards 0.4s 1;
+		pointer-events: none;
 	}
 
 	.shadow {
@@ -529,8 +541,7 @@
 
 	@keyframes wishReveal {
 		0% {
-			transform: translateX(200%);
-			opacity: 0;
+			transform: translateX(150%);
 		}
 		100% {
 			transform: translateX(0);
@@ -539,9 +550,6 @@
 	}
 
 	@keyframes reveal {
-		0% {
-			opacity: 1;
-		}
 		20% {
 			opacity: 1;
 		}

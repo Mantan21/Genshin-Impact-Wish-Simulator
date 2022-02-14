@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { viewportHeight, viewportWidth, isMobile } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
@@ -8,6 +8,7 @@
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
+	import SplashLight from './SplashLight.svelte';
 
 	export let list = [];
 
@@ -62,6 +63,12 @@
 		showItem('start');
 		wishResultContainer.addEventListener('click', showItem);
 	});
+
+	afterUpdate(() => {
+		wishResultContainer?.querySelectorAll('.anim').forEach((el) => {
+			el.addEventListener('animationend', () => el.classList.remove('anim'));
+		});
+	});
 </script>
 
 <audio bind:this={audio} />
@@ -83,19 +90,10 @@
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
-						<div class="orbs orb5" />
-						<div class="orbs orb1" />
-						<div class="orbs orb2" />
-						<div class="orbs orb3" />
-						<div class="orbs orb4" />
-						<img
-							src="/assets/images/utility/splatter-{rarity}star.svg"
-							alt="splatter"
-							class="sprite"
-						/>
+						<SplashLight type="in" {rarity} />
 
 						{#if type === 'weapon'}
-							<div class="splash-art weapon {weaponType}-parent">
+							<div class="splash-art anim weapon {weaponType}-parent">
 								<img
 									src="/assets/images/utility/bg-{weaponType}.svg"
 									alt={weaponType}
@@ -111,7 +109,7 @@
 							<img
 								src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
 								alt={name}
-								class="splash-art"
+								class="splash-art anim"
 							/>
 						{/if}
 
@@ -120,23 +118,23 @@
 								<img
 									src="/assets/images/utility/icon-{vision}.svg"
 									alt="Vision {vision}"
-									class="vision vision-{vision}"
+									class="anim vision vision-{vision}"
 								/>
 							{:else}
-								<i class="elemen gi-{weaponType}" />
+								<i class="anim elemen gi-{weaponType}" />
 							{/if}
 							<div class="name">
-								<div class="text">
+								<div class="text anim">
 									{getName(name)}
 								</div>
 								<div class="star">
 									{#each Array(rarity) as _, i (i)}
-										<i class="gi-star" style={`animation-delay: ${2 + i * 0.15}s`} />
+										<i class="gi-star anim" style="animation-delay: {2 + i * 0.15}s" />
 									{/each}
 								</div>
 							</div>
 
-							<div class="bonus">
+							<div class="bonus anim">
 								{#if stelaFortuna}
 									<div class="stella stella{rarity}">
 										<img
@@ -168,9 +166,7 @@
 							</div>
 						{/if}
 
-						<div class="orbs out1" />
-						<div class="orbs out2" />
-						<div class="orbs out3" />
+						<SplashLight type="out" {rarity} />
 					</div>
 				{/if}
 			{/each}
@@ -202,7 +198,7 @@
 		line-height: 0;
 		z-index: 10;
 		opacity: 0;
-		animation: weaponbg forwards 1.5s;
+		animation: weaponbg forwards 1.5s 1;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -230,8 +226,9 @@
 		position: relative;
 		z-index: +1;
 		opacity: 0;
+		transform: scale(1);
 		animation-delay: 1.3s !important;
-		animation: starfateIcon forwards 0.4s;
+		animation: starfateIcon forwards 0.4s 1;
 	}
 	.starfate.starglitter :global(img) {
 		filter: drop-shadow(0 0 6px rgba(245, 193, 63, 1));
@@ -255,7 +252,7 @@
 		z-index: -1;
 		opacity: 0;
 		animation-delay: 1.3s !important;
-		animation: starfateText forwards 0.7s;
+		animation: starfateText forwards 0.7s 1;
 	}
 	:global(.mobile) .starfate .text {
 		width: 230px;
@@ -293,13 +290,16 @@
 		width: 100%;
 	}
 
-	.name .text {
+	.name .text.anim {
 		animation-delay: 1.3s !important;
-		animation: revealName forwards 0.8s;
+		animation: revealName forwards 0.8s 1;
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	.name .text {
 		max-width: 38%;
 		font-size: 2.5em;
 		line-height: 1.2em;
-		opacity: 0;
 		color: #fff;
 		-webkit-text-stroke: 0.04rem #000;
 	}
@@ -314,9 +314,12 @@
 		margin-top: -5px;
 		position: relative;
 		z-index: -2;
+	}
+	.info i.elemen,
+	.vision.anim {
 		opacity: 0;
 		animation-delay: 1.2s !important;
-		animation: revealIcon forwards 1.3s;
+		animation: revealIcon forwards 1.3s 1;
 	}
 	.vision {
 		width: 4rem;
@@ -326,8 +329,11 @@
 		color: #f7cf33;
 		font-size: 1.525em;
 		display: inline-block;
+	}
+	.gi-star.anim {
 		opacity: 0;
-		animation: revealStar forwards 0.4s;
+		transform: scale(5);
+		animation: revealStar forwards 0.4s 1;
 	}
 
 	.gi-polearm,
@@ -367,22 +373,13 @@
 		position: relative;
 	}
 
-	.sprite {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		transform-origin: 0 0;
-		width: 140%;
-		height: auto;
-		animation-delay: 0.25s;
-		animation: sprite forwards linear 1.3s;
-	}
-
 	.splash-art {
 		height: 120%;
+		transform: scale(1) translate(2%, 0);
+	}
+	.splash-art.anim {
 		filter: brightness(0);
-		animation: splashart forwards 1.5s;
+		animation: splashart forwards 1.5s 1;
 	}
 
 	.splash-art.weapon {
@@ -400,8 +397,20 @@
 
 	.splash-art.weapon img.weaponbg {
 		height: 80%;
+	}
+	.splash-art.weapon.anim img.weaponbg {
 		opacity: 0;
-		animation: weaponbg forwards 1.5s;
+		animation: weaponbg forwards 1.5s 1;
+	}
+
+	.anim .bow,
+	.anim .polearm,
+	.anim .sword,
+	.anim .claymore,
+	.anim .catalyst {
+		animation: weaponShadow forwards 0.1s 1;
+		animation-delay: 1.2s;
+		filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
 	}
 
 	.bow,
@@ -409,8 +418,7 @@
 	.sword,
 	.claymore,
 	.catalyst {
-		animation: weaponShadow forwards 0.1s;
-		animation-delay: 1.2s;
+		filter: drop-shadow(0.7rem 0.6rem 0.2rem rgba(0, 0, 0, 0.7));
 	}
 
 	.bow {
@@ -438,175 +446,16 @@
 		height: 60% !important;
 	}
 
-	/* Light */
-	.orbs {
-		background-color: transparent;
-		border-radius: 100%;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		transform-origin: 0 0;
-		opacity: 0;
-	}
-	.orb1 {
-		animation: orbs forwards 0.7s;
-		width: 300%;
-		height: 300%;
-	}
-
-	.orb2 {
-		width: 180%;
-		height: 180%;
-		animation: orbs forwards 1.2s;
-	}
-
-	.orb3 {
-		animation: orbs forwards 1.4s;
-		width: 80%;
-		height: 80%;
-	}
-
-	.orb4 {
-		width: 120%;
-		height: 120%;
-		animation: orbs forwards 0.75s;
-	}
-
-	.orb5 {
-		top: unset;
-		transform: translateX(-50%);
-		bottom: -40%;
-		width: 160vw;
-		height: 70%;
-		animation: orbs2 forwards 1s;
-	}
-
-	.out1 {
-		width: 50%;
-		height: 50%;
-		background-color: rgb(254 133 63 / 5%);
-		animation: outOrbs forwards 0.8s;
-		animation-delay: 1s;
-	}
-
-	.out2 {
-		width: 100%;
-		height: 100%;
-		animation: outOrbs forwards 1.2s;
-		animation-delay: 1s;
-	}
-
-	.out3 {
-		width: 150%;
-		height: 150%;
-		animation-delay: 0.78s;
-		animation: outOrbs forwards 1.2s;
-		transform: scale(0) translate(-50%, -50%);
-	}
-
-	/* 5Star Color */
-	.star5 .orb1 {
-		background-color: rgb(254 133 63 / 5%);
-		box-shadow: 0 0 50px rgb(254 133 63 / 10%), inset 0 0 70px rgb(254 133 63 / 10%);
-	}
-	.star5 .orb2 {
-		box-shadow: 0 0 50px rgb(253 148 48 / 30%), inset 0 0 70px rgb(253 148 48 / 30%);
-	}
-	.star5 .orb3 {
-		box-shadow: 0 0 50px rgb(251 193 60 / 50%), inset 0 0 70px rgb(251 193 60 / 0%);
-		background-image: radial-gradient(rgba(251, 193, 60, 1), rgb(251, 193, 60, 0));
-	}
-	.star5 .orb4 {
-		box-shadow: 0 0 30px rgb(253 148 48 / 10%), inset 0 0 30px rgb(253 148 48 / 10%);
-	}
-	.star5 .orb5 {
-		background-image: radial-gradient(
-			rgba(253, 148, 48, 0.5),
-			rgb(253, 148, 48, 0),
-			rgba(253, 148, 48, 0)
-		);
-	}
-	.star5 .out1 {
-		box-shadow: 0 0 50px rgb(251 193 60 / 50%), inset 0 0 50px rgb(251 193 60 / 50%);
-	}
-	.star5 .out2 {
-		box-shadow: 0 0 150px rgb(255 255 255 / 50%), inset 0 0 170px rgb(255 255 255 / 50%);
-	}
-	.star5 .out3 {
-		box-shadow: 0 0 200px rgb(253 148 48 / 60%), inset 0 0 170px rgb(253 148 48 / 60%);
-	}
-
-	/* 4 Star Color */
-	.star4 .orb1 {
-		background-color: rgb(156, 71, 218 / 5%);
-		box-shadow: 0 0 50px rgb(156, 71, 218 / 10%), inset 0 0 70px rgb(156, 71, 218 / 10%);
-	}
-	.star4 .orb2 {
-		box-shadow: 0 0 50px rgb(113 34 221 / 30%), inset 0 0 70px rgb(113 34 221 / 30%);
-	}
-	.star4 .orb3 {
-		box-shadow: 0 0 50px rgb(180 47 248 / 50%), inset 0 0 70px rgb(180 47 248 / 0%);
-		background-image: radial-gradient(rgba(156, 71, 218, 1), rgb(180, 47, 248, 0));
-	}
-	.star4 .orb4 {
-		box-shadow: 0 0 30px rgb(113 34 221 / 10%), inset 0 0 30px rgb(113 34 221 / 10%);
-	}
-	.star4 .orb5 {
-		background-image: radial-gradient(
-			rgba(156, 71, 218, 0.5),
-			rgb(156, 71, 218, 0),
-			rgba(156, 71, 218, 0)
-		);
-	}
-	.star4 .out1 {
-		box-shadow: 0 0 50px rgb(180 47 248 / 50%), inset 0 0 50px rgb(180 47 248 / 50%);
-	}
-	.star4 .out2 {
-		box-shadow: 0 0 150px rgb(255 255 255 / 50%), inset 0 0 170px rgb(255 255 255 / 50%);
-	}
-	.star4 .out3 {
-		box-shadow: 0 0 200px rgb(113 34 221 / 60%), inset 0 0 170px rgb(113 34 221 / 60%);
-	}
-
-	/* 3 Star Color */
-	.star3 .orb1 {
-		background-color: rgb(254 133 63 / 5%);
-		box-shadow: 0 0 50px rgb(254 133 63 / 10%), inset 0 0 70px rgb(254 133 63 / 10%);
-	}
-	.star3 .orb2 {
-		box-shadow: 0 0 50px rgb(85 93 255 / 30%), inset 0 0 70px rgb(85 93 255 / 30%);
-	}
-	.star3 .orb3 {
-		box-shadow: 0 0 50px rgb(106 128 254 / 50%), inset 0 0 70px rgb(106 128 254 / 0%);
-		background-image: radial-gradient(rgba(99, 124, 205, 1), rgba(99, 124, 205, 0));
-	}
-	.star3 .orb4 {
-		box-shadow: 0 0 30px rgb(85 93 255 / 10%), inset 0 0 30px rgb(85 93 255 / 10%);
-	}
-	.star3 .orb5 {
-		background-image: radial-gradient(
-			rgba(99, 124, 205, 0.5),
-			rgba(99, 124, 205, 0),
-			rgba(99, 124, 205, 0)
-		);
-	}
-	.star3 .out1 {
-		box-shadow: 0 0 50px rgb(157 217 252 / 50%), inset 0 0 50px rgb(157 217 252 / 50%);
-	}
-	.star3 .out2 {
-		box-shadow: 0 0 150px rgb(255 255 255 / 50%), inset 0 0 170px rgb(255 255 255 / 50%);
-	}
-	.star3 .out3 {
-		box-shadow: 0 0 200px rgb(85 93 255 / 60%), inset 0 0 170px rgb(85 93 255 / 60%);
-	}
 	.bonus {
 		position: absolute;
 		display: flex;
 		bottom: -25vh;
 		left: 50%;
 		transform: translateX(-50%);
-		animation: weaponbg forwards 1.5s;
+	}
+	.bonus.anim {
+		opacity: 0;
+		animation: weaponbg forwards 1.5s 1;
 	}
 	.stella,
 	.bonus .masterless {
@@ -661,7 +510,10 @@
 		right: 8%;
 		color: #fff;
 		font-size: 0.8rem;
-		animation: weaponbg forwards 1.5s;
+	}
+	.share.anim {
+		opacity: 0;
+		animation: weaponbg forwards 1.5s 1;
 	}
 
 	:global(.preview) .uid {
@@ -689,40 +541,28 @@
 	}
 
 	@keyframes revealIcon {
-		0% {
+		from {
 			opacity: 0;
 		}
-		100% {
+		to {
 			opacity: 1;
 		}
 	}
 	@keyframes revealName {
-		0% {
-			transform: translateX(20px);
-			opacity: 0;
-		}
-		100% {
+		to {
 			transform: translateX(0);
 			opacity: 1;
 		}
 	}
 
 	@keyframes revealStar {
-		0% {
-			transform: scale(5);
-			opacity: 0;
-		}
-		100% {
+		to {
 			transform: scale(1);
 			opacity: 1;
 		}
 	}
 
 	@keyframes starfateIcon {
-		0% {
-			transform: scale(0);
-			opacity: 0;
-		}
 		30% {
 			transform: scale(1.5);
 			opacity: 1;
@@ -743,62 +583,19 @@
 			opacity: 1;
 		}
 	}
-	@keyframes orbs {
-		0% {
-			transform: scale(0) translate(-50%, -50%);
-			opacity: 0;
-		}
-		90% {
-			transform: scale(1) translate(-50%, -50%);
-			opacity: 1;
-		}
-		100% {
-			transform: scale(1) translate(-50%, -50%);
-			opacity: 0;
-		}
-	}
-
-	@keyframes orbs2 {
-		0% {
-			transform: scale(0) translateX(-50%);
-			opacity: 1;
-		}
-		90% {
-			transform: scale(1) translateX(-50%);
-			opacity: 1;
-		}
-		100% {
-			transform: scale(1) translateX(-50%);
-			opacity: 0;
-		}
-	}
-
-	@keyframes outOrbs {
-		0% {
-			transform: scale() translate(-50%, -50%);
-			opacity: 1;
-		}
-		100% {
-			transform: scale(3) translate(-50%, -50%);
-			opacity: 0;
-		}
-	}
 
 	@keyframes splashart {
 		0% {
 			transform: scale(5) translate(0, -10%);
 			opacity: 0;
-			filter: brightness(0);
 		}
 
 		20% {
 			transform: scale(1);
 			opacity: 1;
-			filter: brightness(0);
 		}
 		75% {
 			transform: scale(1);
-			opacity: 1;
 			filter: brightness(0);
 		}
 		95% {
@@ -808,43 +605,11 @@
 		}
 		100% {
 			transform: scale(1) translate(2%, 0);
-			opacity: 1;
 			filter: brightness(1);
 		}
 	}
 
-	@keyframes sprite {
-		0% {
-			transform: scale(0) translate(-50%, -50%);
-			opacity: 0;
-		}
-		25% {
-			transform: scale(0.75) translate(-50%, -50%);
-			opacity: 1;
-		}
-		50% {
-			transform: scale(1.5) translate(-50%, -50%);
-			opacity: 0;
-		}
-		80% {
-			transform: scale(0.6) translate(-50%, -50%);
-			opacity: 0;
-		}
-		90% {
-			transform: scale(0.8) translate(-50%, -50%);
-			opacity: 1;
-			z-index: 10;
-		}
-		100% {
-			transform: scale(1.5) translate(-50%, -50%);
-			opacity: 0;
-		}
-	}
-
 	@keyframes weaponbg {
-		0% {
-			opacity: 0;
-		}
 		80% {
 			opacity: 0;
 		}
@@ -856,11 +621,8 @@
 		}
 	}
 	@keyframes weaponShadow {
-		0% {
-			filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-		}
-		100% {
-			filter: drop-shadow(10px 8px 1px rgba(0, 0, 0, 0.7));
+		to {
+			filter: drop-shadow(0.7rem 0.6rem 0.2rem rgba(0, 0, 0, 0.7));
 		}
 	}
 </style>
