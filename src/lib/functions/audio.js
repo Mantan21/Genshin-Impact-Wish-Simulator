@@ -27,7 +27,8 @@ const soundInit = () => {
 	if (!browser) return;
 	Object.keys(source).forEach((key) => {
 		sounds[key] = new Howl({
-			src: [source[key]]
+			src: [source[key]],
+			loop: key === 'wishBacksound'
 		});
 	});
 };

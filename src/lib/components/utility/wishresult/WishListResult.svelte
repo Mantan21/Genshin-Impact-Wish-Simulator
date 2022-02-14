@@ -227,6 +227,10 @@
 		opacity: 0;
 		animation: fadeIn forwards 1s;
 	}
+	:global(.mobile) .close {
+		width: 2rem;
+		height: 2rem;
+	}
 
 	/* Wish List */
 	.wishlist,

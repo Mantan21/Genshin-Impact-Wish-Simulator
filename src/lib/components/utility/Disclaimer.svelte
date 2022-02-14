@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { bannerActive, backsound, showDisclaimer } from '$lib/store/stores';
-	import updates from '$lib/setup/updates.json';
+	import { data } from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
 
 	let content;
@@ -12,7 +12,7 @@
 		bannerActive.set(0);
 	};
 
-	const { date, description } = updates.data.reverse()[0];
+	const { date, description } = data[data.length - 1];
 
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
