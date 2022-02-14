@@ -1,12 +1,17 @@
 <script>
 	// Library
 	import { browser } from '$app/env';
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// store
-	import { beginnerRoll, pity4star, pity5star } from '$lib/store/localstore';
+	import {
+		beginnerAlreadyGuaranteed,
+		beginnerRoll,
+		pity4star,
+		pity5star
+	} from '$lib/store/localstore';
 	import { bannerActive, bannerList, pageActive, showBeginner } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 
@@ -36,6 +41,7 @@
 	let itemPerPage = 6;
 	let showPopup = false;
 	let data = [];
+	let table;
 
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
@@ -63,6 +69,7 @@
 		if (banner === 'beginner') {
 			beginnerRoll.set(0);
 			showBeginner.set(true);
+			beginnerAlreadyGuaranteed.set('no');
 		}
 		pity = 0;
 		data = [];
@@ -74,6 +81,10 @@
 		pageActive.set('index');
 		playSfx('close');
 	};
+
+	afterUpdate(() => {
+		OverlayScrollbars(table, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
 <svelte:head>
@@ -161,40 +172,44 @@
 			</div>
 		</div>
 
-		<div class="table">
-			<div class="row head">
-				<div class="cell cell0">Pity</div>
-				<div class="cell cell1">Item Type</div>
-				<div class="cell cell2">Item Name</div>
-				<div class="cell cell3">Time Received</div>
-			</div>
+		<div class="table" bind:this={table}>
+			<div style="min-width: max-content;">
+				<div class="row head">
+					<div class="cell cell0">Pity</div>
+					<div class="cell cell1">Item Type</div>
+					<div class="cell cell2">Item Name</div>
+					<div class="cell cell3">Time Received</div>
+					<div class="cell cell4">Banner</div>
+				</div>
 
-			<div class="body">
-				{#await readData()}
-					<div class="row" style="justify-content: center">
-						<div class="cell">Waiting ...</div>
-					</div>
-				{:then ls}
-					{#if data.length < 1}
+				<div class="body">
+					{#await readData()}
 						<div class="row" style="justify-content: center">
-							<div class="cell">No data available .</div>
+							<div class="cell">Waiting ...</div>
 						</div>
-					{:else}
-						{#each data as { name, type, rarity, time, pity }, i}
-							{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
-								<div class="row">
-									<div class="cell cell0 star{rarity}">{pity}</div>
-									<div class="cell cell1">{type}</div>
-									<div class="cell cell2 star{rarity}">
-										{getName(name)}
-										{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
+					{:then ls}
+						{#if data.length < 1}
+							<div class="row" style="justify-content: center">
+								<div class="cell">No data available .</div>
+							</div>
+						{:else}
+							{#each data as { name, type, rarity, time, pity, bannerName }, i}
+								{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
+									<div class="row">
+										<div class="cell cell0 star{rarity}">{pity}</div>
+										<div class="cell cell1">{type}</div>
+										<div class="cell cell2 star{rarity}">
+											{getName(name)}
+											{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
+										</div>
+										<div class="cell cell3">{time}</div>
+										<div class="cell cell4">{getName(bannerName || 'untrack')}</div>
 									</div>
-									<div class="cell cell3">{time}</div>
-								</div>
-							{/if}
-						{/each}
-					{/if}
-				{/await}
+								{/if}
+							{/each}
+						{/if}
+					{/await}
+				</div>
 			</div>
 		</div>
 
@@ -303,6 +318,7 @@
 
 	.select-list {
 		position: absolute;
+		z-index: +1;
 		top: 130%;
 		left: 50%;
 		transform: translateX(-50%);
@@ -312,12 +328,17 @@
 		margin: 20px 0;
 	}
 
+	.table {
+		width: 100%;
+		height: 21rem;
+	}
 	.row {
 		display: flex;
 		justify-content: stretch;
 		align-items: center;
 		width: 100%;
 		border: 0.2px solid #b5b2ae;
+		height: 3rem;
 	}
 	.row.head {
 		background-color: #dbd7d3;
@@ -328,30 +349,35 @@
 	}
 
 	.cell0 {
-		flex: 1;
 		width: calc(1 / 12 * 100%);
 		border-right: 0.2px solid #b5b2ae;
 	}
 	.cell1 {
-		flex: 2;
 		min-width: 80px;
-		width: calc(3 / 12 * 100%);
+		width: calc(2 / 12 * 100%);
 		border-right: 0.2px solid #b5b2ae;
 	}
 	.cell2 {
-		flex: 6;
-		width: calc(6 / 12 * 100%);
+		width: calc(4 / 12 * 100%);
 		border-right: 0.2px solid #b5b2ae;
+		min-width: 15rem;
 	}
 	.cell3 {
-		width: 100%;
-		flex: 3;
+		width: calc(2.5 / 12 * 100%);
+		border-right: 0.2px solid #b5b2ae;
+		min-width: 12rem;
+	}
+	.cell4 {
+		width: calc(2.5 / 12 * 100%);
+		min-width: 12rem;
 	}
 	.cell {
 		display: block;
-		padding: 10px;
+		padding: 0.6rem;
+		height: 100%;
 		text-align: center;
 		text-transform: capitalize;
+		white-space: nowrap;
 	}
 
 	.info.row {
