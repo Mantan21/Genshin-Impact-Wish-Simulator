@@ -120,38 +120,43 @@ const limitedWish = {
 
 const beginerWish = (rarity, beginnerData, standardData) => {
 	let { character, vision } = beginnerData;
+
+	const alreadyGetFeatured = beginnerAlreadyGuaranteed.get() === 'yes';
 	const rollCount = beginnerRoll.get() || 0;
 	beginnerRoll.set(rollCount + 1);
 
 	if (rollCount === 19) {
 		// If roll count 20
-		beginnerAlreadyGuaranteed.set('yes');
 		showBeginner.set(false);
-		return { type: 'character', rarity: 4, name: character, vision };
+		// if already get Noelle, no more guaranteed
+		if (!alreadyGetFeatured) {
+			beginnerAlreadyGuaranteed.set('yes');
+			return { type: 'character', rarity: 4, name: character, vision };
+		}
 	}
 
 	if (rarity === 3) return get3StarItem();
 	if (rarity === 5) return getStandard5StarItem({ exclude: standardData.characters });
 
 	if (rarity === 4) {
-		const item = [
-			{
-				name: 'rateup',
-				chance: 25
-			},
-			{
-				name: 'other',
-				chance: 75
+		if (!alreadyGetFeatured) {
+			const item = [
+				{
+					name: 'rateup',
+					chance: 25
+				},
+				{
+					name: 'other',
+					chance: 75
+				}
+			];
+
+			const rng = prob(item);
+			if (rng.name === 'rateup') {
+				// guaranteed probability
+				beginnerAlreadyGuaranteed.set('yes');
+				return limitedBannerChars4Star.find((c) => c.name === character);
 			}
-		];
-
-		if (beginnerAlreadyGuaranteed.get() === 'yes') return get4StarItem(); // if already get Noelle, no more guaranteed
-
-		const rng = prob(item);
-		if (rng.name === 'rateup') {
-			// guaranteed probability
-			beginnerAlreadyGuaranteed.set('yes');
-			return limitedBannerChars4Star.find((c) => c.name === character);
 		}
 
 		// get Random item
@@ -314,6 +319,7 @@ const Wish = {
 		const { _weapons, _phase, _version } = this;
 		const weaponBanner = weaponWish.init(_version, _phase, _weapons);
 		const result = weaponBanner.get(rarity);
+		result.bannerName = _weapons.name;
 		return result;
 	},
 

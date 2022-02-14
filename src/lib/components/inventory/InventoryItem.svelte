@@ -131,7 +131,7 @@
 	}
 
 	img.claymore {
-		transform: rotate(22deg) scale(1.15) translateX(-2em);
+		transform: rotate(18deg) scale(1.15) translateX(-1.5em);
 	}
 
 	img.bow {
