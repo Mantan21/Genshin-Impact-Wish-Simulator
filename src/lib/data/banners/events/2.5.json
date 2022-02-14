@@ -1,0 +1,54 @@
+{
+	"patch": 2.5,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": {
+						"name": "everbloom-violet",
+						"character": "yae-miko",
+						"buttonBoxPosition": {
+							"w": 190,
+							"t": 24,
+							"l": 50
+						}
+					},
+					"rateup": ["thoma", "diona", "fischl"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-25",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "kagura_s-verity",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 70,
+								"t": 25,
+								"l": 37
+							}
+						},
+						{
+							"name": "primordial-jade-cutter",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"w": 90,
+								"t": -7,
+								"l": 67
+							}
+						}
+					],
+					"rateup": [
+						"rainslasher",
+						"eye-of-perception",
+						"the-stringless",
+						"wavebreaker_s-fin",
+						"sacrificial-sword"
+					]
+				}
+			}
+		}
+	]
+}
