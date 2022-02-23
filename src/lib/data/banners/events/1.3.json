@@ -4,7 +4,7 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 1,
+				"standardVersion": 2,
 				"events": {
 					"item": {
 						"name": "invitation-to-mundane-life-1",
@@ -53,7 +53,7 @@
 		{
 			"phase": 2,
 			"banners": {
-				"standardVersion": 1,
+				"standardVersion": 2,
 				"events": {
 					"item": {
 						"name": "dance-of-lantern-1",
@@ -102,7 +102,7 @@
 		{
 			"phase": 3,
 			"banners": {
-				"standardVersion": 1,
+				"standardVersion": 2,
 				"events": {
 					"item": {
 						"name": "moment-of-bloom-1",

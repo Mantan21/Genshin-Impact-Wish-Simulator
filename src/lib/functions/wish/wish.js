@@ -40,30 +40,37 @@ const getStandard5StarItem = ({ exclude }) => {
 
 const standardWeapons = (star) => getAllWeapons(star).filter(({ limited }) => !limited);
 const standardChars5Star = (exclude) => getAllChars(5).filter(({ name }) => exclude.includes(name));
-const standardChars4Star = getAllChars(4).filter(({ limited }) => !limited);
 
-const limitedBannerChars4Star = getAllChars(4).filter(({ name }) => {
-	return !charsDB.onlyStandard.includes(name);
-});
-const commonChar4Star = standardChars4Star.filter(({ name }) => {
+const get4StarChars = getAllChars(4).filter(({ name }) => {
 	return !charsDB.onlyStandard.includes(name);
 });
 
 const get3StarItem = () => rand(standardWeapons(3));
-const get4StarItem = (bannerToRoll = 'allExcludeStandard') => {
+const get4StarItem = (bannerToRoll = 'allExcludeStandard', version = null, phase = null) => {
 	const itemType = rand(['weap', 'char']);
 
 	// show standard character exclude starter character ( amber, kaeya, lisa )
-	let charList = commonChar4Star;
+	let charList = get4StarChars;
 
 	// Show All standard chars exlude new character
-	if (bannerToRoll === 'standard') charList = standardChars4Star;
+	if (bannerToRoll === 'standard') charList = getAllChars(4);
 
 	// show standard item exclude starter and new character
-	if (bannerToRoll === 'limited') charList = limitedBannerChars4Star;
+	if (bannerToRoll === 'limited') charList = get4StarChars;
 
 	const items = itemType === 'weap' ? standardWeapons(4) : charList;
-	return rand(items);
+	const filtered = filterCharByReleased(items, version, phase);
+	return rand(filtered);
+};
+
+const filterCharByReleased = (charlist, version = null, phase = null) => {
+	return charlist.filter(({ release }) => {
+		if (!release) return true;
+		const [v, phs] = release.split('-');
+		if (parseFloat(version) < parseFloat(v)) return false;
+		if (parseFloat(version) === parseFloat(v) && phase <= parseInt(phs)) return false;
+		return true;
+	});
 };
 
 const limitedWish = {
@@ -86,11 +93,12 @@ const limitedWish = {
 		return result;
 	},
 
-	get(rarity, excludedStandardChar) {
+	get(rarity, opt) {
+		const { version, phase, excluded } = opt;
 		if (rarity === 3) return get3StarItem();
 		if (rarity === 4) {
 			const resultType = rand(['rateup', 'std']);
-			if (resultType === 'std') return get4StarItem('limited');
+			if (resultType === 'std') return get4StarItem('limited', version, phase);
 
 			// If rate up character
 			return rand(this._rateupChars());
@@ -108,7 +116,7 @@ const limitedWish = {
 			const resultType = rand(['limited', 'std']);
 			if (resultType === 'std') {
 				nextGuaranteed.set('yes');
-				return rand(standardChars5Star(excludedStandardChar));
+				return rand(standardChars5Star(excluded));
 			}
 
 			// win 50: 50
@@ -118,7 +126,7 @@ const limitedWish = {
 	}
 };
 
-const beginerWish = (rarity, beginnerData, standardData) => {
+const beginerWish = (rarity, beginnerData, standardData, { version, phase }) => {
 	let { character, vision } = beginnerData;
 
 	const alreadyGetFeatured = beginnerAlreadyGuaranteed.get() === 'yes';
@@ -155,12 +163,12 @@ const beginerWish = (rarity, beginnerData, standardData) => {
 			if (rng.name === 'rateup') {
 				// guaranteed probability
 				beginnerAlreadyGuaranteed.set('yes');
-				return limitedBannerChars4Star.find((c) => c.name === character);
+				return get4StarChars.find((c) => c.name === character);
 			}
 		}
 
 		// get Random item
-		const result = get4StarItem();
+		const result = get4StarItem('standard', version, phase);
 		if (result.name === character) beginnerAlreadyGuaranteed.set('yes');
 		return result;
 	}
@@ -227,7 +235,7 @@ const weaponWish = {
 		if (rarity === 3) return get3StarItem();
 		if (rarity === 4) {
 			const resultType = rand(['rateup', 'std']);
-			if (resultType === 'std') return get4StarItem();
+			if (resultType === 'std') return get4StarItem('weapons', this._weapons, this._phase);
 
 			// If rate up character
 			return rand(this._rateupWeapons());
@@ -295,13 +303,20 @@ const Wish = {
 	_limitedWish(rarity, indexOfBannerEvents) {
 		const { item } = this._events;
 		const eventBanner = limitedWish.init(this._events, indexOfBannerEvents);
-		const result = eventBanner.get(rarity, this._standard.characters);
+		const result = eventBanner.get(rarity, {
+			excluded: this._standard.characters,
+			version: this._version,
+			phase: this._phase
+		});
 		result.bannerName = Array.isArray(item) ? item[indexOfBannerEvents].name : item.name;
 		return result;
 	},
 
 	_beginnerWish(rarity) {
-		const result = beginerWish(rarity, this._beginner, this._standard);
+		const result = beginerWish(rarity, this._beginner, this._standard, {
+			phase: this._phase,
+			version: this._version
+		});
 		result.bannerName = 'beginner';
 		return result;
 	},
@@ -309,7 +324,7 @@ const Wish = {
 	_standardWish(rarity) {
 		let result;
 		if (rarity === 3) result = get3StarItem();
-		if (rarity === 4) result = get4StarItem('standard');
+		if (rarity === 4) result = get4StarItem('standard', this._version, this._phase);
 		if (rarity === 5) result = getStandard5StarItem({ exclude: this._standard.characters });
 		result.bannerName = this._standard.featured.name;
 		return result;
