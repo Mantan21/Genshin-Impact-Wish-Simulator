@@ -47,7 +47,11 @@
 	<button class="container" on:click={handleClick}>
 		<FatepointIcon active={$fatePoint === 2} />
 		<div class="point-number">
-			<span>{$fatePoint}</span>/2
+			{#if $selectedCourse.name}
+				<span>{$fatePoint}</span>/2
+			{:else}
+				<span class="small">Epitomized Path</span>
+			{/if}
 		</div>
 	</button>
 {/if}
@@ -77,6 +81,13 @@
 
 	.point-number span {
 		color: #ff8700;
+	}
+
+	.point-number span.small {
+		font-size: 0.75rem;
+		line-height: 0.7rem;
+		padding: 0 1rem;
+		color: var(--text-color);
 	}
 
 	:global(.mobile) button {

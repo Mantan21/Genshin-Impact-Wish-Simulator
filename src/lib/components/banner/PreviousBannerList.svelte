@@ -198,7 +198,7 @@
 		</div>
 		<div class="content" bind:this={content}>
 			<div id="content">
-				{#each dataToShow as [group, data], i (i)}
+				{#each dataToShow as [group, data], x (x)}
 					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
 						<div class="group-title">
 							<h2>
