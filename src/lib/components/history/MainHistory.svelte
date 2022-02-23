@@ -151,7 +151,7 @@
 		</div>
 		<p>
 			We Never save your data on cloud storage. All data was stored to IndexedDB, it means the data
-			is saved on your browser storage. It will never delete till you delete it manualy throught
+			is saved on your browser storage. It will never delete till you delete it manualy through
 			delete/reset button or clear the browser data.
 		</p>
 

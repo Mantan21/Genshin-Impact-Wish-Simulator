@@ -103,10 +103,10 @@
 	<meta name="title" content={APP_TITLE} />
 	<meta property="og:title" content={APP_TITLE} />
 	<meta property="twitter:title" content={APP_TITLE} />
-	<meta property="og:image" content="/assets/images/meta-picture.jpg" />
-	<meta name="twitter:image:src" content="/assets/images/meta-picture.jpg" />
+	<meta property="og:image" content="/screenshot/meta-picture.jpg" />
+	<meta name="twitter:image:src" content="/screenshot/meta-picture.jpg" />
 	<meta property="twitter:image" content="/assets/images/meta-picture.jpg" />
-	<link rel="fluid-icon" href="/assets/images/meta-picture.jpg" title={APP_TITLE} />
+	<link rel="fluid-icon" href="/screenshot/meta-picture.jpg" title={APP_TITLE} />
 </svelte:head>
 
 <Loader />
