@@ -96,7 +96,7 @@
 				Are You sure to clear <strong> All Data </strong> and restore to default ?
 				<br />
 				<small>
-					It also remove your History, Pity Count, Balance and all items from Inventory.</small
+					It also remove your History, Pity Calculation, Balance and all items from Inventory.</small
 				>
 			</div>
 		</div>
@@ -197,6 +197,7 @@
 							You can Check what are changes we made on <a
 								href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
 								target="_blank"
+								on:click|stopPropagation
 							>
 								Github Repository
 							</a>. You can submit an issue if you find something wrong !

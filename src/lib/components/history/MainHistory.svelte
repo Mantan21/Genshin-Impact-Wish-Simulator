@@ -265,6 +265,9 @@
 	.gi-reply {
 		color: #dbd7d3;
 		font-size: 2.2rem;
+		line-height: 0;
+		padding: 0.3rem 1rem;
+		display: inline-block;
 	}
 
 	.history-content {
@@ -330,7 +333,7 @@
 
 	.table {
 		width: 100%;
-		height: 21rem;
+		height: 21.5rem;
 	}
 	.row {
 		display: flex;
@@ -372,12 +375,14 @@
 		min-width: 12rem;
 	}
 	.cell {
-		display: block;
-		padding: 0.6rem;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem 0.5rem;
 		height: 100%;
 		text-align: center;
 		text-transform: capitalize;
-		white-space: nowrap;
+		line-height: 1rem;
 	}
 
 	.info.row {
