@@ -30,6 +30,7 @@
 	let showObtainedMilestone = false;
 	let singleMeteor = true;
 	let meteorStar = 3;
+	let skipSplashOneByOne = false;
 	let showConvertPopup = false;
 	let rollCount = 0;
 	let wishResult = [];
@@ -133,10 +134,17 @@
 		showWish = true;
 	};
 
+	const skiped = () => {
+		if (rollCount > 8) skipSplashOneByOne = true;
+		showMeteor = false;
+		showWish = true;
+	};
+
 	let stardustObtained = 0;
 	let starglitterObtained = 0;
 
 	const checkObtained = () => {
+		skipSplashOneByOne = false;
 		if ($unlimitedFates) {
 			showWish = false;
 			return backsound.set(true);
@@ -167,7 +175,7 @@
 	/>
 {/if}
 {#if showWish}
-	<WishResult list={wishResult} on:wishEnd={checkObtained} />
+	<WishResult list={wishResult} on:wishEnd={checkObtained} {skipSplashOneByOne} />
 {/if}
 
 <section>
@@ -184,6 +192,7 @@
 		on:cancelPopup={cancelExchange}
 		on:confirmPopup={confirmPopup}
 		on:endAnimation={showSplashResult}
+		on:skiped={skiped}
 	/>
 	<div class="col banner">
 		<div class="item">

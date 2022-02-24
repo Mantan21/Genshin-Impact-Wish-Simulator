@@ -71,8 +71,8 @@
 			video.pause();
 			video.currentTime = 0;
 			video.style.display = 'none';
-			dispatch('endAnimation');
 		});
+		dispatch('skiped');
 	};
 
 	const showVideoHandle = (rarity, single = true) => {
