@@ -1,19 +1,20 @@
 <script>
 	import { getName } from '$lib/functions/nameText';
 
-	export let width = 0;
 	export let rarity = 3;
 	export let type = 'character';
 	export let name = 'No Name';
 	export let vision = '';
 	export let weaponType = '';
 	export let qty = 0;
-
-	$: pictureStyle = `width:${width}px; height:${width}px`;
+	export let isOwned = true;
 </script>
 
 <div class="content">
-	<picture style={pictureStyle} class="wish-result star{rarity} {type}">
+	{#if !isOwned}
+		<div class="overlay" />
+	{/if}
+	<picture class="wish-result star{rarity} {type}">
 		{#if type === 'character'}
 			<img src="/assets/images/characters/profile/{name}.webp" alt={getName(name)} />
 			<span class="gi-{vision} element" />
@@ -52,8 +53,21 @@
 		background-color: #fff;
 		color: #3a4156;
 		line-height: 1.2rem;
+		position: relative;
+	}
+	.overlay {
+		top: 0;
+		left: 0;
+		position: absolute;
+		z-index: +1;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: 0.5;
 	}
 	picture {
+		width: 100%;
+		aspect-ratio: 1/1;
 		display: flex;
 		justify-content: flex-end;
 		align-items: flex-start;
