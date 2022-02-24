@@ -45,7 +45,7 @@
 	let encoded;
 
 	onMount(() => {
-		const itemBox = container.querySelectorAll('.item-box');
+		const itemBox = container.querySelectorAll('.item-box, .shadow');
 		itemBox.forEach((el) => {
 			el.addEventListener('animationend', () => el.classList.remove('animate'));
 		});
