@@ -19,7 +19,10 @@
 	import browserState from '$lib/functions/browserState';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
+
+	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Toast from '../utility/Toast.svelte';
 
 	let content;
 	onMount(() => {
@@ -40,6 +43,7 @@
 	let activepage = 1;
 	let itemPerPage = 6;
 	let showPopup = false;
+	let showToast = false;
 	let data = [];
 	let table;
 
@@ -63,7 +67,7 @@
 
 	const confirmReset = async () => {
 		await resetHistory(banner);
-		await resetHistory('limited');
+		if (banner === 'events') await resetHistory('limited');
 		pity5star.set(banner, 0);
 		pity4star.set(banner, 0);
 		if (banner === 'beginner') {
@@ -74,6 +78,7 @@
 		pity = 0;
 		data = [];
 		showPopup = false;
+		showToast = true;
 	};
 
 	const handleCLose = () => {
@@ -111,6 +116,10 @@
 		</p>
 	</div>
 </PopUp>
+
+{#if showToast}
+	<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
+{/if}
 
 <section bind:this={content} transition:fade={{ duration: 200 }}>
 	<div class="header">
