@@ -155,31 +155,27 @@
 					<div class="weapon-item">
 						<div class="weapon-list" bind:clientHeight={weaponHeight}>
 							{#if weaponName}
-								<button class="weapon-content" style={itemStyle}>
-									<InventoryItem
-										name={weaponName}
-										weaponType={weapons[weaponIndex].type}
-										type="weapon"
-										rarity={5}
-										width={itemWidth}
-									/>
-								</button>
-							{:else}
-								{#each weapons as { name, type }, i}
-									<button
-										class="weapon-content"
-										class:active={targetActive === i}
-										style={itemStyle}
-										on:click={() => select(i)}
-									>
+								<div class="weapon-content">
+									<button>
 										<InventoryItem
-											{name}
-											weaponType={type}
+											name={weaponName}
+											weaponType={weapons[weaponIndex].type}
 											type="weapon"
 											rarity={5}
-											width={itemWidth}
 										/>
 									</button>
+								</div>
+							{:else}
+								{#each weapons as { name, type }, i}
+									<div
+										class="weapon-content"
+										class:active={targetActive === i}
+										on:click={() => select(i)}
+									>
+										<button>
+											<InventoryItem {name} weaponType={type} type="weapon" rarity={5} />
+										</button>
+									</div>
 								{/each}
 							{/if}
 						</div>
@@ -337,27 +333,30 @@
 	}
 
 	.weapon-content {
-		margin: 10% 5%;
-		width: 100%;
-		height: 75%;
+		display: inline-block;
+		padding: 5%;
+		width: 50%;
+	}
+
+	.weapon-content button {
 		font-size: small;
+		aspect-ratio: 8.75 / 10;
 		position: relative;
+		vertical-align: middle;
+		width: 100%;
 	}
-	.counter .weapon-content {
-		transform: scale(0.75);
-	}
-	:global(.mobile) .weapon-content {
+	:global(.mobile) .weapon-content button {
 		font-size: xx-small;
 	}
 
-	.weapon-content.active::after,
-	.weapon-content.active::before {
+	.weapon-content.active button::after,
+	.weapon-content.active button::before {
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
 
-	.weapon-content.active::after {
+	.weapon-content.active button::after {
 		display: block;
 		content: '';
 		width: 100%;
@@ -366,7 +365,7 @@
 		border-width: 0.2rem 0;
 		border-radius: 0.5rem;
 	}
-	.weapon-content.active::before {
+	.weapon-content.active button::before {
 		content: '✔';
 		font-size: 1.2rem;
 		color: #759a28;
