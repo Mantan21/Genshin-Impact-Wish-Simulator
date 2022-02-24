@@ -272,12 +272,12 @@
 			transform: scale(1.5) translate(-50%, -50%);
 			opacity: 0;
 		}
-		80% {
-			transform: scale(0.6) translate(-50%, -50%);
+		74% {
+			transform: scale(0.3) translate(-50%, -50%);
 			opacity: 0;
 		}
-		90% {
-			transform: scale(0.8) translate(-50%, -50%);
+		87% {
+			transform: scale(0.66) translate(-50%, -50%);
 			opacity: 1;
 			z-index: 10;
 		}
