@@ -99,8 +99,8 @@
 				Are You sure to clear <strong> All Data </strong> and restore to default ?
 				<br />
 				<small>
-					It also remove your History, Pity Calculation, Balance and all items from Inventory.</small
-				>
+					It also remove your History, Pity Calculation, Balance and all items from Inventory.
+				</small>
 			</div>
 		</div>
 	</PopUp>
