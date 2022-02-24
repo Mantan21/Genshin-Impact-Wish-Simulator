@@ -1,6 +1,6 @@
 <script>
 	import { afterUpdate, createEventDispatcher } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import {
@@ -11,39 +11,46 @@
 		patchVersion,
 		unlimitedFates
 	} from '$lib/store/stores';
-	import { localUnlimitedFates } from '$lib/store/localstore';
+	import { localConfig } from '$lib/store/localstore';
 	import updates from '$lib/setup/updates.json';
 	import { getName } from '$lib/functions/nameText';
 	import factoryReset from '$lib/functions/factoryReset';
 	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
+
+	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
+	import Option from './option.svelte';
+	import { browser } from '$app/env';
 
 	export let show = false;
 	let showResetPopup = false;
 	let showToast = false;
 	let activeContent = 'options';
-	let showUnlimitedOptions = false;
 
 	const selectMenu = (menu) => {
 		activeContent = menu;
 		playSfx();
 	};
 
-	const selectUnlimitedOptions = (val = null) => {
-		showUnlimitedOptions = !showUnlimitedOptions;
-		playSfx();
-		if (val === 'yes') {
-			localUnlimitedFates.set('yes');
-			return unlimitedFates.set(true);
-		}
-		if (val === 'no') {
-			localUnlimitedFates.set('no');
-			return unlimitedFates.set(false);
-		}
+	// Unlimited Fates
+	const selectUnlimitedOptions = (e) => {
+		const { selected } = e.detail;
+		localConfig.set('unlimitedFates', selected === 'yes');
+		if (selected === 'yes') return unlimitedFates.set(true);
+		if (selected === 'no') return unlimitedFates.set(false);
 	};
 
+	// Show Archive
+	let showAllItemsIndicator = browser ? !!localConfig.get('showAllItems') : false;
+	const showAllItemsOption = (e) => {
+		const { selected } = e.detail;
+		localConfig.set('showAllItems', selected === 'yes');
+		showAllItemsIndicator = selected === 'yes';
+	};
+
+	// Reset
 	const reset = () => {
 		showResetPopup = true;
 		playSfx('popup');
@@ -63,10 +70,6 @@
 		playSfx();
 		browserState.set('previous');
 		pageActive.set('previous-banner');
-	};
-
-	const handleCancelSelect = () => {
-		showUnlimitedOptions = false;
 	};
 
 	const dispatch = createEventDispatcher();
@@ -106,7 +109,7 @@
 		<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
 	{/if}
 
-	<section transition:fade={{ duration: 200 }} on:click|preventDefault={handleCancelSelect}>
+	<section transition:fade={{ duration: 200 }}>
 		<div class="head">
 			<h1>Menu / {getName(activeContent)}</h1>
 			<button class="close" on:click={handleClose} title="Change Banner">
@@ -117,10 +120,10 @@
 			<div class="sidebar">
 				<div class="menu-list">
 					<div class="menu-item" class:active={activeContent === 'options'}>
-						<button on:click|stopPropagation={() => selectMenu('options')}> Options </button>
+						<button on:click={() => selectMenu('options')}> Options </button>
 					</div>
 					<div class="menu-item" class:active={activeContent === 'updates'}>
-						<button on:click|stopPropagation={() => selectMenu('updates')}> Update History </button>
+						<button on:click={() => selectMenu('updates')}> Update History </button>
 					</div>
 				</div>
 			</div>
@@ -128,44 +131,27 @@
 			<div class="content">
 				{#if activeContent === 'options'}
 					<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
-						<div class="option">
-							<div class="option-name">Unlimited Fates</div>
-							<div class="option-select">
-								<button
-									class="selected"
-									style="width: 100%; height:100%"
-									on:click|stopPropagation={selectUnlimitedOptions}
-									>{$unlimitedFates ? 'Yes' : 'No'}</button
-								>
-								<i class="gi-caret-{showUnlimitedOptions ? 'up' : 'down'}" />
-								{#if showUnlimitedOptions}
-									<div class="select" in:fly={{ duration: 200, y: -10 }}>
-										<button
-											class:selected={!$unlimitedFates}
-											on:click|stopPropagation={() => selectUnlimitedOptions('no')}
-										>
-											No
-										</button>
-										<button
-											class:selected={$unlimitedFates}
-											on:click|stopPropagation={() => selectUnlimitedOptions('yes')}
-										>
-											Yes
-										</button>
-									</div>
-								{/if}
-							</div>
-						</div>
+						<Option
+							text="Unlimited Fates"
+							activeIndicator={$unlimitedFates}
+							on:select={selectUnlimitedOptions}
+						/>
+						<Option
+							text="Show not owned Item on Inventory"
+							activeIndicator={showAllItemsIndicator}
+							on:select={showAllItemsOption}
+						/>
+
 						<div class="option">
 							<div class="option-name">Switch Banner</div>
-							<button class="option-select" on:click|stopPropagation={openPrevious}>
+							<button class="option-select" on:click={openPrevious}>
 								<i class="gi-caret-down" />
 								{$patchVersion} - {$bannerPhase}
 							</button>
 						</div>
 						<div class="option">
 							<div class="option-name">Clear Data and Restore Default</div>
-							<button class="option-select" on:click|stopPropagation={reset}>
+							<button class="option-select" on:click={reset}>
 								<i
 									class="gi-delete"
 									style="vertical-align: bottom; line-height: 0; margin-right: .2rem"
@@ -197,7 +183,6 @@
 							You can Check what are changes we made on <a
 								href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
 								target="_blank"
-								on:click|stopPropagation
 							>
 								Github Repository
 							</a>. You can submit an issue if you find something wrong !
@@ -383,32 +368,12 @@
 		pointer-events: none;
 	}
 
-	.option-select button,
 	.option-select {
 		font-size: 0.8rem !important;
 	}
 
-	button.option-select:hover,
-	.select button:hover,
-	.select button.selected {
+	button.option-select:hover {
 		background-color: #f0e0c7;
-	}
-
-	.select {
-		position: absolute;
-		top: 110%;
-		left: 0;
-		width: 100%;
-		background-color: var(--tertiary-color);
-		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-		z-index: +1;
-		border-radius: 0.3rem;
-		overflow: hidden;
-	}
-	.select button {
-		display: block;
-		width: 100%;
-		padding: 0.15rem;
 	}
 
 	.text {

@@ -15,6 +15,7 @@
 	import playSfx from '$lib/functions/audio';
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
+	import { localConfig } from '$lib/store/localstore';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
@@ -34,7 +35,7 @@
 	let dataToShow = [];
 	let dataQty = 0;
 	let content;
-	let showAll = false;
+	let showAll = !!localConfig.get('showAllItems');
 
 	// Read All date
 	const listWithRarity = (list, rarity) => {
@@ -114,6 +115,7 @@
 	});
 
 	$: proccessData(activeItem, showAll);
+	$: localConfig.set('showAllItems', showAll);
 
 	const sort = (order) => {
 		if (order === 'rarity') {

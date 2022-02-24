@@ -147,12 +147,23 @@ const localFatePoint = {
 	}
 };
 
-const localUnlimitedFates = {
-	set(value) {
-		return localStorage.setItem('unlimitedFates', value);
+const localConfig = {
+	_getData() {
+		const config = localStorage.getItem('config');
+		if (!config) return { config: {} };
+		const parsed = JSON.parse(config);
+		return parsed;
 	},
-	check() {
-		return localStorage.getItem('unlimitedFates') === 'yes';
+
+	get(key) {
+		const { config } = this._getData();
+		return config[key] || null;
+	},
+
+	set(key, value) {
+		const { config } = this._getData();
+		config[key] = value;
+		localStorage.setItem('config', JSON.stringify({ config }));
 	}
 };
 
@@ -167,5 +178,5 @@ export {
 	localBannerVersion,
 	firstShare,
 	localFatePoint,
-	localUnlimitedFates
+	localConfig
 };
