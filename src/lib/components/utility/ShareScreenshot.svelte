@@ -3,7 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { toBlob } from 'html-to-image';
 	import { saveAs } from 'file-saver';
-	import { HOST } from '$lib/env';
+	import { APP_TITLE, HOST } from '$lib/env';
 	import { primogem } from '$lib/store/stores';
 	import { firstShare, localBalance } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
@@ -14,12 +14,14 @@
 	export let page;
 
 	let show = false;
+	let showOnProgress = false;
 	let showToast = false;
 	let width = 873;
 	let height = 393;
 	let isFirstShare = true;
 
 	let blob;
+	const shareText = "Wow! I'm so lucky when pulling on Wish Simulator, you can try Yours !";
 	let url = '/assets/images/meta-picture.jpg';
 	$: shareLink = `${HOST}/screen/${page}/?a=${encodedData}`;
 
@@ -40,6 +42,7 @@
 
 	const takeShot = async (e) => {
 		playSfx();
+		showOnProgress = true;
 		e.target.innerText = 'wait..';
 		const filter = (node) => {
 			const notIncluded = ['close', 'share'];
@@ -51,6 +54,7 @@
 		blob = await toBlob(node, { filter });
 		url = URL.createObjectURL(blob);
 		show = true;
+		showOnProgress = false;
 		e.target.innerText = 'Share';
 		node.classList.remove('preview');
 	};
@@ -72,6 +76,32 @@
 		addFunds();
 	};
 
+	const facebookHandle = () => {
+		const url = `https://www.facebook.com/sharer/sharer.php?u=${shareLink}&quote=${shareText}`;
+		window.open(url, '_blank');
+		addFunds();
+	};
+
+	const twitterHandle = () => {
+		const url = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareLink}`;
+		window.open(url, '_blank');
+		addFunds();
+	};
+
+	const webShareHandle = async () => {
+		try {
+			const dataToShare = {
+				title: APP_TITLE,
+				text: shareText,
+				url: shareLink
+			};
+			await navigator.share(dataToShare);
+			addFunds();
+		} catch (e) {
+			console.error('Abort Sharing', e);
+		}
+	};
+
 	const closehandle = () => {
 		playSfx('close');
 		show = false;
@@ -87,16 +117,36 @@
 		</button>
 
 		<picture>
-			<div class="copy">
-				<span class="text">{shareLink}</span>
-				<button on:click={copyHandle}> <i class="gi-copy" /> </button>
+			<div class="letshare">
+				<div class="copy">
+					<span class="text">{shareLink}</span>
+					<button on:click={copyHandle}> <i class="gi-link" /> </button>
+				</div>
+				<button class="save" on:click={saveHandler}> <i class="gi-save" /> </button>
+				<div class="divider" />
+				<button class="save" on:click={twitterHandle}>
+					<i class="gi-twitter" />
+				</button>
+				<button class="save" on:click={facebookHandle}>
+					<i class="gi-facebook" />
+				</button>
+				<button class="save" on:click={webShareHandle}> <i class="gi-dot-3" /> </button>
 			</div>
-			<button class="save" on:click={saveHandler}><i class="gi-save" /></button>
 			<img src={url} alt="screenshot" />
 		</picture>
+
 		{#if showToast}
 			<div class="toast" in:fly={{ y: 10 }} out:fade>Copied to Clipboard</div>
 		{/if}
+	</div>
+{/if}
+
+{#if showOnProgress}
+	<div class="progress" transition:fade={{ duration: 200 }}>
+		<div class="row">
+			<div class="loading" />
+			<div class="text">Capturing ..</div>
+		</div>
 	</div>
 {/if}
 
@@ -175,8 +225,6 @@
 	}
 	.screenshot button {
 		padding: 0;
-		width: 30px;
-		height: 30px;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -184,8 +232,7 @@
 	}
 
 	.close,
-	.save,
-	.copy button {
+	.letshare button {
 		color: rgba(0, 0, 0, 0.7);
 		background-color: #fff;
 		padding: 0;
@@ -193,9 +240,24 @@
 		font-size: 1rem;
 		z-index: 10;
 	}
-	.save,
-	.copy button {
-		font-size: 1.4rem !important;
+
+	.letshare button {
+		aspect-ratio: 1 / 1;
+		width: 2.2rem;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 0;
+		margin: 0 0.2rem;
+		font-size: 1.3rem !important;
+	}
+
+	.divider {
+		background-color: #fff;
+		height: 1.7rem;
+		width: 0.1rem;
+		display: inline-block;
+		margin: 0 0.6rem;
 	}
 
 	.toast {
@@ -216,6 +278,8 @@
 		position: fixed;
 		top: 10px;
 		right: 10px;
+		width: 30px;
+		height: 30px;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -229,34 +293,70 @@
 	:global(.mobile) .close {
 		transform: scale(0.87);
 	}
-	:global(.mobile) .save {
-		transform: scale(0.8) translate(0, -120%);
-	}
-	:global(.mobile) .copy {
-		transform: scale(0.8) translate(-10px, -120%);
+	:global(.mobile) .letshare {
+		transform: scale(0.8) translate(10%, -120%);
 	}
 
-	.save,
-	.copy {
+	.letshare {
 		position: absolute;
 		top: 0;
 		right: 0;
+		width: 100%;
 		transform: translate(0, -120%);
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 	}
+
 	.copy {
 		display: inline-flex;
 		align-items: center;
-		transform: translate(-40px, -120%);
 	}
 
 	.copy span {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		display: inline-block;
-		width: 200px;
+		width: 12rem;
 		max-width: 50vw;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	.progress {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: var(--text-color);
+		color: var(--tertiary-color);
+		padding: 2rem;
+		border: 1px solid var(--tertiary-color);
+		border-radius: 0.5rem;
+	}
+	.progress .row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.loading {
+		border: 0.2rem solid #f3f3f3;
+		border-top: 0.2rem solid var(--text-color);
+		border-radius: 50%;
+		width: 2rem;
+		height: 2rem;
+		margin-right: 1rem;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 
 	@keyframes flash {
