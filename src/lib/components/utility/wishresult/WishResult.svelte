@@ -11,6 +11,7 @@
 	import SplashLight from './SplashLight.svelte';
 
 	export let list = [];
+	export let skipSplashOneByOne = false;
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -60,6 +61,7 @@
 	};
 
 	onMount(() => {
+		if (skipSplashOneByOne) return;
 		showItem('start');
 		wishResultContainer.addEventListener('click', showItem);
 	});
@@ -77,7 +79,7 @@
 	<div class="uid">WishSimulator.vercel.app</div>
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 
-	{#if showWishList}
+	{#if showWishList || skipSplashOneByOne}
 		<WishListResult {list} on:wishEnd={closeHandle} />
 	{:else}
 		<div class="container" bind:this={wishResultContainer}>
