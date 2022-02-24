@@ -10,24 +10,16 @@
 	import InventoryItem from './InventoryItem.svelte';
 
 	// Store
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { APP_TITLE } from '$lib/env';
 	import playSfx from '$lib/functions/audio';
+	import charDB from '$lib/data/characters.json';
+	import weaponDB from '$lib/data/weapons.json';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 
-	let itemWidth;
-	$: if ($mobileMode) {
-		itemWidth = (24 / 100) * $viewportHeight;
-	} else if ($viewportWidth < 560) {
-		itemWidth = (14 / 100) * $viewportHeight;
-	} else itemWidth = (20 / 100) * $viewportHeight;
-
-	$: itemStyle = `width: ${itemWidth}px; height:${itemWidth + 20}px`;
-
-	let activeItem = 'Character';
+	let activeItem = 'character';
 	let showOrder = false;
 	let orderby = 'rarity';
 
@@ -42,7 +34,23 @@
 	let dataToShow = [];
 	let dataQty = 0;
 	let content;
+	let showAll = false;
 
+	// Read All date
+	const listWithRarity = (list, rarity) => {
+		return list.map((l) => {
+			l.rarity = rarity;
+			return l;
+		});
+	};
+	const allCharacters = charDB.data.reduce((prev, { list, rarity }) => {
+		return [...prev, ...listWithRarity(list, rarity)];
+	}, []);
+	const allWeapons = weaponDB.data.reduce((prev, { list, rarity }) => {
+		return [...prev, ...listWithRarity(list, rarity)];
+	}, []);
+
+	// Read Data From IndeedDB
 	const { getAllHistories, countItem } = HistoryIDB;
 
 	const getAll = async () => {
@@ -63,24 +71,49 @@
 			});
 	};
 
-	const getTotalItem = () => {
-		dataQty = dataToShow.map((v) => v.qty).reduce((a, b) => a + b, 0);
+	const getTotalItem = (data) => {
+		dataQty = data.map((v) => v.qty).reduce((a, b) => a + b, 0);
 	};
 
-	const proccessData = async (activeItem) => {
-		const data = activeItem === 'Character' ? characters : weapons;
+	const proccessData = async (activeItem, isShowAll = false) => {
+		const data = activeItem === 'character' ? characters : weapons;
+		const allData = activeItem === 'character' ? allCharacters : allWeapons;
 		const promise = await Promise.all(data);
-		dataToShow = promise.sort((a, b) => b.rarity - a.rarity);
-		getTotalItem();
+		const dataFromIDB = promise.sort((a, b) => b.rarity - a.rarity);
+		getTotalItem(dataFromIDB);
+		if (!isShowAll) {
+			dataToShow = dataFromIDB.map((d) => {
+				d.isOwned = true;
+				return d;
+			});
+			return;
+		}
+
+		// If Show All Items
+		const mergeData = allData.map((d) => {
+			const owned = dataFromIDB.find(({ name }) => d.name === name);
+			d.type = activeItem;
+			if (!owned) {
+				d.qty = 0;
+				d.isOwned = false;
+				return d;
+			}
+			const { qty } = owned;
+			d.qty = qty;
+			d.isOwned = true;
+			return d;
+		});
+		dataToShow = mergeData;
+		return;
 	};
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
-		await proccessData(activeItem);
+		await proccessData(activeItem, showAll);
 	});
 
-	$: proccessData(activeItem);
+	$: proccessData(activeItem, showAll);
 
 	const sort = (order) => {
 		if (order === 'rarity') {
@@ -107,6 +140,14 @@
 			dataToShow = dataToShow.sort((a, b) => {
 				if (a.weaponType > b.weaponType) return 1;
 				if (a.weaponType < b.weaponType) return -1;
+				return 0;
+			});
+		}
+
+		if (order === 'owned') {
+			dataToShow = dataToShow.sort((a, b) => {
+				if (a.isOwned < b.isOwned) return 1;
+				if (a.isOwned > b.isOwned) return -1;
 				return 0;
 			});
 		}
@@ -145,15 +186,15 @@
 			<nav>
 				<button
 					class="nav-link"
-					class:active={activeItem === 'Character'}
-					on:click={() => select('Character')}
+					class:active={activeItem === 'character'}
+					on:click={() => select('character')}
 				>
 					<i class="gi-character" />
 				</button>
 				<button
 					class="nav-link"
-					class:active={activeItem === 'Weapon'}
-					on:click={() => select('Weapon')}
+					class:active={activeItem === 'weapon'}
+					on:click={() => select('weapon')}
 				>
 					<i class="gi-weapon" />
 				</button>
@@ -166,19 +207,15 @@
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">No data Found </span>
 					{:else}
 						{#each dataToShow as d (d)}
-							<div
-								class="item"
-								style={itemStyle}
-								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
-							>
+							<div class="item" animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
 								<InventoryItem
-									width={itemWidth}
 									name={d.name}
 									rarity={d.rarity}
 									type={d.type}
 									vision={d.vision}
 									weaponType={d.weaponType}
 									qty={d.qty}
+									isOwned={d.isOwned}
 								/>
 							</div>
 						{/each}
@@ -225,7 +262,7 @@
 									Quantity
 								</a>
 
-								{#if activeItem === 'Character'}
+								{#if activeItem === 'character'}
 									<a
 										href="##"
 										class:selected={orderby == 'element'}
@@ -235,7 +272,7 @@
 									</a>
 								{/if}
 
-								{#if activeItem === 'Weapon'}
+								{#if activeItem === 'weapon'}
 									<a
 										href="##"
 										class:selected={orderby == 'type'}
@@ -244,10 +281,26 @@
 										Type
 									</a>
 								{/if}
+
+								{#if showAll}
+									<a
+										href="##"
+										class:selected={orderby == 'owned'}
+										on:click|preventDefault={() => selectOrder('owned', false)}
+									>
+										Owned
+									</a>
+								{/if}
 							</div>
 						{/if}
 					</div>
-					<div class="total">{dataQty} Items</div>
+					<div class="showAll">
+						<input type="checkbox" name="showAll" id="showAll" bind:checked={showAll} />
+						<label for="showAll">
+							<i>✔</i>
+							Show All {activeItem}s ( {dataQty} Owned )
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -430,6 +483,11 @@
 	.item {
 		margin: 0.5rem;
 		will-change: auto;
+		aspect-ratio: 8.75 / 10;
+		width: 20vh;
+	}
+	:global(.mobile) .item {
+		width: 24vh;
 	}
 
 	.filter {
@@ -501,10 +559,27 @@
 		background-color: rgb(218, 202, 177);
 	}
 
-	.total {
-		color: #d2c69c;
-		font-size: 1rem;
+	.showAll {
+		margin-left: 0.5rem;
+		color: var(--tertiary-color);
+		text-transform: capitalize;
+	}
+	label {
+		cursor: inherit;
+	}
+	.showAll input + label i {
+		color: white;
+		display: inline-block;
+		padding: 0.1rem 0.2rem 0.1rem 0.1rem;
 		line-height: 1rem;
+		background-color: #fff;
+	}
+	.showAll input:checked + label i {
+		background-color: #06bbff;
+	}
+
+	.showAll input {
+		display: none;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -525,6 +600,9 @@
 	@media screen and (max-width: 400px) {
 		.container {
 			height: calc(100vh - 13rem);
+		}
+		.item {
+			width: 14vh;
 		}
 	}
 </style>
