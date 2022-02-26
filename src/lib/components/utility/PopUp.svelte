@@ -80,7 +80,7 @@
 	}
 
 	.popup-content {
-		width: 500px;
+		width: 35rem;
 		max-width: 90%;
 		background-color: #ece6de;
 		padding: 8px;
@@ -131,16 +131,16 @@
 	}
 
 	.pop-header {
-		font-size: 1.35rem;
-		margin: 5px 7%;
-		padding-bottom: 5px;
-		border-bottom: 3px solid #ddd5c8;
+		font-size: 1.2rem;
+		margin: 0.4rem 7%;
+		padding-bottom: 0.4rem;
+		border-bottom: 0.2rem solid #ddd5c8;
 		position: relative;
 		z-index: +1;
 	}
 	.pop-body {
 		height: 15rem;
-		max-height: 50vh;
+		max-height: 45vh;
 		position: relative;
 		z-index: +1;
 		font-size: 1.2rem;
@@ -155,7 +155,7 @@
 
 	.pop-footer {
 		display: flex;
-		padding: 15px 0;
+		padding: 0.7rem 0;
 		justify-content: space-around;
 		position: relative;
 		z-index: +1;
@@ -164,15 +164,11 @@
 		width: 80%;
 		content: '';
 		display: block;
-		border-top: 3px solid #ddd5c8;
+		border-top: 0.2rem solid #ddd5c8;
 		position: absolute;
 		top: 0;
 		left: 50%;
 		transform: translateX(-50%);
-	}
-
-	:global(.mobile) .pop-footer {
-		padding: 8px 0;
 	}
 
 	.pop-footer button {
@@ -182,20 +178,20 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 5px 4rem 5px 5px;
+		padding: 0.2em 2.5em 0.2em 0.1em;
 		transition: all 0.2s;
 	}
 
 	.pop-footer button i {
-		width: 2rem;
-		height: 2rem;
+		width: 1.7rem;
+		height: 1.7rem;
 		background-color: #353533;
 		border-radius: 100%;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1rem;
-		margin-right: 3rem;
+		font-size: 0.8rem;
+		margin-right: 1.5rem;
 	}
 	.pop-footer button:hover {
 		background-color: rgb(51, 57, 71);

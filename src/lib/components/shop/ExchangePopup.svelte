@@ -250,6 +250,7 @@
 							min={minRange}
 							bind:value={rangeVal}
 							style={rangeStyle}
+							disabled={fateQty < 1}
 						/>
 						<span style="pointer-events:none">{maxRange}</span>
 					</div>
@@ -404,6 +405,10 @@
 		width: 100%;
 		position: relative;
 		font-size: 1rem;
+	}
+	.rangeNumber {
+		font-size: 0.8rem;
+		margin-bottom: -0.5rem;
 	}
 	.slider {
 		height: 100%;

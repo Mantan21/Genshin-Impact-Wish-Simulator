@@ -48,7 +48,7 @@
 			<div class="detail">
 				<picture>
 					<span class="product-text">Product</span>
-					<Icon type="genesis" width="70%" />
+					<Icon type="genesis" width="50%" />
 					<span class="product-name">Genesis Crystall x{qty}</span>
 				</picture>
 				<div class="price">
