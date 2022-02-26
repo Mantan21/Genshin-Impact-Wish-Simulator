@@ -71,8 +71,8 @@
 				/>
 				<label for="convert"> Auto convert to primogem ? </label>
 			</div>
-			<div class="button" on:click={genesisBuy}>
-				<button>Proceed Payment</button>
+			<div class="button">
+				<button on:click={genesisBuy}>Proceed Payment</button>
 			</div>
 		</div>
 	</div>
