@@ -12,7 +12,7 @@
 		pity4star,
 		pity5star
 	} from '$lib/store/localstore';
-	import { bannerActive, bannerList, pageActive, showBeginner } from '$lib/store/stores';
+	import { bannerActive, bannerList, pageActive, showBeginner, query } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 
 	import { APP_TITLE } from '$lib/env';
@@ -56,6 +56,11 @@
 				: await getList(banner);
 		data = bannerList.map((d) => d).reverse();
 		return data;
+	};
+
+	const search = (bannerName) => {
+		query.set(getName(bannerName));
+		pageActive.set('previous-banner');
 	};
 
 	const selectBanner = (path) => {
@@ -212,7 +217,15 @@
 											{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
 										</div>
 										<div class="cell cell3">{time}</div>
-										<div class="cell cell4">{getName(bannerName || 'untrack')}</div>
+										<div class="cell cell4">
+											{#if bannerName}
+												<a href="/" on:click|preventDefault={() => search(bannerName)}>
+													{getName(bannerName)}
+												</a>
+											{:else}
+												untrack
+											{/if}
+										</div>
 									</div>
 								{/if}
 							{/each}
@@ -253,10 +266,13 @@
 		height: 100%;
 	}
 	a {
-		text-decoration: none;
-		display: inline-block;
 		margin: 5px;
 	}
+
+	.cell a {
+		color: #dda04f;
+	}
+
 	section {
 		background-color: #ebebeb;
 		width: 100%;

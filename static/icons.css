@@ -184,3 +184,6 @@
 .gi-dot-3:before {
 	content: '\57';
 }
+.gi-search:before {
+	content: '\58';
+}

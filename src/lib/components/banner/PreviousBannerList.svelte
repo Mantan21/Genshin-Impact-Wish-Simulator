@@ -1,10 +1,10 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { bannerPhase, patchVersion, pageActive, bannerActive } from '$lib/store/stores';
+	import { bannerPhase, patchVersion, pageActive, bannerActive, query } from '$lib/store/stores';
 	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
@@ -16,6 +16,8 @@
 	let dataToShow = [];
 	let showGroup = false;
 	let groupby = 'version';
+
+	let searchValue = $query || '';
 
 	const sort = (arr) =>
 		arr.sort((a, b) => {
@@ -68,6 +70,7 @@
 
 	const selectGroup = (group = null, value = null) => {
 		playSfx();
+		searchValue = '';
 		showGroup = value !== null ? value : !showGroup;
 		if (!group) return;
 		groupby = group;
@@ -90,15 +93,54 @@
 			patch = patch.toFixed(1);
 			data = data.map(({ phase, banners }) => {
 				let { events, weapons } = banners;
-				weapons = { name: weapons.name, list: weapons.featured };
-				return { patch, phase, chars: events.item, weapons };
+				return {
+					rateup: [...events.rateup, ...weapons.rateup],
+					weapons: { name: weapons.name, list: weapons.featured },
+					chars: events.item,
+					patch,
+					phase
+				};
 			});
 			return [patch.toString(), data];
 		});
-		allBanners = dataToShow = data.reverse();
+		allBanners = data.reverse();
+		if (searchValue.trim().length > 0) return handleSearch();
+		dataToShow = allBanners;
 		return data;
 	};
 	checkAllBanner();
+
+	const handleSearch = () => {
+		const query = searchValue.trim().toLocaleLowerCase();
+		if (query.length < 1) return;
+		groupby = 'version';
+		const check = (t) => t.replace(/_/g, '').replace(/-/g, ' ').includes(query);
+		const newArr = allBanners.map(([a, b]) => {
+			const filtered = b.filter(({ chars, weapons, rateup }) => {
+				// Check rateup
+				const rateupChar = rateup.map((name) => check(name));
+				if (rateupChar.includes(true)) return true;
+
+				// Check Character
+				if (Array.isArray(chars)) {
+					const result = chars.map(({ character, name }) => check(character) || check(name));
+					if (result.includes(true)) return true;
+				} else {
+					const result = check(chars.character) || check(chars.name);
+					if (result) return true;
+				}
+
+				// Check Weapon
+				const result = weapons.list.map(({ name }) => check(name));
+				if (result.includes(true)) return true;
+				return check(weapons.name);
+			});
+
+			return [a, filtered];
+		});
+		// console.log(newArr.filter((b) => b.length > 0));
+		dataToShow = newArr.filter(([, b]) => b.length > 0);
+	};
 
 	const selectBanner = (patch, phase) => {
 		playSfx();
@@ -127,6 +169,8 @@
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
+
+	onDestroy(() => query.set(''));
 </script>
 
 <svelte:head>
@@ -148,6 +192,18 @@
 	>
 		<div class="filter">
 			<div class="row">
+				<div class="search">
+					<input
+						type="text"
+						name="q"
+						id="q"
+						placeholder="Find a Banner"
+						bind:value={searchValue}
+						on:input={handleSearch}
+						title="Find by Character's or Weapon's Name (4star or 5star) or Banner Name"
+					/>
+					<button><i class="gi-search" /></button>
+				</div>
 				<div class="sort-selector">
 					<div
 						class="selected-filter"
@@ -168,21 +224,21 @@
 					{#if showGroup}
 						<div class="filter-list" transition:fade={{ duration: 200 }}>
 							<a
-								href="##"
+								href="/"
 								class:selected={groupby == 'version'}
 								on:click|preventDefault={() => selectGroup('version', false)}
 							>
 								Version
 							</a>
 							<a
-								href="##"
+								href="/"
 								class:selected={groupby == 'character'}
 								on:click|preventDefault={() => selectGroup('character', false)}
 							>
 								Character
 							</a>
 							<a
-								href="##"
+								href="/"
 								class:selected={groupby == 'weapon'}
 								on:click|preventDefault={() => selectGroup('weapon', false)}
 							>
@@ -266,11 +322,11 @@
 		flex-direction: column;
 		background-image: url('/assets/images/background/constellation.webp');
 		background-size: cover;
-		color: #d2c69c;
+		color: var(--tertiary-color);
 		font-size: 0.97rem;
 	}
 	h1 {
-		color: #d2c69c;
+		color: var(--tertiary-color);
 	}
 	h2 {
 		font-size: 1.1rem;
@@ -278,7 +334,7 @@
 		margin-left: -5rem;
 		margin-top: 1rem;
 		border-radius: 40px;
-		background-color: #ede5d8;
+		background-color: var(--tertiary-color);
 		display: inline-block;
 		position: relative;
 		text-transform: capitalize;
@@ -356,20 +412,38 @@
 		padding: 0 2%;
 	}
 
+	.search {
+		position: relative;
+	}
+	.search input {
+		background-color: var(--tertiary-color);
+		border-radius: 2rem;
+		padding: 0.3rem 2rem 0.3rem 1rem;
+	}
+	.search button {
+		background-color: transparent;
+		position: absolute;
+		right: 0.3rem;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.sort-selector,
+	.search input {
+		width: 13rem;
+		font-size: 0.75rem;
+	}
 	.sort-selector {
 		color: #3a4156;
-		font-size: 1rem;
 		margin: 0 0.5rem;
 		display: inline-block;
-		width: 200px;
-		max-width: 35%;
 		position: relative;
 		text-transform: capitalize;
 	}
 	.selected-filter {
-		background-color: #ede5d8;
-		padding: 0.05rem 1rem;
-		border-radius: 10px;
+		background-color: var(--tertiary-color);
+		padding: 0.3rem 1rem;
+		border-radius: 10rem;
 	}
 	.selected-filter i {
 		display: inline-block;
@@ -383,7 +457,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		background-color: #ede5d8;
+		background-color: var(--tertiary-color);
 		transform: translateY(100%);
 		border-radius: 0.3rem;
 		padding: 0.2rem 0;
@@ -394,15 +468,17 @@
 		padding: 0.2rem 1rem;
 		text-decoration: none;
 		color: #3a4156;
+		transition: background 0.2s;
 	}
-	.filter-list a.selected {
-		background-color: rgb(218, 202, 177);
+	.filter-list a.selected,
+	.filter-list a:hover {
+		background-color: rgb(231, 219, 199);
 	}
 
 	.filter button {
-		width: 2rem;
-		height: 2rem;
-		font-size: 1.2rem;
+		width: 1.7rem;
+		height: 1.7rem;
+		font-size: 1rem;
 	}
 
 	.gi-exchange {
