@@ -18,8 +18,8 @@
 	import playSfx from '$lib/functions/audio';
 
 	// Components
-	import WishResult from '$lib/components/utility/wishresult/WishResult.svelte';
 	import Obtained from '$lib/components/utility/Obtained.svelte';
+	import WishResult from './parts/WishResult.svelte';
 	import Header from './parts/Header.svelte';
 	import Footer from './parts/Footer.svelte';
 	import Meteor from './parts/Meteor.svelte';

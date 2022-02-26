@@ -4,8 +4,8 @@
 	import { APP_TITLE, HOST } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
-	import WishListResult from '$lib/components/utility/wishresult/WishListResult.svelte';
 	import { getName } from '$lib/functions/nameText';
+	import WishListResult from '$lib/components/banner/parts/WishListResult.svelte';
 
 	let title = 'No Name';
 	let isError;
