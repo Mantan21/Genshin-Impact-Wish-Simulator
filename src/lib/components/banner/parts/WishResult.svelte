@@ -1,5 +1,6 @@
 <script>
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { viewportHeight, viewportWidth, isMobile } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
@@ -60,6 +61,11 @@
 		return;
 	};
 
+	const skipHandle = () => {
+		playSfx();
+		skipSplashOneByOne = true;
+	};
+
 	onMount(() => {
 		if (skipSplashOneByOne) return;
 		showItem('start');
@@ -84,9 +90,11 @@
 	{:else}
 		<div class="container" bind:this={wishResultContainer}>
 			{#if list.length === 1}
-				<button class="close" on:click={closeHandle}>
+				<button class="close" on:click={closeHandle} in:fade={{ delay: 1500 }}>
 					<i class="gi-close" />
 				</button>
+			{:else}
+				<button class="skip" on:click|stopPropagation={skipHandle}>Skip</button>
 			{/if}
 
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
@@ -199,8 +207,6 @@
 		right: 10px;
 		line-height: 0;
 		z-index: 10;
-		opacity: 0;
-		animation: weaponbg forwards 1.5s 1;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -214,6 +220,21 @@
 	:global(.mobile) .close {
 		width: 2rem;
 		height: 2rem;
+	}
+
+	.skip {
+		position: absolute;
+		top: 2%;
+		right: 2%;
+		color: #fff;
+		font-size: 1.5rem;
+		z-index: 10;
+	}
+
+	:global(.mobile) .skip {
+		font-size: 1.4rem;
+		right: 1rem;
+		top: 1rem;
 	}
 
 	/* Fate */
