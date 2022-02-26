@@ -152,7 +152,7 @@
 			height: 2.5rem;
 			position: absolute;
 			top: 20%;
-			right: 5%;
+			right: 0;
 		}
 	}
 </style>

@@ -16,6 +16,7 @@
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
+	import { mobileMode } from '$lib/store/stores';
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
@@ -171,6 +172,10 @@
 	const handleCancelSelect = () => {
 		showOrder = false;
 	};
+
+	const inTransition = (node, args) => {
+		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
+	};
 </script>
 
 <svelte:head>
@@ -183,8 +188,8 @@
 	<div class="header" in:fly={{ y: -20 }}>
 		<InventoryHeader {activeItem} />
 	</div>
-	<div class="body" in:fade={{ duration: 400 }}>
-		<div class="navigation">
+	<div class="body">
+		<div class="navigation" in:inTransition={{ mobile: $mobileMode }}>
 			<nav>
 				<button
 					class="nav-link"
@@ -192,6 +197,7 @@
 					on:click={() => select('character')}
 				>
 					<i class="gi-character" />
+					{$mobileMode ? '' : 'Characters'}
 				</button>
 				<button
 					class="nav-link"
@@ -199,10 +205,11 @@
 					on:click={() => select('weapon')}
 				>
 					<i class="gi-weapon" />
+					{$mobileMode ? '' : 'Weapons'}
 				</button>
 			</nav>
 		</div>
-		<div class="body-content">
+		<div class="body-content" in:fade={{ duration: 400 }}>
 			<div class="container" bind:this={content}>
 				<div class="list-item">
 					{#if dataToShow.length < 1}
@@ -381,14 +388,13 @@
 	}
 
 	nav .nav-link {
-		width: 44px;
 		height: 44px;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 		color: #ede5d8;
-		font-size: 2rem;
 		margin: 0 15px;
+		line-height: 0;
 		border-radius: 100%;
 		opacity: 0.6;
 		transition: all 0.2s;
@@ -396,6 +402,10 @@
 	nav .nav-link.active {
 		color: #fff;
 		opacity: 1;
+	}
+
+	nav .nav-link i {
+		font-size: 1.5rem;
 	}
 
 	:global(.mobile) .navigation {
@@ -428,7 +438,6 @@
 		margin: 0;
 		font-size: 1.7rem;
 		margin: 5px 0;
-		width: unset;
 		height: unset;
 		position: relative;
 		line-height: 1rem;
@@ -590,7 +599,6 @@
 			width: 100%;
 		}
 		nav .nav-link {
-			width: 40px;
 			height: 40px;
 		}
 		.container {
