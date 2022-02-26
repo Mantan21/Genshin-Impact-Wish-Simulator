@@ -97,4 +97,8 @@
 	:global(.mobile) .point-number {
 		padding: 0.1rem;
 	}
+	:global(.mobile) .point-number span.small {
+		font-size: 0.5rem;
+		line-height: 0.5rem;
+	}
 </style>

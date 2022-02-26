@@ -363,7 +363,7 @@
 		height: calc(100% - 0.4rem);
 		border: solid #bed634;
 		border-width: 0.2rem 0;
-		border-radius: 0.5rem;
+		border-radius: 0.5em;
 	}
 	.weapon-content.active button::before {
 		content: '✔';
@@ -376,7 +376,7 @@
 		width: 20%;
 		height: 20%;
 		z-index: +1;
-		border-top-right-radius: 0.5rem;
+		border-top-right-radius: 0.5em;
 	}
 
 	.text {

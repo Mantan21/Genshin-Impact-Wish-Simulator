@@ -201,7 +201,6 @@
 		display: block;
 	}
 	.container {
-		transform: translateY(-5%);
 		width: 100% !important;
 		height: 100%;
 		display: flex;

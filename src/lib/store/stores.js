@@ -41,6 +41,8 @@ const intertwined = writable(0);
 const acquaint = writable(0);
 const unlimitedFates = writable(false);
 
+const query = writable('');
+
 export {
 	pageActive,
 	patchVersion,
@@ -67,5 +69,6 @@ export {
 	intertwined,
 	acquaint,
 	unlimitedFates,
-	isAcquaintUsed
+	isAcquaintUsed,
+	query
 };

@@ -301,7 +301,7 @@
 	}
 
 	.menu-item::before {
-		content: '\65';
+		content: '\63';
 		font-family: 'genshin-icon' !important;
 		font-style: normal !important;
 		font-weight: normal !important;
