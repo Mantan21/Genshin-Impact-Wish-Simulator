@@ -8,7 +8,8 @@ import {
 	showBeginner,
 	unlimitedFates,
 	bannerPhase,
-	patchVersion
+	patchVersion,
+	selectedCourse
 } from '$lib/store/stores';
 import HistoryIDB from '$lib/store/historyIdb';
 import { wishPhase, version } from '$lib/setup/wish-setup.json';
@@ -26,7 +27,9 @@ const factoryReset = async () => {
 	primogem.set(1600);
 	stardust.set(0);
 	starglitter.set(0);
+
 	unlimitedFates.set(false);
+	selectedCourse.set({});
 
 	showBeginner.set(true);
 	bannerPhase.set(wishPhase);
