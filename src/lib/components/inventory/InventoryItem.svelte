@@ -43,7 +43,7 @@
 
 <style>
 	.content {
-		border-radius: 0.5rem;
+		border-radius: 0.5em;
 		overflow: hidden;
 		width: 100%;
 		height: 100%;
@@ -131,8 +131,7 @@
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		height: 25px;
-		padding: 0 0.2rem;
+		padding: 0.2rem;
 		position: relative;
 	}
 	.caption span {
@@ -142,6 +141,11 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		text-transform: capitalize;
+	}
+
+	:global(.popup-content) .caption {
+		padding: 0 0.2rem;
+		font-size: 0.6rem;
 	}
 
 	img.claymore {
