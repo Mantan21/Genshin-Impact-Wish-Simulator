@@ -269,6 +269,10 @@
 		display: block;
 		background-color: rgb(20, 18, 15);
 		width: 100%;
+		position: sticky;
+		top: 0;
+		left: 0;
+		z-index: +10;
 	}
 
 	.gi-reply {
