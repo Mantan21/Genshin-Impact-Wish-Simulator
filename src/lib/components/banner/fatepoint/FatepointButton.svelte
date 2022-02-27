@@ -92,7 +92,7 @@
 
 	:global(.mobile) button {
 		margin-top: auto;
-		margin-bottom: 10%;
+		margin-bottom: 7.5%;
 	}
 	:global(.mobile) .point-number {
 		padding: 0.1rem;
