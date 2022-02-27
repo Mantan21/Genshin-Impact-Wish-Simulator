@@ -1,5 +1,5 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import {
 		bannerActive,
 		viewportHeight,
@@ -10,6 +10,7 @@
 		selectedCourse
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/functions/audio';
 
 	$: style =
 		$viewportHeight > 800 ||
@@ -19,6 +20,16 @@
 			: '';
 
 	$: activeBanner = $bannerList[$bannerActive];
+
+	const navigate = (target) => {
+		playSfx('changebanner');
+		if (target === 'next') {
+			return bannerActive.update((n) => n + 1);
+		}
+		if (target === 'previous') {
+			return bannerActive.update((n) => n - 1);
+		}
+	};
 </script>
 
 <div class="banner" {style}>
@@ -56,15 +67,39 @@
 			/>
 		</div>
 	{/if}
+	<div class="navigate">
+		{#if $bannerActive > 0}
+			<button
+				class="left"
+				style="margin-right: auto;"
+				on:click={() => navigate('previous')}
+				transition:fade|local={{ duration: 200 }}
+			>
+				<i class="gi-arrow-left" />
+			</button>
+		{/if}
+
+		{#if $bannerActive < $bannerList.length - 1}
+			<button
+				class="left"
+				style="margin-left: auto;"
+				on:click={() => navigate('next')}
+				transition:fade|local={{ duration: 200 }}
+			>
+				<i class="gi-arrow-right" />
+			</button>
+		{/if}
+	</div>
 </div>
 
 <style>
 	.banner {
 		padding: 30px 0;
-		dipslay: block;
 		width: 80%;
 		max-width: 850px;
 		max-height: 75vh;
+		display: flex;
+		align-items: center;
 		position: absolute;
 		bottom: 0;
 		left: 50%;
@@ -85,6 +120,26 @@
 		max-width: 155vh;
 		max-height: unset;
 		margin-bottom: -10px;
+	}
+
+	.navigate {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 115%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: space-between;
+		transition: all 0.2s;
+	}
+	.navigate button {
+		color: #dad4b4;
+		font-size: 2rem;
+		line-height: 0;
+	}
+
+	:global(.mobile) .navigate {
+		display: none;
 	}
 
 	.selected {
