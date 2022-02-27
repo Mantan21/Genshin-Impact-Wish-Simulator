@@ -7,6 +7,7 @@
 		bannerPhase,
 		isMobile,
 		mobileMode,
+		muted,
 		pageActive,
 		patchVersion,
 		unlimitedFates
@@ -48,6 +49,16 @@
 		const { selected } = e.detail;
 		localConfig.set('showAllItems', selected === 'yes');
 		showAllItemsIndicator = selected === 'yes';
+	};
+
+	// Audio
+	let showAudioOption = browser ? !!localConfig.get('muted') : false;
+	const handleAudio = (e) => {
+		const { selected } = e.detail;
+		const optionValue = selected === 'yes';
+		localConfig.set('muted', optionValue);
+		showAudioOption = optionValue;
+		muted.set(optionValue);
 	};
 
 	// Reset
@@ -140,6 +151,11 @@
 							text="Show not owned Item on Inventory"
 							activeIndicator={showAllItemsIndicator}
 							on:select={showAllItemsOption}
+						/>
+						<Option
+							text="Mute Audio and Sound Effect"
+							activeIndicator={showAudioOption}
+							on:select={handleAudio}
 						/>
 
 						<div class="option">
