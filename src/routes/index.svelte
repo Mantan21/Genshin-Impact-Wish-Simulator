@@ -12,7 +12,8 @@
 		bannerPhase,
 		showBeginner,
 		isFatepointSystem,
-		isLoaded
+		isLoaded,
+		muted
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import { APP_TITLE, HOST } from '$lib/env';
@@ -28,7 +29,7 @@
 	import Loader from '$lib/components/utility/Loader.svelte';
 
 	let isMount = false;
-	$: audioActive = $backsound && $pageActive === 'index';
+	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
 	$: if (audioActive) playSfx('wishBacksound');
 	else if (isMount) playSfx('wishBacksound', true);
 

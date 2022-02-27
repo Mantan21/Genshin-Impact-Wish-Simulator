@@ -1,7 +1,7 @@
 <script>
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { viewportHeight, viewportWidth, isMobile } from '$lib/store/stores';
+	import { viewportHeight, viewportWidth, isMobile, muted } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 
@@ -23,6 +23,7 @@
 	let activeIndex = 0;
 
 	const playRevealAudio = () => {
+		if ($muted) return;
 		const star = list[activeIndex].rarity;
 		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
 		audio.currentTime = 0;

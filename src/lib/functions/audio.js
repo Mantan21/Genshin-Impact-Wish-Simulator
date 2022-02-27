@@ -1,4 +1,5 @@
 import { browser } from '$app/env';
+import { localConfig } from '$lib/store/localstore';
 import { Howl } from 'howler';
 
 const source = {
@@ -42,7 +43,7 @@ soundInit();
 const playSfx = (nameOfSoundfx = 'click', paused = false) => {
 	try {
 		if (!sounds[nameOfSoundfx]) throw new Error('No Sound effect for ' + nameOfSoundfx);
-		if (paused) sounds[nameOfSoundfx].pause();
+		if (paused || localConfig.get('muted')) sounds[nameOfSoundfx].pause();
 		else sounds[nameOfSoundfx].play();
 	} catch (e) {
 		console.error('Unable to Play Sfx : ', e.message);

@@ -6,7 +6,8 @@
 		acquaint,
 		intertwined,
 		bannerList,
-		bannerActive
+		bannerActive,
+		muted
 	} from '$lib/store/stores';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { localBalance } from '$lib/store/localstore';
@@ -140,23 +141,23 @@
 
 <div class="wish-output" class:show={showMeteor}>
 	<div class="video">
-		<video bind:this={v3star} preload="auto">
+		<video bind:this={v3star} preload="auto" muted={$muted}>
 			<source src="/assets/videos/3star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<video bind:this={v4starSingle} preload="auto">
+		<video bind:this={v4starSingle} preload="auto" muted={$muted}>
 			<source src="/assets/videos/4star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<video bind:this={v4star} preload="auto">
+		<video bind:this={v4star} preload="auto" muted={$muted}>
 			<source src="/assets/videos/4star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<video bind:this={v5starSingle} preload="auto">
+		<video bind:this={v5starSingle} preload="auto" muted={$muted}>
 			<source src="/assets/videos/5star-single.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<video bind:this={v5star} preload="auto">
+		<video bind:this={v5star} preload="auto" muted={$muted}>
 			<source src="/assets/videos/5star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
