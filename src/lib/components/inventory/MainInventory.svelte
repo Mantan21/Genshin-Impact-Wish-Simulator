@@ -18,13 +18,12 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { mobileMode } from '$lib/store/stores';
 
-	let isMount = false;
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
 
 	setInterval(() => {
 		activeBgIndex = activeBgIndex === bg.length - 1 ? 0 : activeBgIndex + 1;
-	}, 10000);
+	}, 6500);
 
 	const inTransition = (node, args) => {
 		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
@@ -122,7 +121,6 @@
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
 		await proccessData(activeItem, showAll);
-		isMount = true;
 	});
 
 	$: proccessData(activeItem, showAll);
@@ -189,24 +187,13 @@
 </svelte:head>
 
 <section on:click={handleCancelSelect}>
-	{#each bg as b, i (b)}
-		{#if activeBgIndex === i}
-			{#if isMount}
-				<img
-					transition:fade={{ duration: 6000 }}
-					src="/assets/images/background/element-{bg[i]}-bg.webp"
-					alt="Background"
-					class="bg"
-				/>
-			{:else}
-				<img
-					out:fade={{ duration: 9500 }}
-					src="/assets/images/background/element-{bg[i]}-bg.webp"
-					alt="Background"
-					class="bg"
-				/>
-			{/if}
-		{/if}
+	{#each bg as b, i}
+		<img
+			src="/assets/images/background/element-{b}-bg.webp"
+			alt="Background"
+			class="bg"
+			class:active={activeBgIndex === i}
+		/>
 	{/each}
 
 	<div class="header" in:fly={{ y: -20 }}>
@@ -357,6 +344,13 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 6s ease;
+	}
+
+	img.bg.active {
+		opacity: 1;
 	}
 
 	.header {
