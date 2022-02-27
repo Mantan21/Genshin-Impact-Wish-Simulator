@@ -18,8 +18,17 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { mobileMode } from '$lib/store/stores';
 
-	const rand = (array) => array[Math.floor(Math.random() * array.length)];
+	let isMount = false;
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
+	let activeBgIndex = Math.floor(Math.random() * bg.length);
+
+	setInterval(() => {
+		activeBgIndex = activeBgIndex === bg.length - 1 ? 0 : activeBgIndex + 1;
+	}, 10000);
+
+	const inTransition = (node, args) => {
+		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
+	};
 
 	let activeItem = 'character';
 	let showOrder = false;
@@ -113,6 +122,7 @@
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
 		await proccessData(activeItem, showAll);
+		isMount = true;
 	});
 
 	$: proccessData(activeItem, showAll);
@@ -172,10 +182,6 @@
 	const handleCancelSelect = () => {
 		showOrder = false;
 	};
-
-	const inTransition = (node, args) => {
-		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
-	};
 </script>
 
 <svelte:head>
@@ -183,7 +189,25 @@
 </svelte:head>
 
 <section on:click={handleCancelSelect}>
-	<img src="/assets/images/background/element-{rand(bg)}-bg.webp" alt="Background" class="bg" />
+	{#each bg as b, i (b)}
+		{#if activeBgIndex === i}
+			{#if isMount}
+				<img
+					transition:fade={{ duration: 6000 }}
+					src="/assets/images/background/element-{bg[i]}-bg.webp"
+					alt="Background"
+					class="bg"
+				/>
+			{:else}
+				<img
+					out:fade={{ duration: 9500 }}
+					src="/assets/images/background/element-{bg[i]}-bg.webp"
+					alt="Background"
+					class="bg"
+				/>
+			{/if}
+		{/if}
+	{/each}
 
 	<div class="header" in:fly={{ y: -20 }}>
 		<InventoryHeader {activeItem} />
@@ -307,7 +331,7 @@
 						<input type="checkbox" name="showAll" id="showAll" bind:checked={showAll} />
 						<label for="showAll">
 							<i>✔</i>
-							Show All {activeItem}s ( {dataQty} Owned )
+							Show All {activeItem}s ( {dataQty} Summoned )
 						</label>
 					</div>
 				</div>
@@ -322,6 +346,7 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
+		background-color: #000;
 	}
 
 	img.bg {
@@ -332,7 +357,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: -1;
 	}
 
 	.header {
@@ -340,6 +364,7 @@
 		width: 100%;
 		display: flex;
 		padding: 15px 2%;
+		z-index: +1;
 	}
 
 	/* mobile */
@@ -359,6 +384,8 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
+		position: relative;
+		z-index: +1;
 	}
 
 	.navigation {
