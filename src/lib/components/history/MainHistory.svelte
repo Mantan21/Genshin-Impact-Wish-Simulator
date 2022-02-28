@@ -219,11 +219,15 @@
 										<div class="cell cell3">{time}</div>
 										<div class="cell cell4">
 											{#if bannerName}
-												<a href="/" on:click|preventDefault={() => search(bannerName)}>
+												{#if ['events', 'weapons'].includes(banner)}
+													<a href="/" on:click|preventDefault={() => search(bannerName)}>
+														{getName(bannerName)}
+													</a>
+												{:else}
 													{getName(bannerName)}
-												</a>
+												{/if}
 											{:else}
-												untrack
+												Untrack
 											{/if}
 										</div>
 									</div>
