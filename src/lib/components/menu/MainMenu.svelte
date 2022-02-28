@@ -177,14 +177,23 @@
 						<div class="notes">
 							<ol>
 								<li>
-									Remember, We never collect your data, all task that made by this site will
-									processed on your computer.
+									This app use Localstorage and IndexedDB to save your pull history, it's native on
+									your browser, if you clear your browser data, you will lost your data that related
+									to this app too. No chance to recover it back, because we never store your data on
+									cloud
 								</li>
 								<li>
-									This site use Localstorage and IndexedDB to save your pull history, it's on your
-									browser, if you clear your browser data, you will lost your data that related to
-									this site too. No chance to recover it back, because we never save your data on
-									cloud (point 1)
+									This Service does not collect or store any personally identifiable information
+									about you. However, this app use third party services that may collect information
+									used to identify you. The information that these third party services request will
+									be retained on your device and is not collected by me in any way.
+								</li>
+								<li>
+									This Service may contain links to other apps. If you click on a third-party link,
+									you will be directed to that app. Note that these external apps are not operated
+									by me. Therefore, I strongly advise you to review the Privacy Policy of these
+									webapps. I have no control over and assume no responsibility for the content,
+									privacy policies, or practices of any third-party apps or services.
 								</li>
 							</ol>
 						</div>

@@ -43,6 +43,11 @@
 		width: 100%;
 		padding: 0.5rem 0;
 	}
+	@media screen and (max-width: 900px) {
+		.option {
+			padding: 0.3rem 0;
+		}
+	}
 	.option-name {
 		background-color: #fff;
 		width: 75%;

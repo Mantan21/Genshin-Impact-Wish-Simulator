@@ -20,6 +20,7 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 
+	let bg;
 	let activeShop = 'genesis';
 	let activeFateShop = 'starglitter';
 	let showNavbar = true;
@@ -222,7 +223,12 @@
 </PopUp>
 <!-- Crypto Donate -->
 <section>
-	<img class="bg" src="/assets/images/background/bg{random(1, 16)}.webp" alt="background" />
+	<img
+		class="bg"
+		src="/assets/images/background/bg{random(1, 16)}.webp"
+		alt="background"
+		bind:this={bg}
+	/>
 	<div class="container">
 		<ShopNavbar
 			show={showNavbar}
@@ -243,7 +249,7 @@
 				}}
 			/>
 
-			<div class="item-body" transition:fade={{ duration: 300 }}>
+			<div class="item-body" in:fade={{ duration: 300 }}>
 				{#if activeShop === 'genesis'}
 					<div class="item-list genesis">
 						<div class="list-body">
@@ -392,6 +398,11 @@
 		display: block;
 		position: relative;
 		font-size: 1rem;
+		/* background: linear-gradient(135deg, rgb(112, 31, 164), transparent 45%),
+			linear-gradient(225deg, rgb(223, 220, 116), transparent 60%),
+			linear-gradient(315deg, rgb(242, 79, 202), rgb(80, 148, 215) 25%, rgb(175, 28, 181));
+		background-size: cover; */
+		background-color: var(--text-color);
 	}
 	:global(.mobile) section {
 		font-size: 0.8rem;
@@ -406,7 +417,7 @@
 		transform: translate(-50%, -50%) scale(1.1);
 		filter: blur(10px);
 		-webkit-filter: blur(10px);
-		z-index: -1;
+		z-index: +1;
 	}
 
 	section::after {
@@ -425,6 +436,7 @@
 		display: flex;
 		padding: 0 3%;
 		position: relative;
+		z-index: +2;
 		width: 100%;
 		height: 100%;
 	}
