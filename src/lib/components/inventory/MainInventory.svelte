@@ -358,7 +358,7 @@
 		width: 100%;
 		display: flex;
 		padding: 15px 2%;
-		z-index: +1;
+		z-index: +2;
 	}
 
 	/* mobile */
