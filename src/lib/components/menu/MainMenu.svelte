@@ -38,9 +38,9 @@
 	// Unlimited Fates
 	const selectUnlimitedOptions = (e) => {
 		const { selected } = e.detail;
-		localConfig.set('unlimitedFates', selected === 'yes');
-		if (selected === 'yes') return unlimitedFates.set(true);
-		if (selected === 'no') return unlimitedFates.set(false);
+		const optionValue = selected === 'yes';
+		localConfig.set('unlimitedFates', optionValue);
+		return unlimitedFates.set(optionValue);
 	};
 
 	// Show Archive
@@ -52,12 +52,10 @@
 	};
 
 	// Audio
-	let showAudioOption = browser ? !!localConfig.get('muted') : false;
 	const handleAudio = (e) => {
 		const { selected } = e.detail;
 		const optionValue = selected === 'yes';
 		localConfig.set('muted', optionValue);
-		showAudioOption = optionValue;
 		muted.set(optionValue);
 	};
 
@@ -154,7 +152,7 @@
 						/>
 						<Option
 							text="Mute Audio and Sound Effect"
-							activeIndicator={showAudioOption}
+							activeIndicator={$muted}
 							on:select={handleAudio}
 						/>
 

@@ -9,7 +9,8 @@ import {
 	unlimitedFates,
 	bannerPhase,
 	patchVersion,
-	selectedCourse
+	selectedCourse,
+	muted
 } from '$lib/store/stores';
 import HistoryIDB from '$lib/store/historyIdb';
 import { wishPhase, version } from '$lib/setup/wish-setup.json';
@@ -28,12 +29,15 @@ const factoryReset = async () => {
 	stardust.set(0);
 	starglitter.set(0);
 
-	unlimitedFates.set(false);
 	selectedCourse.set({});
 
 	showBeginner.set(true);
 	bannerPhase.set(wishPhase);
 	patchVersion.set(version);
+
+	// Setting
+	unlimitedFates.set(false);
+	muted.set(false);
 };
 
 export default factoryReset;

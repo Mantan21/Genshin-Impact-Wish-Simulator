@@ -7,7 +7,8 @@ import {
 	acquaint,
 	bannerPhase,
 	patchVersion,
-	unlimitedFates
+	unlimitedFates,
+	muted
 } from '$lib/store/stores';
 import { localBalance, localBannerVersion, localConfig } from '$lib/store/localstore';
 import { storageVersion, version } from '$lib/setup/wish-setup.json';
@@ -40,7 +41,9 @@ const importLocalBalance = () => {
 	const localAcquaint = localBalance.get('acquaint');
 	if (localAcquaint !== null) acquaint.set(localAcquaint);
 
+	// Setting
 	unlimitedFates.set(!!localConfig.get('unlimitedFates'));
+	muted.set(!!localConfig.get('muted'));
 
 	console.log('Balance Updated');
 };
