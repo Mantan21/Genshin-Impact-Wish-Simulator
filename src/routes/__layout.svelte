@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
 	import { onMount } from 'svelte';
-	import MobileDetect from 'mobile-detect';
 
 	import {
 		viewportHeight,
@@ -18,6 +17,7 @@
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import '../app.css';
+	import { mobileDetect } from '$lib/functions/mobileDetect';
 
 	$: preview = $page.path.split('/')[1] === 'screen';
 
@@ -26,24 +26,28 @@
 		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
 	}
 
-	onMount(() => {
-		const md = new MobileDetect(navigator.userAgent);
-		isMobile.set(!!md.mobile());
-
+	const setMobileMode = () => {
 		const { angle } = screen.orientation;
-		mobileMode.set(angle === 90 || angle === 270);
-		window.addEventListener('orientationchange', () => {
-			const { angle } = screen.orientation;
-			if ($isMobile) mobileMode.set(angle === 90 || angle === 270);
-		});
+		const rotate = angle === 90 || angle === 270;
+		mobileMode.set(rotate);
+	};
 
+	onMount(() => {
 		importLocalBalance();
+
+		isMobile.set(mobileDetect());
+		if ($isMobile) setMobileMode();
+
+		window.addEventListener('orientationchange', () => {
+			if ($isMobile) setMobileMode();
+		});
 
 		viewportWidth.set(window.innerWidth);
 		viewportHeight.set(window.innerHeight);
 		window.addEventListener('resize', () => {
 			viewportWidth.set(window.innerWidth);
 			viewportHeight.set(window.innerHeight);
+			if ($isMobile) setMobileMode();
 		});
 
 		// prevent Righ click (hold on android) on production mode

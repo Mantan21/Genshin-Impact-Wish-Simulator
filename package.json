@@ -27,7 +27,6 @@
     "howler": "^2.2.3",
     "html-to-image": "^1.8.5",
     "idb": "^6.1.2",
-    "mobile-detect": "^1.4.5",
     "overlayscrollbars": "^1.13.1"
   }
 }
