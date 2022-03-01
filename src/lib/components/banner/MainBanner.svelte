@@ -12,6 +12,7 @@
 		bannerPhase,
 		unlimitedFates
 	} from '$lib/store/stores';
+	import { fly } from 'svelte/transition';
 	import { APP_TITLE } from '$lib/env';
 	import Wish, { roll } from '$lib/functions/wish/wish';
 	import { localBalance } from '$lib/store/localstore';
@@ -198,7 +199,7 @@
 		<div class="item">
 			<BannerItem />
 		</div>
-		<div class="col button">
+		<div class="col button" in:fly={{ y: 20, duration: 1000 }}>
 			<Footer
 				on:multiRoll={() => doRoll(10, bannerToRoll)}
 				on:singleRoll={() => doRoll(1, bannerToRoll)}

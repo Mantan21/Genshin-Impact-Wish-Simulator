@@ -27,7 +27,7 @@
 		({ time, vision, type, weaponType, rarity } = dt[0]);
 		const count = dt.length;
 		if (type === 'weapon') {
-			countInfo = `Refine ${count > 5 ? `5 + ${count - 5} Extra` : count}`;
+			countInfo = `Refinement ${count > 5 ? `5 + ${count - 5} Extra` : count}`;
 		} else {
 			countInfo = `Constellation ${count > 7 ? `6 + ${count - 7} Extra` : count - 1}`;
 		}
@@ -252,7 +252,7 @@
 		font-size: 2.5em;
 		line-height: 1.2em;
 		color: #fff;
-		-webkit-text-stroke: 0.2px #000;
+		-webkit-text-stroke: 0.015em #000;
 	}
 
 	.gi-star {

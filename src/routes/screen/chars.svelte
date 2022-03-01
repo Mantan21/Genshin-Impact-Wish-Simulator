@@ -119,8 +119,6 @@
 							</div>
 						{/if}
 					</div>
-
-					<!-- <Share page="chars" /> -->
 				</div>
 			</div>
 		</div>
@@ -206,7 +204,7 @@
 		font-size: 2.5em;
 		line-height: 1.2em;
 		color: #fff;
-		-webkit-text-stroke: 0.2px #000;
+		-webkit-text-stroke: 0.015em #000;
 	}
 
 	.gi-star {
