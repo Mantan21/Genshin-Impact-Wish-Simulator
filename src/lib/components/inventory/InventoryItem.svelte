@@ -1,5 +1,6 @@
 <script>
 	import { getName } from '$lib/functions/nameText';
+	import { createEventDispatcher } from 'svelte';
 
 	export let rarity = 3;
 	export let type = 'character';
@@ -8,13 +9,21 @@
 	export let weaponType = '';
 	export let qty = 0;
 	export let isOwned = true;
+
+	const dispatch = createEventDispatcher();
+	const handleShowDetails = () => {
+		if (!isOwned) return;
+		return dispatch('click', {
+			name
+		});
+	};
 </script>
 
-<div class="content">
+<div class="content" class:owned={isOwned}>
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
-	<picture class="wish-result star{rarity} {type}">
+	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
 		{#if type === 'character'}
 			<img src="/assets/images/characters/profile/{name}.webp" alt={getName(name)} />
 			<span class="gi-{vision} element" />
@@ -44,7 +53,6 @@
 <style>
 	.content {
 		border-radius: 0.5em;
-		overflow: hidden;
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -55,6 +63,24 @@
 		line-height: 1.2rem;
 		position: relative;
 	}
+	.content.owned::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		border-radius: 0.8rem;
+		border: 0.3rem solid #eac343;
+		opacity: 0;
+		transition: opacity 0.15s;
+	}
+	.content.owned:hover::after {
+		opacity: 1;
+	}
+
 	.overlay {
 		top: 0;
 		left: 0;
@@ -64,7 +90,9 @@
 		height: 100%;
 		background-color: #000;
 		opacity: 0.5;
+		border-radius: 0.5em;
 	}
+
 	picture {
 		width: 100%;
 		aspect-ratio: 1/1;
@@ -74,6 +102,8 @@
 		background-size: cover;
 		position: relative;
 		overflow: hidden;
+		border-top-left-radius: 0.5em;
+		border-top-right-radius: 0.5em;
 	}
 	picture img {
 		width: 100%;
