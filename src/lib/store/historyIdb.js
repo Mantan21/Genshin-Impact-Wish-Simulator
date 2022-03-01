@@ -28,6 +28,10 @@ const HistoryIDB = {
 		return (await IndexedDB).countFromIndex(storeName, 'name', name);
 	},
 
+	async getByName(name) {
+		return (await IndexedDB).getAllFromIndex(storeName, 'name', name);
+	},
+
 	async resetHistory(banner) {
 		try {
 			const idb = await IndexedDB;

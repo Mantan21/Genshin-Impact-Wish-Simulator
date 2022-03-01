@@ -17,6 +17,7 @@
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
 	import { mobileMode } from '$lib/store/stores';
+	import InventoryDetails from './InventoryDetails.svelte';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
@@ -180,11 +181,26 @@
 	const handleCancelSelect = () => {
 		showOrder = false;
 	};
+
+	let detailName = '';
+	let showInventoryDetail = false;
+	const handleShowDetails = (e) => {
+		playSfx();
+		const { name } = e.detail;
+		detailName = name;
+		showInventoryDetail = true;
+	};
 </script>
 
 <svelte:head>
 	<title>Inventory | {APP_TITLE}</title>
 </svelte:head>
+
+<InventoryDetails
+	show={showInventoryDetail}
+	name={detailName}
+	on:close={() => (showInventoryDetail = false)}
+/>
 
 <section on:click={handleCancelSelect}>
 	{#each bg as b, i}
@@ -236,6 +252,7 @@
 									weaponType={d.weaponType}
 									qty={d.qty}
 									isOwned={d.isOwned}
+									on:click={handleShowDetails}
 								/>
 							</div>
 						{/each}

@@ -89,7 +89,8 @@
 		setBannerVersionAndPhase();
 		window.addEventListener('blur', () => playSfx('wishBacksound', true));
 		window.addEventListener('focus', () => {
-			if (audioActive) playSfx('wishBacksound');
+			if (audioActive) return playSfx('wishBacksound');
+			else return;
 		});
 
 		window.addEventListener('popstate', (e) => {

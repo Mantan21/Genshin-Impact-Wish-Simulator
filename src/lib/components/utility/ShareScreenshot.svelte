@@ -10,8 +10,8 @@
 	import playSfx from '$lib/functions/audio';
 	import Icon from './Icon.svelte';
 
-	export let encodedData;
-	export let page;
+	export let encodedData = '';
+	export let page = '';
 
 	let show = false;
 	let showOnProgress = false;
@@ -43,7 +43,7 @@
 	const takeShot = async (e) => {
 		playSfx();
 		showOnProgress = true;
-		e.target.innerText = 'wait..';
+		e.target.innerText = 'Wait..';
 		const filter = (node) => {
 			const notIncluded = ['close', 'share', 'skip'];
 			if (node.classList) return !notIncluded.some((cl) => node.classList.contains(cl));
@@ -55,7 +55,7 @@
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;
-		e.target.innerText = 'Share';
+		e.target.innerText = page ? 'Share' : 'Save';
 		node.classList.remove('preview');
 	};
 
@@ -118,19 +118,25 @@
 
 		<picture>
 			<div class="letshare">
-				<div class="copy">
-					<span class="text">{shareLink}</span>
-					<button on:click={copyHandle}> <i class="gi-link" /> </button>
-				</div>
+				{#if page}
+					<div class="copy">
+						<span class="text">{shareLink}</span>
+						<button on:click={copyHandle}> <i class="gi-link" /> </button>
+					</div>
+				{/if}
+
 				<button class="save" on:click={saveHandler}> <i class="gi-save" /> </button>
-				<div class="divider" />
-				<button class="save" on:click={twitterHandle}>
-					<i class="gi-twitter" />
-				</button>
-				<button class="save" on:click={facebookHandle}>
-					<i class="gi-facebook" />
-				</button>
-				<button class="save" on:click={webShareHandle}> <i class="gi-dot-3" /> </button>
+
+				{#if page}
+					<div class="divider" />
+					<button class="save" on:click={twitterHandle}>
+						<i class="gi-twitter" />
+					</button>
+					<button class="save" on:click={facebookHandle}>
+						<i class="gi-facebook" />
+					</button>
+					<button class="save" on:click={webShareHandle}> <i class="gi-dot-3" /> </button>
+				{/if}
 			</div>
 			<img src={url} alt="screenshot" />
 		</picture>
@@ -151,13 +157,13 @@
 {/if}
 
 <div class="shr">
-	{#if isFirstShare}
+	{#if isFirstShare && page}
 		<span>
 			Reward for first share : 16000
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}
-	<button on:click|stopPropagation={takeShot}> Share </button>
+	<button on:click|stopPropagation={takeShot}> {page ? 'Share' : 'Save'} </button>
 </div>
 
 <style>
@@ -276,10 +282,10 @@
 	.close {
 		border: 3.5px solid #abbcc6;
 		position: fixed;
-		top: 10px;
-		right: 10px;
-		width: 30px;
-		height: 30px;
+		top: 15px;
+		right: 3%;
+		width: 35px;
+		height: 35px;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -291,7 +297,10 @@
 	}
 
 	:global(.mobile) .close {
-		transform: scale(0.87);
+		width: 2rem;
+		height: 2rem;
+		top: 0.3rem;
+		right: 2%;
 	}
 	:global(.mobile) .letshare {
 		transform: scale(0.8) translate(10%, -120%);
