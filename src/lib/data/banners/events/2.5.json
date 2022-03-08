@@ -49,6 +49,65 @@
 					]
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": [
+						{
+							"name": "reign-of-serenity-2",
+							"character": "raiden-shogun",
+							"buttonBoxPosition": {
+								"w": 180,
+								"t": 10
+							}
+						},
+						{
+							"name": "drifting-luminescence-2",
+							"character": "sagonomiya-kokomi",
+							"buttonBoxPosition": {
+								"w": 180,
+								"t": 30,
+								"l": 55
+							}
+						}
+					],
+					"rateup": ["bennett", "kujou-sara", "xinyan"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-26",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "engulfing-lightning",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 20,
+								"l": 25
+							}
+						},
+						{
+							"name": "everlasting-moonglow",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 70,
+								"t": 30,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"sacrificial-bow",
+						"lithic-blade",
+						"favonius-codex",
+						"favonius-sword",
+						"dragon_s-bane"
+					]
+				}
+			}
 		}
 	]
 }
