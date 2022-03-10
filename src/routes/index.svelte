@@ -31,7 +31,7 @@
 	let isMount = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
 	$: if (audioActive) playSfx('wishBacksound');
-	else if (isMount) playSfx('wishBacksound', true);
+	else if (isMount) playSfx('wishBacksound', { paused: true });
 
 	const beginnerBanner = beginner;
 	let eventBanner;
@@ -87,7 +87,7 @@
 	onMount(async () => {
 		isMount = true;
 		setBannerVersionAndPhase();
-		window.addEventListener('blur', () => playSfx('wishBacksound', true));
+		window.addEventListener('blur', () => playSfx('wishBacksound', { paused: true }));
 		window.addEventListener('focus', () => {
 			if (audioActive) return playSfx('wishBacksound');
 			else return;

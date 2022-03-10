@@ -24,10 +24,12 @@
 
 	const playRevealAudio = () => {
 		if ($muted) return;
+		if (activeIndex > 0) {
+			const starBefore = list[activeIndex - 1].rarity;
+			playSfx(`reveal${starBefore}Star`, { paused: true });
+		}
 		const star = list[activeIndex].rarity;
-		audio.src = `/assets/sfx/reveal-${star}star.ogg`;
-		audio.currentTime = 0;
-		audio.play();
+		playSfx(`reveal${star}Star`);
 	};
 
 	const getEncoded = (index) => {
