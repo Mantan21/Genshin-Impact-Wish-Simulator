@@ -1,18 +1,13 @@
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
+import { config as envConfig } from 'dotenv';
 
-/**
- * If You wan to reduce the site bandwidth usage, you can use Statically CDN to serving some assets from your github repository
- */
+// Read Environtement Variable
+envConfig();
+const { NODE_ENV, STATICALLY, GITHUB_USER, GITHUB_REPO, GITHUB_BRANCH } = process.env;
 
-// Statically Configuration
-const statically = false; // set true to use CDN
-const githubUser = '';
-const githubRepo = '';
-const githubBranch = '';
-
-const cdn_on = process.env.NODE_ENV !== 'development' && statically;
-const cdn_url = `https://cdn.statically.io/gh/${githubUser}/${githubRepo}/${githubBranch}/static/assets/`;
+const cdn_on = NODE_ENV === 'production' && STATICALLY === 'true';
+const cdn_url = `https://cdn.statically.io/gh/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/static/assets/`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
