@@ -51,7 +51,8 @@ npm run build
 
 ## Deploying
 
-Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env`, please change the variables if needed. After that, if you want to serving some assets through cdn, you can go to `svelte.config.js` provide your Github Username, Repositories that you use to save your assets and which branch it is the site will use free cdn service for free, if you want to use another cdn service, please do setup yourself
+Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env`, please change the variables if needed.
+After that, if you want to serve some assets through cdn, you can set your Github informations that you use to save your assets. The site will use free cdn service for free, if you want to use another cdn service, please do setup yourself
 
 ## Features
 
