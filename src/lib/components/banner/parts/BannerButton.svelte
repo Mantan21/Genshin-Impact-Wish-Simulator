@@ -55,6 +55,7 @@
 		background-color: var(--secondary-color);
 		border-radius: 0.4rem;
 		width: 90px;
+		min-width: 50px;
 		aspect-ratio: 2/1;
 		margin: 0.6em;
 		position: relative;
