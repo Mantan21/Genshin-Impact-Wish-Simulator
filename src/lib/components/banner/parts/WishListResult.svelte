@@ -243,6 +243,8 @@
 	:global(.mobile) .close {
 		width: 2rem;
 		height: 2rem;
+		top: 0.3rem;
+		right: 2%;
 	}
 
 	/* Wish List */
