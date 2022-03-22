@@ -111,9 +111,9 @@
 	checkAllBanner();
 
 	const handleSearch = () => {
-		const query = searchValue.trim().toLocaleLowerCase();
-		if (query.length < 1) return;
 		groupby = 'version';
+		const query = searchValue.trim().toLocaleLowerCase();
+		if (query.length < 1) return (dataToShow = allBanners);
 		const check = (t) => t.replace(/_/g, '').replace(/-/g, ' ').includes(query);
 		const newArr = allBanners.map(([a, b]) => {
 			const filtered = b.filter(({ chars, weapons, rateup }) => {
@@ -138,7 +138,6 @@
 
 			return [a, filtered];
 		});
-		// console.log(newArr.filter((b) => b.length > 0));
 		dataToShow = newArr.filter(([, b]) => b.length > 0);
 	};
 
