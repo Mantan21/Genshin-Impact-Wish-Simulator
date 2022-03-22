@@ -108,7 +108,7 @@
 						{#if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent">
 								<img
-									src="/assets/images/utility/bg-{weaponType}.svg"
+									src="/assets/images/utility/bg-{weaponType}.webp"
 									alt={weaponType}
 									class="weaponbg"
 								/>
@@ -424,11 +424,19 @@
 	}
 
 	.splash-art.weapon img.weaponbg {
-		height: 80%;
+		height: 85%;
 	}
 	.splash-art.weapon.anim img.weaponbg {
 		opacity: 0;
 		animation: weaponbg forwards 1.5s 1;
+	}
+
+	.bow-parent .weaponbg {
+		height: 90% !important;
+		transform: translate(-53%, -50%) !important;
+	}
+	.catalyst-parent .weaponbg {
+		height: 90% !important;
 	}
 
 	.anim .bow,
@@ -446,7 +454,7 @@
 	.sword,
 	.claymore,
 	.catalyst {
-		filter: drop-shadow(0.7rem 0.6rem 0.2rem rgba(0, 0, 0, 0.7));
+		filter: drop-shadow(0.6rem 0.6rem 0.05rem rgb(0, 0, 0));
 	}
 
 	.bow {
@@ -457,21 +465,14 @@
 		height: 105% !important;
 	}
 
-	.catalyst-parent .weaponbg {
-		height: 100% !important;
-	}
 	.catalyst {
-		height: 45% !important;
+		height: 40% !important;
 	}
 
 	.polearm {
 		top: 65% !important;
 		left: 48% !important;
 		height: 130% !important;
-	}
-
-	.sword-parent .weaponbg {
-		height: 60% !important;
 	}
 
 	.bonus {
