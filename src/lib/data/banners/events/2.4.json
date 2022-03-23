@@ -71,9 +71,9 @@
 							"name": "gentry-of-hermitage-3",
 							"character": "zhongli",
 							"buttonBoxPosition": {
-								"w": 120,
+								"w": 110,
 								"t": 25,
-								"l": 70
+								"l": 66
 							}
 						},
 						{

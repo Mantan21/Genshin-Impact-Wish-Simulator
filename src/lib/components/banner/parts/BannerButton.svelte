@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import positionToStyle from '$lib/functions/cssPosition';
+	import { mobileMode } from '$lib/store/stores';
 
 	export let active = false;
 	export let type = 'events';
@@ -12,6 +13,7 @@
 		if (!position) return;
 		const tempPosition = { ...position };
 		if (!tempPosition.t) tempPosition.t = 0;
+		if (!$mobileMode) tempPosition.t = tempPosition.t - 10;
 		if (isActive) tempPosition.t = tempPosition.t - 10;
 		return positionToStyle(tempPosition);
 	};
@@ -53,10 +55,10 @@
 	button {
 		display: block;
 		background-color: var(--secondary-color);
-		border-radius: 0.4rem;
+		border-radius: 0.25rem;
 		width: 90px;
 		min-width: 50px;
-		aspect-ratio: 2/1;
+		aspect-ratio: 2.4/1;
 		margin: 0.6em;
 		position: relative;
 		transition: all.2s;
@@ -165,11 +167,11 @@
 
 	/* mobile */
 	:global(.mobile) button {
-		transform: scale(0.83);
-		margin: 0.08rem 0;
+		transform: scale(0.93);
+		margin: 0.2rem 0;
 	}
 
 	:global(.mobile) button.active {
-		transform: scale(0.86);
+		transform: scale(0.96);
 	}
 </style>
