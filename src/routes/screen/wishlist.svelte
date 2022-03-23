@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import { browser } from '$app/env';
-	import { APP_TITLE, HOST } from '$lib/env';
+	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
 	import { getName } from '$lib/functions/nameText';
@@ -66,8 +66,14 @@
 			return;
 		}
 
-		if (get5Star.length > 1) {
+		if (get5Star.length === 2) {
 			title = get5Star.map(({ name }) => getName(name)).join(' and ');
+			metaTitle = `Wow, I just got ${title} when pulling on Wish Simulator for Genshin Impact`;
+			return;
+		}
+
+		if (get5Star.length > 2) {
+			title = get5Star.map(({ name }) => getName(name)).join(', ');
 			metaTitle = `Wow, I just got ${title} when pulling on Wish Simulator for Genshin Impact`;
 			return;
 		}
@@ -113,7 +119,7 @@
 	<meta property="og:title" content={metaTitle} />
 	<meta property="twitter:title" content={metaTitle} />
 
-	<meta
+	<!-- <meta
 		name="twitter:image:src"
 		content="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/wishlist/?a={encoded}"
 	/>
@@ -129,7 +135,7 @@
 		rel="fluid-icon"
 		href="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/wishlist/?a={encoded}"
 		title={APP_TITLE}
-	/>
+	/> -->
 </svelte:head>
 
 {#if isError}

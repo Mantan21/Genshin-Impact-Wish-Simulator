@@ -2,7 +2,7 @@
 	import { browser } from '$app/env';
 	import { page } from '$app/stores';
 
-	import { APP_TITLE, HOST } from '$lib/env';
+	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -56,7 +56,7 @@
 	<meta property="og:title" content="Yeay, I just got {title} Genshin Impact" />
 	<meta property="twitter:title" content="Yeay, I just got {title} Genshin Impact" />
 
-	<meta
+	<!-- <meta
 		name="twitter:image:src"
 		content="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
 	/>
@@ -72,7 +72,7 @@
 		rel="fluid-icon"
 		href="https://mini.s-shot.ru/896x414/JPEG/896/?{HOST}/screen/chars?a={encoded}"
 		title={APP_TITLE}
-	/>
+	/> -->
 </svelte:head>
 
 {#if isError}
