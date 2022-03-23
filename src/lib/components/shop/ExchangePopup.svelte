@@ -163,7 +163,7 @@
 
 <PopUp
 	{show}
-	title="Item To Exchange"
+	title="Item To {fundType === 'genesis' ? 'Exchange' : 'Purchase'}"
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
 	button={fateQty < 1 ? 'cancel' : 'all'}

@@ -593,11 +593,10 @@
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
-		background-image: url('/assets/images/utility/5star-bg.webp');
-		background-size: cover;
-		border-radius: 10px;
+		border-radius: 0.5rem;
 		overflow: hidden;
 		text-align: center;
+		background-color: #596982;
 	}
 
 	.paimon-bargains .content picture {
@@ -608,6 +607,10 @@
 		margin-top: -10%;
 		align-items: center;
 		position: relative;
+		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-size: cover;
+		border-bottom-right-radius: 1.4rem;
+		overflow: hidden;
 	}
 	.content picture span {
 		position: absolute;
@@ -621,11 +624,9 @@
 	}
 	.paimon-bargains .content .price {
 		width: 100%;
-		height: 25%;
-		background-color: #596982;
+		height: 20%;
 		color: #fff;
-		padding: 0.5rem;
-		-webkit-text-stroke: 0.2px black;
+		-webkit-text-stroke: 0.02rem black;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -704,6 +705,12 @@
 		padding: 1rem;
 		text-align: center;
 	}
+
+	.donate .column,
+	.paimon-bargains .column {
+		padding: 0.4rem;
+	}
+
 	.donate-icon {
 		display: flex;
 		flex-wrap: wrap;

@@ -89,6 +89,10 @@
 		position: relative;
 	}
 
+	:global(.mobile) .popup-content {
+		max-width: 110vh;
+	}
+
 	.container {
 		width: 100%;
 		height: 100%;
@@ -178,7 +182,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.2em 2.5em 0.2em 0.1em;
+		padding: 0.2em 2.5em 0.3em 0.1em;
 		transition: all 0.2s;
 	}
 
