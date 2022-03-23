@@ -18,7 +18,6 @@
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
 
 	let showWishList = false;
-	let audio;
 	let wishResultContainer;
 	let activeIndex = 0;
 
@@ -82,8 +81,6 @@
 	});
 </script>
 
-<audio bind:this={audio} />
-
 <div class="wish-result">
 	<div class="uid">WishSimulator.vercel.app</div>
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
@@ -97,7 +94,9 @@
 					<i class="gi-close" />
 				</button>
 			{:else}
-				<button class="skip" on:click|stopPropagation={skipHandle}>Skip</button>
+				<button class="skip" on:click|stopPropagation={skipHandle}
+					>Skip <i class="gi-caret-up" /></button
+				>
 			{/if}
 
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
@@ -232,12 +231,19 @@
 		top: 2%;
 		right: 2%;
 		color: #fff;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		z-index: 10;
 	}
 
+	.gi-caret-up {
+		display: inline-block;
+		transform: rotate(90deg) translateX(-0.1rem);
+		vertical-align: middle;
+		margin-left: -0.5em;
+	}
+
 	:global(.mobile) .skip {
-		font-size: 1.4rem;
+		font-size: 0.8rem;
 		right: 1rem;
 		top: 1rem;
 	}
