@@ -281,6 +281,7 @@
 													src="/assets/images/banner/{patch}/{name}.webp"
 													alt={getName(character)}
 													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
+													class="dual{i + 1}"
 												/>
 											{/each}
 										</div>
@@ -510,11 +511,20 @@
 	}
 	.item img {
 		width: 49.5%;
-		object-position: 88%;
 	}
+
 	.dual {
 		width: 50%;
 		display: flex;
+	}
+
+	.dual1 {
+		object-position: 60%;
+		width: 40% !important;
+	}
+	.dual2 {
+		object-position: 100%;
+		width: 60% !important;
 	}
 
 	.item .name {
