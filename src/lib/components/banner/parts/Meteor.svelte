@@ -161,7 +161,7 @@
 			<source src="/assets/videos/5star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<button class="skip" on:click={skip}>Skip</button>
+		<button class="skip" on:click={skip}>Skip <i class="gi-caret-up" /></button>
 	</div>
 </div>
 
@@ -204,15 +204,22 @@
 		top: 2%;
 		right: 2%;
 		color: #fff;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
+		z-index: 10;
+	}
+
+	.gi-caret-up {
+		display: inline-block;
+		transform: rotate(90deg) translateX(-0.1rem);
+		vertical-align: middle;
+		margin-left: -0.5em;
 	}
 
 	:global(.mobile) .skip {
-		font-size: 1.4rem;
+		font-size: 0.8rem;
 		right: 1rem;
 		top: 1rem;
 	}
-
 	video {
 		display: none;
 		position: absolute;
