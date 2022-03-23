@@ -10,7 +10,7 @@
 						"name": "everbloom-violet-1",
 						"character": "yae-miko",
 						"buttonBoxPosition": {
-							"w": 190,
+							"w": 170,
 							"t": 24,
 							"l": 50
 						}
@@ -60,15 +60,15 @@
 							"name": "reign-of-serenity-2",
 							"character": "raiden-shogun",
 							"buttonBoxPosition": {
-								"w": 180,
-								"t": 10
+								"w": 160,
+								"t": 5
 							}
 						},
 						{
 							"name": "drifting-luminescence-2",
 							"character": "sagonomiya-kokomi",
 							"buttonBoxPosition": {
-								"w": 180,
+								"w": 160,
 								"t": 30,
 								"l": 55
 							}

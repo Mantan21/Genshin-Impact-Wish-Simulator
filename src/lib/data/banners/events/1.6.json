@@ -73,7 +73,7 @@
 							"type": "sword",
 							"buttonBoxPosition": {
 								"w": 100,
-								"t": -10,
+								"t": -20,
 								"l": 25
 							}
 						},
@@ -82,7 +82,7 @@
 							"type": "catalyst",
 							"buttonBoxPosition": {
 								"w": 75,
-								"t": 50,
+								"t": 40,
 								"l": 72
 							}
 						}
