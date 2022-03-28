@@ -159,12 +159,12 @@
 	}
 
 	.roll-button button {
-		background-image: url('/assets/images/utility/button.svg');
+		background-image: url('/assets/images/utility/button.webp');
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;
 		width: 230px;
-		height: 60px;
+		aspect-ratio: 355/88;
 		margin: 0 5px;
 		display: inline-flex;
 		justify-content: center;
@@ -194,7 +194,6 @@
 		margin-right: -0.7rem !important;
 		margin-left: -0.7rem !important;
 		font-size: 0.75rem;
-		transform: scale(0.87);
 	}
 	:global(.mobile) .roll-button :global(img) {
 		transform: scale(0.7);
