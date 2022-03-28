@@ -16,7 +16,6 @@
 	import { HOST, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
-	import Limit from '$lib/components/utility/Limit.svelte';
 	import '../app.css';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 
@@ -32,8 +31,6 @@
 		const rotate = angle === 90 || angle === 270;
 		mobileMode.set(rotate);
 	};
-
-	let limit = true;
 
 	onMount(() => {
 		importLocalBalance();
@@ -68,16 +65,12 @@
 	<meta property="al:web:url" content={HOST} />
 </svelte:head>
 
-{#if !preview && !limit}
+{#if !preview}
 	<Disclaimer />
 {/if}
 
 <main class:mobile={$mobileMode} class:preview>
-	{#if limit}
-		<Limit />
-	{:else}
-		<slot />
-	{/if}
+	<slot />
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.vercel.app </a>
 
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />

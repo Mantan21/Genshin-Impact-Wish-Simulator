@@ -245,7 +245,7 @@
 	:global(.mobile) .skip {
 		font-size: 0.8rem;
 		right: 1rem;
-		top: 1rem;
+		top: 0.5rem;
 	}
 
 	/* Fate */
