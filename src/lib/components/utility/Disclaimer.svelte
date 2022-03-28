@@ -12,7 +12,7 @@
 		bannerActive.set(0);
 	};
 
-	const { date, description } = data[data.length - 1];
+	const updates = data.filter(({ featured }) => !!featured);
 
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
@@ -28,10 +28,13 @@
 	<section>
 		<p class="sp">This is purely a fan made Application, enjoy it !</p>
 		<div class="updates" bind:this={content}>
-			<span>
-				Latest Update ( <i class="tgl"> {date} </i> )
-			</span>
-			{#each description as txt} <p>{@html txt}</p> {/each}
+			{#each updates.reverse() as { description, date }, i (i)}
+				<span>
+					<i class="tgl"> {date} </i>
+					{#if i === 0} ( Latest Update ) {/if}
+				</span>
+				{#each description as txt} <p>{@html txt}</p> {/each}
+			{/each}
 			<div style="height: .5rem" />
 		</div>
 		<span style="font-size: 1rem">Support</span>
