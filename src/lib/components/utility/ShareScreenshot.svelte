@@ -170,6 +170,7 @@
 	.shr span {
 		display: inline-flex;
 		align-items: center;
+		-webkit-text-stroke: 0.02rem #000;
 	}
 	button {
 		background-color: #d9d2c8;
