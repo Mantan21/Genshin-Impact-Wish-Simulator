@@ -163,9 +163,15 @@
 		background-image: url('/assets/images/utility/4star-bg.webp');
 	}
 
+	.acquaint .pic,
+	.intertwined .pic {
+		padding: 0.55rem;
+	}
+
 	.pic {
 		background-size: cover;
 		position: relative;
+		border-bottom-right-radius: 0.8em;
 	}
 	.star {
 		position: absolute;
