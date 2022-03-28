@@ -86,6 +86,16 @@
 					}
 				},
 				{
+					"name": "kamisato-ayato",
+					"vision": "hydro",
+					"limited": true,
+					"wishBoxPosition": {
+						"h": 210,
+						"l": 100,
+						"t": 90
+					}
+				},
+				{
 					"name": "keqing",
 					"vision": "electro",
 					"wishBoxPosition": {
