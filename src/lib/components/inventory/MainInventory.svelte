@@ -534,6 +534,7 @@
 		will-change: auto;
 		aspect-ratio: 8.75 / 10;
 		width: 20vh;
+		max-width: 150px;
 	}
 	:global(.mobile) .item {
 		width: 24vh;
