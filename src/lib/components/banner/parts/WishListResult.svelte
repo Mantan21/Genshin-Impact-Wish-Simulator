@@ -251,9 +251,9 @@
 	.wishlist,
 	.shadows {
 		display: block;
-		height: 40vw;
-		max-height: 67vh;
-		min-height: 50vh;
+		height: 55vh;
+		max-height: 430px;
+		min-height: 300px;
 		width: 100%;
 		padding: 0 20px;
 		white-space: nowrap;
