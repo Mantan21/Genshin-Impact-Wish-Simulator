@@ -1,5 +1,5 @@
 import { getAllChars, get3StarItem, get4StarItem, standardChars5Star, rand } from './wishBase';
-import { nextGuaranteed } from '$lib/store/localstore';
+import { guaranteedStatus } from '$lib/store/localstore';
 
 const limitedWish = {
 	init(eventsData, indexOfBanner) {
@@ -35,20 +35,20 @@ const limitedWish = {
 		if (rarity === 5) {
 			// Guaranteed
 			const limitedResult = this._featuredChars();
-			if (nextGuaranteed.get() === 'yes') {
-				nextGuaranteed.set('no');
+			if (guaranteedStatus.get('events')) {
+				guaranteedStatus.set('events', false);
 				return limitedResult;
 			}
 
 			// not guaranteed
 			const resultType = rand(['limited', 'std']);
 			if (resultType === 'std') {
-				nextGuaranteed.set('yes');
+				guaranteedStatus.set('events', true);
 				return rand(standardChars5Star(excluded));
 			}
 
 			// win 50: 50
-			nextGuaranteed.set('no');
+			guaranteedStatus.set('events', false);
 			return limitedResult;
 		}
 	}

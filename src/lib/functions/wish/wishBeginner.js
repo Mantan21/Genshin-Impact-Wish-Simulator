@@ -1,4 +1,4 @@
-import { beginnerAlreadyGuaranteed, beginnerRoll } from '$lib/store/localstore';
+import { guaranteedStatus, beginnerRoll } from '$lib/store/localstore';
 import { showBeginner } from '$lib/store/stores';
 import { get3StarItem, get4StarItem, get4StarChars, getStandard5StarItem } from './wishBase';
 import prob from './prob';
@@ -6,7 +6,8 @@ import prob from './prob';
 const beginerWish = (rarity, beginnerData, standardData, { version, phase }) => {
 	let { character, vision } = beginnerData;
 
-	const alreadyGetFeatured = beginnerAlreadyGuaranteed.get() === 'yes';
+	const alreadyGetFeatured = guaranteedStatus.get('beginner');
+	console.log(alreadyGetFeatured);
 	const rollCount = beginnerRoll.get() || 0;
 	beginnerRoll.set(rollCount + 1);
 
@@ -15,7 +16,7 @@ const beginerWish = (rarity, beginnerData, standardData, { version, phase }) => 
 		showBeginner.set(false);
 		// if already get Noelle, no more guaranteed
 		if (!alreadyGetFeatured) {
-			beginnerAlreadyGuaranteed.set('yes');
+			guaranteedStatus.set('beginner', true);
 			return { type: 'character', rarity: 4, name: character, vision };
 		}
 	}
@@ -39,14 +40,14 @@ const beginerWish = (rarity, beginnerData, standardData, { version, phase }) => 
 			const rng = prob(item);
 			if (rng.name === 'rateup') {
 				// guaranteed probability
-				beginnerAlreadyGuaranteed.set('yes');
+				guaranteedStatus.set('beginner', true);
 				return get4StarChars.find((c) => c.name === character);
 			}
 		}
 
 		// get Random item
 		const result = get4StarItem('standard', version, phase);
-		if (result.name === character) beginnerAlreadyGuaranteed.set('yes');
+		if (result.name === character) guaranteedStatus.set('beginner', true);
 		return result;
 	}
 };

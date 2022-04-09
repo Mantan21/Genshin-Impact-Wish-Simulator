@@ -34,36 +34,23 @@ const beginnerRoll = {
 	}
 };
 
-const beginnerAlreadyGuaranteed = {
-	set(opt) {
-		localStorage.setItem('beginnerAlreadyGuaranteed', opt);
-		return opt;
+const guaranteedStatus = {
+	_getData() {
+		const status = localStorage.getItem('guaranteedStatus');
+		if (!status) return { status: {} };
+		const parsed = JSON.parse(status);
+		return parsed;
 	},
-	get() {
-		let isGuaranteed = localStorage.getItem('beginnerAlreadyGuaranteed');
-		return isGuaranteed;
-	}
-};
 
-const nextGuaranteed = {
-	set(opt) {
-		localStorage.setItem('nextGuaranteed', opt);
-		return opt;
+	set(key, value = false) {
+		const { status } = this._getData();
+		status[key] = !!value;
+		localStorage.setItem('guaranteedStatus', JSON.stringify({ status }));
 	},
-	get() {
-		const isGuaranteed = localStorage.getItem('nextGuaranteed');
-		return isGuaranteed;
-	}
-};
 
-const nextWeaponGuaranteed = {
-	set(opt) {
-		localStorage.setItem('nextWeaponGuaranteed', opt);
-		return opt;
-	},
-	get() {
-		const isGuaranteed = localStorage.getItem('nextWeaponGuaranteed');
-		return isGuaranteed;
+	get(key) {
+		const { status } = this._getData();
+		return !!status[key];
 	}
 };
 
@@ -171,9 +158,7 @@ export {
 	pity4star,
 	pity5star,
 	beginnerRoll,
-	beginnerAlreadyGuaranteed,
-	nextGuaranteed,
-	nextWeaponGuaranteed,
+	guaranteedStatus,
 	localBalance,
 	localBannerVersion,
 	firstShare,
