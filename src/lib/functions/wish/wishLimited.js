@@ -26,10 +26,21 @@ const limitedWish = {
 		if (rarity === 3) return get3StarItem();
 		if (rarity === 4) {
 			const resultType = rand(['rateup', 'std']);
-			if (resultType === 'std') return get4StarItem('limited', version, phase);
 
 			// If rate up character
-			return rand(this._rateupChars());
+			if (resultType === 'rateup' || guaranteedStatus.get('events4Star')) {
+				const result = rand(this._rateupChars());
+				guaranteedStatus.set('events4Star', false);
+				return result;
+			}
+
+			// Non-Rateup Items
+			const result = get4StarItem('limited', version, phase);
+			const isItemRateup = this._rateupChars()
+				.map(({ name }) => name)
+				.includes(result.name);
+			guaranteedStatus.set('events4Star', !isItemRateup);
+			return result;
 		}
 
 		if (rarity === 5) {

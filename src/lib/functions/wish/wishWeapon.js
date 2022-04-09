@@ -64,10 +64,20 @@ const weaponWish = {
 		if (rarity === 3) return get3StarItem();
 		if (rarity === 4) {
 			const resultType = rand(['rateup', 'std']);
-			if (resultType === 'std') return get4StarItem('weapons', this._weapons, this._phase);
+			if (resultType === 'std') {
+				// If rate up Weapons
+				const result = rand(this._rateupWeapons());
+				guaranteedStatus.set('weapons4Star', false);
+				return result;
+			}
 
-			// If rate up character
-			return rand(this._rateupWeapons());
+			// Non-Rateup Items
+			const result = get4StarItem('weapons', this._weapons, this._phase);
+			const isItemRateup = this._rateupWeapons()
+				.map(({ name }) => name)
+				.includes(result.name);
+			guaranteedStatus.set('weapons4Star', !isItemRateup);
+			return result;
 		}
 
 		if (rarity === 5) {
