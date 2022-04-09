@@ -6,12 +6,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// store
-	import {
-		beginnerAlreadyGuaranteed,
-		beginnerRoll,
-		pity4star,
-		pity5star
-	} from '$lib/store/localstore';
+	import { beginnerRoll, guaranteedStatus, pity4star, pity5star } from '$lib/store/localstore';
 	import { bannerActive, bannerList, pageActive, showBeginner, query } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 
@@ -50,10 +45,7 @@
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
 		if (!browser) return [];
-		const bannerList =
-			banner === 'events'
-				? [...(await getList('limited')), ...(await getList(banner))]
-				: await getList(banner);
+		const bannerList = await getList(banner);
 		data = bannerList.map((d) => d).reverse();
 		return data;
 	};
@@ -72,13 +64,13 @@
 
 	const confirmReset = async () => {
 		await resetHistory(banner);
-		if (banner === 'events') await resetHistory('limited');
 		pity5star.set(banner, 0);
 		pity4star.set(banner, 0);
+		guaranteedStatus.set(banner, false);
+		if (!['beginner', 'standard'].includes(banner)) guaranteedStatus.set(`${banner}4Star`, false);
 		if (banner === 'beginner') {
 			beginnerRoll.set(0);
 			showBeginner.set(true);
-			beginnerAlreadyGuaranteed.set('no');
 		}
 		pity = 0;
 		data = [];

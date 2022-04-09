@@ -1,4 +1,4 @@
-import { localFatePoint, nextWeaponGuaranteed } from '$lib/store/localstore';
+import { localFatePoint, guaranteedStatus } from '$lib/store/localstore';
 import { fatePoint, selectedCourse } from '$lib/store/stores';
 import { rand, getAllWeapons, get3StarItem, get4StarItem, standardWeapons } from './wishBase';
 import prob from './prob';
@@ -74,11 +74,11 @@ const weaponWish = {
 			const { _version, _phase, _weapons } = this;
 			const course = fatepoint.init(_version, _phase, _weapons.featured);
 			const { localSelectedCourse, localPoint } = course.check();
-			const isGuaranteed = nextWeaponGuaranteed.get() === 'yes';
+			const isGuaranteed = guaranteedStatus.get('weapons');
 
 			// When Fatepoint already Filled, guaranteed to pull selected Weapon
 			if (localPoint > 1) {
-				nextWeaponGuaranteed.set('no');
+				guaranteedStatus.set('weapons', false);
 				const result = this._featuredWeapons().find(({ name }) => {
 					return _weapons.featured[localSelectedCourse - 1].name === name;
 				});
@@ -98,8 +98,8 @@ const weaponWish = {
 				if (type === 'std') {
 					const result = rand(standardWeapons(5));
 					const isFeaturedStandardWeapon = this._featuredWeaponsName().includes(result.name);
-					if (isFeaturedStandardWeapon) nextWeaponGuaranteed.set('no');
-					else nextWeaponGuaranteed.set('yes');
+					if (isFeaturedStandardWeapon) guaranteedStatus.set('weapons', false);
+					else guaranteedStatus.set('weapons', true);
 					course.updater(result);
 					return result;
 				}
@@ -107,7 +107,7 @@ const weaponWish = {
 
 			// When Guaranteed and win rate off
 			const result = rand(this._featuredWeapons());
-			nextWeaponGuaranteed.set('no');
+			guaranteedStatus.set('weapons', false);
 			course.updater(result);
 			return result;
 		}
