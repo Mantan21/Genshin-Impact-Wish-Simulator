@@ -258,10 +258,6 @@
 					"limited": true
 				},
 				{
-					"name": "whiteblind",
-					"weaponType": "claymore"
-				},
-				{
 					"name": "wine-and-song",
 					"weaponType": "catalyst",
 					"limited": true
