@@ -10,7 +10,8 @@
 		muted,
 		pageActive,
 		patchVersion,
-		unlimitedFates
+		unlimitedFates,
+		viewportHeight
 	} from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
 	import updates from '$lib/setup/updates.json';
@@ -57,6 +58,21 @@
 		const optionValue = selected === 'yes';
 		localConfig.set('muted', optionValue);
 		muted.set(optionValue);
+	};
+
+	// Fullscreen
+	$: fullscreen = browser ? $viewportHeight === window.screen.height : false;
+	const handleFullscreen = () => {
+		if (!fullscreen) {
+			const body = document.body;
+			if (body.requestFullscreen) return body.requestFullscreen();
+			if (body.webkitRequestFullscreen) return body.webkitRequestFullscreen();
+			if (body.msRequestFullscreen) return body?.msRequestFullscreen();
+		} else {
+			if (document.exitFullscreen) return document?.exitFullscreen();
+			if (document.webkitExitFullscreen) return document?.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document?.msExitFullscreen();
+		}
 	};
 
 	// Reset
@@ -163,6 +179,13 @@
 								{$patchVersion} - {$bannerPhase}
 							</button>
 						</div>
+
+						<Option
+							text="Display Fullscreen"
+							activeIndicator={fullscreen}
+							on:select={handleFullscreen}
+						/>
+
 						<div class="option">
 							<div class="option-name">Clear Data and Restore Default</div>
 							<button class="option-select" on:click={reset}>
