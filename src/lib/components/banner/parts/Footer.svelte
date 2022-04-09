@@ -65,18 +65,23 @@
 			<button on:click={() => changePage('history')}> History </button>
 		</div>
 		<div class="right roll-button">
-			<button class="single" on:click={handleSingleRollClick}>
-				<div class="top">Wish x1</div>
-				<div class="bottom">
-					<Icon type={fateType} />
-					<span style="margin-left: 7px">
-						x
-						<span class:red={fateQty < 1 && !$unlimitedFates}> 1 </span></span
-					>
-				</div>
-			</button>
+			{#if bannerActiveType !== 'beginner'}
+				<button class="single" on:click={handleSingleRollClick}>
+					<div class="top">Wish x1</div>
+					<div class="bottom">
+						<Icon type={fateType} />
+						<span style="margin-left: 7px">
+							x
+							<span class:red={fateQty < 1 && !$unlimitedFates}> 1 </span></span
+						>
+					</div>
+				</button>
+			{/if}
 
 			<button class="ten" on:click={handleMultiRollClick}>
+				{#if bannerActiveType === 'beginner'}
+					<span class="discount">-20%</span>
+				{/if}
 				<div class="top">Wish x10</div>
 				<div class="bottom">
 					<Icon type={fateType} />
@@ -176,6 +181,24 @@
 	.roll-button button .bottom {
 		display: flex;
 		align-items: center;
+	}
+
+	.discount {
+		background-color: #8ab958;
+		position: absolute;
+		z-index: +2;
+		left: 15%;
+		top: -5%;
+		border-radius: 20px;
+		color: #fff;
+		transform: scale(0.8) translateX(-50%);
+		padding: 0.2rem 0.5rem;
+	}
+
+	@media screen and (min-width: 750px) {
+		.discount {
+			font-size: 0.7rem;
+		}
 	}
 
 	/* mobile */
