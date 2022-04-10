@@ -18,7 +18,7 @@
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import '../app.css';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
-	import Ads from '$lib/components/utility/Ads.svelte';
+	import Ads from '$lib/components/utility/Iklan.svelte';
 
 	$: preview = $page.path.split('/')[1] === 'screen';
 

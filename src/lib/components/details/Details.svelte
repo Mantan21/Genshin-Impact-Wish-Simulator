@@ -15,7 +15,7 @@
 	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/functions/wish/wishBase';
 	import { getName } from '$lib/functions/nameText';
 	import Description from './Description.svelte';
-	import Ads from '../utility/Ads.svelte';
+	import Ads from '../utility/Iklan.svelte';
 
 	$: banner = $bannerList[$bannerActive].type;
 
