@@ -1,7 +1,7 @@
 <script>
 	import { APP_TITLE } from '$lib/env';
 	import { getName } from '$lib/functions/nameText';
-	import Ads from '../utility/Ads.svelte';
+	import Ads from '../utility/Iklan.svelte';
 
 	export let bannerType;
 	export let bannerName = '';
