@@ -18,6 +18,7 @@
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import '../app.css';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
+	import Ads from '$lib/components/utility/Ads.svelte';
 
 	$: preview = $page.path.split('/')[1] === 'screen';
 
@@ -64,6 +65,8 @@
 	<meta property="twitter:description" content={DESCRIPTION} />
 	<meta property="al:web:url" content={HOST} />
 </svelte:head>
+
+<Ads />
 
 {#if !preview}
 	<Disclaimer />

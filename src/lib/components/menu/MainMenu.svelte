@@ -181,7 +181,7 @@
 						</div>
 
 						<Option
-							text="Display Fullscreen"
+							text="Display Fullscreen (press F11)"
 							activeIndicator={fullscreen}
 							on:select={handleFullscreen}
 						/>

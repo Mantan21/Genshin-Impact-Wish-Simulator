@@ -1,6 +1,7 @@
 <script>
 	import { APP_TITLE } from '$lib/env';
 	import { getName } from '$lib/functions/nameText';
+	import Ads from '../utility/Ads.svelte';
 
 	export let bannerType;
 	export let bannerName = '';
@@ -19,6 +20,8 @@
 		{bannerName} | {APP_TITLE}
 	</title>
 </svelte:head>
+
+<Ads type="banner" />
 
 {#if bannerType === 'beginner'}
 	<h3>No time limit (Closes after 20 wishes)</h3>
@@ -279,6 +282,8 @@
 		and is independent of the guarantee counts of other wishes.
 	</p>
 {/if}
+
+<Ads type="banner" />
 
 <style>
 	span {

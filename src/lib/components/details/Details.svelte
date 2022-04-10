@@ -12,9 +12,10 @@
 		patchVersion
 	} from '$lib/store/stores';
 	import { beginner } from '$lib/data/banners/beginner.json';
-	import Description from './Description.svelte';
 	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/functions/wish/wishBase';
 	import { getName } from '$lib/functions/nameText';
+	import Description from './Description.svelte';
+	import Ads from '../utility/Ads.svelte';
 
 	$: banner = $bannerList[$bannerActive].type;
 
@@ -54,7 +55,10 @@
 				rarity: 4,
 				items: [{ name: character, title, vision }]
 			};
+
 			items = [obj];
+			bannerTitle = 'Beginner Wish';
+
 			drop5star = this._standard.characters.map((name) => ({ name, type: 'character' }));
 			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
 			drop4star = allItems
@@ -65,6 +69,8 @@
 		_showStandard() {
 			drop5star = this._standard.characters.map((name) => ({ name, type: 'character' }));
 			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
+			bannerTitle = 'Wanderlust Invocation';
+
 			drop4star = allItems
 				.filter(({ release }) => {
 					if (!release) return true;
@@ -311,6 +317,8 @@
 					</div>
 				</div>
 			</div>
+
+			<Ads type="banner" />
 
 			<h3 class="star3">
 				<div class="star">
