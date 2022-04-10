@@ -28,6 +28,7 @@
 	// Components
 	import MainBanner from '$lib/components/banner/MainBanner.svelte';
 	import PreviousBannerList from '$lib/components/banner/PreviousBannerList.svelte';
+	import Details from '$lib/components/details/Details.svelte';
 	import History from '$lib/components/history/MainHistory.svelte';
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
@@ -124,6 +125,10 @@
 
 {#if $pageActive === 'previous-banner'}
 	<PreviousBannerList />
+{/if}
+
+{#if $pageActive === 'details'}
+	<Details />
 {/if}
 
 {#if $pageActive === 'history'}

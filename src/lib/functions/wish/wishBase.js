@@ -22,7 +22,7 @@ const getAllWeapons = (star) =>
 		});
 
 const standardWeapons = (star) => getAllWeapons(star).filter(({ limited }) => !limited);
-const standardChars5Star = (exclude) => getAllChars(5).filter(({ name }) => exclude.includes(name));
+const standardChars5Star = (chars) => getAllChars(5).filter(({ name }) => chars.includes(name));
 
 const get4StarChars = getAllChars(4).filter(({ name }) => {
 	return !charsDB.onlyStandard.includes(name);
