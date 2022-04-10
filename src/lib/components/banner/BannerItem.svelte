@@ -7,10 +7,12 @@
 		patchVersion,
 		bannerList,
 		fatePoint,
-		selectedCourse
+		selectedCourse,
+		pageActive
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/functions/browserState';
 
 	$: style =
 		$viewportHeight > 800 ||
@@ -30,16 +32,25 @@
 			return bannerActive.update((n) => n - 1);
 		}
 	};
+
+	const openDetails = () => {
+		pageActive.set('details');
+		browserState.set('details');
+		return playSfx();
+	};
 </script>
 
 <div class="banner" {style}>
 	{#if activeBanner.type === 'beginner'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
-			<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
+			<div class="banner-content">
+				<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
+				<button class="detail" on:click={openDetails}> Details </button>
+			</div>
 		</div>
 	{:else if activeBanner.type === 'weapons'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
-			<div class="weapon-banner">
+			<div class="banner-content">
 				<img
 					src="/assets/images/banner/{$patchVersion}/{activeBanner.weapons.name}.webp"
 					alt="Weapon Banner"
@@ -50,23 +61,31 @@
 						Course Set For: {getName($selectedCourse.name)}
 					</div>
 				{/if}
+				<button class="detail" on:click={openDetails}> Details </button>
 			</div>
 		</div>
 	{:else if activeBanner.type === 'standard'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
-			<img
-				src="/assets/images/banner/standard/{activeBanner.character.name}.webp"
-				alt="Standard Banner"
-			/>
+			<div class="banner-content">
+				<img
+					src="/assets/images/banner/standard/{activeBanner.character.name}.webp"
+					alt="Standard Banner"
+				/>
+				<button class="detail" on:click={openDetails}> Details </button>
+			</div>
 		</div>
 	{:else if activeBanner.type === 'events'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
-			<img
-				src="/assets/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
-				alt="Character Events Banner"
-			/>
+			<div class="banner-content">
+				<img
+					src="/assets/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
+					alt="Character Events Banner"
+				/>
+				<button class="detail" on:click={openDetails}> Details </button>
+			</div>
 		</div>
 	{/if}
+
 	<div class="navigate">
 		{#if $bannerActive > 0}
 			<button
@@ -106,11 +125,11 @@
 		transform: translateX(-50%);
 	}
 	img,
-	.weapon-banner {
+	.banner-content {
 		max-height: 100%;
 		max-width: 100%;
 	}
-	.weapon-banner {
+	.banner-content {
 		position: relative;
 	}
 
@@ -156,5 +175,22 @@
 
 	.selected.fill {
 		background-color: #62c5ff;
+	}
+	.detail {
+		position: absolute;
+		left: 5%;
+		bottom: 13%;
+		background-color: #eee8e3;
+		color: rgba(0, 0, 0, 0.5);
+		padding: 0.2rem 1.5rem;
+		border-radius: 20px;
+		border: #e2d7b6 0.1rem solid;
+		font-size: 0.9rem;
+		transition: all 0.2s;
+	}
+
+	.detail:hover {
+		background-color: #e2d7b6;
+		color: rgba(0, 0, 0, 1);
 	}
 </style>
