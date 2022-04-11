@@ -208,9 +208,10 @@
 		Event Wish "<span>{bannerName.split(' ')[0]}</span>
 		{bannerName.split(' ').slice(1).join(' ')}" is now available. During this event wish,the
 		event-exclusive 5-star weapon
-		<span class="geo"> {item5Star[0].name} ({item5Star[0].type})</span>
-		and the 5-star weapon <span class="pyro"> {item5Star[1].name} ({item5Star[1].type})</span> as
-		well as the 4-star weapons
+		<span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
+		and the 5-star weapon
+		<span class="pyro"> {getName(item5Star[1].name)} ({item5Star[1].type})</span>
+		as well as the 4-star weapons
 		<span class="stardust">
 			{#each item4Star as { name, type }}
 				{getName(name)} ({type}),
@@ -227,20 +228,23 @@
 	<p>〓Rules〓</p>
 	<p>5-Star Items</p>
 	<p>
-		For Event Wish "<span> Epitome</span> Invocation": Base probability of winning 5-star weapon =
+		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
+		{bannerName.split(' ').slice(1).join(' ')}": Base probability of winning 5-star weapon =
 		<span> 0.700%</span>; consolidated probability (incl. guarantee) = <span> 1.850%</span> ;
 		guaranteed to win 5-star weapon at least once per <span> 80</span> attempts. The first time you
 		win a 5-star weapon in this event, there is a <span> 75%</span> chance it will be one of the
-		promotional weapons <span class="geo"> {item5Star[0].name} ({item5Star[0].type})</span> and
-		<span class="geo"> {item5Star[1].name} ({item5Star[1].type})</span>. If the first 5-star weapon
-		you win in this event wish is not one of the promotional weapons, then the next 5-star weapon
-		you win is <span> guaranteed</span> to be a promotional weapon.
+		promotional weapons <span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
+		and
+		<span class="geo"> {getName(item5Star[1].name)} ({item5Star[1].type})</span>. If the first
+		5-star weapon you win in this event wish is not one of the promotional weapons, then the next
+		5-star weapon you win is <span> guaranteed</span> to be a promotional weapon.
 	</p>
 
 	<p>4-Star Items</p>
 
 	<p>
-		For Event Wish "<span> Epitome</span> Invocation": Base probability of winning 4-star item =
+		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
+		{bannerName.split(' ').slice(1).join(' ')}": Base probability of winning 4-star item =
 		<span> 6.000%</span>; base probability of winning 4-star character = <span>3.000%</span> , and
 		base probability of winning 4-star weapon = <span> 3.000%</span>; consolidated probability
 		(incl. guarantee) of winning 4-star item = <span> 14.500%</span>; guaranteed to win 4-star or
