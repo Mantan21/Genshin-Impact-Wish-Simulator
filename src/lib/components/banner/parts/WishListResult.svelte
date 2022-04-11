@@ -437,6 +437,7 @@
 	.weapon .pic img.wishpic {
 		top: 50%;
 		height: 100%;
+		filter: drop-shadow(0.2rem 0.2rem 0.05rem rgb(0, 0, 0));
 	}
 	.pic > .wishpic.catalyst-item {
 		height: 35% !important;
