@@ -34,6 +34,7 @@
 			const { standard } = await import(`../../data/banners/standard/${standardVersion}.json`);
 			drop3star = getAllWeapons(3).map(({ name, type }) => ({ name, type }));
 
+			this._std = ['amber', 'kaeya', 'lisa'];
 			this._events = events;
 			this._weapons = weapons;
 			this._standard = standard;
@@ -63,11 +64,14 @@
 			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
 			drop4star = allItems
 				.filter(({ limited }) => !limited)
-				.map(({ type, name }) => ({ name, type }));
+				.map(({ type, name }) => ({ name, type }))
+				.filter(({ name }) => !this._std.includes(name));
 		},
 
 		_showStandard() {
-			drop5star = this._standard.characters.map((name) => ({ name, type: 'character' }));
+			const weapon5 = getAllWeapons(5).filter(({ limited }) => !limited);
+			const char5 = this._standard.characters.map((name) => ({ name, type: 'character' }));
+			drop5star = [...char5, ...weapon5];
 			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
 			bannerTitle = 'Wanderlust Invocation';
 
@@ -105,10 +109,9 @@
 			];
 			featured = items[0].items;
 
-			const std = ['amber', 'kaeya', 'lisa'];
 			drop4star = drop4star
 				.filter(({ name }) => !this._events.rateup.includes(name))
-				.filter(({ name }) => !std.includes(name));
+				.filter(({ name }) => !this._std.includes(name));
 			const rateupDrop = rateUpchar.map(({ name }) => ({ name, type: 'character', rateup: true }));
 			drop4star.unshift(...rateupDrop);
 		},
@@ -134,10 +137,9 @@
 				.map(({ name }) => ({ name, type: 'weapon' }));
 			drop5star.unshift(...weapon5.map(({ name }) => ({ name, type: 'weapon', rateup: true })));
 
-			const std = ['amber', 'kaeya', 'lisa'];
 			drop4star = drop4star
 				.filter(({ name }) => !this._events.rateup.includes(name))
-				.filter(({ name }) => !std.includes(name));
+				.filter(({ name }) => !this._std.includes(name));
 			const rateupDrop = weapons4.map(({ name }) => ({ name, type: 'weapon', rateup: true }));
 			drop4star.unshift(...rateupDrop);
 		}
@@ -404,7 +406,7 @@
 		display: block;
 		background-color: rgb(20, 18, 15);
 		width: 100%;
-		position: sticky;
+		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: +10;

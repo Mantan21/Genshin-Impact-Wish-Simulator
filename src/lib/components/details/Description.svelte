@@ -123,7 +123,7 @@
 		</span>
 		as well as 4-star characters
 		{#each item4Star as { name, vision, title }, i}
-			<span class={vision}> "{title}" {getName(name)} (vision)</span>
+			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
 			{#if i === 1} and {:else},&nbsp; {/if}
 		{/each}
 		will get a <span> huge drop-rate boost! </span> <br />
