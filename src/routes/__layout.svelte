@@ -64,9 +64,8 @@
 	<meta property="og:url" content={HOST} />
 	<meta property="twitter:description" content={DESCRIPTION} />
 	<meta property="al:web:url" content={HOST} />
+	<Ads />
 </svelte:head>
-
-<Ads />
 
 {#if !preview}
 	<Disclaimer />
