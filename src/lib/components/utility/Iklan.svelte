@@ -44,6 +44,10 @@
 			mads="2"></script>
 	{/if}
 
+	{#if ad === 1 || $isMobile}
+		<script type="text/javascript" src="https://wap4dollar.com/ad/pops/?id=jnf1abpn5a"></script>
+	{/if}
+
 	<script
 		async
 		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874822310102113"
