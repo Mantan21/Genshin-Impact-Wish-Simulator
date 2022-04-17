@@ -54,6 +54,54 @@
 					"rateup": ["the-flute", "rust", "dragon_s-bane", "the-widsith", "sacrificial-greatsword"]
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": {
+						"name": "the-heron_s-court-2",
+						"character": "kamisato-ayaka",
+						"buttonBoxPosition": {
+							"w": 82,
+							"t": 32
+						}
+					},
+					"rateup": ["razor", "rosaria", "sayu"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-28",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "mistsplitter-reforged",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": -20,
+								"l": 30
+							}
+						},
+						{
+							"name": "the-unforged",
+							"type": "claymore",
+							"buttonBoxPosition": {
+								"w": 60,
+								"t": 10,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"favonius-codex",
+						"favonius-lance",
+						"favonius-warbow",
+						"favonius-sword",
+						"the-bell"
+					]
+				}
+			}
 		}
 	]
 }
