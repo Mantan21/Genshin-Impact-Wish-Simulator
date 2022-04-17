@@ -116,6 +116,11 @@
 		width: 35rem;
 		text-align: center;
 	}
+
+	:global(.mobile) .content {
+		transform: scale(0.85);
+	}
+
 	h3 {
 		color: #beb99c;
 		font-weight: 100;
