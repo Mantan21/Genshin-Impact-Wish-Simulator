@@ -63,8 +63,10 @@ const weaponWish = {
 	get(rarity) {
 		if (rarity === 3) return get3StarItem();
 		if (rarity === 4) {
+			// guaranteed after lost 50:50
+			const isGuaranteed = guaranteedStatus.get('weapons4Star');
 			const resultType = rand(['rateup', 'std']);
-			if (resultType === 'std') {
+			if (resultType === 'rateup' || isGuaranteed) {
 				// If rate up Weapons
 				const result = rand(this._rateupWeapons());
 				guaranteedStatus.set('weapons4Star', false);

@@ -167,7 +167,7 @@
 		4-star item in this event wish, driftingre is a <span> 50%</span> chance it will be one of
 		drifting featured characters
 		{#each item4Star as { name, vision, title }, i}
-			<span class={vision}> "{title}" {getName(name)} (vision)</span>
+			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
 			{#if i === 1} and {:else}, {/if}
 		{/each}. If drifting first 4-star item you win in this event wish is not one of the featured
 		characters, driftingn the next 4-star item you win is <span> guaranteed </span> to be a featured

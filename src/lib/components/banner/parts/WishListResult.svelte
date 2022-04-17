@@ -262,6 +262,11 @@
 
 	:global(.mobile) .wishlist,
 	:global(.mobile) .shadows {
+		min-height: 70vh;
+	}
+
+	:global(.mobile) .wishlist,
+	:global(.mobile) .shadows {
 		max-height: 72.5vh;
 	}
 
