@@ -2,6 +2,7 @@
 	import { isMobile } from '$lib/store/stores';
 
 	export let type = '';
+	export let head = false;
 
 	const rand = (array) => array[Math.floor(Math.random() * array.length)];
 	const ad = rand([1, 2]);
@@ -26,7 +27,9 @@
 			type="text/javascript"
 			src="//onclickprediction.com/a/display.php?r=5729138"></script>
 	{/if}
-{:else}
+{/if}
+
+{#if head}
 	{#if !$isMobile}
 		<script
 			data-cfasync="false"

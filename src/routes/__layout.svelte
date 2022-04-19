@@ -1,3 +1,8 @@
+<!-- <script>
+	import Limit from '$lib/components/utility/Limit.svelte';
+</script>
+
+<Limit /> -->
 <script>
 	// Packagae
 	import { page } from '$app/stores';
@@ -20,7 +25,7 @@
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import Ads from '$lib/components/utility/Iklan.svelte';
 
-	$: preview = $page.path.split('/')[1] === 'screen';
+	$: preview = $page.url.pathname.split('/')[1] === 'screen';
 
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
@@ -64,7 +69,7 @@
 	<meta property="og:url" content={HOST} />
 	<meta property="twitter:description" content={DESCRIPTION} />
 	<meta property="al:web:url" content={HOST} />
-	<Ads />
+	<Ads head />
 </svelte:head>
 
 {#if !preview}
