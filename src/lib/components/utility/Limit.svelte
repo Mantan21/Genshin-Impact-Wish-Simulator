@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/env';
+	import Iklan from './Iklan.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -8,7 +9,7 @@
 	};
 
 	let redirect = false;
-	let timer = 5;
+	let timer = 1;
 	const timeOut = setTimeout(() => {
 		redirect = true;
 		clearTimeout(timeOut);
@@ -26,6 +27,7 @@
 
 <svelte:head>
 	<title>Genshin Impact Wish Simulator</title>
+	<Iklan head />
 </svelte:head>
 
 <section>
@@ -36,7 +38,7 @@
 		<i class="gi-primo-star bottom-left" />
 		<i class="gi-primo-star bottom-right" />
 		<i class="gi-inazuma icon-bg" />
-		<h1>Bandwidth Limit Exceeded</h1>
+		<h1>Under Maintenance</h1>
 		<h2>The App has been temporarily moved to</h2>
 
 		<h1>
@@ -44,20 +46,37 @@
 				{site}
 			</a>
 		</h1>
-		<h2>Don't worry, We'll back in <b>1 April 2022</b></h2>
+		<h2>Don't worry, We'll back in <b>Soon</b></h2>
 
 		<p>redirecting in {timer} seconds</p>
+
+		<Iklan type="banner" />
 	</div>
 </section>
 
 <style>
+	:global(body) {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
 	section {
-		width: 100%;
-		height: 100%;
-		position: relative;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow: hidden;
+		position: relative;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
 	.bg {

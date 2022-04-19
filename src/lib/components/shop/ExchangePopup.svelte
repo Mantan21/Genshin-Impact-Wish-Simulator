@@ -307,7 +307,7 @@
 	.primogem {
 		padding: 2px 15px 0 30px;
 		display: inline-flex;
-		align-itmes: center;
+		align-items: center;
 		max-width: 112px;
 		height: 25px;
 		position: relative;
