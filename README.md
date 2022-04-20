@@ -24,7 +24,7 @@ I'm not expert, I can't write clean code, but I try to create this Realistic Gen
 
 ![Weapon Banner](static/screenshot/switch-banner.jpg)
 
-> For more preview, please visit the live version at [https://wishsimulator.vercel.app](https://wishsimulator.vercel.app)
+> For more preview, please visit the live version at [https://wishsimulator.app](https://wishsimulator.app)
 
 ---
 
