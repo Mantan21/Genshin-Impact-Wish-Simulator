@@ -82,7 +82,7 @@
 </script>
 
 <div class="wish-result">
-	<div class="uid">WishSimulator.vercel.app</div>
+	<div class="uid">WishSimulator.App</div>
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 
 	{#if showWishList || skipSplashOneByOne}

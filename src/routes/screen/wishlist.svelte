@@ -1,6 +1,9 @@
+<script context="module">
+	export const prerender = true;
+</script>
+
 <script>
-	import { page } from '$app/stores';
-	import { browser } from '$app/env';
+	import { onMount } from 'svelte';
 	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
@@ -8,7 +11,7 @@
 	import WishListResult from '$lib/components/banner/parts/WishListResult.svelte';
 
 	let title = 'No Name';
-	let metaTitle = '';
+	let metaTitle = APP_TITLE;
 	let isError;
 	let wishlist = [];
 
@@ -93,11 +96,13 @@
 		return;
 	};
 
-	const encoded = $page.query.get('a');
 	const resolveData = () => {
 		try {
+			const url = new URL(window.location.href);
+			const searchParams = new URLSearchParams(url.search);
+			const encoded = searchParams.get('a');
 			if (encoded) {
-				let decoded = browser ? atob(encoded) : Buffer.from(encoded, 'base64').toString('utf8');
+				let decoded = atob(encoded);
 				wishlist = getList(decoded);
 				getTitle();
 				return;
@@ -105,11 +110,11 @@
 			throw new Error('No data to show');
 		} catch (e) {
 			isError = true;
-			if (browser) window.location.replace('/');
+			window.location.replace('/');
 		}
 	};
 
-	resolveData();
+	onMount(resolveData);
 </script>
 
 <svelte:head>

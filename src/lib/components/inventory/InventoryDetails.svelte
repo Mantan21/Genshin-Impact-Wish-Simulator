@@ -51,7 +51,7 @@
 				<i class="gi-close" />
 			</button>
 
-			<div class="uid">WishSimulator.vercel.app</div>
+			<div class="uid">WishSimulator.App</div>
 
 			<div class="splatter" style={splatterStyle}>
 				{#if type === 'weapon'}

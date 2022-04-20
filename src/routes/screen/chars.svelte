@@ -1,7 +1,9 @@
-<script>
-	import { browser } from '$app/env';
-	import { page } from '$app/stores';
+<script context="module">
+	export const prerender = true;
+</script>
 
+<script>
+	import { onMount } from 'svelte';
 	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
@@ -31,30 +33,32 @@
 		return { name, rarity, vision, stelaFortuna, fateQty, fateType };
 	};
 
-	const encoded = $page.query.get('a');
 	const resolveData = () => {
 		try {
+			const url = new URL(window.location.href);
+			const searchParams = new URLSearchParams(url.search);
+			const encoded = searchParams.get('a');
 			if (encoded) {
-				const decoded = browser ? atob(encoded) : Buffer.from(encoded, 'base64').toString('utf8');
+				const decoded = atob(encoded);
 				data = getData(decoded);
 				if (data.name !== 'No Name' || data.rarity) return;
 			}
 			throw new Error('No Data to show');
 		} catch (e) {
 			isError = true;
-			if (browser) window.location.replace('/');
+			window.location.replace('/');
 		}
 	};
 
-	resolveData();
+	onMount(resolveData);
 </script>
 
 <svelte:head>
 	<title>{title} | {APP_TITLE}</title>
 
-	<meta name="title" content="Yeay, I just got {title} Genshin Impact" />
-	<meta property="og:title" content="Yeay, I just got {title} Genshin Impact" />
-	<meta property="twitter:title" content="Yeay, I just got {title} Genshin Impact" />
+	<meta name="title" content={APP_TITLE} />
+	<meta property="og:title" content={APP_TITLE} />
+	<meta property="twitter:title" content={APP_TITLE} />
 
 	<!-- <meta
 		name="twitter:image:src"
@@ -82,45 +86,47 @@
 {:else}
 	<div class="wish-result">
 		<div class="container">
-			<div class="splatter" style={splatterStyle}>
-				<img
-					src="/assets/images/characters/splash-art/{data.rarity}star/{data.name}.webp"
-					alt={data.name}
-					class="splash-art"
-				/>
+			{#if data.name !== 'No Name'}
+				<div class="splatter" style={splatterStyle}>
+					<img
+						src="/assets/images/characters/splash-art/{data.rarity}star/{data.name}.webp"
+						alt={data.name}
+						class="splash-art"
+					/>
 
-				<div class="info">
-					<i class="elemen gi-{data.vision}" />
-					<div class="name">
-						<div class="text">
-							{title}
-						</div>
-						<div class="star">
-							{#each Array(data.rarity) as _, i (i)}
-								<i class="gi-star" />
-							{/each}
-						</div>
-					</div>
-
-					<div class="bonus">
-						{#if data.stelaFortuna}
-							<div class="stella stella{data.rarity}">
-								<img
-									src="/assets/images/utility/stella-fortuna-{data.rarity}star.webp"
-									alt="Stella Formula"
-								/>
+					<div class="info">
+						<i class="elemen gi-{data.vision}" />
+						<div class="name">
+							<div class="text">
+								{title}
 							</div>
-						{/if}
-
-						{#if data.fateType}
-							<div class="masterless starglitter">
-								<Icon type="starglitter" width="80%" />
-								<span> {data.fateQty} </span>
+							<div class="star">
+								{#each Array(data.rarity) as _, i (i)}
+									<i class="gi-star" />
+								{/each}
 							</div>
-						{/if}
+						</div>
+
+						<div class="bonus">
+							{#if data.stelaFortuna}
+								<div class="stella stella{data.rarity}">
+									<img
+										src="/assets/images/utility/stella-fortuna-{data.rarity}star.webp"
+										alt="Stella Formula"
+									/>
+								</div>
+							{/if}
+
+							{#if data.fateType}
+								<div class="masterless starglitter">
+									<Icon type="starglitter" width="80%" />
+									<span> {data.fateQty} </span>
+								</div>
+							{/if}
+						</div>
 					</div>
 				</div>
-			</div>
+			{/if}
 		</div>
 	</div>
 {/if}
