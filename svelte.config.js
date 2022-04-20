@@ -1,3 +1,4 @@
+// import adapterCloudflare from '@sveltejs/adapter-cloudflare';
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { config as envConfig } from 'dotenv';
@@ -12,8 +13,7 @@ const cdn_url = `https://cdn.statically.io/gh/${GITHUB_USER}/${GITHUB_REPO}/${GI
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: vercel(),
-		target: '#svelte'
+		adapter: vercel()
 	},
 	preprocess: cdn_on
 		? preprocess({
