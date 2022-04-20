@@ -23,7 +23,7 @@
 	let blob;
 	const shareText = "Wow! I'm so lucky when pulling on Wish Simulator, you can try Yours !";
 	let url = '/assets/images/meta-picture.jpg';
-	$: shareLink = `${HOST}/screen/${page}/?a=${encodedData}`;
+	$: shareLink = `${HOST}/screen/${page}?a=${encodedData}`;
 
 	onMount(() => {
 		isFirstShare = firstShare.check();
@@ -61,7 +61,7 @@
 
 	const saveHandler = () => {
 		playSfx();
-		saveAs(blob, `WishSimulator.vercel.app - ${new Date().toLocaleString()}.png`);
+		saveAs(blob, `WishSimulator.App - ${new Date().toLocaleString()}.png`);
 		addFunds();
 	};
 
@@ -138,7 +138,7 @@
 					<button class="save" on:click={webShareHandle}> <i class="gi-dot-3" /> </button>
 				{/if}
 			</div>
-			<img src={url} alt="screenshot" />
+			<img src={url} alt="screenshot" on:contextmenu|stopPropagation />
 		</picture>
 
 		{#if showToast}

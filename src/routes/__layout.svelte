@@ -78,7 +78,7 @@
 
 <main class:mobile={$mobileMode} class:preview>
 	<slot />
-	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.vercel.app </a>
+	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
