@@ -72,8 +72,7 @@
 				},
 				{
 					"name": "primordial-jade-winged-spear",
-					"weaponType": "polearm",
-					"limited": true
+					"weaponType": "polearm"
 				},
 				{
 					"name": "redhorn-stonethresher",
@@ -310,6 +309,10 @@
 				{
 					"name": "skyrider-sword",
 					"weaponType": "sword"
+				},
+				{
+					"name": "slingshot",
+					"weaponType": "bow"
 				},
 				{
 					"name": "thrilling-tales-of-dragon-slayers",
