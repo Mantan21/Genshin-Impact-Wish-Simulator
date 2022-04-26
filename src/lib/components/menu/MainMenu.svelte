@@ -290,30 +290,6 @@
 	:global(.mobile) .head {
 		margin: 0.5rem 2%;
 	}
-	.close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		line-height: 0;
-		overflow: hidden;
-		border-radius: 50px;
-		transition: all 0.2s;
-	}
-
-	.close:hover {
-		background-color: var(--tertiary-color);
-	}
-
-	:global(.mobile) .close {
-		width: 2rem;
-		height: 2rem;
-	}
 
 	.container {
 		display: flex;
@@ -503,13 +479,8 @@
 		font-size: 3rem;
 		animation: rotatePhone 1s infinite alternate;
 	}
-	@media screen and (max-width: 900px) {
-		.close {
-			width: 2.5rem;
-			height: 2.5rem;
-			margin: 3px;
-		}
 
+	@media screen and (max-width: 900px) {
 		.option {
 			padding: 0.3rem 0;
 		}

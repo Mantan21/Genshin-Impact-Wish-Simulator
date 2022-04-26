@@ -194,34 +194,13 @@
 
 <style>
 	.close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		border-radius: 100%;
 		position: fixed;
 		top: 15px;
 		right: 3%;
-		width: 35px;
-		height: 35px;
-		line-height: 0;
 		z-index: 10;
 	}
 
-	@media screen and (max-width: 900px) {
-		.close {
-			width: 2.5rem;
-			height: 2.5rem;
-			margin: 3px;
-		}
-	}
-
 	:global(.mobile) .close {
-		width: 2rem;
-		height: 2rem;
 		top: 0.3rem;
 		right: 2%;
 	}

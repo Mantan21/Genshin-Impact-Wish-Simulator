@@ -113,32 +113,7 @@
 		justify-content: flex-end;
 		align-items: center;
 	}
-	.fates .close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		line-height: 0rem;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		border-radius: 100%;
-		text-decoration: none;
-	}
-	:global(.mobile) .fates .close {
-		width: 2rem;
-		height: 2rem;
-	}
 
-	@media screen and (max-width: 890px) {
-		.close {
-			width: 30px;
-			height: 30px;
-			margin: 3px;
-		}
-	}
 	@media screen and (max-width: 500px) {
 		.item-header {
 			flex-direction: column;
@@ -148,8 +123,6 @@
 			width: 100%;
 		}
 		.fates .close {
-			width: 2.5rem;
-			height: 2.5rem;
 			position: absolute;
 			top: 20%;
 			right: 0;

@@ -172,7 +172,7 @@
 		align-items: center;
 		-webkit-text-stroke: 0.02rem #000;
 	}
-	button {
+	button:not(.close) {
 		background-color: #d9d2c8;
 		color: #000;
 		border-radius: 30px;
@@ -238,7 +238,6 @@
 		line-height: 0;
 	}
 
-	.close,
 	.letshare button {
 		color: rgba(0, 0, 0, 0.7);
 		background-color: #fff;
@@ -281,25 +280,12 @@
 	}
 
 	.close {
-		border: 3.5px solid #abbcc6;
 		position: fixed;
 		top: 15px;
 		right: 3%;
-		width: 35px;
-		height: 35px;
-	}
-
-	@media screen and (max-width: 900px) {
-		.close {
-			width: 2.5rem;
-			height: 2.5rem;
-			margin: 3px;
-		}
 	}
 
 	:global(.mobile) .close {
-		width: 2rem;
-		height: 2rem;
 		top: 0.3rem;
 		right: 2%;
 	}
