@@ -54,15 +54,14 @@
 	/>
 	<slot />
 	{#if type === 'primogem'}
-		<i class="gi-plus" />
+		<span>
+			<i class="gi-plus" />
+		</span>
 	{/if}
 </button>
 
 <style>
-	.gi-plus {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
+	.primogem span {
 		width: 1.2rem;
 		height: 1.2rem;
 		color: #000;
@@ -74,6 +73,7 @@
 		font-size: 0.8rem;
 		transform: translateY(-50%);
 	}
+
 	.primogem {
 		padding-right: 30px !important;
 	}

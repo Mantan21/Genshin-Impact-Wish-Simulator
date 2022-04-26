@@ -424,6 +424,7 @@
 	.content-details {
 		padding: 2rem 10% 1rem;
 		width: 100%;
+		overflow-x: hidden;
 	}
 
 	@media screen and (max-width: 780px) {

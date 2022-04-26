@@ -95,7 +95,8 @@
 	content: '\73';
 }
 .gi-plus:before {
-	content: '\74';
+	content: '\59';
+	font-size: 1.2rem;
 }
 .gi-montstad:before {
 	content: '\75';

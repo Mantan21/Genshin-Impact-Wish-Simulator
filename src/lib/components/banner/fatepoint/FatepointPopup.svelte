@@ -102,7 +102,7 @@
 				alt="Fatepoint Background"
 			/>
 			<button
-				class="close"
+				class="close-popup"
 				on:click={() => {
 					handleClose();
 					playSfx('close');
@@ -240,7 +240,7 @@
 		width: 100%;
 	}
 
-	.close {
+	.close-popup {
 		position: absolute;
 		top: 1.5rem;
 		right: -0.2rem;

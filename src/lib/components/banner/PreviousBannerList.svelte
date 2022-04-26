@@ -361,7 +361,7 @@
 		padding: 5px 2%;
 	}
 
-	button {
+	button:no-button(.close) {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -379,12 +379,7 @@
 		background-color: var(--tertiary-color);
 	}
 	.close {
-		border: 3.5px solid #abbcc6;
 		margin-left: auto;
-	}
-	:global(.mobile) .close {
-		width: 2rem;
-		height: 2rem;
 	}
 
 	.body {
@@ -536,12 +531,5 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		text-transform: capitalize;
-	}
-	@media screen and (max-width: 900px) {
-		.close {
-			width: 2.5rem;
-			height: 2.5rem;
-			margin: 3px;
-		}
 	}
 </style>

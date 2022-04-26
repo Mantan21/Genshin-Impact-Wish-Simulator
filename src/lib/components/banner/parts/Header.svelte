@@ -166,26 +166,6 @@
 		align-items: center;
 	}
 
-	.close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		line-height: 0;
-		overflow: hidden;
-		border-radius: 50px;
-		transition: all 0.2s;
-	}
-
-	.close:hover {
-		background-color: var(--tertiary-color);
-	}
-
 	.banner-button {
 		text-align: center;
 		display: flex;
@@ -201,10 +181,6 @@
 		height: 100vh;
 	}
 
-	:global(.mobile) .close {
-		width: 2rem;
-		height: 2rem;
-	}
 	:global(.mobile) .top {
 		position: fixed;
 		top: 0;
@@ -256,14 +232,6 @@
 			left: 50%;
 			transform: translateX(-50%);
 			margin-top: 0;
-		}
-	}
-
-	@media screen and (max-width: 900px) {
-		.close {
-			width: 2.5rem;
-			height: 2.5rem;
-			margin: 3px;
 		}
 	}
 </style>

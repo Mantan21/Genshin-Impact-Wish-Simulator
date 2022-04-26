@@ -181,12 +181,49 @@ h1 {
 	font-size: 0.85rem;
 }
 
+.gi-close {
+	line-height: 0;
+}
+
+.close {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+	height: 35px;
+	color: rgba(0, 0, 0, 0.7);
+	background-color: var(--tertiary-color);
+	border: 3.5px solid #abbcc6;
+	padding: 0;
+	line-height: 0;
+	overflow: hidden;
+	border-radius: 50px;
+	transition: all 0.2s;
+}
+
+.close:hover {
+	border-color: #fff;
+	box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
+}
+
+.mobile .close {
+	width: 2rem;
+	height: 2rem;
+}
+
 @media screen and (max-width: 900px) {
 	body,
 	html {
 		font-size: 0.8rem;
 	}
+
+	.close {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: 3px;
+	}
 }
+
 @media screen and (max-width: 400px) {
 	body,
 	html {

@@ -101,7 +101,7 @@
 		margin-left: auto;
 	}
 
-	button {
+	button:not(.close) {
 		display: inline-block;
 		max-width: 112px;
 		height: 25px;
@@ -116,19 +116,6 @@
 		padding: 0 15px 0 30px;
 	}
 
-	.close {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		border: 3.5px solid #abbcc6;
-		padding: 0;
-		line-height: 0;
-	}
-
 	@media screen and (max-width: 900px) {
 		.title {
 			font-size: small;
@@ -136,11 +123,6 @@
 		button {
 			height: 20px;
 			margin: 0 3px;
-		}
-		.close {
-			width: 2rem;
-			height: 2rem;
-			margin: 3px;
 		}
 
 		:global(main):not(.mobile) .budget {
