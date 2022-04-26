@@ -32,7 +32,8 @@
 	$: nowOpenIndex = list.findIndex(({ type }) => type === banner.toLocaleLowerCase());
 	$: selected = nowOpenIndex < 0 ? 2 : nowOpenIndex;
 
-	$: pity = browser ? pity5star.get(banner) || 0 : 0;
+	$: pity5 = browser ? pity5star.get(banner) || 0 : 0;
+	$: pity4 = browser ? pity4star.get(banner) || 0 : 0;
 
 	let showSelectList = false;
 	let activepage = 1;
@@ -72,7 +73,7 @@
 			beginnerRoll.set(0);
 			showBeginner.set(true);
 		}
-		pity = 0;
+		pity4 = pity5 = 0;
 		data = [];
 		showPopup = false;
 		showToast = true;
@@ -162,7 +163,10 @@
 		</p>
 
 		<div class="info row">
-			<div class="cell">Pity : <span class="lighted"> <strong> {pity} </strong> </span></div>
+			<div class="cell">
+				Current Pity : &nbsp; <strong class="star4"> {pity4} </strong> &nbsp; - &nbsp;
+				<strong class="star5"> {pity5} </strong>
+			</div>
 			<div class="cell">
 				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span> ~
 				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
