@@ -32,7 +32,10 @@
 			const { data } = await import(`../../data/banners/events/${patch}.json`);
 			const { standardVersion, weapons, events } = data.find((d) => d.phase === phase).banners;
 			const { standard } = await import(`../../data/banners/standard/${standardVersion}.json`);
+
 			drop3star = getAllWeapons(3).map(({ name, type }) => ({ name, type }));
+			this._stdDropChar5 = standard.characters.map((name) => ({ name, type: 'character' }));
+			drop4star = [...getAllChars(4), ...getAllWeapons(4)];
 
 			this._std = ['amber', 'kaeya', 'lisa'];
 			this._events = events;
@@ -60,9 +63,8 @@
 			items = [obj];
 			bannerTitle = 'Beginner Wish';
 
-			drop5star = this._standard.characters.map((name) => ({ name, type: 'character' }));
-			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
-			drop4star = allItems
+			drop5star = this._stdDropChar5;
+			drop4star = drop4star
 				.filter(({ limited }) => !limited)
 				.map(({ type, name }) => ({ name, type }))
 				.filter(({ name }) => !this._std.includes(name));
@@ -70,12 +72,10 @@
 
 		_showStandard() {
 			const weapon5 = getAllWeapons(5).filter(({ limited }) => !limited);
-			const char5 = this._standard.characters.map((name) => ({ name, type: 'character' }));
-			drop5star = [...char5, ...weapon5];
-			const allItems = [...getAllChars(4), ...getAllWeapons(4)];
+			drop5star = [...this._stdDropChar5, ...weapon5];
 			bannerTitle = 'Wanderlust Invocation';
 
-			drop4star = allItems
+			drop4star = drop4star
 				.filter(({ release }) => {
 					if (!release) return true;
 					const [v, phs] = release.split('-');
@@ -90,8 +90,8 @@
 		},
 
 		_showEvents() {
-			this._showStandard();
 			const { character } = $bannerList[$bannerActive];
+			drop5star = this._stdDropChar5;
 			drop5star.unshift({ name: character.character, type: 'character', rateup: true });
 			bannerTitle = getName(character.name);
 
@@ -117,7 +117,6 @@
 		},
 
 		_showWeapons() {
-			this._showStandard();
 			const weapon5 = this._weapons.featured.map(({ name, type }) => ({ name, type }));
 			const weapons4 = getAllWeapons(4)
 				.filter(({ name }) => this._weapons.rateup.includes(name))
