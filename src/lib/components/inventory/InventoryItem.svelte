@@ -10,6 +10,13 @@
 	export let qty = 0;
 	export let isOwned = true;
 
+	let countInfo;
+	if (type === 'character') {
+		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
+	} else {
+		countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
+	}
+
 	const dispatch = createEventDispatcher();
 	const handleShowDetails = () => {
 		if (!isOwned) return;
@@ -35,7 +42,7 @@
 			/>
 		{/if}
 		{#if qty > 1}
-			<span class="qty"> {qty}x </span>
+			<span class="qty"> {countInfo} </span>
 		{/if}
 	</picture>
 	<div class="caption">
