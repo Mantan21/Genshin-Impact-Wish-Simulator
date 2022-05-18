@@ -8,18 +8,20 @@
 		bannerList,
 		fatePoint,
 		selectedCourse,
-		pageActive
+		pageActive,
+		mobileMode
 	} from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
 
+	$: mobileBannerStyle = $mobileMode ? `max-width: ${(150 / 100) * $viewportHeight}px;` : '';
 	$: style =
 		$viewportHeight > 800 ||
 		$viewportHeight > $viewportWidth ||
 		$viewportHeight / $viewportWidth > 0.5
-			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);'
-			: '';
+			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);' + mobileBannerStyle
+			: mobileBannerStyle;
 
 	$: activeBanner = $bannerList[$bannerActive];
 
@@ -136,7 +138,6 @@
 	:global(.mobile) .banner {
 		padding: 0;
 		width: 88%;
-		max-width: 155vh;
 		max-height: unset;
 		margin-bottom: -10px;
 	}

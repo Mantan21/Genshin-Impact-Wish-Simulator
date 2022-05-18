@@ -8,6 +8,7 @@
 		patchVersion,
 		selectedCourse,
 		showFatepointPopup,
+		viewportHeight,
 		viewportWidth
 	} from '$lib/store/stores';
 	import { fade } from 'svelte/transition';
@@ -95,7 +96,7 @@
 </PopUp>
 
 {#if $showFatepointPopup}
-	<section class="popup" transition:fade={{ duration: 80 }}>
+	<section class="popup" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
 		<div class="popup-content">
 			<img
 				src="/assets/images/utility/fatepointbook{half ? '-half' : ''}.webp"
@@ -214,7 +215,6 @@
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.7);
 		z-index: 10;
 		display: flex;
@@ -232,7 +232,7 @@
 	}
 
 	:global(.mobile) .popup-content {
-		max-width: 150vh;
+		max-width: 130vh;
 	}
 
 	.popup-content img {

@@ -76,7 +76,11 @@
 	<Disclaimer />
 {/if}
 
-<main class:mobile={$mobileMode} class:preview>
+<main
+	class:mobile={$mobileMode}
+	class:preview
+	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'}"
+>
 	<slot />
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
@@ -100,7 +104,6 @@
 	main {
 		display: block;
 		width: 100%;
-		height: 100vh;
 		overflow: hidden;
 	}
 

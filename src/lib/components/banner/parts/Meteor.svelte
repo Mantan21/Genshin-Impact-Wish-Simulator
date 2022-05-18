@@ -7,7 +7,8 @@
 		intertwined,
 		bannerList,
 		bannerActive,
-		muted
+		muted,
+		viewportHeight
 	} from '$lib/store/stores';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { localBalance } from '$lib/store/localstore';
@@ -139,7 +140,7 @@
 	<Toast on:close={() => (showToast = false)}>Meteor Animation Failed to Load</Toast>
 {/if}
 
-<div class="wish-output" class:show={showMeteor}>
+<div class="wish-output" class:show={showMeteor} style="height: {$viewportHeight}px">
 	<div class="video">
 		<video bind:this={v3star} preload="auto" muted={$muted}>
 			<source src="/assets/videos/3star-single.webm" type="video/webm" />
@@ -187,7 +188,6 @@
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100vh;
 	}
 	.wish-output.show {
 		display: block;
@@ -196,7 +196,7 @@
 	.video {
 		position: relative;
 		width: 100vw;
-		height: 100vh;
+		height: 100%;
 	}
 
 	.skip {

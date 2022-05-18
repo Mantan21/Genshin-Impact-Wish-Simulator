@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/env';
+	import { viewportHeight } from '$lib/store/stores';
 	import Iklan from './Iklan.svelte';
 
 	const random = (min, max) => {
@@ -30,7 +31,7 @@
 	<Iklan head />
 </svelte:head>
 
-<section>
+<section style="height: {$viewportHeight}px;">
 	<img class="bg" src="/assets/images/background/bg{random(1, 16)}.webp" alt="background" />
 	<div class="container">
 		<i class="gi-primo-star top-left" />
@@ -70,7 +71,6 @@
 
 	section {
 		width: 100vw;
-		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;

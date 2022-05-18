@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { isLoaded, showBeginner, mobileMode, isMobile } from '$lib/store/stores';
+	import { isLoaded, showBeginner, mobileMode, isMobile, viewportHeight } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
 	import { onMount } from 'svelte';
 
@@ -42,7 +42,7 @@
 </script>
 
 {#if show(current, $isLoaded)}
-	<div class="loader" out:fade={{ duration: 500, delay: 1000 }}>
+	<div class="loader" out:fade={{ duration: 500, delay: 1000 }} style="height: {$viewportHeight}px">
 		<div class="content">
 			<div class="progress">
 				<div class="icon">
@@ -84,7 +84,6 @@
 		font-size: 32px;
 		color: #666666;
 		width: 100%;
-		height: 100vh;
 		position: fixed;
 		top: 0;
 		left: 0;

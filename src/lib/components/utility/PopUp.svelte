@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
+	import { viewportHeight } from '$lib/store/stores';
 
 	export let show = false;
 	export let title = '';
@@ -28,7 +29,7 @@
 </script>
 
 {#if show}
-	<div class="popup" transition:fade={{ duration: 80 }}>
+	<div class="popup" transition:fade={{ duration: 80 }} style="height: {$viewportHeight}px;">
 		<div class="popup-content">
 			<i class="gi-primo-star top-left" />
 			<i class="gi-primo-star top-right" />
@@ -70,7 +71,6 @@
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 997;
 		display: flex;
@@ -90,7 +90,7 @@
 	}
 
 	:global(.mobile) .popup-content {
-		max-width: 110vh;
+		max-width: 100vh;
 	}
 
 	.container {

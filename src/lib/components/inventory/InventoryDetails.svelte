@@ -45,7 +45,12 @@
 </script>
 
 {#if render}
-	<div class="wish-result" in:fade={{ duration: 200 }} out:fade={{ duration: 100 }}>
+	<div
+		class="wish-result"
+		in:fade={{ duration: 200 }}
+		out:fade={{ duration: 100 }}
+		style="height: {$viewportHeight}px"
+	>
 		<div class="container">
 			<button class="close" on:click={closeHandle}>
 				<i class="gi-close" />
@@ -139,7 +144,6 @@
 
 	.wish-result {
 		width: 100vw;
-		height: 100vh;
 		background-color: #fff;
 		background-image: url('/assets/images/background/detailbg.webp');
 		background-size: cover;

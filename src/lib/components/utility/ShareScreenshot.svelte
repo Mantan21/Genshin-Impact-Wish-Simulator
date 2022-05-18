@@ -4,7 +4,7 @@
 	import { toBlob } from 'html-to-image';
 	import { saveAs } from 'file-saver';
 	import { APP_TITLE, HOST } from '$lib/env';
-	import { primogem } from '$lib/store/stores';
+	import { primogem, viewportHeight } from '$lib/store/stores';
 	import { firstShare, localBalance } from '$lib/store/localstore';
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
@@ -111,7 +111,12 @@
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
 
 {#if show}
-	<div class="screenshot" out:fade={{ duration: 200 }} on:click|stopPropagation>
+	<div
+		class="screenshot"
+		style="height: {$viewportHeight}px;"
+		out:fade={{ duration: 200 }}
+		on:click|stopPropagation
+	>
 		<button class="close" on:click={closehandle}>
 			<i class="gi-close" />
 		</button>
@@ -192,7 +197,6 @@
 
 	.screenshot {
 		width: 100vw;
-		height: 100vh;
 		position: fixed;
 		z-index: 998;
 		top: 0;

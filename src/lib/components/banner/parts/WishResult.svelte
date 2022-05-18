@@ -365,7 +365,7 @@
 		left: 0;
 		z-index: 998;
 		width: 100vw;
-		height: 100vh;
+		height: 100%;
 		background-color: #fff;
 		background-image: url('/assets/images/background/splash-background.webp');
 		background-size: cover;
