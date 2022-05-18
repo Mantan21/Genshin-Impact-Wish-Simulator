@@ -19,8 +19,12 @@
 		pageActive,
 		isAcquaintUsed,
 		bannerList,
-		unlimitedFates
+		unlimitedFates,
+		viewportHeight
 	} from '$lib/store/stores';
+
+	$: headerHeightstyle = $mobileMode ? `height: ${$viewportHeight}px` : '';
+	$: console.log(headerHeightstyle);
 
 	const inTransition = (node, args) => {
 		return args.mobile
@@ -49,7 +53,7 @@
 <FatepointPopup />
 <MainMenu show={showMenu} on:close={handleMenu} />
 
-<div id="header">
+<div id="header" style={headerHeightstyle}>
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
@@ -88,7 +92,7 @@
 	</div>
 
 	<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
-		<div class="bg">
+		<div class="bg" style={headerHeightstyle}>
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
 		</div>
 
@@ -176,9 +180,8 @@
 
 	/* mobile */
 
-	:global(.mobile #header) {
+	:global(.mobile) #header {
 		padding: 0 !important;
-		height: 100vh;
 	}
 
 	:global(.mobile) .top {
@@ -211,7 +214,6 @@
 		top: 0;
 		left: 50%;
 		width: 40px;
-		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.4);
 		z-index: -1;
 		transform: translateX(-50%);

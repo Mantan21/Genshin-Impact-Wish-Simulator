@@ -134,7 +134,7 @@
 		<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
 	{/if}
 
-	<section transition:fade={{ duration: 200 }}>
+	<section transition:fade={{ duration: 200 }} style="height: {$viewportHeight}px;">
 		<div class="head">
 			<h1>Menu / {getName(activeContent)}</h1>
 			<button class="close" on:click={handleClose} title="Change Banner">
@@ -272,7 +272,6 @@
 	}
 	section {
 		width: 100vw;
-		height: 100vh;
 		display: block;
 		position: fixed;
 		top: 0;

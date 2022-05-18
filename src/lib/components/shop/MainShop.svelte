@@ -222,7 +222,7 @@
 	</div>
 </PopUp>
 <!-- Crypto Donate -->
-<section>
+<section style="height: {$viewportHeight}px">
 	<img
 		class="bg"
 		src="/assets/images/background/bg{random(1, 16)}.webp"
@@ -394,7 +394,6 @@
 <style>
 	section {
 		width: 100vw;
-		height: 100vh;
 		display: block;
 		position: relative;
 		font-size: 1rem;
@@ -409,7 +408,7 @@
 	}
 	.bg {
 		width: 100vw;
-		height: 100vh;
+		height: 100%;
 		object-fit: cover;
 		position: fixed;
 		top: 50%;
