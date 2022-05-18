@@ -128,6 +128,13 @@
 				"<strong> Kamisato Ayaka Rerun </strong> Banner already out !",
 				"Weapon Banner Updated, <b> Mistsplitter Reforged </b> and <b>The Unforged</b> was here too!"
 			]
+		},
+		{
+			"date": "20-Apr-2022",
+			"featured": true,
+			"description": [
+				"We recently had to <strong>migrate our server </strong> for other reasons, so the old wishing histories isn't being tracked on the new server, We apologize for the inconvenience. We hope it doesn't happen again in the future, so you can enjoy the simulator peacefully"
+			]
 		}
 	]
 }
