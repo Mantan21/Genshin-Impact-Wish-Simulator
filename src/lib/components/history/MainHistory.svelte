@@ -164,8 +164,8 @@
 
 		<div class="info row">
 			<div class="cell">
-				Current Pity : &nbsp; <strong class="star4"> {pity4} </strong> &nbsp; - &nbsp;
-				<strong class="star5"> {pity5} </strong>
+				Current Pity : &nbsp; <strong class="star5"> {pity5} </strong> &nbsp; - &nbsp;
+				<strong class="star4"> {pity4} </strong>
 			</div>
 			<div class="cell">
 				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span> ~
