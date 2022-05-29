@@ -10,7 +10,7 @@ I'm not expert, I can't write clean code, but I try to create this Realistic Gen
 
 #### Layout on Mobile Version
 
-![Weapon Banner](static/screenshot/mobile-weapon.jpeg)
+![Weapon Banner](static/screenshot/mobile-weapon.jpg)
 
 #### Epitomized Path
 
