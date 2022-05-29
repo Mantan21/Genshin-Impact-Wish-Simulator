@@ -191,7 +191,7 @@
 	}
 
 	img.bow {
-		transform: rotate(10deg) scale(1.25) translate(-1em, -1em);
+		transform: rotate(10deg) scale(1.25) translateX(-0.5em);
 	}
 
 	img.polearm {

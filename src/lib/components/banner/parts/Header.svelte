@@ -24,7 +24,6 @@
 	} from '$lib/store/stores';
 
 	$: headerHeightstyle = $mobileMode ? `height: ${$viewportHeight}px` : '';
-	$: console.log(headerHeightstyle);
 
 	const inTransition = (node, args) => {
 		return args.mobile
