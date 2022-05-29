@@ -4,7 +4,8 @@
 		"paths": {
 			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"]
-		}
+		},
+		"preserveValueImports": false
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"],
 	"extends": "./.svelte-kit/tsconfig.json"
