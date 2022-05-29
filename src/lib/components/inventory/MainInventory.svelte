@@ -512,7 +512,7 @@
 		height: 100%;
 	}
 	.container {
-		height: calc(100vh - 10.5rem);
+		height: calc(100% - 10.5rem);
 		display: block;
 		width: 100%;
 		padding: 0 2%;
@@ -641,14 +641,14 @@
 			height: 40px;
 		}
 		.container {
-			height: calc(100vh - 12rem);
+			height: calc(100% - 9rem);
 			margin-top: 0;
 		}
 	}
 
 	@media screen and (max-width: 400px) {
 		.container {
-			height: calc(100vh - 13rem);
+			height: calc(100% - 10rem);
 		}
 		.item {
 			width: 14vh;
