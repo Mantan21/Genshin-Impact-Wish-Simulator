@@ -214,6 +214,17 @@
 					}
 				},
 				{
+					"name": "yelan",
+					"vision": "hydro",
+					"limited": true,
+					"title": "Valley Orchid",
+					"wishBoxPosition": {
+						"h": 220,
+						"t": 82,
+						"l": 80
+					}
+				},
+				{
 					"name": "yoimiya",
 					"vision": "pyro",
 					"limited": true,

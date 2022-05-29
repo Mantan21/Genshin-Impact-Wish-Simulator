@@ -131,9 +131,17 @@
 		},
 		{
 			"date": "20-Apr-2022",
-			"featured": true,
 			"description": [
 				"We recently had to <strong>migrate our server </strong> for other reasons, so the old wishing histories isn't being tracked on the new server, We apologize for the inconvenience. We hope it doesn't happen again in the future, so you can enjoy the simulator peacefully"
+			]
+		},
+		{
+			"date": "29-May-2022",
+			"featured": true,
+			"description": [
+				"<strong> Yelan </strong> Banner already out !",
+				"<strong> Xiao 3rd Rerun </strong> Banner was here !",
+				"Weapon Banner Updated, <b> Aqua Simulacra </b> and <b>Primordial Jade Winged Spear</b> are ready to pull !"
 			]
 		}
 	]

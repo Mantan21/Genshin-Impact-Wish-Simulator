@@ -8,6 +8,11 @@
 					"weaponType": "bow"
 				},
 				{
+					"name": "aqua-simulacra",
+					"weaponType": "bow",
+					"limited": true
+				},
+				{
 					"name": "aquila-favonia",
 					"weaponType": "sword"
 				},
