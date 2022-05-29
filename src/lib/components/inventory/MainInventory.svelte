@@ -512,7 +512,7 @@
 		height: 100%;
 	}
 	.container {
-		height: calc(100% - 10.5rem);
+		height: calc(100% - 7.2rem);
 		display: block;
 		width: 100%;
 		padding: 0 2%;
