@@ -72,14 +72,6 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sveltejs/adapter-cloudflare@^1.0.0-next.17":
-  version "1.0.0-next.17"
-  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-1.0.0-next.17.tgz#86213b9024b9e3fcf7e54419ddc636c3dd00147f"
-  integrity sha512-B2ze5L0LsHFsZctVNy4sw0XxgV2YiVEHyMrWRo3pmpTwpu6GT5V3U2fsEoCMg/RKMazlWkyKTCuUqmcpYjjf2g==
-  dependencies:
-    esbuild "^0.14.21"
-    worktop "0.8.0-next.12"
-
 "@sveltejs/adapter-vercel@^1.0.0-next.47":
   version "1.0.0-next.47"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.47.tgz#892af109f0eb60dd7cd4884d0aacb484af852a12"
@@ -875,11 +867,6 @@ mri@^1.1.0:
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.2.0.tgz#6721480fec2a11a4889861115a48b6cbe7cc8f0b"
   integrity sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==
 
-mrmime@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mrmime/-/mrmime-1.0.0.tgz#14d387f0585a5233d291baba339b063752a2398b"
-  integrity sha512-a70zx7zFfVO7XpnQ2IX1Myh9yY4UYvfld/dikWRnsXxbyvMcfz+u6UfgNAtH+k2QqtJuzVpv6eLTx1G2+WKZbQ==
-
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
@@ -984,11 +971,6 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-
-regexparam@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/regexparam/-/regexparam-2.0.0.tgz#059476767d5f5f87f735fc7922d133fd1a118c8c"
-  integrity sha512-gJKwd2MVPWHAIFLsaYDZfyKzHNS4o7E/v8YmNf44vmeV2e4YfVoDToTOKTvE7ab68cRJ++kLuEXJBaEeJVt5ow==
 
 regexpp@^3.1.0:
   version "3.2.0"
@@ -1237,14 +1219,6 @@ word-wrap@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
-
-worktop@0.8.0-next.12:
-  version "0.8.0-next.12"
-  resolved "https://registry.yarnpkg.com/worktop/-/worktop-0.8.0-next.12.tgz#66f835640397de3ef8a64a1a12574912aa9a4614"
-  integrity sha512-ZXdgI9XOf0uB4IegFoViLdQ0Bf7hish0XMHwuV3nopOXygfLJkwAC5+HyA+sihBMSM2sLLQ5uGnD5aknL8+NQg==
-  dependencies:
-    mrmime "^1.0.0"
-    regexparam "^2.0.0"
 
 wrappy@1:
   version "1.0.2"
