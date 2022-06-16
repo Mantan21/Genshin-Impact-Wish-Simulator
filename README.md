@@ -2,9 +2,7 @@
 
 # Realistic Genshin Impact Wish Simulator
 
-![License](https://badgen.net/github/license/AguzzTN54/Genshin-Impact-Wish-Simulator?icon:github) ![Repo Size](https://img.shields.io/github/repo-size/AguzzTN54/Genshin-Impact-Wish-Simulator?color=fa0) [![CodeFactor](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator/badge)](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator) ![Status](https://badgen.net/github/checks/AguzzTN54/Genshin-Impact-Wish-Simulator) ![Code Standard](https://badgen.net/badge/code%20style/standard/f2a) ![Lint](https://badgen.net/github/checks/AguzzTN54/Genshin-Impact-Wish-Simulator/master/lint)
-
-[![Saweria](https://badgen.net/badge/Sawer/Mantan21/F96854)](https://saweria.co/mantan21)
+![License](https://badgen.net/github/license/AguzzTN54/Genshin-Impact-Wish-Simulator?icon:github) ![Repo Size](https://img.shields.io/github/repo-size/AguzzTN54/Genshin-Impact-Wish-Simulator?color=fa0) [![CodeFactor](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator/badge)](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator) ![Status](https://badgen.net/github/checks/AguzzTN54/Genshin-Impact-Wish-Simulator) ![Code Standard](https://badgen.net/badge/code%20style/standard/f2a) [![Saweria](https://badgen.net/badge/Sawer/Mantan21/F96854)](https://saweria.co/mantan21)
 
 I'm not expert, I can't write clean code, but I try to create this Genshin Impact Wish Simulator. I can claim this is the most Realistic one for web version. However, I still need your feedbacks to improve the wishing experience.
 
