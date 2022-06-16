@@ -41,13 +41,16 @@
 	let showPopup = false;
 	let showToast = false;
 	let data = [];
+	let dataToShow = [];
 	let table;
+	let tableFilter = 'All';
+	let showTableFilterOption = false;
 
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
 		if (!browser) return [];
 		const bannerList = await getList(banner);
-		data = bannerList.map((d) => d).reverse();
+		dataToShow = data = bannerList.map((d) => d).reverse();
 		return data;
 	};
 
@@ -60,6 +63,7 @@
 		showSelectList = !showSelectList;
 		activepage = 1;
 		banner = path;
+		tableFilter = 'All';
 		readData();
 	};
 
@@ -74,9 +78,26 @@
 			showBeginner.set(true);
 		}
 		pity4 = pity5 = 0;
-		data = [];
+		dataToShow = data = [];
 		showPopup = false;
 		showToast = true;
+	};
+
+	const reset = () => {
+		showPopup = true;
+		playSfx();
+	};
+
+	// Table Filter
+	const filter = (selected) => {
+		showTableFilterOption = !showTableFilterOption;
+		tableFilter = `${selected} ${isNaN(selected) ? '' : 'Star'}`;
+		if (selected === 'All') {
+			dataToShow = data;
+			return;
+		}
+		dataToShow = data.filter(({ rarity }) => rarity === selected);
+		return;
 	};
 
 	const handleCLose = () => {
@@ -129,14 +150,8 @@
 		<div class="wish-type">
 			<span> Select Wish Type: </span>
 			<div class="select-box">
-				<div
-					class="selected"
-					on:click={() => {
-						showSelectList = !showSelectList;
-					}}
-				>
+				<div class="selected" on:click={() => (showSelectList = !showSelectList)}>
 					{banner === 'events' ? 'Character Event' : getName(banner)} Wish
-
 					<i class="gi-caret-{showSelectList ? 'up' : 'down'}" />
 				</div>
 
@@ -162,23 +177,34 @@
 			delete/reset button or clear the browser data.
 		</p>
 
-		<div class="info row">
-			<div class="cell">
+		<div class="info">
+			<div class="left">
 				Current Pity : &nbsp; <strong class="star5"> {pity5} </strong> &nbsp; - &nbsp;
-				<strong class="star4"> {pity4} </strong>
-			</div>
-			<div class="cell">
+				<strong class="star4"> {pity4} </strong> <br />
 				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span> ~
 				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
 			</div>
-			<div class="cell">
-				<button
-					class="reset"
-					on:click={() => {
-						showPopup = true;
-						playSfx();
-					}}><i class="gi-delete" /> Reset</button
-				>
+			<div class="right">
+				<button class="reset" on:click={reset}>
+					<i class="gi-delete" /> Reset
+				</button>
+				<div class="table-filter">
+					<span
+						class="filter-selected"
+						on:click={() => (showTableFilterOption = !showTableFilterOption)}
+					>
+						Filter / {tableFilter}
+						<i class="gi-caret-{showTableFilterOption ? 'up' : 'down'}" />
+					</span>
+					{#if showTableFilterOption}
+						<div class="options" transition:fade={{ duration: 200 }}>
+							<span on:click={() => filter('All')}>All</span>
+							<span on:click={() => filter(5)}>5 Star</span>
+							<span on:click={() => filter(4)}>4 Star</span>
+							<span on:click={() => filter(3)}>3 Star</span>
+						</div>
+					{/if}
+				</div>
 			</div>
 		</div>
 
@@ -198,12 +224,12 @@
 							<div class="cell">Waiting ...</div>
 						</div>
 					{:then ls}
-						{#if data.length < 1}
+						{#if dataToShow.length < 1}
 							<div class="row" style="justify-content: center">
 								<div class="cell">No data available .</div>
 							</div>
 						{:else}
-							{#each data as { name, type, rarity, time, pity, bannerName }, i}
+							{#each dataToShow as { name, type, rarity, time, pity, bannerName }, i}
 								{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
 									<div class="row">
 										<div class="cell cell0 star{rarity}">{pity}</div>
@@ -248,7 +274,7 @@
 			<button
 				class="next"
 				on:click={() => {
-					if (data.length > activepage * itemPerPage) activepage++;
+					if (dataToShow.length > activepage * itemPerPage) activepage++;
 				}}
 			>
 				<i class="gi-angle-right" />
@@ -360,6 +386,42 @@
 		margin: 20px 0;
 	}
 
+	.table-filter {
+		position: relative;
+	}
+
+	.filter-selected {
+		display: inline-block;
+		border: 1px solid #c3a280;
+		border-radius: 0.2rem;
+		padding: 0.2rem 1rem;
+		width: 150px;
+		text-align: center;
+	}
+
+	.table-filter .options {
+		position: absolute;
+		top: 2.5rem;
+		right: 0.5rem;
+		width: 150px;
+		display: flex;
+		flex-direction: column;
+		z-index: +1;
+		background: #e8e6e5;
+		border: 1px solid #c3a280;
+		border-radius: 0.3rem;
+		padding: 0 0.2rem;
+	}
+
+	.table-filter .options span {
+		padding: 0.3rem 1rem;
+		transition: all 0.2s;
+		border-bottom: 0.5px solid #c8c8c8;
+	}
+	.table-filter .options span:hover {
+		background-color: #d6d1cb;
+	}
+
 	.table {
 		width: 100%;
 		height: 21.5rem;
@@ -414,11 +476,15 @@
 		line-height: 1rem;
 	}
 
-	.info.row {
-		border: 0;
-		width: 100%;
+	.info {
+		display: flex;
 		justify-content: space-between;
-		margin-bottom: 5px;
+		margin-bottom: 0.5rem;
+	}
+	.info > .right {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 
 	.gi-star {
