@@ -1,4 +1,3 @@
-// import adapterCloudflare from '@sveltejs/adapter-cloudflare';
 import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { config as envConfig } from 'dotenv';
