@@ -352,6 +352,17 @@
 					}
 				},
 				{
+					"name": "kuki-shinobu",
+					"vision": "electro",
+					"release": "2.7-2",
+					"title": "Mender of Tribulations",
+					"wishBoxPosition": {
+						"h": 160,
+						"t": 66,
+						"l": 15
+					}
+				},
+				{
 					"name": "lisa",
 					"vision": "electro",
 					"release": "1.0-1",
