@@ -1,6 +1,8 @@
 # Realistic Genshin Impact Wish Simulator
 
-I'm not expert, I can't write clean code, but I try to create this Realistic Genshin Impact Wish Simulator for web version. Include meteor and reveal animation.
+![License](https://badgen.net/github/license/AguzzTN54/Genshin-Impact-Wish-Simulator?icon:github) ![Repo Size](https://img.shields.io/github/repo-size/AguzzTN54/Genshin-Impact-Wish-Simulator?color=fa0) [![CodeFactor](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator/badge)](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator) ![Status](https://badgen.net/github/checks/AguzzTN54/Genshin-Impact-Wish-Simulator) ![Code Standard](https://badgen.net/badge/code%20style/standard/f2a) [![Saweria](https://badgen.net/badge/Sawer/Mantan21/F96854)](https://saweria.co/mantan21)
+
+I'm not expert, I can't write clean code, but I try to create this Genshin Impact Wish Simulator. I can claim this is the most Realistic one for web version. However, I still need your feedbacks to improve the wishing experience.
 
 ## Screenshots
 
@@ -70,8 +72,8 @@ After that, if you want to serve some assets through cdn, you can set your Githu
 12. Responsive Layout and mobile friendly both landscape or portrait orientation.
 13. All user data will saves to localstorage and IndexedDB.
 14. Screenshot and download wish result localy.
-15. Link generator if user want to share their gacha result through internet.
+15. Link generator when user want to share their gacha result through internet.
 
 ---
 
-`Note : No affiliation with mihoyo, all data used for this applications belongs to Mihoyo`
+`Note : This App is not affiliated with mihoyo, all data used for this application belongs to Mihoyo`
