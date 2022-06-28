@@ -35,7 +35,7 @@
 
 			drop3star = getAllWeapons(3).map(({ name, type }) => ({ name, type }));
 			this._stdDropChar5 = standard.characters.map((name) => ({ name, type: 'character' }));
-			drop4star = [...getAllChars(4), ...getAllWeapons(4)];
+			drop4star = [...getAllChars(4), ...getAllWeapons(4)].filter(({ limited }) => !limited);
 
 			this._std = ['amber', 'kaeya', 'lisa'];
 			this._events = events;
@@ -52,12 +52,12 @@
 		},
 
 		_showBeginner() {
-			const { character, title, vision } = get4StarChars.find(({ name }) => {
+			const { name, title, vision } = get4StarChars.find(({ name }) => {
 				return name === beginner.character;
 			});
 			const obj = {
 				rarity: 4,
-				items: [{ name: character, title, vision }]
+				items: [{ name, title, vision }]
 			};
 
 			items = [obj];
@@ -65,7 +65,6 @@
 
 			drop5star = this._stdDropChar5;
 			drop4star = drop4star
-				.filter(({ limited }) => !limited)
 				.map(({ type, name }) => ({ name, type }))
 				.filter(({ name }) => !this._std.includes(name));
 		},

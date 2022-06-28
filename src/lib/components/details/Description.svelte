@@ -13,6 +13,12 @@
 	const item4Star = ['events', 'weapons'].includes(bannerType)
 		? data.find(({ rarity }) => rarity === 4).items
 		: '';
+
+	const getDelimiter = (arr, i) => {
+		if (i > arr.length - 2) return '';
+		if (i > arr.length - 3) return 'and';
+		return ',';
+	};
 </script>
 
 <svelte:head>
@@ -79,18 +85,21 @@
 	</p>
 	<p>〓Rules〓</p>
 	<p>
-		Base probability of winning 5-star item = <span> 0.600%</span>; base probability of winning
-		5-star character =
-		<span> 0.300%</span>, and base probability of winning 5-star weapon = <span> 0.300%</span>;
-		consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>;
-		guaranteed to win 5-star item at least once per <span> 90</span> attempts. Base probability of
-		winning 4-star item = <span> 5.100%</span>; base probability of winning 4-star character =
+		Base probability of winning 5-star item = <span> 0.600%</span>; <br /> base probability of
+		winning 5-star character =
+		<span> 0.300%</span>, <br /> and base probability of winning 5-star weapon =
+		<span> 0.300%</span>;<br />
+		consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; <br />
+		guaranteed to win 5-star item at least once per <span> 90</span> attempts. <br /> Base
+		probability of winning 4-star item = <span> 5.100%</span>; <br /> base probability of winning
+		4-star character =
 		<span> 2.550%</span>, and base probability of winning 4-star weapon = <span> 2.550%</span>;
 		consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>;
-		guaranteed to win 4-star or above item at least once per <span> 10</span> attempts; probability
-		of winning 4-star item through the guarantee = <span> 99.400%</span>, and probability of winning
-		5-star item through the guarantee = <span> 0.600%</span>. 5-star weapons won in this wish
-		include <span class="starglitter"> Masterless Starglitter</span> x10; 4-star weapons include
+		guaranteed to win 4-star or above item at least once per <span> 10</span> attempts; <br />
+		probability of winning 4-star item through the guarantee = <span> 99.400%</span>, and
+		probability of winning 5-star item through the guarantee = <span> 0.600%</span>. 5-star weapons
+		won in this wish include <span class="starglitter"> Masterless Starglitter</span> x10; 4-star
+		weapons include
 		<span class="starglitter"> Masterless Starglitter</span>
 		x2; 3-star weapons include
 		<span class="stardust"> Masterless Stardust</span> x15.
@@ -119,12 +128,12 @@
 		{bannerName.split(' ').slice(1).join(' ')} is now available. During this event wish, drifting 5-star
 		character
 		<span class={item5Star[0].vision}>
-			"{item5Star[0].title}" {item5Star[0].name} ({item5Star[0].vision})
+			"{item5Star[0].title}" {getName(item5Star[0].name)} ({item5Star[0].vision})
 		</span>
 		as well as 4-star characters
 		{#each item4Star as { name, vision, title }, i}
 			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
-			{#if i === 1} and {:else},&nbsp; {/if}
+			{getDelimiter(item4Star, i)}
 		{/each}
 		will get a <span> huge drop-rate boost! </span> <br />
 		<span>
@@ -143,14 +152,16 @@
 		For Event Wish - <span class={item5Star[0].vision}>
 			{bannerName.split(' ')[0]}
 		</span>
-		{bannerName.split(' ').slice(1).join(' ')} : Base probability of winning 5-star character =
-		<span> 0.600% </span>; consolidated probability (incl. guarantee) =
-		<span>1.600%</span>; guaranteed to win 5-star character at least once per <span> 90</span>
+		{bannerName.split(' ').slice(1).join(' ')} : <br /> Base probability of winning 5-star character
+		=
+		<span> 0.600% </span>; <br /> consolidated probability (incl. guarantee) =
+		<span>1.600%</span>; <br /> guaranteed to win 5-star character at least once per
+		<span> 90</span>
 		attempts. The first time you win a 5-star item in this event wish, driftingre is a
 		<span> 50%</span>
 		chance it will be drifting promotional character
 		<span class={item5Star[0].vision}>
-			"{item5Star[0].title}" {item5Star[0].name} ({item5Star[0].vision})
+			"{item5Star[0].title}" {getName(item5Star[0].name)} ({item5Star[0].vision})
 		</span>. If drifting first 5-star character you win in this event wish is not drifting
 		promotional character, then the next 5-star character you win is <span> guaranteed</span> to be drifting
 		promotional character.
@@ -161,14 +172,15 @@
 		For Event Wish - <span class={item5Star[0].vision}>
 			{bannerName.split(' ')[0]}
 		</span>
-		{bannerName.split(' ').slice(1).join(' ')} : Base probability of winning 4-star item =
-		<span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>;
-		guaranteed to win 4-star or above item at least once per 10 attempts. The first time you win a
-		4-star item in this event wish, driftingre is a <span> 50%</span> chance it will be one of
-		drifting featured characters
+		{bannerName.split(' ').slice(1).join(' ')} : <br /> Base probability of winning 4-star item =
+		<span> 5.100%</span>; <br /> consolidated probability (incl. guarantee) = <span> 13.000%</span>;
+		<br />
+		guaranteed to win 4-star or above item at least once per 10 attempts. The first time you win a 4-star
+		item in this event wish, driftingre is a <span> 50%</span> chance it will be one of drifting
+		featured characters
 		{#each item4Star as { name, vision, title }, i}
 			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
-			{#if i === 1} and {:else}, {/if}
+			{getDelimiter(item4Star, i)}
 		{/each}. If drifting first 4-star item you win in this event wish is not one of the featured
 		characters, driftingn the next 4-star item you win is <span> guaranteed </span> to be a featured
 		character.
@@ -206,7 +218,7 @@
 {:else if bannerType === 'weapons'}
 	<p>
 		Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}" is now available. During this event wish,the
+		{bannerName.split(' ').slice(1).join(' ')}" is now available. During this event wish, the
 		event-exclusive 5-star weapon
 		<span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
 		and the 5-star weapon
@@ -229,8 +241,9 @@
 	<p>5-Star Items</p>
 	<p>
 		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}": Base probability of winning 5-star weapon =
-		<span> 0.700%</span>; consolidated probability (incl. guarantee) = <span> 1.850%</span> ;
+		{bannerName.split(' ').slice(1).join(' ')}": <br /> Base probability of winning 5-star weapon =
+		<span> 0.700%</span>; <br /> consolidated probability (incl. guarantee) = <span> 1.850%</span>;
+		<br />
 		guaranteed to win 5-star weapon at least once per <span> 80</span> attempts. The first time you
 		win a 5-star weapon in this event, there is a <span> 75%</span> chance it will be one of the
 		promotional weapons <span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
@@ -244,18 +257,18 @@
 
 	<p>
 		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}": Base probability of winning 4-star item =
-		<span> 6.000%</span>; base probability of winning 4-star character = <span>3.000%</span> , and
-		base probability of winning 4-star weapon = <span> 3.000%</span>; consolidated probability
-		(incl. guarantee) of winning 4-star item = <span> 14.500%</span>; guaranteed to win 4-star or
-		above item at least once per 10 attempts; probability of winning 4-star item through the
-		guarantee = 99.300%, and probability of winning 5-star item through the guarantee =
+		{bannerName.split(' ').slice(1).join(' ')}": <br /> Base probability of winning 4-star item =
+		<span> 6.000%</span>; <br /> base probability of winning 4-star character = <span>3.000%</span>,
+		and base probability of winning 4-star weapon = <span> 3.000%</span>; <br /> consolidated
+		probability (incl. guarantee) of winning 4-star item = <span> 14.500%</span>;<br /> guaranteed
+		to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item
+		through the guarantee = 99.300%, and probability of winning 5-star item through the guarantee =
 		<span> 0.700% </span>
 		The first time you win a 4-star item in this event wish, there is a <span> 75%</span>
 		chance that it will be one of the featured weapons
 		<span class="stardust">
-			{#each item4Star as { name, type }}
-				{getName(name)} ({type}),
+			{#each item4Star as { name, type }, i}
+				{getName(name)} ({type}) {getDelimiter(item4Star, i)}&nbsp;
 			{/each}
 		</span>. If the first 4-star item you win in this event wish is not one of the featured weapons,
 		then the next 4-star item you win is <span> guaranteed</span> to be a featured weapon.
