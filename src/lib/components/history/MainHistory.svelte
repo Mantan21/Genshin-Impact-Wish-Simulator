@@ -180,8 +180,11 @@
 		<div class="info">
 			<div class="left">
 				Current Pity : &nbsp; <strong class="star5"> {pity5} </strong> &nbsp; - &nbsp;
-				<strong class="star4"> {pity4} </strong> <br />
-				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span> ~
+				<strong class="star4"> {pity4} </strong>
+				<br />
+				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span>
+				<br />
+				Total Spend : <strong><span class="lighted"> {data.length * 160}</span> Primos</strong> ~
 				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
 			</div>
 			<div class="right">
@@ -479,7 +482,17 @@
 	.info {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-end;
 		margin-bottom: 0.5rem;
+	}
+	@media screen and (max-width: 450px) {
+		.info {
+			flex-direction: column;
+			width: 100%;
+		}
+		.left {
+			width: 100%;
+		}
 	}
 	.info > .right {
 		display: flex;
