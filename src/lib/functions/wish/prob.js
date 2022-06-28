@@ -3,18 +3,18 @@ const base5StarCharBanner = [];
 const base5StarWeaponBanner = [];
 
 // Character base
-for (let i = 0; i < 72; i++) base5StarCharBanner.push(0.6);
-// Character Banner's hard pity 73 - 90
-for (let i = 0; i < 17; i++) {
+for (let i = 0; i < 73; i++) base5StarCharBanner.push(0.6);
+// Character Banner's hard pity 74 - 90
+for (let i = 1; i < 17; i++) {
 	const probability = 0.6 + 6 * i;
 	base5StarCharBanner.push(probability);
 }
 base5StarCharBanner.push(100); // guaranteed at pity 90
 
 // Weapon Base
-for (let w = 0; w < 61; w++) base5StarWeaponBanner.push(0.7);
-// Weapon Banner's hard pity 62 - 80
-for (let w = 0; w < 12; w++) {
+for (let w = 0; w < 62; w++) base5StarWeaponBanner.push(0.7);
+// Weapon Banner's hard pity 63 - 80
+for (let w = 1; w < 12; w++) {
 	const probability = 0.7 + 7 * w;
 	base5StarWeaponBanner.push(probability);
 }
