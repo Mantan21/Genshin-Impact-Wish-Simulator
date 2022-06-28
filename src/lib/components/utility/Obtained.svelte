@@ -43,7 +43,7 @@
 	}
 </script>
 
-<section on:click={closeHandle}>
+<section on:click|stopPropagation={closeHandle}>
 	<div class="container">
 		<div class="bg" />
 		<div class="content" in:scaleFade={{ duration: 200 }}>
