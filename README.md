@@ -86,7 +86,7 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
 
    ![double guaranteed](static/screenshot/double-guaranteed.png)
 
-## Developing
+## Develoment
 
 This app build with Svelte Kit base on Javascript programming language.
 
@@ -99,6 +99,11 @@ npm run dev
 npm run dev -- --open
 ```
 
+### How to Update new banner
+
+- To add new banner in different patch, you can refer to [this commit](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/commit/029d7cfdc35cf0710907c807c6d4ee38262b6610)
+- To add new banner in the same patch, you can refer to [this commit](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/commit/2dbfdfd64100491d77a85bb9e8f6ef7c849ae61e)
+
 ## Building
 
 Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment. Then:
@@ -107,7 +112,7 @@ Before creating a production version of your app, install an [adapter](https://k
 npm run build
 ```
 
-## Deploying
+## Deployment
 
 Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env`, please change the variables if needed.
 After that, if you want to serve some assets through cdn, you can set your Github informations that you use to save your assets. The site will use free cdn service for free, if you want to use another cdn service, please do setup yourself
