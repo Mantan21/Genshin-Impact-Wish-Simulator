@@ -14,7 +14,7 @@ const { addHistory, countItem } = HistoryIDB;
 const roll = async (banner, indexOfBanner, WishInstance) => {
 	const pity4 = pity4star.get(banner);
 	const pity5 = pity5star.get(banner);
-	const maxPity = (banner === 'weapon' ? 80 : 90) - 1; // Minus 1 to match with index of base pity
+	const maxPity = (banner === 'weapons' ? 80 : 90) - 1; // Minus 1 to match with index of base pity
 
 	const chance5star =
 		banner === 'weapons' ? base5StarWeaponBanner[pity5] || 100 : base5StarCharBanner[pity5] || 100;
