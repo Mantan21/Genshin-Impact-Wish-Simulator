@@ -9,6 +9,7 @@
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import Icon from './Icon.svelte';
+	import Obtained from './Obtained.svelte';
 
 	export let encodedData = '';
 	export let page = '';
@@ -19,6 +20,7 @@
 	let width = 873;
 	let height = 393;
 	let isFirstShare = true;
+	let obtain = false;
 
 	let blob;
 	const shareText = "Wow! I'm so lucky when pulling on Wish Simulator, you can try Yours !";
@@ -30,7 +32,7 @@
 	});
 
 	const addFunds = () => {
-		if (!isFirstShare) return;
+		if (!isFirstShare) return (obtain = false);
 		primogem.update((n) => {
 			const settled = n + 16000;
 			localBalance.set('primogem', settled);
@@ -38,6 +40,7 @@
 		});
 		firstShare.set('yes');
 		isFirstShare = false;
+		obtain = true;
 	};
 
 	const takeShot = async (e) => {
@@ -102,13 +105,27 @@
 		}
 	};
 
+	let showObtained = false;
+	const closeObtained = () => {
+		showObtained = false;
+		playSfx('close');
+	};
+
 	const closehandle = () => {
 		playSfx('close');
 		show = false;
+		if (!obtain) return;
+		showObtained = true;
 	};
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
+
+<!-- Obtain -->
+{#if showObtained}
+	<Obtained items={{ primogem: 16000 }} on:close={closeObtained} />
+{/if}
+<!-- Obtain end -->
 
 {#if show}
 	<div
