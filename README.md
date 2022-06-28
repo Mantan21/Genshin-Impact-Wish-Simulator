@@ -82,7 +82,10 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
    | -------- | ---- | ---- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ---- |
    | **Rate** | 0.7% | 7.7% | 14.7% | 21.7% | 28.7% | 35.7% | 42.7% | 49.7% | 56.7% | 63.7% | 70.7% | 77.7% | 81.2% | 84.7% | 88.2% | 91.7% | 95.2% | 98.7% | 100% |
 
-4.
+4. If your current pity for *5 item is 89 and *4 item is 9, it's mean you are guaranteed for *5 and *4 items at the same time, but only one items you will get on the next pull.
+   If this condition happen to you, your next pull priority is *5 star item and *4 item will appear next at pity 11
+
+   ![double guaranteed](static/screenshot/double-guaranteed.png)
 
 ## Developing
 
