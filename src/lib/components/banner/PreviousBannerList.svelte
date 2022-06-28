@@ -423,6 +423,11 @@
 		transform: translateY(-50%);
 	}
 
+	.sort-button {
+		background-color: var(--tertiary-color);
+		transform: rotate(90deg);
+		border-radius: 100%;
+	}
 	.sort-selector,
 	.search input {
 		width: 13rem;
@@ -491,9 +496,16 @@
 		display: inline-flex;
 		flex-direction: column;
 		width: 60vh;
-		max-width: 46%;
+		max-width: 460px;
 		margin: 0.5rem 0.5rem 1rem;
 		text-align: center;
+	}
+
+	@media screen and (max-width: 1000px) {
+		.item {
+			width: 46%;
+			min-width: 125px;
+		}
 	}
 
 	:global(.mobile) .item {
