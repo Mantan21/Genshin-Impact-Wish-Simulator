@@ -23,10 +23,16 @@
 {/if}
 
 {#if head}
-	<script
+	<!-- <script
 		data-cfasync="false"
 		type="text/javascript"
 		data-adel="atag"
 		src="//acacdn.com/script/atg.js"
-		czid="v1xd6wvvpe"></script>
+		czid="v1xd6wvvpe"></script> -->
+	<script
+		type="text/javascript"
+		src="//pl17416355.profitablecpmgate.com/3e/70/98/3e7098724a8a6321d737e1bd39d9ffed.js"></script>
+	<script
+		type="text/javascript"
+		src="//pl17419889.profitablecpmgate.com/fb/35/45/fb3545e433a3f40f53c83f80f24037ec.js"></script>
 {/if}
