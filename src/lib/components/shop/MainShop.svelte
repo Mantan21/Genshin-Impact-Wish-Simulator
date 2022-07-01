@@ -283,6 +283,8 @@
 									<span> Support me on Ko-fi </span>
 								</a>
 							</div>
+
+							<!-- Donaate By Saweria -->
 							<div class="column" style={columnWidth}>
 								<a class="content saweria" href="https://saweria.co/mantan21" target="_blank">
 									<div
@@ -297,6 +299,8 @@
 									<span> Support me on Saweria </span>
 								</a>
 							</div>
+
+							<!-- Donate By Crypto -->
 							<div class="column" style={columnWidth}>
 								<button
 									class="content crypto"
@@ -315,6 +319,17 @@
 									</div>
 									<span> Support me with Crypto </span>
 								</button>
+							</div>
+
+							<!-- Donate by Ads -->
+							<div class="column" style={columnWidth}>
+								<a
+									class="content kofi"
+									href="https://www.profitablecpmgate.com/d15cka0z4i?key=33ae097ba18c1d45f515ba2e0a2ed251"
+									target="_blank"
+								>
+									<span> Support Me by Visiting Ads Page </span>
+								</a>
 							</div>
 						</div>
 					</div>
