@@ -55,6 +55,7 @@
 		const node = document.querySelector('.wish-result');
 		node.classList.add('preview');
 		blob = await toBlob(node, { filter });
+		playSfx('camera');
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;

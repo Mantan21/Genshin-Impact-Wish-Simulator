@@ -27,6 +27,7 @@
 		pageActive.set(page);
 		browserState.set(page);
 		if (page === 'shop') return playSfx('shop');
+		if (page === 'inventory') return playSfx('inventory');
 		return playSfx();
 	};
 

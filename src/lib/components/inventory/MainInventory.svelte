@@ -185,7 +185,7 @@
 	let detailName = '';
 	let showInventoryDetail = false;
 	const handleShowDetails = (e) => {
-		playSfx();
+		playSfx('item');
 		const { name } = e.detail;
 		detailName = name;
 		showInventoryDetail = true;
