@@ -1,4 +1,5 @@
 <script>
+	import { dev } from '$app/env';
 	import { onMount } from 'svelte';
 
 	export let type = '';
@@ -22,7 +23,7 @@
 	/>
 {/if}
 
-{#if head}
+{#if head && !dev}
 	<!-- <script
 		data-cfasync="false"
 		type="text/javascript"
