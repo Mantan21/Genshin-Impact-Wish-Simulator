@@ -1,0 +1,175 @@
+<script>
+	import { outfits } from '$lib/data/outfits.json';
+	import { getName } from '$lib/functions/nameText';
+	import Icon from '../utility/Icon.svelte';
+	import ColumnParent from './parts/_column-parent.svelte';
+	import Column from './parts/_column.svelte';
+
+	const outfitsData = outfits;
+</script>
+
+<ColumnParent>
+	{#each outfitsData as { name, price, promoPrice, isPromo, isOwned }, i}
+		<Column>
+			<button class:discount={isPromo}>
+				<div class="content">
+					{#if isPromo}
+						<div class="discount-percentage">20%</div>
+					{/if}
+
+					<div class="thumbnail">
+						<picture>
+							<img
+								src="/assets/images/characters/outfit/thumbnail/{name}.webp"
+								alt={getName(name)}
+							/>
+						</picture>
+						<caption>
+							<span class="name">{getName(name)}</span>
+							{#if isOwned}
+								<span class="owned">Already Owned</span>
+							{:else}
+								<span class="desc">Purchase Up to 1</span>
+							{/if}
+						</caption>
+					</div>
+					<div class="price">
+						<Icon type="genesis" width="15%" />
+						{#if isPromo}
+							<del class="real-price">{price}</del>
+						{/if}
+						<span style="margin-left: 5px">{isPromo ? promoPrice : price}</span>
+					</div>
+				</div>
+			</button>
+		</Column>
+	{/each}
+</ColumnParent>
+
+<style>
+	button {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	button:hover {
+		filter: drop-shadow(0 0 5px #d2c69c);
+	}
+
+	.discount-percentage {
+		color: #fff;
+		background-color: #88ba59;
+		position: absolute;
+		top: -0.4rem;
+		left: -0.4rem;
+		z-index: +1;
+		padding: 0.2rem 0.7rem;
+		font-size: 0.8rem;
+		border-bottom-left-radius: 1rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 2rem;
+	}
+
+	.content {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 0.5rem;
+		overflow: hidden;
+		text-align: center;
+		background-color: #596982;
+	}
+	.thumbnail {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		/* background-image: url('/assets/images/utility/4star-bg.webp'); */
+		background-image: linear-gradient(to top, rgb(174, 148, 211), rgb(134, 114, 173));
+		background-size: cover;
+	}
+
+	picture::after {
+		width: 100%;
+		height: 40%;
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(to top, rgba(174, 148, 211, 0.8) 40%, rgba(174, 148, 211, 0));
+	}
+
+	picture {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	img {
+		width: 58%;
+		height: auto;
+	}
+
+	caption {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%);
+		z-index: +2;
+	}
+	caption span {
+		display: block;
+	}
+
+	.name {
+		color: #eeeeee;
+		font-size: 1.1rem;
+		-webkit-text-stroke: 0.02rem #675c31;
+		text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+	}
+
+	@media screen and (max-width: 400px) {
+		.name {
+			font-size: 1.3rem;
+		}
+	}
+
+	.desc,
+	.owned {
+		color: #e8dfbb;
+		font-size: 0.8em;
+		padding-bottom: 0.2rem;
+	}
+
+	.owned {
+		background-color: #e86b69;
+		padding-top: 0.2rem;
+	}
+
+	.price {
+		width: 100%;
+		height: 20%;
+		color: #fff;
+		-webkit-text-stroke: 0.02rem black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+
+	.discount .price {
+		background-color: #88ba59;
+	}
+
+	.real-price {
+		color: #66892b;
+		font-size: 0.7rem;
+		position: absolute;
+		top: 0.1rem;
+		right: 0.5rem;
+	}
+</style>

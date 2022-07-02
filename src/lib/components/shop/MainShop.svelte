@@ -10,10 +10,11 @@
 	import ShopNavbar from './ShopNavbar.svelte';
 	import ShopHeader from './ShopHeader.svelte';
 	import PaymentPopup from './PaymentPopup.svelte';
-	import ItemContainer from './parts/_column-parent.svelte';
+	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 	import Donate from './Donate.svelte';
 	import PaimonBargains from './PaimonBargains.svelte';
+	import CharacterOutfits from './CharacterOutfits.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -140,7 +141,7 @@
 
 			<div class="item-body" in:fade={{ duration: 300 }}>
 				{#if activeShop === 'genesis'}
-					<ItemContainer name="genesis">
+					<ColumnParent name="genesis">
 						{#each genesisList as { qty }, i}
 							<Column>
 								<button class="content" on:click={() => selectGenesis(i)}>
@@ -148,7 +149,11 @@
 								</button>
 							</Column>
 						{/each}
-					</ItemContainer>
+					</ColumnParent>
+
+					<!-- Characters Outfits -->
+				{:else if activeShop === 'outfits'}
+					<CharacterOutfits />
 
 					<!-- Donate -->
 				{:else if activeShop === 'donate'}

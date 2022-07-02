@@ -22,9 +22,16 @@
 			<div class="link">
 				<div class="border"><i class="gi-recomended" /> Recomended</div>
 			</div>
-			<div class="link">
+			<a
+				href="#outfits"
+				class="link"
+				class:active={activeShop === 'outfits'}
+				on:click|preventDefault={() => handleClick('outfits')}
+			>
+				<i class="gi-primo-star" />
+				<i class="gi-caret-up" />
 				<div class="border"><i class="gi-outfit" /> Character Outfits</div>
-			</div>
+			</a>
 			<a
 				href="#paimon"
 				class="link"
