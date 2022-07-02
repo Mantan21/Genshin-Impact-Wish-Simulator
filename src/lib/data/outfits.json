@@ -1,0 +1,32 @@
+{
+	"outfits": [
+		{
+			"name": "sea-breeze-dandelion",
+			"characterName": "jean",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350
+		},
+		{
+			"name": "summertime-sparkle",
+			"characterName": "barbara",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1680
+		},
+		{
+			"name": "opulent-splendor",
+			"characterName": "keqing",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350
+		},
+		{
+			"name": "orchid_s-evening-gown",
+			"characterName": "ningguang",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1680
+		}
+	]
+}
