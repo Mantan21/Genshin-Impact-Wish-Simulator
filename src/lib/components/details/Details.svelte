@@ -194,7 +194,7 @@
 						<picture>
 							<i class="gi-{featured[0].vision}" />
 							<img
-								src="/assets/images/characters/profile/{featured[0].name}.webp"
+								src="/assets/images/characters/face/{featured[0].name}.webp"
 								alt={getName(featured[0].name)}
 							/>
 						</picture>
@@ -230,7 +230,7 @@
 						<div class="character-card star4">
 							<picture>
 								<i class="gi-{vision}" />
-								<img src="/assets/images/characters/profile/{name}.webp" alt={getName(name)} />
+								<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
 							</picture>
 							<caption class="name">{getName(name)}</caption>
 							<i class="gi-{vision} element" />

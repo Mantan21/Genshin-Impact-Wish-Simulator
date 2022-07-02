@@ -320,17 +320,6 @@
 									<span> Support me with Crypto </span>
 								</button>
 							</div>
-
-							<!-- Donate by Ads -->
-							<div class="column" style={columnWidth}>
-								<a
-									class="content kofi"
-									href="https://www.profitablecpmgate.com/d15cka0z4i?key=33ae097ba18c1d45f515ba2e0a2ed251"
-									target="_blank"
-								>
-									<span> Support Me by Visiting Ads Page </span>
-								</a>
-							</div>
 						</div>
 					</div>
 
