@@ -23,7 +23,7 @@
 				<div class="border"><i class="gi-recomended" /> Recomended</div>
 			</div>
 			<div class="link">
-				<div class="border"><i class="gi-gift-shop" /> Gift Shop</div>
+				<div class="border"><i class="gi-outfit" /> Character Outfits</div>
 			</div>
 			<a
 				href="#paimon"

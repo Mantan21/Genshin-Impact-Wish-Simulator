@@ -94,10 +94,6 @@
 .gi-polearm:before {
 	content: '\73';
 }
-.gi-plus:before {
-	content: '\59';
-	font-size: 1.2rem;
-}
 .gi-montstad:before {
 	content: '\75';
 }
@@ -187,4 +183,11 @@
 }
 .gi-search:before {
 	content: '\58';
+}
+.gi-plus:before {
+	content: '\59';
+	font-size: 1.2rem;
+}
+.gi-outfit:before {
+	content: '\74';
 }
