@@ -3,7 +3,7 @@
 	import playSfx from '$lib/functions/audio';
 	import { getContext } from 'svelte';
 	import ExchangePopup from './ExchangePopup.svelte';
-	import ItemContainer from './parts/_column-parent.svelte';
+	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 	import TopNav from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
@@ -72,7 +72,7 @@
 	</TopNavItem>
 </TopNav>
 
-<ItemContainer>
+<ColumnParent>
 	{#each ['intertwined', 'acquaint'] as fate, i}
 		<Column>
 			<button on:click={() => openExchangePopup(fate)}>
@@ -99,7 +99,7 @@
 			</button>
 		</Column>
 	{/each}
-</ItemContainer>
+</ColumnParent>
 
 <style>
 	button {
