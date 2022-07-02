@@ -31,7 +31,7 @@
 				<span />
 			</button>
 		{/if}
-		<span> All Items below will never resfreshes </span>
+		<span> You can get all of items below for free without limit </span>
 	</div>
 	<div class="fates">
 		{#if activeShop === 'genesis'}

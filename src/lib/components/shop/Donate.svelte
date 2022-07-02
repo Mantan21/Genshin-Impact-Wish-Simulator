@@ -2,8 +2,8 @@
 	import playSfx from '$lib/functions/audio';
 	import { copy } from '$lib/functions/nameText';
 	import PopUp from '../utility/PopUp.svelte';
+	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
-	import ItemContainer from './parts/_column-parent.svelte';
 
 	let showCryptoPopup = false;
 	let showToast = false;
@@ -81,7 +81,7 @@
 </PopUp>
 
 <!-- Crypto Donate -->
-<ItemContainer>
+<ColumnParent>
 	<Column style="padding: 0.4rem;">
 		<a class="content kofi" href="https://ko-fi.com/mantan21" target="_blank">
 			<div
@@ -135,7 +135,7 @@
 			<span> Support me with Crypto </span>
 		</button>
 	</Column>
-</ItemContainer>
+</ColumnParent>
 
 <style>
 	/* Donate */
