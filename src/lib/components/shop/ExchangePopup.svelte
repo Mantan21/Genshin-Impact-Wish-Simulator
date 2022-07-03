@@ -17,12 +17,12 @@
 	export let show = false;
 	export let itemToBuy = 'intertwined';
 	export let fundType = 'genesis';
-	export let noConfirm = false;
 
 	export let outfit = false;
 	export let description = '';
 	export let rarity = 0;
 	export let price = 0;
+	export let isOutfitOwned = false;
 
 	const data = {
 		intertwined: {
@@ -155,7 +155,7 @@
 	title="Item To {fundType === 'genesis' ? 'Exchange' : 'Purchase'}"
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
-	button={(outfit ? noConfirm : fateQty < 1) ? 'cancel' : 'all'}
+	button={(outfit ? isOutfitOwned || $genesis < price : fateQty < 1) ? 'cancel' : 'all'}
 >
 	<div class="content" bind:clientHeight={contentHeight}>
 		{#if fundType === 'genesis' && !outfit}
@@ -246,10 +246,10 @@
 						<span class:red={$genesis < 1}> {rangeVal}</span>
 					</div>
 				{/if}
-				{#if outfit ? $genesis < price : fateQty < 1}
+				{#if outfit ? $genesis < price && !isOutfitOwned : fateQty < 1}
 					<div class="error red">Insufficient Funds</div>
 				{/if}
-				{#if noConfirm}
+				{#if isOutfitOwned}
 					<div class="error red">Already Owned</div>
 				{/if}
 			</div>

@@ -31,7 +31,6 @@
 	let showPopupAlert = false;
 	const checkCharacter = async (charName) => {
 		const dt = await HistoryIDB.getByName(charName);
-		console.log(dt.length);
 		return dt.length > 0;
 	};
 
@@ -89,7 +88,7 @@
 	price={outfitPrice}
 	on:cancel={handleClosePopup}
 	on:confirm={confirmBuy}
-	noConfirm={isOutfitOwned}
+	{isOutfitOwned}
 />
 <!-- Fates Popup End -->
 
