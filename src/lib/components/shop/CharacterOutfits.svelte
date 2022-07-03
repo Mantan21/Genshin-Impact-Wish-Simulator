@@ -1,23 +1,79 @@
 <script>
 	import { outfits } from '$lib/data/outfits.json';
+	import playSfx from '$lib/functions/audio';
 	import { getName } from '$lib/functions/nameText';
+	import { genesis } from '$lib/store/stores';
+	import WishResult from '../banner/parts/WishResult.svelte';
 	import Icon from '../utility/Icon.svelte';
+	import ExchangePopup from './ExchangePopup.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 
 	const outfitsData = outfits;
+
+	let showExchangePopup = false;
+	let outfitToBuy = '';
+	let outfitPrice = 0;
+	let outfitRarity = 0;
+	let outfitDescription = '';
+	let isOutfitOwned = false;
+
+	const selectItem = (item) => {
+		const { name, price, promoPrice, isPromo, rarity, description, isOwned } = item;
+		playSfx('exchange');
+		outfitToBuy = name;
+		showExchangePopup = true;
+		outfitPrice = isPromo ? promoPrice : price;
+		outfitRarity = rarity;
+		outfitDescription = description;
+		isOutfitOwned = isOwned;
+	};
+
+	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
+	let showObtained = false;
+
+	const confirmBuy = () => {
+		genesis.update((v) => v - outfitPrice);
+		showObtained = true;
+		handleClosePopup();
+	};
+
+	const handleClosePopup = () => {
+		showExchangePopup = false;
+	};
 </script>
 
+<!-- Fates Popup -->
+<ExchangePopup
+	outfit
+	show={showExchangePopup}
+	itemToBuy={outfitToBuy}
+	description={outfitDescription}
+	rarity={outfitRarity}
+	price={outfitPrice}
+	on:cancel={handleClosePopup}
+	on:confirm={confirmBuy}
+	noConfirm={isOutfitOwned || $genesis < outfitPrice}
+/>
+<!-- Fates Popup End -->
+
+{#if showObtained}
+	<WishResult list={itemData} on:wishEnd={() => (showObtained = false)} fromShop />
+{/if}
+
 <ColumnParent>
-	{#each outfitsData as { name, price, promoPrice, isPromo, isOwned }, i}
+	{#each outfitsData as { name, price, promoPrice, isPromo, isOwned, rarity }, i}
 		<Column>
-			<button class:discount={isPromo}>
+			<button class:discount={isPromo} on:click={() => selectItem({ ...outfitsData[i] })}>
 				<div class="content">
 					{#if isPromo}
 						<div class="discount-percentage">20%</div>
 					{/if}
 
-					<div class="thumbnail">
+					<div
+						class="thumbnail"
+						style="background-image: url('/assets/images/utility/{rarity}star-bg.webp');"
+					>
 						<picture>
 							<img
 								src="/assets/images/characters/outfit/thumbnail/{name}.webp"
@@ -51,9 +107,14 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
+		transition: transform 0.1s;
 	}
 	button:hover {
 		filter: drop-shadow(0 0 5px #d2c69c);
+	}
+
+	button:active {
+		transform: scale(0.95);
 	}
 
 	.discount-percentage {
@@ -86,14 +147,12 @@
 		height: 100%;
 		width: 100%;
 		position: relative;
-		/* background-image: url('/assets/images/utility/4star-bg.webp'); */
-		background-image: linear-gradient(to top, rgb(174, 148, 211), rgb(134, 114, 173));
 		background-size: cover;
 	}
 
 	picture::after {
 		width: 100%;
-		height: 40%;
+		height: 50%;
 		content: '';
 		display: block;
 		position: absolute;
@@ -126,8 +185,9 @@
 	}
 
 	.name {
-		color: #eeeeee;
+		color: #fdf5f5;
 		font-size: 1.1rem;
+		line-height: 1.2rem;
 		-webkit-text-stroke: 0.02rem #675c31;
 		text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
 	}

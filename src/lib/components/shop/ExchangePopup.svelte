@@ -11,11 +11,18 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import { createEventDispatcher } from 'svelte';
-	import playSfx from '$lib/functions/audio';
+	import Range from './parts/_range.svelte';
+	import { getName } from '$lib/functions/nameText';
 
 	export let show = false;
 	export let itemToBuy = 'intertwined';
-	export let fundType = 'primogem';
+	export let fundType = 'genesis';
+	export let noConfirm = false;
+
+	export let outfit = false;
+	export let description = '';
+	export let rarity = 0;
+	export let price = 0;
 
 	const data = {
 		intertwined: {
@@ -60,7 +67,12 @@
 			fundQty = base.primogem * rangeVal;
 		}
 
-		if (fundType === 'genesis') {
+		if (fundType === 'genesis' && outfit) {
+			fundQty = price;
+			fateQty = 1;
+		}
+
+		if (fundType === 'genesis' && !outfit) {
 			fateQty = $genesis;
 			fundQty = rangeVal;
 		}
@@ -68,7 +80,6 @@
 		maxRange = fateQty > 0 ? fateQty : 1;
 		minRange = fateQty > 1 ? 1 : 0;
 	}
-	$: rangeStyle = `--min: ${minRange}; --max: ${maxRange}; --val: ${rangeVal}`;
 
 	$: itemFieldStyle = `height:${(45 / 100) * contentHeight}px`;
 	$: pictureWidthStyle = `height:${(45 / 100) * contentHeight}px; width:${
@@ -136,29 +147,6 @@
 
 		rangeVal = 1;
 	};
-
-	let timeout;
-	let interval;
-	const rangeControl = (plusOrMinus = 'plus') => {
-		const change = plusOrMinus === 'plus' ? plus : min;
-		change();
-		timeout = setTimeout(() => {
-			interval = setInterval(change, 50);
-		}, 500);
-		playSfx();
-	};
-	const plus = () => {
-		if (rangeVal >= maxRange) return clearTimers();
-		rangeVal++;
-	};
-	const min = () => {
-		if (rangeVal <= 1) return clearTimers();
-		rangeVal--;
-	};
-	const clearTimers = () => {
-		clearTimeout(timeout);
-		clearInterval(interval);
-	};
 </script>
 
 <PopUp
@@ -166,10 +154,10 @@
 	title="Item To {fundType === 'genesis' ? 'Exchange' : 'Purchase'}"
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
-	button={fateQty < 1 ? 'cancel' : 'all'}
+	button={(outfit ? noConfirm : fateQty < 1) ? 'cancel' : 'all'}
 >
 	<div class="content" bind:clientHeight={contentHeight}>
-		{#if fundType === 'genesis'}
+		{#if fundType === 'genesis' && !outfit}
 			<!-- Genesis Exchange -->
 			<div class="row genesis-exchange" style={itemFieldStyle}>
 				<div class="col genesis">
@@ -195,7 +183,7 @@
 		{:else}
 			<div class="item" style={itemFieldStyle}>
 				<div class="primo">
-					<span class="primogem" class:red={fateQty < 1}>
+					<span class="primogem" class:red={outfit ? $genesis < price : fateQty < 1}>
 						<Icon
 							type={fundType}
 							height="80%"
@@ -206,18 +194,32 @@
 					</span>
 				</div>
 				<picture style={pictureWidthStyle}>
-					<Icon type={itemToBuy} width="70%" />
+					{#if outfit}
+						<img
+							src="/assets/images/characters/outfit/thumbnail/{itemToBuy}.webp"
+							width="75%"
+							alt={getName(itemToBuy)}
+						/>
+					{:else}
+						<Icon type={itemToBuy} width="70%" />
+					{/if}
 				</picture>
 				<div class="description" style={descriptionStyle}>
-					<div class="title">{itemToBuy} Fate</div>
+					<div class="title">
+						{#if outfit}
+							{getName(itemToBuy)}
+						{:else}
+							{itemToBuy} Fate
+						{/if}
+					</div>
 					<div class="star">
-						{#each Array(data[itemToBuy].star) as _, i}
+						{#each Array(rarity || data[itemToBuy]?.star) as _, i}
 							<i class="gi-star" />
 						{/each}
 					</div>
 
 					<p>
-						{data[itemToBuy].description}
+						{description || data[itemToBuy]?.description}
 					</p>
 				</div>
 			</div>
@@ -229,52 +231,21 @@
 				<span style="font-size: larger">{rangeVal}</span>
 			</div>
 			<div class="rangeInput">
-				<div class="input">
-					<button
-						class="min"
-						disabled={rangeVal <= 1}
-						on:touchstart|preventDefault={() => rangeControl('min')}
-						on:mousedown|preventDefault={() => rangeControl('min')}
-						on:mouseleave={clearTimers}
-						on:mouseup={clearTimers}
-						on:touchend={clearTimers}
-					>
-						<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
-					</button>
-					<div class="control">
-						<span style="pointer-events:none">{minRange}</span>
-						<input
-							class="range"
-							type="range"
-							max={maxRange}
-							min={minRange}
-							bind:value={rangeVal}
-							style={rangeStyle}
-							disabled={fateQty < 1}
-						/>
-						<span style="pointer-events:none">{maxRange}</span>
-					</div>
-					<button
-						class="plus"
-						on:touchstart|preventDefault={() => rangeControl('plus')}
-						on:mousedown|preventDefault={() => rangeControl('plus')}
-						on:mouseleave={clearTimers}
-						on:mouseup={clearTimers}
-						on:touchend={clearTimers}
-						disabled={rangeVal >= maxRange}
-					>
-						<i class="gi-plus" />
-					</button>
-				</div>
-
-				{#if fundType === 'genesis'}
+				<Range
+					on:rangeChange={({ detail }) => (rangeVal = detail.value)}
+					disabled={outfit || fateQty < 1}
+					{maxRange}
+					{minRange}
+					{rangeVal}
+				/>
+				{#if fundType === 'genesis' && !outfit}
 					<div class="consume" style="display: inline-flex; align-items:center">
 						Consume
 						<Icon type="genesis" />
 						<span class:red={$genesis < 1}> {rangeVal}</span>
 					</div>
 				{/if}
-				{#if fateQty < 1}
+				{#if outfit ? $genesis < price : fateQty < 1}
 					<div class="error red">Insufficient Funds</div>
 				{/if}
 			</div>
@@ -395,9 +366,7 @@
 
 	.slider,
 	.rangeNumber,
-	.rangeInput,
-	.control,
-	.input {
+	.rangeInput {
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
@@ -412,142 +381,6 @@
 	}
 	.slider {
 		height: 100%;
-	}
-
-	.control {
-		flex-direction: row;
-		margin: 0 3rem;
-	}
-
-	.control > span {
-		width: 2.2em;
-		height: 2em;
-		line-height: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: larger;
-	}
-
-	/* range */
-	[type='range'] {
-		--range: calc(var(--max) - var(--min));
-		--ratio: calc((var(--val) - var(--min)) / var(--range));
-		--sx: calc(0.5 * 1.5em + var(--ratio) * (100% - 1.5em));
-		margin: 0;
-		padding: 0;
-		width: 55%;
-		height: 1.5em;
-		background: transparent;
-		font: 1em/1 arial, sans-serif;
-	}
-	[type='range'],
-	[type='range']::-webkit-slider-thumb {
-		-webkit-appearance: none;
-	}
-	[type='range']::-webkit-slider-runnable-track {
-		box-sizing: border-box;
-		border: none;
-		width: 100%;
-		height: 0.4em;
-		background: #ccc;
-	}
-	[type='range']::-webkit-slider-runnable-track {
-		background: linear-gradient(#4a5265, #4a5265) 0 / var(--sx) 100% no-repeat #ccc;
-		border-radius: 10px;
-	}
-	[type='range']::-moz-range-track {
-		box-sizing: border-box;
-		border-radius: 10px;
-		width: 100%;
-		height: 0.4em;
-		background: #ccc;
-	}
-
-	/* duplicated because browsers ignore
-	 * the whole selector when they see
-	 * non-standard rules
-	 * (FF 96, Chrome 97)
-	 */
-	[type='range']::-ms-track {
-		box-sizing: border-box;
-		border: none;
-		width: 100%;
-		height: 0.4em;
-		background: #ccc;
-	}
-
-	[type='range']::-moz-range-progress {
-		height: 0.4em;
-		border-radius: 10px;
-		background: #4a5265;
-	}
-
-	[type='range']::-ms-fill-lower {
-		height: 0.4em;
-		background: #ccc;
-	}
-
-	[type='range']::-webkit-slider-thumb {
-		box-sizing: border-box;
-		border: none;
-		border-radius: 0;
-		width: 0.75em;
-		height: 0.75em;
-		background: #4a5265;
-		margin-top: -0.22rem;
-		transform: rotate(45deg);
-		border: 0.15em solid #ece6de;
-		outline: 0.15em solid #4a5265;
-		box-shadow: 0 0 6px #ece6de;
-	}
-
-	[type='range']::-moz-range-thumb {
-		box-sizing: border-box;
-		border: none;
-		border-radius: 0;
-		width: 0.75em;
-		height: 0.75em;
-		background: #4a5265;
-		margin-top: -0.22rem;
-		transform: rotate(45deg);
-		border: 0.15em solid #ece6de;
-		outline: 0.15em solid #4a5265;
-		box-shadow: 0 0 6px #ece6de;
-	}
-
-	[type='range']::-ms-tooltip {
-		display: none;
-	}
-
-	button.plus:disabled,
-	button.min:disabled {
-		background-color: rgb(173, 179, 192);
-	}
-
-	button.plus,
-	button.min {
-		background-color: #4a5265;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		line-height: 0;
-		position: absolute;
-		width: 2rem;
-		height: 2rem;
-		padding: 0.5rem;
-		color: #fff;
-		border-radius: 100%;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	button.plus {
-		right: 7%;
-	}
-	button.min {
-		left: 7%;
-		z-index: +3;
 	}
 
 	@media screen and (max-width: 890px) {
