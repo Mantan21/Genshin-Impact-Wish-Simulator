@@ -6,6 +6,7 @@
 	import { getName } from '$lib/functions/nameText';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import playSfx from '$lib/functions/audio';
+	import { checkAndGetOutfitPath } from '$lib/functions/wish/outfit';
 
 	export let show = false;
 	export let name = '';
@@ -68,11 +69,7 @@
 						/>
 					</div>
 				{:else}
-					<img
-						src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
-						alt={getName(name)}
-						class="splash-art"
-					/>
+					<img src={checkAndGetOutfitPath(name, rarity)} alt={getName(name)} class="splash-art" />
 				{/if}
 
 				<div class="info">
