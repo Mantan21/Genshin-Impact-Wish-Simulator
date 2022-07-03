@@ -10,6 +10,7 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
 	import SplashLight from './SplashLight.svelte';
+	import { localOutfits } from '$lib/store/localstore';
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
@@ -67,6 +68,16 @@
 	const skipHandle = () => {
 		playSfx();
 		skipSplashOneByOne = true;
+	};
+
+	let isWearOutfit = false;
+	$: setOutfitButtonText = isWearOutfit ? 'Unset Outfit' : 'Set Outfit to Character';
+	const setOutfit = () => {
+		const { outfitName } = list[0];
+		const { isSet } = localOutfits.get(outfitName);
+		localOutfits.set(outfitName, !isSet);
+		isWearOutfit = !isSet;
+		playSfx();
 	};
 
 	onMount(() => {
@@ -199,7 +210,7 @@
 			{#if fromShop}
 				<div class="share">
 					<div class="shr">
-						<button on:click|stopPropagation> Set Outfit to My Character</button>
+						<button on:click|stopPropagation={setOutfit}> {setOutfitButtonText} </button>
 					</div>
 				</div>
 			{/if}

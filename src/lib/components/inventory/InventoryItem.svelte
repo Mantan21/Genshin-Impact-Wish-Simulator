@@ -1,5 +1,6 @@
 <script>
 	import { getName } from '$lib/functions/nameText';
+	import { checkAndGetOutfitPath } from '$lib/functions/wish/outfit';
 	import { createEventDispatcher } from 'svelte';
 
 	export let rarity = 3;
@@ -32,7 +33,7 @@
 	{/if}
 	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
 		{#if type === 'character'}
-			<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
+			<img src={checkAndGetOutfitPath(name, rarity, true)} alt={getName(name)} />
 			<span class="gi-{vision} element" />
 		{:else}
 			<img

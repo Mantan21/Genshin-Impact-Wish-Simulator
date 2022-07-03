@@ -13,9 +13,8 @@
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 
-	const ownedOutfits = localOutfits.get();
-	let outfitsData = outfits.map((outfit) => {
-		outfit.isOwned = ownedOutfits.outfits.includes(outfit.name);
+	const outfitsData = outfits.map((outfit) => {
+		outfit.isOwned = localOutfits.check(outfit.name);
 		outfit.isPromo = outfit.name === outfitsPromo;
 		return outfit;
 	});

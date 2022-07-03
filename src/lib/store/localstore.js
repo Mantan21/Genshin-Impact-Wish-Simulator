@@ -155,22 +155,32 @@ const localConfig = {
 };
 
 const localOutfits = {
-	get() {
+	_get() {
 		const outfits = localStorage.getItem('outfits');
 		if (!outfits) return { outfits: [] };
 		const parsed = JSON.parse(outfits);
 		return parsed;
 	},
 
-	check(outfitName) {
-		const { outfits } = this.get();
-		return outfits.includes(outfitName);
+	get(outfitName) {
+		const { outfits } = this._get();
+		return outfits.find(({ name }) => name === outfitName);
 	},
 
-	set(value) {
-		const { outfits } = this.get();
-		if (this.check(value)) return true;
-		outfits.push(value);
+	check(outfitName) {
+		const { outfits } = this._get();
+		const filtered = outfits.filter(({ name }) => name === outfitName);
+		return filtered.length > 0;
+	},
+
+	set(outfitName, isSet = false) {
+		const { outfits } = this._get();
+		if (this.check(outfitName)) {
+			const index = outfits.findIndex(({ name }) => name === outfitName);
+			outfits[index].isSet = isSet;
+		} else {
+			outfits.push({ name: outfitName, isSet });
+		}
 		localStorage.setItem('outfits', JSON.stringify({ outfits }));
 	}
 };
