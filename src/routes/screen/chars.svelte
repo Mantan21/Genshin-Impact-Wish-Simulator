@@ -53,6 +53,9 @@
 	};
 
 	onMount(resolveData);
+
+	let defaultPath, outfitPath;
+	$: ({ defaultPath, outfitPath } = getOutfit(data.name, data.rarity));
 </script>
 
 <svelte:head>
@@ -90,13 +93,7 @@
 		<div class="container">
 			{#if data.name !== 'No Name'}
 				<div class="splatter" style={splatterStyle}>
-					<img
-						src={data.outfitSet
-							? getOutfit(data.name).path
-							: `/assets/images/characters/splash-art/${data.rarity}star/${data.name}.webp`}
-						alt={data.name}
-						class="splash-art"
-					/>
+					<img src={data.outfitSet ? outfitPath : defaultPath} alt={data.name} class="splash-art" />
 
 					<div class="info">
 						<i class="elemen gi-{data.vision}" />

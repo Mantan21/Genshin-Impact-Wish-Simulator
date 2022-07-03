@@ -48,7 +48,7 @@
 		showOnProgress = true;
 		e.target.innerText = 'Wait..';
 		const filter = (node) => {
-			const notIncluded = ['close', 'share', 'skip'];
+			const notIncluded = ['close', 'share', 'skip', 'outfit-toggle'];
 			if (node.classList) return !notIncluded.some((cl) => node.classList.contains(cl));
 			return true;
 		};

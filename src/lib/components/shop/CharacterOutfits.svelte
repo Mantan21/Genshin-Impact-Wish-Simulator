@@ -12,6 +12,8 @@
 	import ExchangePopup from './ExchangePopup.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
+	import PopUp from '../utility/PopUp.svelte';
+	import HistoryIDB from '$lib/store/historyIdb';
 
 	const outfitsData = outfits.map((outfit) => {
 		outfit.isOwned = localOutfits.check(outfit.name);
@@ -26,15 +28,30 @@
 	let outfitDescription = '';
 	let isOutfitOwned = false;
 
-	const selectItem = (item) => {
-		const { name, price, promoPrice, isPromo, rarity, description, isOwned } = item;
+	let showPopupAlert = false;
+	const checkCharacter = async (charName) => {
+		const dt = await HistoryIDB.getByName(charName);
+		console.log(dt.length);
+		return dt.length > 0;
+	};
+
+	const selectItem = async (item) => {
 		playSfx('exchange');
+		const { name, price, promoPrice, isPromo, rarity, description, isOwned, characterName } = item;
+
+		const isOwnedChar = await checkCharacter(characterName);
+		showPopupAlert = !isOwnedChar && !isOwned;
+		showExchangePopup = isOwnedChar || isOwned;
 		outfitToBuy = name;
-		showExchangePopup = true;
 		outfitPrice = isPromo ? promoPrice : price;
 		outfitRarity = rarity;
 		outfitDescription = description;
 		isOutfitOwned = isOwned;
+	};
+
+	const forcePurchase = () => {
+		showExchangePopup = true;
+		showPopupAlert = false;
 	};
 
 	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
@@ -75,6 +92,23 @@
 	noConfirm={isOutfitOwned || $genesis < outfitPrice}
 />
 <!-- Fates Popup End -->
+
+<PopUp
+	show={showPopupAlert}
+	title="Purchase Confirmation"
+	on:cancel={() => (showPopupAlert = false)}
+	on:confirm={forcePurchase}
+>
+	<div
+		class="confirmation"
+		style="display: flex; justify-content:center; align-items:center; height:100%; width:100%"
+	>
+		<p>
+			You don't have a character for this costume yet, are you sure you want to purchase this
+			costume? <br /> You can still use this costume after getting the right character
+		</p>
+	</div>
+</PopUp>
 
 {#if showObtained}
 	<WishResult

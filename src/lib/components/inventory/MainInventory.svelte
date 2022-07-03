@@ -1,6 +1,6 @@
 <script>
 	// library
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -18,6 +18,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { mobileMode } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
+	import { isOutfitSet } from '$lib/functions/wish/outfit';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
@@ -114,7 +115,10 @@
 			d.isOwned = true;
 			return d;
 		});
-		dataToShow = mergeData;
+		dataToShow = mergeData.map((d) => {
+			d.outfitSet = isOutfitSet(d.name);
+			return d;
+		});
 		return;
 	};
 
@@ -190,6 +194,17 @@
 		detailName = name;
 		showInventoryDetail = true;
 	};
+
+	const refreshAfterOutfitChanged = (charName, val) => {
+		const index = dataToShow.findIndex(({ name }) => name === charName);
+		// dataToShow = dataToShow.map((d, i) => {
+		// 	if (i !== index) return d;
+		// 	d.outfitSet = true;
+		// 	return d;
+		// });
+		dataToShow[index].outfitSet = val;
+	};
+	setContext('refreshList', refreshAfterOutfitChanged);
 </script>
 
 <svelte:head>
@@ -252,6 +267,7 @@
 									weaponType={d.weaponType}
 									qty={d.qty}
 									isOwned={d.isOwned}
+									outfitSet={d.outfitSet}
 									on:click={handleShowDetails}
 								/>
 							</div>

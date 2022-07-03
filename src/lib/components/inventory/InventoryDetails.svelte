@@ -1,12 +1,13 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/functions/nameText';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import playSfx from '$lib/functions/audio';
-	import { checkAndGetOutfitPath } from '$lib/functions/wish/outfit';
+	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
+	import OutfitToggle from './_outfit-toggle.svelte';
 
 	export let show = false;
 	export let name = '';
@@ -21,6 +22,9 @@
 	let vision = '';
 	let weaponType = '';
 	let countInfo = 0;
+
+	let defaultPath, outfitPath;
+	$: ({ defaultPath, outfitPath } = getOutfit(name, rarity));
 
 	const getDetail = async (show) => {
 		if (!show && !name) return;
@@ -43,6 +47,20 @@
 	};
 
 	$: getDetail(show);
+
+	const refreshAfterOutfitChanged = getContext('refreshList');
+	$: outfitSet = isOutfitSet(name);
+	const outfitChanger = {
+		applyChange() {
+			refreshAfterOutfitChanged(name, outfitSet);
+			playSfx();
+		},
+		selectOutfit(val) {
+			outfitSet = val;
+			playSfx();
+		}
+	};
+	setContext('outfitChanger', outfitChanger);
 </script>
 
 {#if render}
@@ -58,6 +76,7 @@
 			</button>
 
 			<div class="uid">WishSimulator.App</div>
+			<OutfitToggle charName={name} {outfitSet} charRarity={rarity} />
 
 			<div class="splatter" style={splatterStyle}>
 				{#if type === 'weapon'}
@@ -69,7 +88,7 @@
 						/>
 					</div>
 				{:else}
-					<img src={checkAndGetOutfitPath(name, rarity)} alt={getName(name)} class="splash-art" />
+					<img src={outfitSet ? outfitPath : defaultPath} alt={getName(name)} class="splash-art" />
 				{/if}
 
 				<div class="info">
