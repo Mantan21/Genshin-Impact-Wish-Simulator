@@ -154,6 +154,27 @@ const localConfig = {
 	}
 };
 
+const localOutfits = {
+	get() {
+		const outfits = localStorage.getItem('outfits');
+		if (!outfits) return { outfits: [] };
+		const parsed = JSON.parse(outfits);
+		return parsed;
+	},
+
+	check(outfitName) {
+		const { outfits } = this.get();
+		return outfits.includes(outfitName);
+	},
+
+	set(value) {
+		const { outfits } = this.get();
+		if (this.check(value)) return true;
+		outfits.push(value);
+		localStorage.setItem('outfits', JSON.stringify({ outfits }));
+	}
+};
+
 export {
 	pity4star,
 	pity5star,
@@ -163,5 +184,6 @@ export {
 	localBannerVersion,
 	firstShare,
 	localFatePoint,
-	localConfig
+	localConfig,
+	localOutfits
 };

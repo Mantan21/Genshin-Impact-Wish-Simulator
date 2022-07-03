@@ -105,12 +105,26 @@
 	button {
 		width: 100%;
 		height: 100%;
-		transition: transform 0.1s;
+		transition: all 0.2s;
+		position: relative;
 	}
-	button:hover {
-		filter: drop-shadow(0 0 5px #d2c69c);
+	button::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		border-radius: 0.8rem;
+		border: 0.3rem solid #eac343;
+		opacity: 0;
+		transition: opacity 0.15s;
 	}
-
+	button:hover::after {
+		opacity: 1;
+	}
 	button:active {
 		transform: scale(0.95);
 	}

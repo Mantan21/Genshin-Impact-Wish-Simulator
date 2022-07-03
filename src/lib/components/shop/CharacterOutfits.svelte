@@ -1,15 +1,24 @@
 <script>
+	import { outfitsPromo } from '$lib/setup/wish-setup.json';
 	import { outfits } from '$lib/data/outfits.json';
 	import playSfx from '$lib/functions/audio';
 	import { getName } from '$lib/functions/nameText';
+	import { localBalance, localOutfits } from '$lib/store/localstore';
 	import { genesis } from '$lib/store/stores';
+
+	// Components
 	import WishResult from '../banner/parts/WishResult.svelte';
 	import Icon from '../utility/Icon.svelte';
 	import ExchangePopup from './ExchangePopup.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 
-	const outfitsData = outfits;
+	const ownedOutfits = localOutfits.get();
+	let outfitsData = outfits.map((outfit) => {
+		outfit.isOwned = ownedOutfits.outfits.includes(outfit.name);
+		outfit.isPromo = outfit.name === outfitsPromo;
+		return outfit;
+	});
 
 	let showExchangePopup = false;
 	let outfitToBuy = '';
@@ -32,8 +41,19 @@
 	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
 	let showObtained = false;
 
+	const buy = (item) => {
+		const index = outfitsData.findIndex(({ name }) => item === name);
+		outfitsData[index].isOwned = true;
+	};
+
 	const confirmBuy = () => {
-		genesis.update((v) => v - outfitPrice);
+		genesis.update((v) => {
+			const newVal = v - outfitPrice;
+			localBalance.set('genesis', newVal);
+			return newVal;
+		});
+		localOutfits.set(outfitToBuy);
+		buy(outfitToBuy);
 		showObtained = true;
 		handleClosePopup();
 	};
@@ -63,7 +83,7 @@
 
 <ColumnParent>
 	{#each outfitsData as { name, price, promoPrice, isPromo, isOwned, rarity }, i}
-		<Column>
+		<Column style="padding: .3rem">
 			<button class:discount={isPromo} on:click={() => selectItem({ ...outfitsData[i] })}>
 				<div class="content">
 					{#if isPromo}
@@ -106,13 +126,26 @@
 	button {
 		width: 100%;
 		height: 100%;
+		transition: all 0.2s;
 		position: relative;
-		transition: transform 0.1s;
 	}
-	button:hover {
-		filter: drop-shadow(0 0 5px #d2c69c);
+	button::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		border-radius: 0.8rem;
+		border: 0.3rem solid #eac343;
+		opacity: 0;
+		transition: opacity 0.15s;
 	}
-
+	button:hover::after {
+		opacity: 1;
+	}
 	button:active {
 		transform: scale(0.95);
 	}

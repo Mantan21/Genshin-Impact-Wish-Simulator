@@ -143,7 +143,7 @@
 				{#if activeShop === 'genesis'}
 					<ColumnParent name="genesis">
 						{#each genesisList as { qty }, i}
-							<Column>
+							<Column style="padding:0">
 								<button class="content" on:click={() => selectGenesis(i)}>
 									<img src="/assets/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
 								</button>

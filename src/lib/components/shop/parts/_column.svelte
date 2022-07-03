@@ -27,6 +27,7 @@
 		min-width: 190px;
 		min-height: 190px;
 		margin: 0.4rem;
+		padding: 0.3rem;
 		display: block;
 	}
 
