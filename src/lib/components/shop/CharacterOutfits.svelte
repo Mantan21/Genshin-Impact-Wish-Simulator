@@ -77,7 +77,12 @@
 <!-- Fates Popup End -->
 
 {#if showObtained}
-	<WishResult list={itemData} on:wishEnd={() => (showObtained = false)} fromShop />
+	<WishResult
+		list={itemData}
+		on:wishEnd={() => (showObtained = false)}
+		fromShop
+		outfitName={outfitToBuy}
+	/>
 {/if}
 
 <ColumnParent>

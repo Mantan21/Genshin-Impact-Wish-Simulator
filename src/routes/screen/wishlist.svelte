@@ -26,7 +26,8 @@
 		const arr = decoded.split('|');
 
 		arr.forEach((v) => {
-			let [name, rarity, type, isNew, fateType, stelaFortuna] = v.split('/');
+			let [name, rarity, type, isNew, fateType, stelaFortuna, outfitSet] = v.split('/');
+			outfitSet = outfitSet === '1';
 			stelaFortuna = stelaFortuna === '1';
 			rarity = parseInt(rarity, 10);
 			isNew = !(isNew === '0');
@@ -48,7 +49,8 @@
 				isNew,
 				stelaFortuna,
 				fateType,
-				fateQty
+				fateQty,
+				outfitSet
 			});
 		});
 

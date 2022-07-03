@@ -11,13 +11,24 @@
 	import WishListResult from './WishListResult.svelte';
 	import SplashLight from './SplashLight.svelte';
 	import { localOutfits } from '$lib/store/localstore';
+	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
 	export let fromShop = false;
+	export let outfitName = '';
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
+
+	const setOutfitToList = (arr) => {
+		const isSet = isOutfitSet(arr.name);
+		if (!isSet) return arr;
+		arr.outfitSet = true;
+		return arr;
+	};
+
+	list = list.map(setOutfitToList);
 
 	let showWishList = false;
 	let wishResultContainer;
@@ -34,8 +45,10 @@
 	};
 
 	const getEncoded = (index) => {
-		const { fateQty, fateType, vision, rarity, name, stelaFortuna } = list[index];
-		return btoa(`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}`);
+		const { fateQty, fateType, vision, rarity, name, stelaFortuna, outfitSet } = list[index];
+		return btoa(
+			`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}/${+outfitSet}`
+		);
 	};
 
 	const showItem = (startIndex) => {
@@ -111,7 +124,7 @@
 				>
 			{/if}
 
-			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitName }, i}
+			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitSet }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						<SplashLight type="in" {rarity} />
@@ -137,7 +150,9 @@
 							/>
 						{:else}
 							<img
-								src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
+								src={outfitSet
+									? getOutfit(name).path
+									: `/assets/images/characters/splash-art/${rarity}star/${name}.webp`}
 								alt={name}
 								class="splash-art anim"
 							/>
@@ -561,7 +576,7 @@
 		align-items: center;
 		-webkit-text-stroke: 0.02rem #000;
 	}
-	button:not(.close) {
+	.shr button {
 		background-color: #d9d2c8;
 		color: #000;
 		border-radius: 30px;
@@ -570,12 +585,12 @@
 		margin-left: 10px;
 		transition: all 0.2s;
 	}
-	button:not(.close, .save):active {
+	button:active {
 		transform: scale(0.9);
 	}
 
-	button:active,
-	button:hover {
+	.shr button:active,
+	.shr button:hover {
 		background-color: #fff;
 	}
 

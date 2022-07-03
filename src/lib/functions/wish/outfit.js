@@ -6,6 +6,22 @@ const check = (charName) => {
 	return { outfitAvailable: filtered.length > 0, outfitName: filtered[0]?.name };
 };
 
+const isOutfitSet = (charName) => {
+	const { outfitAvailable, outfitName } = check(charName);
+	if (!outfitAvailable) return false;
+	const ownedOutfits = localOutfits.get(outfitName);
+	if (!ownedOutfits) return false;
+	return true;
+};
+
+const getOutfit = (charName) => {
+	const { name, wishBoxPosition } = outfits.find(({ characterName }) => charName === characterName);
+	return {
+		path: `/assets/images/characters/outfit/splash-art/${name}.webp`,
+		wishBoxPosition
+	};
+};
+
 const checkAndGetOutfitPath = (charName, charRarity, face = false) => {
 	const defaultDir = face ? 'face' : `splash-art/${charRarity}star`;
 	const defaultPath = `/assets/images/characters/${defaultDir}/${charName}.webp`;
@@ -21,4 +37,4 @@ const checkAndGetOutfitPath = (charName, charRarity, face = false) => {
 	return isSet ? outfitPatch : defaultPath;
 };
 
-export { checkAndGetOutfitPath };
+export { getOutfit, checkAndGetOutfitPath, isOutfitSet };

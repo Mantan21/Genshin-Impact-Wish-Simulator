@@ -8,6 +8,7 @@
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import { getName } from '$lib/functions/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
+	import { getOutfit } from '$lib/functions/wish/outfit';
 
 	let isError;
 	let data = {
@@ -26,11 +27,12 @@
 	const getData = (decoded) => {
 		const splited = decoded.split('/');
 		if (splited.length < 6) return { name: 'No Name' };
-		let [name, rarity, vision, stelaFortuna, fateQty, fateType] = splited;
+		let [name, rarity, vision, stelaFortuna, fateQty, fateType, outfitSet] = splited;
+		outfitSet = outfitSet === '1';
 		stelaFortuna = stelaFortuna === '1';
 		rarity = parseInt(rarity, 10);
 		fateType = fateType !== 'undefined' ? fateType : false;
-		return { name, rarity, vision, stelaFortuna, fateQty, fateType };
+		return { name, rarity, vision, stelaFortuna, fateQty, fateType, outfitSet };
 	};
 
 	const resolveData = () => {
@@ -89,7 +91,9 @@
 			{#if data.name !== 'No Name'}
 				<div class="splatter" style={splatterStyle}>
 					<img
-						src="/assets/images/characters/splash-art/{data.rarity}star/{data.name}.webp"
+						src={data.outfitSet
+							? getOutfit(data.name).path
+							: `/assets/images/characters/splash-art/${data.rarity}star/${data.name}.webp`}
 						alt={data.name}
 						class="splash-art"
 					/>
