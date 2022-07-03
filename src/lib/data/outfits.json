@@ -6,7 +6,12 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."
+			"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside.",
+			"wishBoxPosition": {
+				"t": 90,
+				"h": 200,
+				"l": 20
+			}
 		},
 		{
 			"name": "summertime-sparkle",
@@ -14,7 +19,12 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1680,
-			"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze."
+			"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze.",
+			"wishBoxPosition": {
+				"t": 72,
+				"l": 140,
+				"h": 185
+			}
 		},
 		{
 			"name": "opulent-splendor",
@@ -22,7 +32,10 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance."
+			"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance.",
+			"wishBoxPosition": {
+				"t": 83
+			}
 		},
 		{
 			"name": "orchid_s-evening-gown",
@@ -30,7 +43,12 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1680,
-			"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace."
+			"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace.",
+			"wishBoxPosition": {
+				"h": 200,
+				"t": 90,
+				"l": 23
+			}
 		}
 	]
 }

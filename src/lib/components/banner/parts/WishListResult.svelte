@@ -5,6 +5,7 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import positionToStyle from '$lib/functions/cssPosition';
+	import { getOutfit } from '$lib/functions/wish/outfit';
 
 	export let preview = false;
 	export let previewlist = [];
@@ -59,8 +60,8 @@
 		playSfx('resultList');
 
 		const data = sortedWish
-			.map(({ name, rarity, type, isNew, fateType, stelaFortuna }) => {
-				return `${name}/${rarity}/${type}/${+isNew}/${fateType}/${+stelaFortuna}`;
+			.map(({ name, rarity, type, isNew, fateType, stelaFortuna, outfitSet }) => {
+				return `${name}/${rarity}/${type}/${+isNew}/${fateType}/${+stelaFortuna}/${+outfitSet}`;
 			})
 			.join('|');
 		encoded = btoa(data);
@@ -89,7 +90,7 @@
 <div class="scroll" bind:this={container}>
 	<div class="container" class:animate={!preview}>
 		<div class="wishlist">
-			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty }, i (i)}
+			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty, outfitSet }, i (i)}
 				<div class="item-box" class:animate={!preview} style="animation-delay: {0.5 + i * 0.1}s">
 					<div
 						id="wish{i}"
@@ -114,10 +115,14 @@
 										/>
 									{:else}
 										<img
-											src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
+											src={outfitSet
+												? getOutfit(name).path
+												: `/assets/images/characters/splash-art/${rarity}star/${name}.webp`}
 											alt={name}
 											class="wishpic"
-											style={positionToStyle(wishBoxPosition)}
+											style={positionToStyle(
+												outfitSet ? getOutfit(name).wishBoxPosition : wishBoxPosition
+											)}
 										/>
 									{/if}
 
