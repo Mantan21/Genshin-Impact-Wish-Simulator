@@ -94,6 +94,7 @@
 	};
 
 	const buyHandle = () => {
+		if (outfit) return dispatch('confirm');
 		if (fateQty < 1) {
 			dispatch('confirm', { status: 'failed', items: {} });
 			return;
@@ -247,6 +248,9 @@
 				{/if}
 				{#if outfit ? $genesis < price : fateQty < 1}
 					<div class="error red">Insufficient Funds</div>
+				{/if}
+				{#if noConfirm}
+					<div class="error red">Already Owned</div>
 				{/if}
 			</div>
 		</div>

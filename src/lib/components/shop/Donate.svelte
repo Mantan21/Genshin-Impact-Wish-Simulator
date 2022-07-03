@@ -82,7 +82,7 @@
 
 <!-- Crypto Donate -->
 <ColumnParent>
-	<Column style="padding: 0.4rem;">
+	<Column>
 		<a class="content kofi" href="https://ko-fi.com/mantan21" target="_blank">
 			<div
 				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
@@ -209,6 +209,11 @@
 		border-radius: 1rem;
 		padding: 1rem;
 		text-align: center;
+		transition: transform 0.1s;
+	}
+
+	.content:active {
+		transform: scale(0.95);
 	}
 
 	.donate-icon {
