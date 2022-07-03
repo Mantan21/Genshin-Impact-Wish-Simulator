@@ -89,7 +89,7 @@
 	price={outfitPrice}
 	on:cancel={handleClosePopup}
 	on:confirm={confirmBuy}
-	noConfirm={isOutfitOwned || $genesis < outfitPrice}
+	noConfirm={isOutfitOwned}
 />
 <!-- Fates Popup End -->
 
