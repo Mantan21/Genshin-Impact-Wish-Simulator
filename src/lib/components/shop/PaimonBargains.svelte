@@ -105,9 +105,14 @@
 	button {
 		width: 100%;
 		height: 100%;
+		transition: transform 0.1s;
 	}
 	button:hover {
 		filter: drop-shadow(0 0 5px #d2c69c);
+	}
+
+	button:active {
+		transform: scale(0.95);
 	}
 
 	.content {

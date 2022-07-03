@@ -5,28 +5,32 @@
 			"characterName": "jean",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1350
+			"promoPrice": 1350,
+			"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."
 		},
 		{
 			"name": "summertime-sparkle",
 			"characterName": "barbara",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1680
+			"promoPrice": 1680,
+			"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze."
 		},
 		{
 			"name": "opulent-splendor",
 			"characterName": "keqing",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1350
+			"promoPrice": 1350,
+			"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance."
 		},
 		{
 			"name": "orchid_s-evening-gown",
 			"characterName": "ningguang",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1680
+			"promoPrice": 1680,
+			"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace."
 		}
 	]
 }

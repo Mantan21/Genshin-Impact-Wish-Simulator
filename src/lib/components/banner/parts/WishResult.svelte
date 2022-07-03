@@ -13,6 +13,7 @@
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
+	export let fromShop = false;
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -99,7 +100,7 @@
 				>
 			{/if}
 
-			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna }, i}
+			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitName }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						<SplashLight type="in" {rarity} />
@@ -117,6 +118,12 @@
 									class={weaponType}
 								/>
 							</div>
+						{:else if outfitName}
+							<img
+								src="/assets/images/characters/outfit/splash-art/{outfitName}.webp"
+								alt={name}
+								class="splash-art anim"
+							/>
 						{:else}
 							<img
 								src="/assets/images/characters/splash-art/{rarity}star/{name}.webp"
@@ -137,7 +144,7 @@
 							{/if}
 							<div class="name">
 								<div class="text anim">
-									{getName(name)}
+									{getName(name || outfitName)}
 								</div>
 								<div class="star">
 									{#each Array(rarity) as _, i (i)}
@@ -186,6 +193,14 @@
 			{#if list[activeIndex].type === 'character'}
 				<div class="share">
 					<Share page="chars" encodedData={getEncoded(activeIndex)} />
+				</div>
+			{/if}
+
+			{#if fromShop}
+				<div class="share">
+					<div class="shr">
+						<button on:click|stopPropagation> Set Outfit to My Character</button>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -528,6 +543,29 @@
 	.share.anim {
 		opacity: 0;
 		animation: weaponbg forwards 1.5s 1;
+	}
+
+	.shr span {
+		display: inline-flex;
+		align-items: center;
+		-webkit-text-stroke: 0.02rem #000;
+	}
+	button:not(.close) {
+		background-color: #d9d2c8;
+		color: #000;
+		border-radius: 30px;
+		font-size: 0.8rem;
+		padding: 0.3rem 2rem;
+		margin-left: 10px;
+		transition: all 0.2s;
+	}
+	button:not(.close, .save):active {
+		transform: scale(0.9);
+	}
+
+	button:active,
+	button:hover {
+		background-color: #fff;
 	}
 
 	:global(.preview) .uid {
