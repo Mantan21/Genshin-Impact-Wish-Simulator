@@ -1,40 +1,40 @@
 import { outfits } from '$lib/data/outfits.json';
 import { localOutfits } from '$lib/store/localstore';
 
-const check = (charName) => {
+const checkOutfitAvaibility = (charName) => {
+	if (!charName) return false;
 	const filtered = outfits.filter(({ characterName }) => charName === characterName);
 	return { outfitAvailable: filtered.length > 0, outfitName: filtered[0]?.name };
 };
 
+const isOutfitOwned = (charName) => {
+	const { outfitName } = checkOutfitAvaibility(charName);
+	const ownedOutfits = localOutfits.get(outfitName);
+	return !!ownedOutfits;
+};
+
 const isOutfitSet = (charName) => {
-	const { outfitAvailable, outfitName } = check(charName);
+	const { outfitAvailable, outfitName } = checkOutfitAvaibility(charName);
 	if (!outfitAvailable) return false;
 	const ownedOutfits = localOutfits.get(outfitName);
 	if (!ownedOutfits) return false;
-	return true;
+	return ownedOutfits.isSet;
 };
 
-const getOutfit = (charName) => {
-	const { name, wishBoxPosition } = outfits.find(({ characterName }) => charName === characterName);
+const getOutfit = (charName, charRarity, face = false) => {
+	const nullItem = { name: '', wishBoxPosition: {}, rarity: 0 };
+	const { name, wishBoxPosition, rarity } =
+		outfits.find(({ characterName }) => charName === characterName) || nullItem;
+	const defaultDir = face ? 'face' : `splash-art/${charRarity}star`;
+	const defaultPath = `/assets/images/characters/${defaultDir}/${charName}.webp`;
+	const dir = face ? 'face' : 'splash-art';
 	return {
-		path: `/assets/images/characters/outfit/splash-art/${name}.webp`,
+		outfitPath: `/assets/images/characters/outfit/${dir}/${name}.webp`,
+		defaultPath,
+		outfitName: name,
+		outfitRarity: rarity,
 		wishBoxPosition
 	};
 };
 
-const checkAndGetOutfitPath = (charName, charRarity, face = false) => {
-	const defaultDir = face ? 'face' : `splash-art/${charRarity}star`;
-	const defaultPath = `/assets/images/characters/${defaultDir}/${charName}.webp`;
-	const { outfitAvailable, outfitName } = check(charName);
-	if (!outfitAvailable) return defaultPath;
-
-	const ownedOutfits = localOutfits.get(outfitName);
-	if (!ownedOutfits) return defaultPath;
-
-	const { isSet } = ownedOutfits;
-	const outfitDir = face ? 'face' : 'splash-art';
-	const outfitPatch = `/assets/images/characters/outfit/${outfitDir}/${outfitName}.webp`;
-	return isSet ? outfitPatch : defaultPath;
-};
-
-export { getOutfit, checkAndGetOutfitPath, isOutfitSet };
+export { getOutfit, checkOutfitAvaibility, isOutfitSet, isOutfitOwned };

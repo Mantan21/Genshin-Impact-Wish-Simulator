@@ -151,8 +151,8 @@
 						{:else}
 							<img
 								src={outfitSet
-									? getOutfit(name).path
-									: `/assets/images/characters/splash-art/${rarity}star/${name}.webp`}
+									? getOutfit(name, rarity).outfitPath
+									: getOutfit(name, rarity).defaultPath}
 								alt={name}
 								class="splash-art anim"
 							/>

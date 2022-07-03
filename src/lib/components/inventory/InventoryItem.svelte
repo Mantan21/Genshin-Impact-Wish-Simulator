@@ -1,6 +1,6 @@
 <script>
 	import { getName } from '$lib/functions/nameText';
-	import { checkAndGetOutfitPath } from '$lib/functions/wish/outfit';
+	import { getOutfit } from '$lib/functions/wish/outfit';
 	import { createEventDispatcher } from 'svelte';
 
 	export let rarity = 3;
@@ -10,6 +10,7 @@
 	export let weaponType = '';
 	export let qty = 0;
 	export let isOwned = true;
+	export let outfitSet;
 
 	let countInfo;
 	if (type === 'character') {
@@ -18,6 +19,8 @@
 		countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	}
 
+	let outfitPath, defaultPath;
+	$: ({ outfitPath, defaultPath } = getOutfit(name, rarity, true));
 	const dispatch = createEventDispatcher();
 	const handleShowDetails = () => {
 		if (!isOwned) return;
@@ -33,7 +36,7 @@
 	{/if}
 	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
 		{#if type === 'character'}
-			<img src={checkAndGetOutfitPath(name, rarity, true)} alt={getName(name)} />
+			<img src={!outfitSet ? defaultPath : outfitPath} alt={getName(name)} />
 			<span class="gi-{vision} element" />
 		{:else}
 			<img
