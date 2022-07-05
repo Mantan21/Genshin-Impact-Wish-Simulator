@@ -2,10 +2,11 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
-	import Icon from '$lib/components/utility/Icon.svelte';
-	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import positionToStyle from '$lib/functions/cssPosition';
 	import { getOutfit } from '$lib/functions/wish/outfit';
+	import { getName } from '$lib/functions/nameText';
+	import Icon from '$lib/components/utility/Icon.svelte';
+	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let preview = false;
 	export let previewlist = [];
@@ -195,7 +196,7 @@
 
 {#if !preview}
 	<div class="share">
-		<Share encodedData={encoded} page="wishlist" />
+		<Share encodedData={encoded} page="wishlist" item={getName(sortedWish[0].name)} />
 	</div>
 {/if}
 

@@ -13,6 +13,7 @@
 
 	export let encodedData = '';
 	export let page = '';
+	export let item = '';
 
 	let show = false;
 	let showOnProgress = false;
@@ -23,7 +24,8 @@
 	let obtain = false;
 
 	let blob;
-	const shareText = "Wow! I'm so lucky when pulling on Wish Simulator, you can try Yours !";
+	const featuredItem = item ? `I got ${item}` : "Wow! I'm so lucky ";
+	const shareText = `${featuredItem} when pulling on Wish Simulator, how lovely!`;
 	let url = '/assets/images/meta-picture.jpg';
 	$: shareLink = `${HOST}/screen/${page}?a=${encodedData}`;
 
@@ -43,18 +45,21 @@
 		obtain = true;
 	};
 
+	const filterShot = (node) => {
+		const notIncluded = ['close', 'share', 'skip', 'outfit-toggle'];
+		if (node.classList) return !notIncluded.some((cl) => node.classList.contains(cl));
+		return true;
+	};
+
 	const takeShot = async (e) => {
 		playSfx();
+		obtain = false;
 		showOnProgress = true;
 		e.target.innerText = 'Wait..';
-		const filter = (node) => {
-			const notIncluded = ['close', 'share', 'skip', 'outfit-toggle'];
-			if (node.classList) return !notIncluded.some((cl) => node.classList.contains(cl));
-			return true;
-		};
 		const node = document.querySelector('.wish-result');
 		node.classList.add('preview');
-		blob = await toBlob(node, { filter });
+
+		blob = await toBlob(node, { filter: filterShot });
 		playSfx('camera');
 		url = URL.createObjectURL(blob);
 		show = true;

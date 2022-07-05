@@ -218,7 +218,11 @@
 
 			{#if list[activeIndex].type === 'character'}
 				<div class="share">
-					<Share page="chars" encodedData={getEncoded(activeIndex)} />
+					<Share
+						page="chars"
+						encodedData={getEncoded(activeIndex)}
+						item={getName(list[activeIndex].name)}
+					/>
 				</div>
 			{/if}
 
