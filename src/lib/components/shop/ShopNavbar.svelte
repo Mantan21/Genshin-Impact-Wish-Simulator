@@ -13,7 +13,9 @@
 	const handleClick = (shop) => {
 		activeShop = shop;
 		dispatch('select', { selected: shop });
-		if (shop === 'outfits' && outfitsPromo) return noticeMark.openNotice('outfits');
+		if (['outfits', 'recomended'].includes(shop) && outfitsPromo) {
+			return noticeMark.openNotice(shop);
+		}
 	};
 	const handleClose = () => dispatch('close');
 </script>
@@ -23,9 +25,19 @@
 	<div class="navbar" transition:fly={{ x: -100, duration: 200 }}>
 		<div class="top">Shop</div>
 		<div class="nav-item">
-			<div class="link">
+			<a
+				href="#recomended"
+				class="link"
+				class:active={activeShop === 'recomended'}
+				on:click|preventDefault={() => handleClick('recomended')}
+			>
+				{#if outfitsPromo}
+					<NoticeMark name="recomended" />
+				{/if}
+				<i class="gi-primo-star" />
+				<i class="gi-caret-up" />
 				<div class="border"><i class="gi-recomended" /> Recomended</div>
-			</div>
+			</a>
 			<a
 				href="#outfits"
 				class="link"

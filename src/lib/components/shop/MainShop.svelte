@@ -15,6 +15,7 @@
 	import Donate from './Donate.svelte';
 	import PaimonBargains from './PaimonBargains.svelte';
 	import CharacterOutfits from './CharacterOutfits.svelte';
+	import Recomended from './Recomended.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -94,6 +95,12 @@
 <svelte:head>
 	{#if activeShop === 'genesis'}
 		<title>Buy Genesis Crystal | {APP_TITLE}</title>
+	{:else if activeShop === 'recomended'}
+		<title>Recomended Item | {APP_TITLE}</title>
+	{:else if activeShop === 'outfits'}
+		<title>Character Outfits | {APP_TITLE}</title>
+	{:else if activeShop === 'donate'}
+		<title>Donate | {APP_TITLE}</title>
 	{:else}
 		<title>Paimon's Bargains | {APP_TITLE}</title>
 	{/if}
@@ -150,6 +157,10 @@
 							</Column>
 						{/each}
 					</ColumnParent>
+
+					<!-- Recomended Item -->
+				{:else if activeShop === 'recomended'}
+					<Recomended />
 
 					<!-- Characters Outfits -->
 				{:else if activeShop === 'outfits'}

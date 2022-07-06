@@ -12,7 +12,7 @@
 		} else {
 			const tmp = [];
 			name.forEach((n) => tmp.push($notice.includes(n)));
-			active = !tmp.includes(true);
+			active = tmp.includes(false);
 		}
 	}
 </script>

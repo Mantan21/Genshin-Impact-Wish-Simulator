@@ -31,7 +31,10 @@
 		{#if showNavbarButton}
 			<button class="toggle" on:click={handleClick}>
 				{#if outfitsPromo}
-					<NoticeMark name={['outfits']} style="transform: translateX(70%) translateY(-150%)" />
+					<NoticeMark
+						name={['outfits', 'recomended']}
+						style="transform: translateX(70%) translateY(-150%)"
+					/>
 				{/if}
 				<span />
 			</button>

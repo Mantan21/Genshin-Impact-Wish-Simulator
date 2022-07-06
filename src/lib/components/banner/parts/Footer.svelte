@@ -66,7 +66,10 @@
 		<div class="left menu-button">
 			<button on:click={() => changePage('shop')}>
 				{#if outfitsPromo}
-					<NoticeMark name={['outfits']} style="transform: translateX(70%) translateY(-80%)" />
+					<NoticeMark
+						name={['outfits', 'recomended']}
+						style="transform: translateX(70%) translateY(-80%)"
+					/>
 				{/if}
 				Shop
 			</button>
