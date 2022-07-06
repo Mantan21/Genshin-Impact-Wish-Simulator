@@ -4,6 +4,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
 	import { viewportHeight } from '$lib/store/stores';
+	import Button from './Button.svelte';
 
 	export let show = false;
 	export let title = '';
@@ -47,16 +48,10 @@
 				{#if confirm}
 					<div class="pop-footer">
 						{#if ['cancel', 'all'].indexOf(button) > -1}
-							<button class="cancel" on:click={cancelClik}>
-								<i class="gi-times" />
-								<span> Cancel </span>
-							</button>
+							<Button type="cancel" on:click={cancelClik} />
 						{/if}
 						{#if ['confirm', 'all'].indexOf(button) > -1}
-							<button class="confirm" on:click={confirmClick}>
-								<i class="gi-circle-o" />
-								<span> Confirm </span>
-							</button>
+							<Button type="confirm" on:click={confirmClick} />
 						{/if}
 					</div>
 				{/if}
@@ -173,37 +168,5 @@
 		top: 0;
 		left: 50%;
 		transform: translateX(-50%);
-	}
-
-	.pop-footer button {
-		border-radius: 40px;
-		color: white;
-		background-color: #4a5265;
-		display: inline-flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0.2em 2.5em 0.3em 0.1em;
-		transition: all 0.2s;
-	}
-
-	.pop-footer button i {
-		width: 1.7rem;
-		height: 1.7rem;
-		background-color: #353533;
-		border-radius: 100%;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 0.8rem;
-		margin-right: 1.5rem;
-	}
-	.pop-footer button:hover {
-		background-color: rgb(51, 57, 71);
-	}
-	.gi-times {
-		color: #3f9ad1;
-	}
-	.gi-circle-o {
-		color: #ffc107;
 	}
 </style>
