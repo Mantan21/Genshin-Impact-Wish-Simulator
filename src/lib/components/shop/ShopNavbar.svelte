@@ -1,20 +1,23 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { patchVersion } from '$lib/store/stores';
+	import { outfits } from '$lib/data/outfits.json';
 	import { noticeMark } from '$lib/functions/noticeMark';
 	import NoticeMark from '../utility/NoticeMark.svelte';
-	import { outfitsPromo } from '$lib/setup/wish-setup.json';
 
 	export let show;
 	let activeShop = 'genesis';
 
-	const dispatch = createEventDispatcher();
+	$: check = outfits.filter(({ version }) => version.toString() === $patchVersion);
+	$: outfitsPromo = check.length > 0;
 
+	const dispatch = createEventDispatcher();
 	const handleClick = (shop) => {
 		activeShop = shop;
 		dispatch('select', { selected: shop });
 		if (['outfits', 'recomended'].includes(shop) && outfitsPromo) {
-			return noticeMark.openNotice(shop);
+			return noticeMark.openNotice(`${shop}-${$patchVersion}`);
 		}
 	};
 	const handleClose = () => dispatch('close');
@@ -32,7 +35,7 @@
 				on:click|preventDefault={() => handleClick('recomended')}
 			>
 				{#if outfitsPromo}
-					<NoticeMark name="recomended" />
+					<NoticeMark name="recomended-{$patchVersion}" />
 				{/if}
 				<i class="gi-primo-star" />
 				<i class="gi-caret-up" />
@@ -45,7 +48,7 @@
 				on:click|preventDefault={() => handleClick('outfits')}
 			>
 				{#if outfitsPromo}
-					<NoticeMark name="outfits" />
+					<NoticeMark name="outfits-{$patchVersion}" />
 				{/if}
 				<i class="gi-primo-star" />
 				<i class="gi-caret-up" />

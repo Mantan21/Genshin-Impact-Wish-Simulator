@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import positionToStyle from '$lib/functions/cssPosition';
-	import { mobileMode, patchVersion, bannerPhase } from '$lib/store/stores';
+	import { mobileMode, patchVersion, bannerPhase, isFatepointSystem } from '$lib/store/stores';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import { noticeMark } from '$lib/functions/noticeMark';
 
@@ -13,7 +13,8 @@
 	export let index = 0;
 
 	$: baseNoticeName = `${$patchVersion}-${$bannerPhase}-${index}`;
-	$: noticeName = type === 'weapons' ? `fatepoint${$patchVersion}-${$bannerPhase}` : baseNoticeName;
+	$: isWeapon = type === 'weapons' && $isFatepointSystem;
+	$: noticeName = isWeapon ? `fatepoint${$patchVersion}-${$bannerPhase}` : baseNoticeName;
 
 	const buttonStyle = (position, isActive = false) => {
 		if (!position) return;
