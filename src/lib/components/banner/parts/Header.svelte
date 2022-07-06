@@ -98,6 +98,7 @@
 		{#each $bannerList as { type, character, weapons }, i}
 			<BannerButton
 				{type}
+				index={i}
 				character={character || ''}
 				weapons={weapons || []}
 				active={$bannerActive === i}

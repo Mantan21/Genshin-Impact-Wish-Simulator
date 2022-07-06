@@ -1,6 +1,9 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { noticeMark } from '$lib/functions/noticeMark';
+	import NoticeMark from '../utility/NoticeMark.svelte';
+	import { outfitsPromo } from '$lib/setup/wish-setup.json';
 
 	export let show;
 	let activeShop = 'genesis';
@@ -10,13 +13,14 @@
 	const handleClick = (shop) => {
 		activeShop = shop;
 		dispatch('select', { selected: shop });
+		if (shop === 'outfits' && outfitsPromo) return noticeMark.openNotice('outfits');
 	};
 	const handleClose = () => dispatch('close');
 </script>
 
 {#if show}
-	<div class="bg" on:click={handleClose} in:fly={{ x: -10, duration: 100 }} />
-	<div class="navbar" in:fly={{ x: -100, duration: 200 }}>
+	<div class="bg" on:click={handleClose} transition:fly={{ x: -10, duration: 100 }} />
+	<div class="navbar" transition:fly={{ x: -100, duration: 200 }}>
 		<div class="top">Shop</div>
 		<div class="nav-item">
 			<div class="link">
@@ -28,6 +32,9 @@
 				class:active={activeShop === 'outfits'}
 				on:click|preventDefault={() => handleClick('outfits')}
 			>
+				{#if outfitsPromo}
+					<NoticeMark name="outfits" />
+				{/if}
 				<i class="gi-primo-star" />
 				<i class="gi-caret-up" />
 				<div class="border"><i class="gi-outfit" /> Character Outfits</div>

@@ -2,12 +2,18 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import positionToStyle from '$lib/functions/cssPosition';
-	import { mobileMode } from '$lib/store/stores';
+	import { mobileMode, patchVersion, bannerPhase } from '$lib/store/stores';
+	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
+	import { noticeMark } from '$lib/functions/noticeMark';
 
 	export let active = false;
 	export let type = 'events';
 	export let weapons = [];
 	export let character = {};
+	export let index = 0;
+
+	$: baseNoticeName = `${$patchVersion}-${$bannerPhase}-${index}`;
+	$: noticeName = type === 'weapons' ? `fatepoint${$patchVersion}-${$bannerPhase}` : baseNoticeName;
 
 	const buttonStyle = (position, isActive = false) => {
 		if (!position) return;
@@ -21,10 +27,19 @@
 	const dispatch = createEventDispatcher();
 	const buttonClick = () => {
 		dispatch('click');
+		if (['weapons', 'events'].includes(type)) {
+			return noticeMark.openNotice(baseNoticeName);
+		}
 	};
 </script>
 
 <button class="button {type}" class:active on:click={buttonClick}>
+	{#if ['weapons', 'events'].includes(type)}
+		<NoticeMark
+			name={noticeName}
+			style="transform: translateY(-130%) translateX(50%); z-index:+10"
+		/>
+	{/if}
 	<i class="gi-primo-star" />
 	<i class="gi-companion" />
 	<div class="picture">
