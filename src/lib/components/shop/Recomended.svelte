@@ -1,13 +1,21 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { patchVersion } from '$lib/store/stores';
+	import { outfits } from '$lib/data/outfits.json';
 	import TopNavParent from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
 	import playSfx from '$lib/functions/audio';
-	import { outfitsPromo } from '$lib/setup/wish-setup.json';
 	import Icon from '../utility/Icon.svelte';
 	import Button from '../utility/Button.svelte';
+	import { getName } from '$lib/functions/nameText';
 
-	let activeItem = 'outfit';
+	const outfitsForThisVersion = outfits.find(({ version, price, promoPrice }) => {
+		return $patchVersion === `${version}` && promoPrice && promoPrice !== price;
+	});
+	const { name, price, promoPrice, description } = outfitsForThisVersion || {};
+
+	const outfitsPromo = !!outfitsForThisVersion;
+	let activeItem = outfitsPromo ? 'outfit' : 'welkin';
 	let contentWidth;
 
 	const handleRecomendClick = ({ detail }) => {
@@ -46,28 +54,27 @@
 			>
 				<img
 					class="outfit-art"
-					src="/assets/images/characters/outfit/splash-art/opulent-splendor.webp"
-					alt="Opulent Splendor"
+					src="/assets/images/characters/outfit/splash-art/{name}.webp"
+					alt={getName(name)}
 				/>
 
 				<div class="remaining">Limited Time Offer</div>
 				<div class="details">
-					<div class="name">Opulent Splendor</div>
+					<div class="name">{getName(name)}</div>
 					<div class="price">
 						<Icon type="genesis" style="margin-right:-1%; width: 10%" />
-						<span class="dicount"> 1350 </span>
-						<del class="real-price"> 1680 </del>
+						<span class="dicount"> {promoPrice} </span>
+
+						<del class="real-price"> {price} </del>
 					</div>
 				</div>
 
 				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
 					<div class="description">
 						<div class="title">New Character Outfits</div>
-						<span class="name">Opulent Splendor</span>
+						<span class="name">{getName(name)}</span>
 						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum voluptatem
-							architecto placeat dicta qui, iste omnis. Odio sunt reprehenderit non, nulla maxime
-							cumque possimus enim illo
+							{description}
 						</p>
 					</div>
 					<div class="purchase-button">
@@ -169,7 +176,7 @@
 		flex-direction: column;
 		align-items: flex-end;
 		padding-top: 10%;
-		z-index: +10;
+		z-index: +3;
 	}
 
 	.parent-amount {
@@ -290,7 +297,7 @@
 
 	.real-price {
 		position: absolute;
-		right: 25%;
+		left: 52%;
 		bottom: 0;
 		transform: translateY(-50%);
 		color: #fff;

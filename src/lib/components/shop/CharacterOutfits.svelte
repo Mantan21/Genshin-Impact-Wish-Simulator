@@ -1,10 +1,9 @@
 <script>
-	import { outfitsPromo } from '$lib/setup/wish-setup.json';
 	import { outfits } from '$lib/data/outfits.json';
 	import playSfx from '$lib/functions/audio';
 	import { getName } from '$lib/functions/nameText';
 	import { localBalance, localOutfits } from '$lib/store/localstore';
-	import { genesis } from '$lib/store/stores';
+	import { genesis, patchVersion } from '$lib/store/stores';
 
 	// Components
 	import WishResult from '../banner/parts/WishResult.svelte';
@@ -17,7 +16,9 @@
 
 	const outfitsData = outfits.map((outfit) => {
 		outfit.isOwned = localOutfits.check(outfit.name);
-		outfit.isPromo = outfit.name === outfitsPromo;
+		const promo = outfit.promoPrice && outfit.promoPrice !== outfit.price;
+		outfit.isPromo = $patchVersion === `${outfit.version}` && promo;
+
 		return outfit;
 	});
 

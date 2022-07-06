@@ -1,6 +1,7 @@
 {
 	"outfits": [
 		{
+			"version": 1.6,
 			"name": "sea-breeze-dandelion",
 			"characterName": "jean",
 			"rarity": 4,
@@ -14,11 +15,11 @@
 			}
 		},
 		{
+			"version": 1.6,
 			"name": "summertime-sparkle",
 			"characterName": "barbara",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1680,
 			"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze.",
 			"wishBoxPosition": {
 				"t": 72,
@@ -27,6 +28,7 @@
 			}
 		},
 		{
+			"version": 2.4,
 			"name": "opulent-splendor",
 			"characterName": "keqing",
 			"rarity": 4,
@@ -38,11 +40,11 @@
 			}
 		},
 		{
+			"version": 2.4,
 			"name": "orchid_s-evening-gown",
 			"characterName": "ningguang",
 			"rarity": 4,
 			"price": 1680,
-			"promoPrice": 1680,
 			"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace.",
 			"wishBoxPosition": {
 				"h": 200,

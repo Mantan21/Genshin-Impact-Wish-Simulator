@@ -10,12 +10,13 @@
 		isAcquaintUsed,
 		acquaint,
 		intertwined,
-		unlimitedFates
+		unlimitedFates,
+		patchVersion
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
-	import { outfitsPromo } from '$lib/setup/wish-setup.json';
+	import { outfits } from '$lib/data/outfits.json';
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
@@ -25,6 +26,16 @@
 	$: activeBanner = $bannerList[$bannerActive];
 	$: bannerActiveType = activeBanner.type + (isNaN(activeBanner.index) ? '' : activeBanner.index);
 	$: multiRollPrice = bannerActiveType === 'beginner' ? 8 : 10;
+
+	let openedNotices = [];
+	$: check = outfits.filter(({ version }) => version.toString() === $patchVersion) || [];
+	$: outfitsPromo = check.length > 0;
+	$: check.forEach(({ version }) => {
+		const v = version.toString();
+		if (openedNotices.includes(v)) return;
+		openedNotices = [...openedNotices, `outfits-${v}`, `recomended-${v}`];
+		return;
+	});
 
 	const changePage = (page) => {
 		pageActive.set(page);
@@ -66,10 +77,7 @@
 		<div class="left menu-button">
 			<button on:click={() => changePage('shop')}>
 				{#if outfitsPromo}
-					<NoticeMark
-						name={['outfits', 'recomended']}
-						style="transform: translateX(70%) translateY(-80%)"
-					/>
+					<NoticeMark name={openedNotices} style="transform: translateX(70%) translateY(-80%)" />
 				{/if}
 				Shop
 			</button>

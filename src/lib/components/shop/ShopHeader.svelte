@@ -1,8 +1,15 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { outfitsPromo } from '$lib/setup/wish-setup.json';
-	import { genesis, pageActive, primogem, stardust, starglitter } from '$lib/store/stores';
+	import {
+		genesis,
+		pageActive,
+		primogem,
+		stardust,
+		starglitter,
+		patchVersion
+	} from '$lib/store/stores';
+	import { outfits } from '$lib/data/outfits.json';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
@@ -11,6 +18,16 @@
 	export let showNavbar = true;
 	export let showNavbarButton = true;
 	export let activeShop = 'genesis';
+
+	let openedNotices = [];
+	$: check = outfits.filter(({ version }) => version.toString() === $patchVersion) || [];
+	$: outfitsPromo = check.length > 0;
+	$: check.forEach(({ version }) => {
+		const v = version.toString();
+		if (openedNotices.includes(v)) return;
+		openedNotices = [...openedNotices, `outfits-${v}`, `recomended-${v}`];
+		return;
+	});
 
 	const dispatch = createEventDispatcher();
 
@@ -31,10 +48,7 @@
 		{#if showNavbarButton}
 			<button class="toggle" on:click={handleClick}>
 				{#if outfitsPromo}
-					<NoticeMark
-						name={['outfits', 'recomended']}
-						style="transform: translateX(70%) translateY(-150%)"
-					/>
+					<NoticeMark name={openedNotices} style="transform: translateX(70%) translateY(-150%)" />
 				{/if}
 				<span />
 			</button>
