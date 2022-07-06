@@ -5,6 +5,7 @@ import { wishPhase } from '$lib/setup/wish-setup.json';
 const pageActive = writable('index');
 const backsound = writable(false);
 const muted = writable(false);
+const notice = writable([]);
 const isLoaded = writable(false);
 const showDisclaimer = writable(true);
 
@@ -57,6 +58,7 @@ export {
 	isLoaded,
 	backsound,
 	muted,
+	notice,
 	showDisclaimer,
 	viewportWidth,
 	viewportHeight,

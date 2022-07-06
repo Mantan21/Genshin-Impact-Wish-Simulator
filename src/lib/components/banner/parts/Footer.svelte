@@ -13,9 +13,12 @@
 		unlimitedFates
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
+	import { outfitsPromo } from '$lib/setup/wish-setup.json';
+
+	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
+	import FatepointButton from '../fatepoint/FatepointButton.svelte';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
@@ -61,7 +64,12 @@
 
 	<div class="row">
 		<div class="left menu-button">
-			<button on:click={() => changePage('shop')}> Shop </button>
+			<button on:click={() => changePage('shop')}>
+				{#if outfitsPromo}
+					<NoticeMark name={['outfits']} style="transform: translateX(70%) translateY(-80%)" />
+				{/if}
+				Shop
+			</button>
 			<button on:click={() => changePage('inventory')}> Inventory </button>
 			<button on:click={() => changePage('history')}> History </button>
 		</div>
@@ -132,6 +140,7 @@
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
+		position: relative;
 	}
 	button:active {
 		transform: scale(0.95);

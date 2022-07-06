@@ -10,7 +10,8 @@ import {
 	bannerPhase,
 	patchVersion,
 	selectedCourse,
-	muted
+	muted,
+	notice
 } from '$lib/store/stores';
 import HistoryIDB from '$lib/store/historyIdb';
 import { wishPhase, version } from '$lib/setup/wish-setup.json';
@@ -38,6 +39,7 @@ const factoryReset = async () => {
 	// Setting
 	unlimitedFates.set(false);
 	muted.set(false);
+	notice.set([]);
 };
 
 export default factoryReset;

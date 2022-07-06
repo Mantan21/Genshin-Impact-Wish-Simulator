@@ -13,6 +13,8 @@
 	import playSfx from '$lib/functions/audio';
 	import FatepointIcon from './FatepointIcon.svelte';
 	import { localFatePoint } from '$lib/store/localstore';
+	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
+	import { noticeMark } from '$lib/functions/noticeMark';
 
 	$: isWeapon = $bannerList[$bannerActive].type === 'weapons';
 
@@ -38,6 +40,7 @@
 	const handleClick = () => {
 		playSfx();
 		showFatepointPopup.set(true);
+		noticeMark.openNotice(`fatepoint${$patchVersion}-${$bannerPhase}`);
 	};
 
 	$: checkFatepoint($bannerList);
@@ -45,6 +48,7 @@
 
 {#if $isFatepointSystem && isWeapon}
 	<button class="container" on:click={handleClick}>
+		<NoticeMark name="fatepoint{$patchVersion}-{$bannerPhase}" />
 		<FatepointIcon active={$fatePoint === 2} />
 		<div class="point-number">
 			{#if $selectedCourse.name}

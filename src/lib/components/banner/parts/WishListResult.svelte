@@ -529,6 +529,7 @@
 		right: 8%;
 		color: #fff;
 		font-size: 0.8rem;
+		z-index: 999;
 	}
 	.share span {
 		display: flex;

@@ -191,7 +191,9 @@
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}
-	<button on:click|stopPropagation={takeShot}> {page ? 'Share' : 'Save'} </button>
+	<button on:click|stopPropagation={takeShot}>
+		{page ? 'Share' : 'Take Picture'}
+	</button>
 </div>
 
 <style>

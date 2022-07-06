@@ -12,6 +12,7 @@ import {
 } from '$lib/store/stores';
 import { localBalance, localBannerVersion, localConfig } from '$lib/store/localstore';
 import { storageVersion, version } from '$lib/setup/wish-setup.json';
+import { noticeMark } from './noticeMark';
 
 /**
  * Read Balance From LocalStorage
@@ -44,6 +45,7 @@ const importLocalBalance = () => {
 	// Setting
 	unlimitedFates.set(!!localConfig.get('unlimitedFates'));
 	muted.set(!!localConfig.get('muted'));
+	noticeMark.onLoadCheck();
 
 	console.log('Balance Updated');
 };
