@@ -34,20 +34,20 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 1. Gacha on all banner ( Beginner, Standard, Event and Weapon Banner )
 2. Dual or Single Character Event Banner.
-3. Epitomized Path System for Weapon Banner.
+3. Epitomized Path System for Weapon Banner start from version 2.0 - latest.
 4. Pity System almost like the real game.
-5. User can do gacha on all banner version start from version 1.0 - latest.
+5. **The most complete banners** of all existing simulator, user can switch and do gacha on every banner starts from version 1.0 - latest.
 6. Gacha Milestone Bonus, Starglitter and Stardust, exchangable to Aquaint or Intertwined Fate at Shop
 7. **Shop** section to refill Primogem and Genesis Crystal
 8. Shared Pity with previous banner, User can continuously gacha on different banner version without reset pity.
 9. **Wish Details** for every banner.
 10. Different banner type has different **Gacha History**
 11. **Inventory** to show all items ( characters and weapons ) that already owned by gacha
-12. Screenshot and download wish result localy.
-13. Pity Counter, User can track their current pity and pity history
-14. Responsive layout and mobile friendly both landscape or portrait orientation.
-15. All user data will saves to localstorage and indexedDB.
-16. Link generator when user want to share their gacha result through internet.
+12. Screenshot and download wish result as Image localy.
+13. Pity Counter, User can track their current information and history of their pity
+14. Mobile Friendly, responsive layout both landscape and portrait orientation.
+15. Link generator when user want to share their gacha result through internet.
+16. All user's data will saves to localstorage and indexedDB.
 
 ## Pity System
 
@@ -67,7 +67,7 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
 2. Character Event and Standard Wish Probability
 
    - *5 Item guaranteed at 90 roll and promoted *5 item guaranteed at 180 roll.
-   - Probability to get \*5 item is 0.6%, at pity 74 the rate starts to increase by 6% and guaranteed at 90.
+   - Probability to get \*5 item is 0.6%, at pity 74 the rate starts to increase by 6% and then guaranteed at pity 90.
 
    | **Pity** | 1-73 |  74  |  75   |  76   |  77   |  78   |  79   |  80   |  81   |  82   |  83   |  84   |  85   |  86   |  87   |  88   |  89   |  90  |
    | -------: | :--: | :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--: |
@@ -76,19 +76,19 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
 3. Weapons Wish Probability
 
    - *5 Item guaranteed at 80 roll and promoted *5 item guaranteed at 160 roll.
-   - Probability to get \*5 item is 0.7%, at pity 63 the rate starts to increase by 7%, after pity 73 the rate increased by 3.5% and guaranteed at pity 80.
+   - Probability to get \*5 item is 0.7%, at pity 63 the rate starts to increase by 7%, after pity 73 the rate increased by 3.5% and then guaranteed at pity 80.
 
    | **Pity** | 1-62 |  63  |  64   |  65   |  66   |  67   |  68   |  69   |  70   |  71   |  72   |  73   |  74   |  75   |  76   |  77   |  78   |  79   |  80  |
    | -------: | :--: | :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--: |
    | **Rate** | 0.7% | 7.7% | 14.7% | 21.7% | 28.7% | 35.7% | 42.7% | 49.7% | 56.7% | 63.7% | 70.7% | 77.7% | 81.2% | 84.7% | 88.2% | 91.7% | 95.2% | 98.7% | 100% |
 
-4. When you are guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will appear like screenshot below.
+4. When you are guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
 
    ![double guaranteed](static/screenshot/double-guaranteed.png)
 
-## Develoment
+## Development
 
-This app build with Svelte Kit base on Javascript programming language.
+This app build with [Svelte-Kit](https://kit.svelte.dev/) based on Javascript programming language.
 
 Once you've cloned this project, install all dependencies with `npm install` (or `pnpm install` or `yarn`), and start a development server:
 
@@ -106,7 +106,8 @@ npm run dev -- --open
 
 ## Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment. Then:
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment. As default, this project use [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) and deployed to [Vercel.com](https://vercel.com)
+Then:
 
 ```bash
 npm run build
@@ -114,8 +115,10 @@ npm run build
 
 ## Deployment
 
-Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env`, please change the variables if needed.
-After that, if you want to serve some assets through cdn, you can set your Github informations that you use to save your assets. The site will use free cdn service for free, if you want to use another cdn service, please do setup yourself
+Before Deploy to online server, please setup the environment variables by renaming file `.env.example` to `.env` and change the variables if needed.
+Then, if you want to serve some assets through cdn, please provide your Github Repo's informations that you use to save your assets, simply you can fork this repository then put your github username to environment variables.
+
+The site will use [jsDelivr](https://www.jsdelivr.com/) free cdn service. You also can use another CDN Service like [Statically](https://statically.io/) and [PageCDN](https://pagecdn.com/) for free or use paid service from Azure, AWS and GCP, but You must to setup the configuration yourself.
 
 ---
 
