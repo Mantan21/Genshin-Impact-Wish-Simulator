@@ -4,10 +4,10 @@ import { config as envConfig } from 'dotenv';
 
 // Read Environtement Variable
 envConfig();
-const { NODE_ENV, STATICALLY, GITHUB_USER, GITHUB_REPO, GITHUB_BRANCH } = process.env;
+const { NODE_ENV, USE_CDN, GITHUB_USER, GITHUB_REPO } = process.env;
 
-const cdn_on = NODE_ENV === 'production' && STATICALLY === 'true';
-const cdn_url = `https://cdn.statically.io/gh/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/static/assets/`;
+const cdn_on = NODE_ENV === 'production' && USE_CDN === 'true';
+const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static/assets/`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
