@@ -12,7 +12,8 @@
 		bannerPhase,
 		showBeginner,
 		isFatepointSystem,
-		muted
+		muted,
+		bannerActive
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
 	import { APP_TITLE, HOST } from '$lib/env';
@@ -28,6 +29,9 @@
 	import Shop from '$lib/components/shop/MainShop.svelte';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Obtained from '$lib/components/utility/Obtained.svelte';
+	import WelkinCheckin from '$lib/components/utility/WelkinCheckin.svelte';
+	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
+	import { localWelkin } from '$lib/store/localstore';
 
 	let isMount = false;
 	let isLoaded = false;
@@ -125,6 +129,22 @@
 		playSfx('close');
 		if ($pageActive === 'index') backsound.set(true);
 	};
+
+	let welkinCheckin = false;
+	let showDisclaimer = true;
+	const closeDisclaimer = () => {
+		bannerActive.set(0);
+		showDisclaimer = false;
+
+		const { remaining, diff } = localWelkin.getData();
+		welkinCheckin = remaining > 0 && remaining - diff >= 0 && diff > 0;
+		localWelkin.checkin();
+		if (!welkinCheckin) return backsound.set(true);
+	};
+	setContext('closeDisclaimer', closeDisclaimer);
+
+	const closeWelkin = () => (welkinCheckin = false);
+	setContext('closeWelkin', closeWelkin);
 </script>
 
 <svelte:head>
@@ -144,6 +164,9 @@
 	<Obtained items={obtainedItems} on:close={handleCloseObtained} />
 {/if}
 <!-- Obtained Items End -->
+
+<Disclaimer show={showDisclaimer} />
+<WelkinCheckin show={welkinCheckin} />
 
 {#if $pageActive === 'index'}
 	<MainBanner />

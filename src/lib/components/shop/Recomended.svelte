@@ -1,9 +1,9 @@
 <script>
-	import { getContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { outfits } from '$lib/data/outfits.json';
-	import { patchVersion } from '$lib/store/stores';
-	import { localOutfits } from '$lib/store/localstore';
+	import { genesis, patchVersion, primogem } from '$lib/store/stores';
+	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
 	import { getName } from '$lib/functions/nameText';
 
@@ -11,6 +11,7 @@
 	import TopNavItem from './parts/_top-nav-item.svelte';
 	import Icon from '../utility/Icon.svelte';
 	import Button from '../utility/Button.svelte';
+	import WelkinPopup from './WelkinPopup.svelte';
 
 	export let recentlyBuyIndex = -1;
 
@@ -30,6 +31,32 @@
 	};
 
 	const selectItem = getContext('selectItem');
+	const showObtained = getContext('handleObtained');
+
+	const { remaining } = localWelkin.getData();
+	let dayRemaining = remaining || 0;
+	let showWelkinPopup = false;
+
+	const buyWelkin = () => {
+		showWelkinPopup = false;
+		genesis.update((n) => {
+			const newQty = n + 320000;
+			localBalance.set('genesis', newQty);
+			return newQty;
+		});
+		primogem.update((n) => {
+			const newQty = n + 8000;
+			localBalance.set('primogem', newQty);
+			return newQty;
+		});
+		showObtained('genesis', 32000);
+		localWelkin.checkin('welkin');
+		dayRemaining = localWelkin.getData().remaining;
+	};
+
+	const cancelBuy = () => (showWelkinPopup = false);
+	setContext('buyWelkin', buyWelkin);
+	setContext('cancelBuy', cancelBuy);
 </script>
 
 <TopNavParent>
@@ -51,6 +78,8 @@
 		Blessing of the Welkin Moon
 	</TopNavItem>
 </TopNavParent>
+
+<WelkinPopup show={showWelkinPopup} />
 
 <div class="container">
 	<div class="content-item" bind:clientHeight={contentWidth}>
@@ -106,10 +135,12 @@
 			>
 				<img src="/assets/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
 
-				<div class="remaining">
-					Days remaining: <strong>30</strong>
-					<span>(Already Claimed today)</span>
-				</div>
+				{#if dayRemaining > 0}
+					<div class="remaining">
+						Days remaining: <strong>{dayRemaining}</strong>
+						<span>(Already Claimed today)</span>
+					</div>
+				{/if}
 				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
 					<div class="parent-amount">
 						<span>Instantly Get</span>
@@ -132,7 +163,14 @@
 							Obtain a total <strong>32000</strong> Genesis Crystal and
 							<strong> 240000</strong> Primogems across 30 days
 						</div>
-						<Button text="Purchase" type="confirm" />
+						<Button
+							text="Purchase"
+							type="confirm"
+							on:click={() => {
+								showWelkinPopup = true;
+								playSfx();
+							}}
+						/>
 					</div>
 				</div>
 			</div>

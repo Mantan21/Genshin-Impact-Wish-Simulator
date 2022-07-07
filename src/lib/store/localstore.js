@@ -185,6 +185,44 @@ const localOutfits = {
 	}
 };
 
+const localWelkin = {
+	getData() {
+		const welkin = localStorage.getItem('welkin');
+		if (!welkin) return { remaining: 0, diff: 0 };
+		const parsed = JSON.parse(welkin);
+
+		const utc4 = new Date().getTime() + 4 * 3600 * 1000;
+		const today = new Date(utc4).toDateString();
+		const counter = Math.abs(new Date(today) - new Date(parsed.latestCheckIn));
+		parsed.diff = Math.ceil(counter / (1000 * 60 * 60 * 24));
+		return parsed;
+	},
+
+	checkin(action = 'checkin') {
+		let { remaining, latestCheckIn } = this.getData();
+		const utc4 = new Date().getTime() + 4 * 3600 * 1000;
+		const today = new Date(utc4).toDateString();
+		if (!latestCheckIn) {
+			const object = { remaining: 29, latestCheckIn: today, diff: 0 };
+			return localStorage.setItem('welkin', JSON.stringify(object));
+		}
+
+		if (action !== 'checkin') {
+			const days = remaining < 1 ? 29 : 30;
+			const object = { remaining: days + remaining, latestCheckIn: today, diff: 0 };
+			return localStorage.setItem('welkin', JSON.stringify(object));
+		}
+
+		const counter = Math.abs(new Date(today) - new Date(latestCheckIn));
+		const diffDays = Math.ceil(counter / (1000 * 60 * 60 * 24));
+
+		remaining = remaining - diffDays;
+		remaining = remaining < 0 ? 0 : remaining;
+		latestCheckIn = today;
+		localStorage.setItem('welkin', JSON.stringify({ remaining, latestCheckIn, diff: 0 }));
+	}
+};
+
 export {
 	pity4star,
 	pity5star,
@@ -195,5 +233,6 @@ export {
 	firstShare,
 	localFatePoint,
 	localConfig,
-	localOutfits
+	localOutfits,
+	localWelkin
 };
