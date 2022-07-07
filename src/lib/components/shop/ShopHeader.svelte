@@ -53,10 +53,10 @@
 				<span />
 			</button>
 		{/if}
-		<span> You can get all of items below for free without limit </span>
+		<span> No Limit time items available </span>
 	</div>
 	<div class="fates">
-		{#if ['genesis', 'outfits'].includes(activeShop)}
+		{#if ['genesis', 'outfits', 'recomended'].includes(activeShop)}
 			<MyFund type="primogem">
 				{$primogem}
 			</MyFund>

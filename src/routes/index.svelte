@@ -12,7 +12,6 @@
 		bannerPhase,
 		showBeginner,
 		isFatepointSystem,
-		isLoaded,
 		muted
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
@@ -31,6 +30,7 @@
 	import Obtained from '$lib/components/utility/Obtained.svelte';
 
 	let isMount = false;
+	let isLoaded = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
 	$: if (audioActive) playSfx('wishBacksound');
 	else if (isMount) playSfx('wishBacksound', { paused: true });
@@ -64,7 +64,8 @@
 		bannerList.set(list);
 		isFatepointSystem.set(!!weaponBanner.fatepointsystem);
 		pageActive.set('index');
-		return isLoaded.set(true); // remove progress loader
+		isLoaded = true; // remove progress loader
+		return;
 	};
 
 	const switchBanner = async (patch, bannerPhase) => {
@@ -136,7 +137,7 @@
 	<link rel="fluid-icon" href="{HOST}/screenshot/meta-picture.jpg" title={APP_TITLE} />
 </svelte:head>
 
-<Loader />
+<Loader {isLoaded} />
 
 <!-- Obtained Items -->
 {#if showObtained}

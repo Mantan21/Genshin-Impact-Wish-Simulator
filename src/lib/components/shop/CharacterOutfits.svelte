@@ -22,7 +22,7 @@
 
 	const selectItem = getContext('selectItem');
 	const recentlyBuy = (index) => {
-		if (!index || index < 0) return;
+		if (index < 0) return;
 		outfitsData[index].isOwned = true;
 	};
 	$: recentlyBuy(recentlyBuyIndex);

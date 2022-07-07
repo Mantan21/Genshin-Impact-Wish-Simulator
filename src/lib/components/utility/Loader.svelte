@@ -1,8 +1,10 @@
 <script>
-	import { fade } from 'svelte/transition';
-	import { isLoaded, showBeginner, mobileMode, isMobile } from '$lib/store/stores';
-	import { beginnerRoll } from '$lib/store/localstore';
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import { showBeginner, mobileMode, isMobile } from '$lib/store/stores';
+	import { beginnerRoll } from '$lib/store/localstore';
+
+	export let isLoaded = false;
 
 	const start = 0;
 	const end = 110;
@@ -41,7 +43,7 @@
 	});
 </script>
 
-{#if show(current, $isLoaded)}
+{#if show(current, isLoaded)}
 	<div class="loader" out:fade={{ duration: 500, delay: 1000 }}>
 		<div class="content">
 			<div class="progress">

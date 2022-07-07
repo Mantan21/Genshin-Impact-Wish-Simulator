@@ -1,17 +1,13 @@
 <script>
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { bannerActive, backsound, showDisclaimer } from '$lib/store/stores';
 	import { data } from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
 
+	export let show = true;
 	let content;
-	const confirm = () => {
-		showDisclaimer.set(false);
-		backsound.set(true);
-		bannerActive.set(0);
-	};
 
+	const closeDisclaimer = getContext('closeDisclaimer');
 	const updates = data.filter(({ featured }) => !!featured);
 
 	onMount(() => {
@@ -19,12 +15,7 @@
 	});
 </script>
 
-<PopUp
-	show={$showDisclaimer}
-	title="Genshin Impact Wish Simulator"
-	button="confirm"
-	on:confirm={confirm}
->
+<PopUp {show} title="Genshin Impact Wish Simulator" button="confirm" on:confirm={closeDisclaimer}>
 	<section>
 		<p class="sp">This is purely a fan made Application, enjoy it !</p>
 		<div class="updates" bind:this={content}>
