@@ -8,7 +8,6 @@
 
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import WishResult from '$lib/components/banner/parts/WishResult.svelte';
 	import ExchangePopup from './ExchangePopup.svelte';
 	import ShopHeader from './ShopHeader.svelte';
@@ -29,8 +28,6 @@
 	let activeShop = 'genesis';
 	let showNavbar = true;
 	let showNavbarButton = false;
-	let showObtained = false;
-	let obtainedItems = {};
 
 	const selectShop = (e) => {
 		const { selected } = e.detail;
@@ -52,20 +49,9 @@
 		showNavbarButton = false;
 	}
 
-	const handleObtained = (itemToBuy, value) => {
-		obtainedItems[itemToBuy] = value;
-		showObtained = true;
-	};
-	setContext('handleObtained', handleObtained);
-
 	const showNavbarHandle = ({ detail }) => {
 		showNavbar = detail.showNavbar;
 		playSfx();
-	};
-	const handleCloseObtained = () => {
-		showObtained = false;
-		obtainedItems = {};
-		playSfx('close');
 	};
 
 	// Purchase Outifts
@@ -156,12 +142,6 @@
 	{/if}
 </svelte:head>
 
-<!-- Obtained Items -->
-{#if showObtained}
-	<Obtained items={obtainedItems} on:close={handleCloseObtained} />
-{/if}
-<!-- Obtained Items End -->
-
 <!-- ObtainedOutfit -->
 {#if showObtainedOutfit}
 	<WishResult
@@ -194,7 +174,7 @@
 	show={showExchangePopup}
 	itemToBuy={outfitToBuy}
 	description={outfitDescription}
-	rarity={outfitRarity}
+	itemRarity={outfitRarity}
 	price={outfitPrice}
 	on:cancel={handleClosePopup}
 	on:confirm={confirmBuy}

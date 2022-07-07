@@ -116,7 +116,7 @@
 		position: fixed;
 		bottom: 0px;
 		right: 5px;
-		z-index: 998;
+		z-index: 9999;
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
 		font-family: Roboto, sans-serif;
