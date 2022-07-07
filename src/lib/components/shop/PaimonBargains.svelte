@@ -41,6 +41,7 @@
 <ExchangePopup
 	show={showExchangePopup}
 	fundType={activeFateShop}
+	itemRarity={5}
 	{itemToBuy}
 	on:cancel={handleClosePopup}
 	on:confirm={handleConfirmPopup}

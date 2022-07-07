@@ -9,6 +9,7 @@
 	export let show = false;
 	export let title = '';
 	export let confirm = true;
+	export let confirmText = 'Confirm';
 	export let button = 'all';
 	export let sfx = true;
 
@@ -51,7 +52,7 @@
 							<Button type="cancel" on:click={cancelClik} />
 						{/if}
 						{#if ['confirm', 'all'].indexOf(button) > -1}
-							<Button type="confirm" on:click={confirmClick} />
+							<Button type="confirm" text={confirmText} on:click={confirmClick} />
 						{/if}
 					</div>
 				{/if}
