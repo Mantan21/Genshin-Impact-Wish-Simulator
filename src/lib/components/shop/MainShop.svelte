@@ -1,21 +1,24 @@
 <script>
 	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
 	import { APP_TITLE } from '$lib/env';
+	import { mobileMode, viewportHeight, viewportWidth, genesis } from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
+	import HistoryIDB from '$lib/store/historyIdb';
 
 	// Components
+	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Obtained from '$lib/components/utility/Obtained.svelte';
-	import ShopNavbar from './ShopNavbar.svelte';
+	import WishResult from '$lib/components/banner/parts/WishResult.svelte';
+	import ExchangePopup from './ExchangePopup.svelte';
 	import ShopHeader from './ShopHeader.svelte';
-	import PaymentPopup from './PaymentPopup.svelte';
-	import ColumnParent from './parts/_column-parent.svelte';
-	import Column from './parts/_column.svelte';
-	import Donate from './Donate.svelte';
-	import PaimonBargains from './PaimonBargains.svelte';
+	import ShopNavbar from './ShopNavbar.svelte';
 	import CharacterOutfits from './CharacterOutfits.svelte';
+	import PaimonBargains from './PaimonBargains.svelte';
 	import Recomended from './Recomended.svelte';
+	import GenesisCrystal from './GenesisCrystal.svelte';
+	import Donate from './Donate.svelte';
+	import { localBalance, localOutfits } from '$lib/store/localstore';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -24,13 +27,8 @@
 	};
 
 	let activeShop = 'genesis';
-
 	let showNavbar = true;
 	let showNavbarButton = false;
-
-	let activeGenesisIndexforPopup; // undefined
-	let showPaymentPopup = false; //false
-
 	let showObtained = false;
 	let obtainedItems = {};
 
@@ -54,42 +52,94 @@
 		showNavbarButton = false;
 	}
 
-	const genesisList = [
-		{ qty: 60, price: 0.99 },
-		{ qty: 300, price: 4.99 },
-		{ qty: 980, price: 14.99 },
-		{ qty: 1980, price: 29.99 },
-		{ qty: 3280, price: 49.99 },
-		{ qty: 6480, price: 99.99 }
-	];
-
-	const selectGenesis = (i) => {
-		activeGenesisIndexforPopup = i;
-		showPaymentPopup = true;
-		playSfx('exchange');
-	};
-	const handleClosePopup = () => {
-		showPaymentPopup = false;
-	};
-
 	const handleObtained = (itemToBuy, value) => {
 		obtainedItems[itemToBuy] = value;
 		showObtained = true;
 	};
 	setContext('handleObtained', handleObtained);
 
-	const handleConfirmPopup = (e) => {
-		showPaymentPopup = false;
-		const { status, item } = e.detail;
-		if (status === 'failed') return;
-		handleObtained(item.itemToBuy, item.value);
+	const showNavbarHandle = ({ detail }) => {
+		showNavbar = detail.showNavbar;
+		playSfx();
 	};
-
 	const handleCloseObtained = () => {
 		showObtained = false;
 		obtainedItems = {};
 		playSfx('close');
 	};
+
+	// Purchase Outifts
+	let showExchangePopup = false;
+	let showPopupAlert = false;
+	let outfitDescription = '';
+	let isOutfitOwned = false;
+	let outfitToBuy = '';
+	let outfitPrice = 0;
+	let outfitRarity = 0;
+	let outfitsData = [];
+	let recentlyBuyIndex;
+
+	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
+	let showObtainedOutfit = false;
+
+	const forcePurchase = () => {
+		showExchangePopup = true;
+		showPopupAlert = false;
+	};
+
+	const buy = (item) => {
+		const index = outfitsData.findIndex(({ name }) => item === name);
+		recentlyBuyIndex = index;
+	};
+
+	const confirmBuy = () => {
+		genesis.update((v) => {
+			const newVal = v - outfitPrice;
+			localBalance.set('genesis', newVal);
+			return newVal;
+		});
+		localOutfits.set(outfitToBuy);
+		buy(outfitToBuy);
+		showObtainedOutfit = true;
+		handleClosePopup();
+	};
+
+	const handleClosePopup = () => {
+		showExchangePopup = false;
+	};
+
+	const checkCharacter = async (charName) => {
+		const dt = await HistoryIDB.getByName(charName);
+		return dt.length > 0;
+	};
+
+	const selectItem = async (data, i = -1) => {
+		playSfx();
+		if ((Array.isArray(data) && !data[i]) || !data) return;
+		const item = Array.isArray(data) ? data[i] : data;
+		outfitsData = Array.isArray(data) ? data : [data];
+		// prettier-ignore
+		const {
+			name,
+			price,
+			promoPrice,
+			isPromo,
+			rarity,
+			description,
+			isOwned,
+			characterName
+		} = item;
+
+		const isOwnedChar = await checkCharacter(characterName);
+		showPopupAlert = !isOwnedChar && !isOwned;
+		showExchangePopup = isOwnedChar || isOwned;
+		outfitToBuy = name;
+		outfitPrice = isPromo ? promoPrice : price;
+		outfitRarity = rarity;
+		outfitDescription = description;
+		isOutfitOwned = isOwned;
+	};
+	setContext('selectItem', selectItem);
 </script>
 
 <svelte:head>
@@ -112,17 +162,45 @@
 {/if}
 <!-- Obtained Items End -->
 
-<!-- Genesisn Pop up -->
-{#if showPaymentPopup}
-	<PaymentPopup
-		show={showPaymentPopup}
-		price={genesisList[activeGenesisIndexforPopup].price}
-		qty={genesisList[activeGenesisIndexforPopup].qty}
-		on:confirm={handleConfirmPopup}
-		on:cancel={handleClosePopup}
+<!-- ObtainedOutfit -->
+{#if showObtainedOutfit}
+	<WishResult
+		list={itemData}
+		on:wishEnd={() => (showObtainedOutfit = false)}
+		fromShop
+		outfitName={outfitToBuy}
 	/>
 {/if}
-<!-- Genesis Pop Up End -->
+
+<PopUp
+	show={showPopupAlert}
+	title="Purchase Confirmation"
+	on:cancel={() => (showPopupAlert = false)}
+	on:confirm={forcePurchase}
+>
+	<div
+		class="confirmation"
+		style="display: flex; justify-content:center; align-items:center; height:100%; width:100%"
+	>
+		<p>
+			You don't have a character for this costume yet, are you sure you want to purchase this
+			costume? <br /> You can still use this costume after getting the right character
+		</p>
+	</div>
+</PopUp>
+
+<ExchangePopup
+	outfit
+	show={showExchangePopup}
+	itemToBuy={outfitToBuy}
+	description={outfitDescription}
+	rarity={outfitRarity}
+	price={outfitPrice}
+	on:cancel={handleClosePopup}
+	on:confirm={confirmBuy}
+	{isOutfitOwned}
+/>
+<!-- ObtainedOutfit -->
 
 <section style="height: {$viewportHeight}px">
 	<img class="bg" src="/assets/images/background/bg{random(1, 16)}.webp" alt="background" />
@@ -136,35 +214,19 @@
 			}}
 		/>
 		<div class="items-container">
-			<ShopHeader
-				{activeShop}
-				{showNavbar}
-				{showNavbarButton}
-				on:showNavbar={({ detail }) => {
-					showNavbar = detail.showNavbar;
-					playSfx();
-				}}
-			/>
+			<ShopHeader {activeShop} {showNavbar} {showNavbarButton} on:showNavbar={showNavbarHandle} />
 
 			<div class="item-body" in:fade={{ duration: 300 }}>
 				{#if activeShop === 'genesis'}
-					<ColumnParent name="genesis">
-						{#each genesisList as { qty }, i}
-							<Column style="padding:0">
-								<button class="content" on:click={() => selectGenesis(i)}>
-									<img src="/assets/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
-								</button>
-							</Column>
-						{/each}
-					</ColumnParent>
+					<GenesisCrystal />
 
 					<!-- Recomended Item -->
 				{:else if activeShop === 'recomended'}
-					<Recomended />
+					<Recomended {recentlyBuyIndex} />
 
 					<!-- Characters Outfits -->
 				{:else if activeShop === 'outfits'}
-					<CharacterOutfits />
+					<CharacterOutfits {recentlyBuyIndex} />
 
 					<!-- Donate -->
 				{:else if activeShop === 'donate'}
@@ -233,34 +295,5 @@
 
 	.items-container {
 		width: 100%;
-	}
-
-	button {
-		transition: all 0.2s;
-		transform: scale(1);
-	}
-	button:not(.nav-link-item):active {
-		transform: scale(0.95);
-	}
-
-	.content {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		border-radius: 0.5rem;
-		overflow: hidden;
-		text-align: center;
-	}
-
-	.content,
-	.content img {
-		width: 100%;
-		transition: all 0.2s;
-	}
-	.genesis button:hover img {
-		filter: drop-shadow(0 0 5px #d2c69c);
 	}
 </style>

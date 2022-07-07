@@ -1,18 +1,24 @@
 <script>
+	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { patchVersion } from '$lib/store/stores';
 	import { outfits } from '$lib/data/outfits.json';
+	import { patchVersion } from '$lib/store/stores';
+	import { localOutfits } from '$lib/store/localstore';
+	import playSfx from '$lib/functions/audio';
+	import { getName } from '$lib/functions/nameText';
+
 	import TopNavParent from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
-	import playSfx from '$lib/functions/audio';
 	import Icon from '../utility/Icon.svelte';
 	import Button from '../utility/Button.svelte';
-	import { getName } from '$lib/functions/nameText';
+
+	export let recentlyBuyIndex = -1;
 
 	const outfitsForThisVersion = outfits.find(({ version, price, promoPrice }) => {
 		return $patchVersion === `${version}` && promoPrice && promoPrice !== price;
 	});
 	const { name, price, promoPrice, description } = outfitsForThisVersion || {};
+	$: isOwned = localOutfits.check(name) || recentlyBuyIndex > -1;
 
 	const outfitsPromo = !!outfitsForThisVersion;
 	let activeItem = outfitsPromo ? 'outfit' : 'welkin';
@@ -22,6 +28,8 @@
 		playSfx('exchange');
 		activeItem = detail.selected;
 	};
+
+	const selectItem = getContext('selectItem');
 </script>
 
 <TopNavParent>
@@ -78,7 +86,15 @@
 						</p>
 					</div>
 					<div class="purchase-button">
-						<Button text="Purchase" type="confirm" />
+						{#if isOwned}
+							<span class="owned">Already Owned</span>
+						{:else}
+							<Button
+								text="Purchase"
+								type="confirm"
+								on:click={() => selectItem(outfitsForThisVersion)}
+							/>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -208,6 +224,10 @@
 		text-align: right;
 		margin-top: auto;
 		margin-bottom: 2%;
+	}
+
+	.owned {
+		color: #de2f22;
 	}
 
 	/* Outfits */
