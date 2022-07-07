@@ -6,8 +6,6 @@ const pageActive = writable('index');
 const backsound = writable(false);
 const muted = writable(false);
 const notice = writable([]);
-const isLoaded = writable(false);
-const showDisclaimer = writable(true);
 
 // Banner
 const patchVersion = writable(0);
@@ -55,11 +53,9 @@ export {
 	showFatepointPopup,
 	fatepointCounterActive,
 	selectedCourse,
-	isLoaded,
 	backsound,
 	muted,
 	notice,
-	showDisclaimer,
 	viewportWidth,
 	viewportHeight,
 	isMobile,

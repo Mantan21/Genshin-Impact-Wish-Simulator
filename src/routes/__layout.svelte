@@ -7,7 +7,7 @@
 	// Packagae
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 
 	import {
 		viewportHeight,
@@ -16,14 +16,15 @@
 		mobileMode,
 		isAcquaintUsed,
 		bannerActive,
-		bannerList
+		bannerList,
+		backsound
 	} from '$lib/store/stores';
 	import { HOST, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
-	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
-	import '../app.css';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import Ads from '$lib/components/utility/Iklan.svelte';
+	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
+	import '../app.css';
 
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
 
@@ -37,6 +38,14 @@
 		const rotate = angle === 90 || angle === 270;
 		mobileMode.set(rotate);
 	};
+
+	let showDisclaimer = true;
+	const closeDisclaimer = () => {
+		backsound.set(true);
+		bannerActive.set(0);
+		showDisclaimer = false;
+	};
+	setContext('closeDisclaimer', closeDisclaimer);
 
 	onMount(() => {
 		importLocalBalance();
@@ -73,7 +82,7 @@
 </svelte:head>
 
 {#if !preview}
-	<Disclaimer />
+	<Disclaimer show={showDisclaimer} />
 {/if}
 
 <main
