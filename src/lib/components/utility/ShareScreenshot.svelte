@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { toBlob } from 'html-to-image';
 	import { saveAs } from 'file-saver';
@@ -9,7 +9,6 @@
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import Icon from './Icon.svelte';
-	import Obtained from './Obtained.svelte';
 
 	export let encodedData = '';
 	export let page = '';
@@ -64,7 +63,7 @@
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;
-		e.target.innerText = page ? 'Share' : 'Save';
+		e.target.innerText = page ? 'Share' : 'Take Picture';
 		node.classList.remove('preview');
 	};
 
@@ -111,27 +110,16 @@
 		}
 	};
 
-	let showObtained = false;
-	const closeObtained = () => {
-		showObtained = false;
-		playSfx('close');
-	};
-
+	const showObtained = getContext('handleObtained');
 	const closehandle = () => {
 		playSfx('close');
 		show = false;
 		if (!obtain) return;
-		showObtained = true;
+		showObtained('primogem', 16000);
 	};
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
-
-<!-- Obtain -->
-{#if showObtained}
-	<Obtained items={{ primogem: 16000 }} on:close={closeObtained} />
-{/if}
-<!-- Obtain end -->
 
 {#if show}
 	<div

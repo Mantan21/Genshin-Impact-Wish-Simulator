@@ -13,13 +13,13 @@
 		unlimitedFates
 	} from '$lib/store/stores';
 	import { fly } from 'svelte/transition';
+	import { getContext } from 'svelte';
 	import { APP_TITLE } from '$lib/env';
 	import Wish, { roll } from '$lib/functions/wish/wish';
 	import { localBalance } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
 
 	// Components
-	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import WishResult from './parts/WishResult.svelte';
 	import Header from './parts/Header.svelte';
 	import Footer from './parts/Footer.svelte';
@@ -28,7 +28,6 @@
 
 	let showWish = false;
 	let showMeteor = false;
-	let showObtainedMilestone = false;
 	let singleMeteor = true;
 	let meteorStar = 3;
 	let skipSplashOneByOne = false;
@@ -141,9 +140,7 @@
 		showWish = true;
 	};
 
-	let stardustObtained = 0;
-	let starglitterObtained = 0;
-
+	const showObtained = getContext('handleObtained');
 	const checkObtained = () => {
 		skipSplashOneByOne = false;
 		if ($unlimitedFates) {
@@ -151,17 +148,14 @@
 			return backsound.set(true);
 		}
 
-		stardustObtained = countMilestone('stardust');
-		starglitterObtained = countMilestone('starglitter');
-		if (stardust < 1 && starglitter < 1) backsound.set(true);
-		else showObtainedMilestone = true;
-		showWish = false;
-	};
+		const obtainedItems = [
+			{ item: 'stardust', value: countMilestone('stardust') },
+			{ item: 'starglitter', value: countMilestone('starglitter') }
+		];
 
-	const closeMilestone = () => {
-		showObtainedMilestone = false;
-		playSfx('close');
-		backsound.set(true);
+		if (stardust < 1 && starglitter < 1) backsound.set(true);
+		else showObtained(obtainedItems);
+		showWish = false;
 	};
 </script>
 
@@ -169,12 +163,6 @@
 	<title>{APP_TITLE}</title>
 </svelte:head>
 
-{#if showObtainedMilestone}
-	<Obtained
-		items={{ starglitter: starglitterObtained, stardust: stardustObtained }}
-		on:close={closeMilestone}
-	/>
-{/if}
 {#if showWish}
 	<WishResult list={wishResult} on:wishEnd={checkObtained} {skipSplashOneByOne} />
 {/if}

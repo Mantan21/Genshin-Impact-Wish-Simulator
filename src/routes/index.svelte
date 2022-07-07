@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import {
 		pageActive,
 		bannerList,
@@ -28,6 +28,7 @@
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
 	import Loader from '$lib/components/utility/Loader.svelte';
+	import Obtained from '$lib/components/utility/Obtained.svelte';
 
 	let isMount = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
@@ -100,6 +101,29 @@
 			pageActive.set('index');
 		});
 	});
+
+	let showObtained = false;
+	let obtainedItems = {};
+
+	const handleObtained = (itemToBuy, value = 0) => {
+		if (Array.isArray(itemToBuy)) {
+			itemToBuy.forEach(({ item, value }) => {
+				obtainedItems[item] = value;
+			});
+			showObtained = true;
+			return;
+		}
+		obtainedItems[itemToBuy] = value;
+		showObtained = true;
+	};
+	setContext('handleObtained', handleObtained);
+
+	const handleCloseObtained = () => {
+		showObtained = false;
+		obtainedItems = {};
+		playSfx('close');
+		if ($pageActive === 'index') backsound.set(true);
+	};
 </script>
 
 <svelte:head>
@@ -113,6 +137,12 @@
 </svelte:head>
 
 <Loader />
+
+<!-- Obtained Items -->
+{#if showObtained}
+	<Obtained items={obtainedItems} on:close={handleCloseObtained} />
+{/if}
+<!-- Obtained Items End -->
 
 {#if $pageActive === 'index'}
 	<MainBanner />
