@@ -1,4 +1,5 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	import {
 		acquaint,
 		genesis,
@@ -8,19 +9,18 @@
 		starglitter
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
+	import { getName } from '$lib/functions/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import { createEventDispatcher } from 'svelte';
 	import Range from './parts/_range.svelte';
-	import { getName } from '$lib/functions/nameText';
 
 	export let show = false;
 	export let itemToBuy = 'intertwined';
 	export let fundType = 'genesis';
+	export let itemRarity = 0;
 
 	export let outfit = false;
 	export let description = '';
-	export let rarity = 0;
 	export let price = 0;
 	export let isOutfitOwned = false;
 
@@ -155,6 +155,7 @@
 	title="Item To {fundType === 'genesis' ? 'Exchange' : 'Purchase'}"
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
+	confirmText="Purchase"
 	button={(outfit ? isOutfitOwned || $genesis < price : fateQty < 1) ? 'cancel' : 'all'}
 >
 	<div class="content" bind:clientHeight={contentHeight}>
@@ -182,7 +183,7 @@
 
 			<!-- End Genesis Exchange -->
 		{:else}
-			<div class="item" style={itemFieldStyle}>
+			<div class="item star{itemRarity}" style={itemFieldStyle}>
 				<div class="primo">
 					<span class="primogem" class:red={outfit ? $genesis < price : fateQty < 1}>
 						<Icon
@@ -214,7 +215,7 @@
 						{/if}
 					</div>
 					<div class="star">
-						{#each Array(rarity || data[itemToBuy]?.star) as _, i}
+						{#each Array(itemRarity || data[itemToBuy]?.star) as _, i}
 							<i class="gi-star" />
 						{/each}
 					</div>
@@ -272,7 +273,12 @@
 	.item {
 		display: flex;
 		width: 100%;
+	}
+	.item.star5 {
 		background-image: linear-gradient(-15deg, #e0b466, #817874);
+	}
+	.item.star4 {
+		background-image: linear-gradient(-15deg, #b988c8, #625a8a);
 	}
 	.primo {
 		position: absolute;
