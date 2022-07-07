@@ -136,11 +136,18 @@
 		},
 		{
 			"date": "29-May-2022",
-			"featured": true,
 			"description": [
 				"<strong> Yelan </strong> Banner already out !",
 				"<strong> Xiao 3rd Rerun </strong> Banner was here !",
 				"Weapon Banner Updated, <b> Aqua Simulacra </b> and <b>Primordial Jade Winged Spear</b> are ready to pull !"
+			]
+		},
+		{
+			"date": "16-Jun-2022",
+			"featured": true,
+			"description": [
+				"<strong> Arataki Itto Rerun </strong> Banner was here !",
+				"Weapon Banner Updated, <b> Redhorn Stonesthresher </b> and <b>Memory of Dust</b> are ready to pull too!"
 			]
 		}
 	]

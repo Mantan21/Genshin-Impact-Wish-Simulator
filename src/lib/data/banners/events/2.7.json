@@ -60,6 +60,55 @@
 					]
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": {
+						"name": "oni_s-royale-2",
+						"character": "arataki-itto",
+						"buttonBoxPosition": {
+							"w": 190,
+							"t": 30,
+							"l": 50
+						}
+					},
+					"rateup": ["kuki-shinobu", "chongyun", "gorou"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-30",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "redhorn-stonethresher",
+							"type": "claymore",
+							"buttonBoxPosition": {
+								"t": 10,
+								"w": 70,
+								"l": 30
+							}
+						},
+						{
+							"name": "memory-of-dust",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 65,
+								"t": 30,
+								"l": 65
+							}
+						}
+					],
+					"rateup": [
+						"lithic-blade",
+						"the-stringless",
+						"sacrificial-fragments",
+						"dragon_s-bane",
+						"lion_s-roar"
+					]
+				}
+			}
 		}
 	]
 }
