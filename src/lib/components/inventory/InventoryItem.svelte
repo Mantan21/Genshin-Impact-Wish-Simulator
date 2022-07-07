@@ -32,7 +32,7 @@
 	{/if}
 	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
 		{#if type === 'character'}
-			<img src="/assets/images/characters/profile/{name}.webp" alt={getName(name)} />
+			<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
 			<span class="gi-{vision} element" />
 		{:else}
 			<img
