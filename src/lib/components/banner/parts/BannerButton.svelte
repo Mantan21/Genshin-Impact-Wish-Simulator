@@ -25,13 +25,15 @@
 		return positionToStyle(tempPosition);
 	};
 
-	const dispatch = createEventDispatcher();
-	const buttonClick = () => {
-		dispatch('click');
+	const setNotice = () => {
+		if (!active) return;
 		if (['weapons', 'events'].includes(type)) {
-			return noticeMark.openNotice(baseNoticeName);
+			noticeMark.openNotice(baseNoticeName);
 		}
 	};
+	const dispatch = createEventDispatcher();
+	const buttonClick = () => dispatch('click');
+	$: setNotice(active);
 </script>
 
 <button class="button {type}" class:active on:click={buttonClick}>
