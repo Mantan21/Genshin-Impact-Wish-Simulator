@@ -138,8 +138,8 @@
 
 		const { remaining, diff } = localWelkin.getData();
 		welkinCheckin = remaining > 0 && remaining - diff >= 0 && diff > 0;
-		localWelkin.checkin();
 		if (!welkinCheckin) return backsound.set(true);
+		localWelkin.checkin();
 	};
 	setContext('closeDisclaimer', closeDisclaimer);
 
