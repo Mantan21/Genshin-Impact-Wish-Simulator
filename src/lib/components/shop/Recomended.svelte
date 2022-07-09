@@ -12,6 +12,7 @@
 	import Icon from '../utility/Icon.svelte';
 	import Button from '../utility/Button.svelte';
 	import WelkinPopup from './WelkinPopup.svelte';
+	import ColumnParent from './parts/_column-parent.svelte';
 
 	export let recentlyBuyIndex = -1;
 
@@ -81,7 +82,7 @@
 
 <WelkinPopup show={showWelkinPopup} />
 
-<div class="container">
+<ColumnParent>
 	<div class="content-item" bind:clientHeight={contentWidth}>
 		{#if activeItem === 'outfit'}
 			<div
@@ -176,14 +177,9 @@
 			</div>
 		{/if}
 	</div>
-</div>
+</ColumnParent>
 
 <style>
-	.container {
-		width: 100%;
-		padding: 1rem 0;
-	}
-
 	.content-item,
 	.card,
 	img {
@@ -196,6 +192,7 @@
 		max-width: 100%;
 		width: fit-content;
 		height: 75vh;
+		max-height: 40vw;
 	}
 
 	.card {

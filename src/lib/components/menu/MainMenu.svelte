@@ -332,33 +332,33 @@
 		opacity: 0.8;
 		transform-origin: left;
 		padding: 0.5rem;
+		width: 100%;
+		text-align: left;
+		padding-left: 2.5rem;
 	}
 
-	.menu-item::before {
-		content: '\63';
-		font-family: 'genshin-icon' !important;
-		font-style: normal !important;
-		font-weight: normal !important;
-		font-variant: normal !important;
-		text-transform: none !important;
-		speak: none;
-		line-height: 0;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		color: #fff;
-		padding: 0.5rem;
-		visibility: hidden;
-	}
-	.menu-item.active::before {
-		visibility: visible;
+	.menu-item {
+		position: relative;
 	}
 	.menu-item.active button {
-		transform: scale(1.2);
 		color: #fff;
 		opacity: 1;
+		position: relative;
 	}
+	.menu-item.active::after {
+		content: '';
+		background-image: url('/assets/images/utility/menu-active.png');
+		background-size: contain;
+		background-position: center;
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
 	.menu-item:hover button {
-		color: #fff;
 		opacity: 1;
 	}
 
