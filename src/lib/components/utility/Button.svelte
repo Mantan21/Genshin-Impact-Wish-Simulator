@@ -2,12 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	export let type = 'confirm';
 	export let text = '';
+	export let disabled = false;
 
 	const dispatch = createEventDispatcher();
 	const click = () => dispatch('click');
 </script>
 
-<button on:click={click}>
+<button on:click={click} {disabled}>
 	{#if type === 'confirm'}
 		<i class="gi-circle-o" />
 	{:else}
@@ -28,6 +29,10 @@
 		transition: all 0.2s;
 	}
 
+	button:disabled {
+		opacity: 0.7;
+	}
+
 	button i {
 		width: 1.7rem;
 		height: 1.7rem;
@@ -39,7 +44,7 @@
 		font-size: 0.8rem;
 		margin-right: 1.5rem;
 	}
-	button:hover {
+	button:hover:not(:disabled) {
 		background-color: rgb(51, 57, 71);
 	}
 	.gi-times {

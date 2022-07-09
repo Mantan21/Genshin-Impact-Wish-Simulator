@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import { onMount, setContext } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
 	import {
 		pageActive,
 		bannerList,
@@ -27,14 +27,12 @@
 	import History from '$lib/components/history/MainHistory.svelte';
 	import Inventory from '$lib/components/inventory/MainInventory.svelte';
 	import Shop from '$lib/components/shop/MainShop.svelte';
-	import Loader from '$lib/components/utility/Loader.svelte';
 	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import WelkinCheckin from '$lib/components/utility/WelkinCheckin.svelte';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import { localWelkin } from '$lib/store/localstore';
 
 	let isMount = false;
-	let isLoaded = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
 	$: if (audioActive) playSfx('wishBacksound');
 	else if (isMount) playSfx('wishBacksound', { paused: true });
@@ -58,6 +56,7 @@
 		});
 	};
 
+	const loaded = getContext('loaded');
 	const updateBannerListToShow = (showBeginner) => {
 		list = showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
 		if (Array.isArray(eventBanner)) {
@@ -68,7 +67,7 @@
 		bannerList.set(list);
 		isFatepointSystem.set(!!weaponBanner.fatepointsystem);
 		pageActive.set('index');
-		isLoaded = true; // remove progress loader
+		loaded();
 		return;
 	};
 
@@ -156,8 +155,6 @@
 	<meta property="twitter:image" content="{HOST}/assets/images/meta-picture.jpg" />
 	<link rel="fluid-icon" href="{HOST}/screenshot/meta-picture.jpg" title={APP_TITLE} />
 </svelte:head>
-
-<Loader {isLoaded} />
 
 <!-- Obtained Items -->
 {#if showObtained}

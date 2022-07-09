@@ -7,8 +7,7 @@
 	// Packagae
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
-	import { onMount } from 'svelte';
-
+	import { onMount, setContext } from 'svelte';
 	import {
 		viewportHeight,
 		viewportWidth,
@@ -21,9 +20,10 @@
 	import { HOST, DESCRIPTION, KEYWORDS } from '$lib/env';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
-	import Ads from '$lib/components/utility/Iklan.svelte';
 	import '../app.css';
+	import Loader from '$lib/components/utility/Loader.svelte';
 
+	let isLoaded = false;
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
 
 	$: if ($bannerList.length > 0) {
@@ -36,6 +36,9 @@
 		const rotate = angle === 90 || angle === 270;
 		mobileMode.set(rotate);
 	};
+
+	const loaded = () => (isLoaded = true);
+	setContext('loaded', loaded);
 
 	onMount(() => {
 		importLocalBalance();
@@ -68,8 +71,11 @@
 	<meta property="og:url" content={HOST} />
 	<meta property="twitter:description" content={DESCRIPTION} />
 	<meta property="al:web:url" content={HOST} />
-	<Ads head />
 </svelte:head>
+
+{#if !preview}
+	<Loader {isLoaded} />
+{/if}
 
 <main
 	class:mobile={$mobileMode}
