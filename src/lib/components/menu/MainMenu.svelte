@@ -200,6 +200,23 @@
 						<div class="notes">
 							<ol>
 								<li>
+									I heard a lot of people are annoyed with ads, so I decided to created another site
+									without ads, but this is available for supporters only. If you are interested in
+									it, you can go here &raquo; <a
+										href="https://archon.wishsimulator.app"
+										target="_blank"
+									>
+										Archon.WishSimulator.App
+									</a>
+									&laquo; and
+									<a
+										href="ttps://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
+										target="_blank"
+									>
+										here
+									</a> to get the access key
+								</li>
+								<li>
 									This simulator has pity system almost like the real game, the rate of getting rare
 									item will increase when you reach a certain pity depending on where banner you
 									pull. you can go <a
@@ -210,13 +227,13 @@
 										Here
 									</a>
 									to find details of the probability. If you has any idea, please send me feedback by
-									creating new
+									creating
 									<a
 										href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										issue here
+										new issue here
 									</a>
 								</li>
 								<li>
@@ -350,12 +367,14 @@
 		background-image: url('/assets/images/utility/menu-active.png');
 		background-size: contain;
 		background-position: center;
+		background-repeat: no-repeat;
 		display: block;
 		width: 100%;
 		height: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: -1;
 	}
 
 	.menu-item:hover button {
@@ -419,9 +438,10 @@
 	}
 	a {
 		text-decoration: underline;
+		transition: all 0.2s;
 	}
 	a:hover {
-		color: var(--tertiary-color);
+		color: #f29f0f;
 	}
 
 	.notes,
@@ -514,7 +534,7 @@
 			flex-direction: row;
 			justify-content: center;
 		}
-		:global(main):not(.mobile) .menu-item::before {
+		:global(main):not(.mobile) .menu-item.active::after {
 			display: none;
 		}
 		:global(main):not(.mobile) .menu-item button {
