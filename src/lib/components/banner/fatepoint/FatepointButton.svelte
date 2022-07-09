@@ -88,21 +88,18 @@
 	}
 
 	.point-number span.small {
-		font-size: 0.75rem;
-		line-height: 0.7rem;
-		padding: 0 1rem;
+		font-size: 75%;
+		line-height: 110%;
+		display: inline-block;
 		color: var(--text-color);
+		padding: 1% 10%;
 	}
 
 	:global(.mobile) button {
 		margin-top: auto;
-		margin-bottom: 7.5%;
+		margin-bottom: 7.8%;
 	}
 	:global(.mobile) .point-number {
 		padding: 0.1rem;
-	}
-	:global(.mobile) .point-number span.small {
-		font-size: 0.5rem;
-		line-height: 0.5rem;
 	}
 </style>

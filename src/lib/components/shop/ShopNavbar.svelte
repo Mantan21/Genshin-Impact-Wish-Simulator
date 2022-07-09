@@ -37,9 +37,9 @@
 				{#if outfitsPromo}
 					<NoticeMark name="recomended-{$patchVersion}" />
 				{/if}
-				<i class="gi-primo-star" />
-				<i class="gi-caret-up" />
-				<div class="border"><i class="gi-recomended" /> Recomended</div>
+				<span>
+					<i class="gi-recomended" /> Recomended
+				</span>
 			</a>
 			<a
 				href="#outfits"
@@ -50,9 +50,7 @@
 				{#if outfitsPromo}
 					<NoticeMark name="outfits-{$patchVersion}" />
 				{/if}
-				<i class="gi-primo-star" />
-				<i class="gi-caret-up" />
-				<div class="border"><i class="gi-outfit" /> Character Outfits</div>
+				<span><i class="gi-outfit" /> Character Outfits</span>
 			</a>
 			<a
 				href="#paimon"
@@ -60,9 +58,9 @@
 				class:active={activeShop === 'paimon-bargains'}
 				on:click|preventDefault={() => handleClick('paimon-bargains')}
 			>
-				<i class="gi-primo-star" />
-				<i class="gi-caret-up" />
-				<div class="border"><i class="gi-paimon-bargains" /> Paimon's Bargains</div>
+				<span>
+					<i class="gi-paimon-bargains" /> Paimon's Bargains
+				</span>
 			</a>
 			<a
 				href="#genesis"
@@ -70,9 +68,9 @@
 				class:active={activeShop === 'genesis'}
 				on:click|preventDefault={() => handleClick('genesis')}
 			>
-				<i class="gi-primo-star" />
-				<i class="gi-caret-up" />
-				<div class="border"><i class="gi-genesis" /> Crystal Top-Up</div>
+				<span>
+					<i class="gi-genesis" /> Crystal Top-Up
+				</span>
 			</a>
 			<a
 				href="#donate"
@@ -80,9 +78,9 @@
 				class:active={activeShop === 'donate'}
 				on:click|preventDefault={() => handleClick('donate')}
 			>
-				<i class="gi-primo-star" />
-				<i class="gi-caret-up" />
-				<div class="border"><i class="gi-companion" /> Donate</div>
+				<span>
+					<i class="gi-companion" /> Donate
+				</span>
 			</a>
 		</div>
 	</div>
@@ -98,6 +96,8 @@
 		border-left: 1px solid #d2c69c;
 		color: #d2c69c;
 		margin-right: 3%;
+		position: relative;
+		z-index: -1;
 	}
 	:global(.mobile) .navbar {
 		width: 190px;
@@ -131,65 +131,103 @@
 		transition: all 0.2s;
 		text-decoration: none;
 		color: #ededed;
-		padding: 2px;
-	}
-	:global(.mobile) .link {
-		padding: 1px;
-	}
-	.link:not(.active) > i {
-		display: none;
-	}
-	.link .border {
-		padding: 0px 10px;
-		border: 2px solid transparent;
-		display: flex !important;
+		aspect-ratio: 70/17.5;
+		display: flex;
 		align-items: center;
+		padding-left: 5%;
+		z-index: 1;
 	}
-	:global(.mobile) .link .border {
-		padding: 2px 7px;
-	}
-	.border i {
+	.link i {
 		font-size: 2rem;
 		display: inline-block;
 		margin-right: 10px;
 	}
-	:global(.mobile) .border i {
+	:global(.mobile) .link i {
 		font-size: 1.4rem;
 	}
+
 	.link.active,
 	.link:hover {
 		background-color: #ede5d8;
 		color: #40475a;
-		border-radius: 2px;
+		border-radius: 0.25rem;
 	}
-	.link.active > i {
+
+	.link::after,
+	.link::before,
+	span::after,
+	span::before {
+		content: '';
 		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		color: #ede5d8;
-	}
-	.gi-caret-up {
-		left: -1.5rem;
-		font-size: 2rem;
-		transform: translateY(-50%) rotate(90deg) !important;
-	}
-	:global(.mobile) .gi-caret-up {
-		left: -1rem;
-		font-size: 1rem;
-	}
-	.link.active .border {
+		background-size: contain;
 		display: block;
-		border: 2px solid #c1b198;
-		border-radius: 2px;
 	}
-	.gi-primo-star {
-		right: -1.3rem;
-		font-size: 1.3rem;
+
+	.link.active::before {
+		top: 50%;
+		right: -13.25%;
+		height: 100%;
+		aspect-ratio: 37/30;
+		transform: translateY(-50%) rotate(180deg);
+		z-index: -1;
+		line-height: 120%;
+		background-repeat: no-repeat;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAAC0CAMAAADM1mK5AAAAP1BMVEUAAADn59ft5djs5djn39/r49fs5tjs5djr5Nft5dns5dns5Njs49fs49jr5tns5dns59nt5trq5Nrq5NXs5dgwi7xwAAAAFHRSTlMAIN/vEEC/gGCg0L9QkHCwX48wMGbNuj8AAAQnSURBVHja7d3pcuMgDABgcYPPttH7P+uuN02TZpwGWDuWqL7/nalGIAiXQQghhBBCCCGEEOIRe4ohzZ3W+I/W3qcQnQX2bBy9wQeMHwcFXNlh1PhUlwaGabSTx2w+skqiHTwW8hGYUMFgBZ04pNB5rJYc0HYOrp6nHOA1uHqeahNVM26CZh8MBrcSgBqncUOaVgLtO541mUDV4T9tJnAyuAMzAQnvuJN3OJ7qcDfd4Q1UafymrQ74YXBX5gQHejO4M/MGh3nDF8iNj2d0ufFxjS43PmZV5dj6ogy+jFHwHKPx7vDxr8OX6uAZHvNMEvPPCV9ugh9xLSsHlBeNB+gsvEbAXBy7n8KDOFjVQtNcaFjTRtN8uHzWSNN8TfVMeKAZ7jWUvBdUF4+H8rArh4V4pc9jKU7pOzx59+lrqGyupK+psnmmoIbWlkPyKqcuEXGiO9u8ZSyU8xmtOiIJQ2WvOlEfFc58ZUkMDArLwtb9hjMs2uZKkcjsVY5D26xonT7j7yySYaGIyvm7AckYKtcXAvUx/WysXBwydHYVfqJrfwc4+sPCwlb+DvAcuh5ihHwqa0I3IiFj+aB3FsiPeqUjn87aJzRIiKleYHDkB/WFrd1G9mRXWW6dqrcMAu359Fms3yQPxDZOqlck7KRxhY6K8pRskeApNxp8JDnK48LzvRQbOrxaTyHh8LoNbsOkgdgiWdak2gaDmXRQvMKzzlfdG0Ritrs5qJNiEp7HKjOT8CaNFczEJDyA2GOhfrBc+t5CjRqzmWCBT2n5NMyZiXMMx72Fihqf6IKltvdVslbmEj5mkiO7DLjoYVGZwn6ycGdGUnrIMqwEqB3tNepFqr5+19lWfs6unYvWqqXFCICQ9YcnJMVBLmvwhrGNLQTCiDdSa8u44PCGY7EI31ce89PQ3BYKTPgl0j8Xcdl9rikuisPJgdJjczN+StQPlFVdd3M3hYVD50tQxlwKS5MHPy4zl9jmsZ3Lv654HLrq6064z+SuXK6LUMp9NmkWrVNBMYOoyV9iOOuhXPgstwxqZ4RyNiPnlsSvBg01Bkf6ZuLqmC7XNHjdkLpPnlyRYpW+Hr5pLX13yWssfT3caSt9CjZGai8lwRruj5k8S548qiBPYhRXF35Ns2jNjGHT/Mt2mINl0/wFT0E1/pDXAd1vhBzyiJ48gdj+A5YvfX70A3ZA5o2FCDm4xpcbHc/4IhwmGtyZKYuOWX2pqCqMxj99/JP+TX+w4H7+yXie+Ts/FnLpgA02zN2Wz0Za3xzcNoGa3pfOAm7FUPrG0heVcBMzpV53S/X433p67fLK9Q0Ht3Cp4eAWKum6gkK1z21xx5PXx3VVSYT9xCq2MzukDp/SI6+8faOGsTf4gOnHyDe0L9bFkPr++kHybk4hfjQQmRBCCCGEEEIIIa7+AOtDPh8UDv3LAAAAAElFTkSuQmCC');
 	}
-	:global(.mobile) .gi-primo-star {
-		right: -1rem;
-		font-size: 1rem;
+
+	.link.active::after {
+		top: 50%;
+		right: -1%;
+		width: 100%;
+		aspect-ratio: 708/156;
+		transform: translateY(-50%) rotate(180deg);
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsQAAACcCAMAAABPyU0CAAAAOVBMVEUAAADTu4vUvI7Uuo3TvI7TvI7UvI7TvozTu43TvI7Su47Pv4/fv43TvI7Tu43SvIzVuo3UvI/TvI7Io+VzAAAAEnRSTlMAQL9goL/eIHDvsBAQkIBQML8hIpUyAAADO0lEQVR42uzd22oCMRSG0dixM2oVZb//wzaOhzoWerjzh7VAxfuPkExibD9ZF7yg97YgYvKImHj/jHho8FJWIiadiIknYuKJmHgiJp6IiSdi4omYeL9G/FYLIublrOqZiAkjYuL9JeJVgxwiJp6IiSdi4omYeCImnoiJJ2LiiZh4IiaeiIknYuKJmHgiJp6IiSdi4omYeCImnoiJJ2LiiZh4Iibet4inrYjJ8hzxfqwaPxrkeI74ULWdGgR5injo3zcNkiwjnsaqdYMoy4jXVaPJBGEWEQ+uDyTQImKTCRI9RrwxmSDRQ8TTaDJBoh7x46quQZyviCerOjL1cg3EZLtHPG0NxGS6RzwYiAl1j9ijCVLdIj4aiEl1i3hns45U14in/mmzjkzXiIeq9waRrhG/WdYRq0dsNkG2Xq/ZBNkuEe/8so5cl4jHqlODTHPEJzsdBJsjHqp2DULNEa9NiQk2Rzy6fo1gPeL5bd8gVO/Xuo5s54iPtjpIdo54U3VokOoc8cHDCZKdI95VHRuk6hH7lw6y9YidnCDbHLHDxCTrEc8viCVi4omYeCImnoiJJ2LiecRGPBETz7Yz8eYDQO6wIpmjmMT7bO8OU1oHwgCKpiCtIdDHy/4XKxOjOFUQ//XCOWu4hJkk34yf4sk7xpMcO0HZiPhmUJQyI/vkOTyFPMdYkXdE/GpnR9gR8W3f1wWijoiX1agoXSNii2LSXDxD3nvEmzfFdJ1THf+tJ8g6I361niDrjHhzpShZI+JzPXFfoOgj4su+r7Z2JI2ID6sZJaI+I77b2hH1GfG2+h+TphGxRzFpI2KPYtJGxKe7UTuSvkS8rb49UzQi/nD3rpii6VjX676/LBAzRXzZ7e3omSIeRwteLSiImSPeVgsKcuaIl3+7NxTUPEQ8jnld/VhMymPE29WymJgR8eTm6zMx3yJ2gwc1IiZPxOSJmDwRkydi8kRMnojJEzF5IiZPxOSJmDwRkydi8kRMnojJEzF5IiZPxOSJmDwRkydi8n6KeOJSJZ7OZZ+ImB4Rk/drxLMXEfN0Lt9u+hIxMSImT8TkiZg8EZMnYvJETJ6IyftzxPCEREyeiMl7iPgNPx9ffAKGWGIAAAAASUVORK5CYII=');
+		background-repeat: no-repeat;
 	}
+
+	span {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 95%;
+		position: relative;
+		overflow: hidden;
+	}
+	span :global(i) {
+		line-height: 0;
+	}
+
+	.active span::before {
+		width: 40%;
+		height: 100%;
+		z-index: -1;
+		top: 0;
+		right: 0;
+		content: '\68';
+		font-family: 'genshin-icon' !important;
+		font-style: normal !important;
+		font-weight: normal !important;
+		font-variant: normal !important;
+		text-transform: none !important;
+		speak: none;
+		line-height: 90%;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-size: 5rem;
+		color: #e3d9c4;
+	}
+
+	.active span::after {
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background-image: linear-gradient(
+			to right,
+			rgba(237, 229, 216, 1) 60%,
+			rgba(237, 229, 216, 0) 80%
+		);
+	}
+
 	@media screen and (max-width: 400px) {
 		.navbar {
 			position: fixed;
