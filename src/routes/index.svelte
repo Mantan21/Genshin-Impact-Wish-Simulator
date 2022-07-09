@@ -136,10 +136,10 @@
 		bannerActive.set(0);
 		showDisclaimer = false;
 
-		const { remaining, diff } = localWelkin.getData();
+		const { remaining, diff, latestCheckIn } = localWelkin.getData();
 		welkinCheckin = remaining > 0 && remaining - diff >= 0 && diff > 0;
+		if (latestCheckIn) localWelkin.checkin();
 		if (!welkinCheckin) return backsound.set(true);
-		localWelkin.checkin();
 	};
 	setContext('closeDisclaimer', closeDisclaimer);
 

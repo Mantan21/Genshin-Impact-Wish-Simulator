@@ -200,8 +200,8 @@ const localWelkin = {
 
 	checkin(action = 'checkin') {
 		let { remaining, latestCheckIn } = this.getData();
-		const utc4 = new Date().getTime() + 4 * 3600 * 1000;
-		const today = new Date(utc4).toDateString();
+		const time = new Date().getTime() - 3 * 3600 * 1000;
+		const today = new Date(time).toDateString();
 		if (!latestCheckIn && action !== 'checkin') {
 			const object = { remaining: 29, latestCheckIn: today, diff: 0 };
 			return localStorage.setItem('welkin', JSON.stringify(object));
