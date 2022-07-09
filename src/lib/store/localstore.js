@@ -191,8 +191,8 @@ const localWelkin = {
 		if (!welkin) return { remaining: 0, diff: 0 };
 		const parsed = JSON.parse(welkin);
 
-		const utc4 = new Date().getTime() + 4 * 3600 * 1000;
-		const today = new Date(utc4).toDateString();
+		const utc = new Date().getTime() - 3 * 3600 * 1000;
+		const today = new Date(utc).toDateString();
 		const counter = Math.abs(new Date(today) - new Date(parsed.latestCheckIn));
 		parsed.diff = Math.ceil(counter / (1000 * 60 * 60 * 24));
 		return parsed;
