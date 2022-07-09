@@ -26,6 +26,10 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 ![Weapon Banner](static/screenshot/switch-banner.jpg)
 
+#### Shop
+
+![Buying Welkin](https://user-images.githubusercontent.com/13815468/178100892-2d9940fb-921d-4404-840d-c290a41d83a9.gif)
+
 > For more preview, please visit the live version at [https://wishsimulator.app](https://wishsimulator.app)
 
 ---
@@ -39,15 +43,16 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 5. **The most complete banners** of all existing simulator, user can switch and do gacha on every banner starts from version 1.0 - latest.
 6. Gacha Milestone Bonus, Starglitter and Stardust, exchangable to Aquaint or Intertwined Fate at Shop
 7. **Shop** section to refill Primogem and Genesis Crystal
-8. Shared Pity with previous banner, User can continuously gacha on different banner version without reset pity.
-9. **Wish Details** for every banner.
-10. Different banner type has different **Gacha History**
-11. **Inventory** to show all items ( characters and weapons ) that already owned by gacha
-12. Screenshot and download wish result as Image localy.
-13. Pity Counter, User can track their current information and history of their pity
-14. Mobile Friendly, responsive layout both landscape and portrait orientation.
-15. Link generator when user want to share their gacha result through internet.
-16. All user's data will saves to localstorage and indexedDB.
+8. Purchasable Outfits and Blessing of the Welkin Moon
+9. Shared Pity with previous banner, User can continuously gacha on different banner version without reset pity.
+10. **Wish Details** for every banner.
+11. Different banner type has different **Gacha History**
+12. **Inventory** to show all items ( Weapons, Characters and Outfits ) that already owned by gacha or purchasement
+13. Screenshot and download wish result as Image localy.
+14. Pity Counter, User can track their current information and history of their pity
+15. Mobile Friendly, responsive layout both landscape and portrait orientation.
+16. Link generator when user want to share their gacha result through internet.
+17. All user's data will saves to localstorage and indexedDB.
 
 ## Pity System
 
@@ -82,7 +87,7 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
    | -------: | :--: | :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--: |
    | **Rate** | 0.7% | 7.7% | 14.7% | 21.7% | 28.7% | 35.7% | 42.7% | 49.7% | 56.7% | 63.7% | 70.7% | 77.7% | 81.2% | 84.7% | 88.2% | 91.7% | 95.2% | 98.7% | 100% |
 
-4. When you are guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
+4. When you guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
 
    ![double guaranteed](static/screenshot/double-guaranteed.png)
 
@@ -106,8 +111,7 @@ npm run dev -- --open
 
 ## Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment. As default, this project use [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) and deployed to [Vercel.com](https://vercel.com)
-Then:
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment, then run the command below. As default, this project use [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) and deployed to [Vercel.com](https://vercel.com)
 
 ```bash
 npm run build
@@ -122,4 +126,10 @@ The site will use [jsDelivr](https://www.jsdelivr.com/) free cdn service. You al
 
 ---
 
-`Note : This App is not affiliated with Hoyoverse, all data used for this application belongs to Hoyoverse`
+## Contributing
+
+I'm welcome to all contributors! Feel free to [open new Issue](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues/new) if you find any problem or just want to give any suggestions.
+
+> **Notes :**
+>
+> The data and assets used for this Project are taken from [Hoyo Wiki](https://wiki.hoyolab.com/), [Genshin Fandom Wiki](https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki), [Honey Impact](https://genshin.honeyhunterworld.com/) and recorded from the game itself with several modification. <br/> **Important thing**: This App is not affiliated with Hoyoverse, all assets used for this application belongs to [Hoyoverse](http://hoyoverse.com/), so if you want to use assets from this repository, please credit them too.
