@@ -22,6 +22,7 @@
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
+	import Ads from '$lib/components/utility/Iklan.svelte';
 
 	let isLoaded = false;
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
@@ -71,6 +72,7 @@
 	<meta property="og:url" content={HOST} />
 	<meta property="twitter:description" content={DESCRIPTION} />
 	<meta property="al:web:url" content={HOST} />
+	<Ads head />
 </svelte:head>
 
 {#if !preview}

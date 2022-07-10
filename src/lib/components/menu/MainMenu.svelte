@@ -210,7 +210,7 @@
 									</a>
 									&laquo; and
 									<a
-										href="ttps://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
+										href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
 										target="_blank"
 									>
 										here
