@@ -51,6 +51,36 @@
 				"t": 90,
 				"l": 23
 			}
+		},
+		{
+			"version": 2.8,
+			"name": "ein-immernachtstraum",
+			"characterName": "fischl",
+			"rarity": 4,
+			"price": 1680,
+			"description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her.",
+			"wishBoxPosition": {
+				"h": 200,
+				"t": 90,
+				"l": 23
+			}
+		},
+		{
+			"version": 2.8,
+			"name": "red-dead-of-night",
+			"characterName": "diluc",
+			"rarity": 5,
+			"price": 2480,
+			"promoPrice": 1980,
+			"description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever.",
+			"wishBoxPosition": {
+				"l": -54,
+				"h": 200,
+				"t": 85
+			},
+			"cardBoxPosition": {
+				"l": -45
+			}
 		}
 	]
 }
