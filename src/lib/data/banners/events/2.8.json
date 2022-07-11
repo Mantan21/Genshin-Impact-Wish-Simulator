@@ -1,0 +1,63 @@
+{
+	"patch": 2.8,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": [
+						{
+							"name": "leaves-in-the-wind-2",
+							"character": "kaedehara-kazuha",
+							"buttonBoxPosition": {
+								"w": 110,
+								"t": 32
+							}
+						},
+						{
+							"name": "sparkling-steps-3",
+							"character": "klee",
+							"buttonBoxPosition": {
+								"w": 110,
+								"t": 32
+							}
+						}
+					],
+					"rateup": ["shikanoin-heizou", "thoma", "ningguang"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-30",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "freedom-sworn",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"w": 100,
+								"t": -20,
+								"l": 25
+							}
+						},
+						{
+							"name": "lost-prayer-to-the-sacred-winds",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 60,
+								"t": 40,
+								"l": 65
+							}
+						}
+					],
+					"rateup": [
+						"the-alley-flash",
+						"mitternachts-waltz",
+						"the-widsith",
+						"favonius-lance",
+						"rainslasher"
+					]
+				}
+			}
+		}
+	]
+}
