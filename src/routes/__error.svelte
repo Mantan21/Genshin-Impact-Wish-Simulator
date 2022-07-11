@@ -10,6 +10,8 @@
 </script>
 
 <script>
+	import { getContext, onMount } from 'svelte';
+
 	export let statusCode;
 	export let message;
 
@@ -18,6 +20,8 @@
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
+	const loaded = getContext('loaded');
+	onMount(loaded);
 </script>
 
 <svelte:head>

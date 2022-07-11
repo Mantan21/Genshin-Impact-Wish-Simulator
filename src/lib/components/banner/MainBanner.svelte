@@ -1,4 +1,7 @@
 <script>
+	import { getContext } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
 		intertwined,
@@ -12,11 +15,9 @@
 		bannerPhase,
 		unlimitedFates
 	} from '$lib/store/stores';
-	import { fly } from 'svelte/transition';
-	import { getContext } from 'svelte';
+	import { localBalance } from '$lib/store/localstore';
 	import { APP_TITLE } from '$lib/env';
 	import Wish, { roll } from '$lib/functions/wish/wish';
-	import { localBalance } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
 
 	// Components
@@ -160,7 +161,7 @@
 </script>
 
 <svelte:head>
-	<title>{APP_TITLE}</title>
+	<title>{$t('site.title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 {#if showWish}

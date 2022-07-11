@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/env';
+	import { t } from 'svelte-i18n';
 	import {
 		bannerActive,
 		bannerList,
@@ -11,10 +12,10 @@
 		showFatepointPopup
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import FatepointIcon from './FatepointIcon.svelte';
 	import { localFatePoint } from '$lib/store/localstore';
-	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import { noticeMark } from '$lib/functions/noticeMark';
+	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
+	import FatepointIcon from './FatepointIcon.svelte';
 
 	$: isWeapon = $bannerList[$bannerActive].type === 'weapons';
 
@@ -54,7 +55,7 @@
 			{#if $selectedCourse.name}
 				<span>{$fatePoint}</span>/2
 			{:else}
-				<span class="small">Epitomized Path</span>
+				<span class="small">{$t('wish.epitomizedPath.text')}</span>
 			{/if}
 		</div>
 	</button>

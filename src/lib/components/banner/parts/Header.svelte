@@ -1,5 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import MainMenu from '$lib/components/menu/MainMenu.svelte';
@@ -56,7 +57,7 @@
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
-			<span>{$bannerList[$bannerActive]?.type || ''} Wish </span>
+			<span>{$t(`wish.banner.${$bannerList[$bannerActive]?.type}`)}</span>
 			<button class="help" on:click={handleMenu}> <i class="gi-help" /> </button>
 		</h1>
 		<div class="budget">
@@ -156,6 +157,7 @@
 		display: flex;
 		align-items: center;
 		text-align: left;
+		font-size: 110%;
 	}
 
 	.wish-title img {

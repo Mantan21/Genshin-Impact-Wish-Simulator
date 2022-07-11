@@ -1,0 +1,16 @@
+{
+	"character": {
+		"amber": "Amber",
+		"albedo": "Albedo"
+	},
+	"wish": {
+		"banner": {
+			"banner": "Banner",
+			"characterEvent": "Permohonan Karakter",
+			"beginner": "Permohonan Pemula"
+		}
+	},
+	"site": {
+		"title": "Simulator Permohonan Genshin Impact"
+	}
+}

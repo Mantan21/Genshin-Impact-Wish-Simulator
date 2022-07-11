@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
@@ -61,7 +62,7 @@
 			};
 
 			items = [obj];
-			bannerTitle = 'Beginner Wish';
+			bannerTitle = $t('wish.banner.beginner');
 
 			drop5star = this._stdDropChar5;
 			drop4star = drop4star
@@ -72,7 +73,7 @@
 		_showStandard() {
 			const weapon5 = getAllWeapons(5).filter(({ limited }) => !limited);
 			drop5star = [...this._stdDropChar5, ...weapon5];
-			bannerTitle = 'Wanderlust Invocation';
+			bannerTitle = $t('wish.banner.wanderlust');
 
 			drop4star = drop4star
 				.filter(({ release }) => {
@@ -164,7 +165,7 @@
 
 	<div class="content-details wish-result">
 		{#await Data.get($patchVersion, $bannerPhase, banner)}
-			<div class="content-details">Waiting...</div>
+			<div class="content-details">{$t('site.waiting')}...</div>
 		{:then data}
 			{#if banner === 'beginner'}
 				<h1>Beginners's <span class="invocation"> Wish</span></h1>

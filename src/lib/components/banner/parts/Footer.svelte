@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import {
 		bannerActive,
 		bannerList,
@@ -79,15 +80,15 @@
 				{#if outfitsPromo}
 					<NoticeMark name={openedNotices} style="transform: translateX(70%) translateY(-80%)" />
 				{/if}
-				Shop
+				{$t('shop.text')}
 			</button>
-			<button on:click={() => changePage('inventory')}> Inventory </button>
-			<button on:click={() => changePage('history')}> History </button>
+			<button on:click={() => changePage('inventory')}> {$t('inventory.text')} </button>
+			<button on:click={() => changePage('history')}> {$t('history.text')} </button>
 		</div>
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
 				<button class="single" on:click={handleSingleRollClick}>
-					<div class="top">Wish x1</div>
+					<div class="top">{$t('wish.text', { values: { count: 'x1' } })}</div>
 					<div class="bottom">
 						<Icon type={fateType} />
 						<span style="margin-left: 7px">
@@ -102,7 +103,7 @@
 				{#if bannerActiveType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
-				<div class="top">Wish x10</div>
+				<div class="top">{$t('wish.text', { values: { count: 'x10' } })}</div>
 				<div class="bottom">
 					<Icon type={fateType} />
 					<span style="margin-left: 7px">

@@ -1,6 +1,7 @@
 <script>
-	import { afterUpdate, createEventDispatcher } from 'svelte';
+	import { afterUpdate, createEventDispatcher, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { locale } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import {
@@ -30,6 +31,10 @@
 	let showResetPopup = false;
 	let showToast = false;
 	let activeContent = 'options';
+	let optionToShow = '';
+
+	const handleOption = (selected) => (optionToShow = selected);
+	setContext('handleOption', handleOption);
 
 	const selectMenu = (menu) => {
 		activeContent = menu;
@@ -134,7 +139,11 @@
 		<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
 	{/if}
 
-	<section transition:fade={{ duration: 200 }} style="height: {$viewportHeight}px;">
+	<section
+		transition:fade={{ duration: 200 }}
+		style="height: {$viewportHeight}px;"
+		on:click|preventDefault={() => handleOption('')}
+	>
 		<div class="head">
 			<h1>Menu / {getName(activeContent)}</h1>
 			<button class="close" on:click={handleClose} title="Change Banner">
@@ -157,19 +166,27 @@
 				{#if activeContent === 'options'}
 					<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
 						<Option
+							lang
+							text="Language"
+							name="locale"
+							activeIndicator={$locale}
+							showOption={optionToShow === 'locale'}
+						/>
+
+						<Option
+							name="fates"
 							text="Unlimited Fates"
+							showOption={optionToShow === 'fates'}
 							activeIndicator={$unlimitedFates}
 							on:select={selectUnlimitedOptions}
 						/>
+
 						<Option
-							text="Show not owned Item on Inventory"
-							activeIndicator={showAllItemsIndicator}
-							on:select={showAllItemsOption}
-						/>
-						<Option
+							name="audio"
 							text="Mute Audio and Sound Effect"
 							activeIndicator={$muted}
 							on:select={handleAudio}
+							showOption={optionToShow === 'audio'}
 						/>
 
 						<div class="option">
@@ -181,9 +198,19 @@
 						</div>
 
 						<Option
+							name="inventory"
+							text="Show not owned Item on Inventory"
+							activeIndicator={showAllItemsIndicator}
+							on:select={showAllItemsOption}
+							showOption={optionToShow === 'inventory'}
+						/>
+
+						<Option
+							name="fullscreen"
 							text="Display Fullscreen (press F11)"
 							activeIndicator={fullscreen}
 							on:select={handleFullscreen}
+							showOption={optionToShow === 'fullscreen'}
 						/>
 
 						<div class="option">

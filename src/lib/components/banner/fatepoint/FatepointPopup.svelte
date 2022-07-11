@@ -1,6 +1,7 @@
 <script>
 	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
+	import { t } from 'svelte-i18n';
 	import {
 		bannerList,
 		bannerPhase,
@@ -12,19 +13,14 @@
 		viewportWidth
 	} from '$lib/store/stores';
 	import { fade } from 'svelte/transition';
-	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import { localFatePoint } from '$lib/store/localstore';
 
-	import FatepointTribal from './FatepointTribal.svelte';
+	import FatepointSVG from './FatepointSVG.svelte';
 	import InventoryItem from '$lib/components/inventory/InventoryItem.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 
-	let weaponHeight;
 	$: half = $viewportWidth < 500;
-	$: itemWidth = (60 / 100) * weaponHeight;
-	$: itemStyle = `width: ${itemWidth}px; height:${itemWidth + 20}px`;
-
 	$: weaponName = $selectedCourse.name;
 	$: weaponIndex = $selectedCourse.index;
 	$: weapons = $bannerList.find(({ type }) => type === 'weapons')?.weapons.featured || [];
@@ -86,10 +82,10 @@
 		style="display: flex; width:100%; height:100%; justify-content: center; align-items:center;"
 	>
 		<div>
-			Do you wish to cancel your curent Course ?
+			{$t('wish.epitomizedPath.cancelPrompt')}
 			<br />
 			<span style="font-size: smaller; padding: 2rem">
-				Cancelation will reset your accumulated Fate Points
+				{$t('wish.epitomizedPath.cancelDesc')}
 			</span>
 		</div>
 	</div>
@@ -115,46 +111,21 @@
 				{#if !half}
 					<div class="description">
 						<div class="content" bind:this={content}>
-							<p>
-								"Epitomized Path" is a wish mechanic in "Epitome Invocation." Travelers can chart a
-								course towards a specific 5-star promotional weapon they hope to obtain.
-							</p>
-							<p>
-								· Once you have charted a course towards your chosen weapon, you will obtain 1 Fate
-								Point upon <span>
-									receiving a 5-star weapon that is not the one that you chose
-								</span>. You can obtain a maximum of 2 Fate Points.
-							</p>
-							<p>
-								· Once you've reached the maximum amount of Fate Points, the next 5-star weapon you
-								choose will be the one you have chosen through "Epitomized Path".
-							</p>
-							<p>
-								· When you obtain the chosen weapon in Epitome Invocation through Epitomized Path,
-								<span> the accumulated Fate Points will be cleared </span>.
-							</p>
-							<p>
-								· If you do not use Epitomized Path to obtain a weapon, you will not accumulate Fate
-								Points.
-							</p>
-							<p>
-								· The charted course towards a certain weapon can be changed or cancelled. However,
-								after doing so, any current Fate Points will be cleared.
-							</p>
-							<p>
-								· At the end of the current period of Epitome Invocation, any current Fate Points
-								will be cleared.
-							</p>
+							{#each $t('wish.epitomizedPath.description') as desc}
+								<p>
+									· {@html desc}
+								</p>
+							{/each}
 						</div>
 					</div>
 				{/if}
 				<div class="selector" class:counter={weaponName}>
 					<div class="bg">
-						<FatepointTribal mode={weaponName ? 'counter' : 'bg'} />
+						<FatepointSVG mode={weaponName ? 'counter' : 'bg'} />
 					</div>
-					<div class="top">Select Weapon</div>
+					<div class="top">{$t('wish.epitomizedPath.selectWeapon')}</div>
 					<div class="weapon-item">
-						<div class="weapon-list" bind:clientHeight={weaponHeight}>
+						<div class="weapon-list">
 							{#if weaponName}
 								<div class="weapon-content">
 									<button>
@@ -183,11 +154,15 @@
 						<div class="text">
 							<div>
 								{#if weaponName}
-									Fate Points : <span>{$fatePoint}</span>/2
+									{$t('wish.epitomizedPath.fatePoint')} : <span>{$fatePoint}</span>/2
 								{:else if targetActive === null}
-									Select Weapon
+									{$t('wish.epitomizedPath.selectWeapon')}
 								{:else}
-									Chart Course of <span> {getName(weapons[targetActive].name)} </span>
+									{@html $t('wish.epitomizedPath.chartCourseOf', {
+										values: {
+											target: `<span> ${$t(`weapon.${weapons[targetActive].name}`)} </span>`
+										}
+									})}
 								{/if}
 							</div>
 						</div>
@@ -195,11 +170,13 @@
 					<div class="button">
 						{#if weaponName}
 							<button on:click={cancelCourse}>
-								<i class="gi-times" /> Cancel Course
+								<i class="gi-times" />
+								{$t('wish.epitomizedPath.cancelCourse')}
 							</button>
 						{:else}
 							<button on:click={setCourse}>
-								<i class="gi-circle-o" /> Chart Course
+								<i class="gi-circle-o" />
+								{$t('wish.epitomizedPath.chartCourse')}
 							</button>
 						{/if}
 					</div>
@@ -386,7 +363,8 @@
 		justify-content: center;
 		align-items: center;
 	}
-	span {
+	span,
+	section :global(.text span) {
 		color: #f0b164;
 	}
 

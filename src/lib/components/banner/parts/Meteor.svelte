@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import {
 		primogem,
 		isAcquaintUsed,
@@ -109,7 +110,7 @@
 </script>
 
 <PopUp
-	title="Paimon Bargains"
+	title={$t('shop.paimonBargains')}
 	sfx={false}
 	button={popupButton}
 	show={showConvertPopup}
@@ -118,26 +119,33 @@
 >
 	<div class="exchange">
 		<div>
-			An Aditional <span class="yellow">{balanceNeededToRoll}</span>
-			{fateType}
-			Fate are needed. <br />
-			Purchase with
-			<span class="yellow" class:red={$primogem < balanceNeededToRoll * 160}>
-				{balanceNeededToRoll * 160}
-			</span>
-			Primogem ?
+			{@html $t('shop.fateNeeded', {
+				values: {
+					rollPrice: `<span class="yellow">${balanceNeededToRoll}</span>`,
+					currency: fateType
+				}
+			})}
+			<br />
+
+			{@html $t('shop.primoNeeded', {
+				values: {
+					primoPrice: `<span class="${$primogem < balanceNeededToRoll * 160 ? 'red' : 'yellow'}"> ${
+						balanceNeededToRoll * 160
+					} </span>`
+				}
+			})}
 
 			{#if $primogem < balanceNeededToRoll * 160}
 				<br />
 				<br />
-				<span class="red">Infsufficient Funds</span>
+				<span class="red">{$t('shop.infsufficientFunds')}</span>
 			{/if}
 		</div>
 	</div>
 </PopUp>
 
 {#if showToast}
-	<Toast on:close={() => (showToast = false)}>Meteor Animation Failed to Load</Toast>
+	<Toast on:close={() => (showToast = false)}>{$t('wish.result.meteorFailed')}</Toast>
 {/if}
 
 <div class="wish-output" class:show={showMeteor} style="height: {$viewportHeight}px">
@@ -162,16 +170,16 @@
 			<source src="/assets/videos/5star.webm" type="video/webm" />
 			<track kind="captions" />
 		</video>
-		<button class="skip" on:click={skip}>Skip <i class="gi-caret-up" /></button>
+		<button class="skip" on:click={skip}>{$t('wish.result.skip')} <i class="gi-caret-up" /></button>
 	</div>
 </div>
 
 <style>
-	.red {
+	.exchange :global(.red) {
 		color: #de2f22 !important;
 	}
-	.yellow {
-		color: rgb(218, 177, 45);
+	.exchange :global(.yellow) {
+		color: rgb(218, 177, 45) !important;
 	}
 	.exchange {
 		width: 100%;
