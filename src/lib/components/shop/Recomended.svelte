@@ -5,6 +5,7 @@
 	import { genesis, patchVersion, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
+	import positionToStyle from '$lib/functions/cssPosition';
 	import { getName } from '$lib/functions/nameText';
 
 	import TopNavParent from './parts/_top-nav-parent.svelte';
@@ -19,7 +20,7 @@
 	const outfitsForThisVersion = outfits.find(({ version, price, promoPrice }) => {
 		return $patchVersion === `${version}` && promoPrice && promoPrice !== price;
 	});
-	const { name, price, promoPrice, description } = outfitsForThisVersion || {};
+	const { name, price, promoPrice, description, cardBoxPosition } = outfitsForThisVersion || {};
 	$: isOwned = localOutfits.check(name) || recentlyBuyIndex > -1;
 
 	const outfitsPromo = !!outfitsForThisVersion;
@@ -94,6 +95,7 @@
 					class="outfit-art"
 					src="/assets/images/characters/outfit/splash-art/{name}.webp"
 					alt={getName(name)}
+					style={positionToStyle(cardBoxPosition)}
 				/>
 
 				<div class="remaining">Limited Time Offer</div>
@@ -331,7 +333,7 @@
 	}
 	.details .name {
 		font-size: 220%;
-		width: 40%;
+		width: 50%;
 		line-height: 120%;
 		margin-top: auto;
 		color: #fff;
