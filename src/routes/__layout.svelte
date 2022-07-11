@@ -5,6 +5,7 @@
 <Limit /> -->
 <script>
 	// Packagae
+	import { isLoading } from 'svelte-i18n';
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
 	import { onMount, setContext } from 'svelte';
@@ -18,6 +19,7 @@
 		bannerList
 	} from '$lib/store/stores';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
+	import { mountLocale } from '$lib/functions/i18n';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import '../app.css';
@@ -26,7 +28,6 @@
 
 	let isLoaded = false;
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
-
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
 		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
@@ -41,6 +42,7 @@
 	const loaded = () => (isLoaded = true);
 	setContext('loaded', loaded);
 
+	mountLocale();
 	onMount(() => {
 		importLocalBalance();
 
@@ -65,7 +67,6 @@
 </script>
 
 <svelte:head>
-	<title>Genshin Impact Wish Simulator</title>
 	<meta name="description" content={DESCRIPTION} />
 	<meta name="keywords" content={KEYWORDS} />
 	<meta property="al:web:url" content={HOST} />
@@ -96,7 +97,9 @@
 	class:preview
 	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'}"
 >
-	<slot />
+	{#if !$isLoading}
+		<slot />
+	{/if}
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />

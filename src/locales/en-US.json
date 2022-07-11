@@ -1,0 +1,70 @@
+{
+	"character": {
+		"amber": "Amber",
+		"albedo": "Albedo"
+	},
+	"weapon": {
+		"debate-club": "Debate Club"
+	},
+	"outfit": {},
+	"wish": {
+		"text": "Wish {count}",
+		"banner": {
+			"text": "Banner",
+			"events": "Character Event Wish",
+			"beginner": "Beginner' Wish",
+			"weapons": "Weapons Wish",
+			"standard": "Standard Wish",
+			"courseSetFor": "Course Set For: {selectedCourse}",
+			"wanderlust": "Wanderlust Invocation"
+		},
+		"epitomizedPath": {
+			"text": "Epitomized Path",
+			"fatePoint": "Fate Points",
+			"cancelPrompt": "Do you wish to cancel your curent Course ?",
+			"cancelDesc": "Cancelation will reset your accumulated Fate Points",
+			"selectWeapon": "Select Weapon",
+			"chartCourseOf": "Chart Course of {target}",
+			"cancelCourse": "Cancel Course",
+			"chartCourse": "Chart Course",
+			"description": [
+				"\"Epitomized Path\" is a wish mechanic in \"Epitome Invocation\". Travelers can chart a course towards a specific 5-star promotional weapon they hope to obtain.",
+				"Once you have charted a course towards your chosen weapon, you will obtain 1 Fate Point upon <span> receiving a 5-star weapon that is not the one that you chose</span>. You can obtain a maximum of 2 Fate Points.",
+				"Once you've reached the maximum amount of Fate Points, the next 5-star weapon you choose will be the one you have chosen through \"Epitomized Path\".",
+				"When you obtain the chosen weapon in Epitome Invocation through Epitomized Path, <span> the accumulated Fate Points will be cleared </span>.",
+				"If you do not use Epitomized Path to obtain a weapon, you will not accumulate Fate Points.",
+				"The charted course towards a certain weapon can be changed or cancelled. However, after doing so, any current Fate Points will be cleared.",
+				"At the end of the current period of Epitome Invocation, any current Fate Points will be cleared."
+			]
+		},
+		"result": {
+			"skip": "Skip",
+			"meteorFailed": "Meteor Animation Failed to Load",
+			"new": "New",
+			"convertion": "Convertion"
+		}
+	},
+	"details": {
+		"text": "Details"
+	},
+	"history": {
+		"text": "History"
+	},
+	"shop": {
+		"text": "Shop",
+		"paimonBargains": "Paimon Bargains",
+		"infsufficientFunds": "Infsufficient Funds",
+		"fateNeeded": "An Aditional {rollPrice} {currency} Fate are needed.",
+		"primoNeeded": "Purchase with {primoPrice} Primogem ?"
+	},
+	"inventory": {
+		"text": "Inventory",
+		"unsetOutfit": "Unset Outfit",
+		"setOutfit": "Set Outfit to Character"
+	},
+	"site": {
+		"title": "Genshin Impact Wish Simulator",
+		"extra": "Extra",
+		"waiting": "Waiting"
+	}
+}

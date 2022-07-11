@@ -1,13 +1,17 @@
 <script>
-	import playSfx from '$lib/functions/audio';
-
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { locales, locale } from 'svelte-i18n';
+	import playSfx from '$lib/functions/audio';
+	import { localeName, flagsIcon } from './flags';
 
 	export let text;
+	export let name;
 	export let activeIndicator;
+	export let lang = false;
+	export let showOption = false;
 
-	let showOption = false;
+	const handleOption = getContext('handleOption');
 
 	const dispatch = createEventDispatcher();
 	let select = (selected) => {
@@ -15,26 +19,86 @@
 		showOption = !showOption;
 		if (!selected) return;
 
-		dispatch('select', {
-			selected
-		});
+		dispatch('select', { selected });
+		handleOption('');
+	};
+
+	const setLang = (langID) => {
+		playSfx();
+		locale.set(langID);
+		localStorage.setItem('locale', langID);
+		handleOption('');
+	};
+
+	const openOption = () => {
+		playSfx();
+		if (showOption) return handleOption('');
+		handleOption(name);
 	};
 </script>
 
 <div class="option">
 	<div class="option-name">{text}</div>
-	<div class="option-select">
-		<button class="selected" style="width: 100%; height:100%" on:click={() => select()}
-			>{activeIndicator ? 'Yes' : 'No'}</button
-		>
-		<i class="gi-caret-{showOption ? 'up' : 'down'}" />
-		{#if showOption}
-			<div class="select" in:fly={{ duration: 200, y: -10 }}>
-				<button class:selected={!activeIndicator} on:click={() => select('no')}> No </button>
-				<button class:selected={activeIndicator} on:click={() => select('yes')}> Yes </button>
-			</div>
-		{/if}
-	</div>
+
+	{#if !lang}
+		<div class="option-select">
+			<button
+				class="selected"
+				style="width: 100%; height:100%"
+				on:click|stopPropagation={openOption}
+			>
+				{activeIndicator ? 'Yes' : 'No'}
+			</button>
+			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
+			{#if showOption}
+				<div class="select" in:fly={{ duration: 200, y: -10 }}>
+					<button class:selected={!activeIndicator} on:click|stopPropagation={() => select('no')}>
+						No
+					</button>
+					<button class:selected={activeIndicator} on:click|stopPropagation={() => select('yes')}>
+						Yes
+					</button>
+				</div>
+			{/if}
+		</div>
+	{/if}
+
+	{#if lang}
+		<div class="option-select locale">
+			<button
+				class="selected"
+				style="width: 100%; height:100%"
+				on:click|stopPropagation={openOption}
+			>
+				<img
+					src="data:image/png;base64,{flagsIcon[activeIndicator.substring(0, 2)]}"
+					alt="flag"
+					class="flag"
+				/>
+				{localeName[activeIndicator]}
+			</button>
+			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
+			{#if showOption}
+				<div class="select" in:fly={{ duration: 200, y: -10 }}>
+					{#each $locales as locale}
+						<button
+							class:selected={activeIndicator === locale}
+							on:click|stopPropagation={() => setLang(locale)}
+						>
+							<span style="text-align:right; padding-right: 1rem; width:50%">
+								<img
+									src="data:image/png;base64,{flagsIcon[locale.substring(0, 2)]}"
+									alt="flag"
+									class="flag"
+								/>
+							</span>
+							<span style="text-align:left;width:100%"> {localeName[locale]} </span>
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -104,5 +168,16 @@
 	.select button:hover,
 	.select button.selected {
 		background-color: #f0e0c7;
+	}
+
+	.locale .select button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 0%;
+		padding: 0.5rem;
+	}
+	.flag {
+		width: 1.2rem;
 	}
 </style>

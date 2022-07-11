@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import { getName } from '$lib/functions/nameText';
 	import Ads from '../utility/Iklan.svelte';
@@ -23,7 +24,7 @@
 
 <svelte:head>
 	<title>
-		{bannerName} | {APP_TITLE}
+		{bannerName} | {$t('site.title', { default: APP_TITLE })}
 	</title>
 </svelte:head>
 

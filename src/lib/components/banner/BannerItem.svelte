@@ -1,5 +1,6 @@
 <script>
 	import { fly, fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import {
 		bannerActive,
 		viewportHeight,
@@ -11,7 +12,6 @@
 		pageActive,
 		mobileMode
 	} from '$lib/store/stores';
-	import { getName } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
 
@@ -47,7 +47,7 @@
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="banner-content">
 				<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
-				<button class="detail" on:click={openDetails}> Details </button>
+				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			</div>
 		</div>
 	{:else if activeBanner.type === 'weapons'}
@@ -60,10 +60,12 @@
 
 				{#if $selectedCourse.name}
 					<div class="selected" class:fill={$fatePoint === 2}>
-						Course Set For: {getName($selectedCourse.name)}
+						{$t('wish.banner.courseSetFor', {
+							values: { selectedCourse: $t(`weapon.${$selectedCourse.name}`) }
+						})}
 					</div>
 				{/if}
-				<button class="detail" on:click={openDetails}> Details </button>
+				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			</div>
 		</div>
 	{:else if activeBanner.type === 'standard'}
@@ -73,7 +75,7 @@
 					src="/assets/images/banner/standard/{activeBanner.character.name}.webp"
 					alt="Standard Banner"
 				/>
-				<button class="detail" on:click={openDetails}> Details </button>
+				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			</div>
 		</div>
 	{:else if activeBanner.type === 'events'}
@@ -83,7 +85,7 @@
 					src="/assets/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
 					alt="Character Events Banner"
 				/>
-				<button class="detail" on:click={openDetails}> Details </button>
+				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			</div>
 		</div>
 	{/if}

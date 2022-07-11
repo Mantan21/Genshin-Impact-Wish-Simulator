@@ -1,17 +1,18 @@
 <script>
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { viewportHeight, viewportWidth, isMobile, muted } from '$lib/store/stores';
-	import { getName } from '$lib/functions/nameText';
+	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
+	import { getName } from '$lib/functions/nameText';
+	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
 
 	// Component
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
 	import SplashLight from './SplashLight.svelte';
-	import { localOutfits } from '$lib/store/localstore';
-	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
@@ -84,7 +85,7 @@
 	};
 
 	let isWearOutfit = false;
-	$: setOutfitButtonText = isWearOutfit ? 'Unset Outfit' : 'Set Outfit to Character';
+	$: setOutfitButtonText = isWearOutfit ? $t('inventory.unsetOutfit') : $t('inventory.setOutfit');
 	const setOutfit = () => {
 		const { outfitName } = list[0];
 		const { isSet } = localOutfits.get(outfitName);
@@ -119,9 +120,9 @@
 					<i class="gi-close" />
 				</button>
 			{:else}
-				<button class="skip" on:click|stopPropagation={skipHandle}
-					>Skip <i class="gi-caret-up" /></button
-				>
+				<button class="skip" on:click|stopPropagation={skipHandle}>
+					{$t('wish.result.skip')} <i class="gi-caret-up" />
+				</button>
 			{/if}
 
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitSet }, i}
@@ -170,7 +171,11 @@
 							{/if}
 							<div class="name">
 								<div class="text anim">
-									{getName(name || outfitName)}
+									{#if outfitName}
+										{$t(`outfit.${outfitName}`)}
+									{:else}
+										{$t(`${type === 'weapon' ? 'weapon' : 'character'}.${name}`)}
+									{/if}
 								</div>
 								<div class="star">
 									{#each Array(rarity) as _, i (i)}
@@ -204,7 +209,7 @@
 									<Icon type={fateType} width={isMobile ? '50px' : '60px'} />
 								</div>
 								<div class="text">
-									<span>Extra</span>
+									<span>{$t('site.extra')}</span>
 									Masterless {fateType}
 									<br /> x{fateQty}
 								</div>
@@ -328,7 +333,6 @@
 	.starfate {
 		position: fixed;
 		top: 60%;
-		text-transform: capitalize;
 		display: flex;
 		align-items: center;
 		width: 1200px;

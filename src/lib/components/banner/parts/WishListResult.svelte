@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
 	import positionToStyle from '$lib/functions/cssPosition';
@@ -99,7 +100,7 @@
 						on:click|preventDefault={() => playSfx()}
 					>
 						{#if isNew}
-							<div class="new">new</div>
+							<div class="new">{$t('wish.result.new')}</div>
 						{/if}
 						<div class="item-body">
 							<div class="item-content">
@@ -186,7 +187,7 @@
 					style="animation-delay: {0.5 + i * 0.1}s"
 				>
 					{#if fateType && type === 'character'}
-						<span> Convertion </span>
+						<span> {$t('wish.result.convertion')} </span>
 					{/if}
 				</div>
 			{/each}

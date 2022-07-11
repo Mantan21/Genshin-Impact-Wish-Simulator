@@ -1,6 +1,16 @@
 {
-	"name": "genshin-wish-simulator",
-	"version": "0.0.1",
+	"name": "genshin-impact-wish-simulator",
+	"version": "1.0.0",
+	"author": {
+		"name": "AguzzTN54",
+		"email": "admin@wishsimulator.app",
+		"url": "https://github.com/AguzzTN54"
+	},
+	"repository": {
+		"url": "https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
+	},
+	"license": "MIT",
+	"homepage": "https://wishsimulator.app",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
@@ -28,6 +38,7 @@
 		"howler": "^2.2.3",
 		"html-to-image": "^1.8.5",
 		"idb": "^6.1.2",
-		"overlayscrollbars": "^1.13.1"
+		"overlayscrollbars": "^1.13.1",
+		"svelte-i18n": "^3.4.0"
 	}
 }
