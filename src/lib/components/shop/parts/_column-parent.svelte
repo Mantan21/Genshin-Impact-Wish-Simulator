@@ -14,6 +14,7 @@
 		height: calc(100vh - 155px);
 		margin: 15px 0;
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	:global(.mobile) .item-list {
 		height: calc(100vh - 90px);
