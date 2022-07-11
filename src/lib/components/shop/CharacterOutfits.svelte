@@ -41,7 +41,7 @@
 						class="thumbnail"
 						style="background-image: url('/assets/images/utility/{rarity}star-bg.webp');"
 					>
-						<picture>
+						<picture class="star{rarity}">
 							<img
 								src="/assets/images/characters/outfit/thumbnail/{name}.webp"
 								alt={getName(name)}
@@ -138,7 +138,12 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
+	}
+	picture.star4::after {
 		background-image: linear-gradient(to top, rgba(174, 148, 211, 0.8) 40%, rgba(174, 148, 211, 0));
+	}
+	picture.star5::after {
+		background-image: linear-gradient(to top, rgba(224, 180, 102, 0.8) 40%, rgba(224, 180, 102, 0));
 	}
 
 	picture {

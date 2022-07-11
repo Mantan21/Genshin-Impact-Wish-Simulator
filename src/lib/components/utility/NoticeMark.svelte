@@ -27,6 +27,7 @@
 	.notice {
 		position: absolute;
 		right: 0.5rem;
+		z-index: +1;
 	}
 
 	span {
