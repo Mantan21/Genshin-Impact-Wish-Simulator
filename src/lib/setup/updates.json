@@ -145,7 +145,6 @@
 		},
 		{
 			"date": "16-Jun-2022",
-			"featured": true,
 			"description": [
 				"<strong> Arataki Itto Rerun </strong> Banner was here !",
 				"Weapon Banner Updated, <b> Redhorn Stonesthresher </b> and <b>Memory of Dust</b> are ready to pull too!"
@@ -157,6 +156,14 @@
 			"description": [
 				"<strong> New!!! </strong> Now you can purchase <strong> Character's Outfit </strong> in the shop. You also can set the costume splash art as result of your wish if you want :D",
 				"<strong> New!!! </strong> Now Blessing of the Welkin Moon is available to purchase"
+			]
+		},
+		{
+			"date": "11-Jul-2022",
+			"featured": true,
+			"description": [
+				"<strong>Kazuha 2nd Rerun </strong> and <strong>Klee 3rd Rerun </strong> Banner was here !",
+				"Weapon Banner Updated, <b> Freedom Sworn </b> and <b>Lost Prayers to the Sacred Winds</b> are ready to pull too!"
 			]
 		}
 	]
