@@ -17,7 +17,7 @@
 		bannerActive,
 		bannerList
 	} from '$lib/store/stores';
-	import { HOST, DESCRIPTION, KEYWORDS } from '$lib/env';
+	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { importLocalBalance } from '$lib/functions/importLocalData';
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import '../app.css';
@@ -65,13 +65,25 @@
 </script>
 
 <svelte:head>
-	<meta property="twitter:url" content={HOST} />
-	<meta name="keywords" content={KEYWORDS} />
+	<title>Genshin Impact Wish Simulator</title>
 	<meta name="description" content={DESCRIPTION} />
-	<meta property="og:description" content={DESCRIPTION} />
-	<meta property="og:url" content={HOST} />
-	<meta property="twitter:description" content={DESCRIPTION} />
+	<meta name="keywords" content={KEYWORDS} />
 	<meta property="al:web:url" content={HOST} />
+	<link rel="fluid-icon" href="{HOST}/screenshot/meta-picture.jpg" title={APP_TITLE} />
+
+	<meta property="og:url" content={HOST} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={APP_TITLE} />
+	<meta property="og:description" content={DESCRIPTION} />
+	<meta property="og:image" content="{HOST}/screenshot/meta-picture.jpg" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content={HOST.replace('https://', '').replace('http://', '')} />
+	<meta property="twitter:url" content={HOST} />
+	<meta name="twitter:title" content={APP_TITLE} />
+	<meta name="twitter:description" content={DESCRIPTION} />
+	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
+
 	<Ads head />
 </svelte:head>
 
