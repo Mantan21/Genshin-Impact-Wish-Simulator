@@ -1,7 +1,8 @@
 <script>
+	import { browser } from '$app/env';
 	import { afterUpdate, createEventDispatcher, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { locale } from 'svelte-i18n';
+	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import {
@@ -15,17 +16,15 @@
 		viewportHeight
 	} from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
-	import updates from '$lib/setup/updates.json';
-	import { getName } from '$lib/functions/nameText';
 	import factoryReset from '$lib/functions/factoryReset';
 	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
+	import updates from '$lib/setup/updates.json';
 
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
 	import Option from './Option.svelte';
-	import { browser } from '$app/env';
 
 	export let show = false;
 	let showResetPopup = false;
@@ -126,17 +125,17 @@
 	>
 		<div class="confirmation">
 			<div style="padding: 1rem">
-				Are You sure to clear <strong> All Data </strong> and restore to default ?
+				{@html $t('menu.resetPrompt')}
 				<br />
 				<small>
-					It also remove your History, Pity Calculation, Balance and all items from Inventory.
+					{$t('menu.resetDetail')}
 				</small>
 			</div>
 		</div>
 	</PopUp>
 
 	{#if showToast}
-		<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
+		<Toast on:close={() => (showToast = false)}>{$t('menu.resetSuccess')}</Toast>
 	{/if}
 
 	<section
@@ -145,7 +144,7 @@
 		on:click|preventDefault={() => handleOption('')}
 	>
 		<div class="head">
-			<h1>Menu / {getName(activeContent)}</h1>
+			<h1>{$t('menu.text')} / {$t(`menu.${activeContent}`)}</h1>
 			<button class="close" on:click={handleClose} title="Change Banner">
 				<i class="gi-close" />
 			</button>
@@ -154,10 +153,10 @@
 			<div class="sidebar">
 				<div class="menu-list">
 					<div class="menu-item" class:active={activeContent === 'options'}>
-						<button on:click={() => selectMenu('options')}> Options </button>
+						<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 					</div>
 					<div class="menu-item" class:active={activeContent === 'updates'}>
-						<button on:click={() => selectMenu('updates')}> Update History </button>
+						<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
 					</div>
 				</div>
 			</div>
@@ -167,7 +166,7 @@
 					<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
 						<Option
 							lang
-							text="Language"
+							text={$t('menu.language')}
 							name="locale"
 							activeIndicator={$locale}
 							showOption={optionToShow === 'locale'}
@@ -175,7 +174,7 @@
 
 						<Option
 							name="fates"
-							text="Unlimited Fates"
+							text={$t('menu.fates')}
 							showOption={optionToShow === 'fates'}
 							activeIndicator={$unlimitedFates}
 							on:select={selectUnlimitedOptions}
@@ -183,14 +182,14 @@
 
 						<Option
 							name="audio"
-							text="Mute Audio and Sound Effect"
+							text={$t('menu.mute')}
 							activeIndicator={$muted}
 							on:select={handleAudio}
 							showOption={optionToShow === 'audio'}
 						/>
 
 						<div class="option">
-							<div class="option-name">Switch Banner</div>
+							<div class="option-name">{$t('menu.switchBanner')}</div>
 							<button class="option-select" on:click={openPrevious}>
 								<i class="gi-caret-down" />
 								{$patchVersion} - {$bannerPhase}
@@ -199,7 +198,7 @@
 
 						<Option
 							name="inventory"
-							text="Show not owned Item on Inventory"
+							text={$t('menu.showAllitems')}
 							activeIndicator={showAllItemsIndicator}
 							on:select={showAllItemsOption}
 							showOption={optionToShow === 'inventory'}
@@ -207,19 +206,20 @@
 
 						<Option
 							name="fullscreen"
-							text="Display Fullscreen (press F11)"
+							text={$t('menu.displayFullscreen')}
 							activeIndicator={fullscreen}
 							on:select={handleFullscreen}
 							showOption={optionToShow === 'fullscreen'}
 						/>
 
 						<div class="option">
-							<div class="option-name">Clear Data and Restore Default</div>
+							<div class="option-name">{$t('menu.factoryReset')}</div>
 							<button class="option-select" on:click={reset}>
 								<i
 									class="gi-delete"
 									style="vertical-align: bottom; line-height: 0; margin-right: .2rem"
-								/> Reset Now
+								/>
+								{$t('menu.resetButton')}
 							</button>
 						</div>
 
@@ -305,7 +305,7 @@
 				{#if $isMobile && !$mobileMode}
 					<div class="rotate">
 						<i class="gi-rotate-phone" />
-						<span>Rotate for better experience </span>
+						<span>{$t('menu.rotate')} </span>
 					</div>
 				{/if}
 			</div>

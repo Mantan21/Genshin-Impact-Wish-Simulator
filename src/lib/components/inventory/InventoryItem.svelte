@@ -1,7 +1,8 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/functions/nameText';
 	import { getOutfit } from '$lib/functions/wish/outfit';
-	import { createEventDispatcher } from 'svelte';
 
 	export let rarity = 3;
 	export let type = 'character';
@@ -56,7 +57,7 @@
 			{/each}
 		</div>
 		<span>
-			{getName(name)}
+			{$t(`${type}.name.${name}`)}
 		</span>
 	</div>
 </div>

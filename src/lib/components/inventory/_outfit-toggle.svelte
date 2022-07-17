@@ -1,5 +1,8 @@
 <script>
+	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
+	import { localOutfits } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
 	import {
 		checkOutfitAvaibility,
@@ -7,8 +10,6 @@
 		isOutfitOwned,
 		isOutfitSet
 	} from '$lib/functions/wish/outfit';
-	import { localOutfits } from '$lib/store/localstore';
-	import { getContext } from 'svelte';
 
 	export let charName;
 	export let charRarity;
@@ -47,25 +48,27 @@
 						<img src={defaultPath} alt={getName(charName)} />
 					</picture>
 					<caption>
-						<span> {getName(charName)}</span>
+						<span> {$t(`character.name.${charName}`)}</span>
 					</caption>
 				</button>
 			</div>
 
-			<div class="column" class:disabled={!outfitOwned}>
+			<div class="column" class:disabled={!outfitOwned} data-text={$t('inventory.notOwned')}>
 				<button class:selected={outfitSet} on:click={() => set(true)}>
 					<picture class="star4">
 						<img src={outfitPath} alt={getName(outfitName)} />
 					</picture>
 					<caption>
-						<span> {getName(outfitName)}</span>
+						<span> {$t(`outfit.item.${outfitName}.name`)}</span>
 					</caption>
 				</button>
 			</div>
 		</div>
 		<div class="apply">
 			{#if hasChange}
-				<button transition:fade={{ duration: 200 }} on:click={apply}> Set Outfit </button>
+				<button transition:fade={{ duration: 200 }} on:click={apply}>
+					{$t('outfit.setOutfit')}
+				</button>
 			{/if}
 		</div>
 	</div>
@@ -133,7 +136,7 @@
 	}
 
 	.column.disabled::before {
-		content: 'Not Owned';
+		content: attr(data-text);
 		color: #e8dfbb;
 		display: flex;
 		justify-content: center;

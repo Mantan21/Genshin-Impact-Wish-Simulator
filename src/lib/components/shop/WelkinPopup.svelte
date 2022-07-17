@@ -1,6 +1,7 @@
 <script>
-	import { mobileMode } from '$lib/store/stores';
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
+	import { mobileMode } from '$lib/store/stores';
 	import Icon from '../utility/Icon.svelte';
 	import PopUp from '../utility/PopUp.svelte';
 
@@ -12,8 +13,8 @@
 
 <PopUp
 	{show}
-	title="Item to Purchase"
-	confirmText="Purchase"
+	title={$t('shop.purchaseHeading')}
+	confirmText={$t('shop.purchaseButton')}
 	on:confirm={buyWelkin}
 	on:cancel={cancelBuy}
 >
@@ -22,7 +23,7 @@
 			<div class="thumbnail">
 				<picture>
 					<img src="/assets/images/utility/welkin.webp" alt="Welkin" />
-					<caption> Blessing of the Welkin Moon </caption>
+					<caption> {$t('shop.recomended.blessing')} </caption>
 				</picture>
 				<div class="price">
 					<span>4.99 $US</span>
@@ -31,7 +32,7 @@
 		</div>
 		<div class="description-content">
 			<div class="item">
-				<div class="name">Issued on purchase</div>
+				<div class="name">{$t('shop.recomended.issuedPurchase')}</div>
 				<div class="content">
 					<div class="icon">
 						<span>
@@ -39,13 +40,13 @@
 						</span>
 					</div>
 					<div class="detail">
-						<span>Genesis Crystal</span>
+						<span>{$t('shop.item.genesis')}</span>
 						<span class="amount">x32000</span>
 					</div>
 				</div>
 			</div>
 			<div class="item" style="margin-top: 1rem ;">
-				<div class="name">Collect daily login rewards for 30 days</div>
+				<div class="name">{$t('shop.recomended.collect')}</div>
 				<div class="content">
 					<div class="icon">
 						<span>
@@ -53,7 +54,7 @@
 						</span>
 					</div>
 					<div class="detail">
-						<span>Primogems</span>
+						<span>{$t('shop.item.primogem')}</span>
 						<span class="amount">x8000</span>
 					</div>
 				</div>

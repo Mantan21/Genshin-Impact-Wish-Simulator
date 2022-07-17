@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
 		genesis,
@@ -21,7 +22,7 @@
 	};
 </script>
 
-<h1 class="title">Inventory / {activeItem}s</h1>
+<h1 class="title">{$t('inventory.text')} / {$t(`${activeItem}.text`)}</h1>
 <div class="budget">
 	<button class="starglitter">
 		<Icon

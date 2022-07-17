@@ -1,7 +1,6 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
-	import { getName } from '$lib/functions/nameText';
 	import Ads from '../utility/Iklan.svelte';
 
 	export let bannerType;
@@ -15,10 +14,70 @@
 		? data.find(({ rarity }) => rarity === 4).items
 		: '';
 
+	const charNameAndTitle = (name, vision) => {
+		const element = `(${$t(`character.vision.${vision}`)})`;
+		return `"${$t(`character.title.${name}`)}" ${$t(`character.name.${name}`)} ${element}`;
+	};
+
+	const highlightBannerName = (bannerName, { vision }) => {
+		const splited = bannerName.split(' ');
+		return `<span class=${vision}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
+	};
+
+	const getFeaturedChars = ({ name, vision }) => {
+		return `<span class=${vision}>
+			"${$t(`character.title.${name}`)}" ${$t(`character.name.${name}`)} (${item5Star[0].vision})
+		</span>`;
+	};
+
+	const getFeaturedWeapon = ({ name, type }) => {
+		return `<span class="geo"> ${$t(`weapon.name.${name}`)} (${$t(`weapon.${type}`)})</span>`;
+	};
+
 	const getDelimiter = (arr, i) => {
 		if (i > arr.length - 2) return '';
-		if (i > arr.length - 3) return 'and';
+		if (i > arr.length - 3) return '&';
 		return ',';
+	};
+
+	const getRateupChars = (items) => {
+		const translated = items.map(({ name, vision }, i) => {
+			return `<span class=${vision}> ${charNameAndTitle(name, vision)}</span>
+			${getDelimiter(item4Star, i)}`;
+		});
+		return translated.join('');
+	};
+
+	const getRateupWeapons = (items) => {
+		const translated = items.map(({ name, type }, i) => {
+			return `<span> ${$t(`weapon.name.${name}`)} (${$t(`weapon.${type}`)})</span>
+			${getDelimiter(item4Star, i)} `;
+		});
+		return translated.join('');
+	};
+
+	const valuesToToChange = {
+		starglitter: '<span class="starglitter"> Masterless Starglitter</span>',
+		stardust: '<span class="stardust"> Masterless Stardust</span>',
+		stellaFortuna: '<span class="stardust"> Stella Fortuna</span>'
+	};
+
+	const duplicateDetails = (star) => {
+		console.log(star);
+		return $t(`details.duplicate.text`, {
+			values: {
+				rarity: star,
+				constBonus: star === 5 ? 'x10' : 'x2',
+				fullConstBonus: star === 5 ? 'x25' : 'x5',
+				...valuesToToChange
+			}
+		});
+	};
+
+	const convertion = (star) => {
+		return $t(`details.convertion.${star}`, {
+			values: valuesToToChange
+		});
 	};
 </script>
 
@@ -31,311 +90,109 @@
 <Ads type="banner" />
 
 {#if bannerType === 'beginner'}
-	<h3>No time limit (Closes after 20 wishes)</h3>
+	<h3>{$t('details.beginnerInfo')}</h3>
 {:else if ['events', 'weapons'].includes(bannerType)}
-	<h3>Limited Time Event</h3>
+	<h3>{$t('details.limited')}</h3>
 {:else}
-	<h3>Permanent</h3>
+	<h3>{$t('details.permanent')}</h3>
 {/if}
 
 {#if bannerType === 'beginner'}
-	{#each data[0].items as { name, title, vision }, x}
-		<p>
-			Beginners' <span class={vision}> Wish</span> has no time limit and is aimed at Travelers who
-			have recently landed in Teyvat. Non-promotional characters and weapons are available. <br />
-			In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first
-			10-wish set is guaranteedto include
-			<span class={vision}>
-				"{title}" {getName(name)} ({vision})
-			</span>, and your second 10-wish set is guaranteed to include one <span> other </span> min.
-			4-star character! Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires,
-			the page will disappear.
-		</p>
-
-		<p>〓Rules〓</p>
-		<p>
-			Base probability of winning 5-star character = <span> 0.600%</span> <br />
-			Base probability of winning 4-star character = <span> 5.100%</span>; consolidated probability
-			(incl. guarantee) =
-			<span> 13.000%</span>; guaranteed to win 4-star or above character at least once per
-			<span> 10</span>
-			attempts 3-star weapons won in this wish come with
-			<span class="stardust"> Masterless Stardust</span> x15
-		</p>
-
-		<p>〓Duplicate Characters〓</p>
-		<p>
-			On obtaining a 5-star character that you already own (whether obtained in a wish, redeemed at
-			the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be
-			converted into that character's <span class="stardust"> Stella Fortuna</span> x1 and
-			<span class="starglitter"> Masterless Starglitter</span>
-			x10; from the 8th time onwards it will be converted into
-			<span class="starglitter"> Masterless Starglitter</span> x25 On obtaining a 4-star character
-			that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the
-			game): The 2nd - 7th time you obtain the character, it will be converted into that character's
-			<span class="stardust"> Stella Fortuna</span>
-			x1 and <span class="starglitter"> Masterless Starglitter</span> x2; from the 8th time onwards
-			it will be converted into <span class="starglitter"> Masterless Starglitter</span> x5
-		</p>
+	{#each data[0].items as { name, vision }, x}
+		{#each $t('details.beginner') as text}
+			<p>
+				{@html $t(text, {
+					values: {
+						character: ` <span class=${vision}> ${charNameAndTitle(name, vision)} </span> `,
+						...valuesToToChange
+					}
+				})}
+			</p>
+		{/each}
 	{/each}
 {:else if bannerType === 'standard'}
-	<p>
-		Wanderlust <span class="electro"> Invocation</span> is a standard wish with no time limit.
-		Non-promotional characters and weapons are available. In this wish, <span> guaranteed</span> to win
-		4-star or above item at least once per 10 attempts.
-	</p>
-	<p>〓Rules〓</p>
-	<p>
-		Base probability of winning 5-star item = <span> 0.600%</span>; <br /> base probability of
-		winning 5-star character =
-		<span> 0.300%</span>, <br /> and base probability of winning 5-star weapon =
-		<span> 0.300%</span>;<br />
-		consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; <br />
-		guaranteed to win 5-star item at least once per <span> 90</span> attempts. <br /> Base
-		probability of winning 4-star item = <span> 5.100%</span>; <br /> base probability of winning
-		4-star character =
-		<span> 2.550%</span>, and base probability of winning 4-star weapon = <span> 2.550%</span>;
-		consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>;
-		guaranteed to win 4-star or above item at least once per <span> 10</span> attempts; <br />
-		probability of winning 4-star item through the guarantee = <span> 99.400%</span>, and
-		probability of winning 5-star item through the guarantee = <span> 0.600%</span>. 5-star weapons
-		won in this wish include <span class="starglitter"> Masterless Starglitter</span> x10; 4-star
-		weapons include
-		<span class="starglitter"> Masterless Starglitter</span>
-		x2; 3-star weapons include
-		<span class="stardust"> Masterless Stardust</span> x15.
-	</p>
-
-	<p>〓Duplicate Characters〓</p>
-	<p>
-		On obtaining a 5-star character that you already own (whether obtained in a wish, redeemed at
-		the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be
-		converted into that character's <span class="stardust"> Stella Fortuna</span> x1 and
-		<span class="starglitter"> Masterless Starglitter</span>
-		x10; from the 8th time onwards it will be converted into
-		<span class="starglitter"> Masterless Starglitter</span>
-		x25. On obtaining a 4-star character that you already own (whether obtained in a wish, redeemed at
-		the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted
-		into that character's <span class="stardust"> Stella Fortuna </span> x1 and
-		<span class="starglitter">Masterless Starglitter</span>
-		x2; from the 8th time onwards it will be converted into
-		<span class="starglitter"> Masterless Starglitter</span> x5.
-	</p>
+	{#each $t('details.standard') as text}
+		<p>{@html text}</p>
+	{/each}
 {:else if bannerType === 'events'}
-	<p>
-		Event Wish - <span class={item5Star[0].vision}>
-			{bannerName.split(' ')[0]}
-		</span>
-		{bannerName.split(' ').slice(1).join(' ')} is now available. During this event wish, drifting 5-star
-		character
-		<span class={item5Star[0].vision}>
-			"{item5Star[0].title}" {getName(item5Star[0].name)} ({item5Star[0].vision})
-		</span>
-		as well as 4-star characters
-		{#each item4Star as { name, vision, title }, i}
-			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
-			{getDelimiter(item4Star, i)}
-		{/each}
-		will get a <span> huge drop-rate boost! </span> <br />
-		<span>
-			※In most cases, drifting base probability of all characters and weapons is evenly distributed.
-			If there is a boost or guarantee in effect, please refer to the corresponding rules.
-		</span><br />
-		※In most cases, drifting base probability of all characters and weapons is evenly distributed. If
-		driftingre is a boost or guarantee in effect, please refer to drifting corresponding rules.
-	</p>
-
-	<br />
-	<p>〓Rules〓</p>
-	<p>5-Star Items</p>
-
-	<p>
-		For Event Wish - <span class={item5Star[0].vision}>
-			{bannerName.split(' ')[0]}
-		</span>
-		{bannerName.split(' ').slice(1).join(' ')} : <br /> Base probability of winning 5-star character
-		=
-		<span> 0.600% </span>; <br /> consolidated probability (incl. guarantee) =
-		<span>1.600%</span>; <br /> guaranteed to win 5-star character at least once per
-		<span> 90</span>
-		attempts. The first time you win a 5-star item in this event wish, driftingre is a
-		<span> 50%</span>
-		chance it will be drifting promotional character
-		<span class={item5Star[0].vision}>
-			"{item5Star[0].title}" {getName(item5Star[0].name)} ({item5Star[0].vision})
-		</span>. If drifting first 5-star character you win in this event wish is not drifting
-		promotional character, then the next 5-star character you win is <span> guaranteed</span> to be drifting
-		promotional character.
-	</p>
-
-	<p>4-Star Items</p>
-	<p>
-		For Event Wish - <span class={item5Star[0].vision}>
-			{bannerName.split(' ')[0]}
-		</span>
-		{bannerName.split(' ').slice(1).join(' ')} : <br /> Base probability of winning 4-star item =
-		<span> 5.100%</span>; <br /> consolidated probability (incl. guarantee) = <span> 13.000%</span>;
-		<br />
-		guaranteed to win 4-star or above item at least once per 10 attempts. The first time you win a 4-star
-		item in this event wish, driftingre is a <span> 50%</span> chance it will be one of drifting
-		featured characters
-		{#each item4Star as { name, vision, title }, i}
-			<span class={vision}> "{title}" {getName(name)} ({vision})</span>
-			{getDelimiter(item4Star, i)}
-		{/each}. If drifting first 4-star item you win in this event wish is not one of the featured
-		characters, driftingn the next 4-star item you win is <span> guaranteed </span> to be a featured
-		character.
-	</p>
-
-	<p>
-		4-star weapons won in this wish come with <span class="starglitter">
-			Masterless Starglitter
-		</span>
-		x2; 3-star weapons won in this wish come with
-		<span class="stardust"> Masterless Stardust</span> x15.
-	</p>
-
-	<br />
-	<p>〓Duplicate Characters〓</p>
-	<p>
-		On obtaining a 5-star character that you already own (whedriftingr obtained in a wish, redeemed
-		at drifting shop, or awarded by the game): The 2nd - 7th time you obtain drifting character, it
-		will be converted into that character's <span class="stardust"> Stella Fortuna</span>
-		x1 and <span class="starglitter"> Masterless Starglitter</span> x10; from drifting 8th time
-		onwards it will be converted into <span class="starglitter"> Masterless Starglitter </span> x25.
-	</p>
-	<p>
-		On obtaining a 4-star character that you already own (whedrifting obtained in a wish, redeemed
-		at drifting shop, or awarded by the game): The 2nd - 7th time you obtain drifting character, it
-		will be converted into that character's <span class="stardust"> Stella Fortuna</span> x1 and
-		<span class="starglitter"> Masterless Starglitter </span>
-		x2; from drifting 8th time onwards it will be converted into
-		<span class="starglitter"> Masterless Starglitter </span> x5.
-	</p>
-	<p>
-		※ This is a character event wish. The wish guarantee count is accumulated within character event
-		wishes only and is independent of drifting guarantee counts of other types of wishes.
-	</p>
+	{#each $t('details.events') as text}
+		<p>
+			{@html $t(text, {
+				values: {
+					bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
+					featuredCharacter: getFeaturedChars({ ...item5Star[0] }),
+					rateupCharacters: getRateupChars(item4Star)
+				}
+			})}
+		</p>
+	{/each}
 {:else if bannerType === 'weapons'}
-	<p>
-		Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}" is now available. During this event wish, the
-		event-exclusive 5-star weapon
-		<span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
-		and the 5-star weapon
-		<span class="pyro"> {getName(item5Star[1].name)} ({item5Star[1].type})</span>
-		as well as the 4-star weapons
-		<span class="stardust">
-			{#each item4Star as { name, type }}
-				{getName(name)} ({type}),
-			{/each}
-		</span>
-		will get a <span> huge drop-rate boost!</span> <br />
-		<span>
-			※ Of the above weapons, the event-exclusive weapon will not be available in the standard wish
-			"Wanderlust Invocation".
-		</span>
-	</p>
-	<br />
-
-	<p>〓Rules〓</p>
-	<p>5-Star Items</p>
-	<p>
-		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}": <br /> Base probability of winning 5-star weapon =
-		<span> 0.700%</span>; <br /> consolidated probability (incl. guarantee) = <span> 1.850%</span>;
-		<br />
-		guaranteed to win 5-star weapon at least once per <span> 80</span> attempts. The first time you
-		win a 5-star weapon in this event, there is a <span> 75%</span> chance it will be one of the
-		promotional weapons <span class="geo"> {getName(item5Star[0].name)} ({item5Star[0].type})</span>
-		and
-		<span class="geo"> {getName(item5Star[1].name)} ({item5Star[1].type})</span>. If the first
-		5-star weapon you win in this event wish is not one of the promotional weapons, then the next
-		5-star weapon you win is <span> guaranteed</span> to be a promotional weapon.
-	</p>
-
-	<p>4-Star Items</p>
-
-	<p>
-		For Event Wish "<span>{bannerName.split(' ')[0]}</span>
-		{bannerName.split(' ').slice(1).join(' ')}": <br /> Base probability of winning 4-star item =
-		<span> 6.000%</span>; <br /> base probability of winning 4-star character = <span>3.000%</span>,
-		and base probability of winning 4-star weapon = <span> 3.000%</span>; <br /> consolidated
-		probability (incl. guarantee) of winning 4-star item = <span> 14.500%</span>;<br /> guaranteed
-		to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item
-		through the guarantee = 99.300%, and probability of winning 5-star item through the guarantee =
-		<span> 0.700% </span>
-		The first time you win a 4-star item in this event wish, there is a <span> 75%</span>
-		chance that it will be one of the featured weapons
-		<span class="stardust">
-			{#each item4Star as { name, type }, i}
-				{getName(name)} ({type}) {getDelimiter(item4Star, i)}&nbsp;
-			{/each}
-		</span>. If the first 4-star item you win in this event wish is not one of the featured weapons,
-		then the next 4-star item you win is <span> guaranteed</span> to be a featured weapon.
-	</p>
-	<p>
-		5-star weapons won in this wish come with <span class="starglitter">
-			Masterless Starglitter
-		</span>
-		x10; 4-star weapons won in this wish come with
-		<span class="starglitter"> Masterless Starglitter</span>
-		x2; 3-star weapons won in this wish come with
-		<span class="stardust"> Masterless Stardust </span> x15.
-	</p>
-
-	<br />
-	<p>〓Duplicate Characters〓</p>
-	<p>
-		On obtaining a 4-star character that you already own (whether obtained in a wish, redeemed at
-		the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be
-		converted into that character's <span class="stardust"> Stella Fortuna </span> x1 and
-		<span class="starglitter"> Masterless Starglitter </span>
-		x2; from the 8th time onwards it will be converted into
-		<span class="starglitter"> Masterless Starglitter</span> x5.
-	</p>
-
-	<p>
-		※ This is a weapon event wish. The wish guarantee count is accumulated within this event only
-		and is independent of the guarantee counts of other wishes.
-	</p>
+	{#each $t('details.weapons') as text}
+		<p>
+			{@html $t(text, {
+				values: {
+					bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
+					featuredWeapon1: getFeaturedWeapon({ ...item5Star[0] }),
+					featuredWeapon2: getFeaturedWeapon({ ...item5Star[1] }),
+					rateupWeapons: getRateupWeapons(item4Star)
+				}
+			})}
+		</p>
+	{/each}
 {/if}
 
+<p>
+	{#if ['weapons, standard'].includes(bannerType)}
+		{@html convertion('fiveStar')}
+	{/if}
+	{@html convertion('fourStar')}
+	{@html convertion('threeStar')}
+</p>
+
+<br />
+<p>{@html $t('details.duplicate.heading')}</p>
+{#if bannerType !== 'weapons'} <p>{@html duplicateDetails(5)}</p> {/if}
+<p>{@html duplicateDetails(4)}</p>
+
+{#if ['events', 'weapons'].includes(bannerType)}
+	<p>{$t('details.alert', { values: { wishName: $t(`wish.banner.${bannerType}`) } })}</p>
+{/if}
 <Ads type="banner" />
 
 <style>
-	span {
+	p :global(span) {
 		color: #cf5e47;
-		text-transform: capitalize;
 	}
 
-	span.invocation {
+	p :global(span.invocation) {
 		color: #cba885;
 	}
 
-	span.starglitter {
+	p :global(span.starglitter) {
 		color: #c37b4d;
 	}
-	span.stardust {
+	p :global(span.stardust) {
 		color: #a256e1;
 	}
 
-	span.hydro {
+	p :global(span.hydro) {
 		color: #06bbff;
 	}
-	span.geo {
+	p :global(span.geo),
+	p :global(span.wish) {
 		color: #f9aa02;
 	}
-	span.pyro {
+	p :global(span.pyro) {
 		color: #fe6606;
 	}
-	span.anemo {
+	p :global(span.anemo) {
 		color: #369396;
 	}
-	span.electro {
+	p :global(span.electro),
+	p :global(span.std) {
 		color: #ca82fc;
 	}
-	span.cryo {
+	p :global(span.cryo) {
 		color: #4682b4;
 	}
 

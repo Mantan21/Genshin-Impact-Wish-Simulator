@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { outfits } from '$lib/data/outfits.json';
 	import { getName } from '$lib/functions/nameText';
 	import { localOutfits } from '$lib/store/localstore';
@@ -34,7 +35,7 @@
 			<button class:discount={isPromo} on:click={() => selectItem(outfitsData, i)}>
 				<div class="content">
 					{#if isPromo}
-						<div class="discount-percentage">20%</div>
+						<div class="discount-percentage">-20%</div>
 					{/if}
 
 					<div
@@ -48,11 +49,11 @@
 							/>
 						</picture>
 						<caption>
-							<span class="name">{getName(name)}</span>
+							<span class="name">{$t(`outfit.item.${name}.name`)}</span>
 							{#if isOwned}
-								<span class="owned">Already Owned</span>
+								<span class="owned">{$t('outfit.owned')}</span>
 							{:else}
-								<span class="desc">Purchase Up to 1</span>
+								<span class="desc">{$t('shop.purchaseUpto')}</span>
 							{/if}
 						</caption>
 					</div>

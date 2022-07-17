@@ -1,9 +1,9 @@
 <script>
 	import { createEventDispatcher, getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { locales, locale } from 'svelte-i18n';
+	import { locales, locale, t } from 'svelte-i18n';
 	import playSfx from '$lib/functions/audio';
-	import { localeName, flagsIcon } from './flags';
+	import { localeName, flagsIcon } from '../../data/country';
 
 	export let text;
 	export let name;
@@ -47,16 +47,16 @@
 				style="width: 100%; height:100%"
 				on:click|stopPropagation={openOption}
 			>
-				{activeIndicator ? 'Yes' : 'No'}
+				{activeIndicator ? $t('menu.yes') : $t('menu.no')}
 			</button>
 			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
 			{#if showOption}
 				<div class="select" in:fly={{ duration: 200, y: -10 }}>
 					<button class:selected={!activeIndicator} on:click|stopPropagation={() => select('no')}>
-						No
+						{$t('menu.no')}
 					</button>
 					<button class:selected={activeIndicator} on:click|stopPropagation={() => select('yes')}>
-						Yes
+						{$t('menu.yes')}
 					</button>
 				</div>
 			{/if}
@@ -95,6 +95,11 @@
 							<span style="text-align:left;width:100%"> {localeName[locale]} </span>
 						</button>
 					{/each}
+					<button on:click|stopPropagation>
+						<span style="text-align:left;width:100%; padding: .5rem; text-align:center">
+							Suggest language
+						</span>
+					</button>
 				</div>
 			{/if}
 		</div>

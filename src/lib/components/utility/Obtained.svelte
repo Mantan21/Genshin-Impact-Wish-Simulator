@@ -1,9 +1,9 @@
 <script>
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
+
 	import { cubicOut } from 'svelte/easing';
 	import playSfx from '$lib/functions/audio';
-	import { getName } from '$lib/functions/nameText';
-
-	import { createEventDispatcher, onMount } from 'svelte';
 	import Icon from './Icon.svelte';
 
 	export let items = {
@@ -48,7 +48,7 @@
 		<div class="bg" />
 		<div class="content" in:scaleFade={{ duration: 200 }}>
 			<h3 class="title">
-				Obtained
+				{$t('site.obtained')}
 				<i class="gi-primo-star" />
 			</h3>
 
@@ -69,15 +69,14 @@
 								<span>{items[key]}</span>
 							</div>
 							<div class="name">
-								{['stardust', 'starglitter'].includes(key) ? 'Masterless' : ''}
-								{getName(key)}
+								{$t(`shop.item.${key}`)}
 							</div>
 						</div>
 					{/if}
 				{/each}
 			</div>
 
-			<h4 class="msg">Press anywhere in the blank area to continue</h4>
+			<h4 class="msg">{$t('site.pressToContinue')}</h4>
 		</div>
 	</div>
 </section>

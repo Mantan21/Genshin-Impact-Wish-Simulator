@@ -1,12 +1,15 @@
 <script>
 	import { createEventDispatcher, getContext, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
+
 	import { viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/functions/nameText';
-	import Share from '$lib/components/utility/ShareScreenshot.svelte';
-	import playSfx from '$lib/functions/audio';
 	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
+	import playSfx from '$lib/functions/audio';
+
+	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
 
 	export let show = false;
@@ -22,6 +25,7 @@
 	let vision = '';
 	let weaponType = '';
 	let countInfo = 0;
+	let refineExtra = '';
 
 	let defaultPath, outfitPath;
 	$: ({ defaultPath, outfitPath } = getOutfit(name, rarity));
@@ -32,9 +36,15 @@
 		({ time, vision, type, weaponType, rarity } = dt[0]);
 		const count = dt.length;
 		if (type === 'weapon') {
-			countInfo = `Refinement ${count > 5 ? `5 + ${count - 5} Extra` : count}`;
+			refineExtra = $t(`inventory.extra`, { values: { count: `5 + ${count - 5}` } });
+			countInfo = $t(`inventory.refinement`, {
+				values: { count: count > 5 ? refineExtra : count }
+			});
 		} else {
-			countInfo = `Constellation ${count > 7 ? `6 + ${count - 7} Extra` : count - 1}`;
+			refineExtra = $t(`inventory.extra`, { values: { count: `6 + ${count - 7}` } });
+			countInfo = $t(`inventory.constellation`, {
+				values: { count: count > 7 ? refineExtra : count - 1 }
+			});
 		}
 		render = show;
 	};
@@ -103,7 +113,7 @@
 					{/if}
 					<div class="name">
 						<div class="text">
-							{getName(name)}
+							{$t(`character.name.${name}`)}
 						</div>
 						<div class="star">
 							{#each Array(rarity) as _, i (i)}
@@ -115,7 +125,7 @@
 			</div>
 			<div class="detail">
 				<span class="count"> {countInfo} </span>
-				<span> <small> First Summoned at : </small> {time}</span>
+				<span> <small> {$t('inventory.firstSummon', { values: { date: time } })}: </small></span>
 			</div>
 			<div class="share">
 				<Share />

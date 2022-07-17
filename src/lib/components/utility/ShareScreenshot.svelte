@@ -1,8 +1,10 @@
 <script>
 	import { getContext, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { toBlob } from 'html-to-image';
 	import { saveAs } from 'file-saver';
+
 	import { APP_TITLE, HOST } from '$lib/env';
 	import { primogem, viewportHeight } from '$lib/store/stores';
 	import { firstShare, localBalance } from '$lib/store/localstore';
@@ -54,7 +56,7 @@
 		playSfx();
 		obtain = false;
 		showOnProgress = true;
-		e.target.innerText = 'Wait..';
+		e.target.innerText = `${$t('site.waiting')}...`;
 		const node = document.querySelector('.wish-result');
 		node.classList.add('preview');
 
@@ -63,7 +65,7 @@
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;
-		e.target.innerText = page ? 'Share' : 'Take Picture';
+		e.target.innerText = page ? $t('site.share') : $t('site.screenshot');
 		node.classList.remove('preview');
 	};
 
@@ -167,7 +169,7 @@
 	<div class="progress" transition:fade={{ duration: 200 }}>
 		<div class="row">
 			<div class="loading" />
-			<div class="text">Capturing ..</div>
+			<div class="text">{$t('site.capturing')} ..</div>
 		</div>
 	</div>
 {/if}
@@ -175,12 +177,12 @@
 <div class="shr">
 	{#if isFirstShare && page}
 		<span>
-			Reward for first share : 16000
+			{$t('site.rewardFirstShare', { values: { qty: 16000 } })}
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}
 	<button on:click|stopPropagation={takeShot}>
-		{page ? 'Share' : 'Take Picture'}
+		{page ? $t('site.share') : $t('site.screenshot')}
 	</button>
 </div>
 

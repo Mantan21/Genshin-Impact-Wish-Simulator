@@ -1,8 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { localBalance } from '$lib/store/localstore';
 	import { genesis, primogem } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
+
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
@@ -41,15 +43,15 @@
 			<button class="back" on:click={handleClose}>
 				<i class="gi-angle-left" />
 			</button>
-			<div class="title">Pay</div>
+			<div class="title">{$t('shop.pay')}</div>
 		</div>
 
 		<div class="body">
 			<div class="detail">
 				<picture>
-					<span class="product-text">Product</span>
+					<span class="product-text">{$t('shop.product')}</span>
 					<Icon type="genesis" width="50%" />
-					<span class="product-name">Genesis Crystall x{qty}</span>
+					<span class="product-name">{$t('shop.item.genesis')} x{qty}</span>
 				</picture>
 				<div class="price">
 					${price}
@@ -57,9 +59,9 @@
 			</div>
 
 			<div class="payment-type">
-				<span>Select Payment Type</span>
+				<span>{$t('shop.selectPayment')}</span>
 				<div class="list">
-					<div class="item">UnReal Wallet</div>
+					<div class="item">{$t('shop.unrealWallet')}</div>
 				</div>
 			</div>
 			<div class="auto-convert">
@@ -69,10 +71,10 @@
 					style="margin-right: .4rem"
 					id="convert"
 				/>
-				<label for="convert"> Auto convert to primogem ? </label>
+				<label for="convert">{$t('shop.convertPrimo')} </label>
 			</div>
 			<div class="button">
-				<button on:click={genesisBuy}>Proceed Payment</button>
+				<button on:click={genesisBuy}>{$t('shop.proceedPayment')}</button>
 			</div>
 		</div>
 	</div>

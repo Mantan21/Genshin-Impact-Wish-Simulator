@@ -1,5 +1,6 @@
 <script>
 	import { getContext, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/setup/updates.json';
 	import PopUp from './PopUp.svelte';
@@ -17,7 +18,7 @@
 
 <PopUp {show} title="Genshin Impact Wish Simulator" button="confirm" on:confirm={closeDisclaimer}>
 	<section>
-		<p class="sp">This is purely a fan made Application, enjoy it !</p>
+		<p class="sp">{$t('site.fanmade')}</p>
 		<div class="updates" bind:this={content}>
 			{#each updates.reverse() as { description, date }, i (i)}
 				<span>
@@ -42,7 +43,7 @@
 				<span> Saweria </span>
 			</a>
 		</div>
-		<p class="credit">All assets used in this site are owned by Mihoyo.</p>
+		<p class="credit">{$t('site.disclaimer')}</p>
 	</section>
 </PopUp>
 
