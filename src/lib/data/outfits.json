@@ -7,7 +7,6 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside.",
 			"wishBoxPosition": {
 				"t": 90,
 				"h": 200,
@@ -20,7 +19,6 @@
 			"characterName": "barbara",
 			"rarity": 4,
 			"price": 1680,
-			"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze.",
 			"wishBoxPosition": {
 				"t": 72,
 				"l": 140,
@@ -34,7 +32,6 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance.",
 			"wishBoxPosition": {
 				"t": 83
 			}
@@ -45,7 +42,6 @@
 			"characterName": "ningguang",
 			"rarity": 4,
 			"price": 1680,
-			"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace.",
 			"wishBoxPosition": {
 				"h": 200,
 				"t": 90,
@@ -58,7 +54,6 @@
 			"characterName": "fischl",
 			"rarity": 4,
 			"price": 1680,
-			"description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her.",
 			"wishBoxPosition": {
 				"l": 15
 			}
@@ -70,7 +65,6 @@
 			"rarity": 5,
 			"price": 2480,
 			"promoPrice": 1980,
-			"description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever.",
 			"wishBoxPosition": {
 				"l": -54,
 				"h": 200,

@@ -3,6 +3,7 @@
 	import { browser } from '$app/env';
 	import { afterUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// store
@@ -113,31 +114,25 @@
 
 <svelte:head>
 	<title>
-		{getName(banner)} Wish | {APP_TITLE}
+		{$t(`wish.banner.${banner}`)} | {$t('site.title', { default: APP_TITLE })}
 	</title>
 </svelte:head>
 
 <PopUp
 	show={showPopup}
-	title="Reset History ?"
-	on:cancel={() => {
-		showPopup = false;
-	}}
+	title={$t('history.resetPromptTitle')}
+	on:cancel={() => (showPopup = false)}
 	on:confirm={confirmReset}
 >
 	<div class="confirmation">
 		<p>
-			It's also remove all Characters and Weapons related to <strong>
-				{banner === 'events' ? 'Character Event' : getName(banner)}
-			</strong>
-			Banner from your Inventory. <br />
-			Are You Sure to Reset ?
+			{@html $t('history.resetPrompt', { bannerName: $t(`wish.banner.${banner}`) })}
 		</p>
 	</div>
 </PopUp>
 
 {#if showToast}
-	<Toast on:close={() => (showToast = false)}>Reset Successful</Toast>
+	<Toast on:close={() => (showToast = false)}>{$t('history.resetSuccess')}</Toast>
 {/if}
 
 <section bind:this={content} transition:fade={{ duration: 200 }}>
@@ -148,10 +143,10 @@
 	</div>
 	<div class="history-content">
 		<div class="wish-type">
-			<span> Select Wish Type: </span>
+			<span> {$t('history.selectWish')} </span>
 			<div class="select-box">
 				<div class="selected" on:click={() => (showSelectList = !showSelectList)}>
-					{banner === 'events' ? 'Character Event' : getName(banner)} Wish
+					{$t(`wish.banner.${banner}`)}
 					<i class="gi-caret-{showSelectList ? 'up' : 'down'}" />
 				</div>
 
@@ -164,7 +159,7 @@
 								class:active={selected === i}
 								on:click|preventDefault={() => selectBanner(type)}
 							>
-								{type === 'events' ? 'Character Event' : getName(type)} Wish
+								{$t(`wish.banner.${type}`)}
 							</a>
 						{/each}
 					</div>
@@ -172,24 +167,25 @@
 			</div>
 		</div>
 		<p>
-			We Never save your data on cloud storage. All data was stored to IndexedDB, it means the data
-			is saved on your browser storage. It will never delete till you delete it manualy through
-			delete/reset button or clear the browser data.
+			{$t('history.disclaimer')}
 		</p>
 
 		<div class="info">
 			<div class="left">
-				Current Pity : &nbsp; <strong class="star5"> {pity5} </strong> &nbsp; - &nbsp;
+				{$t('history.currentPity')} &nbsp; <strong class="star5"> {pity5} </strong> &nbsp; - &nbsp;
 				<strong class="star4"> {pity4} </strong>
 				<br />
-				Total Pull : <span class="lighted"> <strong> {data.length} </strong> </span>
+				{$t('history.totalPull')} <span class="lighted"> <strong> {data.length} </strong> </span>
 				<br />
-				Total Spend : <strong><span class="lighted"> {data.length * 160}</span> Primos</strong> ~
+				{$t('history.totalSpend')}
+				<strong><span class="lighted"> {data.length * 160}</span> Primos</strong>
+				~
 				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
 			</div>
 			<div class="right">
 				<button class="reset" on:click={reset}>
-					<i class="gi-delete" /> Reset
+					<i class="gi-delete" />
+					{$t('history.resetButton')}
 				</button>
 				<div class="table-filter">
 					<span
@@ -201,10 +197,16 @@
 					</span>
 					{#if showTableFilterOption}
 						<div class="options" transition:fade={{ duration: 200 }}>
-							<span on:click={() => filter('All')}>All</span>
-							<span on:click={() => filter(5)}>5 Star</span>
-							<span on:click={() => filter(4)}>4 Star</span>
-							<span on:click={() => filter(3)}>3 Star</span>
+							<span on:click={() => filter('All')}>{$t('history.filterAll')}</span>
+							<span on:click={() => filter(5)}>
+								{$t('history.filter', { values: { rarity: 5 } })}
+							</span>
+							<span on:click={() => filter(4)}>
+								{$t('history.filter', { values: { rarity: 4 } })}
+							</span>
+							<span on:click={() => filter(3)}>
+								{$t('history.filter', { values: { rarity: 3 } })}
+							</span>
 						</div>
 					{/if}
 				</div>
@@ -214,31 +216,31 @@
 		<div class="table" bind:this={table}>
 			<div style="min-width: max-content;">
 				<div class="row head">
-					<div class="cell cell0">Pity</div>
-					<div class="cell cell1">Item Type</div>
-					<div class="cell cell2">Item Name</div>
-					<div class="cell cell3">Time Received</div>
-					<div class="cell cell4">Banner</div>
+					<div class="cell cell0">{$t('history.pity')}</div>
+					<div class="cell cell1">{$t('details.itemType')}</div>
+					<div class="cell cell2">{$t('details.itemName')}</div>
+					<div class="cell cell3">{$t('history.timeReceived')}</div>
+					<div class="cell cell4">{$t('wish.banner.text')}</div>
 				</div>
 
 				<div class="body">
 					{#await readData()}
 						<div class="row" style="justify-content: center">
-							<div class="cell">Waiting ...</div>
+							<div class="cell">{$t('history.waiting')} ...</div>
 						</div>
 					{:then ls}
 						{#if dataToShow.length < 1}
 							<div class="row" style="justify-content: center">
-								<div class="cell">No data available .</div>
+								<div class="cell">{$t('history.noData')}</div>
 							</div>
 						{:else}
 							{#each dataToShow as { name, type, rarity, time, pity, bannerName }, i}
 								{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
 									<div class="row">
 										<div class="cell cell0 star{rarity}">{pity}</div>
-										<div class="cell cell1">{type}</div>
+										<div class="cell cell1">{$t(`${type}.text`)}</div>
 										<div class="cell cell2 star{rarity}">
-											{getName(name)}
+											{$t(`${type}.name.${name}`)}
 											{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
 										</div>
 										<div class="cell cell3">{time}</div>
@@ -246,13 +248,13 @@
 											{#if bannerName}
 												{#if ['events', 'weapons'].includes(banner)}
 													<a href="/" on:click|preventDefault={() => search(bannerName)}>
-														{getName(bannerName)}
+														{$t(`wish.banner.name.${bannerName.slice(0, -2)}`)}
 													</a>
 												{:else}
-													{getName(bannerName)}
+													{$t(`wish.banner.name.wanderlust`)}
 												{/if}
 											{:else}
-												Untrack
+												{$t('history.untracked')}
 											{/if}
 										</div>
 									</div>

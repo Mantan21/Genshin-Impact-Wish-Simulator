@@ -1,6 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
 
@@ -173,12 +174,12 @@
 </script>
 
 <svelte:head>
-	<title>All Banners | {APP_TITLE}</title>
+	<title>{$t('wish.banner.allBanner')} | {$t('site.title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 <section>
 	<header transition:fly={{ y: -20 }}>
-		<h1>Previous Banner</h1>
+		<h1>{$t('wish.banner.previous')}</h1>
 		<button class="close" on:click={handleCLose}>
 			<i class="gi-close" />
 		</button>
@@ -196,7 +197,7 @@
 						type="text"
 						name="q"
 						id="q"
-						placeholder="Find a Banner"
+						placeholder={$t('wish.banner.findBanner')}
 						bind:value={searchValue}
 						on:input={handleSearch}
 						title="Find by Character's or Weapon's Name (4star or 5star) or Banner Name"
@@ -211,7 +212,9 @@
 							playSfx();
 						}}
 					>
-						Group / {groupby}
+						{$t('wish.banner.group')} / {groupby === 'version'
+							? $t(`site.version`)
+							: $t(`${groupby}.text`)}
 
 						{#if showGroup}
 							<i class="gi-caret-up" />
@@ -222,27 +225,15 @@
 
 					{#if showGroup}
 						<div class="filter-list" transition:fade={{ duration: 200 }}>
-							<a
-								href="/"
-								class:selected={groupby == 'version'}
-								on:click|preventDefault={() => selectGroup('version', false)}
-							>
-								Version
-							</a>
-							<a
-								href="/"
-								class:selected={groupby == 'character'}
-								on:click|preventDefault={() => selectGroup('character', false)}
-							>
-								Character
-							</a>
-							<a
-								href="/"
-								class:selected={groupby == 'weapon'}
-								on:click|preventDefault={() => selectGroup('weapon', false)}
-							>
-								Weapon
-							</a>
+							{#each ['version', 'character', 'weapon'] as val}
+								<a
+									href="/"
+									class:selected={groupby == val}
+									on:click|preventDefault={() => selectGroup(val, false)}
+								>
+									{val === 'version' ? $t(`site.version`) : $t(`${val}.text`)}
+								</a>
+							{/each}
 						</div>
 					{/if}
 				</div>
@@ -257,7 +248,9 @@
 					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
 						<div class="group-title">
 							<h2>
-								{groupby === 'version' ? `Version ${group}` : getName(group)}
+								{groupby === 'version'
+									? `${$t('site.version')} ${group}`
+									: $t(`${groupby}.name.${group}`)}
 								<i class="gi-primo-star" />
 							</h2>
 						</div>
@@ -298,12 +291,12 @@
 								</div>
 								<h3 class="name">
 									{#if Array.isArray(chars)}
-										{getName(chars.map(({ character }) => character).join(', '))}
+										{chars.map(({ character }) => $t(`character.name.${character}`)).join(', ')}
 									{:else}
-										{getName(chars.character)}
+										{$t(`character.name.${chars.character}`)}
 									{/if}
 									&
-									{getName(weapons.list.map(({ name }) => name).join(', '))}
+									{weapons.list.map(({ name }) => $t(`weapon.name.${name}`)).join(', ')}
 								</h3>
 							</a>
 						{/each}
@@ -337,7 +330,6 @@
 		background-color: var(--tertiary-color);
 		display: inline-block;
 		position: relative;
-		text-transform: capitalize;
 		color: #383b40;
 	}
 
@@ -438,7 +430,6 @@
 		margin: 0 0.5rem;
 		display: inline-block;
 		position: relative;
-		text-transform: capitalize;
 	}
 	.selected-filter {
 		background-color: var(--tertiary-color);
@@ -542,6 +533,5 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		text-transform: capitalize;
 	}
 </style>

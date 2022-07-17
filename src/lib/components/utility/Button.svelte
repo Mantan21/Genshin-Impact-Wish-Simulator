@@ -1,5 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
+
 	export let type = 'confirm';
 	export let text = '';
 	export let disabled = false;
@@ -14,7 +16,7 @@
 	{:else}
 		<i class="gi-times" />
 	{/if}
-	<span> {text || (type === 'confirm' ? 'Confirm' : 'Cancel')} </span>
+	<span> {text || (type === 'confirm' ? $t('site.confirmButton') : $t('site.cancelButton'))} </span>
 </button>
 
 <style>

@@ -1,8 +1,10 @@
 <script>
 	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import { mobileMode, viewportHeight, viewportWidth, genesis } from '$lib/store/stores';
+	import { localBalance, localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
 	import HistoryIDB from '$lib/store/historyIdb';
 
@@ -17,7 +19,6 @@
 	import Recomended from './Recomended.svelte';
 	import GenesisCrystal from './GenesisCrystal.svelte';
 	import Donate from './Donate.svelte';
-	import { localBalance, localOutfits } from '$lib/store/localstore';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -25,6 +26,7 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 
+	$: title = $t('site.title', { default: APP_TITLE });
 	let activeShop = 'genesis';
 	let showNavbar = true;
 	let showNavbarButton = false;
@@ -57,7 +59,6 @@
 	// Purchase Outifts
 	let showExchangePopup = false;
 	let showPopupAlert = false;
-	let outfitDescription = '';
 	let isOutfitOwned = false;
 	let outfitToBuy = '';
 	let outfitPrice = 0;
@@ -111,7 +112,6 @@
 			promoPrice,
 			isPromo,
 			rarity,
-			description,
 			isOwned,
 			characterName
 		} = item;
@@ -122,7 +122,6 @@
 		outfitToBuy = name;
 		outfitPrice = isPromo ? promoPrice : price;
 		outfitRarity = rarity;
-		outfitDescription = description;
 		isOutfitOwned = isOwned;
 	};
 	setContext('selectItem', selectItem);
@@ -130,15 +129,15 @@
 
 <svelte:head>
 	{#if activeShop === 'genesis'}
-		<title>Buy Genesis Crystal | {APP_TITLE}</title>
+		<title>{$t('shop.buyGenesisHeading')} | {title}</title>
 	{:else if activeShop === 'recomended'}
-		<title>Recomended Item | {APP_TITLE}</title>
+		<title>{$t('shop.recomendedHeading')} | {title}</title>
 	{:else if activeShop === 'outfits'}
-		<title>Character Outfits | {APP_TITLE}</title>
+		<title>{$t('outfit.heading')} | {title}</title>
 	{:else if activeShop === 'donate'}
-		<title>Donate | {APP_TITLE}</title>
+		<title>Donate | {title}</title>
 	{:else}
-		<title>Paimon's Bargains | {APP_TITLE}</title>
+		<title>{$t('shop.paimonHeading')} | {title}</title>
 	{/if}
 </svelte:head>
 
@@ -154,7 +153,7 @@
 
 <PopUp
 	show={showPopupAlert}
-	title="Purchase Confirmation"
+	title={$t('shop.purchaseConfirm')}
 	on:cancel={() => (showPopupAlert = false)}
 	on:confirm={forcePurchase}
 >
@@ -163,8 +162,8 @@
 		style="display: flex; justify-content:center; align-items:center; height:100%; width:100%"
 	>
 		<p>
-			You don't have a character for this costume yet, are you sure you want to purchase this
-			costume? <br /> You can still use this costume after getting the right character
+			{$t('outfit.purchasePrompt')} <br />
+			{$t('outfit.promptInfo')}
 		</p>
 	</div>
 </PopUp>
@@ -173,7 +172,6 @@
 	outfit
 	show={showExchangePopup}
 	itemToBuy={outfitToBuy}
-	description={outfitDescription}
 	itemRarity={outfitRarity}
 	price={outfitPrice}
 	on:cancel={handleClosePopup}

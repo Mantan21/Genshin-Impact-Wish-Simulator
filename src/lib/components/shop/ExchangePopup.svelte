@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
 		genesis,
@@ -10,6 +11,7 @@
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
 	import { getName } from '$lib/functions/nameText';
+
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Range from './parts/_range.svelte';
@@ -20,19 +22,16 @@
 	export let itemRarity = 0;
 
 	export let outfit = false;
-	export let description = '';
 	export let price = 0;
 	export let isOutfitOwned = false;
 
-	const data = {
+	$: data = {
 		intertwined: {
-			description:
-				"A fateful stone that connects dreams. Its glimmers can entwine fates and connect dreams, just as how its glimmer links stars into the shapes of a heart's desires.",
+			description: $t('shop.description.intertwined'),
 			star: 5
 		},
 		acquaint: {
-			description:
-				"A seed that lights up the night. No matter the distance apart, guided by the stone's glimmer, the fated will meet under the stars.",
+			description: $t('shop.description.acquaint'),
 			star: 5
 		}
 	};
@@ -152,10 +151,10 @@
 
 <PopUp
 	{show}
-	title="Item To {fundType === 'genesis' ? 'Exchange' : 'Purchase'}"
+	title={fundType === 'genesis' ? $t('shop.exchangeHeading') : $t('shop.purchaseHeading')}
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
-	confirmText="Purchase"
+	confirmText={$t('shop.purchaseButton')}
 	button={(outfit ? isOutfitOwned || $genesis < price : fateQty < 1) ? 'cancel' : 'all'}
 >
 	<div class="content" bind:clientHeight={contentHeight}>
@@ -165,14 +164,14 @@
 				<div class="col genesis">
 					<picture>
 						<Icon type="genesis" width="50%" />
-						<span>Genesis Crystal</span>
+						<span>{$t('shop.item.genesis')}</span>
 					</picture>
 				</div>
 
 				<div class="col primo-exchange">
 					<picture>
 						<Icon type="primogem" width="50%" />
-						<span>Primogem</span>
+						<span>{$t('shop.item.primogem')}</span>
 					</picture>
 				</div>
 
@@ -209,9 +208,9 @@
 				<div class="description" style={descriptionStyle}>
 					<div class="title">
 						{#if outfit}
-							{getName(itemToBuy)}
+							{$t(`outfit.item.${itemToBuy}.name`)}
 						{:else}
-							{itemToBuy} Fate
+							{$t(`shop.item.${itemToBuy}`)}
 						{/if}
 					</div>
 					<div class="star">
@@ -220,16 +219,18 @@
 						{/each}
 					</div>
 
-					<p>
-						{description || data[itemToBuy]?.description}
-					</p>
+					{#if outfit}
+						<p>{$t(`outfit.item.${itemToBuy}.description`)}</p>
+					{:else}
+						<p>{$t(`shop.description.${itemToBuy}`)}</p>
+					{/if}
 				</div>
 			</div>
 		{/if}
 
 		<div class="slider">
 			<div class="rangeNumber">
-				<span>Qty :</span>
+				<span>{$t('shop.qty')} :</span>
 				<span style="font-size: larger">{rangeVal}</span>
 			</div>
 			<div class="rangeInput">
@@ -248,10 +249,10 @@
 					</div>
 				{/if}
 				{#if outfit ? $genesis < price && !isOutfitOwned : fateQty < 1}
-					<div class="error red">Insufficient Funds</div>
+					<div class="error red">{$t('shop.insufficient')}</div>
 				{/if}
 				{#if isOutfitOwned}
-					<div class="error red">Already Owned</div>
+					<div class="error red">{$t('outfit.owned')}</div>
 				{/if}
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
 	import {
 		genesis,
@@ -53,7 +54,7 @@
 				<span />
 			</button>
 		{/if}
-		<span> No Limit time items available </span>
+		<span> {$t('shop.noLimitTime')} </span>
 	</div>
 	<div class="fates">
 		{#if ['genesis', 'outfits', 'recomended'].includes(activeShop)}

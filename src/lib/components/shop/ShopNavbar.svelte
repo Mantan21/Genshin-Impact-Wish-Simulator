@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
 	import { patchVersion } from '$lib/store/stores';
 	import { outfits } from '$lib/data/outfits.json';
@@ -26,7 +27,7 @@
 {#if show}
 	<div class="bg" on:click={handleClose} transition:fly={{ x: -10, duration: 100 }} />
 	<div class="navbar" transition:fly={{ x: -100, duration: 200 }}>
-		<div class="top">Shop</div>
+		<div class="top">{$t('shop.text')}</div>
 		<div class="nav-item">
 			<a
 				href="#recomended"
@@ -38,7 +39,8 @@
 					<NoticeMark name="recomended-{$patchVersion}" />
 				{/if}
 				<span>
-					<i class="gi-recomended" /> Recomended
+					<i class="gi-recomended" />
+					{$t('shop.recomendedHeading')}
 				</span>
 			</a>
 			<a
@@ -50,7 +52,7 @@
 				{#if outfitsPromo}
 					<NoticeMark name="outfits-{$patchVersion}" />
 				{/if}
-				<span><i class="gi-outfit" /> Character Outfits</span>
+				<span><i class="gi-outfit" /> {$t('outfit.heading')}</span>
 			</a>
 			<a
 				href="#paimon"
@@ -59,7 +61,8 @@
 				on:click|preventDefault={() => handleClick('paimon-bargains')}
 			>
 				<span>
-					<i class="gi-paimon-bargains" /> Paimon's Bargains
+					<i class="gi-paimon-bargains" />
+					{$t('shop.paimonHeading')}
 				</span>
 			</a>
 			<a
@@ -69,7 +72,8 @@
 				on:click|preventDefault={() => handleClick('genesis')}
 			>
 				<span>
-					<i class="gi-genesis" /> Crystal Top-Up
+					<i class="gi-genesis" />
+					{$t('shop.crystalTopup')}
 				</span>
 			</a>
 			<a

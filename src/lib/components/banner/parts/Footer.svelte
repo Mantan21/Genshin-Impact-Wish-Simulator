@@ -169,8 +169,8 @@
 
 	.menu-button button {
 		border-radius: 50px;
-		background-color: #fff;
-		border: 3px solid #fff;
+		background-color: #efedec;
+		border: 0.1rem solid #e2d7b6;
 		padding: 3px 20px;
 		margin: 2px 5px;
 		transition: all 0.2s;
@@ -178,7 +178,7 @@
 
 	.menu-button button:active,
 	.menu-button button:hover {
-		background-color: var(--tertiary-color);
+		background-color: #e2d7b6;
 	}
 
 	.roll-button {

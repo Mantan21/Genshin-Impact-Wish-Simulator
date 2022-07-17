@@ -172,7 +172,7 @@
 							<div class="name">
 								<div class="text anim">
 									{#if outfitName}
-										{$t(`outfit.${outfitName}`)}
+										{$t(`outfit.item.${outfitName}.name`)}
 									{:else}
 										{$t(`${type === 'weapon' ? 'weapon' : 'character'}.${name}`)}
 									{/if}

@@ -364,7 +364,7 @@
 		align-items: center;
 	}
 	span,
-	section :global(.text span) {
+	p :global(span) {
 		color: #f0b164;
 	}
 

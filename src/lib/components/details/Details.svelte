@@ -3,8 +3,6 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import playSfx from '$lib/functions/audio';
-	import browserState from '$lib/functions/browserState';
 	import {
 		bannerActive,
 		bannerList,
@@ -12,6 +10,8 @@
 		pageActive,
 		patchVersion
 	} from '$lib/store/stores';
+	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/functions/browserState';
 	import { beginner } from '$lib/data/banners/beginner.json';
 	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/functions/wish/wishBase';
 	import { getName } from '$lib/functions/nameText';
@@ -26,7 +26,7 @@
 	let drop5star = [];
 
 	let bannerTitle;
-	let featured;
+	let featured = [];
 
 	const Data = {
 		async get(patch, phase, bannerType) {
@@ -73,7 +73,7 @@
 		_showStandard() {
 			const weapon5 = getAllWeapons(5).filter(({ limited }) => !limited);
 			drop5star = [...this._stdDropChar5, ...weapon5];
-			bannerTitle = $t('wish.banner.wanderlust');
+			bannerTitle = $t('wish.banner.name.wanderlust');
 
 			drop4star = drop4star
 				.filter(({ release }) => {
@@ -93,7 +93,7 @@
 			const { character } = $bannerList[$bannerActive];
 			drop5star = this._stdDropChar5;
 			drop5star.unshift({ name: character.character, type: 'character', rateup: true });
-			bannerTitle = getName(character.name);
+			bannerTitle = $t(`wish.banner.name.${character.name.slice(0, -2)}`);
 
 			const { name, vision, title } = getAllChars(5).find(({ name }) => {
 				return name === character.character;
@@ -122,7 +122,7 @@
 				.filter(({ name }) => this._weapons.rateup.includes(name))
 				.map(({ name, weaponType }) => ({ name, type: weaponType }));
 
-			bannerTitle = getName(this._weapons.name);
+			bannerTitle = $t(`wish.banner.name.epitome-invocation`);
 
 			items = [
 				{ rarity: 5, items: weapon5 },
@@ -154,6 +154,11 @@
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
+
+	const highlightBannerName = (bannerName, vision = '') => {
+		const splited = bannerName.split(' ');
+		return `<span class=${vision}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
+	};
 </script>
 
 <section bind:this={content} transition:fade={{ duration: 200 }}>
@@ -167,27 +172,31 @@
 		{#await Data.get($patchVersion, $bannerPhase, banner)}
 			<div class="content-details">{$t('site.waiting')}...</div>
 		{:then data}
-			{#if banner === 'beginner'}
-				<h1>Beginners's <span class="invocation"> Wish</span></h1>
-			{:else if ['events', 'weapons'].includes(banner)}
-				<h1>
-					Event Wish "<span class={banner === 'events' ? `${featured[0].vision}` : ''}>
-						{bannerTitle.split(' ')[0]}
-					</span>
-					{bannerTitle.split(' ').slice(1).join(' ')}"
+			{#if banner === 'standard'}
+				<h1 class="standard">
+					{$t('wish.banner.standard')} "{@html highlightBannerName(
+						$t('wish.banner.name.wanderlust')
+					)}"
 				</h1>
-			{:else if banner === 'standard'}
-				<h1>Standard Wish "Wanderlust <span class="electro"> Invocation</span>"</h1>
+			{:else}
+				<h1 class={banner}>
+					{#if banner != 'beginner'}
+						{$t(`wish.banner.${banner}`)}
+					{/if}
+					"{@html highlightBannerName(bannerTitle, featured[0]?.vision)}"
+				</h1>
 			{/if}
 
 			{#if ['events', 'weapons'].includes(banner)}
-				<h2>Increased Drop Rates</h2>
+				<h2>{$t('details.increasedRate')}</h2>
 
 				<h3 class="star5">
 					<div class="star">
 						{#each Array(5) as i} <i class="gi-star" /> {/each}
 					</div>
-					<span> Percentage of 5-Star Item Drops: 50.000% </span>
+					<span>
+						{$t('details.percentageDrop', { values: { rarity: 5, percentage: '50.000%' } })}
+					</span>
 				</h3>
 
 				{#if banner === 'events'}
@@ -199,7 +208,7 @@
 								alt={getName(featured[0].name)}
 							/>
 						</picture>
-						<caption class="name">{getName(featured[0].name)}</caption>
+						<caption class="name">{$t(`character.name.${featured[0].name}`)}</caption>
 						<i class="gi-{featured[0].vision} element" />
 					</div>
 				{:else}
@@ -212,7 +221,7 @@
 									class={type}
 								/>
 							</picture>
-							<caption class="name">{getName(name)}</caption>
+							<caption class="name">{$t(`weapon.name.${name}`)}</caption>
 						</div>
 					{/each}
 				{/if}
@@ -223,7 +232,9 @@
 						{#each Array(4) as i} <i class="gi-star" /> {/each}
 					</div>
 					<i class="gi-star" style="color: transparent;" />
-					<span> Percentage of 4-Star Item Drops: 50.000% </span>
+					<span>
+						{$t('details.percentageDrop', { values: { rarity: 4, percentage: '50.000%' } })}
+					</span>
 				</h3>
 
 				{#if banner === 'events'}
@@ -233,7 +244,7 @@
 								<i class="gi-{vision}" />
 								<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
 							</picture>
-							<caption class="name">{getName(name)}</caption>
+							<caption class="name">{$t(`character.name.${name}`)}</caption>
 							<i class="gi-{vision} element" />
 						</div>
 					{/each}
@@ -247,39 +258,45 @@
 									class={type}
 								/>
 							</picture>
-							<caption class="name">{getName(name)}</caption>
+							<caption class="name">{$t(`weapon.name.${name}`)}</caption>
 						</div>
 					{/each}
 				{/if}
 			{/if}
-			<h2>Wish Details</h2>
+			<h2>{$t('details.wishDetails')}</h2>
 
 			<Description bannerType={banner} data={items} bannerName={bannerTitle} />
 
 			<br />
-			<h4>Item to wish for :</h4>
+			<h4>{$t('details.itemWishFor')}</h4>
 			<br />
 			<h3 class="star5">
 				<div class="star">
 					{#each Array(5) as i} <i class="gi-star" /> {/each}
 				</div>
-				<span> Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%) </span>
+				<span>
+					{$t('details.probInfo', {
+						values: { singlePercentage: '0.600%', avgPercentage: '1.600%', rarity: 5 }
+					})}
+				</span>
 			</h3>
 			<div class="table">
 				<div>
 					<div class="row head">
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
 					</div>
 
 					<div class="body">
 						<div class="row">
 							{#each drop5star as { name, type, rateup }}
-								<div class="cell">{type}</div>
 								<div class="cell">
-									{getName(name)}
+									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+								</div>
+								<div class="cell">
+									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
 									{#if rateup} <i class="gi-arrow-up" />{/if}
 								</div>
 							{/each}
@@ -294,23 +311,29 @@
 						<i class="gi-star" style={i > 3 ? 'color: transparent' : ''} />
 					{/each}
 				</div>
-				<span> Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%) </span>
+				<span>
+					{$t('details.probInfo', {
+						values: { singlePercentage: '5.100%', avgPercentage: '13.000%', rarity: 4 }
+					})}
+				</span>
 			</h3>
 			<div class="table">
 				<div>
 					<div class="row head">
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
 					</div>
 
 					<div class="body">
 						<div class="row">
 							{#each drop4star as { name, type, rateup }}
-								<div class="cell">{type}</div>
 								<div class="cell">
-									{getName(name)}
+									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+								</div>
+								<div class="cell">
+									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
 									{#if rateup} <i class="gi-arrow-up" />{/if}
 								</div>
 							{/each}
@@ -327,22 +350,30 @@
 						<i class="gi-star" style={i > 2 ? 'color: transparent' : ''} />
 					{/each}
 				</div>
-				<span> Base Probability for 3-Star Item Drops: 94.300% (Incl. guarantee: 85.400%) </span>
+				<span>
+					{$t('details.probInfo', {
+						values: { singlePercentage: '94.300%', avgPercentage: '85.400%', rarity: 4 }
+					})}
+				</span>
 			</h3>
 			<div class="table">
 				<div>
 					<div class="row head">
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
-						<div class="cell">Item Type</div>
-						<div class="cell">Item Name</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
+						<div class="cell">{$t('details.itemType')}</div>
+						<div class="cell">{$t('details.itemName')}</div>
 					</div>
 
 					<div class="body">
 						<div class="row">
 							{#each drop3star as { name, type }}
-								<div class="cell">{type}</div>
-								<div class="cell">{getName(name)}</div>
+								<div class="cell">
+									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+								</div>
+								<div class="cell">
+									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
+								</div>
 							{/each}
 						</div>
 					</div>
@@ -353,37 +384,40 @@
 </section>
 
 <style>
+	h1.weapons :global(span),
 	span {
 		color: #cf5e47;
 	}
 
-	span.invocation {
+	h1 :global(span.invocation),
+	.beginner :global(span) {
 		color: #cba885;
 	}
 
-	span.starglitter {
+	h1 :global(span.starglitter) {
 		color: #c37b4d;
 	}
-	span.stardust {
+	h1 :global(span.stardust) {
 		color: #a256e1;
 	}
 
-	span.hydro {
+	h1 :global(span.hydro) {
 		color: #06bbff;
 	}
-	span.geo {
+	h1 :global(span.geo) {
 		color: #f9aa02;
 	}
-	span.pyro {
+	h1 :global(span.pyro) {
 		color: #fe6606;
 	}
-	span.anemo {
+	h1 :global(span.anemo) {
 		color: #369396;
 	}
-	span.electro {
+	h1 :global(span.electro),
+	.standard :global(span) {
 		color: #ca82fc;
 	}
-	span.cryo {
+	h1 :global(span.cryo) {
 		color: #4682b4;
 	}
 
@@ -601,7 +635,6 @@
 		align-items: flex-start;
 		justify-content: stretch;
 		text-align: left;
-		text-transform: capitalize;
 	}
 
 	caption::after {
@@ -671,7 +704,6 @@
 		padding: 1rem 0.5rem;
 		height: 100%;
 		text-align: center;
-		text-transform: capitalize;
 		line-height: 1.2rem;
 		height: 3.2rem;
 	}

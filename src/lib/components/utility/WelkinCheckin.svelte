@@ -1,6 +1,7 @@
 <script>
 	import { browser } from '$app/env';
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { localBalance, localWelkin } from '$lib/store/localstore';
 	import { primogem } from '$lib/store/stores';
 
@@ -36,8 +37,12 @@
 					<img src="/assets/images/utility/welkin-moon-girl.webp" alt="Welkin Moon Girl" />
 				</div>
 
-				<h3 class="title">Click to claim your daily Blessing of the Welkin Moon rewards</h3>
-				<h4 class="msg">Days remaining : <span>{dayRemaining}</span></h4>
+				<h3 class="title">{$t('shop.recomended.claimingBlessing')}</h3>
+				<h4 class="msg">
+					{@html $t('shop.recomended.dayRemaining', {
+						values: { days: `<span>${dayRemaining}</span>` }
+					})}
+				</h4>
 			</div>
 		</div>
 	</section>
@@ -91,7 +96,7 @@
 		color: #d0ba98;
 		font-weight: 100;
 	}
-	span {
+	.msg :global(span) {
 		color: #e9e4d9;
 	}
 	.milestone {

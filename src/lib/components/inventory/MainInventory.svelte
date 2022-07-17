@@ -2,6 +2,7 @@
 	// library
 	import { onMount, setContext } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
 
@@ -197,11 +198,6 @@
 
 	const refreshAfterOutfitChanged = (charName, val) => {
 		const index = dataToShow.findIndex(({ name }) => name === charName);
-		// dataToShow = dataToShow.map((d, i) => {
-		// 	if (i !== index) return d;
-		// 	d.outfitSet = true;
-		// 	return d;
-		// });
 		dataToShow[index].outfitSet = val;
 	};
 	setContext('refreshList', refreshAfterOutfitChanged);
@@ -239,7 +235,7 @@
 					on:click={() => select('character')}
 				>
 					<i class="gi-character" />
-					{$mobileMode ? '' : 'Characters'}
+					{$mobileMode ? '' : $t('character.text')}
 				</button>
 				<button
 					class="nav-link"
@@ -247,7 +243,7 @@
 					on:click={() => select('weapon')}
 				>
 					<i class="gi-weapon" />
-					{$mobileMode ? '' : 'Weapons'}
+					{$mobileMode ? '' : $t('weapon.text')}
 				</button>
 			</nav>
 		</div>
@@ -255,7 +251,9 @@
 			<div class="container" bind:this={content}>
 				<div class="list-item">
 					{#if dataToShow.length < 1}
-						<span style="color: white; padding: 2rem; font-size: 1.2rem">No data Found </span>
+						<span style="color: white; padding: 2rem; font-size: 1.2rem"
+							>{$t('history.noData')}
+						</span>
 					{:else}
 						{#each dataToShow as d (d)}
 							<div class="item" animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
@@ -282,7 +280,7 @@
 					</button>
 					<div class="sort-selector">
 						<div class="selected-order" on:click|stopPropagation={() => selectOrder()}>
-							Sort / {orderby}
+							{$t('inventory.sort')} / {$t(`inventory.${orderby}`)}
 
 							{#if showOrder}
 								<i class="gi-caret-up" />
@@ -293,27 +291,15 @@
 
 						{#if showOrder}
 							<div class="order-list" transition:fade={{ duration: 200 }}>
-								<a
-									href="##"
-									class:selected={orderby == 'rarity'}
-									on:click|preventDefault={() => selectOrder('rarity', false)}
-								>
-									Rarity
-								</a>
-								<a
-									href="##"
-									class:selected={orderby == 'name'}
-									on:click|preventDefault={() => selectOrder('name', false)}
-								>
-									Name
-								</a>
-								<a
-									href="##"
-									class:selected={orderby == 'quantity'}
-									on:click|preventDefault={() => selectOrder('quantity', false)}
-								>
-									Quantity
-								</a>
+								{#each ['rarity', 'name', 'quantity'] as val}
+									<a
+										href="##"
+										class:selected={orderby == val}
+										on:click|preventDefault={() => selectOrder(val, false)}
+									>
+										{$t(`inventory.${val}`)}
+									</a>
+								{/each}
 
 								{#if activeItem === 'character'}
 									<a
@@ -321,7 +307,7 @@
 										class:selected={orderby == 'element'}
 										on:click|preventDefault={() => selectOrder('element', false)}
 									>
-										Element
+										{$t(`inventory.element`)}
 									</a>
 								{/if}
 
@@ -331,7 +317,7 @@
 										class:selected={orderby == 'type'}
 										on:click|preventDefault={() => selectOrder('type', false)}
 									>
-										Type
+										{$t(`inventory.type`)}
 									</a>
 								{/if}
 
@@ -341,7 +327,7 @@
 										class:selected={orderby == 'owned'}
 										on:click|preventDefault={() => selectOrder('owned', false)}
 									>
-										Owned
+										{$t(`inventory.owned`)}
 									</a>
 								{/if}
 							</div>
@@ -351,7 +337,9 @@
 						<input type="checkbox" name="showAll" id="showAll" bind:checked={showAll} />
 						<label for="showAll">
 							<i>✔</i>
-							Show All {activeItem}s ( {dataQty} Summoned )
+							{$t(`inventory.showAllOption`, {
+								values: { item: $t(`${activeItem}.text`), qty: dataQty }
+							})}
 						</label>
 					</div>
 				</div>

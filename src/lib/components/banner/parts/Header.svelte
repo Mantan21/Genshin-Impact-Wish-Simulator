@@ -57,7 +57,11 @@
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
 			<img src="/assets/images/utility/brand.svg" alt="Brand" />
-			<span>{$t(`wish.banner.${$bannerList[$bannerActive]?.type}`)}</span>
+			<span>
+				{$t(`wish.banner.${$bannerList[$bannerActive]?.type}`, {
+					values: { markStart: '', markEnd: '' }
+				})}
+			</span>
 			<button class="help" on:click={handleMenu}> <i class="gi-help" /> </button>
 		</h1>
 		<div class="budget">

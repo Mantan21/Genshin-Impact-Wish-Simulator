@@ -1,8 +1,10 @@
 <script>
-	import Icon from '$lib/components/utility/Icon.svelte';
-	import playSfx from '$lib/functions/audio';
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
+	import playSfx from '$lib/functions/audio';
+
 	import ExchangePopup from './ExchangePopup.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 	import TopNav from './parts/_top-nav-parent.svelte';
@@ -49,28 +51,11 @@
 <!-- Fates Popup End -->
 
 <TopNav>
-	<TopNavItem
-		on:click={(e) => handlePaimonClick(e)}
-		name="starglitter"
-		active={activeFateShop === 'starglitter'}
-	>
-		Starglitter Exchange
-	</TopNavItem>
-
-	<TopNavItem
-		name="stardust"
-		active={activeFateShop === 'stardust'}
-		on:click={(e) => handlePaimonClick(e)}
-	>
-		Stardust Exchange
-	</TopNavItem>
-	<TopNavItem
-		name="primogem"
-		active={activeFateShop === 'primogem'}
-		on:click={(e) => handlePaimonClick(e)}
-	>
-		Exchange with Primogem
-	</TopNavItem>
+	{#each ['starglitter', 'stardust', 'primogem'] as val}
+		<TopNavItem on:click={handlePaimonClick} name={val} active={activeFateShop === val}>
+			{$t(`shop.exchange.${val}`)}
+		</TopNavItem>
+	{/each}
 </TopNav>
 
 <ColumnParent>
@@ -80,7 +65,7 @@
 				<div class="content">
 					<picture>
 						<Icon type={fate} width="60%" />
-						<span> {fate} Fate </span>
+						<span> {$t(`shop.item.${fate}`)} </span>
 					</picture>
 					<div class="price">
 						{#if activeFateShop === 'starglitter'}

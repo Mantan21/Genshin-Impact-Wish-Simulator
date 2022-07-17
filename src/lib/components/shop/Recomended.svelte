@@ -1,6 +1,8 @@
 <script>
 	import { getContext, setContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
+
 	import { outfits } from '$lib/data/outfits.json';
 	import { genesis, patchVersion, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
@@ -20,7 +22,7 @@
 	const outfitsForThisVersion = outfits.find(({ version, price, promoPrice }) => {
 		return $patchVersion === `${version}` && promoPrice && promoPrice !== price;
 	});
-	const { name, price, promoPrice, description, cardBoxPosition } = outfitsForThisVersion || {};
+	const { name, price, promoPrice, cardBoxPosition } = outfitsForThisVersion || {};
 	$: isOwned = localOutfits.check(name) || recentlyBuyIndex > -1;
 
 	const outfitsPromo = !!outfitsForThisVersion;
@@ -63,21 +65,13 @@
 
 <TopNavParent>
 	{#if outfitsPromo}
-		<TopNavItem
-			name="outfit"
-			active={activeItem === 'outfit'}
-			on:click={(e) => handleRecomendClick(e)}
-		>
-			Character Outfits
+		<TopNavItem name="outfit" active={activeItem === 'outfit'} on:click={handleRecomendClick}>
+			{$t('outfit.heading')}
 		</TopNavItem>
 	{/if}
 
-	<TopNavItem
-		on:click={(e) => handleRecomendClick(e)}
-		name="welkin"
-		active={activeItem === 'welkin'}
-	>
-		Blessing of the Welkin Moon
+	<TopNavItem on:click={handleRecomendClick} name="welkin" active={activeItem === 'welkin'}>
+		{$t('shop.welkinHeading')}
 	</TopNavItem>
 </TopNavParent>
 
@@ -98,9 +92,9 @@
 					style={positionToStyle(cardBoxPosition)}
 				/>
 
-				<div class="remaining">Limited Time Offer</div>
+				<div class="remaining">{$t('shop.limitedOffer')}</div>
 				<div class="details">
-					<div class="name">{getName(name)}</div>
+					<div class="name">{$t(`outfit.item.${name}.name`)}</div>
 					<div class="price">
 						<Icon type="genesis" style="margin-right:-1%; width: 10%" />
 						<span class="dicount"> {promoPrice} </span>
@@ -111,18 +105,18 @@
 
 				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
 					<div class="description">
-						<div class="title">New Character Outfits</div>
-						<span class="name">{getName(name)}</span>
+						<div class="title">{$t('shop.recomended.newOutfit')}</div>
+						<span class="name">{$t(`outfit.item.${name}.name`)}</span>
 						<p>
-							{description}
+							{$t(`outfit.item.${name}.description`)}
 						</p>
 					</div>
 					<div class="purchase-button">
 						{#if isOwned}
-							<span class="owned">Already Owned</span>
+							<span class="owned">{$t('outfit.owned')}</span>
 						{:else}
 							<Button
-								text="Purchase"
+								text={$t('shop.purchaseButton')}
 								type="confirm"
 								on:click={() => selectItem(outfitsForThisVersion)}
 							/>
@@ -140,20 +134,22 @@
 
 				{#if dayRemaining > 0}
 					<div class="remaining">
-						Days remaining: <strong>{dayRemaining}</strong>
-						<span>(Already Claimed today)</span>
+						{@html $t('shop.recomended.dayRemaining', {
+							values: { days: `<strong>${dayRemaining}</strong>` }
+						})}
+						<span>({$t('shop.recomended.alreadyClaimed')})</span>
 					</div>
 				{/if}
 				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
 					<div class="parent-amount">
-						<span>Instantly Get</span>
+						<span>{$t('shop.recomended.instantlyGet')}</span>
 						<span class="amount" style="width:{(30 / 100) * contentWidth}px;">
 							32000
 							<Icon type="genesis" style="margin-bottom:-5%; width: 20%" />
 						</span>
 					</div>
 					<div class="parent-amount">
-						<span>Daily Gift</span>
+						<span>{$t('shop.recomended.dailyGift')}</span>
 						<span class="amount" style="width:{(30 / 100) * contentWidth}px;">
 							8000
 							<Icon type="primogem" style="margin-bottom:-5%; width: 20%" />
@@ -163,11 +159,15 @@
 					<!-- Button -->
 					<div class="purchase-button">
 						<div class="caption" style="font-size:{(3 / 100) * contentWidth}px; margin-bottom:3%">
-							Obtain a total <strong>32000</strong> Genesis Crystal and
-							<strong> 240000</strong> Primogems across 30 days
+							{@html $t('shop.recomended.obtainTotal', {
+								values: {
+									totalGenesis: '<strong>32000</strong>',
+									totalPrimo: '<strong> 240000</strong>'
+								}
+							})}
 						</div>
 						<Button
-							text="Purchase"
+							text={$t('shop.purchaseButton')}
 							type="confirm"
 							on:click={() => {
 								showWelkinPopup = true;
