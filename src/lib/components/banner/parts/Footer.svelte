@@ -67,13 +67,12 @@
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
 				<button class="single wish-button" on:click={handleSingleRollClick}>
-					<div class="top">Wish x1</div>
+					<div class="top">Wish ×1</div>
 					<div class="bottom">
 						<Icon type={fateType} />
-						<span style="margin-left: 7px">
-							x
-							<span class:red={fateQty < 1 && !$unlimitedFates}> 1 </span></span
-						>
+						<span style="margin-left: 7px" class:red={fateQty < 1 && !$unlimitedFates}>
+							x 1
+						</span>
 					</div>
 				</button>
 			{/if}
@@ -82,13 +81,12 @@
 				{#if bannerActiveType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
-				<div class="top">Wish x10</div>
+				<div class="top">Wish ×10</div>
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px">
-						x
-						<span class:red={fateQty < multiRollPrice && !$unlimitedFates}> {multiRollPrice} </span>
-					</span>
+						<span style="margin-left: 7px" class:red={fateQty < 1 && !$unlimitedFates}>
+							x {multiRollPrice}
+						</span>
 				</div>
 			</button>
 		</div>
