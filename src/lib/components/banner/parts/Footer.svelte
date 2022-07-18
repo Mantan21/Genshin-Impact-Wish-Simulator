@@ -66,7 +66,7 @@
 		</div>
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
-				<button class="single" on:click={handleSingleRollClick}>
+				<button class="single wish-button" on:click={handleSingleRollClick}>
 					<div class="top">Wish x1</div>
 					<div class="bottom">
 						<Icon type={fateType} />
@@ -78,7 +78,7 @@
 				</button>
 			{/if}
 
-			<button class="ten" on:click={handleMultiRollClick}>
+			<button class="ten wish-button" on:click={handleMultiRollClick}>
 				{#if bannerActiveType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
@@ -126,11 +126,15 @@
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 	}
 
-	button {
+	.wish-button {
 		transform: scale(1);
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
+	}
+
+	.wish-button:active {
+  		filter: brightness(85%);
 	}
 	button:active {
 		transform: scale(0.95);
