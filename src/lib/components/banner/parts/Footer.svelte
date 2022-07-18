@@ -177,7 +177,7 @@
 			background: #ede9cc;
 		}
 		100% {
-			border: 3px solid darkgray;
+			border: 0.2rem solid darkgray;
 			color: white;
 			background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
 			#e0ddd4;
