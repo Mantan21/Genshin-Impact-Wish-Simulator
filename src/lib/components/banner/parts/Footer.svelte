@@ -147,17 +147,38 @@
 
 	.menu-button button {
 		border-radius: 50px;
-		background-color: #fff;
-		border: 3px solid #fff;
+		background-color: #e0ddd4;
+		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2),
+    0 2px 2px 0 rgba(100, 100, 100, 0.19);
 		padding: 3px 20px;
 		margin: 2px 5px;
 		transition: all 0.2s;
+		border: solid transparent;
 	}
 
-	.menu-button button:active,
 	.menu-button button:hover {
-		background-color: var(--tertiary-color);
+		border: 3px solid white;
+		transition: none;
 	}
+
+	.menu-button button:active {
+		animation-name: colourchange;
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes colourchange {
+		50% {
+			color: #ffffda;
+			background: #ede9cc;
+		}
+		100% {
+			border: 3px solid darkgray;
+			color: white;
+			background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+			#e0ddd4;
+		}
+		}
 
 	.roll-button {
 		text-align: right;
