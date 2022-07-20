@@ -240,7 +240,7 @@
 										<div class="cell cell0 star{rarity}">{pity}</div>
 										<div class="cell cell1">{$t(`${type}.text`)}</div>
 										<div class="cell cell2 star{rarity}">
-											{$t(`${type}.name.${name}`)}
+											{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 											{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
 										</div>
 										<div class="cell cell3">{time}</div>

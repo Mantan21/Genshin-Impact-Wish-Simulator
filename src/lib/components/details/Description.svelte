@@ -16,7 +16,7 @@
 
 	const charNameAndTitle = (name, vision) => {
 		const element = `(${$t(`character.vision.${vision}`)})`;
-		return `"${$t(`character.title.${name}`)}" ${$t(`character.name.${name}`)} ${element}`;
+		return `"${$t(`character.title.${name}`)}" ${$t(`${name}.name`)} ${element}`;
 	};
 
 	const highlightBannerName = (bannerName, { vision }) => {
@@ -26,12 +26,12 @@
 
 	const getFeaturedChars = ({ name, vision }) => {
 		return `<span class=${vision}>
-			"${$t(`character.title.${name}`)}" ${$t(`character.name.${name}`)} (${item5Star[0].vision})
+			"${$t(`character.title.${name}`)}" ${$t(`${name}.name`)} (${item5Star[0].vision})
 		</span>`;
 	};
 
 	const getFeaturedWeapon = ({ name, type }) => {
-		return `<span class="geo"> ${$t(`weapon.name.${name}`)} (${$t(`weapon.${type}`)})</span>`;
+		return `<span class="geo"> ${$t(name)} (${$t(`weapon.${type}`)})</span>`;
 	};
 
 	const getDelimiter = (arr, i) => {
@@ -50,7 +50,7 @@
 
 	const getRateupWeapons = (items) => {
 		const translated = items.map(({ name, type }, i) => {
-			return `<span> ${$t(`weapon.name.${name}`)} (${$t(`weapon.${type}`)})</span>
+			return `<span> ${$t(name)} (${$t(`weapon.${type}`)})</span>
 			${getDelimiter(item4Star, i)} `;
 		});
 		return translated.join('');

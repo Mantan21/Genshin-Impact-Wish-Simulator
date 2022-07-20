@@ -250,7 +250,9 @@
 							<h2>
 								{groupby === 'version'
 									? `${$t('site.version')} ${group}`
-									: $t(`${groupby}.name.${group}`)}
+									: groupby === 'weapon'
+									? $t(group)
+									: $t(`${group}.name`)}
 								<i class="gi-primo-star" />
 							</h2>
 						</div>
@@ -291,12 +293,12 @@
 								</div>
 								<h3 class="name">
 									{#if Array.isArray(chars)}
-										{chars.map(({ character }) => $t(`character.name.${character}`)).join(', ')}
+										{chars.map(({ character }) => $t(`${character}.name`)).join(', ')}
 									{:else}
-										{$t(`character.name.${chars.character}`)}
+										{$t(`${chars.character}.name`)}
 									{/if}
 									&
-									{weapons.list.map(({ name }) => $t(`weapon.name.${name}`)).join(', ')}
+									{weapons.list.map(({ name }) => $t(name)).join(', ')}
 								</h3>
 							</a>
 						{/each}

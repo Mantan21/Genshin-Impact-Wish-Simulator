@@ -57,7 +57,7 @@
 			{/each}
 		</div>
 		<span>
-			{$t(`${type}.name.${name}`)}
+			{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 		</span>
 	</div>
 </div>

@@ -61,7 +61,7 @@
 				{#if $selectedCourse.name}
 					<div class="selected" class:fill={$fatePoint === 2}>
 						{$t('wish.banner.courseSetFor', {
-							values: { selectedCourse: $t(`weapon.${$selectedCourse.name}`) }
+							values: { selectedCourse: $t($selectedCourse.name) }
 						})}
 					</div>
 				{/if}

@@ -160,7 +160,7 @@
 								{:else}
 									{@html $t('wish.epitomizedPath.chartCourseOf', {
 										values: {
-											target: `<span> ${$t(`weapon.${weapons[targetActive].name}`)} </span>`
+											target: `<span> ${$t(weapons[targetActive].name)} </span>`
 										}
 									})}
 								{/if}
@@ -364,7 +364,8 @@
 		align-items: center;
 	}
 	span,
-	p :global(span) {
+	p :global(span),
+	.text :global(span) {
 		color: #f0b164;
 	}
 
