@@ -15,23 +15,24 @@
 		: '';
 
 	const charNameAndTitle = (name, vision) => {
-		const element = `(${$t(`character.vision.${vision}`)})`;
-		return `"${$t(`character.title.${name}`)}" ${$t(`${name}.name`)} ${element}`;
+		const element = `(${$t(vision)})`;
+		return `"${$t(`${name}.title`)}" ${$t(`${name}.name`)} ${$t(element)}`;
 	};
 
 	const highlightBannerName = (bannerName, { vision }) => {
 		const splited = bannerName.split(' ');
-		return `<span class=${vision}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
+		const divClass = vision || 'invocation';
+		return `<span class=${divClass}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
 	};
 
 	const getFeaturedChars = ({ name, vision }) => {
 		return `<span class=${vision}>
-			"${$t(`character.title.${name}`)}" ${$t(`${name}.name`)} (${item5Star[0].vision})
+			"${$t(`${name}.title`)}" ${$t(`${name}.name`)} (${$t(item5Star[0].vision)})
 		</span>`;
 	};
 
 	const getFeaturedWeapon = ({ name, type }) => {
-		return `<span class="geo"> ${$t(name)} (${$t(`weapon.${type}`)})</span>`;
+		return `<span class="weapon"> ${$t(name)} (${$t(type)})</span>`;
 	};
 
 	const getDelimiter = (arr, i) => {
@@ -50,7 +51,7 @@
 
 	const getRateupWeapons = (items) => {
 		const translated = items.map(({ name, type }, i) => {
-			return `<span> ${$t(name)} (${$t(`weapon.${type}`)})</span>
+			return `<span class="stardust"> ${$t(name)} (${$t(type)})</span>
 			${getDelimiter(item4Star, i)} `;
 		});
 		return translated.join('');
@@ -63,12 +64,11 @@
 	};
 
 	const duplicateDetails = (star) => {
-		console.log(star);
 		return $t(`details.duplicate.text`, {
 			values: {
 				rarity: star,
-				constBonus: star === 5 ? 'x10' : 'x2',
-				fullConstBonus: star === 5 ? 'x25' : 'x5',
+				constBonus: star === 5 ? '×10' : '×2',
+				fullConstBonus: star === 5 ? '×25' : '×5',
 				...valuesToToChange
 			}
 		});
@@ -142,7 +142,7 @@
 {/if}
 
 <p>
-	{#if ['weapons, standard'].includes(bannerType)}
+	{#if ['weapons', 'standard'].includes(bannerType)}
 		{@html convertion('fiveStar')}
 	{/if}
 	{@html convertion('fourStar')}
@@ -165,7 +165,7 @@
 	}
 
 	p :global(span.invocation) {
-		color: #cba885;
+		color: #ef7c1aff;
 	}
 
 	p :global(span.starglitter) {
@@ -180,24 +180,31 @@
 	}
 	p :global(span.geo),
 	p :global(span.wish) {
-		color: #f9aa02;
+		color: #debd6c;
 	}
 	p :global(span.pyro) {
-		color: #fe6606;
+		color: #ec4923;
 	}
 	p :global(span.anemo) {
-		color: #369396;
+		color: #359697;
 	}
-	p :global(span.electro),
-	p :global(span.std) {
+	p :global(span.electro) {
 		color: #ca82fc;
+	}
+	p :global(span.std) {
+		color: #757acdff;
 	}
 	p :global(span.cryo) {
 		color: #4682b4;
 	}
 
+	p :global(span .weapon) {
+		color: #bd6932;
+	}
+
 	p {
-		font-size: 1.2rem;
+		font-size: 150%;
+		line-height: 170%;
 		margin: 1rem 0;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}

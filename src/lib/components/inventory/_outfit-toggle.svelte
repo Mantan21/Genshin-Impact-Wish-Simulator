@@ -10,6 +10,7 @@
 		isOutfitOwned,
 		isOutfitSet
 	} from '$lib/functions/wish/outfit';
+	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
 
 	export let charName;
 	export let charRarity;
@@ -66,9 +67,11 @@
 		</div>
 		<div class="apply">
 			{#if hasChange}
-				<button transition:fade={{ duration: 200 }} on:click={apply}>
-					{$t('outfit.setOutfit')}
-				</button>
+				<div transition:fade={{ duration: 200 }}>
+					<ButtonGeneral on:click={apply}>
+						{$t('outfit.setOutfit')}
+					</ButtonGeneral>
+				</div>
 			{/if}
 		</div>
 	</div>
@@ -194,21 +197,5 @@
 	.apply {
 		width: 100%;
 		text-align: center;
-	}
-	.apply button {
-		background-color: rgb(231, 219, 199);
-		width: 80%;
-		padding: 0.3rem;
-		font-size: 0.8rem;
-		border-radius: 1.2rem;
-		margin-top: 0.5rem;
-		transition: all 0.2s;
-	}
-
-	.apply button:hover {
-		background-color: var(--tertiary-color);
-	}
-	.apply button:active {
-		transform: scale(0.95);
 	}
 </style>

@@ -22,7 +22,7 @@
 	};
 </script>
 
-<h1 class="title">{$t('inventory.text')} / {$t(`${activeItem}.text`)}</h1>
+<h1 class="title">{$t('inventory.text')} / {$t(activeItem)}</h1>
 <div class="budget">
 	<button class="starglitter">
 		<Icon

@@ -44,7 +44,7 @@
 	let data = [];
 	let dataToShow = [];
 	let table;
-	let tableFilter = 'All';
+	let tableFilter = $t('history.filterAll');
 	let showTableFilterOption = false;
 
 	const { getList, resetHistory } = HistoryIDB;
@@ -64,7 +64,7 @@
 		showSelectList = !showSelectList;
 		activepage = 1;
 		banner = path;
-		tableFilter = 'All';
+		tableFilter = $t('history.filterAll');
 		readData();
 	};
 
@@ -92,7 +92,9 @@
 	// Table Filter
 	const filter = (selected) => {
 		showTableFilterOption = !showTableFilterOption;
-		tableFilter = `${selected} ${isNaN(selected) ? '' : 'Star'}`;
+		tableFilter = isNaN(selected)
+			? $t('history.filterAll')
+			: $t('history.filter', { values: { rarity: selected } });
 		if (selected === 'All') {
 			dataToShow = data;
 			return;
@@ -238,7 +240,7 @@
 								{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
 									<div class="row">
 										<div class="cell cell0 star{rarity}">{pity}</div>
-										<div class="cell cell1">{$t(`${type}.text`)}</div>
+										<div class="cell cell1">{$t(type)}</div>
 										<div class="cell cell2 star{rarity}">
 											{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 											{#if rarity > 3} ( {rarity} <i class="gi-star" /> ) {/if}
@@ -400,7 +402,6 @@
 		border: 1px solid #c3a280;
 		border-radius: 0.2rem;
 		padding: 0.2rem 1rem;
-		width: 150px;
 		text-align: center;
 	}
 

@@ -121,7 +121,7 @@
 		<div>
 			{@html $t('shop.fateNeeded', {
 				values: {
-					rollPrice: `<span class="yellow">${balanceNeededToRoll}</span>`,
+					rollQty: `<span class="yellow">${balanceNeededToRoll}</span>`,
 					currency: fateType
 				}
 			})}

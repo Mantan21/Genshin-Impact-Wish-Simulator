@@ -39,7 +39,7 @@
 	};
 
 	const handleClick = () => {
-		playSfx();
+		playSfx('exchange');
 		showFatepointPopup.set(true);
 		noticeMark.openNotice(`fatepoint${$patchVersion}-${$bannerPhase}`);
 	};
