@@ -23,7 +23,7 @@
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
-	import Option from './Option.svelte';
+	import Option from './option.svelte';
 	import { browser } from '$app/env';
 
 	export let show = false;
