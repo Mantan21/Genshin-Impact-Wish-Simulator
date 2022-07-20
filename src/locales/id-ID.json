@@ -80,8 +80,8 @@
 		"heading": "Ruang Ganti",
 		"setOutfit": "Atur Kostum",
 		"owned": "Sudah Dimiliki",
-		"purchasePrompt": "You don't have a character for this costume yet, are you sure you want to purchase this costume?",
-		"promptInfo": "You can still use this costume after getting the right character",
+		"purchasePrompt": "Kamu belum memiliki karakter untuk kostum ini, apakah kamu yakin ingin membeli kostum ini?",
+		"promptInfo": "Kamu masih bisa menggunakan kostum ini setelah mendapatkan karakter yang sesuai.",
 		"item": {
 			"sea-breeze-dandelion": {
 				"name": "Sea Breeze Dandelion",
@@ -213,7 +213,7 @@
 			"newOutfit": "Kostum Karakter Baru",
 			"dayRemaining": "Tersisa {days} hari",
 			"alreadyClaimed": "Telah diperoleh hari ini",
-			"instantlyGet": "Beli dan peroleh",
+			"instantlyGet": "Beli dan Peroleh",
 			"dailyGift": "Bonus Harian",
 			"obtainTotal": "*Berlaku 30 hari memberikan total {totalGenesis} Genesis Crystal dan {totalPrimo} Primogems",
 			"claimingBlessing": "Tekan untuk mengklaim hadiah harian Blessing of the Welkin Moon",
