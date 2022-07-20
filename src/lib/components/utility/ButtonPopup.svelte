@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 
+	const isSlotpresent = $$props.$$slots;
 	export let type = 'confirm';
 	export let text = '';
 	export let disabled = false;
@@ -10,13 +11,20 @@
 	const click = () => dispatch('click');
 </script>
 
-<button on:click={click} {disabled}>
+<button on:click|preventDefault={click} {disabled}>
 	{#if type === 'confirm'}
 		<i class="gi-circle-o" />
 	{:else}
 		<i class="gi-times" />
 	{/if}
-	<span> {text || (type === 'confirm' ? $t('site.confirmButton') : $t('site.cancelButton'))} </span>
+
+	{#if isSlotpresent}
+		<slot />
+	{:else}
+		<span>
+			{text || (type === 'confirm' ? $t('site.confirmButton') : $t('site.cancelButton'))}
+		</span>
+	{/if}
 </button>
 
 <style>

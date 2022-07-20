@@ -11,6 +11,7 @@
 	import { copy } from '$lib/functions/nameText';
 	import playSfx from '$lib/functions/audio';
 	import Icon from './Icon.svelte';
+	import ButtonGeneral from './ButtonGeneral.svelte';
 
 	export let encodedData = '';
 	export let page = '';
@@ -23,6 +24,7 @@
 	let height = 393;
 	let isFirstShare = true;
 	let obtain = false;
+	let btnTxt = page ? $t('site.share') : $t('site.screenshot');
 
 	let blob;
 	const featuredItem = item ? `I got ${item}` : "Wow! I'm so lucky ";
@@ -52,11 +54,11 @@
 		return true;
 	};
 
-	const takeShot = async (e) => {
+	const takeShot = async () => {
 		playSfx();
 		obtain = false;
 		showOnProgress = true;
-		e.target.innerText = `${$t('site.waiting')}...`;
+		btnTxt = `${$t('site.waiting')}...`;
 		const node = document.querySelector('.wish-result');
 		node.classList.add('preview');
 
@@ -65,7 +67,7 @@
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;
-		e.target.innerText = page ? $t('site.share') : $t('site.screenshot');
+		btnTxt = page ? $t('site.share') : $t('site.screenshot');
 		node.classList.remove('preview');
 	};
 
@@ -181,9 +183,9 @@
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}
-	<button on:click|stopPropagation={takeShot}>
-		{page ? $t('site.share') : $t('site.screenshot')}
-	</button>
+	<ButtonGeneral on:click={takeShot}>
+		{btnTxt}
+	</ButtonGeneral>
 </div>
 
 <style>

@@ -13,6 +13,7 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
 	import SplashLight from './SplashLight.svelte';
+	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
@@ -236,7 +237,7 @@
 			{#if fromShop}
 				<div class="share">
 					<div class="shr">
-						<button on:click|stopPropagation={setOutfit}> {setOutfitButtonText} </button>
+						<ButtonGeneral on:click={setOutfit}>{setOutfitButtonText}</ButtonGeneral>
 					</div>
 				</div>
 			{/if}
@@ -587,22 +588,9 @@
 		align-items: center;
 		-webkit-text-stroke: 0.02rem #000;
 	}
-	.shr button {
-		background-color: #d9d2c8;
-		color: #000;
-		border-radius: 30px;
-		font-size: 0.8rem;
-		padding: 0.3rem 2rem;
-		margin-left: 10px;
-		transition: all 0.2s;
-	}
+
 	button:active {
 		transform: scale(0.9);
-	}
-
-	.shr button:active,
-	.shr button:hover {
-		background-color: #fff;
 	}
 
 	:global(.preview) .uid {

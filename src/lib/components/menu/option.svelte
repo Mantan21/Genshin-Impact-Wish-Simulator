@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { locales, locale, t } from 'svelte-i18n';
 	import playSfx from '$lib/functions/audio';
-	import { localeName, flagsIcon } from '../../data/country';
+	import { localeName, flags } from '../../data/country.json';
 
 	export let text;
 	export let name;
@@ -71,7 +71,7 @@
 				on:click|stopPropagation={openOption}
 			>
 				<img
-					src="data:image/png;base64,{flagsIcon[activeIndicator.substring(0, 2)]}"
+					src="data:image/png;base64,{flags[activeIndicator.substring(0, 2)]}"
 					alt="flag"
 					class="flag"
 				/>
@@ -87,7 +87,7 @@
 						>
 							<span style="text-align:right; padding-right: 1rem; width:50%">
 								<img
-									src="data:image/png;base64,{flagsIcon[locale.substring(0, 2)]}"
+									src="data:image/png;base64,{flags[locale.substring(0, 2)]}"
 									alt="flag"
 									class="flag"
 								/>

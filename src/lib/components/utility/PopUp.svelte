@@ -1,15 +1,16 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/functions/audio';
 	import { viewportHeight } from '$lib/store/stores';
-	import Button from './Button.svelte';
+	import ButtonPopup from './ButtonPopup.svelte';
 
 	export let show = false;
 	export let title = '';
 	export let confirm = true;
-	export let confirmText = 'Confirm';
+	export let confirmText = $t('site.confirmButton');
 	export let button = 'all';
 	export let sfx = true;
 
@@ -49,10 +50,12 @@
 				{#if confirm}
 					<div class="pop-footer">
 						{#if ['cancel', 'all'].indexOf(button) > -1}
-							<Button type="cancel" on:click={cancelClik} />
+							<ButtonPopup type="cancel" on:click={cancelClik} />
 						{/if}
 						{#if ['confirm', 'all'].indexOf(button) > -1}
-							<Button type="confirm" text={confirmText} on:click={confirmClick} />
+							<ButtonPopup type="confirm" on:click={confirmClick}>
+								{confirmText}
+							</ButtonPopup>
 						{/if}
 					</div>
 				{/if}

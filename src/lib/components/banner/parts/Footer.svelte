@@ -21,6 +21,7 @@
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import FatepointButton from '../fatepoint/FatepointButton.svelte';
+	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
@@ -76,14 +77,19 @@
 
 	<div class="row">
 		<div class="left menu-button">
-			<button on:click={() => changePage('shop')}>
+			<ButtonGeneral on:click={() => changePage('shop')}>
 				{#if outfitsPromo}
 					<NoticeMark name={openedNotices} style="transform: translateX(70%) translateY(-80%)" />
 				{/if}
 				{$t('shop.text')}
-			</button>
-			<button on:click={() => changePage('inventory')}> {$t('inventory.text')} </button>
-			<button on:click={() => changePage('history')}> {$t('history.text')} </button>
+			</ButtonGeneral>
+
+			<ButtonGeneral on:click={() => changePage('inventory')}>
+				{$t('inventory.text')}
+			</ButtonGeneral>
+			<ButtonGeneral on:click={() => changePage('history')}>
+				{$t('history.text')}
+			</ButtonGeneral>
 		</div>
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
@@ -167,39 +173,6 @@
 		align-items: center;
 	}
 
-	.menu-button button {
-		border-radius: 50px;
-		background-color: #e0ddd4;
-		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2), 0 2px 2px 0 rgba(100, 100, 100, 0.19);
-		padding: 3px 20px;
-		margin: 2px 5px;
-		transition: all 0.2s;
-		border: solid transparent;
-	}
-
-	.menu-button button:hover {
-		border: 3px solid white;
-		transition: none;
-	}
-
-	.menu-button button:active {
-		animation-name: colourchange;
-		animation-duration: 0.2s;
-		animation-fill-mode: forwards;
-	}
-
-	@keyframes colourchange {
-		50% {
-			color: #ffffda;
-			background: #ede9cc;
-		}
-		100% {
-			border: 0.2rem solid darkgray;
-			color: white;
-			background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), #e0ddd4;
-		}
-	}
-
 	.roll-button {
 		text-align: right;
 	}
@@ -246,11 +219,6 @@
 	:global(.mobile) .row {
 		padding: 0;
 	}
-	:global(.mobile) .menu-button button {
-		padding: 1.5px 11px;
-		margin: 1px 2px;
-		font-size: 0.75rem;
-	}
 	:global(.mobile) .roll-button {
 		margin-right: 40px !important;
 	}
@@ -269,8 +237,7 @@
 	/* Media Query */
 
 	@media screen and (max-width: 900px) {
-		button,
-		.menu-button button {
+		button {
 			padding: 2px 15px;
 			margin: 2px 5px;
 		}
@@ -300,10 +267,6 @@
 	}
 
 	@media screen and (max-width: 400px) {
-		.menu-button button {
-			padding: 1px 10px;
-			margin: 1px 2px;
-		}
 		.roll-button button {
 			width: 140px;
 			height: 30px;
