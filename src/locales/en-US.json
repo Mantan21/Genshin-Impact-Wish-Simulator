@@ -1,4 +1,19 @@
 {
+	"character": "Character",
+	"weapon": "Weapon",
+	"vision": "Vision",
+	"anemo": "Anemo",
+	"cryo": "Cryo",
+	"dendro": "Dendro",
+	"electro": "Electro",
+	"hydro": "Hydro",
+	"geo": "Geo",
+	"pyro": "Pyro",
+	"bow": "Bow",
+	"catalyst": "Catalyst",
+	"claymore": "Claymore",
+	"sword": "Sword",
+	"polearm": "Polearm",
 	"wish": {
 		"rollButton": "Wish {count}",
 		"banner": {
@@ -11,7 +26,6 @@
 			"beginner": "Beginners' Wish",
 			"weapons": "Weapons Wish",
 			"standard": "Standard Wish",
-			"courseSetFor": "Course Set For: {selectedCourse}",
 			"name": {
 				"wanderlust": "Wanderlust Invocation",
 				"epitome-invocation": "Epitome Invocation",
@@ -44,10 +58,11 @@
 			"chartCourseOf": "Chart Course of {target}",
 			"cancelCourse": "Cancel Course",
 			"chartCourse": "Chart Course",
+			"courseSetFor": "Course Set For: {selectedCourse}",
 			"description": [
-				"\"Epitomized Path\" is a wish mechanic in \"Epitome Invocation\". Travelers can chart a course towards a specific 5-star promotional weapon they hope to obtain.",
-				"Once you have charted a course towards your chosen weapon, you will obtain 1 Fate Point upon <span> receiving a 5-star weapon that is not the one that you chose</span>. You can obtain a maximum of 2 Fate Points.",
-				"Once you've reached the maximum amount of Fate Points, the next 5-star weapon you choose will be the one you have chosen through \"Epitomized Path\".",
+				"\"Epitomized Path\" is a wish mechanic in \"Epitome Invocation\". Travelers can chart a course towards a specific 5-Star promotional weapon they hope to obtain.",
+				"Once you have charted a course towards your chosen weapon, you will obtain 1 Fate Point upon <span> receiving a 5-Star weapon that is not the one that you chose</span>. You can obtain a maximum of 2 Fate Points.",
+				"Once you've reached the maximum amount of Fate Points, the next 5-Star weapon you choose will be the one you have chosen through \"Epitomized Path\".",
 				"When you obtain the chosen weapon in Epitome Invocation through Epitomized Path, <span> the accumulated Fate Points will be cleared </span>.",
 				"If you do not use Epitomized Path to obtain a weapon, you will not accumulate Fate Points.",
 				"The charted course towards a certain weapon can be changed or cancelled. However, after doing so, any current Fate Points will be cleared.",
@@ -60,27 +75,6 @@
 			"new": "New",
 			"convertion": "Convertion"
 		}
-	},
-	"character": {
-		"text": "Character",
-		"vision": {
-			"text": "Vision",
-			"anemo": "Anemo",
-			"cryo": "Cryo",
-			"dendro": "Dendro",
-			"electro": "Electro",
-			"hydro": "Hydro",
-			"geo": "Geo",
-			"pyro": "Pyro"
-		}
-	},
-	"weapon": {
-		"text": "Weapon",
-		"bow": "Bow",
-		"catalyst": "Catalyst",
-		"claymore": "Claymore",
-		"sword": "Sword",
-		"polearm": "Polearm"
 	},
 	"outfit": {
 		"heading": "Character Outfits",
@@ -130,39 +124,42 @@
 		"permanent": "Permanent",
 		"alert": "※ This is a {wishName}. The wish guarantee count is accumulated within this event only and is independent of the guarantee counts of other wishes.",
 		"beginner": [
-			"Beginners' <span class=\"wish\"> Wish </span> has no time limit and is aimed at Travelers who have recently landed in Teyvat. Non-promotional characters and weapons are available. <br /> In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first 10-wish set is guaranteed to include {character} , and your second 10-wish set is guaranteed to include one <span> other </span> min. 4-star character! Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires, the page will disappear.",
+			"Beginners' <span> Wish </span> has no time limit and is aimed at Travelers who have recently landed in Teyvat. Non-promotional characters and weapons are available. <br /> In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first 10-wish set is guaranteed to include {character} , and your second 10-wish set is guaranteed to include one <span> other </span> min. 4-Star character! Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires, the page will disappear.",
 			"〓Rules〓",
-			"Base probability of winning 5-star character = <span> 0.600%</span> <br /> Base probability of winning 4-star character = <span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>; guaranteed to win 4-star or above character at least <span>10</span> attempts 3-star weapons won in this come with {stardust} x15"
+			"Base probability of winning 5-Star character = <span> 0.600%</span> <br /> Base probability of winning 4-Star character = <span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>;"
 		],
 		"standard": [
-			"Wanderlust <span class=\"std\"> Invocation</span> is a standard wish with no time limit. Non-promotional characters and weapons are available. In this wish, <span> guaranteed</span> to win 4-star or above item at least once per 10 attempts.",
+			"Wanderlust <span class=\"std\"> Invocation</span> is a standard wish with no time limit. Non-event-exclusive characters and weapons are available.<br/> In this wish, <span>guaranteed</span> to win 4-star or above item at least once per 10 attempts.",
+			"※In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
 			"〓Rules〓",
-			"Base probability of winning 5-star item = <span> 0.600%</span>; <br /> base probability of winning 5-star character = <span> 0.300%</span>, <br /> and base probability of winning 5-star weapon = <span> 0.300%</span>; <br /> consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; <br /> guaranteed to win 5-star item at least once per <span> 90</span> attempts. <br /> Base probability of winning 4-star item = <span> 5.100%</span>; <br /> base probability of winning 4-star character = <span> 2.550%</span>, and base probability of winning 4-star weapon = <span> 2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>; guaranteed to win 4-star or above item at least once per <span> 10</span> attempts; <br /> probability of winning 4-star item through the guarantee = <span> 99.400%</span>, and probability of winning 5-star item through the guarantee = <span> 0.600%</span>."
+			"Base probability of winning 5-star item = <span>0.600%</span>; base probability of winning 5-star character = <span>0.300%</span>, and base probability of winning 5-star weapon = <span>0.300%</span>; consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; guaranteed to win 5-star item at least once per <span>90</span> attempts. <br> Base probability of winning 4-star item = <span>5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>13.000%</span>; guaranteed to win 4-star or above item at least once per <span>10</span> attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. "
 		],
 		"events": [
-			"Event Wish - \"{bannerName}\" is now available. During this event wish, drifting 5-star character {featuredCharacter} as well as 4-star characters {rateupCharacters} will get a <span> huge drop-rate boost! </span> <br /> <span> ※In most cases, drifting base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules. </span> <br /> ※In most cases, drifting base probability of all characters and weapons is evenly distributed. If driftingre is a boost or guarantee in effect, please refer to drifting corresponding rules.",
+			"Event Wish - \"{bannerName}\" is now available. During this event wish, drifting 5-Star character {featuredCharacter} as well as 4-Star characters {rateupCharacters} will get a <span> huge drop-rate boost! </span> <span> ※In most cases, drifting base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules. </span>",
+			"※ In most cases, drifting base probability of all characters and weapons is evenly distributed. If driftingre is a boost or guarantee in effect, please refer to drifting corresponding rules.",
 			"〓Rules〓",
 			"5-Star Items",
-			"For Event Wish - {bannerName} : <br /> Base probability of winning 5-star character = <span> 0.600% </span>; <br /> consolidated probability (incl. guarantee) = <span>1.600%</span>; <br /> guaranteed to win 5-star character at least once per <span> 90</span> attempts. The first time you win a 5-star item in this event wish, driftingre is a <span> 50%</span> chance it will be drifting promotional character {featuredCharacter}. If drifting first 5-star character you win in this event wish is not drifting promotional character, then the next 5-star character you win is <span> guaranteed</span> to be drifting promotional character.",
+			"For Event Wish - {bannerName} : <br /> Base probability of winning 5-Star character = <span> 0.600% </span>; <br /> consolidated probability (incl. guarantee) = <span>1.600%</span>; <br /> guaranteed to win 5-Star character at least once per <span> 90</span> attempts. The first time you win a 5-Star item in this event wish, driftingre is a <span> 50%</span> chance it will be drifting promotional character {featuredCharacter}. If drifting first 5-Star character you win in this event wish is not drifting promotional character, then the next 5-Star character you win is <span> guaranteed</span> to be drifting promotional character.",
 			"4-Star Items",
-			"For Event Wish - {bannerName} : <br /> Base probability of winning 4-star item = <span> 5.100%</span>; <br /> consolidated probability (incl. guarantee) = <span> 13.000%</span>; <br /> guaranteed to win 4-star or above item at least once per 10 attempts. The first time you win a 4-star item in this event wish, driftingre is a <span> 50%</span> chance it will be one of drifting featured characters {rateupCharacters}. If drifting first 4-star item you win in this event wish is not one of the featured characters, driftingn the next 4-star item you win is <span> guaranteed </span> to be a featured character."
+			"For Event Wish - {bannerName} : <br /> Base probability of winning 4-Star item = <span> 5.100%</span>; <br /> consolidated probability (incl. guarantee) = <span> 13.000%</span>; <br /> guaranteed to win 4-Star or above item at least once per 10 attempts. The first time you win a 4-Star item in this event wish, driftingre is a <span> 50%</span> chance it will be one of drifting featured characters {rateupCharacters}. If drifting first 4-Star item you win in this event wish is not one of the featured characters, driftingn the next 4-Star item you win is <span> guaranteed </span> to be a featured character."
 		],
 		"weapons": [
-			"Event Wish \"{bannerName}\" is now available. During this event wish, the event-exclusive 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the 4-star weapons {rateupWeapons} will get a <span> huge drop-rate boost!</span> <br /> <span> ※ Of the above weapons, the event-exclusive weapon will not be available in the standard wish \"Wanderlust Invocation\". </span>",
+			"Event Wish \"{bannerName}\" is now available. During this event wish, the event-exclusive 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the event-exclusive 4-star weapon {rateupWeapons}  will get a <span>huge drop-rate boost!</span> <br/> <span> ※ Of the above weapons, the event-exclusive weapons will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
+			"※ In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
 			"〓Rules〓",
 			"5-Star Items",
-			"For Event Wish \"{bannerName}\": <br /> Base probability of winning 5-star weapon = <span> 0.700%</span>; <br /> consolidated probability (incl. guarantee) = <span> 1.850%</span>; <br /> guaranteed to win 5-star weapon at least once per <span> 80</span> attempts. The first time you win a 5-star weapon in this event, there is a <span> 75%</span> chance it will be one of the promotional weapons {featuredWeapon1}</span> and {featuredWeapon2}. If the first 5-star weapon you win in this event wish is not one of the promotional weapons, then the next 5-star weapon you win is <span> guaranteed</span> to be a promotional weapon.",
+			"For Event Wish \"{bannerName}\": Base probability of winning 5-star weapon = <span>0.700%</span>; consolidated probability (incl. guarantee) = <span>1.850%</span>; guaranteed to win 5-star weapon at least once per <span>80</span> attempts.<br/> The first time you win a 5-star weapon in this event wish, there is a <span>75.000%</span> chance it will be one of the promotional weapons {featuredWeapon1} and {featuredWeapon2}. If the first 5-star weapon you win in this event wish is not one of the promotional weapons, then the next 5-star weapon you win is <span>guaranteed</span> to be a promotional weapon. In the event that you obtain a promotional 5-star item through a wish without having maximum Fate Points, the probability of obtaining each promotional 5-star weapon is equal between all of them. <br/> For Event Wish \"{bannerName}\", you can chart a course towards your chosen promotional 5-star weapon with \"Epitomized Path.\" The choice of weapon will only be valid for this period of Event Wish \"{bannerName}\". <br/> For Event Wish \"{bannerName}\", after charting a course towards a chosen weapon with \"Epitomized Path,\" if you obtain a 5-star weapon that was not your chosen weapon, you will receive 1 Fate Point. Once you have reached the <span>maximum amount</span> of Fate Points, the next 5-star weapon will be <span>guaranteed</span> to be your chosen weapon. Once you have obtained the chosen weapon, the number of Fate Points will reset to <span>0</span> whether or not you have reached maximum points, and you will have to accumulate them again. If you do not use the \"Epitomized Path\" to chart a course towards a chosen weapon, you will <span>not</span> receive Fate Points. <br/> After charting a course towards a chosen weapon, you can change your choice or cancel it altogether, but doing so will reset the Fate Points to <span>0</span> and you will have to accumulate them again. <br/> ※ The Fate Points for this Wish are only valid for the current period of Event Wish \"Epitome Invocation\". Once the Wish event is over, the number of Fate Points will reset to <span>0</span>, and you will have to accumulate them again",
 			"4-Star Items",
-			"For Event Wish \"{bannerName}\": <br /> Base probability of winning 4-star item = <span> 6.000%</span>; <br /> base probability of winning 4-star character = <span>3.000%</span>, and base probability of winning 4-star weapon = <span> 3.000%</span>; <br /> consolidated probability (incl. guarantee) of winning 4-star item = <span> 14.500%</span>;<br /> guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = 99.300%, and probability of winning 5-star item through the guarantee = <span> 0.700% </span> The first time you win a 4-star item in this event wish, there is a <span> 75%</span> chance that it will be one of the featured weapons {rateupWeapons}. If the first 4-star item you win in this event wish is not one of the featured weapons, then the next 4-star item you win is <span> guaranteed</span> to be a featured weapon."
+			"For Event Wish \"{bannerName}\": Base probability of winning 4-star item = <span>6.000%</span>; base probability of winning 4-star character = <span>3.000%</span>, and base probability of winning 4-star weapon = <span>3.000%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>14.500%</span>; guaranteed to win 4-star or above item at least once per <span>10</span> attempts; probability of winning 4-star item through the guarantee = <span>99.300%</span>, and probability of winning 5-star item through the guarantee = <span>0.700%</span>. <br/> The first time you win a 4-star item in this event wish, there is a <span>75.000%</span> chance it will be one of the featured weapons {rateupWeapons}. If the first 4-star item you win in this event wish is not one of the featured weapons, then the next 4-star item you win is <span>guaranteed</span> to be a featured weapon. When you win a featured 4-star item, the probability of obtaining each featured 4-star weapon is equal between all of them."
 		],
 		"convertion": {
-			"fiveStar": "5-star weapons won in this wish include {starglitter} x10;",
-			"fourStar": "4-star weapons include {starglitter} x2;",
-			"threeStar": "3-star weapons include {stardust} x15."
+			"fiveStar": "5-Star weapons won in this wish include {starglitter} ×10;",
+			"fourStar": "4-Star weapons include {starglitter} ×2;",
+			"threeStar": "3-Star weapons include {stardust} ×15."
 		},
 		"duplicate": {
 			"heading": "〓Duplicate Characters〓",
-			"text": "On obtaining a 5-star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted into that character's {stellaFortuna} x1 and {starglitter} {constBonus}; from the 8th time onwards it will be converted into {starglitter} {fullConstBonus}."
+			"text": "On obtaining a 5-Star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted into that character's {stellaFortuna} ×1 and {starglitter} {constBonus}; from the 8th time onwards it will be converted into {starglitter} {fullConstBonus}."
 		}
 	},
 	"history": {
@@ -188,7 +185,7 @@
 		"text": "Shop",
 		"paimonBargains": "Paimon Bargains",
 		"infsufficientFunds": "Infsufficient Funds",
-		"fateNeeded": "An Aditional {rollPrice} {currency} Fate are needed.",
+		"fateNeeded": "An Aditional {rollQty} {currency} Fate are needed.",
 		"primoNeeded": "Purchase with {primoPrice} Primogem ?",
 		"purchaseUpto": "Purchase Up to 1",
 		"purchaseConfirm": "Purchase Confirmation",
@@ -197,6 +194,7 @@
 		"purchaseButton": "Purchase",
 		"pay": "Pay",
 		"product": "Product",
+		"consume": "Consume",
 		"selectPayment": "Select Payment Type",
 		"unrealWallet": "UnReal Wallet",
 		"convertPrimo": " Auto convert to primogem ?",
