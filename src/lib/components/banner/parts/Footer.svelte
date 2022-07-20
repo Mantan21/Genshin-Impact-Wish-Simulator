@@ -66,29 +66,27 @@
 		</div>
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
-				<button class="single" on:click={handleSingleRollClick}>
-					<div class="top">Wish x1</div>
+				<button class="single wish-button" on:click={handleSingleRollClick}>
+					<div class="top">Wish ×1</div>
 					<div class="bottom">
 						<Icon type={fateType} />
-						<span style="margin-left: 7px">
-							x
-							<span class:red={fateQty < 1 && !$unlimitedFates}> 1 </span></span
-						>
+						<span style="margin-left: 7px" class:red={fateQty < 1 && !$unlimitedFates}>
+							x 1
+						</span>
 					</div>
 				</button>
 			{/if}
 
-			<button class="ten" on:click={handleMultiRollClick}>
+			<button class="ten wish-button" on:click={handleMultiRollClick}>
 				{#if bannerActiveType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
-				<div class="top">Wish x10</div>
+				<div class="top">Wish ×10</div>
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px">
-						x
-						<span class:red={fateQty < multiRollPrice && !$unlimitedFates}> {multiRollPrice} </span>
-					</span>
+						<span style="margin-left: 7px" class:red={fateQty < 1 && !$unlimitedFates}>
+							x {multiRollPrice}
+						</span>
 				</div>
 			</button>
 		</div>
@@ -126,11 +124,15 @@
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 	}
 
-	button {
+	.wish-button {
 		transform: scale(1);
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
+	}
+
+	.wish-button:active {
+  		filter: brightness(85%);
 	}
 	button:active {
 		transform: scale(0.95);
@@ -147,17 +149,38 @@
 
 	.menu-button button {
 		border-radius: 50px;
-		background-color: #fff;
-		border: 3px solid #fff;
+		background-color: #e0ddd4;
+		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2),
+    0 2px 2px 0 rgba(100, 100, 100, 0.19);
 		padding: 3px 20px;
 		margin: 2px 5px;
 		transition: all 0.2s;
+		border: solid transparent;
 	}
 
-	.menu-button button:active,
 	.menu-button button:hover {
-		background-color: var(--tertiary-color);
+		border: 3px solid white;
+		transition: none;
 	}
+
+	.menu-button button:active {
+		animation-name: colourchange;
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes colourchange {
+		50% {
+			color: #ffffda;
+			background: #ede9cc;
+		}
+		100% {
+			border: 0.2rem solid darkgray;
+			color: white;
+			background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+			#e0ddd4;
+		}
+		}
 
 	.roll-button {
 		text-align: right;
