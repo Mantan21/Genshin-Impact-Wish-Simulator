@@ -113,7 +113,7 @@
 					{/if}
 					<div class="name">
 						<div class="text">
-							{$t(`character.name.${name}`)}
+							{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 						</div>
 						<div class="star">
 							{#each Array(rarity) as _, i (i)}

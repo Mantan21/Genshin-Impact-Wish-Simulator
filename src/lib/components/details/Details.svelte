@@ -208,7 +208,7 @@
 								alt={getName(featured[0].name)}
 							/>
 						</picture>
-						<caption class="name">{$t(`character.name.${featured[0].name}`)}</caption>
+						<caption class="name">{$t(`${featured[0].name}.name`)}</caption>
 						<i class="gi-{featured[0].vision} element" />
 					</div>
 				{:else}
@@ -221,7 +221,7 @@
 									class={type}
 								/>
 							</picture>
-							<caption class="name">{$t(`weapon.name.${name}`)}</caption>
+							<caption class="name">{$t(name)}</caption>
 						</div>
 					{/each}
 				{/if}
@@ -244,7 +244,7 @@
 								<i class="gi-{vision}" />
 								<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
 							</picture>
-							<caption class="name">{$t(`character.name.${name}`)}</caption>
+							<caption class="name">{$t(`${name}.name`)}</caption>
 							<i class="gi-{vision} element" />
 						</div>
 					{/each}
@@ -258,7 +258,7 @@
 									class={type}
 								/>
 							</picture>
-							<caption class="name">{$t(`weapon.name.${name}`)}</caption>
+							<caption class="name">{$t(name)}</caption>
 						</div>
 					{/each}
 				{/if}
@@ -296,7 +296,7 @@
 									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
 								</div>
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
+									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 									{#if rateup} <i class="gi-arrow-up" />{/if}
 								</div>
 							{/each}
@@ -333,7 +333,7 @@
 									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
 								</div>
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
+									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 									{#if rateup} <i class="gi-arrow-up" />{/if}
 								</div>
 							{/each}
@@ -372,7 +372,7 @@
 									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
 								</div>
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.name.${name}`) : $t(`character.name.${name}`)}
+									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
 								</div>
 							{/each}
 						</div>

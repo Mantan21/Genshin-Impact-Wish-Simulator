@@ -1,231 +1,4 @@
 {
-	"character": {
-		"text": "Character",
-		"vision": {
-			"text": "Vision",
-			"anemo": "Anemo",
-			"cryo": "Cryo",
-			"dendro": "Dendro",
-			"electro": "Electro",
-			"hydro": "Hydro",
-			"geo": "Geo",
-			"pyro": "Pyro"
-		},
-		"name": {
-			"albedo": "Albedo",
-			"amber": "Amber",
-			"arataki-itto": "Arataki Itto",
-			"barbara": "Barbara",
-			"beidou": "Beidou",
-			"bennett": "Bennett",
-			"chongyun": "Chongyun",
-			"diluc": "Diluc",
-			"diona": "Diona",
-			"eula": "Eula",
-			"fischl": "Fischl",
-			"ganyu": "Ganyu",
-			"gorou": "Gorou",
-			"hu-tao": "Hu Tao",
-			"jean": "Jean",
-			"kaedehara-kazuha": "Kaedehara Kazuha",
-			"kaeya": "Kaeya",
-			"kamisato-ayaka": "Kamisato Ayaka",
-			"kamisato-ayato": "Kamisato Ayato",
-			"keqing": "Keqing",
-			"klee": "Klee",
-			"kujou-sara": "Kujou Sara",
-			"kuki-shinobu": "Kuki Shinobu",
-			"lisa": "Lisa",
-			"mona": "Mona",
-			"ningguang": "Ningguang",
-			"noelle": "Noelle",
-			"qiqi": "Qiqi",
-			"raiden-shogun": "Raiden Shogun",
-			"razor": "Razor",
-			"rosaria": "Rosaria",
-			"sagonomiya-kokomi": "Sagonomiya Kokomi",
-			"sayu": "Sayu",
-			"shenhe": "Shenhe",
-			"shikanoin-heizou": "Shikanoin Heizou",
-			"sucrose": "Sucrose",
-			"tartaglia": "Tartaglia",
-			"thoma": "Thoma",
-			"venti": "Venti",
-			"xiangling": "Xiangling",
-			"xiao": "Xiao",
-			"xingqiu": "Xingqiu",
-			"xinyan": "Xinyan",
-			"yae-miko": "Yae Miko",
-			"yanfei": "Yanfei",
-			"yelan": "Yelan",
-			"yoimiya": "Yoimiya",
-			"yun-jin": "Yun Jin",
-			"zhongli": "Zhongli"
-		},
-		"title": {
-			"albedo": "Kreideprinz",
-			"amber": "Outrider Knights of Favonius",
-			"arataki-itto": "Hanamizaka Heroics",
-			"barbara": "Knight of Favonius Deaconess",
-			"beidou": "Uncrowned Lord of Ocean",
-			"bennett": "Trial by Fire",
-			"chongyun": "Frozen Ardor",
-			"diluc": "Master of The Dawn Winery",
-			"diona": "Kätzlein Cocktail",
-			"eula": "The Sprindrift Knight",
-			"fischl": "Prinzessin der Verurteilung",
-			"ganyu": "Plenilune Gaze",
-			"gorou": "Canine Warrior",
-			"hu-tao": "77th Master of Wangsheng Funeral Parlor",
-			"jean": "Knight of Favonius Grand Master",
-			"kaedehara-kazuha": "Scarlet Leaves Pursue Wild Waves",
-			"kaeya": "Knight of Favonius Quarter Master",
-			"kamisato-ayaka": "Frostlake Heron",
-			"kamisato-ayato": "Pillar of Fortitude",
-			"keqing": "Driving Thunder",
-			"klee": "Fleeing Sunlight",
-			"kujou-sara": "Crowfeather Kaburaya",
-			"kuki-shinobu": "Mender of Tribulations",
-			"lisa": "Knight of Favonius Librarian",
-			"mona": "Astral Reflection",
-			"ningguang": "Eclipsing Star",
-			"noelle": "Chivalric Blossom",
-			"qiqi": "Icy Resurrection",
-			"raiden-shogun": "Plane of Euthymia",
-			"razor": "Legend of Wolvendom",
-			"rosaria": "Thorny Benevolence",
-			"sagonomiya-kokomi": "Pearl of Wisdom",
-			"sayu": "Mujina Ninja",
-			"shenhe": "Lonesome Transcendence",
-			"shikanoin-heizou": "Analytical Harmoni",
-			"sucrose": "Harmless Sweetie",
-			"tartaglia": "Childe",
-			"thoma": "Protector From Afar",
-			"venti": "Singer of Skyward Sonnets",
-			"xiangling": "Exquisite Delicacy",
-			"xiao": "Vigilant Yaksha",
-			"xingqiu": "Juvenile Galant",
-			"xinyan": "Blazing Riff",
-			"yae-miko": "Astute Amusement",
-			"yanfei": "Wise Innocence",
-			"yelan": "Valley Orchid",
-			"yoimiya": "Frolicking Flames",
-			"yun-jin": "Stage Lucida",
-			"zhongli": "Vago Mundo"
-		}
-	},
-	"weapon": {
-		"text": "Weapon",
-		"bow": "Bow",
-		"catalyst": "Catalyst",
-		"claymore": "Claymore",
-		"sword": "Sword",
-		"polearm": "Polearm",
-		"name": {
-			"akuoumaru": "Akuoumaru",
-			"alley-hunter": "Alley Hunter",
-			"amos-bow": "Amos Bow",
-			"aqua-simulacra": "Aqua Simulacra",
-			"aquila-favonia": "Aquila Favonia",
-			"black-tassel": "Black Tassel",
-			"bloodtained-greatsword": "Bloodtained Greatsword",
-			"calamity-queller": "Calamity Queller",
-			"cool-steel": "Cool Steel",
-			"debate-club": "Debate Club",
-			"dragon_s-bane": "Dragon's Bane",
-			"elegy-for-the-end": "Elegy for the End",
-			"emerald-orb": "Emerald Orb",
-			"engulfing-lightning": "Engulfing Lightning",
-			"everlasting-moonglow": "Everlasting Moonglow",
-			"eye-of-perception": "Eye of Perception",
-			"favonius-codex": "Favonius Codex",
-			"favonius-greatsword": "Favonius Greatsword",
-			"favonius-lance": "Favonius Lance",
-			"favonius-sword": "Favonius Sword",
-			"favonius-warbow": "Favonius Warbow",
-			"ferrous-shadow": "Ferrous Shadow",
-			"freedom-sworn": "Freedom Sworn",
-			"haran-geppaku-futsu": "Haran Geppaku Futsu",
-			"harbinger-of-dawn": "Harbinger of Dawn",
-			"kagura_s-verity": "Kagura's Verity",
-			"lion_s-roar": "Lion's Roar",
-			"lithic-blade": "Lithic Blade",
-			"lithic-spear": "Lithic Spear",
-			"lost-prayer-to-the-sacred-winds": "Lost Prayer to the Sacred Winds",
-			"magic-guide": "Magic Guide",
-			"memory-of-dust": "Memory of Dust",
-			"mistsplitter-reforged": "Mistsplitter Reforged",
-			"mitternachts-waltz": "Mitternachts Waltz",
-			"mouun_s-moon": "Mouun's Moon",
-			"polar-star": "Polar Star",
-			"primordial-jade-cutter": "Primordial Jade Cutter",
-			"primordial-jade-winged-spear": "Primordial Jade Winged Spear",
-			"rainslasher": "Rainslasher",
-			"raven-bow": "Raven Bow",
-			"redhorn-stonethresher": "Redhorn Stonethresher",
-			"rust": "Rust",
-			"sacrificial-bow": "Sacrificial Bow",
-			"sacrificial-fragments": "Sacrificial Fragments",
-			"sacrificial-greatsword": "Sacrificial Greatsword",
-			"sacrificial-sword": "Sacrificial Sword",
-			"sharpshooter_s-oath": "Sharpshooter's Oath",
-			"skyrider-sword": "Skyrider Sword",
-			"skyward-atlas": "Skyward Atlas",
-			"skyward-blade": "Skyward Blade",
-			"skyward-harp": "Skyward Harp",
-			"skyward-pride": "Skyward Pride",
-			"skyward-spine": "Skyward Spine",
-			"slingshot": "Slingshot",
-			"song-of-broken-pines": "Song of Broken Pines",
-			"staff-of-homa": "Staff pf Homa",
-			"summit-shaper": "Summit Shaper",
-			"the-alley-flash": "The Alley Flash",
-			"the-bell": "The Bell",
-			"the-flute": "The Flute",
-			"the-stringless": "The Stringless",
-			"the-unforged": "The Unforged",
-			"the-widsith": "The Widsith",
-			"thrilling-tales-of-dragon-slayers": "Thrilling Tales of Dragon Slayers",
-			"thundering-pulse": "Thundering Pulse",
-			"vortex-vanquisher": "Vortex Vanquisher",
-			"wavebreaker_s-fin": "Wavebreaker's Fin",
-			"wine-and-song": "Wine and Song",
-			"wolf_s-gravestone": "Wolf's Gravestone"
-		}
-	},
-	"outfit": {
-		"heading": "Character Outfits",
-		"setOutfit": "Set Outfit",
-		"owned": "Already Owned",
-		"purchasePrompt": "You don't have a character for this costume yet, are you sure you want to purchase this costume?",
-		"promptInfo": "You can still use this costume after getting the right character",
-		"item": {
-			"sea-breeze-dandelion": {
-				"name": "Sea Breeze Dandelion",
-				"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."
-			},
-			"summertime-sparkle": {
-				"name": "Summertime Sparkle",
-				"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze."
-			},
-			"opulent-splendor": {
-				"name": "Opulent Splendor",
-				"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance."
-			},
-			"orchid_s-evening-gown": {
-				"name": "Orchid's Evening Gown",
-				"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace."
-			},
-			"ein-immernachtstraum": {
-				"name": "Ein Immernachtstraum",
-				"description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her."
-			},
-			"red-dead-of-night": {
-				"name": "Red Dead of Night",
-				"description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever."
-			}
-		}
-	},
 	"wish": {
 		"text": "Wish {count}",
 		"banner": {
@@ -288,6 +61,61 @@
 			"convertion": "Convertion"
 		}
 	},
+	"character": {
+		"text": "Character",
+		"vision": {
+			"text": "Vision",
+			"anemo": "Anemo",
+			"cryo": "Cryo",
+			"dendro": "Dendro",
+			"electro": "Electro",
+			"hydro": "Hydro",
+			"geo": "Geo",
+			"pyro": "Pyro"
+		}
+	},
+	"weapon": {
+		"text": "Weapon",
+		"bow": "Bow",
+		"catalyst": "Catalyst",
+		"claymore": "Claymore",
+		"sword": "Sword",
+		"polearm": "Polearm"
+	},
+	"outfit": {
+		"heading": "Character Outfits",
+		"setOutfit": "Set Outfit",
+		"owned": "Already Owned",
+		"purchasePrompt": "You don't have a character for this costume yet, are you sure you want to purchase this costume?",
+		"promptInfo": "You can still use this costume after getting the right character",
+		"item": {
+			"sea-breeze-dandelion": {
+				"name": "Sea Breeze Dandelion",
+				"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."
+			},
+			"summertime-sparkle": {
+				"name": "Summertime Sparkle",
+				"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze."
+			},
+			"opulent-splendor": {
+				"name": "Opulent Splendor",
+				"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance."
+			},
+			"orchid_s-evening-gown": {
+				"name": "Orchid's Evening Gown",
+				"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace."
+			},
+			"ein-immernachtstraum": {
+				"name": "Ein Immernachtstraum",
+				"description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her."
+			},
+			"red-dead-of-night": {
+				"name": "Red Dead of Night",
+				"description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever."
+			}
+		}
+	},
+
 	"details": {
 		"text": "Details",
 		"increasedRate": "Increased Drop Rates",

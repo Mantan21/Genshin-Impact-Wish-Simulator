@@ -173,8 +173,10 @@
 								<div class="text anim">
 									{#if outfitName}
 										{$t(`outfit.item.${outfitName}.name`)}
+									{:else if type === 'weapon'}
+										{$t(name)}
 									{:else}
-										{$t(`${type === 'weapon' ? 'weapon' : 'character'}.${name}`)}
+										{$t(`${name}.name`)}
 									{/if}
 								</div>
 								<div class="star">

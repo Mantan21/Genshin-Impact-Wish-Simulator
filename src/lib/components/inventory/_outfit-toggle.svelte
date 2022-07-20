@@ -48,7 +48,7 @@
 						<img src={defaultPath} alt={getName(charName)} />
 					</picture>
 					<caption>
-						<span> {$t(`character.name.${charName}`)}</span>
+						<span> {$t(`${charName}.name`)}</span>
 					</caption>
 				</button>
 			</div>

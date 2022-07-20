@@ -7,6 +7,8 @@ const mountLocale = () => {
 	supportedLocales.forEach((langID) => {
 		register(langID, () => import(`../../locales/${langID}.json`));
 	});
+	register('en-US', () => import(`../../locales/characters/en-US.json`));
+	register('en-US', () => import(`../../locales/weapons/en-US.json`));
 
 	const savedLocale = browser ? localStorage.getItem('locale') : 'en';
 	const isLocale = savedLocale && supportedLocales.includes(savedLocale);

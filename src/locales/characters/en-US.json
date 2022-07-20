@@ -1,0 +1,198 @@
+{
+	"albedo": {
+		"name": "Albedo",
+		"title": "Kreideprinz"
+	},
+	"amber": {
+		"name": "Amber",
+		"title": "Outrider Knights of Favonius"
+	},
+	"arataki-itto": {
+		"name": "Arataki Itto",
+		"title": "Hanamizaka Heroics"
+	},
+	"barbara": {
+		"name": "Barbara",
+		"title": "Knight of Favonius Deaconess"
+	},
+	"beidou": {
+		"name": "Beidou",
+		"title": "Uncrowned Lord of Ocean"
+	},
+	"bennett": {
+		"name": "Bennett",
+		"title": "Trial by Fire"
+	},
+	"chongyun": {
+		"name": "Chongyun",
+		"title": "Frozen Ardor"
+	},
+	"diluc": {
+		"name": "Diluc",
+		"title": "Master of The Dawn Winery"
+	},
+	"diona": {
+		"name": "Diona",
+		"title": "Kätzlein Cocktail"
+	},
+	"eula": {
+		"name": "Eula",
+		"title": "The Sprindrift Knight"
+	},
+	"fischl": {
+		"name": "Fischl",
+		"title": "Prinzessin der Verurteilung"
+	},
+	"ganyu": {
+		"name": "Ganyu",
+		"title": "Plenilune Gaze"
+	},
+	"gorou": {
+		"name": "Gorou",
+		"title": "Canine Warrior"
+	},
+	"hu-tao": {
+		"name": "Hu Tao",
+		"title": "77th Master of Wangsheng Funeral Parlor"
+	},
+	"jean": {
+		"name": "Jean",
+		"title": "Knight of Favonius Grand Master"
+	},
+	"kaedehara-kazuha": {
+		"name": "Kaedehara Kazuha",
+		"title": "Scarlet Leaves Pursue Wild Waves"
+	},
+	"kaeya": {
+		"name": "Kaeya",
+		"title": "Knight of Favonius Quarter Master"
+	},
+	"kamisato-ayaka": {
+		"name": "Kamisato Ayaka",
+		"title": "Frostlake Heron"
+	},
+	"kamisato-ayato": {
+		"name": "Kamisato Ayato",
+		"title": "Pillar of Fortitude"
+	},
+	"keqing": {
+		"name": "Keqing",
+		"title": "Driving Thunder"
+	},
+	"klee": {
+		"name": "Klee",
+		"title": "Fleeing Sunlight"
+	},
+	"kujou-sara": {
+		"name": "Kujou Sara",
+		"title": "Crowfeather Kaburaya"
+	},
+	"kuki-shinobu": {
+		"name": "Kuki Shinobu",
+		"title": "Mender of Tribulations"
+	},
+	"lisa": {
+		"name": "Lisa",
+		"title": "Knight of Favonius Librarian"
+	},
+	"mona": {
+		"name": "Mona",
+		"title": "Astral Reflection"
+	},
+	"ningguang": {
+		"name": "Ningguang",
+		"title": "Eclipsing Star"
+	},
+	"noelle": {
+		"name": "Noelle",
+		"title": "Chivalric Blossom"
+	},
+	"qiqi": {
+		"name": "Qiqi",
+		"title": "Icy Resurrection"
+	},
+	"raiden-shogun": {
+		"name": "Raiden Shogun",
+		"title": "Plane of Euthymia"
+	},
+	"razor": {
+		"name": "Razor",
+		"title": "Legend of Wolvendom"
+	},
+	"rosaria": {
+		"name": "Rosaria",
+		"title": "Thorny Benevolence"
+	},
+	"sagonomiya-kokomi": {
+		"name": "Sagonomiya Kokomi",
+		"title": "Pearl of Wisdom"
+	},
+	"sayu": {
+		"name": "Sayu",
+		"title": "Mujina Ninja"
+	},
+	"shenhe": {
+		"name": "Shenhe",
+		"title": "Lonesome Transcendence"
+	},
+	"shikanoin-heizou": {
+		"name": "Shikanoin Heizou",
+		"title": "Analytical Harmoni"
+	},
+	"sucrose": {
+		"name": "Sucrose",
+		"title": "Harmless Sweetie"
+	},
+	"tartaglia": {
+		"name": "Tartaglia",
+		"title": "Childe"
+	},
+	"thoma": {
+		"name": "Thoma",
+		"title": "Protector From Afar"
+	},
+	"venti": {
+		"name": "Venti",
+		"title": "Singer of Skyward Sonnets"
+	},
+	"xiangling": {
+		"name": "Xiangling",
+		"title": "Exquisite Delicacy"
+	},
+	"xiao": {
+		"name": "Xiao",
+		"title": "Vigilant Yaksha"
+	},
+	"xingqiu": {
+		"name": "Xingqiu",
+		"title": "Juvenile Galant"
+	},
+	"xinyan": {
+		"name": "Xinyan",
+		"title": "Blazing Riff"
+	},
+	"yae-miko": {
+		"name": "Yae Miko",
+		"title": "Astute Amusement"
+	},
+	"yanfei": {
+		"name": "Yanfei",
+		"title": "Wise Innocence"
+	},
+	"yelan": {
+		"name": "Yelan",
+		"title": "Valley Orchid"
+	},
+	"yoimiya": {
+		"name": "Yoimiya",
+		"title": "Frolicking Flames"
+	},
+	"yun-jin": {
+		"name": "Yun Jin",
+		"title": "Stage Lucida"
+	},
+	"zhongli": {
+		"name": "Zhongli",
+		"title": "Vago Mundo"
+	}
+}
