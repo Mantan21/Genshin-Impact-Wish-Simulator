@@ -275,6 +275,7 @@
 
 	.top {
 		font-size: 2rem;
+		white-space: nowrap;
 	}
 
 	.weapon-item {

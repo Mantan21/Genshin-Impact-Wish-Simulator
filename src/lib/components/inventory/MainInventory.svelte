@@ -204,7 +204,7 @@
 </script>
 
 <svelte:head>
-	<title>Inventory | {APP_TITLE}</title>
+	<title>{$t(`inventory.text`)} | {$t('site.title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 <InventoryDetails
@@ -235,7 +235,7 @@
 					on:click={() => select('character')}
 				>
 					<i class="gi-character" />
-					{$mobileMode ? '' : $t('character.text')}
+					{$mobileMode ? '' : $t('character')}
 				</button>
 				<button
 					class="nav-link"
@@ -243,7 +243,7 @@
 					on:click={() => select('weapon')}
 				>
 					<i class="gi-weapon" />
-					{$mobileMode ? '' : $t('weapon.text')}
+					{$mobileMode ? '' : $t('weapon')}
 				</button>
 			</nav>
 		</div>
@@ -338,7 +338,7 @@
 						<label for="showAll">
 							<i>✔</i>
 							{$t(`inventory.showAllOption`, {
-								values: { item: $t(`${activeItem}.text`), qty: dataQty }
+								values: { item: $t(activeItem), qty: dataQty }
 							})}
 						</label>
 					</div>

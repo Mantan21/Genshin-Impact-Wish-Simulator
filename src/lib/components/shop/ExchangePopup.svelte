@@ -151,7 +151,7 @@
 
 <PopUp
 	{show}
-	title={fundType === 'genesis' ? $t('shop.exchangeHeading') : $t('shop.purchaseHeading')}
+	title={fundType !== 'genesis' ? $t('shop.exchangeHeading') : $t('shop.purchaseHeading')}
 	on:cancel={cancelBuy}
 	on:confirm={buyHandle}
 	confirmText={$t('shop.purchaseButton')}
@@ -243,7 +243,7 @@
 				/>
 				{#if fundType === 'genesis' && !outfit}
 					<div class="consume" style="display: inline-flex; align-items:center">
-						Consume
+						{$t('shop.consume')}
 						<Icon type="genesis" />
 						<span class:red={$genesis < 1}> {rangeVal}</span>
 					</div>

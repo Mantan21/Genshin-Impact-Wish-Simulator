@@ -16,7 +16,7 @@
 	});
 </script>
 
-<PopUp {show} title="Genshin Impact Wish Simulator" button="confirm" on:confirm={closeDisclaimer}>
+<PopUp {show} title={$t('site.title')} button="confirm" on:confirm={closeDisclaimer}>
 	<section>
 		<p class="sp">{$t('site.fanmade')}</p>
 		<div class="updates" bind:this={content}>

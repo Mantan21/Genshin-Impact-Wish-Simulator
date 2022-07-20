@@ -188,7 +188,7 @@
 			{/if}
 
 			{#if ['events', 'weapons'].includes(banner)}
-				<h2>{$t('details.increasedRate')}</h2>
+				<h2><span> {$t('details.increasedRate')} </span> <span class="line" /></h2>
 
 				<h3 class="star5">
 					<div class="star">
@@ -263,7 +263,7 @@
 					{/each}
 				{/if}
 			{/if}
-			<h2>{$t('details.wishDetails')}</h2>
+			<h2><span>{$t('details.wishDetails')} </span> <span class="line" /></h2>
 
 			<Description bannerType={banner} data={items} bannerName={bannerTitle} />
 
@@ -293,7 +293,7 @@
 						<div class="row">
 							{#each drop5star as { name, type, rateup }}
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+									{$t(type)}
 								</div>
 								<div class="cell">
 									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
@@ -330,7 +330,7 @@
 						<div class="row">
 							{#each drop4star as { name, type, rateup }}
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+									{$t(type)}
 								</div>
 								<div class="cell">
 									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
@@ -369,7 +369,7 @@
 						<div class="row">
 							{#each drop3star as { name, type }}
 								<div class="cell">
-									{type === 'weapon' ? $t(`weapon.text`) : $t(`character.text`)}
+									{$t(type)}
 								</div>
 								<div class="cell">
 									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
@@ -384,14 +384,19 @@
 </section>
 
 <style>
-	h1.weapons :global(span),
-	span {
-		color: #cf5e47;
+	h1.weapons :global(span) {
+		color: #ef7c1aff;
 	}
-
-	h1 :global(span.invocation),
 	.beginner :global(span) {
 		color: #cba885;
+	}
+
+	h1.standard :global(span) {
+		color: #757acdff;
+	}
+
+	span {
+		color: #cf5e47;
 	}
 
 	h1 :global(span.starglitter) {
@@ -505,21 +510,33 @@
 		font-weight: 500;
 		padding: 1rem 0;
 		margin: 1.5rem 0 0.5rem;
-		position: relative;
+		display: flex;
 	}
 	:global(.mobile) h2 {
 		font-size: 1.2rem;
 		margin: 0.5rem 0;
 	}
 
-	h2::after {
+	h2 span:not(.line) {
+		color: var(--text-color);
+		width: fit-content;
+		white-space: nowrap;
+		padding-right: 1rem;
+	}
+
+	h2 span.line {
+		width: 100%;
+		position: relative;
+	}
+
+	h2 span.line::after {
 		content: '';
 		display: block;
 		position: absolute;
 		right: 0;
 		top: 50%;
 		transform: translateY(-50%);
-		width: calc(100% - 17rem);
+		width: 100%;
 		height: 0.1rem;
 		background-color: #d1cfcc;
 	}

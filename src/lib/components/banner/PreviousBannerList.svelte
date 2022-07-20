@@ -214,7 +214,7 @@
 					>
 						{$t('wish.banner.group')} / {groupby === 'version'
 							? $t(`site.version`)
-							: $t(`${groupby}.text`)}
+							: $t(`${groupby}`)}
 
 						{#if showGroup}
 							<i class="gi-caret-up" />
@@ -231,7 +231,7 @@
 									class:selected={groupby == val}
 									on:click|preventDefault={() => selectGroup(val, false)}
 								>
-									{val === 'version' ? $t(`site.version`) : $t(`${val}.text`)}
+									{val === 'version' ? $t(`site.version`) : $t(`${val}`)}
 								</a>
 							{/each}
 						</div>

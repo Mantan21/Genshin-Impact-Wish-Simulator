@@ -60,7 +60,7 @@
 
 				{#if $selectedCourse.name}
 					<div class="selected" class:fill={$fatePoint === 2}>
-						{$t('wish.banner.courseSetFor', {
+						{$t('wish.epitomizedPath.courseSetFor', {
 							values: { selectedCourse: $t($selectedCourse.name) }
 						})}
 					</div>
