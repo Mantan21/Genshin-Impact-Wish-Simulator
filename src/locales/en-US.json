@@ -1,6 +1,6 @@
 {
 	"wish": {
-		"text": "Wish {count}",
+		"rollButton": "Wish {count}",
 		"banner": {
 			"text": "Banner",
 			"allBanner": "All Banners",
