@@ -1,8 +1,3 @@
-<!-- <script>
-	import Limit from '$lib/components/utility/Limit.svelte';
-</script>
-
-<Limit /> -->
 <script>
 	// Packagae
 	import { isLoading } from 'svelte-i18n';

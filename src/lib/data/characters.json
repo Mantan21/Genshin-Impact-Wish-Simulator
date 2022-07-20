@@ -8,7 +8,6 @@
 					"name": "albedo",
 					"vision": "geo",
 					"limited": true,
-					"title": "Kreideprinz",
 					"wishBoxPosition": {
 						"l": 22,
 						"t": 72,
@@ -19,7 +18,6 @@
 					"name": "arataki-itto",
 					"vision": "geo",
 					"limited": true,
-					"title": "Hanamizaka Heroics",
 					"wishBoxPosition": {
 						"t": 85,
 						"l": 75,
@@ -28,14 +26,12 @@
 				},
 				{
 					"name": "diluc",
-					"vision": "pyro",
-					"title": "The Dark Side of Dawn"
+					"vision": "pyro"
 				},
 				{
 					"name": "eula",
 					"vision": "cryo",
 					"limited": true,
-					"title": "The Sprindrift Knight",
 					"wishBoxPosition": {
 						"t": 83,
 						"h": 200
@@ -45,7 +41,6 @@
 					"name": "ganyu",
 					"vision": "cryo",
 					"limited": true,
-					"title": "Plenilune Gaze",
 					"wishBoxPosition": {
 						"t": 79,
 						"h": 175,
@@ -56,7 +51,6 @@
 					"name": "hu-tao",
 					"vision": "pyro",
 					"limited": true,
-					"title": "77th Master of Wangsheng Funeral Parlor",
 					"wishBoxPosition": {
 						"l": -110,
 						"h": 200,
@@ -66,7 +60,6 @@
 				{
 					"name": "jean",
 					"vision": "anemo",
-					"title": "Der Löwenzahn",
 					"wishBoxPosition": {
 						"t": 80,
 						"h": 200
@@ -76,7 +69,6 @@
 					"name": "kaedehara-kazuha",
 					"vision": "anemo",
 					"limited": true,
-					"title": "Scarlet Leaves Pursue Wild Waves",
 					"wishBoxPosition": {
 						"h": 230,
 						"t": 90,
@@ -87,7 +79,6 @@
 					"name": "kamisato-ayaka",
 					"vision": "cryo",
 					"limited": true,
-					"title": "Frostlake Heron",
 					"wishBoxPosition": {
 						"l": 40
 					}
@@ -96,7 +87,6 @@
 					"name": "kamisato-ayato",
 					"vision": "hydro",
 					"limited": true,
-					"title": "Pillar of Fortitude",
 					"wishBoxPosition": {
 						"h": 210,
 						"l": 100,
@@ -106,7 +96,6 @@
 				{
 					"name": "keqing",
 					"vision": "electro",
-					"title": "Driving Thunder",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 25
@@ -116,7 +105,6 @@
 					"name": "klee",
 					"vision": "pyro",
 					"limited": true,
-					"title": "Spark Knight",
 					"wishBoxPosition": {
 						"t": 43,
 						"h": 160,
@@ -126,7 +114,6 @@
 				{
 					"name": "mona",
 					"vision": "hydro",
-					"title": "Astral Reflection",
 					"wishBoxPosition": {
 						"l": 35,
 						"h": 190
@@ -135,7 +122,6 @@
 				{
 					"name": "qiqi",
 					"vision": "cryo",
-					"title": "Icy Resurrection",
 					"wishBoxPosition": {
 						"t": 55
 					}
@@ -144,7 +130,6 @@
 					"name": "raiden-shogun",
 					"limited": true,
 					"vision": "electro",
-					"title": "Plane of Euthymia",
 					"wishBoxPosition": {
 						"t": 80,
 						"l": 95,
@@ -155,7 +140,6 @@
 					"name": "sagonomiya-kokomi",
 					"vision": "hydro",
 					"limited": true,
-					"title": "Pearl of Wisdom",
 					"wishBoxPosition": {
 						"h": 190,
 						"l": 65
@@ -165,7 +149,6 @@
 					"name": "shenhe",
 					"limited": true,
 					"vision": "cryo",
-					"title": "Lonesome Transcendence",
 					"wishBoxPosition": {
 						"h": 190,
 						"l": -15,
@@ -176,7 +159,6 @@
 					"name": "tartaglia",
 					"vision": "hydro",
 					"limited": true,
-					"title": "Childe",
 					"wishBoxPosition": {
 						"l": 120,
 						"h": 225,
@@ -187,7 +169,6 @@
 					"name": "venti",
 					"vision": "anemo",
 					"limited": true,
-					"title": "Windborne Bard",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 90
@@ -197,7 +178,6 @@
 					"name": "xiao",
 					"vision": "anemo",
 					"limited": true,
-					"title": "Vigilant Yaksha",
 					"wishBoxPosition": {
 						"t": 50
 					}
@@ -206,7 +186,6 @@
 					"name": "yae-miko",
 					"vision": "electro",
 					"limited": true,
-					"title": "Astute Amusement",
 					"wishBoxPosition": {
 						"h": 210,
 						"t": 87,
@@ -217,7 +196,6 @@
 					"name": "yelan",
 					"vision": "hydro",
 					"limited": true,
-					"title": "Valley Orchid",
 					"wishBoxPosition": {
 						"h": 220,
 						"t": 82,
@@ -228,7 +206,6 @@
 					"name": "yoimiya",
 					"vision": "pyro",
 					"limited": true,
-					"title": "Frolicking Flames",
 					"wishBoxPosition": {
 						"t": 66,
 						"l": 40
@@ -238,7 +215,6 @@
 					"name": "zhongli",
 					"vision": "geo",
 					"limited": true,
-					"title": "Vago Mundo",
 					"wishBoxPosition": {
 						"t": 94,
 						"l": 80,
@@ -255,7 +231,6 @@
 					"rarity": 4,
 					"vision": "pyro",
 					"release": "1.0-1",
-					"title": "Champion Glider",
 					"wishBoxPosition": {
 						"t": 60,
 						"l": 70
@@ -265,7 +240,6 @@
 					"name": "barbara",
 					"vision": "hydro",
 					"release": "1.0-1",
-					"title": "Shining Starlet",
 					"wishBoxPosition": {
 						"t": 70
 					}
@@ -273,14 +247,12 @@
 				{
 					"name": "beidou",
 					"vision": "electro",
-					"release": "1.0-1",
-					"title": "Uncrowned Lord of Ocean"
+					"release": "1.0-1"
 				},
 				{
 					"name": "bennett",
 					"vision": "pyro",
 					"release": "1.0-1",
-					"title": "Trial by Fire",
 					"wishBoxPosition": {
 						"l": -22,
 						"t": 55,
@@ -291,7 +263,6 @@
 					"name": "chongyun",
 					"vision": "cryo",
 					"release": "1.0-1",
-					"title": "Frozen Ardor",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 40,
@@ -302,7 +273,6 @@
 					"name": "diona",
 					"vision": "cryo",
 					"release": "1.0-1",
-					"title": "Kätzlein Cocktail",
 					"wishBoxPosition": {
 						"t": 50,
 						"l": 80,
@@ -313,7 +283,6 @@
 					"name": "fischl",
 					"vision": "electro",
 					"release": "1.0-1",
-					"title": "Prinzessin der Verurteilung",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 35
@@ -323,7 +292,6 @@
 					"name": "gorou",
 					"vision": "geo",
 					"release": "2.3-2",
-					"title": "Canine Warrior",
 					"wishBoxPosition": {
 						"l": 100,
 						"h": 165,
@@ -334,7 +302,6 @@
 					"name": "kaeya",
 					"vision": "cryo",
 					"release": "1.0-1",
-					"title": "Frostblade",
 					"wishBoxPosition": {
 						"l": 20,
 						"t": 82,
@@ -345,7 +312,6 @@
 					"name": "kujou-sara",
 					"vision": "electro",
 					"release": "2.1-1",
-					"title": "Crowfeather Kaburaya",
 					"wishBoxPosition": {
 						"h": 210,
 						"t": 85
@@ -355,7 +321,6 @@
 					"name": "kuki-shinobu",
 					"vision": "electro",
 					"release": "2.7-2",
-					"title": "Mender of Tribulations",
 					"wishBoxPosition": {
 						"h": 160,
 						"t": 66,
@@ -365,18 +330,15 @@
 				{
 					"name": "lisa",
 					"vision": "electro",
-					"release": "1.0-1",
-					"title": "Rose Witch"
+					"release": "1.0-1"
 				},
 				{
 					"name": "ningguang",
 					"vision": "geo",
-					"release": "1.0-1",
-					"title": "Eclipsing Star"
+					"release": "1.0-1"
 				},
 				{
 					"name": "noelle",
-					"title": "Chivalric Blossom",
 					"vision": "geo",
 					"release": "1.0-1",
 					"wishBoxPosition": {
@@ -387,7 +349,6 @@
 					"name": "razor",
 					"vision": "electro",
 					"release": "1.0-1",
-					"title": "Wolf Boy",
 					"wishBoxPosition": {
 						"l": -5,
 						"t": 65
@@ -397,7 +358,6 @@
 					"name": "rosaria",
 					"vision": "cryo",
 					"release": "1.4-2",
-					"title": "Thorny Benevolence",
 					"wishBoxPosition": {
 						"h": 190,
 						"t": 77,
@@ -408,7 +368,6 @@
 					"name": "sayu",
 					"vision": "anemo",
 					"release": "2.0-2",
-					"title": "Mujina Ninja",
 					"wishBoxPosition": {
 						"t": 63,
 						"h": 185,
@@ -420,7 +379,6 @@
 					"name": "shikanoin-heizou",
 					"vision": "anemo",
 					"release": "2.8-1",
-					"title": "Analytical Harmoni",
 					"wishBoxPosition": {
 						"t": 65,
 						"l": 25
@@ -430,7 +388,6 @@
 					"name": "sucrose",
 					"vision": "anemo",
 					"release": "1.0-1",
-					"title": "Harmless Sweetie",
 					"wishBoxPosition": {
 						"h": 175,
 						"t": 72
@@ -440,7 +397,6 @@
 					"name": "thoma",
 					"vision": "pyro",
 					"release": "2.2-2",
-					"title": "Protector From Afar",
 					"wishBoxPosition": {
 						"l": 80,
 						"h": 160,
@@ -451,7 +407,6 @@
 					"name": "xiangling",
 					"vision": "pyro",
 					"release": "1.0-1",
-					"title": "Chef De Cuisine",
 					"wishBoxPosition": {
 						"l": 120,
 						"t": 66,
@@ -462,7 +417,6 @@
 					"name": "xingqiu",
 					"vision": "hydro",
 					"release": "1.0-1",
-					"title": "Juvenile Galant",
 					"wishBoxPosition": {
 						"h": 200,
 						"t": 80,
@@ -473,7 +427,6 @@
 					"name": "xinyan",
 					"vision": "pyro",
 					"release": "1.0-1",
-					"title": "Blazing Riff",
 					"wishBoxPosition": {
 						"h": 200,
 						"t": 72
@@ -483,7 +436,6 @@
 					"name": "yanfei",
 					"vision": "pyro",
 					"release": "1.0-1",
-					"title": "Wise Innocence",
 					"wishBoxPosition": {
 						"l": 160,
 						"t": 70
@@ -493,7 +445,6 @@
 					"name": "yun-jin",
 					"vision": "geo",
 					"release": "2.4-1",
-					"title": "Stage Lucida",
 					"wishBoxPosition": {
 						"h": 165,
 						"l": 70,
