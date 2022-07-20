@@ -13,7 +13,7 @@
 	import TopNavParent from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
 	import Icon from '../utility/Icon.svelte';
-	import Button from '../utility/Button.svelte';
+	import ButtonPopup from '../utility/ButtonPopup.svelte';
 	import WelkinPopup from './WelkinPopup.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 
@@ -115,7 +115,7 @@
 						{#if isOwned}
 							<span class="owned">{$t('outfit.owned')}</span>
 						{:else}
-							<Button
+							<ButtonPopup
 								text={$t('shop.purchaseButton')}
 								type="confirm"
 								on:click={() => selectItem(outfitsForThisVersion)}
@@ -166,7 +166,7 @@
 								}
 							})}
 						</div>
-						<Button
+						<ButtonPopup
 							text={$t('shop.purchaseButton')}
 							type="confirm"
 							on:click={() => {

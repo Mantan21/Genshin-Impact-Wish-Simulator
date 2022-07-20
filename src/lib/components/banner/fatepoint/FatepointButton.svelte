@@ -68,7 +68,7 @@
 
 	.point-number {
 		border-radius: 50px;
-		background-color: #fff;
+		background-color: #ece4d9;
 		border: 3px solid #fff;
 		padding: 0.2rem;
 		width: 100%;
@@ -97,8 +97,13 @@
 	}
 
 	:global(.mobile) button {
+		font-size: 90%;
+		padding: 0 0.2rem;
 		margin-top: auto;
 		margin-bottom: 7.8%;
+	}
+	:global(.mobile) span:not(.small) {
+		font-size: 120%;
 	}
 	:global(.mobile) .point-number {
 		padding: 0.1rem;

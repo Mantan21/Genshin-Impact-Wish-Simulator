@@ -193,7 +193,7 @@
 	}
 
 	.detail:hover {
-		background-color: #e2d7b6;
+		background-color: #e0ddd4;
 		color: rgba(0, 0, 0, 1);
 	}
 </style>
