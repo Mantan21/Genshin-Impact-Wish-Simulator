@@ -17,7 +17,7 @@
 		border-radius: 50px;
 		background-color: #e0ddd4;
 		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2), 0 2px 2px 0 rgba(100, 100, 100, 0.19);
-		padding: 3px 20px;
+		padding: 0.19rem 1.3rem;
 		margin: 2px 5px;
 		transition: all 0.2s;
 		border: solid transparent;
@@ -51,14 +51,12 @@
 	}
 
 	:global(.mobile) button {
-		padding: 1.5px 11px;
 		margin: 1px 2px;
-		font-size: 90%;
+		font-size: 95%;
 	}
 
 	@media screen and (max-width: 900px) {
 		button {
-			padding: 2px 15px;
 			margin: 2px 5px;
 		}
 	}
@@ -66,7 +64,6 @@
 	@media screen and (max-width: 400px) {
 		button {
 			font-size: 120%;
-			padding: 1px 10px;
 			margin: 1px 2px;
 		}
 	}

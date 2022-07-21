@@ -189,6 +189,9 @@
 </div>
 
 <style>
+	.shr {
+		width: 100%;
+	}
 	.shr span {
 		display: inline-flex;
 		align-items: center;

@@ -35,7 +35,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.2em 2.5em 0.3em 0.1em;
+		padding: 0.2em 3em 0.3em 0.1em;
 		transition: all 0.2s;
 	}
 

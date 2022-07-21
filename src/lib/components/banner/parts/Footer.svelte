@@ -20,7 +20,7 @@
 	import { outfits } from '$lib/data/outfits.json';
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
-	import FatepointButton from '../fatepoint/FatepointButton.svelte';
+	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
@@ -61,7 +61,7 @@
 <div id="footer" style="width: 100%; height: 100%">
 	<div class="footer-info">
 		{#if !$mobileMode}
-			<FatepointButton />
+			<EpitomizedButton />
 			<div class="wish">
 				<div class="starglitter">
 					<Icon type="starglitter" />
@@ -219,12 +219,15 @@
 	:global(.mobile) .row {
 		padding: 0;
 	}
+
+	:global(.mobile .menu-button) {
+		padding-left: 1%;
+		white-space: nowrap;
+	}
 	:global(.mobile) .roll-button {
 		margin-right: 40px !important;
 	}
 	:global(.mobile) .roll-button button {
-		margin-right: -0.7rem !important;
-		margin-left: -0.7rem !important;
 		font-size: 0.75rem;
 	}
 	:global(.mobile) .roll-button :global(img) {
@@ -243,8 +246,7 @@
 		}
 
 		.roll-button button {
-			width: 180px;
-			height: 40px;
+			width: 175px;
 			margin: 0;
 		}
 		.roll-button :global(img) {
@@ -269,7 +271,6 @@
 	@media screen and (max-width: 400px) {
 		.roll-button button {
 			width: 140px;
-			height: 30px;
 			margin: 0;
 		}
 		.roll-button :global(img) {

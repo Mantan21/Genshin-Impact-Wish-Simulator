@@ -4,8 +4,8 @@
 	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import MainMenu from '$lib/components/menu/MainMenu.svelte';
-	import FatepointButton from '../fatepoint/FatepointButton.svelte';
-	import FatepointPopup from '../fatepoint/FatepointPopup.svelte';
+	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
+	import EpitomizedPopup from '../epitomizedPath/EpitomizedPopup.svelte';
 
 	import playSfx from '$lib/functions/audio';
 	import browserState from '$lib/functions/browserState';
@@ -50,7 +50,7 @@
 	};
 </script>
 
-<FatepointPopup />
+<EpitomizedPopup />
 <MainMenu show={showMenu} on:close={handleMenu} />
 
 <div id="header" style={headerHeightstyle}>
@@ -112,7 +112,7 @@
 		{/each}
 
 		{#if $mobileMode}
-			<FatepointButton />
+			<EpitomizedButton />
 		{/if}
 	</div>
 </div>

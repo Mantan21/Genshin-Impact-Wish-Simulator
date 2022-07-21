@@ -31,27 +31,33 @@
 		src="//acacdn.com/script/atg.js"
 		czid="v1xd6wvvpe"></script> -->
 
-{#if $isMobile}
-	<!-- BEGIN ADREACTOR CODE -->
-	<script data-cfasync="false">
-		var _avp = _avp || [];
-		(function () {
-			var s = document.createElement('script');
-			s.type = 'text/javascript';
-			s.async = true;
-			s.src = window.location.protocol + '//adserver.adreactor.com/js/libcode3.js';
-			var x = document.getElementsByTagName('script')[0];
-			x.parentNode.insertBefore(s, x);
-		})();
-	</script>
-	<!-- END ADREACTOR CODE -->
-{:else if head && !dev}
-	<script
-		type="text/javascript"
-		src="//pl17416355.profitablecpmgate.com/3e/70/98/3e7098724a8a6321d737e1bd39d9ffed.js"></script>
+{#if head && !dev}
+	{#if $isMobile}
+		<!-- BEGIN ADREACTOR CODE -->
+		<script data-cfasync="false">
+			var _avp = _avp || [];
+			(function () {
+				var s = document.createElement('script');
+				s.type = 'text/javascript';
+				s.async = true;
+				s.src = window.location.protocol + '//adserver.adreactor.com/js/libcode3.js';
+				var x = document.getElementsByTagName('script')[0];
+				x.parentNode.insertBefore(s, x);
+			})();
+		</script>
+		<!-- END ADREACTOR CODE -->
+	{:else}
+		<!-- PopAds -->
+		<script
+			type="text/javascript"
+			src="//pl17416355.profitablecpmgate.com/3e/70/98/3e7098724a8a6321d737e1bd39d9ffed.js"></script>
+		<!-- PopAds -->
+	{/if}
+	<!-- In-Push Page -->
 	<script
 		type="text/javascript"
 		src="//pl17419889.profitablecpmgate.com/fb/35/45/fb3545e433a3f40f53c83f80f24037ec.js"></script>
+	<!-- In-Push Page -->
 {/if}
 
 {#if $isMobile && !type && !head}

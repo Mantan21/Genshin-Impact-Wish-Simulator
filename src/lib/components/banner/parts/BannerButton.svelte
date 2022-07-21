@@ -185,11 +185,12 @@
 
 	/* mobile */
 	:global(.mobile) button {
-		transform: scale(0.93);
-		margin: 0.2rem 0;
+		transform: scale(0.88);
+		margin: 2.5% 0;
+		aspect-ratio: 2.2/1;
 	}
 
 	:global(.mobile) button.active {
-		transform: scale(0.96);
+		transform: scale(0.9);
 	}
 </style>
