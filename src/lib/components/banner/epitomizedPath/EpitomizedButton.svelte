@@ -15,7 +15,7 @@
 	import { localFatePoint } from '$lib/store/localstore';
 	import { noticeMark } from '$lib/functions/noticeMark';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
-	import FatepointIcon from './FatepointIcon.svelte';
+	import EpitomizedIcon from './EpitomizedIcon.svelte';
 
 	$: isWeapon = $bannerList[$bannerActive].type === 'weapons';
 
@@ -50,7 +50,7 @@
 {#if $isFatepointSystem && isWeapon}
 	<button class="container" on:click={handleClick}>
 		<NoticeMark name="fatepoint{$patchVersion}-{$bannerPhase}" />
-		<FatepointIcon active={$fatePoint === 2} />
+		<EpitomizedIcon active={$fatePoint === 2} />
 		<div class="point-number">
 			{#if $selectedCourse.name}
 				<span>{$fatePoint}</span>/2

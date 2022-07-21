@@ -19,6 +19,7 @@
 	import FatepointSVG from './FatepointSVG.svelte';
 	import InventoryItem from '$lib/components/inventory/InventoryItem.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import ButtonPopup from '$lib/components/utility/ButtonPopup.svelte';
 
 	$: half = $viewportWidth < 500;
 	$: weaponName = $selectedCourse.name;
@@ -169,15 +170,13 @@
 					</div>
 					<div class="button">
 						{#if weaponName}
-							<button on:click={cancelCourse}>
-								<i class="gi-times" />
+							<ButtonPopup on:click={cancelCourse} type="cancel">
 								{$t('wish.epitomizedPath.cancelCourse')}
-							</button>
+							</ButtonPopup>
 						{:else}
-							<button on:click={setCourse}>
-								<i class="gi-circle-o" />
+							<ButtonPopup on:click={setCourse}>
 								{$t('wish.epitomizedPath.chartCourse')}
-							</button>
+							</ButtonPopup>
 						{/if}
 					</div>
 				</div>
@@ -375,20 +374,6 @@
 		margin-bottom: -1rem;
 	}
 
-	.button button {
-		border-radius: 40px;
-		color: white;
-		background-color: #4a5265;
-		display: inline-flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 5px 3rem 5px 5px;
-		transition: all 0.2s;
-	}
-
-	:global(.mobile) .button button {
-		padding: 0.2rem 2rem 0.2rem 0;
-	}
 	button i {
 		width: 2rem;
 		height: 2rem;
@@ -399,16 +384,6 @@
 		align-items: center;
 		font-size: 1rem;
 		margin-right: 2rem;
-	}
-	.button button:hover {
-		background-color: rgb(51, 57, 71);
-	}
-
-	.gi-times {
-		color: #3f9ad1;
-	}
-	.gi-circle-o {
-		color: #ffc107;
 	}
 
 	@media screen and (max-width: 800px) and (min-width: 500px) {
