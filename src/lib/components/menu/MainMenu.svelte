@@ -379,6 +379,7 @@
 		width: 100%;
 		text-align: left;
 		padding-left: 2.5rem;
+		font-size: 110%;
 	}
 
 	.menu-item {
