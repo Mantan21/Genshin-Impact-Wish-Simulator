@@ -166,6 +166,14 @@
 				"Weapon Banner Updated, <b> Freedom Sworn </b> and <b>Lost Prayers to the Sacred Winds</b> are ready to pull too!",
 				"New Outfit released! <strong>Red Dead of Night</strong> for Diluc and <strong>Ein Immernachtstraum</strong> for Fischl, purchasable on shop."
 			]
+		},
+		{
+			"date": "21-Jul-2022",
+			"featured": true,
+			"description": [
+				"<strong>Translation Features</strong> available, But now only available for <strong>EN</strong> and <strong>ID</strong>, if You want to contribute to add more translation, please go to <u><a href=\"https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator\" target=\"_blank\">Github Repository </a></u>",
+				"I need more time to work with translation for Banner. please be patient 😊"
+			]
 		}
 	]
 }
