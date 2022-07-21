@@ -1,7 +1,7 @@
 <script>
 	import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 
 	import { outfits } from '$lib/data/outfits.json';
 	import { genesis, patchVersion, primogem } from '$lib/store/stores';
@@ -78,13 +78,13 @@
 <WelkinPopup show={showWelkinPopup} />
 
 <ColumnParent>
-	<div class="content-item" bind:clientHeight={contentWidth}>
+	<div
+		class="content-item"
+		bind:clientHeight={contentWidth}
+		style="--content-width: {contentWidth}px"
+	>
 		{#if activeItem === 'outfit'}
-			<div
-				class="card outfit"
-				style="font-size:{(3.5 / 100) * contentWidth}px"
-				in:fly={{ x: 50, duration: 1000 }}
-			>
+			<div class="card outfit" in:fade={{ duration: 400 }}>
 				<img
 					class="outfit-art"
 					src="/assets/images/characters/outfit/splash-art/{name}.webp"
@@ -103,7 +103,7 @@
 					</div>
 				</div>
 
-				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
+				<div class="frame">
 					<div class="description">
 						<div class="title">{$t('shop.recomended.newOutfit')}</div>
 						<span class="name">{$t(`outfit.item.${name}.name`)}</span>
@@ -125,11 +125,7 @@
 				</div>
 			</div>
 		{:else}
-			<div
-				class="card"
-				style="font-size:{(3.5 / 100) * contentWidth}px"
-				in:fly={{ x: 50, duration: 1000 }}
-			>
+			<div class="card" in:fade={{ duration: 400 }}>
 				<img src="/assets/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
 
 				{#if dayRemaining > 0}
@@ -140,17 +136,17 @@
 						<span>({$t('shop.recomended.alreadyClaimed')})</span>
 					</div>
 				{/if}
-				<div class="frame" style="padding-right:{(5 / 100) * contentWidth}px;">
+				<div class="frame">
 					<div class="parent-amount">
 						<span>{$t('shop.recomended.instantlyGet')}</span>
-						<span class="amount" style="width:{(30 / 100) * contentWidth}px;">
+						<span class="amount">
 							32000
 							<Icon type="genesis" style="margin-bottom:-5%; width: 20%" />
 						</span>
 					</div>
 					<div class="parent-amount">
 						<span>{$t('shop.recomended.dailyGift')}</span>
-						<span class="amount" style="width:{(30 / 100) * contentWidth}px;">
+						<span class="amount">
 							8000
 							<Icon type="primogem" style="margin-bottom:-5%; width: 20%" />
 						</span>
@@ -158,7 +154,10 @@
 
 					<!-- Button -->
 					<div class="purchase-button">
-						<div class="caption" style="font-size:{(3 / 100) * contentWidth}px; margin-bottom:3%">
+						<div
+							class="caption"
+							style="font-size:calc(0.03 *  var(--content-width)); margin-bottom:3%"
+						>
 							{@html $t('shop.recomended.obtainTotal', {
 								values: {
 									totalGenesis: '<strong>32000</strong>',
@@ -205,6 +204,7 @@
 		aspect-ratio: 1000/561;
 		border-radius: 1rem;
 		overflow: hidden;
+		font-size: calc(0.035 * var(--content-width));
 	}
 
 	.remaining {
@@ -213,7 +213,7 @@
 		top: 2%;
 		left: 2%;
 		color: #b3c4e3;
-		font-size: 85%;
+		font-size: calc(0.03 * var(--content-width));
 	}
 	.remaining span {
 		color: #ffc107;
@@ -230,6 +230,7 @@
 		align-items: flex-end;
 		padding-top: 10%;
 		z-index: +3;
+		padding-right: calc(0.05 * var(--content-width));
 	}
 
 	.parent-amount {
@@ -254,6 +255,7 @@
 		margin-top: 5%;
 		border: 0.1rem solid #fff;
 		outline: 0.135rem solid #8e9cc0;
+		width: calc(0.3 * var(--content-width));
 	}
 
 	.purchase-button {
@@ -312,7 +314,7 @@
 		margin-left: auto;
 		width: 80%;
 		color: #3c4b5e;
-		font-size: 200%;
+		font-size: calc(0.07 * var(--content-width));
 		line-height: 120%;
 	}
 	span.name {
@@ -333,7 +335,7 @@
 		padding-left: 3%;
 	}
 	.details .name {
-		font-size: 220%;
+		font-size: calc(0.08 * var(--content-width));
 		width: 50%;
 		line-height: 120%;
 		margin-top: auto;
@@ -349,7 +351,7 @@
 		text-shadow: 0 0 25px #787b84;
 	}
 	.dicount {
-		font-size: 300%;
+		font-size: calc(0.11 * var(--content-width));
 		-webkit-text-stroke: 0.4px #000;
 	}
 
