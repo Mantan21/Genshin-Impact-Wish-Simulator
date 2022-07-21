@@ -198,6 +198,8 @@ h1 {
 
 .close:active {
 	transform: scale(0.9);
+	color: #fff;
+	border-color: darkgray !important;
 }
 
 .close:hover {
