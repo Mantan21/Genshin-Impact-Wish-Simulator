@@ -103,6 +103,11 @@
 		return;
 	};
 
+	const bannerLocalesID = (bannerName) => {
+		const splitted = bannerName.split('-');
+		return splitted.slice(0, -1).join('-');
+	};
+
 	const handleCLose = () => {
 		browserState.back();
 		pageActive.set('index');
@@ -250,7 +255,7 @@
 											{#if bannerName}
 												{#if ['events', 'weapons'].includes(banner)}
 													<a href="/" on:click|preventDefault={() => search(bannerName)}>
-														{$t(`wish.banner.name.${bannerName.slice(0, -2)}`)}
+														{$t(`wish.banner.name.${bannerLocalesID(bannerName)}`)}
 													</a>
 												{:else}
 													{$t(`wish.banner.name.wanderlust`)}
