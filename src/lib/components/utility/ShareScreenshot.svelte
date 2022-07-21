@@ -24,7 +24,7 @@
 	let height = 393;
 	let isFirstShare = true;
 	let obtain = false;
-	let btnTxt = page ? $t('site.share') : $t('site.screenshot');
+	let btnTxt = page ? $t('share') : $t('screenshot');
 
 	let blob;
 	const featuredItem = item ? `I got ${item}` : "Wow! I'm so lucky ";
@@ -58,7 +58,7 @@
 		playSfx();
 		obtain = false;
 		showOnProgress = true;
-		btnTxt = `${$t('site.waiting')}...`;
+		btnTxt = `${$t('waiting')}...`;
 		const node = document.querySelector('.wish-result');
 		node.classList.add('preview');
 
@@ -67,7 +67,7 @@
 		url = URL.createObjectURL(blob);
 		show = true;
 		showOnProgress = false;
-		btnTxt = page ? $t('site.share') : $t('site.screenshot');
+		btnTxt = page ? $t('share') : $t('screenshot');
 		node.classList.remove('preview');
 	};
 
@@ -171,7 +171,7 @@
 	<div class="progress" transition:fade={{ duration: 200 }}>
 		<div class="row">
 			<div class="loading" />
-			<div class="text">{$t('site.capturing')} ..</div>
+			<div class="text">{$t('capturing')} ..</div>
 		</div>
 	</div>
 {/if}
@@ -179,7 +179,7 @@
 <div class="shr">
 	{#if isFirstShare && page}
 		<span>
-			{$t('site.rewardFirstShare', { values: { qty: 16000 } })}
+			{$t('rewardFirstShare', { values: { qty: 16000 } })}
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}

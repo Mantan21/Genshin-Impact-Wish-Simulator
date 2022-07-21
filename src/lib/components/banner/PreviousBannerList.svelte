@@ -174,7 +174,7 @@
 </script>
 
 <svelte:head>
-	<title>{$t('wish.banner.allBanner')} | {$t('site.title', { default: APP_TITLE })}</title>
+	<title>{$t('wish.banner.allBanner')} | {$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 <section>
@@ -212,9 +212,7 @@
 							playSfx();
 						}}
 					>
-						{$t('wish.banner.group')} / {groupby === 'version'
-							? $t(`site.version`)
-							: $t(`${groupby}`)}
+						{$t('wish.banner.group')} / {groupby === 'version' ? $t(`version`) : $t(`${groupby}`)}
 
 						{#if showGroup}
 							<i class="gi-caret-up" />
@@ -231,7 +229,7 @@
 									class:selected={groupby == val}
 									on:click|preventDefault={() => selectGroup(val, false)}
 								>
-									{val === 'version' ? $t(`site.version`) : $t(`${val}`)}
+									{$t(val)}
 								</a>
 							{/each}
 						</div>
@@ -249,7 +247,7 @@
 						<div class="group-title">
 							<h2>
 								{groupby === 'version'
-									? `${$t('site.version')} ${group}`
+									? `${$t('version')} ${group}`
 									: groupby === 'weapon'
 									? $t(group)
 									: $t(`${group}.name`)}

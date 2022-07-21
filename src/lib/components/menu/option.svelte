@@ -96,9 +96,13 @@
 						</button>
 					{/each}
 					<button on:click|stopPropagation>
-						<span style="text-align:left;width:100%; padding: .5rem; text-align:center">
-							Suggest language
-						</span>
+						<a
+							href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/tree/master/src/locales"
+							target="_blank"
+							style="text-align:left;width:100%; padding: .5rem; text-align:center"
+						>
+							Contribute
+						</a>
 					</button>
 				</div>
 			{/if}

@@ -26,7 +26,7 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
 
-	$: title = $t('site.title', { default: APP_TITLE });
+	$: title = $t('title', { default: APP_TITLE });
 	let activeShop = 'genesis';
 	let showNavbar = true;
 	let showNavbarButton = false;

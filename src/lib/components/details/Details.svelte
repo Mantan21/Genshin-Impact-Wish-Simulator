@@ -170,7 +170,7 @@
 
 	<div class="content-details wish-result">
 		{#await Data.get($patchVersion, $bannerPhase, banner)}
-			<div class="content-details">{$t('site.waiting')}...</div>
+			<div class="content-details">{$t('waiting')}...</div>
 		{:then data}
 			{#if banner === 'standard'}
 				<h1 class="standard">

@@ -16,9 +16,9 @@
 	});
 </script>
 
-<PopUp {show} title={$t('site.title')} button="confirm" on:confirm={closeDisclaimer}>
+<PopUp {show} title={$t('title')} button="confirm" on:confirm={closeDisclaimer}>
 	<section>
-		<p class="sp">{$t('site.fanmade')}</p>
+		<p class="sp">{$t('fanmade')}</p>
 		<div class="updates" bind:this={content}>
 			{#each updates.reverse() as { description, date }, i (i)}
 				<span>
@@ -43,7 +43,7 @@
 				<span> Saweria </span>
 			</a>
 		</div>
-		<p class="credit">{$t('site.disclaimer')}</p>
+		<p class="credit">{$t('disclaimer')}</p>
 	</section>
 </PopUp>
 

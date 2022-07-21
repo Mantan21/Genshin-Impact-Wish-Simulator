@@ -4,6 +4,7 @@
 
 <script>
 	import { onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
@@ -120,7 +121,11 @@
 </script>
 
 <svelte:head>
-	<title>Wish Result for {title} et al | {APP_TITLE}</title>
+	<title>
+		{$t(`wish.result.title`, { values: { item: title } })} | {$t('title', {
+			default: APP_TITLE
+		})}
+	</title>
 
 	<meta name="title" content={metaTitle} />
 	<meta property="og:title" content={metaTitle} />

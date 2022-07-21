@@ -19,7 +19,7 @@
 	import { mobileDetect } from '$lib/functions/mobileDetect';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
-	import Ads from '$lib/components/utility/Iklan.svelte';
+	import Iklan from '$lib/components/utility/Iklan.svelte';
 
 	let isLoaded = false;
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
@@ -80,7 +80,7 @@
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
 
-	<Ads head />
+	<Iklan head />
 </svelte:head>
 
 {#if !preview}
@@ -99,6 +99,7 @@
 
 	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
+<Iklan />
 
 <style>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
