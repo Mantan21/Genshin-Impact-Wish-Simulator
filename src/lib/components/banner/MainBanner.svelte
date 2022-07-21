@@ -161,7 +161,7 @@
 </script>
 
 <svelte:head>
-	<title>{$t('site.title', { default: APP_TITLE })}</title>
+	<title>{$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 {#if showWish}

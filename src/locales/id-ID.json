@@ -1,4 +1,5 @@
 {
+	"title": "Simulator Permohonan Genshin Impact",
 	"character": "Karakter",
 	"weapon": "Senjata",
 	"vision": "Vision",
@@ -14,6 +15,19 @@
 	"claymore": "Claymore",
 	"sword": "Sword",
 	"polearm": "Polearm",
+	"extra": "Extra",
+	"obtained": "Diperoleh",
+	"waiting": "Tunggu",
+	"confirmButton": "OK",
+	"cancelButton": "Batalkan",
+	"disclaimer": "Semua aset yang digunakan di situs ini adalah milik Mihoyo.",
+	"fanmade": "Aplikasi ini murni buatan Fan, enjoy aja!",
+	"pressToContinue": "Tekan di area kosong untuk melanjutkan",
+	"share": "Bagikan",
+	"screenshot": "Ambil Gambar",
+	"capturing": "Memproses",
+	"rewardFirstShare": "Hadiah membagikan pertama kali : {qty}",
+	"version": "Versi",
 	"wish": {
 		"rollButton": "Mohon {count}",
 		"banner": {
@@ -73,7 +87,8 @@
 			"skip": "Lewati",
 			"meteorFailed": "Animasi meteor gagal dimuat",
 			"new": "Baru",
-			"convertion": "Konversi"
+			"convertion": "Konversi",
+			"title": "Hasil Permohonan untuk {item} et al"
 		}
 	},
 	"outfit": {
@@ -274,21 +289,5 @@
 		"resetPrompt": "Apakah kamu yakin untuk menghapus <strong> Semua Data </strong> dan mengembalikan aplikasi seperti semula?",
 		"resetDetail": "Tindakan ini juga akan menghapus Data Riwayat, Akumulasi Pity, Saldo dan Semua Item dari Inventaris",
 		"resetSuccess": "Berhasil me-Reset"
-	},
-	"site": {
-		"title": "Simulator Permohonan Genshin Impact",
-		"extra": "Extra",
-		"obtained": "Diperoleh",
-		"waiting": "Tunggu",
-		"confirmButton": "OK",
-		"cancelButton": "Batalkan",
-		"disclaimer": "Semua aset yang digunakan di situs ini adalah milik Mihoyo.",
-		"fanmade": "Aplikasi ini murni buatan Fan, enjoy aja!",
-		"pressToContinue": "Tekan di area kosong untuk melanjutkan",
-		"share": "Bagikan",
-		"screenshot": "Ambil Gambar",
-		"capturing": "Memproses",
-		"rewardFirstShare": "Hadiah membagikan pertama kali : {qty}",
-		"version": "Versi"
 	}
 }

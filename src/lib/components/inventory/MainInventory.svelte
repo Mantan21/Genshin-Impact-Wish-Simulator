@@ -204,7 +204,7 @@
 </script>
 
 <svelte:head>
-	<title>{$t(`inventory.text`)} | {$t('site.title', { default: APP_TITLE })}</title>
+	<title>{$t(`inventory.text`)} | {$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
 <InventoryDetails

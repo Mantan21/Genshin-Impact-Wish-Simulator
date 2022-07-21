@@ -116,7 +116,7 @@
 
 <svelte:head>
 	<title>
-		{$t(`wish.banner.${banner}`)} | {$t('site.title', { default: APP_TITLE })}
+		{$t(`wish.banner.${banner}`)} | {$t('title', { default: APP_TITLE })}
 	</title>
 </svelte:head>
 

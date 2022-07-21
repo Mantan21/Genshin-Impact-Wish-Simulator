@@ -4,9 +4,9 @@
 
 <script>
 	import { onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
-	import { getName } from '$lib/functions/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import { getOutfit } from '$lib/functions/wish/outfit';
 
@@ -20,7 +20,7 @@
 		vision: ''
 	};
 
-	$: title = getName(data.name);
+	$: title = $t(`${data.name}.name`);
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
 
@@ -59,7 +59,9 @@
 </script>
 
 <svelte:head>
-	<title>{title} | {APP_TITLE}</title>
+	<title>
+		{title} | {$t('title', { default: APP_TITLE })}
+	</title>
 
 	<meta name="title" content={APP_TITLE} />
 	<meta property="og:title" content={APP_TITLE} />

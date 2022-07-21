@@ -10,7 +10,7 @@
 	export let show = false;
 	export let title = '';
 	export let confirm = true;
-	export let confirmText = $t('site.confirmButton');
+	export let confirmText = $t('confirmButton');
 	export let button = 'all';
 	export let sfx = true;
 

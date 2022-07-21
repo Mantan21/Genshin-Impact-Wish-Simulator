@@ -1,4 +1,5 @@
 {
+	"title": "Genshin Impact Wish Simulator",
 	"character": "Character",
 	"weapon": "Weapon",
 	"vision": "Vision",
@@ -14,6 +15,19 @@
 	"claymore": "Claymore",
 	"sword": "Sword",
 	"polearm": "Polearm",
+	"extra": "Extra",
+	"obtained": "Obtained",
+	"waiting": "Waiting",
+	"confirmButton": "Confirm",
+	"cancelButton": "Cancel",
+	"disclaimer": "All assets used in this site are owned by Mihoyo.",
+	"fanmade": "This is purely a fan made Application, enjoy it !",
+	"pressToContinue": "Press anywhere in the blank area to continue",
+	"share": "Share",
+	"screenshot": "Take Picture",
+	"capturing": "Capturing",
+	"rewardFirstShare": "Reward for first share : {qty}",
+	"version": "Version",
 	"wish": {
 		"rollButton": "Wish {count}",
 		"banner": {
@@ -73,7 +87,8 @@
 			"skip": "Skip",
 			"meteorFailed": "Meteor Animation Failed to Load",
 			"new": "New",
-			"convertion": "Convertion"
+			"convertion": "Convertion",
+			"title": "Wish Result for {item} et al"
 		}
 	},
 	"outfit": {
@@ -274,21 +289,5 @@
 		"resetPrompt": "Are You sure to clear <strong> All Data </strong> and restore to default ?",
 		"resetDetail": "It also remove your History, Pity Calculation, Balance and all items from Inventory.",
 		"resetSuccess": "Reset Successful"
-	},
-	"site": {
-		"title": "Genshin Impact Wish Simulator",
-		"extra": "Extra",
-		"obtained": "Obtained",
-		"waiting": "Waiting",
-		"confirmButton": "Confirm",
-		"cancelButton": "Cancel",
-		"disclaimer": "All assets used in this site are owned by Mihoyo.",
-		"fanmade": "This is purely a fan made Application, enjoy it !",
-		"pressToContinue": "Press anywhere in the blank area to continue",
-		"share": "Share",
-		"screenshot": "Take Picture",
-		"capturing": "Capturing",
-		"rewardFirstShare": "Reward for first share : {qty}",
-		"version": "Version"
 	}
 }

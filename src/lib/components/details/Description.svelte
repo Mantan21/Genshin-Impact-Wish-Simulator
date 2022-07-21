@@ -83,7 +83,7 @@
 
 <svelte:head>
 	<title>
-		{bannerName} | {$t('site.title', { default: APP_TITLE })}
+		{bannerName} | {$t('title', { default: APP_TITLE })}
 	</title>
 </svelte:head>
 

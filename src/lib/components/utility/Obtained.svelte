@@ -48,7 +48,7 @@
 		<div class="bg" />
 		<div class="content" in:scaleFade={{ duration: 200 }}>
 			<h3 class="title">
-				{$t('site.obtained')}
+				{$t('obtained')}
 				<i class="gi-primo-star" />
 			</h3>
 
@@ -76,7 +76,7 @@
 				{/each}
 			</div>
 
-			<h4 class="msg">{$t('site.pressToContinue')}</h4>
+			<h4 class="msg">{$t('pressToContinue')}</h4>
 		</div>
 	</div>
 </section>

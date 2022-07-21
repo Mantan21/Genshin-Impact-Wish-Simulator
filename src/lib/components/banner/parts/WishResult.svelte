@@ -212,7 +212,7 @@
 									<Icon type={fateType} width={isMobile ? '50px' : '60px'} />
 								</div>
 								<div class="text">
-									<span>{$t('site.extra')}</span>
+									<span>{$t('extra')}</span>
 									Masterless {fateType}
 									<br /> x{fateQty}
 								</div>

@@ -22,7 +22,7 @@
 		<slot />
 	{:else}
 		<span>
-			{text || (type === 'confirm' ? $t('site.confirmButton') : $t('site.cancelButton'))}
+			{text || (type === 'confirm' ? $t('confirmButton') : $t('cancelButton'))}
 		</span>
 	{/if}
 </button>
