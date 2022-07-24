@@ -181,7 +181,7 @@
 		"text": "Riwayat",
 		"resetButton": "Reset",
 		"resetPromptTitle": "Reset Riwayat ?",
-		"resetPrompt": "Tindakan ini akan menghapus semua Karakter dan Senjata dimiliki yang berasal dari banner {bannerName}. <br /> Yakin untuk me-Reset ?",
+		"resetPrompt": "Tindakan ini akan menghapus semua Karakter dan Senjata dimiliki yang berasal dari banner \"{bannerName}\". <br /> Yakin untuk me-Reset ?",
 		"resetSuccess": "Berhasil me-Reset",
 		"selectWish": "Pilih Jenis Permohonan:",
 		"disclaimer": "Data kamu tidak akan pernah disimpan secara online, semua data akan disimpan ke IndexedDB yang artinya data akan disimpan pada browser, data ini tidak akan dihapus selama kamu tidak menghapusnya secara manual melalui tombol reset atau selama tidak menghapus data browser",
