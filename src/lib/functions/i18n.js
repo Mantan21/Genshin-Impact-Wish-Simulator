@@ -1,7 +1,7 @@
 import { browser } from '$app/env';
 import { init, register, getLocaleFromNavigator } from 'svelte-i18n';
 
-const supportedLocales = ['en-US', 'id-ID'];
+const supportedLocales = ['en-US', 'id-ID', 'zh-CN'];
 
 const mountLocale = () => {
 	supportedLocales.forEach((langID) => {
