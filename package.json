@@ -28,6 +28,7 @@
 		"prettier": "~2.2.1",
 		"prettier-plugin-svelte": "^2.2.0",
 		"svelte": "^3.47.0",
+		"svelte-image": "^0.2.9",
 		"svelte-preprocess": "^4.10.6"
 	},
 	"type": "module",
