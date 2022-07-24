@@ -3,7 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
-/g
+/static/g
 
 .vercel_build_output
 .vercel
