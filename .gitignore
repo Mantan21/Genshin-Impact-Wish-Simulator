@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
+/g
 
 .vercel_build_output
 .vercel
@@ -11,8 +12,6 @@ sitemap.xml
 .env
 
 README.html
-
-/src/lib/export-import/old.json
 
 ### Node ###
 # Logs
