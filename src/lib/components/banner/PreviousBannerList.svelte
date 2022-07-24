@@ -271,7 +271,7 @@
 										<div class:dual={chars.length > 1}>
 											{#each chars as { character, name }, i}
 												<img
-													src="/assets/images/banner/{patch}/{name}.webp"
+													src="/images/banner/{patch}/{name}.webp"
 													alt={getName(character)}
 													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
 													class="dual{i + 1}"
@@ -279,13 +279,10 @@
 											{/each}
 										</div>
 									{:else}
-										<img
-											src="/assets/images/banner/{patch}/{chars.name}.webp"
-											alt={getName(chars.name)}
-										/>
+										<img src="/images/banner/{patch}/{chars.name}.webp" alt={getName(chars.name)} />
 									{/if}
 									<img
-										src="/assets/images/banner/{patch}/{weapons.name}.webp"
+										src="/images/banner/{patch}/{weapons.name}.webp"
 										alt={getName(weapons.name)}
 									/>
 								</div>
@@ -313,7 +310,7 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		background-image: url('/assets/images/background/constellation.webp');
+		background-image: url('/images/background/constellation.webp');
 		background-size: cover;
 		color: var(--tertiary-color);
 		font-size: 0.97rem;

@@ -204,7 +204,7 @@
 						<picture>
 							<i class="gi-{featured[0].vision}" />
 							<img
-								src="/assets/images/characters/face/{featured[0].name}.webp"
+								src="/images/characters/face/{featured[0].name}.webp"
 								alt={getName(featured[0].name)}
 							/>
 						</picture>
@@ -216,7 +216,7 @@
 						<div class="character-card star5 weapons">
 							<picture>
 								<img
-									src="/assets/images/weapons/{type}/5star/{name}.webp"
+									src="/images/weapons/{type}/5star/{name}.webp"
 									alt={getName(name)}
 									class={type}
 								/>
@@ -242,7 +242,7 @@
 						<div class="character-card star4">
 							<picture>
 								<i class="gi-{vision}" />
-								<img src="/assets/images/characters/face/{name}.webp" alt={getName(name)} />
+								<img src="/images/characters/face/{name}.webp" alt={getName(name)} />
 							</picture>
 							<caption class="name">{$t(`${name}.name`)}</caption>
 							<i class="gi-{vision} element" />
@@ -253,7 +253,7 @@
 						<div class="character-card star4">
 							<picture>
 								<img
-									src="/assets/images/weapons/{type}/4star/{name}.webp"
+									src="/images/weapons/{type}/4star/{name}.webp"
 									alt={getName(name)}
 									class={type}
 								/>
@@ -630,10 +630,10 @@
 	}
 
 	.star5 picture {
-		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-image: url('/images/utility/5star-bg.webp');
 	}
 	.star4 picture {
-		background-image: url('/assets/images/utility/4star-bg.webp');
+		background-image: url('/images/utility/4star-bg.webp');
 	}
 
 	picture i {

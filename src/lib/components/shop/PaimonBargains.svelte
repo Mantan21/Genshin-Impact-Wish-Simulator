@@ -136,7 +136,7 @@
 		margin-top: -10%;
 		align-items: center;
 		position: relative;
-		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-image: url('/images/utility/5star-bg.webp');
 		background-size: cover;
 		border-bottom-right-radius: 1.4rem;
 		overflow: hidden;

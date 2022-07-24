@@ -50,7 +50,7 @@
 			{#each weapons.featured as { name, buttonBoxPosition, type }}
 				<img
 					in:fade
-					src="/assets/images/weapons/{type}/5star/{name}.webp"
+					src="/images/weapons/{type}/5star/{name}.webp"
 					alt="Weapon Wish"
 					style={buttonStyle(buttonBoxPosition, active)}
 				/>
@@ -58,7 +58,7 @@
 		{:else}
 			<img
 				in:fade
-				src="/assets/images/characters/banner-button/{character.character}.webp"
+				src="/images/characters/banner-button/{character.character}.webp"
 				alt="{type} Wish"
 				style={buttonStyle(character.buttonBoxPosition, active)}
 			/>

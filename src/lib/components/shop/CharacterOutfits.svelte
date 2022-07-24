@@ -40,13 +40,10 @@
 
 					<div
 						class="thumbnail"
-						style="background-image: url('/assets/images/utility/{rarity}star-bg.webp');"
+						style="background-image: url('/images/utility/{rarity}star-bg.webp');"
 					>
 						<picture class="star{rarity}">
-							<img
-								src="/assets/images/characters/outfit/thumbnail/{name}.webp"
-								alt={getName(name)}
-							/>
+							<img src="/images/characters/outfit/thumbnail/{name}.webp" alt={getName(name)} />
 						</picture>
 						<caption>
 							<span class="name">{$t(`outfit.item.${name}.name`)}</span>

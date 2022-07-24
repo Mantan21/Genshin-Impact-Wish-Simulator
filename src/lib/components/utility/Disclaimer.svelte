@@ -32,7 +32,7 @@
 		<span style="font-size: 1rem">Support</span>
 		<div class="support">
 			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">
-				<img src="/assets/images/utility/donate-kofi.png" alt="ko-fi icon" />
+				<img src="/images/utility/donate-kofi.png" alt="ko-fi icon" />
 				<span> Ko-fi </span>
 			</a>
 			<a class="saweria" href="https://saweria.co/mantan21" target="_blank">

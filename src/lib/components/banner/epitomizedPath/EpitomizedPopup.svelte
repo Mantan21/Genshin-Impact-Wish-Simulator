@@ -96,7 +96,7 @@
 	<section class="popup" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
 		<div class="popup-content">
 			<img
-				src="/assets/images/utility/fatepointbook{half ? '-half' : ''}.webp"
+				src="/images/utility/fatepointbook{half ? '-half' : ''}.webp"
 				alt="Fatepoint Background"
 			/>
 			<button

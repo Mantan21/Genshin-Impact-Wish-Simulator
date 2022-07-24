@@ -56,7 +56,7 @@
 <div id="header" style={headerHeightstyle}>
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
-			<img src="/assets/images/utility/brand.svg" alt="Brand" />
+			<img src="/images/utility/brand.svg" alt="Brand" />
 			<span>
 				{$t(`wish.banner.${$bannerList[$bannerActive]?.type}`, {
 					values: { markStart: '', markEnd: '' }
@@ -97,7 +97,7 @@
 
 	<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
 		<div class="bg" style={headerHeightstyle}>
-			<img src="/assets/images/utility/brand.svg" alt="Brand" />
+			<img src="/images/utility/brand.svg" alt="Brand" />
 		</div>
 
 		{#each $bannerList as { type, character, weapons }, i}

@@ -31,7 +31,7 @@
 	<div class="popup-donate">
 		<div class="pop-item">
 			<div class="icon">
-				<img src="/assets/images/utility/donate-ethereum.png" alt="Ethereum" />
+				<img src="/images/utility/donate-ethereum.png" alt="Ethereum" />
 			</div>
 			<div class="address">
 				<span> Ethereum ( erc20 ) </span>
@@ -46,7 +46,7 @@
 
 		<div class="pop-item">
 			<div class="icon">
-				<img src="/assets/images/utility/donate-bnb.png" alt="Binance Coin" />
+				<img src="/images/utility/donate-bnb.png" alt="Binance Coin" />
 			</div>
 			<div class="address">
 				<span> Binance Coin ( bep20 )</span>
@@ -61,7 +61,7 @@
 
 		<div class="pop-item">
 			<div class="icon">
-				<img src="/assets/images/utility/donate-solana.png" alt="Solana" />
+				<img src="/images/utility/donate-solana.png" alt="Solana" />
 			</div>
 			<div class="address">
 				<span> Solana </span>
@@ -88,11 +88,8 @@
 				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 			>
 				<div class="donate-icon">
-					<img src="/assets/images/utility/donate-kofi.png" alt="Ko-fi Icon" />
-					<img
-						src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/124px-PayPal.svg.png"
-						alt="paypal"
-					/>
+					<img src="/images/utility/donate-kofi.png" alt="Ko-fi Icon" />
+					<img src="/images/utility/paypal.png" alt="paypal" />
 				</div>
 			</div>
 			<span> Support me on Ko-fi </span>
@@ -107,7 +104,7 @@
 			>
 				<div class="donate-icon">
 					{#each ['ovo', 'gopay', 'dana', 'linkaja'] as im}
-						<img src="/assets/images/utility/donate-{im}.png" alt="{im} icon" />
+						<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
 					{/each}
 				</div>
 			</div>
@@ -128,7 +125,7 @@
 			>
 				<div class="donate-icon">
 					{#each ['btc', 'ethereum', 'bnb', 'solana'] as im}
-						<img src="/assets/images/utility/donate-{im}.png" alt="{im} icon" />
+						<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
 					{/each}
 				</div>
 			</div>

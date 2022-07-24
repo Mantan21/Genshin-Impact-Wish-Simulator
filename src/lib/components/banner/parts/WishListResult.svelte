@@ -110,7 +110,7 @@
 								<div class="pic">
 									{#if type === 'weapon'}
 										<img
-											src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+											src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 											alt={name}
 											class="wishpic {weaponType}-item"
 											style={positionToStyle(wishBoxPosition)}
@@ -131,13 +131,13 @@
 									<div class="info">
 										{#if type === 'weapon'}
 											<img
-												src="/assets/images/utility/{weaponType}-white.svg"
+												src="/images/utility/{weaponType}-white.svg"
 												alt="{weaponType} icon"
 												style="width: 60%; height: auto"
 											/>
 										{:else if isNew}
 											<img
-												src="/assets/images/utility/icon-{vision}.svg"
+												src="/images/utility/icon-{vision}.svg"
 												alt="Vision {vision}"
 												class="vision-{vision}"
 												style="width: 60%; height: auto"
@@ -162,7 +162,7 @@
 										{#if stelaFortuna}
 											<div class="stella stella{rarity}">
 												<img
-													src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
+													src="/images/utility/stella-fortuna-{rarity}star.webp"
 													alt="Stella Formula"
 												/>
 											</div>

@@ -178,7 +178,7 @@
 	}
 
 	.roll-button button {
-		background-image: url('/assets/images/utility/button.webp');
+		background-image: url('/images/utility/button.webp');
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;

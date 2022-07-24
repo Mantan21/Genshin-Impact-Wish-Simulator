@@ -392,7 +392,7 @@
 	}
 	.menu-item.active::after {
 		content: '';
-		background-image: url('/assets/images/utility/menu-active.png');
+		background-image: url('/images/utility/menu-active.png');
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;

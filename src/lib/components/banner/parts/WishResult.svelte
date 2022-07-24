@@ -110,7 +110,7 @@
 
 <div class="wish-result">
 	<div class="uid">WishSimulator.App</div>
-	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
+	<img src="/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 
 	{#if showWishList || skipSplashOneByOne}
 		<WishListResult {list} on:wishEnd={closeHandle} />
@@ -133,20 +133,16 @@
 
 						{#if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent">
+								<img src="/images/utility/bg-{weaponType}.webp" alt={weaponType} class="weaponbg" />
 								<img
-									src="/assets/images/utility/bg-{weaponType}.webp"
-									alt={weaponType}
-									class="weaponbg"
-								/>
-								<img
-									src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+									src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 									alt={name}
 									class={weaponType}
 								/>
 							</div>
 						{:else if outfitName}
 							<img
-								src="/assets/images/characters/outfit/splash-art/{outfitName}.webp"
+								src="/images/characters/outfit/splash-art/{outfitName}.webp"
 								alt={name}
 								class="splash-art anim"
 							/>
@@ -163,7 +159,7 @@
 						<div class="info">
 							{#if vision}
 								<img
-									src="/assets/images/utility/icon-{vision}.svg"
+									src="/images/utility/icon-{vision}.svg"
 									alt="Vision {vision}"
 									class="anim vision vision-{vision}"
 								/>
@@ -191,7 +187,7 @@
 								{#if stelaFortuna}
 									<div class="stella stella{rarity}">
 										<img
-											src="/assets/images/utility/stella-fortuna-{rarity}star.webp"
+											src="/images/utility/stella-fortuna-{rarity}star.webp"
 											alt="Stella Formula"
 										/>
 									</div>
@@ -419,7 +415,7 @@
 		width: 100vw;
 		height: 100%;
 		background-color: #fff;
-		background-image: url('/assets/images/background/splash-background.webp');
+		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 	.container {

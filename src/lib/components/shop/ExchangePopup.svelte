@@ -197,7 +197,7 @@
 				<picture style={pictureWidthStyle}>
 					{#if outfit}
 						<img
-							src="/assets/images/characters/outfit/thumbnail/{itemToBuy}.webp"
+							src="/images/characters/outfit/thumbnail/{itemToBuy}.webp"
 							width="75%"
 							alt={getName(itemToBuy)}
 						/>

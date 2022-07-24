@@ -46,7 +46,7 @@
 	{#if activeBanner.type === 'beginner'}
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="banner-content">
-				<img src="/assets/images/banner/beginner.webp" alt="Beginner Banner" />
+				<img src="/images/banner/beginner.webp" alt="Beginner Banner" />
 				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			</div>
 		</div>
@@ -54,7 +54,7 @@
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="banner-content">
 				<img
-					src="/assets/images/banner/{$patchVersion}/{activeBanner.weapons.name}.webp"
+					src="/images/banner/{$patchVersion}/{activeBanner.weapons.name}.webp"
 					alt="Weapon Banner"
 				/>
 
@@ -72,7 +72,7 @@
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="banner-content">
 				<img
-					src="/assets/images/banner/standard/{activeBanner.character.name}.webp"
+					src="/images/banner/standard/{activeBanner.character.name}.webp"
 					alt="Standard Banner"
 				/>
 				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
@@ -82,7 +82,7 @@
 		<div in:fly={{ x: 50, duration: 1000 }}>
 			<div class="banner-content">
 				<img
-					src="/assets/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
+					src="/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
 					alt="Character Events Banner"
 				/>
 				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
