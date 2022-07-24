@@ -97,7 +97,7 @@
 	{/if}
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
-	<img src="/assets/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
+	<img src="/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
 </main>
 <Iklan />
 

@@ -29,7 +29,7 @@
 </svelte:head>
 
 <section>
-	<img class="bg" src="/assets/images/background/bg{random(1, 16)}.webp" alt="background" />
+	<img class="bg" src="/images/background/bg{random(1, 16)}.webp" alt="background" />
 	<div class="container">
 		<i class="gi-primo-star top-left" />
 		<i class="gi-primo-star top-right" />
