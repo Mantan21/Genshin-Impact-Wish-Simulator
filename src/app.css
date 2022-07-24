@@ -148,6 +148,11 @@ pre {
 
 img {
 	object-fit: cover;
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
 }
 
 input,
@@ -208,8 +213,8 @@ h1 {
 }
 
 .mobile .close {
-	width: 2rem;
-	height: 2rem;
+	width: 2.2rem;
+	height: 2.2rem;
 }
 
 @media screen and (max-width: 900px) {
