@@ -26,10 +26,10 @@ const getOutfit = (charName, charRarity, face = false) => {
 	const { name, wishBoxPosition, rarity } =
 		outfits.find(({ characterName }) => charName === characterName) || nullItem;
 	const defaultDir = face ? 'face' : `splash-art/${charRarity}star`;
-	const defaultPath = `/assets/images/characters/${defaultDir}/${charName}.webp`;
+	const defaultPath = `/images/characters/${defaultDir}/${charName}.webp`;
 	const dir = face ? 'face' : 'splash-art';
 	return {
-		outfitPath: `/assets/images/characters/outfit/${dir}/${name}.webp`,
+		outfitPath: `/images/characters/outfit/${dir}/${name}.webp`,
 		defaultPath,
 		outfitName: name,
 		outfitRarity: rarity,

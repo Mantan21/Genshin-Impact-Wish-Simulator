@@ -114,7 +114,7 @@
 							{#if data.stelaFortuna}
 								<div class="stella stella{data.rarity}">
 									<img
-										src="/assets/images/utility/stella-fortuna-{data.rarity}star.webp"
+										src="/images/utility/stella-fortuna-{data.rarity}star.webp"
 										alt="Stella Formula"
 									/>
 								</div>
@@ -148,7 +148,7 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: #fff;
-		background-image: url('/assets/images/background/splash-background.webp');
+		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 

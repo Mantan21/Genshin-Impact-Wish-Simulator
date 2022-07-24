@@ -164,7 +164,7 @@
 	.wish-result {
 		width: 100vw;
 		height: 100vh;
-		background-image: url('/assets/images/background/splash-background.webp');
+		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 
