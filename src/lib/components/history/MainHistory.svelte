@@ -133,7 +133,7 @@
 >
 	<div class="confirmation">
 		<p>
-			{@html $t('history.resetPrompt', { bannerName: $t(`wish.banner.${banner}`) })}
+			{@html $t('history.resetPrompt', { values: { bannerName: $t(`wish.banner.${banner}`) } })}
 		</p>
 	</div>
 </PopUp>
