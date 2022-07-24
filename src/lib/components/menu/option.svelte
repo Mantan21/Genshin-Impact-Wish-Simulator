@@ -2,16 +2,18 @@
 	import { createEventDispatcher, getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { locales, locale, t } from 'svelte-i18n';
+	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import { localeName, flags } from '../../data/country.json';
+	import { localeName, flags } from '$lib/data/country.json';
+	import browserState from '$lib/functions/browserState';
 
 	export let text;
 	export let name;
-	export let activeIndicator;
-	export let lang = false;
+	export let activeIndicator = null;
 	export let showOption = false;
 
 	const handleOption = getContext('handleOption');
+	const reset = getContext('factoryReset');
 
 	const dispatch = createEventDispatcher();
 	let select = (selected) => {
@@ -30,6 +32,12 @@
 		handleOption('');
 	};
 
+	const openPrevious = () => {
+		playSfx();
+		browserState.set('previous');
+		pageActive.set('previous-banner');
+	};
+
 	const openOption = () => {
 		playSfx();
 		if (showOption) return handleOption('');
@@ -40,30 +48,7 @@
 <div class="option">
 	<div class="option-name">{text}</div>
 
-	{#if !lang}
-		<div class="option-select">
-			<button
-				class="selected"
-				style="width: 100%; height:100%"
-				on:click|stopPropagation={openOption}
-			>
-				{activeIndicator ? $t('menu.yes') : $t('menu.no')}
-			</button>
-			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
-			{#if showOption}
-				<div class="select" in:fly={{ duration: 200, y: -10 }}>
-					<button class:selected={!activeIndicator} on:click|stopPropagation={() => select('no')}>
-						{$t('menu.no')}
-					</button>
-					<button class:selected={activeIndicator} on:click|stopPropagation={() => select('yes')}>
-						{$t('menu.yes')}
-					</button>
-				</div>
-			{/if}
-		</div>
-	{/if}
-
-	{#if lang}
+	{#if name === 'locale'}
 		<div class="option-select locale">
 			<button
 				class="selected"
@@ -107,6 +92,37 @@
 				</div>
 			{/if}
 		</div>
+	{:else if name === 'switchBanner'}
+		<button class="option-select" on:click={openPrevious}>
+			<i class="gi-caret-down" />
+			{$patchVersion} - {$bannerPhase}
+		</button>
+	{:else if name === 'reset'}
+		<button class="option-select" on:click={reset}>
+			<i class="gi-delete" style="vertical-align: bottom; line-height: 0; margin-right: .2rem" />
+			{$t('menu.resetButton')}
+		</button>
+	{:else}
+		<div class="option-select">
+			<button
+				class="selected"
+				style="width: 100%; height:100%"
+				on:click|stopPropagation={openOption}
+			>
+				{activeIndicator ? $t('menu.yes') : $t('menu.no')}
+			</button>
+			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
+			{#if showOption}
+				<div class="select" in:fly={{ duration: 200, y: -10 }}>
+					<button class:selected={!activeIndicator} on:click|stopPropagation={() => select('no')}>
+						{$t('menu.no')}
+					</button>
+					<button class:selected={activeIndicator} on:click|stopPropagation={() => select('yes')}>
+						{$t('menu.yes')}
+					</button>
+				</div>
+			{/if}
+		</div>
 	{/if}
 </div>
 
@@ -114,7 +130,7 @@
 	.option {
 		display: flex;
 		width: 100%;
-		padding: 0.5rem 0;
+		padding: 0.4rem 0;
 	}
 	@media screen and (max-width: 900px) {
 		.option {
@@ -122,15 +138,18 @@
 		}
 	}
 	.option-name {
-		background-color: #fff;
+		background-color: #eae5d9;
 		width: 75%;
-		padding: 0.3rem 2rem;
+		padding: 0.2rem 1rem;
 		border-top-left-radius: 5rem;
 		border-bottom-left-radius: 5rem;
+		border: solid transparent;
+		border-width: 0.2rem 0 0.2rem 0.2rem;
+		white-space: nowrap;
 	}
 
 	.option-select {
-		background-color: var(--tertiary-color);
+		background-color: #dcd4c2;
 		width: 40%;
 		max-width: 14rem;
 		text-align: center;
@@ -141,6 +160,13 @@
 		border-top-right-radius: 5rem;
 		border-bottom-right-radius: 5rem;
 		transition: all 0.2s;
+		border: solid transparent;
+		border-width: 0.2rem 0.2rem 0.2rem 0;
+	}
+
+	.option:hover .option-name,
+	.option:hover .option-select {
+		border-color: #fff;
 	}
 
 	.option-select i {

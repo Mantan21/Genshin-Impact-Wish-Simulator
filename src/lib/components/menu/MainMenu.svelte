@@ -5,19 +5,9 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import {
-		bannerPhase,
-		isMobile,
-		mobileMode,
-		muted,
-		pageActive,
-		patchVersion,
-		unlimitedFates,
-		viewportHeight
-	} from '$lib/store/stores';
+	import { isMobile, mobileMode, muted, unlimitedFates, viewportHeight } from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
 	import factoryReset from '$lib/functions/factoryReset';
-	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
 	import updates from '$lib/setup/updates.json';
 
@@ -84,6 +74,7 @@
 		showResetPopup = true;
 		playSfx('popup');
 	};
+	setContext('factoryReset', reset);
 
 	const confirmReset = async () => {
 		showResetPopup = false;
@@ -93,12 +84,6 @@
 
 	const cancelReset = () => {
 		showResetPopup = false;
-	};
-
-	const openPrevious = () => {
-		playSfx();
-		browserState.set('previous');
-		pageActive.set('previous-banner');
 	};
 
 	const dispatch = createEventDispatcher();
@@ -165,7 +150,6 @@
 				{#if activeContent === 'options'}
 					<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
 						<Option
-							lang
 							text={$t('menu.language')}
 							name="locale"
 							activeIndicator={$locale}
@@ -188,13 +172,7 @@
 							showOption={optionToShow === 'audio'}
 						/>
 
-						<div class="option">
-							<div class="option-name">{$t('menu.switchBanner')}</div>
-							<button class="option-select" on:click={openPrevious}>
-								<i class="gi-caret-down" />
-								{$patchVersion} - {$bannerPhase}
-							</button>
-						</div>
+						<Option name="switchBanner" text={$t('menu.switchBanner')} />
 
 						<Option
 							name="inventory"
@@ -212,16 +190,7 @@
 							showOption={optionToShow === 'fullscreen'}
 						/>
 
-						<div class="option">
-							<div class="option-name">{$t('menu.factoryReset')}</div>
-							<button class="option-select" on:click={reset}>
-								<i
-									class="gi-delete"
-									style="vertical-align: bottom; line-height: 0; margin-right: .2rem"
-								/>
-								{$t('menu.resetButton')}
-							</button>
-						</div>
+						<Option name="reset" text={$t('menu.factoryReset')} />
 
 						<h2>Notes :</h2>
 						<div class="notes">
@@ -418,49 +387,6 @@
 		width: 70%;
 		position: relative;
 	}
-	.option {
-		display: flex;
-		width: 100%;
-		padding: 0.5rem 0;
-	}
-	.option-name {
-		background-color: #fff;
-		width: 75%;
-		padding: 0.3rem 2rem;
-		border-top-left-radius: 5rem;
-		border-bottom-left-radius: 5rem;
-	}
-
-	.option-select {
-		background-color: var(--tertiary-color);
-		width: 40%;
-		max-width: 14rem;
-		text-align: center;
-		position: relative;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		border-top-right-radius: 5rem;
-		border-bottom-right-radius: 5rem;
-		transition: all 0.2s;
-	}
-
-	.option-select i {
-		position: absolute;
-		top: 50%;
-		right: 1rem;
-		font-size: 1rem;
-		transform: translateY(-50%);
-		pointer-events: none;
-	}
-
-	.option-select {
-		font-size: 0.8rem !important;
-	}
-
-	button.option-select:hover {
-		background-color: #f0e0c7;
-	}
 
 	.text {
 		color: #fff;
@@ -546,10 +472,6 @@
 	}
 
 	@media screen and (max-width: 900px) {
-		.option {
-			padding: 0.3rem 0;
-		}
-
 		:global(main):not(.mobile) .container {
 			flex-direction: column;
 		}

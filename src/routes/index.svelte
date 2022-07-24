@@ -15,8 +15,9 @@
 		muted,
 		bannerActive
 	} from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
+	import { localWelkin } from '$lib/store/localstore';
 	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
+	import playSfx from '$lib/functions/audio';
 	import { beginner } from '$lib/data/banners/beginner.json';
 
 	// Components
@@ -29,7 +30,6 @@
 	import Obtained from '$lib/components/utility/Obtained.svelte';
 	import WelkinCheckin from '$lib/components/utility/WelkinCheckin.svelte';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
-	import { localWelkin } from '$lib/store/localstore';
 
 	let isMount = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
