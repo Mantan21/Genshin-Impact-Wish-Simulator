@@ -53,7 +53,7 @@
 	{#each genesisList as { qty }, i}
 		<Column style="padding:0">
 			<button class="content" on:click={() => selectGenesis(i)}>
-				<img src="/assets/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
+				<img src="/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
 			</button>
 		</Column>
 	{/each}

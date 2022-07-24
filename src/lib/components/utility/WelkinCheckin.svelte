@@ -34,7 +34,7 @@
 			<div class="bg" />
 			<div class="content">
 				<div class="milestone">
-					<img src="/assets/images/utility/welkin-moon-girl.webp" alt="Welkin Moon Girl" />
+					<img src="/images/utility/welkin-moon-girl.webp" alt="Welkin Moon Girl" />
 				</div>
 
 				<h3 class="title">{$t('shop.recomended.claimingBlessing')}</h3>

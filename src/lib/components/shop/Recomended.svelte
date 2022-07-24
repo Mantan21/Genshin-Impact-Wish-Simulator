@@ -87,7 +87,7 @@
 			<div class="card outfit" in:fade={{ duration: 400 }}>
 				<img
 					class="outfit-art"
-					src="/assets/images/characters/outfit/splash-art/{name}.webp"
+					src="/images/characters/outfit/splash-art/{name}.webp"
 					alt={getName(name)}
 					style={positionToStyle(cardBoxPosition)}
 				/>
@@ -126,7 +126,7 @@
 			</div>
 		{:else}
 			<div class="card" in:fade={{ duration: 400 }}>
-				<img src="/assets/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
+				<img src="/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
 
 				{#if dayRemaining > 0}
 					<div class="remaining">

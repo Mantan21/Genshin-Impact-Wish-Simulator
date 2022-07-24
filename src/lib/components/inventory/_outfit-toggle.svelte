@@ -174,10 +174,10 @@
 	}
 
 	.star4 {
-		background-image: url('/assets/images/utility/4star-bg.webp');
+		background-image: url('/images/utility/4star-bg.webp');
 	}
 	.star5 {
-		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-image: url('/images/utility/5star-bg.webp');
 	}
 
 	picture {

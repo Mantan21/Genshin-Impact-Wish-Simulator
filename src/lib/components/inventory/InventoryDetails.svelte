@@ -92,7 +92,7 @@
 				{#if type === 'weapon'}
 					<div class="splash-art weapon {weaponType}-parent">
 						<img
-							src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+							src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 							alt={name}
 							class={weaponType}
 						/>
@@ -104,7 +104,7 @@
 				<div class="info">
 					{#if vision}
 						<img
-							src="/assets/images/utility/icon-{vision}.svg"
+							src="/images/utility/icon-{vision}.svg"
 							alt="Vision {vision}"
 							class="anim vision vision-{vision}"
 						/>
@@ -145,7 +145,7 @@
 	.wish-result {
 		width: 100vw;
 		background-color: #fff;
-		background-image: url('/assets/images/background/detailbg.webp');
+		background-image: url('/images/background/detailbg.webp');
 		background-size: cover;
 		background-position: center;
 		position: fixed;

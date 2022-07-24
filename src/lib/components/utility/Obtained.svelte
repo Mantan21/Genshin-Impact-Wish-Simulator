@@ -161,10 +161,10 @@
 	}
 
 	.rarity5 .pic {
-		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-image: url('/images/utility/5star-bg.webp');
 	}
 	.rarity4 .pic {
-		background-image: url('/assets/images/utility/4star-bg.webp');
+		background-image: url('/images/utility/4star-bg.webp');
 	}
 
 	.acquaint .pic,

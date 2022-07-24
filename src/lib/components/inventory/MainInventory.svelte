@@ -216,7 +216,7 @@
 <section on:click={handleCancelSelect}>
 	{#each bg as b, i}
 		<img
-			src="/assets/images/background/element-{b}-bg.webp"
+			src="/images/background/element-{b}-bg.webp"
 			alt="Background"
 			class="bg"
 			class:active={activeBgIndex === i}

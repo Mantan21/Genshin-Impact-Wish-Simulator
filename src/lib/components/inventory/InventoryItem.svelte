@@ -41,7 +41,7 @@
 			<span class="gi-{vision} element" />
 		{:else}
 			<img
-				src="/assets/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+				src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 				alt={getName(name)}
 				class={weaponType}
 			/>
@@ -140,13 +140,13 @@
 		color: #f0c882;
 	}
 	.star3 {
-		background-image: url('/assets/images/utility/3star-bg.webp');
+		background-image: url('/images/utility/3star-bg.webp');
 	}
 	.star4 {
-		background-image: url('/assets/images/utility/4star-bg.webp');
+		background-image: url('/images/utility/4star-bg.webp');
 	}
 	.star5 {
-		background-image: url('/assets/images/utility/5star-bg.webp');
+		background-image: url('/images/utility/5star-bg.webp');
 	}
 
 	.star {

@@ -29,7 +29,7 @@
 	let blob;
 	const featuredItem = item ? `I got ${item}` : "Wow! I'm so lucky ";
 	const shareText = `${featuredItem} when pulling on Wish Simulator, how lovely!`;
-	let url = '/assets/images/meta-picture.jpg';
+	let url = '/images/meta-picture.jpg';
 	$: shareLink = `${HOST}/screen/${page}?a=${encodedData}`;
 
 	onMount(() => {
