@@ -230,6 +230,7 @@
 									I heard a lot of people are annoyed with ads, so I decided to created another site
 									without ads, but this is available for supporters only. If you are interested in
 									it, you can go here &raquo; <a
+										on:click|stopPropagation
 										href="https://archon.wishsimulator.app"
 										target="_blank"
 									>
@@ -237,6 +238,7 @@
 									</a>
 									&laquo; and
 									<a
+										on:click|stopPropagation
 										href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
 										target="_blank"
 									>
@@ -247,6 +249,7 @@
 									This simulator has pity system almost like the real game, the rate of getting rare
 									item will increase when you reach a certain pity depending on where banner you
 									pull. you can go <a
+										on:click|stopPropagation
 										href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator#pity-system"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -256,6 +259,7 @@
 									to find details of the probability. If you has any idea, please send me feedback by
 									creating
 									<a
+										on:click|stopPropagation
 										href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -284,6 +288,7 @@
 					<div class="updates content-container" in:fade={{ duration: 200 }}>
 						<div class="text">
 							You can Check what are changes we made on <a
+								on:click|stopPropagation
 								href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
 								target="_blank"
 							>
