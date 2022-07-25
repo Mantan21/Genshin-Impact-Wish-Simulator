@@ -1,0 +1,198 @@
+{
+	"albedo": {
+		"name": "阿贝多",
+		"title": "白垩之子"
+	},
+	"amber": {
+		"name": "安柏",
+		"title": "飞行冠军"
+	},
+	"arataki-itto": {
+		"name": "荒泷一斗",
+		"title": "花坂豪快"
+	},
+	"barbara": {
+		"name": "芭芭拉",
+		"title": "闪耀偶像"
+	},
+	"beidou": {
+		"name": "北斗",
+		"title": "无冕的龙王"
+	},
+	"bennett": {
+		"name": "班尼特",
+		"title": "命运试金石"
+	},
+	"chongyun": {
+		"name": "重云",
+		"title": "雪融有踪"
+	},
+	"diluc": {
+		"name": "迪卢克",
+		"title": "晨曦的暗面"
+	},
+	"diona": {
+		"name": "迪奥娜",
+		"title": "猫尾特调"
+	},
+	"eula": {
+		"name": "优菈",
+		"title": "浪沫的旋舞"
+	},
+	"fischl": {
+		"name": "菲谢尔",
+		"title": "断罪皇女！！"
+	},
+	"ganyu": {
+		"name": "甘雨",
+		"title": "循循守月"
+	},
+	"gorou": {
+		"name": "五郎",
+		"title": "戎犬锵锵"
+	},
+	"hu-tao": {
+		"name": "胡桃",
+		"title": "雪霁梅香"
+	},
+	"jean": {
+		"name": "琴",
+		"title": "蒲公英骑士"
+	},
+	"kaedehara-kazuha": {
+		"name": "枫原万叶",
+		"title": "红叶逐荒波"
+	},
+	"kaeya": {
+		"name": "凯亚",
+		"title": "寒风剑士"
+	},
+	"kamisato-ayaka": {
+		"name": "神里绫华",
+		"title": "白鹭霜华"
+	},
+	"kamisato-ayato": {
+		"name": "神里绫人",
+		"title": "磐祭叶守"
+	},
+	"keqing": {
+		"name": "刻晴",
+		"title": "霆霓快雨"
+	},
+	"klee": {
+		"name": "可莉",
+		"title": "逃跑的太阳"
+	},
+	"kujou-sara": {
+		"name": "九条裟罗",
+		"title": "黑羽鸣镝"
+	},
+	"kuki-shinobu": {
+		"name": "久岐忍",
+		"title": "烦恼刈除"
+	},
+	"lisa": {
+		"name": "丽莎",
+		"title": "蔷薇魔女"
+	},
+	"mona": {
+		"name": "莫娜",
+		"title": "星天水镜"
+	},
+	"ningguang": {
+		"name": "凝光",
+		"title": "掩月天权"
+	},
+	"noelle": {
+		"name": "诺艾尔",
+		"title": "未授勋之花"
+	},
+	"qiqi": {
+		"name": "七七",
+		"title": "冻冻回魂夜"
+	},
+	"raiden-shogun": {
+		"name": "雷电将军",
+		"title": "一心净土"
+	},
+	"razor": {
+		"name": "雷泽",
+		"title": "狼少年"
+	},
+	"rosaria": {
+		"name": "罗莎莉亚",
+		"title": "棘冠恩典"
+	},
+	"sagonomiya-kokomi": {
+		"name": "珊瑚宫心海",
+		"title": "真珠之智"
+	},
+	"sayu": {
+		"name": "早柚",
+		"title": "忍里之貉"
+	},
+	"shenhe": {
+		"name": "申鹤",
+		"title": "孤辰茕怀"
+	},
+	"shikanoin-heizou": {
+		"name": "鹿野院平藏",
+		"title": "心朝乂安"
+	},
+	"sucrose": {
+		"name": "砂糖",
+		"title": "无害甜度"
+	},
+	"tartaglia": {
+		"name": "达达利亚",
+		"title": "「公子」"
+	},
+	"thoma": {
+		"name": "托马",
+		"title": "渡来介者"
+	},
+	"venti": {
+		"name": "温迪",
+		"title": "风色诗人"
+	},
+	"xiangling": {
+		"name": "香菱",
+		"title": "万民百味"
+	},
+	"xiao": {
+		"name": "魈",
+		"title": "护法夜叉"
+	},
+	"xingqiu": {
+		"name": "行秋",
+		"title": "少年春衫薄"
+	},
+	"xinyan": {
+		"name": "辛焱",
+		"title": "燥热旋律"
+	},
+	"yae-miko": {
+		"name": "八重神子",
+		"title": "浮世笑百姿"
+	},
+	"yanfei": {
+		"name": "烟绯",
+		"title": "智明无邪"
+	},
+	"yelan": {
+		"name": "夜兰",
+		"title": "兰生幽谷"
+	},
+	"yoimiya": {
+		"name": "宵宫",
+		"title": "琉焰华舞"
+	},
+	"yun-jin": {
+		"name": "云堇",
+		"title": "红毹婵娟"
+	},
+	"zhongli": {
+		"name": "钟离",
+		"title": "尘世闲游"
+	}
+}
