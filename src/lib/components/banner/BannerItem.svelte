@@ -1,29 +1,26 @@
 <script>
 	import { fly, fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
 	import {
 		bannerActive,
 		viewportHeight,
 		viewportWidth,
-		patchVersion,
 		bannerList,
-		fatePoint,
-		selectedCourse,
-		pageActive,
 		mobileMode
 	} from '$lib/store/stores';
 	import playSfx from '$lib/functions/audio';
-	import browserState from '$lib/functions/browserState';
+	import BannerCard from './parts/_banner-card.svelte';
 
-	$: mobileBannerStyle = $mobileMode ? `max-width: ${(150 / 100) * $viewportHeight}px;` : '';
+	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
+	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';
+	$: mobileBannerStyle = $mobileMode
+		? `max-width: ${(150 / 100) * $viewportHeight}px;`
+		: tabletBannerStyle;
 	$: style =
 		$viewportHeight > 800 ||
 		$viewportHeight > $viewportWidth ||
 		$viewportHeight / $viewportWidth > 0.5
-			? 'bottom: unset; top: 50%; transform: translate(-50%, -50%);' + mobileBannerStyle
-			: mobileBannerStyle;
-
-	$: activeBanner = $bannerList[$bannerActive];
+			? 'align-items:center;'
+			: '';
 
 	const navigate = (target) => {
 		playSfx('changebanner');
@@ -34,61 +31,16 @@
 			return bannerActive.update((n) => n - 1);
 		}
 	};
-
-	const openDetails = () => {
-		pageActive.set('details');
-		browserState.set('details');
-		return playSfx();
-	};
 </script>
 
-<div class="banner" {style}>
-	{#if activeBanner.type === 'beginner'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<div class="banner-content">
-				<img src="/images/banner/beginner.webp" alt="Beginner Banner" />
-				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
+<div class="banner-container" {style}>
+	{#each $bannerList as data, i}
+		{#if $bannerActive === i}
+			<div class="banner-item" in:fly={{ x: 50, duration: 850 }} style={mobileBannerStyle}>
+				<BannerCard {data} />
 			</div>
-		</div>
-	{:else if activeBanner.type === 'weapons'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<div class="banner-content">
-				<img
-					src="/images/banner/{$patchVersion}/{activeBanner.weapons.name}.webp"
-					alt="Weapon Banner"
-				/>
-
-				{#if $selectedCourse.name}
-					<div class="selected" class:fill={$fatePoint === 2}>
-						{$t('wish.epitomizedPath.courseSetFor', {
-							values: { selectedCourse: $t($selectedCourse.name) }
-						})}
-					</div>
-				{/if}
-				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			</div>
-		</div>
-	{:else if activeBanner.type === 'standard'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<div class="banner-content">
-				<img
-					src="/images/banner/standard/{activeBanner.character.name}.webp"
-					alt="Standard Banner"
-				/>
-				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			</div>
-		</div>
-	{:else if activeBanner.type === 'events'}
-		<div in:fly={{ x: 50, duration: 1000 }}>
-			<div class="banner-content">
-				<img
-					src="/images/banner/{$patchVersion}/{activeBanner.character.name}.webp"
-					alt="Character Events Banner"
-				/>
-				<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			</div>
-		</div>
-	{/if}
+		{/if}
+	{/each}
 
 	<div class="navigate">
 		{#if $bannerActive > 0}
@@ -116,32 +68,23 @@
 </div>
 
 <style>
-	.banner {
-		padding: 30px 0;
-		width: 80%;
-		max-width: 850px;
-		max-height: 75vh;
+	.banner-container {
+		width: 100%;
+		height: 100%;
 		display: flex;
 		align-items: center;
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
+		justify-content: center;
 	}
-	img,
-	.banner-content {
-		max-height: 100%;
-		max-width: 100%;
-	}
-	.banner-content {
-		position: relative;
+	:global(.mobile) .banner-container {
+		align-items: flex-end;
+		padding: 0;
 	}
 
-	:global(.mobile) .banner {
-		padding: 0;
-		width: 88%;
-		max-height: unset;
-		margin-bottom: -10px;
+	.banner-item {
+		max-width: 900px;
+		width: 90%;
+		max-height: 75vh;
+		aspect-ratio: 27/14;
 	}
 
 	.navigate {
@@ -162,38 +105,5 @@
 
 	:global(.mobile) .navigate {
 		display: none;
-	}
-
-	.selected {
-		position: absolute;
-		bottom: 0.3rem;
-		right: 0;
-		max-width: 80%;
-		padding: 0.2rem 1rem;
-		color: #fff;
-		background-color: rgba(0, 0, 0, 0.4);
-		font-size: 1rem;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	}
-
-	.selected.fill {
-		background-color: #62c5ff;
-	}
-	.detail {
-		position: absolute;
-		left: 5%;
-		bottom: 13%;
-		background-color: #eee8e3;
-		color: rgba(0, 0, 0, 0.5);
-		padding: 0.2rem 1.5rem;
-		border-radius: 20px;
-		border: #e2d7b6 0.1rem solid;
-		font-size: 0.9rem;
-		transition: all 0.2s;
-	}
-
-	.detail:hover {
-		background-color: #e0ddd4;
-		color: rgba(0, 0, 0, 1);
 	}
 </style>
