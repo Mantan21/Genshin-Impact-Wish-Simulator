@@ -12,7 +12,12 @@ const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/stati
 
 const imagePreprocess = () => {
 	return image({
-		processFolders: ['images/banner'],
+		processFolders: [
+			'images/banner/standard',
+			'images/banner/beginner',
+			'images/banner/character-events',
+			'images/banner/weapons'
+		],
 		processFoldersRecursively: true,
 		processFoldersSizes: true,
 		processFoldersExtensions: ['webp'],
