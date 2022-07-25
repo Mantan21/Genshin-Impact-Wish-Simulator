@@ -209,7 +209,7 @@
 								</div>
 								<div class="text">
 									<span>{$t('extra')}</span>
-									Masterless {fateType}
+									{$t(`shop.item.${fateType}`)}
 									<br /> x{fateQty}
 								</div>
 							</div>
