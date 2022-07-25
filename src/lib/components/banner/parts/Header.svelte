@@ -197,6 +197,7 @@
 		width: calc(100% - 100px);
 		display: flex;
 		justify-content: space-between;
+		padding-right: 4%;
 	}
 
 	:global(.mobile) .wish-title img {
@@ -233,7 +234,7 @@
 	}
 
 	@media screen and (min-width: 975px) {
-		.banner-button {
+		:global(main):not(.mobile) .banner-button {
 			position: absolute;
 			max-width: 50%;
 			top: 20px;

@@ -180,7 +180,7 @@
 				</h1>
 			{:else}
 				<h1 class={banner}>
-					{#if banner != 'beginner'}
+					{#if banner !== 'beginner'}
 						{$t(`wish.banner.${banner}`)}
 					{/if}
 					"{@html highlightBannerName(bannerTitle, featured[0]?.vision)}"
