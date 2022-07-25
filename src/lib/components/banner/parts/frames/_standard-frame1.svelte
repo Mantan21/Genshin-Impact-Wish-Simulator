@@ -88,7 +88,7 @@
 		border-bottom-right-radius: 4rem;
 		top: 0;
 		left: 0;
-		transform: translate(-5%, -25%);
+		transform: translate(-3%, -15%);
 	}
 
 	.set {
@@ -155,7 +155,7 @@
 	.skyward {
 		left: 75%;
 		bottom: 4%;
-		width: 23%;
+		width: 24%;
 		line-height: 170%;
 	}
 

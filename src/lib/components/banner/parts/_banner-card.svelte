@@ -1,16 +1,19 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { fatePoint, selectedCourse, pageActive } from '$lib/store/stores';
+	import { pageActive } from '$lib/store/stores';
 	import browserState from '$lib/functions/browserState';
 	import playSfx from '$lib/functions/audio';
 	import ResponsiveImage from '$lib/components/utility/ResponsiveImage.svelte';
 	import BeginnerFrame from './frames/_beginner-frame.svelte';
 	import StandardFrame1 from './frames/_standard-frame1.svelte';
+	import EventsFrame from './frames/_events-frame.svelte';
+	import WeaponsFrame from './frames/_weapons-frame.svelte';
 
 	export let data = {};
 
 	let { type, weapons, character } = data;
 	let clientWidth;
+	let clientHeight;
 
 	const openDetails = () => {
 		pageActive.set('details');
@@ -19,10 +22,15 @@
 	};
 </script>
 
-<div class="card" bind:clientWidth style="--content-width:{clientWidth}px">
+<div
+	class="card"
+	bind:clientWidth
+	bind:clientHeight
+	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
+>
 	{#if type === 'beginner'}
 		<ResponsiveImage
-			src="/images/banner/beginner.webp"
+			src="/images/banner/beginner/beginner.webp"
 			alt="Weapon Banner"
 			wrapperClass="card-image"
 		/>
@@ -35,20 +43,18 @@
 			alt="Weapon Banner"
 			wrapperClass="card-image"
 		/>
-
-		{#if $selectedCourse.name}
-			<div class="selected" class:fill={$fatePoint === 2}>
-				{$t('wish.epitomizedPath.courseSetFor', {
-					values: { selectedCourse: $t($selectedCourse.name) }
-				})}
-			</div>
-		{/if}
+		<div class="frame">
+			<WeaponsFrame data={weapons} />
+		</div>
 	{:else if type === 'events'}
 		<ResponsiveImage
 			src="/images/banner/character-events/{character.name}.webp"
 			alt="Character Event Banner"
 			wrapperClass="card-image"
 		/>
+		<div class="frame">
+			<EventsFrame data={character} />
+		</div>
 	{:else if type === 'standard'}
 		<ResponsiveImage
 			src="/images/banner/standard/{character.name}.webp"
@@ -96,21 +102,5 @@
 	.detail:hover {
 		background-color: #e0ddd4;
 		color: rgba(0, 0, 0, 1);
-	}
-
-	.selected {
-		position: absolute;
-		bottom: 0rem;
-		right: 0;
-		max-width: 80%;
-		padding: 0.2rem 1rem;
-		color: #fff;
-		background-color: rgba(0, 0, 0, 0.4);
-		font-size: 1rem;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	}
-
-	.selected.fill {
-		background-color: #62c5ff;
 	}
 </style>
