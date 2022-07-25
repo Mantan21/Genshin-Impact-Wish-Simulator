@@ -471,6 +471,10 @@
 		animation: rotatePhone 1s infinite alternate;
 	}
 
+	:global(.mobile) .close {
+		margin-right: 4%;
+	}
+
 	@media screen and (max-width: 900px) {
 		:global(main):not(.mobile) .container {
 			flex-direction: column;

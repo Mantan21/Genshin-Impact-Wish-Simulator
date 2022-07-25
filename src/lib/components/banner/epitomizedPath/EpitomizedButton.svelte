@@ -100,7 +100,7 @@
 		font-size: 90%;
 		padding: 0 0.2rem;
 		margin-top: auto;
-		margin-bottom: 7.8%;
+		margin-bottom: 10%;
 	}
 	:global(.mobile) span:not(.small) {
 		font-size: 120%;

@@ -217,7 +217,8 @@
 
 	/* mobile */
 	:global(.mobile) .row {
-		padding: 0;
+		padding: 1rem 0;
+		align-items: flex-end;
 	}
 
 	:global(.mobile .menu-button) {
