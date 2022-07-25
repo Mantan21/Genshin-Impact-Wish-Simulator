@@ -58,9 +58,9 @@
 	};
 
 	const valuesToToChange = {
-		starglitter: '<span class="starglitter"> Masterless Starglitter</span>',
-		stardust: '<span class="stardust"> Masterless Stardust</span>',
-		stellaFortuna: '<span class="stardust"> Stella Fortuna</span>'
+		starglitter: `<span class="starglitter"> ${$t('shop.exchange.starglitter')}</span>`,
+		stardust: `<span class="stardust"> ${$t('shop.exchange.stardust')}</span>`,
+		stellaFortuna: `<span class="stardust"> ${$t('wish.stellaFortuna')}</span>`
 	};
 
 	const duplicateDetails = (star) => {

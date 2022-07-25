@@ -83,7 +83,8 @@
 				on:click|preventDefault={() => handleClick('donate')}
 			>
 				<span>
-					<i class="gi-companion" /> Donate
+					<i class="gi-companion" />
+					{$t('donate')}
 				</span>
 			</a>
 		</div>

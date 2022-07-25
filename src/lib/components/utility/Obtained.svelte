@@ -52,7 +52,7 @@
 				<i class="gi-primo-star" />
 			</h3>
 
-			<h4>Extra</h4>
+			<h4>{$t('extra')}</h4>
 			<div class="milestone">
 				{#each Object.keys(items) as key}
 					{#if items[key] > 0}
