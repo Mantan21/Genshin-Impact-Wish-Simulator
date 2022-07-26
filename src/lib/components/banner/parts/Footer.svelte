@@ -213,6 +213,9 @@
 		.discount {
 			font-size: 0.7rem;
 		}
+		.roll-button {
+			white-space: nowrap;
+		}
 	}
 
 	/* mobile */
@@ -227,6 +230,7 @@
 	}
 	:global(.mobile) .roll-button {
 		margin-right: 40px !important;
+		white-space: nowrap;
 	}
 	:global(.mobile) .roll-button button {
 		font-size: 0.75rem;
@@ -240,7 +244,7 @@
 
 	/* Media Query */
 
-	@media screen and (max-width: 900px) {
+	@media screen and (max-width: 925px) {
 		button {
 			padding: 2px 15px;
 			margin: 2px 5px;
