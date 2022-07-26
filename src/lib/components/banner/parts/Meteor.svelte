@@ -33,7 +33,7 @@
 	$: isBeginner = $bannerList[$bannerActive]?.type === 'beginner';
 	$: balanceNeededToRoll = (isBeginner && rollCount > 1 ? 8 : rollCount) - balance;
 	$: popupButton = $primogem < balanceNeededToRoll * 160 ? 'cancel' : 'all';
-	$: fateType = $isAcquaintUsed ? 'Acquaint' : 'Intertwined';
+	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
 
 	const closeExchangePopup = () => {
 		dispatch('cancelPopup');
@@ -122,7 +122,7 @@
 			{@html $t('shop.fateNeeded', {
 				values: {
 					rollQty: `<span class="yellow">${balanceNeededToRoll}</span>`,
-					currency: fateType
+					currency: $t(`shop.item.${fateType}`)
 				}
 			})}
 			<br />

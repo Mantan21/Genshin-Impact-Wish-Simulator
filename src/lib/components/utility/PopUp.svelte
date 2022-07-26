@@ -10,7 +10,7 @@
 	export let show = false;
 	export let title = '';
 	export let confirm = true;
-	export let confirmText = $t('confirmButton');
+	export let confirmText = '';
 	export let button = 'all';
 	export let sfx = true;
 
@@ -54,7 +54,7 @@
 						{/if}
 						{#if ['confirm', 'all'].indexOf(button) > -1}
 							<ButtonPopup type="confirm" on:click={confirmClick}>
-								{confirmText}
+								{confirmText || $t('confirmButton')}
 							</ButtonPopup>
 						{/if}
 					</div>
