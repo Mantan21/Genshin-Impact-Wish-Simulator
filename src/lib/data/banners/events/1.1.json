@@ -12,6 +12,10 @@
 						"buttonBoxPosition": {
 							"w": 160,
 							"t": 22
+						},
+						"textOffset": {
+							"l": 44.5,
+							"b": 11
 						}
 					},
 					"rateup": ["beidou", "ninggnang", "diona"]
@@ -39,7 +43,17 @@
 							}
 						}
 					],
-					"rateup": ["rust", "favonius-lance", "rainslasher", "the-flute", "eye-of-perception"]
+					"rateup": ["rust", "favonius-lance", "rainslasher", "the-flute", "eye-of-perception"],
+					"textOffset": {
+						"featured": {
+							"l": 41,
+							"t": 76
+						},
+						"rateup": {
+							"l": 76.5,
+							"b": 19
+						}
+					}
 				}
 			}
 		},
@@ -55,6 +69,9 @@
 							"w": 120,
 							"t": 25,
 							"l": 70
+						},
+						"textOffset": {
+							"l": 52
 						}
 					},
 					"rateup": ["razor", "xinyan", "chongyun"]
@@ -88,7 +105,17 @@
 						"favonius-codex",
 						"dragon_s-bane",
 						"lion_s-roar"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 41.5,
+							"t": 75
+						},
+						"rateup": {
+							"l": 77,
+							"b": 17
+						}
+					}
 				}
 			}
 		}

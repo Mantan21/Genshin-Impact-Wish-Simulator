@@ -13,6 +13,10 @@
 							"w": 180,
 							"t": 30,
 							"l": 50
+						},
+						"textOffset": {
+							"l": 57.5,
+							"b": 11
 						}
 					},
 					"rateup": ["xiangling", "fischl", "barbara"]
@@ -40,7 +44,17 @@
 							}
 						}
 					],
-					"rateup": ["the-stringless", "favonius-lance", "the-bell", "the-widsith", "the-flute"]
+					"rateup": ["the-stringless", "favonius-lance", "the-bell", "the-widsith", "the-flute"],
+					"textOffset": {
+						"featured": {
+							"l": 41,
+							"t": 76
+						},
+						"rateup": {
+							"l": 75,
+							"b": 18
+						}
+					}
 				}
 			}
 		},
@@ -55,6 +69,9 @@
 						"buttonBoxPosition": {
 							"w": 110,
 							"t": 32
+						},
+						"textOffset": {
+							"l": 60
 						}
 					},
 					"rateup": ["sucrose", "xingqiu", "noelle"]
@@ -88,7 +105,18 @@
 						"sacrificial-fragments",
 						"dragon_s-bane",
 						"sacrificial-bow"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 41,
+							"t": 78,
+							"w": 20
+						},
+						"rateup": {
+							"l": 76,
+							"b": 17
+						}
+					}
 				}
 			}
 		}

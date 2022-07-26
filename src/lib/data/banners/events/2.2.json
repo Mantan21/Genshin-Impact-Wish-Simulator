@@ -12,6 +12,9 @@
 						"buttonBoxPosition": {
 							"w": 160,
 							"t": 22
+						},
+						"textOffset": {
+							"l": 50.5
 						}
 					},
 					"rateup": ["yanfei", "chongyun", "ningguang"]
@@ -39,7 +42,17 @@
 							}
 						}
 					],
-					"rateup": ["favonius-lance", "rust", "eye-of-perception", "akuoumaru", "favonius-sword"]
+					"rateup": ["favonius-lance", "rust", "eye-of-perception", "akuoumaru", "favonius-sword"],
+					"textOffset": {
+						"featured": {
+							"l": 42.2,
+							"t": 67
+						},
+						"rateup": {
+							"l": 76.5,
+							"b": 19
+						}
+					}
 				}
 			}
 		},
@@ -54,6 +67,9 @@
 						"buttonBoxPosition": {
 							"w": 160,
 							"t": 22
+						},
+						"textOffset": {
+							"l": 56
 						}
 					},
 					"rateup": ["thoma", "diona", "sayu"]
@@ -87,7 +103,17 @@
 						"the-widsith",
 						"rainslasher",
 						"sacrificial-sword"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 38.5,
+							"t": 68
+						},
+						"rateup": {
+							"l": 74,
+							"b": 18
+						}
+					}
 				}
 			}
 		}

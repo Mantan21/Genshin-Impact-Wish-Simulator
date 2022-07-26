@@ -14,6 +14,10 @@
 								"w": 140,
 								"t": 35,
 								"l": 50
+							},
+							"textOffset": {
+								"l": 48,
+								"b": 11
 							}
 						},
 						{
@@ -23,6 +27,10 @@
 								"w": 180,
 								"t": 30,
 								"l": 50
+							},
+							"textOffset": {
+								"l": 53.5,
+								"b": 11
 							}
 						}
 					],
@@ -51,7 +59,17 @@
 							}
 						}
 					],
-					"rateup": ["the-flute", "rust", "dragon_s-bane", "the-widsith", "sacrificial-greatsword"]
+					"rateup": ["the-flute", "rust", "dragon_s-bane", "the-widsith", "sacrificial-greatsword"],
+					"textOffset": {
+						"featured": {
+							"w": 33,
+							"l": 39.5,
+							"t": 67
+						},
+						"rateup": {
+							"l": 79
+						}
+					}
 				}
 			}
 		},
@@ -66,6 +84,11 @@
 						"buttonBoxPosition": {
 							"w": 82,
 							"t": 32
+						},
+						"textOffset": {
+							"l": 44,
+							"b": 10,
+							"w": 32
 						}
 					},
 					"rateup": ["razor", "rosaria", "sayu"]
@@ -99,7 +122,17 @@
 						"favonius-warbow",
 						"favonius-sword",
 						"the-bell"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"w": 32,
+							"l": 39,
+							"t": 67
+						},
+						"rateup": {
+							"l": 76.5
+						}
+					}
 				}
 			}
 		}

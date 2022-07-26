@@ -13,6 +13,10 @@
 							"w": 140,
 							"t": 30,
 							"l": 50
+						},
+						"textOffset": {
+							"l": 57.5,
+							"b": 5
 						}
 					},
 					"rateup": ["xinyan", "beidou", "diona"]
@@ -46,7 +50,17 @@
 						"favonius-lance",
 						"sacrificial-greatsword",
 						"eye-of-perception"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 44.5,
+							"t": 72
+						},
+						"rateup": {
+							"l": 73.5,
+							"b": 16
+						}
+					}
 				}
 			}
 		},
@@ -62,6 +76,10 @@
 							"w": 180,
 							"t": 22,
 							"l": 60
+						},
+						"textOffset": {
+							"l": 57.5,
+							"b": 4.5
 						}
 					},
 					"rateup": ["barbara", "bennett", "ningguang"]
@@ -95,7 +113,17 @@
 						"lithic-spear",
 						"sacrificial-bow",
 						"the-widsith"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 45,
+							"t": 77
+						},
+						"rateup": {
+							"l": 75,
+							"b": 14
+						}
+					}
 				}
 			}
 		},
@@ -110,6 +138,10 @@
 						"buttonBoxPosition": {
 							"w": 160,
 							"t": 22
+						},
+						"textOffset": {
+							"l": 57.5,
+							"b": 4.5
 						}
 					},
 					"rateup": ["xiangling", "chongyun", "xingqiu"]
@@ -143,7 +175,17 @@
 						"lithic-spear",
 						"sacrificial-bow",
 						"the-widsith"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 45,
+							"t": 77
+						},
+						"rateup": {
+							"l": 75,
+							"b": 14
+						}
+					}
 				}
 			}
 		}

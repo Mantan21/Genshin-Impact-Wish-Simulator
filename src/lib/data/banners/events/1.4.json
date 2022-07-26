@@ -7,12 +7,16 @@
 				"standardVersion": 2,
 				"events": {
 					"item": {
-						"name": "ballad-in-goblet-2",
+						"name": "ballad-in-goblets-2",
 						"character": "venti",
 						"buttonBoxPosition": {
 							"w": 180,
 							"t": 30,
 							"l": 50
+						},
+						"textOffset": {
+							"l": 57,
+							"b": 6
 						}
 					},
 					"rateup": ["razor", "sucrose", "noelle"]
@@ -46,7 +50,17 @@
 						"dragon_s-bane",
 						"favonius-greatsword",
 						"the-alley-flash"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 40,
+							"t": 72
+						},
+						"rateup": {
+							"l": 74,
+							"b": 18
+						}
+					}
 				}
 			}
 		},
@@ -61,6 +75,10 @@
 						"buttonBoxPosition": {
 							"w": 160,
 							"t": 22
+						},
+						"textOffset": {
+							"l": 57.5,
+							"b": 6
 						}
 					},
 					"rateup": ["barbara", "fischl", "rosaria"]
@@ -94,7 +112,17 @@
 						"sacrificial-greatsword",
 						"favonius-lance",
 						"favonius-sword"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 44,
+							"t": 72
+						},
+						"rateup": {
+							"l": 75,
+							"b": 16
+						}
+					}
 				}
 			}
 		}

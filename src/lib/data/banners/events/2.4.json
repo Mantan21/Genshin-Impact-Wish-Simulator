@@ -14,6 +14,10 @@
 								"w": 180,
 								"t": 20,
 								"l": 30
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 11
 							}
 						},
 						{
@@ -23,6 +27,10 @@
 								"w": 140,
 								"t": 30,
 								"l": 50
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 12.5
 							}
 						}
 					],
@@ -57,7 +65,16 @@
 						"favonius-greatsword",
 						"lithic-spear",
 						"the-flute"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 41.5,
+							"t": 68.5
+						},
+						"rateup": {
+							"l": 78
+						}
+					}
 				}
 			}
 		},
@@ -74,6 +91,10 @@
 								"w": 110,
 								"t": 25,
 								"l": 66
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 12
 							}
 						},
 						{
@@ -82,6 +103,10 @@
 							"buttonBoxPosition": {
 								"w": 200,
 								"t": 25
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 12
 							}
 						}
 					],
@@ -116,7 +141,15 @@
 						"favonius-codex",
 						"favonius-sword",
 						"dragon_s-bane"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 41.5,
+							"t": 68,
+							"w": 27
+						},
+						"rateup": { "l": 78 }
+					}
 				}
 			}
 		}

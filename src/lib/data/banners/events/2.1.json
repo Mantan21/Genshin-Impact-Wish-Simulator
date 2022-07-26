@@ -12,6 +12,10 @@
 						"buttonBoxPosition": {
 							"w": 180,
 							"t": 10
+						},
+						"textOffset": {
+							"l": 61,
+							"b": 13
 						}
 					},
 					"rateup": ["xiangling", "sucrose", "kujou-sara"]
@@ -39,7 +43,16 @@
 							}
 						}
 					],
-					"rateup": ["the-bell", "sacrificial-bow", "favonius-lance", "the-widsith", "lion_s-roar"]
+					"rateup": ["the-bell", "sacrificial-bow", "favonius-lance", "the-widsith", "lion_s-roar"],
+					"textOffset": {
+						"featured": {
+							"l": 39.5,
+							"w": 30
+						},
+						"rateup": {
+							"l": 76
+						}
+					}
 				}
 			}
 		},
@@ -55,6 +68,10 @@
 							"w": 180,
 							"t": 25,
 							"l": 55
+						},
+						"textOffset": {
+							"w": 23,
+							"l": 51
 						}
 					},
 					"rateup": ["rosaria", "xingqiu", "beidou"]
@@ -88,7 +105,17 @@
 						"favonius-codex",
 						"favonius-greatsword",
 						"the-flute"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"l": 42,
+							"w": 30,
+							"t": 66
+						},
+						"rateup": {
+							"l": 75.5
+						}
+					}
 				}
 			}
 		}

@@ -14,6 +14,10 @@
 								"w": 170,
 								"t": 28,
 								"l": 50
+							},
+							"textOffset": {
+								"l": 55.5,
+								"b": 9
 							}
 						},
 						{
@@ -22,6 +26,10 @@
 							"buttonBoxPosition": {
 								"w": 140,
 								"t": 32
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 11
 							}
 						}
 					],
@@ -56,7 +64,17 @@
 						"wine-and-song",
 						"dragon_s-bane",
 						"sacrificial-greatsword"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"t": 68,
+							"w": 30
+						},
+						"rateup": {
+							"l": 71,
+							"b": 19
+						}
+					}
 				}
 			}
 		},
@@ -72,6 +90,10 @@
 							"w": 190,
 							"t": 30,
 							"l": 50
+						},
+						"textOffset": {
+							"l": 50,
+							"b": 9.5
 						}
 					},
 					"rateup": ["barbara", "xiangling", "gorou"]
@@ -105,7 +127,17 @@
 						"sacrificial-fragments",
 						"favonius-lance",
 						"the-bell"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"t": 67,
+							"w": 30
+						},
+						"rateup": {
+							"b": 19,
+							"l": 71
+						}
+					}
 				}
 			}
 		}
