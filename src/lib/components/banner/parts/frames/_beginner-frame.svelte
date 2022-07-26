@@ -2,7 +2,7 @@
 	import { t } from 'svelte-i18n';
 	import { browser } from '$app/env';
 	import { mobileMode } from '$lib/store/stores';
-	import { pity4star } from '$lib/store/localstore';
+	import { beginnerRoll } from '$lib/store/localstore';
 
 	export let character = '';
 	$: char = $t(`${character.character}.name`);
@@ -12,7 +12,7 @@
 		return `${splited[0]} <span class="geo"> ${splited.slice(1).join(' ')}</span>`;
 	};
 
-	const pity = browser ? pity4star.get('beginner') : 0;
+	const remaining = browser ? beginnerRoll.get() : 0;
 </script>
 
 <div class="frame-content">
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="chances">
-		{$t('wish.banner.beginnerChance', { values: { chances: `${pity}/20` } })}
+		{$t('wish.banner.beginnerChance', { values: { chances: `${remaining}/20` } })}
 	</div>
 </div>
 
