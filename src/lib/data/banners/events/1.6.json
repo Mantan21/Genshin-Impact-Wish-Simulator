@@ -45,7 +45,11 @@
 						"the-bell",
 						"favonius-lance",
 						"lion_s-roar"
-					]
+					],
+					"textOffset": {
+						"featured": { "l": 42.5 },
+						"rateup": { "l": 71.5, "b": 18 }
+					}
 				}
 			}
 		},
@@ -60,6 +64,9 @@
 						"buttonBoxPosition": {
 							"w": 110,
 							"t": 32
+						},
+						"textOffset": {
+							"w": 25
 						}
 					},
 					"rateup": ["rosaria", "bennett", "razor"]
@@ -93,7 +100,11 @@
 						"favonius-greatsword",
 						"dragon_s-bane",
 						"the-alley-flash"
-					]
+					],
+					"textOffset": {
+						"featured": { "l": 41, "t": 71 },
+						"rateup": { "l": 72, "b": 18 }
+					}
 				}
 			}
 		}

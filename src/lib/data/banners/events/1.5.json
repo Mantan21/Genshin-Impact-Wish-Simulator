@@ -46,7 +46,11 @@
 						"lithic-blade",
 						"lithic-spear",
 						"the-flute"
-					]
+					],
+					"textOffset": {
+						"featured": { "l": 43, "t": 71 },
+						"rateup": { "l": 75, "b": 18 }
+					}
 				}
 			}
 		},
@@ -94,7 +98,11 @@
 						"rainslasher",
 						"dragon_s-bane",
 						"sacrificial-sword"
-					]
+					],
+					"textOffset": {
+						"featured": { "l": 39.5, "t": 71 },
+						"rateup": { "l": 71, "b": 19 }
+					}
 				}
 			}
 		}

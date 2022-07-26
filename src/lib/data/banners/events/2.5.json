@@ -13,6 +13,10 @@
 							"w": 170,
 							"t": 24,
 							"l": 50
+						},
+						"textOffset": {
+							"l": 61,
+							"b": 12
 						}
 					},
 					"rateup": ["thoma", "diona", "fischl"]
@@ -46,7 +50,15 @@
 						"the-stringless",
 						"wavebreaker_s-fin",
 						"sacrificial-sword"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"w": 31,
+							"l": 35,
+							"t": 68
+						},
+						"rateup": { "b": 23 }
+					}
 				}
 			}
 		},
@@ -62,7 +74,8 @@
 							"buttonBoxPosition": {
 								"w": 160,
 								"t": 5
-							}
+							},
+							"textOffset": { "l": 61.5, "b": 13 }
 						},
 						{
 							"name": "drifting-luminescence-2",
@@ -71,7 +84,8 @@
 								"w": 160,
 								"t": 30,
 								"l": 55
-							}
+							},
+							"textOffset": { "l": 51, "b": 8, "w": 23 }
 						}
 					],
 					"rateup": ["bennett", "kujou-sara", "xinyan"]
@@ -105,7 +119,18 @@
 						"lion_s-roar",
 						"mouun_s-moon",
 						"sacrificial-fragments"
-					]
+					],
+					"textOffset": {
+						"featured": {
+							"w": 34,
+							"l": 35.5,
+							"t": 67.5
+						},
+						"rateup": {
+							"l": 74.5,
+							"b": 23
+						}
+					}
 				}
 			}
 		}
