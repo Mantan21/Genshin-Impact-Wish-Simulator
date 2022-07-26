@@ -271,7 +271,7 @@
 										<div class:dual={chars.length > 1}>
 											{#each chars as { character, name }, i}
 												<img
-													src="/images/banner/{patch}/{name}.webp"
+													src="/images/banner/thumbnail/{name}.webp"
 													alt={getName(character)}
 													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
 													class="dual{i + 1}"
@@ -279,10 +279,13 @@
 											{/each}
 										</div>
 									{:else}
-										<img src="/images/banner/{patch}/{chars.name}.webp" alt={getName(chars.name)} />
+										<img
+											src="/images/banner/thumbnail/{chars.name}.webp"
+											alt={getName(chars.name)}
+										/>
 									{/if}
 									<img
-										src="/images/banner/{patch}/{weapons.name}.webp"
+										src="/images/banner/thumbnail/{weapons.name}.webp"
 										alt={getName(weapons.name)}
 									/>
 								</div>
