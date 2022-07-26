@@ -13,6 +13,7 @@ import {
 	muted,
 	notice
 } from '$lib/store/stores';
+import { locale } from 'svelte-i18n';
 import HistoryIDB from '$lib/store/historyIdb';
 import { wishPhase, version } from '$lib/setup/wish-setup.json';
 
@@ -20,6 +21,10 @@ const { clearIDB } = HistoryIDB;
 const factoryReset = async () => {
 	localStorage.clear();
 	localStorage.setItem('primogem', 1600);
+	locale.update((langID) => {
+		localStorage.setItem('locale', langID);
+		return langID;
+	});
 
 	await clearIDB();
 
