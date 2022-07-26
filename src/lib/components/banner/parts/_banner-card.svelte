@@ -5,7 +5,7 @@
 	import playSfx from '$lib/functions/audio';
 	import ResponsiveImage from '$lib/components/utility/ResponsiveImage.svelte';
 	import BeginnerFrame from './frames/_beginner-frame.svelte';
-	import StandardFrame1 from './frames/_standard-frame1.svelte';
+	import StandardFrame from './frames/_standard-frame.svelte';
 	import EventsFrame from './frames/_events-frame.svelte';
 	import WeaponsFrame from './frames/_weapons-frame.svelte';
 
@@ -62,7 +62,7 @@
 			wrapperClass="card-image"
 		/>
 		<div class="frame">
-			<StandardFrame1 />
+			<StandardFrame {data} />
 		</div>
 	{/if}
 
@@ -89,7 +89,7 @@
 	.detail {
 		position: absolute;
 		left: 5%;
-		bottom: 13%;
+		bottom: 9%;
 		background-color: #eee8e3;
 		color: rgba(0, 0, 0, 0.5);
 		padding: 0.2rem 1.5rem;
