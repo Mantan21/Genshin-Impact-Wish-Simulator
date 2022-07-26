@@ -28,8 +28,10 @@
 	"capturing": "Capturing",
 	"rewardFirstShare": "Reward for first share : {qty}",
 	"version": "Version",
+	"donate": "Donate",
 	"wish": {
 		"rollButton": "Wish {count}",
+		"stellaFortuna": "Stella Fortuna",
 		"banner": {
 			"text": "Banner",
 			"allBanner": "All Banners",
@@ -46,9 +48,12 @@
 			"beginnerSet": "10-set 20% off. First 10-set will receive {character}.",
 			"beginnerNote": "\"As a dutiful maid would.\"",
 			"beginnerChance": "Chances Remaining: {chances}",
-			"standardNote": "Standard whises have no time limit. View Details for more.",
+			"standardNote": "Standard whises have no time limit.",
 			"allWeaponTypes": "All Weapon Types",
 			"etc": "etc.",
+			"probIncreased": "Probability increased !",
+			"eventNote": "5-Star event-exclusive characters can only be obtained in the specified wish during the specified time period(s).",
+			"viewDetails": "View Details for more.",
 			"name": {
 				"wanderlust": "Wanderlust Invocation",
 				"epitome-invocation": "Epitome Invocation",
@@ -66,9 +71,11 @@
 				"tapestry-of-golden-flames": "Tapestry of Golden Flames",
 				"reign-of-serenity": "Reign of Serenity",
 				"oni_s-royale": "Oni's Royale",
-				"the-transcendent-one-returns": "The Transcendent One Returns",
+				"the-transcendent-one-returns": "The&nbsp;Transcendent One Returns",
 				"everbloom-violet": "Everbloom Violet",
 				"azure-excursion": "Azure Excursion",
+				"adrift-in-the-harbor": "Adrift in The Harbor",
+				"drifting-luminescence": "Drifting Luminescence",
 				"discerner-of-enigmas": "Discerner of Enigmas"
 			}
 		},

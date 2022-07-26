@@ -28,8 +28,10 @@
 	"capturing": "正在截图",
 	"rewardFirstShare": "首次分享 : {qty}",
 	"version": "版本",
+	"donate": "Donate",
 	"wish": {
 		"rollButton": "祈愿{count}次",
+		"stellaFortuna": "Stella Fortuna",
 		"banner": {
 			"text": "卡池",
 			"allBanner": "全部卡池",
@@ -40,6 +42,18 @@
 			"beginner": "初行者推荐祈愿",
 			"weapons": "武器活动祈愿",
 			"standard": "常驻祈愿",
+			"wishDescription": "Every 10 wishes is guaranteed to include at least one 4-star or higher character",
+			"novice": "Novice Wishes",
+			"up": "UP!",
+			"beginnerSet": "10-set 20% off. First 10-set will receive {character}.",
+			"beginnerNote": "\"As a dutiful maid would.\"",
+			"beginnerChance": "Chances Remaining: {chances}",
+			"standardNote": "Standard whises have no time limit.",
+			"allWeaponTypes": "All Weapon Types",
+			"etc": "etc.",
+			"probIncreased": "Probability increased !",
+			"eventNote": "5-Star event-exclusive characters can only be obtained in the specified wish during the specified time period(s).",
+			"viewDetails": "View Details for more.",
 			"name": {
 				"wanderlust": "奔行世间",
 				"epitome-invocation": "神铸赋形",
@@ -60,7 +74,9 @@
 				"the-transcendent-one-returns": "出尘入世",
 				"everbloom-violet": "华紫樱绯",
 				"azure-excursion": "苍流踏花",
-				"discerner-of-enigmas": "素霓伣天"
+				"discerner-of-enigmas": "素霓伣天",
+				"adrift-in-the-harbor": "Adrift in The Harbor",
+				"drifting-luminescence": "Drifting Luminescence"
 			}
 		},
 		"epitomizedPath": {

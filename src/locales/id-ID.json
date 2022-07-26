@@ -28,8 +28,10 @@
 	"capturing": "Memproses",
 	"rewardFirstShare": "Hadiah membagikan pertama kali : {qty}",
 	"version": "Versi",
+	"donate": "Donasi",
 	"wish": {
 		"rollButton": "Mohon {count}",
+		"stellaFortuna": "Stella Fortuna",
 		"banner": {
 			"text": "Banner",
 			"allBanner": "Semua Banner",
@@ -46,15 +48,18 @@
 			"beginnerSet": "10-set diskon 20%. 10-set pertama pasti memberi {character}.",
 			"beginnerNote": "\"Aku akan selalu ingat etika seorang pelayan.\"",
 			"beginnerChance": "Sisa Kesempatan: {chances}",
-			"standardNote": "Permohonan Standar tidak memiliki batas waktu. Tekan Rincian unutk info lebih lanjut.",
+			"standardNote": "Permohonan Standar tidak memiliki batas waktu.",
 			"allWeaponTypes": "Semua tipe senjata",
 			"etc": "dan lainnya",
+			"probIncreased": "Kesempatan untuk memperoleh ditingkatkan !",
+			"eventNote": "Karakter promo hanya dapat diperoleh di Permohonan khusus selama periode yang ditentukan.",
+			"viewDetails": "Tekan Rincian untuk info lebih.",
 			"name": {
 				"wanderlust": "Wanderlust Invocation",
 				"epitome-invocation": "Epitome Invocation",
 				"ballad-in-goblets": "Syair Dalam Piala",
 				"sparkling-steps": "Percikan Langkah Api",
-				"farewell-of-snezhnaya": "Sampai Jumpa Snezhnaya",
+				"farewell-of-snezhnaya": "Sampai&nbsp;Jumpa Snezhnaya",
 				"gentry-of-hermitage": "Bangsawan dan Pertapa",
 				"secretum-secretorum": "Enigma Kehidupan",
 				"dance-of-lantern": "Tarian Lentera",
@@ -63,13 +68,15 @@
 				"born-of-ocean-swell": "Tarian Gulungan Ombak",
 				"leaves-in-the-wind": "Dedaunan di Tengah Angin",
 				"the-heron_s-court": "Pelataran Bangau Putih",
-				"tapestry-of-golden-flames": "Pijar Api di Angkasa",
-				"reign-of-serenity": "Sang Penguasa Tunggal",
+				"tapestry-of-golden-flames": "Pijar&nbsp;Api di Angkasa",
+				"reign-of-serenity": "Sang&nbspPenguasa Tunggal",
 				"oni_s-royale": "Perjamuan Oni",
-				"the-transcendent-one-returns": "Kembali ke Dunia Fana",
+				"the-transcendent-one-returns": "Kembali&nbsp;ke Dunia Fana",
 				"everbloom-violet": "Lembayung Sakura",
 				"azure-excursion": "Ketenangan Riak Air",
-				"discerner-of-enigmas": "Sang Pengungkap Misteri"
+				"discerner-of-enigmas": "Sang&nbsp;Pengungkap Misteri",
+				"drifting-luminescence": "Mutiara&nbsp;di Atas Laut",
+				"adrift-in-the-harbor": "Misteri Keabadian"
 			}
 		},
 		"epitomizedPath": {
