@@ -2,15 +2,22 @@
 	import { t } from 'svelte-i18n';
 	import { mobileMode } from '$lib/store/stores';
 
+	export let data = {};
+	const oldStd = data.character.name === 'wanderlust-invocation-1';
+
+	const chars = oldStd ? ['jean', 'diluc'] : ['qiqi', 'mona', 'keqing'];
+	const weap = oldStd ? 'skyward-blade' : 'skyward-spine';
+
 	const highlightBannerName = (bannerName) => {
+		const oldClass = oldStd ? 'class="old"' : '';
 		const splited = bannerName.split(' ');
-		return `${splited[0]} <span> ${splited.slice(1).join(' ')}</span>`;
+		return `${splited[0]} <span ${oldClass}> ${splited.slice(1).join(' ')}</span>`;
 	};
 </script>
 
 <div class="frame-content">
 	{#if $mobileMode}
-		<div class="top">
+		<div class="top" class:old={oldStd}>
 			{$t('wish.banner.standard')}
 		</div>
 	{/if}
@@ -18,14 +25,16 @@
 	<div class="set">
 		{$t('wish.banner.standard')}
 	</div>
+
 	<div class="desc">
 		{$t('wish.banner.wishDescription')}
 	</div>
 	<div class="note">
 		{$t('wish.banner.standardNote')}
+		{$t('wish.banner.viewDetails')}
 	</div>
 
-	{#each ['qiqi', 'mona', 'keqing'] as char}
+	{#each chars as char}
 		<div class="group {char}">
 			<div class="group-content">
 				<div class="item-name">
@@ -40,7 +49,7 @@
 	<div class="group skyward">
 		<div class="group-content">
 			<div class="item-name">
-				{$t(`skyward-spine`)}
+				{$t(weap)}
 				<span>{$t('wish.banner.etc')}</span>
 			</div>
 			<div class="all">
@@ -65,6 +74,9 @@
 		color: #757acdff;
 		display: block;
 	}
+	h1 :global(span.old) {
+		color: #c9a07b;
+	}
 
 	h1,
 	.frame-content > div {
@@ -82,7 +94,7 @@
 	.top {
 		color: #fff;
 		background-color: #757acdff;
-		padding: 0.1% 1.4% 0.5%;
+		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
@@ -90,12 +102,16 @@
 		left: 0;
 		transform: translate(-3%, -15%);
 	}
+	.top.old {
+		background-color: #c9a07b;
+	}
 
 	.set {
 		bottom: 60%;
 		left: 4%;
 		width: 36%;
 		font-size: calc(2.4 / 100 * var(--content-width));
+		-webkit-text-stroke: 0.01rem #f4f2f0;
 	}
 
 	.desc {
@@ -112,6 +128,9 @@
 		top: 58%;
 		left: 4%;
 		width: 36%;
+	}
+	.note.old {
+		top: 43%;
 	}
 
 	.group-content {
@@ -138,23 +157,36 @@
 		left: 46%;
 		top: 21%;
 	}
-	.qiqi .item-name,
-	.mona .item-name {
-		font-size: calc(3.3 / 100 * var(--content-width));
-	}
-
 	.keqing {
 		left: 61%;
 		top: 55%;
 	}
+	.jean {
+		left: 44%;
+		top: 72.5%;
+	}
+	.diluc {
+		left: 78%;
+		top: 10%;
+	}
+
 	.keqing .item-name {
 		font-size: calc(4.5 / 100 * var(--content-width));
 		transform: translateY(-80%);
 	}
+	.qiqi .item-name,
+	.mona .item-name {
+		font-size: calc(3.3 / 100 * var(--content-width));
+	}
+	.jean .item-name,
+	.diluc .item-name {
+		font-size: calc(4 / 100 * var(--content-width));
+		margin-bottom: calc(4 / 100 * var(--content-width));
+	}
 
 	.skyward {
-		left: 75%;
-		bottom: 4%;
+		left: 75.1%;
+		bottom: 4.5%;
 		width: 24%;
 		line-height: 170%;
 	}
@@ -171,9 +203,9 @@
 		background-color: #f7ab48;
 		display: inline-block;
 		width: fit-content;
-		font-size: calc(1.6 / 100 * var(--content-width));
+		font-size: calc(1.3 / 100 * var(--content-width));
 		line-height: 130%;
-		padding: 1% 3%;
+		padding: calc(0.2 / 100 * var(--content-width)) calc(2 / 100 * var(--content-width));
 		margin-top: calc(3.8 / 100 * var(--content-width));
 		transform: translateX(-5%);
 	}

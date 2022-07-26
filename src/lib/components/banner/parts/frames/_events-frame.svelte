@@ -2,6 +2,7 @@
 	import { t } from 'svelte-i18n';
 	import { mobileMode } from '$lib/store/stores';
 	import { data as charsDB } from '$lib/data/characters.json';
+	import positionToStyle from '$lib/functions/cssPosition';
 
 	export let data = {};
 
@@ -9,8 +10,10 @@
 		const split = banner.split('-');
 		return split.slice(0, -1).join('-');
 	};
-	const { character, name } = data;
+
+	const { character, name, textOffset } = data;
 	const { vision } = charsDB[0].list.find(({ name }) => name === character);
+	const featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
@@ -40,13 +43,16 @@
 		</div>
 		<div class="note">
 			{$t('wish.banner.eventNote')}
+			{$t('wish.banner.viewDetails')}
 		</div>
 	</div>
 
-	<div class="character">
+	<div class="character" style="{featuredC}{positionToStyle(textOffset)}">
 		<div class="char-name">
-			{$t(`${character}.name`)}
-			<span>{$t('wish.banner.up')}</span>
+			<span>
+				{$t(`${character}.name`)}
+			</span>
+			<span class="up">{$t('wish.banner.up')}</span>
 		</div>
 		<div class="char-title">
 			{$t(`${character}.title`)}
@@ -81,13 +87,13 @@
 		margin: 0 4%;
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.02rem #f4f2f0;
+		-webkit-text-stroke: 0.01rem #f4f2f0;
 	}
 
 	.top {
 		color: #fff;
 		background-color: #757acdff;
-		padding: 0.1% 1.4% 0.5%;
+		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
@@ -142,28 +148,33 @@
 		width: calc(32.5 / 100 * var(--content-width));
 	}
 
+	.note {
+		text-shadow: 0 0 2rem #f4f2f0;
+	}
+
 	.character {
 		left: 54%;
 		bottom: 8%;
+		width: calc(27 / 100 * var(--content-width));
 	}
 
 	.character .char-name {
 		color: #fff;
 		display: inline-block;
-		max-width: calc(27 / 100 * var(--content-width));
-		font-size: calc(4 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.05rem #565654;
+		-webkit-text-stroke: 0.02rem #565654;
 		text-shadow: 0 0 0.15rem #d2c69c;
 		line-height: 100%;
+		position: relative;
+		font-size: calc(11 / 100 * var(--text-width));
 	}
 
-	.char-name span {
+	.char-name .up {
 		color: #fff664;
 		-webkit-text-stroke: 0.05rem #e7a12e;
 		font-size: calc(2 / 100 * var(--content-width));
 		position: absolute;
 		top: 0;
-		left: 80%;
+		left: 100%;
 		transform: translateX(100%);
 		text-transform: uppercase;
 		text-shadow: 0 0 0.4rem #f79c09;
@@ -179,10 +190,10 @@
 	}
 
 	h1 :global(span.hydro) {
-		color: #06bbff;
+		color: #3f8ed1;
 	}
 	h1 :global(span.geo) {
-		color: #debd6c;
+		color: #d0a467;
 	}
 	h1 :global(span.pyro) {
 		color: #ee6c4c;
@@ -191,18 +202,18 @@
 		color: #359697;
 	}
 	h1 :global(span.electro) {
-		color: #ca82fc;
+		color: #7d67c5;
 	}
 	h1 :global(span.cryo) {
-		color: #4682b4;
+		color: #46c2d8;
 	}
 
 	.bg.hydro {
-		background-color: #06bbff;
+		background-color: #3f8ed1;
 	}
 
 	.bg.geo {
-		background-color: #debd6c;
+		background-color: #d0a467;
 	}
 	.bg.pyro {
 		background-color: #ee6c4c;
@@ -211,9 +222,9 @@
 		background-color: #359697;
 	}
 	.bg.electro {
-		background-color: #ca82fc;
+		background-color: #7d67c5;
 	}
 	.bg.cryo {
-		background-color: #4682b4;
+		background-color: #46c2d8;
 	}
 </style>

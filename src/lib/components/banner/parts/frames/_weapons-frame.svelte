@@ -1,10 +1,13 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { mobileMode, fatePoint, selectedCourse } from '$lib/store/stores';
+	import positionToStyle from '$lib/functions/cssPosition';
 
 	export let data = {};
-
-	const { featured, rateup } = data;
+	const { featured, rateup, textOffset } = data;
+	const feturedW = `--text-width: calc(${
+		textOffset?.featured?.w || 29
+	} / 100 * var(--content-width));`;
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
@@ -37,9 +40,11 @@
 		</div>
 	</div>
 
-	<div class="featured">
-		<div class="weapon-name">
-			{$t(`${featured[0].name}`)}
+	<div class="featured" style="{feturedW}{positionToStyle(textOffset?.featured)}">
+		<div class="weapon-name first-wp">
+			<span>
+				{$t(`${featured[0].name}`)}
+			</span>
 			<span class="up">{$t('wish.banner.up')}</span>
 		</div>
 		<div class="weapon-name second-wp">
@@ -47,7 +52,7 @@
 		</div>
 	</div>
 
-	<div class="rateup">
+	<div class="rateup" style={positionToStyle(textOffset?.rateup)}>
 		<div class="weapon-name">
 			{$t(`${rateup[0]}`)}, <span class="etc"> {$t('wish.banner.etc')}</span>
 			<span class="up">{$t('wish.banner.up')}</span>
@@ -96,7 +101,7 @@
 	.top {
 		color: #fff;
 		background-color: #757acdff;
-		padding: 0.1% 1.4% 0.5%;
+		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
@@ -152,8 +157,8 @@
 
 	.featured {
 		left: 37%;
-		top: 62%;
-		width: fit-content;
+		top: 64%;
+		width: calc(22 / 100 * var(--content-width));
 	}
 
 	.rateup {
@@ -163,18 +168,19 @@
 
 	.weapon-name {
 		color: #fff;
-		display: inline-block;
-		max-width: calc(27 / 100 * var(--content-width));
-		font-size: calc(3.2 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.04rem #565654;
-		text-shadow: 0 0 0.15rem #d2c69c;
-		line-height: 100%;
 		display: block;
+		-webkit-text-stroke: 0.03rem #565654;
+		line-height: 100%;
+		position: relative;
+	}
+
+	.first-wp {
+		font-size: calc(8 / 100 * var(--text-width));
 	}
 
 	.second-wp {
-		font-size: calc(2.5 / 100 * var(--content-width)) !important;
-		margin-top: calc(0.5 / 100 * var(--content-width));
+		font-size: calc(8 / 100 * var(--text-width));
+		margin-top: calc(0.6 / 100 * var(--content-width));
 	}
 
 	span.up {
@@ -190,7 +196,7 @@
 	}
 
 	.rateup .weapon-name {
-		font-size: calc(2.4 / 100 * var(--content-width));
+		font-size: calc(2 / 100 * var(--content-width));
 	}
 	.rateup span.up {
 		left: 100%;

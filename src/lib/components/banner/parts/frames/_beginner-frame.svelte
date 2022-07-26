@@ -5,7 +5,7 @@
 	import { pity4star } from '$lib/store/localstore';
 
 	export let character = '';
-	const char = $t(`${character.character}.name`);
+	$: char = $t(`${character.character}.name`);
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
@@ -77,7 +77,7 @@
 	.top {
 		color: #fff;
 		background-color: #e79649;
-		padding: 0.1% 1.4% 0.5%;
+		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
