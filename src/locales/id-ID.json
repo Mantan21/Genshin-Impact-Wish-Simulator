@@ -16,7 +16,7 @@
 	"sword": "Sword",
 	"polearm": "Polearm",
 	"extra": "Extra",
-	"obtained": "Diperoleh",
+	"obtained": "Mendapatkan",
 	"waiting": "Tunggu",
 	"confirmButton": "OK",
 	"cancelButton": "Batalkan",
@@ -50,7 +50,7 @@
 			"beginnerChance": "Sisa Kesempatan: {chances}",
 			"standardNote": "Permohonan Standar tidak memiliki batas waktu.",
 			"allWeaponTypes": "Semua tipe senjata",
-			"etc": "dan lainnya",
+			"etc": "dll.",
 			"probIncreased": "Kesempatan untuk memperoleh ditingkatkan !",
 			"eventNote": "Karakter promo hanya dapat diperoleh di Permohonan khusus selama periode yang ditentukan.",
 			"viewDetails": "Tekan Rincian untuk info lebih.",
@@ -108,7 +108,7 @@
 		}
 	},
 	"outfit": {
-		"heading": "Ruang Ganti",
+		"heading": "Kostum Karakter",
 		"setOutfit": "Atur Kostum",
 		"owned": "Sudah Dimiliki",
 		"purchasePrompt": "Kamu belum memiliki karakter untuk kostum ini, apakah kamu yakin ingin membeli kostum ini?",
@@ -236,7 +236,7 @@
 		"buyGenesisHeading": "Beli Genesis Crystal",
 		"recomendedHeading": "Item Rekomendasi",
 		"paimonHeading": "Penukaran Paimon",
-		"welkinHeading": "Blessing of the Welkin Moon",
+		"welkinNote": "Bisa dibeli beberapa kali",
 		"limitedOffer": "Penawaran Terbatas",
 		"noLimitTime": "Item tersedia tanpa batas waktu",
 		"recomended": {
@@ -305,5 +305,18 @@
 		"resetPrompt": "Apakah kamu yakin untuk menghapus <strong> Semua Data </strong> dan mengembalikan aplikasi seperti semula?",
 		"resetDetail": "Tindakan ini juga akan menghapus Data Riwayat, Akumulasi Pity, Saldo dan Semua Item dari Inventaris",
 		"resetSuccess": "Berhasil me-Reset"
+	},
+	"price": {
+		"format": "{symbol}{nominal}",
+		"symbol": "Rp",
+		"welkin": 75000,
+		"genesis": {
+			"60": 15000,
+			"300": 75000,
+			"980": 219000,
+			"1980": 439000,
+			"3280": 739000,
+			"6480": 1499000
+		}
 	}
 }

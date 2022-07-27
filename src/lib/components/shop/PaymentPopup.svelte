@@ -142,13 +142,13 @@
 	}
 	:global(.mobile) span.product-text {
 		width: fit-content;
-		left: 22vh;
+		left: 19vh;
 		top: 25%;
 		font-size: 0.9rem;
 	}
 	:global(.mobile) span.product-name {
 		width: max-content;
-		left: 22vh;
+		left: 19vh;
 		font-size: 0.9rem;
 		bottom: 25%;
 	}
@@ -158,7 +158,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1.8rem;
+		font-size: 1.5rem;
 		margin-right: 0.2rem;
 		color: #de2f22;
 	}
