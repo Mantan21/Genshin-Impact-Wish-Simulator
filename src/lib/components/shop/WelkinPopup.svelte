@@ -7,6 +7,10 @@
 
 	export let show = false;
 
+	const welkinPrice = $t(`price.format`, {
+		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin') }
+	});
+
 	const cancelBuy = getContext('cancelBuy');
 	const buyWelkin = getContext('buyWelkin');
 </script>
@@ -26,7 +30,7 @@
 					<caption> {$t('shop.recomended.blessing')} </caption>
 				</picture>
 				<div class="price">
-					<span>4.99 $US</span>
+					<span>{welkinPrice}</span>
 				</div>
 			</div>
 		</div>
