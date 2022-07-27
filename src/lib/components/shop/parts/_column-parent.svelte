@@ -1,8 +1,4 @@
-<script>
-	export let name = '';
-</script>
-
-<div class="item-list" class:genesis={name === 'genesis'}>
+<div class="item-list">
 	<div class="list-body">
 		<slot />
 	</div>
@@ -17,12 +13,9 @@
 		overflow-x: hidden;
 	}
 	:global(.mobile) .item-list {
-		height: calc(100vh - 90px);
+		height: calc(100vh - 60px);
 		margin: 5px 0 0;
 		padding: 0;
-	}
-	:global(.mobile) .genesis {
-		height: calc(100vh - 60px);
 	}
 
 	.list-body {
@@ -33,6 +26,7 @@
 	@media screen and (max-width: 400px) {
 		.list-body {
 			justify-content: space-between;
+			padding: 0 2.3%;
 		}
 	}
 </style>
