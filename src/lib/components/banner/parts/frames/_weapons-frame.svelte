@@ -90,7 +90,7 @@
 		position: absolute;
 	}
 	h1 {
-		top: 12%;
+		bottom: 67%;
 		left: 0;
 		margin: 0 4%;
 		line-height: 125%;

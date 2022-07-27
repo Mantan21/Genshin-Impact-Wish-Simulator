@@ -12,7 +12,7 @@
 		return `${splited[0]} <span class="geo"> ${splited.slice(1).join(' ')}</span>`;
 	};
 
-	const remaining = browser ? beginnerRoll.get() : 0;
+	const remaining = browser ? 20 - beginnerRoll.get() : 0;
 </script>
 
 <div class="frame-content">
@@ -67,7 +67,7 @@
 		display: block;
 	}
 	h1 {
-		top: 5%;
+		bottom: 73.5%;
 		left: 0;
 		margin: 0 4%;
 		line-height: 125%;
