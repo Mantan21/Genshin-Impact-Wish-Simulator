@@ -5,9 +5,8 @@
 
 	export let data = {};
 	const { featured, rateup, textOffset } = data;
-	const feturedW = `--text-width: calc(${
-		textOffset?.featured?.w || 29
-	} / 100 * var(--content-width));`;
+	const w = textOffset?.featured?.w || 29;
+	const feturedW = `--text-width: calc(${w} / 100 * var(--content-width));`;
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
