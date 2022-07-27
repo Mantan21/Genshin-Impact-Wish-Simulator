@@ -1,7 +1,7 @@
 <script>
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
+	import { t, locale } from 'svelte-i18n';
 	import { viewportHeight, viewportWidth, isMobile, muted } from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/functions/audio';
@@ -19,6 +19,7 @@
 	export let skipSplashOneByOne = false;
 	export let fromShop = false;
 	export let outfitName = '';
+	const isCN = $locale?.toLowerCase().includes('cn');
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -110,7 +111,12 @@
 
 <div class="wish-result">
 	<div class="uid">WishSimulator.App</div>
-	<img src="/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
+	<img
+		src="/images/utility/genshin-logo{isCN ? '-cn' : ''}.webp"
+		alt="genshin logo"
+		class="logo"
+		class:cn={isCN}
+	/>
 
 	{#if showWishList || skipSplashOneByOne}
 		<WishListResult {list} on:wishEnd={closeHandle} />
@@ -604,6 +610,7 @@
 		z-index: 999;
 		pointer-events: none;
 	}
+
 	:global(.preview) .logo {
 		display: block;
 		width: 30vh;
@@ -611,6 +618,11 @@
 		position: fixed;
 		bottom: 0px;
 		right: 5px;
+	}
+
+	.logo.cn {
+		max-height: 20vh;
+		width: 20vh;
 	}
 
 	@keyframes revealIcon {

@@ -1,6 +1,6 @@
 <script>
 	// Packagae
-	import { isLoading } from 'svelte-i18n';
+	import { isLoading, locale } from 'svelte-i18n';
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
 	import { onMount, setContext } from 'svelte';
@@ -22,6 +22,8 @@
 	import Iklan from '$lib/components/utility/Iklan.svelte';
 
 	let isLoaded = false;
+	const isCN = $locale?.toLowerCase().includes('cn');
+
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
@@ -97,7 +99,12 @@
 	{/if}
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
-	<img src="/images/utility/genshin-logo.webp" alt="genshin logo" class="logo" />
+	<img
+		src="/images/utility/genshin-logo{isCN ? '-cn' : ''}.webp"
+		alt="genshin logo"
+		class="logo"
+		class:cn={isCN}
+	/>
 </main>
 <Iklan />
 
@@ -153,5 +160,10 @@
 		position: fixed;
 		bottom: 0px;
 		right: 5px;
+	}
+
+	.preview .logo.cn {
+		max-height: 20vh;
+		width: 20vh;
 	}
 </style>

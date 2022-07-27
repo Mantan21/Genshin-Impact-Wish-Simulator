@@ -7,7 +7,6 @@ const beginerWish = (rarity, beginnerData, standardData, { version, phase }) => 
 	let { character, vision } = beginnerData;
 
 	const alreadyGetFeatured = guaranteedStatus.get('beginner');
-	console.log(alreadyGetFeatured);
 	const rollCount = beginnerRoll.get() || 0;
 	beginnerRoll.set(rollCount + 1);
 
