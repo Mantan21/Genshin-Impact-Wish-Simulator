@@ -26,6 +26,7 @@
 	$: weaponIndex = $selectedCourse.index;
 	$: weapons = $bannerList.find(({ type }) => type === 'weapons')?.weapons.featured || [];
 
+	let clientWidth;
 	let showCancelConfirmation = false;
 
 	// Target Course
@@ -94,7 +95,7 @@
 
 {#if $showFatepointPopup}
 	<section class="popup" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
-		<div class="popup-content">
+		<div class="popup-content" bind:clientWidth style="--popup-width: {clientWidth}px">
 			<img
 				src="/images/utility/fatepointbook{half ? '-half' : ''}.webp"
 				alt="Fatepoint Background"
@@ -111,6 +112,7 @@
 			<div class="container">
 				{#if !half}
 					<div class="description">
+						<h1>{$t('wish.epitomizedPath.text')}</h1>
 						<div class="content" bind:this={content}>
 							{#each $t('wish.epitomizedPath.description') as desc}
 								<p>
@@ -235,16 +237,31 @@
 		top: 0;
 		left: 0;
 	}
+
+	.container h1 {
+		text-align: left;
+		padding-left: 10%;
+		padding-top: 5%;
+		font-size: calc(3 / 100 * var(--popup-width));
+		color: #7c613f;
+	}
+
 	.container > div {
 		flex-basis: 50%;
 		flex-grow: 1;
 		padding: 3% 7%;
 	}
+
+	.description {
+		padding-right: 5.5% !important;
+		font-size: calc(1.55 / 100 * var(--popup-width));
+	}
+
 	.container .content {
 		width: 100%;
 		height: 82%;
 		overflow: hidden;
-		margin: 22% 0 0;
+		margin: 8% 0 0;
 		text-align: left;
 		color: #aa8e77;
 	}
@@ -273,7 +290,7 @@
 	}
 
 	.top {
-		font-size: 2rem;
+		font-size: calc(3 / 100 * var(--popup-width));
 		white-space: nowrap;
 	}
 
@@ -387,17 +404,11 @@
 	}
 
 	@media screen and (max-width: 800px) and (min-width: 500px) {
-		.top {
-			font-size: 1rem;
-		}
 		.weapon-item {
 			font-size: medium;
 		}
 	}
 
-	:global(.mobile) .top {
-		font-size: medium;
-	}
 	:global(.mobile) .text {
 		height: 30%;
 	}
