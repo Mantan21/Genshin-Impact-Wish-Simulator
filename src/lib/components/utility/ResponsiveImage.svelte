@@ -8,15 +8,12 @@
 </script>
 
 <div class="wrapper {wrapperClass}" style="min-height: 100px; width: 100%;">
-	<div class="s-A5q0eY9StNhG loaded" style="position: relative; width: 100%;">
+	<div style="position: relative; width: 100%;">
 		<div style="position: relative; overflow: hidden;">
 			<picture>
-				<source
-					type="image/webp"
-					srcset=" /g{source}-400.webp 375w, /g{source}-800.webp 768w, g{src}"
-					sizes="(max-width: 800px) 768px, 800px"
-				/>
-				<img src="/g{src}" {alt} />
+				<source media="(min-width: 900px)" srcset={src} />
+				<source media="(min-width: 500px)" srcset="/g{source}-800.webp" />
+				<img src="/g{source}-400.webp" {alt} />
 			</picture>
 		</div>
 	</div>
