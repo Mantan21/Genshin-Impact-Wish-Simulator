@@ -49,11 +49,21 @@
 {/if}
 <!-- Genesis Pop Up End -->
 
-<ColumnParent name="genesis">
-	{#each genesisList as { qty }, i}
+<ColumnParent>
+	{#each genesisList as { qty, price }, i}
 		<Column style="padding:0">
-			<button class="content" on:click={() => selectGenesis(i)}>
-				<img src="/images/utility/genesis-{qty}.webp" alt="genesis {qty}" />
+			<button on:click={() => selectGenesis(i)}>
+				<div class="content">
+					<div class="picture">
+						<picture>
+							<img src="/images/utility/genesis-{qty}.webp" alt="Genesis Crystal {qty}" />
+						</picture>
+					</div>
+					<div class="caption">
+						<div class="name">{qty} Genesis Crystals</div>
+						<div class="price">$US{price}</div>
+					</div>
+				</div>
 			</button>
 		</Column>
 	{/each}
@@ -63,6 +73,9 @@
 	button {
 		transition: all 0.2s;
 		transform: scale(1);
+		width: 100%;
+		height: 100%;
+		display: block;
 	}
 	button:not(.nav-link-item):active {
 		transform: scale(0.95);
@@ -72,20 +85,58 @@
 		width: 100%;
 		height: 100%;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-direction: column;
 		align-items: center;
-		border-radius: 0.5rem;
 		overflow: hidden;
 		text-align: center;
+		background-image: url('/images/utility/genesis-bg.webp');
+		background-size: cover;
+		background-position: center center;
+		transition: all 0.2s;
+		position: relative;
 	}
 
-	.content,
-	.content img {
-		width: 100%;
-		transition: all 0.2s;
+	.content:hover {
+		filter: drop-shadow(-0.3rem 0.2rem #eac343) drop-shadow(0.3rem 0.2rem #eac343)
+			drop-shadow(-0rem -0.3rem #eac343);
 	}
-	.genesis button:hover img {
-		filter: drop-shadow(0 0 5px #d2c69c);
+
+	picture {
+		display: block;
+		margin-top: -10%;
+	}
+	.picture {
+		display: block;
+		width: 100%;
+		height: 70%;
+		overflow-y: hidden;
+		margin-top: 5%;
+	}
+
+	img {
+		width: 90%;
+	}
+
+	.caption {
+		position: absolute;
+		bottom: 5%;
+		display: block;
+		width: 95%;
+	}
+
+	.name {
+		width: 100%;
+		padding: 15% 4% 2%;
+		display: block;
+		font-size: calc(8.5 / 100 * var(--column-width));
+		background-image: linear-gradient(to top, rgba(241, 239, 222, 1) 55%, rgba(241, 239, 222, 0));
+	}
+
+	.price {
+		display: block;
+		height: calc(16 / 100 * var(--column-width));
+		line-height: calc(16 / 100 * var(--column-width));
+		font-size: calc(9 / 100 * var(--column-width));
 	}
 </style>
