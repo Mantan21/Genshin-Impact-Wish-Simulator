@@ -204,6 +204,7 @@
 		"currentPity": "Current Pity :",
 		"totalPull": "Total Pull :",
 		"totalSpend": "Total Spend :",
+		"filterTxt": "Filter",
 		"filter": "{rarity} Star",
 		"filterAll": "All",
 		"pity": "Pity",
