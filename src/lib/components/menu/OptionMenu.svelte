@@ -215,4 +215,10 @@
 	.flag {
 		width: 1.2rem;
 	}
+
+	@media screen and (max-width: 900px) {
+		.option-name {
+			font-size: 120%;
+		}
+	}
 </style>
