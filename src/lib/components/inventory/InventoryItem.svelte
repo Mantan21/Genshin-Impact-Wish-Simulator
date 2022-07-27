@@ -13,6 +13,7 @@
 	export let isOwned = true;
 	export let outfitSet;
 
+	let clientWidth;
 	let countInfo;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
@@ -31,7 +32,7 @@
 	};
 </script>
 
-<div class="content" class:owned={isOwned}>
+<div class="content" class:owned={isOwned} bind:clientWidth style="--item-width: {clientWidth}px">
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
@@ -64,7 +65,7 @@
 
 <style>
 	.content {
-		border-radius: 0.5em;
+		border-radius: calc(7 / 100 * var(--item-width));
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -72,7 +73,6 @@
 		text-align: center;
 		background-color: #fff;
 		color: #3a4156;
-		line-height: 1.2rem;
 		position: relative;
 	}
 	.content.owned::after {
@@ -84,7 +84,7 @@
 		transform: translate(-50%, -50%);
 		width: 100%;
 		height: 100%;
-		border-radius: 0.8rem;
+		border-radius: calc(10 / 100 * var(--item-width));
 		border: 0.3rem solid #eac343;
 		opacity: 0;
 		transition: opacity 0.15s;
@@ -102,7 +102,7 @@
 		height: 100%;
 		background-color: #000;
 		opacity: 0.5;
-		border-radius: 0.5em;
+		border-radius: calc(7 / 100 * var(--item-width));
 	}
 
 	picture {
@@ -114,9 +114,9 @@
 		background-size: cover;
 		position: relative;
 		overflow: hidden;
-		border-top-left-radius: 0.5em;
-		border-top-right-radius: 0.5em;
-		border-bottom-right-radius: 1.2em;
+		border-top-left-radius: calc(7 / 100 * var(--item-width));
+		border-top-right-radius: calc(7 / 100 * var(--item-width));
+		border-bottom-right-radius: calc(20 / 100 * var(--item-width));
 	}
 	picture img {
 		width: 100%;
@@ -152,21 +152,13 @@
 	.star {
 		position: absolute;
 		left: 50%;
-		top: -0.7rem;
+		top: calc(-8 / 100 * var(--item-width));
 		transform: translateX(-50%);
+		filter: drop-shadow(0 0 1rem #fff);
 	}
 	.gi-star {
 		color: #eac343;
-		font-size: 1.3rem;
-	}
-
-	:global(.mobile) .gi-star {
-		font-size: 1rem;
-	}
-	@media screen and (max-width: 500px) {
-		.gi-star {
-			font-size: 1rem;
-		}
+		font-size: calc(15 / 100 * var(--item-width));
 	}
 
 	.caption {
@@ -174,8 +166,9 @@
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		padding: 0.2rem;
+		padding: calc(4 / 100 * var(--item-width));
 		position: relative;
+		font-size: calc(11 / 100 * var(--item-width));
 	}
 	.caption span {
 		display: block;
@@ -184,11 +177,6 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		text-transform: capitalize;
-	}
-
-	:global(.popup-content) .caption {
-		padding: 0 0.2rem;
-		font-size: 0.6rem;
 	}
 
 	img.claymore {
@@ -205,11 +193,5 @@
 
 	img.sword {
 		transform: rotate(10deg) scale(1.2) translateY(-1em) translateX(-0.7em);
-	}
-
-	@media screen and (max-width: 500px) {
-		.caption {
-			font-size: 0.85rem;
-		}
 	}
 </style>
