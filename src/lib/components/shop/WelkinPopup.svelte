@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 	import { mobileMode } from '$lib/store/stores';
 	import Icon from '../utility/Icon.svelte';
 	import PopUp from '../utility/PopUp.svelte';
@@ -8,7 +8,7 @@
 	export let show = false;
 
 	const welkinPrice = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin').toFixed(2) }
+		values: { symbol: $t('price.symbol'), nominal: $json('price.welkin').toFixed(2) }
 	});
 
 	const cancelBuy = getContext('cancelBuy');

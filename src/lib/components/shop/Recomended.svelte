@@ -1,6 +1,6 @@
 <script>
 	import { getContext, setContext } from 'svelte';
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 
 	import { outfits } from '$lib/data/outfits.json';
@@ -42,7 +42,7 @@
 	let showWelkinPopup = false;
 
 	const welkinPrice = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin').toFixed(2) }
+		values: { symbol: $t('price.symbol'), nominal: $json('price.welkin').toFixed(2) }
 	});
 
 	const buyWelkin = () => {
