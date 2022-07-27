@@ -136,9 +136,9 @@
 					</div>
 					<div class="top">{$t('wish.epitomizedPath.selectWeapon')}</div>
 					<div class="weapon-item">
-						<div class="weapon-list">
+						<div class="weapon-list" style="--item-width: {itemWidth}px">
 							{#if weaponName}
-								<div class="weapon-content" style="--item-width: {itemWidth}px">
+								<div class="weapon-content">
 									<button>
 										<InventoryItem
 											name={weaponName}
@@ -215,10 +215,12 @@
 		min-width: 250px;
 		text-align: center;
 		position: relative;
+		border-radius: 1.2rem;
+		overflow: hidden;
 	}
 
 	:global(.mobile) .popup-content {
-		max-width: 130vh;
+		max-width: 155vh;
 	}
 
 	.popup-content img {
@@ -262,7 +264,7 @@
 
 	.description {
 		padding-right: 5.5% !important;
-		font-size: calc(1.55 / 100 * var(--popup-width));
+		font-size: calc(2 / 100 * var(--popup-width));
 	}
 
 	.container .content {

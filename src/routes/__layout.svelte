@@ -22,7 +22,7 @@
 	import Iklan from '$lib/components/utility/Iklan.svelte';
 
 	let isLoaded = false;
-	const isCN = $locale?.toLowerCase().includes('cn');
+	$: isCN = $locale?.toLowerCase().includes('cn');
 
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
 	$: if ($bannerList.length > 0) {
