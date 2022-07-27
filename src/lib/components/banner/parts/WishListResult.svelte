@@ -12,6 +12,7 @@
 	export let preview = false;
 	export let previewlist = [];
 	export let list = [];
+	let clientHeight;
 
 	const sortByType = (a, b) => {
 		if (a.type > b.type) return 1;
@@ -91,7 +92,7 @@
 
 <div class="scroll" bind:this={container}>
 	<div class="container" class:animate={!preview}>
-		<div class="wishlist">
+		<div class="wishlist" bind:clientHeight style="--card-height: {clientHeight}px">
 			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty, outfitSet }, i (i)}
 				<div class="item-box" class:animate={!preview} style="animation-delay: {0.5 + i * 0.1}s">
 					<div
@@ -179,7 +180,7 @@
 				</div>
 			{/each}
 		</div>
-		<div class="shadows">
+		<div class="shadows" style="--card-height: {clientHeight}px">
 			{#each sortedWish as { rarity, type, fateType }, i}
 				<div
 					class="shadow shadow{rarity}"
@@ -187,7 +188,7 @@
 					style="animation-delay: {0.5 + i * 0.1}s"
 				>
 					{#if fateType && type === 'character'}
-						<span> {$t('wish.result.convertion')} </span>
+						<span class="convertion"> {$t('wish.result.convertion')} </span>
 					{/if}
 				</div>
 			{/each}
@@ -324,12 +325,7 @@
 		bottom: -5%;
 		color: #fff;
 		transform: translateX(-50%);
-		font-size: small;
 		-webkit-text-stroke: 0.3px #000;
-	}
-
-	:global(.mobile) .shadow span {
-		font-size: 0.6rem;
 	}
 
 	.shadow.shadow5 {
@@ -369,11 +365,15 @@
 		left: 80%;
 		transform: translateX(-50%);
 		padding: 0 0.4rem;
-		border-radius: 4px 0 4px 0;
+		border-radius: calc(2 / 100 * var(--card-height)) 0;
 		color: #fffa66;
 		background-color: #c3882a;
 		border: 1px solid #fffa66;
-		font-size: 0.7rem;
+		font-size: calc(3 / 100 * var(--card-height));
+	}
+
+	.convertion {
+		font-size: calc(3 / 100 * var(--card-height));
 	}
 
 	.cover {
@@ -460,8 +460,7 @@
 	.stella::after,
 	.masterless span {
 		width: 100%;
-		/* height: 5px; */
-		font-size: 0.6rem;
+		font-size: calc(3 / 100 * var(--card-height));
 		content: '1';
 		display: block;
 		position: absolute;
@@ -497,7 +496,7 @@
 	.info .gi-star {
 		color: #f7cf33;
 		display: inline-block;
-		font-size: 0.8rem;
+		font-size: calc(3.5 / 100 * var(--card-height));
 	}
 
 	.gi-primo-star {
@@ -508,15 +507,15 @@
 	}
 	.primo1 {
 		top: 3%;
-		font-size: 0.5rem;
+		font-size: calc(2 / 100 * var(--card-height));
 	}
 	.primo2 {
 		top: 10%;
-		font-size: 1.3rem;
+		font-size: calc(5 / 100 * var(--card-height));
 	}
 	.primo3 {
 		top: 20%;
-		font-size: 0.5rem;
+		font-size: calc(2 / 100 * var(--card-height));
 	}
 
 	.share {
