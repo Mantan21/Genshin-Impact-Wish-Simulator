@@ -130,7 +130,7 @@
 	>
 		<div class="head">
 			<h1>{$t('menu.text')} / {$t(`menu.${activeContent}`)}</h1>
-			<button class="close" on:click={handleClose} title="Change Banner">
+			<button class="close" on:click={handleClose}>
 				<i class="gi-close" />
 			</button>
 		</div>
@@ -500,6 +500,7 @@
 			padding: 0.2rem 1rem;
 			border-radius: 50px;
 			opacity: unset;
+			font-size: 135%;
 		}
 		:global(main):not(.mobile) .menu-item.active button,
 		:global(main):not(.mobile) .menu-item:hover button {
