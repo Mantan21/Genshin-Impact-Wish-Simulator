@@ -8,7 +8,6 @@
 	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
-	import { getName } from '$lib/functions/nameText';
 	import WishListResult from '$lib/components/banner/parts/WishListResult.svelte';
 
 	let title = 'No Name';
@@ -63,7 +62,7 @@
 		const get5Star = wishlist.filter(({ rarity }) => rarity === 5);
 		const featured5StarChar = wishlist.filter(({ rarity, name, type }) => {
 			const check = rarity === 5 && !standard.includes(name) && type === 'character';
-			if (check) title = getName(name);
+			if (check) title = $t(`${name}.name`);
 			return check;
 		});
 
@@ -73,20 +72,20 @@
 		}
 
 		if (get5Star.length === 2) {
-			title = get5Star.map(({ name }) => getName(name)).join(' and ');
+			title = get5Star.map(({ name }) => $t(name)).join(' and ');
 			metaTitle = `Wow, I just got ${title} when pulling on Wish Simulator for Genshin Impact`;
 			return;
 		}
 
 		if (get5Star.length > 2) {
-			title = get5Star.map(({ name }) => getName(name)).join(', ');
+			title = get5Star.map(({ name }) => $t(name)).join(', ');
 			metaTitle = `Wow, I just got ${title} when pulling on Wish Simulator for Genshin Impact`;
 			return;
 		}
 
-		const get4Star = wishlist.filter(({ rarity, name }, i) => {
+		const get4Star = wishlist.filter(({ rarity, name, type }, i) => {
 			const check = rarity === 4;
-			if (i === 0) title = getName(name);
+			if (i === 0) title = type === 'weapon' ? $t(name) : $t(`${name}.name`);
 			return check;
 		});
 
