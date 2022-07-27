@@ -160,7 +160,6 @@
 		},
 		{
 			"date": "12-Jul-2022",
-			"featured": true,
 			"description": [
 				"<strong>Kazuha 2nd Rerun </strong> and <strong>Klee 3rd Rerun </strong> Banner was here !",
 				"Weapon Banner Updated, <b> Freedom Sworn </b> and <b>Lost Prayers to the Sacred Winds</b> are ready to pull too!",
@@ -172,6 +171,14 @@
 			"featured": true,
 			"description": [
 				"<strong>Translation Features</strong> is live now, But  only <strong>EN</strong>, <strong>CN-Simplified</strong> and <strong>ID</strong> are available for now, if You want to contribute to add more translation, please go to <u><a href=\"https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator\" target=\"_blank\">Github Repository </a></u>"
+			]
+		},
+		{
+			"date": "28-Jul-2022",
+			"featured": true,
+			"description": [
+				"<strong> Yoimiya 2nd Rerun </strong> Banner already out !",
+				"Weapon Banner Updated, <b> Thundering Pulse </b> and <b>Summit Shaper</b> are ready to pull too !"
 			]
 		}
 	]
