@@ -143,13 +143,17 @@
 		z-index: +1;
 	}
 	.pop-body {
-		height: 12rem;
+		height: 15rem;
 		max-height: 45vh;
 		position: relative;
 		z-index: +1;
 		font-size: 1.2rem;
 		display: flex;
 		justify-content: center;
+	}
+
+	:global(.mobile) .pop-body {
+		height: 12rem;
 	}
 
 	.disclaimer {
