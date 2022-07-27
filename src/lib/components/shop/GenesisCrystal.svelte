@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { json, t } from 'svelte-i18n';
 	import playSfx from '$lib/functions/audio';
 
 	import ColumnParent from './parts/_column-parent.svelte';
@@ -9,14 +10,15 @@
 	let activeGenesisIndexforPopup; // undefined
 	let showPaymentPopup = false; //false
 
-	const genesisList = [
-		{ qty: 60, price: 0.99 },
-		{ qty: 300, price: 4.99 },
-		{ qty: 980, price: 14.99 },
-		{ qty: 1980, price: 29.99 },
-		{ qty: 3280, price: 49.99 },
-		{ qty: 6480, price: 99.99 }
-	];
+	const genesis = $json('price.genesis');
+	const genesisList = [];
+	Object.keys(genesis).forEach((key) => {
+		const price = $t(`price.format`, {
+			values: { symbol: $t('price.symbol'), nominal: genesis[key].toString() }
+		});
+		const item = { qty: parseInt(key), price };
+		genesisList.push(item);
+	});
 
 	const handleClosePopup = () => {
 		showPaymentPopup = false;
@@ -60,8 +62,8 @@
 						</picture>
 					</div>
 					<div class="caption">
-						<div class="name">{qty} Genesis Crystals</div>
-						<div class="price">$US{price}</div>
+						<div class="name">{qty} {$t('shop.item.genesis')}</div>
+						<div class="price">{price}</div>
 					</div>
 				</div>
 			</button>
@@ -127,7 +129,7 @@
 
 	.name {
 		width: 100%;
-		padding: 15% 4% 2%;
+		padding: 15% 4.5% 2%;
 		display: block;
 		font-size: calc(8.5 / 100 * var(--column-width));
 		background-image: linear-gradient(to top, rgba(241, 239, 222, 1) 55%, rgba(241, 239, 222, 0));

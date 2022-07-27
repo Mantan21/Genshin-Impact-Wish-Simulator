@@ -53,9 +53,7 @@
 					<Icon type="genesis" width="50%" />
 					<span class="product-name">{$t('shop.item.genesis')} x{qty}</span>
 				</picture>
-				<div class="price">
-					${price}
-				</div>
+				<div class="price">{price}</div>
 			</div>
 
 			<div class="payment-type">
@@ -160,7 +158,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 3rem;
+		font-size: 1.8rem;
 		margin-right: 0.2rem;
 		color: #de2f22;
 	}
