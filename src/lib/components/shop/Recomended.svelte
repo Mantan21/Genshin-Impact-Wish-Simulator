@@ -41,6 +41,10 @@
 	let dayRemaining = remaining || 0;
 	let showWelkinPopup = false;
 
+	const welkinPrice = $t(`price.format`, {
+		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin') }
+	});
+
 	const buyWelkin = () => {
 		showWelkinPopup = false;
 		genesis.update((n) => {
@@ -71,7 +75,7 @@
 	{/if}
 
 	<TopNavItem on:click={handleRecomendClick} name="welkin" active={activeItem === 'welkin'}>
-		{$t('shop.welkinHeading')}
+		{$t('shop.recomended.welkin')}
 	</TopNavItem>
 </TopNavParent>
 
@@ -125,9 +129,10 @@
 				</div>
 			</div>
 		{:else}
-			<div class="card" in:fade={{ duration: 400 }}>
+			<div class="card welkin" in:fade={{ duration: 400 }}>
 				<img src="/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
 
+				<h1>{$t('shop.recomended.welkin')}</h1>
 				{#if dayRemaining > 0}
 					<div class="remaining">
 						{@html $t('shop.recomended.dayRemaining', {
@@ -136,6 +141,10 @@
 						<span>({$t('shop.recomended.alreadyClaimed')})</span>
 					</div>
 				{/if}
+
+				<h2 class="price">{welkinPrice}</h2>
+				<div class="note">{$t('shop.welkinNote')}</div>
+
 				<div class="frame">
 					<div class="parent-amount">
 						<span>{$t('shop.recomended.instantlyGet')}</span>
@@ -205,6 +214,30 @@
 		border-radius: 1rem;
 		overflow: hidden;
 		font-size: calc(0.035 * var(--content-width));
+	}
+
+	.welkin h1 {
+		position: absolute;
+		right: 2%;
+		top: 7.5%;
+		color: #4c505e;
+		font-size: calc(0.065 * var(--content-width));
+	}
+
+	.welkin h2 {
+		position: absolute;
+		left: 2%;
+		bottom: 8%;
+		font-size: calc(0.115 * var(--content-width));
+		color: #fff;
+	}
+
+	.note {
+		position: absolute;
+		left: 6%;
+		bottom: 3.7%;
+		color: #fff;
+		font-size: calc(0.026 * var(--content-width));
 	}
 
 	.remaining {
