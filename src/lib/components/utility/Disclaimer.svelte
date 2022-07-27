@@ -16,7 +16,7 @@
 	});
 </script>
 
-<PopUp {show} title={$t('title')} button="confirm" on:confirm={closeDisclaimer}>
+<PopUp {show} title={$t('title')} button="confirm" disclaimer on:confirm={closeDisclaimer}>
 	<section>
 		<p class="sp">{$t('fanmade')}</p>
 		<div class="updates" bind:this={content}>

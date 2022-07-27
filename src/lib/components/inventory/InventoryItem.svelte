@@ -13,7 +13,6 @@
 	export let isOwned = true;
 	export let outfitSet;
 
-	let clientWidth;
 	let countInfo;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
@@ -32,7 +31,7 @@
 	};
 </script>
 
-<div class="content" class:owned={isOwned} bind:clientWidth style="--item-width: {clientWidth}px">
+<div class="content" class:owned={isOwned}>
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
@@ -75,6 +74,7 @@
 		color: #3a4156;
 		position: relative;
 	}
+
 	.content.owned::after {
 		content: '';
 		position: absolute;

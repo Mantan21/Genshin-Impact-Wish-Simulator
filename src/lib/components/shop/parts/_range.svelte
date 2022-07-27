@@ -217,6 +217,7 @@
 		border-radius: 100%;
 		top: 50%;
 		transform: translateY(-50%);
+		line-height: 0;
 	}
 
 	button.plus {
@@ -225,5 +226,6 @@
 	button.min {
 		left: 7%;
 		z-index: +3;
+		padding-top: 1rem;
 	}
 </style>

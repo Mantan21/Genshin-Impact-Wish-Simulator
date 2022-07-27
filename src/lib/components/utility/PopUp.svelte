@@ -13,6 +13,7 @@
 	export let confirmText = '';
 	export let button = 'all';
 	export let sfx = true;
+	export let disclaimer = false;
 
 	let content;
 
@@ -43,7 +44,7 @@
 				{#if title}
 					<h1 class="pop-header">{title}</h1>
 				{/if}
-				<div class="pop-body" class:large={!title && !confirm} bind:this={content}>
+				<div class="pop-body" class:disclaimer class:large={!title && !confirm} bind:this={content}>
 					<slot />
 				</div>
 
@@ -127,14 +128,14 @@
 	.bg {
 		font-size: 17em;
 		position: absolute;
-		top: 50%;
+		top: 60%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: #e4dcce;
 	}
 
 	.pop-header {
-		font-size: 1.2rem;
+		font-size: 130%;
 		margin: 0.4rem 7%;
 		padding-bottom: 0.4rem;
 		border-bottom: 0.2rem solid #ddd5c8;
@@ -142,13 +143,17 @@
 		z-index: +1;
 	}
 	.pop-body {
-		height: 15rem;
+		height: 12rem;
 		max-height: 45vh;
 		position: relative;
 		z-index: +1;
 		font-size: 1.2rem;
 		display: flex;
 		justify-content: center;
+	}
+
+	.disclaimer {
+		height: 18rem;
 	}
 
 	.pop-body.large {

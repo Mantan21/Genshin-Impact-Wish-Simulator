@@ -217,7 +217,7 @@
 	}
 
 	@media screen and (max-width: 900px) {
-		.option-name {
+		:global(main):not(.mobile) .option-name {
 			font-size: 120%;
 		}
 	}
