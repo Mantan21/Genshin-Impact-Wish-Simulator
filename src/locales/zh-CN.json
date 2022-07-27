@@ -204,6 +204,7 @@
 		"currentPity": "当前已垫:",
 		"totalPull": "总共抽取:",
 		"totalSpend": "已花费:",
+		"filterTxt": "Filter",
 		"filter": "{rarity} 星",
 		"filterAll": "全部",
 		"pity": "已垫",

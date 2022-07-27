@@ -199,7 +199,7 @@
 						class="filter-selected"
 						on:click={() => (showTableFilterOption = !showTableFilterOption)}
 					>
-						Filter / {tableFilter}
+						{$t('history.filterTxt')} / {tableFilter}
 						<i class="gi-caret-{showTableFilterOption ? 'up' : 'down'}" />
 					</span>
 					{#if showTableFilterOption}
