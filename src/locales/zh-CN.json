@@ -28,7 +28,7 @@
 	"capturing": "正在截图",
 	"rewardFirstShare": "首次分享 : {qty}",
 	"version": "版本",
-	"donate": "Donate",
+	"donate": "捐款",
 	"wish": {
 		"rollButton": "祈愿{count}次",
 		"stellaFortuna": "Stella Fortuna",
@@ -236,11 +236,11 @@
 		"buyGenesisHeading": "购买创世结晶",
 		"recomendedHeading": "推荐商品",
 		"paimonHeading": "尘辉兑换",
-		"welkinHeading": "空月祝福",
+		"welkinNote": "Can be purchased multiple times",
 		"limitedOffer": "限时提供购买",
 		"noLimitTime": "刷新时间：不会刷新",
 		"recomended": {
-			"blessing": "空月祝福",
+			"welkin": "空月祝福",
 			"newOutfit": "角色装扮 · 新装",
 			"dayRemaining": "剩余 {days} 天",
 			"alreadyClaimed": "本日已领取",
@@ -305,5 +305,18 @@
 		"resetPrompt": "您确定清除<strong>所有数据</strong>并恢复默认吗？",
 		"resetDetail": "它还会从仓库中删除您的历史记录、垫数计算、余额和所有项目。",
 		"resetSuccess": "已成功重置"
+	},
+	"price": {
+		"format": "{symbol}{nominal}",
+		"symbol": "¥",
+		"welkin": 30,
+		"genesis": {
+			"60": 6,
+			"300": 30,
+			"980": 98,
+			"1980": 198,
+			"3280": 328,
+			"6480": 648
+		}
 	}
 }

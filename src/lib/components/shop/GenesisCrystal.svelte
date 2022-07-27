@@ -14,7 +14,7 @@
 	const genesisList = [];
 	Object.keys(genesis).forEach((key) => {
 		const price = $t(`price.format`, {
-			values: { symbol: $t('price.symbol'), nominal: genesis[key].toString() }
+			values: { symbol: $t('price.symbol'), nominal: genesis[key].toFixed(2) }
 		});
 		const item = { qty: parseInt(key), price };
 		genesisList.push(item);

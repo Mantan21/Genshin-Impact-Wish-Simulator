@@ -42,7 +42,7 @@
 	let showWelkinPopup = false;
 
 	const welkinPrice = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin') }
+		values: { symbol: $t('price.symbol'), nominal: $t('price.welkin').toFixed(2) }
 	});
 
 	const buyWelkin = () => {
