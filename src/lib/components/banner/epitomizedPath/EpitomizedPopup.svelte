@@ -138,7 +138,7 @@
 					<div class="weapon-item">
 						<div class="weapon-list">
 							{#if weaponName}
-								<div class="weapon-content">
+								<div class="weapon-content" style="--item-width: {itemWidth}px">
 									<button>
 										<InventoryItem
 											name={weaponName}
@@ -155,7 +155,7 @@
 										class:active={targetActive === i}
 										on:click={() => select(i)}
 									>
-										<button style="--item-width: {itemWidth}px">
+										<button>
 											<InventoryItem {name} weaponType={type} type="weapon" rarity={5} />
 										</button>
 									</div>
