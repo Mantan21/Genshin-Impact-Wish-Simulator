@@ -26,6 +26,14 @@
 	$: weaponIndex = $selectedCourse.index;
 	$: weapons = $bannerList.find(({ type }) => type === 'weapons')?.weapons.featured || [];
 
+	let itemWidth;
+	$: defaultItemWidth = (16.5 / 100) * $viewportHeight;
+	$: if (itemWidth < 150) {
+		itemWidth = 150;
+	} else {
+		itemWidth = defaultItemWidth;
+	}
+
 	let clientWidth;
 	let showCancelConfirmation = false;
 
@@ -147,7 +155,7 @@
 										class:active={targetActive === i}
 										on:click={() => select(i)}
 									>
-										<button>
+										<button style="--item-width: {itemWidth}px">
 											<InventoryItem {name} weaponType={type} type="weapon" rarity={5} />
 										</button>
 									</div>

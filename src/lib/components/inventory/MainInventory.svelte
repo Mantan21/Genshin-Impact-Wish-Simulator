@@ -17,7 +17,7 @@
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
-	import { mobileMode } from '$lib/store/stores';
+	import { mobileMode, viewportHeight } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
 	import { isOutfitSet } from '$lib/functions/wish/outfit';
 
@@ -31,6 +31,16 @@
 	const inTransition = (node, args) => {
 		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
 	};
+
+	let itemWidth;
+	$: defaultItemWidth = (20 / 100) * $viewportHeight;
+	$: if ($mobileMode) {
+		itemWidth = (24 / 100) * $viewportHeight;
+	} else if (itemWidth < 150) {
+		itemWidth = 150;
+	} else {
+		itemWidth = defaultItemWidth;
+	}
 
 	let activeItem = 'character';
 	let showOrder = false;
@@ -249,10 +259,10 @@
 		</div>
 		<div class="body-content" in:fade={{ duration: 400 }}>
 			<div class="container" bind:this={content}>
-				<div class="list-item">
+				<div class="list-item" style="--item-width: {itemWidth}px">
 					{#if dataToShow.length < 1}
-						<span style="color: white; padding: 2rem; font-size: 1.2rem"
-							>{$t('history.noData')}
+						<span style="color: white; padding: 2rem; font-size: 1.2rem">
+							{$t('history.noData')}
 						</span>
 					{:else}
 						{#each dataToShow as d (d)}

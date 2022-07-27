@@ -266,7 +266,6 @@
 
 	.content {
 		width: 100%;
-		height: 100%;
 		display: flex;
 		flex-direction: column;
 	}
@@ -391,7 +390,10 @@
 		margin-bottom: -0.5rem;
 	}
 	.slider {
-		height: 100%;
+		padding: 1% 0;
+	}
+	.error {
+		font-size: 80%;
 	}
 
 	@media screen and (max-width: 890px) {

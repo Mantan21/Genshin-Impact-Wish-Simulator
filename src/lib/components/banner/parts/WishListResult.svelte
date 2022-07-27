@@ -489,7 +489,6 @@
 		position: absolute;
 		bottom: 10%;
 		text-align: center;
-		width: 100%;
 		z-index: 10;
 	}
 
