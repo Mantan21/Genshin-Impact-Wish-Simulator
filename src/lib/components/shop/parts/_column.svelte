@@ -2,30 +2,29 @@
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 
 	export let style = '';
-	let columnWidth = '';
 
-	$: if ($viewportWidth < 400) {
-		columnWidth = `width: ${(44 / 100) * $viewportWidth}px; height:${
-			(44 / 100) * $viewportWidth
-		}px;`;
-	}
+	$: defaultWitdh = (10 / 100) * $viewportHeight;
+	let columnWidth = 0;
+
 	$: if ($mobileMode) {
-		columnWidth = `width: ${(37 / 100) * $viewportHeight - 0.1}px; height:${
-			(37 / 100) * $viewportHeight
-		}px;`;
+		columnWidth = (36 / 100) * $viewportHeight;
+	} else if ($viewportWidth < 400) {
+		columnWidth = (40 / 100) * $viewportWidth;
+	} else if (defaultWitdh < 190) {
+		columnWidth = 190;
+	} else {
+		columnWidth = defaultWitdh;
 	}
 </script>
 
-<div class="column" style="{columnWidth}{style}">
+<div class="column" style="--column-width: {columnWidth}px;{style}">
 	<slot />
 </div>
 
 <style>
 	.column {
-		width: 10vh;
-		height: 10vh;
-		min-width: 190px;
-		min-height: 190px;
+		width: var(--column-width);
+		height: var(--column-width);
 		margin: 0.4rem;
 		padding: 0.3rem;
 		display: block;
