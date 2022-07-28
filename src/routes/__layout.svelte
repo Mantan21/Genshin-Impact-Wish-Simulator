@@ -106,7 +106,6 @@
 		class:cn={isCN}
 	/>
 </main>
-<Iklan />
 
 <style>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';

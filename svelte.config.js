@@ -8,7 +8,7 @@ envConfig();
 const { NODE_ENV, USE_CDN, GITHUB_USER, GITHUB_REPO } = process.env;
 
 const cdn_on = NODE_ENV === 'production' && USE_CDN === 'true';
-const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static/assets/`;
+const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static/images/`;
 
 const imagePreprocess = () => {
 	return image({
@@ -48,7 +48,12 @@ const config = {
 		? [
 				imagePreprocess(),
 				preprocess({
-					replace: [[new RegExp('/assets/', 'gi'), `${cdn_url}`]]
+					replace: [
+						[new RegExp('/g{', 'g'), '{'],
+						[new RegExp('-800', 'g'), ''],
+						[new RegExp('-400', 'g'), ''],
+						[new RegExp('/images/', 'g'), `${cdn_url}`]
+					]
 				})
 		  ]
 		: imagePreprocess()

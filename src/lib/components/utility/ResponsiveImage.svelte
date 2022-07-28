@@ -4,7 +4,7 @@
 	export let wrapperClass;
 
 	const splitSrc = src.split('.');
-	const source = splitSrc.slice(0, -1).join();
+	const source = splitSrc.slice(0, -1).join('.');
 </script>
 
 <div class="wrapper {wrapperClass}" style="min-height: 100px; width: 100%;">
