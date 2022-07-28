@@ -131,6 +131,7 @@
 		color: #fff;
 		height: calc(14 / 100 * var(--content-height));
 		display: flex;
+		align-items: center;
 		margin: calc(0.7 / 100 * var(--content-width)) 0;
 	}
 
@@ -143,7 +144,7 @@
 	}
 
 	.desc .text {
-		height: 100%;
+		max-height: 100%;
 		overflow-y: auto;
 		width: calc(32.5 / 100 * var(--content-width));
 	}

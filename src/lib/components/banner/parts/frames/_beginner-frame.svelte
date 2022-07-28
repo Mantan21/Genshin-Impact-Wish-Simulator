@@ -26,7 +26,9 @@
 		{$t('wish.banner.beginnerSet', { values: { character: char } })}
 	</div>
 	<div class="desc">
-		{$t('wish.banner.wishDescription')}
+		<p>
+			{$t('wish.banner.wishDescription')}
+		</p>
 	</div>
 	<div class="note">
 		{$t('wish.banner.beginnerNote')}
@@ -100,9 +102,14 @@
 		top: 55.2%;
 		transform: translateY(-50%);
 		color: #fff;
-		line-height: 120%;
 		height: 14%;
 		overflow-y: auto;
+		display: flex;
+		align-items: center;
+	}
+
+	.desc p {
+		line-height: 120%;
 	}
 
 	.note {

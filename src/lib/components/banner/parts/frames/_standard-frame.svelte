@@ -27,7 +27,9 @@
 	</div>
 
 	<div class="desc">
-		{$t('wish.banner.wishDescription')}
+		<p>
+			{$t('wish.banner.wishDescription')}
+		</p>
 	</div>
 	<div class="note">
 		{$t('wish.banner.standardNote')}
@@ -117,11 +119,17 @@
 	.desc {
 		left: 7.5%;
 		width: 32.5%;
-		top: 49.7%;
+		top: 49%;
 		transform: translateY(-50%);
 		color: #fff;
 		height: 14%;
 		overflow-y: auto;
+		display: flex;
+		align-items: center;
+	}
+
+	.desc p {
+		line-height: 120%;
 	}
 
 	.note {
