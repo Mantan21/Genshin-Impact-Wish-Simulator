@@ -3,7 +3,7 @@
 	import { browser } from '$app/env';
 	import { afterUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// store
@@ -46,6 +46,12 @@
 	let table;
 	let tableFilter = $t('history.filterAll');
 	let showTableFilterOption = false;
+
+	$: pricePerPrimo = $json('price.genesis.60') / 60;
+	$: totalSpend = data.length * 160 * pricePerPrimo;
+	$: totalSpendString = $t(`price.format`, {
+		values: { symbol: $t('price.symbol'), nominal: totalSpend.toFixed(2) }
+	});
 
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
@@ -187,7 +193,7 @@
 				{$t('history.totalSpend')}
 				<strong><span class="lighted"> {data.length * 160}</span> Primos</strong>
 				~
-				<span class="lighted"> <strong> ${((data.length * 160) / 60).toFixed(2)} </strong> </span>
+				<span class="lighted"> <strong> {totalSpendString} </strong> </span>
 			</div>
 			<div class="right">
 				<button class="reset" on:click={reset}>
