@@ -1,5 +1,5 @@
 <script>
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import Ads from '../utility/Iklan.svelte';
 
@@ -99,7 +99,7 @@
 
 {#if bannerType === 'beginner'}
 	{#each data[0].items as { name, vision }, x}
-		{#each $t('details.beginner') as text}
+		{#each $json('details.beginner') as text}
 			<p>
 				{@html $t(text, {
 					values: {
@@ -111,11 +111,11 @@
 		{/each}
 	{/each}
 {:else if bannerType === 'standard'}
-	{#each $t('details.standard') as text}
+	{#each $json('details.standard') as text}
 		<p>{@html text}</p>
 	{/each}
 {:else if bannerType === 'events'}
-	{#each $t('details.events') as text}
+	{#each $json('details.events') as text}
 		<p>
 			{@html $t(text, {
 				values: {
@@ -127,7 +127,7 @@
 		</p>
 	{/each}
 {:else if bannerType === 'weapons'}
-	{#each $t('details.weapons') as text}
+	{#each $json('details.weapons') as text}
 		<p>
 			{@html $t(text, {
 				values: {
