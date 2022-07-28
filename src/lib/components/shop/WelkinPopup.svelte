@@ -27,7 +27,7 @@
 			<div class="thumbnail">
 				<picture>
 					<img src="/images/utility/welkin.webp" alt="Welkin" />
-					<caption> {$t('shop.recomended.blessing')} </caption>
+					<caption> {$t('shop.recomended.welkin')} </caption>
 				</picture>
 				<div class="price">
 					<span>{welkinPrice}</span>
