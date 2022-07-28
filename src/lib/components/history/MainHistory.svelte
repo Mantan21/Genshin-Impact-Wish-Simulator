@@ -139,7 +139,9 @@
 >
 	<div class="confirmation">
 		<p>
-			{@html $t('history.resetPrompt', { values: { bannerName: $t(`wish.banner.${banner}`) } })}
+			{@html $t('history.resetPrompt', {
+				values: { bannerName: `<b>${$t(`wish.banner.${banner}`)}</b>` }
+			})}
 		</p>
 	</div>
 </PopUp>
@@ -261,7 +263,7 @@
 											{#if bannerName}
 												{#if ['events', 'weapons'].includes(banner)}
 													<a href="/" on:click|preventDefault={() => search(bannerName)}>
-														{$t(`wish.banner.name.${bannerLocalesID(bannerName)}`)}
+														{@html $t(`wish.banner.name.${bannerLocalesID(bannerName)}`)}
 													</a>
 												{:else}
 													{$t(`wish.banner.name.wanderlust`)}
@@ -489,7 +491,6 @@
 		padding: 1rem 0.5rem;
 		height: 100%;
 		text-align: center;
-		text-transform: capitalize;
 		line-height: 1rem;
 	}
 
