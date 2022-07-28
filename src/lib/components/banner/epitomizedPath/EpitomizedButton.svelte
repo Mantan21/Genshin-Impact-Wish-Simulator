@@ -64,6 +64,7 @@
 <style>
 	button {
 		position: relative;
+		pointer-events: initial;
 	}
 
 	.point-number {
