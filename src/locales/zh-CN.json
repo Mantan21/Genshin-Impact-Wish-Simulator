@@ -21,17 +21,17 @@
 	"confirmButton": "确认",
 	"cancelButton": "取消",
 	"disclaimer": "本网站使用的所有资源均归米哈游所有。",
-	"fanmade": "这纯粹是一个粉丝制作的应用，尽情享受吧！",
+	"fanmade": "这是一个粉丝制作的应用，尽情享受吧！",
 	"pressToContinue": "点击空白区域继续",
 	"share": "分享",
 	"screenshot": "截图",
 	"capturing": "正在截图",
 	"rewardFirstShare": "首次分享 : {qty}",
 	"version": "版本",
-	"donate": "捐款",
+	"donate": "捐赠",
 	"wish": {
 		"rollButton": "祈愿{count}次",
-		"stellaFortuna": "Stella Fortuna",
+		"stellaFortuna": "对应角色的命星",
 		"banner": {
 			"text": "卡池",
 			"allBanner": "全部卡池",
@@ -42,18 +42,18 @@
 			"beginner": "初行者推荐祈愿",
 			"weapons": "武器活动祈愿",
 			"standard": "常驻祈愿",
-			"wishDescription": "Every 10 wishes is guaranteed to include at least one 4-star or higher character",
-			"novice": "Novice Wishes",
+			"wishDescription": "每十次祈愿必出四星或以上物品。",
+			"novice": "新手祈愿",
 			"up": "UP!",
-			"beginnerSet": "10-set 20% off. First 10-set will receive {character}.",
-			"beginnerNote": "\"As a dutiful maid would.\"",
-			"beginnerChance": "Chances Remaining: {chances}",
-			"standardNote": "Standard whises have no time limit.",
-			"allWeaponTypes": "All Weapon Types",
-			"etc": "etc.",
-			"probIncreased": "Probability increased !",
-			"eventNote": "5-Star event-exclusive characters can only be obtained in the specified wish during the specified time period(s).",
-			"viewDetails": "View Details for more.",
+			"beginnerSet": "十连8折，首次必得{character}",
+			"beginnerNote": "「我会注意女仆的礼仪。」",
+			"beginnerChance": "剩余次数：{chances}",
+			"standardNote": "常驻祈愿，永久性祈愿活动。",
+			"allWeaponTypes": "全部类型",
+			"etc": "等",
+			"probIncreased": "获取概率提升！",
+			"eventNote": "活动限定五星角色仅在UP期间，通过对应祈愿获得。",
+			"viewDetails": "具体内容查看【详情】",
 			"name": {
 				"wanderlust": "奔行世间",
 				"epitome-invocation": "神铸赋形",
@@ -75,8 +75,8 @@
 				"everbloom-violet": "华紫樱绯",
 				"azure-excursion": "苍流踏花",
 				"discerner-of-enigmas": "素霓伣天",
-				"adrift-in-the-harbor": "Adrift in The Harbor",
-				"drifting-luminescence": "Drifting Luminescence"
+				"adrift-in-the-harbor": "浮生孰来",
+				"drifting-luminescence": "浮岳虹珠"
 			}
 		},
 		"epitomizedPath": {
@@ -222,7 +222,7 @@
 		"purchaseUpto": "限购 1",
 		"purchaseConfirm": "确认购买",
 		"exchangeHeading": "兑换物品",
-		"purchaseHeading": "充值物品",
+		"purchaseHeading": "购买物品",
 		"purchaseButton": "购买",
 		"pay": "支付",
 		"product": "产品",
@@ -237,7 +237,7 @@
 		"buyGenesisHeading": "购买创世结晶",
 		"recomendedHeading": "推荐商品",
 		"paimonHeading": "尘辉兑换",
-		"welkinNote": "Can be purchased multiple times",
+		"welkinNote": "可累计购买",
 		"limitedOffer": "限时提供购买",
 		"noLimitTime": "刷新时间：不会刷新",
 		"recomended": {
@@ -253,8 +253,8 @@
 			"collect": "每日登录奖励"
 		},
 		"exchange": {
-			"starglitter": "星辉兑换",
-			"stardust": "星尘兑换",
+			"starglitter": "无主的星辉",
+			"stardust": "无主的星尘",
 			"primogem": "原石购买"
 		},
 		"item": {
