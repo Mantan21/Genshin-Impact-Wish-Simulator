@@ -1,7 +1,7 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { mobileMode, fatePoint, selectedCourse } from '$lib/store/stores';
-	import positionToStyle from '$lib/functions/cssPosition';
+	import { fatePoint, selectedCourse } from '$lib/store/stores';
+	import positionToStyle from '$lib/helpers/cssPosition';
 
 	export let data = {};
 	const { featured, rateup, textOffset } = data;
@@ -15,11 +15,9 @@
 </script>
 
 <div class="frame-content">
-	{#if $mobileMode}
-		<div class="top bg">
-			{$t('wish.banner.weapons')}
-		</div>
-	{/if}
+	<div class="top bg">
+		{$t('wish.banner.weapons')}
+	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.name.epitome-invocation`))}</h1>
 
 	<div class="info">
@@ -53,7 +51,8 @@
 
 	<div class="rateup" style={positionToStyle(textOffset?.rateup)}>
 		<div class="weapon-name">
-			{$t(`${rateup[0]}`)}, <span class="etc"> {$t('wish.banner.etc')}</span>
+			<span>{$t(`${rateup[0]}`)},</span>
+			<span class="etc"> {$t('wish.banner.etc')}</span>
 			<span class="up">{$t('wish.banner.up')}</span>
 		</div>
 	</div>
@@ -135,7 +134,7 @@
 		left: 7.5%;
 		top: 49.7%;
 		color: #fff;
-		height: calc(14 / 100 * var(--content-height));
+		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;
 		align-items: center;
 		margin: calc(0.7 / 100 * var(--content-width)) 0;
@@ -150,9 +149,12 @@
 	}
 
 	.desc .text {
-		max-height: 100%;
-		overflow-y: auto;
 		width: calc(32.5 / 100 * var(--content-width));
+		padding: calc(0.3 / 100 * var(--content-width));
+	}
+
+	.note {
+		width: 85%;
 	}
 
 	.featured {
@@ -169,9 +171,14 @@
 	.weapon-name {
 		color: #fff;
 		display: block;
-		-webkit-text-stroke: 0.03rem #565654;
+		-webkit-text-stroke: 0.015rem #000;
+		letter-spacing: -0.05rem;
 		line-height: 100%;
 		position: relative;
+	}
+
+	.weapon-name span:not(.up) {
+		filter: drop-shadow(-0.2rem 0.2rem 0.5rem #000);
 	}
 
 	.first-wp {
@@ -186,11 +193,12 @@
 	span.up {
 		color: #fff664;
 		-webkit-text-stroke: 0.05rem #e7a12e;
+		filter: drop-shadow(0 0.3rem 0.5rem #fff);
 		font-size: calc(2 / 100 * var(--content-width));
 		position: absolute;
 		top: 0;
-		left: 90%;
-		transform: translateX(100%);
+		right: 0;
+		transform: translateX(100%) translateY(-80%);
 		text-transform: uppercase;
 		text-shadow: 0 0 0.4rem #f79c09;
 	}
@@ -198,10 +206,7 @@
 	.rateup .weapon-name {
 		font-size: calc(2 / 100 * var(--content-width));
 	}
-	.rateup span.up {
-		left: 100%;
-		transform: translateY(-100%) translateX(-50%);
-	}
+
 	span.etc {
 		font-size: calc(2 / 100 * var(--content-width));
 		white-space: nowrap;

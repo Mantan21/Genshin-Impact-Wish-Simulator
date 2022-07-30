@@ -1,8 +1,9 @@
 <script>
+	import { onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { mobileMode } from '$lib/store/stores';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { data as charsDB } from '$lib/data/characters.json';
-	import positionToStyle from '$lib/functions/cssPosition';
+	import positionToStyle from '$lib/helpers/cssPosition';
 
 	export let data = {};
 
@@ -19,31 +20,40 @@
 		const splited = bannerName.split(' ');
 		return `<span class="${vision}">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
+
+	let bannerInfo;
+	onMount(() => {
+		OverlayScrollbars(bannerInfo, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light',
+			scrollbars: { visibility: 'hidden' }
+		});
+	});
 </script>
 
 <div class="frame-content">
-	{#if $mobileMode}
-		<div class="top bg {vision}">
-			{$t('wish.banner.events')}
-		</div>
-	{/if}
+	<div class="top bg {vision}">
+		{$t('wish.banner.events')}
+	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.name.${getBannerName(name)}`))}</h1>
 
-	<div class="info">
-		<div class="set">
-			{$t('wish.banner.probIncreased')}
-		</div>
-		<div class="desc bg {vision}">
-			<div class="icon">
-				<i class="gi-primo-star" />
+	<div class="info" bind:this={bannerInfo}>
+		<div class="content">
+			<div class="set">
+				{$t('wish.banner.probIncreased')}
 			</div>
-			<div class="text">
-				{$t('wish.banner.wishDescription')}
+			<div class="desc bg {vision}">
+				<div class="icon">
+					<i class="gi-primo-star" />
+				</div>
+				<div class="text">
+					{$t('wish.banner.wishDescription')}
+				</div>
 			</div>
-		</div>
-		<div class="note">
-			{$t('wish.banner.eventNote')}
-			{$t('wish.banner.viewDetails')}
+			<div class="note">
+				{$t('wish.banner.eventNote')}
+				{$t('wish.banner.viewDetails')}
+			</div>
 		</div>
 	</div>
 
@@ -103,33 +113,40 @@
 	}
 
 	.info {
-		left: 4%;
+		left: 0;
 		top: 40%;
-		width: 36%;
+		width: 40%;
+		height: 45%;
 		display: block;
 		-webkit-text-stroke: 0.002rem #f4f2f0;
+		padding-left: 4%;
 	}
 
-	.info::after {
+	.content {
+		position: relative;
+	}
+
+	.info .content::after {
 		content: '';
 		display: block;
 		width: calc(0.55 / 100 * var(--content-width));
 		height: 100%;
 		background-color: #565654;
 		position: absolute;
-		left: calc(-3 / 100 * var(--content-width));
+		left: calc(-3.045 / 100 * var(--content-width));
 		top: 0;
 	}
 
 	.set {
 		font-size: calc(2.4 / 100 * var(--content-width));
+		-webkit-text-stroke: 0.015rem #f4f2f0;
 	}
 
 	.desc {
 		left: 7.5%;
 		top: 49.7%;
 		color: #fff;
-		height: calc(14 / 100 * var(--content-height));
+		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;
 		align-items: center;
 		margin: calc(0.7 / 100 * var(--content-width)) 0;
@@ -144,9 +161,8 @@
 	}
 
 	.desc .text {
-		max-height: 100%;
-		overflow-y: auto;
 		width: calc(32.5 / 100 * var(--content-width));
+		padding: calc(0.3 / 100 * var(--content-width));
 	}
 
 	.note {
@@ -169,14 +185,19 @@
 		font-size: calc(11 / 100 * var(--text-width));
 	}
 
+	.char-name span {
+		filter: drop-shadow(0 0.3rem 0.5rem #000);
+	}
+
 	.char-name .up {
 		color: #fff664;
 		-webkit-text-stroke: 0.05rem #e7a12e;
 		font-size: calc(2 / 100 * var(--content-width));
+		filter: drop-shadow(0 0.3rem 0.5rem #fff);
 		position: absolute;
 		top: 0;
-		left: 100%;
-		transform: translateX(100%);
+		right: 0;
+		transform: translateX(100%) translateY(-50%);
 		text-transform: uppercase;
 		text-shadow: 0 0 0.4rem #f79c09;
 	}

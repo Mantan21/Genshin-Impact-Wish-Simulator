@@ -1,7 +1,6 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { browser } from '$app/env';
-	import { mobileMode } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
 
 	export let character = '';
@@ -16,11 +15,9 @@
 </script>
 
 <div class="frame-content">
-	{#if $mobileMode}
-		<div class="top">
-			{$t('wish.banner.novice')}
-		</div>
-	{/if}
+	<div class="top">
+		{$t('wish.banner.novice')}
+	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
 	<div class="set">
 		{$t('wish.banner.beginnerSet', { values: { character: char } })}

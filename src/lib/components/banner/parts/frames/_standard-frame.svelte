@@ -1,6 +1,5 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { mobileMode } from '$lib/store/stores';
 
 	export let data = {};
 	const oldStd = data.character.name === 'wanderlust-invocation-1';
@@ -16,11 +15,9 @@
 </script>
 
 <div class="frame-content">
-	{#if $mobileMode}
-		<div class="top" class:old={oldStd}>
-			{$t('wish.banner.standard')}
-		</div>
-	{/if}
+	<div class="top" class:old={oldStd}>
+		{$t('wish.banner.standard')}
+	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.name.wanderlust`))}</h1>
 	<div class="set">
 		{$t('wish.banner.standard')}
