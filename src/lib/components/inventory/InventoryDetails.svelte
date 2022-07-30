@@ -5,9 +5,9 @@
 
 	import { viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
-	import { getName } from '$lib/functions/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
-	import playSfx from '$lib/functions/audio';
+	import { getName } from '$lib/helpers/nameText';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
+	import playSfx from '$lib/helpers/audio';
 
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';

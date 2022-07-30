@@ -13,7 +13,7 @@
 		viewportWidth
 	} from '$lib/store/stores';
 	import { fade } from 'svelte/transition';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import { localFatePoint } from '$lib/store/localstore';
 
 	import FatepointSVG from './FatepointSVG.svelte';
@@ -220,7 +220,8 @@
 	}
 
 	:global(.mobile) .popup-content {
-		max-width: 155vh;
+		max-width: 140vh;
+		border-radius: 0.8rem;
 	}
 
 	.popup-content img {
@@ -367,7 +368,7 @@
 		height: calc(100% - 0.4rem);
 		border: solid #bed634;
 		border-width: 0.2rem 0;
-		border-radius: 0.5em;
+		border-radius: 0.3rem;
 	}
 	.weapon-content.active button::before {
 		content: '✔';

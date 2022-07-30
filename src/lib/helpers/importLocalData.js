@@ -46,6 +46,7 @@ const importLocalBalance = () => {
 	unlimitedFates.set(!!localConfig.get('unlimitedFates'));
 	muted.set(!!localConfig.get('muted'));
 	noticeMark.onLoadCheck();
+	window.getContent();
 
 	console.log('Balance Updated');
 };

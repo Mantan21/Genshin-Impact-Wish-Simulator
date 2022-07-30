@@ -7,8 +7,8 @@
 
 	import { isMobile, mobileMode, muted, unlimitedFates, viewportHeight } from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
-	import factoryReset from '$lib/functions/factoryReset';
-	import playSfx from '$lib/functions/audio';
+	import factoryReset from '$lib/helpers/factoryReset';
+	import playSfx from '$lib/helpers/audio';
 	import updates from '$lib/setup/updates.json';
 
 	// Components

@@ -1,6 +1,6 @@
 <script>
-	import playSfx from '$lib/functions/audio';
-	import { copy } from '$lib/functions/nameText';
+	import playSfx from '$lib/helpers/audio';
+	import { copy } from '$lib/helpers/nameText';
 	import PopUp from '../utility/PopUp.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';

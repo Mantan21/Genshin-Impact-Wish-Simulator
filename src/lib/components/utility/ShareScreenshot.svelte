@@ -8,8 +8,8 @@
 	import { APP_TITLE, HOST } from '$lib/env';
 	import { primogem, viewportHeight } from '$lib/store/stores';
 	import { firstShare, localBalance } from '$lib/store/localstore';
-	import { copy } from '$lib/functions/nameText';
-	import playSfx from '$lib/functions/audio';
+	import { copy } from '$lib/helpers/nameText';
+	import playSfx from '$lib/helpers/audio';
 	import Icon from './Icon.svelte';
 	import ButtonGeneral from './ButtonGeneral.svelte';
 

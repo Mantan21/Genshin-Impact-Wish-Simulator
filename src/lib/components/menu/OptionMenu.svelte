@@ -3,9 +3,9 @@
 	import { fly } from 'svelte/transition';
 	import { locales, locale, t } from 'svelte-i18n';
 	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import { localeName, flags } from '$lib/data/country.json';
-	import browserState from '$lib/functions/browserState';
+	import browserState from '$lib/helpers/browserState';
 
 	export let text;
 	export let name;

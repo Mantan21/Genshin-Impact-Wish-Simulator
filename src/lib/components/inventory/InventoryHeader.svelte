@@ -9,8 +9,8 @@
 		stardust,
 		starglitter
 	} from '$lib/store/stores';
-	import browserState from '$lib/functions/browserState';
-	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/helpers/browserState';
+	import playSfx from '$lib/helpers/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let activeItem = '';

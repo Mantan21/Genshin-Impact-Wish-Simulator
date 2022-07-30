@@ -3,13 +3,13 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { localOutfits } from '$lib/store/localstore';
-	import { getName } from '$lib/functions/nameText';
+	import { getName } from '$lib/helpers/nameText';
 	import {
 		checkOutfitAvaibility,
 		getOutfit,
 		isOutfitOwned,
 		isOutfitSet
-	} from '$lib/functions/wish/outfit';
+	} from '$lib/helpers/wish/outfit';
 	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
 
 	export let charName;

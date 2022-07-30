@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { localBalance } from '$lib/store/localstore';
 	import { genesis, primogem } from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';

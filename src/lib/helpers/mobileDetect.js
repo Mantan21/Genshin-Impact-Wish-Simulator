@@ -15,8 +15,8 @@ const checkViewport = () => {
 const mobileDetect = () => {
 	return (
 		navigator?.userAgentData?.mobile ||
-		checkViewport() ||
-		checkUserAgent(navigator.userAgent || navigator.vendor || window.opera)
+		checkUserAgent(navigator.userAgent || navigator.vendor || window.opera) ||
+		checkViewport()
 	);
 };
 

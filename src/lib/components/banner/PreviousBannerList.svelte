@@ -7,11 +7,11 @@
 
 	import { bannerPhase, patchVersion, pageActive, bannerActive, query } from '$lib/store/stores';
 	import { localBannerVersion } from '$lib/store/localstore';
-	import { getName } from '$lib/functions/nameText';
-	import playSfx from '$lib/functions/audio';
+	import { getName } from '$lib/helpers/nameText';
+	import playSfx from '$lib/helpers/audio';
 	import { allPatch } from '$lib/setup/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
-	import browserState from '$lib/functions/browserState';
+	import browserState from '$lib/helpers/browserState';
 
 	let allBanners = [];
 	let dataToShow = [];

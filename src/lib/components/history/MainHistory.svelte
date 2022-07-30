@@ -12,9 +12,9 @@
 	import HistoryIDB from '$lib/store/historyIdb';
 
 	import { APP_TITLE } from '$lib/env';
-	import browserState from '$lib/functions/browserState';
-	import { getName } from '$lib/functions/nameText';
-	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/helpers/browserState';
+	import { getName } from '$lib/helpers/nameText';
+	import playSfx from '$lib/helpers/audio';
 
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';

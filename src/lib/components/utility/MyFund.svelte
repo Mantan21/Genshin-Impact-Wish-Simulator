@@ -2,7 +2,7 @@
 	import Icon from './Icon.svelte';
 	import ExchangePopup from '$lib/components/shop/ExchangePopup.svelte';
 	import Obtained from './Obtained.svelte';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 
 	export let type = 'primogem';
 

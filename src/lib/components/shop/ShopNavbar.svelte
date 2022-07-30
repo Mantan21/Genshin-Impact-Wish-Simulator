@@ -4,7 +4,7 @@
 	import { fly } from 'svelte/transition';
 	import { patchVersion } from '$lib/store/stores';
 	import { outfits } from '$lib/data/outfits.json';
-	import { noticeMark } from '$lib/functions/noticeMark';
+	import { noticeMark } from '$lib/helpers/noticeMark';
 	import NoticeMark from '../utility/NoticeMark.svelte';
 
 	export let show;

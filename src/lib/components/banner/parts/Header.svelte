@@ -7,8 +7,8 @@
 	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 	import EpitomizedPopup from '../epitomizedPath/EpitomizedPopup.svelte';
 
-	import playSfx from '$lib/functions/audio';
-	import browserState from '$lib/functions/browserState';
+	import playSfx from '$lib/helpers/audio';
+	import browserState from '$lib/helpers/browserState';
 	import {
 		acquaint,
 		bannerActive,

@@ -5,7 +5,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { mobileMode, viewportHeight, viewportWidth, genesis } from '$lib/store/stores';
 	import { localBalance, localOutfits } from '$lib/store/localstore';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import HistoryIDB from '$lib/store/historyIdb';
 
 	// Components

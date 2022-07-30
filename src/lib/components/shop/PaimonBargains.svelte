@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 
 	import ExchangePopup from './ExchangePopup.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';

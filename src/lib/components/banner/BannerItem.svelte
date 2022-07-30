@@ -7,7 +7,7 @@
 		bannerList,
 		mobileMode
 	} from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import BannerCard from './parts/_banner-card.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
@@ -82,7 +82,7 @@
 
 	.banner-item {
 		max-width: 900px;
-		width: 90%;
+		width: 80%;
 		max-height: 75vh;
 		aspect-ratio: 27/14;
 	}
@@ -91,14 +91,27 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 115%;
+		width: 85%;
 		transform: translate(-50%, -50%);
 		display: flex;
 		justify-content: space-between;
 		transition: all 0.2s;
 	}
+
+	@media screen and (max-width: 1200px) {
+		.navigate {
+			width: 90%;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		.navigate {
+			width: 95%;
+		}
+	}
+
 	.navigate button {
-		color: #dad4b4;
+		color: #ece5d8;
 		font-size: 2rem;
 		line-height: 0;
 	}

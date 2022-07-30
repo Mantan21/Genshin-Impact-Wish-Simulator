@@ -1,8 +1,8 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { pageActive } from '$lib/store/stores';
-	import browserState from '$lib/functions/browserState';
-	import playSfx from '$lib/functions/audio';
+	import browserState from '$lib/helpers/browserState';
+	import playSfx from '$lib/helpers/audio';
 	import ResponsiveImage from '$lib/components/utility/ResponsiveImage.svelte';
 	import BeginnerFrame from './frames/_beginner-frame.svelte';
 	import StandardFrame from './frames/_standard-frame.svelte';
@@ -92,10 +92,10 @@
 		bottom: 9%;
 		background-color: #eee8e3;
 		color: rgba(0, 0, 0, 0.5);
-		padding: 0.2rem 1.5rem;
+		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
 		border-radius: 20px;
 		border: #e2d7b6 0.1rem solid;
-		font-size: 0.9rem;
+		font-size: calc(1.5 / 100 * var(--content-width));
 		transition: all 0.2s;
 	}
 

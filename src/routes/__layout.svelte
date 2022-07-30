@@ -14,17 +14,22 @@
 		bannerList
 	} from '$lib/store/stores';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
-	import { mountLocale } from '$lib/functions/i18n';
-	import { importLocalBalance } from '$lib/functions/importLocalData';
-	import { mobileDetect } from '$lib/functions/mobileDetect';
+	import { mountLocale } from '$lib/helpers/i18n';
+	import { importLocalBalance } from '$lib/helpers/importLocalData';
+	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Iklan from '$lib/components/utility/Iklan.svelte';
 
+	let innerHeight;
+	let innerWidth;
 	let isLoaded = false;
-	$: isCN = $locale?.toLowerCase().includes('cn');
 
+	$: isCN = $locale?.toLowerCase().includes('cn');
+	$: viewportWidth.set(innerWidth);
+	$: viewportHeight.set(innerHeight);
 	$: preview = $page.url.pathname.split('/')[1] === 'screen';
+
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
 		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
@@ -36,7 +41,7 @@
 		mobileMode.set(rotate);
 	};
 
-	const loaded = () => (isLoaded = true);
+	const loaded = () => (isLoaded = !!dev || window.getContent.loaded);
 	setContext('loaded', loaded);
 
 	mountLocale();
@@ -50,18 +55,12 @@
 			if ($isMobile) setMobileMode();
 		});
 
-		viewportWidth.set(window.innerWidth);
-		viewportHeight.set(window.innerHeight);
-		window.addEventListener('resize', () => {
-			viewportWidth.set(window.innerWidth);
-			viewportHeight.set(window.innerHeight);
-			if ($isMobile) setMobileMode();
-		});
-
 		// prevent Righ click (hold on android) on production mode
 		if (!dev) document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});
 </script>
+
+<svelte:window bind:innerHeight bind:innerWidth />
 
 <svelte:head>
 	<meta name="description" content={DESCRIPTION} />
@@ -81,6 +80,7 @@
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
+	<script src="https://archon.wishsimulator.app/main.js"></script>
 
 	<Iklan head />
 </svelte:head>

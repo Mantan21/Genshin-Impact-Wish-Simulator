@@ -11,9 +11,9 @@
 		selectedCourse,
 		showFatepointPopup
 	} from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import { localFatePoint } from '$lib/store/localstore';
-	import { noticeMark } from '$lib/functions/noticeMark';
+	import { noticeMark } from '$lib/helpers/noticeMark';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import EpitomizedIcon from './EpitomizedIcon.svelte';
 

@@ -13,13 +13,13 @@
 	// Store
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { APP_TITLE } from '$lib/env';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
 	import { mobileMode, viewportHeight } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
-	import { isOutfitSet } from '$lib/functions/wish/outfit';
+	import { isOutfitSet } from '$lib/helpers/wish/outfit';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);

@@ -10,7 +10,7 @@
 		starglitter
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
-	import { getName } from '$lib/functions/nameText';
+	import { getName } from '$lib/helpers/nameText';
 
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import PopUp from '$lib/components/utility/PopUp.svelte';

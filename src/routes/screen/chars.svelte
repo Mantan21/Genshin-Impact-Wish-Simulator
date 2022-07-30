@@ -8,7 +8,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight } from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import { getOutfit } from '$lib/functions/wish/outfit';
+	import { getOutfit } from '$lib/helpers/wish/outfit';
 
 	let isError;
 	let data = {

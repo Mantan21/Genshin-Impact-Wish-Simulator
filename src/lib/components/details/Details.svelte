@@ -10,11 +10,11 @@
 		pageActive,
 		patchVersion
 	} from '$lib/store/stores';
-	import playSfx from '$lib/functions/audio';
-	import browserState from '$lib/functions/browserState';
+	import playSfx from '$lib/helpers/audio';
+	import browserState from '$lib/helpers/browserState';
 	import { beginner } from '$lib/data/banners/beginner.json';
-	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/functions/wish/wishBase';
-	import { getName } from '$lib/functions/nameText';
+	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/helpers/wish/wishBase';
+	import { getName } from '$lib/helpers/nameText';
 	import Description from './Description.svelte';
 	import Ads from '../utility/Iklan.svelte';
 

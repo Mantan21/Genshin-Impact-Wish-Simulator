@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { outfits } from '$lib/data/outfits.json';
-	import { getName } from '$lib/functions/nameText';
+	import { getName } from '$lib/helpers/nameText';
 	import { localOutfits } from '$lib/store/localstore';
 	import { patchVersion } from '$lib/store/stores';
 

@@ -4,9 +4,9 @@
 	import { t, locale } from 'svelte-i18n';
 	import { viewportHeight, viewportWidth, isMobile, muted } from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
-	import playSfx from '$lib/functions/audio';
-	import { getName } from '$lib/functions/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/functions/wish/outfit';
+	import playSfx from '$lib/helpers/audio';
+	import { getName } from '$lib/helpers/nameText';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
 
 	// Component
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';

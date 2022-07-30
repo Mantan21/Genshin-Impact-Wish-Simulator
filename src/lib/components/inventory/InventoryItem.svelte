@@ -1,8 +1,8 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { getName } from '$lib/functions/nameText';
-	import { getOutfit } from '$lib/functions/wish/outfit';
+	import { getName } from '$lib/helpers/nameText';
+	import { getOutfit } from '$lib/helpers/wish/outfit';
 
 	export let rarity = 3;
 	export let type = 'character';
@@ -64,7 +64,7 @@
 
 <style>
 	.content {
-		border-radius: calc(7 / 100 * var(--item-width));
+		border-radius: calc(3.5 / 100 * var(--item-width));
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -102,7 +102,7 @@
 		height: 100%;
 		background-color: #000;
 		opacity: 0.5;
-		border-radius: calc(7 / 100 * var(--item-width));
+		border-radius: calc(3.5 / 100 * var(--item-width));
 	}
 
 	picture {
@@ -114,8 +114,8 @@
 		background-size: cover;
 		position: relative;
 		overflow: hidden;
-		border-top-left-radius: calc(7 / 100 * var(--item-width));
-		border-top-right-radius: calc(7 / 100 * var(--item-width));
+		border-top-left-radius: calc(3.5 / 100 * var(--item-width));
+		border-top-right-radius: calc(3.5 / 100 * var(--item-width));
 		border-bottom-right-radius: calc(20 / 100 * var(--item-width));
 	}
 	picture img {

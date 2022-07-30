@@ -15,8 +15,8 @@
 		patchVersion
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import playSfx from '$lib/functions/audio';
-	import browserState from '$lib/functions/browserState';
+	import playSfx from '$lib/helpers/audio';
+	import browserState from '$lib/helpers/browserState';
 	import { outfits } from '$lib/data/outfits.json';
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';

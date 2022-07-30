@@ -1,10 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import positionToStyle from '$lib/functions/cssPosition';
+	import positionToStyle from '$lib/helpers/cssPosition';
 	import { mobileMode, patchVersion, bannerPhase, isFatepointSystem } from '$lib/store/stores';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
-	import { noticeMark } from '$lib/functions/noticeMark';
+	import { noticeMark } from '$lib/helpers/noticeMark';
 
 	export let active = false;
 	export let type = 'events';

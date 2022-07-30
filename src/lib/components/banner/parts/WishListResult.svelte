@@ -2,10 +2,10 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import playSfx from '$lib/functions/audio';
-	import positionToStyle from '$lib/functions/cssPosition';
-	import { getOutfit } from '$lib/functions/wish/outfit';
-	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/helpers/audio';
+	import positionToStyle from '$lib/helpers/cssPosition';
+	import { getOutfit } from '$lib/helpers/wish/outfit';
+	import { getName } from '$lib/helpers/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 

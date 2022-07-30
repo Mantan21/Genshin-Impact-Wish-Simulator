@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { json, t } from 'svelte-i18n';
-	import playSfx from '$lib/functions/audio';
+	import playSfx from '$lib/helpers/audio';
 
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';

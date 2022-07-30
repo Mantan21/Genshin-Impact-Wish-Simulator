@@ -17,8 +17,8 @@
 		bannerActive
 	} from '$lib/store/stores';
 	import { localWelkin } from '$lib/store/localstore';
-	import { setBannerVersionAndPhase } from '$lib/functions/importLocalData';
-	import playSfx from '$lib/functions/audio';
+	import { setBannerVersionAndPhase } from '$lib/helpers/importLocalData';
+	import playSfx from '$lib/helpers/audio';
 	import { beginner } from '$lib/data/banners/beginner.json';
 
 	// Components

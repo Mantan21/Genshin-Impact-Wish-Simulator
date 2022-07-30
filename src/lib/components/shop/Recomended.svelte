@@ -6,9 +6,9 @@
 	import { outfits } from '$lib/data/outfits.json';
 	import { genesis, patchVersion, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
-	import playSfx from '$lib/functions/audio';
-	import positionToStyle from '$lib/functions/cssPosition';
-	import { getName } from '$lib/functions/nameText';
+	import playSfx from '$lib/helpers/audio';
+	import positionToStyle from '$lib/helpers/cssPosition';
+	import { getName } from '$lib/helpers/nameText';
 
 	import TopNavParent from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
