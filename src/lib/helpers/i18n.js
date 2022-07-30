@@ -14,9 +14,9 @@ const mountLocale = () => {
 		register(langID, () => import(`../../locales/weapons/${langID}.json`));
 	});
 
-	const savedLocale = browser ? localStorage.getItem('locale') : 'en';
-	const isLocale = savedLocale && supportedLocales.includes(savedLocale);
-	const usedLocale = !isLocale && browser ? getLocaleFromNavigator() : savedLocale;
+	const savedLocale = browser ? localStorage.getItem('locale') : null;
+	const browserLocale = savedLocale || getLocaleFromNavigator();
+	const usedLocale = supportedLocales.find((langID) => langID.includes(browserLocale));
 
 	init({
 		fallbackLocale: 'en-US',
