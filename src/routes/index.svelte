@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import { dev } from '$app/env';
 	import { getContext, onMount, setContext } from 'svelte';
 	import {
 		pageActive,
@@ -91,7 +90,7 @@
 	$: showBeginnerCheck($showBeginner);
 
 	onMount(async () => {
-		isMount = !!dev || window.getContent.loaded;
+		isMount = true;
 		setBannerVersionAndPhase();
 		window.addEventListener('blur', () => playSfx('wishBacksound', { paused: isMount }));
 		window.addEventListener('focus', () => {

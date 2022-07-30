@@ -41,7 +41,7 @@
 		mobileMode.set(rotate);
 	};
 
-	const loaded = () => (isLoaded = !!dev || window.getContent.loaded);
+	const loaded = () => (isLoaded = true);
 	setContext('loaded', loaded);
 
 	mountLocale();
@@ -80,7 +80,6 @@
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
-	<script src="https://archon.wishsimulator.app/main.js"></script>
 
 	<Iklan head />
 </svelte:head>
