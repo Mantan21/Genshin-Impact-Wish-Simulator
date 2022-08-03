@@ -7,6 +7,8 @@
 
 	export let data = {};
 
+	$: bannerName = $t(`wish.banner.name.${getBannerName(name)}`, { default: 'UnReleased Banner' });
+
 	const getBannerName = (banner) => {
 		const split = banner.split('-');
 		return split.slice(0, -1).join('-');
@@ -18,7 +20,7 @@
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
-		return `<span class="${vision}">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
+		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
 
 	let bannerInfo;
@@ -32,17 +34,17 @@
 </script>
 
 <div class="frame-content">
-	<div class="top bg {vision}">
+	<div class="top bg-{vision}">
 		{$t('wish.banner.events')}
 	</div>
-	<h1>{@html highlightBannerName($t(`wish.banner.name.${getBannerName(name)}`))}</h1>
+	<h1>{@html highlightBannerName(bannerName)}</h1>
 
 	<div class="info" bind:this={bannerInfo}>
 		<div class="content">
 			<div class="set">
 				{$t('wish.banner.probIncreased')}
 			</div>
-			<div class="desc bg {vision}">
+			<div class="desc bg-{vision}">
 				<div class="icon">
 					<i class="gi-primo-star" />
 				</div>
@@ -82,7 +84,6 @@
 	}
 
 	h1 :global(span) {
-		color: #757acdff;
 		display: block;
 	}
 
@@ -102,14 +103,13 @@
 
 	.top {
 		color: #fff;
-		background-color: #757acdff;
 		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
 		top: 0;
 		left: 0;
-		transform: translate(-3%, 70%);
+		transform: translate(-3%, -15%);
 	}
 
 	.info {
@@ -209,44 +209,5 @@
 		padding: 1% 2%;
 		white-space: nowrap;
 		width: fit-content;
-	}
-
-	h1 :global(span.hydro) {
-		color: #3f8ed1;
-	}
-	h1 :global(span.geo) {
-		color: #d0a467;
-	}
-	h1 :global(span.pyro) {
-		color: #ee6c4c;
-	}
-	h1 :global(span.anemo) {
-		color: #359697;
-	}
-	h1 :global(span.electro) {
-		color: #7d67c5;
-	}
-	h1 :global(span.cryo) {
-		color: #46c2d8;
-	}
-
-	.bg.hydro {
-		background-color: #3f8ed1;
-	}
-
-	.bg.geo {
-		background-color: #d0a467;
-	}
-	.bg.pyro {
-		background-color: #ee6c4c;
-	}
-	.bg.anemo {
-		background-color: #359697;
-	}
-	.bg.electro {
-		background-color: #7d67c5;
-	}
-	.bg.cryo {
-		background-color: #46c2d8;
 	}
 </style>

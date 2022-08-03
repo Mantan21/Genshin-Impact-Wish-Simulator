@@ -8,14 +8,14 @@
 	const weap = oldStd ? 'skyward-blade' : 'skyward-spine';
 
 	const highlightBannerName = (bannerName) => {
-		const oldClass = oldStd ? 'class="old"' : '';
+		const oldClass = oldStd ? 'old' : 'wanderlust-flat';
 		const splited = bannerName.split(' ');
-		return `${splited[0]} <span ${oldClass}> ${splited.slice(1).join(' ')}</span>`;
+		return `${splited[0]} <span class="${oldClass}"> ${splited.slice(1).join(' ')}</span>`;
 	};
 </script>
 
 <div class="frame-content">
-	<div class="top" class:old={oldStd}>
+	<div class="top bg-wanderlust" class:old={oldStd}>
 		{$t('wish.banner.standard')}
 	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.name.wanderlust`))}</h1>
@@ -70,7 +70,6 @@
 	}
 
 	h1 :global(span) {
-		color: #757acdff;
 		display: block;
 	}
 	h1 :global(span.old) {
@@ -92,7 +91,6 @@
 
 	.top {
 		color: #fff;
-		background-color: #757acdff;
 		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;

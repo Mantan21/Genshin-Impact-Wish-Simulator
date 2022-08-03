@@ -10,12 +10,12 @@
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');
-		return `<span>${splited[0]}</span> ${splited.slice(1).join(' ')}`;
+		return `<span class="epitome-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
 </script>
 
 <div class="frame-content">
-	<div class="top bg">
+	<div class="top bg-epitome">
 		{$t('wish.banner.weapons')}
 	</div>
 	<h1>{@html highlightBannerName($t(`wish.banner.name.epitome-invocation`))}</h1>
@@ -24,7 +24,7 @@
 		<div class="set">
 			{$t('wish.banner.probIncreased')}
 		</div>
-		<div class="desc bg">
+		<div class="desc bg-epitome">
 			<div class="icon">
 				<i class="gi-primo-star" />
 			</div>
@@ -78,7 +78,6 @@
 	}
 
 	h1 :global(span) {
-		color: #757acdff;
 		display: block;
 	}
 
@@ -98,14 +97,13 @@
 
 	.top {
 		color: #fff;
-		background-color: #757acdff;
 		padding: 0.3% 1.4%;
 		border-bottom-left-radius: 2rem;
 		border-top-left-radius: 2rem;
 		border-bottom-right-radius: 4rem;
 		top: 0;
 		left: 0;
-		transform: translate(-3%, 70%);
+		transform: translate(-3%, -15%);
 	}
 
 	.info {
@@ -210,13 +208,6 @@
 	span.etc {
 		font-size: calc(2 / 100 * var(--content-width));
 		white-space: nowrap;
-	}
-
-	h1 :global(span) {
-		color: #ef7c1aff;
-	}
-	.bg {
-		background-color: #ef7c1aff;
 	}
 
 	.selected {

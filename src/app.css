@@ -49,58 +49,111 @@ a:hover {
 		auto;
 }
 
-.wish-result .gi-hydro,
-.wish-result .gi-cryo,
-.wish-result .gi-electro,
-.wish-result .gi-geo,
-.wish-result .gi-pyro,
-.wish-result .gi-anemo {
+.icon-gradient {
 	background-clip: text;
 	text-fill-color: transparent;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-.wish-result .gi-hydro {
+
+.icon-gradient.dendro {
+	background-image: linear-gradient(to right, #73ae15 30%, #9bc755 45%, #73ae15 75%);
+}
+.icon-gradient.hydro {
 	background-image: linear-gradient(to right, #06bbff, #06bbff, #10e2ff, #06bbff, #06bbff);
 }
-.wish-result .gi-hydro,
-img.vision-hydro {
-	filter: drop-shadow(0 0 6px rgba(6, 187, 255, 0.6));
-}
-.wish-result .gi-geo {
+.icon-gradient.geo {
 	background-image: linear-gradient(to right, #f9aa02, #f9aa02, #fcd260, #f9aa02, #f9aa02);
 }
-.wish-result .gi-geo,
-img.vision-geo {
-	filter: drop-shadow(0 0 6px rgba(249, 170, 2, 0.6));
-}
-.wish-result .gi-pyro {
+.icon-gradient.pyro {
 	background-image: linear-gradient(to right, #fe6606, #fe6606, #fea76b, #fe6606, #fe6606);
 }
-.wish-result .gi-pyro,
-img.vision-pyro {
-	filter: drop-shadow(0 0 6px rgba(254, 102, 6, 0.6));
-}
-.wish-result .gi-anemo {
+.icon-gradient.anemo {
 	background-image: linear-gradient(to right, #32d9a1, #32d9a1, #aef2cd, #32d9a1, #32d9a1);
 }
-.wish-result .gi-anemo,
-img.vision-anemo {
-	filter: drop-shadow(0 0 6px rgba(50, 217, 161, 0.6));
-}
-.wish-result .gi-electro {
+.icon-gradient.electro {
 	background-image: linear-gradient(to right, #ca82fc, #ca82fc, #deb5fe, #ca82fc, #ca82fc);
 }
-.wish-result .gi-electro,
-img.vision-electro {
-	filter: drop-shadow(0 0 6px rgba(202, 130, 252, 0.6));
-}
-.wish-result .gi-cryo {
+.icon-gradient.cryo {
 	background-image: linear-gradient(to right, #7cfeff, #7cfeff, #c6fffd, #7cfeff, #7cfeff);
 }
-.wish-result .gi-cryo,
-img.vision-cryo {
+
+.filter-drop.dendro {
+	filter: drop-shadow(0 0 6px rgba(114, 255, 6, 0.6));
+}
+.filter-drop.hydro {
+	filter: drop-shadow(0 0 6px rgba(6, 187, 255, 0.6));
+}
+.filter-drop.geo {
+	filter: drop-shadow(0 0 6px rgba(249, 170, 2, 0.6));
+}
+.filter-drop.pyro {
+	filter: drop-shadow(0 0 6px rgba(254, 102, 6, 0.6));
+}
+.filter-drop.anemo {
+	filter: drop-shadow(0 0 6px rgba(50, 217, 161, 0.6));
+}
+.filter-drop.electro {
+	filter: drop-shadow(0 0 6px rgba(202, 130, 252, 0.6));
+}
+.filter-drop.cryo {
 	filter: drop-shadow(0 0 6px rgba(124, 254, 255, 0.6));
+}
+
+.dendro-flat {
+	color: #1db968;
+}
+.hydro-flat {
+	color: #3f8ed1;
+}
+.geo-flat {
+	color: #d0a467;
+}
+.pyro-flat {
+	color: #ee6c4c;
+}
+.anemo-flat {
+	color: #359697;
+}
+.electro-flat {
+	color: #7d67c5;
+}
+.cryo-flat {
+	color: #46c2d8;
+}
+.wanderlust-flat {
+	color: #757acdff;
+}
+.epitome-flat {
+	color: #ef7c1aff;
+}
+
+.bg-dendro {
+	background-color: #1db968;
+}
+.bg-hydro {
+	background-color: #3f8ed1;
+}
+.bg-geo {
+	background-color: #d0a467;
+}
+.bg-pyro {
+	background-color: #ee6c4c;
+}
+.bg-anemo {
+	background-color: #359697;
+}
+.bg-electro {
+	background-color: #7d67c5;
+}
+.bg-cryo {
+	background-color: #46c2d8;
+}
+.bg-wanderlust {
+	background-color: #757acdff;
+}
+.bg-epitome {
+	background-color: #ef7c1aff;
 }
 
 #svelte {
