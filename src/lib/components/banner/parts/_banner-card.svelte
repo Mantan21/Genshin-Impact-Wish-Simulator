@@ -41,18 +41,27 @@
 		<ResponsiveImage
 			src="/images/banner/weapons/{weapons.name}.webp"
 			alt="Weapon Banner"
-			wrapperClass="card-image"
+			wrapperClass="card-image wide"
 		/>
-		<div class="frame">
+		<div class="frame wide">
 			<WeaponsFrame data={weapons} />
 		</div>
 	{:else if type === 'events'}
 		<ResponsiveImage
 			src="/images/banner/character-events/{character.name}.webp"
 			alt="Character Event Banner"
-			wrapperClass="card-image"
+			wrapperClass="card-image wide"
 		/>
-		<div class="frame">
+		{#if !character.name}
+			<div class="character">
+				<img
+					class="splash-art"
+					src="/images/characters/splash-art/5star/{character.character}.webp"
+					alt="character"
+				/>
+			</div>
+		{/if}
+		<div class="frame wide">
 			<EventsFrame data={character} />
 		</div>
 	{:else if type === 'standard'}
@@ -76,6 +85,11 @@
 		height: fit-content;
 		aspect-ratio: 27/14;
 	}
+
+	.frame.wide,
+	.card :global(.card-image.wide) {
+		aspect-ratio: 1080/533;
+	}
 	.card {
 		position: relative;
 	}
@@ -84,6 +98,18 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
+	}
+
+	.character {
+		position: absolute;
+		height: 100%;
+		right: 0;
+		top: 0;
+		overflow: hidden;
+	}
+
+	img.splash-art {
+		height: 150%;
 	}
 
 	.detail {
