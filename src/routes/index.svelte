@@ -16,20 +16,37 @@
 		bannerActive
 	} from '$lib/store/stores';
 	import { localWelkin } from '$lib/store/localstore';
-	import { setBannerVersionAndPhase } from '$lib/helpers/importLocalData';
-	import playSfx from '$lib/helpers/audio';
 	import { beginner } from '$lib/data/banners/beginner.json';
 
 	// Components
-	import MainBanner from '$lib/components/banner/MainBanner.svelte';
-	import PreviousBannerList from '$lib/components/banner/PreviousBannerList.svelte';
-	import Details from '$lib/components/details/Details.svelte';
-	import History from '$lib/components/history/MainHistory.svelte';
-	import Inventory from '$lib/components/inventory/MainInventory.svelte';
-	import Shop from '$lib/components/shop/MainShop.svelte';
-	import Obtained from '$lib/components/utility/Obtained.svelte';
-	import WelkinCheckin from '$lib/components/utility/WelkinCheckin.svelte';
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
+	import MainBanner from '$lib/components/banner/MainBanner.svelte';
+
+	let PrevBanner;
+	let DetailsSection;
+	let ShopSection;
+	let InventorySection;
+	let HistorySection;
+	let Obtained;
+	let WelkinCheckin;
+	let setBannerVersionAndPhase;
+	let playSfx;
+
+	const importChunks = async () => {
+		// Splitting Chunks
+		PrevBanner = (await import(`../lib/components/banner/PreviousBannerList.svelte`)).default;
+		DetailsSection = (await import(`../lib/components/details/Details.svelte`)).default;
+		HistorySection = (await import(`../lib/components/history/MainHistory.svelte`)).default;
+		InventorySection = (await import(`../lib/components/inventory/MainInventory.svelte`)).default;
+		ShopSection = (await import(`../lib/components/shop/MainShop.svelte`)).default;
+		Obtained = (await import('../lib/components/utility/Obtained.svelte')).default;
+		WelkinCheckin = (await import('../lib/components/utility/WelkinCheckin.svelte')).default;
+	};
+
+	const importHelper = async () => {
+		({ setBannerVersionAndPhase } = await import('../lib/helpers/importLocalData'));
+		playSfx = (await import('../lib/helpers/audio.js')).default;
+	};
 
 	let isMount = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
@@ -90,6 +107,8 @@
 	$: showBeginnerCheck($showBeginner);
 
 	onMount(async () => {
+		await importHelper();
+		importChunks();
 		isMount = true;
 		setBannerVersionAndPhase();
 		window.addEventListener('blur', () => playSfx('wishBacksound', { paused: isMount }));
@@ -147,33 +166,33 @@
 
 <!-- Obtained Items -->
 {#if showObtained}
-	<Obtained items={obtainedItems} on:close={handleCloseObtained} />
+	<svelte:component this={Obtained} items={obtainedItems} on:close={handleCloseObtained} />
 {/if}
 <!-- Obtained Items End -->
 
-<Disclaimer show={showDisclaimer} />
-<WelkinCheckin show={welkinCheckin} />
+<svelte:component this={Disclaimer} show={showDisclaimer} />
+<svelte:component this={WelkinCheckin} show={welkinCheckin} />
 
 {#if $pageActive === 'index'}
 	<MainBanner />
 {/if}
 
 {#if $pageActive === 'previous-banner'}
-	<PreviousBannerList />
+	<svelte:component this={PrevBanner} />
 {/if}
 
 {#if $pageActive === 'details'}
-	<Details />
+	<svelte:component this={DetailsSection} />
 {/if}
 
 {#if $pageActive === 'history'}
-	<History />
+	<svelte:component this={HistorySection} />
 {/if}
 
 {#if $pageActive === 'inventory'}
-	<Inventory />
+	<svelte:component this={InventorySection} />
 {/if}
 
 {#if $pageActive === 'shop'}
-	<Shop />
+	<svelte:component this={ShopSection} />
 {/if}

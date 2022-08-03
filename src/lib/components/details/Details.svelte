@@ -1,8 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		bannerActive,
 		bannerList,
@@ -150,18 +148,13 @@
 		playSfx('close');
 	};
 
-	let content;
-	onMount(() => {
-		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-	});
-
 	const highlightBannerName = (bannerName, vision = '') => {
 		const splited = bannerName.split(' ');
 		return `<span class=${vision}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
 	};
 </script>
 
-<section bind:this={content} transition:fade={{ duration: 200 }}>
+<section transition:fade={{ duration: 200 }}>
 	<div class="header">
 		<button on:click={handleCLose}>
 			<i class="gi-reply" />
@@ -439,6 +432,7 @@
 		height: 100%;
 		color: var(--text-color);
 		padding-top: 2rem;
+		overflow-y: auto;
 	}
 
 	.header {

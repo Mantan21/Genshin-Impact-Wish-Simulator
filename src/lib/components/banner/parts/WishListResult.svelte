@@ -1,18 +1,17 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import OverlayScrollbars from 'overlayscrollbars';
-	import playSfx from '$lib/helpers/audio';
 	import positionToStyle from '$lib/helpers/cssPosition';
 	import { getOutfit } from '$lib/helpers/wish/outfit';
 	import { getName } from '$lib/helpers/nameText';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 
 	export let preview = false;
 	export let previewlist = [];
 	export let list = [];
 	let clientHeight;
+	let Share;
+	let playSfx;
 
 	const sortByType = (a, b) => {
 		if (a.type > b.type) return 1;
@@ -48,7 +47,11 @@
 	let container;
 	let encoded;
 
-	onMount(() => {
+	onMount(async () => {
+		const OverlayScrollbars = (await import('overlayscrollbars')).default;
+		Share = (await import('../../utility/ShareScreenshot.svelte')).default;
+		playSfx = (await import('../../../helpers/audio.js')).default;
+
 		const itemBox = container.querySelectorAll('.item-box, .shadow');
 		itemBox.forEach((el) => {
 			el.addEventListener('animationend', () => el.classList.remove('animate'));
@@ -198,7 +201,12 @@
 
 {#if !preview}
 	<div class="share">
-		<Share encodedData={encoded} page="wishlist" item={getName(sortedWish[0].name)} />
+		<svelte:component
+			this={Share}
+			encodedData={encoded}
+			page="wishlist"
+			item={getName(sortedWish[0].name)}
+		/>
 	</div>
 {/if}
 
