@@ -21,12 +21,14 @@
 
 	const highlightBannerName = (bannerName, { vision }) => {
 		const splited = bannerName.split(' ');
-		const divClass = vision || 'invocation';
-		return `<span class=${divClass}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
+		const divClass = vision || 'epitome';
+		return `<span class="custom ${divClass}-flat"> ${splited[0]} </span> ${splited
+			.slice(1)
+			.join(' ')}`;
 	};
 
 	const getFeaturedChars = ({ name, vision }) => {
-		return `<span class=${vision}>
+		return `<span class="custom ${vision}-flat">
 			"${$t(`${name}.title`)}" ${$t(`${name}.name`)} (${$t(item5Star[0].vision)})
 		</span>`;
 	};
@@ -43,7 +45,7 @@
 
 	const getRateupChars = (items) => {
 		const translated = items.map(({ name, vision }, i) => {
-			return `<span class=${vision}> ${charNameAndTitle(name, vision)}</span>
+			return `<span class="custom ${vision}-flat"> ${charNameAndTitle(name, vision)}</span>
 			${getDelimiter(item4Star, i)}`;
 		});
 		return translated.join('');
@@ -103,7 +105,10 @@
 			<p>
 				{@html $t(text, {
 					values: {
-						character: ` <span class=${vision}> ${charNameAndTitle(name, vision)} </span> `,
+						character: ` <span class="custom ${vision}-flat"> ${charNameAndTitle(
+							name,
+							vision
+						)} </span> `,
 						...valuesToToChange
 					}
 				})}
@@ -160,7 +165,7 @@
 <Ads type="banner" />
 
 <style>
-	p :global(span) {
+	p :global(span):not(.custom) {
 		color: #cf5e47;
 	}
 
@@ -174,28 +179,14 @@
 	p :global(span.stardust) {
 		color: #a256e1;
 	}
-
-	p :global(span.hydro) {
-		color: #06bbff;
-	}
-	p :global(span.geo),
 	p :global(span.wish) {
 		color: #debd6c;
 	}
-	p :global(span.pyro) {
-		color: #ec4923;
-	}
-	p :global(span.anemo) {
-		color: #359697;
-	}
-	p :global(span.electro) {
+	p :global(span.electro-flat) {
 		color: #ca82fc;
 	}
 	p :global(span.std) {
 		color: #757acdff;
-	}
-	p :global(span.cryo) {
-		color: #4682b4;
 	}
 
 	p :global(span .weapon) {

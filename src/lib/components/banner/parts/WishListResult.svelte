@@ -143,8 +143,8 @@
 											<img
 												src="/images/utility/icon-{vision}.svg"
 												alt="Vision {vision}"
-												class="vision-{vision}"
-												style="width: 60%; height: auto"
+												class="{vision} filter-drop vision"
+												style="height: calc(15 / 100 * var(--card-height))"
 											/>
 										{/if}
 

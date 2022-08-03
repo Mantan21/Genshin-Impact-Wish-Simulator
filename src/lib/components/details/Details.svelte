@@ -91,7 +91,9 @@
 			const { character } = $bannerList[$bannerActive];
 			drop5star = this._stdDropChar5;
 			drop5star.unshift({ name: character.character, type: 'character', rateup: true });
-			bannerTitle = $t(`wish.banner.name.${character.name.slice(0, -2)}`);
+			bannerTitle = $t(`wish.banner.name.${character.name.slice(0, -2)}`, {
+				default: 'UnReleased Banner'
+			});
 
 			const { name, vision, title } = getAllChars(5).find(({ name }) => {
 				return name === character.character;
@@ -150,7 +152,8 @@
 
 	const highlightBannerName = (bannerName, vision = '') => {
 		const splited = bannerName.split(' ');
-		return `<span class=${vision}> ${splited[0]} </span> ${splited.slice(1).join(' ')}`;
+		const joined = splited.slice(1).join(' ');
+		return `<span class="${vision || 'epitome'}-flat">${splited[0]}</span> ${joined}`;
 	};
 </script>
 
@@ -168,13 +171,14 @@
 			{#if banner === 'standard'}
 				<h1 class="standard">
 					{$t('wish.banner.standard')} "{@html highlightBannerName(
-						$t('wish.banner.name.wanderlust')
+						$t('wish.banner.name.wanderlust'),
+						'wanderlust'
 					)}"
 				</h1>
 			{:else}
 				<h1 class={banner}>
 					{#if banner !== 'beginner'}
-						{$t(`wish.banner.${banner}`)}
+						{$t(`wish.banner.${banner}`, { default: 'UnReleased Banner' })}
 					{/if}
 					"{@html highlightBannerName(bannerTitle, featured[0]?.vision)}"
 				</h1>
@@ -377,46 +381,12 @@
 </section>
 
 <style>
-	h1.weapons :global(span) {
-		color: #ef7c1aff;
-	}
 	.beginner :global(span) {
 		color: #cba885;
 	}
 
-	h1.standard :global(span) {
-		color: #757acdff;
-	}
-
 	span {
 		color: #cf5e47;
-	}
-
-	h1 :global(span.starglitter) {
-		color: #c37b4d;
-	}
-	h1 :global(span.stardust) {
-		color: #a256e1;
-	}
-
-	h1 :global(span.hydro) {
-		color: #06bbff;
-	}
-	h1 :global(span.geo) {
-		color: #f9aa02;
-	}
-	h1 :global(span.pyro) {
-		color: #fe6606;
-	}
-	h1 :global(span.anemo) {
-		color: #369396;
-	}
-	h1 :global(span.electro),
-	.standard :global(span) {
-		color: #ca82fc;
-	}
-	h1 :global(span.cryo) {
-		color: #4682b4;
 	}
 
 	.gi-arrow-up {
@@ -572,6 +542,7 @@
 		position: relative;
 		padding: 1rem;
 		display: inline-flex;
+		overflow: hidden;
 	}
 	.character-card::after {
 		content: '';
@@ -666,8 +637,8 @@
 	}
 
 	.element {
-		background-image: linear-gradient(#fff, #fff);
-		opacity: 0.07;
+		color: #fff;
+		opacity: 0.08;
 		font-size: 7em;
 		display: inline-block;
 		position: absolute;

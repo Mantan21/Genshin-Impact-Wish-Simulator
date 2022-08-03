@@ -167,7 +167,7 @@
 								<img
 									src="/images/utility/icon-{vision}.svg"
 									alt="Vision {vision}"
-									class="anim vision vision-{vision}"
+									class="anim vision {vision}"
 								/>
 							{:else}
 								<i class="anim elemen gi-{weaponType}" />
@@ -389,7 +389,11 @@
 		animation: revealIcon forwards 1.3s 1;
 	}
 	.vision {
-		width: 4rem;
+		height: 5rem;
+	}
+
+	:global(.mobile) .vision {
+		height: 4rem;
 	}
 
 	.gi-star {

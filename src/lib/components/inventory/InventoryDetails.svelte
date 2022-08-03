@@ -106,7 +106,7 @@
 						<img
 							src="/images/utility/icon-{vision}.svg"
 							alt="Vision {vision}"
-							class="anim vision vision-{vision}"
+							class="anim vision filter-drop {vision}"
 						/>
 					{:else}
 						<i class="anim elemen gi-{weaponType}" />
@@ -242,7 +242,11 @@
 	}
 
 	.vision {
-		width: 4rem;
+		height: 5rem;
+	}
+
+	:global(.mobile) .vision {
+		height: 4rem;
 	}
 
 	.name {

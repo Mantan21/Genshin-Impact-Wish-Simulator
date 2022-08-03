@@ -38,7 +38,7 @@
 	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
 		{#if type === 'character'}
 			<img src={!outfitSet ? defaultPath : outfitPath} alt={getName(name)} />
-			<span class="gi-{vision} element" />
+			<span class="gi-{vision} {vision} icon-gradient filter-drop element" />
 		{:else}
 			<img
 				src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"

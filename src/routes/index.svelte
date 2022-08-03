@@ -4,6 +4,7 @@
 
 <script>
 	import { getContext, onMount, setContext } from 'svelte';
+	import playSfx from '$lib/helpers/audio';
 	import {
 		pageActive,
 		bannerList,
@@ -30,7 +31,6 @@
 	let Obtained;
 	let WelkinCheckin;
 	let setBannerVersionAndPhase;
-	let playSfx;
 
 	const importChunks = async () => {
 		// Splitting Chunks
@@ -45,7 +45,6 @@
 
 	const importHelper = async () => {
 		({ setBannerVersionAndPhase } = await import('../lib/helpers/importLocalData'));
-		playSfx = (await import('../lib/helpers/audio.js')).default;
 	};
 
 	let isMount = false;

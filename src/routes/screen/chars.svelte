@@ -98,7 +98,7 @@
 					<img src={data.outfitSet ? outfitPath : defaultPath} alt={data.name} class="splash-art" />
 
 					<div class="info">
-						<i class="elemen gi-{data.vision}" />
+						<i class="elemen gi-{data.vision} {data.vision} filter-drop icon-gradient" />
 						<div class="name">
 							<div class="text">
 								{title}
