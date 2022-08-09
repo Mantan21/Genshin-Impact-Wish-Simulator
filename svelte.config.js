@@ -42,12 +42,7 @@ const imagePreprocess = () => {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: vercel(),
-		vite: {
-			build: {
-				chunkSizeWarningLimit: 250
-			}
-		}
+		adapter: vercel()
 	},
 	preprocess: cdn_on
 		? [

@@ -34,11 +34,11 @@
 
 	const importChunks = async () => {
 		// Splitting Chunks
-		PrevBanner = (await import(`../lib/components/banner/PreviousBannerList.svelte`)).default;
-		DetailsSection = (await import(`../lib/components/details/Details.svelte`)).default;
-		HistorySection = (await import(`../lib/components/history/MainHistory.svelte`)).default;
-		InventorySection = (await import(`../lib/components/inventory/MainInventory.svelte`)).default;
-		ShopSection = (await import(`../lib/components/shop/MainShop.svelte`)).default;
+		PrevBanner = (await import('../lib/components/banner/PreviousBannerList.svelte')).default;
+		DetailsSection = (await import('../lib/components/details/Details.svelte')).default;
+		HistorySection = (await import('../lib/components/history/MainHistory.svelte')).default;
+		InventorySection = (await import('../lib/components/inventory/MainInventory.svelte')).default;
+		ShopSection = (await import('../lib/components/shop/MainShop.svelte')).default;
 		Obtained = (await import('../lib/components/utility/Obtained.svelte')).default;
 		WelkinCheckin = (await import('../lib/components/utility/WelkinCheckin.svelte')).default;
 	};
