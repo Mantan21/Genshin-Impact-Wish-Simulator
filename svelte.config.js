@@ -48,6 +48,7 @@ const config = {
 		? [
 				imagePreprocess(),
 				preprocess({
+					postcss: true,
 					replace: [
 						[new RegExp('/g{', 'g'), '{'],
 						[new RegExp('-800', 'g'), ''],
