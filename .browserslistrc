@@ -1,0 +1,6 @@
+# Browsers that we support
+
+last 4 version
+not ie <= 8
+
+> 5%
