@@ -1,7 +1,7 @@
 <script>
 	import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	import { outfits } from '$lib/data/outfits.json';
 	import { genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
@@ -129,6 +129,13 @@
 		{:else}
 			<div class="card welkin" in:fade={{ duration: 400 }}>
 				<img src="/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
+				<div class="welkin-item">
+					<img
+						src="/images/utility/welkin.webp"
+						alt="Welkin Item"
+						in:fly={{ y: -50, duration: 400 }}
+					/>
+				</div>
 
 				<h1>{$t('shop.recomended.welkin')}</h1>
 				{#if dayRemaining > 0}
@@ -212,6 +219,13 @@
 		border-radius: 1rem;
 		overflow: hidden;
 		font-size: calc(0.035 * var(--content-width));
+	}
+
+	.welkin-item {
+		position: absolute;
+		top: 7%;
+		left: 8%;
+		width: 47.5%;
 	}
 
 	.welkin h1 {
@@ -340,6 +354,14 @@
 		color: #787b84;
 		text-shadow: 0 0 1rem #f7f3eb;
 	}
+
+	.description p {
+		line-height: 130%;
+		font-size: calc(0.04 * var(--content-width));
+		max-height: calc(0.52 * var(--content-width));
+		overflow-y: auto;
+	}
+
 	.title {
 		display: block;
 		margin-left: auto;
