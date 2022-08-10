@@ -48,6 +48,7 @@ const limitedWish = {
 			const limitedResult = this._featuredChars();
 			if (guaranteedStatus.get('events')) {
 				guaranteedStatus.set('events', false);
+				limitedResult.status = 'guaranteed';
 				return limitedResult;
 			}
 
@@ -55,11 +56,14 @@ const limitedWish = {
 			const resultType = rand(['limited', 'std']);
 			if (resultType === 'std') {
 				guaranteedStatus.set('events', true);
-				return rand(standardChars5Star(excluded));
+				const result = rand(standardChars5Star(excluded));
+				result.status = 'lose';
+				return result;
 			}
 
 			// win 50: 50
 			guaranteedStatus.set('events', false);
+			limitedResult.status = 'win';
 			return limitedResult;
 		}
 	}

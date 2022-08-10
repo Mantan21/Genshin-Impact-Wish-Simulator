@@ -197,3 +197,15 @@
 .gi-shrink:before {
 	content: '\30';
 }
+.gi-lose:before {
+	content: '\31';
+}
+.gi-win:before {
+	content: '\33';
+}
+.gi-selected:before {
+	content: '\32';
+}
+.gi-guaranteed:before {
+	content: '\35';
+}

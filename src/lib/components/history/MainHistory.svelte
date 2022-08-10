@@ -246,10 +246,15 @@
 								<div class="cell">{$t('history.noData')}</div>
 							</div>
 						{:else}
-							{#each dataToShow as { name, type, rarity, time, pity, bannerName }, i}
+							{#each dataToShow as { name, type, rarity, time, pity, bannerName, status }, i}
 								{#if i > (activepage - 1) * itemPerPage - 1 && i < itemPerPage * activepage}
 									<div class="row">
-										<div class="cell cell0 star{rarity}">{pity}</div>
+										<div class="cell cell0 star{rarity}">
+											{pity}
+											{#if status}
+												<span class="status"> <i class="gi-{status}" /> </span>
+											{/if}
+										</div>
 										<div class="cell cell1">{$t(type)}</div>
 										<div class="cell cell2 star{rarity}">
 											{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
@@ -277,6 +282,19 @@
 				</div>
 			</div>
 		</div>
+
+		{#if !['beginner', 'standard'].includes(banner)}
+			<div class="legend">
+				{#each ['win', 'lose', 'guaranteed', 'selected'] as v, i}
+					<div class="item">
+						<span class="star5">
+							<i class="gi-{v}" style="font-size: larger;" />
+						</span>
+						&nbsp; : &nbsp; {$t(`history.${v}`)}
+					</div>
+				{/each}
+			</div>
+		{/if}
 
 		<div class="pagination">
 			<button
@@ -346,6 +364,12 @@
 		padding: 20px 5% 10px;
 		width: 100%;
 	}
+
+	span.status {
+		font-size: 80%;
+		margin-left: 5%;
+	}
+
 	.wish-type {
 		display: flex;
 		align-items: center;
@@ -534,6 +558,21 @@
 
 	:global(.mobile) .wish-type {
 		font-size: 0.9em;
+	}
+
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.legend .item {
+		padding-left: 1.5rem;
+		text-transform: capitalize;
+	}
+	@media screen and (max-width: 640px) {
+		.legend .item {
+			min-width: 40%;
+			max-width: 50%;
+		}
 	}
 
 	.pagination {

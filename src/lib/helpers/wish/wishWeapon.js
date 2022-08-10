@@ -94,11 +94,13 @@ const weaponWish = {
 				const result = this._featuredWeapons().find(({ name }) => {
 					return _weapons.featured[localSelectedCourse - 1].name === name;
 				});
+				result.status = 'selected';
 				course.updater(result);
 				return result;
 			}
 
 			// When Not guaranteed ( Rate OFF)
+			let status;
 			if (!isGuaranteed) {
 				const item = [
 					{ type: 'featured', chance: 50 },
@@ -113,14 +115,17 @@ const weaponWish = {
 					if (isFeaturedStandardWeapon) guaranteedStatus.set('weapons', false);
 					else guaranteedStatus.set('weapons', true);
 					course.updater(result);
+					result.status = 'lose';
 					return result;
 				}
-			}
+				status = 'win';
+			} else status = 'guaranteed';
 
 			// When Guaranteed and win rate off
 			const result = rand(this._featuredWeapons());
 			guaranteedStatus.set('weapons', false);
 			course.updater(result);
+			result.status = status;
 			return result;
 		}
 	}
