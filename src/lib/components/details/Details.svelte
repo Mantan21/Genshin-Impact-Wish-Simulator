@@ -26,6 +26,16 @@
 	let bannerTitle;
 	let featured = [];
 
+	const filterRelease = (releaseVersion, pathcNow, phaseNow) => {
+		if (!releaseVersion) return true;
+		const [v, phs] = releaseVersion.split('-');
+		if (parseFloat(pathcNow) < parseFloat(v)) return false;
+		if (parseFloat(pathcNow) === parseFloat(v) && phaseNow <= parseInt(phs)) {
+			return false;
+		}
+		return true;
+	};
+
 	const Data = {
 		async get(patch, phase, bannerType) {
 			const { data } = await import(`../../data/banners/events/${patch}.json`);
@@ -64,6 +74,7 @@
 
 			drop5star = this._stdDropChar5;
 			drop4star = drop4star
+				.filter(({ release }) => filterRelease(release, this._patch, this._phase))
 				.map(({ type, name }) => ({ name, type }))
 				.filter(({ name }) => !this._std.includes(name));
 		},
@@ -74,15 +85,7 @@
 			bannerTitle = $t('wish.banner.name.wanderlust');
 
 			drop4star = drop4star
-				.filter(({ release }) => {
-					if (!release) return true;
-					const [v, phs] = release.split('-');
-					if (parseFloat(this._patch) < parseFloat(v)) return false;
-					if (parseFloat(this._patch) === parseFloat(v) && this._phase <= parseInt(phs)) {
-						return false;
-					}
-					return true;
-				})
+				.filter(({ release }) => filterRelease(release, this._patch, this._phase))
 				.filter(({ limited }) => !limited)
 				.map(({ type, name }) => ({ name, type }));
 		},
@@ -110,6 +113,7 @@
 			featured = items[0].items;
 
 			drop4star = drop4star
+				.filter(({ release }) => filterRelease(release, this._patch, this._phase))
 				.filter(({ name }) => !this._events.rateup.includes(name))
 				.filter(({ name }) => !this._std.includes(name));
 			const rateupDrop = rateUpchar.map(({ name }) => ({ name, type: 'character', rateup: true }));
@@ -137,6 +141,7 @@
 			drop5star.unshift(...weapon5.map(({ name }) => ({ name, type: 'weapon', rateup: true })));
 
 			drop4star = drop4star
+				.filter(({ release }) => filterRelease(release, this._patch, this._phase))
 				.filter(({ name }) => !this._events.rateup.includes(name))
 				.filter(({ name }) => !this._std.includes(name));
 			const rateupDrop = weapons4.map(({ name }) => ({ name, type: 'weapon', rateup: true }));
