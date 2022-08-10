@@ -1,4 +1,4 @@
-import vercel from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import image from 'svelte-image';
 import { config as envConfig } from 'dotenv';
@@ -42,7 +42,9 @@ const imagePreprocess = () => {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: vercel()
+		prerender: { default: true },
+		appDir: 'internal',
+		adapter: adapter()
 	},
 	preprocess: cdn_on
 		? [
