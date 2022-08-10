@@ -199,7 +199,7 @@
 				{#if banner === 'events'}
 					<div class="character-card star5">
 						<picture>
-							<i class="gi-{featured[0].vision}" />
+							<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
 							<img
 								src="/images/characters/face/{featured[0].name}.webp"
 								alt={getName(featured[0].name)}
@@ -238,7 +238,7 @@
 					{#each items[1].items as { name, vision }}
 						<div class="character-card star4">
 							<picture>
-								<i class="gi-{vision}" />
+								<i class="gi-{vision} {vision} icon-gradient filter-drop" />
 								<img src="/images/characters/face/{name}.webp" alt={getName(name)} />
 							</picture>
 							<caption class="name">{$t(`${name}.name`)}</caption>
