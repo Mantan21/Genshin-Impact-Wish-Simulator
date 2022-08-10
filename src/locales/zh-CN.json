@@ -211,7 +211,12 @@
 		"timeReceived": "祈愿时间",
 		"waiting": "请稍等",
 		"noData": "无可用数据",
-		"untracked": "未追踪"
+		"untracked": "未追踪",
+		"item": "物品",
+		"win": "赢 50/50",
+		"lose": "失去 50/50",
+		"guaranteed": "保证",
+		"selected": "选定项目"
 	},
 	"shop": {
 		"text": "商城",

@@ -211,7 +211,12 @@
 		"timeReceived": "Time Received",
 		"waiting": "Waiting",
 		"noData": "No data available .",
-		"untracked": "Untracked"
+		"untracked": "Untracked",
+		"item": "Item",
+		"win": "Win 50/50",
+		"lose": "Lose 50/50",
+		"guaranteed": "Guaranteed",
+		"selected": "Selected Item"
 	},
 	"shop": {
 		"text": "Shop",

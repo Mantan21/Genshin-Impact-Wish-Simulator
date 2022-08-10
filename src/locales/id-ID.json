@@ -211,7 +211,12 @@
 		"timeReceived": "Waktu Perolehan",
 		"waiting": "Tunggu",
 		"noData": "Tidak ada data .",
-		"untracked": "Tidak Terlacak"
+		"untracked": "Tidak Terlacak",
+		"item": "Item",
+		"win": "Menang 50/50",
+		"lose": "Kalah 50/50",
+		"guaranteed": "Item Jaminan",
+		"selected": "Item Pilihan"
 	},
 	"shop": {
 		"text": "Toko",
