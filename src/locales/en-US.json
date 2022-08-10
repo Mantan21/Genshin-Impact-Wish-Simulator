@@ -111,8 +111,8 @@
 		"heading": "Character Outfits",
 		"setOutfit": "Set Outfit",
 		"owned": "Already Owned",
-		"purchasePrompt": "You don't have a character for this costume yet, are you sure you want to purchase this costume?",
-		"promptInfo": "You can still use this costume after getting the right character",
+		"purchasePrompt": "You don't have a character for this costume yet, are you sure to purchase this costume?",
+		"promptInfo": "You still can use this costume after getting the right character",
 		"item": {
 			"sea-breeze-dandelion": {
 				"name": "Sea Breeze Dandelion",
@@ -160,19 +160,19 @@
 			"Base probability of winning 5-Star character = <span> 0.600%</span> <br /> Base probability of winning 4-Star character = <span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>;"
 		],
 		"standard": [
-			"Wanderlust <span class=\"std\"> Invocation</span> is a standard wish with no time limit. Non-event-exclusive characters and weapons are available.<br/> In this wish, <span>guaranteed</span> to win 4-star or above item at least once per 10 attempts.",
+			"\"{bannerName}\" is a standard wish with no time limit. Non-event-exclusive characters and weapons are available.<br/> In this wish, <span>guaranteed</span> to win 4-star or above item at least once per 10 attempts.",
 			"※In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
 			"〓Rules〓",
 			"Base probability of winning 5-star item = <span>0.600%</span>; base probability of winning 5-star character = <span>0.300%</span>, and base probability of winning 5-star weapon = <span>0.300%</span>; consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; guaranteed to win 5-star item at least once per <span>90</span> attempts. <br> Base probability of winning 4-star item = <span>5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>13.000%</span>; guaranteed to win 4-star or above item at least once per <span>10</span> attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. "
 		],
 		"events": [
-			"Event Wish - \"{bannerName}\" is now available. During this event wish, drifting 5-Star character {featuredCharacter} as well as 4-Star characters {rateupCharacters} will get a <span> huge drop-rate boost! </span> <span> ※In most cases, drifting base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules. </span>",
+			"Event Wish \"{bannerName}\" is now available. During this event wish, the  <span>event-exclusive</span> 5-star character {featuredCharacter} as well as 4-star characters {rateupCharacters} will get a <span> huge drop-rate boost</span>! <br/> <span> ※ Of the above characters, the event-exclusive character will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
 			"※ In most cases, drifting base probability of all characters and weapons is evenly distributed. If driftingre is a boost or guarantee in effect, please refer to drifting corresponding rules.",
 			"〓Rules〓",
 			"5-Star Items",
-			"For Event Wish - {bannerName} : <br /> Base probability of winning 5-Star character = <span> 0.600% </span>; <br /> consolidated probability (incl. guarantee) = <span>1.600%</span>; <br /> guaranteed to win 5-Star character at least once per <span> 90</span> attempts. The first time you win a 5-Star item in this event wish, driftingre is a <span> 50%</span> chance it will be drifting promotional character {featuredCharacter}. If drifting first 5-Star character you win in this event wish is not drifting promotional character, then the next 5-Star character you win is <span> guaranteed</span> to be drifting promotional character.",
+			"For Event Wish \"{bannerName}\": Base probability of winning 5-star character = <span> 0.600% </span>; consolidated probability (incl. guarantee) = <span>1.600%</span>; guaranteed to win 5-star character at least once per <span> 90</span> attempts.<br/> The first time you win a 5-star item in this event wish, there is a <span> 50.000%</span> chance it will be the promotional character {featuredCharacter}. If the first 5-star character you win in this event wish is not the promotional character, then the next 5-star character you win is <span> guaranteed</span> to be the promotional character.",
 			"4-Star Items",
-			"For Event Wish - {bannerName} : <br /> Base probability of winning 4-Star item = <span> 5.100%</span>; <br /> consolidated probability (incl. guarantee) = <span> 13.000%</span>; <br /> guaranteed to win 4-Star or above item at least once per 10 attempts. The first time you win a 4-Star item in this event wish, driftingre is a <span> 50%</span> chance it will be one of drifting featured characters {rateupCharacters}. If drifting first 4-Star item you win in this event wish is not one of the featured characters, driftingn the next 4-Star item you win is <span> guaranteed </span> to be a featured character."
+			"For Event Wish  \"{bannerName}\": Base probability of winning 4-star item = <span> 5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>; guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. <br/> The first time you win a 4-star item in this event wish, there is a <span>50.000%</span> chance it will be one of the featured characters {rateupCharacters}. If the first 4-star item you win in this event wish is not one of the featured characters, then the next 4-star item you win is <span>guaranteed</span> to be a featured character. When you win a featured 4-star item, the probability of obtaining each featured 4-star character is equal between all of them."
 		],
 		"weapons": [
 			"Event Wish \"{bannerName}\" is now available. During this event wish, the event-exclusive 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the event-exclusive 4-star weapon {rateupWeapons}  will get a <span>huge drop-rate boost!</span> <br/> <span> ※ Of the above weapons, the event-exclusive weapons will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
@@ -184,9 +184,9 @@
 			"For Event Wish \"{bannerName}\": Base probability of winning 4-star item = <span>6.000%</span>; base probability of winning 4-star character = <span>3.000%</span>, and base probability of winning 4-star weapon = <span>3.000%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>14.500%</span>; guaranteed to win 4-star or above item at least once per <span>10</span> attempts; probability of winning 4-star item through the guarantee = <span>99.300%</span>, and probability of winning 5-star item through the guarantee = <span>0.700%</span>. <br/> The first time you win a 4-star item in this event wish, there is a <span>75.000%</span> chance it will be one of the featured weapons {rateupWeapons}. If the first 4-star item you win in this event wish is not one of the featured weapons, then the next 4-star item you win is <span>guaranteed</span> to be a featured weapon. When you win a featured 4-star item, the probability of obtaining each featured 4-star weapon is equal between all of them."
 		],
 		"convertion": {
-			"fiveStar": "5-Star weapons won in this wish include {starglitter} ×10;",
-			"fourStar": "4-Star weapons include {starglitter} ×2;",
-			"threeStar": "3-Star weapons include {stardust} ×15."
+			"fiveStar": "5-Star weapons won in this wish come with {starglitter} ×10;",
+			"fourStar": "4-star weapons won in this wish come with {starglitter} ×2;",
+			"threeStar": "3-star weapons won in this wish come with {stardust} ×15."
 		},
 		"duplicate": {
 			"heading": "〓Duplicate Characters〓",
@@ -216,7 +216,7 @@
 	"shop": {
 		"text": "Shop",
 		"paimonBargains": "Paimon Bargains",
-		"infsufficientFunds": "Infsufficient Funds",
+		"infsufficientFunds": "Insufficient Funds",
 		"fateNeeded": "An Aditional {rollQty} {currency} are needed.",
 		"primoNeeded": "Purchase with {primoPrice} Primogem ?",
 		"purchaseUpto": "Purchase Up to 1",
@@ -235,7 +235,7 @@
 		"insufficient": "Insufficient Funds",
 		"crystalTopup": "Crystal Top-Up",
 		"buyGenesisHeading": "Buy Genesis Crystal",
-		"recomendedHeading": "Recomended Items",
+		"recomendedHeading": "Recommended Items",
 		"paimonHeading": "Paimon's Bargains",
 		"welkinNote": "Can be purchased multiple times",
 		"limitedOffer": "Limited Time Offer",
