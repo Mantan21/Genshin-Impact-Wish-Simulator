@@ -46,29 +46,12 @@
 		showAllItemsIndicator = selected === 'yes';
 	};
 
-	// Currency
-
 	// Audio
 	const handleAudio = (e) => {
 		const { selected } = e.detail;
 		const optionValue = selected === 'yes';
 		localConfig.set('muted', optionValue);
 		muted.set(optionValue);
-	};
-
-	// Fullscreen
-	$: fullscreen = browser ? $viewportHeight === window.screen.height : false;
-	const handleFullscreen = () => {
-		if (!fullscreen) {
-			const body = document.body;
-			if (body.requestFullscreen) return body.requestFullscreen();
-			if (body.webkitRequestFullscreen) return body.webkitRequestFullscreen();
-			if (body.msRequestFullscreen) return body?.msRequestFullscreen();
-		} else {
-			if (document.exitFullscreen) return document?.exitFullscreen();
-			if (document.webkitExitFullscreen) return document?.webkitExitFullscreen();
-			if (document.msExitFullscreen) return document?.msExitFullscreen();
-		}
 	};
 
 	// Reset
@@ -188,14 +171,6 @@
 							activeIndicator={showAllItemsIndicator}
 							on:select={showAllItemsOption}
 							showOption={optionToShow === 'inventory'}
-						/>
-
-						<Option
-							name="fullscreen"
-							text={$t('menu.displayFullscreen')}
-							activeIndicator={fullscreen}
-							on:select={handleFullscreen}
-							showOption={optionToShow === 'fullscreen'}
 						/>
 
 						<Option name="reset" text={$t('menu.factoryReset')} />

@@ -191,3 +191,9 @@
 .gi-outfit:before {
 	content: '\74';
 }
+.gi-fullscreen:before {
+	content: '\5a';
+}
+.gi-shrink:before {
+	content: '\30';
+}

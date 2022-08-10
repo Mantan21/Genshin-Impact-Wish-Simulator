@@ -1,6 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import { browser } from '$app/env';
 	import BannerButton from '$lib/components/banner/parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import MainMenu from '$lib/components/menu/MainMenu.svelte';
@@ -48,6 +49,20 @@
 		playSfx(!showMenu ? 'click' : 'close');
 		showMenu = !showMenu;
 	};
+
+	$: fullscreen = browser ? $viewportHeight === window.screen.height : false;
+	const handleFullscreen = () => {
+		if (!fullscreen) {
+			const body = document.body;
+			if (body.requestFullscreen) return body.requestFullscreen();
+			if (body.webkitRequestFullscreen) return body.webkitRequestFullscreen();
+			if (body.msRequestFullscreen) return body?.msRequestFullscreen();
+		} else {
+			if (document.exitFullscreen) return document?.exitFullscreen();
+			if (document.webkitExitFullscreen) return document?.webkitExitFullscreen();
+			if (document.msExitFullscreen) return document?.msExitFullscreen();
+		}
+	};
 </script>
 
 <EpitomizedPopup />
@@ -62,7 +77,17 @@
 					values: { markStart: '', markEnd: '' }
 				})}
 			</span>
-			<button class="help" on:click={handleMenu}> <i class="gi-help" /> </button>
+			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
+				<i class="gi-help" />
+			</button>
+			<button
+				class="fullscreen"
+				on:click={handleFullscreen}
+				title="FullScreen"
+				aria-label="Fullscreen"
+			>
+				<i class="gi-{!fullscreen ? 'fullscreen' : 'shrink'}" />
+			</button>
 		</h1>
 		<div class="budget">
 			<div class="fates">
@@ -126,23 +151,35 @@
 		z-index: 5;
 	}
 
-	.help {
+	.help,
+	.fullscreen {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 50px;
-		border: 0.15rem solid #fff;
 		color: #fff;
 		margin-left: 1rem;
-		width: 1.7rem;
-		height: 1.7rem;
 		line-height: 0;
 		transition: all 0.2s;
 	}
 
-	.help:hover {
+	.help {
+		border-radius: 50px;
+		border: 0.15rem solid #fff;
+		width: 1.7rem;
+		height: 1.7rem;
+	}
+
+	.help:hover,
+	.fullscreen:hover {
 		background-color: var(--tertiary-color);
 		color: #3a4156;
+	}
+
+	.fullscreen {
+		border-color: transparent;
+		transform: scale(1.3);
+		width: 1.3rem;
+		height: 1.3rem;
 	}
 
 	.bg {
