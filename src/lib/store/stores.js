@@ -40,6 +40,7 @@ const primogem = writable(1600);
 const intertwined = writable(0);
 const acquaint = writable(0);
 const unlimitedFates = writable(false);
+const priceList = writable({ genesis: {}, welkin: null });
 
 const query = writable('');
 
@@ -70,5 +71,6 @@ export {
 	acquaint,
 	unlimitedFates,
 	isAcquaintUsed,
+	priceList,
 	query
 };

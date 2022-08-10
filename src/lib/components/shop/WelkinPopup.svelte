@@ -1,16 +1,13 @@
 <script>
 	import { getContext } from 'svelte';
-	import { t, json } from 'svelte-i18n';
-	import { mobileMode } from '$lib/store/stores';
+	import { t } from 'svelte-i18n';
+	import { mobileMode, priceList } from '$lib/store/stores';
 	import Icon from '../utility/Icon.svelte';
 	import PopUp from '../utility/PopUp.svelte';
 
 	export let show = false;
 
-	const welkinPrice = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: $json('price.welkin').toFixed(2) }
-	});
-
+	const welkinPrice = $priceList.welkin;
 	const cancelBuy = getContext('cancelBuy');
 	const buyWelkin = getContext('buyWelkin');
 </script>

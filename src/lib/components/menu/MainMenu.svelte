@@ -46,6 +46,8 @@
 		showAllItemsIndicator = selected === 'yes';
 	};
 
+	// Currency
+
 	// Audio
 	const handleAudio = (e) => {
 		const { selected } = e.detail;
@@ -154,6 +156,12 @@
 							name="locale"
 							activeIndicator={$locale}
 							showOption={optionToShow === 'locale'}
+						/>
+
+						<Option
+							text={$t('menu.currency')}
+							name="currency"
+							showOption={optionToShow === 'currency'}
 						/>
 
 						<Option

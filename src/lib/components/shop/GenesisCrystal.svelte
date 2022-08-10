@@ -1,22 +1,20 @@
 <script>
 	import { getContext } from 'svelte';
-	import { json, t } from 'svelte-i18n';
+	import { t } from 'svelte-i18n';
 	import playSfx from '$lib/helpers/audio';
 
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 	import PaymentPopup from './PaymentPopup.svelte';
+	import { priceList } from '$lib/store/stores';
 
 	let activeGenesisIndexforPopup; // undefined
 	let showPaymentPopup = false; //false
 
-	const genesis = $json('price.genesis');
 	const genesisList = [];
-	Object.keys(genesis).forEach((key) => {
-		const price = $t(`price.format`, {
-			values: { symbol: $t('price.symbol'), nominal: genesis[key].toFixed(2) }
-		});
-		const item = { qty: parseInt(key), price };
+	$: genesis = $priceList.genesis;
+	$: Object.keys(genesis).forEach((key) => {
+		const item = { qty: parseInt(key), price: genesis[key] };
 		genesisList.push(item);
 	});
 

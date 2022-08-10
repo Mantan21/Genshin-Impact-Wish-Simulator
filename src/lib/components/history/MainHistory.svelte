@@ -3,7 +3,7 @@
 	import { browser } from '$app/env';
 	import { afterUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t, json } from 'svelte-i18n';
+	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	// store
@@ -15,6 +15,7 @@
 	import browserState from '$lib/helpers/browserState';
 	import { getName } from '$lib/helpers/nameText';
 	import playSfx from '$lib/helpers/audio';
+	import { userCurrencies } from '$lib/helpers/currencies';
 
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
@@ -47,11 +48,7 @@
 	let tableFilter = $t('history.filterAll');
 	let showTableFilterOption = false;
 
-	$: pricePerPrimo = $json('price.genesis.60') / 60;
-	$: totalSpend = data.length * 160 * pricePerPrimo;
-	$: totalSpendString = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: totalSpend.toFixed(2) }
-	});
+	$: totalSpend = userCurrencies.getTotalSpend(data.length);
 
 	const { getList, resetHistory } = HistoryIDB;
 	const readData = async () => {
@@ -195,7 +192,7 @@
 				{$t('history.totalSpend')}
 				<strong><span class="lighted"> {data.length * 160}</span> Primos</strong>
 				~
-				<span class="lighted"> <strong> {totalSpendString} </strong> </span>
+				<span class="lighted"> <strong> {totalSpend} </strong> </span>
 			</div>
 			<div class="right">
 				<button class="reset" on:click={reset}>

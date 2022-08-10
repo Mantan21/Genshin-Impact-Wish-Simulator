@@ -295,6 +295,7 @@
 		"options": "Options",
 		"updates": "Update History",
 		"language": "Language",
+		"currency": "Currency",
 		"fates": "Unlimited Fates",
 		"mute": "Mute Audio and Sound Effect",
 		"switchBanner": "Switch Banner",
@@ -306,18 +307,5 @@
 		"resetPrompt": "Are You sure to clear <strong> All Data </strong> and restore to default ?",
 		"resetDetail": "It also remove your History, Pity Calculation, Balance and all items from Inventory.",
 		"resetSuccess": "Reset Successful"
-	},
-	"price": {
-		"format": "{symbol}{nominal}",
-		"symbol": "US$",
-		"welkin": 4.99,
-		"genesis": {
-			"60": 0.99,
-			"300": 4.99,
-			"980": 14.99,
-			"1980": 29.99,
-			"3280": 49.99,
-			"6480": 99.99
-		}
 	}
 }

@@ -295,6 +295,7 @@
 		"options": "Opsi",
 		"updates": "Riwayat Pembaruan",
 		"language": "Bahasa",
+		"currency": "Mata Uang",
 		"fates": "Permohonan Tak Terbatas",
 		"mute": "Matikan Audio dan Musik",
 		"switchBanner": "Ganti Banner",
@@ -306,18 +307,5 @@
 		"resetPrompt": "Apakah kamu yakin untuk menghapus <strong> Semua Data </strong> dan mengembalikan aplikasi seperti semula?",
 		"resetDetail": "Tindakan ini juga akan menghapus Data Riwayat, Akumulasi Pity, Saldo dan Semua Item dari Inventaris",
 		"resetSuccess": "Berhasil me-Reset"
-	},
-	"price": {
-		"format": "{symbol}{nominal}",
-		"symbol": "Rp",
-		"welkin": 75000,
-		"genesis": {
-			"60": 15000,
-			"300": 75000,
-			"980": 219000,
-			"1980": 439000,
-			"3280": 739000,
-			"6480": 1499000
-		}
 	}
 }

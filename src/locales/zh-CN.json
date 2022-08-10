@@ -295,6 +295,7 @@
 		"options": "选项",
 		"updates": "更新历史",
 		"language": "语言",
+		"currency": "货币",
 		"fates": "无限抽数",
 		"mute": "禁用音频音效",
 		"switchBanner": "切换卡池",
@@ -306,18 +307,5 @@
 		"resetPrompt": "您确定清除<strong>所有数据</strong>并恢复默认吗？",
 		"resetDetail": "它还会从仓库中删除您的历史记录、垫数计算、余额和所有项目。",
 		"resetSuccess": "已成功重置"
-	},
-	"price": {
-		"format": "{symbol}{nominal}",
-		"symbol": "¥",
-		"welkin": 30,
-		"genesis": {
-			"60": 6,
-			"300": 30,
-			"980": 98,
-			"1980": 198,
-			"3280": 328,
-			"6480": 648
-		}
 	}
 }

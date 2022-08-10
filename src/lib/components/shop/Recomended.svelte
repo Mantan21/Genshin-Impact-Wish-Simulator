@@ -1,10 +1,10 @@
 <script>
 	import { getContext, setContext } from 'svelte';
-	import { t, json } from 'svelte-i18n';
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 
 	import { outfits } from '$lib/data/outfits.json';
-	import { genesis, patchVersion, primogem } from '$lib/store/stores';
+	import { genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio';
 	import positionToStyle from '$lib/helpers/cssPosition';
@@ -41,9 +41,7 @@
 	let dayRemaining = remaining || 0;
 	let showWelkinPopup = false;
 
-	const welkinPrice = $t(`price.format`, {
-		values: { symbol: $t('price.symbol'), nominal: $json('price.welkin').toFixed(2) }
-	});
+	$: welkinPrice = $priceList.welkin;
 
 	const buyWelkin = () => {
 		showWelkinPopup = false;

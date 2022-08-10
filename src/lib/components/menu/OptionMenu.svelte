@@ -6,6 +6,8 @@
 	import playSfx from '$lib/helpers/audio';
 	import { localeName, flags } from '$lib/data/country.json';
 	import browserState from '$lib/helpers/browserState';
+	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';
+	import { localConfig } from '$lib/store/localstore';
 
 	export let text;
 	export let name;
@@ -30,6 +32,7 @@
 		locale.set(langID);
 		localStorage.setItem('locale', langID);
 		handleOption('');
+		userCurrencies.init();
 	};
 
 	const openPrevious = () => {
@@ -42,6 +45,15 @@
 		playSfx();
 		if (showOption) return handleOption('');
 		handleOption(name);
+	};
+
+	$: currencyIndicator = $locale ? userCurrencies.checkUsedCurrency().currency : '';
+	const setCurrency = (selected) => {
+		playSfx();
+		localConfig.set('currency', selected);
+		currencyIndicator = selected;
+		userCurrencies.init(selected);
+		handleOption('');
 	};
 </script>
 
@@ -89,6 +101,29 @@
 							Contribute
 						</a>
 					</button>
+				</div>
+			{/if}
+		</div>
+	{:else if name === 'currency'}
+		<div class="option-select locale">
+			<button
+				class="selected"
+				style="width: 100%; height:100%"
+				on:click|stopPropagation={openOption}
+			>
+				{currencyIndicator}
+			</button>
+			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
+			{#if showOption}
+				<div class="select" in:fly={{ duration: 200, y: -10 }}>
+					{#each availableCurrencies as { currency }}
+						<button
+							class:selected={currencyIndicator === currency}
+							on:click|stopPropagation={() => setCurrency(currency)}
+						>
+							<span style="text-align:center;width:100%;padding: 3%"> {currency} </span>
+						</button>
+					{/each}
 				</div>
 			{/if}
 		</div>

@@ -17,6 +17,7 @@
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { importLocalBalance } from '$lib/helpers/importLocalData';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
+	import { userCurrencies } from '$lib/helpers/currencies';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Iklan from '$lib/components/utility/Iklan.svelte';
@@ -47,6 +48,7 @@
 	mountLocale();
 	onMount(() => {
 		importLocalBalance();
+		userCurrencies.init();
 
 		isMobile.set(mobileDetect());
 		if ($isMobile) setMobileMode();
