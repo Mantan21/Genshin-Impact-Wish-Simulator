@@ -60,8 +60,8 @@
 	};
 
 	const valuesToToChange = {
-		starglitter: `<span class="starglitter"> ${$t('shop.exchange.starglitter')}</span>`,
-		stardust: `<span class="stardust"> ${$t('shop.exchange.stardust')}</span>`,
+		starglitter: `<span class="starglitter"> ${$t('shop.item.starglitter')}</span>`,
+		stardust: `<span class="stardust"> ${$t('shop.item.stardust')}</span>`,
 		stellaFortuna: `<span class="stardust"> ${$t('wish.stellaFortuna')}</span>`
 	};
 
@@ -117,7 +117,11 @@
 	{/each}
 {:else if bannerType === 'standard'}
 	{#each $json('details.standard') as text}
-		<p>{@html text}</p>
+		<p>
+			{@html $t(text, {
+				values: { bannerName: highlightBannerName(bannerName, { vision: 'std' }) }
+			})}
+		</p>
 	{/each}
 {:else if bannerType === 'events'}
 	{#each $json('details.events') as text}
@@ -185,7 +189,7 @@
 	p :global(span.electro-flat) {
 		color: #ca82fc;
 	}
-	p :global(span.std) {
+	p :global(span.std-flat) {
 		color: #757acdff;
 	}
 
