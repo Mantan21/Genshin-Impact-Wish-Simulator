@@ -440,9 +440,9 @@
 	}
 
 	.rotate {
-		position: absolute;
-		bottom: 0;
-		right: 0;
+		position: fixed;
+		bottom: 5%;
+		left: 5%;
 		color: #fff;
 		display: flex;
 		flex-direction: column;
