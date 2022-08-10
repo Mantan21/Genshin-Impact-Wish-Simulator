@@ -143,6 +143,7 @@
 		color: #fff;
 		-webkit-text-stroke: 0.05rem #565654;
 		text-shadow: 0 0 0.15rem #d2c69c;
+		filter: drop-shadow(0 0.3rem 0.5rem #000);
 	}
 	.char-title {
 		color: #cfbc99;

@@ -32,8 +32,10 @@
 	</div>
 	<div class="featured">
 		<div class="charName" style="position: relative;">
-			{char}
-			<span>{$t('wish.banner.up')}</span>
+			<span>
+				{char}
+			</span>
+			<span class="up">{$t('wish.banner.up')}</span>
 		</div>
 	</div>
 
@@ -124,10 +126,15 @@
 		text-shadow: 0 0 0.15rem #d2c69c;
 	}
 
-	.charName span {
+	.charName span:not(.up) {
+		filter: drop-shadow(0 0.3rem 0.5rem #000);
+	}
+
+	.charName span.up {
 		color: #fff664;
 		-webkit-text-stroke: 0.05rem #e7a12e;
 		font-size: calc(1.5 / 100 * var(--content-width));
+		filter: drop-shadow(0 0.3rem 0.5rem #fff);
 		position: absolute;
 		top: 0;
 		right: 0;

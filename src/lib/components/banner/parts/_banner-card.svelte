@@ -115,7 +115,7 @@
 	.detail {
 		position: absolute;
 		left: 5%;
-		bottom: 9%;
+		bottom: 8%;
 		background-color: #eee8e3;
 		color: rgba(0, 0, 0, 0.5);
 		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
