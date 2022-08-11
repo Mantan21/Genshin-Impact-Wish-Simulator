@@ -408,6 +408,8 @@
 		color: var(--text-color);
 		padding-top: 2rem;
 		overflow-y: auto;
+		position: relative;
+		z-index: +1;
 	}
 
 	.header {

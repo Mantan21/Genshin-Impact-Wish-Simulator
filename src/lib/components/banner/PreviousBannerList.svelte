@@ -317,6 +317,8 @@
 		background-size: cover;
 		color: var(--tertiary-color);
 		font-size: 0.97rem;
+		position: relative;
+		z-index: +1;
 	}
 	h1 {
 		color: var(--tertiary-color);
