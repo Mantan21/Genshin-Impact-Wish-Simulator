@@ -11,7 +11,8 @@
 
 	export let data = {};
 
-	let { type, weapons, character } = data;
+	let type, weapons, character;
+	$: ({ type, weapons, character } = data);
 	let clientWidth;
 	let clientHeight;
 
