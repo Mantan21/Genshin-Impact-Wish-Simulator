@@ -74,7 +74,7 @@ const weaponWish = {
 			}
 
 			// Non-Rateup Items
-			const result = get4StarItem('weapons', this._weapons, this._phase);
+			const result = get4StarItem('weapons', this._version, this._phase);
 			const isItemRateup = this._rateupWeapons()
 				.map(({ name }) => name)
 				.includes(result.name);
