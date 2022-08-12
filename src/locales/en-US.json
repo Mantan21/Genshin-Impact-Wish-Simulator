@@ -216,7 +216,8 @@
 		"win": "Win 50/50",
 		"lose": "Lose 50/50",
 		"guaranteed": "Guaranteed",
-		"selected": "Selected Item"
+		"selected": "Selected Item",
+		"primos": "Primos"
 	},
 	"shop": {
 		"text": "Shop",
