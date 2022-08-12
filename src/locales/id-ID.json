@@ -216,7 +216,8 @@
 		"win": "Menang 50/50",
 		"lose": "Kalah 50/50",
 		"guaranteed": "Item Jaminan",
-		"selected": "Item Pilihan"
+		"selected": "Item Pilihan",
+		"primos": "Primos"
 	},
 	"shop": {
 		"text": "Toko",
