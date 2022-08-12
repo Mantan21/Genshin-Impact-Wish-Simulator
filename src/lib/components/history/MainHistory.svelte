@@ -190,7 +190,7 @@
 				{$t('history.totalPull')} <span class="lighted"> <strong> {data.length} </strong> </span>
 				<br />
 				{$t('history.totalSpend')}
-				<strong><span class="lighted"> {data.length * 160}</span> Primos</strong>
+				<strong><span class="lighted"> {data.length * 160}</span> {$t('history.primos')}</strong>
 				~
 				<span class="lighted"> <strong> {totalSpend} </strong> </span>
 			</div>
