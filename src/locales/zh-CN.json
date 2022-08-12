@@ -204,7 +204,7 @@
 		"currentPity": "当前已垫:",
 		"totalPull": "总共抽取:",
 		"totalSpend": "已花费:",
-		"filterTxt": "Filter",
+		"filterTxt": "筛选",
 		"filter": "{rarity} 星",
 		"filterAll": "全部",
 		"pity": "已垫",
@@ -213,10 +213,11 @@
 		"noData": "无可用数据",
 		"untracked": "未追踪",
 		"item": "物品",
-		"win": "赢 50/50",
-		"lose": "失去 50/50",
-		"guaranteed": "保证",
-		"selected": "选定项目"
+		"win": "小保底",
+		"lose": "歪",
+		"guaranteed": "大保底",
+		"selected": "已定轨",
+		"primos": "原石"
 	},
 	"shop": {
 		"text": "商城",
