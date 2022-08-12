@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
@@ -164,6 +164,18 @@
 	<title>{$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
+<video
+	in:fade={{ duration: 2000 }}
+	muted
+	loop
+	autoplay
+	poster="/images/background/wish-background.webp"
+>
+	<source src="/assets/videos/bg.webm" type="video/webm" />
+	<track kind="captions" />
+</video>
+<div class="overlay" />
+
 {#if showWish}
 	<WishResult list={wishResult} on:wishEnd={checkObtained} {skipSplashOneByOne} />
 {/if}
@@ -210,6 +222,47 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+	}
+	video {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 110%;
+		height: 105%;
+		object-fit: cover;
+		object-position: 20%;
+	}
+
+	.overlay {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: block;
+		width: 120%;
+		height: 120%;
+		background-color: rgba(0, 0, 0, 0.08);
+		box-shadow: 0 0 50vh rgba(0, 0, 0, 0.9) inset;
+	}
+
+	:global(.mobile) .overlay {
+		width: 140%;
+		height: 140%;
+	}
+
+	@media screen and (max-width: 645px) {
+		.overlay {
+			width: 150%;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		.overlay {
+			width: 150%;
+			height: 130%;
+		}
 	}
 
 	.top,
