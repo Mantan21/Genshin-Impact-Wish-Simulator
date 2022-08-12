@@ -168,10 +168,7 @@
 
 					<!-- Button -->
 					<div class="purchase-button">
-						<div
-							class="caption"
-							style="font-size:calc(0.03 *  var(--content-width)); margin-bottom:3%"
-						>
+						<div class="caption">
 							{@html $t('shop.recomended.obtainTotal', {
 								values: {
 									totalGenesis: '<strong>32000</strong>',
@@ -223,9 +220,19 @@
 
 	.welkin-item {
 		position: absolute;
-		top: 7%;
+		top: 8%;
 		left: 8%;
 		width: 47.5%;
+		animation: welkinItem 2s infinite alternate ease-in-out;
+	}
+
+	@keyframes welkinItem {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(-3%);
+		}
 	}
 
 	.welkin h1 {
@@ -304,10 +311,25 @@
 	}
 
 	.purchase-button {
-		width: 50%;
+		width: 55%;
 		text-align: right;
 		margin-top: auto;
-		margin-bottom: 2%;
+		margin-bottom: 2.5%;
+	}
+	.purchase-button .caption {
+		font-size: calc(0.035 * var(--content-width));
+		/* prettier-ignore */
+		text-shadow:
+    -0.03rem -0.03rem 0 #f7f3eb,
+     0   		 -0.03rem 0 #f7f3eb,
+     0.03rem -0.03rem 0 #f7f3eb,
+     0.03rem  0 		  0 #f7f3eb,
+     0.03rem  0.03rem 0 #f7f3eb,
+     0    		0.03rem 0 #f7f3eb,
+    -0.03rem  0.03rem 0 #f7f3eb,
+    -0.03rem  0		    0 #f7f3eb;
+		line-height: 150%;
+		margin-bottom: 5%;
 	}
 
 	.owned {
