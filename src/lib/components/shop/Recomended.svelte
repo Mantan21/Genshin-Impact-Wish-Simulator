@@ -96,10 +96,10 @@
 
 				<div class="remaining">{$t('shop.limitedOffer')}</div>
 				<div class="details">
-					<div class="name">{$t(`outfit.item.${name}.name`)}</div>
+					<div class="name stroke">{$t(`outfit.item.${name}.name`)}</div>
 					<div class="price">
 						<Icon type="genesis" style="margin-right:-1%; width: 10%" />
-						<span class="dicount"> {promoPrice} </span>
+						<span class="dicount stroke"> {promoPrice} </span>
 
 						<del class="real-price"> {price} </del>
 					</div>
@@ -109,7 +109,7 @@
 					<div class="description">
 						<div class="title">{$t('shop.recomended.newOutfit')}</div>
 						<span class="name">{$t(`outfit.item.${name}.name`)}</span>
-						<p>
+						<p class="card-stroke">
 							{$t(`outfit.item.${name}.description`)}
 						</p>
 					</div>
@@ -168,7 +168,7 @@
 
 					<!-- Button -->
 					<div class="purchase-button">
-						<div class="caption">
+						<div class="caption card-stroke">
 							{@html $t('shop.recomended.obtainTotal', {
 								values: {
 									totalGenesis: '<strong>32000</strong>',
@@ -318,6 +318,9 @@
 	}
 	.purchase-button .caption {
 		font-size: calc(0.035 * var(--content-width));
+	}
+
+	.card-stroke {
 		/* prettier-ignore */
 		text-shadow:
     -0.03rem -0.03rem 0 #f7f3eb,
@@ -415,19 +418,30 @@
 		line-height: 120%;
 		margin-top: auto;
 		color: #fff;
-		-webkit-text-stroke: 0.4px #000;
-		text-shadow: 0 0 25px #787b84;
+		filter: drop-shadow(0 0 25px #787b84);
 	}
 
 	.price {
 		position: relative;
 		color: #fff;
 		margin-top: 5%;
-		text-shadow: 0 0 25px #787b84;
+		filter: drop-shadow(0 0 25px #787b84);
 	}
 	.dicount {
 		font-size: calc(0.11 * var(--content-width));
-		-webkit-text-stroke: 0.4px #000;
+	}
+
+	.stroke {
+		/* prettier-ignore */
+		text-shadow:
+    -0.03rem -0.03rem 0 #3c4b5e,
+     0   		 -0.03rem 0 #3c4b5e,
+     0.03rem -0.03rem 0 #3c4b5e,
+     0.03rem  0 		  0 #3c4b5e,
+     0.03rem  0.03rem 0 #3c4b5e,
+     0    		0.03rem 0 #3c4b5e,
+    -0.03rem  0.03rem 0 #3c4b5e,
+    -0.03rem  0		    0 #3c4b5e;
 	}
 
 	.real-price {

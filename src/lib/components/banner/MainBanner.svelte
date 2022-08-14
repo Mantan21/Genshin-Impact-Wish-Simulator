@@ -222,6 +222,7 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		background-position: 20%;
 	}
 	video {
 		position: fixed;
