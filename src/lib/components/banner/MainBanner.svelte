@@ -27,6 +27,7 @@
 	import Meteor from './parts/Meteor.svelte';
 	import BannerItem from './BannerItem.svelte';
 
+	export let bgAnimated;
 	let showWish = false;
 	let showMeteor = false;
 	let singleMeteor = true;
@@ -164,16 +165,18 @@
 	<title>{$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
-<video
-	in:fade={{ duration: 2000 }}
-	muted
-	loop
-	autoplay
-	poster="/images/background/wish-background.webp"
->
-	<source src="/assets/videos/bg.webm" type="video/webm" />
-	<track kind="captions" />
-</video>
+{#if bgAnimated}
+	<video
+		in:fade={{ duration: 2000 }}
+		muted
+		loop
+		autoplay
+		poster="/images/background/wish-background.webp"
+	>
+		<source src="/assets/videos/bg.webm" type="video/webm" />
+		<track kind="captions" />
+	</video>
+{/if}
 <div class="overlay" />
 
 {#if showWish}

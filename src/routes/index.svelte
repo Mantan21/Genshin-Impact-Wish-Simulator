@@ -16,7 +16,7 @@
 		muted,
 		bannerActive
 	} from '$lib/store/stores';
-	import { localWelkin } from '$lib/store/localstore';
+	import { localConfig, localWelkin } from '$lib/store/localstore';
 	import { beginner } from '$lib/data/banners/beginner.json';
 
 	// Components
@@ -48,9 +48,15 @@
 	};
 
 	let isMount = false;
+	let isAnimatedBG = false;
 	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
 	$: if (audioActive) playSfx('wishBacksound');
 	else if (isMount) playSfx('wishBacksound', { paused: true });
+
+	const animateBG = () => {
+		isAnimatedBG = localConfig.get('animatedBG');
+	};
+	setContext('animateBG', animateBG);
 
 	const beginnerBanner = beginner;
 	let eventBanner;
@@ -107,6 +113,7 @@
 
 	onMount(async () => {
 		await importHelper();
+		animateBG();
 		importChunks();
 		isMount = true;
 		setBannerVersionAndPhase();
@@ -173,7 +180,7 @@
 <svelte:component this={WelkinCheckin} show={welkinCheckin} />
 
 {#if $pageActive === 'index'}
-	<MainBanner />
+	<MainBanner bgAnimated={isAnimatedBG} />
 {/if}
 
 {#if $pageActive === 'previous-banner'}

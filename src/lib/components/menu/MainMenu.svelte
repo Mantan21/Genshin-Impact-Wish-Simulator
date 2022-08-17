@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/env';
-	import { afterUpdate, createEventDispatcher, setContext } from 'svelte';
+	import { afterUpdate, createEventDispatcher, setContext, getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -15,7 +15,6 @@
 	import PopUp from '$lib/components/utility/PopUp.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
 	import Option from './OptionMenu.svelte';
-
 	export let show = false;
 	let showResetPopup = false;
 	let showToast = false;
@@ -38,12 +37,22 @@
 		return unlimitedFates.set(optionValue);
 	};
 
-	// Show Archive
+	// Show Collection
 	let showAllItemsIndicator = browser ? !!localConfig.get('showAllItems') : false;
 	const showAllItemsOption = (e) => {
 		const { selected } = e.detail;
 		localConfig.set('showAllItems', selected === 'yes');
 		showAllItemsIndicator = selected === 'yes';
+	};
+
+	// Animated BG
+	const handleAnimatedBG = getContext('animateBG');
+	let animatedbg = browser ? !!localConfig.get('animatedBG') : false;
+	const showAnimatedBG = (e) => {
+		const { selected } = e.detail;
+		localConfig.set('animatedBG', selected === 'yes');
+		animatedbg = selected === 'yes';
+		handleAnimatedBG();
 	};
 
 	// Audio
@@ -161,6 +170,14 @@
 							activeIndicator={$muted}
 							on:select={handleAudio}
 							showOption={optionToShow === 'audio'}
+						/>
+
+						<Option
+							name="animatedbg"
+							text={$t('menu.animatedbg')}
+							activeIndicator={animatedbg}
+							on:select={showAnimatedBG}
+							showOption={optionToShow === 'animatedbg'}
 						/>
 
 						<Option name="switchBanner" text={$t('menu.switchBanner')} />
