@@ -50,9 +50,10 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 12. **Inventory** to show all items ( Weapons, Characters and Outfits ) that already owned by gacha or purchasement
 13. Screenshot and download wish result as Image localy.
 14. Pity Counter, User can track their current information and history of their pity
-15. Mobile Friendly, responsive layout both landscape and portrait orientation.
-16. Link generator when user want to share their gacha result through internet.
-17. All user's data will saves to localstorage and indexedDB.
+15. Site Localization, So I hope this Wish Sim can reach more people even they aren't english speaker.
+16. Mobile Friendly, responsive layout both landscape and portrait orientation.
+17. Link generator when user want to share their gacha result through internet.
+18. All user's data will saves to localstorage and indexedDB.
 
 ## Pity System
 
@@ -106,12 +107,11 @@ npm run dev -- --open
 
 ### How to Update new banner
 
-- To add new banner in different patch, you can refer to [this commit](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/commit/029d7cfdc35cf0710907c807c6d4ee38262b6610)
-- To add new banner in the same patch, you can refer to [this commit](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/commit/2dbfdfd64100491d77a85bb9e8f6ef7c849ae61e)
+- The guide to Add New Banner are moved to Wiki, [Read Here](https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/wiki/How-to-Add-more-Banner)
 
 ## Building
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment, then run the command below. As default, this project use [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) and deployed to [Vercel.com](https://vercel.com)
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment, then run the command below. As default, this project use [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) and can be deployed to [Vercel.com](https://vercel.com)
 
 ```bash
 npm run build
@@ -123,6 +123,8 @@ Before Deploy to online server, please setup the environment variables by renami
 Then, if you want to serve some assets through cdn, please provide your Github Repo's informations that you use to save your assets, simply you can fork this repository then put your github username to environment variables.
 
 The site will use [jsDelivr](https://www.jsdelivr.com/) free cdn service. You also can use another CDN Service like [Statically](https://statically.io/) and [PageCDN](https://pagecdn.com/) for free or use paid service from Azure, AWS and GCP, but You must to setup the configuration yourself.
+
+\*\* You can still deploy the app even without setting environment variables
 
 ---
 
