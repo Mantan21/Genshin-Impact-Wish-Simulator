@@ -47,8 +47,10 @@ soundInit();
 const playSfx = (nameOfSoundfx = 'click', { paused = false } = {}) => {
 	try {
 		if (!sounds[nameOfSoundfx]) throw new Error('No Sound effect for ' + nameOfSoundfx);
-		if (paused || localConfig.get('muted')) sounds[nameOfSoundfx].stop();
-		else sounds[nameOfSoundfx].play();
+		if (paused || localConfig.get('muted')) {
+			if (nameOfSoundfx.includes('reveal')) sounds[nameOfSoundfx].stop();
+			else sounds[nameOfSoundfx].pause();
+		} else sounds[nameOfSoundfx].play();
 	} catch (e) {
 		console.error('Unable to Play Sfx : ', e.message);
 	}
