@@ -7,17 +7,17 @@ const regex2 = new RegExp(
 );
 const checkUserAgent = (a) => regex1.test(a) || regex2.test(a.substr(0, 4));
 
+const userAgentPlaceholder =
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.54';
+
 const checkViewport = () => {
-	const { angle } = screen.orientation;
+	const angle = screen.orientation?.angle;
 	const rotate = angle === 90 || angle === 270;
 	return !rotate && window.matchMedia('screen and (max-width: 760px)').matches;
 };
 const mobileDetect = () => {
-	return (
-		navigator?.userAgentData?.mobile ||
-		checkUserAgent(navigator.userAgent || navigator.vendor || window.opera) ||
-		checkViewport()
-	);
+	const userAgent = navigator.userAgent || navigator.vendor || window.opera || userAgentPlaceholder;
+	return navigator?.userAgentData?.mobile || checkUserAgent(userAgent) || checkViewport();
 };
 
 export { mobileDetect };

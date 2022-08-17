@@ -37,7 +37,7 @@
 	}
 
 	const setMobileMode = () => {
-		const { angle } = screen.orientation;
+		const angle = screen.orientation?.angle || angle;
 		const rotate = angle === 90 || angle === 270;
 		mobileMode.set(rotate);
 	};

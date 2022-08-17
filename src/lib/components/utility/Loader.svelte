@@ -11,8 +11,10 @@
 	let current = -1;
 
 	const progressLoader = () => {
-		const a = performance.getEntriesByType('navigation')[0];
-		const estimatedTime = -(a.loadEventEnd - a.connectStart);
+		const navigationTiming = performance.getEntriesByType('navigation');
+		const defaultTiming = [{ loadEventEnd: 1, connectStart: 0 }];
+		const { loadEventEnd, connectStart } = (navigationTiming || defaultTiming)[0];
+		const estimatedTime = -(loadEventEnd - connectStart);
 		const duration = parseInt((estimatedTime / 1000) % 60) * 100;
 		animateValue(duration);
 	};
