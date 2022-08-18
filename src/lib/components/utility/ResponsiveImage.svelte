@@ -1,4 +1,6 @@
 <script>
+	import { getContext } from 'svelte';
+
 	export let src = '';
 	export let alt = '';
 	export let wrapperClass;
@@ -7,8 +9,10 @@
 	// const source = splitSrc.slice(0, -1).join('.');
 
 	let imageError = false;
+	const handleImageError = getContext('imageError');
 	const errorHandle = () => {
 		imageError = true;
+		handleImageError(imageError);
 	};
 </script>
 

@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data as charsDB } from '$lib/data/characters.json';
@@ -37,14 +38,16 @@
 	<div class="top bg-{vision}">
 		{$t('wish.banner.events')}
 	</div>
-	<h1>{@html highlightBannerName(bannerName)}</h1>
+	<h1 class="card-stroke" in:fly={{ x: 15, duration: 900 }}>
+		{@html highlightBannerName(bannerName)}
+	</h1>
 
-	<div class="info" bind:this={bannerInfo}>
+	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 900 }}>
 		<div class="content">
-			<div class="set">
+			<div class="set card-stroke">
 				{$t('wish.banner.probIncreased')}
 			</div>
-			<div class="desc bg-{vision}">
+			<div class="desc bg-{vision}" style="opacity: 90%;">
 				<div class="icon">
 					<i class="gi-primo-star" />
 				</div>
@@ -52,14 +55,18 @@
 					{$t('wish.banner.wishDescription')}
 				</div>
 			</div>
-			<div class="note">
+			<div class="note card-stroke">
 				{$t('wish.banner.eventNote')}
 				{$t('wish.banner.viewDetails')}
 			</div>
 		</div>
 	</div>
 
-	<div class="character" style="{featuredC}{positionToStyle(textOffset)}">
+	<div
+		class="character"
+		style="{featuredC}{positionToStyle(textOffset)}"
+		in:fly={{ x: 10, duration: 900 }}
+	>
 		<div class="char-name">
 			<span>
 				{$t(`${character}.name`)}
@@ -98,7 +105,6 @@
 		margin: 0 4%;
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.01rem #f4f2f0;
 	}
 
 	.top {
@@ -118,7 +124,6 @@
 		width: 40%;
 		height: 45%;
 		display: block;
-		-webkit-text-stroke: 0.002rem #f4f2f0;
 		padding-left: 4%;
 	}
 
@@ -139,7 +144,6 @@
 
 	.set {
 		font-size: calc(2.4 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.015rem #f4f2f0;
 	}
 
 	.desc {
@@ -163,10 +167,6 @@
 	.desc .text {
 		width: calc(32.5 / 100 * var(--content-width));
 		padding: calc(0.3 / 100 * var(--content-width));
-	}
-
-	.note {
-		text-shadow: 0 0 2rem #f4f2f0;
 	}
 
 	.character {

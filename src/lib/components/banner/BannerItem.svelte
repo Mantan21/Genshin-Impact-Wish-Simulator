@@ -36,7 +36,7 @@
 <div class="banner-container" {style}>
 	{#each $bannerList as data, i}
 		{#if $bannerActive === i}
-			<div class="banner-item" in:fly={{ x: 50, duration: 850 }} style={mobileBannerStyle}>
+			<div class="banner-item" in:fly={{ x: 25, duration: 850 }} style={mobileBannerStyle}>
 				<BannerCard {data} />
 			</div>
 		{/if}

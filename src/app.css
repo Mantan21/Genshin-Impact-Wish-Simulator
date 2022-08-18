@@ -101,7 +101,7 @@ a:hover {
 }
 
 .dendro-flat {
-	color: #1db968;
+	color: #7e9952;
 }
 .hydro-flat {
 	color: #3f8ed1;
@@ -129,7 +129,7 @@ a:hover {
 }
 
 .bg-dendro {
-	background-color: #1db968;
+	background-color: #7e9952;
 }
 .bg-hydro {
 	background-color: #3f8ed1;
@@ -154,6 +154,19 @@ a:hover {
 }
 .bg-epitome {
 	background-color: #ef7c1aff;
+}
+
+.card-stroke {
+	/* prettier-ignore */
+	text-shadow:
+	-0.03rem -0.03rem 0 #f7f3eb,
+	 0   		 -0.03rem 0 #f7f3eb,
+	 0.03rem -0.03rem 0 #f7f3eb,
+	 0.03rem  0 		  0 #f7f3eb,
+	 0.03rem  0.03rem 0 #f7f3eb,
+	 0    		0.03rem 0 #f7f3eb,
+	-0.03rem  0.03rem 0 #f7f3eb,
+	-0.03rem  0		    0 #f7f3eb;
 }
 
 #svelte {

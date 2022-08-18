@@ -319,18 +319,7 @@
 	.purchase-button .caption {
 		font-size: calc(0.035 * var(--content-width));
 	}
-
 	.card-stroke {
-		/* prettier-ignore */
-		text-shadow:
-    -0.03rem -0.03rem 0 #f7f3eb,
-     0   		 -0.03rem 0 #f7f3eb,
-     0.03rem -0.03rem 0 #f7f3eb,
-     0.03rem  0 		  0 #f7f3eb,
-     0.03rem  0.03rem 0 #f7f3eb,
-     0    		0.03rem 0 #f7f3eb,
-    -0.03rem  0.03rem 0 #f7f3eb,
-    -0.03rem  0		    0 #f7f3eb;
 		line-height: 150%;
 		margin-bottom: 5%;
 	}

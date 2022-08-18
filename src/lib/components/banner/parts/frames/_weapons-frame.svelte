@@ -1,4 +1,5 @@
 <script>
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { fatePoint, selectedCourse } from '$lib/store/stores';
 	import positionToStyle from '$lib/helpers/cssPosition';
@@ -18,13 +19,15 @@
 	<div class="top bg-epitome">
 		{$t('wish.banner.weapons')}
 	</div>
-	<h1>{@html highlightBannerName($t(`wish.banner.name.epitome-invocation`))}</h1>
+	<h1 in:fly={{ x: 10, duration: 850 }}>
+		{@html highlightBannerName($t(`wish.banner.name.epitome-invocation`))}
+	</h1>
 
-	<div class="info">
-		<div class="set">
+	<div class="info" in:fly={{ x: 10, duration: 850 }}>
+		<div class="set card-stroke">
 			{$t('wish.banner.probIncreased')}
 		</div>
-		<div class="desc bg-epitome">
+		<div class="desc bg-epitome " style="opacity: 90%;">
 			<div class="icon">
 				<i class="gi-primo-star" />
 			</div>
@@ -32,12 +35,16 @@
 				{$t('wish.banner.wishDescription')}
 			</div>
 		</div>
-		<div class="note">
+		<div class="note card-stroke">
 			{$t('wish.banner.viewDetails')}
 		</div>
 	</div>
 
-	<div class="featured" style="{feturedW}{positionToStyle(textOffset?.featured)}">
+	<div
+		class="featured"
+		style="{feturedW}{positionToStyle(textOffset?.featured)}"
+		in:fly={{ x: 10, duration: 850 }}
+	>
 		<div class="weapon-name first-wp">
 			<span>
 				{$t(`${featured[0].name}`)}
@@ -49,7 +56,7 @@
 		</div>
 	</div>
 
-	<div class="rateup" style={positionToStyle(textOffset?.rateup)}>
+	<div class="rateup" style={positionToStyle(textOffset?.rateup)} in:fly={{ x: 10, duration: 850 }}>
 		<div class="weapon-name">
 			<span>{$t(`${rateup[0]}`)},</span>
 			<span class="etc"> {$t('wish.banner.etc')}</span>
@@ -92,7 +99,6 @@
 		margin: 0 4%;
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
-		-webkit-text-stroke: 0.02rem #f4f2f0;
 	}
 
 	.top {
@@ -111,7 +117,6 @@
 		top: 40%;
 		width: 36%;
 		display: block;
-		-webkit-text-stroke: 0.002rem #f4f2f0;
 	}
 	.info::after {
 		content: '';

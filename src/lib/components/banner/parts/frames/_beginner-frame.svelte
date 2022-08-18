@@ -1,4 +1,5 @@
 <script>
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { browser } from '$app/env';
 	import { beginnerRoll } from '$lib/store/localstore';
@@ -18,7 +19,7 @@
 	<div class="top">
 		{$t('wish.banner.novice')}
 	</div>
-	<h1>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
+	<h1 in:fly={{ x: 10, duration: 850 }}>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
 	<div class="set">
 		{$t('wish.banner.beginnerSet', { values: { character: char } })}
 	</div>
@@ -30,7 +31,7 @@
 	<div class="note">
 		{$t('wish.banner.beginnerNote')}
 	</div>
-	<div class="featured">
+	<div class="featured" in:fly={{ x: 10, duration: 850 }}>
 		<div class="charName" style="position: relative;">
 			<span>
 				{char}
@@ -39,7 +40,7 @@
 		</div>
 	</div>
 
-	<div class="char-title">
+	<div class="char-title" in:fly={{ x: 10, duration: 850 }}>
 		{$t(`${character.character}.title`)}
 	</div>
 

@@ -1,4 +1,6 @@
 <script>
+	import { setContext } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { pageActive } from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
@@ -15,6 +17,12 @@
 	$: ({ type, weapons, character } = data);
 	let clientWidth;
 	let clientHeight;
+	let imageError = false;
+
+	const handleImageError = (v) => {
+		imageError = v;
+	};
+	setContext('imageError', handleImageError);
 
 	const openDetails = () => {
 		pageActive.set('details');
@@ -53,8 +61,8 @@
 			alt="Character Event Banner"
 			wrapperClass="card-image wide"
 		/>
-		{#if !character.name}
-			<div class="character">
+		{#if !character.name || imageError}
+			<div class="character" in:fly={{ x: 20, duration: 850 }}>
 				<img
 					class="splash-art"
 					src="/images/characters/splash-art/5star/{character.character}.webp"
