@@ -284,8 +284,11 @@
 		</div>
 
 		{#if !['beginner', 'standard'].includes(banner)}
+			{@const wpLegends = ['win', 'lose', 'guaranteed', 'selected']}
+			{@const chLegends = ['win', 'lose', 'guaranteed']}
+			{@const legends = banner === 'events' ? chLegends : wpLegends}
 			<div class="legend">
-				{#each ['win', 'lose', 'guaranteed', 'selected'] as v, i}
+				{#each legends as v, i}
 					<div class="item">
 						<span class="star5">
 							<i class="gi-{v}" style="font-size: larger;" />
