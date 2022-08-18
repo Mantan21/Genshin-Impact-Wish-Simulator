@@ -7,7 +7,7 @@ envConfig();
 const { NODE_ENV, USE_CDN, GITHUB_USER, GITHUB_REPO } = process.env;
 
 const cdn_on = NODE_ENV === 'production' && USE_CDN === 'true';
-const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static/images/`;
+const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -19,14 +19,9 @@ const config = {
 	preprocess: cdn_on
 		? preprocess({
 				postcss: true,
-				replace: [
-					[new RegExp('/g{', 'g'), '{'],
-					[new RegExp('-800', 'g'), ''],
-					[new RegExp('-400', 'g'), ''],
-					[new RegExp('/images/', 'g'), `${cdn_url}`]
-				]
+				replace: [[/\/(videos|images)\//g, `${cdn_url}/$1/`]]
 		  })
-		: null
+		: preprocess({ postcss: true })
 };
 
 export default config;
