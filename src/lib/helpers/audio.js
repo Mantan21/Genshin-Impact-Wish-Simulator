@@ -25,11 +25,11 @@ const source = {
 	inventory,
 	item,
 	camera,
-	wishBacksound: '/assets/sfx/wish-backsound.ogg',
-	resultList: '/assets/sfx/result-list.ogg',
-	reveal3Star: '/assets/sfx/reveal-3star.ogg',
-	reveal4Star: '/assets/sfx/reveal-4star.ogg',
-	reveal5Star: '/assets/sfx/reveal-5star.ogg'
+	wishBacksound: '/sfx/wish-backsound.ogg',
+	resultList: '/sfx/result-list.ogg',
+	reveal3Star: '/sfx/reveal-3star.ogg',
+	reveal4Star: '/sfx/reveal-4star.ogg',
+	reveal5Star: '/sfx/reveal-5star.ogg'
 };
 
 const sounds = {};

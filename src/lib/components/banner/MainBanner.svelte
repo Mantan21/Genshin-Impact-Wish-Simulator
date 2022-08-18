@@ -173,7 +173,7 @@
 		autoplay
 		poster="/images/background/wish-background.webp"
 	>
-		<source src="/assets/videos/bg.webm" type="video/webm" />
+		<source src="/videos/bg.webm" type="video/webm" />
 		<track kind="captions" />
 	</video>
 {/if}

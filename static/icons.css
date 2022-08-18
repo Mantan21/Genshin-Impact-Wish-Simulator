@@ -2,11 +2,10 @@
 
 @font-face {
 	font-family: 'genshin-icon';
-	src: url('assets/fonts/genshin-icon.eot');
-	src: url('assets/fonts/genshin-icon.eot?#iefix') format('embedded-opentype'),
-		url('assets/fonts/genshin-icon.woff') format('woff'),
-		url('assets/fonts/genshin-icon.ttf') format('truetype'),
-		url('assets/fonts/genshin-icon.svg#genshin-icon') format('svg');
+	src: url('fonts/genshin-icon.eot');
+	src: url('fonts/genshin-icon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/genshin-icon.woff') format('woff'), url('fonts/genshin-icon.ttf') format('truetype'),
+		url('fonts/genshin-icon.svg#genshin-icon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
