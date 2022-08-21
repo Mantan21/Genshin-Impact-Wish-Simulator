@@ -12,6 +12,7 @@
 	"license": "MIT",
 	"homepage": "https://wishsimulator.app",
 	"scripts": {
+		"prepare": "svelte-kit sync",
 		"dev": "vite dev --port 3000",
 		"build": "vite build",
 		"package": "svelte-kit package",

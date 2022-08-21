@@ -96,7 +96,13 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
 
 This app build with [Svelte-Kit](https://kit.svelte.dev/) based on Javascript programming language.
 
-Once you've cloned this project, install all dependencies with `npm install` (or `pnpm install` or `yarn`), and start a development server:
+Once you've cloned this project, install all dependencies with `npm install` (or `pnpm install` or `yarn`). Once all dependencies already installed, prepare .svelte-kit module by running
+
+```
+npm run prepare
+```
+
+Then you can start a development server or build for production:
 
 ```bash
 npm run dev
