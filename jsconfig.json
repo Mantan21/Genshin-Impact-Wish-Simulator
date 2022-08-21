@@ -5,8 +5,16 @@
 			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"]
 		},
-		"preserveValueImports": false
+		"preserveValueImports": false,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"],
 	"extends": "./.svelte-kit/tsconfig.json"
 }
+
