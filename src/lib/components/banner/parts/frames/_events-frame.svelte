@@ -8,16 +8,16 @@
 
 	export let data = {};
 
-	$: bannerName = $t(`wish.banner.name.${getBannerName(name)}`, { default: 'UnReleased Banner' });
-
 	const getBannerName = (banner) => {
 		const split = banner.split('-');
 		return split.slice(0, -1).join('-');
 	};
 
-	const { character, name, textOffset } = data;
-	const { vision } = charsDB[0].list.find(({ name }) => name === character);
-	const featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
+	let character, name, textOffset;
+	$: bannerName = $t(`wish.banner.name.${getBannerName(name)}`, { default: 'UnReleased Banner' });
+	$: ({ character, name, textOffset } = data);
+	$: vision = charsDB[0].list.find(({ name }) => name === character).vision;
+	$: featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
 
 	const highlightBannerName = (bannerName) => {
 		const splited = bannerName.split(' ');

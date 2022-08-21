@@ -155,7 +155,7 @@
 			{ item: 'starglitter', value: countMilestone('starglitter') }
 		];
 
-		if (stardust < 1 && starglitter < 1) backsound.set(true);
+		if ($stardust < 1 && $starglitter < 1) backsound.set(true);
 		else showObtained(obtainedItems);
 		showWish = false;
 	};
