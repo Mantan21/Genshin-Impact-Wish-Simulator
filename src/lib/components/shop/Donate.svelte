@@ -103,12 +103,11 @@
 				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 			>
 				<div class="donate-icon">
-					{#each ['ovo', 'gopay', 'dana', 'linkaja'] as im}
-						<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
-					{/each}
+					<img src="/images/utility/sociabuzz.png" alt="icon" />
+					<span style="font-size: 80%; color:darkblue">Global & Local Payment</span>
 				</div>
 			</div>
-			<span> Support me on Saweria </span>
+			<span> Support me on SociaBuzz </span>
 		</a>
 	</Column>
 
