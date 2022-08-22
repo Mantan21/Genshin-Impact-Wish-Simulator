@@ -27,6 +27,10 @@
 		"name": "Chongyun",
 		"title": "Frozen Ardor"
 	},
+	"collei": {
+		"name": "Collei",
+		"title": "Sprout of Rebirth"
+	},
 	"diluc": {
 		"name": "Diluc",
 		"title": "The Dark Side of Dawn"
@@ -150,6 +154,10 @@
 	"thoma": {
 		"name": "Thoma",
 		"title": "Protector From Afar"
+	},
+	"tighnari": {
+		"name": "Tighnari",
+		"title": "Verdant Strider"
 	},
 	"venti": {
 		"name": "Venti",

@@ -27,6 +27,10 @@
 		"name": "重云",
 		"title": "雪融有踪"
 	},
+	"collei": {
+		"name": "柯莱",
+		"title": "萃念初蘖"
+	},
 	"diluc": {
 		"name": "迪卢克",
 		"title": "晨曦的暗面"
@@ -150,6 +154,10 @@
 	"thoma": {
 		"name": "托马",
 		"title": "渡来介者"
+	},
+	"tighnari": {
+		"name": "提纳里",
+		"title": "浅蔚轻行"
 	},
 	"venti": {
 		"name": "温迪",

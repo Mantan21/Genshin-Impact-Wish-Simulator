@@ -175,10 +175,18 @@
 		},
 		{
 			"date": "28-Jul-2022",
-			"featured": true,
 			"description": [
 				"<strong> Yoimiya 2nd Rerun </strong> Banner already out !",
 				"Weapon Banner Updated, <b> Thundering Pulse </b> and <b>Summit Shaper</b> are ready to pull too !"
+			]
+		},
+		{
+			"date": "22-Agu-2022",
+			"featured": true,
+			"description": [
+				"<strong> WELCOME to SUMERU !!</strong>",
+				"<strong> Tighnari </strong> Banner already out, with new 4★ Character \"<b>Collei</b>\"",
+				"Weapon Banner Updated, <b> Hunter's Path </b> and <b>Vortex Vanquisher</b> are ready to pull too !"
 			]
 		}
 	]

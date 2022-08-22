@@ -47,6 +47,11 @@
 					"limited": true
 				},
 				{
+					"name": "hunter_s-path",
+					"weaponType": "bow",
+					"limited": true
+				},
+				{
 					"name": "kagura_s-verity",
 					"weaponType": "catalyst",
 					"limited": true

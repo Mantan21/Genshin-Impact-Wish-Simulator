@@ -166,6 +166,16 @@
 					}
 				},
 				{
+					"name": "tighnari",
+					"vision": "dendro",
+					"limited": true,
+					"wishBoxPosition": {
+						"l": 50,
+						"h": 195,
+						"t": 85
+					}
+				},
+				{
 					"name": "venti",
 					"vision": "anemo",
 					"limited": true,
@@ -267,6 +277,16 @@
 						"t": 70,
 						"l": 40,
 						"h": 190
+					}
+				},
+				{
+					"name": "collei",
+					"vision": "dendro",
+					"release": "3.0-1",
+					"wishBoxPosition": {
+						"l": 140,
+						"h": 170,
+						"t": 65
 					}
 				},
 				{

@@ -1,0 +1,74 @@
+{
+	"patch": 3.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": [
+						{
+							"name": "viridescent-vigil-1",
+							"character": "tighnari",
+							"buttonBoxPosition": {
+								"w": 95,
+								"t": 35,
+								"l": 30
+							}
+						},
+						{
+							"name": "gentry-of-hermitage-4",
+							"character": "zhongli",
+							"buttonBoxPosition": {
+								"w": 110,
+								"t": 25,
+								"l": 66
+							},
+							"textOffset": {
+								"l": 57,
+								"b": 13
+							}
+						}
+					],
+
+					"rateup": ["collei", "fischl", "diona"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-33",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "hunter_s-path",
+							"type": "bow",
+							"buttonBoxPosition": {
+								"w": 70,
+								"l": 35,
+								"t": 0
+							}
+						},
+						{
+							"name": "vortex-vanquisher",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 20,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"favonius-sword",
+						"the-stringless",
+						"the-bell",
+						"favonius-codex",
+						"favonius-lance"
+					],
+					"textOffset": {
+						"featured": { "l": 42, "t": 68, "w": 32 },
+						"rateup": { "l": 75.5, "b": 20, "w": 15 }
+					}
+				}
+			}
+		}
+	]
+}
