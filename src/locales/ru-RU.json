@@ -30,6 +30,7 @@
 	"version": "Версия",
 	"donate": "Поддержать",
 	"wish": {
+		"wishTitle": "Молитва",
 		"rollButton": "Желание {count}",
 		"stellaFortuna": "Удачу",
 		"banner": {
@@ -57,26 +58,26 @@
 			"name": {
 				"wanderlust": "Жажда странствий",
 				"epitome-invocation": "Воплощение божества",
+				"adrift-in-the-harbor": "Эфемерное недоверие",
+				"azure-excursion": "Лазурный поход",
 				"ballad-in-goblets": "Стихи из винного кубка",
-				"sparkling-steps": "Сверкающая поступь",
+				"born-of-ocean-swell": "Рождённая морской пеной",
+				"dance-of-lantern": "Танец фонарей",
+				"discerner-of-enigmas": "Белая радуга",
+				"drifting-luminescence": "Дрейфующее свечение",
+				"everbloom-violet": "Вечноцветущий пурпур",
 				"farewell-of-snezhnaya": "Зимнее расставание",
 				"gentry-of-hermitage": "Горы и рынки",
-				"secretum-secretorum": "Таинственные секреты",
-				"dance-of-lantern": "Танец фонарей",
-				"moment-of-bloom": "Момент цветения",
 				"invitation-to-mundane-life": "Приглашение&nbsp;к мирской жизни",
-				"born-of-ocean-swell": "Рождённая морской пеной",
 				"leaves-in-the-wind": "Листья на ветру",
-				"the-heron_s-court": "Сад белой цапли",
-				"tapestry-of-golden-flames": "Гобелен золотого пламени",
-				"reign-of-serenity": "Господство безмятежности",
+				"moment-of-bloom": "Момент цветения",
 				"oni_s-royale": "Пиршество о́ни",
-				"the-transcendent-one-returns": "Возвращение&nbsp;в мир смертных",
-				"everbloom-violet": "Вечноцветущий пурпур",
-				"azure-excursion": "Лазурный поход",
-				"adrift-in-the-harbor": "Эфемерное недоверие",
-				"drifting-luminescence": "Дрейфующее свечение",
-				"discerner-of-enigmas": "Белая радуга"
+				"reign-of-serenity": "Господство безмятежности",
+				"secretum-secretorum": "Таинственные секреты",
+				"sparkling-steps": "Сверкающая поступь",
+				"tapestry-of-golden-flames": "Гобелен золотого пламени",
+				"the-heron_s-court": "Сад белой цапли",
+				"the-transcendent-one-returns": "Возвращение&nbsp;в мир смертных"
 			}
 		},
 		"epitomizedPath": {
