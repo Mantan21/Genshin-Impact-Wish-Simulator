@@ -57,7 +57,7 @@ a:hover {
 }
 
 .icon-gradient.dendro {
-	background-image: linear-gradient(to right, #73ae15 30%, #9bc755 45%, #73ae15 75%);
+	background-image: linear-gradient(to right, #a6d138 30%, #aaef3a 45%, #a6d138 75%);
 }
 .icon-gradient.hydro {
 	background-image: linear-gradient(to right, #06bbff, #06bbff, #10e2ff, #06bbff, #06bbff);
@@ -101,7 +101,7 @@ a:hover {
 }
 
 .dendro-flat {
-	color: #7e9952;
+	color: #64ad15;
 }
 .hydro-flat {
 	color: #3f8ed1;
@@ -129,7 +129,7 @@ a:hover {
 }
 
 .bg-dendro {
-	background-color: #7e9952;
+	background-color: #64ad15;
 }
 .bg-hydro {
 	background-color: #3f8ed1;
