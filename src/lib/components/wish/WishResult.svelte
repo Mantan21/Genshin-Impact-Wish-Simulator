@@ -12,7 +12,7 @@
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
-	import SplashLight from './SplashLight.svelte';
+	import SplashLight from './_parts/SplashLight.svelte';
 	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	export let list = [];

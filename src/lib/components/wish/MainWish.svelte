@@ -21,11 +21,11 @@
 	import playSfx from '$lib/helpers/audio';
 
 	// Components
-	import WishResult from './parts/WishResult.svelte';
-	import Header from './parts/Header.svelte';
-	import Footer from './parts/Footer.svelte';
-	import Meteor from './parts/Meteor.svelte';
-	import BannerItem from './BannerItem.svelte';
+	import WishResult from './WishResult.svelte';
+	import Header from './_parts/Header.svelte';
+	import Footer from './_parts/Footer.svelte';
+	import Meteor from './_parts/Meteor.svelte';
+	import BannerItem from './_parts/BannerItem.svelte';
 
 	export let bgAnimated;
 	let showWish = false;

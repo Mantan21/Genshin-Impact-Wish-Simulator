@@ -21,7 +21,7 @@
 
 	// Components
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
-	import MainBanner from '$lib/components/banner/MainBanner.svelte';
+	import MainWish from '$lib/components/wish/MainWish.svelte';
 
 	let PrevBanner;
 	let DetailsSection;
@@ -34,7 +34,7 @@
 
 	const importChunks = async () => {
 		// Splitting Chunks
-		PrevBanner = (await import('../lib/components/banner/PreviousBannerList.svelte')).default;
+		PrevBanner = (await import('../lib/components/wish/PreviousBannerList.svelte')).default;
 		DetailsSection = (await import('../lib/components/details/Details.svelte')).default;
 		HistorySection = (await import('../lib/components/history/MainHistory.svelte')).default;
 		InventorySection = (await import('../lib/components/inventory/MainInventory.svelte')).default;
@@ -180,7 +180,7 @@
 <svelte:component this={WelkinCheckin} show={welkinCheckin} />
 
 {#if $pageActive === 'index'}
-	<MainBanner bgAnimated={isAnimatedBG} />
+	<MainWish bgAnimated={isAnimatedBG} />
 {/if}
 
 {#if $pageActive === 'previous-banner'}

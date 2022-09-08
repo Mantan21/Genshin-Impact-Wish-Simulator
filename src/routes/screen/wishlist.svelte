@@ -8,7 +8,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
-	import WishListResult from '$lib/components/banner/parts/WishListResult.svelte';
+	import WishListResult from '$lib/components/wish/WishListResult.svelte';
 
 	let title = 'No Name';
 	let metaTitle = APP_TITLE;

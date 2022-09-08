@@ -20,8 +20,8 @@
 	import { outfits } from '$lib/data/outfits.json';
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
-	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
+	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';

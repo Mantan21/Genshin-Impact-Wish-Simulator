@@ -8,7 +8,7 @@
 		mobileMode
 	} from '$lib/store/stores';
 	import playSfx from '$lib/helpers/audio';
-	import BannerCard from './parts/_banner-card.svelte';
+	import BannerCard from './_banner-card.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
 	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';

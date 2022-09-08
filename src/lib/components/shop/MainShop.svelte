@@ -10,7 +10,7 @@
 
 	// Components
 	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import WishResult from '$lib/components/banner/parts/WishResult.svelte';
+	import WishResult from '$lib/components/wish/WishResult.svelte';
 	import ExchangePopup from './ExchangePopup.svelte';
 	import ShopHeader from './ShopHeader.svelte';
 	import ShopNavbar from './ShopNavbar.svelte';
