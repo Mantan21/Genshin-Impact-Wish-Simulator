@@ -93,7 +93,7 @@
 
 <style>
 	.navbar {
-		width: 280px;
+		width: 320px;
 		height: 100%;
 		display: block;
 		background-color: rgba(75, 82, 101, 0.8);

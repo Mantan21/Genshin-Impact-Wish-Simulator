@@ -267,14 +267,21 @@
 
 	.container {
 		display: flex;
-		padding: 0 3%;
+		padding: 0 3% 0 0;
 		position: relative;
 		z-index: +2;
 		width: 100%;
 		height: 100%;
 	}
+
 	:global(.mobile) .container {
 		padding: 0 2%;
+	}
+
+	@media screen and (max-width: 745px) {
+		.container {
+			padding: 0 3%;
+		}
 	}
 
 	.items-container {
