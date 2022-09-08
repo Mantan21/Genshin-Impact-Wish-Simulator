@@ -4,7 +4,6 @@
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { flip } from 'svelte/animate';
-	import OverlayScrollbars from 'overlayscrollbars';
 
 	// Components
 	import InventoryHeader from './InventoryHeader.svelte';
@@ -23,6 +22,7 @@
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
+	let headerHeight = 0;
 
 	setInterval(() => {
 		activeBgIndex = activeBgIndex === bg.length - 1 ? 0 : activeBgIndex + 1;
@@ -56,7 +56,6 @@
 	let characters = [];
 	let dataToShow = [];
 	let dataQty = 0;
-	let content;
 	let showAll = !!localConfig.get('showAllItems');
 
 	// Read All date
@@ -134,7 +133,6 @@
 	};
 
 	onMount(async () => {
-		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		await getAll();
 		await proccessData(activeItem, showAll);
 	});
@@ -233,7 +231,7 @@
 		/>
 	{/each}
 
-	<div class="header" in:fly={{ y: -20 }}>
+	<div class="header" bind:clientHeight={headerHeight} in:fly={{ y: -20 }}>
 		<InventoryHeader {activeItem} />
 	</div>
 	<div class="body">
@@ -258,7 +256,7 @@
 			</nav>
 		</div>
 		<div class="body-content" in:fade={{ duration: 400 }}>
-			<div class="container" bind:this={content}>
+			<div class="container" style="--headerHeight: {headerHeight}px;">
 				<div class="list-item" style="--item-width: {itemWidth}px">
 					{#if dataToShow.length < 1}
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">
@@ -526,12 +524,14 @@
 		height: 100%;
 	}
 	.container {
-		height: calc(100% - 7.2rem);
+		height: calc(100vh - var(--headerHeight) - 6.3rem);
 		display: block;
 		width: 100%;
 		padding: 0 2%;
 		margin-top: 2px;
+		overflow-y: auto;
 	}
+
 	.list-item {
 		display: flex;
 		flex-wrap: wrap;
@@ -655,15 +655,12 @@
 			height: 40px;
 		}
 		.container {
-			height: calc(100% - 9rem);
+			height: calc(100vh - var(--headerHeight) - 7rem);
 			margin-top: 0;
 		}
 	}
 
 	@media screen and (max-width: 400px) {
-		.container {
-			height: calc(100% - 10rem);
-		}
 		.item {
 			width: 14vh;
 		}
