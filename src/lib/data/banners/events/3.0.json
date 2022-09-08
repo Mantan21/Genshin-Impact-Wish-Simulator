@@ -69,6 +69,72 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"item": [
+						{
+							"name": "drifting-luminescence-3",
+							"character": "sagonomiya-kokomi",
+							"buttonBoxPosition": {
+								"w": 160,
+								"t": 30,
+								"l": 55
+							},
+							"textOffset": { "l": 51, "b": 8 }
+						},
+						{
+							"name": "adrift-in-the-harbor-3",
+							"character": "ganyu",
+							"buttonBoxPosition": {
+								"w": 200,
+								"t": 25
+							},
+							"textOffset": { "l": 57, "b": 12.8 }
+						}
+					],
+
+					"rateup": ["dori", "xingqiu", "sucrose"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-34",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "amos-bow",
+							"type": "bow",
+							"buttonBoxPosition": {
+								"w": 70,
+								"l": 30,
+								"t": 0
+							}
+						},
+						{
+							"name": "everlasting-moonglow",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 60,
+								"t": 30,
+								"l": 63
+							}
+						}
+					],
+					"rateup": [
+						"sacrificial-sword",
+						"rust",
+						"dragon_s-bane",
+						"favonius-greatsword",
+						"eye-of-perception"
+					],
+					"textOffset": {
+						"featured": { "l": 44, "t": 71, "w": 28 },
+						"rateup": { "l": 78.5, "b": 19, "w": 15 }
+					}
+				}
+			}
 		}
 	]
 }

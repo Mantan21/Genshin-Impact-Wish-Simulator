@@ -170,7 +170,7 @@
 			"date": "21-Jul-2022",
 			"featured": true,
 			"description": [
-				"<strong>Translation Features</strong> is live now, But  only <strong>EN</strong>, <strong>CN-Simplified</strong> and <strong>ID</strong> are available for now, if You want to contribute to add more translation, please go to <u><a href=\"https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator\" target=\"_blank\">Github Repository </a></u>"
+				"<strong>Translation Features</strong> is live now, But  only <strong>EN</strong>, <b>RU</b> <strong>CN-Simplified</strong> and <strong>ID</strong> are available for now, if You want to contribute to add more translation, please go to <u><a href=\"https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator\" target=\"_blank\">Github Repository </a></u>"
 			]
 		},
 		{
@@ -182,11 +182,18 @@
 		},
 		{
 			"date": "22-Agu-2022",
-			"featured": true,
 			"description": [
 				"<strong> WELCOME to SUMERU !!</strong>",
 				"<strong> Tighnari </strong> Banner already out, with new 4★ Character \"<b>Collei</b>\"",
 				"Weapon Banner Updated, <b> Hunter's Path </b> and <b>Vortex Vanquisher</b> are ready to pull too !"
+			]
+		},
+		{
+			"date": "08-Sep-2022",
+			"featured": true,
+			"description": [
+				"<strong> Kokomi 3rd Rerun </strong> and <strong> Ganyu 3rd Rerun </strong> Banner already out !",
+				"Weapon Banner Updated, <b> Amos Bow </b> and <b>Everlasting Moonglow</b> are ready to pull too !"
 			]
 		}
 	]

@@ -300,6 +300,16 @@
 					}
 				},
 				{
+					"name": "dori",
+					"vision": "electro",
+					"release": "3.0-2",
+					"wishBoxPosition": {
+						"l": -15,
+						"h": 180,
+						"t": 65
+					}
+				},
+				{
 					"name": "fischl",
 					"vision": "electro",
 					"release": "1.0-1",
