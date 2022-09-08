@@ -1,5 +1,7 @@
 <script>
+	import { onMount } from 'svelte';
 	import playSfx from '$lib/helpers/audio';
+	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
 	import PopUp from '../utility/PopUp.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
@@ -17,6 +19,11 @@
 			clearTimeout(t);
 		}, 2000);
 	};
+
+	let listOfSupporters = [];
+	onMount(async () => {
+		listOfSupporters = await supporterList();
+	});
 </script>
 
 <!-- Crypto Donate -->
@@ -81,57 +88,92 @@
 </PopUp>
 
 <!-- Crypto Donate -->
-<ColumnParent>
-	<Column>
-		<a class="content kofi" href="https://ko-fi.com/mantan21" target="_blank">
-			<div
-				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
-			>
-				<div class="donate-icon">
-					<img src="/images/utility/donate-kofi.png" alt="Ko-fi Icon" />
-					<img src="/images/utility/paypal.png" alt="paypal" />
+<div class="container">
+	<ColumnParent>
+		<Column>
+			<a class="content kofi" href="https://ko-fi.com/mantan21" target="_blank">
+				<div
+					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
+				>
+					<div class="donate-icon">
+						<img src="/images/utility/donate-kofi.png" alt="Ko-fi Icon" />
+						<img src="/images/utility/paypal.png" alt="paypal" />
+					</div>
 				</div>
-			</div>
-			<span> Support me on Ko-fi </span>
-		</a>
-	</Column>
+				<span> Support me on Ko-fi </span>
+			</a>
+		</Column>
 
-	<!-- Donaate By Saweria -->
-	<Column style="padding: 0.4rem;">
-		<a class="content saweria" href="https://saweria.co/mantan21" target="_blank">
-			<div
-				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
-			>
-				<div class="donate-icon">
-					<img src="/images/utility/sociabuzz.png" alt="icon" />
-					<span style="font-size: 80%; color:darkblue">Global & Local Payment</span>
+		<!-- Donaate By Saweria -->
+		<Column style="padding: 0.4rem;">
+			<a class="content Saweria" href="https://saweria.co/mantan21" target="_blank">
+				<div
+					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
+				>
+					<div class="donate-icon">
+						{#each ['ovo', 'dana', 'linkaja'] as im}
+							<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
+						{/each}
+					</div>
 				</div>
-			</div>
-			<span> Support me on SociaBuzz </span>
-		</a>
-	</Column>
+				<span> Support me on Saweria </span>
+			</a>
+		</Column>
 
-	<!-- Donate By Crypto -->
-	<Column style="padding: 0.4rem;">
-		<button
-			class="content crypto"
-			on:click={() => {
-				showCryptoPopup = true;
-			}}
-		>
-			<div
-				style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
+		<!-- Donate Sociabuzz -->
+		<Column style="padding: 0.4rem;">
+			<a class="content sociabuzz" href="https://sociabuzz.com/mantan21/posts" target="_blank">
+				<div
+					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
+				>
+					<div class="donate-icon">
+						<img src="/images/utility/sociabuzz.png" alt="icon" />
+						<span style="font-size: 80%; color:darkblue">Global & Local Payment</span>
+					</div>
+				</div>
+				<span> Support me on SociaBuzz </span>
+			</a>
+		</Column>
+
+		<!-- Donate By Crypto -->
+		<Column style="padding: 0.4rem;">
+			<button
+				class="content crypto"
+				on:click={() => {
+					showCryptoPopup = true;
+				}}
 			>
-				<div class="donate-icon">
-					{#each ['btc', 'ethereum', 'bnb', 'solana'] as im}
-						<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
-					{/each}
+				<div
+					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
+				>
+					<div class="donate-icon">
+						{#each ['btc', 'ethereum', 'bnb', 'solana'] as im}
+							<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
+						{/each}
+					</div>
+				</div>
+				<span> Support me with Crypto </span>
+			</button>
+		</Column>
+	</ColumnParent>
+	<div class="recent">
+		{#each listOfSupporters as { name, message, amount, date, platform }}
+			<div class="donation-item {platform}">
+				<div class="supporter">
+					<div class="info">
+						<div class="name">New support from <span> {name} </span></div>
+						<span class="message">{message ? `"${message}"` : ''}</span>
+						<span class="platform">✧ &nbsp; via {platform}</span>
+						<span class="time"> ✧ &nbsp; {date}</span>
+					</div>
+					<div class="amount">
+						<span>{amount}</span>
+					</div>
 				</div>
 			</div>
-			<span> Support me with Crypto </span>
-		</button>
-	</Column>
-</ColumnParent>
+		{/each}
+	</div>
+</div>
 
 <style>
 	/* Donate */
@@ -224,5 +266,132 @@
 	}
 	span {
 		padding: 0.5rem;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: calc(100vh - 130px);
+	}
+	:global(.mobile) .container {
+		height: calc(100vh - 60px);
+	}
+
+	.recent {
+		display: flex;
+		flex-wrap: wrap;
+		overflow-y: auto;
+		max-height: 60%;
+		justify-content: space-between;
+		align-items: flex-start;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
+
+	.donation-item {
+		width: 50%;
+		margin: 0;
+		padding: 0.5%;
+	}
+
+	.donation-item .supporter {
+		background-color: rgba(255, 255, 255, 0.8);
+		width: 100%;
+		height: 100px;
+		padding: 2%;
+		border-radius: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	@media screen and (max-width: 640px) {
+		.recent {
+			max-height: 50%;
+		}
+
+		.donation-item {
+			width: 100%;
+		}
+		.supporter {
+			height: unset !important;
+		}
+		.info {
+			overflow-y: unset !important;
+		}
+	}
+
+	:global(.mobile) .recent {
+		max-height: 50%;
+	}
+	:global(.mobile) .supporter {
+		height: 5rem;
+	}
+	:global(.mobile) .info {
+		overflow-y: auto;
+	}
+
+	.info {
+		font-size: smaller;
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	.info::-webkit-scrollbar {
+		display: none;
+	}
+
+	.info .name {
+		margin-left: 0.5rem;
+	}
+	.info .name span {
+		font-family: 'Genshin Impact';
+		font-size: larger;
+	}
+
+	.message {
+		display: block;
+		font-weight: 600;
+		padding: 0.4rem 1rem;
+	}
+
+	.ko-fi .platform {
+		color: #127399;
+		margin-right: 0.5rem;
+	}
+	.sociabuzz .platform {
+		color: #4f8d28;
+		margin-right: 0.5rem;
+	}
+
+	.saweria .platform {
+		color: rgb(213, 142, 18);
+		margin-right: 0.5rem;
+	}
+
+	.time {
+		color: #575859;
+	}
+
+	.amount span {
+		width: fit-content;
+		font-size: 0.7rem;
+		white-space: nowrap;
+		padding: 0.4rem 0.6rem;
+		border-radius: 1rem;
+		color: #fff;
+		font-family: 'Genshin Impact';
+	}
+
+	.donation-item.ko-fi .amount span {
+		background-color: #24ade1;
+	}
+	.donation-item.saweria .amount span {
+		background-color: #e2a12d;
+	}
+
+	.donation-item.sociabuzz .amount span {
+		background-image: linear-gradient(45deg, #3fa9f5 30%, #78c845);
 	}
 </style>

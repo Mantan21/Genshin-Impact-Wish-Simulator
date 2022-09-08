@@ -231,6 +231,12 @@
 		background-size: cover; */
 		background-color: var(--text-color);
 	}
+
+	.item-body {
+		height: 100%;
+		overflow-y: auto;
+	}
+
 	:global(.mobile) section {
 		font-size: 0.8rem;
 	}
