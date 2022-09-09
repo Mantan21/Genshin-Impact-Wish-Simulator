@@ -87,7 +87,7 @@
 			videoContent = rarity === 5 ? v5star : v4star;
 		}
 
-		if (isNaN(videoContent.duration)) {
+		if (videoContent.error) {
 			showToast = true;
 			console.error("Can't play Meteor Animation because it cannot be loaded");
 			return dispatch('endAnimation');
@@ -150,26 +150,42 @@
 
 <div class="wish-output" class:show={showMeteor} style="height: {$viewportHeight}px">
 	<div class="video">
-		<video bind:this={v3star} preload="auto" muted={$muted}>
-			<source src="/videos/3star-single.webm" type="video/webm" />
-			<track kind="captions" />
-		</video>
-		<video bind:this={v4starSingle} preload="auto" muted={$muted}>
-			<source src="/videos/4star-single.webm" type="video/webm" />
-			<track kind="captions" />
-		</video>
-		<video bind:this={v4star} preload="auto" muted={$muted}>
-			<source src="/videos/4star.webm" type="video/webm" />
-			<track kind="captions" />
-		</video>
-		<video bind:this={v5starSingle} preload="auto" muted={$muted}>
-			<source src="/videos/5star-single.webm" type="video/webm" />
-			<track kind="captions" />
-		</video>
-		<video bind:this={v5star} preload="auto" muted={$muted}>
-			<source src="/videos/5star.webm" type="video/webm" />
-			<track kind="captions" />
-		</video>
+		<video
+			bind:this={v3star}
+			preload="auto"
+			muted={$muted}
+			src="/videos/3star-single.webm"
+			type="video/webm"
+		/>
+		<video
+			bind:this={v4starSingle}
+			preload="auto"
+			muted={$muted}
+			src="/videos/4star-single.webm"
+			type="video/webm"
+		/>
+		<video
+			bind:this={v4star}
+			preload="auto"
+			muted={$muted}
+			src="/videos/4star.webm"
+			type="video/webm"
+		/>
+		<video
+			bind:this={v5starSingle}
+			preload="auto"
+			muted={$muted}
+			src="/videos/5star-single.webm"
+			type="video/webm"
+		/>
+		<video
+			bind:this={v5star}
+			preload="auto"
+			muted={$muted}
+			src="/videos/5star.webm"
+			type="video/webm"
+		/>
+
 		<button class="skip" on:click={skip}>{$t('wish.result.skip')} <i class="gi-caret-up" /></button>
 	</div>
 </div>
