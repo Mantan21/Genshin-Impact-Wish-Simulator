@@ -13,13 +13,14 @@
 	const progressLoader = () => {
 		const navigationTiming = performance.getEntriesByType('navigation');
 		const defaultTiming = [{ loadEventEnd: 1, connectStart: 0 }];
-		const { loadEventEnd, connectStart } = (navigationTiming || defaultTiming)[0];
+		const noEntries = navigationTiming.length < 1 || !navigationTiming;
+		const { loadEventEnd, connectStart } = (noEntries ? defaultTiming : navigationTiming)[0];
 		const estimatedTime = -(loadEventEnd - connectStart);
 		const duration = parseInt((estimatedTime / 1000) % 60) * 100;
 		animateValue(duration);
 	};
 
-	function animateValue(duration) {
+	const animateValue = (duration) => {
 		const range = end - start;
 		current = start;
 		const increment = end > start ? 1 : -1;
@@ -31,7 +32,7 @@
 				clearInterval(timer);
 			}
 		}, stepTime);
-	}
+	};
 
 	const show = (progress, loaded) => {
 		if (progress < end) return true;
