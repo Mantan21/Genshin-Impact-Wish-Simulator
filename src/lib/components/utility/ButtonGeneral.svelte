@@ -17,11 +17,11 @@
 		border-radius: 50px;
 		background-color: #e0ddd4;
 		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2), 0 2px 2px 0 rgba(100, 100, 100, 0.19);
-		padding: 0.19rem 1.3rem;
+		padding: 0.2rem 1.5rem;
 		margin: 2px 5px;
 		transition: all 0.2s;
 		border: solid transparent;
-		font-size: 100%;
+		font-size: 90%;
 	}
 
 	button:hover {
@@ -52,7 +52,8 @@
 
 	:global(.mobile) button {
 		margin: 1px 2px;
-		font-size: 95%;
+		padding: 0.15rem 1.3rem;
+		font-size: 90%;
 	}
 
 	@media screen and (max-width: 900px) {

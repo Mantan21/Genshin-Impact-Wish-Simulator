@@ -45,10 +45,17 @@
 	};
 
 	$: checkFatepoint($bannerList);
+
+	let buttonHeight;
 </script>
 
 {#if $isFatepointSystem && isWeapon}
-	<button class="container" on:click={handleClick}>
+	<button
+		class="container"
+		style="--height:{buttonHeight}px"
+		on:click={handleClick}
+		bind:clientHeight={buttonHeight}
+	>
 		<NoticeMark name="fatepoint{$patchVersion}-{$bannerPhase}" />
 		<EpitomizedIcon active={$fatePoint === 2} />
 		<div class="point-number">
@@ -90,13 +97,12 @@
 	}
 
 	.point-number span.small {
-		font-size: 75%;
+		font-size: calc(0.101 * var(--height));
 		line-height: 110%;
 		display: inline-block;
 		color: var(--text-color);
 		padding: 1% 10%;
 	}
-
 	:global(.mobile) button {
 		font-size: 90%;
 		padding: 0 0.2rem;
