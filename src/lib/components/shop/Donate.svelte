@@ -106,7 +106,7 @@
 
 		<!-- Donaate By Saweria -->
 		<Column style="padding: 0.4rem;">
-			<a class="content Saweria" href="https://saweria.co/mantan21" target="_blank">
+			<a class="content Saweria" href="https://saweria.co/AguzzTN54" target="_blank">
 				<div
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 				>
