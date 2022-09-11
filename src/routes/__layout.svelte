@@ -50,7 +50,7 @@
 		importLocalBalance();
 		userCurrencies.init();
 
-		isMobile.set(mobileDetect());
+		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();
 
 		window.addEventListener('orientationchange', () => {

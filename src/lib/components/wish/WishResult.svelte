@@ -449,7 +449,7 @@
 		transform: scale(1) translate(2%, 0);
 	}
 	.splash-art.anim {
-		filter: brightness(0);
+		filter: brightness(0) opacity(0);
 		animation: splashart forwards 1.5s 1;
 	}
 
@@ -676,25 +676,20 @@
 	@keyframes splashart {
 		0% {
 			transform: scale(5) translate(0, -10%);
-			opacity: 0;
+			filter: opacity(0) brightness(0);
 		}
 
 		20% {
 			transform: scale(1);
-			opacity: 1;
+			filter: opacity(1) brightness(0);
 		}
 		75% {
 			transform: scale(1);
-			filter: brightness(0);
+			filter: brightness(0) opacity(1);
 		}
 		95% {
 			transform: scale(1) translate(2%, 0);
-			opacity: 1;
-			filter: brightness(1);
-		}
-		100% {
-			transform: scale(1) translate(2%, 0);
-			filter: brightness(1);
+			filter: brightness(1) opacity(1);
 		}
 	}
 
