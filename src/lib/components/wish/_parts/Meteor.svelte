@@ -154,36 +154,36 @@
 			bind:this={v3star}
 			preload="auto"
 			muted={$muted}
-			src="/videos/3star-single.webm"
-			type="video/webm"
+			src="/videos/3star-single.mp4"
+			type="video/mp4"
 		/>
 		<video
 			bind:this={v4starSingle}
 			preload="auto"
 			muted={$muted}
-			src="/videos/4star-single.webm"
-			type="video/webm"
+			src="/videos/4star-single.mp4"
+			type="video/mp4"
 		/>
 		<video
 			bind:this={v4star}
 			preload="auto"
 			muted={$muted}
-			src="/videos/4star.webm"
-			type="video/webm"
+			src="/videos/4star.mp4"
+			type="video/mp4"
 		/>
 		<video
 			bind:this={v5starSingle}
 			preload="auto"
 			muted={$muted}
-			src="/videos/5star-single.webm"
-			type="video/webm"
+			src="/videos/5star-single.mp4"
+			type="video/mp4"
 		/>
 		<video
 			bind:this={v5star}
 			preload="auto"
 			muted={$muted}
-			src="/videos/5star.webm"
-			type="video/webm"
+			src="/videos/5star.mp4"
+			type="video/mp4"
 		/>
 
 		<button class="skip" on:click={skip}>{$t('wish.result.skip')} <i class="gi-caret-up" /></button>
