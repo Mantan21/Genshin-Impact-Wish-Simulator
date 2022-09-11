@@ -691,6 +691,10 @@
 			transform: scale(1) translate(2%, 0);
 			filter: brightness(1) opacity(1);
 		}
+		100% {
+			transform: scale(1) translate(2%, 0);
+			filter: brightness(1) opacity(1);
+		}
 	}
 
 	@keyframes weaponbg {

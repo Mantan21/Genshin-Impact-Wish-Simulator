@@ -35,10 +35,10 @@
 {#if show}
 	<div class="popup" transition:fade={{ duration: 80 }} style="height: {$viewportHeight}px;">
 		<div class="popup-content">
-			<i class="gi-primo-star top-left" />
-			<i class="gi-primo-star top-right" />
-			<i class="gi-primo-star bottom-left" />
-			<i class="gi-primo-star bottom-right" />
+			<span class="corner top-left" />
+			<span class="corner top-right" />
+			<span class="corner bottom-left" />
+			<span class="corner bottom-right" />
 			<i class="gi-inazuma bg" />
 			<div class="container">
 				{#if title}
@@ -87,6 +87,7 @@
 		text-align: center;
 		color: #383b40;
 		position: relative;
+		border-radius: 0.8rem;
 	}
 
 	:global(.mobile) .popup-content {
@@ -98,32 +99,34 @@
 		height: 100%;
 		border: 2px solid #ddd5c8;
 	}
-	.gi-primo-star {
-		color: #fdf0ac;
+	.corner {
+		background-image: url('/images/utility/corner.webp');
+		background-size: cover;
+		width: 2.35rem;
+		aspect-ratio: 1/1;
 		font-size: 1.5rem;
 		display: inline-block;
 		position: absolute;
-		filter: drop-shadow(0 0 7px rgba(227, 149, 48, 0.9));
 	}
+
 	.top-left {
-		top: -0.8rem;
-		left: -0.5rem;
-		transform: rotate(-45deg);
+		top: -0.9rem;
+		left: -0.9rem;
+		transform: rotate(-90deg);
 	}
 	.top-right {
-		top: -0.8rem;
-		right: -0.5rem;
-		transform: rotate(45deg);
+		top: -0.9rem;
+		right: -0.9rem;
 	}
 	.bottom-left {
-		bottom: -0.8rem;
-		left: -0.5rem;
-		transform: rotate(-135deg);
+		bottom: -0.9rem;
+		left: -0.9rem;
+		transform: rotate(-180deg);
 	}
 	.bottom-right {
-		bottom: -0.8rem;
-		right: -0.5rem;
-		transform: rotate(135deg);
+		bottom: -0.9rem;
+		right: -0.9rem;
+		transform: rotate(90deg);
 	}
 	.bg {
 		font-size: 17em;

@@ -199,7 +199,7 @@
 	}
 
 	.wish-title img {
-		width: 30px;
+		width: 50px;
 		margin-right: 15px;
 	}
 
