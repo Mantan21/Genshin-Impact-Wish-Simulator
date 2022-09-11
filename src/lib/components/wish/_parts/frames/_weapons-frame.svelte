@@ -19,11 +19,11 @@
 	<div class="top bg-epitome">
 		{$t('wish.banner.weapons')}
 	</div>
-	<h1 in:fly={{ x: 10, duration: 850 }}>
+	<h1 in:fly={{ x: 10, duration: 700 }}>
 		{@html highlightBannerName($t(`wish.banner.name.epitome-invocation`))}
 	</h1>
 
-	<div class="info" in:fly={{ x: 10, duration: 850 }}>
+	<div class="info" in:fly={{ x: 10, duration: 700 }}>
 		<div class="set card-stroke">
 			{$t('wish.banner.probIncreased')}
 		</div>
@@ -43,7 +43,7 @@
 	<div
 		class="featured"
 		style="{feturedW}{positionToStyle(textOffset?.featured)}"
-		in:fly={{ x: 10, duration: 850 }}
+		in:fly={{ x: 10, duration: 700 }}
 	>
 		<div class="weapon-name first-wp">
 			<span>
@@ -56,7 +56,7 @@
 		</div>
 	</div>
 
-	<div class="rateup" style={positionToStyle(textOffset?.rateup)} in:fly={{ x: 10, duration: 850 }}>
+	<div class="rateup" style={positionToStyle(textOffset?.rateup)} in:fly={{ x: 10, duration: 700 }}>
 		<div class="weapon-name">
 			<span>{$t(`${rateup[0]}`)},</span>
 			<span class="etc"> {$t('wish.banner.etc')}</span>

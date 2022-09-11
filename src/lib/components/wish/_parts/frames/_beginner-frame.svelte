@@ -19,19 +19,19 @@
 	<div class="top">
 		{$t('wish.banner.novice')}
 	</div>
-	<h1 in:fly={{ x: 10, duration: 850 }}>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
-	<div class="set">
+	<h1 in:fly={{ x: 10, duration: 700 }}>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
+	<div class="set" in:fly={{ x: 10, duration: 700 }}>
 		{$t('wish.banner.beginnerSet', { values: { character: char } })}
 	</div>
-	<div class="desc">
+	<div class="desc" in:fly={{ x: 10, duration: 700 }}>
 		<p>
 			{$t('wish.banner.wishDescription')}
 		</p>
 	</div>
-	<div class="note">
+	<div class="note" in:fly={{ x: 10, duration: 700 }}>
 		{$t('wish.banner.beginnerNote')}
 	</div>
-	<div class="featured" in:fly={{ x: 10, duration: 850 }}>
+	<div class="featured" in:fly={{ x: 10, duration: 700 }}>
 		<div class="charName" style="position: relative;">
 			<span>
 				{char}
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	<div class="char-title" in:fly={{ x: 10, duration: 850 }}>
+	<div class="char-title" in:fly={{ x: 10, duration: 700 }}>
 		{$t(`${character.character}.title`)}
 	</div>
 

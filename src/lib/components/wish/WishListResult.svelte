@@ -76,10 +76,24 @@
 	};
 </script>
 
-<svg viewBox="0 0 302.22 1333.94" height="0" width="0" style="position: absolute;">
-	<clipPath id="wishframe" transform="scale(0.003308 0.00074965)" clipPathUnits="objectBoundingBox">
+<svg viewBox="0 0 151.000000 656.000000" height="0" width="0" style="position: absolute;">
+	<clipPath
+		id="wishframe"
+		transform="scale(0.00066225165562914 0.00015455950540958)"
+		clipPathUnits="objectBoundingBox"
+	>
 		<path
-			d="M0.01 168.12l0 -9.64c4.32,-21.34 12,-32.33 25.46,-25.58 -2.35,-10.3 -1.53,-26.06 5.79,-25.96 19.18,0.25 29.95,-3.14 40.24,-13.16 -4.5,-66.43 51.39,-54.26 79.61,-93.78l0 0c28.22,39.52 84.1,27.34 79.61,93.78 10.29,10.02 21.06,13.41 40.24,13.16 7.32,-0.1 8.13,15.66 5.79,25.96 13.46,-6.75 21.14,4.24 25.46,25.58l0 9.64 0.01 0 0 1004.21 -0.01 0 0 3.13c-4.32,21.34 -12,32.33 -25.46,25.58 2.35,10.3 1.53,26.06 -5.79,25.96 -19.18,-0.25 -29.95,3.14 -40.24,13.16 4.5,66.43 -51.39,54.26 -79.61,93.78l0 0c-28.22,-39.52 -84.1,-27.34 -79.61,-93.78 -10.29,-10.02 -21.06,-13.41 -40.24,-13.16 -7.32,0.1 -8.13,-15.66 -5.79,-25.96 -13.46,6.75 -21.14,-4.24 -25.46,-25.58l0 -3.13 -0.01 0 0 -1004.21 0.01 0z"
+			d="M734 6419 c-25 -29 -100 -76 -199 -127 -125 -64 -165 -117 -165 -217
+			0 -22 -3 -50 -6 -63 -9 -33 -83 -72 -155 -82 -68 -10 -79 -19 -79 -67 0 -24
+			-7 -37 -32 -54 -18 -12 -43 -34 -55 -48 l-22 -26 -1 -2502 c0 -1542 4 -2503 9
+			-2503 5 0 13 -9 16 -20 4 -11 23 -28 43 -38 32 -15 37 -22 40 -57 4 -49 23
+			-65 76 -65 47 0 113 -28 140 -58 12 -14 21 -45 26 -90 13 -117 54 -164 215
+			-250 55 -28 114 -66 132 -82 18 -17 35 -30 39 -30 4 0 23 15 44 34 21 19 80
+			56 131 82 153 79 197 131 210 252 4 39 13 70 25 84 27 30 93 58 140 58 53 0
+			72 16 76 65 3 35 8 42 40 57 20 10 39 27 43 38 3 11 11 20 16 20 5 0 9 961 9
+			2503 l-1 2502 -22 26 c-12 14 -37 36 -54 48 -26 17 -33 30 -33 54 0 48 -11 57
+			-79 67 -72 10 -146 49 -155 82 -3 13 -6 41 -6 63 0 100 -40 153 -165 217 -106
+			54 -153 84 -191 119 l-30 29 -20 -21z"
 		/>
 	</clipPath>
 </svg>
@@ -105,9 +119,6 @@
 						{/if}
 						<div class="item-body">
 							<div class="item-content">
-								<i class="gi-primo-star primo1" />
-								<i class="gi-primo-star primo2" />
-								<i class="gi-primo-star primo3" />
 								<div class="pic">
 									{#if type === 'weapon'}
 										<img
@@ -130,20 +141,22 @@
 									{/if}
 
 									<div class="info">
-										{#if type === 'weapon'}
-											<img
-												src="/images/utility/{weaponType}-white.svg"
-												alt="{weaponType} icon"
-												style="width: 60%; height: auto"
-											/>
-										{:else if isNew}
-											<img
-												src="/images/utility/icon-{vision}.svg"
-												alt="Vision {vision}"
-												class="{vision} filter-drop vision"
-												style="height: calc(15 / 100 * var(--card-height))"
-											/>
-										{/if}
+										<div class="icon" style="width: 100%;">
+											{#if type === 'weapon'}
+												<img
+													src="/images/utility/{weaponType}-white.svg"
+													alt="{weaponType} icon"
+													style="width: 73%; height: auto"
+												/>
+											{:else if isNew}
+												<img
+													src="/images/utility/icon-{vision}.svg"
+													alt="Vision {vision}"
+													class="{vision} filter-drop vision"
+													style="height: calc(15 / 100 * var(--card-height))"
+												/>
+											{/if}
+										</div>
 
 										{#if (isNew && type === 'character') || type === 'weapon'}
 											<div class="star">
@@ -246,9 +259,9 @@
 	.wishlist,
 	.shadows {
 		display: block;
-		height: 55vh;
-		max-height: 430px;
-		min-height: 300px;
+		height: 40vw;
+		max-height: 60vh;
+		min-height: 40vh;
 		width: 100%;
 		padding: 0 20px;
 		white-space: nowrap;
@@ -268,7 +281,7 @@
 	.item,
 	.shadow {
 		height: 100%;
-		aspect-ratio: 1/4.5;
+		aspect-ratio: 7/30;
 		border-radius: 100%;
 		filter: drop-shadow(0px 0px 6px rgb(101, 187, 246));
 		position: relative;
@@ -401,12 +414,9 @@
 		width: 97%;
 		height: 99%;
 		clip-path: url(#wishframe);
-		background-image: linear-gradient(
-			to bottom,
-			rgb(82, 107, 129),
-			rgb(187, 197, 172),
-			rgb(82, 107, 129)
-		);
+		background-image: url('/images/utility/resultcard-bg.svg');
+		background-size: cover;
+		background-position: center center;
 	}
 
 	.pic {
@@ -423,7 +433,7 @@
 		left: 0;
 		width: 100%;
 		height: 50%;
-		background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+		background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 	}
 	.pic img.wishpic {
 		position: absolute;
@@ -435,11 +445,11 @@
 
 	.weapon .pic img.wishpic {
 		top: 50%;
-		height: 100%;
+		height: 97%;
 		filter: drop-shadow(0.2rem 0.2rem 0.05rem rgb(0, 0, 0));
 	}
 	.pic > .wishpic.catalyst-item {
-		height: 35% !important;
+		height: 30% !important;
 	}
 
 	.stella {
@@ -447,13 +457,11 @@
 	}
 	.stella,
 	.masterless {
-		width: 70%;
+		width: 65%;
 		border-radius: 10%;
 		overflow: hidden;
 		display: block;
 		position: relative;
-		margin-left: auto;
-		margin-right: auto;
 		box-shadow: 0 0 7px rgba(255, 255, 255, 0.7), 0 0 14px rgba(255, 255, 255, 0.5),
 			0 0 21px rgba(255, 255, 255, 0.2), 0 0 42px rgba(255, 255, 255, 1);
 	}
@@ -488,34 +496,18 @@
 	.info {
 		position: absolute;
 		bottom: 10%;
+		left: 0;
 		width: 100%;
-		text-align: center;
 		z-index: 10;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.info .gi-star {
 		color: #f7cf33;
 		display: inline-block;
 		font-size: calc(3.5 / 100 * var(--card-height));
-	}
-
-	.gi-primo-star {
-		color: #fff;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-	.primo1 {
-		top: 3%;
-		font-size: calc(2 / 100 * var(--card-height));
-	}
-	.primo2 {
-		top: 10%;
-		font-size: calc(5 / 100 * var(--card-height));
-	}
-	.primo3 {
-		top: 20%;
-		font-size: calc(2 / 100 * var(--card-height));
 	}
 
 	.share {

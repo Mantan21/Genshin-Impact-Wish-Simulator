@@ -19,10 +19,10 @@
 	<div class="top bg-wanderlust" class:old={oldStd}>
 		{$t('wish.banner.standard')}
 	</div>
-	<h1 in:fly={{ x: 10, duration: 850 }} class="card-stroke">
+	<h1 in:fly={{ x: 10, duration: 700 }} class="card-stroke">
 		{@html highlightBannerName($t(`wish.banner.name.wanderlust`))}
 	</h1>
-	<div class="set card-stroke" in:fly={{ x: 10, duration: 850 }}>
+	<div class="set card-stroke" in:fly={{ x: 10, duration: 700 }}>
 		{$t('wish.banner.standard')}
 	</div>
 
@@ -31,13 +31,13 @@
 			{$t('wish.banner.wishDescription')}
 		</p>
 	</div>
-	<div class="note card-stroke" in:fly={{ x: 10, duration: 850 }}>
+	<div class="note card-stroke" in:fly={{ x: 10, duration: 700 }}>
 		{$t('wish.banner.standardNote')}
 		{$t('wish.banner.viewDetails')}
 	</div>
 
 	{#each chars as char}
-		<div class="group {char}" in:fly={{ x: 10, duration: 850 }}>
+		<div class="group {char}" in:fly={{ x: 10, duration: 700 }}>
 			<div class="group-content">
 				<div class="item-name">
 					{$t(`${char}.name`)}
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 	{/each}
-	<div class="group skyward" in:fly={{ x: 10, duration: 850 }}>
+	<div class="group skyward" in:fly={{ x: 10, duration: 700 }}>
 		<div class="group-content">
 			<div class="item-name">
 				{$t(weap)}

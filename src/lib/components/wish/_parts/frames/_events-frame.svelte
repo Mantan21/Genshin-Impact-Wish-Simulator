@@ -38,11 +38,11 @@
 	<div class="top bg-{vision}">
 		{$t('wish.banner.events')}
 	</div>
-	<h1 class="card-stroke" in:fly={{ x: 15, duration: 900 }}>
+	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
 		{@html highlightBannerName(bannerName)}
 	</h1>
 
-	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 900 }}>
+	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
 		<div class="content">
 			<div class="set card-stroke">
 				{$t('wish.banner.probIncreased')}
@@ -65,7 +65,7 @@
 	<div
 		class="character"
 		style="{featuredC}{positionToStyle(textOffset)}"
-		in:fly={{ x: 10, duration: 900 }}
+		in:fly={{ x: 10, duration: 700 }}
 	>
 		<div class="char-name">
 			<span>
