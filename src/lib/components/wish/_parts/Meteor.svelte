@@ -11,7 +11,7 @@
 		muted,
 		viewportHeight
 	} from '$lib/store/stores';
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import { localBalance } from '$lib/store/localstore';
 	import Toast from '$lib/components/utility/Toast.svelte';
 
@@ -87,20 +87,24 @@
 			videoContent = rarity === 5 ? v5star : v4star;
 		}
 
-		if (videoContent.error) {
+		if (videoContent.error || isNaN(videoContent.duration)) {
 			showToast = true;
-			console.error("Can't play Meteor Animation because it cannot be loaded");
+			console.error(
+				"Can't play Meteor Animation because it cannot be loaded",
+				videoContent.error.message
+			);
 			return dispatch('endAnimation');
 		}
 		videoContent.style.display = 'unset';
-		return videoContent.play();
+		videoContent.play();
+		return;
 	};
 
 	onMount(() => {
 		[v3star, v4starSingle, v4star, v5starSingle, v5star].forEach((video) => {
 			video.addEventListener('ended', () => {
 				video.style.display = 'none';
-				video.currentTime = 0;
+				video.load();
 				dispatch('endAnimation');
 			});
 		});
@@ -109,7 +113,7 @@
 	$: if (showMeteor) showVideoHandle(meteorStar, singleMeteor);
 </script>
 
-<PopUp
+<Modal
 	title={$t('shop.paimonBargains')}
 	sfx={false}
 	button={popupButton}
@@ -142,7 +146,7 @@
 			{/if}
 		</div>
 	</div>
-</PopUp>
+</Modal>
 
 {#if showToast}
 	<Toast on:close={() => (showToast = false)}>{$t('wish.result.meteorFailed')}</Toast>
