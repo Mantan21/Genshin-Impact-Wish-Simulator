@@ -9,7 +9,7 @@ import exchange from '$lib/data/audio/exchange';
 import inventory from '$lib/data/audio/inventory';
 import item from '$lib/data/audio/item';
 import obtain from '$lib/data/audio/obtain';
-import popup from '$lib/data/audio/popup';
+import modal from '$lib/data/audio/modal';
 import roll from '$lib/data/audio/roll';
 import shop from '$lib/data/audio/shop';
 
@@ -18,7 +18,7 @@ const source = {
 	close,
 	click,
 	exchange,
-	popup,
+	modal,
 	shop,
 	obtain,
 	roll,

@@ -9,7 +9,7 @@
 		isFatepointSystem,
 		patchVersion,
 		selectedCourse,
-		showFatepointPopup
+		showFatepointModal
 	} from '$lib/store/stores';
 	import playSfx from '$lib/helpers/audio';
 	import { localFatePoint } from '$lib/store/localstore';
@@ -40,7 +40,7 @@
 
 	const handleClick = () => {
 		playSfx('exchange');
-		showFatepointPopup.set(true);
+		showFatepointModal.set(true);
 		noticeMark.openNotice(`fatepoint${$patchVersion}-${$bannerPhase}`);
 	};
 

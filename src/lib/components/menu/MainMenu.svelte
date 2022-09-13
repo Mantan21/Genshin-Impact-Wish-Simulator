@@ -12,11 +12,11 @@
 	import updates from '$lib/setup/updates.json';
 
 	// Components
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
 	import Option from './OptionMenu.svelte';
 	export let show = false;
-	let showResetPopup = false;
+	let showResetModal = false;
 	let showToast = false;
 	let activeContent = 'options';
 	let optionToShow = '';
@@ -65,19 +65,19 @@
 
 	// Reset
 	const reset = () => {
-		showResetPopup = true;
-		playSfx('popup');
+		showResetModal = true;
+		playSfx('Modal');
 	};
 	setContext('factoryReset', reset);
 
 	const confirmReset = async () => {
-		showResetPopup = false;
+		showResetModal = false;
 		await factoryReset();
 		showToast = true;
 	};
 
 	const cancelReset = () => {
-		showResetPopup = false;
+		showResetModal = false;
 	};
 
 	const dispatch = createEventDispatcher();
@@ -95,9 +95,9 @@
 </script>
 
 {#if show}
-	<PopUp
+	<Modal
 		title="Factory Reset"
-		show={showResetPopup}
+		show={showResetModal}
 		button="all"
 		on:confirm={confirmReset}
 		on:cancel={cancelReset}
@@ -111,7 +111,7 @@
 				</small>
 			</div>
 		</div>
-	</PopUp>
+	</Modal>
 
 	{#if showToast}
 		<Toast on:close={() => (showToast = false)}>{$t('menu.resetSuccess')}</Toast>

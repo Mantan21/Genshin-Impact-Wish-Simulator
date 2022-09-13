@@ -33,7 +33,7 @@
 	let singleMeteor = true;
 	let meteorStar = 3;
 	let skipSplashOneByOne = false;
-	let showConvertPopup = false;
+	let showConvertModal = false;
 	let rollCount = 0;
 	let wishResult = [];
 	let WishFunction;
@@ -63,7 +63,7 @@
 		const balanceNeededToRoll = bannerToRoll === 'beginner' && count > 1 ? 8 : count;
 		const indexOfEventBanner = bannerToRoll === 'events' ? getIndexOfEventBanner() : 0;
 
-		if (balance < balanceNeededToRoll && !$unlimitedFates) return (showConvertPopup = true);
+		if (balance < balanceNeededToRoll && !$unlimitedFates) return (showConvertModal = true);
 		for (let i = 0; i < count; i++) {
 			const result = await roll(bannerToRoll, indexOfEventBanner, WishFunction);
 			tmp.push(result);
@@ -121,13 +121,13 @@
 	};
 
 	const cancelExchange = () => {
-		showConvertPopup = false;
+		showConvertModal = false;
 		playSfx();
 	};
 
-	const confirmPopup = () => {
+	const confirmModal = () => {
 		doRoll(rollCount, bannerToRoll);
-		showConvertPopup = false;
+		showConvertModal = false;
 		playSfx();
 	};
 
@@ -192,10 +192,10 @@
 		{showMeteor}
 		{singleMeteor}
 		{meteorStar}
-		{showConvertPopup}
+		{showConvertModal}
 		{rollCount}
-		on:cancelPopup={cancelExchange}
-		on:confirmPopup={confirmPopup}
+		on:cancelModal={cancelExchange}
+		on:confirmModal={confirmModal}
 		on:endAnimation={showSplashResult}
 		on:skiped={skiped}
 	/>

@@ -9,9 +9,9 @@
 	import HistoryIDB from '$lib/store/historyIdb';
 
 	// Components
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import WishResult from '$lib/components/wish/WishResult.svelte';
-	import ExchangePopup from './ExchangePopup.svelte';
+	import ExchangeModal from './ExchangeModal.svelte';
 	import ShopHeader from './ShopHeader.svelte';
 	import ShopNavbar from './ShopNavbar.svelte';
 	import CharacterOutfits from './CharacterOutfits.svelte';
@@ -57,8 +57,8 @@
 	};
 
 	// Purchase Outifts
-	let showExchangePopup = false;
-	let showPopupAlert = false;
+	let showExchangeModal = false;
+	let showModalAlert = false;
 	let isOutfitOwned = false;
 	let outfitToBuy = '';
 	let outfitPrice = 0;
@@ -70,8 +70,8 @@
 	let showObtainedOutfit = false;
 
 	const forcePurchase = () => {
-		showExchangePopup = true;
-		showPopupAlert = false;
+		showExchangeModal = true;
+		showModalAlert = false;
 	};
 
 	const buy = (item) => {
@@ -88,11 +88,11 @@
 		localOutfits.set(outfitToBuy);
 		buy(outfitToBuy);
 		showObtainedOutfit = true;
-		handleClosePopup();
+		handleCloseModal();
 	};
 
-	const handleClosePopup = () => {
-		showExchangePopup = false;
+	const handleCloseModal = () => {
+		showExchangeModal = false;
 	};
 
 	const checkCharacter = async (charName) => {
@@ -117,8 +117,8 @@
 		} = item;
 
 		const isOwnedChar = await checkCharacter(characterName);
-		showPopupAlert = !isOwnedChar && !isOwned;
-		showExchangePopup = isOwnedChar || isOwned;
+		showModalAlert = !isOwnedChar && !isOwned;
+		showExchangeModal = isOwnedChar || isOwned;
 		outfitToBuy = name;
 		outfitPrice = isPromo ? promoPrice : price;
 		outfitRarity = rarity;
@@ -151,10 +151,10 @@
 	/>
 {/if}
 
-<PopUp
-	show={showPopupAlert}
+<Modal
+	show={showModalAlert}
 	title={$t('shop.purchaseConfirm')}
-	on:cancel={() => (showPopupAlert = false)}
+	on:cancel={() => (showModalAlert = false)}
 	on:confirm={forcePurchase}
 >
 	<div
@@ -166,15 +166,15 @@
 			{$t('outfit.promptInfo')}
 		</p>
 	</div>
-</PopUp>
+</Modal>
 
-<ExchangePopup
+<ExchangeModal
 	outfit
-	show={showExchangePopup}
+	show={showExchangeModal}
 	itemToBuy={outfitToBuy}
 	itemRarity={outfitRarity}
 	price={outfitPrice}
-	on:cancel={handleClosePopup}
+	on:cancel={handleCloseModal}
 	on:confirm={confirmBuy}
 	{isOutfitOwned}
 />

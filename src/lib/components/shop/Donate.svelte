@@ -3,11 +3,11 @@
 	import playSfx from '$lib/helpers/audio';
 	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
-	import PopUp from '../utility/PopUp.svelte';
+	import Modal from '../utility/ModalTpl.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 
-	let showCryptoPopup = false;
+	let showCryptoModal = false;
 	let showToast = false;
 
 	const copyHandle = (text) => {
@@ -27,15 +27,15 @@
 </script>
 
 <!-- Crypto Donate -->
-<PopUp
+<Modal
 	button="confirm"
-	show={showCryptoPopup}
+	show={showCryptoModal}
 	title="Support With Crypto"
 	on:confirm={() => {
-		showCryptoPopup = false;
+		showCryptoModal = false;
 	}}
 >
-	<div class="popup-donate">
+	<div class="modal-donate">
 		<div class="pop-item">
 			<div class="icon">
 				<img src="/images/utility/donate-ethereum.png" alt="Ethereum" />
@@ -85,7 +85,7 @@
 			<div class="toast">Address Copied</div>
 		{/if}
 	</div>
-</PopUp>
+</Modal>
 
 <!-- Crypto Donate -->
 <div class="container">
@@ -140,7 +140,7 @@
 			<button
 				class="content crypto"
 				on:click={() => {
-					showCryptoPopup = true;
+					showCryptoModal = true;
 				}}
 			>
 				<div
@@ -190,21 +190,21 @@
 		font-size: 0.75rem;
 	}
 
-	.popup-donate .pop-item {
+	.modal-donate .pop-item {
 		display: flex;
 		align-items: center;
 		width: 100%;
 	}
 
-	.popup-donate .icon,
-	.popup-donate .copy {
+	.modal-donate .icon,
+	.modal-donate .copy {
 		display: flex;
 		height: 100%;
 		justify-content: center;
 		align-items: center;
 		margin: 0.2rem;
 	}
-	.popup-donate img {
+	.modal-donate img {
 		height: 3rem;
 		margin: 0;
 	}
@@ -219,7 +219,7 @@
 		font-size: 0.8rem;
 	}
 
-	.popup-donate button {
+	.modal-donate button {
 		background-color: #383b40;
 		color: #fff;
 		transition: all 0.2s;
@@ -231,7 +231,7 @@
 		align-items: center;
 		font-size: 1rem;
 	}
-	.popup-donate button:hover {
+	.modal-donate button:hover {
 		background-color: #ccc;
 		color: #000;
 	}

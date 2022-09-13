@@ -5,11 +5,11 @@
 
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
-	import PaymentPopup from './PaymentPopup.svelte';
+	import PaymentModal from './PaymentModal.svelte';
 	import { priceList } from '$lib/store/stores';
 
-	let activeGenesisIndexforPopup; // undefined
-	let showPaymentPopup = false; //false
+	let activeGenesisIndexforModal; // undefined
+	let showPaymentModal = false; //false
 
 	const genesisList = [];
 	$: genesis = $priceList.genesis;
@@ -18,19 +18,19 @@
 		genesisList.push(item);
 	});
 
-	const handleClosePopup = () => {
-		showPaymentPopup = false;
+	const handleCloseModal = () => {
+		showPaymentModal = false;
 	};
 
 	const selectGenesis = (i) => {
-		activeGenesisIndexforPopup = i;
-		showPaymentPopup = true;
+		activeGenesisIndexforModal = i;
+		showPaymentModal = true;
 		playSfx('exchange');
 	};
 
 	const handleObtained = getContext('handleObtained');
-	const handleConfirmPopup = (e) => {
-		showPaymentPopup = false;
+	const handleConfirmModal = (e) => {
+		showPaymentModal = false;
 		const { status, item } = e.detail;
 		if (status === 'failed') return;
 		handleObtained(item.itemToBuy, item.value);
@@ -38,13 +38,13 @@
 </script>
 
 <!-- Genesisn Pop up -->
-{#if showPaymentPopup}
-	<PaymentPopup
-		show={showPaymentPopup}
-		price={genesisList[activeGenesisIndexforPopup].price}
-		qty={genesisList[activeGenesisIndexforPopup].qty}
-		on:confirm={handleConfirmPopup}
-		on:cancel={handleClosePopup}
+{#if showPaymentModal}
+	<PaymentModal
+		show={showPaymentModal}
+		price={genesisList[activeGenesisIndexforModal].price}
+		qty={genesisList[activeGenesisIndexforModal].qty}
+		on:confirm={handleConfirmModal}
+		on:cancel={handleCloseModal}
 	/>
 {/if}
 <!-- Genesis Pop Up End -->

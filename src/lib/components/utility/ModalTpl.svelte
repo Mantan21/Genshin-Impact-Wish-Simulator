@@ -5,7 +5,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import playSfx from '$lib/helpers/audio';
 	import { viewportHeight } from '$lib/store/stores';
-	import ButtonPopup from './ButtonPopup.svelte';
+	import ButtonModal from './ButtonModal.svelte';
 
 	export let show = false;
 	export let title = '';
@@ -33,8 +33,8 @@
 </script>
 
 {#if show}
-	<div class="popup" transition:fade={{ duration: 80 }} style="height: {$viewportHeight}px;">
-		<div class="popup-content">
+	<div class="modal" transition:fade={{ duration: 80 }} style="height: {$viewportHeight}px;">
+		<div class="modal-content">
 			<span class="corner top-left" />
 			<span class="corner top-right" />
 			<span class="corner bottom-left" />
@@ -51,12 +51,12 @@
 				{#if confirm}
 					<div class="pop-footer">
 						{#if ['cancel', 'all'].indexOf(button) > -1}
-							<ButtonPopup type="cancel" on:click={cancelClik} />
+							<ButtonModal type="cancel" on:click={cancelClik} />
 						{/if}
 						{#if ['confirm', 'all'].indexOf(button) > -1}
-							<ButtonPopup type="confirm" on:click={confirmClick}>
+							<ButtonModal type="confirm" on:click={confirmClick}>
 								{confirmText || $t('confirmButton')}
-							</ButtonPopup>
+							</ButtonModal>
 						{/if}
 					</div>
 				{/if}
@@ -66,7 +66,7 @@
 {/if}
 
 <style>
-	.popup {
+	.modal {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -79,7 +79,7 @@
 		backdrop-filter: blur(2px);
 	}
 
-	.popup-content {
+	.modal-content {
 		width: 35rem;
 		max-width: 90%;
 		background-color: #ece6de;
@@ -90,7 +90,7 @@
 		border-radius: 0.8rem;
 	}
 
-	:global(.mobile) .popup-content {
+	:global(.mobile) .modal-content {
 		max-width: 100vh;
 	}
 

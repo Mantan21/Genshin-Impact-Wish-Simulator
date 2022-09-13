@@ -18,7 +18,7 @@
 	import { userCurrencies } from '$lib/helpers/currencies';
 
 	// Components
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '../utility/Toast.svelte';
 
 	let content;
@@ -40,7 +40,7 @@
 	let showSelectList = false;
 	let activepage = 1;
 	let itemPerPage = 6;
-	let showPopup = false;
+	let showModal = false;
 	let showToast = false;
 	let data = [];
 	let dataToShow = [];
@@ -83,12 +83,12 @@
 		}
 		pity4 = pity5 = 0;
 		dataToShow = data = [];
-		showPopup = false;
+		showModal = false;
 		showToast = true;
 	};
 
 	const reset = () => {
-		showPopup = true;
+		showModal = true;
 		playSfx();
 	};
 
@@ -128,10 +128,10 @@
 	</title>
 </svelte:head>
 
-<PopUp
-	show={showPopup}
+<Modal
+	show={showModal}
 	title={$t('history.resetPromptTitle')}
-	on:cancel={() => (showPopup = false)}
+	on:cancel={() => (showModal = false)}
 	on:confirm={confirmReset}
 >
 	<div class="confirmation">
@@ -141,7 +141,7 @@
 			})}
 		</p>
 	</div>
-</PopUp>
+</Modal>
 
 {#if showToast}
 	<Toast on:close={() => (showToast = false)}>{$t('history.resetSuccess')}</Toast>

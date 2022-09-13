@@ -7,7 +7,7 @@
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import MainMenu from '$lib/components/menu/MainMenu.svelte';
 	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
-	import EpitomizedPopup from '../epitomizedPath/EpitomizedPopup.svelte';
+	import EpitomizedModal from '../epitomizedPath/EpitomizedModal.svelte';
 
 	import playSfx from '$lib/helpers/audio';
 	import browserState from '$lib/helpers/browserState';
@@ -42,7 +42,7 @@
 	const previousClick = () => {
 		browserState.set('previous');
 		pageActive.set('previous-banner');
-		playSfx('popup');
+		playSfx('modal');
 	};
 
 	let showMenu = false;
@@ -66,7 +66,7 @@
 	};
 </script>
 
-<EpitomizedPopup />
+<EpitomizedModal />
 <MainMenu show={showMenu} on:close={handleMenu} />
 
 <div id="header" style={headerHeightstyle}>

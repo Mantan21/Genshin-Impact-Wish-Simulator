@@ -18,7 +18,7 @@
 	export let showMeteor = false;
 	export let meteorStar = 3;
 	export let singleMeteor = true;
-	export let showConvertPopup = false;
+	export let showConvertModal = false;
 	export let rollCount = 0;
 
 	let v3star;
@@ -32,14 +32,14 @@
 	$: balance = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: isBeginner = $bannerList[$bannerActive]?.type === 'beginner';
 	$: balanceNeededToRoll = (isBeginner && rollCount > 1 ? 8 : rollCount) - balance;
-	$: popupButton = $primogem < balanceNeededToRoll * 160 ? 'cancel' : 'all';
+	$: modalButton = $primogem < balanceNeededToRoll * 160 ? 'cancel' : 'all';
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
 
-	const closeExchangePopup = () => {
-		dispatch('cancelPopup');
+	const closeExchangeModal = () => {
+		dispatch('cancelModal');
 	};
 
-	const handleExchangePopup = async () => {
+	const handleExchangeModal = async () => {
 		const promise = new Promise((resolve, reject) => {
 			if ($primogem < balanceNeededToRoll * 160) return reject('not enough primogem');
 			primogem.update((n) => {
@@ -66,7 +66,7 @@
 			});
 		});
 		await promise;
-		dispatch('confirmPopup');
+		dispatch('confirmModal');
 	};
 
 	const skip = () => {
@@ -116,10 +116,10 @@
 <Modal
 	title={$t('shop.paimonBargains')}
 	sfx={false}
-	button={popupButton}
-	show={showConvertPopup}
-	on:cancel={closeExchangePopup}
-	on:confirm={handleExchangePopup}
+	button={modalButton}
+	show={showConvertModal}
+	on:cancel={closeExchangeModal}
+	on:confirm={handleExchangeModal}
 >
 	<div class="exchange">
 		<div>

@@ -13,8 +13,8 @@
 	import TopNavParent from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
 	import Icon from '../utility/Icon.svelte';
-	import ButtonPopup from '../utility/ButtonPopup.svelte';
-	import WelkinPopup from './WelkinPopup.svelte';
+	import ButtonModal from '../utility/ButtonModal.svelte';
+	import WelkinModal from './WelkinModal.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 
 	export let recentlyBuyIndex = -1;
@@ -39,12 +39,12 @@
 
 	const { remaining } = localWelkin.getData();
 	let dayRemaining = remaining || 0;
-	let showWelkinPopup = false;
+	let showWelkinModal = false;
 
 	$: welkinPrice = $priceList.welkin;
 
 	const buyWelkin = () => {
-		showWelkinPopup = false;
+		showWelkinModal = false;
 		genesis.update((n) => {
 			const newQty = n + 320000;
 			localBalance.set('genesis', newQty);
@@ -60,7 +60,7 @@
 		dayRemaining = localWelkin.getData().remaining;
 	};
 
-	const cancelBuy = () => (showWelkinPopup = false);
+	const cancelBuy = () => (showWelkinModal = false);
 	setContext('buyWelkin', buyWelkin);
 	setContext('cancelBuy', cancelBuy);
 </script>
@@ -77,7 +77,7 @@
 	</TopNavItem>
 </TopNavParent>
 
-<WelkinPopup show={showWelkinPopup} />
+<WelkinModal show={showWelkinModal} />
 
 <ColumnParent>
 	<div
@@ -117,7 +117,7 @@
 						{#if isOwned}
 							<span class="owned">{$t('outfit.owned')}</span>
 						{:else}
-							<ButtonPopup
+							<ButtonModal
 								text={$t('shop.purchaseButton')}
 								type="confirm"
 								on:click={() => selectItem(outfitsForThisVersion)}
@@ -176,11 +176,11 @@
 								}
 							})}
 						</div>
-						<ButtonPopup
+						<ButtonModal
 							text={$t('shop.purchaseButton')}
 							type="confirm"
 							on:click={() => {
-								showWelkinPopup = true;
+								showWelkinModal = true;
 								playSfx();
 							}}
 						/>

@@ -5,7 +5,7 @@
 	import { genesis, primogem } from '$lib/store/stores';
 	import playSfx from '$lib/helpers/audio';
 
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let show;
@@ -37,8 +37,8 @@
 	};
 </script>
 
-<PopUp {show} confirm={false} sfx={false}>
-	<div class="genesis-popup">
+<Modal {show} confirm={false} sfx={false}>
+	<div class="genesis-modal">
 		<div class="header">
 			<button class="back" on:click={handleClose}>
 				<i class="gi-angle-left" />
@@ -76,10 +76,10 @@
 			</div>
 		</div>
 	</div>
-</PopUp>
+</Modal>
 
 <style>
-	.genesis-popup {
+	.genesis-modal {
 		display: block;
 		width: 100%;
 		height: 100%;

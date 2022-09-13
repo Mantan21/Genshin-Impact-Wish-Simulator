@@ -13,7 +13,7 @@
 	import { getName } from '$lib/helpers/nameText';
 
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import PopUp from '$lib/components/utility/PopUp.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Range from './parts/_range.svelte';
 
 	export let show = false;
@@ -149,7 +149,7 @@
 	};
 </script>
 
-<PopUp
+<Modal
 	{show}
 	title={fundType !== 'genesis' ? $t('shop.exchangeHeading') : $t('shop.purchaseHeading')}
 	on:cancel={cancelBuy}
@@ -257,7 +257,7 @@
 			</div>
 		</div>
 	</div>
-</PopUp>
+</Modal>
 
 <style>
 	.red {

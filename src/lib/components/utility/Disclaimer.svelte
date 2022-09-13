@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/setup/updates.json';
-	import PopUp from './PopUp.svelte';
+	import Modal from './ModalTpl.svelte';
 
 	export let show = true;
 	let content;
@@ -16,7 +16,7 @@
 	});
 </script>
 
-<PopUp {show} title={$t('title')} button="confirm" disclaimer on:confirm={closeDisclaimer}>
+<Modal {show} title={$t('title')} button="confirm" disclaimer on:confirm={closeDisclaimer}>
 	<section>
 		<p class="sp">{$t('fanmade')}</p>
 		<div class="updates" bind:this={content}>
@@ -42,7 +42,7 @@
 		</div>
 		<p class="credit">{$t('disclaimer')}</p>
 	</section>
-</PopUp>
+</Modal>
 
 <style>
 	section {

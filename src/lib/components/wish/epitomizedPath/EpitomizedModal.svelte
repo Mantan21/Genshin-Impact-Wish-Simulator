@@ -8,7 +8,7 @@
 		fatePoint,
 		patchVersion,
 		selectedCourse,
-		showFatepointPopup,
+		showFatepointModal,
 		viewportHeight,
 		viewportWidth
 	} from '$lib/store/stores';
@@ -18,8 +18,8 @@
 
 	import FatepointSVG from './FatepointSVG.svelte';
 	import InventoryItem from '$lib/components/inventory/InventoryItem.svelte';
-	import PopUp from '$lib/components/utility/PopUp.svelte';
-	import ButtonPopup from '$lib/components/utility/ButtonPopup.svelte';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
+	import ButtonModal from '$lib/components/utility/ButtonModal.svelte';
 
 	$: half = $viewportWidth < 500;
 	$: weaponName = $selectedCourse.name;
@@ -71,7 +71,7 @@
 	};
 
 	const handleClose = () => {
-		showFatepointPopup.set(false);
+		showFatepointModal.set(false);
 	};
 
 	let content;
@@ -80,7 +80,7 @@
 	});
 </script>
 
-<PopUp
+<Modal
 	show={showCancelConfirmation}
 	on:confirm={confirmCancel}
 	on:cancel={() => {
@@ -99,17 +99,17 @@
 			</span>
 		</div>
 	</div>
-</PopUp>
+</Modal>
 
-{#if $showFatepointPopup}
-	<section class="popup" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
-		<div class="popup-content" bind:clientWidth style="--popup-width: {clientWidth}px">
+{#if $showFatepointModal}
+	<section class="modal" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
+		<div class="modal-content" bind:clientWidth style="--modal-width: {clientWidth}px">
 			<img
 				src="/images/utility/fatepointbook{half ? '-half' : ''}.webp"
 				alt="Fatepoint Background"
 			/>
 			<button
-				class="close-popup"
+				class="close-modal"
 				on:click={() => {
 					handleClose();
 					playSfx('close');
@@ -180,13 +180,13 @@
 					</div>
 					<div class="button">
 						{#if weaponName}
-							<ButtonPopup on:click={cancelCourse} type="cancel">
+							<ButtonModal on:click={cancelCourse} type="cancel">
 								{$t('wish.epitomizedPath.cancelCourse')}
-							</ButtonPopup>
+							</ButtonModal>
 						{:else}
-							<ButtonPopup on:click={setCourse}>
+							<ButtonModal on:click={setCourse}>
 								{$t('wish.epitomizedPath.chartCourse')}
-							</ButtonPopup>
+							</ButtonModal>
 						{/if}
 					</div>
 				</div>
@@ -196,7 +196,7 @@
 {/if}
 
 <style>
-	.popup {
+	.modal {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -209,7 +209,7 @@
 		backdrop-filter: blur(2px);
 	}
 
-	.popup-content {
+	.modal-content {
 		width: 1000px;
 		max-width: 90%;
 		min-width: 250px;
@@ -219,17 +219,17 @@
 		overflow: hidden;
 	}
 
-	:global(.mobile) .popup-content {
+	:global(.mobile) .modal-content {
 		max-width: 140vh;
 		border-radius: 0.8rem;
 	}
 
-	.popup-content img {
+	.modal-content img {
 		position: relative;
 		width: 100%;
 	}
 
-	.close-popup {
+	.close-modal {
 		position: absolute;
 		top: 1.5rem;
 		right: -0.2rem;
@@ -253,7 +253,7 @@
 		text-align: left;
 		padding-left: 10%;
 		padding-top: 5%;
-		font-size: calc(3 / 100 * var(--popup-width));
+		font-size: calc(3 / 100 * var(--modal-width));
 		color: #7c613f;
 	}
 
@@ -265,7 +265,7 @@
 
 	.description {
 		padding-right: 5.5% !important;
-		font-size: calc(2 / 100 * var(--popup-width));
+		font-size: calc(2 / 100 * var(--modal-width));
 	}
 
 	.container .content {
@@ -301,7 +301,7 @@
 	}
 
 	.top {
-		font-size: calc(3 / 100 * var(--popup-width));
+		font-size: calc(3 / 100 * var(--modal-width));
 		white-space: nowrap;
 	}
 

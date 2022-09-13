@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { mobileMode, priceList } from '$lib/store/stores';
 	import Icon from '../utility/Icon.svelte';
-	import PopUp from '../utility/PopUp.svelte';
+	import Modal from '../utility/ModalTpl.svelte';
 
 	export let show = false;
 
@@ -12,7 +12,7 @@
 	const buyWelkin = getContext('buyWelkin');
 </script>
 
-<PopUp
+<Modal
 	{show}
 	title={$t('shop.purchaseHeading')}
 	confirmText={$t('shop.purchaseButton')}
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-</PopUp>
+</Modal>
 
 <style>
 	.content {

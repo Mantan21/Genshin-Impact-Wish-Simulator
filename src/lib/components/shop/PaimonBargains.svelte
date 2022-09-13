@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import playSfx from '$lib/helpers/audio';
 
-	import ExchangePopup from './ExchangePopup.svelte';
+	import ExchangeModal from './ExchangeModal.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
@@ -11,17 +11,17 @@
 	import TopNavItem from './parts/_top-nav-item.svelte';
 
 	let activeFateShop = 'starglitter';
-	let showExchangePopup = false;
+	let showExchangeModal = false;
 	let itemToBuy;
 
-	const openExchangePopup = (fate) => {
-		showExchangePopup = true;
+	const openExchangeModal = (fate) => {
+		showExchangeModal = true;
 		itemToBuy = fate;
 		playSfx();
 	};
 
-	const handleClosePopup = () => {
-		showExchangePopup = false;
+	const handleCloseModal = () => {
+		showExchangeModal = false;
 	};
 
 	const handlePaimonClick = ({ detail }) => {
@@ -30,8 +30,8 @@
 	};
 
 	const handleObtained = getContext('handleObtained');
-	const handleConfirmPopup = (e) => {
-		showExchangePopup = false;
+	const handleConfirmModal = (e) => {
+		showExchangeModal = false;
 		const { status, item } = e.detail;
 		if (status === 'failed') return;
 		const { value, itemToBuy } = item;
@@ -39,16 +39,16 @@
 	};
 </script>
 
-<!-- Fates Popup -->
-<ExchangePopup
-	show={showExchangePopup}
+<!-- Fates Modal -->
+<ExchangeModal
+	show={showExchangeModal}
 	fundType={activeFateShop}
 	itemRarity={5}
 	{itemToBuy}
-	on:cancel={handleClosePopup}
-	on:confirm={handleConfirmPopup}
+	on:cancel={handleCloseModal}
+	on:confirm={handleConfirmModal}
 />
-<!-- Fates Popup End -->
+<!-- Fates Modal End -->
 
 <TopNav>
 	{#each ['starglitter', 'stardust', 'primogem'] as val}
@@ -61,7 +61,7 @@
 <ColumnParent>
 	{#each ['intertwined', 'acquaint'] as fate, i}
 		<Column>
-			<button on:click={() => openExchangePopup(fate)}>
+			<button on:click={() => openExchangeModal(fate)}>
 				<div class="content">
 					<picture>
 						<Icon type={fate} width="60%" />

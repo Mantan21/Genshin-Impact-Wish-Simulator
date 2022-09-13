@@ -15,7 +15,7 @@ const showBeginner = writable(true);
 
 const isFatepointSystem = writable(false);
 const fatePoint = writable(0);
-const showFatepointPopup = writable(false);
+const showFatepointModal = writable(false);
 const selectedCourse = writable({});
 const fatepointCounterActive = writable(false);
 
@@ -51,7 +51,7 @@ export {
 	bannerActive,
 	isFatepointSystem,
 	fatePoint,
-	showFatepointPopup,
+	showFatepointModal,
 	fatepointCounterActive,
 	selectedCourse,
 	backsound,

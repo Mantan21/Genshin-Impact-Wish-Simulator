@@ -1,23 +1,23 @@
 <script>
 	import Icon from './Icon.svelte';
-	import ExchangePopup from '$lib/components/shop/ExchangePopup.svelte';
+	import ExchangeModal from '$lib/components/shop/ExchangeModal.svelte';
 	import Obtained from './Obtained.svelte';
 	import playSfx from '$lib/helpers/audio';
 
 	export let type = 'primogem';
 
-	let showExchangePopup = false;
+	let showExchangeModal = false;
 	let showObtained = false;
 	let obtainedItem = {};
 
-	const handlePopup = () => {
+	const handleModal = () => {
 		if (type !== 'primogem') return;
-		if (!showExchangePopup) playSfx('popup');
-		showExchangePopup = !showExchangePopup;
+		if (!showExchangeModal) playSfx('modal');
+		showExchangeModal = !showExchangeModal;
 	};
 
 	const handleConfirmExchange = (e) => {
-		showExchangePopup = false;
+		showExchangeModal = false;
 		const { item } = e.detail;
 		obtainedItem[item.itemToBuy] = item.value;
 		showObtained = true;
@@ -36,16 +36,16 @@
 <!-- Obtain end -->
 
 <!-- Exchange -->
-<ExchangePopup
+<ExchangeModal
 	fundType="genesis"
 	itemToBuy="primogem"
-	show={showExchangePopup}
-	on:cancel={handlePopup}
+	show={showExchangeModal}
+	on:cancel={handleModal}
 	on:confirm={handleConfirmExchange}
 />
 <!-- Exchange -->
 
-<button class={type} on:click={handlePopup}>
+<button class={type} on:click={handleModal}>
 	<Icon
 		{type}
 		height="80%"
