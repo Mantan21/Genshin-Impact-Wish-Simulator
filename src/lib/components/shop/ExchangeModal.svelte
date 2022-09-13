@@ -15,6 +15,7 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Range from './parts/_range.svelte';
+	import Funds from './parts/_funds.svelte';
 
 	export let show = false;
 	export let itemToBuy = 'intertwined';
@@ -157,6 +158,7 @@
 	confirmText={$t('shop.purchaseButton')}
 	button={(outfit ? isOutfitOwned || $genesis < price : fateQty < 1) ? 'cancel' : 'all'}
 >
+	<Funds {itemToBuy} />
 	<div class="content" bind:clientHeight={contentHeight}>
 		{#if fundType === 'genesis' && !outfit}
 			<!-- Genesis Exchange -->

@@ -7,6 +7,7 @@
 
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
+	import Funds from './parts/_funds.svelte';
 
 	export let show;
 	export let qty;
@@ -38,6 +39,7 @@
 </script>
 
 <Modal {show} confirm={false} sfx={false}>
+	<Funds />
 	<div class="genesis-modal">
 		<div class="header">
 			<button class="back" on:click={handleClose}>

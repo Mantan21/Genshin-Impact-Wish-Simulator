@@ -1,14 +1,15 @@
 <script>
+	import { getContext } from 'svelte';
 	import Icon from './Icon.svelte';
 	import ExchangeModal from '$lib/components/shop/ExchangeModal.svelte';
-	import Obtained from './Obtained.svelte';
 	import playSfx from '$lib/helpers/audio';
 
 	export let type = 'primogem';
+	export let increament = true;
+	const isExchangable = type === 'primogem' && increament;
 
 	let showExchangeModal = false;
-	let showObtained = false;
-	let obtainedItem = {};
+	const handleObtained = getContext('handleObtained');
 
 	const handleModal = () => {
 		if (type !== 'primogem') return;
@@ -19,33 +20,23 @@
 	const handleConfirmExchange = (e) => {
 		showExchangeModal = false;
 		const { item } = e.detail;
-		obtainedItem[item.itemToBuy] = item.value;
-		showObtained = true;
-	};
-
-	const closeObtained = () => {
-		showObtained = false;
-		playSfx('close');
+		handleObtained(item.itemToBuy, item.value);
 	};
 </script>
 
-<!-- Obtain -->
-{#if showObtained}
-	<Obtained items={obtainedItem} on:close={closeObtained} />
+<!-- Exchange -->
+{#if isExchangable}
+	<ExchangeModal
+		fundType="genesis"
+		itemToBuy="primogem"
+		show={showExchangeModal}
+		on:cancel={handleModal}
+		on:confirm={handleConfirmExchange}
+	/>
 {/if}
-<!-- Obtain end -->
-
-<!-- Exchange -->
-<ExchangeModal
-	fundType="genesis"
-	itemToBuy="primogem"
-	show={showExchangeModal}
-	on:cancel={handleModal}
-	on:confirm={handleConfirmExchange}
-/>
 <!-- Exchange -->
 
-<button class={type} on:click={handleModal}>
+<button class={type} class:increament={isExchangable} on:click={handleModal}>
 	<Icon
 		{type}
 		height="80%"
@@ -53,10 +44,8 @@
 		style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
 	/>
 	<slot />
-	{#if type === 'primogem'}
-		<span>
-			<i class="gi-plus" />
-		</span>
+	{#if isExchangable}
+		<span> <i class="gi-plus" /> </span>
 	{/if}
 </button>
 
@@ -74,7 +63,7 @@
 		transform: translateY(-50%);
 	}
 
-	.primogem {
+	.primogem.increament {
 		padding-right: 30px !important;
 	}
 
@@ -91,6 +80,7 @@
 		position: relative;
 		margin: 0 8px;
 		padding: 0 15px 0 30px;
+		border: 1px solid #656565;
 	}
 
 	@media screen and (max-width: 900px) {
