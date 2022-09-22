@@ -16,7 +16,7 @@
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
-	import { mobileMode, viewportHeight } from '$lib/store/stores';
+	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
 	import { isOutfitSet } from '$lib/helpers/wish/outfit';
 
@@ -32,14 +32,13 @@
 		return args.mobile ? fly(node, { x: -20, duration: 400 }) : fade(node, { duration: 400 });
 	};
 
-	let itemWidth;
-	$: defaultItemWidth = (20 / 100) * $viewportHeight;
+	$: itemWidth = (20 / 100) * $viewportWidth;
 	$: if ($mobileMode) {
 		itemWidth = (24 / 100) * $viewportHeight;
 	} else if (itemWidth < 150) {
+		itemWidth = 130;
+	} else if (itemWidth > 150) {
 		itemWidth = 150;
-	} else {
-		itemWidth = defaultItemWidth;
 	}
 
 	let activeItem = 'character';

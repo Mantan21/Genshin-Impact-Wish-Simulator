@@ -3,16 +3,20 @@
 	import MyFund from '$lib/components/utility/MyFund.svelte';
 	import { genesis, primogem, starglitter, stardust } from '$lib/store/stores';
 	export let itemToBuy = '';
+
+	const isPaimon = ['intertwined', 'acquaint'].includes(itemToBuy);
 </script>
 
 <div class="funds" in:fly={{ y: -15, duration: 300 }}>
 	<div class="fates">
-		{#if ['intertwined', 'acquaint'].includes(itemToBuy)}
+		{#if isPaimon}
 			<MyFund type="starglitter">{$starglitter}</MyFund>
 			<MyFund type="stardust">{$stardust}</MyFund>
 		{/if}
 		<MyFund type="primogem" increament={false}>{$primogem}</MyFund>
-		<MyFund type="genesis">{$genesis}</MyFund>
+		{#if !isPaimon}
+			<MyFund type="genesis">{$genesis}</MyFund>
+		{/if}
 	</div>
 </div>
 

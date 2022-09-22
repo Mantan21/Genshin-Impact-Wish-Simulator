@@ -11,8 +11,8 @@
 		muted,
 		viewportHeight
 	} from '$lib/store/stores';
-	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import { localBalance } from '$lib/store/localstore';
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
 
 	export let showMeteor = false;
@@ -71,8 +71,7 @@
 
 	const skip = () => {
 		[v3star, v4starSingle, v4star, v5starSingle, v5star].forEach((video) => {
-			video.pause();
-			video.currentTime = 0;
+			video.load();
 			video.style.display = 'none';
 		});
 		dispatch('skiped');
