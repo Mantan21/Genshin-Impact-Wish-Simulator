@@ -35,7 +35,7 @@
 	const importChunks = async () => {
 		// Splitting Chunks
 		PrevBanner = (await import('../lib/components/wish/PreviousBannerList.svelte')).default;
-		DetailsSection = (await import('../lib/components/details/Details.svelte')).default;
+		DetailsSection = (await import('../lib/components/details/MainDetails.svelte')).default;
 		HistorySection = (await import('../lib/components/history/MainHistory.svelte')).default;
 		InventorySection = (await import('../lib/components/inventory/MainInventory.svelte')).default;
 		ShopSection = (await import('../lib/components/shop/MainShop.svelte')).default;

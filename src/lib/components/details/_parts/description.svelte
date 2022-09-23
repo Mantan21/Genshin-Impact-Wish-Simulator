@@ -1,9 +1,10 @@
 <script>
 	import { t, json } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
-	import Ads from '../utility/Iklan.svelte';
+	import Ads from '../../utility/Iklan.svelte';
 
 	export let bannerType;
+	export let tplVersion = 'v1';
 	export let bannerName = '';
 	export let data = [];
 
@@ -89,84 +90,90 @@
 	</title>
 </svelte:head>
 
-<Ads type="banner" />
+<div class="description" class:v2={tplVersion === 'v2'}>
+	{#if tplVersion === 'v2'}
+		<h2><span>{$t('details.wishDetails')} </span> <span class="line" /></h2>
+	{/if}
 
-{#if bannerType === 'beginner'}
-	<h3>{$t('details.beginnerInfo')}</h3>
-{:else if ['events', 'weapons'].includes(bannerType)}
-	<h3>{$t('details.limited')}</h3>
-{:else}
-	<h3>{$t('details.permanent')}</h3>
-{/if}
+	<Ads type="banner" />
 
-{#if bannerType === 'beginner'}
-	{#each data[0].items as { name, vision }, x}
-		{#each $json('details.beginner') as text}
+	{#if bannerType === 'beginner'}
+		<h3>{$t('details.beginnerInfo')}</h3>
+	{:else if ['events', 'weapons'].includes(bannerType)}
+		<h3>{$t('details.limited')}</h3>
+	{:else}
+		<h3>{$t('details.permanent')}</h3>
+	{/if}
+
+	{#if bannerType === 'beginner'}
+		{#each data[0].items as { name, vision }, x}
+			{#each $json('details.beginner') as text}
+				<p>
+					{@html $t(text, {
+						values: {
+							character: ` <span class="custom ${vision}-flat"> ${charNameAndTitle(
+								name,
+								vision
+							)} </span> `,
+							...valuesToToChange
+						}
+					})}
+				</p>
+			{/each}
+		{/each}
+	{:else if bannerType === 'standard'}
+		{#each $json('details.standard') as text}
+			<p>
+				{@html $t(text, {
+					values: { bannerName: highlightBannerName(bannerName, { vision: 'std' }) }
+				})}
+			</p>
+		{/each}
+	{:else if bannerType === 'events'}
+		{#each $json('details.events') as text}
 			<p>
 				{@html $t(text, {
 					values: {
-						character: ` <span class="custom ${vision}-flat"> ${charNameAndTitle(
-							name,
-							vision
-						)} </span> `,
-						...valuesToToChange
+						bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
+						featuredCharacter: getFeaturedChars({ ...item5Star[0] }),
+						rateupCharacters: getRateupChars(item4Star)
 					}
 				})}
 			</p>
 		{/each}
-	{/each}
-{:else if bannerType === 'standard'}
-	{#each $json('details.standard') as text}
-		<p>
-			{@html $t(text, {
-				values: { bannerName: highlightBannerName(bannerName, { vision: 'std' }) }
-			})}
-		</p>
-	{/each}
-{:else if bannerType === 'events'}
-	{#each $json('details.events') as text}
-		<p>
-			{@html $t(text, {
-				values: {
-					bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
-					featuredCharacter: getFeaturedChars({ ...item5Star[0] }),
-					rateupCharacters: getRateupChars(item4Star)
-				}
-			})}
-		</p>
-	{/each}
-{:else if bannerType === 'weapons'}
-	{#each $json('details.weapons') as text}
-		<p>
-			{@html $t(text, {
-				values: {
-					bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
-					featuredWeapon1: getFeaturedWeapon({ ...item5Star[0] }),
-					featuredWeapon2: getFeaturedWeapon({ ...item5Star[1] }),
-					rateupWeapons: getRateupWeapons(item4Star)
-				}
-			})}
-		</p>
-	{/each}
-{/if}
-
-<p>
-	{#if ['weapons', 'standard'].includes(bannerType)}
-		{@html convertion('fiveStar')}
+	{:else if bannerType === 'weapons'}
+		{#each $json('details.weapons') as text}
+			<p>
+				{@html $t(text, {
+					values: {
+						bannerName: highlightBannerName(bannerName, { ...item5Star[0] }),
+						featuredWeapon1: getFeaturedWeapon({ ...item5Star[0] }),
+						featuredWeapon2: getFeaturedWeapon({ ...item5Star[1] }),
+						rateupWeapons: getRateupWeapons(item4Star)
+					}
+				})}
+			</p>
+		{/each}
 	{/if}
-	{@html convertion('fourStar')}
-	{@html convertion('threeStar')}
-</p>
 
-<br />
-<p>{@html $t('details.duplicate.heading')}</p>
-{#if bannerType !== 'weapons'} <p>{@html duplicateDetails(5)}</p> {/if}
-<p>{@html duplicateDetails(4)}</p>
+	<p>
+		{#if ['weapons', 'standard'].includes(bannerType)}
+			{@html convertion('fiveStar')}
+		{/if}
+		{@html convertion('fourStar')}
+		{@html convertion('threeStar')}
+	</p>
 
-{#if ['events', 'weapons'].includes(bannerType)}
-	<p>{$t('details.alert', { values: { wishName: $t(`wish.banner.${bannerType}`) } })}</p>
-{/if}
-<Ads type="banner" />
+	<br />
+	<p>{@html $t('details.duplicate.heading')}</p>
+	{#if bannerType !== 'weapons'} <p>{@html duplicateDetails(5)}</p> {/if}
+	<p>{@html duplicateDetails(4)}</p>
+
+	{#if ['events', 'weapons'].includes(bannerType)}
+		<p>{$t('details.alert', { values: { wishName: $t(`wish.banner.${bannerType}`) } })}</p>
+	{/if}
+	<Ads type="banner" />
+</div>
 
 <style>
 	p :global(span):not(.custom) {
@@ -201,14 +208,33 @@
 		font-size: 150%;
 		line-height: 170%;
 		margin: 1rem 0;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
+
+	.v2 p {
+		font-size: calc(0.017 * var(--content-width));
+	}
+
+	h2 {
+		font-size: calc(0.015 * var(--content-width));
+		padding: calc(0.007 * var(--content-width)) 0;
+		display: flex;
+	}
+
 	h3 {
 		padding: 0.2rem 0.7rem;
 		font-weight: 400;
 		color: #fff;
 		background-color: #a28052;
 		vertical-align: middle;
+	}
+
+	:not(.v2) p,
+	:not(.v2) h3 {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
+
+	.v2 h3 {
+		background-color: #6f778a;
+		font-size: calc(0.015 * var(--content-width));
 	}
 </style>

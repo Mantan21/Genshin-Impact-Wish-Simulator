@@ -1,0 +1,234 @@
+<script>
+	import { t } from 'svelte-i18n';
+	import { getName } from '$lib/helpers/nameText';
+
+	export let data = { featured: [], items: [], banner: '' };
+	const { featured, items, banner } = data;
+</script>
+
+{#if ['events', 'weapons'].includes(banner)}
+	<h2><span> {$t('details.increasedRate')} </span> <span class="line" /></h2>
+
+	<h3 class="star5">
+		<div class="star">
+			{#each Array(5) as i} <i class="gi-star" /> {/each}
+		</div>
+		<span>
+			{$t('details.percentageDrop', { values: { rarity: 5, percentage: '50.000%' } })}
+		</span>
+	</h3>
+
+	<div class="row">
+		{#if banner === 'events'}
+			<div class="name">
+				<span>
+					{$t(`${featured[0].name}.name`)}
+				</span>
+			</div>
+			<div class="pic">
+				<div class="pic-item">
+					<picture class="star5">
+						<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
+						<img
+							src="/images/characters/face/{featured[0].name}.webp"
+							alt={getName(featured[0].name)}
+						/>
+					</picture>
+					<caption>Lv.1</caption>
+				</div>
+			</div>
+		{:else}
+			<div class="name">
+				{#each items[0].items as { name }}
+					<span>{$t(name)}</span>
+				{/each}
+			</div>
+			<div class="pic">
+				{#each items[0].items as { name, type }}
+					<div class="pic-item">
+						<picture class="star5">
+							<img
+								src="/images/weapons/{type}/5star/{name}.webp"
+								alt={getName(name)}
+								class={type}
+							/>
+						</picture>
+						<caption>Lv.1</caption>
+					</div>
+				{/each}
+			</div>
+		{/if}
+	</div>
+
+	<h3 class="star4">
+		<div class="star">
+			{#each Array(4) as i} <i class="gi-star" /> {/each}
+		</div>
+		<i class="gi-star" style="color: transparent;" />
+		<span>
+			{$t('details.percentageDrop', { values: { rarity: 4, percentage: '50.000%' } })}
+		</span>
+	</h3>
+
+	<div class="row">
+		<div class="name">
+			{#each items[1].items as { name }}
+				<span>{$t(`${name}${banner === 'events' ? '.name' : ''}`)}</span>
+			{/each}
+		</div>
+
+		<div class="pic">
+			{#if banner === 'events'}
+				{#each items[1].items as { name, vision }}
+					<div class="pic-item">
+						<picture class="star4">
+							<i class="gi-{vision} {vision} icon-gradient filter-drop" />
+							<img src="/images/characters/face/{name}.webp" alt={getName(name)} />
+						</picture>
+						<caption>Lv.1</caption>
+					</div>
+				{/each}
+			{:else}
+				{#each items[1].items as { name, type }}
+					<div class="pic-item">
+						<picture class="star4">
+							<img
+								src="/images/weapons/{type}/4star/{name}.webp"
+								alt={getName(name)}
+								class={type}
+							/>
+						</picture>
+						<caption>Lv.1</caption>
+					</div>
+				{/each}
+			{/if}
+		</div>
+	</div>
+{/if}
+
+<style>
+	.beginner :global(span) {
+		color: #cba885;
+	}
+
+	.gi-star {
+		color: #feca33;
+	}
+
+	h2 {
+		font-size: calc(0.015 * var(--content-width));
+		padding: calc(0.007 * var(--content-width)) 0;
+		display: flex;
+	}
+
+	h2 span {
+		color: var(--text-color);
+		width: fit-content;
+		white-space: nowrap;
+		padding-right: 1rem;
+	}
+
+	h3 {
+		padding: 0.2rem 0.7rem;
+		font-weight: 400;
+		font-size: calc(0.014 * var(--content-width));
+		color: #fff;
+		display: flex;
+		align-items: center;
+		line-height: 0;
+		padding: 0.5% 1%;
+	}
+	h3 span {
+		padding-left: 2rem;
+		color: #fff;
+	}
+	h3.star5 {
+		background-color: #cfb383;
+	}
+	h3.star4 {
+		background-color: #b5a8c9;
+	}
+
+	.row {
+		display: flex;
+		width: 100%;
+		padding: 1%;
+	}
+	.name {
+		flex-basis: 35%;
+	}
+	.name span {
+		font-size: calc(0.014 * var(--content-width));
+		display: block;
+		padding: 1% 0;
+		color: var(--text-color);
+	}
+	.pic {
+		flex-basis: 65%;
+		padding-bottom: 2%;
+	}
+
+	.pic-item {
+		margin-right: 1.5%;
+		display: inline-block;
+		position: relative;
+	}
+
+	picture {
+		height: calc(0.1 * var(--content-width));
+		display: block;
+		aspect-ratio: 1/1;
+		background-size: cover;
+		position: relative;
+		overflow: hidden;
+	}
+
+	img {
+		width: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	img.claymore {
+		transform: rotate(18deg) scale(1.15) translateX(-0.7em);
+	}
+
+	img.bow {
+		transform: rotate(10deg) scale(1.25) translate(-0.5em, 0em);
+	}
+
+	img.polearm {
+		transform: rotate(10deg) scale(1.5) translate(-12%, 12%);
+		height: 200%;
+	}
+
+	img.sword {
+		transform: rotate(10deg) scale(1.2) translateY(-1em) translate(-0.2em, 0.5em);
+	}
+
+	picture.star5 {
+		background-image: url('/images/utility/5star-bg.webp');
+	}
+	picture.star4 {
+		background-image: url('/images/utility/4star-bg.webp');
+	}
+
+	picture i {
+		position: absolute;
+		z-index: +1;
+		top: 0;
+		left: 0;
+		font-size: 1.3rem;
+	}
+
+	caption {
+		font-size: calc(0.013 * var(--content-width));
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(120%);
+	}
+</style>
