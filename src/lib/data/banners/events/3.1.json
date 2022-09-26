@@ -1,0 +1,72 @@
+{
+	"patch": 3.1,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "twilight-arbiter-1",
+							"character": "cyno",
+							"buttonBoxPosition": {
+								"w": 160,
+								"t": 35,
+								"l": 55
+							},
+							"textOffset": { "l": 55, "b": 10 }
+						},
+						{
+							"name": "ballad-in-goblets-4",
+							"character": "venti",
+							"buttonBoxPosition": {
+								"w": 180,
+								"t": 30,
+								"l": 50
+							},
+							"textOffset": { "l": 55, "b": 10.5 }
+						}
+					],
+
+					"rateup": ["candace", "kuki-shinobu", "sayu"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-35",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "elegy-for-the-end",
+							"type": "bow",
+							"buttonBoxPosition": {
+								"t": 5,
+								"w": 80,
+								"l": 65
+							}
+						},
+						{
+							"name": "staff-of-the-scarlet-sands",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 10,
+								"l": 30
+							}
+						}
+					],
+					"rateup": [
+						"makhaira-aquamarine",
+						"lion_s-roar",
+						"sacrificial-fragments",
+						"favonius-lance",
+						"favonius-warbow"
+					],
+					"textOffset": {
+						"featured": { "l": 41, "t": 66, "w": 30 },
+						"rateup": { "l": 73.5, "b": 17, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}

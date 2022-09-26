@@ -23,6 +23,10 @@
 		"name": "Bennett",
 		"title": "Trial by Fire"
 	},
+	"candace": {
+		"name": "Candace",
+		"title": "Golden Vow"
+	},
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Frozen Ardor"
@@ -30,6 +34,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Sprout of Rebirth"
+	},
+	"cyno": {
+		"name": "Cyno",
+		"title": "Judicator of Secrets"
 	},
 	"diluc": {
 		"name": "Diluc",

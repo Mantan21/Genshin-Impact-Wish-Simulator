@@ -124,6 +124,11 @@
 					"limited": true
 				},
 				{
+					"name": "staff-of-the-scarlet-sands",
+					"weaponType": "polearm",
+					"limited": true
+				},
+				{
 					"name": "summit-shaper",
 					"weaponType": "sword",
 					"limited": true
@@ -203,6 +208,11 @@
 				{
 					"name": "lithic-spear",
 					"weaponType": "polearm",
+					"limited": true
+				},
+				{
+					"name": "makhaira-aquamarine",
+					"weaponType": "claymore",
 					"limited": true
 				},
 				{

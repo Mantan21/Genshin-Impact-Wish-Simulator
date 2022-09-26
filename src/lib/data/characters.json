@@ -25,6 +25,16 @@
 					}
 				},
 				{
+					"name": "cyno",
+					"vision": "electro",
+					"limited": true,
+					"wishBoxPosition": {
+						"t": 83,
+						"l": 40,
+						"h": 195
+					}
+				},
+				{
 					"name": "diluc",
 					"vision": "pyro"
 				},
@@ -168,7 +178,6 @@
 				{
 					"name": "tighnari",
 					"vision": "dendro",
-					"limited": true,
 					"wishBoxPosition": {
 						"l": 50,
 						"h": 195,
@@ -267,6 +276,16 @@
 						"l": -22,
 						"t": 55,
 						"h": 190
+					}
+				},
+				{
+					"name": "candace",
+					"vision": "hydro",
+					"release": "3.1-1",
+					"wishBoxPosition": {
+						"l": 35,
+						"h": 170,
+						"t": 60
 					}
 				},
 				{

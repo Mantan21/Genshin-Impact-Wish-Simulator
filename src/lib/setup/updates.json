@@ -190,10 +190,18 @@
 		},
 		{
 			"date": "08-Sep-2022",
-			"featured": true,
 			"description": [
 				"<strong> Kokomi 3rd Rerun </strong> and <strong> Ganyu 3rd Rerun </strong> Banner already out !",
 				"Weapon Banner Updated, <b> Amos Bow </b> and <b>Everlasting Moonglow</b> are ready to pull too !"
+			]
+		},
+		{
+			"date": "26-Sep-2022",
+			"featured": true,
+			"description": [
+				"<strong> Cyno </strong> and <strong> Venti 4th Rerun </strong> Banners already out, with new 4★ Character \"<b>Candace</b>\"",
+				"Weapon Banner Updated, <b> Staff of the Scarlet Sands </b> and <b>Elegy for The End</b> are ready to pull too !",
+				"Now you can obtain Tighnari when you lose 50:50 or when you pull Standard Banner starts from version 3.1"
 			]
 		}
 	]
