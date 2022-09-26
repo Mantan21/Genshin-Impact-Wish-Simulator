@@ -3,7 +3,7 @@
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { localBalance, localWelkin } from '$lib/store/localstore';
-	import { primogem } from '$lib/store/stores';
+	import { assets, primogem } from '$lib/store/stores';
 
 	export let show;
 
@@ -34,7 +34,7 @@
 			<div class="bg" />
 			<div class="content">
 				<div class="milestone">
-					<img src="/images/utility/welkin-moon-girl.webp" alt="Welkin Moon Girl" />
+					<img src={$assets['welkin-moon-girl.webp']} alt="Welkin Moon Girl" />
 				</div>
 
 				<h3 class="title">{$t('shop.recomended.claimingBlessing')}</h3>

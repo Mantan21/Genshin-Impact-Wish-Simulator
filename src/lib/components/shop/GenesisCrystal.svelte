@@ -6,7 +6,7 @@
 	import ColumnParent from './parts/_column-parent.svelte';
 	import Column from './parts/_column.svelte';
 	import PaymentModal from './PaymentModal.svelte';
-	import { priceList } from '$lib/store/stores';
+	import { assets, priceList } from '$lib/store/stores';
 
 	let activeGenesisIndexforModal; // undefined
 	let showPaymentModal = false; //false
@@ -53,10 +53,10 @@
 	{#each genesisList as { qty, price }, i}
 		<Column style="padding:0">
 			<button on:click={() => selectGenesis(i)}>
-				<div class="content">
+				<div class="content" style="background-image: url({$assets['genesis-bg.webp']})">
 					<div class="picture">
 						<picture>
-							<img src="/images/utility/genesis-{qty}.webp" alt="Genesis Crystal {qty}" />
+							<img src={$assets[`genesis-${qty}.webp`]} alt="Genesis Crystal {qty}" />
 						</picture>
 					</div>
 					<div class="caption">
@@ -90,7 +90,6 @@
 		align-items: center;
 		overflow: hidden;
 		text-align: center;
-		background-image: url('/images/utility/genesis-bg.webp');
 		background-size: cover;
 		background-position: center center;
 		transition: all 0.2s;

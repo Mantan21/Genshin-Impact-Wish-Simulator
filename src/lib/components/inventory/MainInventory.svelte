@@ -16,7 +16,7 @@
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
+	import { assets, mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
 	import { isOutfitSet } from '$lib/helpers/wish/outfit';
 
@@ -223,7 +223,7 @@
 <section on:click={handleCancelSelect}>
 	{#each bg as b, i}
 		<img
-			src="/images/background/element-{b}-bg.webp"
+			src={$assets[`element-${b}-bg.webp`]}
 			alt="Background"
 			class="bg"
 			class:active={activeBgIndex === i}

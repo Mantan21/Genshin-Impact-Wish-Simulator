@@ -1,4 +1,5 @@
 <script>
+	import { assets } from '$lib/store/stores';
 	import { getContext } from 'svelte';
 	import Description from './_parts/description.svelte';
 	import List from './_parts/list.svelte';
@@ -28,11 +29,15 @@
 {#if tplVersion === 'v2'}
 	<div class="content-container">
 		<button class="old" on:click={() => setTpl('v1')}>Older Layout</button>
-		<div class="book" bind:clientWidth={contentWidth} style="--content-width:{contentWidth}px">
+		<div
+			class="book"
+			bind:clientWidth={contentWidth}
+			style="--content-width:{contentWidth}px; background-image:url({$assets['book.webp']})"
+		>
 			<button class="tutup" on:click={close} />
 			<div class="book-content">
 				<Title {banner} {bannerTitle} vision={featured[0]?.vision} {tplVersion} />
-				<nav>
+				<nav style="background-image: url({$assets['book-select-bg.webp']});">
 					{#if !noPromo}
 						<div class="nav-item" class:active={activeContent === 1}>
 							<button on:click={() => select(1)}> Promotional Items </button>
@@ -106,7 +111,6 @@
 		max-height: 900px;
 		aspect-ratio: 487/257;
 		overflow: hidden;
-		background-image: url('/images/utility/book.webp');
 		background-size: cover;
 		padding: calc(0.015 * var(--content-width)) calc(0.09 * var(--content-width))
 			calc(0.15 * var(--content-width));
@@ -137,7 +141,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-evenly;
-		background-image: url('/images/utility/book-select-bg.webp');
 		background-size: cover;
 		background-position: center center;
 	}

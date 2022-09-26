@@ -12,7 +12,8 @@
 		acquaint,
 		intertwined,
 		unlimitedFates,
-		patchVersion
+		patchVersion,
+		assets
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import playSfx from '$lib/helpers/audio';
@@ -93,7 +94,11 @@
 		</div>
 		<div class="right roll-button">
 			{#if bannerActiveType !== 'beginner'}
-				<button class="single wish-button" on:click={handleSingleRollClick}>
+				<button
+					class="single wish-button"
+					on:click={handleSingleRollClick}
+					style="background-image: url({$assets['button.webp']})"
+				>
 					<div class="top">{$t('wish.rollButton', { values: { count: '×1' } })}</div>
 					<div class="bottom">
 						<Icon type={fateType} />
@@ -102,7 +107,11 @@
 				</button>
 			{/if}
 
-			<button class="ten wish-button" on:click={handleMultiRollClick}>
+			<button
+				class="ten wish-button"
+				on:click={handleMultiRollClick}
+				style="background-image: url({$assets['button.webp']})"
+			>
 				{#if bannerActiveType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
@@ -179,7 +188,6 @@
 	}
 
 	.roll-button button {
-		background-image: url('/images/utility/button.webp');
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;

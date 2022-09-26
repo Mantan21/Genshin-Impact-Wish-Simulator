@@ -1,6 +1,7 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
+	import { assets } from '$lib/store/stores';
 
 	export let data = { featured: [], items: [], banner: '' };
 	const { featured, items, banner } = data;
@@ -27,7 +28,7 @@
 			</div>
 			<div class="pic">
 				<div class="pic-item">
-					<picture class="star5">
+					<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}');">
 						<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
 						<img
 							src="/images/characters/face/{featured[0].name}.webp"
@@ -46,7 +47,7 @@
 			<div class="pic">
 				{#each items[0].items as { name, type }}
 					<div class="pic-item">
-						<picture class="star5">
+						<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}')">
 							<img
 								src="/images/weapons/{type}/5star/{name}.webp"
 								alt={getName(name)}
@@ -81,7 +82,7 @@
 			{#if banner === 'events'}
 				{#each items[1].items as { name, vision }}
 					<div class="pic-item">
-						<picture class="star4">
+						<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}')">
 							<i class="gi-{vision} {vision} icon-gradient filter-drop" />
 							<img src="/images/characters/face/{name}.webp" alt={getName(name)} />
 						</picture>
@@ -91,7 +92,7 @@
 			{:else}
 				{#each items[1].items as { name, type }}
 					<div class="pic-item">
-						<picture class="star4">
+						<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}')">
 							<img
 								src="/images/weapons/{type}/4star/{name}.webp"
 								alt={getName(name)}
@@ -206,13 +207,6 @@
 
 	img.sword {
 		transform: rotate(10deg) scale(1.2) translateY(-1em) translate(-0.2em, 0.5em);
-	}
-
-	picture.star5 {
-		background-image: url('/images/utility/5star-bg.webp');
-	}
-	picture.star4 {
-		background-image: url('/images/utility/4star-bg.webp');
 	}
 
 	picture i {

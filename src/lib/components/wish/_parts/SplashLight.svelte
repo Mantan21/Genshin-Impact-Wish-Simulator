@@ -1,4 +1,5 @@
 <script>
+	import { assets } from '$lib/store/stores';
 	import { onMount } from 'svelte';
 
 	export let type = '';
@@ -20,7 +21,7 @@
 	<div class="in animate star{rarity} orbs in2" style="animation-duration: 1.2s;" />
 	<div class="in animate star{rarity} orbs in3" style="animation-duration: 1.3s;" />
 	<div class="in animate star{rarity} orbs in4" style="animation-duration: .75s;" />
-	<img src="/images/utility/splatter-{rarity}star.svg" alt="splatter" class="animate sprite" />
+	<img src={$assets[`splatter-${rarity}star.svg`]} alt="splatter" class="animate sprite" />
 {/if}
 
 {#if type === 'out'}

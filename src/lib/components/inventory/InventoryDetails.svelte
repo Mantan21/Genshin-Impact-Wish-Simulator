@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
-	import { viewportHeight, viewportWidth } from '$lib/store/stores';
+	import { assets, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/helpers/nameText';
 	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
@@ -78,7 +78,7 @@
 		class="wish-result"
 		in:fade={{ duration: 200 }}
 		out:fade={{ duration: 100 }}
-		style="height: {$viewportHeight}px"
+		style="height: {$viewportHeight}px; background-image: url({$assets['detailbg.webp']})"
 	>
 		<div class="container">
 			<button class="close" on:click={closeHandle}>
@@ -104,7 +104,7 @@
 				<div class="info">
 					{#if vision}
 						<img
-							src="/images/utility/icon-{vision}.svg"
+							src={$assets[`${vision}.svg`]}
 							alt="Vision {vision}"
 							class="anim vision filter-drop {vision}"
 						/>
@@ -145,7 +145,6 @@
 	.wish-result {
 		width: 100vw;
 		background-color: #fff;
-		background-image: url('/images/background/detailbg.webp');
 		background-size: cover;
 		background-position: center;
 		position: fixed;

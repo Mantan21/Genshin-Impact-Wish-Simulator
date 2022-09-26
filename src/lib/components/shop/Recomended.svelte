@@ -4,7 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 
 	import { outfits } from '$lib/data/outfits.json';
-	import { genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
+	import { assets, genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio';
 	import positionToStyle from '$lib/helpers/cssPosition';
@@ -128,13 +128,9 @@
 			</div>
 		{:else}
 			<div class="card welkin" in:fade={{ duration: 400 }}>
-				<img src="/images/utility/welkin-card.webp" alt="Welkin of the Blessing Moon" />
+				<img src={$assets['welkin-card.webp']} alt="Welkin of the Blessing Moon" />
 				<div class="welkin-item">
-					<img
-						src="/images/utility/welkin.webp"
-						alt="Welkin Item"
-						in:fly={{ y: -50, duration: 400 }}
-					/>
+					<img src={$assets['welkin.webp']} alt="Welkin Item" in:fly={{ y: -50, duration: 400 }} />
 				</div>
 
 				<h1>{$t('shop.recomended.welkin')}</h1>

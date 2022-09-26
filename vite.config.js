@@ -5,7 +5,7 @@ const config = {
 	plugins: [sveltekit()],
 	build: {
 		chunkSizeWarningLimit: 350,
-		target: ['es2015']
+		target: ['es2020']
 	}
 };
 

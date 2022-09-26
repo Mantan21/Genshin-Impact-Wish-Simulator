@@ -9,7 +9,8 @@
 		bannerList,
 		bannerActive,
 		muted,
-		viewportHeight
+		viewportHeight,
+		assets
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
@@ -88,10 +89,7 @@
 
 		if (videoContent.error || isNaN(videoContent.duration)) {
 			showToast = true;
-			console.error(
-				"Can't play Meteor Animation because it cannot be loaded",
-				videoContent.error.message
-			);
+			console.error("Can't play Meteor Animation because it cannot be loaded", videoContent.error);
 			return dispatch('endAnimation');
 		}
 		videoContent.style.display = 'unset';
@@ -153,41 +151,21 @@
 
 <div class="wish-output" class:show={showMeteor} style="height: {$viewportHeight}px">
 	<div class="video">
-		<video
-			bind:this={v3star}
-			preload="auto"
-			muted={$muted}
-			src="/videos/3star-single.mp4"
-			type="video/mp4"
-		/>
+		<video bind:this={v3star} muted={$muted} src={$assets['3star-single.mp4']} type="video/mp4" />
 		<video
 			bind:this={v4starSingle}
-			preload="auto"
 			muted={$muted}
-			src="/videos/4star-single.mp4"
+			src={$assets['4star-single.mp4']}
 			type="video/mp4"
 		/>
-		<video
-			bind:this={v4star}
-			preload="auto"
-			muted={$muted}
-			src="/videos/4star.mp4"
-			type="video/mp4"
-		/>
+		<video bind:this={v4star} muted={$muted} src={$assets['4star.mp4']} type="video/mp4" />
 		<video
 			bind:this={v5starSingle}
-			preload="auto"
 			muted={$muted}
-			src="/videos/5star-single.mp4"
+			src={$assets['5star-single.mp4']}
 			type="video/mp4"
 		/>
-		<video
-			bind:this={v5star}
-			preload="auto"
-			muted={$muted}
-			src="/videos/5star.mp4"
-			type="video/mp4"
-		/>
+		<video bind:this={v5star} muted={$muted} src={$assets['5star.mp4']} type="video/mp4" />
 
 		<button class="skip" on:click={skip}>{$t('wish.result.skip')} <i class="gi-caret-up" /></button>
 	</div>

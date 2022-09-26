@@ -2,7 +2,7 @@
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t, locale } from 'svelte-i18n';
-	import { viewportHeight, viewportWidth, isMobile, muted } from '$lib/store/stores';
+	import { viewportHeight, viewportWidth, isMobile, muted, assets } from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio';
 	import { getName } from '$lib/helpers/nameText';
@@ -109,10 +109,10 @@
 	});
 </script>
 
-<div class="wish-result">
+<div class="wish-result" style="background-image: url({$assets['splash-background.webp']}) ;">
 	<div class="uid">WishSimulator.App</div>
 	<img
-		src="/images/utility/genshin-logo{isCN ? '-cn' : ''}.webp"
+		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}
 		alt="genshin logo"
 		class="logo"
 		class:cn={isCN}
@@ -139,7 +139,7 @@
 
 						{#if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent">
-								<img src="/images/utility/bg-{weaponType}.webp" alt={weaponType} class="weaponbg" />
+								<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
 								<img
 									src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
 									alt={name}
@@ -165,7 +165,7 @@
 						<div class="info">
 							{#if vision}
 								<img
-									src="/images/utility/icon-{vision}.svg"
+									src={$assets[`icon-${vision}.svg`]}
 									alt="Vision {vision}"
 									class="anim vision {vision}"
 								/>
@@ -192,10 +192,7 @@
 							<div class="bonus anim">
 								{#if stelaFortuna}
 									<div class="stella stella{rarity}">
-										<img
-											src="/images/utility/stella-fortuna-{rarity}star.webp"
-											alt="Stella Formula"
-										/>
+										<img src={$assets[`stella-fortuna-${rarity}star.webp`]} alt="Stella Formula" />
 									</div>
 								{/if}
 
@@ -425,7 +422,6 @@
 		width: 100vw;
 		height: 100%;
 		background-color: #fff;
-		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 	.container {

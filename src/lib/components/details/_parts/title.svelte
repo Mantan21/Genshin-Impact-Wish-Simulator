@@ -1,4 +1,5 @@
 <script>
+	import { assets } from '$lib/store/stores';
 	import { t } from 'svelte-i18n';
 
 	export let bannerTitle;
@@ -16,7 +17,7 @@
 {#if banner === 'standard'}
 	<h1 class="standard" class:v2={tplVersion === 'v2'}>
 		{#if tplVersion === 2}
-			<img src="/images/utility/brand.png" alt="Icon" />
+			<img src={$assets['brand.png']} alt="Icon" />
 		{/if}
 		<span>
 			{$t('wish.banner.standard')} "{@html highlightBannerName(
@@ -28,7 +29,7 @@
 {:else}
 	<h1 class={banner} class:v2={tplVersion === 'v2'}>
 		{#if tplVersion === 2}
-			<img src="/images/utility/brand.png" alt="Icon" />
+			<img src={$assets['brand.png']} alt="Icon" />
 		{/if}
 		<span>
 			{#if banner !== 'beginner'}

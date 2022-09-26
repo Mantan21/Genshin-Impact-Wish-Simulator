@@ -3,6 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
 	import { getOutfit } from '$lib/helpers/wish/outfit';
+	import { assets } from '$lib/store/stores';
 
 	export let rarity = 3;
 	export let type = 'character';
@@ -35,7 +36,11 @@
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
-	<picture class="wish-result star{rarity} {type}" on:click={handleShowDetails}>
+	<picture
+		class="wish-result star{rarity} {type}"
+		on:click={handleShowDetails}
+		style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
+	>
 		{#if type === 'character'}
 			<img src={!outfitSet ? defaultPath : outfitPath} alt={getName(name)} />
 			<span class="gi-{vision} {vision} icon-gradient filter-drop element" />
@@ -138,15 +143,6 @@
 		font-size: 0.9rem;
 		padding: 0.1rem 0.3rem;
 		color: #f0c882;
-	}
-	.star3 {
-		background-image: url('/images/utility/3star-bg.webp');
-	}
-	.star4 {
-		background-image: url('/images/utility/4star-bg.webp');
-	}
-	.star5 {
-		background-image: url('/images/utility/5star-bg.webp');
 	}
 
 	.star {

@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import { beginner } from '$lib/data/banners/beginner.json';
 import { wishPhase } from '$lib/setup/wish-setup.json';
 
+const assets = writable({});
 const pageActive = writable('index');
 const backsound = writable(false);
 const muted = writable(false);
@@ -18,7 +19,6 @@ const fatePoint = writable(0);
 const showFatepointModal = writable(false);
 const selectedCourse = writable({});
 const fatepointCounterActive = writable(false);
-
 const isAcquaintUsed = writable(true);
 
 // viewport
@@ -45,6 +45,7 @@ const priceList = writable({ genesis: {}, welkin: null });
 const query = writable('');
 
 export {
+	assets,
 	pageActive,
 	patchVersion,
 	bannerPhase,

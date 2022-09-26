@@ -11,7 +11,8 @@
 		mobileMode,
 		isAcquaintUsed,
 		bannerActive,
-		bannerList
+		bannerList,
+		assets
 	} from '$lib/store/stores';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
@@ -24,7 +25,8 @@
 
 	let innerHeight;
 	let innerWidth;
-	let isLoaded = false;
+	let isBannerLoaded = false;
+	let isloaded = false;
 
 	$: isCN = $locale?.toLowerCase().includes('cn');
 	$: viewportWidth.set(innerWidth);
@@ -42,7 +44,9 @@
 		mobileMode.set(rotate);
 	};
 
-	const loaded = () => (isLoaded = true);
+	const bannerLoaded = () => (isBannerLoaded = true);
+	setContext('bannerLoaded', bannerLoaded);
+	const loaded = () => (isloaded = true);
 	setContext('loaded', loaded);
 
 	mountLocale();
@@ -86,22 +90,20 @@
 	<Iklan head />
 </svelte:head>
 
-{#if !preview}
-	<Loader {isLoaded} />
-{/if}
+<Loader {isBannerLoaded} {preview} />
 
 <main
 	class:mobile={$mobileMode}
 	class:preview
 	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'}"
 >
-	{#if !$isLoading}
+	{#if !$isLoading && isloaded}
 		<slot />
 	{/if}
 	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
 
 	<img
-		src="/images/utility/genshin-logo{isCN ? '-cn' : ''}.webp"
+		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}
 		alt="genshin logo"
 		class="logo"
 		class:cn={isCN}

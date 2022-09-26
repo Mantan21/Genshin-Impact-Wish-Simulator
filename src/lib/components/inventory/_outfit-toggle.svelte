@@ -11,6 +11,7 @@
 		isOutfitSet
 	} from '$lib/helpers/wish/outfit';
 	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
+	import { assets } from '$lib/store/stores';
 
 	export let charName;
 	export let charRarity;
@@ -45,7 +46,10 @@
 		<div class="content">
 			<div class="column">
 				<button class:selected={!outfitSet} on:click={() => set(false)}>
-					<picture class="star{outfitRarity}">
+					<picture
+						class="star{outfitRarity}"
+						style="background-image:url('{$assets[`${outfitRarity}star-bg.webp`]}');"
+					>
 						<img src={defaultPath} alt={getName(charName)} />
 					</picture>
 					<caption>
@@ -56,7 +60,7 @@
 
 			<div class="column" class:disabled={!outfitOwned} data-text={$t('inventory.notOwned')}>
 				<button class:selected={outfitSet} on:click={() => set(true)}>
-					<picture class="star4">
+					<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
 						<img src={outfitPath} alt={getName(outfitName)} />
 					</picture>
 					<caption>
@@ -171,13 +175,6 @@
 	}
 	:global(.mobile) caption {
 		font-size: 0.7rem;
-	}
-
-	.star4 {
-		background-image: url('/images/utility/4star-bg.webp');
-	}
-	.star5 {
-		background-image: url('/images/utility/5star-bg.webp');
 	}
 
 	picture {

@@ -5,7 +5,14 @@
 	import { flip } from 'svelte/animate';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { bannerPhase, patchVersion, pageActive, bannerActive, query } from '$lib/store/stores';
+	import {
+		bannerPhase,
+		patchVersion,
+		pageActive,
+		bannerActive,
+		query,
+		assets
+	} from '$lib/store/stores';
 	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/helpers/nameText';
 	import playSfx from '$lib/helpers/audio';
@@ -177,7 +184,7 @@
 	<title>{$t('wish.banner.allBanner')} | {$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
-<section>
+<section style="background-image: url({$assets['constellation.webp']});">
 	<header transition:fly={{ y: -20 }}>
 		<h1>{$t('wish.banner.previous')}</h1>
 		<button class="close" on:click={handleCLose}>
@@ -313,7 +320,6 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		background-image: url('/images/background/constellation.webp');
 		background-size: cover;
 		color: var(--tertiary-color);
 		font-size: 0.97rem;

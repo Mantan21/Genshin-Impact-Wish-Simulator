@@ -8,6 +8,7 @@
 	import playSfx from '$lib/helpers/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import ShareScreenshot from '$lib/components/utility/ShareScreenshot.svelte';
+	import { assets } from '$lib/store/stores';
 
 	export let preview = false;
 	export let previewlist = [];
@@ -118,7 +119,10 @@
 							<div class="new">{$t('wish.result.new')}</div>
 						{/if}
 						<div class="item-body">
-							<div class="item-content">
+							<div
+								class="item-content"
+								style="background-image: url({$assets['resultcard-bg.svg']})"
+							>
 								<div class="pic">
 									{#if type === 'weapon'}
 										<img
@@ -144,13 +148,13 @@
 										<div class="icon" style="width: 100%;">
 											{#if type === 'weapon'}
 												<img
-													src="/images/utility/{weaponType}-white.svg"
+													src={$assets[`${weaponType}-white.svg`]}
 													alt="{weaponType} icon"
 													style="width: 73%; height: auto"
 												/>
 											{:else if isNew}
 												<img
-													src="/images/utility/icon-{vision}.svg"
+													src={$assets[`icon-${vision}.svg`]}
 													alt="Vision {vision}"
 													class="{vision} filter-drop vision"
 													style="height: calc(15 / 100 * var(--card-height))"
@@ -176,7 +180,7 @@
 										{#if stelaFortuna}
 											<div class="stella stella{rarity}">
 												<img
-													src="/images/utility/stella-fortuna-{rarity}star.webp"
+													src={$assets[`stella-fortuna-${rarity}star.webp`]}
 													alt="Stella Formula"
 												/>
 											</div>
@@ -414,7 +418,6 @@
 		width: 97%;
 		height: 99%;
 		clip-path: url(#wishframe);
-		background-image: url('/images/utility/resultcard-bg.svg');
 		background-size: cover;
 		background-position: center center;
 	}

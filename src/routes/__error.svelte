@@ -20,7 +20,7 @@
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
-	const loaded = getContext('loaded');
+	const loaded = getContext('isBannerLoaded');
 	onMount(loaded);
 </script>
 

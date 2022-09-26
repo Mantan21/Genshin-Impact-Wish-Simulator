@@ -77,7 +77,7 @@
 		});
 	};
 
-	const loaded = getContext('loaded');
+	const loaded = getContext('bannerLoaded');
 	const updateBannerListToShow = (showBeginner) => {
 		list = showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
 		if (Array.isArray(eventBanner)) {

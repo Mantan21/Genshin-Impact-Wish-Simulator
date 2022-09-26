@@ -9,6 +9,7 @@
 	import Column from './parts/_column.svelte';
 	import TopNav from './parts/_top-nav-parent.svelte';
 	import TopNavItem from './parts/_top-nav-item.svelte';
+	import { assets } from '$lib/store/stores';
 
 	let activeFateShop = 'starglitter';
 	let showExchangeModal = false;
@@ -63,7 +64,7 @@
 		<Column>
 			<button on:click={() => openExchangeModal(fate)}>
 				<div class="content">
-					<picture>
+					<picture style="background-image: url('{$assets['5star-bg.webp']}')">
 						<Icon type={fate} width="60%" />
 						<span> {$t(`shop.item.${fate}`)} </span>
 					</picture>
@@ -136,7 +137,6 @@
 		margin-top: -10%;
 		align-items: center;
 		position: relative;
-		background-image: url('/images/utility/5star-bg.webp');
 		background-size: cover;
 		border-bottom-right-radius: 1.4rem;
 		overflow: hidden;

@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
-	import { mobileMode, viewportHeight, viewportWidth, genesis } from '$lib/store/stores';
+	import { mobileMode, viewportHeight, viewportWidth, genesis, assets } from '$lib/store/stores';
 	import { localBalance, localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio';
 	import HistoryIDB from '$lib/store/historyIdb';
@@ -181,7 +181,7 @@
 <!-- ObtainedOutfit -->
 
 <section style="height: {$viewportHeight}px">
-	<img class="bg" src="/images/background/bg{random(1, 16)}.webp" alt="background" />
+	<img class="bg" src={$assets[`bg${random(1, 16)}.webp`]} alt="background" />
 	<div class="container">
 		<ShopNavbar
 			show={showNavbar}

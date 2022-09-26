@@ -4,6 +4,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/setup/updates.json';
 	import Modal from './ModalTpl.svelte';
+	import { assets } from '$lib/store/stores';
 
 	export let show = true;
 	let content;
@@ -32,11 +33,11 @@
 		<span style="font-size: 1rem">Support</span>
 		<div class="support">
 			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">
-				<img src="/images/utility/donate-kofi.png" alt="ko-fi icon" />
+				<img src={$assets['donate-kofi.png']} alt="ko-fi icon" />
 				<span> Ko-fi </span>
 			</a>
 			<a class="sociabuzz" href="https://sociabuzz.com/mantan21/posts" target="_blank">
-				<img src="/images/utility/sociabuzz.png" alt="Sociabuzz icon" />
+				<img src={$assets['sociabuzz.png']} alt="Sociabuzz icon" />
 				<span> Sociabuzz </span>
 			</a>
 		</div>

@@ -1,52 +1,64 @@
 <script>
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { showBeginner, mobileMode, isMobile } from '$lib/store/stores';
+	import { showBeginner, mobileMode, isMobile, assets } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
+	import { rawAssets, blobAssets } from '$lib/helpers/assets';
 
-	export let isLoaded = false;
+	export let isBannerLoaded = false;
+	export let preview = false;
 
-	const start = 0;
-	const end = 110;
+	let anyError = false;
+	let isLoaded = false;
 	let current = -1;
 
-	const progressLoader = () => {
-		const navigationTiming = performance.getEntriesByType('navigation');
-		const defaultTiming = [{ loadEventEnd: 1, connectStart: 0 }];
-		const noEntries = navigationTiming.length < 1 || !navigationTiming;
-		const { loadEventEnd, connectStart } = (noEntries ? defaultTiming : navigationTiming)[0];
-		const estimatedTime = -(loadEventEnd - connectStart);
-		const duration = parseInt((estimatedTime / 1000) % 60) * 100;
-		animateValue(duration);
+	const loaded = getContext('loaded');
+	const handleLoaded = () => {
+		loaded();
+		isLoaded = true;
 	};
 
-	const animateValue = (duration) => {
-		const range = end - start;
-		current = start;
-		const increment = end > start ? 1 : -1;
-		const stepTime = Math.abs(Math.floor(duration / range));
+	const assetInit = async () => {
+		const arr = [];
+		let i = 0;
+		for await (const ass of rawAssets) {
+			i++;
+			const { path, asset } = ass;
+			const blob = await blobAssets(path);
+			if (blob === 'error') anyError = true;
+			arr.push({ url: blob, name: asset });
+			current = ((i / rawAssets.length) * 100).toFixed();
+		}
 
-		let timer = setInterval(() => {
-			current += increment;
-			if (current === end) {
-				clearInterval(timer);
-			}
-		}, stepTime);
-	};
+		const loadedAssets = await Promise.all(arr);
+		assets.update((pv) => {
+			pv = {};
+			loadedAssets.forEach(({ url, name }) => (pv[name] = url));
+			return pv;
+		});
 
-	const show = (progress, loaded) => {
-		if (progress < end) return true;
-		if (!loaded) return true;
-		return false;
+		if (anyError === false) handleLoaded();
 	};
 
 	onMount(() => {
+		assetInit();
 		if (beginnerRoll.get() > 19) showBeginner.set(false);
-		progressLoader();
 	});
 </script>
 
-{#if show(current, isLoaded)}
+{#if anyError && !isLoaded}
+	<div class="modal">
+		<div class="modal-content">
+			<div class="msg">Some main assets cannot be loaded, this may affect your wish experience</div>
+			<div class="btn">
+				<button class="reload" on:click={() => window.location.reload()}>Reload</button>
+				<button class="open" on:click={handleLoaded}>Open Anyway</button>
+			</div>
+		</div>
+	</div>
+{/if}
+
+{#if !(isBannerLoaded && isLoaded && current >= 100) && !preview}
 	<div class="loader" out:fade={{ duration: 500, delay: 1000 }}>
 		<div class="content">
 			<div class="progress">
@@ -82,11 +94,51 @@
 {/if}
 
 <style>
+	.modal {
+		position: fixed;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(8px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.modal-content {
+		background-color: #fff;
+		border-radius: 2%;
+		width: 500px;
+		max-width: 80%;
+		padding: 2%;
+	}
+
+	.btn {
+		padding-top: 5%;
+		width: 100%;
+	}
+	button {
+		color: #fff;
+		padding: 2% 6%;
+	}
+
+	.reload {
+		background-color: #94866e;
+	}
+
+	.open {
+		background-color: #353533;
+	}
+
 	.loader {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 32px;
+		font-size: 3.2vw;
 		color: #666666;
 		width: 100%;
 		height: 100vh;
@@ -94,7 +146,13 @@
 		top: 0;
 		left: 0;
 		background-color: #fff;
-		z-index: 9999;
+		z-index: 9998;
+	}
+
+	@media screen and (max-width: 600px) {
+		.loader {
+			font-size: 4vh;
+		}
 	}
 
 	.content {

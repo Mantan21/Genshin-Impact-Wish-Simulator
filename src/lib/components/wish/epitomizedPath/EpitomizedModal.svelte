@@ -3,6 +3,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { t } from 'svelte-i18n';
 	import {
+		assets,
 		bannerList,
 		bannerPhase,
 		fatePoint,
@@ -104,10 +105,7 @@
 {#if $showFatepointModal}
 	<section class="modal" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
 		<div class="modal-content" bind:clientWidth style="--modal-width: {clientWidth}px">
-			<img
-				src="/images/utility/fatepointbook{half ? '-half' : ''}.webp"
-				alt="Fatepoint Background"
-			/>
+			<img src={$assets[`fatepointbook${half ? '-half' : ''}.webp`]} alt="Fatepoint Background" />
 			<button
 				class="close-modal"
 				on:click={() => {

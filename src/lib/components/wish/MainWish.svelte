@@ -13,7 +13,8 @@
 		backsound,
 		patchVersion,
 		bannerPhase,
-		unlimitedFates
+		unlimitedFates,
+		assets
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
 	import { APP_TITLE } from '$lib/env';
@@ -166,14 +167,8 @@
 </svelte:head>
 
 {#if bgAnimated}
-	<video
-		in:fade={{ duration: 2000 }}
-		muted
-		loop
-		autoplay
-		poster="/images/background/wish-background.webp"
-	>
-		<source src="/videos/bg.webm" type="video/webm" />
+	<video in:fade={{ duration: 2000 }} muted loop autoplay poster={$assets['wish-background.webp']}>
+		<source src={$assets['bg.webm']} type="video/webm" />
 		<track kind="captions" />
 	</video>
 {/if}
@@ -183,7 +178,7 @@
 	<WishResult list={wishResult} on:wishEnd={checkObtained} {skipSplashOneByOne} />
 {/if}
 
-<section>
+<section style="background-image: url('{$assets['wish-background.webp']}');">
 	<div class="col top">
 		<Header />
 	</div>
@@ -221,7 +216,6 @@
 		justify-content: flex-end;
 		align-items: center;
 		overflow: hidden;
-		background-image: url('/images/background/wish-background.webp');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;

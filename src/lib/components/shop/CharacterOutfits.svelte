@@ -4,7 +4,7 @@
 	import { outfits } from '$lib/data/outfits.json';
 	import { getName } from '$lib/helpers/nameText';
 	import { localOutfits } from '$lib/store/localstore';
-	import { patchVersion } from '$lib/store/stores';
+	import { assets, patchVersion } from '$lib/store/stores';
 
 	// Components
 	import Icon from '../utility/Icon.svelte';
@@ -40,7 +40,7 @@
 
 					<div
 						class="thumbnail"
-						style="background-image: url('/images/utility/{rarity}star-bg.webp');"
+						style="background-image: url('{$assets[`${rarity}star-bg.webp`]}');"
 					>
 						<picture class="star{rarity}">
 							<img src="/images/characters/outfit/thumbnail/{name}.webp" alt={getName(name)} />

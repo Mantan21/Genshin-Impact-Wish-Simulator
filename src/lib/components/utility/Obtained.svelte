@@ -5,6 +5,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import playSfx from '$lib/helpers/audio';
 	import Icon from './Icon.svelte';
+	import { assets } from '$lib/store/stores';
 
 	export let items = {
 		genesis: 0,
@@ -56,9 +57,14 @@
 			<div class="milestone">
 				{#each Object.keys(items) as key}
 					{#if items[key] > 0}
-						<div class="item {key} rarity{key === 'stardust' ? 4 : 5}" on:click|stopPropagation>
+						<div class="item {key}" on:click|stopPropagation>
 							<div class="body">
-								<div class="pic">
+								<div
+									class="pic"
+									style="background-image: url('{$assets[
+										`${key === 'stardust' ? 4 : 5}star-bg.webp`
+									]}');"
+								>
 									<Icon width="100%" type={key} />
 									<div class="star">
 										{#each Array(key === 'stardust' ? 4 : 5) as i}
@@ -158,13 +164,6 @@
 	}
 	.body {
 		background-color: #fff;
-	}
-
-	.rarity5 .pic {
-		background-image: url('/images/utility/5star-bg.webp');
-	}
-	.rarity4 .pic {
-		background-image: url('/images/utility/4star-bg.webp');
 	}
 
 	.acquaint .pic,

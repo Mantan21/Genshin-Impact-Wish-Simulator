@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import {
+		assets,
 		bannerActive,
 		bannerList,
 		bannerPhase,
@@ -175,7 +176,11 @@
 		</div>
 	{/if}
 
-	<div class="content-details" class:v2={tplVersion === 'v2'}>
+	<div
+		class="content-details"
+		class:v2={tplVersion === 'v2'}
+		style={tplVersion === 'v2' ? `background-image:url(${$assets['wish-background.webp']})` : ''}
+	>
 		{#await Data.get($patchVersion, $bannerPhase, banner)}
 			<div class="content-details">{$t('waiting')}...</div>
 		{:then data}
@@ -234,7 +239,6 @@
 	}
 
 	.content-details.v2 {
-		background-image: url('/images/background/wish-background.webp');
 		background-size: cover;
 		height: 100%;
 		display: flex;

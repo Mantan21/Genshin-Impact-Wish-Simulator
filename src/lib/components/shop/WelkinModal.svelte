@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { mobileMode, priceList } from '$lib/store/stores';
+	import { assets, mobileMode, priceList } from '$lib/store/stores';
 	import Icon from '../utility/Icon.svelte';
 	import Modal from '../utility/ModalTpl.svelte';
 
@@ -23,7 +23,7 @@
 		<div class="img-content">
 			<div class="thumbnail">
 				<picture>
-					<img src="/images/utility/welkin.webp" alt="Welkin" />
+					<img src={$assets['welkin.webp']} alt="Welkin" />
 					<caption> {$t('shop.recomended.welkin')} </caption>
 				</picture>
 				<div class="price">
