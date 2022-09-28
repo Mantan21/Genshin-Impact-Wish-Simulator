@@ -100,7 +100,14 @@
 	{#if !$isLoading && isloaded}
 		<slot />
 	{/if}
-	<a href="/" class="uid" title="Try Your Luck by this Simulator"> WishSimulator.App </a>
+	<a
+		href="/"
+		on:click|preventDefault={() => window.location.replace('/')}
+		class="uid"
+		title="Try Your Luck by this Simulator"
+	>
+		WishSimulator.App
+	</a>
 
 	<img
 		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}

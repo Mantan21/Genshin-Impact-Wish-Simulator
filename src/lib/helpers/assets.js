@@ -104,6 +104,45 @@ const images = [
 	}
 ];
 
+const previewImages = [
+	{
+		dir: 'background',
+		paths: ['splash-background.webp']
+	},
+	{
+		dir: 'utility',
+		paths: [
+			'bg-bow.webp',
+			'bg-catalyst.webp',
+			'bg-claymore.webp',
+			'bg-polearm.webp',
+			'bg-sword.webp',
+			'bow-white.svg',
+			'catalyst-white.svg',
+			'claymore-white.svg',
+			'corner.webp',
+			'cursor.png',
+			'genshin-logo-cn.webp',
+			'genshin-logo.webp',
+			'icon-anemo.svg',
+			'icon-cryo.svg',
+			'icon-dendro.svg',
+			'icon-electro.svg',
+			'icon-geo.svg',
+			'icon-hydro.svg',
+			'icon-pyro.svg',
+			'intertwined-fate.webp',
+			'masterless-stardust.webp',
+			'masterless-starglitter.webp',
+			'polearm-white.svg',
+			'resultcard-bg.svg',
+			'stella-fortuna-4star.webp',
+			'stella-fortuna-5star.webp',
+			'sword-white.svg'
+		]
+	}
+];
+
 const videos = [
 	'3star-single.mp4',
 	'4star-single.mp4',
@@ -113,15 +152,18 @@ const videos = [
 	'bg.webm'
 ];
 
-const listingAssets = () => {
+const listingAssets = (param) => {
 	const arr = [];
-	images.forEach(({ dir, paths }) => {
+	const img = param === 'preview' ? previewImages : images;
+
+	img.forEach(({ dir, paths }) => {
 		paths.forEach((path) => {
 			const pathdir = `/images/${dir}/${path}`;
 			const item = { path: pathdir, asset: path };
 			arr.push(item);
 		});
 	});
+	if (param === 'preview') return arr;
 
 	videos.forEach((v) => {
 		const pathdir = `/videos/${v}`;
@@ -133,6 +175,7 @@ const listingAssets = () => {
 };
 
 export const rawAssets = listingAssets();
+export const rawPreviewAssets = listingAssets('preview');
 
 export const blobAssets = async (path) => {
 	try {

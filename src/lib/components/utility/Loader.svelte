@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { showBeginner, mobileMode, isMobile, assets } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
-	import { rawAssets, blobAssets } from '$lib/helpers/assets';
+	import { rawPreviewAssets, rawAssets, blobAssets } from '$lib/helpers/assets';
 
 	export let isBannerLoaded = false;
 	export let preview = false;
@@ -18,16 +18,17 @@
 		isLoaded = true;
 	};
 
-	const assetInit = async () => {
+	const assetInit = async (param) => {
 		const arr = [];
 		let i = 0;
-		for await (const ass of rawAssets) {
+		const raw = param === 'preview' ? rawPreviewAssets : rawAssets;
+		for await (const ass of raw) {
 			i++;
 			const { path, asset } = ass;
 			const blob = await blobAssets(path);
 			if (blob === 'error') anyError = true;
 			arr.push({ url: blob, name: asset });
-			current = ((i / rawAssets.length) * 100).toFixed();
+			current = ((i / raw.length) * 100).toFixed();
 		}
 
 		const loadedAssets = await Promise.all(arr);
@@ -41,7 +42,7 @@
 	};
 
 	onMount(() => {
-		assetInit();
+		assetInit(preview ? 'preview' : '');
 		if (beginnerRoll.get() > 19) showBeginner.set(false);
 	});
 </script>
@@ -58,7 +59,7 @@
 	</div>
 {/if}
 
-{#if !(isBannerLoaded && isLoaded && current >= 100) && !preview}
+{#if !((isBannerLoaded || preview) && isLoaded && current >= 100)}
 	<div class="loader" out:fade={{ duration: 500, delay: 1000 }}>
 		<div class="content">
 			<div class="progress">

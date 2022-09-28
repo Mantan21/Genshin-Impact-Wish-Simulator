@@ -11,7 +11,6 @@
 	import { assets } from '$lib/store/stores';
 
 	export let preview = false;
-	export let previewlist = [];
 	export let list = [];
 	let clientHeight;
 
@@ -44,7 +43,7 @@
 		sortedWish = [...item(5), ...item(4), ...threeStar];
 	};
 
-	$: getList(preview, previewlist);
+	$: getList(preview, list);
 
 	let container;
 	let encoded;

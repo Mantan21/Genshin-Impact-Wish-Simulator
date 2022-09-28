@@ -8,6 +8,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
+	import { assets } from '$lib/store/stores';
 	import WishListResult from '$lib/components/wish/WishListResult.svelte';
 
 	let title = 'No Name';
@@ -154,8 +155,8 @@
 		<h1>You're going to unresolved page, redirecting to index ...</h1>
 	</div>
 {:else}
-	<div class="wish-result">
-		<WishListResult preview previewlist={wishlist} />
+	<div class="wish-result" style="background-image: url('{$assets['splash-background.webp']}');">
+		<WishListResult preview list={wishlist} />
 	</div>
 {/if}
 
@@ -163,7 +164,6 @@
 	.wish-result {
 		width: 100vw;
 		height: 100vh;
-		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 

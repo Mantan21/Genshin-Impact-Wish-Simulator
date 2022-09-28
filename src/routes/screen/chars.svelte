@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
-	import { viewportWidth, viewportHeight } from '$lib/store/stores';
+	import { viewportWidth, viewportHeight, assets } from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import { getOutfit } from '$lib/helpers/wish/outfit';
 
@@ -91,7 +91,7 @@
 		<h1>You're going to unresolved page, redirecting to index ...</h1>
 	</div>
 {:else}
-	<div class="wish-result">
+	<div class="wish-result" style="background-image: url('{$assets['splash-background.webp']}');">
 		<div class="container">
 			{#if data.name !== 'No Name'}
 				<div class="splatter" style={splatterStyle}>
@@ -114,7 +114,7 @@
 							{#if data.stelaFortuna}
 								<div class="stella stella{data.rarity}">
 									<img
-										src="/images/utility/stella-fortuna-{data.rarity}star.webp"
+										src={$assets[`stella-fortuna-${data.rarity}star.webp`]}
 										alt="Stella Formula"
 									/>
 								</div>
@@ -148,7 +148,6 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: #fff;
-		background-image: url('/images/background/splash-background.webp');
 		background-size: cover;
 	}
 
