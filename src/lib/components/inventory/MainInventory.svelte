@@ -105,6 +105,7 @@
 		if (!isShowAll) {
 			dataToShow = dataFromIDB.map((d) => {
 				d.isOwned = true;
+				d.outfitSet = isOutfitSet(d.name);
 				return d;
 			});
 			return;
@@ -611,6 +612,7 @@
 		transform: translateY(-100%);
 		border-radius: 0.3rem;
 		padding: 0.2rem 0;
+		z-index: +10;
 	}
 
 	.order-list a {

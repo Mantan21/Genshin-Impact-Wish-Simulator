@@ -64,12 +64,11 @@
 	}
 
 	.primogem.increament {
-		padding-right: 30px !important;
+		padding-right: 2rem !important;
 	}
 
 	button {
 		display: inline-block;
-		max-width: 112px;
 		height: 25px;
 		overflow: hidden;
 		background-color: rgba(0, 0, 0, 0.3);
@@ -79,7 +78,7 @@
 		text-align: center;
 		position: relative;
 		margin: 0 8px;
-		padding: 0 15px 0 30px;
+		padding: 0 1rem 0 1.85rem;
 		border: 1px solid #656565;
 	}
 
@@ -91,12 +90,8 @@
 	}
 
 	@media screen and (max-width: 400px) {
-		button {
-			max-width: 80px;
-		}
 		.primogem {
 			margin-bottom: 2px;
-			padding: 0 30px;
 		}
 
 		.gi-plus {

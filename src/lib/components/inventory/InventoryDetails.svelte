@@ -104,7 +104,7 @@
 				<div class="info">
 					{#if vision}
 						<img
-							src={$assets[`${vision}.svg`]}
+							src={$assets[`icon-${vision}.svg`]}
 							alt="Vision {vision}"
 							class="anim vision filter-drop {vision}"
 						/>

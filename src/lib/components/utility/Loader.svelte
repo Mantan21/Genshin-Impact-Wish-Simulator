@@ -28,7 +28,7 @@
 			const blob = await blobAssets(path);
 			if (blob === 'error') anyError = true;
 			arr.push({ url: blob, name: asset });
-			current = ((i / raw.length) * 100).toFixed();
+			current = (i / raw.length) * 100;
 		}
 
 		const loadedAssets = await Promise.all(arr);
@@ -74,14 +74,14 @@
 				</div>
 				<div class="blend">
 					<div class="unfilled" />
-					<div class="filled animate" style="width:{current}%" />
+					<div class="filled animate" style="width:{current.toFixed(2)}%" />
 				</div>
 			</div>
 
 			{#if current < 0}
 				<div class="text connecting" transition:fade>Connecting</div>
 			{:else}
-				<div class="text" in:fade>{current > 99 ? 100 : current}%</div>
+				<div class="text" in:fade>{current > 99 ? 100 : current.toFixed()}%</div>
 			{/if}
 
 			{#if $isMobile && !$mobileMode}

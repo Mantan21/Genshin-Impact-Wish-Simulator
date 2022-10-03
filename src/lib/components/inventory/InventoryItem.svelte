@@ -15,7 +15,7 @@
 	export let outfitSet;
 
 	let countInfo;
-	if (type === 'character') {
+	$: if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	} else {
 		countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
