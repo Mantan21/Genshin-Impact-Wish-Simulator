@@ -249,7 +249,7 @@
 					"name": "amber",
 					"rarity": 4,
 					"vision": "pyro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 60,
 						"l": 70
@@ -258,7 +258,7 @@
 				{
 					"name": "barbara",
 					"vision": "hydro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 70
 					}
@@ -266,12 +266,12 @@
 				{
 					"name": "beidou",
 					"vision": "electro",
-					"release": "1.0-1"
+					"release": "1.0-0"
 				},
 				{
 					"name": "bennett",
 					"vision": "pyro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"l": -22,
 						"t": 55,
@@ -291,7 +291,7 @@
 				{
 					"name": "chongyun",
 					"vision": "cryo",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 40,
@@ -311,7 +311,7 @@
 				{
 					"name": "diona",
 					"vision": "cryo",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 50,
 						"l": 80,
@@ -331,7 +331,7 @@
 				{
 					"name": "fischl",
 					"vision": "electro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 70,
 						"l": 35
@@ -350,7 +350,7 @@
 				{
 					"name": "kaeya",
 					"vision": "cryo",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"l": 20,
 						"t": 82,
@@ -379,17 +379,17 @@
 				{
 					"name": "lisa",
 					"vision": "electro",
-					"release": "1.0-1"
+					"release": "1.0-0"
 				},
 				{
 					"name": "ningguang",
 					"vision": "geo",
-					"release": "1.0-1"
+					"release": "1.0-0"
 				},
 				{
 					"name": "noelle",
 					"vision": "geo",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"t": 70
 					}
@@ -397,7 +397,7 @@
 				{
 					"name": "razor",
 					"vision": "electro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"l": -5,
 						"t": 65
@@ -436,7 +436,7 @@
 				{
 					"name": "sucrose",
 					"vision": "anemo",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"h": 175,
 						"t": 72
@@ -455,7 +455,7 @@
 				{
 					"name": "xiangling",
 					"vision": "pyro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"l": 120,
 						"t": 66,
@@ -465,7 +465,7 @@
 				{
 					"name": "xingqiu",
 					"vision": "hydro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"h": 200,
 						"t": 80,
@@ -475,7 +475,7 @@
 				{
 					"name": "xinyan",
 					"vision": "pyro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"h": 200,
 						"t": 72
@@ -484,7 +484,7 @@
 				{
 					"name": "yanfei",
 					"vision": "pyro",
-					"release": "1.0-1",
+					"release": "1.0-0",
 					"wishBoxPosition": {
 						"l": 160,
 						"t": 70
