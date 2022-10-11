@@ -72,7 +72,8 @@
 					"vision": "anemo",
 					"wishBoxPosition": {
 						"t": 80,
-						"h": 200
+						"h": 190,
+						"l": 85
 					}
 				},
 				{
@@ -118,7 +119,7 @@
 					"wishBoxPosition": {
 						"t": 43,
 						"h": 160,
-						"l": 100
+						"l": 45
 					}
 				},
 				{
@@ -244,9 +245,9 @@
 					"vision": "geo",
 					"limited": true,
 					"wishBoxPosition": {
-						"t": 94,
+						"t": 80,
 						"l": 80,
-						"h": 240
+						"h": 200
 					}
 				}
 			]
@@ -269,13 +270,17 @@
 					"vision": "hydro",
 					"release": "1.0-0",
 					"wishBoxPosition": {
-						"t": 70
+						"t": 75,
+						"h": 155
 					}
 				},
 				{
 					"name": "beidou",
 					"vision": "electro",
-					"release": "1.0-0"
+					"release": "1.0-0",
+					"wishBoxPosition": {
+						"l": 35
+					}
 				},
 				{
 					"name": "bennett",
@@ -342,8 +347,9 @@
 					"vision": "electro",
 					"release": "1.0-0",
 					"wishBoxPosition": {
-						"t": 70,
-						"l": 35
+						"t": 65,
+						"l": 10,
+						"h": 170
 					}
 				},
 				{
