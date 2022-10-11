@@ -57,6 +57,11 @@
 					"limited": true
 				},
 				{
+					"name": "key-of-khaj-nisut",
+					"weaponType": "sword",
+					"limited": true
+				},
+				{
 					"name": "lost-prayer-to-the-sacred-winds",
 					"weaponType": "catalyst"
 				},
@@ -252,8 +257,7 @@
 				},
 				{
 					"name": "rust",
-					"weaponType": "bow",
-					"style": ""
+					"weaponType": "bow"
 				},
 				{
 					"name": "sacrificial-bow",
@@ -272,6 +276,11 @@
 					"weaponType": "sword"
 				},
 				{
+					"name": "wandering-evenstar",
+					"weaponType": "catalyst",
+					"limited": true
+				},
+				{
 					"name": "wavebreaker_s-fin",
 					"weaponType": "polearm",
 					"limited": true
@@ -279,6 +288,11 @@
 				{
 					"name": "wine-and-song",
 					"weaponType": "catalyst",
+					"limited": true
+				},
+				{
+					"name": "xiphos-moonlight",
+					"weaponType": "sword",
 					"limited": true
 				}
 			]

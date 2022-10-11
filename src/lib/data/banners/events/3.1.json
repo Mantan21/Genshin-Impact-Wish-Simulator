@@ -67,6 +67,73 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "twirling-lotus-1",
+							"character": "nilou",
+							"buttonBoxPosition": {
+								"w": 145,
+								"t": 35,
+								"l": 55
+							},
+							"textOffset": { "l": 55, "b": 10 }
+						},
+						{
+							"name": "secretum-secretorum-3",
+							"character": "albedo",
+							"buttonBoxPosition": {
+								"w": 150,
+								"t": 30,
+								"l": 50
+							},
+							"textOffset": { "l": 55, "b": 10.5 }
+						}
+					],
+
+					"rateup": ["beidou", "barbara", "xiangling"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-36",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "key-of-khaj-nisut",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"t": -10,
+								"w": 90,
+								"l": 30
+							}
+						},
+						{
+							"name": "primordial-jade-cutter",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"w": 90,
+								"l": 65,
+								"t": -10
+							}
+						}
+					],
+					"rateup": [
+						"xiphos-moonlight",
+						"dragon_s-bane",
+						"sacrificial-bow",
+						"rainslasher",
+						"wandering-evenstar"
+					],
+					"textOffset": {
+						"featured": { "l": 41, "t": 66 },
+						"rateup": { "l": 73.5, "b": 17, "w": 20 }
+					}
+				}
+			}
 		}
 	]
 }

@@ -130,6 +130,15 @@
 					}
 				},
 				{
+					"name": "nilou",
+					"vision": "hydro",
+					"wishBoxPosition": {
+						"l": 70,
+						"h": 200,
+						"t": 66
+					}
+				},
+				{
 					"name": "qiqi",
 					"vision": "cryo",
 					"wishBoxPosition": {

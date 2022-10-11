@@ -87,7 +87,9 @@
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
 
-	<Iklan head />
+	{#if isloaded}
+		<Iklan head />
+	{/if}
 </svelte:head>
 
 <Loader {isBannerLoaded} {preview} />
