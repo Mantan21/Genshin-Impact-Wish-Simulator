@@ -46,10 +46,7 @@
 		<div class="content">
 			<div class="column">
 				<button class:selected={!outfitSet} on:click={() => set(false)}>
-					<picture
-						class="star{outfitRarity}"
-						style="background-image:url('{$assets[`${outfitRarity}star-bg.webp`]}');"
-					>
+					<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
 						<img src={defaultPath} alt={getName(charName)} />
 					</picture>
 					<caption>
@@ -60,7 +57,10 @@
 
 			<div class="column" class:disabled={!outfitOwned} data-text={$t('inventory.notOwned')}>
 				<button class:selected={outfitSet} on:click={() => set(true)}>
-					<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
+					<picture
+						class="star{outfitRarity}"
+						style="background-image:url('{$assets[`${outfitRarity}star-bg.webp`]}');"
+					>
 						<img src={outfitPath} alt={getName(outfitName)} />
 					</picture>
 					<caption>

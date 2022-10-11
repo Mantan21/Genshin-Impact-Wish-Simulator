@@ -307,13 +307,13 @@
 	}
 
 	.purchase-button {
-		width: 55%;
+		width: 48%;
 		text-align: right;
 		margin-top: auto;
 		margin-bottom: 2.5%;
 	}
 	.purchase-button .caption {
-		font-size: calc(0.035 * var(--content-width));
+		font-size: calc(0.029 * var(--content-width));
 	}
 	.card-stroke {
 		line-height: 150%;

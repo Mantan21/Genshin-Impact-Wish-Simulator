@@ -153,10 +153,10 @@
 	.row {
 		display: flex;
 		width: 100%;
-		padding: 1%;
 	}
 	.name {
 		flex-basis: 35%;
+		padding: 1.5%;
 	}
 	.name span {
 		font-size: calc(0.014 * var(--content-width));
@@ -170,7 +170,7 @@
 	}
 
 	.pic-item {
-		margin-right: 1.5%;
+		margin: 2% 1.5% 2% 0;
 		display: inline-block;
 		position: relative;
 	}
