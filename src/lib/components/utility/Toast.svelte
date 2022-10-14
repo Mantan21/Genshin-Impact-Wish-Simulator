@@ -25,7 +25,7 @@
 		position: fixed;
 		z-index: 999;
 		left: 50%;
-		top: 1rem;
+		top: 7%;
 		transform: translateX(-50%);
 		font-size: 0.7rem;
 	}

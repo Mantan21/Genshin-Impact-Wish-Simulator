@@ -2,10 +2,10 @@
 	import { assets } from '$lib/store/stores';
 	import { t } from 'svelte-i18n';
 
-	export let bannerTitle;
-	export let banner;
-	export let vision;
-	export let tplVersion;
+	export let bannerTitle = '';
+	export let banner = '';
+	export let vision = '';
+	export let tplVersion = '';
 
 	const highlightBannerName = (bannerName, vision = '') => {
 		const splited = bannerName.split(' ');
@@ -14,9 +14,14 @@
 	};
 </script>
 
-{#if banner === 'standard'}
+{#if banner === 'history'}
+	<h1 class="v2">
+		<img src={$assets['brand.png']} alt="Icon" />
+		<span> {$t('history.title')}</span>
+	</h1>
+{:else if banner === 'standard'}
 	<h1 class="standard" class:v2={tplVersion === 'v2'}>
-		{#if tplVersion === 2}
+		{#if tplVersion === 'v2'}
 			<img src={$assets['brand.png']} alt="Icon" />
 		{/if}
 		<span>
@@ -28,7 +33,7 @@
 	</h1>
 {:else}
 	<h1 class={banner} class:v2={tplVersion === 'v2'}>
-		{#if tplVersion === 2}
+		{#if tplVersion === 'v2'}
 			<img src={$assets['brand.png']} alt="Icon" />
 		{/if}
 		<span>
@@ -49,6 +54,7 @@
 		display: flex;
 		align-items: center;
 		position: relative;
+		font-family: 'Genshin Impact';
 	}
 	:global(.mobile) h1 {
 		font-size: 1.3rem;
@@ -56,9 +62,9 @@
 
 	h1.v2 {
 		background-color: transparent;
-		font-size: calc(0.023 * var(--content-width));
+		font-size: calc(0.022 * var(--content-width));
 		vertical-align: middle;
-		padding: calc(0.015 * var(--content-width)) 0;
+		padding: calc(0.01 * var(--content-width)) 0;
 	}
 
 	h1 img {

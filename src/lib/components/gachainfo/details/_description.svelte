@@ -228,11 +228,6 @@
 		vertical-align: middle;
 	}
 
-	:not(.v2) p,
-	:not(.v2) h3 {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	}
-
 	.v2 h3 {
 		background-color: #6f778a;
 		font-size: calc(0.015 * var(--content-width));

@@ -24,10 +24,9 @@
 	import MainWish from '$lib/components/wish/MainWish.svelte';
 
 	let PrevBanner;
-	let DetailsSection;
+	let GachaInfo;
 	let ShopSection;
 	let InventorySection;
-	let HistorySection;
 	let Obtained;
 	let WelkinCheckin;
 	let setBannerVersionAndPhase;
@@ -35,8 +34,7 @@
 	const importChunks = async () => {
 		// Splitting Chunks
 		PrevBanner = (await import('../lib/components/wish/PreviousBannerList.svelte')).default;
-		DetailsSection = (await import('../lib/components/details/MainDetails.svelte')).default;
-		HistorySection = (await import('../lib/components/history/MainHistory.svelte')).default;
+		GachaInfo = (await import('../lib/components/gachainfo/GachaInfo.svelte')).default;
 		InventorySection = (await import('../lib/components/inventory/MainInventory.svelte')).default;
 		ShopSection = (await import('../lib/components/shop/MainShop.svelte')).default;
 		Obtained = (await import('../lib/components/utility/Obtained.svelte')).default;
@@ -188,11 +186,11 @@
 {/if}
 
 {#if $pageActive === 'details'}
-	<svelte:component this={DetailsSection} />
+	<svelte:component this={GachaInfo} page="details" />
 {/if}
 
 {#if $pageActive === 'history'}
-	<svelte:component this={HistorySection} />
+	<svelte:component this={GachaInfo} page="history" />
 {/if}
 
 {#if $pageActive === 'inventory'}

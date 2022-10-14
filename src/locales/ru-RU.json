@@ -198,6 +198,7 @@
 		}
 	},
 	"history": {
+		"title": "История Гача",
 		"text": "История",
 		"resetButton": "Перезагрузить",
 		"resetPromptTitle": "Сбросить историю ?",

@@ -22,7 +22,7 @@
 	<div class="row">
 		{#if banner === 'events'}
 			<div class="name">
-				<span>
+				<span class="{featured[0].vision}-flat">
 					{$t(`${featured[0].name}.name`)}
 				</span>
 			</div>
@@ -35,13 +35,18 @@
 							alt={getName(featured[0].name)}
 						/>
 					</picture>
+					<span class="stars">
+						{#each Array(5) as i}
+							<i class="gi-star" />
+						{/each}
+					</span>
 					<caption>Lv.1</caption>
 				</div>
 			</div>
 		{:else}
 			<div class="name">
 				{#each items[0].items as { name }}
-					<span>{$t(name)}</span>
+					<span style="color: #bd6932;">{$t(name)}</span>
 				{/each}
 			</div>
 			<div class="pic">
@@ -54,6 +59,11 @@
 								class={type}
 							/>
 						</picture>
+						<span class="stars">
+							{#each Array(5) as i}
+								<i class="gi-star" />
+							{/each}
+						</span>
 						<caption>Lv.1</caption>
 					</div>
 				{/each}
@@ -73,8 +83,10 @@
 
 	<div class="row">
 		<div class="name">
-			{#each items[1].items as { name }}
-				<span>{$t(`${name}${banner === 'events' ? '.name' : ''}`)}</span>
+			{#each items[1].items as { name, vision }}
+				<span class="{vision || 'wanderlust'}-flat"
+					>{$t(`${name}${banner === 'events' ? '.name' : ''}`)}</span
+				>
 			{/each}
 		</div>
 
@@ -86,6 +98,11 @@
 							<i class="gi-{vision} {vision} icon-gradient filter-drop" />
 							<img src="/images/characters/face/{name}.webp" alt={getName(name)} />
 						</picture>
+						<span class="stars">
+							{#each Array(4) as i}
+								<i class="gi-star" />
+							{/each}
+						</span>
 						<caption>Lv.1</caption>
 					</div>
 				{/each}
@@ -99,6 +116,11 @@
 								class={type}
 							/>
 						</picture>
+						<span class="stars">
+							{#each Array(4) as i}
+								<i class="gi-star" />
+							{/each}
+						</span>
 						<caption>Lv.1</caption>
 					</div>
 				{/each}
@@ -162,26 +184,30 @@
 		font-size: calc(0.014 * var(--content-width));
 		display: block;
 		padding: 1% 0;
-		color: var(--text-color);
 	}
 	.pic {
 		flex-basis: 65%;
-		padding-bottom: 2%;
+		padding-bottom: 1%;
 	}
 
 	.pic-item {
-		margin: 2% 1.5% 2% 0;
+		margin: 2% 1.5% 0 0;
+		padding-bottom: 4%;
 		display: inline-block;
 		position: relative;
+		background-color: #fff;
+		border-radius: 4%;
+		overflow: hidden;
 	}
 
 	picture {
-		height: calc(0.1 * var(--content-width));
+		height: calc(0.095 * var(--content-width));
 		display: block;
 		aspect-ratio: 1/1;
 		background-size: cover;
 		position: relative;
 		overflow: hidden;
+		border-bottom-right-radius: 20%;
 	}
 
 	img {
@@ -209,6 +235,14 @@
 		transform: rotate(10deg) scale(1.2) translateY(-1em) translate(-0.2em, 0.5em);
 	}
 
+	.stars {
+		position: absolute;
+		bottom: 10%;
+		left: 50%;
+		font-size: calc(0.015 * var(--content-width));
+		transform: translateX(-50%);
+	}
+
 	picture i {
 		position: absolute;
 		z-index: +1;
@@ -220,9 +254,9 @@
 	caption {
 		font-size: calc(0.013 * var(--content-width));
 		display: block;
+		width: 100%;
+		text-align: center;
 		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%) translateY(120%);
+		padding: 3%;
 	}
 </style>

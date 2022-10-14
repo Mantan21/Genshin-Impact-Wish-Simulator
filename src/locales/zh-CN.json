@@ -198,6 +198,7 @@
 		}
 	},
 	"history": {
+		"title": "扭蛋历史",
 		"text": "历史记录",
 		"resetButton": "重置",
 		"resetPromptTitle": "重置记录？",

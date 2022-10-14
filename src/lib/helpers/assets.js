@@ -38,21 +38,13 @@ const images = [
 			'4star-bg.webp',
 			'5star-bg.webp',
 			'acquaint-fate.webp',
-			'bg-bow.webp',
-			'bg-catalyst.webp',
-			'bg-claymore.webp',
-			'bg-polearm.webp',
-			'bg-sword.webp',
+			'arrow-up.png',
 			'book.webp',
 			'book-select-bg.webp',
 			'book-select-btn.webp',
 			'bow-white.svg',
 			'brand.png',
 			'button.webp',
-			'catalyst-white.svg',
-			'claymore-white.svg',
-			'corner.webp',
-			'cursor.png',
 			'donate-bnb.png',
 			'donate-btc.png',
 			'donate-dana.png',
@@ -73,30 +65,14 @@ const images = [
 			'genesis-6480.webp',
 			'genesis-bg.webp',
 			'genesis.webp',
-			'genshin-logo-cn.webp',
-			'genshin-logo.webp',
-			'icon-anemo.svg',
-			'icon-cryo.svg',
-			'icon-dendro.svg',
-			'icon-electro.svg',
-			'icon-geo.svg',
-			'icon-hydro.svg',
-			'icon-pyro.svg',
-			'intertwined-fate.webp',
-			'masterless-stardust.webp',
-			'masterless-starglitter.webp',
+			'history-select-bg.webp',
 			'menu-active.png',
 			'paypal.png',
-			'polearm-white.svg',
 			'primogem.webp',
-			'resultcard-bg.svg',
 			'sociabuzz.png',
 			'splatter-3star.svg',
 			'splatter-4star.svg',
 			'splatter-5star.svg',
-			'stella-fortuna-4star.webp',
-			'stella-fortuna-5star.webp',
-			'sword-white.svg',
 			'welkin-card.webp',
 			'welkin-moon-girl.webp',
 			'welkin.webp'
@@ -154,7 +130,7 @@ const videos = [
 
 const listingAssets = (param) => {
 	const arr = [];
-	const img = param === 'preview' ? previewImages : images;
+	const img = param === 'preview' ? previewImages : [...images, ...previewImages];
 
 	img.forEach(({ dir, paths }) => {
 		paths.forEach((path) => {
@@ -190,4 +166,3 @@ export const blobAssets = async (path) => {
 		return 'error';
 	}
 };
-

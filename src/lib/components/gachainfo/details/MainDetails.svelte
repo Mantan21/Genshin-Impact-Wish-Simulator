@@ -1,21 +1,11 @@
 <script>
-	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import {
-		assets,
-		bannerActive,
-		bannerList,
-		bannerPhase,
-		pageActive,
-		patchVersion
-	} from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio';
-	import browserState from '$lib/helpers/browserState';
+	import { bannerActive, bannerList, bannerPhase, patchVersion } from '$lib/store/stores';
 	import { beginner } from '$lib/data/banners/beginner.json';
 	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/helpers/wish/wishBase';
 	import Details from './_details.svelte';
-	import { setContext } from 'svelte';
-	import { localConfig } from '$lib/store/localstore';
+
+	export let tplVersion;
 
 	$: banner = $bannerList[$bannerActive].type;
 
@@ -39,9 +29,9 @@
 
 	const Data = {
 		async get(patch, phase, bannerType) {
-			const { data } = await import(`../../data/banners/events/${patch}.json`);
+			const { data } = await import(`../../../data/banners/events/${patch}.json`);
 			const { standardVersion, weapons, events } = data.find((d) => d.phase === phase).banners;
-			const { standard } = await import(`../../data/banners/standard/${standardVersion}.json`);
+			const { standard } = await import(`../../../data/banners/standard/${standardVersion}.json`);
 
 			drop3star = getAllWeapons(3).map(({ name, type }) => ({ name, type }));
 			this._stdDropChar5 = standard.characters.map((name) => ({ name, type: 'character' }));
@@ -149,112 +139,14 @@
 			drop4star.unshift(...rateupDrop);
 		}
 	};
-
-	const handleCLose = () => {
-		browserState.back();
-		pageActive.set('index');
-		playSfx('close');
-	};
-	setContext('close-detail', handleCLose);
-
-	let tplVersion = localConfig.get('detail-tpl') || 'v2';
-	const setTpl = (v) => {
-		localConfig.set('detail-tpl', v);
-		tplVersion = v;
-	};
-	setContext('detail-tpl', setTpl);
 </script>
 
-<section transition:fade={{ duration: 200 }}>
-	{#if tplVersion !== 'v2'}
-		<div class="header">
-			<button on:click={handleCLose}>
-				<i class="gi-reply" />
-			</button>
-
-			<button class="switchNewTpl" on:click={() => setTpl('v2')}> Switch to V2</button>
-		</div>
-	{/if}
-
-	<div
-		class="content-details"
-		class:v2={tplVersion === 'v2'}
-		style={tplVersion === 'v2' ? `background-image:url(${$assets['wish-background.webp']})` : ''}
-	>
-		{#await Data.get($patchVersion, $bannerPhase, banner)}
-			<div class="content-details">{$t('waiting')}...</div>
-		{:then data}
-			<Details
-				{tplVersion}
-				data={{ banner, bannerTitle, featured, items }}
-				drops={{ drop3star, drop4star, drop5star }}
-			/>
-		{/await}
-	</div>
-</section>
-
-<style>
-	section {
-		background-color: #ebebeb;
-		width: 100%;
-		height: 100%;
-		color: var(--text-color);
-		overflow-y: auto;
-		position: relative;
-		z-index: +1;
-	}
-
-	.header {
-		display: flex;
-		padding: 0 2%;
-		justify-content: space-between;
-		background-color: rgb(20, 18, 15);
-		width: 100%;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: +10;
-	}
-
-	.gi-reply {
-		color: #dbd7d3;
-		font-size: 2.2rem;
-		line-height: 0;
-		padding: 0.3rem 1rem;
-		display: inline-block;
-	}
-	.switchNewTpl {
-		color: darkgoldenrod;
-		text-decoration: underline;
-		transition: all 0.3s;
-	}
-	.switchNewTpl:hover {
-		color: rgb(255, 238, 213);
-	}
-
-	.content-details {
-		padding: 5rem 10% 1rem;
-		width: 100%;
-		overflow-x: hidden;
-	}
-
-	.content-details.v2 {
-		background-size: cover;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0 10%;
-		overflow-x: auto;
-	}
-
-	.content-details.v2::-webkit-scrollbar {
-		display: none;
-	}
-
-	@media screen and (max-width: 780px) {
-		.content-details {
-			padding: 1.5rem 5% 0.5rem;
-		}
-	}
-</style>
+{#await Data.get($patchVersion, $bannerPhase, banner)}
+	<div>{$t('waiting')}...</div>
+{:then data}
+	<Details
+		{tplVersion}
+		data={{ banner, bannerTitle, featured, items }}
+		drops={{ drop3star, drop4star, drop5star }}
+	/>
+{/await}

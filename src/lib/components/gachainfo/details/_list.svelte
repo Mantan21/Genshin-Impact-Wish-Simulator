@@ -208,6 +208,7 @@
 	}
 	.row.head {
 		background-color: #dbd7d3;
+		font-family: 'Genshin Impact';
 	}
 	.body .row {
 		border-top: 0;
