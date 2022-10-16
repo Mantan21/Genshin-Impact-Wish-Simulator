@@ -92,7 +92,7 @@
 	}
 	.v2 .options span {
 		border: 0;
-		padding: 5% 10%;
+		padding: calc(0.015 * var(--content-width)) calc(0.02 * var(--content-width));
 	}
 	.v2 .options span:hover {
 		background-color: #717887;

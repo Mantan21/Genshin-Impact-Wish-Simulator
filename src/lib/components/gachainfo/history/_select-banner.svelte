@@ -35,7 +35,7 @@
 
 				{#if v2}
 					<span class="arrow {showSelectList ? 'up' : 'down'}">
-						<img src="/images/utility/arrow-up.png" alt="arrow" />
+						<img src={$assets['arrow-up.png']} alt="arrow" />
 					</span>
 				{:else}
 					<i class="arrow gi-caret-{showSelectList ? 'up' : 'down'}" />
@@ -177,7 +177,7 @@
 	}
 	.v2 .item {
 		color: #fff;
-		padding: 0.5rem 2rem;
+		padding: calc(0.02 * var(--content-width)) calc(0.03 * var(--content-width));
 	}
 
 	.v2 .item.active,

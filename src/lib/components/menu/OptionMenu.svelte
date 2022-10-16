@@ -232,7 +232,7 @@
 	.select button {
 		display: block;
 		width: 100%;
-		padding: 0.15rem;
+		padding: 3%;
 	}
 
 	.select button:hover,
@@ -245,7 +245,7 @@
 		justify-content: center;
 		align-items: center;
 		line-height: 0%;
-		padding: 0.5rem;
+		padding: 5%;
 	}
 	.flag {
 		width: 1.2rem;

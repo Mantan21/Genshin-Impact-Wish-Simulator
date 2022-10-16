@@ -349,7 +349,7 @@
 		transition: all 0.2s;
 		opacity: 0.8;
 		transform-origin: left;
-		padding: 0.5rem;
+		padding: 5%;
 		width: 100%;
 		text-align: left;
 		padding-left: 2.5rem;

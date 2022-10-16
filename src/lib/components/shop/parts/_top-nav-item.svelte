@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { assets } from '$lib/store/stores';
 
 	export let active = false;
 	export let name = '';
@@ -13,7 +14,10 @@
 </script>
 
 <button class="nav-link-item" class:active on:click={select}>
-	<div class="border">
+	<div
+		class="border"
+		style={active ? `background-image:url('${$assets['shop-nav-bg.webp']}')` : ''}
+	>
 		<slot />
 	</div>
 </button>
@@ -42,9 +46,18 @@
 		padding: 0 10%;
 	}
 
-	.nav-link-item.active .border,
-	.nav-link-item:hover .border {
+	.nav-link-item.active .border {
 		color: var(--text-color);
-		background-image: url('/images/utility/shop-nav-bg.webp');
+	}
+
+	:global(.mobile) .nav-link-item {
+		height: 1.7rem;
+		font-size: 99%;
+		padding: 0;
+	}
+
+	:global(.mobile) .nav-link-item .border {
+		height: 2.3rem;
+		padding: 0 10%;
 	}
 </style>

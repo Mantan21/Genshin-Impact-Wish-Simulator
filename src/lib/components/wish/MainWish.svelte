@@ -168,7 +168,7 @@
 
 {#if bgAnimated}
 	<video in:fade={{ duration: 2000 }} muted loop autoplay poster={$assets['wish-background.webp']}>
-		<source src={$assets['bg.webm']} type="video/webm" />
+		<source src="/videos/bg.webm" type="video/webm" />
 		<track kind="captions" />
 	</video>
 {/if}

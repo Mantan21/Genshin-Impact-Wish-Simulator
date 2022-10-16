@@ -14,14 +14,16 @@
 {:else}
 	<div class="content-container">
 		<button class="old" on:click={() => setTpl('v1')}>Older Layout</button>
-		<div
-			class="book"
-			bind:clientWidth={contentWidth}
-			style="--content-width:{contentWidth}px; background-image:url({$assets['book.webp']})"
-		>
-			<button class="tutup" on:click={close} />
-			<div class="book-content">
-				<slot />
+		<div class="wrapper">
+			<div
+				class="book"
+				bind:clientWidth={contentWidth}
+				style="--content-width:{contentWidth}px; background-image:url({$assets['book.webp']})"
+			>
+				<button class="tutup" on:click={close} />
+				<div class="book-content">
+					<slot />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -34,6 +36,15 @@
 		position: relative;
 	}
 
+	.wrapper {
+		width: 100%;
+		height: 100%;
+		overflow-x: auto;
+	}
+	.wrapper::-webkit-scrollbar {
+		display: none;
+	}
+
 	.tutup {
 		width: calc(0.035 * var(--content-width));
 		aspect-ratio: 1/1;
@@ -44,7 +55,8 @@
 
 	.old {
 		position: absolute;
-		bottom: 0%;
+		z-index: +2;
+		bottom: 5%;
 		left: 50%;
 		transform: translateX(-50%) translateY(200%);
 		text-decoration: underline;
@@ -61,7 +73,6 @@
 		height: 50vh;
 		max-height: 900px;
 		aspect-ratio: 487/257;
-		overflow: hidden;
 		background-size: cover;
 		padding: calc(0.015 * var(--content-width)) calc(0.09 * var(--content-width));
 	}
@@ -76,7 +87,7 @@
 
 	:global(.mobile) .content-container,
 	:global(.mobile) .book {
-		height: 80vh !important;
+		height: 85vh !important;
 		width: auto;
 	}
 

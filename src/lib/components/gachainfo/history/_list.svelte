@@ -25,7 +25,7 @@
 		const bannerList = await getList(banner);
 		data = bannerList.map((d) => d).reverse();
 		dataToShow = filter && filter !== 'All' ? filterData(filter) : data;
-		setDataLength(dataToShow.length);
+		setDataLength(data.length);
 		return data;
 	};
 

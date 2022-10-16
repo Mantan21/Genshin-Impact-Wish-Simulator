@@ -72,6 +72,7 @@
 		width: 100%;
 		height: 100%;
 		font-family: 'Genshin Impact';
+		font-size: smaller;
 	}
 
 	.reset {

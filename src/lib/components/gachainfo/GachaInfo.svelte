@@ -38,7 +38,7 @@
 	{/if}
 
 	<div
-		class="content-details"
+		class="content-details {page}"
 		class:v2={tplVersion === 'v2'}
 		style={tplVersion === 'v2' ? `background-image:url(${$assets['wish-background.webp']})` : ''}
 	>
@@ -122,8 +122,8 @@
 	}
 
 	@media screen and (max-width: 780px) {
-		.content-details {
-			padding: 4rem 5% 0.5rem;
+		:global(main):not(.mobile) .content-details {
+			padding: 0 5% !important;
 		}
 	}
 </style>
