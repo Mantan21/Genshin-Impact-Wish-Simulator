@@ -181,7 +181,7 @@
 <!-- ObtainedOutfit -->
 
 <section style="height: {$viewportHeight}px">
-	<img class="bg" src={$assets[`bg${random(1, 16)}.webp`]} alt="background" />
+	<img class="bg" src={$assets[`bg${random(1, 25)}.webp`]} alt="background" />
 	<div class="container">
 		<ShopNavbar
 			show={showNavbar}

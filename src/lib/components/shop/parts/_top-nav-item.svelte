@@ -14,8 +14,6 @@
 
 <button class="nav-link-item" class:active on:click={select}>
 	<div class="border">
-		<i class="gi-primo-star left" />
-		<i class="gi-primo-star right" />
 		<slot />
 	</div>
 </button>
@@ -24,99 +22,29 @@
 	.nav-link-item {
 		color: #d2c69c;
 		position: relative;
-		padding: 0 3px;
-		transition: all 0.2s;
-		line-height: 120%;
+		aspect-ratio: 720/100;
+		padding: 0 7.5rem;
+		height: 2rem;
 	}
 
-	.nav-link-item::after,
-	.active::after,
-	.nav-link-item:hover::after {
+	.nav-link-item .border {
+		height: 2.7rem;
+		aspect-ratio: 669/122;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		position: absolute;
-		transition: all 0.2s;
 		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		content: '';
-		display: block;
-		border-radius: 1.2rem;
-		width: 100%;
-	}
-
-	.active::after,
-	.nav-link-item:hover::after {
-		height: 115%;
-		background-color: #ede5d8;
-	}
-
-	:global(.mobile) .nav-link-item::after,
-	:global(.mobile) .active::after,
-	:global(.mobile) .nav-link-item:hover::after {
-		border-radius: 0.9rem;
+		left: 0;
+		transform: translateY(-50%);
+		padding: 0 10%;
 	}
 
 	.nav-link-item.active .border,
 	.nav-link-item:hover .border {
-		color: #40475a;
-	}
-
-	:global(.mobile) .nav-link-item .border {
-		font-size: 0.75rem;
-	}
-
-	.nav-link-item .border {
-		padding: 0.25rem 1.7rem;
-		border: 0.09rem solid transparent;
-		position: relative;
-		z-index: +1;
-		border-radius: 1rem;
-		transition: all 0.2s;
-	}
-	.nav-link-item.active .border {
-		border: 0.09rem solid #c1b198;
-	}
-
-	.border i {
-		font-size: 2rem;
-		display: inline-block;
-		margin-right: 10px;
-	}
-	:global(.mobile) .border i {
-		font-size: 1.5rem;
-	}
-
-	.gi-primo-star {
-		right: -1.3rem;
-		font-size: 1.3rem;
-	}
-	:global(.mobile) .gi-primo-star {
-		right: -1rem;
-		font-size: 1rem;
-	}
-
-	.nav-link-item .border i {
-		display: none;
-	}
-	.nav-link-item.active .border i {
-		position: absolute;
-		display: unset;
-		top: 50%;
-		transform: translateY(-50%);
-		font-size: 0.7rem;
-		color: #d2c3aa;
-	}
-	.nav-link-item.active .border i.left {
-		left: 0.5rem;
-		right: unset;
-	}
-	.nav-link-item.active .border i.right {
-		right: 0.5em;
-		margin-right: 0;
-	}
-
-	@media screen and (max-width: 400px) {
-		.nav-link-item {
-			font-size: 0.8rem;
-		}
+		color: var(--text-color);
+		background-image: url('/images/utility/shop-nav-bg.webp');
 	}
 </style>

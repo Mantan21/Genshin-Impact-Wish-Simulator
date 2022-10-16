@@ -69,6 +69,7 @@ const images = [
 			'menu-active.png',
 			'paypal.png',
 			'primogem.webp',
+			'shop-nav-bg.webp',
 			'sociabuzz.png',
 			'splatter-3star.svg',
 			'splatter-4star.svg',
@@ -124,13 +125,21 @@ const videos = [
 	'4star-single.mp4',
 	'4star.mp4',
 	'5star-single.mp4',
-	'5star.mp4',
-	'bg.webm'
+	'5star.mp4'
 ];
+
+const bgList = () => {
+	const paths = [];
+	for (let i = 0; i < 25; i++) {
+		paths.push(`bg${i + 1}.webp`);
+	}
+	return { dir: 'background', paths };
+};
 
 const listingAssets = (param) => {
 	const arr = [];
-	const img = param === 'preview' ? previewImages : [...images, ...previewImages];
+	const allImg = [bgList(), ...previewImages, ...images];
+	const img = param === 'preview' ? previewImages : allImg;
 
 	img.forEach(({ dir, paths }) => {
 		paths.forEach((path) => {
