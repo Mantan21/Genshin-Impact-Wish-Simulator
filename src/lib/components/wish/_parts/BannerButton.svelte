@@ -2,7 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import positionToStyle from '$lib/helpers/cssPosition';
-	import { mobileMode, patchVersion, bannerPhase, isFatepointSystem } from '$lib/store/stores';
+	import {
+		mobileMode,
+		patchVersion,
+		bannerPhase,
+		isFatepointSystem,
+		assets
+	} from '$lib/store/stores';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import { noticeMark } from '$lib/helpers/noticeMark';
 
@@ -50,7 +56,7 @@
 			{#each weapons.featured as { name, buttonBoxPosition, type }}
 				<img
 					in:fade
-					src="/images/weapons/{type}/5star/{name}.webp"
+					src={$assets[name]}
 					alt="Weapon Wish"
 					style={buttonStyle(buttonBoxPosition, active)}
 				/>

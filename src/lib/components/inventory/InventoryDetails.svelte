@@ -91,11 +91,7 @@
 			<div class="splatter" style={splatterStyle}>
 				{#if type === 'weapon'}
 					<div class="splash-art weapon {weaponType}-parent">
-						<img
-							src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
-							alt={name}
-							class={weaponType}
-						/>
+						<img src={$assets[name]} alt={name} class={weaponType} />
 					</div>
 				{:else}
 					<img src={outfitSet ? outfitPath : defaultPath} alt={getName(name)} class="splash-art" />

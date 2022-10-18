@@ -140,18 +140,10 @@
 						{#if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent">
 								<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
-								<img
-									src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
-									alt={name}
-									class={weaponType}
-								/>
+								<img src={$assets[name]} alt={name} class={weaponType} />
 							</div>
 						{:else if outfitName}
-							<img
-								src="/images/characters/outfit/splash-art/{outfitName}.webp"
-								alt={name}
-								class="splash-art anim"
-							/>
+							<img src={$assets[`splash-art/${outfitName}`]} alt={name} class="splash-art anim" />
 						{:else}
 							<img
 								src={outfitSet

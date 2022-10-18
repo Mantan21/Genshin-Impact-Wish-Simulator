@@ -3,6 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
+		assets,
 		genesis,
 		intertwined,
 		primogem,
@@ -199,7 +200,7 @@
 				<picture style={pictureWidthStyle}>
 					{#if outfit}
 						<img
-							src="/images/characters/outfit/thumbnail/{itemToBuy}.webp"
+							src={$assets[`thumbnail/${itemToBuy}.webp`]}
 							width="75%"
 							alt={getName(itemToBuy)}
 						/>

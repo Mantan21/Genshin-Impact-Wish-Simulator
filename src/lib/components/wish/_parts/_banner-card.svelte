@@ -2,7 +2,7 @@
 	import { setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { pageActive } from '$lib/store/stores';
+	import { assets, pageActive } from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
 	import playSfx from '$lib/helpers/audio';
 	import ResponsiveImage from '$lib/components/utility/ResponsiveImage.svelte';
@@ -38,17 +38,13 @@
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
 >
 	{#if type === 'beginner'}
-		<ResponsiveImage
-			src="/images/banner/beginner/beginner.webp"
-			alt="Weapon Banner"
-			wrapperClass="card-image"
-		/>
+		<ResponsiveImage src={$assets['beginner']} alt="Weapon Banner" wrapperClass="card-image" />
 		<div class="frame">
 			<BeginnerFrame {character} />
 		</div>
 	{:else if type === 'weapons'}
 		<ResponsiveImage
-			src="/images/banner/weapons/{weapons.name}.webp"
+			src={$assets[`${weapons.name}`]}
 			alt="Weapon Banner"
 			wrapperClass="card-image wide"
 		/>
@@ -57,17 +53,13 @@
 		</div>
 	{:else if type === 'events'}
 		<ResponsiveImage
-			src="/images/banner/character-events/{character.name}.webp"
+			src={$assets[`${character.name}`]}
 			alt="Character Event Banner"
 			wrapperClass="card-image wide"
 		/>
 		{#if !character.name || imageError}
 			<div class="character" in:fly={{ x: 20, duration: 850 }}>
-				<img
-					class="splash-art"
-					src="/images/characters/splash-art/5star/{character.character}.webp"
-					alt="character"
-				/>
+				<img class="splash-art" src={$assets[`${character.character}`]} alt="character" />
 			</div>
 		{/if}
 		<div class="frame wide">
@@ -75,7 +67,7 @@
 		</div>
 	{:else if type === 'standard'}
 		<ResponsiveImage
-			src="/images/banner/standard/{character.name}.webp"
+			src={$assets[`${character.name}`]}
 			alt="Standard Banner"
 			wrapperClass="card-image"
 		/>

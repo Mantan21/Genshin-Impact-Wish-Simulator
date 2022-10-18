@@ -1,4 +1,7 @@
 import { outfits } from '$lib/data/outfits.json';
+import { data as charDB } from '$lib/data/characters.json';
+import { data as weaponsDB } from '$lib/data/weapons.json';
+import { allPatch } from '$lib/setup/wish-setup.json';
 
 const images = [
 	{
@@ -81,7 +84,6 @@ const previewImages = [
 			'bow-white.svg',
 			'catalyst-white.svg',
 			'claymore-white.svg',
-			'cursor.png',
 			'genshin-logo-cn.webp',
 			'genshin-logo.webp',
 			'icon-anemo.svg',
@@ -119,15 +121,56 @@ const bgList = () => {
 	return { dir: 'background', paths };
 };
 
-const outfitList = () => {
-	const paths = outfits.map(({ name }) => `outfit/thumbnail/${name}.webp`);
-	return { dir: 'characters', paths };
+const outfitShopList = () => {
+	const paths = outfits.map(({ name }) => `thumbnail/${name}.webp`);
+	return { dir: 'characters/outfit', paths };
+};
+
+export const getItemlist = async () => {
+	const pathList = {};
+	outfits.forEach(({ name }) => {
+		pathList[`face/${name}`] = `/images/characters/outfit/face/${name}.webp`;
+		pathList[`splash-art/${name}`] = `/images/characters/outfit/splash-art/${name}.webp`;
+	});
+
+	charDB.forEach(({ rarity, list }) => {
+		list.forEach(({ name }) => {
+			pathList[`face/${name}`] = `/images/characters/face/${name}.webp`;
+			pathList[`splash-art/${name}`] = `/images/characters/splash-art/${rarity}star/${name}.webp`;
+		});
+	});
+
+	weaponsDB.forEach(({ rarity, list }) => {
+		list.forEach(({ name, weaponType }) => {
+			pathList[name] = `/images/weapons/${weaponType}/${rarity}star/${name}.webp`;
+		});
+	});
+
+	for await (const patch of allPatch) {
+		const json = await import(`$lib/data/banners/events/${patch.toFixed(1)}.json`);
+		const { data } = json.default;
+		data.forEach(({ banners }) => {
+			pathList[banners.weapons.name] = `/images/banner/weapons/${banners.weapons.name}.webp`;
+			const event = banners.events.item;
+			if (Array.isArray(event)) {
+				event.forEach(({ name }) => {
+					pathList[name] = `/images/banner/character-events/${name}.webp`;
+				});
+			} else {
+				pathList[event.name] = `/images/banner/character-events/${event.name}.webp`;
+			}
+		});
+	}
+
+	pathList['wanderlust-invocation-1'] = '/images/banner/standard/wanderlust-invocation-1.webp';
+	pathList['wanderlust-invocation-2'] = '/images/banner/standard/wanderlust-invocation-2.webp';
+	pathList['beginner'] = '/images/banner/beginner/beginner.webp';
+	return pathList;
 };
 
 export const listingAssets = (param) => {
-	outfitList();
 	const arr = [];
-	const allImg = [bgList(), outfitList(), ...previewImages, ...images];
+	const allImg = [bgList(), outfitShopList(), ...previewImages, ...images];
 	const img = param === 'preview' ? previewImages : allImg;
 
 	img.forEach(({ dir, paths }) => {

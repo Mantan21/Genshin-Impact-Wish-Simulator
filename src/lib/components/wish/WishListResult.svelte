@@ -125,7 +125,7 @@
 								<div class="pic">
 									{#if type === 'weapon'}
 										<img
-											src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
+											src={$assets[name]}
 											alt={name}
 											class="wishpic {weaponType}-item"
 											style={positionToStyle(wishBoxPosition)}

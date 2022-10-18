@@ -43,7 +43,7 @@
 						style="background-image: url('{$assets[`${rarity}star-bg.webp`]}');"
 					>
 						<picture class="star{rarity}">
-							<img src={$assets[`outfit/thumbnail/${name}.webp`]} alt={getName(name)} />
+							<img src={$assets[`thumbnail/${name}.webp`]} alt={getName(name)} />
 						</picture>
 						<caption>
 							<span class="name">{$t(`outfit.item.${name}.name`)}</span>

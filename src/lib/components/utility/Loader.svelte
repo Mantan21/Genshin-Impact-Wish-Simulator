@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { showBeginner, mobileMode, isMobile, assets } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
-	import { listingAssets, blobAssets } from '$lib/helpers/assets';
+	import { listingAssets, blobAssets, getItemlist } from '$lib/helpers/assets';
 
 	export let isBannerLoaded = false;
 	export let preview = false;
@@ -19,9 +19,10 @@
 	};
 
 	const assetInit = async (param) => {
+		const ispreview = param === 'preview';
 		const arr = [];
 		let i = 0;
-		const raw = param === 'preview' ? listingAssets('preview') : listingAssets();
+		const raw = ispreview ? listingAssets('preview') : listingAssets();
 		for await (const ass of raw) {
 			i++;
 			const { path, asset } = ass;
@@ -32,10 +33,11 @@
 		}
 
 		const loadedAssets = await Promise.all(arr);
+		const itemList = await getItemlist();
 		assets.update((pv) => {
 			pv = {};
 			loadedAssets.forEach(({ url, name }) => (pv[name] = url));
-			return pv;
+			return { ...pv, ...itemList };
 		});
 
 		if (anyError === false) handleLoaded();

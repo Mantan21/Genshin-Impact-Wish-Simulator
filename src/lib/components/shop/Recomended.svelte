@@ -89,7 +89,7 @@
 			<div class="card outfit" in:fade={{ duration: 400 }}>
 				<img
 					class="outfit-art"
-					src="/images/characters/outfit/splash-art/{name}.webp"
+					src={$assets[`splash-art/${name}`]}
 					alt={getName(name)}
 					style={positionToStyle(cardBoxPosition)}
 				/>

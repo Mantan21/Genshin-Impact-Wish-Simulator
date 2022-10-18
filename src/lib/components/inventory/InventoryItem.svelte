@@ -45,11 +45,7 @@
 			<img src={!outfitSet ? defaultPath : outfitPath} alt={getName(name)} />
 			<span class="gi-{vision} {vision} icon-gradient filter-drop element" />
 		{:else}
-			<img
-				src="/images/weapons/{weaponType}/{rarity}star/{name}.webp"
-				alt={getName(name)}
-				class={weaponType}
-			/>
+			<img src={$assets[name]} alt={getName(name)} class={weaponType} />
 		{/if}
 		{#if qty > 1}
 			<span class="qty"> {countInfo} </span>

@@ -33,16 +33,16 @@
 
 	const importChunks = async () => {
 		// Splitting Chunks
-		PrevBanner = (await import('../lib/components/wish/PreviousBannerList.svelte')).default;
-		GachaInfo = (await import('../lib/components/gachainfo/GachaInfo.svelte')).default;
-		InventorySection = (await import('../lib/components/inventory/MainInventory.svelte')).default;
-		ShopSection = (await import('../lib/components/shop/MainShop.svelte')).default;
-		Obtained = (await import('../lib/components/utility/Obtained.svelte')).default;
-		WelkinCheckin = (await import('../lib/components/utility/WelkinCheckin.svelte')).default;
+		PrevBanner = (await import('$lib/components/wish/PreviousBannerList.svelte')).default;
+		GachaInfo = (await import('$lib/components/gachainfo/GachaInfo.svelte')).default;
+		InventorySection = (await import('$lib/components/inventory/MainInventory.svelte')).default;
+		ShopSection = (await import('$lib/components/shop/MainShop.svelte')).default;
+		Obtained = (await import('$lib/components/utility/Obtained.svelte')).default;
+		WelkinCheckin = (await import('$lib/components/utility/WelkinCheckin.svelte')).default;
 	};
 
 	const importHelper = async () => {
-		({ setBannerVersionAndPhase } = await import('../lib/helpers/importLocalData'));
+		({ setBannerVersionAndPhase } = await import('$lib/helpers/importLocalData'));
 	};
 
 	let isMount = false;
@@ -93,10 +93,10 @@
 	const switchBanner = async (patch, bannerPhase) => {
 		try {
 			if (!patch) return;
-			const { data } = await import(`../lib/data/banners/events/${patch}.json`);
+			const { data } = await import(`$lib/data/banners/events/${patch}.json`);
 			const { banners } = data.find(({ phase }) => phase === bannerPhase);
 			const { events, weapons, standardVersion } = banners;
-			const { standard } = await import(`../lib/data/banners/standard/${standardVersion}.json`);
+			const { standard } = await import(`$lib/data/banners/standard/${standardVersion}.json`);
 			eventBanner = events.item;
 			weaponBanner = weapons;
 			standardBanner = standard.featured;

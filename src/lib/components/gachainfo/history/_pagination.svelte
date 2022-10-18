@@ -1,5 +1,4 @@
 <script>
-	import { assets } from '$lib/store/stores';
 	import { getContext } from 'svelte';
 
 	export let dataLength;
@@ -8,7 +7,6 @@
 	export let v2 = false;
 
 	const navigate = getContext('navigation');
-
 	const previous = () => {
 		if (activepage > 1) navigate(activepage - 1);
 	};
@@ -21,7 +19,7 @@
 <div class="pagination" class:v2>
 	<button class="prev" disabled={activepage === 1} on:click={previous}>
 		{#if v2}
-			<img class="left" src={$assets['arrow-up.png']} alt="arrow" />
+			<span class="left arrow" />
 		{:else}
 			<i class="gi-angle-left" />
 		{/if}
@@ -29,7 +27,7 @@
 	<span class="active">{activepage}</span>
 	<button class="next" disabled={!(dataLength > activepage * itemPerPage)} on:click={next}>
 		{#if v2}
-			<img class="right" src={$assets['arrow-up.png']} alt="arrow" />
+			<span class="right arrow" />
 		{:else}
 			<i class="gi-angle-right" />
 		{/if}
@@ -71,7 +69,7 @@
 		color: #8e8e8e;
 	}
 
-	.pagination.v2 button,
+	.pagination.v2 > button,
 	.pagination.v2 span {
 		width: calc(0.028 * var(--content-width));
 		margin: 0 2%;
@@ -86,17 +84,22 @@
 		border: 2px solid #d7cbbd;
 	}
 
-	img.left {
-		transform: rotate(-90deg);
+	span.arrow {
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAASCAMAAAAJ4/xdAAAAY1BMVEVHcExZUlJZUVFVTU1YUVFYUVFZUVFZUlJZUlJYTU1ZUFBZUVFYUVFYT09ZRUVXTk5YUVFZUlJZQ0NYUVFZUVFZUlJZUVFZUlJYTk5ZUVFZUlJYT09ZUVFYUlJOTk5OTk5ZUlKPb9bhAAAAIHRSTlMAz+kiZfbk8foSSKpVNAgqsokLxqTbcsAbhNc6j5YGDUB/3r0AAACpSURBVBgZfcEFEoMwAATAC0Rxrcv9/5UFmjBAobtYKytj0hJ/JIYDk+CQtJxYiQM1Z1fsKVIudAV+uJYrZ4eNuOfGLcbKPaKnFL0ox0Km6EX5PaKnMsxODG4xEPf07Anek8HZYeBaBg+MmopB98KkSBlUDeAEgytmNYPWIaVnJRakpddB8cskWEkMvww0J7rERq456SE5Ehf8uAiOJJAJq+sGO94PbUWGD0o8IC9WAY0jAAAAAElFTkSuQmCC');
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: calc(0.01 * var(--content-width));
+		aspect-ratio: 2.5/1;
+		transform-origin: 40%;
 	}
-	img.right {
-		transform: rotate(90deg);
+	.arrow.left {
+		transform: rotate(-90deg) translateY(10%);
+	}
+	.arrow.right {
+		transform: rotate(90deg) translateY(-40%);
 	}
 
-	button img {
-		width: calc(0.015 * var(--content-width));
-	}
-	button:disabled img {
+	button:disabled span {
 		opacity: 0.3;
 	}
 </style>
