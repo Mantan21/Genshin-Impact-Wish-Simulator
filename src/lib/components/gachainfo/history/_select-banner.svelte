@@ -34,9 +34,7 @@
 				<span>{$t(`wish.banner.${banner}`)}</span>
 
 				{#if v2}
-					<span class="arrow {showSelectList ? 'up' : 'down'}">
-						<img src={$assets['arrow-up.png']} alt="arrow" />
-					</span>
+					<span class="arrow icon {showSelectList ? 'up' : 'down'}" />
 				{:else}
 					<i class="arrow gi-caret-{showSelectList ? 'up' : 'down'}" />
 				{/if}
@@ -189,14 +187,17 @@
 		width: calc(0.08 * var(--content-width));
 	}
 
-	.arrow img {
+	.arrow.icon {
 		width: calc(0.02 * var(--content-width));
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAASCAMAAAAJ4/xdAAAAY1BMVEVHcExZUlJZUVFVTU1YUVFYUVFZUVFZUlJZUlJYTU1ZUFBZUVFYUVFYT09ZRUVXTk5YUVFZUlJZQ0NYUVFZUVFZUlJZUVFZUlJYTk5ZUVFZUlJYT09ZUVFYUlJOTk5OTk5ZUlKPb9bhAAAAIHRSTlMAz+kiZfbk8foSSKpVNAgqsokLxqTbcsAbhNc6j5YGDUB/3r0AAACpSURBVBgZfcEFEoMwAATAC0Rxrcv9/5UFmjBAobtYKytj0hJ/JIYDk+CQtJxYiQM1Z1fsKVIudAV+uJYrZ4eNuOfGLcbKPaKnFL0ox0Km6EX5PaKnMsxODG4xEPf07Anek8HZYeBaBg+MmopB98KkSBlUDeAEgytmNYPWIaVnJRakpddB8cskWEkMvww0J7rERq456SE5Ehf8uAiOJJAJq+sGO94PbUWGD0o8IC9WAY0jAAAAAElFTkSuQmCC');
+		background-size: contain;
+		background-repeat: no-repeat;
 	}
-	.v2 .arrow.up img {
+	.v2 .arrow.icon.up {
 		transform: translateY(-50%) rotate(0);
 	}
 
-	.v2 .arrow.down img {
+	.v2 .arrow.icon.down {
 		transform: translateY(-50%) rotate(180deg);
 	}
 </style>

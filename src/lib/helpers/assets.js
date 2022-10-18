@@ -1,23 +1,9 @@
+import { outfits } from '$lib/data/outfits.json';
+
 const images = [
 	{
 		dir: 'background',
 		paths: [
-			'bg1.webp',
-			'bg2.webp',
-			'bg3.webp',
-			'bg4.webp',
-			'bg5.webp',
-			'bg6.webp',
-			'bg7.webp',
-			'bg8.webp',
-			'bg9.webp',
-			'bg10.webp',
-			'bg11.webp',
-			'bg12.webp',
-			'bg13.webp',
-			'bg14.webp',
-			'bg15.webp',
-			'bg16.webp',
 			'constellation.webp',
 			'detailbg.webp',
 			'element-anemo-bg.webp',
@@ -38,10 +24,8 @@ const images = [
 			'4star-bg.webp',
 			'5star-bg.webp',
 			'acquaint-fate.webp',
-			'arrow-up.png',
 			'book.webp',
 			'book-select-bg.webp',
-			'book-select-btn.webp',
 			'bow-white.svg',
 			'brand.png',
 			'button.webp',
@@ -97,7 +81,6 @@ const previewImages = [
 			'bow-white.svg',
 			'catalyst-white.svg',
 			'claymore-white.svg',
-			'corner.webp',
 			'cursor.png',
 			'genshin-logo-cn.webp',
 			'genshin-logo.webp',
@@ -136,9 +119,15 @@ const bgList = () => {
 	return { dir: 'background', paths };
 };
 
-const listingAssets = (param) => {
+const outfitList = () => {
+	const paths = outfits.map(({ name }) => `outfit/thumbnail/${name}.webp`);
+	return { dir: 'characters', paths };
+};
+
+export const listingAssets = (param) => {
+	outfitList();
 	const arr = [];
-	const allImg = [bgList(), ...previewImages, ...images];
+	const allImg = [bgList(), outfitList(), ...previewImages, ...images];
 	const img = param === 'preview' ? previewImages : allImg;
 
 	img.forEach(({ dir, paths }) => {
@@ -158,9 +147,6 @@ const listingAssets = (param) => {
 
 	return arr;
 };
-
-export const rawAssets = listingAssets();
-export const rawPreviewAssets = listingAssets('preview');
 
 export const blobAssets = async (path) => {
 	try {

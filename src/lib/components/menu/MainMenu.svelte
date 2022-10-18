@@ -5,7 +5,14 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { isMobile, mobileMode, muted, unlimitedFates, viewportHeight } from '$lib/store/stores';
+	import {
+		assets,
+		isMobile,
+		mobileMode,
+		muted,
+		unlimitedFates,
+		viewportHeight
+	} from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
 	import factoryReset from '$lib/helpers/factoryReset';
 	import playSfx from '$lib/helpers/audio';
@@ -130,7 +137,7 @@
 		</div>
 		<div class="container">
 			<div class="sidebar">
-				<div class="menu-list">
+				<div class="menu-list" style="--bg-active: url('{$assets['menu-active.png']}')">
 					<div class="menu-item" class:active={activeContent === 'options'}>
 						<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 					</div>
@@ -366,7 +373,7 @@
 	}
 	.menu-item.active::after {
 		content: '';
-		background-image: url('/images/utility/menu-active.png');
+		background-image: var(--bg-active);
 		background-size: contain;
 		background-position: center;
 		background-repeat: no-repeat;

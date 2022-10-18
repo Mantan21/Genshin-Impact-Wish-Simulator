@@ -20,4 +20,7 @@
 			rgba(0, 0, 0, 0)
 		);
 	}
+	:global(.mobile) div {
+		flex-wrap: nowrap;
+	}
 </style>

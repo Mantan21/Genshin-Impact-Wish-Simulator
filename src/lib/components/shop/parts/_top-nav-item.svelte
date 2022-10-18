@@ -13,11 +13,13 @@
 	};
 </script>
 
-<button class="nav-link-item" class:active on:click={select}>
-	<div
-		class="border"
-		style={active ? `background-image:url('${$assets['shop-nav-bg.webp']}')` : ''}
-	>
+<button
+	class="nav-link-item"
+	style="--bg-active: url('{$assets['shop-nav-bg.webp']}')"
+	class:active
+	on:click={select}
+>
+	<div class="border">
 		<slot />
 	</div>
 </button>
@@ -44,16 +46,19 @@
 		left: 0;
 		transform: translateY(-50%);
 		padding: 0 10%;
+		transition: all 0.2s;
 	}
 
-	.nav-link-item.active .border {
+	.nav-link-item.active .border,
+	.nav-link-item:hover .border {
 		color: var(--text-color);
+		background-image: var(--bg-active);
 	}
 
 	:global(.mobile) .nav-link-item {
 		height: 1.7rem;
 		font-size: 99%;
-		padding: 0;
+		padding: 0 6.4rem;
 	}
 
 	:global(.mobile) .nav-link-item .border {

@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { showBeginner, mobileMode, isMobile, assets } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
-	import { rawPreviewAssets, rawAssets, blobAssets } from '$lib/helpers/assets';
+	import { listingAssets, blobAssets } from '$lib/helpers/assets';
 
 	export let isBannerLoaded = false;
 	export let preview = false;
@@ -21,7 +21,7 @@
 	const assetInit = async (param) => {
 		const arr = [];
 		let i = 0;
-		const raw = param === 'preview' ? rawPreviewAssets : rawAssets;
+		const raw = param === 'preview' ? listingAssets('preview') : listingAssets();
 		for await (const ass of raw) {
 			i++;
 			const { path, asset } = ass;
@@ -50,7 +50,18 @@
 {#if anyError && !isLoaded}
 	<div class="modal">
 		<div class="modal-content">
-			<div class="msg">Some main assets cannot be loaded, this may affect your wish experience</div>
+			<div class="msg">
+				An error occurred while trying to load some assets, this may affect your wish experience.
+				<br />
+				<small>
+					<small>
+						If you think this is a mistake, please contact me on
+						<a href="https://discord.com/users/523179264116523018" style="color: #7289da">
+							Discord
+						</a>!
+					</small>
+				</small>
+			</div>
 			<div class="btn">
 				<button class="reload" on:click={() => window.location.reload()}>Reload</button>
 				<button class="open" on:click={handleLoaded}>Open Anyway</button>
@@ -112,7 +123,7 @@
 
 	.modal-content {
 		background-color: #fff;
-		border-radius: 2%;
+		border-radius: 0.4rem;
 		width: 500px;
 		max-width: 80%;
 		padding: 2%;
