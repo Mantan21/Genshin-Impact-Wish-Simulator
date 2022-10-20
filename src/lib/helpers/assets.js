@@ -197,7 +197,8 @@ export const blobAssets = async (path) => {
 		const responseType = data.headers.get('Content-Type');
 		if (responseType === 'text/html') throw new Error('Failed to load Assets');
 		const blob = await data.blob();
-		const url = URL.createObjectURL(blob);
+		const DOMURL = window.URL || window.webkitURL;
+		const url = DOMURL.createObjectURL(blob);
 		return url;
 	} catch (e) {
 		console.error(e);

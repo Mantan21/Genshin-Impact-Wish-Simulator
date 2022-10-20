@@ -121,7 +121,8 @@
 		border: 2.5px solid #eee2c8;
 	}
 
-	button.active {
+	button.active,
+	button:hover {
 		transform: scale(1.1);
 	}
 

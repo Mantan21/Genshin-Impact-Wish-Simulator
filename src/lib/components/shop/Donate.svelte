@@ -158,21 +158,23 @@
 		</Column>
 	</ColumnParent>
 	<div class="recent">
-		{#each listOfSupporters as { name, message, amount, date, platform }}
-			<div class="donation-item {platform}">
-				<div class="supporter">
-					<div class="info">
-						<div class="name">New support from <span> {name} </span></div>
-						<span class="message">{message ? `"${message}"` : ''}</span>
-						<span class="platform">✧ &nbsp; via {platform}</span>
-						<span class="time"> ✧ &nbsp; {date}</span>
-					</div>
-					<div class="amount">
-						<span>{amount}</span>
+		{#if listOfSupporters.length > 0}
+			{#each listOfSupporters as { name, message, amount, date, platform }}
+				<div class="donation-item {platform}">
+					<div class="supporter">
+						<div class="info">
+							<div class="name">New support from <span> {name} </span></div>
+							<span class="message">{message ? `"${message}"` : ''}</span>
+							<span class="platform">✧ &nbsp; via {platform}</span>
+							<span class="time"> ✧ &nbsp; {date}</span>
+						</div>
+						<div class="amount">
+							<span>{amount}</span>
+						</div>
 					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		{/if}
 	</div>
 </div>
 

@@ -11,7 +11,7 @@ const getFromSheet = async () => {
 		});
 	} catch (e) {
 		console.error('failed to process data');
-		return null;
+		return [];
 	}
 };
 
@@ -31,4 +31,3 @@ export const supporterList = async () => {
 	const kofi = await getFromSheet();
 	return kofi;
 };
-

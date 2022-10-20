@@ -5,7 +5,7 @@
 	import { assets, pageActive } from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
 	import playSfx from '$lib/helpers/audio';
-	import ResponsiveImage from '$lib/components/utility/ResponsiveImage.svelte';
+	import ResponsiveImage from './ResponsiveImage.svelte';
 	import BeginnerFrame from './frames/_beginner-frame.svelte';
 	import StandardFrame from './frames/_standard-frame.svelte';
 	import EventsFrame from './frames/_events-frame.svelte';
