@@ -1,5 +1,6 @@
 <script>
 	// Packagae
+	import { registerSW } from 'virtual:pwa-register';
 	import { isLoading, locale } from 'svelte-i18n';
 	import { page } from '$app/stores';
 	import { dev } from '$app/env';
@@ -51,6 +52,7 @@
 
 	mountLocale();
 	onMount(() => {
+		registerSW();
 		importLocalBalance();
 		userCurrencies.init();
 

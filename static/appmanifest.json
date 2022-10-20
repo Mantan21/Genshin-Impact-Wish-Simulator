@@ -1,9 +1,9 @@
 {
 	"name": "Genshin Impact Wish Simulator",
-	"short_name": "Wish Sim",
+	"short_name": "WishSimulator.App",
 	"theme_color": "#fff",
 	"background_color": "#fff",
-	"display": "fullScreen",
+	"display": "standalone",
 	"orientation": "landscape",
 	"scope": "/",
 	"start_url": "/",
