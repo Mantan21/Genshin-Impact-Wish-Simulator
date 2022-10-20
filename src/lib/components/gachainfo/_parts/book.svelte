@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/stores';
 
 	export let tplVersion;
@@ -13,7 +14,7 @@
 	<slot />
 {:else}
 	<div class="content-container">
-		<button class="old" on:click={() => setTpl('v1')}>Older Layout</button>
+		<button class="old" on:click={() => setTpl('v1')}> {$t('history.olderLayout')}</button>
 		<div class="wrapper">
 			<div
 				class="book"

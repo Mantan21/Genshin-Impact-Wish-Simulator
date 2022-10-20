@@ -147,6 +147,8 @@
 
 	"details": {
 		"text": "Подробности",
+		"promotional": "Повышенный шанс",
+		"itemlist": "Список предметов",
 		"increasedRate": "Вероятность получения следующих предметов повышена!",
 		"percentageDrop": "Шанс получения {rarity}★ : {percentage}",
 		"wishDetails": "Подробнее о Молитвах",
@@ -222,7 +224,9 @@
 		"lose": "терять 50/50",
 		"guaranteed": "Гарантировано",
 		"selected": "Выбранный элемент",
-		"primos": "Камней Истока"
+		"primos": "Камней Истока",
+		"olderLayout": "старый макет",
+		"switchv2": "Перейти на версию 2"
 	},
 	"shop": {
 		"text": "Магазин",
@@ -287,7 +291,7 @@
 		"setOutfit": "Установить наряд для персонажа",
 		"refinement": "Уточнение {count}",
 		"constellation": "Созвездие {count}",
-		"extra": "Дополнительный {count}",
+		"extra": "{count} Дополнительный",
 		"firstSummon": "Впервые призван в : {date}",
 		"notOwned": "Не принадлежит",
 		"sort": "Sort",

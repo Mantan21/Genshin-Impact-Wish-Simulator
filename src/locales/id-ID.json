@@ -147,6 +147,8 @@
 
 	"details": {
 		"text": "Rincian",
+		"promotional": "Item UP",
+		"itemlist": "Daftar Item",
 		"increasedRate": "Persentase Perolehan Meningkat",
 		"percentageDrop": "Kemungkinan dari Persentase Perolehan {rarity}★: {percentage}",
 		"wishDetails": "Rincian Permohonan",
@@ -222,7 +224,9 @@
 		"lose": "Kalah 50/50",
 		"guaranteed": "Item Jaminan",
 		"selected": "Item Pilihan",
-		"primos": "Primos"
+		"primos": "Primos",
+		"olderLayout": "Layout Lama",
+		"switchv2": "Ganti ke V2"
 	},
 	"shop": {
 		"text": "Toko",
@@ -287,7 +291,7 @@
 		"setOutfit": "Atur Kostum pada Karakter",
 		"refinement": "Refinement {count}",
 		"constellation": "Konstelasi {count}",
-		"extra": "Extra {count}",
+		"extra": "{count} Extra",
 		"firstSummon": "Pertama kali dimiliki pada : {date}",
 		"notOwned": "Tidak Dimiliki",
 		"sort": "Urutkan",

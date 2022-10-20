@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { setContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { assets, pageActive } from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
 	import browserState from '$lib/helpers/browserState';
@@ -33,7 +34,7 @@
 				<i class="gi-reply" />
 			</button>
 
-			<button class="switchNewTpl" on:click={() => setTpl('v2')}> Switch to V2 </button>
+			<button class="switchNewTpl" on:click={() => setTpl('v2')}> {$t('history.switchv2')} </button>
 		</div>
 	{/if}
 

@@ -19,6 +19,7 @@
 	export let tplVersion;
 
 	let dataLength = 0;
+	let filteredDataLength = 0;
 	let activepage = 1;
 	let itemPerPage = tplVersion === 'v2' ? 5 : 6;
 	let filterBy = 'All';
@@ -44,7 +45,10 @@
 	};
 	setContext('tableFilter', filter);
 
-	const setDataLength = (length) => (dataLength = length);
+	const setDataLength = (allData, dataToShow) => {
+		dataLength = allData;
+		filteredDataLength = dataToShow;
+	};
 	setContext('setDataLength', setDataLength);
 
 	const navigation = (page) => (activepage = page);
@@ -74,7 +78,7 @@
 		<List v2 {banner} filter={filterBy} page={{ activepage, itemPerPage }} />
 	</div>
 	<Legends {banner} v2 />
-	<Pagination v2 {dataLength} {itemPerPage} {activepage} />
+	<Pagination v2 dataLength={filteredDataLength} {itemPerPage} {activepage} />
 {:else}
 	<SelectBanner {banner} />
 	<p>{$t('history.disclaimer')}</p>
@@ -91,7 +95,7 @@
 
 	<List {banner} filter={filterBy} page={{ activepage, itemPerPage }} />
 	<Legends {banner} />
-	<Pagination {dataLength} {itemPerPage} {activepage} />
+	<Pagination dataLength={filteredDataLength} {itemPerPage} {activepage} />
 {/if}
 
 <style>

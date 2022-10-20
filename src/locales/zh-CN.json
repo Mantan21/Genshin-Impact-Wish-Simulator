@@ -147,6 +147,8 @@
 
 	"details": {
 		"text": "详情",
+		"promotional": "UP物品",
+		"itemlist": "物品清单",
 		"increasedRate": "以下内容出现[概率UP!!!]",
 		"percentageDrop": "占{rarity}星出率的: {percentage}",
 		"wishDetails": "祈愿详情",
@@ -222,7 +224,9 @@
 		"lose": "歪",
 		"guaranteed": "大保底",
 		"selected": "已定轨",
-		"primos": "原石"
+		"primos": "原石",
+		"olderLayout": "旧布局",
+		"switchv2": "切换到版本 2"
 	},
 	"shop": {
 		"text": "商城",
@@ -287,7 +291,7 @@
 		"setOutfit": "设置角色装扮",
 		"refinement": "精炼等级 {count}",
 		"constellation": "命之座层数 {count}",
-		"extra": "已满并溢出 {count}",
+		"extra": "{count} 已满并溢出",
 		"firstSummon": "首次获得: {date}",
 		"notOwned": "尚未拥有",
 		"sort": "排序",

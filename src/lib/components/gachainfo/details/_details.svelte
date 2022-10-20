@@ -5,6 +5,7 @@
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Promotional from './_promotional.svelte';
 	import Title from '../_parts/title.svelte';
+	import { t } from 'svelte-i18n';
 
 	export let tplVersion = 'v1';
 	export let data;
@@ -27,14 +28,14 @@
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		{#if !noPromo}
 			<div class="nav-item" class:active={activeContent === 1}>
-				<button on:click={() => select(1)}> Promotional Items </button>
+				<button on:click={() => select(1)}> {$t('details.promotional')} </button>
 			</div>
 		{/if}
 		<div class="nav-item" class:active={activeContent === 2}>
-			<button on:click={() => select(2)}> Details </button>
+			<button on:click={() => select(2)}> {$t('details.text')} </button>
 		</div>
 		<div class="nav-item" class:active={activeContent === 3}>
-			<button on:click={() => select(3)}> List of Items </button>
+			<button on:click={() => select(3)}> {$t('details.itemlist')} </button>
 		</div>
 	</nav>
 	<div class="content">
