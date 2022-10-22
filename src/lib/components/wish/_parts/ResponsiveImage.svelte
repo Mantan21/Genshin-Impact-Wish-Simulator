@@ -1,24 +1,23 @@
 <script>
-	import { getContext } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
 	export let src = '';
 	export let alt = '';
 	export let wrapperClass;
+	export let isError = false;
 
-	let imageError = false;
-	const handleImageError = getContext('imageError');
+	const dispatch = createEventDispatcher();
 	const errorHandle = () => {
-		imageError = true;
-		handleImageError(imageError);
+		dispatch('error');
 	};
 </script>
 
 <div
-	class:image-error={imageError}
+	class:image-error={isError}
 	class="wrapper {wrapperClass}"
 	style="min-height: 100px; width: 100%;"
 >
-	{#if !imageError}
+	{#if !isError}
 		<div style="position: relative; width: 100%;">
 			<div style="position: relative; overflow: hidden;">
 				<picture>

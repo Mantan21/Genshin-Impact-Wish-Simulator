@@ -59,6 +59,7 @@
 					src={$assets[name]}
 					alt="Weapon Wish"
 					style={buttonStyle(buttonBoxPosition, active)}
+					on:error={(e) => e.target.remove()}
 				/>
 			{/each}
 		{:else}
@@ -67,6 +68,7 @@
 				src="/images/characters/banner-button/{character.character}.webp"
 				alt="{type} Wish"
 				style={buttonStyle(character.buttonBoxPosition, active)}
+				on:error={(e) => e.target.remove()}
 			/>
 		{/if}
 	</div>

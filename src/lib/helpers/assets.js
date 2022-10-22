@@ -54,6 +54,7 @@ const images = [
 			'genesis.webp',
 			'history-select-bg.webp',
 			'menu-active.png',
+			'modal-bg-icon.png',
 			'paypal.png',
 			'primogem.webp',
 			'shop-nav-bg.webp',

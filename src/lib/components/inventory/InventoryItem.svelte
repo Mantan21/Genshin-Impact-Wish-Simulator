@@ -42,10 +42,21 @@
 		style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
 	>
 		{#if type === 'character'}
-			<img src={!outfitSet ? defaultPath : outfitPath} alt={getName(name)} />
+			<img
+				src={!outfitSet ? defaultPath : outfitPath}
+				alt={getName(name)}
+				on:error={(e) => e.target.remove()}
+				loading="lazy"
+			/>
 			<span class="gi-{vision} {vision} icon-gradient filter-drop element" />
 		{:else}
-			<img src={$assets[name]} alt={getName(name)} class={weaponType} />
+			<img
+				src={$assets[name]}
+				alt={getName(name)}
+				class={weaponType}
+				loading="lazy"
+				on:error={(e) => e.target.remove()}
+			/>
 		{/if}
 		{#if qty > 1}
 			<span class="qty"> {countInfo} </span>

@@ -1,5 +1,4 @@
 <script>
-	import { setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets, pageActive } from '$lib/store/stores';
@@ -17,12 +16,11 @@
 	$: ({ type, weapons, character } = data);
 	let clientWidth;
 	let clientHeight;
-	let imageError = false;
 
-	const handleImageError = (v) => {
-		imageError = v;
+	let imageError = false;
+	const handleimageError = () => {
+		imageError = true;
 	};
-	setContext('imageError', handleImageError);
 
 	const openDetails = () => {
 		pageActive.set('details');
@@ -38,38 +36,55 @@
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
 >
 	{#if type === 'beginner'}
-		<ResponsiveImage src={$assets['beginner']} alt="Weapon Banner" wrapperClass="card-image" />
-		<div class="frame">
+		<ResponsiveImage
+			on:error={handleimageError}
+			isError={imageError}
+			src={$assets['beginner']}
+			alt="Weapon Banner"
+			wrapperClass="card-image skeleton"
+		/>
+		<div class="frame skeleton">
 			<BeginnerFrame {character} />
 		</div>
 	{:else if type === 'weapons'}
 		<ResponsiveImage
+			on:error={handleimageError}
+			isError={imageError}
 			src={$assets[`${weapons.name}`]}
 			alt="Weapon Banner"
-			wrapperClass="card-image wide"
+			wrapperClass="card-image skeleton-event"
 		/>
-		<div class="frame wide">
+		<div class="frame skeleton-event">
 			<WeaponsFrame data={weapons} />
 		</div>
 	{:else if type === 'events'}
 		<ResponsiveImage
+			on:error={handleimageError}
+			isError={imageError}
 			src={$assets[`${character.name}`]}
 			alt="Character Event Banner"
-			wrapperClass="card-image wide"
+			wrapperClass="card-image skeleton-event"
 		/>
 		{#if !character.name || imageError}
 			<div class="character" in:fly={{ x: 20, duration: 850 }}>
-				<img class="splash-art" src={$assets[`${character.character}`]} alt="character" />
+				<img
+					class="splash-art"
+					src={$assets[`splash-art/${character.character}`]}
+					alt="character"
+					on:error={(e) => e.target.remove()}
+				/>
 			</div>
 		{/if}
-		<div class="frame wide">
+		<div class="frame skeleton-event">
 			<EventsFrame data={character} />
 		</div>
 	{:else if type === 'standard'}
 		<ResponsiveImage
+			on:error={handleimageError}
+			isError={imageError}
 			src={$assets[`${character.name}`]}
 			alt="Standard Banner"
-			wrapperClass="card-image"
+			wrapperClass="card-image {imageError ? 'skeleton' : ''}"
 		/>
 		<div class="frame">
 			<StandardFrame {data} />
@@ -87,10 +102,16 @@
 		aspect-ratio: 27/14;
 	}
 
-	.frame.wide,
-	.card :global(.card-image.wide) {
+	.frame.skeleton-event,
+	.card :global(.card-image.skeleton-event) {
 		aspect-ratio: 1080/533;
 	}
+
+	.frame.skeleton,
+	.card :global(.card-image.skeleton) {
+		aspect-ratio: 738.55/382.95;
+	}
+
 	.card {
 		position: relative;
 	}

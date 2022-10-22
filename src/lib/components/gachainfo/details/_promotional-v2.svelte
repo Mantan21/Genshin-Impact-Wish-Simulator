@@ -30,7 +30,11 @@
 				<div class="pic-item">
 					<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}');">
 						<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
-						<img src={$assets[`face/${featured[0].name}`]} alt={getName(featured[0].name)} />
+						<img
+							src={$assets[`face/${featured[0].name}`]}
+							alt={getName(featured[0].name)}
+							on:error={(e) => e.target.remove()}
+						/>
 					</picture>
 					<span class="stars">
 						{#each Array(5) as i}
@@ -50,7 +54,12 @@
 				{#each items[0].items as { name, type }}
 					<div class="pic-item">
 						<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}')">
-							<img src={$assets[name]} alt={getName(name)} class={type} />
+							<img
+								src={$assets[name]}
+								alt={getName(name)}
+								class={type}
+								on:error={(e) => e.target.remove()}
+							/>
 						</picture>
 						<span class="stars">
 							{#each Array(5) as i}
@@ -89,7 +98,11 @@
 					<div class="pic-item">
 						<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}')">
 							<i class="gi-{vision} {vision} icon-gradient filter-drop" />
-							<img src={$assets[`face/${name}`]} alt={getName(name)} />
+							<img
+								src={$assets[`face/${name}`]}
+								alt={getName(name)}
+								on:error={(e) => e.target.remove()}
+							/>
 						</picture>
 						<span class="stars">
 							{#each Array(4) as i}
@@ -103,7 +116,12 @@
 				{#each items[1].items as { name, type }}
 					<div class="pic-item">
 						<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}')">
-							<img src={$assets[name]} alt={getName(name)} class={type} />
+							<img
+								src={$assets[name]}
+								alt={getName(name)}
+								class={type}
+								on:error={(e) => e.target.remove()}
+							/>
 						</picture>
 						<span class="stars">
 							{#each Array(4) as i}

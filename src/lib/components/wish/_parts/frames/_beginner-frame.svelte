@@ -5,6 +5,7 @@
 	import { beginnerRoll } from '$lib/store/localstore';
 
 	export let character = '';
+	export let isError = false;
 	$: char = $t(`${character.character}.name`);
 
 	const highlightBannerName = (bannerName) => {
@@ -15,7 +16,7 @@
 	const remaining = browser ? 20 - beginnerRoll.get() : 0;
 </script>
 
-<div class="frame-content">
+<div class="frame-content" class:error={isError}>
 	<div class="top">
 		{$t('wish.banner.novice')}
 	</div>
@@ -57,6 +58,10 @@
 		color: #565654;
 		display: block;
 		font-size: calc(1.8 / 100 * var(--content-width));
+	}
+
+	.frame-content.error {
+		background-color: #fff;
 	}
 
 	h1,

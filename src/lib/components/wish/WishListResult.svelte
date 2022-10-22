@@ -129,6 +129,7 @@
 											alt={name}
 											class="wishpic {weaponType}-item"
 											style={positionToStyle(wishBoxPosition)}
+											on:error={(e) => e.target.remove()}
 										/>
 									{:else}
 										<img
@@ -137,6 +138,7 @@
 												: getOutfit(name, rarity).defaultPath}
 											alt={name}
 											class="wishpic"
+											on:error={(e) => e.target.remove()}
 											style={positionToStyle(
 												outfitSet ? getOutfit(name).wishBoxPosition : wishBoxPosition
 											)}

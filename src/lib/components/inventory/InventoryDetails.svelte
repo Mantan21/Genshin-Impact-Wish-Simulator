@@ -91,10 +91,20 @@
 			<div class="splatter" style={splatterStyle}>
 				{#if type === 'weapon'}
 					<div class="splash-art weapon {weaponType}-parent">
-						<img src={$assets[name]} alt={name} class={weaponType} />
+						<img
+							src={$assets[name]}
+							alt={name}
+							class={weaponType}
+							on:error={(e) => e.target.remove()}
+						/>
 					</div>
 				{:else}
-					<img src={outfitSet ? outfitPath : defaultPath} alt={getName(name)} class="splash-art" />
+					<img
+						src={outfitSet ? outfitPath : defaultPath}
+						alt={getName(name)}
+						class="splash-art"
+						on:error={(e) => e.target.remove()}
+					/>
 				{/if}
 
 				<div class="info">

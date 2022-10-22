@@ -47,7 +47,7 @@
 			<div class="column">
 				<button class:selected={!outfitSet} on:click={() => set(false)}>
 					<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
-						<img src={defaultPath} alt={getName(charName)} />
+						<img src={defaultPath} alt={getName(charName)} on:error={(e) => e.target.remove()} />
 					</picture>
 					<caption>
 						<span> {$t(`${charName}.name`)}</span>
@@ -61,7 +61,7 @@
 						class="star{outfitRarity}"
 						style="background-image:url('{$assets[`${outfitRarity}star-bg.webp`]}');"
 					>
-						<img src={outfitPath} alt={getName(outfitName)} />
+						<img src={outfitPath} alt={getName(outfitName)} on:error={(e) => e.target.remove()} />
 					</picture>
 					<caption>
 						<span> {$t(`outfit.item.${outfitName}.name`)}</span>

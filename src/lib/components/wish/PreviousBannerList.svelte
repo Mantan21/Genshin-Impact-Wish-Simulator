@@ -219,13 +219,8 @@
 							playSfx();
 						}}
 					>
-						{$t('wish.banner.group')} / {groupby === 'version' ? $t(`version`) : $t(`${groupby}`)}
-
-						{#if showGroup}
-							<i class="gi-caret-up" />
-						{:else}
-							<i class="gi-caret-down" />
-						{/if}
+						{$t('wish.banner.group')} / {groupby === 'version' ? $t(`version`) : $t(groupby)}
+						<i class="gi-caret-{showGroup ? 'up' : 'down'}" />
 					</div>
 
 					{#if showGroup}
@@ -274,27 +269,35 @@
 								)}"
 							>
 								<div class="banner">
-									{#if Array.isArray(chars)}
-										<div class:dual={chars.length > 1}>
+									<div class:dual={Array.isArray(chars) && chars?.length > 1}>
+										{#if Array.isArray(chars)}
 											{#each chars as { character, name }, i}
 												<img
 													src="/images/banner/thumbnail/{name}.webp"
 													alt={getName(character)}
-													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
 													class="dual{i + 1}"
+													loading="lazy"
+													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
+													on:error={(e) => e.target.remove()}
 												/>
 											{/each}
-										</div>
-									{:else}
+										{:else}
+											<img
+												src="/images/banner/thumbnail/{chars.name}.webp"
+												alt={getName(chars.name)}
+												loading="lazy"
+												on:error={(e) => e.target.remove()}
+											/>
+										{/if}
+									</div>
+									<div>
 										<img
-											src="/images/banner/thumbnail/{chars.name}.webp"
-											alt={getName(chars.name)}
+											src="/images/banner/thumbnail/{weapons.name}.webp"
+											alt={getName(weapons.name)}
+											loading="lazy"
+											on:error={(e) => e.target.remove()}
 										/>
-									{/if}
-									<img
-										src="/images/banner/thumbnail/{weapons.name}.webp"
-										alt={getName(weapons.name)}
-									/>
+									</div>
 								</div>
 								<h3 class="name">
 									{#if Array.isArray(chars)}
@@ -515,22 +518,36 @@
 		display: flex;
 		justify-content: space-between;
 	}
-	.item img {
+	.banner > div {
 		width: 49.5%;
+		height: 100%;
+		aspect-ratio: 200/99;
+		background-image: linear-gradient(90deg, #fbf6ee 30%, #ccc, #fbf6ee);
+		background-size: 400%;
+		display: flex;
+		animation: infinite alternate 2s skeleton;
 	}
 
-	.dual {
-		width: 50%;
-		display: flex;
+	@keyframes skeleton {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 300% 0;
+		}
 	}
 
 	.dual1 {
 		object-position: 60%;
 		width: 40% !important;
+		aspect-ratio: 81.1/99.35;
+		margin-right: auto;
 	}
 	.dual2 {
+		margin-left: auto;
 		object-position: 100%;
 		width: 60% !important;
+		aspect-ratio: 121.65/99.35;
 	}
 
 	.item .name {
