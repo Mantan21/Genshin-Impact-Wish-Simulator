@@ -25,6 +25,7 @@
 	export let show = false;
 	let showResetModal = false;
 	let showToast = false;
+	let clearCache = false;
 	let activeContent = 'options';
 	let optionToShow = '';
 
@@ -79,7 +80,7 @@
 
 	const confirmReset = async () => {
 		showResetModal = false;
-		await factoryReset();
+		await factoryReset({ clearCache });
 		showToast = true;
 	};
 
@@ -116,6 +117,17 @@
 				<small>
 					{$t('menu.resetDetail')}
 				</small>
+
+				<div class="clear-cache">
+					<input
+						type="checkbox"
+						bind:checked={clearCache}
+						name="cache"
+						id="cache"
+						style="margin-right: 2%;"
+					/>
+					<label for="cache">{$t('menu.clearCache')}</label>
+				</div>
 			</div>
 		</div>
 	</Modal>
@@ -301,6 +313,18 @@
 		align-items: center;
 		width: 100%;
 		height: 100%;
+	}
+
+	.clear-cache {
+		font-size: small;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 5%;
+	}
+	.clear-cache label {
+		width: 60%;
+		text-align: left;
 	}
 
 	h2 {

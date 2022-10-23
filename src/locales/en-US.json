@@ -318,6 +318,7 @@
 		"animatedbg": "Animated Background",
 		"factoryReset": "Clear Data and Restore Default",
 		"rotate": "Rotate for better experience",
+		"clearCache": "Clear Image Caches, You will re-load the assets after this action.",
 		"resetButton": "Reset Now",
 		"resetPrompt": "Are You sure to clear <strong> All Data </strong> and restore to default ?",
 		"resetDetail": "It also remove your History, Pity Calculation, Balance and all items from Inventory.",

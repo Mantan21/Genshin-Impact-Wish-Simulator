@@ -18,7 +18,14 @@ import HistoryIDB from '$lib/store/historyIdb';
 import { wishPhase, version } from '$lib/setup/wish-setup.json';
 
 const { clearIDB } = HistoryIDB;
-const factoryReset = async () => {
+
+const clearCacheStorage = async () => {
+	const keys = await caches.keys();
+	for (const key of keys) await caches.delete(key);
+	return true;
+};
+
+const factoryReset = async ({ clearCache = false }) => {
 	localStorage.clear();
 	localStorage.setItem('primogem', 1600);
 	locale.update((langID) => {
@@ -27,6 +34,7 @@ const factoryReset = async () => {
 	});
 
 	await clearIDB();
+	if (clearCache) await clearCacheStorage();
 
 	acquaint.set(0);
 	genesis.set(0);

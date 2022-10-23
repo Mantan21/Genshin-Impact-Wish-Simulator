@@ -318,6 +318,7 @@
 		"animatedbg": "Sfondo Animato",
 		"factoryReset": "Cancella i Dati e Ripristina",
 		"rotate": "Gira per un'esperienza migliore",
+		"clearCache": "Clear Image Caches, You will re-load the assets after this action.",
 		"resetButton": "Ripristina ora",
 		"resetPrompt": "Sei sicuro di voler cancellare <strong>Tutti i Dati</strong> e ripristinare le impostazioni predefinite ?",
 		"resetDetail": "Rimuove anche la Cronologia, il Calcolo Pity, il Saldo e tutti gli oggetti dell'Inventario.",
