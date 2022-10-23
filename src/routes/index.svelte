@@ -22,6 +22,7 @@
 	// Components
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import MainWish from '$lib/components/wish/MainWish.svelte';
+	import Toast from '$lib/components/utility/Toast.svelte';
 
 	let PrevBanner;
 	let GachaInfo;
@@ -56,6 +57,7 @@
 	};
 	setContext('animateBG', animateBG);
 
+	let showToast = false;
 	const beginnerBanner = beginner;
 	let eventBanner;
 	let weaponBanner;
@@ -102,6 +104,7 @@
 			standardBanner = standard.featured;
 			return updateBannerListToShow($showBeginner);
 		} catch (e) {
+			showToast = true;
 			console.error(`Can't Switch banner because it unavailable !`, e);
 		}
 	};
@@ -167,6 +170,10 @@
 	const closeWelkin = () => (welkinCheckin = false);
 	setContext('closeWelkin', closeWelkin);
 </script>
+
+{#if showToast}
+	<Toast on:close={() => (showToast = false)}>Failed to load Banner!</Toast>
+{/if}
 
 <!-- Obtained Items -->
 {#if showObtained}
