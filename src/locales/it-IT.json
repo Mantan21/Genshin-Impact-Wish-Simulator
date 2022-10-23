@@ -40,7 +40,7 @@
 			"findBanner": "Trova un Banner",
 			"group": "Gruppo",
 			"events": "Wish dell'Evento del Personaggio",
-			"beginner": "Wish per Principianti",
+			"beginner": "Wish&nbsp;per Principianti",
 			"weapons": "Wish per Armi",
 			"standard": "Wish Standard",
 			"wishDescription": "Ogni 10 wish se ne ha almeno uno a 4 o più stelle",
@@ -78,6 +78,8 @@
 				"tapestry-of-golden-flames": "Tapestry&nbsp;of Golden Flames",
 				"the-heron_s-court": "The Heron's Court",
 				"the-transcendent-one-returns": "The&nbsp;Transcendent One Returns",
+				"twilight-arbiter": "Twilight Arbiter",
+				"twirling-lotus": "Twirling Lotus",
 				"viridescent-vigil": "Viridescent Vigil"
 			}
 		},
@@ -145,6 +147,8 @@
 
 	"details": {
 		"text": "Dettagli",
+		"promotional": "Promotional Items",
+		"itemlist": "List of Items",
 		"increasedRate": "Aumento del Tasso di Caduta",
 		"percentageDrop": "Percentuale di caduta di oggetti a {rarity} stelle: {percentage}",
 		"wishDetails": "Dettagli dei Wish",
@@ -196,6 +200,7 @@
 		}
 	},
 	"history": {
+		"title": "Wish History",
 		"text": "Cronologia",
 		"resetButton": "Ripristino",
 		"resetPromptTitle": "Ripristino della Cronologia ?",
@@ -219,7 +224,9 @@
 		"lose": "Perdita 50/50",
 		"guaranteed": "Assicurato",
 		"selected": "Oggetto Selezionato",
-		"primos": "Primos"
+		"primos": "Primos",
+		"olderLayout": "Older Layout",
+		"switchv2": "Switch to V2"
 	},
 	"shop": {
 		"text": "Negozio",
