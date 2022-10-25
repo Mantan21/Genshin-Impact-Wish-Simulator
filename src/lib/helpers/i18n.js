@@ -17,8 +17,7 @@ const mountLocale = () => {
 	});
 
 	itemLocales.forEach((langID) => {
-		register(langID, () => import(`../../locales/characters/${langID}.json`));
-		register(langID, () => import(`../../locales/weapons/${langID}.json`));
+		register(langID, () => import(`../../locales/items/${langID}.json`));
 	});
 
 	const usedLocale = checkLocale();
