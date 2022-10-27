@@ -74,7 +74,7 @@
 	// Reset
 	const reset = () => {
 		showResetModal = true;
-		playSfx('Modal');
+		playSfx('modal');
 	};
 	setContext('factoryReset', reset);
 

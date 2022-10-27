@@ -162,6 +162,7 @@
 		"alert": "※ Permohonan ini termasuk {wishName}. Hitungan jaminan Permohonan pada event ini hanya diakumulasi untuk kategori {wishName} dan terpisah dari hitungan jaminan Permohonan lainnya",
 		"beginner": [
 			"Permohonan <span> Pemula </span> tidak memiliki batas waktu dan ditujukan untuk pengembara baru yang baru saja mendarat di Teyvat. Menyediakan karakter dan senjata Non-promosi. <br /> pada Permohonan Pemula, permohonan ×10 mendapat pengurangan biaya <span> 20%</span> lebih rendah menggunakan Acquaint Fate, dan ×10 permohonan pertama termasuk jaminan {character}, dan ×10 permohonan kedua termasuk min. character 4★ <span>lainnya</span>! Permohonan Pemula akan berakhir setelah <span> 20 </span> percobaan. Setelah permohonan berakhir, halaman ini akan berhenti ditampilkan",
+			"※ Dalam keadaan normal, Permohonan Karakter atau Senjata dihitung berdasarkan pada persentase dasar. Untuk Permohonan dengan persentase perolehan yang meningkat, jaminan perolehan, dan lainnya, akan dihitung berdasarkan pada ketentuan yang berlaku.",
 			"〓Ketentuan〓",
 			"Persentase dasar untuk mendapatkan item 5★: <span>0,600%</span>; Persentase dasar untuk mendapatkan item 4★: <span>5,100%</span>; persentase keseluruhan untuk mendapatkan item 4★ (termasuk jaminan): <span>13,000%</span>;"
 		],
@@ -231,7 +232,6 @@
 	"shop": {
 		"text": "Toko",
 		"paimonBargains": "Penukaran Paimon",
-		"infsufficientFunds": "Saldo Tidak Cukup",
 		"fateNeeded": "Tambahan {rollQty} {currency} diperlukan.",
 		"primoNeeded": "Beli dengan menggunakan {primoPrice} Primogem ?",
 		"purchaseUpto": "Batas Pembelian 1",
@@ -247,7 +247,7 @@
 		"convertPrimo": "Otomatis Konversi ke Primogem?",
 		"proceedPayment": "Proses Pembayaran",
 		"qty": "Qty",
-		"insufficient": "Dana Tidak Cukup",
+		"insufficient": "Saldo Tidak Cukup",
 		"crystalTopup": "Top Up Crystal",
 		"buyGenesisHeading": "Beli Genesis Crystal",
 		"recomendedHeading": "Item Rekomendasi",

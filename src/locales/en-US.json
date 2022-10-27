@@ -161,7 +161,8 @@
 		"permanent": "Permanent",
 		"alert": "※ This is a {wishName}. The wish guarantee count is accumulated within this event only and is independent of the guarantee counts of other wishes.",
 		"beginner": [
-			"Beginners' <span> Wish </span> has no time limit and is aimed at Travelers who have recently landed in Teyvat. Non-promotional characters and weapons are available. <br /> In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first 10-wish set is guaranteed to include {character} , and your second 10-wish set is guaranteed to include one <span> other </span> min. 4-Star character! Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires, the page will disappear.",
+			"Beginners' <span> Wish </span> has no time limit and is aimed at Travelers who have recently landed in Teyvat. Non-promotional characters and weapons are available. <br /> In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first 10-wish set is guaranteed to include {character} , and your second 10-wish set is guaranteed to include one <span> other </span> min. 4-Star character! <br/> Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires, the page will disappear.",
+			"※In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
 			"〓Rules〓",
 			"Base probability of winning 5-Star character = <span> 0.600%</span> <br /> Base probability of winning 4-Star character = <span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>;"
 		],
@@ -181,7 +182,7 @@
 			"For Event Wish  \"{bannerName}\": Base probability of winning 4-star item = <span> 5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>; guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. <br/> The first time you win a 4-star item in this event wish, there is a <span>50.000%</span> chance it will be one of the featured characters {rateupCharacters}. If the first 4-star item you win in this event wish is not one of the featured characters, then the next 4-star item you win is <span>guaranteed</span> to be a featured character. When you win a featured 4-star item, the probability of obtaining each featured 4-star character is equal between all of them."
 		],
 		"weapons": [
-			"Event Wish \"{bannerName}\" is now available. During this event wish, the event-exclusive 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the event-exclusive 4-star weapon {rateupWeapons}  will get a <span>huge drop-rate boost!</span> <br/> <span> ※ Of the above weapons, the event-exclusive weapons will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
+			"Event Wish \"{bannerName}\" is now available. During this event wish, the <span>event-exclusive</span> 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the <span>event-exclusive</span> 4-star weapon {rateupWeapons}  will get a <span>huge drop-rate boost!</span> <br/> <span> ※ Of the above weapons, the event-exclusive weapons will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
 			"※ In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
 			"〓Rules〓",
 			"5-Star Items",
@@ -223,7 +224,7 @@
 		"win": "Win 50/50",
 		"lose": "Lose 50/50",
 		"guaranteed": "Guaranteed",
-		"selected": "Selected Item",
+		"selected": "Selected Weapon",
 		"primos": "Primos",
 		"olderLayout": "Older Layout",
 		"switchv2": "Switch to V2"
@@ -231,7 +232,6 @@
 	"shop": {
 		"text": "Shop",
 		"paimonBargains": "Paimon Bargains",
-		"infsufficientFunds": "Insufficient Funds",
 		"fateNeeded": "An Aditional {rollQty} {currency} are needed.",
 		"primoNeeded": "Purchase with {primoPrice} Primogem ?",
 		"purchaseUpto": "Purchase Up to 1",

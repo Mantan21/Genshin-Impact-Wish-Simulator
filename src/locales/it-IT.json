@@ -162,6 +162,7 @@
 		"alert": "※ Questo è un {wishName}. La garanzia dei desideri viene accumulata solo all'interno di questo evento ed è indipendente dalle garanzie di altri desideri.",
 		"beginner": [
 			"Il <span> Wish </span> per principianti non ha limiti di tempo ed è rivolto ai viaggiatori che sono atterrati di recente a Teyvat. Sono disponibili personaggi e armi non promozionali. <br /> Nel Wish per principianti, i set da 10 wish costano il <span> 20%</span> in meno di Acquaint Fate, e il tuo primo set da 10 wish includerà sicuramente {character} , mentre il tuo secondo set da 10 wish includerà sicuramente un <span> altro </span> personaggio min. a 4 stelle! Il Wish per Principianti sparisce dopo <span> 20 </span> tentativi. Dopo essere sparito, la pagina scomparirà.",
+			"※ Nella maggior parte dei casi, la probabilità di base di tutti i personaggi e le armi è distribuita uniformemente. Se è in vigore un boost o una garanzia, fare riferimento alle regole corrispondenti.",
 			"〓Regole〓",
 			"Probabilità base di vincere un personaggio a 5 stelle = <span> 0.600%</span> <br /> Probabilità base di vincere un personaggio a 4 stelle = <span> 5.100%</span>; probabilità consolidata (incl. garanzia) = <span> 13.000%</span>;"
 		],
@@ -231,7 +232,6 @@
 	"shop": {
 		"text": "Negozio",
 		"paimonBargains": "Paimon Bargains",
-		"infsufficientFunds": "Fondi Insufficienti",
 		"fateNeeded": "È necessario un {rollQty} {currency} aggiuntivo.",
 		"primoNeeded": "Acquista con {primoPrice} Primogem ?",
 		"purchaseUpto": "Acquista fino a 1",
