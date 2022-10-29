@@ -256,7 +256,7 @@
 			</nav>
 		</div>
 		<div class="body-content" in:fade={{ duration: 400 }}>
-			<div class="container" style="--headerHeight: {headerHeight}px;">
+			<div class="container" style="--headerHeight:{$viewportHeight - headerHeight}px;">
 				<div class="list-item" style="--item-width: {itemWidth}px">
 					{#if dataToShow.length < 1}
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">
@@ -283,7 +283,7 @@
 			</div>
 			<div class="filter">
 				<div class="row">
-					<button class="sort-button" on:click={() => reverse()} title="Reverse Order">
+					<button class="sort-button" on:click={reverse} title="Reverse Order">
 						<i class="gi-exchange" />
 					</button>
 					<div class="sort-selector">
@@ -524,7 +524,7 @@
 		height: 100%;
 	}
 	.container {
-		height: calc(100vh - var(--headerHeight) - 6.3rem);
+		height: calc(var(--headerHeight) - 6.3rem);
 		display: block;
 		width: 100%;
 		padding: 0 2%;
@@ -656,7 +656,7 @@
 			height: 40px;
 		}
 		.container {
-			height: calc(100vh - var(--headerHeight) - 7rem);
+			height: calc(var(--headerHeight) - 7rem);
 			margin-top: 0;
 		}
 	}

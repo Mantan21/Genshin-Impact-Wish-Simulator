@@ -122,8 +122,17 @@
 		display: none;
 	}
 
+	:global(.mobile) .content-details.v2 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	@media screen and (max-width: 780px) {
 		:global(main):not(.mobile) .content-details {
+			padding: 3.5rem 5% 0;
+		}
+
+		:global(main):not(.mobile) .content-details.v2 {
 			padding: 0 5% !important;
 		}
 	}

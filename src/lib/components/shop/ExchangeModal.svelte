@@ -388,6 +388,10 @@
 		position: relative;
 		font-size: 1rem;
 	}
+
+	:global(.mobile) .rangeInput {
+		font-size: 0.8rem;
+	}
 	.rangeNumber {
 		font-size: 0.8rem;
 		margin-bottom: -0.5rem;

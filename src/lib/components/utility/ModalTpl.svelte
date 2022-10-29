@@ -90,7 +90,7 @@
 	}
 
 	:global(.mobile) .modal-content {
-		max-width: 100vh;
+		max-width: 110vh;
 	}
 
 	.container {
@@ -140,6 +140,11 @@
 		position: relative;
 		z-index: +1;
 	}
+
+	:global(.mobile) .pop-header {
+		font-size: 1rem;
+	}
+
 	.pop-body {
 		height: 15rem;
 		max-height: 45vh;
@@ -152,6 +157,7 @@
 
 	:global(.mobile) .pop-body {
 		height: 12rem;
+		font-size: 0.9rem;
 	}
 
 	.disclaimer {

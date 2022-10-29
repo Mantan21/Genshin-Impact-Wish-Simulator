@@ -31,7 +31,7 @@
 		<span> {$t('history.selectWish')} </span>
 		<div class="select-box">
 			<div class="selected" on:click={() => (showSelectList = !showSelectList)}>
-				<span>{$t(`wish.banner.${banner}`)}</span>
+				<span>{@html $t(`wish.banner.${banner}`)}</span>
 
 				{#if v2}
 					<span class="arrow icon {showSelectList ? 'up' : 'down'}" />
@@ -49,7 +49,7 @@
 							class:active={selected === i}
 							on:click|preventDefault={() => select(type)}
 						>
-							{$t(`wish.banner.${type}`)}
+							{@html $t(`wish.banner.${type}`)}
 						</a>
 					{/each}
 				</div>

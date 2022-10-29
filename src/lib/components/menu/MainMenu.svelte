@@ -316,7 +316,7 @@
 	}
 
 	.clear-cache {
-		font-size: small;
+		font-size: 80%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
