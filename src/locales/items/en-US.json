@@ -1,4 +1,5 @@
 {
+	"a-thousand-floating-dreams": "A Thousand Floating Dreams",
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Alley Hunter",
 	"amos-bow": "Amos Bow",
@@ -189,6 +190,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Astral Reflection"
+	},
+	"nahida": {
+		"name": "Nahida",
+		"title": "Physic of Purity"
 	},
 	"nilou": {
 		"name": "Nilou",

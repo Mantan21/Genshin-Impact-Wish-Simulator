@@ -4,6 +4,11 @@
 			"rarity": 5,
 			"list": [
 				{
+					"name": "a-thousand-floating-dreams",
+					"weaponType": "catalyst",
+					"limited": true
+				},
+				{
 					"name": "amos-bow",
 					"weaponType": "bow"
 				},

@@ -131,6 +131,14 @@
 					}
 				},
 				{
+					"name": "nahida",
+					"vision": "dendro",
+					"wishBoxPosition": {
+						"l": 70,
+						"t": 45
+					}
+				},
+				{
 					"name": "nilou",
 					"vision": "hydro",
 					"wishBoxPosition": {

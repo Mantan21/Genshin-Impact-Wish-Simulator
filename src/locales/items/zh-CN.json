@@ -1,4 +1,5 @@
 {
+	"a-thousand-floating-dreams": "千夜浮梦",
 	"akuoumaru": "恶王丸",
 	"alley-hunter": "暗巷猎手",
 	"amos-bow": "阿莫斯之弓",
@@ -189,6 +190,10 @@
 	"mona": {
 		"name": "莫娜",
 		"title": "星天水镜"
+	},
+	"nahida": {
+		"name": "纳西妲",
+		"title": "白草净华"
 	},
 	"nilou": {
 		"name": "妮露",

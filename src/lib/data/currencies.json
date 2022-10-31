@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"country": ["fr", "de", "fi", "es"],
+			"country": ["ad", "at", "be", "cy", "gr", "es", "fr", "de", "fi", "it", "pt", "nl"],
 			"currency": "EUR",
 			"symbol": "€",
 			"format": "{symbol}{nominal}",
@@ -190,7 +190,7 @@
 		{
 			"country": ["vn"],
 			"currency": "VND",
-			"symbol": "₫",
+			"symbol": "đ",
 			"format": "{nominal}{symbol}",
 			"list": {
 				"welkin": 109000,

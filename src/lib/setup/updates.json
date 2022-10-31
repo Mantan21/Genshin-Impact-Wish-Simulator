@@ -205,11 +205,18 @@
 		},
 		{
 			"date": "11-Oct-2022",
-			"featured": true,
 			"description": [
 				"<strong> Nilou </strong> and <strong> Albedo 3rd Rerun </strong> Banners already out",
 				"Weapon Banner Updated, <b> Key of Khaj-Nisut </b> and <b>Primordial Jade Cutter</b> are ready to pull too !",
 				"New 4★ Sumeru Weapon Series: <strong>Xiphos' Moonlight</strong> and <strong>Wandering Evenstar</strong>"
+			]
+		},
+		{
+			"date": "31-Oct-2022",
+			"featured": true,
+			"description": [
+				"New Character <strong> Nahida </strong> and <strong> Yoimiya 3rd Rerun </strong> Banners already out",
+				"Weapon Banner Updated, <b> A Thousand Floating Dreams </b> and <b>Thundering Pulse</b> are ready to pull too !"
 			]
 		}
 	]
