@@ -92,6 +92,10 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
+	:global(.zh-CN) h1 {
+		font-size: calc(7 / 100 * var(--content-width));
+	}
+
 	.top {
 		color: #fff;
 		padding: 0.3% 1.4%;

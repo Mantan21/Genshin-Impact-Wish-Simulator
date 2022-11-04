@@ -20,7 +20,9 @@
 	<div class="top">
 		{$t('wish.banner.novice')}
 	</div>
-	<h1 in:fly={{ x: 10, duration: 700 }}>{@html highlightBannerName($t(`wish.banner.beginner`))}</h1>
+	<h1 class="card-stroke" in:fly={{ x: 10, duration: 700 }}>
+		{@html highlightBannerName($t(`wish.banner.beginner`))}
+	</h1>
 	<div class="set" in:fly={{ x: 10, duration: 700 }}>
 		{$t('wish.banner.beginnerSet', { values: { character: char } })}
 	</div>
@@ -79,6 +81,10 @@
 		margin: 0 4%;
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
+	}
+
+	:global(.zh-CN) h1 {
+		font-size: calc(6 / 100 * var(--content-width));
 	}
 
 	.top {

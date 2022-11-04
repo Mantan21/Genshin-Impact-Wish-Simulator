@@ -101,6 +101,10 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
+	:global(.zh-CN) h1 {
+		font-size: calc(7 / 100 * var(--content-width));
+	}
+
 	.top {
 		color: #fff;
 		padding: 0.3% 1.4%;
@@ -193,6 +197,11 @@
 		margin-top: calc(0.6 / 100 * var(--content-width));
 	}
 
+	:global(.zh-CN) .first-wp,
+	:global(.zh-CN) .second-wp {
+		font-size: calc(11 / 100 * var(--text-width));
+	}
+
 	span.up {
 		color: #fff664;
 		-webkit-text-stroke: 0.05rem #e7a12e;
@@ -208,6 +217,10 @@
 
 	.rateup .weapon-name {
 		font-size: calc(2 / 100 * var(--content-width));
+	}
+
+	:global(.zh-CN) .rateup .weapon-name {
+		font-size: calc(3.5 / 100 * var(--content-width));
 	}
 
 	span.etc {

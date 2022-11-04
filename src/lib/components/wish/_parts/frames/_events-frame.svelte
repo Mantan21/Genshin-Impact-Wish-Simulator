@@ -107,6 +107,10 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
+	:global(.zh-CN) h1 {
+		font-size: calc(7 / 100 * var(--content-width));
+	}
+
 	.top {
 		color: #fff;
 		padding: 0.3% 1.4%;
@@ -183,6 +187,10 @@
 		line-height: 100%;
 		position: relative;
 		font-size: calc(11 / 100 * var(--text-width));
+	}
+
+	:global(.zh-CN) .character .char-name {
+		font-size: calc(17 / 100 * var(--text-width));
 	}
 
 	.char-name span {
