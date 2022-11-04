@@ -1,4 +1,5 @@
 {
+	"a-thousand-floating-dreams": "Cõi Mộng Ngàn Đêm",
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Thợ Săn Hẻm Tối",
 	"amos-bow": "Cung Amos",
@@ -189,6 +190,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Thủy Kính Thiên Tinh"
+	},
+	"nahida": {
+		"name": "Nahida",
+		"title": "Kết Tinh Bạch Thảo"
 	},
 	"nilou": {
 		"name": "Nilou",

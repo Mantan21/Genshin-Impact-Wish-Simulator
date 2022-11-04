@@ -99,6 +99,7 @@
 <main
 	class:mobile={$mobileMode}
 	class:preview
+	class={$locale}
 	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'}"
 >
 	{#if !$isLoading && isloaded}

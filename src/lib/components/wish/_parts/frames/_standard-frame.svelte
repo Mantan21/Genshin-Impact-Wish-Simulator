@@ -200,6 +200,11 @@
 	.skyward .item-name {
 		font-size: calc(3.5 / 100 * var(--content-width));
 	}
+
+	:global(.vi-VN) .skyward .item-name {
+		font-size: calc(3 / 100 * var(--content-width));
+	}
+
 	.item-name span {
 		font-size: calc(2 / 100 * var(--content-width));
 		white-space: nowrap;
