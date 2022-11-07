@@ -94,9 +94,9 @@
 			"chartCourse": "Progreso de senda",
 			"courseSetFor": "Senda elegida para: {selectedCourse}",
 			"description": [
-				"\"Epitomized Path\" is a wish mechanic in \"Epitome Invocation\". Travelers can chart a course towards a specific 5-Star promotional weapon they hope to obtain.",
-				"Once you have charted a course towards your chosen weapon, you will obtain 1 Fate Point upon <span> receiving a 5-Star weapon that is not the one that you chose</span>. You can obtain a maximum of 2 Fate Points.",
-				"Once you've reached the maximum amount of Fate Points, the next 5-Star weapon you choose will be the one you have chosen through \"Epitomized Path\".",
+				"\"Senda divina\" es una mecánica de gachapón de \"Encarnación divina\":",
+				"Al marcar el camino para el arma de 5 estrellas que hayas escogido, <span> si no consigues el arma que elegiste, obtendrás 1 punto de destino</span>.",
+				"Al disponer de suficientes puntos de destino, la próxima arma de 5 estrellas que consigas en este gahapón de \"Encarnación divina\" será la que hayas escogido mediante Senda divina.",
 				"When you obtain the chosen weapon in Epitome Invocation through Epitomized Path, <span> the accumulated Fate Points will be cleared </span>.",
 				"If you do not use Epitomized Path to obtain a weapon, you will not accumulate Fate Points.",
 				"The charted course towards a certain weapon can be changed or cancelled. However, after doing so, any current Fate Points will be cleared.",
