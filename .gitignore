@@ -8,6 +8,7 @@ node_modules
 
 .vercel_build_output
 .vercel
+.well-known
 
 sitemap.xml
 .env

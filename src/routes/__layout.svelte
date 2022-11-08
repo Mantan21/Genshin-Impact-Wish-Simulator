@@ -13,13 +13,15 @@
 		isAcquaintUsed,
 		bannerActive,
 		bannerList,
-		assets
+		assets,
+		isPWA
 	} from '$lib/store/stores';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { importLocalBalance } from '$lib/helpers/importLocalData';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { userCurrencies } from '$lib/helpers/currencies';
+	import { wakeLock } from '$lib/helpers/wakeLock';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Iklan from '$lib/components/utility/Iklan.svelte';
@@ -32,7 +34,9 @@
 	$: isCN = $locale?.toLowerCase().includes('cn');
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
-	$: preview = $page.url.pathname.split('/')[1] === 'screen';
+	$: path = $page.url.pathname.split('/');
+	$: directLoad = path[1] !== '';
+	$: preview = path[1] === 'screen';
 
 	$: if ($bannerList.length > 0) {
 		const { type } = $bannerList[$bannerActive];
@@ -40,6 +44,7 @@
 	}
 
 	const setMobileMode = () => {
+		if ($isPWA) return mobileMode.set(true);
 		const angle = screen.orientation?.angle || 0;
 		const rotate = angle === 90 || angle === 270;
 		mobileMode.set(rotate);
@@ -52,7 +57,12 @@
 
 	mountLocale();
 	onMount(() => {
+		const url = new URL(window.location.href);
+		const searchParams = new URLSearchParams(url.search);
+		isPWA.set(searchParams.get('pwa') === 'true');
+
 		registerSW();
+		wakeLock();
 		importLocalBalance();
 		userCurrencies.init();
 
@@ -94,7 +104,7 @@
 	{/if}
 </svelte:head>
 
-<Loader {isBannerLoaded} {preview} />
+<Loader {isBannerLoaded} {directLoad} />
 
 <main
 	class:mobile={$mobileMode}

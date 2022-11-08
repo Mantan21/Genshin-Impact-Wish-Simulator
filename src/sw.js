@@ -8,19 +8,25 @@ clientsClaim();
 skipWaiting();
 cleanupOutdatedCaches();
 
-let preCache = self.__WB_MANIFEST;
 setCacheNameDetails({
 	prefix: 'WishSim',
-	precache: 'Core'
+	precache: 'Core',
+	suffix: 'v1'
 });
 
-preCache = ['./favicon.ico', './appmanifest.json'];
-precacheAndRoute(preCache);
+let precache = self.__WB_MANIFEST;
+precache = [];
+precacheAndRoute(precache, { ignoreURLParametersMatching: [/.*/] });
 
 registerRoute(
-	new RegExp('.(?:css|js)$'),
+	new RegExp('.(?:css|js|json)$'),
 	new NetworkFirst({
-		cacheName: 'chunks'
+		cacheName: 'Chunks',
+		plugins: [
+			new ExpirationPlugin({
+				maxAgeSeconds: 15 * 24 * 60 * 60
+			})
+		]
 	})
 );
 

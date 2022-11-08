@@ -28,6 +28,7 @@ const viewportHeight = writable(0);
 // Mobile Detect
 const isMobile = writable(false);
 const mobileMode = writable(false);
+const isPWA = writable(false);
 
 // Wish
 const bannerList = writable([{ type: 'beginner', character: beginner }]);
@@ -62,6 +63,7 @@ export {
 	viewportHeight,
 	isMobile,
 	mobileMode,
+	isPWA,
 	showBeginner,
 	bannerList,
 	genesis,

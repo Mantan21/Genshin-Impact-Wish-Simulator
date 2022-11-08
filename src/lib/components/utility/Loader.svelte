@@ -6,7 +6,7 @@
 	import { listingAssets, blobAssets, getItemlist } from '$lib/helpers/assets';
 
 	export let isBannerLoaded = false;
-	export let preview = false;
+	export let directLoad = false;
 
 	let anyError = false;
 	let isLoaded = false;
@@ -44,7 +44,7 @@
 	};
 
 	onMount(() => {
-		assetInit(preview ? 'preview' : '');
+		assetInit(directLoad ? 'preview' : '');
 		if (beginnerRoll.get() > 19) showBeginner.set(false);
 	});
 </script>
@@ -72,7 +72,7 @@
 	</div>
 {/if}
 
-{#if !((isBannerLoaded || preview) && isLoaded && current >= 100)}
+{#if !((isBannerLoaded || directLoad) && isLoaded && current >= 100)}
 	<div class="loader" out:fade={{ duration: 500, delay: 1000 }}>
 		<div class="content">
 			<div class="progress">
