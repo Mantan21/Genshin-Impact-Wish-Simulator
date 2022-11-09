@@ -25,7 +25,8 @@
 		unlimitedFates,
 		viewportHeight,
 		assets,
-		isPWA
+		isPWA,
+		isMobile
 	} from '$lib/store/stores';
 
 	$: headerHeightstyle = $mobileMode ? `height: ${$viewportHeight}px` : '';
@@ -79,7 +80,7 @@
 			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
 				<i class="gi-help" />
 			</button>
-			{#if !$isPWA}
+			{#if !$isPWA || !$isMobile}
 				<button
 					class="fullscreen"
 					on:click={handleFullscreen}

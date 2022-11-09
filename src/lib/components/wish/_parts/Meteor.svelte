@@ -139,7 +139,7 @@
 			{#if $primogem < balanceNeededToRoll * 160}
 				<br />
 				<br />
-				<span class="red">{$t('shop.infsufficientFunds')}</span>
+				<span class="red">{$t('shop.insufficient')}</span>
 			{/if}
 		</div>
 	</div>

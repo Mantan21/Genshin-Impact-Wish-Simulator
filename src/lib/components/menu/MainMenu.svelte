@@ -45,14 +45,6 @@
 		return unlimitedFates.set(optionValue);
 	};
 
-	// Show Collection
-	let showAllItemsIndicator = browser ? !!localConfig.get('showAllItems') : false;
-	const showAllItemsOption = (e) => {
-		const { selected } = e.detail;
-		localConfig.set('showAllItems', selected === 'yes');
-		showAllItemsIndicator = selected === 'yes';
-	};
-
 	// Animated BG
 	const handleAnimatedBG = getContext('animateBG');
 	let animatedbg = browser ? !!localConfig.get('animatedBG') : false;
@@ -200,14 +192,6 @@
 						/>
 
 						<Option name="switchBanner" text={$t('menu.switchBanner')} />
-
-						<Option
-							name="inventory"
-							text={$t('menu.showAllitems')}
-							activeIndicator={showAllItemsIndicator}
-							on:select={showAllItemsOption}
-							showOption={optionToShow === 'inventory'}
-						/>
 
 						<Option name="reset" text={$t('menu.factoryReset')} />
 
