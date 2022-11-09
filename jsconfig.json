@@ -3,7 +3,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
+			"$lib/*": ["src/lib/*"],
+			"$post": ["src/post"],
+			"$post/*": ["src/post/*"]
 		},
 		"preserveValueImports": false,
 		"allowJs": true,
@@ -17,4 +19,3 @@
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"],
 	"extends": "./.svelte-kit/tsconfig.json"
 }
-

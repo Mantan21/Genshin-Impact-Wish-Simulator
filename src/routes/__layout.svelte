@@ -57,6 +57,10 @@
 
 	mountLocale();
 	onMount(() => {
+		const available = ['install', 'privacy-policy', 'screen'];
+		console.log(path[1]);
+		if (path[1] && !available.includes(path[1].toLowerCase())) return window.location.replace('/');
+
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
 		isPWA.set(searchParams.get('pwa') === 'true');

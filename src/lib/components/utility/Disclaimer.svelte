@@ -3,8 +3,8 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/setup/updates.json';
+	import { assets, isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
-	import { assets } from '$lib/store/stores';
 
 	export let show = true;
 	let content;
@@ -19,7 +19,12 @@
 
 <Modal {show} title={$t('title')} button="confirm" disclaimer on:confirm={closeDisclaimer}>
 	<section>
-		<p class="sp">{$t('fanmade')}</p>
+		<p class="sp">
+			{$t('fanmade')} <br />
+			{#if !$isPWA}
+				<a href="/install">Instructions to Install to Home Screen/Desktop</a>
+			{/if}
+		</p>
 		<div class="updates" bind:this={content}>
 			{#each updates.reverse() as { description, date }, i (i)}
 				<span>
@@ -30,7 +35,7 @@
 			{/each}
 			<div style="height: .5rem" />
 		</div>
-		<span style="font-size: 1rem">Support</span>
+		<span style="font-size: .9rem; margin-top: .5rem;display:block">Support</span>
 		<div class="support">
 			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">
 				<img src={$assets['donate-kofi.png']} alt="ko-fi icon" />
@@ -48,7 +53,7 @@
 <style>
 	section {
 		width: 100%;
-		padding: 0 1.5rem 1rem;
+		padding: 0 1.5rem;
 	}
 	.credit {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -96,8 +101,14 @@
 	}
 
 	.sp {
-		font-size: 0.97rem;
-		padding: 0.5rem 0 1rem;
+		font-size: 0.9rem;
+		padding: 0rem 0 0.5rem;
+	}
+
+	.sp a {
+		font-weight: bold;
+		color: #e3a023;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
 	.support {
@@ -107,16 +118,16 @@
 	}
 
 	.support a {
-		width: 10rem;
-		height: 2.2rem;
-		margin: 0.5rem;
+		width: 9rem;
+		height: 2rem;
+		margin: 0.3rem;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 40px;
 		transition: all 0.2s;
 		color: #fff;
-		font-size: 1rem;
+		font-size: 0.9rem;
 	}
 
 	a.kofi {

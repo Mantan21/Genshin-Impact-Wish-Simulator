@@ -37,6 +37,7 @@
 		"svelte": "^3.47.0",
 		"svelte-preprocess": "^4.10.6",
 		"vite": "^3.1.8",
+		"vite-plugin-markdown": "^2.1.0",
 		"vite-plugin-pwa": "^0.13.1",
 		"workbox-core": "^6.5.4",
 		"workbox-expiration": "^6.5.4",

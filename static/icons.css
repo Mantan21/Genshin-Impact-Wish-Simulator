@@ -208,3 +208,12 @@
 .gi-guaranteed:before {
 	content: '\35';
 }
+.gi-apple:before {
+	content: '\34';
+}
+.gi-android:before {
+	content: '\36';
+}
+.gi-windows:before {
+	content: '\37';
+}

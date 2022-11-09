@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
+import path from 'path';
 import { config as envConfig } from 'dotenv';
 
 // Read Environtement Variable
@@ -14,7 +15,10 @@ const config = {
 	kit: {
 		prerender: { default: true },
 		appDir: 'internal',
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			$post: path.resolve('./src/post')
+		}
 	},
 	preprocess: cdn_on
 		? preprocess({

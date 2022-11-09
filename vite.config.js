@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { plugin as MdPlugin } from 'vite-plugin-markdown';
 import { config as envConfig } from 'dotenv';
 
 envConfig();
@@ -63,6 +64,7 @@ const manifest = {
 const config = {
 	plugins: [
 		sveltekit(),
+		MdPlugin({ mode: 'html' }),
 		VitePWA({
 			strategies: 'injectManifest',
 			srcDir: 'src',
