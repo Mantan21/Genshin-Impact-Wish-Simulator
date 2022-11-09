@@ -233,34 +233,15 @@
 	}
 
 	.overlay {
-		content: '';
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: block;
-		width: 120%;
-		height: 120%;
+		width: 100%;
+		height: 100%;
 		background-color: rgba(0, 0, 0, 0.08);
-		box-shadow: 0 0 50vh rgba(0, 0, 0, 0.9) inset;
-	}
-
-	:global(.mobile) .overlay {
-		width: 140%;
-		height: 140%;
-	}
-
-	@media screen and (max-width: 645px) {
-		.overlay {
-			width: 150%;
-		}
-	}
-
-	@media screen and (max-width: 400px) {
-		.overlay {
-			width: 150%;
-			height: 130%;
-		}
+		box-shadow: 0 0 50vh rgba(0, 0, 0, 0.4) inset;
 	}
 
 	.top,
