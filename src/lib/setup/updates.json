@@ -212,10 +212,18 @@
 		},
 		{
 			"date": "31-Oct-2022",
-			"featured": true,
 			"description": [
 				"New Character <strong> Nahida </strong> and <strong> Yoimiya 3rd Rerun </strong> Banners already out",
 				"Weapon Banner Updated, <b> A Thousand Floating Dreams </b> and <b>Thundering Pulse</b> are ready to pull too !"
+			]
+		},
+		{
+			"date": "15-Nov-2022",
+			"featured": true,
+			"description": [
+				"<strong> Yae Miko 2nd Rerun</strong> and <strong> Tartaglia 4th Rerun </strong> Banners are ready",
+				"New Character <strong> Layla </strong>",
+				"Weapon Banner Updated, <b> Kagura's Verity </b> and <b>Polar Star</b> are ready to pull too !"
 			]
 		}
 	]

@@ -400,6 +400,15 @@
 					}
 				},
 				{
+					"name": "layla",
+					"vision": "cryo",
+					"release": "3.2-2",
+					"wishBoxPosition": {
+						"h": 160,
+						"t": 65
+					}
+				},
+				{
 					"name": "lisa",
 					"vision": "electro",
 					"release": "1.0-0"

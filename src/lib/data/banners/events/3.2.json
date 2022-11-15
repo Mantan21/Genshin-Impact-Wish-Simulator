@@ -66,6 +66,78 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "everbloom-violet-2",
+							"character": "yae-miko",
+							"buttonBoxPosition": {
+								"w": 170,
+								"t": 24,
+								"l": 50
+							},
+							"textOffset": {
+								"l": 46.6,
+								"b": 13
+							}
+						},
+						{
+							"name": "farewell-of-snezhnaya-4",
+							"character": "tartaglia",
+							"buttonBoxPosition": {
+								"w": 160,
+								"t": 22
+							},
+							"textOffset": {
+								"l": 47,
+								"b": 9
+							}
+						}
+					],
+
+					"rateup": ["layla", "thoma", "shikanoin-heizou"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-38",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "kagura_s-verity",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 65,
+								"t": 40,
+								"l": 64
+							}
+						},
+						{
+							"name": "polar-star",
+							"type": "bow",
+							"buttonBoxPosition": {
+								"w": 70,
+								"t": 2,
+								"l": 35
+							}
+						}
+					],
+					"rateup": [
+						"favonius-sword",
+						"the-stringless",
+						"dragon_s-bane",
+						"the-bell",
+						"favonius-codex"
+					],
+					"textOffset": {
+						"featured": { "l": 42.5, "t": 67 },
+						"rateup": { "l": 70.5, "b": 22 }
+					}
+				}
+			}
 		}
 	]
 }
