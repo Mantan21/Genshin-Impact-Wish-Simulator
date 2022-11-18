@@ -439,6 +439,13 @@
 		overflow: hidden;
 	}
 
+	.update-item :global(a) {
+		color: #f29f0f;
+	}
+	.update-item :global(a:hover) {
+		text-decoration: underline;
+	}
+
 	.updates p {
 		position: relative;
 		padding-left: 1rem;

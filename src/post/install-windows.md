@@ -23,7 +23,6 @@ You are not required to install it, the installed app is literally the same as t
    <video src="https://user-images.githubusercontent.com/13815468/200639254-ef34490c-e18d-4b2e-b157-a99f9b426267.mp4" controls>
 
 3. Congratulations, Now you can access the Simulator directly from your desktop!
-4. If You want to uninstall it, Just uninstall like regular application. Click start -> search "Genshin Impact Wish Simulator" -> Click **Uninstall** option
+4. If You want to uninstall it, Just uninstall like a regular application. Click start -> search "Genshin Impact Wish Simulator" -> Click **Uninstall** option
 
    ![OnPaste 20221109-010157](https://user-images.githubusercontent.com/13815468/200641681-98bd462e-65f2-4ee4-8a49-227f9b8d333a.jpg)
-

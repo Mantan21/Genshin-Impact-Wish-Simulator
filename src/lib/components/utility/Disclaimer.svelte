@@ -81,6 +81,13 @@
 		color: #bd6932;
 	}
 
+	.updates :global(a) {
+		color: #f29f0f;
+	}
+	.updates :global(a:hover) {
+		text-decoration: underline;
+	}
+
 	.updates p {
 		padding-left: 1rem;
 		position: relative;
