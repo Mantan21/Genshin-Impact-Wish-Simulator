@@ -27,5 +27,5 @@ You are not required to install it, the installed app is literally the same as t
    <video src="https://user-images.githubusercontent.com/13815468/200663590-7497627e-3def-4ede-b883-1037e532d846.mp4" controls>
 
 6. Congratulations, Now you can access the Simulator directly from your Homescreen !
-7. If You want to uninstall it, Just uninstall like regular application. Press & Hold the app Icon, then select **Uninstall** option.
-
+7. If You want to uninstall it, Just uninstall like a regular application. Press & Hold the app Icon, then select **Uninstall** option.
+8. Alternative option, you can download and install the App from <a href="https://play.google.com/store/apps/details?id=twa.wishsimulator.app" target="_blank"><img style="width: 7rem; transform: translateY(35%)" src="/images/utility/playstore-button.webp" alt="playstore button"/></a>. But you don't need to download it if you already install WishSimulator.App directly from web, because it's literally same!
