@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { init, register, getLocaleFromNavigator } from 'svelte-i18n';
 
 const supportedLocales = ['zh-CN', 'en-US', 'id-ID', 'it-IT', 'ru-RU', 'th-TH', 'vi-VN'];

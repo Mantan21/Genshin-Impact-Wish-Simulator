@@ -1,5 +1,5 @@
 <script>
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { afterUpdate, createEventDispatcher, setContext, getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { locale, t } from 'svelte-i18n';

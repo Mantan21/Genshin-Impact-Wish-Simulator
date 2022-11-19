@@ -13,7 +13,6 @@ const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/stati
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		prerender: { default: true },
 		appDir: 'internal',
 		adapter: adapter(),
 		alias: {

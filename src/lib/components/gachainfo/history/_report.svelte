@@ -1,5 +1,5 @@
 <script>
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { t } from 'svelte-i18n';
 	import { pity4star, pity5star } from '$lib/store/localstore';
 	import { userCurrencies } from '$lib/helpers/currencies';

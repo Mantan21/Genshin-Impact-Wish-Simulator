@@ -1,7 +1,3 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
 	import { onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
