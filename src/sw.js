@@ -30,7 +30,21 @@ registerRoute(
 	})
 );
 
-registerRoute('./', new NetworkFirst({ cacheName: 'Static' }));
+registerRoute(
+	new RegExp('.(?:/|/?pwa=true)$'),
+	new NetworkFirst({
+		cacheName: 'Static',
+		plugins: [
+			{
+				cachedResponseWillBeUsed: ({ cachedResponse }) => {
+					if (cachedResponse) return cachedResponse;
+					return caches.match('/');
+				}
+			}
+		]
+	})
+);
+
 registerRoute(new RegExp('.(?:html)$'), new NetworkFirst({ cacheName: 'Static' }));
 
 registerRoute(
@@ -52,4 +66,3 @@ registerRoute(
 		]
 	})
 );
-
