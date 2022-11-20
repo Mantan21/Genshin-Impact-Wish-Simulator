@@ -3,7 +3,7 @@
 	import { registerSW } from 'virtual:pwa-register';
 	import { isLoading, locale } from 'svelte-i18n';
 	import { page } from '$app/stores';
-	import { dev } from '$app/env';
+	import { dev } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
 	import {
 		viewportHeight,
@@ -58,7 +58,6 @@
 	mountLocale();
 	onMount(() => {
 		const available = ['install', 'privacy-policy', 'screen'];
-		console.log(path[1]);
 		if (path[1] && !available.includes(path[1].toLowerCase())) return window.location.replace('/');
 
 		const url = new URL(window.location.href);
@@ -102,6 +101,10 @@
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
+
+	{#if !dev}
+		<link rel="manifest" href="/appmanifest.json" />
+	{/if}
 
 	{#if isloaded}
 		<Iklan head />

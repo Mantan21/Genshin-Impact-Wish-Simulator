@@ -1,4 +1,5 @@
 const base4StarChance = [5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 56.1, 100, 100];
+const base4StarWeapon = [6, 6, 6, 6, 6, 6, 6, 6, 62, 100, 100];
 const base5StarCharBanner = [];
 const base5StarWeaponBanner = [];
 
@@ -38,4 +39,4 @@ const prob = (items) => {
 };
 
 export default prob;
-export { base4StarChance, base5StarCharBanner, base5StarWeaponBanner };
+export { base4StarChance, base4StarWeapon, base5StarCharBanner, base5StarWeaponBanner };

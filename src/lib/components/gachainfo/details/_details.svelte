@@ -44,14 +44,14 @@
 		{:else if activeContent === 2}
 			<Description bannerType={banner} data={items} bannerName={bannerTitle} tplVersion="v2" />
 		{:else if activeContent === 3}
-			<List {drop5star} {drop4star} {drop3star} tplVersion="v2" />
+			<List {drop5star} {drop4star} {drop3star} {banner} tplVersion="v2" />
 		{/if}
 	</div>
 {:else}
 	<Promotional data={{ featured, items, banner, bannerTitle }} />
 	<Description bannerType={banner} data={items} bannerName={bannerTitle} />
 	<br />
-	<List {drop5star} {drop4star} {drop3star} />
+	<List {drop5star} {drop4star} {drop3star} {banner} />
 {/if}
 
 <style>

@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { Howl } from 'howler';
 import { localConfig } from '$lib/store/localstore';
 import camera from '$lib/data/audio/camera';

@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { beginnerRoll } from '$lib/store/localstore';
 
 	export let character = '';

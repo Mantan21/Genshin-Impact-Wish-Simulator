@@ -1,19 +1,6 @@
-<script context="module">
-	export function load({ error, status }) {
-		return {
-			props: {
-				statusCode: status,
-				message: error.message
-			}
-		};
-	}
-</script>
-
 <script>
+	import { page } from '$app/stores';
 	import { getContext, onMount } from 'svelte';
-
-	export let statusCode;
-	export let message;
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -25,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>Error {statusCode}</title>
+	<title>Error {$page.status}</title>
 </svelte:head>
 
 <section>
@@ -36,8 +23,8 @@
 		<i class="gi-primo-star bottom-left" />
 		<i class="gi-primo-star bottom-right" />
 		<i class="gi-inazuma icon-bg" />
-		<h1>Error {statusCode}</h1>
-		<h2>{message}</h2>
+		<h1>Error {$page.status}</h1>
+		<h2>{$page.error.message}</h2>
 		<p>We find some problem with the page you're looking for ..</p>
 		<a href="/"> <i class="gi-reply" /> Back To The Beginning .. </a>
 	</div>

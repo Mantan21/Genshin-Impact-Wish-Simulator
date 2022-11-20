@@ -16,7 +16,7 @@
 	import { localBannerVersion } from '$lib/store/localstore';
 	import { getName } from '$lib/helpers/nameText';
 	import playSfx from '$lib/helpers/audio';
-	import { allPatch } from '$lib/setup/wish-setup.json';
+	import { allPatch } from '$lib/data/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
 	import browserState from '$lib/helpers/browserState';
 

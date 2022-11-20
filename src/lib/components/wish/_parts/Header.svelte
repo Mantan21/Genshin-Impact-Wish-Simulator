@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 
 	import BannerButton from '$lib/components/wish/_parts/BannerButton.svelte';
 	import MyFund from '$lib/components/utility/MyFund.svelte';

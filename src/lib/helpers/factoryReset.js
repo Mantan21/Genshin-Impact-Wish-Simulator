@@ -15,7 +15,7 @@ import {
 } from '$lib/store/stores';
 import { locale } from 'svelte-i18n';
 import HistoryIDB from '$lib/store/historyIdb';
-import { wishPhase, version } from '$lib/setup/wish-setup.json';
+import { wishPhase, version } from '$lib/data/wish-setup.json';
 
 const { clearIDB } = HistoryIDB;
 

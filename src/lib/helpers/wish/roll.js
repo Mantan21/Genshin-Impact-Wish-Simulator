@@ -1,6 +1,11 @@
 import HistoryIDB from '$lib/store/historyIdb';
 import { pity4star, pity5star } from '$lib/store/localstore';
-import prob, { base4StarChance, base5StarCharBanner, base5StarWeaponBanner } from './prob';
+import prob, {
+	base4StarChance,
+	base4StarWeapon,
+	base5StarCharBanner,
+	base5StarWeaponBanner
+} from './prob';
 
 const { addHistory, countItem } = HistoryIDB;
 
@@ -14,12 +19,14 @@ const { addHistory, countItem } = HistoryIDB;
 const roll = async (banner, indexOfBanner, WishInstance) => {
 	const pity4 = pity4star.get(banner);
 	const pity5 = pity5star.get(banner);
-	const maxPity = (banner === 'weapons' ? 80 : 90) - 1; // Minus 1 to match with index of base pity
+	const isWeapon = banner === 'weapons';
+	const maxPity = (isWeapon ? 80 : 90) - 1; // Minus 1 to match with index of base pity
 
-	const chance5star =
-		banner === 'weapons' ? base5StarWeaponBanner[pity5] || 100 : base5StarCharBanner[pity5] || 100;
-	let chance4star = base4StarChance[pity4];
-	let chance3star = 100 - base4StarChance[pity4] - chance5star;
+	const chance5star = isWeapon
+		? base5StarWeaponBanner[pity5] || 100
+		: base5StarCharBanner[pity5] || 100;
+	let chance4star = isWeapon ? base4StarWeapon[pity4] : base4StarChance[pity4];
+	let chance3star = 100 - chance4star - chance5star;
 
 	if (chance3star < 0 && pity5 > maxPity - 1) chance4star = 0;
 	if (chance3star < 0) chance3star = 0;

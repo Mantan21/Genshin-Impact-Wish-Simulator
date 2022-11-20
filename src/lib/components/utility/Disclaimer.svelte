@@ -2,7 +2,7 @@
 	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { data } from '$lib/setup/updates.json';
+	import { data } from '$lib/data/updates.json';
 	import { assets, isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
 

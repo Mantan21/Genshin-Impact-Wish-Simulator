@@ -23,9 +23,9 @@
 		const arr = [];
 		let i = 0;
 		const raw = ispreview ? listingAssets('preview') : listingAssets();
-		for await (const ass of raw) {
+		for await (const assetData of raw) {
 			i++;
-			const { path, asset } = ass;
+			const { path, asset } = assetData;
 			const blob = await blobAssets(path);
 			if (blob === 'error') anyError = true;
 			arr.push({ url: blob, name: asset });
