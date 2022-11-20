@@ -11,7 +11,7 @@ import {
 	muted
 } from '$lib/store/stores';
 import { localBalance, localBannerVersion, localConfig } from '$lib/store/localstore';
-import { storageVersion, version } from '$lib/setup/wish-setup.json';
+import { storageVersion, version } from '$lib/data/wish-setup.json';
 import { noticeMark } from './noticeMark';
 
 /**

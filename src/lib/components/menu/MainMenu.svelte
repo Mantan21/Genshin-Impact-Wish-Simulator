@@ -16,7 +16,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import factoryReset from '$lib/helpers/factoryReset';
 	import playSfx from '$lib/helpers/audio';
-	import updates from '$lib/setup/updates.json';
+	import updates from '$lib/data/updates.json';
 
 	// Components
 	import Modal from '$lib/components/utility/ModalTpl.svelte';

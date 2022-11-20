@@ -1,7 +1,7 @@
 import { outfits } from '$lib/data/outfits.json';
 import { data as charDB } from '$lib/data/characters.json';
 import { data as weaponsDB } from '$lib/data/weapons.json';
-import { allPatch } from '$lib/setup/wish-setup.json';
+import { allPatch } from '$lib/data/wish-setup.json';
 
 const images = [
 	{

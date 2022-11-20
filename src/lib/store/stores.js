@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { beginner } from '$lib/data/banners/beginner.json';
-import { wishPhase } from '$lib/setup/wish-setup.json';
+import { wishPhase } from '$lib/data/wish-setup.json';
 
 const assets = writable({});
 const pageActive = writable('index');
