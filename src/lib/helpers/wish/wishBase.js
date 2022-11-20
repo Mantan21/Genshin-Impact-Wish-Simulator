@@ -21,8 +21,12 @@ const getAllWeapons = (star) =>
 			return arr;
 		});
 
-const standardWeapons = (star) => getAllWeapons(star).filter(({ limited }) => !limited);
 const standardChars5Star = (chars) => getAllChars(5).filter(({ name }) => chars.includes(name));
+const standardWeapons = (star, exclude = []) => {
+	return getAllWeapons(star)
+		.filter(({ limited }) => !limited)
+		.filter(({ name }) => !exclude.includes(name));
+};
 
 const get4StarChars = getAllChars(4).filter(({ name }) => {
 	return !charsDB.onlyStandard.includes(name);
@@ -39,7 +43,12 @@ const filterCharByReleased = (charlist, version = null, phase = null) => {
 };
 
 const get3StarItem = () => rand(standardWeapons(3));
-const get4StarItem = (bannerToRoll = 'allExcludeStandard', version = null, phase = null) => {
+const get4StarItem = (
+	bannerToRoll = 'allExcludeStandard',
+	version = null,
+	phase = null,
+	exclude = []
+) => {
 	const itemType = rand(['weap', 'char']);
 
 	// show standard character exclude starter character ( amber, kaeya, lisa )
@@ -52,7 +61,10 @@ const get4StarItem = (bannerToRoll = 'allExcludeStandard', version = null, phase
 	if (bannerToRoll === 'limited') charList = get4StarChars;
 
 	const items = itemType === 'weap' ? standardWeapons(4) : charList;
-	const filtered = filterCharByReleased(items, version, phase);
+	let filtered = filterCharByReleased(items, version, phase);
+	if (exclude.length > 0) {
+		filtered = filtered.filter(({ name }) => !exclude.includes(name));
+	}
 	return rand(filtered);
 };
 

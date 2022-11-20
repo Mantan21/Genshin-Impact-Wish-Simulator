@@ -78,11 +78,9 @@ const weaponWish = {
 			}
 
 			// Non-Rateup Items
-			const result = get4StarItem('weapons', this._version, this._phase);
-			const isItemRateup = this._rateupWeapons()
-				.map(({ name }) => name)
-				.includes(result.name);
-			guaranteedStatus.set('weapons4Star', !isItemRateup);
+			const rateupNames = this._rateupWeapons().map(({ name }) => name);
+			const result = get4StarItem('weapons', this._version, this._phase, rateupNames);
+			guaranteedStatus.set('weapons4Star', true);
 			return result;
 		}
 
@@ -114,10 +112,8 @@ const weaponWish = {
 
 				// Lose rateoff
 				if (type === 'std') {
-					const result = rand(standardWeapons(5));
-					const isFeaturedStandardWeapon = this._featuredWeaponsName().includes(result.name);
-					if (isFeaturedStandardWeapon) guaranteedStatus.set('weapons', false);
-					else guaranteedStatus.set('weapons', true);
+					const result = rand(standardWeapons(5, this._featuredWeaponsName()));
+					guaranteedStatus.set('weapons', true);
 					course.updater(result);
 					result.status = 'lose';
 					return result;
