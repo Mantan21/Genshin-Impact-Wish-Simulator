@@ -16,7 +16,9 @@
 			{#each Array(5) as i} <i class="gi-star" /> {/each}
 		</div>
 		<span>
-			{$t('details.percentageDrop', { values: { rarity: 5, percentage: '50.000%' } })}
+			{$t('details.percentageDrop', {
+				values: { rarity: 5, percentage: banner === 'weapons' ? '75.000%' : '50.000%' }
+			})}
 		</span>
 	</h3>
 
@@ -47,7 +49,9 @@
 		</div>
 		<i class="gi-star" style="color: transparent;" />
 		<span>
-			{$t('details.percentageDrop', { values: { rarity: 4, percentage: '50.000%' } })}
+			{$t('details.percentageDrop', {
+				values: { rarity: 4, percentage: banner === 'weapons' ? '75.000%' : '50.000%' }
+			})}
 		</span>
 	</h3>
 

@@ -6,6 +6,21 @@
 	export let drop4star;
 	export let drop3star;
 	export let tplVersion = 'v1';
+	export let banner = '';
+
+	let value5star;
+	let value4star;
+	let value3star;
+
+	if (banner === 'weapons') {
+		value5star = { singlePercentage: '0.700%', avgPercentage: '1.850%', rarity: 5 };
+		value4star = { singlePercentage: '6.000%', avgPercentage: '14.500%', rarity: 4 };
+		value3star = { singlePercentage: '93.300%', avgPercentage: '83.650%', rarity: 4 };
+	} else {
+		value5star = { singlePercentage: '0.600%', avgPercentage: '1.600%', rarity: 5 };
+		value4star = { singlePercentage: '5.100%', avgPercentage: '13.000%', rarity: 4 };
+		value3star = { singlePercentage: '94.300%', avgPercentage: '85.400%', rarity: 4 };
+	}
 </script>
 
 <div class="list" class:v2={tplVersion === 'v2'}>
@@ -15,9 +30,7 @@
 			{#each Array(5) as i} <i class="gi-star" /> {/each}
 		</div>
 		<span>
-			{$t('details.probInfo', {
-				values: { singlePercentage: '0.600%', avgPercentage: '1.600%', rarity: 5 }
-			})}
+			{$t('details.probInfo', { values: value5star })}
 		</span>
 	</h3>
 	<div class="table">
@@ -52,9 +65,7 @@
 			{/each}
 		</div>
 		<span>
-			{$t('details.probInfo', {
-				values: { singlePercentage: '5.100%', avgPercentage: '13.000%', rarity: 4 }
-			})}
+			{$t('details.probInfo', { values: value4star })}
 		</span>
 	</h3>
 	<div class="table">
@@ -91,9 +102,7 @@
 			{/each}
 		</div>
 		<span>
-			{$t('details.probInfo', {
-				values: { singlePercentage: '94.300%', avgPercentage: '85.400%', rarity: 4 }
-			})}
+			{$t('details.probInfo', { values: value3star })}
 		</span>
 	</h3>
 	<div class="table">
