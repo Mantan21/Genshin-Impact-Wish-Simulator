@@ -30,6 +30,7 @@
 	let innerWidth;
 	let isBannerLoaded = false;
 	let isloaded = false;
+	let showAd = false;
 
 	$: isCN = $locale?.toLowerCase().includes('cn');
 	$: viewportWidth.set(innerWidth);
@@ -50,10 +51,9 @@
 		mobileMode.set(rotate);
 	};
 
-	const bannerLoaded = () => (isBannerLoaded = true);
-	setContext('bannerLoaded', bannerLoaded);
-	const loaded = () => (isloaded = true);
-	setContext('loaded', loaded);
+	setContext('bannerLoaded', () => (isBannerLoaded = true));
+	setContext('loaded', () => (isloaded = true));
+	setContext('showAd', (show) => (showAd = show));
 
 	mountLocale();
 	onMount(() => {
@@ -106,7 +106,7 @@
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
 
-	{#if isloaded}
+	{#if isloaded && showAd}
 		<Iklan head />
 	{/if}
 </svelte:head>

@@ -167,7 +167,13 @@
 </svelte:head>
 
 {#if bgAnimated}
-	<video in:fade={{ duration: 2000 }} muted loop autoplay poster={$assets['wish-background.webp']}>
+	<video
+		transition:fade={{ duration: 2000 }}
+		muted
+		loop
+		autoplay
+		poster={$assets['wish-background.webp']}
+	>
 		<source src="/videos/bg.webm" type="video/webm" />
 		<track kind="captions" />
 	</video>

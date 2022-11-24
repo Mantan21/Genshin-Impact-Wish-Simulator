@@ -1,259 +1,229 @@
 <script>
-	import { createEventDispatcher, getContext } from 'svelte';
-	import { fly } from 'svelte/transition';
-	import { locales, locale, t } from 'svelte-i18n';
-	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio';
-	import { localeName, flags } from '$lib/data/country.json';
-	import browserState from '$lib/helpers/browserState';
-	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';
+	import { browser } from '$app/environment';
+	import { getContext, onMount, setContext } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import { locale, t } from 'svelte-i18n';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { localConfig } from '$lib/store/localstore';
+	import { muted, unlimitedFates } from '$lib/store/stores';
+	import factoryReset from '$lib/helpers/factoryReset';
+	import playSfx from '$lib/helpers/audio';
 
-	export let text;
-	export let name;
-	export let activeIndicator = null;
-	export let showOption = false;
+	import Modal from '$lib/components/utility/ModalTpl.svelte';
+	import Toast from '$lib/components/utility/Toast.svelte';
+	import OptionMenu from './_options.svelte';
 
-	const handleOption = getContext('handleOption');
-	const reset = getContext('factoryReset');
+	let optionToShow = '';
+	const handleOption = (selected) => (optionToShow = selected);
+	setContext('handleOption', handleOption);
 
-	const dispatch = createEventDispatcher();
-	let select = (selected) => {
-		playSfx();
-		showOption = !showOption;
-		if (!selected) return;
-
-		dispatch('select', { selected });
-		handleOption('');
+	// Unlimited Fates
+	const selectUnlimitedOptions = (e) => {
+		const { selected } = e.detail;
+		const optionValue = selected === 'yes';
+		localConfig.set('unlimitedFates', optionValue);
+		return unlimitedFates.set(optionValue);
 	};
 
-	const setLang = (langID) => {
-		playSfx();
-		locale.set(langID);
-		localStorage.setItem('locale', langID);
-		handleOption('');
-		userCurrencies.init();
+	// Animated BG
+	const handleAnimatedBG = getContext('animateBG');
+	let animatedbg = browser ? !!localConfig.get('animatedBG') : false;
+	const showAnimatedBG = (e) => {
+		const { selected } = e.detail;
+		localConfig.set('animatedBG', selected === 'yes');
+		animatedbg = selected === 'yes';
+		handleAnimatedBG();
 	};
 
-	const openPrevious = () => {
-		playSfx();
-		browserState.set('previous');
-		pageActive.set('previous-banner');
+	// Audio
+	const handleAudio = (e) => {
+		const { selected } = e.detail;
+		const optionValue = selected === 'yes';
+		localConfig.set('muted', optionValue);
+		muted.set(optionValue);
 	};
 
-	const openOption = () => {
-		playSfx();
-		if (showOption) return handleOption('');
-		handleOption(name);
+	let showResetModal = false;
+	let clearCache = false;
+	let showToast = false;
+
+	// Reset
+	const reset = () => {
+		showResetModal = true;
+		playSfx('modal');
+	};
+	setContext('factoryReset', reset);
+
+	const confirmReset = async () => {
+		showResetModal = false;
+		await factoryReset({ clearCache });
+		showToast = true;
 	};
 
-	$: currencyIndicator = $locale ? userCurrencies.checkUsedCurrency().currency : '';
-	const setCurrency = (selected) => {
-		playSfx();
-		localConfig.set('currency', selected);
-		currencyIndicator = selected;
-		userCurrencies.init(selected);
-		handleOption('');
+	const cancelReset = () => {
+		showResetModal = false;
 	};
+
+	let optionsContainer;
+	onMount(() => {
+		OverlayScrollbars(optionsContainer, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
-<div class="option">
-	<div class="option-name">{text}</div>
+<Modal
+	title="Factory Reset"
+	show={showResetModal}
+	button="all"
+	on:confirm={confirmReset}
+	on:cancel={cancelReset}
+>
+	<div class="confirmation">
+		<div style="padding: 1rem">
+			{@html $t('menu.resetPrompt')}
+			<br />
+			<small>
+				{$t('menu.resetDetail')}
+			</small>
 
-	{#if name === 'locale'}
-		<div class="option-select locale">
-			<button
-				class="selected"
-				style="width: 100%; height:100%"
-				on:click|stopPropagation={openOption}
-			>
-				<img
-					src="data:image/png;base64,{flags[activeIndicator.substring(0, 2)]}"
-					alt="flag"
-					class="flag"
+			<div class="clear-cache">
+				<input
+					type="checkbox"
+					bind:checked={clearCache}
+					name="cache"
+					id="cache"
+					style="margin-right: 2%;"
 				/>
-				{localeName[activeIndicator]}
-			</button>
-			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
-			{#if showOption}
-				<div class="select" in:fly={{ duration: 200, y: -10 }}>
-					{#each $locales as locale}
-						<button
-							class:selected={activeIndicator === locale}
-							on:click|stopPropagation={() => setLang(locale)}
-						>
-							<span style="text-align:right; padding-right: 1rem; width:50%">
-								<img
-									src="data:image/png;base64,{flags[locale.substring(0, 2)]}"
-									alt="flag"
-									class="flag"
-								/>
-							</span>
-							<span style="text-align:left;width:100%"> {localeName[locale]} </span>
-						</button>
-					{/each}
-					<button on:click|stopPropagation>
-						<a
-							href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/tree/master/src/locales"
-							target="_blank"
-							style="text-align:left;width:100%; padding: .5rem; text-align:center"
-						>
-							Contribute
-						</a>
-					</button>
-				</div>
-			{/if}
+				<label for="cache">{$t('menu.clearCache')}</label>
+			</div>
 		</div>
-	{:else if name === 'currency'}
-		<div class="option-select locale">
-			<button
-				class="selected"
-				style="width: 100%; height:100%"
-				on:click|stopPropagation={openOption}
-			>
-				{currencyIndicator}
-			</button>
-			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
-			{#if showOption}
-				<div class="select" in:fly={{ duration: 200, y: -10 }}>
-					{#each availableCurrencies as { currency }}
-						<button
-							class:selected={currencyIndicator === currency}
-							on:click|stopPropagation={() => setCurrency(currency)}
-						>
-							<span style="text-align:center;width:100%;padding: 3%"> {currency} </span>
-						</button>
-					{/each}
-				</div>
-			{/if}
-		</div>
-	{:else if name === 'switchBanner'}
-		<button class="option-select" on:click={openPrevious}>
-			<i class="gi-caret-down" />
-			{$patchVersion} - {$bannerPhase}
-		</button>
-	{:else if name === 'reset'}
-		<button class="option-select" on:click={reset}>
-			<i class="gi-delete" style="vertical-align: bottom; line-height: 0; margin-right: .2rem" />
-			{$t('menu.resetButton')}
-		</button>
-	{:else}
-		<div class="option-select">
-			<button
-				class="selected"
-				style="width: 100%; height:100%"
-				on:click|stopPropagation={openOption}
-			>
-				{activeIndicator ? $t('menu.yes') : $t('menu.no')}
-			</button>
-			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
-			{#if showOption}
-				<div class="select" in:fly={{ duration: 200, y: -10 }}>
-					<button class:selected={!activeIndicator} on:click|stopPropagation={() => select('no')}>
-						{$t('menu.no')}
-					</button>
-					<button class:selected={activeIndicator} on:click|stopPropagation={() => select('yes')}>
-						{$t('menu.yes')}
-					</button>
-				</div>
-			{/if}
-		</div>
-	{/if}
+	</div>
+</Modal>
+
+{#if showToast}
+	<Toast on:close={() => (showToast = false)}>{$t('menu.resetSuccess')}</Toast>
+{/if}
+
+<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
+	<OptionMenu
+		text={$t('menu.language')}
+		name="locale"
+		activeIndicator={$locale}
+		showOption={optionToShow === 'locale'}
+	/>
+
+	<OptionMenu text={$t('menu.currency')} name="currency" showOption={optionToShow === 'currency'} />
+
+	<OptionMenu
+		name="fates"
+		text={$t('menu.fates')}
+		showOption={optionToShow === 'fates'}
+		activeIndicator={$unlimitedFates}
+		on:select={selectUnlimitedOptions}
+	/>
+
+	<OptionMenu
+		name="audio"
+		text={$t('menu.mute')}
+		activeIndicator={$muted}
+		on:select={handleAudio}
+		showOption={optionToShow === 'audio'}
+	/>
+
+	<OptionMenu
+		name="animatedbg"
+		text={$t('menu.animatedbg')}
+		activeIndicator={animatedbg}
+		on:select={showAnimatedBG}
+		showOption={optionToShow === 'animatedbg'}
+	/>
+
+	<OptionMenu name="switchBanner" text={$t('menu.switchBanner')} />
+
+	<OptionMenu name="reset" text={$t('menu.factoryReset')} />
+
+	<h2>Notes :</h2>
+	<div class="notes">
+		<ol>
+			<li>
+				I heard a lot of people are annoyed with ads, so I decided to created another site without
+				ads, but this is available for supporters only. If you are interested in it, you can go here
+				&raquo; <a on:click|stopPropagation href="https://archon.wishsimulator.app" target="_blank">
+					Archon.WishSimulator.App
+				</a>
+				&laquo; and
+				<a
+					on:click|stopPropagation
+					href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
+					target="_blank"
+				>
+					here
+				</a> to get the access key
+			</li>
+			<li>
+				This simulator has pity system almost like the real game, the rate of getting rare item will
+				increase when you reach a certain pity depending on where banner you pull. you can go <a
+					on:click|stopPropagation
+					href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator#pity-system"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Here
+				</a>
+				to find details of the probability. If you has any idea, please send me feedback by creating
+				<a
+					on:click|stopPropagation
+					href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					new issue here
+				</a>
+			</li>
+			<li>
+				This app use Localstorage and IndexedDB to save your pull history, it's native on your
+				browser, if you clear your browser data, you will lost your data that related to this app
+				too. No chance to recover it back, because we never store your data on cloud
+			</li>
+			<li>
+				This App does not collect or store any personally identifiable information about you.
+				However, this app use third party services that may collect information used to identify
+				you. The information that these third party services request will be retained on your device
+				and is not collected by me in any way.
+			</li>
+		</ol>
+	</div>
 </div>
 
 <style>
-	.option {
+	.confirmation {
 		display: flex;
-		width: 100%;
-		padding: 0.4rem 0;
-	}
-	@media screen and (max-width: 900px) {
-		.option {
-			padding: 0.3rem 0;
-		}
-	}
-	.option-name {
-		background-color: #eae5d9;
-		width: 75%;
-		padding: 0.2rem 1rem;
-		border-top-left-radius: 5rem;
-		border-bottom-left-radius: 5rem;
-		border: solid transparent;
-		border-width: 0.2rem 0 0.2rem 0.2rem;
-		white-space: nowrap;
-	}
-
-	.option-select {
-		background-color: #dcd4c2;
-		width: 40%;
-		max-width: 14rem;
-		text-align: center;
-		position: relative;
-		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		border-top-right-radius: 5rem;
-		border-bottom-right-radius: 5rem;
-		transition: all 0.2s;
-		border: solid transparent;
-		border-width: 0.2rem 0.2rem 0.2rem 0;
-	}
-
-	.option:hover .option-name,
-	.option:hover .option-select {
-		border-color: #fff;
-	}
-
-	.option-select i {
-		position: absolute;
-		top: 50%;
-		right: 1rem;
-		font-size: 1rem;
-		transform: translateY(-50%);
-		pointer-events: none;
-	}
-
-	.option-select button,
-	.option-select {
-		font-size: 0.8rem !important;
-	}
-
-	.select {
-		position: absolute;
-		top: 110%;
-		left: 0;
 		width: 100%;
-		background-color: var(--tertiary-color);
-		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-		z-index: +1;
+		height: 100%;
+	}
+
+	.clear-cache {
+		font-size: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 5%;
+	}
+	.clear-cache label {
+		width: 60%;
+		text-align: left;
+	}
+
+	.notes {
+		font-weight: 100;
+		background-color: #fff;
+		padding: 1rem 2.5rem 0.5rem;
+		font-size: 0.87rem;
 		border-radius: 0.3rem;
-		overflow: hidden;
-	}
-	.select button {
-		display: block;
-		width: 100%;
-		padding: 3%;
 	}
 
-	.select button:hover,
-	.select button.selected {
-		background-color: #f0e0c7;
-	}
-
-	.locale .select button {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		line-height: 0%;
-		padding: 5%;
-	}
-	.flag {
-		width: 1.2rem;
-	}
-
-	@media screen and (max-width: 900px) {
-		:global(main):not(.mobile) .option-name {
-			font-size: 120%;
-		}
+	ol li {
+		margin-bottom: 1rem;
 	}
 </style>

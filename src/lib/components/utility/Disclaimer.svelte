@@ -5,19 +5,27 @@
 	import { data } from '$lib/data/updates.json';
 	import { assets, isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
+	import { adKey } from '$lib/helpers/accessKey';
 
 	export let show = true;
 	let content;
 
 	const closeDisclaimer = getContext('closeDisclaimer');
+	const showAd = getContext('showAd');
 	const updates = data.filter(({ featured }) => !!featured);
+
+	const handleConfirm = async () => {
+		closeDisclaimer();
+		const { validity } = await adKey.checkLocal();
+		showAd(!validity);
+	};
 
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
 </script>
 
-<Modal {show} title={$t('title')} button="confirm" disclaimer on:confirm={closeDisclaimer}>
+<Modal {show} title={$t('title')} button="confirm" disclaimer on:confirm={handleConfirm}>
 	<section>
 		<p class="sp">
 			{$t('fanmade')} <br />
