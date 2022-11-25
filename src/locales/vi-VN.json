@@ -322,7 +322,7 @@
 		"factoryReset": "Xoá sạch dữ liệu và khôi phục cài đặt gốc",
 		"resetTitle": "Factory Reset",
 		"rotate": "Xoay thiết bị cho trải nghiệm tốt hơn",
-		"clearCache": "Xoá ảnh đệm, bạn sẽ cần tải lại đồ dùng sau hành động này",
+		"clearCache": "Clear Caches ( {size} ) ? You will re-load the assets after this action!",
 		"resetButton": "Xoá sạch ngay lập tức",
 		"resetPrompt": "Bạn có chắc muốn xoá <strong> Tất cả dữ liệu </strong> và khôi phục cài đặt gốc ?",
 		"resetDetail": "Điều này cũng xoá lịch sử, tính toán tổn hại (Pity Calculation), tiền và tất cả vật phẩm trong túi đồ của bạn",

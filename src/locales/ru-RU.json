@@ -322,7 +322,7 @@
 		"factoryReset": "Удалить все данные",
 		"resetTitle": "Factory Reset",
 		"rotate": "Поверните для лучшего опыта",
-		"clearCache": "Чистые кэши изображения, вы перезагружаете активы после этого действия.",
+		"clearCache": "Clear Caches ( {size} ) ? You will re-load the assets after this action!",
 		"resetButton": "Сбросить сейчас",
 		"resetPrompt": "Вы уверены, что удалили <strong> все данные </strong> и восстановили настройки по умолчанию? ?",
 		"resetDetail": "Он также удаляет вашу историю, расчет жалости, баланс и все предметы из инвентаря.",

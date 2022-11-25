@@ -46,8 +46,15 @@
 	let showResetModal = false;
 	let clearCache = false;
 	let showToast = false;
+	let storageSize = '..B';
 
 	// Reset
+	const getSize = async () => {
+		const { usage } = await navigator.storage.estimate();
+		const size = (usage / 1000000).toFixed(2);
+		storageSize = `${size}MB`;
+	};
+
 	const reset = () => {
 		showResetModal = true;
 		playSfx('modal');
@@ -67,6 +74,7 @@
 	let optionsContainer;
 	onMount(() => {
 		OverlayScrollbars(optionsContainer, { sizeAutoCapable: false, className: 'os-theme-light' });
+		getSize();
 	});
 </script>
 
@@ -93,7 +101,7 @@
 					id="cache"
 					style="margin-right: 2%;"
 				/>
-				<label for="cache">{$t('menu.clearCache')}</label>
+				<label for="cache">{$t('menu.clearCache', { values: { size: storageSize } })}</label>
 			</div>
 		</div>
 	</div>

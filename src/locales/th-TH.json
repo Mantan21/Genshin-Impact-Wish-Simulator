@@ -322,7 +322,7 @@
 		"factoryReset": "ล้างข้อมูลและกู้คืนค่าเริ่มต้น",
 		"resetTitle": "Factory Reset",
 		"rotate": "หมุนเพื่อประสบการณ์ที่ดีขึ้น",
-		"clearCache": "ลบแคช คุณจะดาวน์โหลดสินทรัพย์อีกครั้งหลังจากการกระทำนี้",
+		"clearCache": "Clear Caches ( {size} ) ? You will re-load the assets after this action!",
 		"resetButton": "รีเซ็ตตอนนี้",
 		"resetPrompt": "คุณแน่ใจหรือไม่ว่า <strong> ข้อมูลทั้งหมด </strong> และกู้คืนเป็นค่าเริ่มต้น?",
 		"resetDetail": "นอกจากนี้ยังลบประวัติของคุณการคำนวณความสงสารความสมดุลและรายการทั้งหมดจากสินค้าคงคลัง",

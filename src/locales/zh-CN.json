@@ -322,7 +322,7 @@
 		"factoryReset": "清除数据并恢复默认",
 		"resetTitle": "Factory Reset",
 		"rotate": "旋转设备以获得更好体验",
-		"clearCache": "清除图像缓存，您将在此操作之后重新加载资产",
+		"clearCache": "Clear Caches ( {size} ) ? You will re-load the assets after this action!",
 		"resetButton": "现在重置",
 		"resetPrompt": "您确定清除<strong>所有数据</strong>并恢复默认吗？",
 		"resetDetail": "它还会从仓库中删除您的历史记录、垫数计算、余额和所有项目。",

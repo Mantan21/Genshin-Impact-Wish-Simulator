@@ -322,7 +322,7 @@
 		"factoryReset": "Clear Data and Restore Default",
 		"resetTitle": "Factory Reset",
 		"rotate": "Rotate for better experience",
-		"clearCache": "Clear Image Caches, You will re-load the assets after this action.",
+		"clearCache": "Clear Caches ( {size} ) ? You will re-load the assets after this action!",
 		"resetButton": "Reset Now",
 		"resetPrompt": "Are You sure to clear <strong> All Data </strong> and restore to default ?",
 		"resetDetail": "It also remove your History, Pity Calculation, Balance and all items from Inventory.",

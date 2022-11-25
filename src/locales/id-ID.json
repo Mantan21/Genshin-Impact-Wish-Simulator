@@ -322,7 +322,7 @@
 		"factoryReset": "Bersihkan Data dan Kembalikan Seperti Semula",
 		"resetTitle": "Factory Reset",
 		"rotate": "Putar untuk pengalaman yang lebih baik",
-		"clearCache": "Hapus Cache Gambar, Kamu akan memuat ulang asset setelah tindakan ini",
+		"clearCache": "Hapus Cache ( {size} )? Kamu akan memuat ulang asset setelah tindakan ini!",
 		"resetButton": "Reset Sekarang",
 		"resetPrompt": "Apakah kamu yakin untuk menghapus <strong> Semua Data </strong> dan mengembalikan aplikasi seperti semula?",
 		"resetDetail": "Tindakan ini juga akan menghapus Data Riwayat, Akumulasi Pity, Saldo dan Semua Item dari Inventaris",
