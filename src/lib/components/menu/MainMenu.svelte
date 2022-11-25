@@ -82,6 +82,9 @@
 		flex-direction: column;
 		height: 100%;
 	}
+	.container :global(a) {
+		color: #f29f0f;
+	}
 
 	.head {
 		display: flex;

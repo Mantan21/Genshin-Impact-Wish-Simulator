@@ -121,21 +121,6 @@
 			</a>
 		</Column>
 
-		<!-- Donate Sociabuzz -->
-		<Column style="padding: 0.4rem;">
-			<a class="content sociabuzz" href="https://sociabuzz.com/mantan21/posts" target="_blank">
-				<div
-					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
-				>
-					<div class="donate-icon">
-						<img src={$assets['sociabuzz.png']} alt="icon" />
-						<span style="font-size: 80%; color:darkblue">Global & Local Payment</span>
-					</div>
-				</div>
-				<span> Support me on SociaBuzz </span>
-			</a>
-		</Column>
-
 		<!-- Donate By Crypto -->
 		<Column style="padding: 0.4rem;">
 			<button

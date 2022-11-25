@@ -49,9 +49,9 @@
 				<img src={$assets['donate-kofi.png']} alt="ko-fi icon" />
 				<span> Ko-fi </span>
 			</a>
-			<a class="sociabuzz" href="https://sociabuzz.com/mantan21/posts" target="_blank">
-				<img src={$assets['sociabuzz.png']} alt="Sociabuzz icon" />
-				<span> Sociabuzz </span>
+			<a class="saweria" href="https://saweria.co/mantan21" target="_blank">
+				<img src={$assets['donate-saweria.webp']} alt="Saweria Icon" />
+				<span> Saweria </span>
 			</a>
 		</div>
 		<p class="credit">{$t('disclaimer')}</p>
@@ -143,23 +143,27 @@
 		transition: all 0.2s;
 		color: #fff;
 		font-size: 0.9rem;
+		text-decoration: none;
 	}
 
 	a.kofi {
 		background-color: #24ade1;
 	}
-	a.sociabuzz {
-		background-image: linear-gradient(to right, #3fa9f5, #78c845);
-		color: #fff;
+
+	a.saweria {
+		background-color: #ffe3af;
+		color: #bd6932;
 	}
-	a.sociabuzz img {
-		border-radius: 100%;
+
+	.kofi:hover {
+		background-color: #0c91c6;
+	}
+	.saweria:hover {
+		background-color: #f3d192;
 	}
 
 	a:active {
 		transform: scale(0.9);
-		background-color: #fff;
-		color: #000;
 	}
 
 	a img {

@@ -39,12 +39,14 @@
 		font-weight: bold;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
-	a {
+	.text a {
 		text-decoration: underline;
 		transition: all 0.2s;
+		color: #ffffff;
 	}
+
 	a:hover {
-		color: #f29f0f;
+		color: #f7cf33;
 	}
 
 	.updates .update-item {
@@ -61,13 +63,6 @@
 		font-size: 0.97rem;
 		display: block;
 		overflow: hidden;
-	}
-
-	.update-item :global(a) {
-		color: #f29f0f;
-	}
-	.update-item :global(a:hover) {
-		text-decoration: underline;
 	}
 
 	.updates p {

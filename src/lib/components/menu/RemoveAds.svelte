@@ -153,9 +153,6 @@
 		align-items: center;
 	}
 
-	a {
-		color: #f29f0f;
-	}
 	.row {
 		height: 100%;
 		width: 100%;
