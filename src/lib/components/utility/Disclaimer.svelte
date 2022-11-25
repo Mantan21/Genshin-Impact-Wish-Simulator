@@ -30,7 +30,7 @@
 		<p class="sp">
 			{$t('fanmade')} <br />
 			{#if !$isPWA}
-				<a href="/install">Instructions to Install to Home Screen/Desktop</a>
+				<a href="/install">{$t('installInstruction')}</a>
 			{/if}
 		</p>
 		<div class="updates" bind:this={content}>

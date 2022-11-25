@@ -71,7 +71,7 @@
 </script>
 
 <Modal
-	title="Factory Reset"
+	title={$t('menu.resetTitle')}
 	show={showResetModal}
 	button="all"
 	on:confirm={confirmReset}

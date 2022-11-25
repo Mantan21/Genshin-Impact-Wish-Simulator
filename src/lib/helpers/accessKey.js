@@ -34,14 +34,14 @@ const adKey = {
 	},
 
 	async checkLocal() {
+		const storedKey = localConfig.get('adKey');
+		const reversedKey = storedKey?.split('').reverse().join('');
 		try {
-			const storedKey = localConfig.get('adKey');
-			const reversedKey = storedKey?.split('').reverse().join('');
-			if (!storedKey) return { validity: false, storedKey: reversedKey };
+			if (!storedKey) return { validity: false, storedKey: reversedKey, status: 'ok' };
 			const isKeyValid = await checkKey(reversedKey);
-			return { validity: isKeyValid, storedKey: reversedKey };
+			return { validity: isKeyValid, storedKey: reversedKey, status: 'ok' };
 		} catch (e) {
-			return { validity: false, storedKey: null };
+			return { validity: false, storedKey: reversedKey, status: 'offline' };
 		}
 	},
 
@@ -49,10 +49,10 @@ const adKey = {
 		try {
 			const isKeyValid = await checkKey(key);
 			if (isKeyValid) this._set(key);
-			const msg = isKeyValid ? 'success' : 'Invalid Key';
+			const msg = isKeyValid ? 'success' : 'menu.invalidKey';
 			return { validity: isKeyValid, msg };
 		} catch (e) {
-			return { validity: false, msg: 'Connection Failed' };
+			return { validity: false, msg: 'connectionFailed' };
 		}
 	}
 };

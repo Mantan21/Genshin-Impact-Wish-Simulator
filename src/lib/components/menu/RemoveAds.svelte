@@ -1,14 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/stores';
-	import ButtonModal from '../utility/ButtonModal.svelte';
 	import { adKey } from '$lib/helpers/accessKey';
 	import playSfx from '$lib/helpers/audio';
 
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
-	import Icon from '../utility/Icon.svelte';
+	import ButtonModal from '$lib/components/utility/ButtonModal.svelte';
+	import Icon from '$lib/components/utility/Icon.svelte';
 
 	let showToast = false;
 	let input = '';
@@ -29,9 +30,11 @@
 	let checkingLocal = true;
 	let userHasKey = false;
 	let isUserKeyValid = false;
+	let isOffline = false;
 
 	const checkLocal = async () => {
-		const { validity, storedKey } = await adKey.checkLocal();
+		const { validity, storedKey, status } = await adKey.checkLocal();
+		isOffline = status === 'offline';
 		input = storedKey;
 		userHasKey = !!storedKey;
 		isUserKeyValid = validity;
@@ -56,7 +59,7 @@
 </script>
 
 <Modal
-	title="Remove AdKey"
+	title={$t('menu.removeKey')}
 	show={showModal}
 	button="all"
 	on:confirm={confirmModal}
@@ -64,14 +67,13 @@
 >
 	<div class="confirmation">
 		<span>
-			Are You sure to remove the current adKey ? You need to enter a new key to remove the future
-			ads!
+			{$t('menu.removeKeyConfirm')}
 		</span>
 	</div>
 </Modal>
 
 {#if showToast}
-	<Toast on:close={() => (showToast = false)}>{message}</Toast>
+	<Toast on:close={() => (showToast = false)}>{$t(message)}</Toast>
 {/if}
 
 <div
@@ -82,40 +84,44 @@
 	{#if checkingLocal}
 		<div class="row loader">
 			<Icon type="loader" />
-			<span> Checking Stored AdKey </span>
+			<span> {$t('menu.checkingKey')} </span>
 		</div>
 	{:else}
 		<form class="row" on:submit|preventDefault={!waiting ? removeAds : null} in:fade>
-			<label for="key">Input the Key to Remove Ads !</label>
+			<label for="key">{$t('menu.inputKeyTxt')}</label>
 			<div class="input">
 				<input
 					type="text"
 					id="key"
 					bind:value={input}
-					placeholder="Enter Key"
+					placeholder={$t('menu.inputKeyPlaceholder')}
 					class:error={error || (!isUserKeyValid && userHasKey)}
 					disabled={userHasKey}
 				/>
 				<div class="note">
-					{#if !isUserKeyValid && userHasKey}
-						<span class="invalid"> Your key isn't valid, Get a new one Here </span>
+					{#if isOffline}
+						<span class="offline"> {$t('menu.verifyFail')} </span>
 					{:else}
-						<span> Don't have a key? Get a new one </span>
+						{#if !isUserKeyValid && userHasKey}
+							<span class="invalid"> {$t('menu.invalidKey')} </span>
+						{:else}
+							<span> {$t('menu.noKey')} </span>
+						{/if}
+						<a
+							href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
+							target="_blank"
+							on:click|stopPropagation
+						>
+							{$t('menu.getNewKey')}
+						</a>
 					{/if}
-					<a
-						href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
-						target="_blank"
-						on:click|stopPropagation
-					>
-						Here!
-					</a>
 				</div>
 
 				{#if userHasKey}
-					<ButtonModal type="cancel" on:click={handleKey}>Remove Key</ButtonModal>
+					<ButtonModal type="cancel" on:click={handleKey}>{$t('menu.removeKey')}</ButtonModal>
 				{:else}
 					<ButtonModal on:click={removeAds} disabled={!input || waiting}>
-						{waiting ? 'Waiting...' : 'Remove Ads'}
+						{waiting ? $t('waiting') : $t('menu.removeAds')}
 					</ButtonModal>
 				{/if}
 			</div>
@@ -124,9 +130,7 @@
 	<div class="admin-note">
 		<picture> <img src={$assets['imbroke.webp']} alt="I'm Broke" /> </picture>
 		<p>
-			* I need to say sorry about the ads. Actually I don't want to ruin your wishing experience,
-			but I don't have any Team or Sponsor to keep this app alive. If you don't want to spend
-			anythings, You can still turn on the Ad Blocker or just use custom DNS, I will not forbid you.
+			{$t('menu.authorNotes')}
 		</p>
 	</div>
 </div>
@@ -223,6 +227,9 @@
 	}
 	.note .invalid {
 		color: #ee6c4c;
+	}
+	.note .offline {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
 	.admin-note {

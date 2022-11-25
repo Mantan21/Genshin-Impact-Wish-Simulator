@@ -44,7 +44,7 @@
 					<Options />
 				{:else if activeContent === 'updates'}
 					<Updates />
-				{:else if activeContent === 'removeads'}
+				{:else if activeContent === 'removeAds'}
 					<RemoveAds />
 				{/if}
 

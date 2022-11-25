@@ -15,8 +15,8 @@
 		<div class="menu-item" class:active={activeContent === 'updates'}>
 			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
 		</div>
-		<div class="menu-item" class:active={activeContent === 'removeads'}>
-			<button on:click={() => selectMenu('removeads')}> Remove Ads </button>
+		<div class="menu-item" class:active={activeContent === 'removeAds'}>
+			<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>
 		</div>
 	</div>
 </div>
