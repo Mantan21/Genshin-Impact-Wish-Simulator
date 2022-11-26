@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 
 	import { cubicOut } from 'svelte/easing';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from './Icon.svelte';
 	import { assets } from '$lib/store/stores';
 

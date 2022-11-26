@@ -4,7 +4,7 @@
 	import { t, locale } from 'svelte-i18n';
 	import { viewportHeight, viewportWidth, isMobile, muted, assets } from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import { getName } from '$lib/helpers/nameText';
 	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
 

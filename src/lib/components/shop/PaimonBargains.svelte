@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 
 	import ExchangeModal from './ExchangeModal.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -27,7 +27,7 @@
 
 	const handlePaimonClick = ({ detail }) => {
 		activeFateShop = detail.selected;
-		playSfx('exchange');
+		playSfx('shopnav');
 	};
 
 	const handleObtained = getContext('handleObtained');

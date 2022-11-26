@@ -7,7 +7,7 @@
 		bannerList,
 		mobileMode
 	} from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import BannerCard from './_banner-card.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;

@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/stores';
 	import { adKey } from '$lib/helpers/accessKey';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';

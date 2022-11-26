@@ -16,7 +16,7 @@
 		assets
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import browserState from '$lib/helpers/browserState';
 	import { outfits } from '$lib/data/outfits.json';
 
@@ -43,8 +43,7 @@
 	const changePage = (page) => {
 		pageActive.set(page);
 		browserState.set(page);
-		if (page === 'shop') return playSfx('shop');
-		if (page === 'inventory') return playSfx('inventory');
+		if (['shop', 'inventory', 'history'].includes(page)) return playSfx(page);
 		return playSfx();
 	};
 

@@ -6,7 +6,7 @@
 	import { outfits } from '$lib/data/outfits.json';
 	import { assets, genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import positionToStyle from '$lib/helpers/cssPosition';
 	import { getName } from '$lib/helpers/nameText';
 
@@ -30,7 +30,8 @@
 	let contentWidth;
 
 	const handleRecomendClick = ({ detail }) => {
-		playSfx('exchange');
+		if (activeItem === detail.selected) return;
+		playSfx('shopnav');
 		activeItem = detail.selected;
 	};
 

@@ -5,7 +5,7 @@
 	import positionToStyle from '$lib/helpers/cssPosition';
 	import { getOutfit } from '$lib/helpers/wish/outfit';
 	import { getName } from '$lib/helpers/nameText';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import ShareScreenshot from '$lib/components/utility/ShareScreenshot.svelte';
 	import { assets } from '$lib/store/stores';

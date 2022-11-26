@@ -1,7 +1,7 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { getContext } from 'svelte';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 
 	import { beginnerRoll, guaranteedStatus, pity4star, pity5star } from '$lib/store/localstore';
 	import { showBeginner } from '$lib/store/stores';

@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 
 	import { isMobile, mobileMode, viewportHeight } from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 
 	// Components
 	import Options from './OptionMenu.svelte';

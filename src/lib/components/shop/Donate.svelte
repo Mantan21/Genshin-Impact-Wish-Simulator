@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
 	import Modal from '../utility/ModalTpl.svelte';

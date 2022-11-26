@@ -32,13 +32,12 @@
 	};
 </script>
 
-<div class="content" class:owned={isOwned}>
+<div class="content" class:owned={isOwned} on:click={handleShowDetails}>
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
 	<picture
 		class="wish-result star{rarity} {type}"
-		on:click={handleShowDetails}
 		style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
 	>
 		{#if type === 'character'}
@@ -96,7 +95,7 @@
 		transform: translate(-50%, -50%);
 		width: 100%;
 		height: 100%;
-		border-radius: calc(10 / 100 * var(--item-width));
+		border-radius: calc(5 / 100 * var(--item-width));
 		border: 0.3rem solid #eac343;
 		opacity: 0;
 		transition: opacity 0.15s;
@@ -171,7 +170,7 @@
 		width: 100%;
 		padding: calc(4 / 100 * var(--item-width));
 		position: relative;
-		font-size: calc(11 / 100 * var(--item-width));
+		font-size: calc(9 / 100 * var(--item-width));
 	}
 	.caption span {
 		display: block;

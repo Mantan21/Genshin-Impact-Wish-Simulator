@@ -10,7 +10,7 @@
 		starglitter
 	} from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let activeItem = '';

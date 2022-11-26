@@ -1,30 +1,34 @@
 import { browser } from '$app/environment';
 import { Howl } from 'howler';
 import { localConfig } from '$lib/store/localstore';
-import camera from '$lib/data/audio/camera';
-import changebanner from '$lib/data/audio/changebanner';
-import click from '$lib/data/audio/click';
-import close from '$lib/data/audio/close';
-import exchange from '$lib/data/audio/exchange';
-import inventory from '$lib/data/audio/inventory';
-import item from '$lib/data/audio/item';
-import obtain from '$lib/data/audio/obtain';
-import modal from '$lib/data/audio/modal';
-import roll from '$lib/data/audio/roll';
-import shop from '$lib/data/audio/shop';
+import camera from './camera';
+import changebanner from './changebanner';
+import click from './click';
+import close from './close';
+import exchange from './exchange';
+import inventory from './inventory';
+import history from './history';
+import obtain from './obtain';
+import modal from './modal';
+import roll from './roll';
+import shop from './shop';
+import shopnav from './shopnav';
+import collectionitem from './collectionitem';
 
 const source = {
 	changebanner,
 	close,
 	click,
+	collectionitem,
 	exchange,
 	modal,
 	shop,
 	obtain,
 	roll,
 	inventory,
-	item,
+	history,
 	camera,
+	shopnav,
 	wishBacksound: '/sfx/wish-backsound.ogg',
 	resultList: '/sfx/result-list.ogg',
 	reveal3Star: '/sfx/reveal-3star.ogg',

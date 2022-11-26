@@ -12,7 +12,7 @@
 	// Store
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { APP_TITLE } from '$lib/env';
-	import playSfx from '$lib/helpers/audio';
+	import playSfx from '$lib/helpers/audio/audio';
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';
@@ -198,7 +198,7 @@
 	let detailName = '';
 	let showInventoryDetail = false;
 	const handleShowDetails = (e) => {
-		playSfx('item');
+		playSfx('collectionitem');
 		const { name } = e.detail;
 		detailName = name;
 		showInventoryDetail = true;
@@ -548,7 +548,7 @@
 		will-change: auto;
 		aspect-ratio: 8.75 / 10;
 		width: 20vh;
-		max-width: 150px;
+		max-width: 140px;
 	}
 	:global(.mobile) .item {
 		width: 24vh;
