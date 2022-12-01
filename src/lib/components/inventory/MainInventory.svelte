@@ -263,8 +263,12 @@
 							{$t('history.noData')}
 						</span>
 					{:else}
-						{#each dataToShow as d (d)}
-							<div class="item" animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
+						{#each dataToShow as d, i (d)}
+							<div
+								class="item"
+								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
+								in:fade={{ duration: 300, delay: Math.sqrt(i * 2500) }}
+							>
 								<InventoryItem
 									name={d.name}
 									rarity={d.rarity}
@@ -571,13 +575,13 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		width: 2rem;
-		height: 2rem;
+		width: 1.8rem;
+		height: 1.8rem;
 		line-height: 1rem;
 		color: #3a4156;
 		background-color: #ede5d8;
 		transform: rotate(90deg);
-		font-size: 1.2rem;
+		font-size: 1rem;
 		border-radius: 100%;
 	}
 
@@ -590,12 +594,14 @@
 		max-width: 35%;
 		position: relative;
 		text-transform: capitalize;
+		font-size: 0.85rem;
 	}
 	.selected-order {
 		background-color: #ede5d8;
-		padding: 0.05rem 1rem;
-		border-radius: 10px;
+		padding: 0.3rem 1rem;
+		border-radius: 10rem;
 	}
+
 	.selected-order i {
 		display: inline-block;
 		position: absolute;
@@ -616,11 +622,13 @@
 	}
 
 	.order-list a {
-		padding: 0.2rem 1rem;
+		padding: 0.7rem 1rem;
 		text-decoration: none;
 		color: #3a4156;
+		transition: all 0.2s;
 	}
-	.order-list a.selected {
+	.order-list a.selected,
+	.order-list a:hover {
 		background-color: rgb(218, 202, 177);
 	}
 

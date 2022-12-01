@@ -54,12 +54,12 @@
 		width: 1.2rem;
 		height: 1.2rem;
 		color: #000;
-		background-color: #fff;
+		background-color: #ececec;
 		border-radius: 100%;
 		position: absolute;
 		right: 3px;
 		top: 50%;
-		font-size: 0.8rem;
+		font-size: 0.75rem;
 		transform: translateY(-50%);
 	}
 
@@ -77,9 +77,9 @@
 		vertical-align: middle;
 		text-align: center;
 		position: relative;
-		margin: 0 8px;
+		margin: 0 10px 0 0;
 		padding: 0 1rem 0 1.85rem;
-		border: 1px solid #656565;
+		border: 0.7px solid #656565;
 	}
 
 	@media screen and (max-width: 900px) {

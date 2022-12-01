@@ -244,8 +244,11 @@
 		</div>
 		<div class="content" bind:this={content}>
 			<div id="content">
-				{#each dataToShow as [group, data] (group)}
-					<div animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}>
+				{#each dataToShow as [group, data], i (group)}
+					<div
+						animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
+						in:fade={{ duration: 300, delay: Math.sqrt(i * 20000) }}
+					>
 						<div class="group-title">
 							<h2>
 								{groupby === 'version'
@@ -258,7 +261,7 @@
 						</div>
 						{#each data as { patch, phase, chars, weapons }, i (i)}
 							<a
-								in:fade
+								in:fade={{ duration: 300, delay: Math.sqrt(i * 10000) }}
 								href="/"
 								class="item"
 								on:click|preventDefault={() => selectBanner(patch, phase)}
@@ -364,25 +367,15 @@
 		padding: 5px 2%;
 	}
 
-	button:no-button(.close) {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 35px;
-		height: 35px;
-		color: rgba(0, 0, 0, 0.7);
-		background-color: #fff;
-		padding: 0;
-		line-height: 0;
-		border-radius: 40px;
-		transition: all 0.2s;
-	}
-
 	button:hover {
 		background-color: var(--tertiary-color);
 	}
+
 	.close {
 		margin-left: auto;
+	}
+	:global(.mobile) .close {
+		margin-right: 4.5%;
 	}
 
 	.body {
@@ -467,10 +460,10 @@
 	}
 
 	.filter-list a {
-		padding: 0.2rem 1rem;
+		padding: 0.7rem 1rem;
 		text-decoration: none;
 		color: #3a4156;
-		transition: background 0.2s;
+		transition: all 0.2s;
 	}
 	.filter-list a.selected,
 	.filter-list a:hover {

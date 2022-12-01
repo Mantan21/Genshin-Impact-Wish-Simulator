@@ -172,7 +172,10 @@
 </script>
 
 {#if showToast}
-	<Toast on:close={() => (showToast = false)}>Failed to load Banner!</Toast>
+	<Toast autoclose={false} on:close={() => (showToast = false)}>
+		Failed to load Banner! <br />
+		Please choose another banner or reconnect to the internet to avoid errors!
+	</Toast>
 {/if}
 
 <!-- Obtained Items -->

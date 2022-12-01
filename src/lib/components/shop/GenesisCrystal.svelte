@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import playSfx from '$lib/helpers/audio/audio';
 
@@ -52,7 +53,10 @@
 <ColumnParent>
 	{#each genesisList as { qty, price }, i}
 		<Column style="padding:0">
-			<button on:click={() => selectGenesis(i)}>
+			<button
+				on:click={() => selectGenesis(i)}
+				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
+			>
 				<div class="content" style="background-image: url({$assets['genesis-bg.webp']})">
 					<div class="picture">
 						<picture>

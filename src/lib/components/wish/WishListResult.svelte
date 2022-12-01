@@ -257,7 +257,7 @@
 	}
 	:global(.mobile) .close {
 		top: 0.3rem;
-		right: 2%;
+		right: 6%;
 	}
 
 	/* Wish List */

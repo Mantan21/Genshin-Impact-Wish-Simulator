@@ -2,14 +2,23 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 
+	export let autoclose = true;
+
 	const dispatch = createEventDispatcher();
-	const timer = setTimeout(() => {
-		dispatch('close');
-		clearTimeout(timer);
-	}, 3000);
+	const closeHandle = () => {
+		if (autoclose) return;
+		return dispatch('close');
+	};
+
+	if (autoclose) {
+		const timer = setTimeout(() => {
+			dispatch('close');
+			clearTimeout(timer);
+		}, 3000);
+	}
 </script>
 
-<div class="toast" transition:fly={{ y: -20 }}>
+<div class="toast" transition:fly={{ y: -20 }} on:click={closeHandle}>
 	<slot />
 </div>
 

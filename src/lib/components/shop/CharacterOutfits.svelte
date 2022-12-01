@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { outfits } from '$lib/data/outfits.json';
 	import { getName } from '$lib/helpers/nameText';
@@ -32,7 +33,11 @@
 <ColumnParent>
 	{#each outfitsData as { name, price, promoPrice, isPromo, isOwned, rarity }, i}
 		<Column style="padding: .3rem">
-			<button class:discount={isPromo} on:click={() => selectItem(outfitsData, i)}>
+			<button
+				class:discount={isPromo}
+				on:click={() => selectItem(outfitsData, i)}
+				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
+			>
 				<div class="content">
 					{#if isPromo}
 						<div class="discount-percentage">-20%</div>

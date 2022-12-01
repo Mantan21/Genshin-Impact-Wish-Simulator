@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import playSfx from '$lib/helpers/audio/audio';
 
@@ -62,7 +63,10 @@
 <ColumnParent>
 	{#each ['intertwined', 'acquaint'] as fate, i}
 		<Column>
-			<button on:click={() => openExchangeModal(fate)}>
+			<button
+				on:click={() => openExchangeModal(fate)}
+				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
+			>
 				<div class="content">
 					<picture style="background-image: url('{$assets['5star-bg.webp']}')">
 						<Icon type={fate} width="60%" />

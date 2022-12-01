@@ -257,7 +257,7 @@
 
 	:global(.mobile) .close {
 		top: 0.3rem;
-		right: 2%;
+		right: 6%;
 	}
 
 	.skip {
@@ -278,7 +278,7 @@
 
 	:global(.mobile) .skip {
 		font-size: 0.8rem;
-		right: 1rem;
+		right: 5%;
 		top: 0.5rem;
 	}
 

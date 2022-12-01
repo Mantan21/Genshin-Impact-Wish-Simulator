@@ -257,6 +257,7 @@ h1 {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
+	aspect-ratio: 1/1;
 	width: 35px;
 	height: 35px;
 	color: rgba(0, 0, 0, 0.7);
@@ -281,8 +282,8 @@ h1 {
 }
 
 .mobile .close {
-	width: 2.2rem;
-	height: 2.2rem;
+	width: 2rem;
+	height: 2rem;
 }
 
 @media screen and (max-width: 900px) {

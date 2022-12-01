@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import playSfx from '$lib/helpers/audio/audio';
 	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
@@ -92,7 +93,12 @@
 <div class="container">
 	<ColumnParent>
 		<Column>
-			<a class="content kofi" href="https://ko-fi.com/mantan21" target="_blank">
+			<a
+				class="content kofi"
+				href="https://ko-fi.com/mantan21"
+				target="_blank"
+				in:fade={{ duration: 300, delay: Math.sqrt(0 * 5000) }}
+			>
 				<div
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 				>
@@ -107,7 +113,12 @@
 
 		<!-- Donaate By Saweria -->
 		<Column style="padding: 0.4rem;">
-			<a class="content Saweria" href="https://saweria.co/AguzzTN54" target="_blank">
+			<a
+				class="content Saweria"
+				href="https://saweria.co/AguzzTN54"
+				target="_blank"
+				in:fade={{ duration: 300, delay: Math.sqrt(1 * 5000) }}
+			>
 				<div
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 				>
@@ -128,6 +139,7 @@
 				on:click={() => {
 					showCryptoModal = true;
 				}}
+				in:fade={{ duration: 300, delay: Math.sqrt(2 * 5000) }}
 			>
 				<div
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
@@ -145,7 +157,7 @@
 	<div class="recent">
 		{#if listOfSupporters.length > 0}
 			{#each listOfSupporters as { name, message, amount, date, platform }}
-				<div class="donation-item {platform}">
+				<div class="donation-item {platform}" in:fade={{ duration: 300 }}>
 					<div class="supporter">
 						<div class="info">
 							<div class="name">New support from <span> {name} </span></div>

@@ -32,11 +32,23 @@
 		border-radius: 40px;
 		color: white;
 		background-color: #4a5265;
-		display: inline-flex;
 		align-items: center;
-		justify-content: space-between;
-		padding: 0.2em 3em 0.3em 0.1em;
+		padding: 0 0 0 0.3em;
+		width: 200px;
+		max-width: 100%;
+		height: 2.3rem;
 		transition: all 0.2s;
+		position: relative;
+		text-align: center;
+		border: 3.5px solid transparent;
+		transition: all 0.2s;
+	}
+
+	button:active {
+		transform: scale(0.9);
+		background-color: #e0ddd4 !important;
+		border-color: rgb(195, 195, 195) !important;
+		box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
 	}
 
 	button:disabled {
@@ -52,7 +64,10 @@
 		justify-content: center;
 		align-items: center;
 		font-size: 0.8rem;
-		margin-right: 1.5rem;
+		position: absolute;
+		left: 2%;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 	button:hover:not(:disabled) {
 		background-color: rgb(51, 57, 71);
@@ -62,5 +77,18 @@
 	}
 	.gi-circle-o {
 		color: #ffc107;
+	}
+
+	:global(.mobile) button {
+		width: 130px;
+		height: 2.1rem;
+	}
+
+	@media screen and (max-width: 700px) {
+		:global(main):not(.mobile) button {
+			width: 120px;
+			height: 2rem;
+			font-size: 0.85rem;
+		}
 	}
 </style>

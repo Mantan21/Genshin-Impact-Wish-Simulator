@@ -140,7 +140,9 @@
 		justify-content: flex-end;
 		align-items: center;
 	}
-
+	:global(.mobile) .fates {
+		margin-right: 5%;
+	}
 	@media screen and (max-width: 500px) {
 		.item-header {
 			flex-direction: column;
@@ -149,7 +151,7 @@
 		.info {
 			width: 100%;
 		}
-		.fates .close {
+		.close {
 			position: absolute;
 			top: 20%;
 			right: 0;

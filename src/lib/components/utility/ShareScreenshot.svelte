@@ -311,7 +311,7 @@
 
 	:global(.mobile) .close {
 		top: 0.3rem;
-		right: 2%;
+		right: 6%;
 	}
 	:global(.mobile) .letshare {
 		transform: scale(0.8) translate(10%, -120%);

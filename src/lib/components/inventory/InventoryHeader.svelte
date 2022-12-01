@@ -1,14 +1,6 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import {
-		acquaint,
-		genesis,
-		intertwined,
-		pageActive,
-		primogem,
-		stardust,
-		starglitter
-	} from '$lib/store/stores';
+	import { acquaint, genesis, intertwined, pageActive, primogem } from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
 	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -24,24 +16,6 @@
 
 <h1 class="title">{$t('inventory.text')} / {$t(activeItem)}</h1>
 <div class="budget">
-	<button class="starglitter">
-		<Icon
-			type="starglitter"
-			height="80%"
-			width="auto"
-			style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-		/>
-		{$starglitter}
-	</button>
-	<button class="stardust">
-		<Icon
-			type="stardust"
-			height="80%"
-			width="auto"
-			style="position: absolute; left: 5px;top: 50%; transform: translateY(-50%);"
-		/>
-		{$stardust}
-	</button>
 	<button class="intertwined">
 		<Icon
 			height="70%"
@@ -113,8 +87,12 @@
 		vertical-align: middle;
 		text-align: center;
 		position: relative;
-		margin: 0 8px;
+		margin: 0 0.3rem;
 		padding: 0 15px 0 30px;
+	}
+
+	:global(.mobile) .close {
+		margin-right: 4%;
 	}
 
 	@media screen and (max-width: 900px) {

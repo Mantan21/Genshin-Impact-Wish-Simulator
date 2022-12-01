@@ -222,7 +222,7 @@
 
 	:global(.mobile) .skip {
 		font-size: 0.8rem;
-		right: 1rem;
+		right: 6%;
 		top: 1rem;
 	}
 	video {

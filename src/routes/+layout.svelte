@@ -175,6 +175,10 @@
 		pointer-events: none;
 	}
 
+	.mobile .uid {
+		right: 5%;
+	}
+
 	.preview .uid {
 		pointer-events: unset;
 		right: unset;
