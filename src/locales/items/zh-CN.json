@@ -69,6 +69,7 @@
 	"the-widsith": "流浪乐章",
 	"thrilling-tales-of-dragon-slayers": "讨龙英杰谭",
 	"thundering-pulse": "飞雷之弦振",
+	"tulaytullah_s-remembrance": "图莱杜拉的回忆",
 	"vortex-vanquisher": "贯虹之槊",
 	"wavebreaker_s-fin": "断浪长鳍",
 	"wine-and-song": "暗巷的酒与诗",
@@ -130,6 +131,10 @@
 	"eula": {
 		"name": "优菈",
 		"title": "浪沫的旋舞"
+	},
+	"faruzan": {
+		"name": "珐露珊",
+		"title": "机逐封秘"
 	},
 	"fischl": {
 		"name": "菲谢尔",
@@ -262,6 +267,10 @@
 	"venti": {
 		"name": "温迪",
 		"title": "风色诗人"
+	},
+	"wanderer": {
+		"name": "流浪者",
+		"title": "久世浮倾"
 	},
 	"xiangling": {
 		"name": "香菱",

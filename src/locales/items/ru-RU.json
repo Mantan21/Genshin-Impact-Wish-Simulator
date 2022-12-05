@@ -69,6 +69,7 @@
 	"the-widsith": "Песнь странника",
 	"thrilling-tales-of-dragon-slayers": "Эпос о драконоборцах",
 	"thundering-pulse": "Громовой пульс",
+	"tulaytullah_s-remembrance": "Воспоминания Тулайтуллы",
 	"vortex-vanquisher": "Покоритель вихря",
 	"wavebreaker_s-fin": "Режущий волны плавник",
 	"wine-and-song": "Вино и песни",
@@ -130,6 +131,10 @@
 	"eula": {
 		"name": "Эола",
 		"title": "Танец морской пены"
+	},
+	"faruzan": {
+		"name": "Фарузан",
+		"title": "Загадочный механик"
 	},
 	"fischl": {
 		"name": "Фишль",
@@ -262,6 +267,10 @@
 	"venti": {
 		"name": "Венти",
 		"title": "Поэт ветров"
+	},
+	"wanderer": {
+		"name": "Странник",
+		"title": "Затерявшийся в вечности"
 	},
 	"xiangling": {
 		"name": "Сян Лин",

@@ -69,6 +69,7 @@
 	"the-widsith": "Chương Nhạc Lang Thang",
 	"thrilling-tales-of-dragon-slayers": "Câu Chuyện Diệt Rồng",
 	"thundering-pulse": "Sấm Sét Rung Động",
+	"tulaytullah_s-remembrance": "Hồi Ức Tulaytullah",
 	"vortex-vanquisher": "Giáo Nịnh Thần",
 	"wavebreaker_s-fin": "Vây Cá Chẻ Sóng",
 	"wine-and-song": "Rượu Và Thơ Nơi Hẻm Tối",
@@ -130,6 +131,10 @@
 	"eula": {
 		"name": "Eula",
 		"title": "Vũ Điệu Bọt Biển"
+	},
+	"faruzan": {
+		"name": "Faruzan",
+		"title": "Người Giải Bí Ẩn"
 	},
 	"fischl": {
 		"name": "Fischl",
@@ -262,6 +267,10 @@
 	"venti": {
 		"name": "Venti",
 		"title": "Nhà Thơ Có Màu Của Gió"
+	},
+	"wanderer": {
+		"name": "Kẻ Lang Thang",
+		"title": "Đoạn Tuyệt Thế Gian"
 	},
 	"xiangling": {
 		"name": "Xiangling",

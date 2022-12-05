@@ -155,6 +155,11 @@
 					"style": ""
 				},
 				{
+					"name": "tulaytullah_s-remembrance",
+					"limited": true,
+					"weaponType": "catalyst"
+				},
+				{
 					"name": "vortex-vanquisher",
 					"weaponType": "polearm",
 					"limited": true

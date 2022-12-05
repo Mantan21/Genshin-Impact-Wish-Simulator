@@ -1,0 +1,76 @@
+{
+	"patch": 3.3,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "from-ashes-reborn-1",
+							"character": "wanderer",
+							"buttonBoxPosition": {
+								"w": 120,
+								"t": 27
+							},
+							"textOffset": { "l": 58.5, "b": 10.5 }
+						},
+						{
+							"name": "oni_s-royale-3",
+							"character": "arataki-itto",
+							"buttonBoxPosition": {
+								"w": 190,
+								"t": 30,
+								"l": 50
+							},
+							"textOffset": {
+								"w": 30,
+								"l": 56,
+								"b": 10
+							}
+						}
+					],
+
+					"rateup": ["faruzan", "gorou", "yanfei"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-39",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "tulaytullah_s-remembrance",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 70,
+								"t": 30,
+								"l": 35
+							}
+						},
+						{
+							"name": "redhorn-stonethresher",
+							"type": "claymore",
+							"buttonBoxPosition": {
+								"t": 10,
+								"w": 70,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"eye-of-perception",
+						"favonius-warbow",
+						"wavebreaker_s-fin",
+						"favonius-greatsword",
+						"sacrificial-sword"
+					],
+					"textOffset": {
+						"featured": { "l": 42.5, "t": 65, "w": 30.5 },
+						"rateup": { "l": 78, "w": 18, "b": 26 }
+					}
+				}
+			}
+		}
+	]
+}
+

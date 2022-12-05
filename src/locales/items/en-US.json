@@ -69,6 +69,7 @@
 	"the-widsith": "The Widsith",
 	"thrilling-tales-of-dragon-slayers": "Thrilling Tales of Dragon Slayers",
 	"thundering-pulse": "Thundering Pulse",
+	"tulaytullah_s-remembrance": "Tulaytullah's Remembrance",
 	"vortex-vanquisher": "Vortex Vanquisher",
 	"wavebreaker_s-fin": "Wavebreaker's Fin",
 	"wine-and-song": "Wine and Song",
@@ -130,6 +131,10 @@
 	"eula": {
 		"name": "Eula",
 		"title": "The Sprindrift Knight"
+	},
+	"faruzan": {
+		"name": "Faruzan",
+		"title": "Enigmatic Machinist"
 	},
 	"fischl": {
 		"name": "Fischl",
@@ -262,6 +267,10 @@
 	"venti": {
 		"name": "Venti",
 		"title": "Windborne Bard"
+	},
+	"wanderer": {
+		"name": "Wanderer",
+		"title": "Eons Adrift"
 	},
 	"xiangling": {
 		"name": "Xiangling",
