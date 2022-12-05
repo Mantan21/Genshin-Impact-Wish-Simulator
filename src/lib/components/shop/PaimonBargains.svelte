@@ -28,7 +28,7 @@
 
 	const handlePaimonClick = ({ detail }) => {
 		activeFateShop = detail.selected;
-		playSfx('shopnav');
+		playSfx('shopsubnav');
 	};
 
 	const handleObtained = getContext('handleObtained');

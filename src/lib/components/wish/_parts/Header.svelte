@@ -45,7 +45,7 @@
 	const previousClick = () => {
 		browserState.set('previous');
 		pageActive.set('previous-banner');
-		playSfx('modal');
+		playSfx('prevbanner');
 	};
 
 	let showMenu = false;

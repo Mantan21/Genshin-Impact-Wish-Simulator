@@ -34,7 +34,7 @@
 	const selectShop = (e) => {
 		const { selected } = e.detail;
 		activeShop = selected;
-		playSfx();
+		playSfx('shopnav');
 		if ($viewportWidth < 500) showNavbar = false;
 	};
 

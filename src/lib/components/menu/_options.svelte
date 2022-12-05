@@ -36,7 +36,7 @@
 	};
 
 	const openPrevious = () => {
-		playSfx();
+		playSfx('prevbanner');
 		browserState.set('previous');
 		pageActive.set('previous-banner');
 	};

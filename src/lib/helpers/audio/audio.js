@@ -11,9 +11,11 @@ import history from './history';
 import obtain from './obtain';
 import modal from './modal';
 import roll from './roll';
-import shop from './shop';
+import shopopen from './shopopen';
 import shopnav from './shopnav';
+import shopsubnav from './shopsubnav';
 import collectionitem from './collectionitem';
+import prevbanner from './prevbanner';
 
 const source = {
 	changebanner,
@@ -22,13 +24,15 @@ const source = {
 	collectionitem,
 	exchange,
 	modal,
-	shop,
 	obtain,
 	roll,
 	inventory,
 	history,
 	camera,
+	shopopen,
 	shopnav,
+	shopsubnav,
+	prevbanner,
 	wishBacksound: '/sfx/wish-backsound.ogg',
 	resultList: '/sfx/result-list.ogg',
 	reveal3Star: '/sfx/reveal-3star.ogg',

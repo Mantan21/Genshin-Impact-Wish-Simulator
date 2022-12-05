@@ -43,7 +43,8 @@
 	const changePage = (page) => {
 		pageActive.set(page);
 		browserState.set(page);
-		if (['shop', 'inventory', 'history'].includes(page)) return playSfx(page);
+		if (['inventory', 'history'].includes(page)) return playSfx(page);
+		if (page === 'shop') return playSfx('shopopen');
 		return playSfx();
 	};
 

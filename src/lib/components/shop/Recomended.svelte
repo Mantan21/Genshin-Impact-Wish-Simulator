@@ -31,7 +31,7 @@
 
 	const handleRecomendClick = ({ detail }) => {
 		if (activeItem === detail.selected) return;
-		playSfx('shopnav');
+		playSfx('shopsubnav');
 		activeItem = detail.selected;
 	};
 

@@ -17,7 +17,7 @@
 
 	const selectMenu = (menu) => {
 		activeContent = menu;
-		playSfx();
+		playSfx('shopnav');
 	};
 	setContext('selectMenu', selectMenu);
 

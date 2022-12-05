@@ -530,6 +530,10 @@
 		}
 	}
 
+	.banner > div:not(.dual) img {
+		width: 100%;
+	}
+
 	.dual1 {
 		object-position: 60%;
 		width: 40% !important;
