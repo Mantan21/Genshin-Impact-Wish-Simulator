@@ -4,8 +4,8 @@ import { plugin as MdPlugin } from 'vite-plugin-markdown';
 import { config as envConfig } from 'dotenv';
 
 envConfig();
-const { VITE_APP_TITLE, VITE_DESCRIPTION } = process.env;
-const iconSize = [72, 96, 128, 144, 152, 192, 384, 512];
+const { VITE_APP_TITLE, VITE_DESCRIPTION, VITE_HOST } = process.env;
+const iconSize = [72, 96, 128, 144, 152, 192, 256, 384, 512];
 const icons = iconSize.map((size) => {
 	const iconObj = {
 		src: `./icons/icon-${size}x${size}.png`,
@@ -52,12 +52,24 @@ const manifest = {
 	background_color: '#ffffff',
 	display: 'fullscreen',
 	scope: '/',
-	start_url: '/?pwa=true',
-	categories: 'Games',
+	start_url: '/?pwasc=homescreen',
+	categories: ['Games', 'Simulator'],
 	description: VITE_DESCRIPTION,
 	dir: 'auto',
 	icons,
-	screenshots
+	screenshots,
+	prefer_related_applications: true,
+	related_applications: [
+		{
+			platform: 'webapp',
+			url: `${VITE_HOST}/appmanifest.json`
+		},
+		{
+			platform: 'play',
+			url: 'https://play.google.com/store/apps/details?id=twa.wishsimulator.app',
+			id: 'twa.wishsimulator.app'
+		}
+	]
 };
 
 /** @type {import('vite').UserConfig} */

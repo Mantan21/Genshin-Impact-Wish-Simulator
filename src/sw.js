@@ -18,20 +18,10 @@ let precache = self.__WB_MANIFEST;
 precache = [];
 precacheAndRoute(precache, { ignoreURLParametersMatching: [/.*/] });
 
-registerRoute(
-	new RegExp('.(?:css|js|json)$'),
-	new NetworkFirst({
-		cacheName: 'Chunks',
-		plugins: [
-			new ExpirationPlugin({
-				maxAgeSeconds: 15 * 24 * 60 * 60
-			})
-		]
-	})
-);
+registerRoute('/', new NetworkFirst({ cacheName: 'Static' }));
 
 registerRoute(
-	new RegExp('.(?:/|/?pwa=true)$'),
+	new RegExp('.(?:/?pwa=true|/?pwasc)'),
 	new NetworkFirst({
 		cacheName: 'Static',
 		plugins: [
@@ -39,18 +29,10 @@ registerRoute(
 				cachedResponseWillBeUsed: ({ cachedResponse }) => {
 					if (cachedResponse) return cachedResponse;
 					return caches.match('/');
-				}
+				},
+				cacheWillUpdate: () => null // prevent update cache
 			}
 		]
-	})
-);
-
-registerRoute(new RegExp('.(?:html)$'), new NetworkFirst({ cacheName: 'Static' }));
-
-registerRoute(
-	new RegExp('.(?:woff|woff2|ttf)$'),
-	new CacheFirst({
-		cacheName: 'Static'
 	})
 );
 
@@ -62,6 +44,25 @@ registerRoute(
 		plugins: [
 			new ExpirationPlugin({
 				maxAgeSeconds: 30 * 24 * 60 * 60
+			})
+		]
+	})
+);
+
+registerRoute(
+	new RegExp('.(?:woff|woff2|ttf)$'),
+	new CacheFirst({
+		cacheName: 'Static'
+	})
+);
+
+registerRoute(
+	new RegExp('.(?:css|js|json)$'),
+	new NetworkFirst({
+		cacheName: 'Chunks',
+		plugins: [
+			new ExpirationPlugin({
+				maxAgeSeconds: 15 * 24 * 60 * 60
 			})
 		]
 	})
