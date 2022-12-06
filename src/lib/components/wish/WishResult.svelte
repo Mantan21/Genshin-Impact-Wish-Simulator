@@ -6,7 +6,7 @@
 	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio/audio';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit';
 
 	// Component
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';

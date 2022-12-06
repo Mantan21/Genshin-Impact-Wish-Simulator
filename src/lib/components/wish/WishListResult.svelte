@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import positionToStyle from '$lib/helpers/cssPosition';
-	import { getOutfit } from '$lib/helpers/wish/outfit';
+	import { getOutfit } from '$lib/helpers/outfit';
 	import { getName } from '$lib/helpers/nameText';
 	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';

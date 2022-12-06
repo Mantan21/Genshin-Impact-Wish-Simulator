@@ -6,7 +6,7 @@
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/wish/outfit';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit';
 	import playSfx from '$lib/helpers/audio/audio';
 
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
@@ -143,9 +143,14 @@
 <style>
 	.close {
 		position: fixed;
-		top: 15px;
-		right: 3%;
+		top: 2%;
+		right: 2%;
 		z-index: 10;
+	}
+
+	:global(.mobile) .close {
+		top: 1.5%;
+		right: 5.5%;
 	}
 
 	.wish-result {

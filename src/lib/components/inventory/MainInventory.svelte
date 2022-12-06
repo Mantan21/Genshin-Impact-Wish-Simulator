@@ -4,6 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { flip } from 'svelte/animate';
+	import OverlayScrollbars from 'overlayscrollbars';
 
 	// Components
 	import InventoryHeader from './InventoryHeader.svelte';
@@ -18,7 +19,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { assets, mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
-	import { isOutfitSet } from '$lib/helpers/wish/outfit';
+	import { isOutfitSet } from '$lib/helpers/outfit';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
@@ -46,9 +47,11 @@
 	let orderby = 'rarity';
 
 	const select = (item) => {
+		if (activeItem === item) return;
+		playSfx('shopnav');
 		activeItem = item;
 		orderby = 'rarity';
-		playSfx();
+		proccessData(item, showAll);
 	};
 
 	let weapons = [];
@@ -64,12 +67,14 @@
 			return l;
 		});
 	};
-	const allCharacters = charDB.data.reduce((prev, { list, rarity }) => {
-		return [...prev, ...listWithRarity(list, rarity)];
-	}, []);
-	const allWeapons = weaponDB.data.reduce((prev, { list, rarity }) => {
-		return [...prev, ...listWithRarity(list, rarity)];
-	}, []);
+	const allCharacters = () =>
+		charDB.data.reduce((prev, { list, rarity }) => {
+			return [...prev, ...listWithRarity(list, rarity)];
+		}, []);
+	const allWeapons = () =>
+		weaponDB.data.reduce((prev, { list, rarity }) => {
+			return [...prev, ...listWithRarity(list, rarity)];
+		}, []);
 
 	// Read Data From IndeedDB
 	const { getAllHistories, countItem } = HistoryIDB;
@@ -96,23 +101,31 @@
 		dataQty = data.map((v) => v.qty).reduce((a, b) => a + b, 0);
 	};
 
+	const filterObjProps = (obj) => {
+		const { name, type, rarity, isOwned, outfitSet, vision, weaponType, qty } = obj;
+		return { name, type, rarity, isOwned, outfitSet, vision, weaponType, qty };
+	};
+
 	const proccessData = async (activeItem, isShowAll = false) => {
 		const data = activeItem === 'character' ? characters : weapons;
-		const allData = activeItem === 'character' ? allCharacters : allWeapons;
 		const promise = await Promise.all(data);
 		const dataFromIDB = promise.sort((a, b) => b.rarity - a.rarity);
 		getTotalItem(dataFromIDB);
 		if (!isShowAll) {
 			dataToShow = dataFromIDB.map((d) => {
-				d.isOwned = true;
-				d.outfitSet = isOutfitSet(d.name);
-				return d;
+				const dd = filterObjProps(d);
+				dd.isOwned = true;
+				if (dd.type === 'weapon') return dd;
+				dd.outfitSet = isOutfitSet(dd.name);
+				return dd;
 			});
 			return;
 		}
 
 		// If Show All Items
-		const mergeData = allData.map((d) => {
+		const allData = activeItem === 'character' ? allCharacters() : allWeapons();
+		const mergeData = allData.map((dd) => {
+			const d = filterObjProps(dd);
 			const owned = dataFromIDB.find(({ name }) => d.name === name);
 			d.type = activeItem;
 			if (!owned) {
@@ -125,19 +138,25 @@
 			d.isOwned = true;
 			return d;
 		});
+
 		dataToShow = mergeData.map((d) => {
+			if (d.type === 'weapon') return d;
 			d.outfitSet = isOutfitSet(d.name);
 			return d;
 		});
 		return;
 	};
 
+	let content;
 	onMount(async () => {
 		await getAll();
 		await proccessData(activeItem, showAll);
+		OverlayScrollbars(content, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light'
+		});
 	});
 
-	$: proccessData(activeItem, showAll);
 	$: localConfig.set('showAllItems', showAll);
 
 	const sort = (order) => {
@@ -256,7 +275,11 @@
 			</nav>
 		</div>
 		<div class="body-content" in:fade={{ duration: 400 }}>
-			<div class="container" style="--headerHeight:{$viewportHeight - headerHeight}px;">
+			<div
+				class="container"
+				bind:this={content}
+				style="--headerHeight:{$viewportHeight - headerHeight}px;"
+			>
 				<div class="list-item" style="--item-width: {itemWidth}px">
 					{#if dataToShow.length < 1}
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">
@@ -269,17 +292,7 @@
 								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
 								in:fade={{ duration: 300, delay: Math.sqrt(i * 2500) }}
 							>
-								<InventoryItem
-									name={d.name}
-									rarity={d.rarity}
-									type={d.type}
-									vision={d.vision}
-									weaponType={d.weaponType}
-									qty={d.qty}
-									isOwned={d.isOwned}
-									outfitSet={d.outfitSet}
-									on:click={handleShowDetails}
-								/>
+								<InventoryItem {...d} on:click={handleShowDetails} />
 							</div>
 						{/each}
 					{/if}
@@ -346,7 +359,13 @@
 						{/if}
 					</div>
 					<div class="showAll">
-						<input type="checkbox" name="showAll" id="showAll" bind:checked={showAll} />
+						<input
+							type="checkbox"
+							name="showAll"
+							id="showAll"
+							bind:checked={showAll}
+							on:change={(e) => proccessData(activeItem, e.target.checked)}
+						/>
 						<label for="showAll">
 							<i>✔</i>
 							{$t(`inventory.showAllOption`, {
@@ -378,7 +397,6 @@
 		top: 0;
 		left: 0;
 		opacity: 0;
-		will-change: opacity;
 		transition: opacity 6s ease;
 	}
 
@@ -533,7 +551,7 @@
 		width: 100%;
 		padding: 0 2%;
 		margin-top: 2px;
-		overflow-y: auto;
+		/* overflow-y: auto; */
 	}
 
 	.list-item {
@@ -543,16 +561,20 @@
 		align-items: flex-start;
 		width: 100%;
 	}
+
+	.list-item:hover {
+		will-change: scroll-position;
+	}
+
 	:global(.mobile) .container {
 		margin-top: 45px;
 		height: calc(100% - 85px);
 	}
 	.item {
 		margin: 0.5rem;
-		will-change: auto;
 		aspect-ratio: 8.75 / 10;
 		width: 20vh;
-		max-width: 140px;
+		max-width: 135px;
 	}
 	:global(.mobile) .item {
 		width: 24vh;

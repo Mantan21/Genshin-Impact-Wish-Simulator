@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit } from '$lib/helpers/wish/outfit';
+	import { getOutfit } from '$lib/helpers/outfit';
 	import { assets } from '$lib/store/stores';
 
 	export let rarity = 3;
@@ -15,20 +15,17 @@
 	export let outfitSet;
 
 	let countInfo;
-	$: if (type === 'character') {
+	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	} else {
 		countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	}
 
-	let outfitPath, defaultPath;
-	$: ({ outfitPath, defaultPath } = getOutfit(name, rarity, true));
+	const { outfitPath, defaultPath } = getOutfit(name, rarity, true);
 	const dispatch = createEventDispatcher();
 	const handleShowDetails = () => {
 		if (!isOwned) return;
-		return dispatch('click', {
-			name
-		});
+		return dispatch('click', { name });
 	};
 </script>
 

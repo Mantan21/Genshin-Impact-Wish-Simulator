@@ -3,15 +3,15 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { localOutfits } from '$lib/store/localstore';
+	import { assets } from '$lib/store/stores';
 	import { getName } from '$lib/helpers/nameText';
 	import {
 		checkOutfitAvaibility,
 		getOutfit,
 		isOutfitOwned,
 		isOutfitSet
-	} from '$lib/helpers/wish/outfit';
+	} from '$lib/helpers/outfit';
 	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
-	import { assets } from '$lib/store/stores';
 
 	export let charName;
 	export let charRarity;
