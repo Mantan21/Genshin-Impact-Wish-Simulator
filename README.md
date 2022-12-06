@@ -8,23 +8,23 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 #### Main Banner
 
-![Main Banner](static/screenshot/meta-picture.jpg)
+![Main Banner](screenshot/meta-picture.jpg)
 
 #### Layout on Mobile Version
 
-![Weapon Banner](static/screenshot/mobile-weapon.jpg)
+![Weapon Banner](screenshot/mobile-weapon.jpg)
 
 #### Epitomized Path
 
-![Epitomized Path](static/screenshot/epitomized-path.jpg)
+![Epitomized Path](screenshot/epitomized-path.jpg)
 
 #### Inventory
 
-![Weapon Banner](static/screenshot/inventory.jpg)
+![Weapon Banner](screenshot/inventory.jpg)
 
 #### Switch banner
 
-![Weapon Banner](static/screenshot/switch-banner.jpg)
+![Weapon Banner](screenshot/switch-banner.jpg)
 
 #### Shop
 
@@ -90,7 +90,7 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
 
 4. When you guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
 
-   ![double guaranteed](static/screenshot/double-guaranteed.png)
+   ![double guaranteed](screenshot/double-guaranteed.png)
 
 ## Development
 

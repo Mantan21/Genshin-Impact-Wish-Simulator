@@ -22,6 +22,7 @@
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { wakeLock } from '$lib/helpers/wakeLock';
+	import metaPicture from '../../screenshot/meta-picture.jpg';
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Iklan from '$lib/components/utility/Iklan.svelte';
@@ -62,7 +63,7 @@
 
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
-		isPWA.set(searchParams.get('pwa') === 'true');
+		isPWA.set(searchParams.get('pwa') === 'true' || !!searchParams.get('pwasc'));
 
 		registerSW();
 		wakeLock();
@@ -87,20 +88,20 @@
 	<meta name="description" content={DESCRIPTION} />
 	<meta name="keywords" content={KEYWORDS} />
 	<meta property="al:web:url" content={HOST} />
-	<link rel="fluid-icon" href="{HOST}/screenshot/meta-picture.jpg" title={APP_TITLE} />
+	<link rel="fluid-icon" href="{HOST}{metaPicture}" title={APP_TITLE} />
 
 	<meta property="og:url" content={HOST} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={APP_TITLE} />
 	<meta property="og:description" content={DESCRIPTION} />
-	<meta property="og:image" content="{HOST}/screenshot/meta-picture.jpg" />
+	<meta property="og:image" content="{HOST}{metaPicture}" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="twitter:domain" content={HOST.replace('https://', '').replace('http://', '')} />
 	<meta property="twitter:url" content={HOST} />
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
-	<meta name="twitter:image" content="{HOST}/screenshot/meta-picture.jpg" />
+	<meta name="twitter:image" content="{HOST}{metaPicture}" />
 
 	{#if !dev}
 		<link rel="manifest" href="/appmanifest.json" />
