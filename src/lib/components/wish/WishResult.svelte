@@ -12,7 +12,7 @@
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
-	import SplashLight from './_parts/SplashLight.svelte';
+	import SplashLight from './_parts/_splashlight.svelte';
 	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	export let list = [];
@@ -37,7 +37,19 @@
 	let wishResultContainer;
 	let activeIndex = 0;
 
+	let isSplashOut = false;
+	let timer;
+	const startTimer = () => {
+		clearTimeout(timer);
+		isSplashOut = false;
+		timer = setTimeout(() => {
+			isSplashOut = true;
+			clearTimeout(timer);
+		}, 1100);
+	};
+
 	const playRevealAudio = () => {
+		startTimer();
 		if ($muted) return;
 		if (activeIndex > 0) {
 			const starBefore = list[activeIndex - 1].rarity;
@@ -135,7 +147,8 @@
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitSet }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
-						<SplashLight type="in" {rarity} />
+						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
+						<!-- <img src={$assets[`splatter-${rarity}star.svg`]} alt="splatter" class="anim sprite" /> -->
 
 						{#if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent">
@@ -221,7 +234,7 @@
 							</div>
 						{/if}
 
-						<SplashLight type="out" {rarity} />
+						{#if isSplashOut} <SplashLight type="out" {rarity} /> {/if}
 					</div>
 				{/if}
 			{/each}
@@ -436,6 +449,21 @@
 		align-items: center;
 	}
 
+	/* .sprite {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0);
+		transform-origin: 0 0;
+		width: 140%;
+		height: auto;
+		animation-delay: 0.25s;
+	}
+
+	.sprite.anim {
+		animation: sprite forwards linear 1.3s 1;
+	} */
+
 	.splatter {
 		display: flex;
 		justify-content: center;
@@ -627,6 +655,34 @@
 		max-height: 20vh;
 		width: 20vh;
 	}
+
+	/* @keyframes sprite {
+		0% {
+			transform: scale(0) translate(-50%, -50%);
+			opacity: 0;
+		}
+		25% {
+			transform: scale(0.75) translate(-50%, -50%);
+			opacity: 1;
+		}
+		50% {
+			transform: scale(1.5) translate(-50%, -50%);
+			opacity: 0;
+		}
+		74% {
+			transform: scale(0.3) translate(-50%, -50%);
+			opacity: 0;
+		}
+		87% {
+			transform: scale(0.66) translate(-50%, -50%);
+			opacity: 1;
+			z-index: 10;
+		}
+		100% {
+			transform: scale(1.5) translate(-50%, -50%);
+			opacity: 0;
+		}
+	} */
 
 	@keyframes revealIcon {
 		from {

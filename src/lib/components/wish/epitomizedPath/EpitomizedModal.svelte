@@ -1,7 +1,7 @@
 <script>
 	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 	import {
 		assets,
 		bannerList,
@@ -120,7 +120,7 @@
 					<div class="description">
 						<h1>{$t('wish.epitomizedPath.text')}</h1>
 						<div class="content" bind:this={content}>
-							{#each $t('wish.epitomizedPath.description') as desc}
+							{#each $json('wish.epitomizedPath.description') as desc}
 								<p>
 									· {@html desc}
 								</p>

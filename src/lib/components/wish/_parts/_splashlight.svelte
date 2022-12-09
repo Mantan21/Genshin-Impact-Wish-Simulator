@@ -1,5 +1,4 @@
 <script>
-	import { assets } from '$lib/store/stores';
 	import { onMount } from 'svelte';
 
 	export let type = '';
@@ -19,42 +18,23 @@
 	<div class="star{rarity} orbs in5" />
 	<div class="in animate star{rarity} orbs in1" style="animation-duration: .7s;" />
 	<div class="in animate star{rarity} orbs in2" style="animation-duration: 1.2s;" />
-	<div class="in animate star{rarity} orbs in3" style="animation-duration: 1.3s;" />
+	<div class="in animate star{rarity} orbs in3" style="animation-duration: 1.1s;" />
 	<div class="in animate star{rarity} orbs in4" style="animation-duration: .75s;" />
-	<img src={$assets[`splatter-${rarity}star.svg`]} alt="splatter" class="animate sprite" />
 {/if}
 
 {#if type === 'out'}
 	<div
 		class="out star{rarity} orbs out1 animate"
-		style="animation-duration: 0.8s; animation-delay: 1.2s;"
+		style="animation-duration: 0.8s; animation-delay: .1s;"
 	/>
-	<div
-		class="out animate star{rarity} orbs out2"
-		style="animation-duration: 2s; animation-delay:1s;"
-	/>
+	<div class="out animate star{rarity} orbs out2" style="animation-duration: 2s;" />
 	<div
 		class="out animate star{rarity} orbs out3"
-		style="animation-duration: 1.2s; animation-delay: 1.2s;"
+		style="animation-duration: 1.2s; animation-delay: .1s;"
 	/>
 {/if}
 
 <style>
-	.sprite {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) scale(0);
-		transform-origin: 0 0;
-		width: 140%;
-		height: auto;
-		animation-delay: 0.25s;
-	}
-
-	.sprite.animate {
-		animation: sprite forwards linear 1.3s 1;
-	}
-
 	/* Light */
 	.orbs {
 		background-color: transparent;
@@ -252,34 +232,6 @@
 		}
 		100% {
 			transform: scale(3) translate(-50%, -50%);
-			opacity: 0;
-		}
-	}
-
-	@keyframes sprite {
-		0% {
-			transform: scale(0) translate(-50%, -50%);
-			opacity: 0;
-		}
-		25% {
-			transform: scale(0.75) translate(-50%, -50%);
-			opacity: 1;
-		}
-		50% {
-			transform: scale(1.5) translate(-50%, -50%);
-			opacity: 0;
-		}
-		74% {
-			transform: scale(0.3) translate(-50%, -50%);
-			opacity: 0;
-		}
-		87% {
-			transform: scale(0.66) translate(-50%, -50%);
-			opacity: 1;
-			z-index: 10;
-		}
-		100% {
-			transform: scale(1.5) translate(-50%, -50%);
 			opacity: 0;
 		}
 	}

@@ -12,13 +12,11 @@
 	export let weaponType = '';
 	export let qty = 0;
 	export let isOwned = true;
-	export let outfitSet;
+	export let outfitSet = false;
 
-	let countInfo;
+	let countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
-	} else {
-		countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	}
 
 	const { outfitPath, defaultPath } = getOutfit(name, rarity, true);
@@ -44,7 +42,7 @@
 				on:error={(e) => e.target.remove()}
 				loading="lazy"
 			/>
-			<span class="gi-{vision} {vision} icon-gradient filter-drop element" />
+			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else}
 			<img
 				src={$assets[name]}
@@ -60,7 +58,7 @@
 	</picture>
 	<div class="caption">
 		<div class="star">
-			{#each Array(rarity) as _, i}
+			{#each Array(rarity) as _}
 				<i class="gi-star" />
 			{/each}
 		</div>
@@ -153,8 +151,8 @@
 		left: 50%;
 		top: calc(-8 / 100 * var(--item-width));
 		transform: translateX(-50%);
-		filter: drop-shadow(0 0 1rem #fff);
 	}
+
 	.gi-star {
 		color: #eac343;
 		font-size: calc(15 / 100 * var(--item-width));

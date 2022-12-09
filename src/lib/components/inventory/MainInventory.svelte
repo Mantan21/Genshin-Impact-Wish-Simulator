@@ -67,34 +67,37 @@
 			return l;
 		});
 	};
-	const allCharacters = () =>
-		charDB.data.reduce((prev, { list, rarity }) => {
-			return [...prev, ...listWithRarity(list, rarity)];
-		}, []);
-	const allWeapons = () =>
-		weaponDB.data.reduce((prev, { list, rarity }) => {
-			return [...prev, ...listWithRarity(list, rarity)];
-		}, []);
+	const allCharacters = charDB.data.reduce((prev, { list, rarity }) => {
+		return [...prev, ...listWithRarity(list, rarity)];
+	}, []);
+	const allWeapons = weaponDB.data.reduce((prev, { list, rarity }) => {
+		return [...prev, ...listWithRarity(list, rarity)];
+	}, []);
 
 	// Read Data From IndeedDB
-	const { getAllHistories, countItem } = HistoryIDB;
+	const { getAllHistories } = HistoryIDB;
 
 	const getAll = async () => {
 		const data = await getAllHistories();
-		const filtered = [...new Map(data.map((d) => [d.name, d])).values()];
-		weapons = filtered
-			.filter(({ type }) => type === 'weapon')
-			.map(async (w) => {
-				w.qty = await countItem(w.name);
-				return w;
+		const grouped = data.reduce((prev, current) => {
+			const obj = prev || {};
+			obj[current.name] = obj[current.name] || [];
+			obj[current.name].push(current);
+			return obj;
+		}, {});
+
+		const filtered = Object.values(grouped)
+			.map((val) => {
+				const { name, type, rarity, isOwned, vision, weaponType } = val[0];
+				return { name, type, rarity, isOwned, vision, weaponType };
+			})
+			.map((v) => {
+				v.qty = grouped[v.name].length;
+				return v;
 			});
 
-		characters = filtered
-			.filter(({ type }) => type === 'character')
-			.map(async (d) => {
-				d.qty = await countItem(d.name);
-				return d;
-			});
+		weapons = filtered.filter(({ type }) => type === 'weapon');
+		characters = filtered.filter(({ type }) => type === 'character');
 	};
 
 	const getTotalItem = (data) => {
@@ -106,24 +109,23 @@
 		return { name, type, rarity, isOwned, outfitSet, vision, weaponType, qty };
 	};
 
-	const proccessData = async (activeItem, isShowAll = false) => {
+	const proccessData = (activeItem, isShowAll = false) => {
 		const data = activeItem === 'character' ? characters : weapons;
-		const promise = await Promise.all(data);
-		const dataFromIDB = promise.sort((a, b) => b.rarity - a.rarity);
+		const dataFromIDB = data.sort((a, b) => b.rarity - a.rarity);
 		getTotalItem(dataFromIDB);
 		if (!isShowAll) {
-			dataToShow = dataFromIDB.map((d) => {
-				const dd = filterObjProps(d);
-				dd.isOwned = true;
-				if (dd.type === 'weapon') return dd;
-				dd.outfitSet = isOutfitSet(dd.name);
-				return dd;
+			dataToShow = dataFromIDB.map((dd) => {
+				const d = filterObjProps(dd);
+				d.isOwned = true;
+				if (d.type === 'weapon') return d;
+				d.outfitSet = isOutfitSet(d.name);
+				return d;
 			});
 			return;
 		}
 
 		// If Show All Items
-		const allData = activeItem === 'character' ? allCharacters() : allWeapons();
+		const allData = activeItem === 'character' ? allCharacters : allWeapons;
 		const mergeData = allData.map((dd) => {
 			const d = filterObjProps(dd);
 			const owned = dataFromIDB.find(({ name }) => d.name === name);
