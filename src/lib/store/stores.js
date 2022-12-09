@@ -7,6 +7,7 @@ const pageActive = writable('index');
 const backsound = writable(false);
 const muted = writable(false);
 const notice = writable([]);
+const animeoff = writable(false);
 
 // Banner
 const patchVersion = writable(0);
@@ -46,6 +47,7 @@ const priceList = writable({ genesis: {}, welkin: null });
 const query = writable('');
 
 export {
+	animeoff,
 	assets,
 	pageActive,
 	patchVersion,

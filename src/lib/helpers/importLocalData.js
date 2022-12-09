@@ -8,7 +8,8 @@ import {
 	bannerPhase,
 	patchVersion,
 	unlimitedFates,
-	muted
+	muted,
+	animeoff
 } from '$lib/store/stores';
 import { localBalance, localBannerVersion, localConfig } from '$lib/store/localstore';
 import { storageVersion, version } from '$lib/data/wish-setup.json';
@@ -45,6 +46,7 @@ const importLocalBalance = () => {
 	// Setting
 	unlimitedFates.set(!!localConfig.get('unlimitedFates'));
 	muted.set(!!localConfig.get('muted'));
+	animeoff.set(!!localConfig.get('animeoff'));
 	noticeMark.onLoadCheck();
 
 	console.log('Balance Updated');

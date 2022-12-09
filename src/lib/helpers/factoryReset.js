@@ -11,7 +11,8 @@ import {
 	patchVersion,
 	selectedCourse,
 	muted,
-	notice
+	notice,
+	animeoff
 } from '$lib/store/stores';
 import { locale } from 'svelte-i18n';
 import HistoryIDB from '$lib/store/historyIdb';
@@ -57,6 +58,7 @@ const factoryReset = async ({ clearCache = false }) => {
 	unlimitedFates.set(false);
 	muted.set(false);
 	notice.set([]);
+	animeoff.set(false);
 };
 
 export default factoryReset;

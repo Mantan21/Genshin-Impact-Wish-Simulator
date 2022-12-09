@@ -8,7 +8,7 @@
 	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import ShareScreenshot from '$lib/components/utility/ShareScreenshot.svelte';
-	import { assets } from '$lib/store/stores';
+	import { animeoff, assets } from '$lib/store/stores';
 
 	export let preview = false;
 	export let list = [];
@@ -51,6 +51,7 @@
 	onMount(async () => {
 		const itemBox = container.querySelectorAll('.item-box, .shadow');
 		itemBox.forEach((el) => {
+			if ($animeoff) return el.classList.remove('animate');
 			el.addEventListener('animationend', () => el.classList.remove('animate'));
 		});
 

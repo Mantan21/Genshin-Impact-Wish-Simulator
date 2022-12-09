@@ -10,7 +10,8 @@
 		bannerActive,
 		muted,
 		viewportHeight,
-		assets
+		assets,
+		animeoff
 	} from '$lib/store/stores';
 	import { localBalance } from '$lib/store/localstore';
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
@@ -107,7 +108,10 @@
 		});
 	});
 
-	$: if (showMeteor) showVideoHandle(meteorStar, singleMeteor);
+	$: if (showMeteor) {
+		if (!$animeoff) showVideoHandle(meteorStar, singleMeteor);
+		else dispatch('skiped');
+	}
 </script>
 
 <Modal

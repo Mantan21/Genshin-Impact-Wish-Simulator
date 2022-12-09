@@ -2,7 +2,14 @@
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t, locale } from 'svelte-i18n';
-	import { viewportHeight, viewportWidth, isMobile, muted, assets } from '$lib/store/stores';
+	import {
+		viewportHeight,
+		viewportWidth,
+		isMobile,
+		muted,
+		assets,
+		animeoff
+	} from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio/audio';
 	import { getName } from '$lib/helpers/nameText';
@@ -23,6 +30,10 @@
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
+
+	const inTransition = (node, args) => {
+		return args.animeoff ? fade(node, { duration: 500, delay: 200 }) : null;
+	};
 
 	const setOutfitToList = (arr) => {
 		const isSet = isOutfitSet(arr.name);
@@ -116,12 +127,13 @@
 
 	afterUpdate(() => {
 		wishResultContainer?.querySelectorAll('.anim').forEach((el) => {
+			if ($animeoff) return el.classList.remove('anim');
 			el.addEventListener('animationend', () => el.classList.remove('anim'));
 		});
 	});
 </script>
 
-<div class="wish-result" style="background-image: url({$assets['splash-background.webp']}) ;">
+<div class="wish-result" style="background-image: url({$assets['splash-background.webp']});">
 	<div class="uid">WishSimulator.App</div>
 	<img
 		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}
@@ -133,7 +145,11 @@
 	{#if showWishList || skipSplashOneByOne}
 		<WishListResult {list} on:wishEnd={closeHandle} />
 	{:else}
-		<div class="container" bind:this={wishResultContainer}>
+		<div
+			class="container"
+			bind:this={wishResultContainer}
+			in:inTransition={{ animeoff: $animeoff }}
+		>
 			{#if list.length === 1}
 				<button class="close" on:click={closeHandle} in:fade={{ delay: 1500 }}>
 					<i class="gi-close" />
@@ -147,7 +163,7 @@
 			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitSet }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
-						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
+						{#if !isSplashOut && !$animeoff} <SplashLight type="in" {rarity} /> {/if}
 						<!-- <img src={$assets[`splatter-${rarity}star.svg`]} alt="splatter" class="anim sprite" /> -->
 
 						{#if type === 'weapon'}
@@ -222,7 +238,7 @@
 						</div>
 
 						{#if type === 'weapon' && fateQty > 1}
-							<div class="starfate {fateType}">
+							<div class="starfate anim {fateType}">
 								<div class="icon">
 									<Icon type={fateType} width={isMobile ? '50px' : '60px'} />
 								</div>
@@ -234,7 +250,7 @@
 							</div>
 						{/if}
 
-						{#if isSplashOut} <SplashLight type="out" {rarity} /> {/if}
+						{#if isSplashOut && !$animeoff} <SplashLight type="out" {rarity} /> {/if}
 					</div>
 				{/if}
 			{/each}
@@ -306,10 +322,12 @@
 		margin-right: -25px;
 		position: relative;
 		z-index: +1;
-		opacity: 0;
 		transform: scale(1);
 		animation-delay: 1.3s !important;
+	}
+	.starfate.anim > .icon {
 		animation: starfateIcon forwards 0.4s 1;
+		opacity: 0;
 	}
 	.starfate.starglitter :global(img) {
 		filter: drop-shadow(0 0 6px rgba(245, 193, 63, 1));
@@ -331,10 +349,14 @@
 		padding: 2px 25px;
 		position: relative;
 		z-index: -1;
-		opacity: 0;
 		animation-delay: 1.3s !important;
+	}
+
+	.starfate.anim .text {
+		opacity: 0;
 		animation: starfateText forwards 0.7s 1;
 	}
+
 	:global(.mobile) .starfate .text {
 		width: 230px;
 	}
@@ -395,12 +417,13 @@
 		position: relative;
 		z-index: -2;
 	}
-	.info i.elemen,
+	.info i.elemen.anim,
 	.vision.anim {
 		opacity: 0;
 		animation-delay: 1.2s !important;
 		animation: revealIcon forwards 1.3s 1;
 	}
+
 	.vision {
 		height: 5rem;
 	}

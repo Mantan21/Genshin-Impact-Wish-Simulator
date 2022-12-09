@@ -5,7 +5,7 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { localConfig } from '$lib/store/localstore';
-	import { muted, unlimitedFates } from '$lib/store/stores';
+	import { animeoff, muted, unlimitedFates } from '$lib/store/stores';
 	import factoryReset from '$lib/helpers/factoryReset';
 	import playSfx from '$lib/helpers/audio/audio';
 
@@ -17,12 +17,14 @@
 	const handleOption = (selected) => (optionToShow = selected);
 	setContext('handleOption', handleOption);
 
-	// Unlimited Fates
-	const selectUnlimitedOptions = (e) => {
+	const handleSelect = (option, e) => {
 		const { selected } = e.detail;
 		const optionValue = selected === 'yes';
-		localConfig.set('unlimitedFates', optionValue);
-		return unlimitedFates.set(optionValue);
+		localConfig.set(option, optionValue);
+
+		if (option === 'fates') return unlimitedFates.set(optionValue);
+		if (option === 'muted') return muted.set(optionValue);
+		if (option === 'animeoff') return animeoff.set(optionValue);
 	};
 
 	// Animated BG
@@ -33,14 +35,6 @@
 		localConfig.set('animatedBG', selected === 'yes');
 		animatedbg = selected === 'yes';
 		handleAnimatedBG();
-	};
-
-	// Audio
-	const handleAudio = (e) => {
-		const { selected } = e.detail;
-		const optionValue = selected === 'yes';
-		localConfig.set('muted', optionValue);
-		muted.set(optionValue);
 	};
 
 	let showResetModal = false;
@@ -124,17 +118,25 @@
 	<OptionMenu
 		name="fates"
 		text={$t('menu.fates')}
-		showOption={optionToShow === 'fates'}
 		activeIndicator={$unlimitedFates}
-		on:select={selectUnlimitedOptions}
+		on:select={(e) => handleSelect('fates', e)}
+		showOption={optionToShow === 'fates'}
 	/>
 
 	<OptionMenu
 		name="audio"
 		text={$t('menu.mute')}
 		activeIndicator={$muted}
-		on:select={handleAudio}
+		on:select={(e) => handleSelect('muted', e)}
 		showOption={optionToShow === 'audio'}
+	/>
+
+	<OptionMenu
+		name="animeoff"
+		text={$t('menu.animeoff')}
+		activeIndicator={$animeoff}
+		on:select={(e) => handleSelect('animeoff', e)}
+		showOption={optionToShow === 'animeoff'}
 	/>
 
 	<OptionMenu
