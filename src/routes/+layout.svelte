@@ -26,6 +26,7 @@
 	import '../app.css';
 	import Loader from '$lib/components/utility/Loader.svelte';
 	import Iklan from '$lib/components/utility/Iklan.svelte';
+	import { IDBUpdater } from '$lib/helpers/IDBUpdater';
 
 	let innerHeight;
 	let innerWidth;
@@ -67,6 +68,8 @@
 
 		registerSW();
 		wakeLock();
+
+		IDBUpdater();
 		importLocalBalance();
 		userCurrencies.init();
 
