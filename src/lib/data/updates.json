@@ -232,12 +232,20 @@
 			]
 		},
 		{
-			"date": "5-Des-2022",
+			"date": "5-Dec-2022",
 			"featured": true,
 			"description": [
 				"New Character <strong> Wanderer </strong> and <strong> Itto 3rd Rerun </strong> Banners already out",
 				"New 4★ Character <strong> Faruzan </strong> is featured on the current banner too!",
 				"Weapon Banner Updated, <b> Tulaytullah's Remembrance </b> and <b>Redhorn Stonethresher</b> are ready to pull as well"
+			]
+		},
+		{
+			"date": "17-Dec-2022",
+			"featured": true,
+			"description": [
+				"Someone who doesn't even work with Mihoyo has reported this application, then Cloudflare which is the service I used to deploy this app took this app down immediately. So I need to make some changes to the app, Again and again 🥲!",
+				"I want say sorry to you for the inconvenience, without all of your supports, maybe I will give up to keep this app running."
 			]
 		}
 	]

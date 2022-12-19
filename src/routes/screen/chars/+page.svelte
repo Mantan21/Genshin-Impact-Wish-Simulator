@@ -4,7 +4,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight, assets } from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import { getOutfit } from '$lib/helpers/outfit';
+	import { getOutfit } from '$lib/helpers/outfit.svelte';
 
 	let isError;
 	let data = {
