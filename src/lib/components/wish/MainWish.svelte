@@ -19,7 +19,7 @@
 	import { localBalance } from '$lib/store/localstore';
 	import { APP_TITLE } from '$lib/env';
 	import Wish, { roll } from '$lib/helpers/wish/wish';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	// Components
 	import WishResult from './WishResult.svelte';

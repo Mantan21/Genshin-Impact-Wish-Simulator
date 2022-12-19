@@ -22,7 +22,7 @@ const config = {
 	preprocess: cdn_on
 		? preprocess({
 				postcss: true,
-				replace: [[/\/(videos|images)\//g, `${cdn_url}/$1/`]]
+				replace: [[/\/(videos|images|sfx|fonts)\//g, `${cdn_url}/$1/`]]
 		  })
 		: preprocess({ postcss: true })
 };

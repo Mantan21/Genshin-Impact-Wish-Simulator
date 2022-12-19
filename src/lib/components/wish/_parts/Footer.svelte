@@ -16,7 +16,7 @@
 		assets
 	} from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import browserState from '$lib/helpers/browserState';
 	import { outfits } from '$lib/data/outfits.json';
 

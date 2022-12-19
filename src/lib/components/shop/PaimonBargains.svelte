@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	import ExchangeModal from './ExchangeModal.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';

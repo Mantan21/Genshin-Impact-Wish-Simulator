@@ -2,7 +2,7 @@
 	import { t } from 'svelte-i18n';
 	import { acquaint, genesis, intertwined, pageActive, primogem } from '$lib/store/stores';
 	import browserState from '$lib/helpers/browserState';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 
 	export let activeItem = '';

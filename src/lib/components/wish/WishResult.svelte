@@ -11,7 +11,7 @@
 		animeoff
 	} from '$lib/store/stores';
 	import { localOutfits } from '$lib/store/localstore';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { getName } from '$lib/helpers/nameText';
 	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
 

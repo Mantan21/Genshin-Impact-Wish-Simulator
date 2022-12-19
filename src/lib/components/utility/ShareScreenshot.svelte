@@ -9,7 +9,7 @@
 	import { primogem, viewportHeight } from '$lib/store/stores';
 	import { firstShare, localBalance } from '$lib/store/localstore';
 	import { copy } from '$lib/helpers/nameText';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import Icon from './Icon.svelte';
 	import ButtonGeneral from './ButtonGeneral.svelte';
 

@@ -13,7 +13,7 @@
 	// Store
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { APP_TITLE } from '$lib/env';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import charDB from '$lib/data/characters.json';
 	import weaponDB from '$lib/data/weapons.json';
 	import { localConfig } from '$lib/store/localstore';

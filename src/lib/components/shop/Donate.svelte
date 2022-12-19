@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import playSfx from '$lib/helpers/audio/audio.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
 	import Modal from '../utility/ModalTpl.svelte';

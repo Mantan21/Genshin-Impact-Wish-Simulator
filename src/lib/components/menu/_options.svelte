@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { locales, locale, t } from 'svelte-i18n';
 	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { localeName, flags } from '$lib/data/country.json';
 	import browserState from '$lib/helpers/browserState';
 	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';

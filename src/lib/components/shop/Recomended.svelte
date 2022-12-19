@@ -6,7 +6,7 @@
 	import { outfits } from '$lib/data/outfits.json';
 	import { assets, genesis, patchVersion, priceList, primogem } from '$lib/store/stores';
 	import { localBalance, localOutfits, localWelkin } from '$lib/store/localstore';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import positionToStyle from '$lib/helpers/cssPosition';
 	import { getName } from '$lib/helpers/nameText';
 

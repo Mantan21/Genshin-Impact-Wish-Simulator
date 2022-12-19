@@ -5,7 +5,7 @@
 	import positionToStyle from '$lib/helpers/cssPosition';
 	import { getOutfit } from '$lib/helpers/outfit.svelte';
 	import { getName } from '$lib/helpers/nameText';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import ShareScreenshot from '$lib/components/utility/ShareScreenshot.svelte';
 	import { animeoff, assets } from '$lib/store/stores';

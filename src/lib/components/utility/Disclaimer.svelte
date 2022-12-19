@@ -49,7 +49,7 @@
 				<img src={$assets['donate-kofi.png']} alt="ko-fi icon" />
 				<span> Ko-fi </span>
 			</a>
-			<a class="saweria" href="https://saweria.co/mantan21" target="_blank">
+			<a class="saweria" href="https://saweria.co/AguzzTN54" target="_blank">
 				<img src={$assets['donate-saweria.webp']} alt="Saweria Icon" />
 				<span> Saweria </span>
 			</a>

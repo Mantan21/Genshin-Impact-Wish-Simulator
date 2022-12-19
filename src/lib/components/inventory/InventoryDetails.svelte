@@ -7,7 +7,7 @@
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/helpers/nameText';
 	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';

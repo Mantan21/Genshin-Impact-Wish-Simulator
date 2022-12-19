@@ -11,7 +11,7 @@
 		selectedCourse,
 		showFatepointModal
 	} from '$lib/store/stores';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { localFatePoint } from '$lib/store/localstore';
 	import { noticeMark } from '$lib/helpers/noticeMark';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';

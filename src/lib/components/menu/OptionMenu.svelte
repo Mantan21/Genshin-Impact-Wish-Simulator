@@ -7,7 +7,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { animeoff, muted, unlimitedFates } from '$lib/store/stores';
 	import factoryReset from '$lib/helpers/factoryReset';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';

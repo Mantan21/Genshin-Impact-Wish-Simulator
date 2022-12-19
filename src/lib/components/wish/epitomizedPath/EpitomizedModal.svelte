@@ -14,7 +14,7 @@
 		viewportWidth
 	} from '$lib/store/stores';
 	import { fade } from 'svelte/transition';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { localFatePoint } from '$lib/store/localstore';
 
 	import FatepointSVG from './FatepointSVG.svelte';

@@ -9,7 +9,7 @@
 	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 	import EpitomizedModal from '../epitomizedPath/EpitomizedModal.svelte';
 
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import browserState from '$lib/helpers/browserState';
 	import {
 		acquaint,

@@ -1,5 +1,5 @@
 <script>
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	export let rangeVal;

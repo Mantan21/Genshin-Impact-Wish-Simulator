@@ -5,7 +5,7 @@
 	import { assets, pageActive } from '$lib/store/stores';
 	import { localConfig } from '$lib/store/localstore';
 	import browserState from '$lib/helpers/browserState';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import Book from './_parts/book.svelte';
 	import MainDetails from './details/MainDetails.svelte';
 	import MainHistory from './history/MainHistory.svelte';

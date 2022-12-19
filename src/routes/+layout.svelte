@@ -59,7 +59,7 @@
 
 	mountLocale();
 	onMount(() => {
-		const available = ['install', 'privacy-policy', 'screen'];
+		const available = ['adkey', 'install', 'privacy-policy', 'screen'];
 		if (path[1] && !available.includes(path[1].toLowerCase())) return window.location.replace('/');
 
 		const url = new URL(window.location.href);
@@ -143,8 +143,15 @@
 	/>
 </main>
 
-<style>
+<style global>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
+
+	@font-face {
+		font-family: 'Genshin Impact';
+		src: url('/fonts/optimized-genshin-font.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
 
 	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle) {
 		background-color: #d2c69c;

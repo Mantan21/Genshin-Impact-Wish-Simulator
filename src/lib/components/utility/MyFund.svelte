@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import Icon from './Icon.svelte';
 	import ExchangeModal from '$lib/components/shop/ExchangeModal.svelte';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	export let type = 'primogem';
 	export let increament = true;

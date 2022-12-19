@@ -4,7 +4,7 @@
 
 <script>
 	import { getContext, onMount, setContext } from 'svelte';
-	import playSfx from '$lib/helpers/audio/audio';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import {
 		pageActive,
 		bannerList,
