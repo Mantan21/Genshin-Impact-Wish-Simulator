@@ -75,7 +75,7 @@
 <div id="header" style={headerHeightstyle}>
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>
 		<h1 class="wish-title">
-			<img src={$assets['brand.png']} alt="Brand" />
+			<img src={$assets['brand.png']} alt="Brand" crossorigin="anonymous" />
 			<span> {$t('wish.wishTitle')} </span>
 			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
 				<i class="gi-help" />
@@ -124,7 +124,7 @@
 
 	<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
 		<div class="bg" style={headerHeightstyle}>
-			<img src={$assets['brand.png']} alt="Brand" />
+			<img src={$assets['brand.png']} alt="Brand" crossorigin="anonymous" />
 		</div>
 
 		{#each $bannerList as { type, character, weapons }, i}

@@ -6,7 +6,7 @@
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
 	import playSfx from '$lib/helpers/audio/audio';
 
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
@@ -96,6 +96,7 @@
 							alt={name}
 							class={weaponType}
 							on:error={(e) => e.target.remove()}
+							crossorigin="anonymous"
 						/>
 					</div>
 				{:else}
@@ -104,6 +105,7 @@
 						alt={getName(name)}
 						class="splash-art"
 						on:error={(e) => e.target.remove()}
+						crossorigin="anonymous"
 					/>
 				{/if}
 
@@ -113,6 +115,7 @@
 							src={$assets[`icon-${vision}.svg`]}
 							alt="Vision {vision}"
 							class="anim vision filter-drop {vision}"
+							crossorigin="anonymous"
 						/>
 					{:else}
 						<i class="anim elemen gi-{weaponType}" />

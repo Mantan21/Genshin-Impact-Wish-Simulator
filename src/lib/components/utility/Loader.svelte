@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { showBeginner, mobileMode, isMobile, assets } from '$lib/store/stores';
 	import { beginnerRoll } from '$lib/store/localstore';
-	import { listingAssets, blobAssets, getItemlist } from '$lib/helpers/assets';
+	import { listingAssets, blobAssets, getItemlist } from '$lib/helpers/assets.svelte';
 
 	export let isBannerLoaded = false;
 	export let directLoad = false;

@@ -26,7 +26,11 @@
 		<div class="character-card star5">
 			<picture style="background-image:url('{$assets['5star-bg.webp']}')">
 				<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
-				<img src={$assets[`face/${featured[0].name}`]} alt={getName(featured[0].name)} />
+				<img
+					src={$assets[`face/${featured[0].name}`]}
+					alt={getName(featured[0].name)}
+					crossorigin="anonymous"
+				/>
 			</picture>
 			<caption class="name">{$t(`${featured[0].name}.name`)}</caption>
 			<i class="gi-{featured[0].vision} element" />
@@ -35,7 +39,7 @@
 		{#each items[0].items as { name, type }}
 			<div class="character-card star5 weapons">
 				<picture style="background-image:url('{$assets['5star-bg.webp']}')">
-					<img src={$assets[name]} alt={getName(name)} class={type} />
+					<img src={$assets[name]} alt={getName(name)} class={type} crossorigin="anonymous" />
 				</picture>
 				<caption class="name">{$t(name)}</caption>
 			</div>
@@ -60,7 +64,7 @@
 			<div class="character-card star4">
 				<picture style="background-image:url('{$assets['4star-bg.webp']}')">
 					<i class="gi-{vision} {vision} icon-gradient filter-drop" />
-					<img src={$assets[`face/${name}`]} alt={getName(name)} />
+					<img src={$assets[`face/${name}`]} alt={getName(name)} crossorigin="anonymous" />
 				</picture>
 				<caption class="name">{$t(`${name}.name`)}</caption>
 				<i class="gi-{vision} element" />
@@ -70,7 +74,7 @@
 		{#each items[1].items as { name, type }}
 			<div class="character-card star4">
 				<picture style="background-image:url('{$assets['4star-bg.webp']}')">
-					<img src={$assets[name]} alt={getName(name)} class={type} />
+					<img src={$assets[name]} alt={getName(name)} class={type} crossorigin="anonymous" />
 				</picture>
 				<caption class="name">{$t(name)}</caption>
 			</div>

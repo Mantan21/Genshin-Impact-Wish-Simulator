@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import positionToStyle from '$lib/helpers/cssPosition';
-	import { getOutfit } from '$lib/helpers/outfit';
+	import { getOutfit } from '$lib/helpers/outfit.svelte';
 	import { getName } from '$lib/helpers/nameText';
 	import playSfx from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -131,6 +131,7 @@
 											class="wishpic {weaponType}-item"
 											style={positionToStyle(wishBoxPosition)}
 											on:error={(e) => e.target.remove()}
+											crossorigin="anonymous"
 										/>
 									{:else}
 										<img
@@ -140,6 +141,7 @@
 											alt={name}
 											class="wishpic"
 											on:error={(e) => e.target.remove()}
+											crossorigin="anonymous"
 											style={positionToStyle(
 												outfitSet ? getOutfit(name).wishBoxPosition : wishBoxPosition
 											)}

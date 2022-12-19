@@ -16,13 +16,13 @@
 
 {#if banner === 'history'}
 	<h1 class="v2">
-		<img src={$assets['brand.png']} alt="Icon" />
+		<img src={$assets['brand.png']} alt="Icon" crossorigin="anonymous" />
 		<span> {$t('history.title')}</span>
 	</h1>
 {:else if banner === 'standard'}
 	<h1 class="standard" class:v2={tplVersion === 'v2'}>
 		{#if tplVersion === 'v2'}
-			<img src={$assets['brand.png']} alt="Icon" />
+			<img src={$assets['brand.png']} alt="Icon" crossorigin="anonymous" />
 		{/if}
 		<span>
 			{$t('wish.banner.standard')} "{@html highlightBannerName(
@@ -34,7 +34,7 @@
 {:else}
 	<h1 class={banner} class:v2={tplVersion === 'v2'}>
 		{#if tplVersion === 'v2'}
-			<img src={$assets['brand.png']} alt="Icon" />
+			<img src={$assets['brand.png']} alt="Icon" crossorigin="anonymous" />
 		{/if}
 		<span>
 			{#if banner !== 'beginner'}

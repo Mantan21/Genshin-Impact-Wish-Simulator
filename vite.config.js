@@ -53,7 +53,7 @@ const manifest = {
 	display: 'fullscreen',
 	scope: '/',
 	start_url: '/?pwasc=homescreen',
-	categories: ['Games', 'Simulator'],
+	categories: ['games', 'utilities'],
 	description: VITE_DESCRIPTION,
 	dir: 'auto',
 	icons,

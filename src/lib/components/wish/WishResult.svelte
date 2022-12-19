@@ -13,7 +13,7 @@
 	import { localOutfits } from '$lib/store/localstore';
 	import playSfx from '$lib/helpers/audio/audio';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit';
+	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
 
 	// Component
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
@@ -182,6 +182,7 @@
 								alt={name}
 								class="splash-art anim"
 								on:error={(e) => e.target.remove()}
+								crossorigin="anonymous"
 							/>
 						{:else}
 							<img
@@ -191,6 +192,7 @@
 								alt={name}
 								class="splash-art anim"
 								on:error={(e) => e.target.remove()}
+								crossorigin="anonymous"
 							/>
 						{/if}
 

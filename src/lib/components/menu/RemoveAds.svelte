@@ -128,7 +128,9 @@
 		</form>
 	{/if}
 	<div class="admin-note">
-		<picture> <img src={$assets['imbroke.webp']} alt="I'm Broke" /> </picture>
+		<picture>
+			<img src={$assets['imbroke.webp']} alt="I'm Broke" crossorigin="anonymous" />
+		</picture>
 		<p>
 			{$t('menu.authorNotes')}
 		</p>

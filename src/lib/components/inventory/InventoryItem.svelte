@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit } from '$lib/helpers/outfit';
+	import { getOutfit } from '$lib/helpers/outfit.svelte';
 	import { assets } from '$lib/store/stores';
 
 	export let rarity = 3;
@@ -41,6 +41,7 @@
 				alt={getName(name)}
 				on:error={(e) => e.target.remove()}
 				loading="lazy"
+				crossorigin="anonymous"
 			/>
 			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else}
@@ -49,6 +50,7 @@
 				alt={getName(name)}
 				class={weaponType}
 				loading="lazy"
+				crossorigin="anonymous"
 				on:error={(e) => e.target.remove()}
 			/>
 		{/if}

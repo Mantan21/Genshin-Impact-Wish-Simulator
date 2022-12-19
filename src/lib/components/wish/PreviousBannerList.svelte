@@ -282,6 +282,7 @@
 													loading="lazy"
 													style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
 													on:error={(e) => e.target.remove()}
+													crossorigin="anonymous"
 												/>
 											{/each}
 										{:else}
@@ -290,6 +291,7 @@
 												alt={getName(chars.name)}
 												loading="lazy"
 												on:error={(e) => e.target.remove()}
+												crossorigin="anonymous"
 											/>
 										{/if}
 									</div>

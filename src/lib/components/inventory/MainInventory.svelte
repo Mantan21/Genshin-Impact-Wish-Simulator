@@ -19,7 +19,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { assets, mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
-	import { isOutfitSet } from '$lib/helpers/outfit';
+	import { isOutfitSet } from '$lib/helpers/outfit.svelte';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
@@ -248,6 +248,7 @@
 			src={$assets[`element-${b}-bg.webp`]}
 			alt="Background"
 			class="bg"
+			crossorigin="anonymous"
 			class:active={activeBgIndex === i}
 		/>
 	{/each}

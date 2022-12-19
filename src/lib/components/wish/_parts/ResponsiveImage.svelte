@@ -21,7 +21,7 @@
 		<div style="position: relative; width: 100%;">
 			<div style="position: relative; overflow: hidden;">
 				<picture>
-					<img {src} {alt} on:error={errorHandle} />
+					<img {src} {alt} on:error={errorHandle} crossorigin="anonymous" />
 				</picture>
 			</div>
 		</div>

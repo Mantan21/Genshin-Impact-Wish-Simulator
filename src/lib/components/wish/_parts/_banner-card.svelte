@@ -72,6 +72,7 @@
 					src={$assets[`splash-art/${character.character}`]}
 					alt="character"
 					on:error={(e) => e.target.remove()}
+					crossorigin="anonymous"
 				/>
 			</div>
 		{/if}

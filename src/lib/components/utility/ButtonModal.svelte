@@ -44,7 +44,7 @@
 		transition: all 0.2s;
 	}
 
-	button:active {
+	button:active:not(:disabled) {
 		transform: scale(0.9);
 		background-color: #e0ddd4 !important;
 		border-color: rgb(195, 195, 195) !important;

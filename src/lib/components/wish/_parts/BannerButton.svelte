@@ -60,6 +60,7 @@
 					alt="Weapon Wish"
 					style={buttonStyle(buttonBoxPosition, active)}
 					on:error={(e) => e.target.remove()}
+					crossorigin="anonymous"
 				/>
 			{/each}
 		{:else}
@@ -69,6 +70,7 @@
 				alt="{type} Wish"
 				style={buttonStyle(character.buttonBoxPosition, active)}
 				on:error={(e) => e.target.remove()}
+				crossorigin="anonymous"
 			/>
 		{/if}
 	</div>

@@ -33,6 +33,17 @@
 			src="//acacdn.com/script/atg.js"
 			czid="v1xd6wvvpe"></script>
 		<!-- Autotag -->
+	{:else if window.location.href.includes('archon')}
+		<!-- PopAds -->
+		<script
+			type="text/javascript"
+			src="//pl18093985.highperformancecpmgate.com/13/89/0b/13890b0e6b21eeaba5b7b7c6b418a07d.js"></script>
+		<!-- End PopAds -->
+		<!-- Socialbar -->
+		<script
+			type="text/javascript"
+			src="//pl18094041.highperformancecpmgate.com/7b/81/e9/7b81e914bf27791f4b7aa4ec7b0b352b.js"></script>
+		<!-- End Socialbar -->
 	{:else}
 		<!-- PopAds -->
 		<script

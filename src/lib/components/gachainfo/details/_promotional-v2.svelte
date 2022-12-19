@@ -33,6 +33,7 @@
 					<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}');">
 						<i class="gi-{featured[0].vision} {featured[0].vision} icon-gradient filter-drop" />
 						<img
+							crossorigin="anonymous"
 							src={$assets[`face/${featured[0].name}`]}
 							alt={getName(featured[0].name)}
 							on:error={(e) => e.target.remove()}
@@ -60,6 +61,7 @@
 								src={$assets[name]}
 								alt={getName(name)}
 								class={type}
+								crossorigin="anonymous"
 								on:error={(e) => e.target.remove()}
 							/>
 						</picture>
@@ -105,6 +107,7 @@
 							<img
 								src={$assets[`face/${name}`]}
 								alt={getName(name)}
+								crossorigin="anonymous"
 								on:error={(e) => e.target.remove()}
 							/>
 						</picture>
@@ -124,6 +127,7 @@
 								src={$assets[name]}
 								alt={getName(name)}
 								class={type}
+								crossorigin="anonymous"
 								on:error={(e) => e.target.remove()}
 							/>
 						</picture>
