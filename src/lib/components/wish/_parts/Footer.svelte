@@ -118,7 +118,7 @@
 				<div class="top">{$t('wish.rollButton', { values: { count: '×10' } })}</div>
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px" class:red={fateQty < 1 && !$unlimitedFates}>
+					<span style="margin-left: 7px" class:red={fateQty < 10 && !$unlimitedFates}>
 						x {multiRollPrice}
 					</span>
 				</div>
