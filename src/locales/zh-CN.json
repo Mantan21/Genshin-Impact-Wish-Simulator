@@ -201,7 +201,7 @@
 		},
 		"duplicate": {
 			"heading": "〓若获得重复角色〓",
-			"text": "无论通过何种方式（包含但不限于祈愿、商城兑换、系统赠送等）第2~7次获得相同5星角色时，每次将转化为1个{stellaFortuna}和10个{starglitter}；第8次及之后获得，将仅转化为25个{starglitter}。"
+			"text": "无论通过何种方式（包含但不限于祈愿、商城兑换、系统赠送等）第2~7次获得相同{rarity}星角色时，每次将转化为1个{stellaFortuna}和10个{starglitter}；第8次及之后获得，将仅转化为25个{starglitter}。"
 		}
 	},
 	"history": {

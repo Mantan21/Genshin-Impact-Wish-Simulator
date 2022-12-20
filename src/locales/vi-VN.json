@@ -201,7 +201,7 @@
 		},
 		"duplicate": {
 			"heading": "〓Nếu Nhận Trùng Nhân Vật〓",
-			"text": "Khi nhận nhân vật 4 sao trùng nhau ở lần thứ 2 đến 7 bằng bất kỳ cách nào (Bao gồm nhưng không giới hạn ở cầu nguyện, đổi ở Cửa Hàng, hệ thống tặng v.v...), mỗi lần như vậy sẽ chuyển thành 1 {stellaFortuna} và {constBonus} {starglitter}, Lần thứ 8 trở đi sẽ chuyển thành {fullConstBonus} {starglitter}."
+			"text": "Khi nhận nhân vật {rarity} sao trùng nhau ở lần thứ 2 đến 7 bằng bất kỳ cách nào (Bao gồm nhưng không giới hạn ở cầu nguyện, đổi ở Cửa Hàng, hệ thống tặng v.v...), mỗi lần như vậy sẽ chuyển thành 1 {stellaFortuna} và {constBonus} {starglitter}, Lần thứ 8 trở đi sẽ chuyển thành {fullConstBonus} {starglitter}."
 		}
 	},
 	"history": {
