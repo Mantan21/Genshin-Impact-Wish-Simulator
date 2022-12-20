@@ -27,6 +27,7 @@
 	};
 
 	const handlePaimonClick = ({ detail }) => {
+		if (activeFateShop === detail.selected) return;
 		activeFateShop = detail.selected;
 		playSfx('shopsubnav');
 	};

@@ -38,6 +38,7 @@
 	};
 
 	const buttonClick = (banner) => {
+		if ($bannerActive === banner) return;
 		bannerActive.set(banner);
 		playSfx('changebanner');
 	};

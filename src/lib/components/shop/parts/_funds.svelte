@@ -1,10 +1,18 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import MyFund from '$lib/components/utility/MyFund.svelte';
-	import { genesis, primogem, starglitter, stardust } from '$lib/store/stores';
+	import {
+		genesis,
+		primogem,
+		starglitter,
+		stardust,
+		acquaint,
+		intertwined
+	} from '$lib/store/stores';
 	export let itemToBuy = '';
 
 	const isPaimon = ['intertwined', 'acquaint'].includes(itemToBuy);
+	$: fates = itemToBuy === 'intertwined' ? $intertwined : $acquaint;
 </script>
 
 <div class="funds" in:fly={{ y: -15, duration: 300 }}>
@@ -12,9 +20,12 @@
 		{#if isPaimon}
 			<MyFund type="starglitter">{$starglitter}</MyFund>
 			<MyFund type="stardust">{$stardust}</MyFund>
+			<MyFund type="primogem" increament={false}>{$primogem}</MyFund>
+			<MyFund type={itemToBuy}>{fates}</MyFund>
 		{/if}
-		<MyFund type="primogem" increament={false}>{$primogem}</MyFund>
+
 		{#if !isPaimon}
+			<MyFund type="primogem" increament={false}>{$primogem}</MyFund>
 			<MyFund type="genesis">{$genesis}</MyFund>
 		{/if}
 	</div>

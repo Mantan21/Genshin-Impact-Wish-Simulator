@@ -16,6 +16,7 @@
 	let activeContent = 'options';
 
 	const selectMenu = (menu) => {
+		if (activeContent === menu) return;
 		activeContent = menu;
 		playSfx('shopnav');
 	};

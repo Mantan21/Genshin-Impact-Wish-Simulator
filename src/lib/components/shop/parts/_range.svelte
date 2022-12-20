@@ -24,8 +24,13 @@
 		timeout = setTimeout(() => {
 			interval = setInterval(change, 50);
 		}, 500);
+
+		const isMinRange = plusOrMinus === 'min' && rangeVal <= 1;
+		const isMaxRange = plusOrMinus === 'plus' && rangeVal >= maxRange;
+		if (isMinRange || isMaxRange) return;
 		playSfx();
 	};
+
 	const plus = () => {
 		if (rangeVal >= maxRange) return clearTimers();
 		changeRange({ target: { value: rangeVal + 1 } });
@@ -197,6 +202,17 @@
 		display: none;
 	}
 
+	button:active:not(:disabled) {
+		transform: scale(0.9) translateY(-50%);
+		background-color: #e0ddd4 !important;
+		border-color: rgb(195, 195, 195) !important;
+		box-shadow: rgb(160 175 190 / 60%) 0px 0px 4px 2px;
+	}
+
+	button:hover:not(:disabled) {
+		background-color: rgb(51, 57, 71);
+	}
+
 	button.plus:disabled,
 	button.min:disabled {
 		background-color: rgb(173, 179, 192);
@@ -215,9 +231,11 @@
 		padding: 0.5rem;
 		color: #fff;
 		border-radius: 100%;
+		border: 0.2rem solid transparent;
 		top: 50%;
 		transform: translateY(-50%);
 		line-height: 0;
+		transition: all 0.2s;
 	}
 
 	button.plus {

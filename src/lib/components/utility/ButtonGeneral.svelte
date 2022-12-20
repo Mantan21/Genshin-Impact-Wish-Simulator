@@ -24,14 +24,15 @@
 		font-size: 90%;
 	}
 
-	button:hover {
+	button:hover:not(:disabled) {
 		border-color: #fff;
 	}
 
-	button:active {
+	button:active:not(:disabled) {
 		animation-name: colourchange;
 		animation-duration: 0.2s;
 		animation-fill-mode: forwards;
+		transform: scale(0.95);
 	}
 
 	@keyframes colourchange {
@@ -44,10 +45,6 @@
 			color: white;
 			background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), #e0ddd4;
 		}
-	}
-
-	button:active {
-		transform: scale(0.95);
 	}
 
 	:global(.mobile) button {

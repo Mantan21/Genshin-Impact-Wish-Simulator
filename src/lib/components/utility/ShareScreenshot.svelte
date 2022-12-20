@@ -183,7 +183,7 @@
 			<Icon type="primogem" width="18px" style="margin-left: .5rem" />
 		</span>
 	{/if}
-	<ButtonGeneral on:click={takeShot}>
+	<ButtonGeneral on:click={takeShot} disabled={showOnProgress}>
 		{btnTxt}
 	</ButtonGeneral>
 </div>
