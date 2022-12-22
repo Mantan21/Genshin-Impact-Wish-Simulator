@@ -219,7 +219,7 @@
 		{
 			"date": "15-Nov-2022",
 			"description": [
-				"<strong> Yae Miko 2nd Rerun</strong> and <strong> Tartaglia 4th Rerun </strong> Banners are ready",
+				"<strong> Yae Miko 2nd Rerun</strong> and <strong> Tartaglia 3rd Rerun </strong> Banners are ready",
 				"New Character <strong> Layla </strong>",
 				"Weapon Banner Updated, <b> Kagura's Verity </b> and <b>Polar Star</b> are ready to pull too !"
 			]
@@ -233,7 +233,6 @@
 		},
 		{
 			"date": "5-Dec-2022",
-			"featured": true,
 			"description": [
 				"New Character <strong> Wanderer </strong> and <strong> Itto 3rd Rerun </strong> Banners already out",
 				"New 4★ Character <strong> Faruzan </strong> is featured on the current banner too!",
@@ -246,6 +245,15 @@
 			"description": [
 				"Someone who doesn't even work with Mihoyo has reported this application, then Cloudflare which is the service I used to deploy this app took this app down immediately. So I need to make some changes to the app, Again and again 🥲!",
 				"I want say sorry to you for the inconvenience, without all of your supports, maybe I will give up to keep this app running."
+			]
+		},
+		{
+			"date": "23-Dec-2022",
+			"featured": true,
+			"description": [
+				"<strong> 🎅 ൱ḝꞅꞅү ℂҺꞅḭຮẗɱẩຮ 2022 🦌🛷𒈱 ★*🌙☆* </strong>",
+				"<strong> Raiden Shogun</strong> and <strong> Ayato</strong> 2nd Banners has been added!",
+				"Weapon Banner Updated, <b> Engulfing Lightning </b> and <b>Haran Geppaku Futsu</b> are ready to pull too!"
 			]
 		}
 	]

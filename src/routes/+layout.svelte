@@ -59,6 +59,8 @@
 
 	mountLocale();
 	onMount(() => {
+		const isCDNHost = $page.url.host.includes('cdn.');
+		if (isCDNHost) return window.location.replace('https://wishsimulator.app/');
 		const available = ['adkey', 'install', 'privacy-policy', 'screen'];
 		if (path[1] && !available.includes(path[1].toLowerCase())) return window.location.replace('/');
 
@@ -143,7 +145,7 @@
 	/>
 </main>
 
-<style global>
+<style>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
 
 	@font-face {
@@ -155,8 +157,14 @@
 
 	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle) {
 		background-color: #d2c69c;
-		opacity: 0.7;
+		opacity: 0.5;
 	}
+	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle:hover),
+	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle:active) {
+		background-color: #d2c69c;
+		opacity: 1;
+	}
+
 	:global(.os-theme-light > .os-scrollbar-vertical) {
 		width: 8px;
 	}

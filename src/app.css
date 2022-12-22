@@ -18,6 +18,7 @@
 ::-webkit-scrollbar-thumb {
 	background-color: rgba(210, 198, 156, 0.5);
 	border-radius: 5px;
+	transition: all 0.2s;
 }
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(210, 198, 156, 1);

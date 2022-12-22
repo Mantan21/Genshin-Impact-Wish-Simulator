@@ -1,11 +1,11 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/stores';
 	import Description from './_description.svelte';
 	import List from './_list.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Promotional from './_promotional.svelte';
 	import Title from '../_parts/title.svelte';
-	import { t } from 'svelte-i18n';
 
 	export let tplVersion = 'v1';
 	export let data;
