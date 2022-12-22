@@ -336,6 +336,7 @@
 		"noKey": "Belum memiliki AdKey?",
 		"verifyFail": "Gagal terhubung untuk memverifikasi AdKey!",
 		"invalidKey": "AdKey tidak valid",
+		"adFreeUser": "Kamu telah menggunakan Simulator Iklan!",
 		"inputKeyPlaceholder": "Masukkan AdKey",
 		"inputKeyTxt": "Masukkan AdKey untuk menghapus Iklan !",
 		"checkingKey": "Menverifikasi AdKey tersimpan",

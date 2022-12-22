@@ -336,6 +336,7 @@
 		"noKey": "Don't have a key?",
 		"verifyFail": "Failed to verifying AdKey, Check your Connection !",
 		"invalidKey": "Your key isn't valid",
+		"adFreeUser": "You're enjoying Simulator Without Ads !",
 		"inputKeyPlaceholder": "Enter Key",
 		"inputKeyTxt": "Input the Key to Remove Ads !",
 		"checkingKey": "Verifying Stored AdKey",

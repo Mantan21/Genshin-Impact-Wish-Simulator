@@ -100,7 +100,9 @@
 				/>
 				<div class="note">
 					{#if isOffline}
-						<span class="offline"> {$t('menu.verifyFail')} </span>
+						<span class="invalid"> {$t('menu.verifyFail')} </span>
+					{:else if isUserKeyValid}
+						<span class="keyValid"> {$t('menu.adFreeUser')} </span>
 					{:else}
 						{#if !isUserKeyValid && userHasKey}
 							<span class="invalid"> {$t('menu.invalidKey')} </span>
@@ -179,6 +181,10 @@
 		}
 	}
 
+	form {
+		padding: 0 2%;
+	}
+
 	label {
 		font-size: 1.5rem;
 	}
@@ -224,10 +230,15 @@
 	.note {
 		margin-bottom: 5%;
 	}
-	.note .invalid {
+
+	.keyValid {
+		color: #64ad15;
+	}
+	.invalid {
 		color: #ee6c4c;
 	}
-	.note .offline {
+	.invalid,
+	.keyValid {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
