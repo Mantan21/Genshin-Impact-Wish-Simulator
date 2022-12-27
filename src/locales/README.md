@@ -60,6 +60,15 @@ If you are not familiar with javascript especially sveltekit or don't know how t
          </td>
       </tr>
       <tr>
+         <td> Russian </td>
+         <td>
+            <a href="https://github.com/ArtMuxomor">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/27068331?s=20" />
+               ArtMuxomor
+            </a>
+         </td>
+      </tr>
+      <tr>
          <td> Vietnamese </td>
          <td>
             <a href="https://github.com/bibi0019">
