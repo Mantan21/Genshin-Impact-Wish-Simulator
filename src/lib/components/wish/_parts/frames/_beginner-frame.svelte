@@ -83,7 +83,8 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) h1 {
+	:global(.zh-CN) h1,
+	:global(.ja-JP) h1 {
 		font-size: calc(6 / 100 * var(--content-width));
 	}
 
@@ -136,6 +137,11 @@
 		font-size: calc(4.9 / 100 * var(--content-width));
 		-webkit-text-stroke: 0.05rem #565654;
 		text-shadow: 0 0 0.15rem #d2c69c;
+	}
+
+	:global(.ja-JP) .featured,
+	:global(.zh-CN) .featured {
+		top: 68%;
 	}
 
 	.charName span:not(.up) {

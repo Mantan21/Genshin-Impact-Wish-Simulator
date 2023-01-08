@@ -34,7 +34,9 @@
 	let isloaded = false;
 	let showAd = false;
 
-	$: isCN = $locale?.toLowerCase().includes('cn');
+	$: lc = $locale?.toLowerCase() || '';
+	$: isCN = lc.includes('cn') || lc.includes('ja');
+
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
 	$: path = $page.url.pathname.split('/');
@@ -186,7 +188,7 @@
 		display: block;
 		position: fixed;
 		bottom: 0px;
-		right: 5px;
+		right: 2em;
 		z-index: 9999;
 		color: #fff;
 		text-shadow: 0 0 1.5px rgba(0, 0, 0, 0.7);
@@ -213,7 +215,7 @@
 		max-width: 30%;
 		position: fixed;
 		bottom: 0px;
-		right: 5px;
+		right: 2em;
 	}
 
 	.preview .logo.cn {

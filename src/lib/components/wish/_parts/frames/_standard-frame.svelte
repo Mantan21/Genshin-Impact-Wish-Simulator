@@ -92,7 +92,8 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) h1 {
+	:global(.zh-CN) h1,
+	:global(.ja-JP) h1 {
 		font-size: calc(7 / 100 * var(--content-width));
 	}
 

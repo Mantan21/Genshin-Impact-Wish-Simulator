@@ -26,7 +26,9 @@
 	export let skipSplashOneByOne = false;
 	export let fromShop = false;
 	export let outfitName = '';
-	const isCN = $locale?.toLowerCase().includes('cn');
+
+	const lc = $locale?.toLowerCase() || '';
+	const isCN = lc.includes('cn') || lc.includes('ja');
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -407,6 +409,12 @@
 		color: #fff;
 		-webkit-text-stroke: 0.04rem #000;
 	}
+
+	:global(.zh-CN) .name .text,
+	:global(.ja-JP) .name .text {
+		font-size: 3.5em;
+	}
+
 	.info i.elemen {
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -673,7 +681,7 @@
 		max-width: 30%;
 		position: fixed;
 		bottom: 0px;
-		right: 5px;
+		right: 2rem;
 	}
 
 	.logo.cn {

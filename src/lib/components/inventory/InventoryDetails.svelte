@@ -276,6 +276,11 @@
 		-webkit-text-stroke: 0.015em #000;
 	}
 
+	:global(.zh-CN) .name .text,
+	:global(.ja-JP) .name .text {
+		font-size: 3.5em;
+	}
+
 	.gi-star {
 		color: #f7cf33;
 		font-size: 1.525em;

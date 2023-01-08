@@ -101,7 +101,8 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) h1 {
+	:global(.zh-CN) h1,
+	:global(.ja-JP) h1 {
 		font-size: calc(7 / 100 * var(--content-width));
 	}
 
@@ -198,7 +199,9 @@
 	}
 
 	:global(.zh-CN) .first-wp,
-	:global(.zh-CN) .second-wp {
+	:global(.zh-CN) .second-wp,
+	:global(.ja-JP) .first-wp,
+	:global(.ja-JP) .second-wp {
 		font-size: calc(11 / 100 * var(--text-width));
 	}
 
@@ -219,7 +222,8 @@
 		font-size: calc(2 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) .rateup .weapon-name {
+	:global(.zh-CN) .rateup .weapon-name,
+	:global(.ja-JP) .rateup .weapon-name {
 		font-size: calc(3.5 / 100 * var(--content-width));
 	}
 
