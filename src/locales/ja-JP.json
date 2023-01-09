@@ -235,7 +235,7 @@
 	},
 	"shop": {
 		"text": "ショップ",
-		"paimonBargains": "ギフトパック",
+		"paimonBargains": "スター交換",
 		"fateNeeded": "{currency}が{rollQty}個足りませんが、",
 		"primoNeeded": "原石を{primoPrice}個使って購入しますか？",
 		"purchaseUpto": "数量限定 1",
@@ -244,7 +244,7 @@
 		"purchaseHeading": "アイテムを交換する",
 		"purchaseButton": "交換",
 		"pay": "購入",
-		"product": "アイテム",
+		"product": "商品",
 		"consume": "消費",
 		"selectPayment": "決済方法",
 		"unrealWallet": "タルタリヤ",
@@ -305,12 +305,12 @@
 		"element": "神の目",
 		"type": "武器タイプ",
 		"owned": "所持",
-		"showAllOption": "全ての{item}を表示 ( {qty} 体/個獲得済み、重複含む )"
+		"showAllOption": "全ての{item}を表示 ( {qty} 体・個獲得済み、重複含む )"
 	},
 	"menu": {
 		"no": "オフ",
 		"yes": "オン",
-		"text": "菜单",
+		"text": "メニュー",
 		"options": "オプション",
 		"updates": "更新履歴",
 		"language": "言語",
