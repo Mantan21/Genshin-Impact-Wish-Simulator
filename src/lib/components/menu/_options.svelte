@@ -240,6 +240,9 @@
 		background-color: #f0e0c7;
 	}
 
+	.locale {
+		font-family: var(--gi-global-font);
+	}
 	.locale .select button {
 		display: flex;
 		justify-content: center;
@@ -247,6 +250,7 @@
 		line-height: 0%;
 		padding: 5%;
 	}
+
 	.flag {
 		width: 1.2rem;
 	}

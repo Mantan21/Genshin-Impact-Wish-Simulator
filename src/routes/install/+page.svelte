@@ -133,7 +133,7 @@
 		background-color: #dadada;
 		padding: 0.5rem 5%;
 		position: relative;
-		font-family: 'Genshin Impact';
+		font-family: var(--genshin-font);
 	}
 	:global(.mobile) section :global(h1) {
 		font-size: 1.3rem;

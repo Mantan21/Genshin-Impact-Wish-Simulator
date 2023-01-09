@@ -168,7 +168,7 @@
 
 {#if bgAnimated}
 	<video
-		transition:fade={{ duration: 2000 }}
+		transition:fade|local={{ duration: 2000 }}
 		muted
 		loop
 		autoplay

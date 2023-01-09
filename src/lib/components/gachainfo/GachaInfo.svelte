@@ -70,7 +70,7 @@
 
 	.content-details :global(h1),
 	.content-details :global(.pop-footer button) {
-		font-family: 'Genshin Impact', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: var(--genshin-font);
 	}
 
 	.header {

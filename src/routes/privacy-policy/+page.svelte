@@ -72,7 +72,7 @@
 	}
 
 	article :global(h2) {
-		font-family: 'Genshin Impact';
+		font-family: var(--genshin-font);
 		padding: 1.5rem 0 0.5rem;
 	}
 

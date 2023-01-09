@@ -54,8 +54,8 @@
 		display: flex;
 		align-items: center;
 		position: relative;
-		font-family: 'Genshin Impact';
 	}
+
 	:global(.mobile) h1 {
 		font-size: 1.3rem;
 	}

@@ -36,6 +36,7 @@
 
 	$: lc = $locale?.toLowerCase() || '';
 	$: isCN = lc.includes('cn') || lc.includes('ja');
+	$: font = isCN || lc.includes('th') ? lc.split('-')[0] : 'global';
 
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
@@ -125,7 +126,8 @@
 	class:mobile={$mobileMode}
 	class:preview
 	class={$locale}
-	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'}"
+	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'};
+		--genshin-font: var(--gi-{font}-font)"
 >
 	{#if !$isLoading && isloaded}
 		<slot />
@@ -151,8 +153,29 @@
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
 
 	@font-face {
-		font-family: 'Genshin Impact';
-		src: url('/fonts/optimized-genshin-font.woff2') format('woff2');
+		font-family: 'GI_Global_Web';
+		src: url('/fonts/optimized_global_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_JA_Web';
+		src: url('/fonts/optimized_jp_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_TH_Web';
+		src: url('/fonts/optimized_th_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_ZH_Web';
+		src: url('/fonts/optimized_zh_web.woff2') format('woff2');
 		font-weight: normal;
 		font-style: normal;
 	}
@@ -178,6 +201,7 @@
 		display: block;
 		width: 100%;
 		overflow: hidden;
+		font-family: var(--genshin-font);
 	}
 
 	:global(audio) {

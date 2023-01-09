@@ -346,7 +346,7 @@
 		margin-left: 0.5rem;
 	}
 	.info .name span {
-		font-family: 'Genshin Impact';
+		font-family: var(--gi-global-font);
 		font-size: larger;
 	}
 
@@ -381,7 +381,7 @@
 		padding: 0.4rem 0.6rem;
 		border-radius: 1rem;
 		color: #fff;
-		font-family: 'Genshin Impact';
+		font-family: var(--gi-global-font);
 	}
 
 	.donation-item.ko-fi .amount span {

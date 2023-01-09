@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/stores';
 	import { adKey } from '$lib/helpers/accessKey';
-	import playSfx from '$lib/helpers/audio/audio.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	import Modal from '$lib/components/utility/ModalTpl.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
@@ -18,6 +18,7 @@
 	let message = '';
 
 	const removeAds = async () => {
+		playSfx();
 		waiting = true;
 		const { msg, validity } = await adKey.verify(input);
 		error = !validity;
