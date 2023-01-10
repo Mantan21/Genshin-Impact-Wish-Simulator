@@ -1,7 +1,9 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
 	import { browser } from '$app/environment';
+	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import { beginnerRoll } from '$lib/store/localstore';
 
 	export let character = '';
@@ -14,6 +16,15 @@
 	};
 
 	const remaining = browser ? 20 - beginnerRoll.get() : 0;
+
+	let bannerInfo;
+	onMount(() => {
+		OverlayScrollbars(bannerInfo, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light',
+			scrollbars: { visibility: 'hidden' }
+		});
+	});
 </script>
 
 <div class="frame-content" class:error={isError}>
@@ -23,17 +34,26 @@
 	<h1 class="card-stroke" in:fly={{ x: 10, duration: 700 }}>
 		{@html highlightBannerName($t(`wish.banner.beginner`))}
 	</h1>
-	<div class="set" in:fly={{ x: 10, duration: 700 }}>
-		{$t('wish.banner.beginnerSet', { values: { character: char } })}
+
+	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
+		<div class="content">
+			<div class="set">
+				{$t('wish.banner.beginnerSet', { values: { character: char } })}
+			</div>
+			<div class="desc">
+				<div class="icon">
+					<i class="gi-primo-star" />
+				</div>
+				<p class="text">
+					{$t('wish.banner.wishDescription')}
+				</p>
+			</div>
+			<div class="note">
+				{$t('wish.banner.beginnerNote')}
+			</div>
+		</div>
 	</div>
-	<div class="desc" in:fly={{ x: 10, duration: 700 }}>
-		<p>
-			{$t('wish.banner.wishDescription')}
-		</p>
-	</div>
-	<div class="note" in:fly={{ x: 10, duration: 700 }}>
-		{$t('wish.banner.beginnerNote')}
-	</div>
+
 	<div class="featured" in:fly={{ x: 10, duration: 700 }}>
 		<div class="charName" style="position: relative;">
 			<span>
@@ -88,6 +108,15 @@
 		font-size: calc(6 / 100 * var(--content-width));
 	}
 
+	.info {
+		left: 0;
+		top: 36%;
+		width: 40%;
+		height: 45%;
+		display: block;
+		padding-left: 4%;
+	}
+
 	.top {
 		color: #fff;
 		background-color: #e79649;
@@ -101,33 +130,30 @@
 	}
 
 	.set {
-		bottom: 54%;
-		left: 4%;
-		width: 36%;
 		font-size: calc(2.4 / 100 * var(--content-width));
-		line-height: 120%;
 	}
 
 	.desc {
-		left: 7.5%;
-		width: 32.5%;
-		top: 55.2%;
-		transform: translateY(-50%);
 		color: #fff;
-		height: 14%;
-		overflow-y: auto;
+		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;
 		align-items: center;
+		margin: calc(0.7 / 100 * var(--content-width)) 0;
+		background-color: rgba(224, 85, 94, 0.85);
 	}
 
-	.desc p {
-		line-height: 120%;
+	.desc .text {
+		width: calc(32.5 / 100 * var(--content-width));
+		padding: calc(0.3 / 100 * var(--content-width));
+		line-height: 125%;
 	}
 
-	.note {
-		top: 63%;
-		left: 4%;
-		width: 36%;
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: calc(1 / 100 * var(--content-width));
+		font-size: calc(1.1 / 100 * var(--content-width));
 	}
 
 	.featured {
@@ -166,13 +192,14 @@
 		top: 83.5%;
 		color: #cfbc99;
 		background-color: #39425d;
+		padding: 0.2% 1%;
 	}
 
 	.chances {
 		right: 0;
-		bottom: 7.3%;
+		bottom: 6.5%;
 		color: #e7dfd0;
 		background-color: #252d3a;
-		padding-right: 1%;
+		padding: 0.2% 2%;
 	}
 </style>

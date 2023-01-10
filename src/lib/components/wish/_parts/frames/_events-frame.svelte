@@ -157,8 +157,6 @@
 	}
 
 	.desc {
-		left: 7.5%;
-		top: 49.7%;
 		color: #fff;
 		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;

@@ -1,6 +1,8 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import OverlayScrollbars from 'overlayscrollbars';
 
 	export let data = {};
 	const oldStd = data.character.name === 'wanderlust-invocation-1';
@@ -13,27 +15,43 @@
 		const splited = bannerName.split(' ');
 		return `${splited[0]} <span class="${oldClass}"> ${splited.slice(1).join(' ')}</span>`;
 	};
+
+	let bannerInfo;
+	onMount(() => {
+		OverlayScrollbars(bannerInfo, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light',
+			scrollbars: { visibility: 'hidden' }
+		});
+	});
 </script>
 
-<div class="frame-content">
-	<div class="top bg-wanderlust" class:old={oldStd}>
+<div class="frame-content" class:old={oldStd}>
+	<div class="top bg-wanderlust">
 		{$t('wish.banner.standard')}
 	</div>
 	<h1 in:fly={{ x: 10, duration: 700 }} class="card-stroke">
 		{@html highlightBannerName($t(`wish.banner.name.wanderlust`))}
 	</h1>
-	<div class="set card-stroke" in:fly={{ x: 10, duration: 700 }}>
-		{$t('wish.banner.standard')}
-	</div>
+	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
+		<div class="content">
+			<div class="set card-stroke">
+				{$t('wish.banner.standard')}
+			</div>
 
-	<div class="desc">
-		<p>
-			{$t('wish.banner.wishDescription')}
-		</p>
-	</div>
-	<div class="note card-stroke" in:fly={{ x: 10, duration: 700 }}>
-		{$t('wish.banner.standardNote')}
-		{$t('wish.banner.viewDetails')}
+			<div class="desc">
+				<div class="icon">
+					<i class="gi-primo-star" />
+				</div>
+				<div class="text">
+					{$t('wish.banner.wishDescription')}
+				</div>
+			</div>
+			<div class="note card-stroke">
+				{$t('wish.banner.standardNote')}
+				{$t('wish.banner.viewDetails')}
+			</div>
+		</div>
 	</div>
 
 	{#each chars as char}
@@ -97,6 +115,15 @@
 		font-size: calc(7 / 100 * var(--content-width));
 	}
 
+	.info {
+		left: 0;
+		top: 36%;
+		width: 40%;
+		height: 45%;
+		display: block;
+		padding-left: 4%;
+	}
+
 	.top {
 		color: #fff;
 		padding: 0.3% 1.4%;
@@ -107,40 +134,39 @@
 		left: 0;
 		transform: translate(-3%, -15%);
 	}
-	.top.old {
+
+	.old .top {
 		background-color: #c9a07b;
 	}
 
 	.set {
-		bottom: 60%;
-		left: 4%;
-		width: 36%;
 		font-size: calc(2.4 / 100 * var(--content-width));
 	}
 
 	.desc {
-		left: 7.5%;
-		width: 32.5%;
-		top: 49%;
-		transform: translateY(-50%);
 		color: #fff;
-		height: 14%;
-		overflow-y: auto;
+		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;
 		align-items: center;
+		margin: calc(0.7 / 100 * var(--content-width)) 0;
+		background-color: rgba(101, 107, 202, 0.9);
 	}
 
-	.desc p {
-		line-height: 120%;
+	.old .desc {
+		background-color: rgba(48, 143, 148, 0.9);
 	}
 
-	.note {
-		top: 58%;
-		left: 4%;
-		width: 36%;
+	.desc .text {
+		width: calc(32.5 / 100 * var(--content-width));
+		padding: calc(0.3 / 100 * var(--content-width));
 	}
-	.note.old {
-		top: 43%;
+
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: calc(1 / 100 * var(--content-width));
+		font-size: calc(1.1 / 100 * var(--content-width));
 	}
 
 	.group-content {
@@ -152,11 +178,12 @@
 		text-shadow: 0 0 0.15rem #d2c69c;
 		filter: drop-shadow(0 0.3rem 0.5rem #000);
 	}
+
 	.char-title {
 		color: #cfbc99;
 		background-color: #39425d;
 		margin-top: calc(2.8 / 100 * var(--content-width));
-		padding: 1% 2%;
+		padding: 1% 7%;
 		white-space: nowrap;
 		width: fit-content;
 	}
