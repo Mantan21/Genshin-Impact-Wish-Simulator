@@ -1,11 +1,31 @@
 {
 	"beginner": {
-		"name": "beginner",
-		"character": "noelle",
-		"vision": "geo",
-		"buttonBoxPosition": {
-			"w": 100,
-			"t": 30
-		}
+		"featured": {
+			"name": "beginner",
+			"character": "noelle",
+			"vision": "geo",
+			"buttonBoxPosition": {
+				"w": 100,
+				"t": 30
+			}
+		},
+		"characters": [
+			"qiqi",
+			"keqing",
+			"diluc",
+			"mona",
+			"jean",
+			"sucrose",
+			"bennett",
+			"fischl",
+			"chongyun",
+			"ningguang",
+			"xingqiu",
+			"beidou",
+			"razor",
+			"xiangling",
+			"barbara",
+			"noelle"
+		]
 	}
 }

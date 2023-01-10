@@ -47,24 +47,25 @@ const get4StarItem = (
 	bannerToRoll = 'allExcludeStandard',
 	version = null,
 	phase = null,
-	exclude = []
+	exinclude = []
 ) => {
-	const itemType = rand(['weap', 'char']);
-
-	// show standard character exclude starter character ( amber, kaeya, lisa )
 	let charList = get4StarChars;
 
+	if (bannerToRoll === 'beginner') {
+		charList = charList.filter(({ name }) => exinclude.includes(name));
+		return rand(charList);
+	}
+
+	const itemType = rand(['weap', 'char']);
 	// Show All standard chars exlude new character
 	if (bannerToRoll === 'standard') charList = getAllChars(4);
 
-	// show standard item exclude starter and new character
-	if (bannerToRoll === 'limited') charList = get4StarChars;
-
 	const items = itemType === 'weap' ? standardWeapons(4) : charList;
 	let filtered = filterCharByReleased(items, version, phase);
-	if (exclude.length > 0) {
-		filtered = filtered.filter(({ name }) => !exclude.includes(name));
+	if (exinclude.length > 0) {
+		filtered = filtered.filter(({ name }) => !exinclude.includes(name));
 	}
+
 	return rand(filtered);
 };
 

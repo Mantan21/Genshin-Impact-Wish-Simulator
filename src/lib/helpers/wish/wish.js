@@ -33,10 +33,7 @@ const Wish = {
 	},
 
 	_beginnerWish(rarity) {
-		const result = beginerWish(rarity, this._beginner, this._standard, {
-			phase: this._phase,
-			version: this._version
-		});
+		const result = beginerWish(rarity, this._beginner);
 		result.bannerName = 'beginner';
 		return result;
 	},

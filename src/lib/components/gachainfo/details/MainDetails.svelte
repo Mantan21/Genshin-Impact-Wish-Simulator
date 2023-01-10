@@ -53,7 +53,7 @@
 
 		_showBeginner() {
 			const { name, title, vision } = get4StarChars.find(({ name }) => {
-				return name === beginner.character;
+				return name === beginner.featured.character;
 			});
 			const obj = {
 				rarity: 4,
@@ -63,11 +63,8 @@
 			items = [obj];
 			bannerTitle = $t('wish.banner.beginner');
 
-			drop5star = this._stdDropChar5;
-			drop4star = drop4star
-				.filter(({ release }) => filterRelease(release, this._patch, this._phase))
-				.map(({ type, name }) => ({ name, type }))
-				.filter(({ name }) => !this._std.includes(name));
+			drop5star = this._stdDropChar5.filter(({ name }) => beginner.characters.includes(name));
+			drop4star = drop4star.filter(({ name }) => beginner.characters.includes(name));
 		},
 
 		_showStandard() {

@@ -58,7 +58,7 @@
 	setContext('animateBG', animateBG);
 
 	let showToast = false;
-	const beginnerBanner = beginner;
+	const beginnerBanner = beginner.featured;
 	let eventBanner;
 	let weaponBanner;
 	let standardBanner;

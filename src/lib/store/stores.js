@@ -32,7 +32,7 @@ const mobileMode = writable(false);
 const isPWA = writable(false);
 
 // Wish
-const bannerList = writable([{ type: 'beginner', character: beginner }]);
+const bannerList = writable([{ type: 'beginner', character: beginner.featured }]);
 
 const genesis = writable(0);
 const stardust = writable(0);
