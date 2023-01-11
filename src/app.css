@@ -14,6 +14,34 @@
 	--text-color: #444444;
 }
 
+@font-face {
+	font-family: 'GI_Global_Web';
+	src: url('/fonts/optimized_global_web.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GI_JA_Web';
+	src: url('/fonts/optimized_jp_web.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GI_TH_Web';
+	src: url('/fonts/optimized_th_web.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GI_ZH_Web';
+	src: url('/fonts/optimized_zh_web.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;

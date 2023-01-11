@@ -20,12 +20,12 @@ let precache = self.__WB_MANIFEST;
 precache = [];
 precacheAndRoute(precache, { ignoreURLParametersMatching: [/.*/] });
 
-registerRoute('/', new NetworkFirst({ cacheName: 'Static' }));
+registerRoute('/', new NetworkFirst({ cacheName: `Static-${cacheVersion}` }));
 
 registerRoute(
 	new RegExp('.(?:/?pwa=true|/?pwasc)'),
 	new NetworkFirst({
-		cacheName: 'Static',
+		cacheName: `Static-${cacheVersion}`,
 		plugins: [
 			{
 				cachedResponseWillBeUsed: ({ cachedResponse }) => {
@@ -53,7 +53,7 @@ registerRoute(
 
 registerRoute(
 	new RegExp('.(?:woff|woff2|ttf)$'),
-	new CacheFirst({
+	new NetworkFirst({
 		cacheName: `Static-${cacheVersion}`
 	})
 );

@@ -35,8 +35,8 @@
 	let showAd = false;
 
 	$: lc = $locale?.toLowerCase() || '';
-	$: isCN = lc.includes('cn') || lc.includes('ja');
-	$: font = isCN || lc.includes('th') ? lc.split('-')[0] : 'global';
+	$: isYuanshen = lc.includes('cn') || lc.includes('ja');
+	$: font = isYuanshen || lc.includes('th') ? lc.split('-')[0] : 'global';
 
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
@@ -142,43 +142,15 @@
 	</a>
 
 	<img
-		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}
+		src={$assets[`genshin-logo${isYuanshen ? '-cn' : ''}.webp`]}
 		alt="genshin logo"
 		class="logo"
-		class:cn={isCN}
+		class:yuanshen={isYuanshen}
 	/>
 </main>
 
 <style>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
-
-	@font-face {
-		font-family: 'GI_Global_Web';
-		src: url('/fonts/optimized_global_web.woff2') format('woff2');
-		font-weight: normal;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'GI_JA_Web';
-		src: url('/fonts/optimized_jp_web.woff2') format('woff2');
-		font-weight: normal;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'GI_TH_Web';
-		src: url('/fonts/optimized_th_web.woff2') format('woff2');
-		font-weight: normal;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'GI_ZH_Web';
-		src: url('/fonts/optimized_zh_web.woff2') format('woff2');
-		font-weight: normal;
-		font-style: normal;
-	}
 
 	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle) {
 		background-color: #d2c69c;
@@ -242,7 +214,7 @@
 		right: 2em;
 	}
 
-	.preview .logo.cn {
+	.preview .logo.yuanshen {
 		max-height: 20vh;
 		width: 20vh;
 	}
