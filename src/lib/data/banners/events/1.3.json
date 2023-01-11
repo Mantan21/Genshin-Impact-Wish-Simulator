@@ -73,9 +73,9 @@
 						"name": "dance-of-lantern-1",
 						"character": "keqing",
 						"buttonBoxPosition": {
-							"w": 180,
+							"w": 150,
 							"t": 22,
-							"l": 60
+							"l": 50
 						},
 						"textOffset": {
 							"l": 57.5,

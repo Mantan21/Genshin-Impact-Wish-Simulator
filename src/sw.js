@@ -4,6 +4,8 @@ import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { CacheFirst, NetworkFirst } from 'workbox-strategies';
 
+const cacheVersion = 'v1';
+
 clientsClaim();
 skipWaiting();
 cleanupOutdatedCaches();
@@ -11,7 +13,7 @@ cleanupOutdatedCaches();
 setCacheNameDetails({
 	prefix: 'WishSim',
 	precache: 'Core',
-	suffix: 'v1'
+	suffix: cacheVersion
 });
 
 let precache = self.__WB_MANIFEST;
@@ -40,7 +42,7 @@ registerRoute(
 	({ url }) =>
 		url.href.includes('videos') || url.href.includes('images') || url.href.includes('sfx'),
 	new CacheFirst({
-		cacheName: 'Static',
+		cacheName: `Static-${cacheVersion}`,
 		plugins: [
 			new ExpirationPlugin({
 				maxAgeSeconds: 30 * 24 * 60 * 60
@@ -52,7 +54,7 @@ registerRoute(
 registerRoute(
 	new RegExp('.(?:woff|woff2|ttf)$'),
 	new CacheFirst({
-		cacheName: 'Static'
+		cacheName: `Static-${cacheVersion}`
 	})
 );
 
