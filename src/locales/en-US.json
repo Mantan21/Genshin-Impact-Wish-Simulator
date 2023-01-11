@@ -117,11 +117,24 @@
 	},
 	"outfit": {
 		"heading": "Character Outfits",
+		"default": "Default",
 		"setOutfit": "Set Outfit",
 		"owned": "Already Owned",
 		"purchasePrompt": "You don't have a character for this costume yet, are you sure to purchase this costume?",
 		"promptInfo": "You still can use this costume after getting the right character",
 		"item": {
+			"5-star-outrider": {
+				"name": "5-Star Outrider"
+			},
+			"favonian-fevotion": {
+				"name": "Favonian Devotion"
+			},
+			"flowing-fate": {
+				"name": "Flowing Fate"
+			},
+			"executor_s-thorns": {
+				"name": "Executor's Thorns"
+			},
 			"sea-breeze-dandelion": {
 				"name": "Sea Breeze Dandelion",
 				"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."

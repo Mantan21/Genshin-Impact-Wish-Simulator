@@ -10,7 +10,7 @@
 	export let show;
 	let activeShop = 'genesis';
 
-	$: check = outfits.filter(({ version }) => version.toString() === $patchVersion);
+	$: check = outfits.filter(({ version }) => version?.toString() === $patchVersion);
 	$: outfitsPromo = check.length > 0;
 
 	const dispatch = createEventDispatcher();

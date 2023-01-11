@@ -4,7 +4,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { viewportWidth, viewportHeight, assets } from '$lib/store/stores';
 	import Icon from '$lib/components/utility/Icon.svelte';
-	import { getOutfit } from '$lib/helpers/outfit.svelte';
+	import {} from '$lib/helpers/outfit';
 
 	let isError;
 	let data = {
@@ -23,12 +23,11 @@
 	const getData = (decoded) => {
 		const splited = decoded.split('/');
 		if (splited.length < 6) return { name: 'No Name' };
-		let [name, rarity, vision, stelaFortuna, fateQty, fateType, outfitSet] = splited;
-		outfitSet = outfitSet === '1';
+		let [name, rarity, vision, stelaFortuna, fateQty, fateType, outfit] = splited;
 		stelaFortuna = stelaFortuna === '1';
 		rarity = parseInt(rarity, 10);
 		fateType = fateType !== 'undefined' ? fateType : false;
-		return { name, rarity, vision, stelaFortuna, fateQty, fateType, outfitSet };
+		return { name, rarity, vision, stelaFortuna, fateQty, fateType, outfit };
 	};
 
 	const resolveData = () => {
@@ -49,9 +48,6 @@
 	};
 
 	onMount(resolveData);
-
-	let defaultPath, outfitPath;
-	$: ({ defaultPath, outfitPath } = getOutfit(data.name, data.rarity));
 </script>
 
 <svelte:head>
@@ -91,7 +87,11 @@
 		<div class="container">
 			{#if data.name !== 'No Name'}
 				<div class="splatter" style={splatterStyle}>
-					<img src={data.outfitSet ? outfitPath : defaultPath} alt={data.name} class="splash-art" />
+					<img
+						src={$assets[`splash-art/${data.outfit || data.name}`]}
+						alt={data.name}
+						class="splash-art"
+					/>
 
 					<div class="info">
 						<i class="elemen gi-{data.vision} {data.vision} filter-drop icon-gradient" />

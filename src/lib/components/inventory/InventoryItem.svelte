@@ -2,7 +2,6 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit } from '$lib/helpers/outfit.svelte';
 	import { assets } from '$lib/store/stores';
 
 	export let rarity = 3;
@@ -12,18 +11,17 @@
 	export let weaponType = '';
 	export let qty = 0;
 	export let isOwned = true;
-	export let outfitSet = false;
+	export let outfit = null;
 
 	let countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	}
 
-	const { outfitPath, defaultPath } = getOutfit(name, rarity, true);
 	const dispatch = createEventDispatcher();
 	const handleShowDetails = () => {
 		if (!isOwned) return;
-		return dispatch('click', { name });
+		return dispatch('click', { name, outfit });
 	};
 </script>
 
@@ -37,7 +35,7 @@
 	>
 		{#if type === 'character'}
 			<img
-				src={!outfitSet ? defaultPath : outfitPath}
+				src={$assets[`face/${outfit || name}`]}
 				alt={getName(name)}
 				on:error={(e) => e.target.remove()}
 				loading="lazy"

@@ -5,80 +5,89 @@
 	import { localOutfits } from '$lib/store/localstore';
 	import { assets } from '$lib/store/stores';
 	import { getName } from '$lib/helpers/nameText';
-	import {
-		checkOutfitAvaibility,
-		getOutfit,
-		isOutfitOwned,
-		isOutfitSet
-	} from '$lib/helpers/outfit.svelte';
+	import { checkOutfitAvaibility } from '$lib/helpers/outfit';
 	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
 
 	export let charName;
-	export let charRarity;
-	export let outfitSet;
 
-	const { outfitPath, defaultPath, outfitName, outfitRarity } = getOutfit(
-		charName,
-		charRarity,
-		true
-	);
+	const { outfitList } = checkOutfitAvaibility(charName);
+	const outfitAvailable = outfitList.length > 0;
+	let activeOutfit = outfitList.filter(({ name }) => localOutfits.get(name)?.isSet)[0]?.name;
+	const listToShow = outfitList.map((d) => {
+		const purchased = localOutfits.get(d.name);
+		d.owned = !d.version || purchased;
+		return d;
+	});
 
 	const { applyChange, selectOutfit } = getContext('outfitChanger');
 
+	let selectedOutfit = activeOutfit;
 	let hasChange = false;
-	const set = (val) => {
-		outfitSet = val;
-		hasChange = !(isOutfitSet(charName) === val);
+
+	const preview = (val) => {
+		hasChange = activeOutfit !== val;
+		selectedOutfit = val;
+
+		if (val === 'default') {
+			hasChange = !!activeOutfit;
+			val = null;
+		}
 		selectOutfit(val);
 	};
+
 	const apply = () => {
-		localOutfits.set(outfitName, outfitSet);
+		if (activeOutfit && activeOutfit !== 'default') localOutfits.set(activeOutfit, false);
+		if (selectedOutfit !== 'default') localOutfits.set(selectedOutfit, true);
+		activeOutfit = selectedOutfit;
+
 		hasChange = false;
 		applyChange();
 	};
 
-	const { outfitAvailable } = checkOutfitAvaibility(charName);
-	const outfitOwned = isOutfitOwned(charName);
+	let columnWidth;
 </script>
 
 {#if outfitAvailable}
-	<div class="outfit-toggle">
-		<div class="content">
-			<div class="column">
-				<button class:selected={!outfitSet} on:click={() => set(false)}>
-					<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
-						<img
-							src={defaultPath}
-							alt={getName(charName)}
-							on:error={(e) => e.target.remove()}
-							crossorigin="anonymous"
-						/>
-					</picture>
-					<caption>
-						<span> {$t(`${charName}.name`)}</span>
-					</caption>
-				</button>
-			</div>
+	<div class="outfit-toggle" style="--width: {columnWidth}px">
+		<div class="column" bind:clientWidth={columnWidth}>
+			<button
+				class:selected={!selectedOutfit || selectedOutfit === 'default'}
+				on:click={() => preview('default')}
+			>
+				<picture class="star4" style="background-image:url('{$assets['4star-bg.webp']}');">
+					<img
+						src={$assets[`face/${charName}`]}
+						alt={getName(charName)}
+						on:error={(e) => e.target.remove()}
+						crossorigin="anonymous"
+					/>
+				</picture>
+				<caption>
+					<span> Default </span>
+				</caption>
+			</button>
+		</div>
 
-			<div class="column" class:disabled={!outfitOwned} data-text={$t('inventory.notOwned')}>
-				<button class:selected={outfitSet} on:click={() => set(true)}>
+		{#each listToShow as { name, rarity, owned }}
+			<div class="column" class:disabled={!owned} data-text={$t('inventory.notOwned')}>
+				<button class:selected={name === selectedOutfit} on:click={() => preview(name)}>
 					<picture
-						class="star{outfitRarity}"
-						style="background-image:url('{$assets[`${outfitRarity}star-bg.webp`]}');"
+						class="star{rarity}"
+						style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
 					>
 						<img
-							src={outfitPath}
-							alt={getName(outfitName)}
+							src={$assets[`face/${name}`]}
+							alt={getName(name)}
 							on:error={(e) => e.target.remove()}
 							crossorigin="anonymous"
 						/>
 					</picture>
 					<caption>
-						<span> {$t(`outfit.item.${outfitName}.name`)}</span>
+						<span> {$t(`outfit.item.${name}.name`)}</span>
 					</caption>
 				</button>
 			</div>
-		</div>
+		{/each}
 		<div class="apply">
 			{#if hasChange}
 				<div transition:fade={{ duration: 200 }}>
@@ -96,25 +105,29 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		display: block;
-		max-width: 320px;
-		width: 50%;
 		padding-top: 1rem;
 		padding-left: 1rem;
 		z-index: +2;
+		width: fit-content;
 	}
 
-	:global(.mobile) .outfit-toggle {
-		width: 25%;
+	.column {
+		width: 10vw;
+		max-width: 120px;
+		min-width: 90px;
+		aspect-ratio: 1/1;
+		padding: 0.3rem;
+		display: inline-block;
+		flex-direction: column;
+		position: relative;
 	}
 
-	.content {
-		width: 100%;
-		height: 100%;
-		display: flex;
+	:global(.mobile) .column {
+		width: 10%;
 	}
+
 	.column button {
-		border-radius: 0.5em;
+		border-radius: 5%;
 		display: flex;
 		flex-direction: column;
 		text-align: center;
@@ -133,23 +146,14 @@
 		transform: translate(-50%, -50%);
 		width: 100%;
 		height: 100%;
-		border-radius: 0.8rem;
-		border: 0.25rem solid rgba(234, 195, 67, 0.7);
+		border-radius: 8%;
+		border: 0.2rem solid rgba(234, 195, 67, 0.7);
 		opacity: 0;
 		transition: opacity 0.15s;
 	}
 	.column:not(.disabled):hover button::after,
-	.content button.selected::after {
+	button.selected::after {
 		opacity: 1;
-	}
-
-	.column {
-		width: 50%;
-		aspect-ratio: 1/1;
-		padding: 0.4rem;
-		display: flex;
-		flex-direction: column;
-		position: relative;
 	}
 
 	.column.disabled::before {
@@ -162,11 +166,12 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: calc(100% - 0.8rem);
-		height: calc(100% - 0.8rem);
+		width: calc(100% - 0.6rem);
+		height: calc(100% - 0.6rem);
 		background-color: rgba(0, 0, 0, 0.6);
 		border-radius: 0.5em;
 		z-index: +2;
+		font-size: calc(0.12 * var(--width));
 	}
 
 	.column button {
@@ -180,11 +185,8 @@
 		justify-content: center;
 		align-items: center;
 		height: 40%;
-		font-size: 0.9rem;
+		font-size: calc(0.095 * var(--width));
 		line-height: 1.15em;
-	}
-	:global(.mobile) caption {
-		font-size: 0.7rem;
 	}
 
 	picture {
@@ -204,5 +206,6 @@
 	.apply {
 		width: 100%;
 		text-align: center;
+		font-size: 90%;
 	}
 </style>

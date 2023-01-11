@@ -44,6 +44,7 @@ const Wish = {
 		if (rarity === 4) result = get4StarItem('standard', this._version, this._phase);
 		if (rarity === 5) result = getStandard5StarItem({ exclude: this._standard.characters });
 		result.bannerName = this._standard.featured.name;
+		result.status = null;
 		return result;
 	},
 

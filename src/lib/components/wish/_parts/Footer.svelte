@@ -31,7 +31,7 @@
 	$: multiRollPrice = bannerActiveType === 'beginner' ? 8 : 10;
 
 	let openedNotices = [];
-	$: check = outfits.filter(({ version }) => version.toString() === $patchVersion) || [];
+	$: check = outfits.filter(({ version }) => version?.toString() === $patchVersion) || [];
 	$: outfitsPromo = check.length > 0;
 	$: check.forEach(({ version }) => {
 		const v = version.toString();

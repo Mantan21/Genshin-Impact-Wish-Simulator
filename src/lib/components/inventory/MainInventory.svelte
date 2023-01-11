@@ -19,7 +19,7 @@
 	import { localConfig } from '$lib/store/localstore';
 	import { assets, mobileMode, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import InventoryDetails from './InventoryDetails.svelte';
-	import { isOutfitSet } from '$lib/helpers/outfit.svelte';
+	import { checkActiveOutfit } from '$lib/helpers/outfit';
 
 	const bg = ['dendro', 'anemo', 'cryo', 'hydro', 'electro', 'pyro', 'geo'];
 	let activeBgIndex = Math.floor(Math.random() * bg.length);
@@ -105,8 +105,8 @@
 	};
 
 	const filterObjProps = (obj) => {
-		const { name, type, rarity, isOwned, outfitSet, vision, weaponType, qty } = obj;
-		return { name, type, rarity, isOwned, outfitSet, vision, weaponType, qty };
+		const { name, type, rarity, isOwned, outfit, vision, weaponType, qty } = obj;
+		return { name, type, rarity, isOwned, outfit, vision, weaponType, qty };
 	};
 
 	const proccessData = (activeItem, isShowAll = false) => {
@@ -118,7 +118,7 @@
 				const d = filterObjProps(dd);
 				d.isOwned = true;
 				if (d.type === 'weapon') return d;
-				d.outfitSet = isOutfitSet(d.name);
+				d.outfit = checkActiveOutfit(d.name)?.name;
 				return d;
 			});
 			return;
@@ -143,7 +143,7 @@
 
 		dataToShow = mergeData.map((d) => {
 			if (d.type === 'weapon') return d;
-			d.outfitSet = isOutfitSet(d.name);
+			d.outfit = checkActiveOutfit(d.name)?.name;
 			return d;
 		});
 		return;
@@ -216,18 +216,17 @@
 		showOrder = false;
 	};
 
-	let detailName = '';
+	let detailItem = {};
 	let showInventoryDetail = false;
 	const handleShowDetails = (e) => {
 		playSfx('collectionitem');
-		const { name } = e.detail;
-		detailName = name;
+		detailItem = e.detail;
 		showInventoryDetail = true;
 	};
 
-	const refreshAfterOutfitChanged = (charName, val) => {
+	const refreshAfterOutfitChanged = (charName, outfitName) => {
 		const index = dataToShow.findIndex(({ name }) => name === charName);
-		dataToShow[index].outfitSet = val;
+		dataToShow[index].outfit = outfitName;
 	};
 	setContext('refreshList', refreshAfterOutfitChanged);
 </script>
@@ -236,11 +235,9 @@
 	<title>{$t(`inventory.text`)} | {$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
-<InventoryDetails
-	show={showInventoryDetail}
-	name={detailName}
-	on:close={() => (showInventoryDetail = false)}
-/>
+{#if showInventoryDetail}
+	<InventoryDetails {...detailItem} on:close={() => (showInventoryDetail = false)} />
+{/if}
 
 <section on:click={handleCancelSelect}>
 	{#each bg as b, i}

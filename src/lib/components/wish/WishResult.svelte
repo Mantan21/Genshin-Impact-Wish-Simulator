@@ -13,7 +13,7 @@
 	import { localOutfits } from '$lib/store/localstore';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
+	import { checkActiveOutfit } from '$lib/helpers/outfit';
 
 	// Component
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
@@ -28,7 +28,7 @@
 	export let outfitName = '';
 
 	const lc = $locale?.toLowerCase() || '';
-	const isCN = lc.includes('cn') || lc.includes('ja');
+	const isYuanshen = lc.includes('cn') || lc.includes('ja');
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
@@ -38,9 +38,11 @@
 	};
 
 	const setOutfitToList = (arr) => {
-		const isSet = isOutfitSet(arr.name);
-		if (!isSet) return arr;
-		arr.outfitSet = true;
+		const check = checkActiveOutfit(arr.name);
+		if (!check) return arr;
+		const { wishBoxPosition, name } = check;
+		arr.outfit = name;
+		arr.outfitOffset = wishBoxPosition;
 		return arr;
 	};
 
@@ -73,10 +75,8 @@
 	};
 
 	const getEncoded = (index) => {
-		const { fateQty, fateType, vision, rarity, name, stelaFortuna, outfitSet } = list[index];
-		return btoa(
-			`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}/${+outfitSet}`
-		);
+		const { fateQty, fateType, vision, rarity, name, stelaFortuna, outfit } = list[index];
+		return btoa(`${name}/${rarity}/${vision}/${+stelaFortuna}/${fateQty}/${fateType}/${outfit}`);
 	};
 
 	const showItem = (startIndex) => {
@@ -138,10 +138,10 @@
 <div class="wish-result" style="background-image: url({$assets['splash-background.webp']});">
 	<div class="uid">WishSimulator.App</div>
 	<img
-		src={$assets[`genshin-logo${isCN ? '-cn' : ''}.webp`]}
+		src={$assets[`genshin-logo${isYuanshen ? '-cn' : ''}.webp`]}
 		alt="genshin logo"
 		class="logo"
-		class:cn={isCN}
+		class:cn={isYuanshen}
 	/>
 
 	{#if showWishList || skipSplashOneByOne}
@@ -162,7 +162,7 @@
 				</button>
 			{/if}
 
-			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfitSet }, i}
+			{#each list as { name, rarity, weaponType, type, vision, fateType, fateQty, stelaFortuna, outfit }, i}
 				{#if activeIndex === i}
 					<div class="splatter star{rarity}" style={splatterStyle}>
 						{#if !isSplashOut && !$animeoff} <SplashLight type="in" {rarity} /> {/if}
@@ -188,9 +188,7 @@
 							/>
 						{:else}
 							<img
-								src={outfitSet
-									? getOutfit(name, rarity).outfitPath
-									: getOutfit(name, rarity).defaultPath}
+								src={$assets[`splash-art/${outfit || name}`]}
 								alt={name}
 								class="splash-art anim"
 								on:error={(e) => e.target.remove()}

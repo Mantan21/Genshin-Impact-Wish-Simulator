@@ -42,7 +42,7 @@
 			"findBanner": "祈願を検索",
 			"group": "表示",
 			"events": "イベント祈願・キャラクター",
-			"beginner": "初心者応援祈願",
+			"beginner": " 初心者応援祈願",
 			"weapons": "イベント祈願・武器",
 			"standard": "通常祈願",
 			"wishDescription": "祈願を10回すると、必ず★4以上のアイテムを獲得できます。",
@@ -58,7 +58,7 @@
 			"eventNote": "イベント限定★5キャラクターは確率UP期間中にそれぞれの祈願からしか獲得できません。",
 			"viewDetails": "具体的な内容は【詳細】から確認できます。",
 			"name": {
-				"wanderlust": "奔走世間",
+				"wanderlust": " 奔走世間",
 				"epitome-invocation": "神鋳賦形",
 				"adrift-in-the-harbor": "逸俗逡巡",
 				"azure-excursion": "花踏み歩む 蒼流",
@@ -117,11 +117,24 @@
 	},
 	"outfit": {
 		"heading": "キャラ外観",
+		"default": "Default",
 		"setOutfit": "切り替え",
 		"owned": "所有済",
 		"purchasePrompt": "対応するキャラはまだ未所持ですが、本当にこのコスチュームを購入しますか？",
 		"promptInfo": "キャラクターを入手した後でも購入可能です",
 		"item": {
+			"5-star-outrider": {
+				"name": "「満点の偵察騎士」"
+			},
+			"favonian-fevotion": {
+				"name": "風の加護"
+			},
+			"flowing-fate": {
+				"name": "星命流転"
+			},
+			"executor_s-thorns": {
+				"name": "棘の処刑"
+			},
 			"sea-breeze-dandelion": {
 				"name": "海風の夢",
 				"description": "夏をモチーフにしたジンの衣装。涼し気な作りだが、同時に優雅さも感じられる。海辺の旅にぴったり。"
@@ -201,7 +214,7 @@
 		},
 		"duplicate": {
 			"heading": "〓キャラクターの重複獲得〓",
-			"text": "各方法（祈願、ショップ交換、システム配布など）で、★5キャラクターを2～7回重複して獲得した時、{stellaFortuna}1個と、{starglitter}10個に変換されます。8回目以降の獲得では、{starglitter}25個に変換されます。<br/>各方法（祈願、ショップ交換、システム配布など）で、★4キャラクターを2～7回重複して獲得した時、{stellaFortuna}1個と、{starglitter}2個に変換されます。8回目以降の獲得では、{starglitter}5個に変換されます。"
+			"text": "各方法（祈願、ショップ交換、システム配布など）で、★5キャラクターを2～7回重複して獲得した時、{stellaFortuna}1個と、{starglitter}{constBonus}個に変換されます。8回目以降の獲得では、{starglitter}{fullConstBonus}個に変換されます。"
 		}
 	},
 	"history": {

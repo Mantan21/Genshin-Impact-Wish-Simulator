@@ -14,7 +14,8 @@
 
 	export let recentlyBuyIndex = -1;
 
-	const outfitsData = [...outfits].reverse().map((outfit) => {
+	const purchasableOutfit = outfits.filter(({ version }) => !!version);
+	const outfitsData = [...purchasableOutfit].reverse().map((outfit) => {
 		outfit.isOwned = localOutfits.check(outfit.name);
 		const promo = outfit.promoPrice && outfit.promoPrice !== outfit.price;
 		outfit.isPromo = $patchVersion === `${outfit.version}` && promo;

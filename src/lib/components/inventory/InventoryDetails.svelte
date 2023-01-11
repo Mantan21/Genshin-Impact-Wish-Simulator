@@ -1,24 +1,22 @@
 <script>
-	import { createEventDispatcher, getContext, setContext } from 'svelte';
+	import { createEventDispatcher, getContext, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
 	import { getName } from '$lib/helpers/nameText';
-	import { getOutfit, isOutfitSet } from '$lib/helpers/outfit.svelte';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 
 	import Share from '$lib/components/utility/ShareScreenshot.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
 
-	export let show = false;
 	export let name = '';
+	export let outfit = '';
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
 
-	let render = false;
 	let rarity = 0;
 	let time = '';
 	let type = '';
@@ -27,11 +25,8 @@
 	let countInfo = 0;
 	let refineExtra = '';
 
-	let defaultPath, outfitPath;
-	$: ({ defaultPath, outfitPath } = getOutfit(name, rarity));
-
-	const getDetail = async (show) => {
-		if (!show && !name) return;
+	onMount(async () => {
+		if (!name) return;
 		const dt = await HistoryIDB.getByName(name);
 		({ time, vision, type, weaponType, rarity } = dt[0]);
 		const count = dt.length;
@@ -46,102 +41,95 @@
 				values: { count: count > 7 ? refineExtra : count - 1 }
 			});
 		}
-		render = show;
-	};
+	});
 
 	const dispatch = createEventDispatcher();
 	const closeHandle = () => {
 		playSfx('close');
-		render = false;
 		dispatch('close');
 	};
 
-	$: getDetail(show);
-
 	const refreshAfterOutfitChanged = getContext('refreshList');
-	$: outfitSet = isOutfitSet(name);
 	const outfitChanger = {
 		applyChange() {
-			refreshAfterOutfitChanged(name, outfitSet);
+			refreshAfterOutfitChanged(name, outfit);
 			playSfx();
 		},
 		selectOutfit(val) {
-			outfitSet = val;
+			outfit = val;
 			playSfx();
 		}
 	};
 	setContext('outfitChanger', outfitChanger);
 </script>
 
-{#if render}
-	<div
-		class="wish-result"
-		in:fade={{ duration: 200 }}
-		out:fade={{ duration: 100 }}
-		style="height: {$viewportHeight}px; background-image: url({$assets['detailbg.webp']})"
-	>
-		<div class="container">
-			<button class="close" on:click={closeHandle}>
-				<i class="gi-close" />
-			</button>
+<div
+	class="wish-result"
+	in:fade={{ duration: 200 }}
+	out:fade={{ duration: 100 }}
+	style="height: {$viewportHeight}px; background-image: url({$assets['detailbg.webp']})"
+>
+	<div class="container">
+		<button class="close" on:click={closeHandle}>
+			<i class="gi-close" />
+		</button>
 
-			<div class="uid">WishSimulator.App</div>
-			<OutfitToggle charName={name} {outfitSet} charRarity={rarity} />
+		<div class="uid">WishSimulator.App</div>
+		<OutfitToggle charName={name} />
 
-			<div class="splatter" style={splatterStyle}>
-				{#if type === 'weapon'}
-					<div class="splash-art weapon {weaponType}-parent">
-						<img
-							src={$assets[name]}
-							alt={name}
-							class={weaponType}
-							on:error={(e) => e.target.remove()}
-							crossorigin="anonymous"
-						/>
-					</div>
-				{:else}
+		<div class="splatter" style={splatterStyle}>
+			{#if type === 'weapon'}
+				<div class="splash-art weapon {weaponType}-parent">
 					<img
-						src={outfitSet ? outfitPath : defaultPath}
-						alt={getName(name)}
-						class="splash-art"
+						src={$assets[name]}
+						alt={name}
+						class={weaponType}
 						on:error={(e) => e.target.remove()}
 						crossorigin="anonymous"
 					/>
-				{/if}
+				</div>
+			{:else}
+				<img
+					src={$assets[`splash-art/${outfit || name}`]}
+					alt={getName(name)}
+					class="splash-art"
+					on:error={(e) => e.target.remove()}
+					crossorigin="anonymous"
+				/>
+			{/if}
 
-				<div class="info">
-					{#if vision}
-						<img
-							src={$assets[`icon-${vision}.svg`]}
-							alt="Vision {vision}"
-							class="anim vision filter-drop {vision}"
-							crossorigin="anonymous"
-						/>
-					{:else}
-						<i class="anim elemen gi-{weaponType}" />
-					{/if}
-					<div class="name">
-						<div class="text">
-							{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
-						</div>
-						<div class="star">
-							{#each Array(rarity) as _, i (i)}
-								<i class="gi-star" />
-							{/each}
-						</div>
+			<div class="info">
+				{#if vision}
+					<img
+						src={$assets[`icon-${vision}.svg`]}
+						alt="Vision {vision}"
+						class="anim vision filter-drop {vision}"
+						crossorigin="anonymous"
+					/>
+				{:else}
+					<i class="anim elemen gi-{weaponType}" />
+				{/if}
+				<div class="name">
+					<div class="text">
+						{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+					</div>
+					<div class="star">
+						{#each Array(rarity) as _, i (i)}
+							<i class="gi-star" />
+						{/each}
 					</div>
 				</div>
 			</div>
-			<div class="detail">
-				<span class="count"> {countInfo} </span>
-				<span> <small> {$t('inventory.firstSummon', { values: { date: time } })}: </small></span>
-			</div>
-			<div class="share">
-				<Share />
-			</div>
+		</div>
+		<div class="detail">
+			<span class="count"> {countInfo} </span>
+			<span> <small> {$t('inventory.firstSummon', { values: { date: time } })}: </small></span>
+		</div>
+		<div class="share">
+			<Share />
 		</div>
 	</div>
-{/if}
+</div>
 
 <style>
 	.close {

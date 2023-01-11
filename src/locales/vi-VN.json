@@ -117,11 +117,24 @@
 	},
 	"outfit": {
 		"heading": "Trang Phục Nhân Vật",
+		"default": "Vỡ nợ",
 		"setOutfit": "Đặt Trang Phục",
 		"owned": "Đã Sở Hữu",
 		"purchasePrompt": "Bạn không có nhân vật phù hợp với trang phục này, bạn có chắc muốn mua trang phục này không?",
 		"promptInfo": "Bạn có thể sử dụng trang phục này sau khi nhận được nhân vật phù hợp",
 		"item": {
+			"5-star-outrider": {
+				"name": "\"Kỵ Sĩ Trinh Thám Điểm Tuyệt Đối\""
+			},
+			"favonian-fevotion": {
+				"name": "Vòng Che Chở Của Gió"
+			},
+			"flowing-fate": {
+				"name": "Ngôi Sao Lưu Chuyển"
+			},
+			"executor_s-thorns": {
+				"name": "Gai Góc Kết Án"
+			},
 			"sea-breeze-dandelion": {
 				"name": "Giấc Mộng Gió Biển",
 				"description": "Trang phục mùa hè của Jean. Mát mẻ nhưng vẫn tao nhã, rất thích hợp cho du lịch bãi biển."

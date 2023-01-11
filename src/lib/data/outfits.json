@@ -1,6 +1,30 @@
 {
 	"outfits": [
 		{
+			"name": "5-star-outrider",
+			"characterName": "amber",
+			"rarity": 4
+		},
+		{
+			"name": "favonian-fevotion",
+			"characterName": "jean",
+			"rarity": 4
+		},
+		{
+			"name": "executor_s-thorns",
+			"characterName": "rosaria",
+			"rarity": 4
+		},
+		{
+			"name": "flowing-fate",
+			"characterName": "mona",
+			"rarity": 4,
+			"wishBoxPosition": {
+				"l": 35,
+				"h": 190
+			}
+		},
+		{
 			"version": 1.6,
 			"name": "sea-breeze-dandelion",
 			"characterName": "jean",

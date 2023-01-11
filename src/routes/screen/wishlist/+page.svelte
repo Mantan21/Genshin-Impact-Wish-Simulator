@@ -5,6 +5,7 @@
 	import weapons from '$lib/data/weapons.json';
 	import characters from '$lib/data/characters.json';
 	import { assets } from '$lib/store/stores';
+	import { outfits as outfitDB } from '$lib/data/outfits.json';
 	import WishListResult from '$lib/components/wish/WishListResult.svelte';
 
 	let title = 'No Name';
@@ -23,8 +24,8 @@
 		const arr = decoded.split('|');
 
 		arr.forEach((v) => {
-			let [name, rarity, type, isNew, fateType, stelaFortuna, outfitSet] = v.split('/');
-			outfitSet = outfitSet === '1';
+			let [name, rarity, type, isNew, fateType, stelaFortuna, outfit] = v.split('/');
+			outfit = outfit === 'undefined' ? null : outfit;
 			stelaFortuna = stelaFortuna === '1';
 			rarity = parseInt(rarity, 10);
 			isNew = !(isNew === '0');
@@ -35,6 +36,7 @@
 			const { weaponType, wishBoxPosition, vision } = items.data
 				.find((d) => d.rarity === rarity)
 				.list.find((d) => d.name === name);
+			const outfitOffset = outfitDB.find(({ name }) => name === outfit)?.wishBoxPosition || null;
 
 			list.push({
 				type,
@@ -47,7 +49,8 @@
 				stelaFortuna,
 				fateType,
 				fateQty,
-				outfitSet
+				outfit,
+				outfitOffset
 			});
 		});
 

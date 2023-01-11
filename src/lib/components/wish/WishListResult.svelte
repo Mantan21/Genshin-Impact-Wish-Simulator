@@ -3,7 +3,6 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import positionToStyle from '$lib/helpers/cssPosition';
-	import { getOutfit } from '$lib/helpers/outfit.svelte';
 	import { getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import Icon from '$lib/components/utility/Icon.svelte';
@@ -64,8 +63,8 @@
 		playSfx('resultList');
 
 		const data = sortedWish
-			.map(({ name, rarity, type, isNew, fateType, stelaFortuna, outfitSet }) => {
-				return `${name}/${rarity}/${type}/${+isNew}/${fateType}/${+stelaFortuna}/${+outfitSet}`;
+			.map(({ name, rarity, type, isNew, fateType, stelaFortuna, outfit }) => {
+				return `${name}/${rarity}/${type}/${+isNew}/${fateType}/${+stelaFortuna}/${outfit}`;
 			})
 			.join('|');
 		encoded = btoa(data);
@@ -108,7 +107,7 @@
 <div class="scroll" bind:this={container}>
 	<div class="container" class:animate={!preview}>
 		<div class="wishlist" bind:clientHeight style="--card-height: {clientHeight}px">
-			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty, outfitSet }, i (i)}
+			{#each sortedWish as { name, rarity, weaponType, type, vision, wishBoxPosition, stelaFortuna, isNew, fateType, fateQty, outfit, outfitOffset }, i (i)}
 				<div class="item-box" class:animate={!preview} style="animation-delay: {0.5 + i * 0.1}s">
 					<div
 						id="wish{i}"
@@ -135,16 +134,12 @@
 										/>
 									{:else}
 										<img
-											src={outfitSet
-												? getOutfit(name, rarity).outfitPath
-												: getOutfit(name, rarity).defaultPath}
+											src={$assets[`splash-art/${outfit || name}`]}
 											alt={name}
 											class="wishpic"
 											on:error={(e) => e.target.remove()}
 											crossorigin="anonymous"
-											style={positionToStyle(
-												outfitSet ? getOutfit(name).wishBoxPosition : wishBoxPosition
-											)}
+											style={positionToStyle(outfitOffset || wishBoxPosition)}
 										/>
 									{/if}
 

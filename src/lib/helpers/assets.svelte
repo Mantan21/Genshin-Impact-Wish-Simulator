@@ -61,9 +61,6 @@
 				'paypal.png',
 				'primogem.webp',
 				'shop-nav-bg.webp',
-				'splatter-3star.svg',
-				'splatter-4star.svg',
-				'splatter-5star.svg',
 				'welkin-card.webp',
 				'welkin-moon-girl.webp',
 				'welkin.webp'
@@ -125,7 +122,9 @@
 	};
 
 	const outfitShopList = () => {
-		const paths = outfits.map(({ name }) => `thumbnail/${name}.webp`);
+		const paths = outfits
+			.filter(({ version }) => !!version)
+			.map(({ name }) => `thumbnail/${name}.webp`);
 		return { dir: 'characters/outfit', paths };
 	};
 

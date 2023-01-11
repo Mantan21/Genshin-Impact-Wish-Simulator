@@ -117,11 +117,24 @@
 	},
 	"outfit": {
 		"heading": "Kostum Karakter",
+		"default": "Default",
 		"setOutfit": "Atur Kostum",
 		"owned": "Sudah Dimiliki",
 		"purchasePrompt": "Kamu belum memiliki karakter untuk kostum ini, apakah kamu yakin ingin membeli kostum ini?",
 		"promptInfo": "Kamu masih bisa menggunakan kostum ini setelah mendapatkan karakter yang sesuai.",
 		"item": {
+			"5-star-outrider": {
+				"name": "5-Star Outrider"
+			},
+			"favonian-fevotion": {
+				"name": "Favonian Devotion"
+			},
+			"flowing-fate": {
+				"name": "Flowing Fate"
+			},
+			"executor_s-thorns": {
+				"name": "Executor's Thorns"
+			},
 			"sea-breeze-dandelion": {
 				"name": "Sea Breeze Dandelion",
 				"description": "Pakaian yang dikenakan Jean saat musim panas. Terlihat nyaman dan santai, namun tetap elegan, sangat cocok dikenakan saat bepergian ke pantai."

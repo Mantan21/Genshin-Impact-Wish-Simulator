@@ -117,11 +117,24 @@
 	},
 	"outfit": {
 		"heading": "角色装扮",
+		"default": "Default",
 		"setOutfit": "设置装扮",
 		"owned": "已拥有",
 		"purchasePrompt": "您还没有此装扮对应的角色，您确定要购买此装扮吗？",
 		"promptInfo": "获得相应的角色后，您仍然可以使用此装扮",
 		"item": {
+			"5-star-outrider": {
+				"name": "「满分的侦察骑士」"
+			},
+			"favonian-fevotion": {
+				"name": "风之虔护"
+			},
+			"flowing-fate": {
+				"name": "星命流转"
+			},
+			"executor_s-thorns": {
+				"name": "处刑棘刺"
+			},
 			"sea-breeze-dandelion": {
 				"name": "海风之梦",
 				"description": "琴的夏日装束。清凉而不失优雅，是海滨之游的绝佳搭配。"

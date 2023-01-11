@@ -126,7 +126,7 @@
 					"name": "mona",
 					"vision": "hydro",
 					"wishBoxPosition": {
-						"l": 35,
+						"l": 55,
 						"h": 190
 					}
 				},
@@ -279,8 +279,9 @@
 					"vision": "pyro",
 					"release": "1.0-0",
 					"wishBoxPosition": {
-						"t": 60,
-						"l": 70
+						"t": 55,
+						"h": 170,
+						"l": 120
 					}
 				},
 				{
@@ -460,8 +461,8 @@
 					"vision": "cryo",
 					"release": "1.4-2",
 					"wishBoxPosition": {
-						"h": 190,
-						"t": 77,
+						"h": 175,
+						"t": 80,
 						"l": 60
 					}
 				},
