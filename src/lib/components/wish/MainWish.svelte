@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import {
 		acquaint,
@@ -28,7 +28,6 @@
 	import Meteor from './_parts/Meteor.svelte';
 	import BannerItem from './_parts/BannerItem.svelte';
 
-	export let bgAnimated;
 	let showWish = false;
 	let showMeteor = false;
 	let singleMeteor = true;
@@ -160,24 +159,16 @@
 		else showObtained(obtainedItems);
 		showWish = false;
 	};
+
+	// Hide Animated BG when wishing screen out
+	const bgToggle = getContext('bgToggle');
+	$: bgToggle(!(showWish || showMeteor));
 </script>
 
 <svelte:head>
 	<title>{$t('title', { default: APP_TITLE })}</title>
 </svelte:head>
 
-{#if bgAnimated}
-	<video
-		transition:fade|local={{ duration: 2000 }}
-		muted
-		loop
-		autoplay
-		poster={$assets['wish-background.webp']}
-	>
-		<source src="/videos/bg.webm" type="video/webm" />
-		<track kind="captions" />
-	</video>
-{/if}
 <div class="overlay" />
 
 {#if showWish}
@@ -226,16 +217,6 @@
 		background-position: center;
 		background-size: cover;
 		background-position: 20%;
-	}
-	video {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 110%;
-		height: 105%;
-		object-fit: cover;
-		object-position: 20%;
 	}
 
 	.overlay {

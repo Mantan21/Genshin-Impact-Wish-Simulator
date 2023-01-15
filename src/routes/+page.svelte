@@ -4,6 +4,7 @@
 
 <script>
 	import { getContext, onMount, setContext } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import {
 		pageActive,
@@ -14,7 +15,8 @@
 		showBeginner,
 		isFatepointSystem,
 		muted,
-		bannerActive
+		bannerActive,
+		assets
 	} from '$lib/store/stores';
 	import { localConfig, localWelkin } from '$lib/store/localstore';
 	import { beginner } from '$lib/data/banners/beginner.json';
@@ -169,6 +171,12 @@
 
 	const closeWelkin = () => (welkinCheckin = false);
 	setContext('closeWelkin', closeWelkin);
+
+	let hideBG = false;
+	const bgToggle = (val) => {
+		hideBG = val;
+	};
+	setContext('bgToggle', bgToggle);
 </script>
 
 {#if showToast}
@@ -187,8 +195,22 @@
 <svelte:component this={Disclaimer} show={showDisclaimer} />
 <svelte:component this={WelkinCheckin} show={welkinCheckin} />
 
+{#if isAnimatedBG}
+	<video
+		transition:fade|local={{ duration: 2000 }}
+		muted
+		loop
+		autoplay
+		poster={$assets['wish-background.webp']}
+		class:hide={$pageActive !== 'index' || hideBG}
+	>
+		<source src="/videos/bg.webm" type="video/webm" />
+		<track kind="captions" />
+	</video>
+{/if}
+
 {#if $pageActive === 'index'}
-	<MainWish bgAnimated={isAnimatedBG} />
+	<MainWish />
 {/if}
 
 {#if $pageActive === 'previous-banner'}
@@ -210,3 +232,20 @@
 {#if $pageActive === 'shop'}
 	<svelte:component this={ShopSection} />
 {/if}
+
+<style>
+	video {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 110vw;
+		height: 105%;
+		object-fit: cover;
+		object-position: 20%;
+	}
+
+	.hide {
+		visibility: none;
+	}
+</style>
