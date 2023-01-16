@@ -452,6 +452,10 @@
 		opacity: 1;
 	}
 
+	nav .nav-link:hover {
+		opacity: 0.9;
+	}
+
 	nav .nav-link i {
 		font-size: 1.5rem;
 	}
@@ -575,29 +579,45 @@
 		align-items: center;
 		width: 1.8rem;
 		height: 1.8rem;
-		line-height: 1rem;
+		line-height: 0rem;
 		color: #3a4156;
 		background-color: #ede5d8;
 		transform: rotate(90deg);
 		font-size: 1rem;
 		border-radius: 100%;
+		transition: 0.2s;
+	}
+	.sort-button:active {
+		transform: rotate(90deg) scale(0.9);
+	}
+
+	.sort-button:active,
+	.selected-order:active {
+		color: #fff;
+		border-color: darkgray;
+	}
+
+	.sort-button:hover,
+	.selected-order:hover {
+		border-color: #fff;
+		box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
 	}
 
 	.sort-selector {
 		color: #3a4156;
-		font-size: 1rem;
 		margin: 0 0.5rem;
 		display: inline-block;
-		width: 200px;
-		max-width: 35%;
+		width: 240px;
+		max-width: 40%;
 		position: relative;
 		text-transform: capitalize;
 		font-size: 0.85rem;
 	}
 	.selected-order {
 		background-color: #ede5d8;
-		padding: 0.3rem 1rem;
+		padding: 0.45rem 1rem;
 		border-radius: 10rem;
+		transition: all 0.2s;
 	}
 
 	.selected-order i {
@@ -608,26 +628,27 @@
 
 	.order-list {
 		position: absolute;
-		top: -30%;
+		top: -10%;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		background-color: #ede5d8;
+		background-color: #565a64;
 		transform: translateY(-100%);
-		border-radius: 0.3rem;
+		border-radius: 1rem;
 		padding: 0.2rem 0;
 		z-index: +10;
+		overflow: hidden;
 	}
 
 	.order-list a {
-		padding: 0.7rem 1rem;
+		padding: 0.85rem 1rem;
 		text-decoration: none;
-		color: #3a4156;
+		color: #eee;
 		transition: all 0.2s;
 	}
 	.order-list a.selected,
 	.order-list a:hover {
-		background-color: rgb(218, 202, 177);
+		background-color: #717887;
 	}
 
 	.showAll {
@@ -644,9 +665,16 @@
 		padding: 0.1rem 0.2rem 0.1rem 0.1rem;
 		line-height: 1rem;
 		background-color: #fff;
+		border: 1px solid transparent;
+		transition: all 0.2s;
 	}
 	.showAll input:checked + label i {
 		background-color: #06bbff;
+	}
+
+	.showAll:hover input + label i {
+		border: 1px solid #06bbff;
+		box-shadow: rgba(106, 168, 230, 0.6) 0px 0px 7px 5px;
 	}
 
 	.showAll input {

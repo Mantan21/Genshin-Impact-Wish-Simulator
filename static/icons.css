@@ -217,3 +217,9 @@
 .gi-windows:before {
 	content: '\37';
 }
+.gi-eye-slash:before {
+	content: '\38';
+}
+.gi-eye:before {
+	content: '\39';
+}

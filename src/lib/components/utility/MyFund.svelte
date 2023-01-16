@@ -53,18 +53,30 @@
 	.primogem span {
 		width: 1.2rem;
 		height: 1.2rem;
-		color: #000;
-		background-color: #ececec;
+		color: rgba(0, 0, 0, 0.7);
+		background-color: #e0ddd4;
 		border-radius: 100%;
 		position: absolute;
 		right: 3px;
 		top: 50%;
 		font-size: 0.75rem;
 		transform: translateY(-50%);
+		transition: all 0.2s;
 	}
 
 	.primogem.increament {
 		padding-right: 2rem !important;
+	}
+
+	.primogem:active span {
+		transform: translateY(-50%) scale(0.9);
+		color: #fff;
+		border-color: darkgray;
+	}
+
+	.primogem:hover span {
+		border-color: #fff;
+		box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
 	}
 
 	button {

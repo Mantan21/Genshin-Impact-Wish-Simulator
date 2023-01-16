@@ -115,8 +115,7 @@
 		width: 100%;
 		aspect-ratio: 1/1;
 		display: flex;
-		justify-content: flex-end;
-		align-items: flex-start;
+		justify-content: center;
 		background-size: cover;
 		position: relative;
 		overflow: hidden;
@@ -124,9 +123,16 @@
 		border-top-right-radius: calc(3.5 / 100 * var(--item-width));
 		border-bottom-right-radius: calc(20 / 100 * var(--item-width));
 	}
-	picture img {
+	picture.weapon {
+		justify-content: flex-end;
+		align-items: flex-start;
+	}
+
+	picture.character img {
+		height: 100%;
+	}
+	picture.weapon img {
 		width: 100%;
-		object-fit: cover;
 	}
 
 	picture span {

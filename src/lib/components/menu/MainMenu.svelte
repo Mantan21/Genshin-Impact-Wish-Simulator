@@ -90,7 +90,7 @@
 	.head {
 		display: flex;
 		justify-content: space-between;
-		margin: 2%;
+		margin: 2% 2% 1%;
 		color: var(--tertiary-color);
 	}
 	:global(.mobile) .head {

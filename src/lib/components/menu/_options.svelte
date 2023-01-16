@@ -175,7 +175,7 @@
 	.option-name {
 		background-color: #eae5d9;
 		width: 75%;
-		padding: 0.2rem 1rem;
+		padding: 0.35rem 1rem;
 		border-top-left-radius: 5rem;
 		border-bottom-left-radius: 5rem;
 		border: solid transparent;
@@ -223,21 +223,23 @@
 		top: 110%;
 		left: 0;
 		width: 100%;
-		background-color: var(--tertiary-color);
+		max-height: 60vh;
+		background-color: #565a64;
 		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 		z-index: +1;
-		border-radius: 0.3rem;
-		overflow: hidden;
+		border-radius: 1rem;
+		overflow-y: auto;
 	}
 	.select button {
 		display: block;
 		width: 100%;
-		padding: 3%;
+		padding: 6%;
+		color: #eee;
 	}
 
 	.select button:hover,
 	.select button.selected {
-		background-color: #f0e0c7;
+		background-color: #717887;
 	}
 
 	.locale {
@@ -248,7 +250,7 @@
 		justify-content: center;
 		align-items: center;
 		line-height: 0%;
-		padding: 5%;
+		padding: 8%;
 	}
 
 	.flag {

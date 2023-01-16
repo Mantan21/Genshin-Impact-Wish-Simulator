@@ -13,6 +13,7 @@
 
 	let showToast = false;
 	let input = '';
+	let userKey = '';
 	let error = false;
 	let waiting = false;
 	let message = '';
@@ -36,10 +37,15 @@
 	const checkLocal = async () => {
 		const { validity, storedKey, status } = await adKey.checkLocal();
 		isOffline = status === 'offline';
-		input = storedKey;
+		userKey = storedKey;
 		userHasKey = !!storedKey;
 		isUserKeyValid = validity;
+		if (userHasKey) input = '*****';
 		checkingLocal = false;
+	};
+
+	const showKeyHandle = () => {
+		input = input === '*****' ? userKey : '*****';
 	};
 
 	// Modal
@@ -48,6 +54,7 @@
 		adKey.clear();
 		checkLocal();
 		showModal = false;
+		input = '';
 	};
 	const cancelModal = () => (showModal = false);
 
@@ -91,14 +98,21 @@
 		<form class="row" on:submit|preventDefault={!waiting ? removeAds : null} in:fade>
 			<label for="key">{$t('menu.inputKeyTxt')}</label>
 			<div class="input">
-				<input
-					type="text"
-					id="key"
-					bind:value={input}
-					placeholder={$t('menu.inputKeyPlaceholder')}
-					class:error={error || (!isUserKeyValid && userHasKey)}
-					disabled={userHasKey}
-				/>
+				<div class="field" style="position: relative">
+					<input
+						type="text"
+						id="key"
+						bind:value={input}
+						placeholder={$t('menu.inputKeyPlaceholder')}
+						class:error={error || (!isUserKeyValid && userHasKey)}
+						disabled={userHasKey}
+					/>
+					{#if userHasKey}
+						<button class="toggle-visible" on:click|preventDefault={showKeyHandle}>
+							<i class="gi-eye{input === '*****' ? '-slash' : ''}" />
+						</button>
+					{/if}
+				</div>
 				<div class="note">
 					{#if isOffline}
 						<span class="invalid"> {$t('menu.verifyFail')} </span>
@@ -226,6 +240,18 @@
 	}
 	input:not(.error):disabled {
 		border: 2px solid #64ad15 !important;
+	}
+
+	.toggle-visible {
+		position: absolute;
+		height: 100%;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+		padding: 0.5rem;
+		aspect-ratio: 1/1;
+		font-size: 150%;
+		color: rgba(0, 0, 0, 0.5);
 	}
 
 	.note {
