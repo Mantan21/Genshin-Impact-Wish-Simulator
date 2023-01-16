@@ -316,6 +316,7 @@
 		"name": "Nome",
 		"quantity": "Quantità",
 		"element": "Elemento",
+		"release": "Pubblicazione",
 		"type": "Tipo",
 		"owned": "In Possesso",
 		"showAllOption": "Mostra Tutti {item} ( {qty} Evocati )"

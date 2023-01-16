@@ -316,6 +316,7 @@
 		"name": "Имя",
 		"quantity": "Количество",
 		"element": "Элемент",
+		"release": "Release Date",
 		"type": "Тип",
 		"owned": "Наличие",
 		"showAllOption": "Показать всех {item} (получено {qty})"

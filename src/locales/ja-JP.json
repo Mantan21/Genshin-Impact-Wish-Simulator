@@ -316,6 +316,7 @@
 		"name": "アルファベット",
 		"quantity": "命の星座",
 		"element": "神の目",
+		"release": "Release Date",
 		"type": "武器タイプ",
 		"owned": "所持",
 		"showAllOption": "全ての{item}を表示 ( {qty} 体・個獲得済み、重複含む )"

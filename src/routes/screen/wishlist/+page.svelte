@@ -25,7 +25,7 @@
 
 		arr.forEach((v) => {
 			let [name, rarity, type, isNew, fateType, stelaFortuna, outfit] = v.split('/');
-			outfit = outfit === 'undefined' ? null : outfit;
+			outfit = ['undefined', 'NaN'].includes(outfit) ? null : outfit;
 			stelaFortuna = stelaFortuna === '1';
 			rarity = parseInt(rarity, 10);
 			isNew = !(isNew === '0');
@@ -34,8 +34,8 @@
 
 			const items = type === 'weapon' ? weapons : characters;
 			const { weaponType, wishBoxPosition, vision } = items.data
-				.find((d) => d.rarity === rarity)
-				.list.find((d) => d.name === name);
+				.filter((d) => d.rarity === rarity)
+				.find((d) => d.name === name);
 			const outfitOffset = outfitDB.find(({ name }) => name === outfit)?.wishBoxPosition || null;
 
 			list.push({

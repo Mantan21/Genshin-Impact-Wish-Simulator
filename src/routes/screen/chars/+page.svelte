@@ -24,6 +24,7 @@
 		const splited = decoded.split('/');
 		if (splited.length < 6) return { name: 'No Name' };
 		let [name, rarity, vision, stelaFortuna, fateQty, fateType, outfit] = splited;
+		outfit = ['undefined', 'NaN'].includes(outfit) ? null : outfit;
 		stelaFortuna = stelaFortuna === '1';
 		rarity = parseInt(rarity, 10);
 		fateType = fateType !== 'undefined' ? fateType : false;

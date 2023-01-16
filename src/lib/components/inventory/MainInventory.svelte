@@ -46,33 +46,11 @@
 	let showOrder = false;
 	let orderby = 'rarity';
 
-	const select = (item) => {
-		if (activeItem === item) return;
-		playSfx('shopnav');
-		activeItem = item;
-		orderby = 'rarity';
-		proccessData(item, showAll);
-	};
-
 	let weapons = [];
 	let characters = [];
+	let loadedData = [];
 	let dataToShow = [];
-	let dataQty = 0;
 	let showAll = !!localConfig.get('showAllItems');
-
-	// Read All date
-	const listWithRarity = (list, rarity) => {
-		return list.map((l) => {
-			l.rarity = rarity;
-			return l;
-		});
-	};
-	const allCharacters = charDB.data.reduce((prev, { list, rarity }) => {
-		return [...prev, ...listWithRarity(list, rarity)];
-	}, []);
-	const allWeapons = weaponDB.data.reduce((prev, { list, rarity }) => {
-		return [...prev, ...listWithRarity(list, rarity)];
-	}, []);
 
 	// Read Data From IndeedDB
 	const { getAllHistories } = HistoryIDB;
@@ -98,10 +76,18 @@
 
 		weapons = filtered.filter(({ type }) => type === 'weapon');
 		characters = filtered.filter(({ type }) => type === 'character');
+
+		proccessData(activeItem);
+		filter();
+		sort(orderby);
 	};
 
-	const getTotalItem = (data) => {
-		dataQty = data.map((v) => v.qty).reduce((a, b) => a + b, 0);
+	const filter = () => {
+		if (showAll) {
+			dataToShow = [...loadedData];
+			return;
+		}
+		dataToShow = [...loadedData].filter(({ isOwned }) => isOwned);
 	};
 
 	const filterObjProps = (obj) => {
@@ -109,27 +95,19 @@
 		return { name, type, rarity, isOwned, outfit, vision, weaponType, qty };
 	};
 
-	const proccessData = (activeItem, isShowAll = false) => {
-		const data = activeItem === 'character' ? characters : weapons;
-		const dataFromIDB = data.sort((a, b) => b.rarity - a.rarity);
-		getTotalItem(dataFromIDB);
-		if (!isShowAll) {
-			dataToShow = dataFromIDB.map((dd) => {
-				const d = filterObjProps(dd);
-				d.isOwned = true;
-				if (d.type === 'weapon') return d;
-				d.outfit = checkActiveOutfit(d.name)?.name;
-				return d;
-			});
-			return;
-		}
+	const dataCounter = (data) => data.map((v) => v.qty).reduce((a, b) => a + b, 0);
 
-		// If Show All Items
-		const allData = activeItem === 'character' ? allCharacters : allWeapons;
-		const mergeData = allData.map((dd) => {
+	const proccessData = (activeItem) => {
+		const dataFromIDB = activeItem === 'character' ? characters : weapons;
+		const allData = (activeItem === 'character' ? charDB : weaponDB).data;
+		loadedData = allData.map((dd) => {
 			const d = filterObjProps(dd);
 			const owned = dataFromIDB.find(({ name }) => d.name === name);
 			d.type = activeItem;
+			if (d.type === 'character') {
+				d.outfit = checkActiveOutfit(d.name)?.name;
+			}
+
 			if (!owned) {
 				d.qty = 0;
 				d.isOwned = false;
@@ -140,19 +118,21 @@
 			d.isOwned = true;
 			return d;
 		});
-
-		dataToShow = mergeData.map((d) => {
-			if (d.type === 'weapon') return d;
-			d.outfit = checkActiveOutfit(d.name)?.name;
-			return d;
-		});
 		return;
+	};
+
+	const select = (item) => {
+		if (activeItem === item) return;
+		playSfx('shopnav');
+		activeItem = item;
+		orderby = 'rarity';
+		proccessData(item);
+		filter();
+		sort(orderby);
 	};
 
 	let content;
 	onMount(async () => {
-		await getAll();
-		await proccessData(activeItem, showAll);
 		OverlayScrollbars(content, {
 			sizeAutoCapable: false,
 			className: 'os-theme-light'
@@ -162,6 +142,10 @@
 	$: localConfig.set('showAllItems', showAll);
 
 	const sort = (order) => {
+		if (order === 'release') {
+			dataToShow = loadedData;
+			filter();
+		}
 		if (order === 'rarity') {
 			dataToShow = dataToShow.sort((a, b) => b.rarity - a.rarity);
 		}
@@ -186,14 +170,6 @@
 			dataToShow = dataToShow.sort((a, b) => {
 				if (a.weaponType > b.weaponType) return 1;
 				if (a.weaponType < b.weaponType) return -1;
-				return 0;
-			});
-		}
-
-		if (order === 'owned') {
-			dataToShow = dataToShow.sort((a, b) => {
-				if (a.isOwned < b.isOwned) return 1;
-				if (a.isOwned > b.isOwned) return -1;
 				return 0;
 			});
 		}
@@ -281,21 +257,27 @@
 				style="--headerHeight:{$viewportHeight - headerHeight}px;"
 			>
 				<div class="list-item" style="--item-width: {itemWidth}px">
-					{#if dataToShow.length < 1}
+					{#await getAll()}
 						<span style="color: white; padding: 2rem; font-size: 1.2rem">
-							{$t('history.noData')}
+							{$t('waiting')}...
 						</span>
-					{:else}
-						{#each dataToShow as d, i (d)}
-							<div
-								class="item"
-								animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
-								in:fade={{ duration: 300, delay: Math.sqrt(i * 2500) }}
-							>
-								<InventoryItem {...d} on:click={handleShowDetails} />
-							</div>
-						{/each}
-					{/if}
+					{:then data}
+						{#if dataToShow.length < 1}
+							<span style="color: white; padding: 2rem; font-size: 1.2rem">
+								{$t('history.noData')}
+							</span>
+						{:else}
+							{#each dataToShow as d, i (d)}
+								<div
+									class="item"
+									animate:flip={{ duration: (i) => 30 * Math.sqrt(i) }}
+									in:fade={{ duration: 300, delay: Math.sqrt(i * 2500) }}
+								>
+									<InventoryItem {...d} on:click={handleShowDetails} />
+								</div>
+							{/each}
+						{/if}
+					{/await}
 				</div>
 			</div>
 			<div class="filter">
@@ -316,7 +298,7 @@
 
 						{#if showOrder}
 							<div class="order-list" transition:fade={{ duration: 200 }}>
-								{#each ['rarity', 'name', 'quantity'] as val}
+								{#each ['release', 'rarity', 'name', 'quantity'] as val}
 									<a
 										href="##"
 										class:selected={orderby == val}
@@ -345,16 +327,6 @@
 										{$t(`inventory.type`)}
 									</a>
 								{/if}
-
-								{#if showAll}
-									<a
-										href="##"
-										class:selected={orderby == 'owned'}
-										on:click|preventDefault={() => selectOrder('owned', false)}
-									>
-										{$t(`inventory.owned`)}
-									</a>
-								{/if}
 							</div>
 						{/if}
 					</div>
@@ -364,12 +336,16 @@
 							name="showAll"
 							id="showAll"
 							bind:checked={showAll}
-							on:change={(e) => proccessData(activeItem, e.target.checked)}
+							on:change={() => {
+								playSfx();
+								filter();
+								sort(orderby);
+							}}
 						/>
 						<label for="showAll">
 							<i>✔</i>
 							{$t(`inventory.showAllOption`, {
-								values: { item: $t(activeItem), qty: dataQty }
+								values: { item: $t(activeItem), qty: dataCounter(dataToShow) }
 							})}
 						</label>
 					</div>

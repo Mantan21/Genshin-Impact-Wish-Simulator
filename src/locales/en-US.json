@@ -316,6 +316,7 @@
 		"name": "Name",
 		"quantity": "Quantity",
 		"element": "Element",
+		"release": "Release Date",
 		"type": "Type",
 		"owned": "Owned",
 		"showAllOption": "Show All {item}s ( {qty} Summoned )"

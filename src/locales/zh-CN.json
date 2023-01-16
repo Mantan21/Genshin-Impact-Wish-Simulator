@@ -316,6 +316,7 @@
 		"name": "名字",
 		"quantity": "数量",
 		"element": "元素",
+		"release": "Release Date",
 		"type": "类型",
 		"owned": "已获得",
 		"showAllOption": "显示所有{item} ( {qty} 已获得 )"

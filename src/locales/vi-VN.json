@@ -316,6 +316,7 @@
 		"name": "Tên",
 		"quantity": "Số Lượng",
 		"element": "Nguyên Tố",
+		"release": "Release Date",
 		"type": "Loại",
 		"owned": "Đã sở Hữu",
 		"showAllOption": "Hiện tất cả {item} vật phẩm ( Đã mở {qty} vật phẩm )"

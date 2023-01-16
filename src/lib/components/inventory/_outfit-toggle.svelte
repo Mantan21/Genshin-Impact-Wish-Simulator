@@ -25,6 +25,7 @@
 	let hasChange = false;
 
 	const preview = (val) => {
+		if (selectedOutfit === val) return;
 		hasChange = activeOutfit !== val;
 		selectedOutfit = val;
 
@@ -63,7 +64,7 @@
 					/>
 				</picture>
 				<caption>
-					<span> Default </span>
+					<span> {$t('outfit.default')} </span>
 				</caption>
 			</button>
 		</div>
@@ -120,10 +121,6 @@
 		display: inline-block;
 		flex-direction: column;
 		position: relative;
-	}
-
-	:global(.mobile) .column {
-		width: 10%;
 	}
 
 	.column button {

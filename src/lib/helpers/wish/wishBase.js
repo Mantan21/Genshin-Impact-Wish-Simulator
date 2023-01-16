@@ -5,19 +5,17 @@ const rand = (array) => array[Math.floor(Math.random() * array.length)];
 
 const getAllChars = (star) =>
 	charsDB.data
-		.find(({ rarity }) => rarity === star)
-		.list.map((arr) => {
+		.filter(({ rarity }) => rarity === star)
+		.map((arr) => {
 			arr.type = 'character';
-			arr.rarity = star;
 			return arr;
 		});
 
 const getAllWeapons = (star) =>
 	weaponsDB.data
-		.find(({ rarity }) => rarity === star)
-		.list.map((arr) => {
+		.filter(({ rarity }) => rarity === star)
+		.map((arr) => {
 			arr.type = 'weapon';
-			arr.rarity = star;
 			return arr;
 		});
 

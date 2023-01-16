@@ -316,6 +316,7 @@
 		"name": "Nama",
 		"quantity": "Quantity",
 		"element": "Element",
+		"release": "Tgl Rilis",
 		"type": "Jenis",
 		"owned": "Dimiliki",
 		"showAllOption": "Tampilkan Semua {item} ( {qty} dipanggil )"

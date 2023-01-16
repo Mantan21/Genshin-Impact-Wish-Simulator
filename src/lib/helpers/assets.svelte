@@ -135,17 +135,13 @@
 			pathList[`splash-art/${name}`] = `/images/characters/outfit/splash-art/${name}.webp`;
 		});
 
-		charDB.forEach(({ rarity, list }) => {
-			list.forEach(({ name }) => {
-				pathList[`face/${name}`] = `/images/characters/face/${name}.webp`;
-				pathList[`splash-art/${name}`] = `/images/characters/splash-art/${rarity}star/${name}.webp`;
-			});
+		charDB.forEach(({ name, rarity }) => {
+			pathList[`face/${name}`] = `/images/characters/face/${name}.webp`;
+			pathList[`splash-art/${name}`] = `/images/characters/splash-art/${rarity}star/${name}.webp`;
 		});
 
-		weaponsDB.forEach(({ rarity, list }) => {
-			list.forEach(({ name, weaponType }) => {
-				pathList[name] = `/images/weapons/${weaponType}/${rarity}star/${name}.webp`;
-			});
+		weaponsDB.forEach(({ name, weaponType, rarity }) => {
+			pathList[name] = `/images/weapons/${weaponType}/${rarity}star/${name}.webp`;
 		});
 
 		for await (const patch of allPatch) {

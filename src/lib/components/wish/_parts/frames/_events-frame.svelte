@@ -16,7 +16,7 @@
 	let character, name, textOffset;
 	$: bannerName = $t(`wish.banner.name.${getBannerName(name)}`, { default: 'UnReleased Banner' });
 	$: ({ character, name, textOffset } = data);
-	$: vision = charsDB[0].list.find(({ name }) => name === character).vision;
+	$: vision = charsDB.find(({ name }) => name === character).vision;
 	$: featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
 
 	const highlightBannerName = (bannerName) => {

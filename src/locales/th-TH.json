@@ -316,6 +316,7 @@
 		"name": "ชื่อ",
 		"quantity": "ปริมาณ",
 		"element": "ธาตุ",
+		"release": "วันที่วางจำหน่าย",
 		"type": "พิมพ์",
 		"owned": "เป็นเจ้าของ",
 		"showAllOption": "แสดงทั้งหมด {item} ({qty} เรียก )"
