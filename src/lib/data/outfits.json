@@ -97,6 +97,35 @@
 			"cardBoxPosition": {
 				"l": -45
 			}
+		},
+		{
+			"version": 3.4,
+			"name": "a-sobriquet-under-shade",
+			"characterName": "lisa",
+			"rarity": 4,
+			"price": 1680,
+			"wishBoxPosition": {
+				"l": -45,
+				"t": 70
+			}
+		},
+		{
+			"version": 3.4,
+			"name": "springbloom-missive",
+			"characterName": "kamisato-ayaka",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"wishBoxPosition": {
+				"l": 60,
+				"h": 190,
+				"t": 70
+			},
+			"cardBoxPosition": {
+				"l": -15,
+				"w": 95,
+				"t": -35
+			}
 		}
 	]
 }

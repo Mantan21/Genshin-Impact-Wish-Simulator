@@ -20,18 +20,18 @@
 	import Icon from '$lib/components/utility/Icon.svelte';
 	import WishListResult from './WishListResult.svelte';
 	import SplashLight from './_parts/_splashlight.svelte';
-	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
 
 	export let list = [];
 	export let skipSplashOneByOne = false;
-	export let fromShop = false;
 	export let outfitName = '';
+	export let outfitOwner = '';
 
 	const lc = $locale?.toLowerCase() || '';
 	const isYuanshen = lc.includes('cn') || lc.includes('ja');
 
 	$: splatterWidth = $viewportHeight > $viewportWidth ? $viewportWidth : $viewportHeight;
 	$: splatterStyle = `width: ${splatterWidth}px; height: ${splatterWidth}px`;
+	let splashBG = outfitName ? $assets['outfit-background.webp'] : $assets['splash-background.webp'];
 
 	const inTransition = (node, args) => {
 		return args.animeoff ? fade(node, { duration: 500, delay: 200 }) : null;
@@ -111,17 +111,13 @@
 		skipSplashOneByOne = true;
 	};
 
-	let isWearOutfit = false;
-	$: setOutfitButtonText = isWearOutfit ? $t('inventory.unsetOutfit') : $t('inventory.setOutfit');
 	const setOutfit = () => {
 		const { outfitName } = list[0];
-		const { isSet } = localOutfits.get(outfitName);
-		localOutfits.set(outfitName, !isSet);
-		isWearOutfit = !isSet;
-		playSfx();
+		localOutfits.set(outfitName, true);
 	};
 
 	onMount(() => {
+		if (outfitName) setOutfit();
 		if (skipSplashOneByOne) return;
 		showItem('start');
 		wishResultContainer.addEventListener('click', showItem);
@@ -135,7 +131,7 @@
 	});
 </script>
 
-<div class="wish-result" style="background-image: url({$assets['splash-background.webp']});">
+<div class="wish-result" style="background-image: url({splashBG});">
 	<div class="uid">WishSimulator.App</div>
 	<img
 		src={$assets[`genshin-logo${isYuanshen ? '-cn' : ''}.webp`]}
@@ -207,6 +203,9 @@
 								<i class="anim elemen gi-{weaponType}" />
 							{/if}
 							<div class="name">
+								{#if outfitName}
+									<span class="anim"> {$t('outfit.obtained')} </span>
+								{/if}
 								<div class="text anim">
 									{#if outfitName}
 										{$t(`outfit.item.${outfitName}.name`)}
@@ -221,6 +220,13 @@
 										<i class="gi-star anim" style="animation-delay: {2 + i * 0.15}s" />
 									{/each}
 								</div>
+								{#if outfitName}
+									<span class="anim">
+										{$t('outfit.unlocked', {
+											values: { character: $t(`${outfitOwner}.name`) }
+										})}</span
+									>
+								{/if}
 							</div>
 
 							<div class="bonus anim">
@@ -264,14 +270,6 @@
 						encodedData={getEncoded(activeIndex)}
 						item={getName(list[activeIndex].name)}
 					/>
-				</div>
-			{/if}
-
-			{#if fromShop}
-				<div class="share">
-					<div class="shr">
-						<ButtonGeneral on:click={setOutfit}>{setOutfitButtonText}</ButtonGeneral>
-					</div>
 				</div>
 			{/if}
 		</div>
@@ -392,6 +390,17 @@
 		position: relative;
 		z-index: +2;
 		width: 100%;
+	}
+
+	.name span {
+		color: rgba(255, 255, 255, 0.9);
+		padding: 0.2% 0 0.5%;
+		display: block;
+	}
+	.name span.anim {
+		animation-delay: 2s !important;
+		animation: revealName forwards 0.8s 1;
+		opacity: 0;
 	}
 
 	.name .text.anim {

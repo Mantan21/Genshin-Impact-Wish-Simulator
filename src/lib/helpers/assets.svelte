@@ -17,6 +17,7 @@
 				'element-geo-bg.webp',
 				'element-hydro-bg.webp',
 				'element-pyro-bg.webp',
+				'outfit-background.webp',
 				'splash-background.webp',
 				'wish-background.webp'
 			]

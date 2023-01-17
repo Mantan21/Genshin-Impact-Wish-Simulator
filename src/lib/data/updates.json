@@ -240,20 +240,21 @@
 			]
 		},
 		{
-			"date": "17-Dec-2022",
-			"featured": true,
-			"description": [
-				"Someone who doesn't even work with Mihoyo has reported this application, then Cloudflare which is the service I used to deploy this app took this app down immediately. So I need to make some changes to the app, Again and again 🥲!",
-				"I want say sorry to you for the inconvenience, without all of your supports, maybe I will give up to keep this app running."
-			]
-		},
-		{
 			"date": "23-Dec-2022",
-			"featured": true,
 			"description": [
 				"<strong> 𒀭*𒀮 ๖ۣۜH𝐚𝒑𝒑ɣ ቢēⴓ ɣē𝐚ṛ 2023 𒀮*𒀭 </strong>",
 				"<strong> Raiden Shogun</strong> and <strong> Ayato</strong> 2nd Banners has been added!",
 				"Weapon Banner Updated, <b> Engulfing Lightning </b> and <b>Haran Geppaku Futsu</b> are ready to pull too!"
+			]
+		},
+		{
+			"date": "17-Jan-2023",
+			"featured": true,
+			"description": [
+				"New 5★ Character <strong> Alhaitam</strong> and <strong> Xiao 3rd Rerun </strong> Banners are ready!",
+				"New 4★ Character <strong> Yaoyao </strong>",
+				"Weapon Banner Updated, <b> Light of Foliar Incision </b> and <b>Primordial Jade Winged-Spear</b> are ready to pull too !",
+				"New Character Outfits  are available! <b>Springbloom Missive</b> for Ayaka and <b>A Sobriquet Under Shade </b> for Lisa."
 			]
 		}
 	]

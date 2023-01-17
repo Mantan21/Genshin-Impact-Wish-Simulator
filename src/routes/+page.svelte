@@ -25,6 +25,7 @@
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import MainWish from '$lib/components/wish/MainWish.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
+	import { t } from 'svelte-i18n';
 
 	let PrevBanner;
 	let GachaInfo;
@@ -180,9 +181,8 @@
 </script>
 
 {#if showToast}
-	<Toast autoclose={false} on:close={() => (showToast = false)}>
-		Failed to load Banner! <br />
-		Please choose another banner or reconnect to the internet to avoid errors!
+	<Toast autoclose on:close={() => (showToast = false)}>
+		{@html $t('wish.loadFailed')}
 	</Toast>
 {/if}
 
@@ -239,13 +239,13 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 110vw;
-		height: 105%;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 		object-position: 20%;
 	}
 
 	.hide {
-		visibility: none;
+		visibility: hidden;
 	}
 </style>

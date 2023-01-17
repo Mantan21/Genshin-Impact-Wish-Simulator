@@ -95,7 +95,7 @@
 					style={positionToStyle(cardBoxPosition)}
 				/>
 
-				<div class="remaining">{$t('shop.limitedOffer')}</div>
+				<div class="remaining card-stroke">{$t('shop.limitedOffer')}</div>
 				<div class="details">
 					<div class="name stroke">{$t(`outfit.item.${name}.name`)}</div>
 					<div class="price">
@@ -420,14 +420,14 @@
 	.stroke {
 		/* prettier-ignore */
 		text-shadow:
-    -0.03rem -0.03rem 0 #3c4b5e,
-     0   		 -0.03rem 0 #3c4b5e,
-     0.03rem -0.03rem 0 #3c4b5e,
-     0.03rem  0 		  0 #3c4b5e,
-     0.03rem  0.03rem 0 #3c4b5e,
-     0    		0.03rem 0 #3c4b5e,
-    -0.03rem  0.03rem 0 #3c4b5e,
-    -0.03rem  0		    0 #3c4b5e;
+    -0.025rem -0.025rem 0 #3c4b5e,
+     0   		 -0.025rem 0 #3c4b5e,
+     0.025rem -0.025rem 0 #3c4b5e,
+     0.025rem  0 		  0 #3c4b5e,
+     0.025rem  0.025rem 0 #3c4b5e,
+     0    		0.025rem 0 #3c4b5e,
+    -0.025rem  0.025rem 0 #3c4b5e,
+    -0.025rem  0		    0 #3c4b5e;
 	}
 
 	.real-price {

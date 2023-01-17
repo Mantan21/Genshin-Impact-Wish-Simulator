@@ -34,6 +34,7 @@
 	"wish": {
 		"rollButton": "祈愿{count}次",
 		"stellaFortuna": "对应角色的命星",
+		"loadFailed": "Failed to load Banner! <br /> Please switch to other banner or reconnect to the internet to avoid errors!",
 		"banner": {
 			"wishTitle": "祈愿",
 			"text": "卡池",
@@ -64,6 +65,7 @@
 				"azure-excursion": "苍流踏花",
 				"ballad-in-goblets": "杯装之诗",
 				"born-of-ocean-swell": "浪涌之瞬",
+				"caution-in-confidence": "敕诫枢谋",
 				"dance-of-lantern": "鱼龙灯昼",
 				"discerner-of-enigmas": "素霓伣天",
 				"drifting-luminescence": "浮岳虹珠",
@@ -122,6 +124,8 @@
 		"owned": "已拥有",
 		"purchasePrompt": "您还没有此装扮对应的角色，您确定要购买此装扮吗？",
 		"promptInfo": "获得相应的角色后，您仍然可以使用此装扮",
+		"obtained": "New Outfit Obtained",
+		"unlocked": "{character}: Outfit Unlocked",
 		"item": {
 			"5-star-outrider": {
 				"name": "「满分的侦察骑士」"
@@ -158,6 +162,14 @@
 			"red-dead-of-night": {
 				"name": "殷红终夜",
 				"description": "迪卢克隐秘行动时所穿的衣装之一，如阴影之中翻腾的火焰。敌人视野尽头所留下的殷红残痕，即是他们余生挥之不去的梦魇。"
+			},
+			"a-sobriquet-under-shade": {
+				"name": "叶隐芳名",
+				"description": "丽莎重游须弥时请人订做的服饰。裙装干练而不失优雅，与她学生时代的制服有几分相似之处。"
+			},
+			"springbloom-missive": {
+				"name": "花时来信",
+				"description": "神里绫华的出游装扮。比照轻小说插画中的枫丹女性装束而制作的洋装，似乎能借其一窥枫丹淑女的生活风貌。"
 			}
 		}
 	},

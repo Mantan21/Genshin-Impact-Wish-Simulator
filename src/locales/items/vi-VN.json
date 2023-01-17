@@ -29,6 +29,7 @@
 	"kagura_s-verity": "Chân Ý Của Kagura",
 	"key-of-khaj-nisut": "Chìa Khóa Khaj-Nisut",
 	"lion_s-roar": "Tiếng Hét Của Rồng",
+	"light-of-foliar-incision": "Ánh Lá Phán Quyết",
 	"lithic-blade": "Thiên Nham Cổ Kiếm",
 	"lithic-spear": "Thương Thiên Nham",
 	"lost-prayer-to-the-sacred-winds": "Điển Tích Tây Phong",
@@ -79,6 +80,10 @@
 	"albedo": {
 		"name": "Albedo",
 		"title": "Kreideprinz"
+	},
+	"alhaitam": {
+		"name": "Alhaitam",
+		"title": "Lời Khuyên Tận Tình"
 	},
 	"amber": {
 		"name": "Amber",
@@ -295,6 +300,10 @@
 	"yanfei": {
 		"name": "Yanfei",
 		"title": "Cơ Trí Ngây Thơ"
+	},
+	"yaoyao": {
+		"name": "Yaoyao",
+		"title": "Nhụy Hoa Hoạt Bát"
 	},
 	"yelan": {
 		"name": "Yelan",

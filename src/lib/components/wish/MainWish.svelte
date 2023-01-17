@@ -142,8 +142,13 @@
 		showWish = true;
 	};
 
+	// Hide Animated BG when wishing screen out
+	const hideBG = getContext('bgToggle');
+	$: if (showMeteor) hideBG(true);
+
 	const showObtained = getContext('handleObtained');
 	const checkObtained = () => {
+		hideBG(false);
 		skipSplashOneByOne = false;
 		if ($unlimitedFates) {
 			showWish = false;
@@ -159,10 +164,6 @@
 		else showObtained(obtainedItems);
 		showWish = false;
 	};
-
-	// Hide Animated BG when wishing screen out
-	const bgToggle = getContext('bgToggle');
-	$: bgToggle(!(showWish || showMeteor));
 </script>
 
 <svelte:head>

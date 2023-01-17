@@ -34,6 +34,7 @@
 	"wish": {
 		"rollButton": "{count}回祈願",
 		"stellaFortuna": "該当キャラクターの星屑",
+		"loadFailed": "Failed to load Banner! <br /> Please switch to other banner or reconnect to the internet to avoid errors!",
 		"banner": {
 			"wishTitle": "祈願",
 			"text": "祈願",
@@ -64,6 +65,7 @@
 				"azure-excursion": "花踏み歩む 蒼流",
 				"ballad-in-goblets": "杯に 注がれた詩",
 				"born-of-ocean-swell": "波折りの刹那",
+				"caution-in-confidence": "戒勅枢策",
 				"dance-of-lantern": "魚龍灯昼",
 				"discerner-of-enigmas": "天を諜知せし 白袖",
 				"drifting-luminescence": "海原 に浮かぶ虹珠",
@@ -122,6 +124,8 @@
 		"owned": "所有済",
 		"purchasePrompt": "対応するキャラはまだ未所持ですが、本当にこのコスチュームを購入しますか？",
 		"promptInfo": "キャラクターを入手した後でも購入可能です",
+		"obtained": "New Outfit Obtained",
+		"unlocked": "{character}: Outfit Unlocked",
 		"item": {
 			"5-star-outrider": {
 				"name": "「満点の偵察騎士」"
@@ -158,6 +162,14 @@
 			"red-dead-of-night": {
 				"name": "レッドデッド・オブ・ナイト",
 				"description": "ディルックが隠密行動をする際に着る衣装の一つ。それはまるで、影の中で燃える炎のよう。敵の目に焼き付いた深紅の残痕は、彼らに消えることのない悪夢を植え付ける。"
+			},
+			"a-sobriquet-under-shade": {
+				"name": "葉に隠れし芳名",
+				"description": "リサがスメールを再訪した際に作らせた衣装。服装の実用性とエレガンスのバランスは絶妙。リサの学生時代の制服と少し似ている。"
+			},
+			"springbloom-missive": {
+				"name": "花時に訪れた手紙",
+				"description": "神里綾華のお出かけ衣装。娯楽小説の挿絵に登場するフォンテーヌ女性の衣装をモチーフにした洋服で、フォンテーヌの貴婦人の生活を垣間見ているような気分にさせてくれる。"
 			}
 		}
 	},

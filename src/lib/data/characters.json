@@ -2,6 +2,27 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "alhaitam",
+			"vision": "dendro",
+			"rarity": 5,
+			"wishBoxPosition": {
+				"t": 90,
+				"l": 80,
+				"h": 200
+			}
+		},
+		{
+			"name": "yaoyao",
+			"vision": "dendro",
+			"rarity": 4,
+			"release": "3.4-1",
+			"wishBoxPosition": {
+				"t": 63,
+				"l": 35,
+				"h": 140
+			}
+		},
+		{
 			"name": "wanderer",
 			"vision": "anemo",
 			"rarity": 5,

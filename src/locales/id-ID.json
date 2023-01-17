@@ -35,6 +35,7 @@
 		"wishTitle": "Permohonan",
 		"rollButton": "Mohon {count}",
 		"stellaFortuna": "Stella Fortuna",
+		"loadFailed": "Gagal Memuat Banner! <br /> Silahkan ganti banner atau hubungkan kembali ke internet untuk menghindari error!",
 		"banner": {
 			"text": "Banner",
 			"allBanner": "Semua Banner",
@@ -64,6 +65,7 @@
 				"azure-excursion": "Ketenangan Riak Air",
 				"ballad-in-goblets": "Syair Dalam Piala",
 				"born-of-ocean-swell": "Tarian Gulungan Ombak",
+				"caution-in-confidence": "Perintah dan Siasat",
 				"dance-of-lantern": "Tarian Lentera",
 				"discerner-of-enigmas": "Sang&nbsp;Pengungkap Misteri",
 				"drifting-luminescence": "Mutiara&nbsp;di Atas Laut",
@@ -122,6 +124,8 @@
 		"owned": "Sudah Dimiliki",
 		"purchasePrompt": "Kamu belum memiliki karakter untuk kostum ini, apakah kamu yakin ingin membeli kostum ini?",
 		"promptInfo": "Kamu masih bisa menggunakan kostum ini setelah mendapatkan karakter yang sesuai.",
+		"obtained": "Kostum Baru Didapatkan",
+		"unlocked": "{character}: Kostum Terbuka",
 		"item": {
 			"5-star-outrider": {
 				"name": "5-Star Outrider"
@@ -158,6 +162,14 @@
 			"red-dead-of-night": {
 				"name": "Red Dead of Night",
 				"description": "Salah satu pakaian Diluc yang dia pakai saat beroperasi dalam rahasia, bagaikan kobaran api dalam gelapnya bayangan. Bekas luka berwarna merah merona di ujung penglihatan para musuh adalah mimpi buruk di sisa hidup mereka."
+			},
+			"a-sobriquet-under-shade": {
+				"name": "A Sobriquet Under Shade",
+				"description": "Kostum Lisa yang dipesankan oleh seseorang saat dirinya berkunjung kembali ke Sumeru. Keseimbangan sempurna antara kepraktisan dan keanggunan, modelnya lumayan mirip dengan seragam lamanya ketika masih belajar di Akademiya dulu."
+			},
+			"springbloom-missive": {
+				"name": "Springbloom Missive",
+				"description": "Kostum perjalanan Kamisato Ayaka. Gaun yang dirancang mengikuti model gaun para wanita Fontaine dalam ilustrasi novel ringan, yang menunjukkan sekilas gaya hidup para wanita terhormat di sana."
 			}
 		}
 	},

@@ -29,6 +29,7 @@
 	"kagura_s-verity": "神楽の真意",
 	"key-of-khaj-nisut": "聖顕の鍵",
 	"lion_s-roar": "匣中龍吟",
+	"light-of-foliar-incision": "萃光の裁葉",
 	"lithic-blade": "千岩古剣",
 	"lithic-spear": "千岩長槍",
 	"lost-prayer-to-the-sacred-winds": "四風原典",
@@ -79,6 +80,10 @@
 	"albedo": {
 		"name": "アルベド",
 		"title": "白亜の申し子"
+	},
+	"alhaitam": {
+		"name": "アルハイゼン",
+		"title": "権謀教戒"
 	},
 	"amber": {
 		"name": "アンバー",
@@ -295,6 +300,10 @@
 	"yanfei": {
 		"name": "煙緋",
 		"title": "無邪気な知恵"
+	},
+	"yaoyao": {
+		"name": "ヨォーヨ",
+		"title": "仙蕊玲瓏"
 	},
 	"yelan": {
 		"name": "夜蘭",

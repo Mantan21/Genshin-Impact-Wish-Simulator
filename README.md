@@ -28,7 +28,7 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 #### Shop
 
-![Buying Welkin](https://user-images.githubusercontent.com/13815468/178100892-2d9940fb-921d-4404-840d-c290a41d83a9.gif)
+![Buying Welkin](https://user-images.githubusercontent.com/13815468/212980583-7539f527-c6bb-4005-8322-8996b59937fe.gif)
 
 > For more preview, please visit the live version at [https://wishsimulator.app](https://wishsimulator.app)
 

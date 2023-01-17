@@ -193,9 +193,11 @@
 		font-size: calc(11 / 100 * var(--text-width));
 	}
 
-	:global(.zh-CN) .character .char-name,
-	:global(.ja-JP) .character .char-name {
+	:global(.zh-CN) .character .char-name {
 		font-size: calc(17 / 100 * var(--text-width));
+	}
+	:global(.ja-JP) .character .char-name {
+		font-size: calc(15 / 100 * var(--text-width));
 	}
 
 	.char-name span {

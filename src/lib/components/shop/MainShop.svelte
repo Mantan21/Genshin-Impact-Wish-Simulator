@@ -66,6 +66,7 @@
 	let outfitRarity = 0;
 	let outfitsData = [];
 	let recentlyBuyIndex;
+	let outfitOwner = '';
 
 	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
 	let showObtainedOutfit = false;
@@ -118,6 +119,7 @@
 		} = item;
 
 		const isOwnedChar = await checkCharacter(characterName);
+		outfitOwner = characterName;
 		showModalAlert = !isOwnedChar && !isOwned;
 		showExchangeModal = isOwnedChar || isOwned;
 		outfitToBuy = name;
@@ -147,7 +149,7 @@
 	<WishResult
 		list={itemData}
 		on:wishEnd={() => (showObtainedOutfit = false)}
-		fromShop
+		{outfitOwner}
 		outfitName={outfitToBuy}
 	/>
 {/if}

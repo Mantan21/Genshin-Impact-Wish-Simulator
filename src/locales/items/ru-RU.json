@@ -29,6 +29,7 @@
 	"kagura_s-verity": "Истина кагура",
 	"key-of-khaj-nisut": "Ключ Хадж-нисут",
 	"lion_s-roar": "Драконий рык",
+	"light-of-foliar-incision": "Свет лиственного разреза",
 	"lithic-blade": "Каменный меч",
 	"lithic-spear": "Каменное копьё",
 	"lost-prayer-to-the-sacred-winds": "Молитва святым ветрам",
@@ -79,6 +80,10 @@
 	"albedo": {
 		"name": "Альбедо",
 		"title": "Принц мела"
+	},
+	"alhaitam": {
+		"name": "Аль-Хайтам",
+		"title": "Голос разума"
 	},
 	"amber": {
 		"name": "Эмбер",
@@ -295,6 +300,10 @@
 	"yanfei": {
 		"name": "Янь Фэй",
 		"title": "Непорочная мудрость"
+	},
+	"yaoyao": {
+		"name": "Яо Яо",
+		"title": "Бутон изящества"
 	},
 	"yelan": {
 		"name": "Е Лань",

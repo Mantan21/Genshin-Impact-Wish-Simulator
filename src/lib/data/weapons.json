@@ -1,6 +1,12 @@
 {
 	"data": [
 		{
+			"name": "light-of-foliar-incision",
+			"rarity": 5,
+			"limited": true,
+			"weaponType": "sword"
+		},
+		{
 			"name": "tulaytullah_s-remembrance",
 			"rarity": 5,
 			"limited": true,
