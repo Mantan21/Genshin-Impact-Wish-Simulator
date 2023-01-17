@@ -41,6 +41,7 @@
 		"vite": "^3.1.8",
 		"vite-plugin-markdown": "^2.1.0",
 		"vite-plugin-pwa": "^0.13.1",
+		"workbox-cacheable-response": "^6.5.4",
 		"workbox-core": "^6.5.4",
 		"workbox-expiration": "^6.5.4",
 		"workbox-precaching": "^6.5.4",

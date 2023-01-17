@@ -3,6 +3,7 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { CacheFirst, NetworkFirst } from 'workbox-strategies';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 const cacheVersion = 'v1';
 
@@ -52,9 +53,13 @@ registerRoute(
 );
 
 registerRoute(
-	new RegExp('.(?:woff|woff2|ttf)$'),
+	({ url }) => {
+		const font = url.href.match(new RegExp('.(?:woff|woff2|ttf)$')) || [];
+		return font.length > 0;
+	},
 	new NetworkFirst({
-		cacheName: `Static-${cacheVersion}`
+		cacheName: `Static-${cacheVersion}`,
+		plugins: [new CacheableResponsePlugin({ statuses: [0, 200] })]
 	})
 );
 

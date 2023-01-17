@@ -111,6 +111,35 @@
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}{metaPicture}" />
 
+	<link
+		rel="preload"
+		href="/fonts/optimized_global_web.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="/fonts/optimized_th_web.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="/fonts/optimized_jp_web.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="/fonts/optimized_zh_web.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+
 	{#if !dev}
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
@@ -149,8 +178,36 @@
 	/>
 </main>
 
-<style>
+<style global>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
+
+	@font-face {
+		font-family: 'GI_Global_Web';
+		src: url('/fonts/optimized_global_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_JA_Web';
+		src: url('/fonts/optimized_jp_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_TH_Web';
+		src: url('/fonts/optimized_th_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_ZH_Web';
+		src: url('/fonts/optimized_zh_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
 
 	:global(.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle) {
 		background-color: #d2c69c;
