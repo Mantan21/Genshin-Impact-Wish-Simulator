@@ -1,14 +1,17 @@
 import HistoryIDB from '$lib/store/historyIdb';
 
-const updateKokomiNameFromIDB = async () => {
-	const { getByName, addHistory } = HistoryIDB;
-	const kokomi = await getByName('sagonomiya-kokomi');
+const { getByName, addHistory } = HistoryIDB;
 
+const updateNameFromIDB = async (before, after) => {
+	const kokomi = await getByName(before);
 	kokomi.forEach(async (item) => {
-		item.name = 'sangonomiya-kokomi';
+		item.name = after;
 		await addHistory(item);
 	});
 };
 
-export const IDBUpdater = () => updateKokomiNameFromIDB();
+export const IDBUpdater = () => {
+	updateNameFromIDB('sagonomiya-kokomi', 'sangonomiya-kokomi');
+	updateNameFromIDB('alhaitam', 'alhaitham');
+};
 

@@ -2,7 +2,7 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
-			"name": "alhaitam",
+			"name": "alhaitham",
 			"vision": "dendro",
 			"rarity": 5,
 			"wishBoxPosition": {
