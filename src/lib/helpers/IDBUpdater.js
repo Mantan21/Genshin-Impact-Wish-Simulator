@@ -1,4 +1,5 @@
 import HistoryIDB from '$lib/store/historyIdb';
+import { deleteDB } from 'idb';
 
 const { getByName, addHistory } = HistoryIDB;
 
@@ -10,8 +11,9 @@ const updateNameFromIDB = async (before, after) => {
 	});
 };
 
-export const IDBUpdater = () => {
+export const IDBUpdater = async () => {
 	updateNameFromIDB('sagonomiya-kokomi', 'sangonomiya-kokomi');
 	updateNameFromIDB('alhaitam', 'alhaitham');
+	await deleteDB('workbox-expiration');
 };
 
