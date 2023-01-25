@@ -32,6 +32,7 @@
 	"version": "Ver.",
 	"donate": "寄付",
 	"wish": {
+                "wishTitle": "祈願",
 		"rollButton": "{count}回祈願",
 		"stellaFortuna": "該当キャラクターの星屑",
 		"loadFailed": "Failed to load Banner! <br /> Please switch to other banner or reconnect to the internet to avoid errors!",
