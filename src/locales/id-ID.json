@@ -125,7 +125,7 @@
 		"purchasePrompt": "Kamu belum memiliki karakter untuk kostum ini, apakah kamu yakin ingin membeli kostum ini?",
 		"promptInfo": "Kamu masih bisa menggunakan kostum ini setelah mendapatkan karakter yang sesuai.",
 		"obtained": "Mendapatkan Kostum Baru",
-		"unlocked": "Berhasil membuka kostum untuk{character}!",
+		"unlocked": "Berhasil membuka kostum untuk {character}!",
 		"item": {
 			"5-star-outrider": {
 				"name": "5-Star Outrider"
@@ -254,7 +254,6 @@
 		"lose": "Kalah 50/50",
 		"guaranteed": "Item Jaminan",
 		"selected": "Item Pilihan",
-		"primos": "Primos",
 		"olderLayout": "Layout Lama",
 		"switchv2": "Ganti ke V2"
 	},

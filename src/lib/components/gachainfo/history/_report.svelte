@@ -27,7 +27,7 @@
 	</div>
 	<div class="cell">
 		{$t('history.totalSpend')}
-		<strong><span class="lighted"> {dataLength * 160}</span> {$t('history.primos')}</strong>
+		<strong><span class="lighted"> {dataLength * 160}</span> {$t('shop.item.primogem')}</strong>
 		<br />
 		Est. <span class="lighted"> <strong> {totalSpend} </strong> </span>
 	</div>
@@ -38,7 +38,7 @@
 	{$t('history.totalPull')} <span class="lighted"> <strong> {dataLength} </strong> </span>
 	<br />
 	{$t('history.totalSpend')}
-	<strong><span class="lighted"> {dataLength * 160}</span> {$t('history.primos')}</strong>
+	<strong><span class="lighted"> {dataLength * 160}</span> {$t('shop.item.primogem')}</strong>
 	~
 	<span class="lighted"> <strong> {totalSpend} </strong> </span>
 {/if}
