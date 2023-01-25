@@ -13,14 +13,16 @@ const fetchKey = async () => {
 	const data = await fetch(
 		`https://gist.githubusercontent.com/AguzzTN54/3816708e01827a5c64f4903242ede7b0/raw?date=${date}`
 	);
-	const { hash } = await data.json();
-	return hash;
+	const { hash, previousKey } = await data.json();
+	return { baseKey: hash, previousKey };
 };
 
 const checkKey = async (key) => {
-	const baseKey = await fetchKey();
+	const { baseKey, previousKey } = await fetchKey();
 	const inputKey = await digestMessage(key?.trim());
-	return baseKey === inputKey;
+	const isKeyValid = baseKey === inputKey;
+	const expiryDate = isKeyValid ? 'none' : previousKey[inputKey] || null;
+	return { isKeyValid, expiryDate };
 };
 
 const adKey = {
@@ -38,8 +40,8 @@ const adKey = {
 		const reversedKey = storedKey?.split('').reverse().join('');
 		try {
 			if (!storedKey) return { validity: false, storedKey: reversedKey, status: 'ok' };
-			const isKeyValid = await checkKey(reversedKey);
-			return { validity: isKeyValid, storedKey: reversedKey, status: 'ok' };
+			const { isKeyValid, expiryDate } = await checkKey(reversedKey);
+			return { validity: isKeyValid, expiryDate, storedKey: reversedKey, status: 'ok' };
 		} catch (e) {
 			return { validity: false, storedKey: reversedKey, status: 'offline' };
 		}
@@ -47,9 +49,11 @@ const adKey = {
 
 	async verify(key) {
 		try {
-			const isKeyValid = await checkKey(key);
+			const { isKeyValid, expiryDate } = await checkKey(key);
 			if (isKeyValid) this._set(key);
-			const msg = isKeyValid ? 'success' : 'menu.invalidKey';
+			const isExpired = expiryDate && expiryDate !== 'none';
+			const invalidMsg = isExpired ? 'menu.keyExpired1' : 'menu.invalidKey';
+			const msg = isKeyValid ? 'success' : invalidMsg;
 			return { validity: isKeyValid, msg };
 		} catch (e) {
 			return { validity: false, msg: 'connectionFailed' };

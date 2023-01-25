@@ -361,6 +361,8 @@
 		"noKey": "キーを持っていませんか？",
 		"verifyFail": "キーの検証に失敗しました。接続を確認してください！",
 		"invalidKey": "あなたのキーは有効ではありません",
+		"keyExpired1": "Expired Key!",
+		"keyExpired2": "Your key: \"{key}\" has expired since {date}!",
 		"adFreeUser": "あなたは広告なしのシミュをエンジョイ中です！",
 		"inputKeyPlaceholder": "キーを入力",
 		"inputKeyTxt": "広告を除去するにはキーを入力！",

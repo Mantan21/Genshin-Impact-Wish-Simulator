@@ -361,6 +361,8 @@
 		"noKey": "没有赞助码？",
 		"verifyFail": "无法验证赞助码，请检查您的网络连接！",
 		"invalidKey": "您的赞助码无效",
+		"keyExpired1": "Expired Key!",
+		"keyExpired2": "Your key: \"{key}\" has expired since {date}!",
 		"adFreeUser": "您正在以无广告模式体验祈愿模拟器！",
 		"inputKeyPlaceholder": "输入赞助码",
 		"inputKeyTxt": "请输入赞助码以移除广告",

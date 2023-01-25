@@ -361,6 +361,8 @@
 		"noKey": "Não pusse uma Chave de Anúncios?",
 		"verifyFail": "Falha ao verificar a Chave de Anúncios, verifique sua conexão !",
 		"invalidKey": "Esta chave não é mais válida",
+		"keyExpired1": "Expired Key!",
+		"keyExpired2": "Your key: \"{key}\" has expired since {date}!",
 		"adFreeUser": "Você está usando o Simulador sem anúncios agora!",
 		"inputKeyPlaceholder": "Digite a chave",
 		"inputKeyTxt": "Digite a Chave para Remover Anúncios !",

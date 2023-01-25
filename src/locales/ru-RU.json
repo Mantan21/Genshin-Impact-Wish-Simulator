@@ -361,6 +361,8 @@
 		"noKey": "Ещё нет ключа?",
 		"verifyFail": "Не удалось подтвердить ключ, проврьте ваше соединение.",
 		"invalidKey": "Ключ недействителен.",
+		"keyExpired1": "Expired Key!",
+		"keyExpired2": "Your key: \"{key}\" has expired since {date}!",
 		"adFreeUser": "Теперь вы наслаждаетесь Симулятором молитв без рекламы!",
 		"inputKeyPlaceholder": "Введите ключ",
 		"inputKeyTxt": "Введите ключ для удаления рекламы!",

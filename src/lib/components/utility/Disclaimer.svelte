@@ -3,57 +3,69 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/data/updates.json';
-	import { assets, isPWA } from '$lib/store/stores';
+	import { isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
 	import { adKey } from '$lib/helpers/accessKey';
 
 	export let show = true;
 	let content;
+	let contentHeight;
+	let adKeyValid = false;
+	let savedKey = '';
+	let dateExpired = '';
 
 	const closeDisclaimer = getContext('closeDisclaimer');
 	const showAd = getContext('showAd');
 	const updates = data.filter(({ featured }) => !!featured);
 
-	const handleConfirm = async () => {
+	const handleConfirm = () => {
 		closeDisclaimer();
-		const { validity } = await adKey.checkLocal();
-		showAd(!validity);
+		showAd(!adKeyValid);
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
+		const { validity, expiryDate, storedKey } = await adKey.checkLocal();
+		adKeyValid = validity;
+		savedKey = storedKey;
+		dateExpired = expiryDate;
 	});
 </script>
 
 <Modal {show} title={$t('title')} button="confirm" disclaimer on:confirm={handleConfirm}>
-	<section>
+	<section bind:clientHeight={contentHeight} style="--modalHeight:{contentHeight}px">
 		<p class="sp">
 			{$t('fanmade')} <br />
 			{#if !$isPWA}
 				<a href="/install">{$t('installInstruction')}</a>
 			{/if}
 		</p>
-		<div class="updates" bind:this={content}>
-			{#each updates.reverse() as { description, date }, i (i)}
-				<span>
-					<i class="tgl"> {date} </i>
-					{#if i === 0} ( Latest Update ) {/if}
-				</span>
-				{#each description as txt} <p>{@html txt}</p> {/each}
-			{/each}
-			<div style="height: .5rem" />
-		</div>
-		<span style="font-size: .9rem; margin-top: .5rem;display:block">Support</span>
-		<div class="support">
-			<a class="kofi" href="https://ko-fi.com/mantan21" target="_blank">
-				<img src={$assets['donate-kofi.png']} alt="ko-fi icon" />
-				<span> Ko-fi </span>
-			</a>
-			<a class="saweria" href="https://saweria.co/AguzzTN54" target="_blank">
-				<img src={$assets['donate-saweria.webp']} alt="Saweria Icon" />
-				<span> Saweria </span>
-			</a>
-		</div>
+		{#if dateExpired && dateExpired !== 'none'}
+			<div class="updates adExpired">
+				<div>
+					{@html $t('menu.keyExpired2', {
+						values: { key: `<b>${savedKey}</b>`, date: `<u>${dateExpired}</u>` }
+					})}
+					<a
+						href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
+						target="_blank"
+					>
+						{$t('menu.getNewKey')}
+					</a>
+				</div>
+			</div>
+		{:else}
+			<div class="updates" bind:this={content}>
+				{#each updates.reverse() as { description, date }, i (i)}
+					<span>
+						<i class="tgl"> {date} </i>
+						{#if i === 0} ( Latest Update ) {/if}
+					</span>
+					{#each description as txt} <p>{@html txt}</p> {/each}
+				{/each}
+				<div style="height: .5rem" />
+			</div>
+		{/if}
 		<p class="credit">{$t('disclaimer')}</p>
 	</section>
 </Modal>
@@ -61,6 +73,7 @@
 <style>
 	section {
 		width: 100%;
+		height: 100%;
 		padding: 0 1.5rem;
 	}
 	.credit {
@@ -73,10 +86,27 @@
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		background-color: #fff;
 		font-size: 0.97rem;
-		height: 8rem;
+		height: calc(0.7 * var(--modalHeight));
 		padding: 0 1rem;
 		display: block;
 		overflow: hidden;
+	}
+
+	:global(.mobile) .updates {
+		height: calc(0.6 * var(--modalHeight));
+	}
+
+	.adExpired {
+		text-align: center;
+		font-size: 125%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.adExpired a {
+		display: block;
+		margin-top: 1rem;
 	}
 
 	.updates span {
@@ -120,54 +150,16 @@
 		padding: 0rem 0 0.5rem;
 	}
 
+	a {
+		transition: all 0.2s;
+	}
 	.sp a {
 		font-weight: bold;
 		color: #e3a023;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
-	.support {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
-	.support a {
-		width: 9rem;
-		height: 2rem;
-		margin: 0.3rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 40px;
-		transition: all 0.2s;
-		color: #fff;
-		font-size: 0.9rem;
-		text-decoration: none;
-	}
-
-	a.kofi {
-		background-color: #24ade1;
-	}
-
-	a.saweria {
-		background-color: #ffe3af;
-		color: #bd6932;
-	}
-
-	.kofi:hover {
-		background-color: #0c91c6;
-	}
-	.saweria:hover {
-		background-color: #f3d192;
-	}
-
 	a:active {
 		transform: scale(0.9);
-	}
-
-	a img {
-		height: 80%;
-		margin-right: 0.5rem;
 	}
 </style>

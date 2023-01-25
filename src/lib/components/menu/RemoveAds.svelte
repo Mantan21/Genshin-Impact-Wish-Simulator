@@ -31,21 +31,23 @@
 
 	let checkingLocal = true;
 	let userHasKey = false;
+	let dateExpired = '';
 	let isUserKeyValid = false;
 	let isOffline = false;
 
 	const checkLocal = async () => {
-		const { validity, storedKey, status } = await adKey.checkLocal();
+		const { validity, storedKey, status, expiryDate } = await adKey.checkLocal();
 		isOffline = status === 'offline';
 		userKey = storedKey;
 		userHasKey = !!storedKey;
 		isUserKeyValid = validity;
-		if (userHasKey) input = '*****';
+		dateExpired = expiryDate;
+		if (userHasKey) input = '✼✼✼✼✼';
 		checkingLocal = false;
 	};
 
 	const showKeyHandle = () => {
-		input = input === '*****' ? userKey : '*****';
+		input = input.includes('✼') ? userKey : '✼✼✼✼✼';
 	};
 
 	// Modal
@@ -109,7 +111,7 @@
 					/>
 					{#if userHasKey}
 						<button class="toggle-visible" on:click|preventDefault={showKeyHandle}>
-							<i class="gi-eye{input === '*****' ? '-slash' : ''}" />
+							<i class="gi-eye{input.includes('✼') ? '-slash' : ''}" />
 						</button>
 					{/if}
 				</div>
@@ -119,7 +121,9 @@
 					{:else if isUserKeyValid}
 						<span class="keyValid"> {$t('menu.adFreeUser')} </span>
 					{:else}
-						{#if !isUserKeyValid && userHasKey}
+						{#if dateExpired && dateExpired !== 'none'}
+							<span class="invalid"> {$t('menu.keyExpired1')}</span>
+						{:else if !isUserKeyValid && userHasKey}
 							<span class="invalid"> {$t('menu.invalidKey')} </span>
 						{:else}
 							<span> {$t('menu.noKey')} </span>
