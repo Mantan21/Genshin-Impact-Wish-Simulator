@@ -32,9 +32,10 @@
 	"version": "Ver.",
 	"donate": "寄付",
 	"wish": {
+		"wishTitle": "祈願",
 		"rollButton": "{count}回祈願",
 		"stellaFortuna": "該当キャラクターの星屑",
-		"loadFailed": "Failed to load Banner! <br /> Please switch to other banner or reconnect to the internet to avoid errors!",
+		"loadFailed": "祈願の読み込みに失敗しました! <br /> 他の祈願に切り替える、またはインターネットへの再接続をお試しください!",
 		"banner": {
 			"wishTitle": "祈願",
 			"text": "祈願",
@@ -119,13 +120,13 @@
 	},
 	"outfit": {
 		"heading": "キャラ外観",
-		"default": "Default",
+		"default": "デフォルト",
 		"setOutfit": "切り替え",
 		"owned": "所有済",
 		"purchasePrompt": "対応するキャラはまだ未所持ですが、本当にこのコスチュームを購入しますか？",
 		"promptInfo": "キャラクターを入手した後でも購入可能です",
-		"obtained": "New Outfit Obtained",
-		"unlocked": "{character}: Outfit Unlocked",
+		"obtained": "新コスチューム獲得",
+		"unlocked": "{character}専用コスチューム",
 		"item": {
 			"5-star-outrider": {
 				"name": "「満点の偵察騎士」"
@@ -324,13 +325,13 @@
 		"notOwned": "未所持",
 		"sort": "並び替え",
 		"rarity": "レア度",
-		"name": "アルファベット",
+		"name": "名前",
 		"quantity": "命の星座",
 		"element": "神の目",
-		"release": "Release Date",
+		"release": "実装日",
 		"type": "武器タイプ",
 		"owned": "所持",
-		"showAllOption": "全ての{item}を表示 ( {qty} 体・個獲得済み、重複含む )"
+		"showAllOption": "全ての{item}を表示 ( {qty} 体・個獲得済み )"
 	},
 	"menu": {
 		"no": "オフ",
@@ -361,8 +362,8 @@
 		"noKey": "キーを持っていませんか？",
 		"verifyFail": "キーの検証に失敗しました。接続を確認してください！",
 		"invalidKey": "あなたのキーは有効ではありません",
-		"keyExpired1": "Expired Key!",
-		"keyExpired2": "Your key: \"{key}\" has expired since {date}!",
+		"keyExpired1": "キーが期限切れです!",
+		"keyExpired2": "あなたのキー: \"{key}\" は{date}から期限切れです!",
 		"adFreeUser": "あなたは広告なしのシミュをエンジョイ中です！",
 		"inputKeyPlaceholder": "キーを入力",
 		"inputKeyTxt": "広告を除去するにはキーを入力！",
