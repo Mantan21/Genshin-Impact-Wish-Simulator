@@ -37,7 +37,6 @@
 		"stellaFortuna": "該当キャラクターの星屑",
 		"loadFailed": "祈願の読み込みに失敗しました! <br /> 他の祈願に切り替える、またはインターネットへの再接続をお試しください!",
 		"banner": {
-			"wishTitle": "祈願",
 			"text": "祈願",
 			"allBanner": "全ての祈願",
 			"previous": "過去の祈願一覧",
