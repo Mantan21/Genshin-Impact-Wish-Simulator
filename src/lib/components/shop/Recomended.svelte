@@ -47,7 +47,7 @@
 	const buyWelkin = () => {
 		showWelkinModal = false;
 		genesis.update((n) => {
-			const newQty = n + 320000;
+			const newQty = n + 32000;
 			localBalance.set('genesis', newQty);
 			return newQty;
 		});

@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { assets } from '$lib/store/stores';
+	import { assets, isMobile, isPWA } from '$lib/store/stores';
 
 	export let activeContent;
 	const selectMenu = getContext('selectMenu');
@@ -15,9 +15,12 @@
 		<div class="menu-item" class:active={activeContent === 'updates'}>
 			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
 		</div>
-		<div class="menu-item" class:active={activeContent === 'removeAds'}>
-			<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>
-		</div>
+
+		{#if !($isPWA && $isMobile)}
+			<div class="menu-item" class:active={activeContent === 'removeAds'}>
+				<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>
+			</div>
+		{/if}
 	</div>
 </div>
 

@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data } from '$lib/data/updates.json';
-	import { isPWA } from '$lib/store/stores';
+	import { isMobile, isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
 	import { adKey } from '$lib/helpers/accessKey';
 
@@ -20,6 +20,7 @@
 
 	const handleConfirm = () => {
 		closeDisclaimer();
+		if ($isPWA && $isMobile) return;
 		showAd(!adKeyValid);
 	};
 
