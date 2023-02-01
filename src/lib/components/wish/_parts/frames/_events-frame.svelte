@@ -1,12 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
+	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data as charsDB } from '$lib/data/characters.json';
 	import positionToStyle from '$lib/helpers/cssPosition';
 
 	export let data = {};
+	export let event2 = false;
 
 	const getBannerName = (banner) => {
 		const split = banner.split('-');
@@ -37,6 +38,7 @@
 <div class="frame-content">
 	<div class="top bg-{vision}">
 		{$t('wish.banner.events')}
+		{event2 ? ($locale === 'ja-JP' ? '2' : '— 2') : ''}
 	</div>
 	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
 		{@html highlightBannerName(bannerName)}

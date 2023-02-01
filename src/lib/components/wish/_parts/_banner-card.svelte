@@ -11,9 +11,11 @@
 	import WeaponsFrame from './frames/_weapons-frame.svelte';
 
 	export let data = {};
+	export let index = -1;
 
 	let type, weapons, character;
 	$: ({ type, weapons, character } = data);
+
 	let clientWidth;
 	let clientHeight;
 
@@ -77,7 +79,7 @@
 			</div>
 		{/if}
 		<div class="frame skeleton-event">
-			<EventsFrame data={character} />
+			<EventsFrame data={character} event2={index === 2} />
 		</div>
 	{:else if type === 'standard'}
 		<ResponsiveImage
