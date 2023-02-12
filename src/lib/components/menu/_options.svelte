@@ -215,7 +215,7 @@
 
 	.option-select button,
 	.option-select {
-		font-size: 0.8rem !important;
+		font-size: 0.7rem !important;
 	}
 
 	.select {
@@ -229,17 +229,35 @@
 		z-index: +1;
 		border-radius: 1rem;
 		overflow-y: auto;
+		padding: 1% 2%;
 	}
+
 	.select button {
 		display: block;
 		width: 100%;
 		padding: 6%;
 		color: #eee;
+		margin: 1% 0;
+		transition: all 0.2s;
+		position: relative;
 	}
 
 	.select button:hover,
 	.select button.selected {
 		background-color: #717887;
+		border-radius: 2rem;
+	}
+
+	.select button.selected::after {
+		content: '✔';
+		color: #eee;
+		position: absolute;
+		display: block;
+		top: 50%;
+		right: 8%;
+		font-size: 170%;
+		line-height: 0;
+		transform: translateY(-50%);
 	}
 
 	.locale {
@@ -250,7 +268,7 @@
 		justify-content: center;
 		align-items: center;
 		line-height: 0%;
-		padding: 8%;
+		padding: 6% 8%;
 	}
 
 	.flag {

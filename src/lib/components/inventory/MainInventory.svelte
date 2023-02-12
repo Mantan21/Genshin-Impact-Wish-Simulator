@@ -635,20 +635,36 @@
 		background-color: #565a64;
 		transform: translateY(-100%);
 		border-radius: 1rem;
-		padding: 0.2rem 0;
+		padding: 1% 1.5%;
 		z-index: +10;
 		overflow: hidden;
 	}
 
 	.order-list a {
+		position: relative;
 		padding: 0.85rem 1rem;
+		margin: 0.5% 0;
 		text-decoration: none;
 		color: #eee;
 		transition: all 0.2s;
 	}
+
 	.order-list a.selected,
 	.order-list a:hover {
 		background-color: #717887;
+		border-radius: 2rem;
+	}
+
+	.order-list a.selected::after {
+		content: '✔';
+		color: #eee;
+		position: absolute;
+		display: block;
+		top: 50%;
+		right: 8%;
+		font-size: 170%;
+		line-height: 0;
+		transform: translateY(-50%);
 	}
 
 	.showAll {

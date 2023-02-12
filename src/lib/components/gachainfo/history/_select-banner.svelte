@@ -174,13 +174,28 @@
 		overflow: hidden;
 	}
 	.v2 .item {
-		color: #fff;
+		color: #eee;
 		padding: calc(0.02 * var(--content-width)) calc(0.03 * var(--content-width));
+		position: relative;
+		margin: 0.5% 1%;
 	}
 
 	.v2 .item.active,
 	.v2 .item:hover {
 		background-color: #717887;
+		border-radius: 3rem;
+	}
+
+	.v2 .item.active::after {
+		content: '✔';
+		color: #eee;
+		position: absolute;
+		display: block;
+		top: 50%;
+		right: 5%;
+		font-size: 170%;
+		line-height: 0;
+		transform: translateY(-50%);
 	}
 
 	.selectType.v2 .reset {

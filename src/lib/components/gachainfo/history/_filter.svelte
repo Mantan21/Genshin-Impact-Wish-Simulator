@@ -25,14 +25,16 @@
 	</span>
 	{#if showTableFilterOption}
 		<div class="options" transition:fade={{ duration: 200 }}>
-			<span on:click={() => filter('All')}>{$t('history.filterAll')}</span>
-			<span on:click={() => filter(5)}>
+			<span on:click={() => filter('All')} class:active={isNaN(filterBy)}>
+				{$t('history.filterAll')}
+			</span>
+			<span on:click={() => filter(5)} class:active={filterBy === 5}>
 				{$t('history.filter', { values: { rarity: 5 } })}
 			</span>
-			<span on:click={() => filter(4)}>
+			<span on:click={() => filter(4)} class:active={filterBy === 4}>
 				{$t('history.filter', { values: { rarity: 4 } })}
 			</span>
-			<span on:click={() => filter(3)}>
+			<span on:click={() => filter(3)} class:active={filterBy === 3}>
 				{$t('history.filter', { values: { rarity: 3 } })}
 			</span>
 		</div>
@@ -93,8 +95,28 @@
 	.v2 .options span {
 		border: 0;
 		padding: calc(0.015 * var(--content-width)) calc(0.02 * var(--content-width));
+		position: relative;
+		margin: 1%;
 	}
 	.v2 .options span:hover {
 		background-color: #717887;
+	}
+
+	.v2 .options span.active,
+	.v2 .options span:hover {
+		background-color: #717887;
+		border-radius: 3rem;
+	}
+
+	.v2 .options span.active::after {
+		content: '✔';
+		color: #eee;
+		position: absolute;
+		display: block;
+		top: 50%;
+		right: 10%;
+		font-size: 170%;
+		line-height: 0;
+		transform: translateY(-50%);
 	}
 </style>
