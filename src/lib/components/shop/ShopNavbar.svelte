@@ -10,8 +10,9 @@
 	export let show;
 	let activeShop = 'genesis';
 
-	$: check = outfits.filter(({ version }) => version?.toString() === $patchVersion);
-	$: outfitsPromo = check.length > 0;
+	const outfitList = outfits.filter(({ version }) => version <= parseFloat($patchVersion));
+	const versionHasOutfit = outfitList.length > 0;
+	const outfitsPromo = outfitList.find(({ version }) => version === parseFloat($patchVersion));
 
 	const dispatch = createEventDispatcher();
 	const handleClick = (shop) => {
@@ -43,17 +44,21 @@
 					{$t('shop.recomendedHeading')}
 				</span>
 			</a>
-			<a
-				href="#outfits"
-				class="link"
-				class:active={activeShop === 'outfits'}
-				on:click|preventDefault={() => handleClick('outfits')}
-			>
-				{#if outfitsPromo}
-					<NoticeMark name="outfits-{$patchVersion}" />
-				{/if}
-				<span><i class="gi-outfit" /> {$t('outfit.heading')}</span>
-			</a>
+
+			{#if versionHasOutfit}
+				<a
+					href="#outfits"
+					class="link"
+					class:active={activeShop === 'outfits'}
+					on:click|preventDefault={() => handleClick('outfits')}
+				>
+					{#if outfitsPromo}
+						<NoticeMark name="outfits-{$patchVersion}" />
+					{/if}
+					<span><i class="gi-outfit" /> {$t('outfit.heading')}</span>
+				</a>
+			{/if}
+
 			<a
 				href="#paimon"
 				class="link"
