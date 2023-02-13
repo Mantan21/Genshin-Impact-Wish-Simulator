@@ -71,7 +71,9 @@
 </script>
 
 <EpitomizedModal />
-<MainMenu show={showMenu} on:close={handleMenu} />
+{#if showMenu}
+	<MainMenu on:close={handleMenu} />
+{/if}
 
 <div id="header" style={headerHeightstyle}>
 	<div class="top" in:fly={{ y: -20, duration: 800 }}>

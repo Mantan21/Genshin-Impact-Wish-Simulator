@@ -2,15 +2,26 @@
 	import { createEventDispatcher, getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { locales, locale, t } from 'svelte-i18n';
-	import { bannerPhase, pageActive, patchVersion } from '$lib/store/stores';
+	import {
+		acquaint,
+		bannerPhase,
+		intertwined,
+		pageActive,
+		patchVersion,
+		primogem,
+		stardust,
+		starglitter
+	} from '$lib/store/stores';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import { localeName, flags } from '$lib/data/country.json';
 	import browserState from '$lib/helpers/browserState';
 	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';
-	import { localConfig } from '$lib/store/localstore';
+	import { localBalance, localConfig } from '$lib/store/localstore';
+	import Icon from '../utility/Icon.svelte';
 
 	export let text;
 	export let name;
+	export let sub = false;
 	export let activeIndicator = null;
 	export let showOption = false;
 
@@ -47,6 +58,7 @@
 		handleOption(name);
 	};
 
+	// Currency
 	$: currencyIndicator = $locale ? userCurrencies.checkUsedCurrency().currency : '';
 	const setCurrency = (selected) => {
 		playSfx();
@@ -55,12 +67,83 @@
 		userCurrencies.init(selected);
 		handleOption('');
 	};
+
+	// Wish Amount
+	const selectAmount = (val) => {
+		playSfx();
+		handleOption('');
+		dispatch('select', val);
+	};
+
+	const getValue = (value) => {
+		let result = 0;
+		switch (value) {
+			case 'primogem':
+				result = $primogem;
+				break;
+			case 'intertwined':
+				result = $intertwined;
+				break;
+			case 'acquaint':
+				result = $acquaint;
+				break;
+			case 'starglitter':
+				result = $starglitter;
+				break;
+			case 'stardust':
+				result = $stardust;
+				break;
+
+			default:
+				break;
+		}
+		return result;
+	};
+
+	const setValues = (e) => {
+		let val = parseInt(e.target.value);
+		const value = !isNaN(val) ? val : 0;
+		switch (name) {
+			case 'primogem':
+				primogem.set(value);
+				break;
+			case 'intertwined':
+				intertwined.set(value);
+				break;
+			case 'acquaint':
+				acquaint.set(value);
+				break;
+			case 'starglitter':
+				starglitter.set(value);
+				break;
+			case 'stardust':
+				stardust.set(value);
+				break;
+
+			default:
+				break;
+		}
+		localBalance.set(name, value);
+	};
 </script>
 
-<div class="option">
-	<div class="option-name">{text}</div>
+<div class="option" class:sub>
+	<div class="option-name">
+		{#if sub}
+			<Icon type={name} style="margin: -1% 2% -1% 0" />
+		{/if}
+		{text}
+	</div>
 
-	{#if name === 'locale'}
+	{#if sub}
+		<input
+			type="number"
+			class="option-select"
+			on:change={setValues}
+			min="0"
+			value={getValue(name) || 0}
+		/>
+	{:else if name === 'locale'}
 		<div class="option-select locale">
 			<button
 				class="selected"
@@ -127,6 +210,28 @@
 				</div>
 			{/if}
 		</div>
+	{:else if name === 'wishAmount'}
+		<div class="option-select wishAmount">
+			<button
+				class="selected"
+				style="width: 100%; height:100%"
+				on:click|stopPropagation={openOption}
+			>
+				{activeIndicator === 'default' ? $t('outfit.default') : $t(`menu.${activeIndicator}`)}
+			</button>
+			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
+			{#if showOption}
+				<div class="select" in:fly={{ duration: 200, y: -10 }}>
+					{#each ['default', 'unlimited', 'manual'] as item}
+						<button class:selected={activeIndicator === item} on:click={() => selectAmount(item)}>
+							<span style="text-align:center;width:100%;padding: 3%">
+								{item === 'default' ? $t('outfit.default') : $t(`menu.${item}`)}
+							</span>
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
 	{:else if name === 'switchBanner'}
 		<button class="option-select" on:click={openPrevious}>
 			<i class="gi-caret-down" />
@@ -174,13 +279,31 @@
 	}
 	.option-name {
 		background-color: #eae5d9;
-		width: 75%;
+		width: 100%;
 		padding: 0.35rem 1rem;
 		border-top-left-radius: 5rem;
 		border-bottom-left-radius: 5rem;
 		border: solid transparent;
 		border-width: 0.2rem 0 0.2rem 0.2rem;
 		white-space: nowrap;
+	}
+	.sub .option-name {
+		width: 87%;
+		margin-left: 10%;
+		position: relative;
+	}
+
+	.sub .option-name::before {
+		content: '';
+		position: absolute;
+		left: -13%;
+		width: 15%;
+		height: 148%;
+		z-index: -1;
+		bottom: 50%;
+		border-bottom: #dcd4c2 dashed 0.12rem;
+		border-left: #dcd4c2 dashed 0.12rem;
+		opacity: 0.5;
 	}
 
 	.option-select {
@@ -215,7 +338,10 @@
 
 	.option-select button,
 	.option-select {
-		font-size: 0.7rem !important;
+		font-size: 0.7rem;
+	}
+	input.option-select {
+		font-size: 0.8rem;
 	}
 
 	.select {

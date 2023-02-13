@@ -12,7 +12,6 @@
 	import Sidebar from './_sidebar.svelte';
 	import RemoveAds from './RemoveAds.svelte';
 
-	export let show = false;
 	let activeContent = 'options';
 
 	const selectMenu = (menu) => {
@@ -29,36 +28,34 @@
 	};
 </script>
 
-{#if show}
-	<section transition:fade={{ duration: 200 }} style="height: {$viewportHeight}px;">
-		<div class="head">
-			<h1>{$t('menu.text')} / {$t(`menu.${activeContent}`)}</h1>
-			<button class="close" on:click={handleClose}>
-				<i class="gi-close" />
-			</button>
-		</div>
-		<div class="container">
-			<Sidebar {activeContent} />
+<section transition:fade={{ duration: 200 }} style="height: {$viewportHeight}px;">
+	<div class="head">
+		<h1>{$t('menu.text')} / {$t(`menu.${activeContent}`)}</h1>
+		<button class="close" on:click={handleClose}>
+			<i class="gi-close" />
+		</button>
+	</div>
+	<div class="container">
+		<Sidebar {activeContent} />
 
-			<div class="content">
-				{#if activeContent === 'options'}
-					<Options />
-				{:else if activeContent === 'updates'}
-					<Updates />
-				{:else if activeContent === 'removeAds'}
-					<RemoveAds />
-				{/if}
+		<div class="content">
+			{#if activeContent === 'options'}
+				<Options />
+			{:else if activeContent === 'updates'}
+				<Updates />
+			{:else if activeContent === 'removeAds'}
+				<RemoveAds />
+			{/if}
 
-				{#if $isMobile && !$mobileMode}
-					<div class="rotate">
-						<i class="gi-rotate-phone" />
-						<span>{$t('menu.rotate')} </span>
-					</div>
-				{/if}
-			</div>
+			{#if $isMobile && !$mobileMode}
+				<div class="rotate">
+					<i class="gi-rotate-phone" />
+					<span>{$t('menu.rotate')} </span>
+				</div>
+			{/if}
 		</div>
-	</section>
-{/if}
+	</div>
+</section>
 
 <style>
 	section {

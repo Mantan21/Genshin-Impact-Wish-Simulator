@@ -44,7 +44,7 @@ const importLocalBalance = () => {
 	if (localAcquaint !== null) acquaint.set(localAcquaint);
 
 	// Setting
-	unlimitedFates.set(!!localConfig.get('fates'));
+	unlimitedFates.set(localConfig.get('wishAmount') === 'unlimited');
 	muted.set(!!localConfig.get('muted'));
 	animeoff.set(!!localConfig.get('animeoff'));
 	noticeMark.onLoadCheck();

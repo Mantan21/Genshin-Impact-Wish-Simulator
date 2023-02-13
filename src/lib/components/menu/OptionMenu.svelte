@@ -1,7 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
 	import { getContext, onMount, setContext } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { localConfig } from '$lib/store/localstore';
@@ -22,7 +22,6 @@
 		const optionValue = selected === 'yes';
 		localConfig.set(option, optionValue);
 
-		if (option === 'fates') return unlimitedFates.set(optionValue);
 		if (option === 'muted') return muted.set(optionValue);
 		if (option === 'animeoff') return animeoff.set(optionValue);
 	};
@@ -37,12 +36,20 @@
 		handleAnimatedBG();
 	};
 
+	// WishAmount
+	let selectedAmount = localConfig.get('wishAmount') || 'default';
+	const handleSelectAmount = ({ detail }) => {
+		selectedAmount = detail;
+		localConfig.set('wishAmount', detail);
+		unlimitedFates.set(detail === 'unlimited');
+	};
+
+	// Reset
 	let showResetModal = false;
 	let clearCache = false;
 	let showToast = false;
 	let storageSize = '..B';
 
-	// Reset
 	const getSize = async () => {
 		const { usage } = await navigator.storage.estimate();
 		const size = (usage / 1000000).toFixed(2);
@@ -59,6 +66,7 @@
 		showResetModal = false;
 		await factoryReset({ clearCache });
 		showToast = true;
+		selectedAmount = 'default';
 	};
 
 	const cancelReset = () => {
@@ -116,12 +124,20 @@
 	<OptionMenu text={$t('menu.currency')} name="currency" showOption={optionToShow === 'currency'} />
 
 	<OptionMenu
-		name="fates"
+		name="wishAmount"
 		text={$t('menu.fates')}
-		activeIndicator={$unlimitedFates}
-		on:select={(e) => handleSelect('fates', e)}
-		showOption={optionToShow === 'fates'}
+		showOption={optionToShow === 'wishAmount'}
+		activeIndicator={selectedAmount}
+		on:select={handleSelectAmount}
 	/>
+
+	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
+		{#if selectedAmount === 'manual'}
+			<div in:fly|local={{ y: -10, delay: Math.sqrt(i * 10000) }} out:fly|local={{ y: -10 }}>
+				<OptionMenu sub name={item} text={$t(`shop.item.${item}`)} />
+			</div>
+		{/if}
+	{/each}
 
 	<OptionMenu
 		name="audio"
