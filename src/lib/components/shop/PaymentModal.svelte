@@ -12,6 +12,7 @@
 	export let show;
 	export let qty;
 	export let price;
+	export let bonus = 0;
 
 	let autoConvert = false;
 
@@ -22,19 +23,19 @@
 	};
 
 	const convertToPrimogem = () => {
-		const afterBuy = $primogem + qty;
+		const afterBuy = $primogem + qty + bonus;
 		primogem.set(afterBuy);
 		localBalance.set('primogem', afterBuy);
-		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'primogem', value: qty } });
+		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'primogem', value: qty + bonus } });
 	};
 
 	const genesisBuy = () => {
 		playSfx();
 		if (autoConvert) return convertToPrimogem();
-		const afterBuy = $genesis + qty;
+		const afterBuy = $genesis + qty + bonus;
 		genesis.set(afterBuy);
 		localBalance.set('genesis', afterBuy);
-		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'genesis', value: qty } });
+		dispatch('confirm', { status: 'ok', item: { itemToBuy: 'genesis', value: qty + bonus } });
 	};
 </script>
 

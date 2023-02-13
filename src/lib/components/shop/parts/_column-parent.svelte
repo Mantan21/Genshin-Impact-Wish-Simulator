@@ -7,13 +7,12 @@
 <style>
 	/* List */
 	.item-list {
-		/* height: calc(100vh - 155px); */
+		height: calc(var(--content-height) * 0.78);
 		margin: 15px 0;
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
 	:global(.mobile) .item-list {
-		/* height: calc(100vh - 60px); */
 		margin: 5px 0 0;
 		padding: 0;
 	}

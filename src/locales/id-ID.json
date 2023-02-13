@@ -277,6 +277,8 @@
 		"qty": "Qty",
 		"insufficient": "Saldo Tidak Cukup",
 		"crystalTopup": "Top Up Crystal",
+		"initialBonus": "Bonus Topup Perdana",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "Beli Genesis Crystal",
 		"recomendedHeading": "Item Rekomendasi",
 		"paimonHeading": "Penukaran Paimon",

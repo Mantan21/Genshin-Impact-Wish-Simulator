@@ -82,6 +82,7 @@
 				'bg-claymore.webp',
 				'bg-polearm.webp',
 				'bg-sword.webp',
+				'bg-bonus.webp',
 				'bow-white.svg',
 				'catalyst-white.svg',
 				'claymore-white.svg',

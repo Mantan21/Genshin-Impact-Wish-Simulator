@@ -277,6 +277,8 @@
 		"qty": "数量",
 		"insufficient": "アイテム不足",
 		"crystalTopup": "結晶凝結",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "創世結晶を購入",
 		"recomendedHeading": "おすすめ",
 		"paimonHeading": "スター交換",

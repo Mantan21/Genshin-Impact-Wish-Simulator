@@ -277,6 +277,8 @@
 		"qty": "Qty",
 		"insufficient": "Insufficient Funds",
 		"crystalTopup": "Crystal Top-Up",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "Buy Genesis Crystal",
 		"recomendedHeading": "Recommended Items",
 		"paimonHeading": "Paimon's Bargains",

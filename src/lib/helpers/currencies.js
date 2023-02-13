@@ -1,6 +1,6 @@
 import { priceList } from '$lib/store/stores';
 import { localConfig } from '$lib/store/localstore';
-import { currencies } from '$lib/data/currencies.json';
+import { currencies } from '$lib/data/pricelist.json';
 import { checkLocale } from './i18n';
 
 export const availableCurrencies = currencies.map(({ symbol, currency }) => ({ symbol, currency }));

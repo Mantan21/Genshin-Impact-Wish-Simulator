@@ -277,6 +277,8 @@
 		"qty": "数量",
 		"insufficient": "货币不足",
 		"crystalTopup": "凝取结晶",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "购买创世结晶",
 		"recomendedHeading": "推荐商品",
 		"paimonHeading": "尘辉兑换",

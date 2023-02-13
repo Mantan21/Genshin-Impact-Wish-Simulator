@@ -277,6 +277,8 @@
 		"qty": "Qtd",
 		"insufficient": "Fundos Insuficientes",
 		"crystalTopup": "Recarga de Cristal",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "Comprar Cristais Genesys",
 		"recomendedHeading": "Recomendado",
 		"paimonHeading": "Barganhas da Paimon",

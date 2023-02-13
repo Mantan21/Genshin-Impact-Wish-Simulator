@@ -67,6 +67,7 @@
 	let outfitsData = [];
 	let recentlyBuyIndex;
 	let outfitOwner = '';
+	let contentHeight;
 
 	$: itemData = [{ rarity: outfitRarity, outfitName: outfitToBuy }];
 	let showObtainedOutfit = false;
@@ -197,7 +198,12 @@
 		<div class="items-container">
 			<ShopHeader {activeShop} {showNavbar} {showNavbarButton} on:showNavbar={showNavbarHandle} />
 
-			<div class="item-body" in:fade={{ duration: 300 }}>
+			<div
+				class="item-body"
+				in:fade={{ duration: 300 }}
+				bind:clientHeight={contentHeight}
+				style="--content-height:{contentHeight}px"
+			>
 				{#if activeShop === 'genesis'}
 					<GenesisCrystal />
 

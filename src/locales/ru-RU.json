@@ -277,6 +277,8 @@
 		"qty": "Количество",
 		"insufficient": "Недостаточно средств",
 		"crystalTopup": "Пополнение кристаллов",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "Купить Кристалл Сотворения",
 		"recomendedHeading": "Рекомендуемые товары",
 		"paimonHeading": "Магазин Паймон",

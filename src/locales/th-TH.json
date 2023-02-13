@@ -277,6 +277,8 @@
 		"qty": "Qty",
 		"insufficient": "เงินทุนไม่เพียงพอ",
 		"crystalTopup": "คริสตัลเติมเงิน",
+		"initialBonus": "Initial Topup Bonus",
+		"bonus": "Bonus",
 		"buyGenesisHeading": "ซื้อคริสตัล",
 		"recomendedHeading": "รายการแนะนำ",
 		"paimonHeading": "ร้านค้า Paimon",
