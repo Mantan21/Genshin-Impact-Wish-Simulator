@@ -30,11 +30,20 @@
 		dispatch('cancel');
 		if (sfx) playSfx();
 	};
+
+	const dimiss = () => {
+		dispatch('cancel');
+	};
 </script>
 
 {#if show}
-	<div class="modal" transition:fade={{ duration: 80 }} style="height: {$viewportHeight}px;">
-		<div class="modal-content">
+	<div
+		class="modal"
+		transition:fade={{ duration: 80 }}
+		style="height: {$viewportHeight}px;"
+		on:click={dimiss}
+	>
+		<div class="modal-content" on:click|stopPropagation>
 			<span class="corner top-left" />
 			<span class="corner top-right" />
 			<span class="corner bottom-left" />

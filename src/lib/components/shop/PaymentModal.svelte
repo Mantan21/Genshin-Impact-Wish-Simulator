@@ -22,6 +22,10 @@
 		playSfx('close');
 	};
 
+	const dimiss = () => {
+		dispatch('cancel');
+	};
+
 	const convertToPrimogem = () => {
 		const afterBuy = $primogem + qty + bonus;
 		primogem.set(afterBuy);
@@ -39,7 +43,7 @@
 	};
 </script>
 
-<Modal {show} confirm={false} sfx={false}>
+<Modal {show} confirm={false} sfx={false} on:cancel={dimiss}>
 	<Funds />
 	<div class="genesis-modal">
 		<div class="header">

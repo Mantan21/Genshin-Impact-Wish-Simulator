@@ -12,6 +12,10 @@
 	let showCryptoModal = false;
 	let showToast = false;
 
+	let dimiss = () => {
+		showCryptoModal = false;
+	};
+
 	const copyHandle = (text) => {
 		playSfx();
 		copy(text);
@@ -33,9 +37,8 @@
 	button="confirm"
 	show={showCryptoModal}
 	title="Support With Crypto"
-	on:confirm={() => {
-		showCryptoModal = false;
-	}}
+	on:confirm={dimiss}
+	on:cancel={dimiss}
 >
 	<div class="modal-donate">
 		<div class="pop-item">
