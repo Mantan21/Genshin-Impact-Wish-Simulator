@@ -226,7 +226,7 @@
 		},
 		"duplicate": {
 			"heading": "〓キャラクターの重複獲得〓",
-			"text": "各方法（祈願、ショップ交換、システム配布など）で、★5キャラクターを2～7回重複して獲得した時、{stellaFortuna}1個と、{starglitter}{constBonus}個に変換されます。8回目以降の獲得では、{starglitter}{fullConstBonus}個に変換されます。"
+			"text": "各方法（祈願、ショップ交換、システム配布など）で、★{rarity}キャラクターを2～7回重複して獲得した時、{stellaFortuna}1個と、{starglitter}{constBonus}個に変換されます。8回目以降の獲得では、{starglitter}{fullConstBonus}個に変換されます。"
 		}
 	},
 	"history": {
@@ -237,7 +237,7 @@
 		"resetPrompt": " {bannerName} から排出されたすべてのキャラクターと武器がインベントリから削除されます。 本当にリセットしますか？",
 		"resetSuccess": "リセット成功！",
 		"selectWish": "祈願タイプ",
-		"disclaimer": "あなたの祈願データをインターネット上に保存することはありません。データはすべてIndexedDBに保存されるため、ブラウザのキャッシュに保存されることになります。お客様が削除/リセットボタンで手動で削除するか、ブラウザのデータを消去しない限り、削除されません。",
+		"disclaimer": "祈願データをインターネット上に保存することはありません。IndexedDBを利用するため、データはすべてブラウザのキャッシュに保存されることになります。ユーザー自身が削除/リセットボタンで削除するか、ブラウザのデータを消去しない限り削除されません。",
 		"currentPity": "現在の天井カウント:",
 		"totalPull": "祈願合計回数:",
 		"totalSpend": "消費原石総数:",
@@ -277,8 +277,8 @@
 		"qty": "数量",
 		"insufficient": "アイテム不足",
 		"crystalTopup": "結晶凝結",
-		"initialBonus": "Initial Topup Bonus",
-		"bonus": "Bonus",
+		"initialBonus": "初回2倍ボーナス",
+		"bonus": "おまけ",
 		"buyGenesisHeading": "創世結晶を購入",
 		"recomendedHeading": "おすすめ",
 		"paimonHeading": "スター交換",
@@ -332,7 +332,7 @@
 		"release": "実装日",
 		"type": "武器タイプ",
 		"owned": "所持",
-		"showAllOption": "全ての{item}を表示 ( {qty} 体・個獲得済み )"
+		"showAllOption": "全ての{item}を表示 ( {qty} 所持 )"
 	},
 	"menu": {
 		"no": "オフ",
@@ -342,9 +342,9 @@
 		"updates": "更新履歴",
 		"language": "言語",
 		"currency": "通貨",
-		"fates": "Number of Wishes",
-		"unlimited": "Unlimited",
-		"manual": "Manual Input",
+		"fates": "祈願回数",
+		"unlimited": "エンドレス",
+		"manual": "マニュアル",
 		"mute": "BGM・SEをミュート",
 		"switchBanner": "祈願内容の切替",
 		"showAllitems": "インベントリのすべてのアイテムを表示",
