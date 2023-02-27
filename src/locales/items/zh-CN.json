@@ -5,6 +5,7 @@
 	"amos-bow": "阿莫斯之弓",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "风鹰剑",
+	"beacon-of-the-reed-sea": "苇海信标",
 	"black-tassel": "黑缨枪",
 	"bloodtained-greatsword": "沐浴龙血的剑",
 	"calamity-queller": "息灾",
@@ -120,6 +121,10 @@
 	"cyno": {
 		"name": "赛诺",
 		"title": "缄秘的裁遣"
+	},
+	"dehya": {
+		"name": "迪希雅",
+		"title": "炽鬃之狮"
 	},
 	"diluc": {
 		"name": "迪卢克",

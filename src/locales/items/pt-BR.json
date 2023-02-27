@@ -5,6 +5,7 @@
 	"amos-bow": "Arco de Amos",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
+	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
 	"bloodtained-greatsword": "Espadão Sangrento",
 	"calamity-queller": "Subjugadora de Calamidades",
@@ -120,6 +121,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Juiz dos Segredos"
+	},
+	"dehya": {
+		"name": "Dehya",
+		"title": "Leoa Flamejante"
 	},
 	"diluc": {
 		"name": "Diluc",

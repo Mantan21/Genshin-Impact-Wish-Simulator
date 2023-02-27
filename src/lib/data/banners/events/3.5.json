@@ -1,0 +1,75 @@
+{
+	"patch": 3.5,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "auric-blaze-1",
+							"character": "dehya",
+							"buttonBoxPosition": {
+								"w": 130,
+								"t": 24,
+								"l": 55
+							},
+							"textOffset": {
+								"l": 48.5
+							}
+						},
+						{
+							"name": "twilight-arbiter-2",
+							"character": "cyno",
+							"buttonBoxPosition": {
+								"w": 160,
+								"t": 35,
+								"l": 55
+							},
+							"textOffset": { "l": 48.5 }
+						}
+					],
+
+					"rateup": ["barbara", "collei", "bennett"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-43",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "beacon-of-the-reed-sea",
+							"type": "claymore",
+							"buttonBoxPosition": {
+								"t": 10,
+								"w": 70,
+								"l": 30
+							}
+						},
+						{
+							"name": "staff-of-the-scarlet-sands",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 15,
+								"l": 60
+							}
+						}
+					],
+					"rateup": [
+						"the-alley-flash",
+						"alley-hunter",
+						"dragon_s-bane",
+						"eye-of-perception",
+						"sacrificial-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 34.5, "t": 67, "w": 30.5 },
+						"rateup": { "l": 72.5, "b": 24 }
+					}
+				}
+			}
+		}
+	]
+}
+

@@ -2,6 +2,16 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "dehya",
+			"vision": "pyro",
+			"rarity": 5,
+			"wishBoxPosition": {
+				"t": 89,
+				"l": 25,
+				"h": 220
+			}
+		},
+		{
 			"name": "alhaitham",
 			"vision": "dendro",
 			"rarity": 5,

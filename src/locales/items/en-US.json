@@ -5,6 +5,7 @@
 	"amos-bow": "Amos Bow",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
 	"black-tassel": "Black Tassel",
 	"bloodtained-greatsword": "Bloodtained Greatsword",
 	"calamity-queller": "Calamity Queller",
@@ -120,6 +121,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Judicator of Secrets"
+	},
+	"dehya": {
+		"name": "Dehya",
+		"title": "Flame-Mane"
 	},
 	"diluc": {
 		"name": "Diluc",

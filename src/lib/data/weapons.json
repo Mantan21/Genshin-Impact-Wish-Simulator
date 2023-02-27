@@ -1,6 +1,12 @@
 {
 	"data": [
 		{
+			"name": "beacon-of-the-reed-sea",
+			"rarity": 5,
+			"limited": true,
+			"weaponType": "claymore"
+		},
+		{
 			"name": "light-of-foliar-incision",
 			"rarity": 5,
 			"limited": true,

@@ -234,34 +234,44 @@
 		{
 			"date": "5-Dec-2022",
 			"description": [
-				"New Character <strong> Wanderer </strong> and <strong> Itto 3rd Rerun </strong> Banners already out",
-				"New 4★ Character <strong> Faruzan </strong> is featured on the current banner too!",
-				"Weapon Banner Updated, <b> Tulaytullah's Remembrance </b> and <b>Redhorn Stonethresher</b> are ready to pull as well"
+				"Add <strong> Itto 3rd Rerun </strong> Banners",
+				"Add New Character: <strong> Wanderer ( 5★ ) </strong>",
+				"Add New Character: <strong> Faruzan ( 4★ )</strong>",
+				"Update Weapon Banner: <b> Tulaytullah's Remembrance </b> and <b>Redhorn Stonethresher</b>"
 			]
 		},
 		{
 			"date": "23-Dec-2022",
 			"description": [
 				"<strong> 𒀭*𒀮 ๖ۣۜH𝐚𝒑𝒑ɣ ቢēⴓ ɣē𝐚ṛ 2023 𒀮*𒀭 </strong>",
-				"<strong> Raiden Shogun</strong> and <strong> Ayato</strong> 2nd Banners has been added!",
-				"Weapon Banner Updated, <b> Engulfing Lightning </b> and <b>Haran Geppaku Futsu</b> are ready to pull too!"
+				"Add <strong> Raiden Shogun</strong> and <strong> Ayato</strong> rerun banners",
+				"Update Weapon Banner: <b> Engulfing Lightning </b> and <b>Haran Geppaku Futsu</b>"
 			]
 		},
 		{
 			"date": "17-Jan-2023",
 			"description": [
-				"New 5★ Character <strong> Alhaitham</strong> and <strong> Xiao 3rd Rerun </strong> Banners are ready!",
-				"New 4★ Character <strong> Yaoyao </strong>",
-				"Weapon Banner Updated, <b> Light of Foliar Incision </b> and <b>Primordial Jade Winged-Spear</b> are ready to pull too !",
-				"New Character Outfits  are available! <b>Springbloom Missive</b> for Ayaka and <b>A Sobriquet Under Shade </b> for Lisa."
+				"Add <strong> Xiao 3rd Rerun </strong> Banner",
+				"Add New Character: <strong> Alhaitham ( 5★ )</strong>",
+				"Add New Character: <strong> Yaoyao ( 4★ )</strong>",
+				"Update Weapon Banner: <b> Light of Foliar Incision </b> and <b>Primordial Jade Winged-Spear</b>",
+				"Add New Character Outfits: <b>Springbloom Missive</b> for Ayaka and <b>A Sobriquet Under Shade </b> for Lisa."
 			]
 		},
 		{
 			"date": "1-Feb-2023",
+			"description": [
+				"Add <strong> Hu Tao 2nd rerun </strong> & <strong> Yelan 1st rerun</strong>",
+				"Add Weapon Banner: <b> Staff of Homa </b> and <b>Aqua Simulacra</b>"
+			]
+		},
+		{
+			"date": "27-Feb-2023",
 			"featured": true,
 			"description": [
-				"<strong> Hu Tao 2nd rerun </strong> and <strong> Yelan 1st rerun</strong> Banner has been added !",
-				"Weapon Banner Updated, <b> Staff of Homa </b> and <b>Aqua Simulacra</b> are ready to pull too !"
+				"Add <b>Cyno 1st Rerun</b> Banner",
+				"Add New Character: <b>Dehya ( 5★ )</b>",
+				"Add New Weapon: <b> Beacon of The Reed Sea ( 5★ )</b>"
 			]
 		}
 	]

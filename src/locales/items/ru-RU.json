@@ -5,6 +5,7 @@
 	"amos-bow": "Лук Амоса",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
+	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
 	"bloodtained-greatsword": "Меч драконьей крови",
 	"calamity-queller": "Усмиритель бед",
@@ -120,6 +121,10 @@
 	"cyno": {
 		"name": "Сайно",
 		"title": "Вершитель таинств"
+	},
+	"dehya": {
+		"name": "Дэхья",
+		"title": "Пламенная Грива"
 	},
 	"diluc": {
 		"name": "Дилюк",

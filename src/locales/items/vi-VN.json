@@ -5,6 +5,7 @@
 	"amos-bow": "Cung Amos",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
+	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
 	"calamity-queller": "Hủy Diệt",
@@ -120,6 +121,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Phán Quyết Ẩn Mật"
+	},
+	"dehya": {
+		"name": "Dehya",
+		"title": "Sư Tử Lửa"
 	},
 	"diluc": {
 		"name": "Diluc",
