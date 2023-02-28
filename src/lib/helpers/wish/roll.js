@@ -82,7 +82,7 @@ const roll = async (banner, indexOfBanner, WishInstance) => {
 	}
 	result.fateType = result.rarity === 3 ? 'stardust' : 'starglitter';
 	result.fateQty = result.isNew
-		? 0
+		? rarity === 4 ? 2 : 10
 		: getMilestoneQty(result.rarity, result.type, isFullConstellation);
 
 	return result;
