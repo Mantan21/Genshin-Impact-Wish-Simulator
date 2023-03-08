@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { init, register, getLocaleFromNavigator } from 'svelte-i18n';
 
 const supportedLocales = [
+	'fr-FR',
 	'en-US',
 	'id-ID',
 	'it-IT',
