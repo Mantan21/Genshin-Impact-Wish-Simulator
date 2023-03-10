@@ -49,6 +49,15 @@ If you are not familiar with javascript especially sveltekit or don't know how t
                SleepyAsh0191
             </a>
          </td>
+      </tr>,
+      <tr>
+         <td> Français </td>
+         <td>
+            <a href="https://github.com/Rapi-shiny">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/14368641?s=20" />
+               Rapi-shiny
+            </a>
+         </td>
       </tr>
       <tr>
          <td> Italiano </td>
