@@ -13,7 +13,7 @@ const supportedLocales = [
 	'vi-VN',
 	'zh-CN'
 ];
-const itemLocales = ['en-US', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN', 'zh-CN'];
+const itemLocales = ['en-US', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN', 'zh-CN'];
 
 const checkLocale = () => {
 	const savedLocale = browser ? localStorage.getItem('locale') : null;
