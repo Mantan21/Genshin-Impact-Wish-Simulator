@@ -69,6 +69,70 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "the-transcendent-one-returns-2",
+							"character": "shenhe",
+							"buttonBoxPosition": {
+								"w": 160,
+								"t": 22
+							},
+							"textOffset": {
+								"l": 51
+							}
+						},
+						{
+							"name": "the-heron_s-court-3",
+						"character": "kamisato-ayaka",
+							"buttonBoxPosition": {
+								"w": 95,
+								"t": 32,
+								"l": 50
+							},
+							"textOffset": {
+								"l": 51
+							}
+						}
+					],
+
+					"rateup": ["diona", "sucrose", "mika"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-44",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "calamity-queller",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"t": 15,
+								"w": 90,
+								"l": 60
+							}
+						},
+						{
+							"name": "mistsplitter-reforged",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"t": 5,
+								"w": 80,
+								"l": 35
+							}
+						}
+					],
+					"rateup": ["lithic-blade", "rust", "favonius-sword", "favonius-codex", "dragon_s-bane"],
+					"textOffset": {
+						"featured": { "l": 38.5, "t": 67 },
+						"rateup": { "l": 72.5, "b": 22.5 }
+					}
+				}
+			}
 		}
 	]
 }

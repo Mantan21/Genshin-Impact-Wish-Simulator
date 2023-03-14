@@ -81,22 +81,22 @@ const roll = async (banner, indexOfBanner, WishInstance) => {
 		result.stelaFortuna = !isFullConstellation;
 	}
 	result.fateType = result.rarity === 3 ? 'stardust' : 'starglitter';
-	result.fateQty = result.isNew
-		? 0
-		: getMilestoneQty(result.rarity, result.type, isFullConstellation);
+	result.fateQty = getMilestoneQty(result.rarity, result.type, isFullConstellation, result.isNew);
 
 	return result;
 };
 
-const getMilestoneQty = (rarity, type, isFullConstellation) => {
+const getMilestoneQty = (rarity, type, isFullConstellation, isNew) => {
+if (type === 'weapon') {
 	if (rarity === 3) return 15;
+	if (rarity === 4) return 2;
+	return 10;
+}
+if (isNew) return 0;
 
-	let charQty;
-	const weaponQty = rarity === 4 ? 2 : 10;
-	if (rarity === 4) charQty = isFullConstellation ? 5 : 2;
-	if (rarity === 5) charQty = isFullConstellation ? 25 : 10;
+	if (rarity === 4) return isFullConstellation ? 5 : 2;
+	return isFullConstellation ? 25 : 10;
 
-	return type === 'character' ? charQty : weaponQty;
 };
 
 export default roll;
