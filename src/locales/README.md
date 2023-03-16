@@ -65,6 +65,10 @@ If you are not familiar with javascript especially sveltekit or don't know how t
             <a href="https://github.com/OCTIPI1">
                <img width="20px" src="https://avatars.githubusercontent.com/u/64631735?s=20" />
                OCTIPI1
+            </a>,
+            <a href="https://github.com/ScarletSeal">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/118117643?s=20" />
+               ScarletSeal
             </a>
          </td>
       </tr>

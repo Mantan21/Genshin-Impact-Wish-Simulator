@@ -2,7 +2,7 @@
 
 ![License](https://badgen.net/github/license/AguzzTN54/Genshin-Impact-Wish-Simulator?icon:github) ![Repo Size](https://img.shields.io/github/repo-size/AguzzTN54/Genshin-Impact-Wish-Simulator?color=fa0) [![CodeFactor](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator/badge)](https://www.codefactor.io/repository/github/aguzztn54/genshin-impact-wish-simulator) ![Status](https://badgen.net/github/checks/AguzzTN54/Genshin-Impact-Wish-Simulator) ![Code Standard](https://badgen.net/badge/code%20style/standard/f2a) [![Saweria](https://badgen.net/badge/Saweria/AguzzTN54/F96854)](https://saweria.co/AguzzTN54)
 
-I'm not expert, I can't write clean code, but I try to create this Genshin Impact Wish Simulator. I can claim this is the most Realistic one for web version. However, I still need your feedbacks to improve the wishing experience. If you like this Simulator, please give a star to this repository
+I'm not expert, I can't write clean code, but I try to create this Genshin Impact Wish Simulator. I can claim this is the most Realistic one for web version. However, I still need your feedbacks to improve the wishing experience. If you like this Simulator, please give a star to this repository.
 
 ## Screenshots
 
@@ -36,28 +36,28 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 ## Features
 
-1. Gacha on all banner ( Beginner, Standard, Event and Weapon Banner )
+1. All banner types available ( Beginner, Standard, Event and Weapon Banner )
 2. Dual or Single Character Event Banner.
 3. Epitomized Path System for Weapon Banner start from version 2.0 - latest.
 4. Pity System almost like the real game.
 5. **The most complete banners** of all existing simulator, user can switch and do gacha on every banner starts from version 1.0 - latest.
-6. Gacha Milestone Bonus, Starglitter and Stardust, exchangable to Aquaint or Intertwined Fate at Shop
-7. **Shop** section to refill Primogem and Genesis Crystal
+6. Gacha Milestone Bonus, Starglitter and Stardust, exchangable to Aquaint or Intertwined Fate at the Shop section
+7. **Shop** section, Serving Gacha Currencies, Outfit and Welkin
 8. Purchasable Outfits and Blessing of the Welkin Moon
-9. Shared Pity with previous banner, User can continuously gacha on different banner version without reset pity.
-10. **Wish Details** for every banner.
+9. Shared Pity with previous banner, User can continuously gacha on different patch without reseting pity.
+10. **Wish Details** for each banner.
 11. Different banner type has different **Gacha History**
 12. **Inventory** to show all items ( Weapons, Characters and Outfits ) that already owned by gacha or purchasement
 13. Screenshot and download wish result as Image localy.
 14. Pity Counter, User can track their current information and history of their pity
 15. Site Localization, So I hope this Wish Sim can reach more people even they aren't english speaker.
 16. Mobile Friendly, responsive layout both landscape and portrait orientation.
-17. Link generator when user want to share their gacha result through internet.
-18. All user's data will saves to localstorage and indexedDB.
+17. Link generator if user want to share their gacha result through internet.
+18. All user data will be saved to local storage and indexedDB.
 
 ## Pity System
 
-I don't know how HoyoVerse's algorithm is, so I tried to create mine as realistic as possible with the following points based on in-game wish details. I also use [GI Gacha Dataset](https://github.com/OneBST/GI_gacha_dataset) as reference for wish probability.
+I don't know how HoyoVerse's algorithm is, so I tried to create mine as realistic as possible with the following points based on in-game wish details. I also use [GI Gacha Dataset](https://github.com/OneBST/GI_gacha_dataset) as reference on creating the wishing probability.
 
 > if you feel luckier when you roll in this simulator, I can tell you it's just a feeling, In the simulator you can do a thousand or more rolls without limit, In real games your wishes are limited by the game currencies, therefore more chance to get multiple \*5 item in this wish simulator
 
@@ -88,7 +88,7 @@ I don't know how HoyoVerse's algorithm is, so I tried to create mine as realisti
    | -------: | :--: | :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--: |
    | **Rate** | 0.7% | 7.7% | 14.7% | 21.7% | 28.7% | 35.7% | 42.7% | 49.7% | 56.7% | 63.7% | 70.7% | 77.7% | 81.2% | 84.7% | 88.2% | 91.7% | 95.2% | 98.7% | 100% |
 
-4. When you guaranteed for *5 and *4 item at the same time, your next pull priority is *5 star item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 star item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
+4. When you guaranteed for *5 and *4 item at the same time, your next pull priority is *5 item and *4 item will appear next at pity 11. For example: On Character Event Banner, you doesn't get *5 item until pity 89 and your *4 pity is 9, So your next pull will looks like screenshot below.
 
    ![double guaranteed](screenshot/double-guaranteed.png)
 
@@ -124,7 +124,7 @@ Then, if you want to serve some assets through cdn, please provide your Github R
 
 The site will use [jsDelivr](https://www.jsdelivr.com/) free cdn service. You also can use another CDN Service like [Statically](https://statically.io/) and [PageCDN](https://pagecdn.com/) for free or use paid service from Azure, AWS and GCP, but You must to setup the configuration yourself.
 
-\*\* You can still deploy the app even without setting environment variables
+\*\* You can still deploy the app without even set the environment variables
 
 ---
 
