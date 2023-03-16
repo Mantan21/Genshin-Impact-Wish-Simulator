@@ -78,11 +78,12 @@
 					"item": [
 						{
 							"name": "the-transcendent-one-returns-2",
-							"character": "shenhe",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 22
-							},
+							"character": "shenhe", 
+                             "buttonBoxPosition": { 
+ 								"w": 180, 
+ 								"t": 20, 
+ 								"l": 30 
+ 							}, 
 							"textOffset": {
 								"t": 78.5,
 								"l": 43
@@ -92,9 +93,8 @@
 							"name": "the-heron_s-court-3",
 						"character": "kamisato-ayaka",
 							"buttonBoxPosition": {
-								"w": 95,
-								"t": 32,
-								"l": 50
+								"w": 82,
+								"t": 32
 							},
 							"textOffset": {
 								"l": 51
@@ -109,21 +109,21 @@
 					"fatepointsystem": true,
 					"featured": [
 						{
-							"name": "calamity-queller",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"t": 15,
-								"w": 90,
-								"l": 60
+							"name": "calamity-queller", 
+							"type": "polearm", 
+ 							"buttonBoxPosition": { 
+							"w": 80, 
+ 							"t": 10, 
+ 							"l": 60 
 							}
 						},
 						{
 							"name": "mistsplitter-reforged",
 							"type": "sword",
 							"buttonBoxPosition": {
-								"t": 5,
-								"w": 80,
-								"l": 35
+ 							"w": 100, 
+ 							"t": -20, 
+						 	"l": 30 
 							}
 						}
 					],
