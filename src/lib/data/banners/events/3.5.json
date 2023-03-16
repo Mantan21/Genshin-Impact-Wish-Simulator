@@ -127,7 +127,7 @@
 							}
 						}
 					],
-					"rateup": ["the-bell", "favonius-warbow", "sacrificial-sword", "wine-and-song", "favonius-lance"],
+					"rateup": ["wine-and-song", "the-bell", "favonius-warbow", "sacrificial-sword", "favonius-lance"],
 					"textOffset": {
 						"featured": { "l": 38.5, "t": 67 },
 						"rateup": { "l": 72.5, "b": 22.5 }
