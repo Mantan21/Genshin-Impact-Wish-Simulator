@@ -81,22 +81,25 @@ const roll = async (banner, indexOfBanner, WishInstance) => {
 		result.stelaFortuna = !isFullConstellation;
 	}
 	result.fateType = result.rarity === 3 ? 'stardust' : 'starglitter';
-	result.fateQty = result.isNew
-		? 0
-		: getMilestoneQty(result.rarity, result.type, isFullConstellation);
+	result.fateQty = getMilestoneQty(result.rarity, result.type, isFullConstellation, result.isNew);
 
 	return result;
 };
 
-const getMilestoneQty = (rarity, type, isFullConstellation) => {
-	if (rarity === 3) return 15;
+const getMilestoneQty = (rarity, type, isFullConstellation, isNew) => {
+	// Always give stargliter or stardust on obtaining weapons
+	if (type === 'weapon') {
+		if (rarity === 3) return 15; // *3
+		if (rarity === 4) return 2; // *4
+		return 10; // *5
+	}
 
-	let charQty;
-	const weaponQty = rarity === 4 ? 2 : 10;
-	if (rarity === 4) charQty = isFullConstellation ? 5 : 2;
-	if (rarity === 5) charQty = isFullConstellation ? 25 : 10;
+	// Don't give Starglitter to newly obtained character
+	if (isNew) return 0;
 
-	return type === 'character' ? charQty : weaponQty;
+	// Give starglitter for duplicate characters
+	if (rarity === 4) return isFullConstellation ? 5 : 2; // *4
+	return isFullConstellation ? 25 : 10; // *5
 };
 
 export default roll;
