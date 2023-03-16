@@ -78,20 +78,20 @@
 					"item": [
 						{
 							"name": "the-transcendent-one-returns-2",
-							"character": "shenhe", 
-                             "buttonBoxPosition": { 
- 								"w": 180, 
- 								"t": 20, 
- 								"l": 30 
- 							}, 
+							"character": "shenhe",
+							"buttonBoxPosition": {
+								"w": 180,
+								"t": 20,
+								"l": 30
+							},
 							"textOffset": {
-								"t": 78.5,
-								"l": 44
+								"t": 67,
+								"l": 50.5
 							}
 						},
 						{
 							"name": "the-heron_s-court-3",
-						"character": "kamisato-ayaka",
+							"character": "kamisato-ayaka",
 							"buttonBoxPosition": {
 								"w": 82,
 								"t": 32
@@ -109,27 +109,33 @@
 					"fatepointsystem": true,
 					"featured": [
 						{
-							"name": "calamity-queller", 
-							"type": "polearm", 
- 							"buttonBoxPosition": { 
-							"w": 80, 
- 							"t": 10, 
- 							"l": 60 
+							"name": "calamity-queller",
+							"type": "polearm",
+							"buttonBoxPosition": {
+								"w": 80,
+								"t": 10,
+								"l": 60
 							}
 						},
 						{
 							"name": "mistsplitter-reforged",
 							"type": "sword",
 							"buttonBoxPosition": {
- 							"w": 100, 
- 							"t": -20, 
-						 	"l": 30 
+								"w": 100,
+								"t": -20,
+								"l": 30
 							}
 						}
 					],
-					"rateup": ["wine-and-song", "the-bell", "favonius-warbow", "sacrificial-sword", "favonius-lance"],
+					"rateup": [
+						"wine-and-song",
+						"the-bell",
+						"favonius-warbow",
+						"sacrificial-sword",
+						"favonius-lance"
+					],
 					"textOffset": {
-						"featured": { "l": 38.5, "t": 67 },
+						"featured": { "l": 38.5, "t": 67, "w": 30 },
 						"rateup": { "l": 72.5, "b": 22.5 }
 					}
 				}
@@ -137,4 +143,3 @@
 		}
 	]
 }
-

@@ -267,11 +267,20 @@
 		},
 		{
 			"date": "27-Feb-2023",
-			"featured": true,
 			"description": [
 				"Add <b>Cyno 1st Rerun</b> Banner",
 				"Add New Character: <b>Dehya ( 5★ )</b>",
 				"Add New Weapon: <b> Beacon of The Reed Sea ( 5★ )</b>"
+			]
+		},
+		{
+			"date": "16-Mar-2023",
+			"featured": true,
+			"description": [
+				"Add <b>Shenhe 1st Rerun</b> Banner",
+				"Add <b>Ayaka 2nd Rerun</b> Banner",
+				"Add New Character: <b>Mika ( 4★ )</b>",
+				"Update Weapon Banner: <b> Mistsplitter Reforged </b> and <b>Qalamity Queller</b>"
 			]
 		}
 	]
