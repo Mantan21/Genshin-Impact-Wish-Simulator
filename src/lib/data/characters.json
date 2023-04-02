@@ -330,7 +330,7 @@
 			"name": "yanfei",
 			"vision": "pyro",
 			"rarity": 4,
-			"release": "1.0-0",
+			"release": "1.5-1",
 			"wishBoxPosition": {
 				"l": 160,
 				"t": 70
@@ -399,7 +399,7 @@
 			"name": "xinyan",
 			"vision": "pyro",
 			"rarity": 4,
-			"release": "1.0-0",
+			"release": "1.1-2",
 			"wishBoxPosition": {
 				"h": 200,
 				"t": 72
@@ -419,7 +419,7 @@
 			"name": "diona",
 			"vision": "cryo",
 			"rarity": 4,
-			"release": "1.0-0",
+			"release": "1.1-1",
 			"wishBoxPosition": {
 				"t": 50,
 				"l": 80,
