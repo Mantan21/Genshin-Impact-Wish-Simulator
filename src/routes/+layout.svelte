@@ -60,12 +60,14 @@
 	setContext('loaded', () => (isloaded = true));
 	setContext('showAd', (show) => (showAd = show));
 
+	const validPaths = ['adkey', 'install', 'privacy-policy', 'screen'];
+	$: isPathValid = validPaths.includes(path[1].toLowerCase());
+
 	mountLocale();
 	onMount(() => {
 		const isCDNHost = $page.url.host.includes('cdn.');
 		if (isCDNHost) return window.location.replace('https://wishsimulator.app/');
-		const available = ['adkey', 'install', 'privacy-policy', 'screen'];
-		if (path[1] && !available.includes(path[1].toLowerCase())) return window.location.replace('/');
+		if (path[1] && !isPathValid) return window.location.replace('/');
 
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
@@ -110,6 +112,10 @@
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}{metaPicture}" />
+
+	{#if path[1] && !isPathValid}
+		<link rel="canonical" href={HOST} />
+	{/if}
 
 	<link
 		rel="preload"

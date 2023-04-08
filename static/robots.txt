@@ -1,5 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: /assets
-Disallow: /images
-Disallow: /videos
+Allow: /install
+Allow: /privacy-policy
+Allow: /$
+Disallow: /
