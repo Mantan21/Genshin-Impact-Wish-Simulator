@@ -241,6 +241,35 @@ button {
 	font-size: 1rem;
 }
 
+input.wishinput {
+	height: 2.3rem;
+	font-size: 90%;
+	width: 100%;
+	border-radius: 10rem;
+	outline: none;
+	padding: 2% 6%;
+	font-family: var(--genshin-font);
+	color: #3b4255;
+	border: 0;
+	transition: 0.2s;
+}
+input.wishinput:focus,
+input.wishinput:hover {
+	border-color: #fff;
+	box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
+}
+:global(.mobile) input.wishinput {
+	height: 2.1rem;
+}
+
+input.wishinput.error {
+	border: #ee6c4c 2px solid;
+}
+input.wishinput.error:focus,
+input.wishinput.error {
+	box-shadow: rgba(222, 47, 34, 0.7) 0px 0px 7px 5px;
+}
+
 h1 {
 	font-size: 1.3rem;
 }
@@ -297,6 +326,12 @@ h1 {
 		width: 2.5rem;
 		height: 2.5rem;
 		margin: 3px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	input.wishinput {
+		font-size: 150%;
 	}
 }
 

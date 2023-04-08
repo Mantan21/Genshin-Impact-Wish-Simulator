@@ -35,7 +35,6 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 .gi-anemo:before {
 	content: '\61';
 }
@@ -190,9 +189,6 @@
 .gi-outfit:before {
 	content: '\74';
 }
-.gi-fullscreen:before {
-	content: '\5a';
-}
 .gi-shrink:before {
 	content: '\30';
 }
@@ -222,4 +218,22 @@
 }
 .gi-eye:before {
 	content: '\39';
+}
+.gi-check:before {
+	content: '\21';
+}
+.gi-chat:before {
+	content: '\5a';
+}
+.gi-fullscreen:before {
+	content: '\23';
+}
+.gi-picture:before {
+	content: '\22';
+}
+.gi-team:before {
+	content: '\24';
+}
+.gi-user:before {
+	content: '\25';
 }

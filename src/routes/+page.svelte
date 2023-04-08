@@ -5,6 +5,8 @@
 <script>
 	import { getContext, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
+	import { CHATROOM } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio.svelte';
 	import {
 		pageActive,
@@ -25,7 +27,6 @@
 	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
 	import MainWish from '$lib/components/wish/MainWish.svelte';
 	import Toast from '$lib/components/utility/Toast.svelte';
-	import { t } from 'svelte-i18n';
 
 	let PrevBanner;
 	let GachaInfo;
@@ -34,6 +35,7 @@
 	let Obtained;
 	let WelkinCheckin;
 	let setBannerVersionAndPhase;
+	let Chats;
 
 	const importChunks = async () => {
 		// Splitting Chunks
@@ -43,6 +45,9 @@
 		ShopSection = (await import('$lib/components/shop/MainShop.svelte')).default;
 		Obtained = (await import('$lib/components/utility/Obtained.svelte')).default;
 		WelkinCheckin = (await import('$lib/components/utility/WelkinCheckin.svelte')).default;
+
+		if (!CHATROOM) return;
+		Chats = (await import('$lib/components/chat/MainChat.svelte')).default;
 	};
 
 	const importHelper = async () => {
@@ -134,6 +139,7 @@
 		});
 	});
 
+	// Milestone Bonus screen
 	let showObtained = false;
 	let obtainedItems = {};
 
@@ -159,6 +165,8 @@
 
 	let welkinCheckin = false;
 	let showDisclaimer = true;
+
+	// Announcement - Notice - Disclaimer
 	const closeDisclaimer = () => {
 		bannerActive.set(0);
 		showDisclaimer = false;
@@ -170,14 +178,26 @@
 	};
 	setContext('closeDisclaimer', closeDisclaimer);
 
+	// Welkin
 	const closeWelkin = () => (welkinCheckin = false);
 	setContext('closeWelkin', closeWelkin);
 
+	// Animated Background
 	let hideBG = false;
 	const bgToggle = (val) => {
 		hideBG = val;
 	};
 	setContext('bgToggle', bgToggle);
+
+	// ChatRoom
+	let chatLoaded = false; // initial load
+	let showChat = false; // toggle hide-show
+	const chatToggle = () => {
+		chatLoaded = true;
+		showChat = !showChat;
+		playSfx(!showChat ? 'click' : 'close');
+	};
+	setContext('chatToggle', chatToggle);
 </script>
 
 {#if showToast}
@@ -192,6 +212,9 @@
 {/if}
 <!-- Obtained Items End -->
 
+{#if CHATROOM && chatLoaded}
+	<svelte:component this={Chats} show={showChat} />
+{/if}
 <svelte:component this={Disclaimer} show={showDisclaimer} />
 <svelte:component this={WelkinCheckin} show={welkinCheckin} />
 

@@ -6,12 +6,19 @@
 	export let type = 'confirm';
 	export let text = '';
 	export let disabled = false;
+	export let light = false;
+	export let width = '';
 
 	const dispatch = createEventDispatcher();
 	const click = () => dispatch('click');
 </script>
 
-<button on:click|preventDefault={click} {disabled}>
+<button
+	on:click|preventDefault={click}
+	{disabled}
+	class:light
+	style={width ? `width:${width}` : ''}
+>
 	{#if type === 'confirm'}
 		<i class="gi-circle-o" />
 	{:else}
@@ -30,11 +37,8 @@
 <style>
 	button {
 		border-radius: 40px;
-		color: white;
-		background-color: #4a5265;
 		align-items: center;
 		padding: 0 0 0 0.3em;
-		width: 200px;
 		max-width: 100%;
 		height: 2.3rem;
 		transition: all 0.2s;
@@ -42,6 +46,16 @@
 		text-align: center;
 		border: 3.5px solid transparent;
 		transition: all 0.2s;
+		width: 200px;
+	}
+	button.light {
+		background-color: #ece5d8;
+		color: #4a5265;
+	}
+
+	button:not(.light) {
+		color: white;
+		background-color: #4a5265;
 	}
 
 	button:active:not(:disabled) {
@@ -49,6 +63,7 @@
 		background-color: #e0ddd4 !important;
 		border-color: rgb(195, 195, 195) !important;
 		box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
+		color: #fff;
 	}
 
 	button:disabled {
@@ -72,6 +87,11 @@
 	button:hover:not(:disabled) {
 		background-color: rgb(51, 57, 71);
 	}
+
+	button.light:hover:not(:disabled) {
+		background-color: #c3b8a1;
+	}
+
 	.gi-times {
 		color: #3f9ad1;
 	}
@@ -80,15 +100,18 @@
 	}
 
 	:global(.mobile) button {
-		width: 130px;
 		height: 2.1rem;
+	}
+	:global(.mobile) button:not(.light) {
+		width: 130px;
 	}
 
 	@media screen and (max-width: 700px) {
 		:global(main):not(.mobile) button {
-			width: 120px;
-			height: 2rem;
 			font-size: 0.85rem;
+		}
+		:global(main):not(.mobile) button:not(.light) {
+			width: 120px;
 		}
 	}
 </style>
