@@ -4,6 +4,7 @@
 	import { beginner } from '$lib/data/banners/beginner.json';
 	import { get4StarChars, getAllChars, getAllWeapons } from '$lib/helpers/wish/wishBase';
 	import Details from './_details.svelte';
+	import { getBannerName } from '$lib/helpers/nameText';
 
 	export let tplVersion;
 
@@ -82,7 +83,7 @@
 			const { character } = $bannerList[$bannerActive];
 			drop5star = this._stdDropChar5;
 			drop5star.unshift({ name: character.character, type: 'character', rateup: true });
-			bannerTitle = $t(`wish.banner.name.${character.name.slice(0, -2)}`, {
+			bannerTitle = $t(`wish.banner.name.${getBannerName(character.name).name}`, {
 				default: 'UnReleased Banner'
 			});
 

@@ -5,7 +5,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { pageActive, query } from '$lib/store/stores';
 	import HistoryIDB from '$lib/store/historyIdb';
-	import { getName } from '$lib/helpers/nameText';
+	import { getBannerName, getName } from '$lib/helpers/nameText';
 
 	export let v2 = false;
 	export let banner = 'beginner';
@@ -34,11 +34,6 @@
 	const search = (bannerName) => {
 		query.set(getName(bannerName));
 		pageActive.set('previous-banner');
-	};
-
-	const bannerLocalesID = (bannerName) => {
-		const splitted = bannerName.split('-');
-		return splitted.slice(0, -1).join('-');
 	};
 
 	afterUpdate(() => {
@@ -82,7 +77,7 @@
 								{#if bannerName}
 									{#if ['events', 'weapons'].includes(banner)}
 										<a href="/" on:click|preventDefault={() => search(bannerName)}>
-											{@html $t(`wish.banner.name.${bannerLocalesID(bannerName)}`)}
+											{@html $t(`wish.banner.name.${getBannerName(bannerName).name}`)}
 										</a>
 									{:else}
 										{$t(`wish.banner.name.wanderlust`)}

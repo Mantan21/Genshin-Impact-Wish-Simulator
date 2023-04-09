@@ -12,6 +12,7 @@
 	import browserState from '$lib/helpers/browserState';
 	import ItemBanner from './_item-banner.svelte';
 	import FormBox from './_form-box.svelte';
+	import { getBannerName } from '$lib/helpers/nameText';
 
 	let allBanners = [];
 	let dataToShow = [];
@@ -77,27 +78,78 @@
 	};
 	setContext('reverse', reverse);
 
+	const translateWp = (bannerName, featured) => {
+		const { number } = getBannerName(bannerName);
+		const tmp = [`${$t(`wish.banner.name.epitome-invocation`)}-${number}`];
+		featured.forEach(({ name }) => {
+			tmp.push($t(name));
+			tmp.push(name);
+		});
+		return tmp;
+	};
+
+	const translateChar = (item) => {
+		const tmp = [];
+		const translate = (name, character) => {
+			const banner = getBannerName(name);
+			tmp.push(character);
+			tmp.push(name);
+			tmp.push($t(`${character}.name`));
+			tmp.push(`${$t(`wish.banner.name.${banner.name}`)}-${banner.number}`);
+		};
+
+		if (Array.isArray(item)) {
+			item.forEach(({ name, character }) => translate(name, character));
+			return tmp;
+		}
+
+		const { name, character } = item;
+		translate(name, character);
+		return tmp;
+	};
+
+	const generateQueryKey = (ver, phase, banners) => {
+		const { events, weapons } = banners;
+		const { rateup, name, featured } = weapons;
+
+		const translatedRateupWp = rateup.map((wp) => $t(wp));
+		const translatedBannerWp = translateWp(name, featured);
+		const translatedRateupCh = events.rateup.map((ch) => $t(`${ch}.name`));
+		const translatedBannerCh = translateChar(events.item);
+		const queryKey = [
+			...translatedRateupWp,
+			...translatedBannerWp,
+			...translatedRateupCh,
+			...translatedBannerCh,
+			...events.rateup,
+			...rateup
+		];
+
+		const result = {
+			queryKey,
+			rateup: [...events.rateup, ...weapons.rateup],
+			weapons: { name: weapons.name, list: weapons.featured },
+			chars: events.item,
+			patch: ver,
+			phase
+		};
+		return result;
+	};
+
 	const checkAllBanner = async () => {
 		const patchList = [];
 		allPatch.forEach((patch) => {
 			const json = import(`../../data/banners/events/${patch.toFixed(1)}.json`);
 			patchList.push(json);
 		});
+
 		const promise = await Promise.all(patchList);
 		const data = promise.map(({ data, patch }) => {
 			patch = patch.toFixed(1);
-			data = data.map(({ phase, banners }) => {
-				let { events, weapons } = banners;
-				return {
-					rateup: [...events.rateup, ...weapons.rateup],
-					weapons: { name: weapons.name, list: weapons.featured },
-					chars: events.item,
-					patch,
-					phase
-				};
-			});
+			data = data.map(({ phase, banners }) => generateQueryKey(patch, phase, banners));
 			return [patch.toString(), data];
 		});
+
 		allBanners = data.reverse();
 		if ($query.trim().length > 0) return handleSearch($query);
 		dataToShow = allBanners;
@@ -107,30 +159,18 @@
 	const handleSearch = (e) => {
 		groupby = 'version';
 		const queryValue = typeof e === 'string' ? e : e.target.value;
-		const query = queryValue.toLocaleLowerCase().trim();
+		const query = queryValue.toLocaleLowerCase().trim().replace(/'/, '');
 		if (query.length < 1) return (dataToShow = allBanners);
 
-		const escaped = query.replace(/'/, '');
-		const check = (t) => t.replace(/_/g, '').replace(/-/g, ' ').includes(escaped);
+		const check = (t) => {
+			const text = t.toLocaleLowerCase();
+			return text.replace(/_/g, '').replace(/-/g, ' ').includes(query);
+		};
+
 		const newArr = allBanners.map(([a, b]) => {
-			const filtered = b.filter(({ chars, weapons, rateup }) => {
-				// Check rateup
-				const rateupChar = rateup.map((name) => check(name));
-				if (rateupChar.includes(true)) return true;
-
-				// Check Character
-				if (Array.isArray(chars)) {
-					const result = chars.map(({ character, name }) => check(character) || check(name));
-					if (result.includes(true)) return true;
-				} else {
-					const result = check(chars.character) || check(chars.name);
-					if (result) return true;
-				}
-
-				// Check Weapon
-				const result = weapons.list.map(({ name }) => check(name));
-				if (result.includes(true)) return true;
-				return check(weapons.name);
+			const filtered = b.filter(({ queryKey }) => {
+				const checkQueryKey = queryKey.map((name) => check(name));
+				return checkQueryKey.includes(true);
 			});
 
 			return [a, filtered];

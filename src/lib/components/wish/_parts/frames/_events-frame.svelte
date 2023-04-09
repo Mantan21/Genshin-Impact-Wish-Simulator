@@ -5,17 +5,15 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { data as charsDB } from '$lib/data/characters.json';
 	import positionToStyle from '$lib/helpers/cssPosition';
+	import { getBannerName } from '$lib/helpers/nameText';
 
 	export let data = {};
 	export let event2 = false;
 
-	const getBannerName = (banner) => {
-		const split = banner.split('-');
-		return split.slice(0, -1).join('-');
-	};
-
 	let character, name, textOffset;
-	$: bannerName = $t(`wish.banner.name.${getBannerName(name)}`, { default: 'UnReleased Banner' });
+	$: bannerName = $t(`wish.banner.name.${getBannerName(name).name}`, {
+		default: 'UnReleased Banner'
+	});
 	$: ({ character, name, textOffset } = data);
 	$: vision = charsDB.find(({ name }) => name === character).vision;
 	$: featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;

@@ -1,3 +1,8 @@
+const getBannerName = (banner) => {
+	const split = banner.split('-');
+	return { name: split.slice(0, -1).join('-'), number: split[split.length - 1] };
+};
+
 const getName = (name) => {
 	if (!name) return name;
 	const removedDelimiter = name.replace(/-/g, ' ').replace(new RegExp('_'), "'");
@@ -26,4 +31,4 @@ const copy = (text) => {
 	});
 };
 
-export { getName, getSlug, copy };
+export { getName, getSlug, copy, getBannerName };
