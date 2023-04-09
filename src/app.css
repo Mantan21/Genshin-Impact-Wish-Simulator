@@ -248,7 +248,7 @@ input.wishinput {
 	border-radius: 10rem;
 	outline: none;
 	padding: 2% 6%;
-	font-family: var(--genshin-font);
+	font-family: var(--gi-global-font);
 	color: #3b4255;
 	border: 0;
 	transition: 0.2s;
@@ -316,6 +316,123 @@ h1 {
 	height: 2rem;
 }
 
+/* Select Option */
+.selector {
+	color: #3a4156;
+	margin: 0 0.5rem;
+	display: inline-block;
+	width: 240px;
+	max-width: 40%;
+	position: relative;
+	text-transform: capitalize;
+	font-size: 0.85rem;
+}
+
+.selected-option {
+	background-color: #ede5d8;
+	padding: 0.45rem 2rem 0.45rem 1.5rem;
+	border-radius: 10rem;
+	transition: all 0.2s;
+}
+
+.selected-option i {
+	display: inline-block;
+	position: absolute;
+	right: 1rem;
+}
+
+.sort-button:active,
+.selected-option:active {
+	color: #fff;
+	border-color: darkgray;
+}
+
+.sort-button:hover,
+.selected-option:hover {
+	border-color: #fff;
+	box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
+}
+
+.option-list {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: #565a64;
+	border-radius: 1rem;
+	padding: 1% 1.5%;
+	z-index: +10;
+	overflow: hidden;
+}
+
+.option-list.above {
+	top: -10%;
+	transform: translateY(-100%);
+}
+
+.option-list.below {
+	top: 110%;
+}
+
+.option-list a {
+	position: relative;
+	padding: 0.85rem 1rem;
+	margin: 0.5% 0;
+	text-decoration: none;
+	color: #eee;
+	transition: all 0.2s;
+}
+
+.option-list a.selected,
+.option-list a:hover {
+	background-color: #717887;
+	border-radius: 2rem;
+}
+
+.option-list a.selected::after {
+	content: '✔';
+	color: #eee;
+	position: absolute;
+	display: block;
+	top: 50%;
+	right: 8%;
+	font-size: 170%;
+	line-height: 0;
+	transform: translateY(-50%);
+}
+
+/* Button */
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 1.8rem;
+	height: 1.8rem;
+	line-height: 0rem;
+	color: #3a4156;
+	background-color: #ede5d8;
+	font-size: 1rem;
+	border-radius: 100%;
+	transition: 0.2s;
+}
+
+.btn:active {
+	color: #fff;
+	border-color: darkgray;
+}
+
+.btn:hover {
+	border-color: #fff;
+	box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
+}
+
+.gi-exchange {
+	transform: rotate(90deg);
+}
+
+.btn:active {
+	transform: scale(0.9);
+}
 @media screen and (max-width: 900px) {
 	body,
 	html {

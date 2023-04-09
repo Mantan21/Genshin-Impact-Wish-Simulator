@@ -132,7 +132,7 @@
 	};
 
 	let content;
-	onMount(async () => {
+	onMount(() => {
 		OverlayScrollbars(content, {
 			sizeAutoCapable: false,
 			className: 'os-theme-light'
@@ -282,11 +282,11 @@
 			</div>
 			<div class="filter">
 				<div class="row">
-					<button class="sort-button" on:click={reverse} title="Reverse Order">
+					<button class="btn reverse" on:click={reverse} title="Reverse Order">
 						<i class="gi-exchange" />
 					</button>
-					<div class="sort-selector">
-						<div class="selected-order" on:click|stopPropagation={() => selectOrder()}>
+					<div class="selector">
+						<div class="selected-option" on:click|stopPropagation={() => selectOrder()}>
 							{$t('inventory.sort')} / {$t(`inventory.${orderby}`)}
 
 							{#if showOrder}
@@ -297,7 +297,7 @@
 						</div>
 
 						{#if showOrder}
-							<div class="order-list" transition:fade={{ duration: 200 }}>
+							<div class="option-list above" transition:fade={{ duration: 200 }}>
 								{#each ['release', 'rarity', 'name', 'quantity'] as val}
 									<a
 										href="##"
@@ -497,10 +497,12 @@
 		opacity: unset;
 		background-color: #3a4156;
 	}
+
 	:global(.mobile) nav .nav-link.active {
 		color: #3a4156;
 		background-color: transparent;
 	}
+
 	:global(.mobile) nav .nav-link::after {
 		position: absolute;
 		top: 0;
@@ -571,100 +573,6 @@
 		display: flex;
 		align-items: center;
 		padding: 0 2%;
-	}
-
-	.sort-button {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 1.8rem;
-		height: 1.8rem;
-		line-height: 0rem;
-		color: #3a4156;
-		background-color: #ede5d8;
-		transform: rotate(90deg);
-		font-size: 1rem;
-		border-radius: 100%;
-		transition: 0.2s;
-	}
-	.sort-button:active {
-		transform: rotate(90deg) scale(0.9);
-	}
-
-	.sort-button:active,
-	.selected-order:active {
-		color: #fff;
-		border-color: darkgray;
-	}
-
-	.sort-button:hover,
-	.selected-order:hover {
-		border-color: #fff;
-		box-shadow: rgb(160 175 190 / 60%) 0px 0px 7px 5px;
-	}
-
-	.sort-selector {
-		color: #3a4156;
-		margin: 0 0.5rem;
-		display: inline-block;
-		width: 240px;
-		max-width: 40%;
-		position: relative;
-		text-transform: capitalize;
-		font-size: 0.85rem;
-	}
-	.selected-order {
-		background-color: #ede5d8;
-		padding: 0.45rem 1rem;
-		border-radius: 10rem;
-		transition: all 0.2s;
-	}
-
-	.selected-order i {
-		display: inline-block;
-		position: absolute;
-		right: 1rem;
-	}
-
-	.order-list {
-		position: absolute;
-		top: -10%;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		background-color: #565a64;
-		transform: translateY(-100%);
-		border-radius: 1rem;
-		padding: 1% 1.5%;
-		z-index: +10;
-		overflow: hidden;
-	}
-
-	.order-list a {
-		position: relative;
-		padding: 0.85rem 1rem;
-		margin: 0.5% 0;
-		text-decoration: none;
-		color: #eee;
-		transition: all 0.2s;
-	}
-
-	.order-list a.selected,
-	.order-list a:hover {
-		background-color: #717887;
-		border-radius: 2rem;
-	}
-
-	.order-list a.selected::after {
-		content: '✔';
-		color: #eee;
-		position: absolute;
-		display: block;
-		top: 50%;
-		right: 8%;
-		font-size: 170%;
-		line-height: 0;
-		transform: translateY(-50%);
 	}
 
 	.showAll {
