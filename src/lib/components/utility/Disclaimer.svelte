@@ -6,6 +6,7 @@
 	import { isMobile, isPWA } from '$lib/store/stores';
 	import Modal from './ModalTpl.svelte';
 	import { adKey } from '$lib/helpers/accessKey';
+	import { browserDetect } from '$lib/helpers/mobileDetect';
 
 	export let show = true;
 	let content;
@@ -41,7 +42,15 @@
 				<a href="/install">{$t('installInstruction')}</a>
 			{/if}
 		</p>
-		{#if dateExpired && dateExpired !== 'none'}
+		{#if !browserDetect().isSupported && isPWA}
+			<div class="updates adExpired">
+				<strong>
+					We highly recommend you to install <span style="display: inline; color:#5ab3ff"
+						>Google Chrome</span
+					> First, Maybe some features won't work properly for now!
+				</strong>
+			</div>
+		{:else if dateExpired && dateExpired !== 'none'}
 			<div class="updates adExpired">
 				<div>
 					{@html $t('menu.keyExpired2', {

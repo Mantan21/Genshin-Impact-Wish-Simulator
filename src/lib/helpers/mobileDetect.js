@@ -20,4 +20,26 @@ const mobileDetect = () => {
 	return navigator?.userAgentData?.mobile || checkUserAgent(userAgent) || checkViewport();
 };
 
-export { mobileDetect };
+const browserDetect = () => {
+	const winNav = window.navigator;
+	const userAgent = winNav.userAgent;
+	const isIOSChrome = userAgent.match('CriOS');
+
+	if (isIOSChrome) return { isSupported: true, ios: true };
+
+	const chromium = window.chrome;
+	const vendorName = winNav.vendor;
+	const isOpera = typeof window.opr !== 'undefined';
+	const isIEedge = userAgent.indexOf('Edg') > -1;
+	const isFirefox = userAgent.indexOf('Firefox') > -1;
+
+	const isChromium = chromium !== null && typeof chromium !== 'undefined';
+	const isBrowserSupport =
+		isChromium || vendorName === 'Google Inc.' || isOpera || isIEedge || isFirefox;
+
+	if (isBrowserSupport) return { isSupported: true };
+
+	return { isSupported: false };
+};
+
+export { mobileDetect, browserDetect };
