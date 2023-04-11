@@ -103,10 +103,13 @@
 		loadedData = allData.map((dd) => {
 			const d = filterObjProps(dd);
 			const owned = dataFromIDB.find(({ name }) => d.name === name);
+
 			d.type = activeItem;
 			if (d.type === 'character') {
+				d.localName = $t(`${d.name}.name`);
 				d.outfit = checkActiveOutfit(d.name)?.name;
 			}
+			if (d.type === 'weapon') d.localName = $t(d.name);
 
 			if (!owned) {
 				d.qty = 0;
@@ -154,8 +157,8 @@
 		}
 		if (order === 'name') {
 			dataToShow = dataToShow.sort((a, b) => {
-				if (a.name > b.name) return 1;
-				if (a.name < b.name) return -1;
+				if (a.localName > b.localName) return 1;
+				if (a.localName < b.localName) return -1;
 				return 0;
 			});
 		}
