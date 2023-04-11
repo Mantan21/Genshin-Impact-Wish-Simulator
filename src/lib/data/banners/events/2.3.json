@@ -10,11 +10,6 @@
 						{
 							"name": "secretum-secretorum-2",
 							"character": "albedo",
-							"buttonBoxPosition": {
-								"w": 170,
-								"t": 28,
-								"l": 50
-							},
 							"textOffset": {
 								"l": 55.5,
 								"b": 9
@@ -23,10 +18,6 @@
 						{
 							"name": "born-of-ocean-swell-2",
 							"character": "eula",
-							"buttonBoxPosition": {
-								"w": 140,
-								"t": 32
-							},
 							"textOffset": {
 								"l": 57,
 								"b": 11
@@ -39,21 +30,10 @@
 					"name": "epitome-invocation-21",
 					"fatepointsystem": true,
 					"featured": [
-						{
-							"name": "freedom-sworn",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"t": -10,
-								"w": 100,
-								"l": 30
-							}
-						},
+						{ "name": "freedom-sworn" },
 						{
 							"name": "song-of-broken-pines",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"t": 10,
-								"w": 80,
+							"buttonPosition": {
 								"l": 60
 							}
 						}
@@ -83,44 +63,22 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "oni_s-royale-1",
-						"character": "arataki-itto",
-						"buttonBoxPosition": {
-							"w": 190,
-							"t": 30,
-							"l": 50
-						},
-						"textOffset": {
-							"l": 50,
-							"b": 9.5
+					"item": [
+						{
+							"name": "oni_s-royale-1",
+							"character": "arataki-itto",
+							"textOffset": {
+								"l": 50,
+								"b": 9.5
+							}
 						}
-					},
+					],
 					"rateup": ["barbara", "xiangling", "gorou"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-22",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "skyward-harp",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"t": 10,
-								"w": 80,
-								"l": 35
-							}
-						},
-						{
-							"name": "redhorn-stonethresher",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"t": 10,
-								"w": 80,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "skyward-harp" }, { "name": "redhorn-stonethresher" }],
 					"rateup": [
 						"the-alley-flash",
 						"mitternachts-waltz",

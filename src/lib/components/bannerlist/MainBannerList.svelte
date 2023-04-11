@@ -29,14 +29,9 @@
 		const char = {};
 		allBanners.forEach((data) => {
 			data[1].forEach((dt) => {
-				if (Array.isArray(dt.chars)) {
-					dt.chars.forEach(({ character }) => {
-						char[character] = [...(char[character] || []), dt];
-					});
-				} else {
-					const { character } = dt.chars;
+				dt.chars.forEach(({ character }) => {
 					char[character] = [...(char[character] || []), dt];
-				}
+				});
 			});
 		});
 		dataToShow = sort(Object.entries(char));
@@ -98,13 +93,7 @@
 			tmp.push(`${$t(`wish.banner.name.${banner.name}`)}-${banner.number}`);
 		};
 
-		if (Array.isArray(item)) {
-			item.forEach(({ name, character }) => translate(name, character));
-			return tmp;
-		}
-
-		const { name, character } = item;
-		translate(name, character);
+		item.forEach(({ name, character }) => translate(name, character));
 		return tmp;
 	};
 

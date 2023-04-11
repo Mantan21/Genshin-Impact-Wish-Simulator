@@ -6,43 +6,24 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "invitation-to-mundane-life-1",
-						"character": "xiao",
-						"buttonBoxPosition": {
-							"w": 140,
-							"t": 30,
-							"l": 50
-						},
-						"textOffset": {
-							"l": 57.5,
-							"b": 5
+					"item": [
+						{
+							"name": "invitation-to-mundane-life-1",
+							"character": "xiao",
+							"textOffset": {
+								"l": 57.5,
+								"b": 5
+							}
 						}
-					},
+					],
 					"rateup": ["xinyan", "beidou", "diona"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-7",
 					"fatepointsystem": false,
 					"featured": [
-						{
-							"name": "primordial-jade-winged-spear",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 30
-							}
-						},
-						{
-							"name": "primordial-jade-cutter",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 100,
-								"t": -14,
-								"l": 60
-							}
-						}
+						{ "name": "primordial-jade-winged-spear" },
+						{ "name": "primordial-jade-cutter" }
 					],
 					"rateup": [
 						"rust",
@@ -69,43 +50,24 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "dance-of-lantern-1",
-						"character": "keqing",
-						"buttonBoxPosition": {
-							"w": 150,
-							"t": 22,
-							"l": 50
-						},
-						"textOffset": {
-							"l": 57.5,
-							"b": 4.5
+					"item": [
+						{
+							"name": "dance-of-lantern-1",
+							"character": "keqing",
+							"textOffset": {
+								"l": 57.5,
+								"b": 4.5
+							}
 						}
-					},
+					],
 					"rateup": ["barbara", "bennett", "ningguang"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-8",
 					"fatepointsystem": false,
 					"featured": [
-						{
-							"name": "wolf_s-gravestone",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 15,
-								"l": 35
-							}
-						},
-						{
-							"name": "staff-of-homa",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 90,
-								"t": 15,
-								"l": 60
-							}
-						}
+						{ "name": "wolf_s-gravestone", "buttonPosition": { "l": 35 } },
+						{ "name": "staff-of-homa" }
 					],
 					"rateup": [
 						"lion_s-roar",
@@ -132,18 +94,16 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "moment-of-bloom-1",
-						"character": "hu-tao",
-						"buttonBoxPosition": {
-							"w": 160,
-							"t": 22
-						},
-						"textOffset": {
-							"l": 57.5,
-							"b": 4.5
+					"item": [
+						{
+							"name": "moment-of-bloom-1",
+							"character": "hu-tao",
+							"textOffset": {
+								"l": 57.5,
+								"b": 4.5
+							}
 						}
-					},
+					],
 					"rateup": ["xiangling", "chongyun", "xingqiu"]
 				},
 				"weapons": {
@@ -152,22 +112,9 @@
 					"featured": [
 						{
 							"name": "wolf_s-gravestone",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 15,
-								"l": 35
-							}
+							"buttonPosition": { "l": 35 }
 						},
-						{
-							"name": "staff-of-homa",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 90,
-								"t": 15,
-								"l": 60
-							}
-						}
+						{ "name": "staff-of-homa" }
 					],
 					"rateup": [
 						"lion_s-roar",

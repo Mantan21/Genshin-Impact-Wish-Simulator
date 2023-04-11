@@ -10,21 +10,11 @@
 						{
 							"name": "twilight-arbiter-1",
 							"character": "cyno",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 35,
-								"l": 55
-							},
 							"textOffset": { "l": 55, "b": 10 }
 						},
 						{
 							"name": "ballad-in-goblets-4",
 							"character": "venti",
-							"buttonBoxPosition": {
-								"w": 180,
-								"t": 30,
-								"l": 50
-							},
 							"textOffset": { "l": 55, "b": 10.5 }
 						}
 					],
@@ -34,26 +24,7 @@
 				"weapons": {
 					"name": "epitome-invocation-35",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "elegy-for-the-end",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"t": 5,
-								"w": 80,
-								"l": 65
-							}
-						},
-						{
-							"name": "staff-of-the-scarlet-sands",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 30
-							}
-						}
-					],
+					"featured": [{ "name": "elegy-for-the-end" }, { "name": "staff-of-the-scarlet-sands" }],
 					"rateup": [
 						"makhaira-aquamarine",
 						"lion_s-roar",
@@ -77,21 +48,11 @@
 						{
 							"name": "twirling-lotus-1",
 							"character": "nilou",
-							"buttonBoxPosition": {
-								"w": 145,
-								"t": 35,
-								"l": 55
-							},
 							"textOffset": { "l": 55, "b": 10 }
 						},
 						{
 							"name": "secretum-secretorum-3",
 							"character": "albedo",
-							"buttonBoxPosition": {
-								"w": 150,
-								"t": 30,
-								"l": 50
-							},
 							"textOffset": { "l": 55, "b": 10.5 }
 						}
 					],
@@ -101,26 +62,7 @@
 				"weapons": {
 					"name": "epitome-invocation-36",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "key-of-khaj-nisut",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"t": -10,
-								"w": 90,
-								"l": 30
-							}
-						},
-						{
-							"name": "primordial-jade-cutter",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 90,
-								"l": 65,
-								"t": -10
-							}
-						}
-					],
+					"featured": [{ "name": "key-of-khaj-nisut" }, { "name": "primordial-jade-cutter" }],
 					"rateup": [
 						"xiphos-moonlight",
 						"dragon_s-bane",

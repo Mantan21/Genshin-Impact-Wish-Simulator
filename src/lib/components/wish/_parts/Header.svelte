@@ -144,8 +144,7 @@
 			<BannerButton
 				{type}
 				index={i}
-				character={character || ''}
-				weapons={weapons || []}
+				bannerData={character || weapons || {}}
 				active={$bannerActive === i}
 				on:click={() => buttonClick(i)}
 			/>

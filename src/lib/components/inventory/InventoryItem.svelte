@@ -1,12 +1,11 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { t } from 'svelte-i18n';
-	import { getName } from '$lib/helpers/nameText';
 	import { assets } from '$lib/store/stores';
 
 	export let rarity = 3;
 	export let type = 'character';
-	export let name = 'No Name';
+	export let name = '';
+	export let localName = '';
 	export let vision = '';
 	export let weaponType = '';
 	export let qty = 0;
@@ -36,7 +35,7 @@
 		{#if type === 'character'}
 			<img
 				src={$assets[`face/${outfit || name}`]}
-				alt={getName(name)}
+				alt={localName}
 				on:error={(e) => e.target.remove()}
 				loading="lazy"
 				crossorigin="anonymous"
@@ -45,7 +44,7 @@
 		{:else}
 			<img
 				src={$assets[name]}
-				alt={getName(name)}
+				alt={localName}
 				class={weaponType}
 				loading="lazy"
 				crossorigin="anonymous"
@@ -63,7 +62,7 @@
 			{/each}
 		</div>
 		<span>
-			{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+			{localName}
 		</span>
 	</div>
 </div>

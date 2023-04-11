@@ -6,39 +6,18 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "sparkling-steps-2",
-						"character": "klee",
-						"buttonBoxPosition": {
-							"w": 110,
-							"t": 32
+					"item": [
+						{
+							"name": "sparkling-steps-2",
+							"character": "klee"
 						}
-					},
+					],
 					"rateup": ["fischl", "barbara", "sucrose"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-13",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "lost-prayer-to-the-sacred-winds",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 40,
-								"l": 40
-							}
-						},
-						{
-							"name": "skyward-pride",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 10,
-								"l": 65
-							}
-						}
-					],
+					"featured": [{ "name": "lost-prayer-to-the-sacred-winds" }, { "name": "skyward-pride" }],
 					"rateup": [
 						"mitternachts-waltz",
 						"the-widsith",
@@ -58,42 +37,19 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "leaves-in-the-wind-1",
-						"character": "kaedehara-kazuha",
-						"buttonBoxPosition": {
-							"w": 110,
-							"t": 32
-						},
-						"textOffset": {
-							"w": 25
+					"item": [
+						{
+							"name": "leaves-in-the-wind-1",
+							"character": "kaedehara-kazuha",
+							"textOffset": { "w": 25 }
 						}
-					},
+					],
 					"rateup": ["rosaria", "bennett", "razor"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-14",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "freedom-sworn",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 100,
-								"t": -20,
-								"l": 25
-							}
-						},
-						{
-							"name": "skyward-atlas",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 75,
-								"t": 40,
-								"l": 72
-							}
-						}
-					],
+					"featured": [{ "name": "freedom-sworn" }, { "name": "skyward-atlas" }],
 					"rateup": [
 						"alley-hunter",
 						"wine-and-song",

@@ -42,33 +42,21 @@
 		href="/"
 		class="item"
 		on:click|preventDefault={() => selectBanner(patch, phase)}
-		title="{Array.isArray(chars)
-			? getName(chars.map(({ character }) => character).join(', '))
-			: getName(chars.character)} & {getName(weapons.list.map(({ name }) => name).join(', '))}"
+		title={getName(chars.map(({ character }) => character).join(', '))}
 	>
 		<div class="banner">
-			<div class:dual={Array.isArray(chars) && chars?.length > 1}>
-				{#if Array.isArray(chars)}
-					{#each chars as { character, name }, i}
-						<img
-							src="/images/banner/thumbnail/{name}.webp"
-							alt={getName(character)}
-							class="dual{i + 1}"
-							loading="lazy"
-							style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
-							on:error={(e) => e.target.remove()}
-							crossorigin="anonymous"
-						/>
-					{/each}
-				{:else}
+			<div class:dual={chars?.length > 1}>
+				{#each chars as { character, name }, i}
 					<img
-						src="/images/banner/thumbnail/{chars.name}.webp"
-						alt={getName(chars.name)}
+						src="/images/banner/thumbnail/{name}.webp"
+						alt={getName(character)}
+						class="dual{i + 1}"
 						loading="lazy"
+						style={chars.length > 1 ? '' : `width: 100%; height: 100%`}
 						on:error={(e) => e.target.remove()}
 						crossorigin="anonymous"
 					/>
-				{/if}
+				{/each}
 			</div>
 			<div>
 				<img
@@ -80,11 +68,7 @@
 			</div>
 		</div>
 		<h3 class="name">
-			{#if Array.isArray(chars)}
-				{chars.map(({ character }) => $t(`${character}.name`)).join(', ')}
-			{:else}
-				{$t(`${chars.character}.name`)}
-			{/if}
+			{chars.map(({ character }) => $t(`${character}.name`)).join(', ')}
 			&
 			{weapons.list.map(({ name }) => $t(name)).join(', ')}
 		</h3>
@@ -160,13 +144,13 @@
 		width: 100%;
 	}
 
-	.dual1 {
+	.dual .dual1 {
 		object-position: 60%;
 		width: 40% !important;
 		aspect-ratio: 81.1/99.35;
 		margin-right: auto;
 	}
-	.dual2 {
+	.dual .dual2 {
 		margin-left: auto;
 		object-position: 100%;
 		width: 60% !important;

@@ -6,52 +6,29 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "reign-of-serenity-1",
-						"character": "raiden-shogun",
-						"buttonBoxPosition": {
-							"w": 180,
-							"t": 10
-						},
-						"textOffset": {
-							"l": 61,
-							"b": 13
+					"item": [
+						{
+							"name": "reign-of-serenity-1",
+							"character": "raiden-shogun",
+							"textOffset": {
+								"l": 61,
+								"b": 13
+							}
 						}
-					},
+					],
 					"rateup": ["xiangling", "sucrose", "kujou-sara"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-17",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "engulfing-lightning",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 20,
-								"l": 30
-							}
-						},
-						{
-							"name": "the-unforged",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 20,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "engulfing-lightning" }, { "name": "the-unforged" }],
 					"rateup": ["the-bell", "sacrificial-bow", "favonius-lance", "the-widsith", "lion_s-roar"],
 					"textOffset": {
 						"featured": {
 							"l": 39.5,
 							"w": 30
 						},
-						"rateup": {
-							"l": 76
-						}
+						"rateup": { "l": 76 }
 					}
 				}
 			}
@@ -61,43 +38,24 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "drifting-luminescence-1",
-						"character": "sangonomiya-kokomi",
-						"buttonBoxPosition": {
-							"w": 180,
-							"t": 25,
-							"l": 55
-						},
-						"textOffset": {
-							"w": 23,
-							"l": 51
+					"item": [
+						{
+							"name": "drifting-luminescence-1",
+							"character": "sangonomiya-kokomi",
+							"textOffset": {
+								"w": 23,
+								"l": 51
+							}
 						}
-					},
+					],
 					"rateup": ["rosaria", "xingqiu", "beidou"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-18",
 					"fatepointsystem": true,
 					"featured": [
-						{
-							"name": "primordial-jade-cutter",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 100,
-								"t": -14,
-								"l": 30
-							}
-						},
-						{
-							"name": "everlasting-moonglow",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 20,
-								"l": 60
-							}
-						}
+						{ "name": "primordial-jade-cutter", "buttonPosition": { "l": 25 } },
+						{ "name": "everlasting-moonglow" }
 					],
 					"rateup": [
 						"dragon_s-bane",
@@ -112,9 +70,7 @@
 							"w": 30,
 							"t": 66
 						},
-						"rateup": {
-							"l": 75.5
-						}
+						"rateup": { "l": 75.5 }
 					}
 				}
 			}

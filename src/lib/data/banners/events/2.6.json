@@ -10,11 +10,6 @@
 						{
 							"name": "azure-excursion-1",
 							"character": "kamisato-ayato",
-							"buttonBoxPosition": {
-								"w": 140,
-								"t": 35,
-								"l": 50
-							},
 							"textOffset": {
 								"l": 48,
 								"b": 11
@@ -23,11 +18,6 @@
 						{
 							"name": "ballad-in-goblets-3",
 							"character": "venti",
-							"buttonBoxPosition": {
-								"w": 180,
-								"t": 30,
-								"l": 50
-							},
 							"textOffset": {
 								"l": 53.5,
 								"b": 11
@@ -39,26 +29,7 @@
 				"weapons": {
 					"name": "epitome-invocation-27",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "elegy-for-the-end",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"t": 5,
-								"w": 80,
-								"l": 35
-							}
-						},
-						{
-							"name": "haran-geppaku-futsu",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"t": -35,
-								"w": 120,
-								"l": 55
-							}
-						}
-					],
+					"featured": [{ "name": "elegy-for-the-end" }, { "name": "haran-geppaku-futsu" }],
 					"rateup": ["the-flute", "rust", "dragon_s-bane", "the-widsith", "sacrificial-greatsword"],
 					"textOffset": {
 						"featured": {
@@ -66,9 +37,7 @@
 							"l": 39.5,
 							"t": 67
 						},
-						"rateup": {
-							"l": 79
-						}
+						"rateup": { "l": 79 }
 					}
 				}
 			}
@@ -78,44 +47,23 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "the-heron_s-court-2",
-						"character": "kamisato-ayaka",
-						"buttonBoxPosition": {
-							"w": 82,
-							"t": 32
-						},
-						"textOffset": {
-							"l": 44,
-							"b": 10,
-							"w": 32
+					"item": [
+						{
+							"name": "the-heron_s-court-2",
+							"character": "kamisato-ayaka",
+							"textOffset": {
+								"l": 44,
+								"b": 10,
+								"w": 32
+							}
 						}
-					},
+					],
 					"rateup": ["razor", "rosaria", "sayu"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-28",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "mistsplitter-reforged",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": -20,
-								"l": 30
-							}
-						},
-						{
-							"name": "the-unforged",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 10,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "mistsplitter-reforged" }, { "name": "the-unforged" }],
 					"rateup": [
 						"favonius-codex",
 						"favonius-lance",
@@ -129,9 +77,7 @@
 							"l": 39,
 							"t": 67
 						},
-						"rateup": {
-							"l": 76.5
-						}
+						"rateup": { "l": 76.5 }
 					}
 				}
 			}

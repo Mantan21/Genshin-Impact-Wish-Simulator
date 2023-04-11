@@ -10,20 +10,11 @@
 						{
 							"name": "the-moongrass-enlightenment-1",
 							"character": "nahida",
-							"buttonBoxPosition": {
-								"w": 130,
-								"t": 30
-							},
 							"textOffset": { "l": 48, "b": 8.5 }
 						},
 						{
 							"name": "tapestry-of-golden-flames-3",
 							"character": "yoimiya",
-							"buttonBoxPosition": {
-								"w": 140,
-								"t": 20,
-								"l": 40
-							},
 							"textOffset": { "l": 50 }
 						}
 					],
@@ -33,26 +24,7 @@
 				"weapons": {
 					"name": "epitome-invocation-37",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "a-thousand-floating-dreams",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 30,
-								"l": 65
-							}
-						},
-						{
-							"name": "thundering-pulse",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 10,
-								"l": 35
-							}
-						}
-					],
+					"featured": [{ "name": "a-thousand-floating-dreams" }, { "name": "thundering-pulse" }],
 					"rateup": [
 						"rust",
 						"favonius-lance",
@@ -76,11 +48,6 @@
 						{
 							"name": "everbloom-violet-2",
 							"character": "yae-miko",
-							"buttonBoxPosition": {
-								"w": 170,
-								"t": 24,
-								"l": 50
-							},
 							"textOffset": {
 								"l": 46.6,
 								"b": 13
@@ -89,10 +56,6 @@
 						{
 							"name": "farewell-of-snezhnaya-4",
 							"character": "tartaglia",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 22
-							},
 							"textOffset": {
 								"l": 47,
 								"b": 9
@@ -108,22 +71,9 @@
 					"featured": [
 						{
 							"name": "kagura_s-verity",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 65,
-								"t": 40,
-								"l": 64
-							}
+							"buttonPosition": { "l": 64 }
 						},
-						{
-							"name": "polar-star",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 2,
-								"l": 35
-							}
-						}
+						{ "name": "polar-star" }
 					],
 					"rateup": [
 						"favonius-sword",

@@ -9,21 +9,11 @@
 					"item": [
 						{
 							"name": "viridescent-vigil-1",
-							"character": "tighnari",
-							"buttonBoxPosition": {
-								"w": 95,
-								"t": 35,
-								"l": 30
-							}
+							"character": "tighnari"
 						},
 						{
 							"name": "gentry-of-hermitage-4",
 							"character": "zhongli",
-							"buttonBoxPosition": {
-								"w": 110,
-								"t": 25,
-								"l": 66
-							},
 							"textOffset": {
 								"l": 57,
 								"b": 13
@@ -37,23 +27,10 @@
 					"name": "epitome-invocation-33",
 					"fatepointsystem": true,
 					"featured": [
-						{
-							"name": "hunter_s-path",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"l": 35,
-								"t": 0
-							}
-						},
+						{ "name": "hunter_s-path" },
 						{
 							"name": "vortex-vanquisher",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 20,
-								"l": 60
-							}
+							"buttonPosition": { "l": 60 }
 						}
 					],
 					"rateup": [
@@ -79,20 +56,11 @@
 						{
 							"name": "drifting-luminescence-3",
 							"character": "sangonomiya-kokomi",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 30,
-								"l": 55
-							},
 							"textOffset": { "l": 51, "b": 8 }
 						},
 						{
 							"name": "adrift-in-the-harbor-3",
 							"character": "ganyu",
-							"buttonBoxPosition": {
-								"w": 200,
-								"t": 25
-							},
 							"textOffset": { "l": 57, "b": 12.8 }
 						}
 					],
@@ -102,26 +70,7 @@
 				"weapons": {
 					"name": "epitome-invocation-34",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "amos-bow",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"l": 30,
-								"t": 0
-							}
-						},
-						{
-							"name": "everlasting-moonglow",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 30,
-								"l": 63
-							}
-						}
-					],
+					"featured": [{ "name": "amos-bow" }, { "name": "everlasting-moonglow" }],
 					"rateup": [
 						"sacrificial-sword",
 						"rust",

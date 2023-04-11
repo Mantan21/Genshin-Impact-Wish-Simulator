@@ -10,51 +10,22 @@
 						{
 							"name": "auric-blaze-1",
 							"character": "dehya",
-							"buttonBoxPosition": {
-								"w": 130,
-								"t": 24,
-								"l": 55
-							},
-							"textOffset": {
-								"l": 48.5
-							}
+							"textOffset": { "l": 48.5 }
 						},
 						{
 							"name": "twilight-arbiter-2",
 							"character": "cyno",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 35,
-								"l": 55
-							},
 							"textOffset": { "l": 48.5 }
 						}
 					],
-
 					"rateup": ["barbara", "collei", "bennett"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-43",
 					"fatepointsystem": true,
 					"featured": [
-						{
-							"name": "beacon-of-the-reed-sea",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"t": 10,
-								"w": 70,
-								"l": 30
-							}
-						},
-						{
-							"name": "staff-of-the-scarlet-sands",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 15,
-								"l": 60
-							}
-						}
+						{ "name": "beacon-of-the-reed-sea" },
+						{ "name": "staff-of-the-scarlet-sands" }
 					],
 					"rateup": [
 						"the-alley-flash",
@@ -79,11 +50,6 @@
 						{
 							"name": "the-transcendent-one-returns-2",
 							"character": "shenhe",
-							"buttonBoxPosition": {
-								"w": 180,
-								"t": 20,
-								"l": 30
-							},
 							"textOffset": {
 								"t": 67,
 								"l": 50.5
@@ -92,13 +58,7 @@
 						{
 							"name": "the-heron_s-court-3",
 							"character": "kamisato-ayaka",
-							"buttonBoxPosition": {
-								"w": 82,
-								"t": 32
-							},
-							"textOffset": {
-								"l": 48.5
-							}
+							"textOffset": { "l": 48.5 }
 						}
 					],
 
@@ -107,26 +67,7 @@
 				"weapons": {
 					"name": "epitome-invocation-44",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "calamity-queller",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 60
-							}
-						},
-						{
-							"name": "mistsplitter-reforged",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 100,
-								"t": -20,
-								"l": 30
-							}
-						}
-					],
+					"featured": [{ "name": "calamity-queller" }, { "name": "mistsplitter-reforged" }],
 					"rateup": [
 						"wine-and-song",
 						"the-bell",

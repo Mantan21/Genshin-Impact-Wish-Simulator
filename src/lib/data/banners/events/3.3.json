@@ -10,20 +10,11 @@
 						{
 							"name": "from-ashes-reborn-1",
 							"character": "wanderer",
-							"buttonBoxPosition": {
-								"w": 120,
-								"t": 27
-							},
 							"textOffset": { "l": 58.5, "b": 10.5 }
 						},
 						{
 							"name": "oni_s-royale-3",
 							"character": "arataki-itto",
-							"buttonBoxPosition": {
-								"w": 190,
-								"t": 30,
-								"l": 50
-							},
 							"textOffset": {
 								"w": 30,
 								"l": 56,
@@ -38,24 +29,8 @@
 					"name": "epitome-invocation-39",
 					"fatepointsystem": true,
 					"featured": [
-						{
-							"name": "tulaytullah_s-remembrance",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 30,
-								"l": 35
-							}
-						},
-						{
-							"name": "redhorn-stonethresher",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"t": 10,
-								"w": 70,
-								"l": 60
-							}
-						}
+						{ "name": "tulaytullah_s-remembrance" },
+						{ "name": "redhorn-stonethresher" }
 					],
 					"rateup": [
 						"eye-of-perception",
@@ -80,20 +55,11 @@
 						{
 							"name": "reign-of-serenity-3",
 							"character": "raiden-shogun",
-							"buttonBoxPosition": {
-								"w": 160,
-								"t": 5
-							},
 							"textOffset": { "l": 47, "b": 8.5 }
 						},
 						{
 							"name": "azure-excursion-2",
 							"character": "kamisato-ayato",
-							"buttonBoxPosition": {
-								"w": 140,
-								"t": 35,
-								"l": 50
-							},
 							"textOffset": { "l": 47, "b": 8.5 }
 						}
 					],
@@ -103,26 +69,7 @@
 				"weapons": {
 					"name": "epitome-invocation-40",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "engulfing-lightning",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 20,
-								"l": 25
-							}
-						},
-						{
-							"name": "haran-geppaku-futsu",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"t": -35,
-								"w": 120,
-								"l": 55
-							}
-						}
-					],
+					"featured": [{ "name": "engulfing-lightning" }, { "name": "haran-geppaku-futsu" }],
 					"rateup": [
 						"akuoumaru",
 						"favonius-lance",

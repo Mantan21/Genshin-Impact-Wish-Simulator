@@ -6,45 +6,23 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": {
-						"name": "ballad-in-goblets-1",
-						"character": "venti",
-						"buttonBoxPosition": {
-							"w": 180,
-							"t": 30,
-							"l": 50
-						},
-						"textOffset": {
-							"l": 57.5,
-							"b": 11
+					"item": [
+						{
+							"name": "ballad-in-goblets-1",
+							"character": "venti",
+							"textOffset": {
+								"l": 57.5,
+								"b": 5.8
+							}
 						}
-					},
+					],
 					"rateup": ["xiangling", "fischl", "barbara"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-1",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "amos-bow",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 0,
-								"l": 35
-							}
-						},
-						{
-							"name": "aquila-favonia",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": -10,
-								"l": 65
-							}
-						}
-					],
-					"rateup": ["the-stringless", "favonius-lance", "the-bell", "the-widsith", "the-flute"],
+					"featured": [{ "name": "amos-bow" }, { "name": "aquila-favonia" }],
+					"rateup": ["the-flute", "the-stringless", "favonius-lance", "the-bell", "the-widsith"],
 					"textOffset": {
 						"featured": {
 							"l": 41,
@@ -63,41 +41,23 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": {
-						"name": "sparkling-steps-1",
-						"character": "klee",
-						"buttonBoxPosition": {
-							"w": 110,
-							"t": 32
-						},
-						"textOffset": {
-							"l": 60
+					"item": [
+						{
+							"name": "sparkling-steps-1",
+							"character": "klee",
+							"textOffset": {
+								"l": 60
+							}
 						}
-					},
+					],
 					"rateup": ["sucrose", "xingqiu", "noelle"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-2",
 					"fatepointsystem": false,
 					"featured": [
-						{
-							"name": "lost-prayer-to-the-sacred-winds",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 40,
-								"l": 40
-							}
-						},
-						{
-							"name": "wolf_s-gravestone",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 15,
-								"l": 65
-							}
-						}
+						{ "name": "lost-prayer-to-the-sacred-winds" },
+						{ "name": "wolf_s-gravestone" }
 					],
 					"rateup": [
 						"sacrificial-greatsword",

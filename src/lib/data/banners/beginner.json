@@ -3,11 +3,7 @@
 		"featured": {
 			"name": "beginner",
 			"character": "noelle",
-			"vision": "geo",
-			"buttonBoxPosition": {
-				"w": 100,
-				"t": 30
-			}
+			"vision": "geo"
 		},
 		"characters": [
 			"qiqi",

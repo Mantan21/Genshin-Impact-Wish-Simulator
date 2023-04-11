@@ -6,40 +6,18 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "gentry-of-hermitage-2",
-						"character": "zhongli",
-						"buttonBoxPosition": {
-							"w": 120,
-							"t": 25,
-							"l": 70
+					"item": [
+						{
+							"name": "gentry-of-hermitage-2",
+							"character": "zhongli"
 						}
-					},
+					],
 					"rateup": ["yanfei", "noelle", "diona"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-11",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "summit-shaper",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 90,
-								"t": -10,
-								"l": 30
-							}
-						},
-						{
-							"name": "memory-of-dust",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 65,
-								"t": 30,
-								"l": 65
-							}
-						}
-					],
+					"featured": [{ "name": "summit-shaper" }, { "name": "memory-of-dust" }],
 					"rateup": [
 						"sacrificial-bow",
 						"eye-of-perception",
@@ -59,45 +37,24 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "born-of-ocean-swell-1",
-						"character": "eula",
-						"buttonBoxPosition": {
-							"w": 140,
-							"t": 32
+					"item": [
+						{
+							"name": "born-of-ocean-swell-1",
+							"character": "eula"
 						}
-					},
+					],
 					"rateup": ["beidou", "xinyan", "xingqiu"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-12",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "song-of-broken-pines",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 35
-							}
-						},
-						{
-							"name": "aquila-favonia",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": -10,
-								"l": 65
-							}
-						}
-					],
+					"featured": [{ "name": "song-of-broken-pines" }, { "name": "aquila-favonia" }],
 					"rateup": [
+						"sacrificial-sword",
 						"rust",
 						"sacrificial-fragments",
 						"rainslasher",
-						"dragon_s-bane",
-						"sacrificial-sword"
+						"dragon_s-bane"
 					],
 					"textOffset": {
 						"featured": { "l": 39.5, "t": 71 },

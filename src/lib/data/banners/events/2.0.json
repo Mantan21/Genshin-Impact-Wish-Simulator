@@ -6,43 +6,19 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "the-heron_s-court-1",
-						"character": "kamisato-ayaka",
-						"buttonBoxPosition": {
-							"w": 95,
-							"t": 32
-						},
-						"textOffset": {
-							"l": 51,
-							"w": 28
+					"item": [
+						{
+							"name": "the-heron_s-court-1",
+							"character": "kamisato-ayaka",
+							"textOffset": { "l": 51, "w": 28 }
 						}
-					},
+					],
 					"rateup": ["yanfei", "chongyun", "ningguang"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-15",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "mistsplitter-reforged",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 100,
-								"t": -20,
-								"l": 30
-							}
-						},
-						{
-							"name": "skyward-spine",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "mistsplitter-reforged" }, { "name": "skyward-spine" }],
 					"rateup": [
 						"the-stringless",
 						"favonius-codex",
@@ -62,43 +38,19 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": {
-						"name": "tapestry-of-golden-flames-1",
-						"character": "yoimiya",
-						"buttonBoxPosition": {
-							"w": 150,
-							"t": 20,
-							"l": 40
-						},
-						"textOffset": {
-							"l": 50
+					"item": [
+						{
+							"name": "tapestry-of-golden-flames-1",
+							"character": "yoimiya",
+							"textOffset": { "l": 50 }
 						}
-					},
+					],
 					"rateup": ["sayu", "xinyan", "diona"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-16",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "thundering-pulse",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 10,
-								"l": 35
-							}
-						},
-						{
-							"name": "skyward-blade",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 5,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "thundering-pulse" }, { "name": "skyward-blade" }],
 					"rateup": [
 						"sacrificial-sword",
 						"sacrificial-fragments",

@@ -6,43 +6,22 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": {
-						"name": "farewell-of-snezhnaya-1",
-						"character": "tartaglia",
-						"buttonBoxPosition": {
-							"w": 160,
-							"t": 22
-						},
-						"textOffset": {
-							"l": 44.5,
-							"b": 11
+					"item": [
+						{
+							"name": "farewell-of-snezhnaya-1",
+							"character": "tartaglia",
+							"textOffset": {
+								"l": 44.5,
+								"b": 11
+							}
 						}
-					},
+					],
 					"rateup": ["beidou", "ninggnang", "diona"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-3",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "skyward-harp",
-							"type": "bow",
-							"buttonBoxPosition": {
-								"w": 80,
-								"t": 10,
-								"l": 35
-							}
-						},
-						{
-							"name": "memory-of-dust",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 65,
-								"t": 30,
-								"l": 65
-							}
-						}
-					],
+					"featured": [{ "name": "skyward-harp" }, { "name": "memory-of-dust" }],
 					"rateup": ["rust", "favonius-lance", "rainslasher", "the-flute", "eye-of-perception"],
 					"textOffset": {
 						"featured": {
@@ -62,43 +41,21 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": {
-						"name": "gentry-of-hermitage-1",
-						"character": "zhongli",
-						"buttonBoxPosition": {
-							"w": 120,
-							"t": 25,
-							"l": 70
-						},
-						"textOffset": {
-							"l": 52
+					"item": [
+						{
+							"name": "gentry-of-hermitage-1",
+							"character": "zhongli",
+							"textOffset": {
+								"l": 52
+							}
 						}
-					},
+					],
 					"rateup": ["razor", "xinyan", "chongyun"]
 				},
 				"weapons": {
 					"name": "epitome-invocation-4",
 					"fatepointsystem": false,
-					"featured": [
-						{
-							"name": "vortex-vanquisher",
-							"type": "polearm",
-							"buttonBoxPosition": {
-								"w": 90,
-								"t": 20,
-								"l": 30
-							}
-						},
-						{
-							"name": "the-unforged",
-							"type": "claymore",
-							"buttonBoxPosition": {
-								"w": 60,
-								"t": 20,
-								"l": 60
-							}
-						}
-					],
+					"featured": [{ "name": "vortex-vanquisher" }, { "name": "the-unforged" }],
 					"rateup": [
 						"favonius-warbow",
 						"the-bell",

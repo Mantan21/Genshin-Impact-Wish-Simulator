@@ -1,7 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { data as charDB } from '$lib/data/characters.json';
+	import { data as weaponDB } from '$lib/data/weapons.json';
 	import positionToStyle from '$lib/helpers/cssPosition';
+	import { noticeMark } from '$lib/helpers/noticeMark';
 	import {
 		mobileMode,
 		patchVersion,
@@ -10,13 +13,18 @@
 		assets
 	} from '$lib/store/stores';
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
-	import { noticeMark } from '$lib/helpers/noticeMark';
 
 	export let active = false;
 	export let type = 'events';
-	export let weapons = [];
-	export let character = {};
+	export let bannerData;
 	export let index = 0;
+
+	const buttonOffset = (itemName, buttonPosition = {}) => {
+		const data = type === 'weapons' ? weaponDB : charDB;
+		const { buttonOffset } = data.find(({ name }) => name === itemName) || {};
+		Object.keys(buttonPosition).forEach((key) => (buttonOffset[key] = buttonPosition[key]));
+		return buttonOffset;
+	};
 
 	$: baseNoticeName = `${$patchVersion}-${$bannerPhase}-${index}`;
 	$: isWeapon = type === 'weapons' && $isFatepointSystem;
@@ -53,12 +61,12 @@
 	<i class="gi-companion" />
 	<div class="picture">
 		{#if type === 'weapons'}
-			{#each weapons.featured as { name, buttonBoxPosition, type }}
+			{#each bannerData.featured as { name, buttonPosition }}
 				<img
 					in:fade
 					src={$assets[name]}
 					alt="Weapon Wish"
-					style={buttonStyle(buttonBoxPosition, active)}
+					style={buttonStyle(buttonOffset(name, buttonPosition), active)}
 					on:error={(e) => e.target.remove()}
 					crossorigin="anonymous"
 				/>
@@ -66,9 +74,9 @@
 		{:else}
 			<img
 				in:fade
-				src="/images/characters/banner-button/{character.character}.webp"
+				src="/images/characters/banner-button/{bannerData.character}.webp"
 				alt="{type} Wish"
-				style={buttonStyle(character.buttonBoxPosition, active)}
+				style={buttonStyle(buttonOffset(bannerData.character), active)}
 				on:error={(e) => e.target.remove()}
 				crossorigin="anonymous"
 			/>

@@ -10,20 +10,11 @@
 						{
 							"name": "the-moongrass-enlightenment-2",
 							"character": "nahida",
-							"buttonBoxPosition": {
-								"w": 130,
-								"t": 30
-							},
 							"textOffset": { "l": 50.5, "b": 10 }
 						},
 						{
 							"name": "twirling-lotus-2",
 							"character": "nilou",
-							"buttonBoxPosition": {
-								"w": 145,
-								"t": 35,
-								"l": 55
-							},
 							"textOffset": { "l": 50.5, "b": 10.5 }
 						}
 					],
@@ -33,26 +24,7 @@
 				"weapons": {
 					"name": "epitome-invocation-45",
 					"fatepointsystem": true,
-					"featured": [
-						{
-							"name": "key-of-khaj-nisut",
-							"type": "sword",
-							"buttonBoxPosition": {
-								"t": -10,
-								"w": 90,
-								"l": 30
-							}
-						},
-						{
-							"name": "a-thousand-floating-dreams",
-							"type": "catalyst",
-							"buttonBoxPosition": {
-								"w": 70,
-								"t": 30,
-								"l": 65
-							}
-						}
-					],
+					"featured": [{ "name": "key-of-khaj-nisut" }, { "name": "a-thousand-floating-dreams" }],
 					"rateup": [
 						"xiphos-moonlight",
 						"the-stringless",
