@@ -1,0 +1,71 @@
+{
+	"patch": 3.6,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"item": [
+						{
+							"name": "the-moongrass-enlightenment-2",
+							"character": "nahida",
+							"buttonBoxPosition": {
+								"w": 130,
+								"t": 30
+							},
+							"textOffset": { "l": 50.5, "b": 10 }
+						},
+						{
+							"name": "twirling-lotus-2",
+							"character": "nilou",
+							"buttonBoxPosition": {
+								"w": 145,
+								"t": 35,
+								"l": 55
+							},
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+
+					"rateup": ["dori", "kuki-shinobu", "layla"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-45",
+					"fatepointsystem": true,
+					"featured": [
+						{
+							"name": "key-of-khaj-nisut",
+							"type": "sword",
+							"buttonBoxPosition": {
+								"t": -10,
+								"w": 90,
+								"l": 30
+							}
+						},
+						{
+							"name": "a-thousand-floating-dreams",
+							"type": "catalyst",
+							"buttonBoxPosition": {
+								"w": 70,
+								"t": 30,
+								"l": 65
+							}
+						}
+					],
+					"rateup": [
+						"xiphos-moonlight",
+						"the-stringless",
+						"dragon_s-bane",
+						"favonius-greatsword",
+						"sacrificial-fragments"
+					],
+					"textOffset": {
+						"featured": { "l": 52.5, "t": 71, "w": 23 },
+						"rateup": { "l": 74.5, "b": 19 }
+					}
+				}
+			}
+		}
+	]
+}

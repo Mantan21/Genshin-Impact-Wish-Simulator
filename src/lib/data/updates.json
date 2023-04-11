@@ -275,12 +275,20 @@
 		},
 		{
 			"date": "16-Mar-2023",
-			"featured": true,
 			"description": [
 				"Add <b>Shenhe 1st Rerun</b> Banner",
 				"Add <b>Ayaka 2nd Rerun</b> Banner",
 				"Add New Character: <b>Mika ( 4★ )</b>",
 				"Update Weapon Banner: <b> Mistsplitter Reforged </b> and <b>Qalamity Queller</b>"
+			]
+		},
+		{
+			"date": "11-Apr-2023",
+			"featured": true,
+			"description": [
+				"Add <b>Nahida 1st Rerun</b> Banner",
+				"Add <b>Nilou 1st Rerun</b> Banner",
+				"Update Weapon Banner: <b> Key of Khaj-Nisut </b> and <b>A Thousand Floating Dreams</b>"
 			]
 		}
 	]
