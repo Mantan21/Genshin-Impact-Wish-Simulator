@@ -184,7 +184,6 @@
 }
 .gi-plus:before {
 	content: '\59';
-	font-size: 1.2rem;
 }
 .gi-outfit:before {
 	content: '\74';
@@ -236,4 +235,7 @@
 }
 .gi-user:before {
 	content: '\25';
+}
+.gi-min:before {
+	content: '\26';
 }

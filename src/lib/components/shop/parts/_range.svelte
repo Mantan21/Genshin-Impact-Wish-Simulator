@@ -55,7 +55,7 @@
 		on:mouseup={clearTimers}
 		on:touchend={clearTimers}
 	>
-		<span style="font-size: 1.5rem; margin-top: -0.4rem; margin-left: 0rem"> - </span>
+		<i class="gi-min" />
 	</button>
 	<div class="control">
 		<span style="pointer-events:none">{minRange}</span>
@@ -228,13 +228,11 @@
 		position: absolute;
 		width: 2rem;
 		height: 2rem;
-		padding: 0.5rem;
 		color: #fff;
 		border-radius: 100%;
 		border: 0.2rem solid transparent;
 		top: 50%;
 		transform: translateY(-50%);
-		line-height: 0;
 		transition: all 0.2s;
 	}
 
@@ -244,6 +242,5 @@
 	button.min {
 		left: 7%;
 		z-index: +3;
-		padding-top: 1rem;
 	}
 </style>

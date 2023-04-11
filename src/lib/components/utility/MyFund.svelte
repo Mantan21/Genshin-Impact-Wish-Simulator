@@ -13,7 +13,7 @@
 
 	const handleModal = () => {
 		if (type !== 'primogem') return;
-		if (!showExchangeModal) playSfx('modal');
+		if (!showExchangeModal && isExchangable) playSfx('modal');
 		showExchangeModal = !showExchangeModal;
 	};
 
@@ -59,7 +59,11 @@
 		position: absolute;
 		right: 3px;
 		top: 50%;
-		font-size: 0.75rem;
+		font-size: 110%;
+		line-height: 0;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 		transform: translateY(-50%);
 		transition: all 0.2s;
 	}

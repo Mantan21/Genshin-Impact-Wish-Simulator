@@ -128,7 +128,7 @@
 						</div>
 					</div>
 				{/if}
-				<div class="selector" class:counter={weaponName}>
+				<div class="weapon-selector" class:counter={weaponName}>
 					<div class="bg">
 						<FatepointSVG mode={weaponName ? 'counter' : 'bg'} />
 					</div>
@@ -275,25 +275,25 @@
 		color: #aa8e77;
 	}
 
-	.selector {
+	.weapon-selector {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		color: #383b40;
 	}
-	.selector,
-	.selector > div {
+	.weapon-selector,
+	.weapon-selector > div {
 		position: relative;
 		padding: 5%;
 	}
-	.selector .bg {
+	.weapon-selector .bg {
 		position: absolute;
 		width: 90%;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
-	.counter.selector .bg {
+	.counter.weapon-selector .bg {
 		width: 110%;
 		top: 48%;
 	}

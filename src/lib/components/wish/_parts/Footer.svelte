@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import {
 		bannerActive,
@@ -22,7 +22,6 @@
 
 	import NoticeMark from '$lib/components/utility/NoticeMark.svelte';
 	import ButtonGeneral from '$lib/components/utility/ButtonGeneral.svelte';
-	import EpitomizedButton from '../epitomizedPath/EpitomizedButton.svelte';
 
 	$: fateQty = $isAcquaintUsed ? $acquaint : $intertwined;
 	$: fateType = $isAcquaintUsed ? 'acquaint' : 'intertwined';
@@ -57,12 +56,18 @@
 		playSfx('roll');
 		dispatch('multiRoll');
 	};
+
+	let EpitomizedButton;
+	onMount(async () => {
+		EpitomizedButton = (await import('$lib/components/wish/epitomizedPath/EpitomizedButton.svelte'))
+			.default;
+	});
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">
 	<div class="footer-info">
 		{#if !$mobileMode}
-			<EpitomizedButton />
+			<svelte:component this={EpitomizedButton} />
 			<div class="wish">
 				<div class="starglitter">
 					<Icon type="starglitter" />
