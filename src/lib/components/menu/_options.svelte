@@ -101,7 +101,9 @@
 	};
 
 	const setValues = (e) => {
-		let val = parseInt(e.target.value);
+		let val = e.target.value;
+		val = val.length > 9 ? val.substring(0, 9) : val;
+		val = parseInt(val, 10);
 		const value = !isNaN(val) ? val : 0;
 		switch (name) {
 			case 'primogem':
@@ -124,6 +126,7 @@
 				break;
 		}
 		localBalance.set(name, value);
+		e.target.value = val;
 	};
 </script>
 
@@ -139,8 +142,10 @@
 		<input
 			type="number"
 			class="option-select"
-			on:change={setValues}
+			on:input={setValues}
 			min="0"
+			max="999999999"
+			maxlength="9"
 			value={getValue(name) || 0}
 		/>
 	{:else if name === 'locale'}
