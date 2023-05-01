@@ -284,11 +284,19 @@
 		},
 		{
 			"date": "11-Apr-2023",
-			"featured": true,
 			"description": [
 				"Add <b>Nahida 1st Rerun</b> Banner",
 				"Add <b>Nilou 1st Rerun</b> Banner",
 				"Update Weapon Banner: <b> Key of Khaj-Nisut </b> and <b>A Thousand Floating Dreams</b>"
+			]
+		},
+		{
+			"date": "1-May-2023",
+			"featured": true,
+			"description": [
+				"Add New Character: <b>Baizhu ( 5★ )</b>",
+				"Add New Weapon: <b> Jadefall's Splendor ( 5★ )</b>",
+				"Add <b>Ganyu 3rd Rerun</b> Banner"
 			]
 		}
 	]

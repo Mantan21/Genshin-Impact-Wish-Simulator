@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"name": "jadefall-splendor",
+			"rarity": 5,
+			"limited": true,
+			"weaponType": "catalyst",
+			"buttonOffset": {
+				"w": 65,
+				"t": 35,
+				"l": 65
+			}
+		},
+		{
 			"name": "beacon-of-the-reed-sea",
 			"rarity": 5,
 			"limited": true,

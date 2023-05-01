@@ -27,6 +27,7 @@
 	"haran-geppaku-futsu": "波乱月白経津",
 	"harbinger-of-dawn": "黎明の神剣",
 	"hunter_s-path": "狩人の道",
+	"jadefall-splendor": "碧落の瓏",
 	"kagura_s-verity": "神楽の真意",
 	"key-of-khaj-nisut": "聖顕の鍵",
 	"lion_s-roar": "匣中龍吟",
@@ -93,6 +94,10 @@
 	"arataki-itto": {
 		"name": "荒瀧一斗",
 		"title": "花坂豪快"
+	},
+	"baizhu": {
+		"name": "白朮",
+		"title": "遵生合和"
 	},
 	"barbara": {
 		"name": "バーバラ",
@@ -181,6 +186,10 @@
 	"kamisato-ayato": {
 		"name": "神里綾人",
 		"title": "磐祭葉守"
+	},
+	"kaveh": {
+		"name": "カーヴェ",
+		"title": "天穹の鏡"
 	},
 	"keqing": {
 		"name": "刻晴",

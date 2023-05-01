@@ -61,7 +61,7 @@
 			"name": {
 				"wanderlust": "Wanderlust Invocation",
 				"epitome-invocation": "Incarnazione divina",
-				"adrift-in-the-harbor": "Adrift in The Harbor",
+				"adrift-in-the-harbor": "Alla deriva nel porto",
 				"auric-blaze": "Fiamma dorata",
 				"azure-excursion": "Azure Excursion",
 				"ballad-in-goblets": "Ballad in Goblets",
@@ -74,6 +74,7 @@
 				"farewell-of-snezhnaya": "Farewell of Snezhnaya",
 				"from-ashes-reborn": "Rinato dalle ceneri",
 				"gentry-of-hermitage": "Gentry of Hermitage",
+				"immaculate-pulse": "Battito immacolato",
 				"invitation-to-mundane-life": "Invito alla Vita mondana",
 				"leaves-in-the-wind": "Leaves in The Wind",
 				"moment-of-bloom": "Tempo di fioritura",
@@ -82,11 +83,11 @@
 				"secretum-secretorum": "Secretum Secretorum",
 				"sparkling-steps": "Sparkling Steps",
 				"tapestry-of-golden-flames": "Tapestry of Golden Flames",
-				"the-heron_s-court": "The Heron's Court",
-				"the-moongrass-enlightenment": "The Moongrass' Enlightenment",
-				"the-transcendent-one-returns": "The Transcendent One Returns",
+				"the-heron_s-court": "La corte dell'airone",
+				"the-moongrass-enlightenment": "L'illuminazione dell'Erba lunare",
+				"the-transcendent-one-returns": "Evento trascendentale",
 				"twilight-arbiter": "Giudice del crepuscolo",
-				"twirling-lotus": "Twirling Lotus",
+				"twirling-lotus": "Loto volteggiante",
 				"viridescent-vigil": "Viridescent Vigil"
 			}
 		},
@@ -125,8 +126,8 @@
 		"owned": "Già in possesso",
 		"purchasePrompt": "Non hai ancora un personaggio per questo outfit, sei sicuro di volerlo acquistare?",
 		"promptInfo": "Potrai ancora usare questo outfit dopo aver ottenuto il personaggio giusto",
-		"obtained": "ได้รับชุดใหม่แล้ว",
-		"unlocked": "{character}: ปลดล็อคชุดแล้ว",
+		"obtained": "New Outfit Obtained",
+		"unlocked": "{character}: Outfit Unlocked",
 		"item": {
 			"5-star-outrider": {
 				"name": "5-Star Outrider"

@@ -27,6 +27,7 @@
 	"haran-geppaku-futsu": "Харан гэппаку фуцу",
 	"harbinger-of-dawn": "Предвестник зари",
 	"hunter_s-path": "Охотничья тропа",
+	"jadefall-splendor": "Великолепие лазурного свода",
 	"kagura_s-verity": "Истина кагура",
 	"key-of-khaj-nisut": "Ключ Хадж-нисут",
 	"lion_s-roar": "Драконий рык",
@@ -93,6 +94,10 @@
 	"arataki-itto": {
 		"name": "Итто",
 		"title": "Герой Ханамидзаки"
+	},
+	"baizhu": {
+		"name": "Бай Чжу",
+		"title": "Преодоление бренности"
 	},
 	"barbara": {
 		"name": "Барбара",
@@ -181,6 +186,10 @@
 	"kamisato-ayato": {
 		"name": "Аято",
 		"title": "Оплот стойкости"
+	},
+	"kaveh": {
+		"name": "Кавех",
+		"title": "Отражение эмпирея"
 	},
 	"keqing": {
 		"name": "Кэ Цин",

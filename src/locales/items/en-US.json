@@ -2,7 +2,7 @@
 	"a-thousand-floating-dreams": "A Thousand Floating Dreams",
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Alley Hunter",
-	"amos-bow": "Amos Bow",
+	"amos-bow": "Amos' Bow",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
@@ -27,6 +27,7 @@
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Harbinger of Dawn",
 	"hunter_s-path": "Hunter's Path",
+	"jadefall-splendor": "Jadefall's Splendor",
 	"kagura_s-verity": "Kagura's Verity",
 	"key-of-khaj-nisut": "Key of Khaj-Nisut",
 	"light-of-foliar-incision": "Light of Foliar Incision",
@@ -93,6 +94,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Hanamizaka Heroics"
+	},
+	"baizhu": {
+		"name": "Baizhu",
+		"title": "Beyond Mortality"
 	},
 	"barbara": {
 		"name": "Barbara",
@@ -181,6 +186,10 @@
 	"kamisato-ayato": {
 		"name": "Kamisato Ayato",
 		"title": "Pillar of Fortitude"
+	},
+	"kaveh": {
+		"name": "Kaveh",
+		"title": "Empyrean Reflection"
 	},
 	"keqing": {
 		"name": "Keqing",

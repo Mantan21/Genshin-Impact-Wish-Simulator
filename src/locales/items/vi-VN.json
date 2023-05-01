@@ -27,6 +27,7 @@
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Thần Kiếm Lê Minh",
 	"hunter_s-path": "Con Đường Thợ Săn",
+	"jadefall-splendor": "Ngọc Bích Huy Hoàng",
 	"kagura_s-verity": "Chân Ý Của Kagura",
 	"key-of-khaj-nisut": "Chìa Khóa Khaj-Nisut",
 	"lion_s-roar": "Tiếng Hét Của Rồng",
@@ -93,6 +94,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Quái Kiệt Hanamizaka"
+	},
+	"baizhu": {
+		"name": "Baizhu",
+		"title": "Sinh Tử Giao Hòa"
 	},
 	"barbara": {
 		"name": "Barbara",
@@ -181,6 +186,10 @@
 	"kamisato-ayato": {
 		"name": "Kamisato Ayato",
 		"title": "Trụ Cột Vững Vàng"
+	},
+	"kaveh": {
+		"name": "Kaveh",
+		"title": "Lăng Kính Vòm Trời"
 	},
 	"keqing": {
 		"name": "Keqing",

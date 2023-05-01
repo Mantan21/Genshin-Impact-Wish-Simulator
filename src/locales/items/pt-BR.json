@@ -27,6 +27,7 @@
 	"haran-geppaku-futsu": "Maremoto da Lua de Futsu",
 	"harbinger-of-dawn": "Prenúncio do Alvorecer",
 	"hunter_s-path": "Caminho do Caçador",
+	"jadefall-splendor": "Esplendor Índigo",
 	"kagura_s-verity": "Prova de Kagura",
 	"key-of-khaj-nisut": "Chave de Hierofania",
 	"light-of-foliar-incision": "Luz das Folhas Cortadas",
@@ -93,6 +94,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Heroísmo de Hanamizaka"
+	},
+	"baizhu": {
+		"name": "Baizhu",
+		"title": "Além da Mortalidade"
 	},
 	"barbara": {
 		"name": "Barbara",
@@ -181,6 +186,10 @@
 	"kamisato-ayato": {
 		"name": "Kamisato Ayato",
 		"title": "Pilar da Fortaleza"
+	},
+	"kaveh": {
+		"name": "Kaveh",
+		"title": "Refletor Empíreo"
 	},
 	"keqing": {
 		"name": "Keqing",

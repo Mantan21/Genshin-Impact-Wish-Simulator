@@ -2,6 +2,32 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "baizhu",
+			"vision": "dendro",
+			"rarity": 5,
+			"wishBoxPosition": {
+				"l": 128,
+				"h": 205,
+				"t": 74
+			},
+			"buttonOffset": {
+				"l": 50,
+				"w": 105,
+				"t": 35
+			}
+		},
+		{
+			"name": "kaveh",
+			"vision": "dendro",
+			"rarity": 4,
+			"release": "3.6-2",
+			"wishBoxPosition": {
+				"l": 20,
+				"h": 215,
+				"t": 85
+			}
+		},
+		{
 			"name": "mika",
 			"vision": "cryo",
 			"rarity": 4,
