@@ -292,11 +292,20 @@
 		},
 		{
 			"date": "1-May-2023",
-			"featured": true,
 			"description": [
 				"Add New Character: <b>Baizhu ( 5★ )</b>",
 				"Add New Weapon: <b> Jadefall's Splendor ( 5★ )</b>",
 				"Add <b>Ganyu 3rd Rerun</b> Banner"
+			]
+		},
+		{
+			"date": "1-May-2023",
+			"featured": true,
+			"description": [
+				"Add New Character: <b>Kirara ( 4★ )</b>",
+				"Add <b>Yoimiya 3rd Rerun</b> Banner",
+				"Add <b>Yae Miko 2nd Rerun</b> Banner",
+				"<b>New Gacha Simulator for Honkai: Star Rail <a href='https://hsr.wishsimulator.app' target='_blank'>HSR.WishSimulator.App </a><b> <br/> <img src='https://img.youtube.com/vi/iWC6zwB6obY/maxresdefault.jpg' style='width:90%; margin: .5rem 0' alt='HSR Wish Simulator' />"
 			]
 		}
 	]

@@ -1,0 +1,43 @@
+{
+	"patch": 3.7,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"item": [
+						{
+							"name": "tapestry-of-golden-flames-4",
+							"character": "yoimiya",
+							"textOffset": { "l": 48.5 }
+						},
+						{
+							"name": "everbloom-violet-3",
+							"character": "yae-miko",
+							"textOffset": { "l": 48.6, "b": 8 }
+						}
+					],
+
+					"rateup": ["kirara", "yun-jin", "chongyun"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-47",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "thundering-pulse" },
+						{
+							"name": "kagura_s-verity",
+							"buttonPosition": { "l": 64 }
+						}
+					],
+					"rateup": ["akuoumaru", "the-flute", "dragon_s-bane", "rust", "the-widtsith"],
+					"textOffset": {
+						"featured": { "l": 52.5, "t": 71, "w": 23 },
+						"rateup": { "l": 74.5, "b": 19 }
+					}
+				}
+			}
+		}
+	]
+}

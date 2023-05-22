@@ -2,6 +2,17 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "kirara",
+			"vision": "dendro",
+			"rarity": 4,
+			"release": "3.7-1",
+			"wishBoxPosition": {
+				"l": 98,
+				"h": 200,
+				"t": 78
+			}
+		},
+		{
 			"name": "baizhu",
 			"vision": "dendro",
 			"rarity": 5,
