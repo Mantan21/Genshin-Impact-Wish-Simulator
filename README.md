@@ -8,7 +8,7 @@ I'm not expert, I can't write clean code, but I try to create this Genshin Impac
 
 #### Main Banner
 
-![Main Banner](screenshot/meta-picture.jpg)
+![Main Banner](static/meta-picture.jpg)
 
 #### Layout on Mobile Version
 
