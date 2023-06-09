@@ -38,6 +38,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 3,
+				"events": {
+					"item": [
+						{
+							"name": "caution-in-confidence-2",
+							"character": "alhaitham",
+							"textOffset": { "l": 50.5, "b": 10 }
+						},
+						{
+							"name": "leaves-in-the-wind-3",
+							"character": "kaedehara-kazuha",
+							"textOffset": { "l": 46, "b": 12 }
+						}
+					],
+					"rateup": ["yaoyao", "shikanoin-heizou", "xiangling"]
+				},
+				"weapons": {
+					"name": "epitome-invocation-48",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "light-of-foliar-incision" },
+						{ "name": "freedom-sworn", "buttonPosition": { "l": 60 } }
+					],
+					"rateup": [
+						"wavebreaker_s-fin",
+						"favonius-codex",
+						"favonius-sword",
+						"mouun_s-moon",
+						"sacrificial-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 52, "t": 72, "w": 27 },
+						"rateup": { "l": 80, "b": 18.5 }
+					}
+				}
+			}
 		}
 	]
 }

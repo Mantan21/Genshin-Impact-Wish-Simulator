@@ -300,7 +300,6 @@
 		},
 		{
 			"date": "22-May-2023",
-			"featured": true,
 			"description": [
 				"Add New Character: <b>Kirara ( 4★ )</b>",
 				"Add <b>Yoimiya 3rd Rerun</b> Banner",
@@ -311,7 +310,16 @@
 			"date": "23-May-2023",
 			"featured": true,
 			"description": [
-				"<b>COMING SOON!!!</b> at version 1.1 Update: <br/>Gacha Simulator for Honkai: Star Rail 👉 <b><a href='https://hsr.wishsimulator.app' target='_blank'>HSR.WishSimulator.App </a></b> <br/> <img src='https://img.youtube.com/vi/vaUGgsqe2c4/maxresdefault.jpg' style='width:90%; margin: .5rem 0' alt='HSR Wish Simulator' />"
+				"<b>LIVE NOW!!!</b> <br/>Gacha Simulator for Honkai: Star Rail 👉 <b><a href='https://hsr.wishsimulator.app' target='_blank'>HSR.WishSimulator.App </a></b> <br/> <img src='https://img.youtube.com/vi/vaUGgsqe2c4/maxresdefault.jpg' style='width:90%; margin: .5rem 0' alt='HSR Wish Simulator' />"
+			]
+		},
+		{
+			"date": "16-Mar-2023",
+			"featured": true,
+			"description": [
+				"Add <b>Alhaitam 1st Rerun</b> Banner",
+				"Add <b>Kazuha 3rd Rerun</b> Banner",
+				"Update Weapon Banner: <b> Light in Foliar </b> and <b>Freedom-Sworn</b>"
 			]
 		}
 	]
