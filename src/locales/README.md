@@ -49,7 +49,16 @@ If you are not familiar with javascript especially sveltekit or don't know how t
                SleepyAsh0191
             </a>
          </td>
-      </tr>,
+      </tr>
+      <tr>
+         <td> Deutsch </td>
+         <td>
+            <a href="https://github.com/LA1211">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/70387228?s=20" />
+               LA1211
+            </a>
+         </td>
+      </tr>
       <tr>
          <td> Français </td>
          <td>
