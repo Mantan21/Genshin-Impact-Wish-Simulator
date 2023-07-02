@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "auric-blaze-1",
+							"bannerName": "auric-blaze-1",
 							"character": "dehya",
 							"textOffset": { "l": 48.5 }
 						},
 						{
-							"name": "twilight-arbiter-2",
+							"bannerName": "twilight-arbiter-2",
 							"character": "cyno",
 							"textOffset": { "l": 48.5 }
 						}
@@ -21,7 +21,7 @@
 					"rateup": ["barbara", "collei", "bennett"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-43",
+					"bannerName": "epitome-invocation-43",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "beacon-of-the-reed-sea" },
@@ -46,9 +46,9 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "the-transcendent-one-returns-2",
+							"bannerName": "the-transcendent-one-returns-2",
 							"character": "shenhe",
 							"textOffset": {
 								"t": 67,
@@ -56,7 +56,7 @@
 							}
 						},
 						{
-							"name": "the-heron_s-court-3",
+							"bannerName": "the-heron_s-court-3",
 							"character": "kamisato-ayaka",
 							"textOffset": { "l": 48.5 }
 						}
@@ -65,7 +65,7 @@
 					"rateup": ["diona", "sucrose", "mika"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-44",
+					"bannerName": "epitome-invocation-44",
 					"fatepointsystem": true,
 					"featured": [{ "name": "calamity-queller" }, { "name": "mistsplitter-reforged" }],
 					"rateup": [

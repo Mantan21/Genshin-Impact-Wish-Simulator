@@ -1,13 +1,13 @@
 <script>
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { getCookie, setCookie } from '$lib/store/cookie';
-	import ModalTpl from '../utility/ModalTpl.svelte';
+	import { cookie } from '$lib/store/cookie';
 	import Badwords from '$lib/helpers/chat/badwords';
+	import ModalTpl from '../ModalTpl.svelte';
 
 	let error = false;
 	let errorMsg = '';
-	let newName = getCookie('nickName') || getCookie('travelerID');
+	let newName = cookie.get('nickName') || cookie.get('travelerID');
 	const toggleNick = getContext('toggleNick');
 
 	const setName = () => {
@@ -24,7 +24,7 @@
 			return;
 		}
 		toggleNick();
-		setCookie('nickName', newNick);
+		cookie.set('nickName', newNick);
 	};
 </script>
 

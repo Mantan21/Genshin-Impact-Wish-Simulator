@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "caution-in-confidence-1",
+							"bannerName": "caution-in-confidence-1",
 							"character": "alhaitham",
 							"textOffset": { "l": 48.5 }
 						},
 						{
-							"name": "invitation-to-mundane-life-4",
+							"bannerName": "invitation-to-mundane-life-4",
 							"character": "xiao",
 							"textOffset": { "l": 48.5 }
 						}
@@ -21,7 +21,7 @@
 					"rateup": ["yaoyao", "xinyan", "yun-jin"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-41",
+					"bannerName": "epitome-invocation-41",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "light-of-foliar-incision" },
@@ -40,14 +40,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "moment-of-bloom-3",
+							"bannerName": "moment-of-bloom-3",
 							"character": "hu-tao",
 							"textOffset": { "l": 51 }
 						},
 						{
-							"name": "discerner-of-enigmas-2",
+							"bannerName": "discerner-of-enigmas-2",
 							"character": "yelan",
 							"textOffset": { "l": 51 }
 						}
@@ -56,7 +56,7 @@
 					"rateup": ["xingqiu", "ningguang", "beidou"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-42",
+					"bannerName": "epitome-invocation-42",
 					"fatepointsystem": true,
 					"featured": [{ "name": "staff-of-homa" }, { "name": "aqua-simulacra" }],
 					"rateup": ["lithic-blade", "rust", "favonius-sword", "favonius-codex", "dragon_s-bane"],

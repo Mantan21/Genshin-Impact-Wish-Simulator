@@ -1,10 +1,10 @@
 <script>
 	import { push, ref } from 'firebase/database';
 	import { db } from '$lib/helpers/chat/firebaseApp';
-	import ButtonModal from '../utility/ButtonModal.svelte';
-	import { playSfx } from '$lib/helpers/audio/audio.svelte';
-	import { getCookie } from '$lib/store/cookie';
+	import { playSfx } from '$lib/helpers/audio/audio';
+	import { cookie } from '$lib/store/cookie';
 	import Badwords from '$lib/helpers/chat/badwords';
+	import ButtonModal from '../ButtonModal.svelte';
 
 	export let userId;
 	export let pro = false;
@@ -12,10 +12,10 @@
 
 	// Write to DB
 	const writeUserData = (userId, message) => {
-		const char = JSON.parse(getCookie('avatar') || '{}');
+		const char = cookie.get('avatar');
 		push(ref(db, 'wishsim-chatroom'), {
 			uid: userId,
-			name: getCookie('nickName'),
+			name: cookie.get('nickName'),
 			pic: char.outfit || char.name,
 			pro,
 			message

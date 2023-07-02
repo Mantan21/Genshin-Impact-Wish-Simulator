@@ -1,22 +1,43 @@
 import { outfits } from '$lib/data/outfits.json';
-import { localOutfits } from '$lib/store/localstore';
+import { ownedOutfits } from '$lib/store/localstore-manager';
 
-const checkOutfitAvaibility = (charName) => {
-	if (!charName) return false;
-	const filtered = outfits.filter(({ characterName }) => charName === characterName);
-	return {
-		outfitAvailable: filtered.length > 0,
-		outfitName: filtered[0]?.name,
-		outfitList: filtered
-	};
+export const setActiveOutfit = (obj = {}) => {
+	if (!obj.name) return obj;
+	const { name: outfitName } = ownedOutfits.getByChar(obj.name)?.find(({ isSet }) => isSet) || {};
+	if (!outfitName) return obj;
+	const { wishBoxPosition } = getSplashArtData(outfitName);
+	if (wishBoxPosition) obj.wishBoxPosition = wishBoxPosition;
+	return { ...obj, useOutfit: true, outfitName };
 };
 
-const checkActiveOutfit = (charName) => {
-	if (!charName) return;
-	const { outfitList } = checkOutfitAvaibility(charName);
-	if (outfitList.length < 1) return null;
-	const activeOutfit = outfitList.filter(({ name }) => localOutfits.get(name)?.isSet)[0];
-	return activeOutfit || null;
+export const getSplashArtData = (outfitName) => {
+	const findOutfit = outfits.find(({ name }) => name === outfitName);
+	const { characterName, rarity, wishBoxPosition } = findOutfit || {};
+	const data = { name: characterName, rarity, outfitName, wishBoxPosition, type: 'outfit' };
+	return data;
 };
 
-export { checkOutfitAvaibility, checkActiveOutfit };
+export const outfitListForChar = (charName) => {
+	const list = outfits.filter(({ characterName }) => characterName === charName);
+	const setStatus = list.map((o) => {
+		const localOutfit = ownedOutfits.get(o.name);
+		o.owned = !!localOutfit || !o.release;
+		o.isSet = localOutfit?.isSet || false;
+		return o;
+	});
+	return setStatus;
+};
+
+export const outfitsForThisPatch = ({ patch }) => {
+	const filtered = outfits.filter(({ release }) => release <= parseFloat(patch));
+	const setOwned = filtered.map((outfit) => {
+		outfit.isOwned = !!ownedOutfits.get(outfit.name);
+		return outfit;
+	});
+	return setOwned;
+};
+
+export const isNewOutfitReleased = (patch) => {
+	const filtered = outfits.filter(({ release }) => release === parseFloat(patch));
+	return filtered.length > 0;
+};

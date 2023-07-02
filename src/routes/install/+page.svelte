@@ -1,10 +1,10 @@
 <script>
+	import { onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
-	import { isMobile } from '$lib/store/stores';
+	import { isMobile } from '$lib/store/app-stores';
 	import { html as tutorAndroid } from '$post/install-android.md';
 	import { html as tutorWindows } from '$post/install-windows.md';
-	import { onMount } from 'svelte';
 
 	let selected = 'windows';
 	$: tutor = selected === 'android' ? tutorAndroid : tutorWindows;

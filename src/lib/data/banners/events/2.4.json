@@ -6,28 +6,22 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "the-transcendent-one-returns-1",
+							"bannerName": "the-transcendent-one-returns-1",
 							"character": "shenhe",
-							"textOffset": {
-								"l": 57,
-								"b": 11
-							}
+							"textOffset": { "l": 57, "b": 11 }
 						},
 						{
-							"name": "invitation-to-mundane-life-2",
+							"bannerName": "invitation-to-mundane-life-2",
 							"character": "xiao",
-							"textOffset": {
-								"l": 57,
-								"b": 12.5
-							}
+							"textOffset": { "l": 57, "b": 12.5 }
 						}
 					],
 					"rateup": ["yun-jin", "ningguang", "chongyun"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-23",
+					"bannerName": "epitome-invocation-23",
 					"fatepointsystem": true,
 					"featured": [{ "name": "calamity-queller" }, { "name": "primordial-jade-winged-spear" }],
 					"rateup": [
@@ -38,10 +32,7 @@
 						"the-flute"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 41.5,
-							"t": 68.5
-						},
+						"featured": { "l": 41.5, "t": 68.5 },
 						"rateup": { "l": 78 }
 					}
 				}
@@ -52,28 +43,22 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "gentry-of-hermitage-3",
+							"bannerName": "gentry-of-hermitage-3",
 							"character": "zhongli",
-							"textOffset": {
-								"l": 57,
-								"b": 12
-							}
+							"textOffset": { "l": 57, "b": 12 }
 						},
 						{
-							"name": "adrift-in-the-harbor-2",
+							"bannerName": "adrift-in-the-harbor-2",
 							"character": "ganyu",
-							"textOffset": {
-								"l": 57,
-								"b": 12
-							}
+							"textOffset": { "l": 57, "b": 12 }
 						}
 					],
 					"rateup": ["xingqiu", "yanfei", "beidou"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-24",
+					"bannerName": "epitome-invocation-24",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "vortex-vanquisher" },
@@ -90,11 +75,7 @@
 						"dragon_s-bane"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 41.5,
-							"t": 68,
-							"w": 27
-						},
+						"featured": { "l": 41.5, "t": 68, "w": 27 },
 						"rateup": { "l": 78 }
 					}
 				}

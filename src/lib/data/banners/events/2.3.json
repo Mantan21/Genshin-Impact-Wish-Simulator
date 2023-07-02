@@ -6,36 +6,28 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "secretum-secretorum-2",
+							"bannerName": "secretum-secretorum-2",
 							"character": "albedo",
-							"textOffset": {
-								"l": 55.5,
-								"b": 9
-							}
+							"textOffset": { "l": 55.5, "b": 9 }
 						},
 						{
-							"name": "born-of-ocean-swell-2",
+							"bannerName": "born-of-ocean-swell-2",
 							"character": "eula",
-							"textOffset": {
-								"l": 57,
-								"b": 11
-							}
+							"textOffset": { "l": 57, "b": 11 }
 						}
 					],
 					"rateup": ["bennett", "noelle", "rosaria"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-21",
+					"bannerName": "epitome-invocation-21",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "freedom-sworn" },
 						{
 							"name": "song-of-broken-pines",
-							"buttonPosition": {
-								"l": 60
-							}
+							"buttonPosition": { "l": 60 }
 						}
 					],
 					"rateup": [
@@ -46,14 +38,8 @@
 						"sacrificial-greatsword"
 					],
 					"textOffset": {
-						"featured": {
-							"t": 68,
-							"w": 30
-						},
-						"rateup": {
-							"l": 71,
-							"b": 19
-						}
+						"featured": { "t": 68, "w": 30 },
+						"rateup": { "l": 71, "b": 19 }
 					}
 				}
 			}
@@ -63,20 +49,17 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "oni_s-royale-1",
+							"bannerName": "oni_s-royale-1",
 							"character": "arataki-itto",
-							"textOffset": {
-								"l": 50,
-								"b": 9.5
-							}
+							"textOffset": { "l": 50, "b": 9.5 }
 						}
 					],
 					"rateup": ["barbara", "xiangling", "gorou"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-22",
+					"bannerName": "epitome-invocation-22",
 					"fatepointsystem": true,
 					"featured": [{ "name": "skyward-harp" }, { "name": "redhorn-stonethresher" }],
 					"rateup": [
@@ -87,14 +70,8 @@
 						"the-bell"
 					],
 					"textOffset": {
-						"featured": {
-							"t": 67,
-							"w": 30
-						},
-						"rateup": {
-							"b": 19,
-							"l": 71
-						}
+						"featured": { "t": 67, "w": 30 },
+						"rateup": { "b": 19, "l": 71 }
 					}
 				}
 			}

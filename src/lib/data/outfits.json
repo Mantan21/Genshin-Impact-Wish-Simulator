@@ -25,7 +25,7 @@
 			}
 		},
 		{
-			"version": 1.6,
+			"release": 1.6,
 			"name": "sea-breeze-dandelion",
 			"characterName": "jean",
 			"rarity": 4,
@@ -38,7 +38,7 @@
 			}
 		},
 		{
-			"version": 1.6,
+			"release": 1.6,
 			"name": "summertime-sparkle",
 			"characterName": "barbara",
 			"rarity": 4,
@@ -50,7 +50,7 @@
 			}
 		},
 		{
-			"version": 2.4,
+			"release": 2.4,
 			"name": "opulent-splendor",
 			"characterName": "keqing",
 			"rarity": 4,
@@ -61,7 +61,7 @@
 			}
 		},
 		{
-			"version": 2.4,
+			"release": 2.4,
 			"name": "orchid_s-evening-gown",
 			"characterName": "ningguang",
 			"rarity": 4,
@@ -73,7 +73,7 @@
 			}
 		},
 		{
-			"version": 2.8,
+			"release": 2.8,
 			"name": "ein-immernachtstraum",
 			"characterName": "fischl",
 			"rarity": 4,
@@ -83,7 +83,7 @@
 			}
 		},
 		{
-			"version": 2.8,
+			"release": 2.8,
 			"name": "red-dead-of-night",
 			"characterName": "diluc",
 			"rarity": 5,
@@ -99,7 +99,7 @@
 			}
 		},
 		{
-			"version": 3.4,
+			"release": 3.4,
 			"name": "a-sobriquet-under-shade",
 			"characterName": "lisa",
 			"rarity": 4,
@@ -110,7 +110,7 @@
 			}
 		},
 		{
-			"version": 3.4,
+			"release": 3.4,
 			"name": "springbloom-missive",
 			"characterName": "kamisato-ayaka",
 			"rarity": 4,

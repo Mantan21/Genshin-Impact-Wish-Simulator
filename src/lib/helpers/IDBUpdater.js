@@ -1,4 +1,4 @@
-import HistoryIDB from '$lib/store/historyIdb';
+import HistoryIDB from '$lib/store/IDB-manager';
 import { deleteDB } from 'idb';
 
 const { getByName, addHistory } = HistoryIDB;
@@ -16,4 +16,9 @@ export const IDBUpdater = async () => {
 	updateNameFromIDB('alhaitam', 'alhaitham');
 	await deleteDB('workbox-expiration');
 };
+
+/**
+ * This file is Unused for now
+ * To use this function, call on Layout.svelte inside onMount Scope
+ */
 

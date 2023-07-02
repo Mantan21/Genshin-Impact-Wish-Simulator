@@ -8,8 +8,8 @@ envConfig();
 const { NODE_ENV, USE_CDN, GITHUB_USER, GITHUB_REPO } = process.env;
 
 const cdn_on = NODE_ENV === 'production' && USE_CDN === 'true';
-// const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static`;
-const cdn_url = 'https://cdn.wishsimulator.app';
+const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static`;
+// const cdn_url = 'https://cdn.wishsimulator.app';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

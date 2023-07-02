@@ -6,32 +6,23 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "ballad-in-goblets-1",
+							"bannerName": "ballad-in-goblets-1",
 							"character": "venti",
-							"textOffset": {
-								"l": 57.5,
-								"b": 5.8
-							}
+							"textOffset": { "l": 57.5, "b": 5.8 }
 						}
 					],
 					"rateup": ["xiangling", "fischl", "barbara"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-1",
+					"bannerName": "epitome-invocation-1",
 					"fatepointsystem": false,
 					"featured": [{ "name": "amos-bow" }, { "name": "aquila-favonia" }],
 					"rateup": ["the-flute", "the-stringless", "favonius-lance", "the-bell", "the-widsith"],
 					"textOffset": {
-						"featured": {
-							"l": 41,
-							"t": 76
-						},
-						"rateup": {
-							"l": 75,
-							"b": 18
-						}
+						"featured": { "l": 41, "t": 76 },
+						"rateup": { "l": 75, "b": 18 }
 					}
 				}
 			}
@@ -41,19 +32,17 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "sparkling-steps-1",
+							"bannerName": "sparkling-steps-1",
 							"character": "klee",
-							"textOffset": {
-								"l": 60
-							}
+							"textOffset": { "l": 60 }
 						}
 					],
 					"rateup": ["sucrose", "xingqiu", "noelle"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-2",
+					"bannerName": "epitome-invocation-2",
 					"fatepointsystem": false,
 					"featured": [
 						{ "name": "lost-prayer-to-the-sacred-winds" },
@@ -67,15 +56,8 @@
 						"sacrificial-bow"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 41,
-							"t": 78,
-							"w": 20
-						},
-						"rateup": {
-							"l": 76,
-							"b": 17
-						}
+						"featured": { "l": 41, "t": 78, "w": 20 },
+						"rateup": { "l": 76, "b": 17 }
 					}
 				}
 			}

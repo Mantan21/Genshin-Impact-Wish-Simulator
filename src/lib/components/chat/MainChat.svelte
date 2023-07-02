@@ -3,16 +3,16 @@
 	import { fade, fly } from 'svelte/transition';
 	import { ref, query, limitToLast, onChildAdded } from 'firebase/database';
 	import { db } from '$lib/helpers/chat/firebaseApp';
-	import { mobileMode, viewportWidth } from '$lib/store/stores';
+	import { mobileMode, viewportWidth } from '$lib/store/app-stores';
 	import { getCredential } from '$lib/helpers/chat/firebaseApp';
-	import { playSfx } from '$lib/helpers/audio/audio.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
+	import { adKey } from '$lib/helpers/accessKey';
 
-	import ButtonGeneral from '../utility/ButtonGeneral.svelte';
+	import ButtonGeneral from '../ButtonGeneral.svelte';
 	import Chats from './_chats.svelte';
 	import Sidebar from './_sidebar.svelte';
 	import ChangeNick from './_changeNick.svelte';
 	import ChangeAvatar from './_changeAvatar.svelte';
-	import { adKey } from '$lib/helpers/accessKey';
 	import LoaderChat from './_loader-chat.svelte';
 
 	export let show = false;

@@ -6,20 +6,17 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "everbloom-violet-1",
+							"bannerName": "everbloom-violet-1",
 							"character": "yae-miko",
-							"textOffset": {
-								"l": 61,
-								"b": 12
-							}
+							"textOffset": { "l": 61, "b": 12 }
 						}
 					],
 					"rateup": ["thoma", "diona", "fischl"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-25",
+					"bannerName": "epitome-invocation-25",
 					"fatepointsystem": true,
 					"featured": [{ "name": "kagura_s-verity" }, { "name": "primordial-jade-cutter" }],
 					"rateup": [
@@ -30,11 +27,7 @@
 						"sacrificial-sword"
 					],
 					"textOffset": {
-						"featured": {
-							"w": 31,
-							"l": 35,
-							"t": 68
-						},
+						"featured": { "w": 31, "l": 35, "t": 68 },
 						"rateup": { "b": 23 }
 					}
 				}
@@ -45,14 +38,14 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "reign-of-serenity-2",
+							"bannerName": "reign-of-serenity-2",
 							"character": "raiden-shogun",
 							"textOffset": { "l": 61.5, "b": 13 }
 						},
 						{
-							"name": "drifting-luminescence-2",
+							"bannerName": "drifting-luminescence-2",
 							"character": "sangonomiya-kokomi",
 							"textOffset": { "l": 51, "b": 8, "w": 23 }
 						}
@@ -60,7 +53,7 @@
 					"rateup": ["bennett", "kujou-sara", "xinyan"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-26",
+					"bannerName": "epitome-invocation-26",
 					"fatepointsystem": true,
 					"featured": [{ "name": "engulfing-lightning" }, { "name": "everlasting-moonglow" }],
 					"rateup": [
@@ -71,15 +64,8 @@
 						"sacrificial-fragments"
 					],
 					"textOffset": {
-						"featured": {
-							"w": 34,
-							"l": 35.5,
-							"t": 67.5
-						},
-						"rateup": {
-							"l": 74.5,
-							"b": 23
-						}
+						"featured": { "w": 34, "l": 35.5, "t": 67.5 },
+						"rateup": { "l": 74.5, "b": 23 }
 					}
 				}
 			}

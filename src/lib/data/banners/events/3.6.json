@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 4,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "the-moongrass-enlightenment-2",
+							"bannerName": "the-moongrass-enlightenment-2",
 							"character": "nahida",
 							"textOffset": { "l": 50.5, "b": 10 }
 						},
 						{
-							"name": "twirling-lotus-2",
+							"bannerName": "twirling-lotus-2",
 							"character": "nilou",
 							"textOffset": { "l": 50.5, "b": 10.5 }
 						}
@@ -22,7 +22,7 @@
 					"rateup": ["dori", "kuki-shinobu", "layla"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-45",
+					"bannerName": "epitome-invocation-45",
 					"fatepointsystem": true,
 					"featured": [{ "name": "key-of-khaj-nisut" }, { "name": "a-thousand-floating-dreams" }],
 					"rateup": [
@@ -44,14 +44,14 @@
 			"banners": {
 				"standardVersion": 4,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "immaculate-pulse-1",
+							"bannerName": "immaculate-pulse-1",
 							"character": "baizhu",
 							"textOffset": { "l": 50.5, "b": 9 }
 						},
 						{
-							"name": "adrift-in-the-harbor-4",
+							"bannerName": "adrift-in-the-harbor-4",
 							"character": "ganyu",
 							"textOffset": { "l": 50.5, "b": 10.5 }
 						}
@@ -60,7 +60,7 @@
 					"rateup": ["kaveh", "candace", "fischl"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-46",
+					"bannerName": "epitome-invocation-46",
 					"fatepointsystem": true,
 					"featured": [{ "name": "amos-bow" }, { "name": "jadefall-splendor" }],
 					"rateup": [

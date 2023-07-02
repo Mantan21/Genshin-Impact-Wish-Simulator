@@ -6,16 +6,16 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "gentry-of-hermitage-2",
+							"bannerName": "gentry-of-hermitage-2",
 							"character": "zhongli"
 						}
 					],
 					"rateup": ["yanfei", "noelle", "diona"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-11",
+					"bannerName": "epitome-invocation-11",
 					"fatepointsystem": false,
 					"featured": [{ "name": "summit-shaper" }, { "name": "memory-of-dust" }],
 					"rateup": [
@@ -37,16 +37,16 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "born-of-ocean-swell-1",
+							"bannerName": "born-of-ocean-swell-1",
 							"character": "eula"
 						}
 					],
 					"rateup": ["beidou", "xinyan", "xingqiu"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-12",
+					"bannerName": "epitome-invocation-12",
 					"fatepointsystem": false,
 					"featured": [{ "name": "song-of-broken-pines" }, { "name": "aquila-favonia" }],
 					"rateup": [

@@ -1,5 +1,5 @@
-import { priceList } from '$lib/store/stores';
-import { localConfig } from '$lib/store/localstore';
+import { pricelist } from '$lib/store/app-stores';
+import { cookie } from '$lib/store/cookie';
 import { currencies } from '$lib/data/pricelist.json';
 import { checkLocale } from './i18n';
 
@@ -19,11 +19,11 @@ export const userCurrencies = {
 		Object.keys(genesis).forEach((key) => {
 			prices.genesis[key] = this.formatPrice(genesis[key]);
 		});
-		priceList.set(prices);
+		pricelist.set(prices);
 	},
 
 	checkUsedCurrency(curr) {
-		const used = curr || localConfig.get('currency') || checkLocale();
+		const used = curr || cookie.get('currency') || checkLocale();
 		const filtered = currencies.find(({ country, currency }) => {
 			const isCurrDetected = used === currency;
 			const isCountryAvailable = country.find((v) => used.toLocaleLowerCase().includes(v));

@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 4,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "tapestry-of-golden-flames-4",
+							"bannerName": "tapestry-of-golden-flames-4",
 							"character": "yoimiya",
 							"textOffset": { "l": 48.5 }
 						},
 						{
-							"name": "everbloom-violet-3",
+							"bannerName": "everbloom-violet-3",
 							"character": "yae-miko",
 							"textOffset": { "l": 48.6, "b": 8 }
 						}
@@ -22,7 +22,7 @@
 					"rateup": ["kirara", "yun-jin", "chongyun"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-47",
+					"bannerName": "epitome-invocation-47",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "thundering-pulse" },
@@ -42,16 +42,16 @@
 		{
 			"phase": 2,
 			"banners": {
-				"standardVersion": 3,
+				"standardVersion": 4,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "caution-in-confidence-2",
+							"bannerName": "caution-in-confidence-2",
 							"character": "alhaitham",
 							"textOffset": { "l": 50.5, "b": 10 }
 						},
 						{
-							"name": "leaves-in-the-wind-3",
+							"bannerName": "leaves-in-the-wind-3",
 							"character": "kaedehara-kazuha",
 							"textOffset": { "l": 46, "b": 12 }
 						}
@@ -59,7 +59,7 @@
 					"rateup": ["yaoyao", "shikanoin-heizou", "xiangling"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-48",
+					"bannerName": "epitome-invocation-48",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "light-of-foliar-incision" },

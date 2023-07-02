@@ -6,9 +6,9 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "the-heron_s-court-1",
+							"bannerName": "the-heron_s-court-1",
 							"character": "kamisato-ayaka",
 							"textOffset": { "l": 51, "w": 28 }
 						}
@@ -16,7 +16,7 @@
 					"rateup": ["yanfei", "chongyun", "ningguang"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-15",
+					"bannerName": "epitome-invocation-15",
 					"fatepointsystem": true,
 					"featured": [{ "name": "mistsplitter-reforged" }, { "name": "skyward-spine" }],
 					"rateup": [
@@ -38,9 +38,9 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "tapestry-of-golden-flames-1",
+							"bannerName": "tapestry-of-golden-flames-1",
 							"character": "yoimiya",
 							"textOffset": { "l": 50 }
 						}
@@ -48,7 +48,7 @@
 					"rateup": ["sayu", "xinyan", "diona"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-16",
+					"bannerName": "epitome-invocation-16",
 					"fatepointsystem": true,
 					"featured": [{ "name": "thundering-pulse" }, { "name": "skyward-blade" }],
 					"rateup": [

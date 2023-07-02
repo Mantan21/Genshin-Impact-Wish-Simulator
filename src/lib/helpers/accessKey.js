@@ -1,4 +1,4 @@
-import { localConfig } from '$lib/store/localstore';
+import { localConfig } from '$lib/store/localstore-manager';
 
 const digestMessage = async (message) => {
 	const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array

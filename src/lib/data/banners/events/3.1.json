@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "twilight-arbiter-1",
+							"bannerName": "twilight-arbiter-1",
 							"character": "cyno",
 							"textOffset": { "l": 55, "b": 10 }
 						},
 						{
-							"name": "ballad-in-goblets-4",
+							"bannerName": "ballad-in-goblets-4",
 							"character": "venti",
 							"textOffset": { "l": 55, "b": 10.5 }
 						}
@@ -22,7 +22,7 @@
 					"rateup": ["candace", "kuki-shinobu", "sayu"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-35",
+					"bannerName": "epitome-invocation-35",
 					"fatepointsystem": true,
 					"featured": [{ "name": "elegy-for-the-end" }, { "name": "staff-of-the-scarlet-sands" }],
 					"rateup": [
@@ -44,14 +44,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "twirling-lotus-1",
+							"bannerName": "twirling-lotus-1",
 							"character": "nilou",
 							"textOffset": { "l": 55, "b": 10 }
 						},
 						{
-							"name": "secretum-secretorum-3",
+							"bannerName": "secretum-secretorum-3",
 							"character": "albedo",
 							"textOffset": { "l": 55, "b": 10.5 }
 						}
@@ -60,7 +60,7 @@
 					"rateup": ["beidou", "barbara", "xiangling"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-36",
+					"bannerName": "epitome-invocation-36",
 					"fatepointsystem": true,
 					"featured": [{ "name": "key-of-khaj-nisut" }, { "name": "primordial-jade-cutter" }],
 					"rateup": [

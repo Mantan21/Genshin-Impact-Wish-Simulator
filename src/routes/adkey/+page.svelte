@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { playSfx } from '$lib/helpers/audio/audio.svelte';
-	import ButtonModal from '$lib/components/utility/ButtonModal.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { adKey } from '$lib/helpers/accessKey';
+	import ButtonModal from '$lib/components/ButtonModal.svelte';
 
 	const random = (min, max) => {
 		min = Math.ceil(min);
@@ -44,7 +44,7 @@
 </script>
 
 <svelte:head>
-	<title>Archon Genshin Impact Wish Simulator</title>
+	<title>Genshin Impact Wish Simulator</title>
 </svelte:head>
 
 <section>

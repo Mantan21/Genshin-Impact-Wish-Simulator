@@ -39,6 +39,7 @@ body {
 body,
 button:hover,
 input,
+label,
 a:hover {
 	user-select: none;
 	-moz-user-select: -moz-none;
@@ -333,6 +334,7 @@ h1 {
 	padding: 0.45rem 2rem 0.45rem 1.5rem;
 	border-radius: 10rem;
 	transition: all 0.2s;
+	text-align: left;
 }
 
 .selected-option i {
@@ -374,22 +376,23 @@ h1 {
 	top: 110%;
 }
 
-.option-list a {
+.option-list button {
 	position: relative;
 	padding: 0.85rem 1rem;
 	margin: 0.5% 0;
 	text-decoration: none;
 	color: #eee;
 	transition: all 0.2s;
+	text-align: left;
 }
 
-.option-list a.selected,
-.option-list a:hover {
+.option-list button.selected,
+.option-list button:hover {
 	background-color: #717887;
 	border-radius: 2rem;
 }
 
-.option-list a.selected::after {
+.option-list button.selected::after {
 	content: '✔';
 	color: #eee;
 	position: absolute;

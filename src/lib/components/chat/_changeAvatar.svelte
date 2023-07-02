@@ -1,22 +1,23 @@
 <script>
 	import { getContext, onMount } from 'svelte';
-	import OverlayScrollbars from 'overlayscrollbars';
-	import { getCookie, setCookie } from '$lib/store/cookie';
-	import HistoryIDB from '$lib/store/historyIdb';
-	import ModalTpl from '../utility/ModalTpl.svelte';
-	import { assets } from '$lib/store/stores';
-	import ButtonModal from '../utility/ButtonModal.svelte';
 	import { t } from 'svelte-i18n';
-	import { playSfx } from '$lib/helpers/audio/audio.svelte';
+	import OverlayScrollbars from 'overlayscrollbars';
+	import { cookie } from '$lib/store/cookie';
+	import { HistoryManager } from '$lib/store/IDB-manager';
+	import { assets } from '$lib/store/app-stores';
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { checkActiveOutfit } from '$lib/helpers/outfit';
+
+	import ModalTpl from '../ModalTpl.svelte';
+	import ButtonModal from '../ButtonModal.svelte';
 
 	let scrollable;
 	let characters = [];
 	let selectedChar = {};
-	let activeAvatar = JSON.parse(getCookie('avatar') || '{}');
+	let activeAvatar = cookie.get('avatar') || {};
 	$: avatarName = selectedChar?.name || activeAvatar?.name;
 
-	const { getAllHistories } = HistoryIDB;
+	const { getAllHistories } = HistoryManager;
 	const togglePic = getContext('togglePic');
 
 	const previewAvatar = (charData) => {
@@ -25,7 +26,7 @@
 	};
 
 	const setAvatar = () => {
-		setCookie('avatar', JSON.stringify(selectedChar));
+		cookie.set('avatar', selectedChar);
 		playSfx();
 		togglePic();
 	};
@@ -49,7 +50,7 @@
 	});
 </script>
 
-<ModalTpl show dark wide confirm={false} on:cancel={togglePic} title="Change Avatar">
+<ModalTpl dark wide confirm={false} on:cancel={togglePic} title="Change Avatar">
 	<div class="changeAvatar">
 		<div class="avatars" bind:this={scrollable}>
 			{#if characters.length < 1}

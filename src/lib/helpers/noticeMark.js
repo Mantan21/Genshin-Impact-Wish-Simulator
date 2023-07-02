@@ -1,10 +1,10 @@
-import { localConfig } from '$lib/store/localstore';
-import { notice } from '$lib/store/stores';
+import { cookie } from '$lib/store/cookie';
+import { notice } from '$lib/store/app-stores';
 
-const getNotices = () => localConfig.get('notice') || [];
-const setNotices = (data = []) => localConfig.set('notice', data);
+const getNotices = () => cookie.get('notice') || [];
+const setNotices = (data = []) => cookie.set('notice', data);
 
-const noticeMark = {
+export const noticeMark = {
 	openNotice(key) {
 		const openedNotice = getNotices();
 		const isAlreadyOpen = openedNotice.includes(key);
@@ -20,5 +20,3 @@ const noticeMark = {
 		notice.set(openedNotice);
 	}
 };
-
-export { noticeMark };

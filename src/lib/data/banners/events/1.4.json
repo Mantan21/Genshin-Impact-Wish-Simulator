@@ -6,20 +6,17 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "ballad-in-goblets-2",
+							"bannerName": "ballad-in-goblets-2",
 							"character": "venti",
-							"textOffset": {
-								"l": 57,
-								"b": 6
-							}
+							"textOffset": { "l": 57, "b": 6 }
 						}
 					],
 					"rateup": ["razor", "sucrose", "noelle"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-9",
+					"bannerName": "epitome-invocation-9",
 					"fatepointsystem": false,
 					"featured": [{ "name": "elegy-for-the-end" }, { "name": "skyward-blade" }],
 					"rateup": [
@@ -30,14 +27,8 @@
 						"the-alley-flash"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 40,
-							"t": 72
-						},
-						"rateup": {
-							"l": 74,
-							"b": 18
-						}
+						"featured": { "l": 40, "t": 72 },
+						"rateup": { "l": 74, "b": 18 }
 					}
 				}
 			}
@@ -47,20 +38,17 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "farewell-of-snezhnaya-2",
+							"bannerName": "farewell-of-snezhnaya-2",
 							"character": "tartaglia",
-							"textOffset": {
-								"l": 57.5,
-								"b": 6
-							}
+							"textOffset": { "l": 57.5, "b": 6 }
 						}
 					],
 					"rateup": ["barbara", "fischl", "rosaria"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-10",
+					"bannerName": "epitome-invocation-10",
 					"fatepointsystem": false,
 					"featured": [
 						{ "name": "skyward-harp" },
@@ -74,14 +62,8 @@
 						"favonius-sword"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 44,
-							"t": 72
-						},
-						"rateup": {
-							"l": 75,
-							"b": 16
-						}
+						"featured": { "l": 44, "t": 72 },
+						"rateup": { "l": 75, "b": 16 }
 					}
 				}
 			}

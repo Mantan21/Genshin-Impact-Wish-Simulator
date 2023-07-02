@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { getDatabase } from 'firebase/database';
 import { v4 as uuidv4 } from 'uuid';
-import { getCookie, setCookie } from '$lib/store/cookie';
+import { cookie } from '$lib/store/cookie';
 import {
 	API_KEY,
 	AUTH_DOMAIN,
@@ -31,12 +31,12 @@ initializeAppCheck(app, {
 const setCookieUuid = () => {
 	const uuid = uuidv4().split('-')[0];
 	const travelerID = `Traveler_${uuid}`;
-	setCookie('travelerID', travelerID);
+	cookie.set('travelerID', travelerID);
 	return travelerID;
 };
 
 const getCredential = async () => {
-	const currentUuid = getCookie('travelerID');
+	const currentUuid = cookie.get('travelerID');
 	if (currentUuid) return currentUuid;
 	return setCookieUuid();
 };

@@ -6,14 +6,14 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "the-moongrass-enlightenment-1",
+							"bannerName": "the-moongrass-enlightenment-1",
 							"character": "nahida",
 							"textOffset": { "l": 48, "b": 8.5 }
 						},
 						{
-							"name": "tapestry-of-golden-flames-3",
+							"bannerName": "tapestry-of-golden-flames-3",
 							"character": "yoimiya",
 							"textOffset": { "l": 50 }
 						}
@@ -22,7 +22,7 @@
 					"rateup": ["bennett", "razor", "noelle"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-37",
+					"bannerName": "epitome-invocation-37",
 					"fatepointsystem": true,
 					"featured": [{ "name": "a-thousand-floating-dreams" }, { "name": "thundering-pulse" }],
 					"rateup": [
@@ -44,9 +44,9 @@
 			"banners": {
 				"standardVersion": 3,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "everbloom-violet-2",
+							"bannerName": "everbloom-violet-2",
 							"character": "yae-miko",
 							"textOffset": {
 								"l": 46.6,
@@ -54,7 +54,7 @@
 							}
 						},
 						{
-							"name": "farewell-of-snezhnaya-4",
+							"bannerName": "farewell-of-snezhnaya-4",
 							"character": "tartaglia",
 							"textOffset": {
 								"l": 47,
@@ -66,7 +66,7 @@
 					"rateup": ["layla", "thoma", "shikanoin-heizou"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-38",
+					"bannerName": "epitome-invocation-38",
 					"fatepointsystem": true,
 					"featured": [
 						{

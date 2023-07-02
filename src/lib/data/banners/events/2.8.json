@@ -6,20 +6,20 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "leaves-in-the-wind-2",
+							"bannerName": "leaves-in-the-wind-2",
 							"character": "kaedehara-kazuha"
 						},
 						{
-							"name": "sparkling-steps-3",
+							"bannerName": "sparkling-steps-3",
 							"character": "klee"
 						}
 					],
 					"rateup": ["shikanoin-heizou", "thoma", "ningguang"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-31",
+					"bannerName": "epitome-invocation-31",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "freedom-sworn" },
@@ -43,9 +43,9 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "tapestry-of-golden-flames-2",
+							"bannerName": "tapestry-of-golden-flames-2",
 							"character": "yoimiya",
 							"textOffset": { "l": 50 }
 						}
@@ -53,7 +53,7 @@
 					"rateup": ["bennett", "xinyan", "yun-jin"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-32",
+					"bannerName": "epitome-invocation-32",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "thundering-pulse" },

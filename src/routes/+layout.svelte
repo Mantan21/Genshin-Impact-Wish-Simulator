@@ -10,22 +10,16 @@
 		viewportWidth,
 		isMobile,
 		mobileMode,
-		isAcquaintUsed,
-		bannerActive,
-		bannerList,
-		assets,
 		isPWA
-	} from '$lib/store/stores';
+	} from '$lib/store/app-stores';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
-	import { importLocalBalance } from '$lib/helpers/importLocalData';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
-	import { userCurrencies } from '$lib/helpers/currencies';
 	import { wakeLock } from '$lib/helpers/wakeLock';
 	import '../app.css';
-	import Loader from '$lib/components/utility/Loader.svelte';
-	import Iklan from '$lib/components/utility/Iklan.svelte';
-	import { IDBUpdater } from '$lib/helpers/IDBUpdater';
+
+	import Iklan from '$lib/components/Iklan.svelte';
+	import Loader from './_index/InitialLoader.svelte';
 
 	let innerHeight;
 	let innerWidth;
@@ -33,20 +27,22 @@
 	let isloaded = false;
 	let showAd = false;
 
-	$: lc = $locale?.toLowerCase() || '';
-	$: isYuanshen = lc.includes('cn') || lc.includes('ja');
-	$: font = isYuanshen || lc.includes('th') ? lc.split('-')[0] : 'global';
+	setContext('bannerLoaded', () => (isBannerLoaded = true));
+	setContext('loaded', () => (isloaded = true));
+	setContext('showAd', (show) => (showAd = show));
+
+	let font = '';
+	$: {
+		const lc = $locale?.toLowerCase() || '';
+		const isYuanshen = lc.match(/(cn|ja)/);
+		font = isYuanshen || lc.includes('th') ? lc.split('-')[0] : 'global';
+	}
 
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
 	$: path = $page.url.pathname.split('/');
 	$: directLoad = path[1] !== '';
 	$: preview = path[1] === 'screen';
-
-	$: if ($bannerList.length > 0) {
-		const { type } = $bannerList[$bannerActive];
-		isAcquaintUsed.set(type === 'standard' || type === 'beginner');
-	}
 
 	const setMobileMode = () => {
 		if ($isPWA) return mobileMode.set(true);
@@ -55,18 +51,18 @@
 		mobileMode.set(rotate);
 	};
 
-	setContext('bannerLoaded', () => (isBannerLoaded = true));
-	setContext('loaded', () => (isloaded = true));
-	setContext('showAd', (show) => (showAd = show));
-
 	const validPaths = ['adkey', 'install', 'privacy-policy', 'screen'];
 	$: isPathValid = validPaths.includes(path[1].toLowerCase());
 
-	mountLocale();
-	onMount(() => {
+	const redirectIfNotValidPath = () => {
 		const isCDNHost = $page.url.host.includes('cdn.');
 		if (isCDNHost) return window.location.replace('https://wishsimulator.app/');
 		if (path[1] && !isPathValid) return window.location.replace('/');
+	};
+
+	mountLocale();
+	onMount(() => {
+		redirectIfNotValidPath();
 
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
@@ -74,10 +70,6 @@
 
 		registerSW();
 		wakeLock();
-
-		IDBUpdater();
-		importLocalBalance();
-		userCurrencies.init();
 
 		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();
@@ -160,8 +152,10 @@
 	class:mobile={$mobileMode}
 	class:preview
 	class={$locale}
-	style="height: {$viewportHeight ? `${$viewportHeight}px` : '100vh'};
-		--genshin-font: var(--gi-{font}-font)"
+	style="--screen-height: {$viewportHeight
+		? `${$viewportHeight}px`
+		: '100vh'};--screen-width: {$viewportWidth}px;
+		--genshin-font: var(--gi-{font}-font);"
 >
 	{#if !$isLoading && isloaded}
 		<slot />
@@ -174,13 +168,6 @@
 	>
 		WishSimulator.App
 	</a>
-
-	<img
-		src={$assets[`genshin-logo${isYuanshen ? '-cn' : ''}.webp`]}
-		alt="genshin logo"
-		class="logo"
-		class:yuanshen={isYuanshen}
-	/>
 </main>
 
 <style global>
@@ -233,13 +220,10 @@
 
 	main {
 		display: block;
-		width: 100%;
-		overflow: hidden;
+		width: var(--screen-width);
+		height: var(--screen-height);
 		font-family: var(--genshin-font);
-	}
-
-	:global(audio) {
-		visibility: hidden;
+		overflow: hidden;
 	}
 
 	.uid {
@@ -263,21 +247,5 @@
 		right: unset;
 		left: 1rem;
 		bottom: 1rem;
-	}
-	.logo {
-		display: none;
-	}
-	.preview .logo {
-		display: block;
-		width: 30vh;
-		max-width: 30%;
-		position: fixed;
-		bottom: 0px;
-		right: 2em;
-	}
-
-	.preview .logo.yuanshen {
-		max-height: 20vh;
-		width: 20vh;
 	}
 </style>

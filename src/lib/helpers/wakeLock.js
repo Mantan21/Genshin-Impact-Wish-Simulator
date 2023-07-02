@@ -1,19 +1,24 @@
-export const wakeLock = async () => {
+let screenLock;
+
+const wakelockHandle = async ({ release = false } = {}) => {
 	try {
-		const isWakeLockSupport = 'wakeLock' in navigator;
-		if (!isWakeLockSupport) return;
-
-		let screenLock = await navigator.wakeLock.request('screen');
-		window.addEventListener('focus', async () => {
+		if (!release) {
 			screenLock = await navigator.wakeLock.request('screen');
-		});
+			return;
+		}
 
-		window.addEventListener('blur', async () => {
-			await screenLock.release();
-			screenLock = null;
-		});
+		await screenLock.release();
+		screenLock = null;
 	} catch (e) {
-		// console
+		// console.log('error');
 	}
 };
 
+export const wakeLock = () => {
+	const isWakeLockSupport = 'wakeLock' in navigator;
+	if (!isWakeLockSupport) return;
+
+	wakelockHandle();
+	window.addEventListener('focus', () => wakelockHandle());
+	window.addEventListener('blur', () => wakelockHandle({ release: true }));
+};

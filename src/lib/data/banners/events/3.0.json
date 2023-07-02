@@ -6,25 +6,22 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "viridescent-vigil-1",
+							"bannerName": "viridescent-vigil-1",
 							"character": "tighnari"
 						},
 						{
-							"name": "gentry-of-hermitage-4",
+							"bannerName": "gentry-of-hermitage-4",
 							"character": "zhongli",
-							"textOffset": {
-								"l": 57,
-								"b": 13
-							}
+							"textOffset": { "l": 57, "b": 13 }
 						}
 					],
 
 					"rateup": ["collei", "fischl", "diona"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-33",
+					"bannerName": "epitome-invocation-33",
 					"fatepointsystem": true,
 					"featured": [
 						{ "name": "hunter_s-path" },
@@ -52,14 +49,14 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "drifting-luminescence-3",
+							"bannerName": "drifting-luminescence-3",
 							"character": "sangonomiya-kokomi",
 							"textOffset": { "l": 51, "b": 8 }
 						},
 						{
-							"name": "adrift-in-the-harbor-3",
+							"bannerName": "adrift-in-the-harbor-3",
 							"character": "ganyu",
 							"textOffset": { "l": 57, "b": 12.8 }
 						}
@@ -68,7 +65,7 @@
 					"rateup": ["dori", "xingqiu", "sucrose"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-34",
+					"bannerName": "epitome-invocation-34",
 					"fatepointsystem": true,
 					"featured": [{ "name": "amos-bow" }, { "name": "everlasting-moonglow" }],
 					"rateup": [

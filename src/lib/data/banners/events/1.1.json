@@ -6,32 +6,23 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "farewell-of-snezhnaya-1",
+							"bannerName": "farewell-of-snezhnaya-1",
 							"character": "tartaglia",
-							"textOffset": {
-								"l": 44.5,
-								"b": 11
-							}
+							"textOffset": { "l": 44.5, "b": 11 }
 						}
 					],
 					"rateup": ["beidou", "ninggnang", "diona"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-3",
+					"bannerName": "epitome-invocation-3",
 					"fatepointsystem": false,
 					"featured": [{ "name": "skyward-harp" }, { "name": "memory-of-dust" }],
 					"rateup": ["rust", "favonius-lance", "rainslasher", "the-flute", "eye-of-perception"],
 					"textOffset": {
-						"featured": {
-							"l": 41,
-							"t": 76
-						},
-						"rateup": {
-							"l": 76.5,
-							"b": 19
-						}
+						"featured": { "l": 41, "t": 76 },
+						"rateup": { "l": 76.5, "b": 19 }
 					}
 				}
 			}
@@ -41,19 +32,17 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "gentry-of-hermitage-1",
+							"bannerName": "gentry-of-hermitage-1",
 							"character": "zhongli",
-							"textOffset": {
-								"l": 52
-							}
+							"textOffset": { "l": 52 }
 						}
 					],
 					"rateup": ["razor", "xinyan", "chongyun"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-4",
+					"bannerName": "epitome-invocation-4",
 					"fatepointsystem": false,
 					"featured": [{ "name": "vortex-vanquisher" }, { "name": "the-unforged" }],
 					"rateup": [
@@ -64,14 +53,8 @@
 						"lion_s-roar"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 41.5,
-							"t": 75
-						},
-						"rateup": {
-							"l": 77,
-							"b": 17
-						}
+						"featured": { "l": 41.5, "t": 75 },
+						"rateup": { "l": 77, "b": 17 }
 					}
 				}
 			}

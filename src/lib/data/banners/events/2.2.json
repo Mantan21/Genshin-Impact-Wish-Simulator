@@ -6,31 +6,23 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "farewell-of-snezhnaya-3",
+							"bannerName": "farewell-of-snezhnaya-3",
 							"character": "tartaglia",
-							"textOffset": {
-								"l": 50.5
-							}
+							"textOffset": { "l": 50.5 }
 						}
 					],
 					"rateup": ["yanfei", "chongyun", "ningguang"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-19",
+					"bannerName": "epitome-invocation-19",
 					"fatepointsystem": true,
 					"featured": [{ "name": "polar-star" }, { "name": "memory-of-dust" }],
 					"rateup": ["favonius-lance", "rust", "eye-of-perception", "akuoumaru", "favonius-sword"],
 					"textOffset": {
-						"featured": {
-							"l": 42.2,
-							"t": 67
-						},
-						"rateup": {
-							"l": 76.5,
-							"b": 19
-						}
+						"featured": { "l": 42.2, "t": 67 },
+						"rateup": { "l": 76.5, "b": 19 }
 					}
 				}
 			}
@@ -40,19 +32,17 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "moment-of-bloom-2",
+							"bannerName": "moment-of-bloom-2",
 							"character": "hu-tao",
-							"textOffset": {
-								"l": 56
-							}
+							"textOffset": { "l": 56 }
 						}
 					],
 					"rateup": ["thoma", "diona", "sayu"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-20",
+					"bannerName": "epitome-invocation-20",
 					"fatepointsystem": true,
 					"featured": [{ "name": "elegy-for-the-end" }, { "name": "staff-of-homa" }],
 					"rateup": [
@@ -63,14 +53,8 @@
 						"sacrificial-sword"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 38.5,
-							"t": 68
-						},
-						"rateup": {
-							"l": 74,
-							"b": 18
-						}
+						"featured": { "l": 38.5, "t": 68 },
+						"rateup": { "l": 74, "b": 18 }
 					}
 				}
 			}

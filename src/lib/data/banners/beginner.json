@@ -1,27 +1,9 @@
 {
 	"beginner": {
 		"featured": {
-			"name": "beginner",
+			"bannerName": "beginner",
 			"character": "noelle",
 			"vision": "geo"
-		},
-		"characters": [
-			"qiqi",
-			"keqing",
-			"diluc",
-			"mona",
-			"jean",
-			"sucrose",
-			"bennett",
-			"fischl",
-			"chongyun",
-			"ningguang",
-			"xingqiu",
-			"beidou",
-			"razor",
-			"xiangling",
-			"barbara",
-			"noelle"
-		]
+		}
 	}
 }

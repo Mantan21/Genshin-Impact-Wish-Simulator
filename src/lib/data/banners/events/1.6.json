@@ -6,16 +6,16 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "sparkling-steps-2",
+							"bannerName": "sparkling-steps-2",
 							"character": "klee"
 						}
 					],
 					"rateup": ["fischl", "barbara", "sucrose"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-13",
+					"bannerName": "epitome-invocation-13",
 					"fatepointsystem": false,
 					"featured": [{ "name": "lost-prayer-to-the-sacred-winds" }, { "name": "skyward-pride" }],
 					"rateup": [
@@ -37,9 +37,9 @@
 			"banners": {
 				"standardVersion": 2,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "leaves-in-the-wind-1",
+							"bannerName": "leaves-in-the-wind-1",
 							"character": "kaedehara-kazuha",
 							"textOffset": { "w": 25 }
 						}
@@ -47,7 +47,7 @@
 					"rateup": ["rosaria", "bennett", "razor"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-14",
+					"bannerName": "epitome-invocation-14",
 					"fatepointsystem": false,
 					"featured": [{ "name": "freedom-sworn" }, { "name": "skyward-atlas" }],
 					"rateup": [

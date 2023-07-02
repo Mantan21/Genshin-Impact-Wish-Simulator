@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { init, register, getLocaleFromNavigator } from 'svelte-i18n';
+import { localConfig } from '$lib/store/localstore-manager';
 
 const supportedLocales = [
 	'de-DE',
@@ -17,7 +18,7 @@ const supportedLocales = [
 const itemLocales = ['en-US', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN', 'zh-CN'];
 
 const checkLocale = () => {
-	const savedLocale = browser ? localStorage.getItem('locale') : null;
+	const savedLocale = browser ? localConfig.get('locale') : null;
 	const browserLocale = savedLocale || getLocaleFromNavigator();
 	const usedLocale = supportedLocales.find((langID) => langID.includes(browserLocale));
 	return usedLocale || 'en-US';

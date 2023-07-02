@@ -2,7 +2,7 @@
 	"version": 2,
 	"standard": {
 		"featured": {
-			"name": "wanderlust-invocation-1",
+			"bannerName": "wanderlust-invocation-1",
 			"character": "jean"
 		},
 		"characters": ["qiqi", "keqing", "diluc", "mona", "jean"]

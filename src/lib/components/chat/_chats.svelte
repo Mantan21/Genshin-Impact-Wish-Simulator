@@ -1,7 +1,7 @@
 <script>
 	import { afterUpdate, beforeUpdate, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { assets } from '$lib/store/stores';
+	import { assets } from '$lib/store/app-stores';
 	import Messagebox from './_messagebox.svelte';
 
 	export let userId;

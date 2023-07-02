@@ -6,20 +6,17 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "secretum-secretorum-1",
+							"bannerName": "secretum-secretorum-1",
 							"character": "albedo",
-							"textOffset": {
-								"l": 56.5,
-								"b": 5.5
-							}
+							"textOffset": { "l": 56.5, "b": 5.5 }
 						}
 					],
 					"rateup": ["bennett", "sucrose", "fischl"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-5",
+					"bannerName": "epitome-invocation-5",
 					"fatepointsystem": false,
 					"featured": [{ "name": "summit-shaper" }, { "name": "skyward-atlas" }],
 					"rateup": [
@@ -30,14 +27,8 @@
 						"the-widsith"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 46,
-							"t": 76
-						},
-						"rateup": {
-							"l": 76,
-							"b": 18.5
-						}
+						"featured": { "l": 46, "t": 76 },
+						"rateup": { "l": 76, "b": 18.5 }
 					}
 				}
 			}
@@ -47,20 +38,17 @@
 			"banners": {
 				"standardVersion": 1,
 				"events": {
-					"item": [
+					"featured": [
 						{
-							"name": "adrift-in-the-harbor-1",
+							"bannerName": "adrift-in-the-harbor-1",
 							"character": "ganyu",
-							"textOffset": {
-								"l": 59.5,
-								"b": 12
-							}
+							"textOffset": { "l": 59.5, "b": 12 }
 						}
 					],
 					"rateup": ["beidou", "xinyan", "xingqiu"]
 				},
 				"weapons": {
-					"name": "epitome-invocation-6",
+					"bannerName": "epitome-invocation-6",
 					"fatepointsystem": false,
 					"featured": [{ "name": "amos-bow" }, { "name": "skyward-pride" }],
 					"rateup": [
@@ -71,14 +59,8 @@
 						"sacrificial-sword"
 					],
 					"textOffset": {
-						"featured": {
-							"l": 46,
-							"t": 77
-						},
-						"rateup": {
-							"l": 75,
-							"b": 17
-						}
+						"featured": { "l": 46, "t": 77 },
+						"rateup": { "l": 75, "b": 17 }
 					}
 				}
 			}

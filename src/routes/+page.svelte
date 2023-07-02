@@ -1,260 +1,213 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
 	import { getContext, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
-	import { CHATROOM } from '$lib/env';
-	import { playSfx } from '$lib/helpers/audio/audio.svelte';
-	import {
-		pageActive,
-		bannerList,
-		backsound,
-		patchVersion,
-		bannerPhase,
-		showBeginner,
-		isFatepointSystem,
-		muted,
-		bannerActive,
-		assets
-	} from '$lib/store/stores';
-	import { localConfig, localWelkin } from '$lib/store/localstore';
-	import { beginner } from '$lib/data/banners/beginner.json';
+	import { writable } from 'svelte/store';
 
-	// Components
-	import Disclaimer from '$lib/components/utility/Disclaimer.svelte';
-	import MainWish from '$lib/components/wish/MainWish.svelte';
-	import Toast from '$lib/components/utility/Toast.svelte';
+	import browserState from '$lib/helpers/browserState';
+	import { activeVersion, assets, showBeginner } from '$lib/store/app-stores';
+	import { dailyWelkin, localConfig } from '$lib/store/localstore-manager';
+	import { importLocalConfig, setBannerVersionAndPhase } from '$lib/helpers/storage-reader';
+	import { handleShowStarter, initializeBanner } from '$lib/helpers/banner-loader';
+	import { userCurrencies } from '$lib/helpers/currencies';
+	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
-	let PrevBanner;
-	let GachaInfo;
-	let ShopSection;
-	let InventorySection;
-	let Obtained;
-	let WelkinCheckin;
-	let setBannerVersionAndPhase;
-	let Chats;
+	import ModalWelcome from './_index/ModalWelcome.svelte';
+	import WelkinCheckin from './_index/WelkinCheckin.svelte';
+	import PreloadMeteor from './_index/PreloadMeteor.svelte';
+	import MainWish from './_wish/index.svelte';
 
-	const importChunks = async () => {
-		// Splitting Chunks
-		PrevBanner = (await import('$lib/components/bannerlist/MainBannerList.svelte')).default;
-		GachaInfo = (await import('$lib/components/gachainfo/GachaInfo.svelte')).default;
-		InventorySection = (await import('$lib/components/inventory/MainInventory.svelte')).default;
-		ShopSection = (await import('$lib/components/shop/MainShop.svelte')).default;
-		Obtained = (await import('$lib/components/utility/Obtained.svelte')).default;
-		WelkinCheckin = (await import('$lib/components/utility/WelkinCheckin.svelte')).default;
+	let status = '';
+	let pageActive = 'index';
+	let showWelcomeModal = true;
 
-		if (!CHATROOM) return;
-		Chats = (await import('$lib/components/chat/MainChat.svelte')).default;
+	let onWish = writable(false);
+	setContext('onWish', onWish);
+	setContext('query', writable('')); //query store to help finding a banner
+	setContext('readyToPull', writable(true)); // Ready to pull if meteor animation are loaded already
+
+	// Background animation
+	let animatedBG = localConfig.get('animatedBG');
+	const animatebg = () => (animatedBG = localConfig.get('animatedBG'));
+	setContext('animateBG', animatebg);
+
+	// Background Music
+	$: if (!showWelcomeModal) {
+		if (pageActive !== 'index' || $onWish) pauseSfx('wishBacksound');
+		else playSfx('wishBacksound');
+	}
+
+	const bgmHandle = ({ play = true } = {}) => {
+		if (showWelcomeModal) return; // User is not ready to Wish
+		if ($onWish) return; // dont resume/pause if user on wishing
+		if (pageActive !== 'index') return; // dont handle BGM if not index page
+		if (play) return playSfx('wishBacksound');
+		return pauseSfx('wishBacksound');
 	};
 
-	const importHelper = async () => {
-		({ setBannerVersionAndPhase } = await import('$lib/helpers/importLocalData'));
+	// Welkin Checkin
+	let showWelkinScreen = false;
+	const welkinCheckin = () => {
+		const { remaining, diff, latestCheckIn } = dailyWelkin.getData();
+		showWelkinScreen = remaining > 0 && remaining - diff >= 0 && diff > 0;
+		if (latestCheckIn) return dailyWelkin.checkin();
+	};
+	setContext('closeWelkin', () => (showWelkinScreen = false));
+
+	// Welcome Modal
+	const closeWelcomeModal = () => {
+		showWelcomeModal = false;
+		welkinCheckin();
+		playSfx();
+	};
+	setContext('closeWelcomeModal', closeWelcomeModal);
+
+	// Menu
+	let showMenu = false;
+	const handleMenu = () => {
+		playSfx(showMenu ? 'close' : 'click');
+		showMenu = !showMenu;
+	};
+	setContext('handleMenu', handleMenu);
+
+	// Page Navigation
+	const navigate = (page) => {
+		let beforeNavigate = pageActive;
+		pageActive = page;
+		showMenu = false;
+		if (page === 'allbanners') browserState.set(page);
+		if (beforeNavigate !== 'index') return browserState.back();
+		if (beforeNavigate === pageActive) return;
+		if (page === 'allbanners') return;
+		browserState.set(page);
+	};
+	setContext('navigate', navigate);
+
+	// Component Loader
+	let AllBanners, GachaInfo, Inventory, Shop, Menu, ObtainedItem, ModalConvert;
+	const asyncLoadComponent = async () => {
+		ObtainedItem = (await import('$lib/components/ObtainedItem.svelte')).default;
+		ModalConvert = (await import('./_index/ModalConvert.svelte')).default;
+
+		Menu = (await import('./_menu/index.svelte')).default;
+		GachaInfo = (await import('./_gachainfo/index.svelte')).default;
+		AllBanners = (await import('./_allbanners/index.svelte')).default;
+		Inventory = (await import('./_inventory/index.svelte')).default;
+		Shop = (await import('./_shop/index.svelte')).default;
 	};
 
-	let isMount = false;
-	let isAnimatedBG = false;
-	$: audioActive = $backsound && $pageActive === 'index' && !$muted;
-	$: if (audioActive) playSfx('wishBacksound');
-	else if (isMount) playSfx('wishBacksound', { paused: true });
-
-	const animateBG = () => {
-		isAnimatedBG = localConfig.get('animatedBG');
-	};
-	setContext('animateBG', animateBG);
-
-	let showToast = false;
-	const beginnerBanner = beginner.featured;
-	let eventBanner;
-	let weaponBanner;
-	let standardBanner;
-	let list = [];
-
-	const showBeginnerCheck = (showBeginner) => {
-		if ($bannerList.length < 2) return;
-		if (!showBeginner) {
-			return bannerList.update((bn) => {
-				return bn.filter(({ type }) => type !== 'beginner');
-			});
-		}
-		return bannerList.update((bn) => {
-			bn.unshift({ type: 'beginner', character: beginnerBanner });
-			return bn;
-		});
+	// Switching Banner
+	const bannerLoaded = getContext('bannerLoaded');
+	const loadBanner = async (patchPhase) => {
+		const initBanner = await initializeBanner(patchPhase);
+		({ status } = initBanner);
+		bannerLoaded();
 	};
 
-	const loaded = getContext('bannerLoaded');
-	const updateBannerListToShow = (showBeginner) => {
-		list = showBeginner ? [{ type: 'beginner', character: beginnerBanner }] : [];
-		if (Array.isArray(eventBanner)) {
-			eventBanner.forEach((bn) => list.push({ type: 'events', character: bn }));
-		} else list.push({ type: 'events', character: eventBanner });
-		list.push({ type: 'weapons', weapons: weaponBanner });
-		list.push({ type: 'standard', character: standardBanner });
-		bannerList.set(list);
-		isFatepointSystem.set(!!weaponBanner.fatepointsystem);
-		pageActive.set('index');
-		loaded();
-		return;
-	};
-
-	const switchBanner = async (patch, bannerPhase) => {
-		try {
-			if (!patch) return;
-			const { data } = await import(`$lib/data/banners/events/${patch}.json`);
-			const { banners } = data.find(({ phase }) => phase === bannerPhase);
-			const { events, weapons, standardVersion } = banners;
-			const { standard } = await import(`$lib/data/banners/standard/${standardVersion}.json`);
-			eventBanner = events.item;
-			weaponBanner = weapons;
-			standardBanner = standard.featured;
-			return updateBannerListToShow($showBeginner);
-		} catch (e) {
-			showToast = true;
-			console.error(`Can't Switch banner because it unavailable !`, e);
-		}
-	};
-
-	$: switchBanner($patchVersion, $bannerPhase);
-	$: showBeginnerCheck($showBeginner);
-
-	onMount(async () => {
-		await importHelper();
-		animateBG();
-		importChunks();
-		isMount = true;
+	onMount(() => {
 		setBannerVersionAndPhase();
-		window.addEventListener('blur', () => playSfx('wishBacksound', { paused: isMount }));
-		window.addEventListener('focus', () => {
-			if (audioActive) return playSfx('wishBacksound');
-			else return;
-		});
+		activeVersion.subscribe(loadBanner);
+		showBeginner.subscribe(handleShowStarter);
+
+		importLocalConfig();
+		userCurrencies.init();
+		asyncLoadComponent();
+		animatebg();
 
 		window.addEventListener('popstate', (e) => {
 			if (e.state.page) return;
-			if ($pageActive === 'index') return;
-			pageActive.set('index');
+			if (pageActive === 'index') return;
+			navigate('index');
 		});
+
+		window.addEventListener('blur', () => bgmHandle({ play: false }));
+		window.addEventListener('focus', () => bgmHandle({ play: true }));
 	});
 
-	// Milestone Bonus screen
+	// Obtained
 	let showObtained = false;
-	let obtainedItems = {};
-
-	const handleObtained = (itemToBuy, value = 0) => {
-		if (Array.isArray(itemToBuy)) {
-			itemToBuy.forEach(({ item, value }) => {
-				obtainedItems[item] = value;
-			});
-			showObtained = true;
-			return;
-		}
-		obtainedItems[itemToBuy] = value;
+	let obtainedData = {};
+	const openObtained = (data) => {
+		obtainedData = data;
 		showObtained = true;
 	};
-	setContext('handleObtained', handleObtained);
-
-	const handleCloseObtained = () => {
+	const closeObtained = () => {
 		showObtained = false;
-		obtainedItems = {};
+		obtainedData = {};
 		playSfx('close');
-		if ($pageActive === 'index') backsound.set(true);
 	};
+	setContext('openObtained', openObtained);
+	setContext('closeObtained', closeObtained);
 
-	let welkinCheckin = false;
-	let showDisclaimer = true;
-
-	// Announcement - Notice - Disclaimer
-	const closeDisclaimer = () => {
-		bannerActive.set(0);
-		showDisclaimer = false;
-
-		const { remaining, diff, latestCheckIn } = localWelkin.getData();
-		welkinCheckin = remaining > 0 && remaining - diff >= 0 && diff > 0;
-		if (latestCheckIn) localWelkin.checkin();
-		if (!welkinCheckin) return backsound.set(true);
-	};
-	setContext('closeDisclaimer', closeDisclaimer);
-
-	// Welkin
-	const closeWelkin = () => (welkinCheckin = false);
-	setContext('closeWelkin', closeWelkin);
-
-	// Animated Background
-	let hideBG = false;
-	const bgToggle = (val) => {
-		hideBG = val;
-	};
-	setContext('bgToggle', bgToggle);
-
-	// ChatRoom
-	let chatLoaded = false; // initial load
-	let showChat = false; // toggle hide-show
-	const chatToggle = () => {
-		chatLoaded = true;
-		showChat = !showChat;
-		playSfx(!showChat ? 'click' : 'close');
-	};
-	setContext('chatToggle', chatToggle);
+	// Modal to Convert Genesis
+	let showConvertModal = false;
+	setContext('openConvertModal', () => (showConvertModal = true));
+	setContext('closeConvertModal', () => (showConvertModal = false));
 </script>
 
-{#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>
-		{@html $t('wish.loadFailed')}
-	</Toast>
+{#if status !== 'ok'}
+	error bos
 {/if}
 
-<!-- Obtained Items -->
-{#if showObtained}
-	<svelte:component this={Obtained} items={obtainedItems} on:close={handleCloseObtained} />
-{/if}
-<!-- Obtained Items End -->
-
-{#if CHATROOM && chatLoaded}
-	<svelte:component this={Chats} show={showChat} />
-{/if}
-<svelte:component this={Disclaimer} show={showDisclaimer} />
-<svelte:component this={WelkinCheckin} show={welkinCheckin} />
-
-{#if isAnimatedBG}
+{#if animatedBG && pageActive.match(/(index|detail|history)/) && !$onWish}
 	<video
 		transition:fade|local={{ duration: 2000 }}
 		muted
 		loop
 		autoplay
+		type="video/webm"
+		src={$assets['bg.webm']}
 		poster={$assets['wish-background.webp']}
-		class:hide={$pageActive !== 'index' || hideBG}
 	>
-		<source src="/videos/bg.webm" type="video/webm" />
 		<track kind="captions" />
 	</video>
 {/if}
 
-{#if $pageActive === 'index'}
+<!-- Main Banner -->
+{#if pageActive === 'index'}
 	<MainWish />
-{/if}
 
-{#if $pageActive === 'previous-banner'}
-	<svelte:component this={PrevBanner} />
-{/if}
+	{#if showMenu}
+		<svelte:component this={Menu} />
+	{/if}
 
-{#if $pageActive === 'details'}
+	<!-- Select Banner -->
+{:else if pageActive === 'allbanners'}
+	<svelte:component this={AllBanners} />
+
+	<!-- Wish Details -->
+{:else if pageActive === 'details'}
 	<svelte:component this={GachaInfo} page="details" />
-{/if}
 
-{#if $pageActive === 'history'}
+	<!-- Wish Record -->
+{:else if pageActive === 'history'}
 	<svelte:component this={GachaInfo} page="history" />
+
+	<!-- Inventory -->
+{:else if pageActive === 'inventory'}
+	<svelte:component this={Inventory} />
+
+	<!-- Shop -->
+{:else if pageActive === 'shop'}
+	<svelte:component this={Shop} />
 {/if}
 
-{#if $pageActive === 'inventory'}
-	<svelte:component this={InventorySection} />
+{#if showObtained}
+	<svelte:component this={ObtainedItem} data={obtainedData} />
 {/if}
 
-{#if $pageActive === 'shop'}
-	<svelte:component this={ShopSection} />
+<!-- Utility -->
+{#if showConvertModal}
+	<svelte:component this={ModalConvert} />
 {/if}
+
+{#if showWelkinScreen}
+	<WelkinCheckin />
+{/if}
+{#if showWelcomeModal}
+	<ModalWelcome />
+{/if}
+
+<PreloadMeteor />
 
 <style>
 	video {
@@ -266,9 +219,5 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: 20%;
-	}
-
-	.hide {
-		visibility: hidden;
 	}
 </style>
