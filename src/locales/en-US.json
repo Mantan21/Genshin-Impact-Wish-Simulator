@@ -90,7 +90,7 @@
 			"beginnerSet": "10-set 20% off. First 10-set will receive {character}.",
 			"beginnerNote": "\"As a dutiful maid would.\"",
 			"beginnerChance": "Chances Remaining: {chances}",
-			"standardNote": "Standard whises have no time limit.",
+			"standardNote": "Standard wishes have no time limit.",
 			"allWeaponTypes": "All Weapon Types",
 			"etc": "etc.",
 			"probIncreased": "Probability increased !",
@@ -121,7 +121,7 @@
 			"skip": "Skip",
 			"meteorFailed": "Meteor Animation Failed to Load",
 			"new": "New",
-			"convertion": "Convertion",
+			"convertion": "Convert",
 			"title": "Wish Result for {item} et al"
 		}
 	},
@@ -247,8 +247,8 @@
 		"selectWish": "Select Wish Type:",
 		"disclaimer": "We Never save your data on cloud storage. All data was stored to IndexedDB, it means the data is saved on your browser storage. It will never delete till you delete it manualy through delete/reset button or clear the browser data.",
 		"currentPity": "Current Pity :",
-		"totalPull": "Total Pull :",
-		"totalSpend": "Total Spend :",
+		"totalPull": "Total Pulls :",
+		"totalSpend": "Total Spent :",
 		"filterTxt": "Filter",
 		"filter": "{rarity} Star",
 		"filterAll": "All",
@@ -308,7 +308,7 @@
 		"exchange": {
 			"starglitter": "Starglitter Exchange",
 			"stardust": "Stardust Exchange",
-			"primogem": "Exchange with Primogem"
+			"primogem": "Exchange with Primogems"
 		},
 		"item": {
 			"genesis": "Genesis Crystal",
