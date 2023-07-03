@@ -29,7 +29,7 @@ export const HistoryManager = {
 	async historyCount() {
 		return (await IndexedDB).count('history');
 	},
-	async getList(banner) {
+	async getListByBanner(banner) {
 		return (await IndexedDB).getAllFromIndex('history', 'banner', banner);
 	},
 

@@ -15,13 +15,13 @@
 	let data = [];
 	let dataToShow = [];
 
-	const { getList } = HistoryManager;
+	const { getListByBanner } = HistoryManager;
 	const setDataLength = getContext('setDataLength');
 
 	const filterData = (filterBy) => data.filter(({ rarity }) => rarity === filterBy);
 	const readData = async (banner, filter) => {
 		if (!browser) return [];
-		const bannerList = await getList(banner);
+		const bannerList = await getListByBanner(banner);
 		data = bannerList.map((d) => d).reverse();
 		dataToShow = filter && filter !== 'All' ? filterData(filter) : data;
 		setDataLength(data.length, dataToShow.length);

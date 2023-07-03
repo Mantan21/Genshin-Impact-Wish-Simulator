@@ -12,6 +12,7 @@
 		mobileMode,
 		isPWA
 	} from '$lib/store/app-stores';
+	import { retriveOldData } from '$lib/helpers/migrator/collect-old-data';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
@@ -70,6 +71,7 @@
 
 		registerSW();
 		wakeLock();
+		retriveOldData();
 
 		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();

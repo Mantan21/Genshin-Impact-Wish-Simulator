@@ -40,7 +40,7 @@ export const importLocalConfig = () => {
 	const lWishAmount = localConfig.get('wishAmount') || 'default';
 	wishAmount.set(lWishAmount);
 
-	const starterRollCount = rollCounter.get('starter') || 0;
+	const starterRollCount = rollCounter.get('beginner') || 0;
 	beginnerRemaining.set(20 - starterRollCount);
 
 	// Setting
