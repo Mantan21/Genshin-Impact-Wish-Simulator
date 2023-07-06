@@ -8,7 +8,7 @@
 	};
 </script>
 
-<img class="bg" src={$assets[`bg${random(1, 25)}.webp`]} alt="background" />
+<img class="bg" src={$assets[`bg${random(1, 20)}.webp`]} alt="background" />
 
 <style>
 	.bg {

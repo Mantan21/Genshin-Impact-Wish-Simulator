@@ -125,7 +125,7 @@
 
 	.skip {
 		position: absolute;
-		top: 2%;
+		top: 30px;
 		right: 2%;
 		color: #fff;
 		font-size: 1.2rem;
@@ -141,8 +141,8 @@
 
 	:global(.mobile) .skip {
 		font-size: 0.8rem;
+		top: 0.3rem;
 		right: 6%;
-		top: 1rem;
 	}
 	video {
 		display: none;

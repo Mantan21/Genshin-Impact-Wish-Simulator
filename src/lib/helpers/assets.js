@@ -84,7 +84,7 @@ const previewImages = [
 
 const bgList = () => {
 	const paths = [];
-	for (let i = 0; i < 25; i++) {
+	for (let i = 0; i < 20; i++) {
 		paths.push(`bg${i + 1}.webp`);
 	}
 	return { dir: 'background', paths };
