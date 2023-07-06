@@ -5,6 +5,7 @@
 
 	export let activeContent;
 	const selectMenu = getContext('selectMenu');
+	const chatToggle = getContext('chatToggle');
 </script>
 
 <div class="sidebar">
@@ -21,6 +22,10 @@
 				<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>
 			</div>
 		{/if}
+
+		<div class="menu-item">
+			<button on:click={chatToggle}> {$t('menu.feedback')} </button>
+		</div>
 	</div>
 </div>
 
