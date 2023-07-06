@@ -87,11 +87,10 @@
 				{/if}
 
 				<ItemInfo staticMode itemName={name} {rarity} {vision} {weaponType} />
-
-				<div class="detail">
-					<span class="qty"> {getQtyInfo(type, qty)} </span>
-					<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
-				</div>
+			</div>
+			<div class="detail">
+				<span class="qty"> {getQtyInfo(type, qty)} </span>
+				<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
 			</div>
 		{/await}
 	</div>
