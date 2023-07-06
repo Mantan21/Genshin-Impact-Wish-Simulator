@@ -126,6 +126,36 @@
 				"w": 90,
 				"t": -35
 			}
+		},
+		{
+			"release": 3.8,
+			"name": "sailwind-shadow",
+			"characterName": "kaeya",
+			"rarity": 4,
+			"price": 1680,
+			"wishBoxPosition": {
+				"l": 23,
+				"t": 70,
+				"h": 210
+			}
+		},
+		{
+			"release": 3.8,
+			"name": "blossoming-starlight",
+			"characterName": "klee",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"wishBoxPosition": {
+				"l": 80,
+				"h": 185,
+				"t": 50
+			},
+			"cardBoxPosition": {
+				"l": -15,
+				"w": 100,
+				"t": -40
+			}
 		}
 	]
 }

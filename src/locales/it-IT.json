@@ -178,6 +178,14 @@
 			"springbloom-missive": {
 				"name": "Missiva primaverile",
 				"description": "Il completo di viaggio di Ayaka. Il suo design si basa sugli abiti di Fontaine raffigurati nelle illustrazioni delle light novel, e sembra rispecchiare lo stile di vita delle gentildonne di quella nazione."
+			},
+			"blossoming-starlight": {
+				"name": "Luce stellare fiorente",
+				"description": "Un delizioso completo che Klee indossa solo per le esibizioni più importanti. Dai colori brillanti, sembra una torta decorata con fiori di panna e coronata da candele scarlatte. Indossandolo, la felicità e i sorrisi riempiranno le vostre avventure."
+			},
+			"sailwind-shadow": {
+				"name": "Ombra Navigavento",
+				"description": "Il completo che Kaeya indossa quando interpreta il \"Bandito della Daga\". Sebbene sia alquanto appariscente, non è difficile da indossare, anche se ci vuole del tempo per sistemare tutti quegli accessori e tutte quelle daghe."
 			}
 		}
 	},

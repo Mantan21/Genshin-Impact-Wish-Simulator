@@ -178,6 +178,14 @@
 			"springbloom-missive": {
 				"name": "Springbloom Missive",
 				"description": "Ayaka’s travel outfit. Its design is based on the Fontaine dresses depicted in light novel illustrations and seems to reflect the lifestyle of proper ladies who live in that nation."
+			},
+			"blossoming-starlight": {
+				"name": "Blossoming Starlight",
+				"description": "An exquisite outfit Klee wears only for the most important performances. The colors are brilliant, like a cake adorned with cream flowers and crowned with scarlet candles. With it comes happiness and smiles that will fill your adventures."
+			},
+			"sailwind-shadow": {
+				"name": "Sailwind Shadow",
+				"description": "Kaeya's outfit from his role as the \"Dagger Bandit\" in the play. Though flamboyant and designed to be as eye-catching as possible, it isn't difficult to put on, though it does take some time to get all the accessories and daggers sorted."
 			}
 		}
 	},

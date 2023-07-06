@@ -178,6 +178,14 @@
 			"springbloom-missive": {
 				"name": "Thư Từ Hoa Xuân",
 				"description": "Trang phục đi chơi của Kamisato Ayaka. Bộ váy được may dựa theo kiểu dáng trang phục nữ giới Fontaine trong tiểu thuyết, dường như có thể thông qua đó để nhìn thấy được diện mạo cuộc sống của các cô gái Fontaine."
+			},
+			"blossoming-starlight": {
+				"name": "Hoa Lửa Rực Rỡ",
+				"description": "Bộ trang phục xinh xắn mà Klee đã mặc khi tham gia diễn xuất trong vở kịch quan trọng. Màu sắc sặc sỡ, giống như một chiếc bánh kem được tô điểm bằng những bông hoa bằng kem cùng với nến màu đỏ rực, có thể đem đến niềm vui và nụ cười trên mọi nẻo đường mạo hiểm."
+			},
+			"sailwind-shadow": {
+				"name": "Cánh Buồm Lướt Gió",
+				"description": "Trang phục Kaeya đã mặc khi diễn vở \"Đạo Chích Dao Găm\", là bộ trang phục lộng lẫy được thiết kế với nguyên tắc \"thu hút ánh nhìn\". Việc mặc trang phục không phiền phức lắm, chỉ mất thời gian ở chỗ gắn trang sức và dao găm."
 			}
 		}
 	},

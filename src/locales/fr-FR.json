@@ -178,6 +178,14 @@
 			"springbloom-missive": {
 				"name": "Missive de floraison printanière",
 				"description": "Tenue de voyage d'Ayaka. Sa conception est basée sur les robes fontainoises représentées dans les romans légers et semble refléter le style de vie des dames respectables qui résident dans cette nation."
+			},
+			"blossoming-starlight": {
+				"name": "Lumière stellaire en fleurs",
+				"description": "Une tenue exquise que Klee ne porte que pour les performances les plus importantes. Les couleurs sont brillantes, comme un gâteau à la crème décoré de fleurs et couronné de bougies écarlates. Avec cette tenue, bonheur et sourires combleront vos aventures !"
+			},
+			"sailwind-shadow": {
+				"name": "Ombre nautique",
+				"description": "La tenue que Kaeya porte en jouant le Bandit au poignard. Bien qu'il s'agisse d'une tenue flamboyante conçue pour être aussi accrocheuse que possible, elle n'est pas difficile à enfiler, bien qu'il faille un certain temps pour arranger tous les accessoires et son poignard."
 			}
 		}
 	},

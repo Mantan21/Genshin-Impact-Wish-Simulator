@@ -1,0 +1,49 @@
+{
+	"patch": 3.8,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "born-of-ocean-swell-3",
+							"character": "eula",
+							"textOffset": { "l": 50, "b": 10.5 }
+						},
+						{
+							"bannerName": "sparkling-steps-4",
+							"character": "klee",
+							"textOffset": { "l": 50, "b": 11.5 }
+						}
+					],
+
+					"rateup": ["mika", "thoma", "razor"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-49",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "song-of-broken-pines" },
+						{
+							"name": "lost-prayer-to-the-sacred-winds",
+							"buttonPosition": { "l": 70, "t": 65 }
+						}
+					],
+					"rateup": [
+						"the-alley-flash",
+						"alley-hunter",
+						"eye-of-perception",
+						"favonius-lance",
+						"rainslasher"
+					],
+					"textOffset": {
+						"featured": { "l": 49, "t": 71.5, "w": 23 },
+						"rateup": { "l": 79, "b": 20.5 }
+					}
+				}
+			}
+		}
+	]
+}
