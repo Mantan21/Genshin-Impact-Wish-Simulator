@@ -22,7 +22,7 @@
 	const handleConfirm = () => {
 		closeDisclaimer();
 		if ($isPWA && $isMobile) return;
-		showAd(!adKeyValid);
+		showAd.set(!adKeyValid);
 	};
 
 	onMount(async () => {

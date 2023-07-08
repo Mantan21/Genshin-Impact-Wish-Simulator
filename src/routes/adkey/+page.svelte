@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { adKey } from '$lib/helpers/accessKey';
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
@@ -47,8 +48,8 @@
 	<title>Genshin Impact Wish Simulator</title>
 </svelte:head>
 
-<section>
-	<img class="bg" src="/images/background/bg{random(1, 16)}.webp" alt="background" />
+<section in:fly={{ x: -200, duration: 200 }}>
+	<img class="bg" src="/images/background/bg{random(1, 20)}.webp" alt="background" />
 	<div class="container">
 		<i class="gi-primo-star top-left" />
 		<i class="gi-primo-star top-right" />

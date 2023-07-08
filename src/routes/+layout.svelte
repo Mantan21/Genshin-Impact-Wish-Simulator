@@ -5,6 +5,8 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+
 	import {
 		viewportHeight,
 		viewportWidth,
@@ -26,11 +28,11 @@
 	let innerWidth;
 	let isBannerLoaded = false;
 	let isloaded = false;
-	let showAd = false;
+	const showAd = writable(false);
 
 	setContext('bannerLoaded', () => (isBannerLoaded = true));
 	setContext('loaded', () => (isloaded = true));
-	setContext('showAd', (show) => (showAd = show));
+	setContext('showAd', showAd);
 
 	let font = '';
 	$: {
@@ -143,7 +145,7 @@
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
 
-	{#if isloaded && showAd}
+	{#if isloaded && $showAd}
 		<Iklan head />
 	{/if}
 </svelte:head>
@@ -171,6 +173,8 @@
 		WishSimulator.App
 	</a>
 </main>
+
+<Iklan type="pop" />
 
 <style global>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';
