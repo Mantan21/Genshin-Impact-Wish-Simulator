@@ -33,7 +33,7 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 		const config = storageLocal.get('config');
 		const pity = storageLocal.get('pity');
 		const balance = storageLocal.get('balance');
-		localStorage.clear();
+		localStorage.removeItem('WishSimulator.App');
 
 		storageLocal.set('config', config);
 		storageLocal.set('pity', pity);
@@ -44,7 +44,7 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	// Remove all Settings
 	const locale = localConfig.get('locale');
 	const adKey = localConfig.get('adKey');
-	localStorage.clear();
+	localStorage.removeItem('WishSimulator.App');
 	if (locale) localConfig.set('locale', locale);
 	if (adKey) localConfig.set('adKey', adKey);
 
