@@ -47,7 +47,7 @@
 		});
 	});
 
-	const showVideoHandle = (rarity, single = true) => {
+	const showVideoHandle = async (rarity, single = true) => {
 		const muted = localConfig.get('muted');
 		let videoContent = v3star;
 		if (single && rarity !== 3) {
@@ -57,14 +57,14 @@
 			videoContent = rarity === 5 ? v5star : v4star;
 		}
 
-		if (videoContent.error || isNaN(videoContent.duration)) {
+		if (!videoContent || videoContent.error || isNaN(videoContent.duration)) {
 			showToast = true;
 			console.error("Can't play Meteor Animation because it cannot be loaded", videoContent.error);
 			return meteorEnd();
 		}
 		videoContent.style.display = 'unset';
 		videoContent.muted = !!muted;
-		videoContent.play();
+		await videoContent.play();
 		return;
 	};
 

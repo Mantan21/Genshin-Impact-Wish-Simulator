@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
+	import { removeAnimClass } from '$lib/helpers/transition';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ResultListItem from './_result-list-item.svelte';
 
@@ -72,17 +72,27 @@
 </svg>
 
 <div class="scroll" bind:this={container}>
-	<div class="container animate" on:animationend={(e) => e.target.classList.remove('animate')}>
+	<div class="container animate" use:removeAnimClass>
 		<div class="wishlist" bind:clientHeight style="--card-height: {clientHeight}px">
 			{#each sortedWish as data, i}
-				<div class="item-box" in:fly={{ delay: i * 90, x: 150 }}>
+				<div
+					class="item-box"
+					class:animate={!standalone}
+					style="animation-delay: {0.5 + i * 0.1}s"
+					use:removeAnimClass
+				>
 					<ResultListItem {data} index={i} />
 				</div>
 			{/each}
 		</div>
 		<div class="shadows" style="--card-height: {clientHeight}px">
 			{#each sortedWish as { rarity, type, bonusType }, i}
-				<div class="shadow shadow{rarity}" in:fly={{ delay: i * 90, x: 150 }}>
+				<div
+					class="shadow shadow{rarity}"
+					class:animate={!standalone}
+					style="animation-delay: {0.5 + i * 0.1}s"
+					use:removeAnimClass
+				>
 					{#if bonusType && type === 'character'}
 						<span class="convertion"> {$t('wish.result.convertion')} </span>
 					{/if}
@@ -143,6 +153,13 @@
 		padding: 0 20px;
 		white-space: nowrap;
 		text-align: center;
+	}
+
+	.item-box.animate,
+	.shadow.animate {
+		opacity: 0;
+		animation: wishReveal forwards 0.4s 1;
+		pointer-events: none;
 	}
 
 	:global(.mobile) .wishlist,
@@ -209,6 +226,16 @@
 		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.6), 0 0 1rem rgb(138, 3, 161),
 			0 0 1.4rem rgb(217, 0, 255), 0 0 2rem rgb(29, 4, 255);
 		background-color: rgb(185, 18, 214);
+	}
+
+	@keyframes wishReveal {
+		0% {
+			transform: translateX(150%);
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
+		}
 	}
 
 	@keyframes reveal {

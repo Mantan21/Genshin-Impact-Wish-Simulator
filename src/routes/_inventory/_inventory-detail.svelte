@@ -240,4 +240,10 @@
 	.detail .qty {
 		font-size: larger;
 	}
+
+	@media screen and (max-width: 520px) {
+		.detail {
+			font-size: 120%;
+		}
+	}
 </style>

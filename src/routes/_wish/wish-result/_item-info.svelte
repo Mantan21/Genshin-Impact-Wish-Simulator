@@ -1,8 +1,9 @@
 <script>
+	import { t } from 'svelte-i18n';
+	import { assets } from '$lib/store/app-stores';
+	import { removeAnimClass } from '$lib/helpers/transition';
 	import Icon from '$lib/components/Icon.svelte';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
-	import { assets } from '$lib/store/app-stores';
-	import { t } from 'svelte-i18n';
 
 	export let staticMode = false;
 
@@ -15,17 +16,11 @@
 	export let stelaFortuna = false;
 	export let bonusQty = 0;
 	export let rarity = 4;
-
-	const removeClass = (el) => {
-		el.addEventListener('animationend', () => {
-			el.classList.remove('anim');
-		});
-	};
 </script>
 
 <div class="info">
 	{#if type !== 'outfit'}
-		<div class="icon vision" class:anim={!staticMode} use:removeClass>
+		<div class="icon vision" class:animate={!staticMode} use:removeAnimClass>
 			<SvgIcon name={weaponType || vision} />
 		</div>
 	{/if}
@@ -33,10 +28,10 @@
 	<!-- Item Name -->
 	<div class="name">
 		{#if type === 'outfit'}
-			<span class:anim={!staticMode} use:removeClass> {$t('outfit.obtained')} </span>
+			<span class:animate={!staticMode} use:removeAnimClass> {$t('outfit.obtained')} </span>
 		{/if}
 
-		<div class="text" class:anim={!staticMode} use:removeClass>
+		<div class="text" class:animate={!staticMode} use:removeAnimClass>
 			{#if type === 'outfit'}
 				{$t(`outfit.item.${outfitName}.name`)}
 			{:else if weaponType}
@@ -50,15 +45,15 @@
 			{#each Array(rarity) as _, i (i)}
 				<i
 					class="gi-star"
-					class:anim={!staticMode}
+					class:animate={!staticMode}
 					style="animation-delay: {2 + i * 0.15}s"
-					use:removeClass
+					use:removeAnimClass
 				/>
 			{/each}
 		</div>
 
 		{#if type === 'outfit'}
-			<span class="anim" class:anim={!staticMode} use:removeClass>
+			<span class="anim" class:animate={!staticMode} use:removeAnimClass>
 				{$t('outfit.unlocked', {
 					values: { character: $t(`${itemName}.name`) }
 				})}
@@ -67,7 +62,7 @@
 	</div>
 
 	<!-- Show Starglitter Bonus & Stella Fortuna For Character -->
-	<div class="bonus" class:anim={!staticMode} use:removeClass>
+	<div class="bonus" class:animate={!staticMode} use:removeAnimClass>
 		{#if stelaFortuna}
 			<div class="stella stella{rarity}">
 				<img src={$assets[`stella-fortuna-${rarity}star.webp`]} alt="Stella Formula" />
@@ -112,13 +107,13 @@
 		padding: 0.2% 0 0.5%;
 		display: block;
 	}
-	.name span.anim {
+	.name span.animate {
 		animation-delay: 2s !important;
 		animation: revealName forwards 0.8s 1;
 		opacity: 0;
 	}
 
-	.name .text.anim {
+	.name .text.animate {
 		animation-delay: 1.3s !important;
 		animation: revealName forwards 0.8s 1;
 		opacity: 0;
@@ -151,7 +146,7 @@
 		height: 4rem;
 	}
 
-	.icon.anim {
+	.icon.animate {
 		opacity: 0;
 		animation-delay: 1.2s !important;
 		animation: revealIcon forwards 1.3s 1;
@@ -162,7 +157,7 @@
 		font-size: 1.525em;
 		display: inline-block;
 	}
-	.gi-star.anim {
+	.gi-star.animate {
 		opacity: 0;
 		transform: scale(5);
 		animation: revealStar forwards 0.4s 1;
@@ -179,7 +174,7 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
-	.bonus.anim {
+	.bonus.animate {
 		opacity: 0;
 		animation: opacityChange forwards 1.5s 1;
 	}
