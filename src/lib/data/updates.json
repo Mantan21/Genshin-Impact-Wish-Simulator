@@ -323,12 +323,20 @@
 		},
 		{
 			"date": "04-Jul-2023",
-			"featured": true,
 			"description": [
 				"Add <b>Eula 2nd Rerun</b> Banner",
 				"Add <b>Klee 3rd Rerun</b> Banner",
 				"Update Weapon Banner: <b> Song of Broken Pines </b> and <b>Lost Prayers to the Sacred Winds</b>",
 				"New Character Outfits: <b>Blossoming Starlight</b> for Klee and <b>Sailwind Shadow </b> for Kaeya."
+			]
+		},
+		{
+			"date": "20-Jul-2023",
+			"featured": true,
+			"description": [
+				"Add <b>Sangonomiya Kokomi 3rd Rerun</b> Banner",
+				"Add <b>Wanderer 2nd Rerun</b> Banner",
+				"Update Weapon Banner: <b> S Tulaytullah's Remembrance </b> and <b>Everlasting Moonglow</b>"
 			]
 		}
 	]

@@ -18,7 +18,7 @@
 
 <div class="frame-content">
 	<div class="top bg-epitome">
-		{$t('wish.banner.weapons')}
+		{$t('wish.banner.weapon-event')}
 	</div>
 	<h1 in:fly={{ x: 10, duration: 700 }}>
 		{@html highlightBannerName($t(`banner.epitome-invocation`))}

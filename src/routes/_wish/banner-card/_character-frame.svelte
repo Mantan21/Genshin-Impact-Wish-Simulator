@@ -33,7 +33,7 @@
 
 <div class="frame-content">
 	<div class="top bg-{vision}">
-		{$t('wish.banner.events')}
+		{$t('wish.banner.character-event')}
 		{event2 ? ($locale === 'ja-JP' ? '2' : '— 2') : ''}
 	</div>
 	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>

@@ -44,6 +44,38 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "drifting-luminescence-4",
+							"character": "sangonomiya-kokomi",
+							"textOffset": { "l": 50, "b": 10.5 }
+						},
+						{
+							"bannerName": "from-ashes-reborn-2",
+							"character": "wanderer",
+							"textOffset": { "l": 50, "b": 11.5 }
+						}
+					],
+
+					"rateup": ["yanfei", "rosaria", "faruzan"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-50",
+					"fatepointsystem": true,
+					"featured": [{ "name": "everlasting-moonglow" }, { "name": "tulaytullah_s-remembrance" }],
+					"rateup": ["wine-and-song", "the-bell", "dragon_s-bane", "favonius-bow", "lion_s-roar"],
+					"textOffset": {
+						"featured": { "l": 46, "t": 71.5, "w": 25 },
+						"rateup": { "l": 79, "b": 20.5 }
+					}
+				}
+			}
 		}
 	]
 }
