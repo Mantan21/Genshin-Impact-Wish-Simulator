@@ -15,12 +15,12 @@ const checkViewport = () => {
 	const rotate = angle === 90 || angle === 270;
 	return !rotate && window.matchMedia('screen and (max-width: 760px)').matches;
 };
-const mobileDetect = () => {
+export const mobileDetect = () => {
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera || userAgentPlaceholder;
 	return navigator?.userAgentData?.mobile || checkUserAgent(userAgent) || checkViewport();
 };
 
-const browserDetect = () => {
+export const browserDetect = () => {
 	const winNav = window.navigator;
 	const userAgent = winNav.userAgent;
 	const isIOSChrome = userAgent.match('CriOS');
@@ -42,4 +42,10 @@ const browserDetect = () => {
 	return { isSupported: false };
 };
 
-export { mobileDetect, browserDetect };
+export const isSafari = () => {
+	const userAgent = window.navigator?.userAgent?.toLowerCase();
+	const chromeFn = window.chrome;
+	const chromeAgent = userAgent?.indexOf('chrome');
+	const safariAgent = userAgent?.match('safari') && !chromeAgent && !chromeFn;
+	return safariAgent;
+};

@@ -1,6 +1,7 @@
+import { writable } from 'svelte/store';
 import { assets } from '$lib/store/app-stores';
 import { AssetManager } from '$lib/store/IDB-manager';
-import { writable } from 'svelte/store';
+import { isSafari } from './mobileDetect';
 
 const itemRarity = [3, 3, 4, 4, 5, 5];
 const meteorList = [
@@ -15,6 +16,10 @@ const meteorList = [
 export const check = async () => {
 	const loadedData = [];
 
+	// Load video from network directly if user use Safari browser
+	if (isSafari()) return safariMeteorLoader();
+
+	// Read blob data from storage if using chrome
 	for (let i = 0; i < meteorList.length; i++) {
 		const key = meteorList[i];
 		const storedData = await AssetManager.get(key);
@@ -31,6 +36,14 @@ export const check = async () => {
 		});
 	}
 	return allComplete;
+};
+
+const safariMeteorLoader = () => {
+	assets.update((v) => {
+		meteorList.forEach((vid) => (v[vid] = `/videos/${vid}`));
+		return v;
+	});
+	return true;
 };
 
 export const loadProggress = writable({ rarity: '', progress: 0, totalItem: 0, itemNumber: 0 });
