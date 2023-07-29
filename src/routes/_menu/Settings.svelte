@@ -6,13 +6,14 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import { localConfig } from '$lib/store/localstore-manager';
-	import { autoskip, wishAmount } from '$lib/store/app-stores';
+	import { autoskip, multipull, wishAmount } from '$lib/store/app-stores';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
 	import factoryReset from '$lib/helpers/storage-reset';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Toast from '$lib/components/Toast.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import OptionMenu from './_options.svelte';
 
 	let optionToShow = '';
@@ -154,58 +155,68 @@
 {/if}
 
 <div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
-	<OptionMenu
-		text={$t('menu.language')}
-		name="locale"
-		activeIndicator={$locale}
-		showOption={optionToShow === 'locale'}
-	/>
+	<h2>General</h2>
+	<OptionMenu name="locale" activeIndicator={$locale} showOption={optionToShow === 'locale'}>
+		{$t('menu.language')}
+	</OptionMenu>
 
-	<OptionMenu text={$t('menu.currency')} name="currency" showOption={optionToShow === 'currency'} />
-
-	<OptionMenu
-		name="wishAmount"
-		text={$t('menu.fates')}
-		showOption={optionToShow === 'wishAmount'}
-		activeIndicator={selectedAmount}
-		on:select={handleSelectAmount}
-	/>
-
-	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
-		{#if selectedAmount === 'manual'}
-			<div in:fly|local={{ y: -10, delay: Math.sqrt(i * 10000) }} out:fly|local={{ y: -10 }}>
-				<OptionMenu sub name={item} text={$t(`shop.item.${item}`)} />
-			</div>
-		{/if}
-	{/each}
+	<OptionMenu name="currency" showOption={optionToShow === 'currency'}>
+		{$t('menu.currency')}
+	</OptionMenu>
 
 	<OptionMenu
-		text={$t('menu.mute')}
 		showOption={optionToShow === 'audio'}
 		name="audio"
 		activeIndicator={isMuted}
 		on:select={handleMuted}
-	/>
+	>
+		{$t('menu.mute')}
+	</OptionMenu>
 
 	<OptionMenu
-		text={$t('menu.autoskip')}
 		showOption={optionToShow === 'autoskip'}
 		name="autoskip"
 		activeIndicator={$autoskip}
 		on:select={handleAutoSkip}
-	/>
+	>
+		{$t('menu.autoskip')}
+	</OptionMenu>
 
 	<OptionMenu
-		text={$t('menu.animatedbg')}
 		showOption={optionToShow === 'animatedbg'}
 		name="animatedbg"
 		activeIndicator={animatedbg}
 		on:select={showAnimatedBG}
-	/>
+	>
+		{$t('menu.animatedbg')}
+	</OptionMenu>
 
-	<OptionMenu name="switchBanner" text={$t('menu.switchBanner')} />
+	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu>
 
-	<OptionMenu name="reset" text={$t('menu.factoryReset')} />
+	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu>
+
+	<h2>Wish Setting</h2>
+	<OptionMenu
+		name="wishAmount"
+		showOption={optionToShow === 'wishAmount'}
+		activeIndicator={selectedAmount}
+		on:select={handleSelectAmount}
+	>
+		{$t('menu.fates')}
+	</OptionMenu>
+
+	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
+		{#if selectedAmount === 'manual'}
+			<div in:fly|local={{ y: -10, delay: Math.sqrt(i * 10000) }} out:fly|local={{ y: -10 }}>
+				<OptionMenu useInput sub inputValue={item} name="currencyItem">
+					<Icon type={item} style="margin: -1% 2% -1% 0" />
+					{$t(`shop.item.${item}`)}
+				</OptionMenu>
+			</div>
+		{/if}
+	{/each}
+
+	<OptionMenu name="multi" inputValue={$multipull} useInput>Number per multi-roll</OptionMenu>
 
 	<h2>Notes :</h2>
 	<div class="notes">

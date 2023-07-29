@@ -8,17 +8,18 @@
 		acquaint as ac,
 		intertwined as iw,
 		stardust as sd,
-		starglitter as sg
+		starglitter as sg,
+		multipull
 	} from '$lib/store/app-stores';
 	import { localBalance, localConfig } from '$lib/store/localstore-manager';
 	import { cookie } from '$lib/store/cookie';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { localeName, flags } from '$lib/data/country.json';
 	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';
-	import Icon from '$lib/components/Icon.svelte';
 
-	export let text;
 	export let name;
+	export let useInput = false;
+	export let inputValue = '';
 	export let sub = false;
 	export let activeIndicator = null;
 	export let showOption = false;
@@ -82,40 +83,41 @@
 		stardust: sd
 	};
 
-	const getValue = (name) => {
-		let balance = 0;
-		gameCurrencyList[name]?.subscribe((v) => (balance = v));
-		return balance;
+	$: balance = gameCurrencyList[inputValue];
+
+	const setGameCurrencies = (value) => {
+		gameCurrencyList[inputValue]?.set(value);
+		localBalance.set(inputValue, value);
+	};
+
+	const setMultiPull = (value) => {
+		localConfig.set('multipull', value);
+		multipull.set(value);
 	};
 
 	const setValues = (e) => {
-		let val = e.target.value;
-		val = val.length > 9 ? val.substring(0, 9) : val;
-		val = parseInt(val, 10);
-		const value = !isNaN(val) ? val : 0;
-		gameCurrencyList[name]?.set(value);
-		localBalance.set(name, value);
-		e.target.value = val;
+		const inputVal = e.target.value.substring(0, 9);
+		const numberVal = parseInt(inputVal, 10);
+		const value = !isNaN(numberVal) ? numberVal : 0;
+		e.target.value = value;
+
+		if (name === 'currencyItem') return setGameCurrencies(value);
+		if (name === 'multi') return setMultiPull(value);
 	};
 </script>
 
 <div class="option" class:sub>
 	<div class="option-name">
-		{#if sub}
-			<Icon type={name} style="margin: -1% 2% -1% 0" />
-		{/if}
-		{text}
+		<slot />
 	</div>
 
-	{#if sub}
+	{#if useInput}
 		<input
+			min="0"
 			type="number"
 			class="option-select"
+			value={name === 'currencyItem' ? $balance : inputValue}
 			on:input={setValues}
-			min="0"
-			max="999999999"
-			maxlength="9"
-			value={getValue(name) || 0}
 		/>
 	{:else if name === 'locale'}
 		<div class="option-select locale">

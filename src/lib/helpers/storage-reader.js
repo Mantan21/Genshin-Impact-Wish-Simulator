@@ -9,7 +9,8 @@ import {
 	stardust,
 	genesis,
 	starglitter,
-	intertwined
+	intertwined,
+	multipull
 } from '$lib/store/app-stores';
 import { localBalance, rollCounter, localConfig } from '$lib/store/localstore-manager';
 import { noticeMark } from './noticeMark';
@@ -34,18 +35,20 @@ export const importLocalConfig = () => {
 	stardust.set(isNaN(sd) ? 0 : sd);
 	starglitter.set(isNaN(sg) ? 0 : sg);
 
-	const lAutoSkip = localConfig.get('autoskip') || false;
-	autoskip.set(lAutoSkip);
-
 	const lWishAmount = localConfig.get('wishAmount') || 'default';
 	wishAmount.set(lWishAmount);
+	console.log('Balance Updated');
 
 	const starterRollCount = rollCounter.get('beginner') || 0;
 	beginnerRemaining.set(20 - starterRollCount);
 
-	// Setting
+	const lAutoSkip = localConfig.get('autoskip') || false;
+	autoskip.set(lAutoSkip);
+
 	noticeMark.onLoadCheck();
-	console.log('Balance Updated');
+
+	const lMulti = localConfig.get('multipull');
+	multipull.set(lMulti || 10);
 };
 
 /**

@@ -223,4 +223,3 @@ export const ownedOutfits = {
 		storageLocal.set('ownedOutfits', outfits);
 	}
 };
-

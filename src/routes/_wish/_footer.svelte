@@ -9,7 +9,8 @@
 		starglitter,
 		intertwined,
 		wishAmount,
-		activeVersion
+		activeVersion,
+		multipull
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
@@ -50,7 +51,7 @@
 	};
 	const handleMultiRollClick = () => {
 		playSfx('roll');
-		roll(10, bannerType);
+		roll($multipull, bannerType);
 	};
 </script>
 
@@ -114,11 +115,11 @@
 				{#if bannerType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
-				<div class="top">{$t('wish.rollButton', { values: { count: '×10' } })}</div>
+				<div class="top">{$t('wish.rollButton', { values: { count: `×${$multipull}` } })}</div>
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px" class:red={currencyUsed < 10 && !isUnlimited}>
-						x {isBeginner ? 8 : 10}
+					<span style="margin-left: 7px" class:red={currencyUsed < $multipull && !isUnlimited}>
+						x {isBeginner ? 8 : $multipull}
 					</span>
 				</div>
 			</button>

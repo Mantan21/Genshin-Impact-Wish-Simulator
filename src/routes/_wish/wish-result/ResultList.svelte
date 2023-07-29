@@ -42,7 +42,7 @@
 		OverlayScrollbars(container, {
 			sizeAutoCapable: false,
 			className: 'os-theme-light',
-			scrollbars: { visibility: 'hidden' }
+			scrollbars: { visibility: 'auto', autoHide: true }
 		});
 		if (standalone) return;
 		playSfx('resultList');

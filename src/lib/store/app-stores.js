@@ -27,6 +27,7 @@ export const pricelist = writable({});
 // Settings
 export const autoskip = writable(false);
 export const wishAmount = writable('default');
+export const multipull = writable(10);
 
 // other
 export const mobileMode = writable(false);

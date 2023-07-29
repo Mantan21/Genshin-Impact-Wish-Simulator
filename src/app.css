@@ -224,6 +224,20 @@ img {
 	user-drag: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+input:focus {
+	border: none;
+	outline: none;
+}
+
 input,
 button {
 	font-size: inherit;
