@@ -119,6 +119,8 @@
 			value={name === 'currencyItem' ? $balance : inputValue}
 			on:input={setValues}
 		/>
+
+		<!-- Languages -->
 	{:else if name === 'locale'}
 		<div class="option-select locale">
 			<button
@@ -163,6 +165,8 @@
 				</div>
 			{/if}
 		</div>
+
+		<!-- User Currency -->
 	{:else if name === 'currency'}
 		<div class="option-select locale">
 			<button
@@ -186,6 +190,8 @@
 				</div>
 			{/if}
 		</div>
+
+		<!-- Wish Amount -->
 	{:else if name === 'wishAmount'}
 		<div class="option-select wishAmount">
 			<button
@@ -208,16 +214,22 @@
 				</div>
 			{/if}
 		</div>
+
+		<!-- Switch Banner -->
 	{:else if name === 'switchBanner'}
 		<button class="option-select" on:click={openPrevious}>
 			<i class="gi-caret-down" />
 			{$activeVersion.patch} - {$activeVersion.phase}
 		</button>
+
+		<!-- Reset -->
 	{:else if name === 'reset'}
 		<button class="option-select" on:click={reset}>
 			<i class="gi-delete" style="vertical-align: bottom; line-height: 0; margin-right: .2rem" />
 			{$t('menu.resetButton')}
 		</button>
+
+		<!-- General Option -->
 	{:else}
 		<div class="option-select">
 			<button

@@ -51,7 +51,7 @@
 	};
 	const handleMultiRollClick = () => {
 		playSfx('roll');
-		roll($multipull, bannerType);
+		roll(isBeginner ? 10 : $multipull, bannerType);
 	};
 </script>
 
@@ -115,12 +115,20 @@
 				{#if bannerType === 'beginner'}
 					<span class="discount">-20%</span>
 				{/if}
-				<div class="top">{$t('wish.rollButton', { values: { count: `×${$multipull}` } })}</div>
+
+				<div class="top">
+					{$t('wish.rollButton', { values: { count: `×${isBeginner ? 10 : $multipull}` } })}
+				</div>
+
 				<div class="bottom">
 					<Icon type={fateType} />
-					<span style="margin-left: 7px" class:red={currencyUsed < $multipull && !isUnlimited}>
-						x {isBeginner ? 8 : $multipull}
-					</span>
+					{#if isBeginner}
+						<span style="margin-left: 7px" class:red={currencyUsed < 8 && !isUnlimited}> x 8 </span>
+					{:else}
+						<span style="margin-left: 7px" class:red={currencyUsed < $multipull && !isUnlimited}>
+							x {$multipull}
+						</span>
+					{/if}
 				</div>
 			</button>
 		</div>

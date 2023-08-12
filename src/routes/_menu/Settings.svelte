@@ -5,8 +5,8 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { localConfig } from '$lib/store/localstore-manager';
 	import { autoskip, multipull, wishAmount } from '$lib/store/app-stores';
+	import { localConfig } from '$lib/store/localstore-manager';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
 	import factoryReset from '$lib/helpers/storage-reset';
@@ -71,12 +71,11 @@
 	let keepSetting = false;
 	let clearCache = false;
 	let showToast = false;
-	let storageSize = '..B';
 
-	const getSize = async () => {
+	const getStorageSize = async () => {
 		const { usage } = await navigator.storage.estimate();
 		const size = (usage / 1000000).toFixed(2);
-		storageSize = `${size}MB`;
+		return `${size}MB`;
 	};
 
 	const reset = () => {
@@ -105,7 +104,6 @@
 	let optionsContainer;
 	onMount(() => {
 		OverlayScrollbars(optionsContainer, { sizeAutoCapable: false, className: 'os-theme-light' });
-		getSize();
 	});
 </script>
 
@@ -140,9 +138,13 @@
 					/>
 					<label for="cache">
 						<i>✔</i>
-						<span>
-							{@html $t('menu.clearCache', { values: { size: storageSize } })}
-						</span>
+						{#await getStorageSize()}
+							<span>..B</span>
+						{:then size}
+							<span>
+								{@html $t('menu.clearCache', { values: { size: size } })}
+							</span>
+						{/await}
 					</label>
 				</div>
 			</div>
@@ -155,7 +157,6 @@
 {/if}
 
 <div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
-	<h2>General</h2>
 	<OptionMenu name="locale" activeIndicator={$locale} showOption={optionToShow === 'locale'}>
 		{$t('menu.language')}
 	</OptionMenu>
@@ -163,6 +164,28 @@
 	<OptionMenu name="currency" showOption={optionToShow === 'currency'}>
 		{$t('menu.currency')}
 	</OptionMenu>
+
+	<OptionMenu
+		name="wishAmount"
+		showOption={optionToShow === 'wishAmount'}
+		activeIndicator={selectedAmount}
+		on:select={handleSelectAmount}
+	>
+		{$t('menu.fates')}
+	</OptionMenu>
+
+	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
+		{#if selectedAmount === 'manual'}
+			<div in:fly|local={{ y: -10, delay: Math.sqrt(i * 10000) }} out:fly|local={{ y: -10 }}>
+				<OptionMenu useInput sub inputValue={item} name="currencyItem">
+					<Icon type={item} style="margin: -1% 2% -1% 0" />
+					{$t(`shop.item.${item}`)}
+				</OptionMenu>
+			</div>
+		{/if}
+	{/each}
+
+	<OptionMenu name="multi" inputValue={$multipull} useInput>Number per multi-roll</OptionMenu>
 
 	<OptionMenu
 		showOption={optionToShow === 'audio'}
@@ -194,29 +217,6 @@
 	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu>
 
 	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu>
-
-	<h2>Wish Setting</h2>
-	<OptionMenu
-		name="wishAmount"
-		showOption={optionToShow === 'wishAmount'}
-		activeIndicator={selectedAmount}
-		on:select={handleSelectAmount}
-	>
-		{$t('menu.fates')}
-	</OptionMenu>
-
-	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
-		{#if selectedAmount === 'manual'}
-			<div in:fly|local={{ y: -10, delay: Math.sqrt(i * 10000) }} out:fly|local={{ y: -10 }}>
-				<OptionMenu useInput sub inputValue={item} name="currencyItem">
-					<Icon type={item} style="margin: -1% 2% -1% 0" />
-					{$t(`shop.item.${item}`)}
-				</OptionMenu>
-			</div>
-		{/if}
-	{/each}
-
-	<OptionMenu name="multi" inputValue={$multipull} useInput>Number per multi-roll</OptionMenu>
 
 	<h2>Notes :</h2>
 	<div class="notes">

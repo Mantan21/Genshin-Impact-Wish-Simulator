@@ -18,7 +18,7 @@
 		border-radius: 50px;
 		background-color: #e0ddd4;
 		box-shadow: 0 2px 2px 0 rgba(100, 100, 100, 0.2), 0 2px 2px 0 rgba(100, 100, 100, 0.19);
-		padding: 0.2rem 1.5rem;
+		padding: 0.25rem 1.5rem;
 		margin: 2px 5px;
 		transition: all 0.2s;
 		border: solid transparent;
