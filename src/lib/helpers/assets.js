@@ -46,7 +46,7 @@ const images = [
 			'intertwined-fate.webp',
 			'menu-active.png',
 			'modal-bg-icon.png',
-			'payment-moraless.webp',
+			'payment-childe.webp',
 			'payment-tears.webp',
 			'payment-wakaranai.webp',
 			'primogem.webp',

@@ -72,14 +72,14 @@
 			<div class="payment-type">
 				<span>{$t('shop.selectPayment')}</span>
 				<div class="list">
-					{#each ['moraless', 'tears', 'wakaranai'] as method}
+					{#each ['Childe', 'Tears', 'Wakaranai'] as method}
 						<button
 							class="item"
 							class:selected={method === activeMethod}
 							on:click={() => selectMethod(method)}
 						>
-							<img src={$assets[`payment-${method}.webp`]} alt="method" />
-							{method}
+							<img src={$assets[`payment-${method.toLocaleLowerCase()}.webp`]} alt="method" />
+							{$t(`shop.payment${method}`)}
 						</button>
 					{/each}
 				</div>
@@ -90,7 +90,7 @@
 					type="checkbox"
 					style="margin-right: .4rem"
 					bind:checked={autoConvert}
-					on:change={() => playSfx()}
+					on:change={() => playSfx('click2')}
 				/>
 				<label for="convert">{$t('shop.convertPrimo')} </label>
 			</div>
