@@ -1,14 +1,20 @@
 <script>
+	import { setContext } from 'svelte';
 	import { fly, fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
+
+	import { localrate } from '$lib/store/localstore-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import BannerCard from './banner-card/BannerCard.svelte';
 	import {
 		activeBanner,
 		bannerList,
+		isMobile,
 		mobileMode,
 		viewportHeight,
 		viewportWidth
 	} from '$lib/store/app-stores';
+	import BannerCard from './banner-card/BannerCard.svelte';
+	import ModalTpl from '$lib/components/ModalTpl.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
 	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';
@@ -33,13 +39,58 @@
 			return activeBanner.update((n) => n - 1);
 		}
 	};
+
+	// Probability Editor
+	let editor = false;
+	$: banner = $bannerList[$activeBanner]?.type;
+	$: if (banner === 'beginner') editor = false;
+
+	const editProb = () => {
+		playSfx('bookflip');
+		editor = !editor;
+	};
+	setContext('editprob', editProb);
+
+	let showModalReset = false;
+	setContext('showModalReset', () => {
+		showModalReset = true;
+	});
+
+	const confirmModal = () => {
+		playSfx('modal');
+		playSfx('bookflip');
+		localrate.reset(banner);
+		showModalReset = false;
+		editor = false;
+	};
+
+	const cancelModal = () => {
+		playSfx('close');
+		showModalReset = false;
+	};
 </script>
+
+{#if showModalReset}
+	<ModalTpl title="Back to Default" on:cancel={cancelModal} on:confirm={confirmModal}>
+		<div class="modal-content">
+			<p>
+				{@html $t('editor.resetPrompt', { values: { banner: $t(`wish.banner.${banner}`) } })}
+			</p>
+		</div>
+	</ModalTpl>
+{/if}
 
 <div class="banner-container" {style}>
 	{#each $bannerList as data, i}
 		{#if $activeBanner === i}
-			<div class="banner-item" in:fly={{ x: 25, duration: 580 }} style={mobileBannerStyle}>
-				<BannerCard {data} index={i} />
+			<div
+				class="banner-item"
+				class:editorOpen={editor}
+				class:fullscreen={$isMobile && $mobileMode}
+				style={mobileBannerStyle}
+				in:fly={{ x: 25, duration: 580 }}
+			>
+				<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
 			</div>
 		{/if}
 	{/each}
@@ -70,6 +121,16 @@
 </div>
 
 <style>
+	.modal-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		font-family: var(--genshin-font);
+		padding: 3%;
+	}
+
 	.banner-container {
 		width: 100%;
 		height: 100%;
@@ -87,6 +148,15 @@
 		width: 80%;
 		max-height: 75vh;
 		aspect-ratio: 27/14;
+		perspective: 1000px;
+	}
+	.fullscreen.banner-item {
+		perspective: unset;
+	}
+
+	:global(.banner-item.editorOpen:not(.fullscreen)) {
+		position: relative;
+		z-index: +10;
 	}
 
 	.navigate {
@@ -98,6 +168,7 @@
 		display: flex;
 		justify-content: space-between;
 		transition: all 0.2s;
+		pointer-events: none;
 	}
 
 	@media screen and (max-width: 1200px) {
@@ -116,6 +187,7 @@
 		color: #ece5d8;
 		font-size: 2rem;
 		line-height: 0;
+		pointer-events: initial;
 	}
 
 	:global(.mobile) .navigate {

@@ -239,3 +239,6 @@
 .gi-min:before {
 	content: '\26';
 }
+.gi-gear:before {
+	content: '\27';
+}

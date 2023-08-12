@@ -5,6 +5,7 @@ import { localConfig } from '$lib/store/localstore-manager';
 import camera from './camera';
 import changebanner from './changebanner';
 import click from './click';
+import click2 from './click2';
 import close from './close';
 import exchange from './exchange';
 import inventory from './inventory';
@@ -17,11 +18,14 @@ import shopnav from './shopnav';
 import shopsubnav from './shopsubnav';
 import collectionitem from './collectionitem';
 import prevbanner from './prevbanner';
+import bookflip from './bookflip';
 
 const source = {
+	bookflip,
 	changebanner,
 	close,
 	click,
+	click2,
 	collectionitem,
 	exchange,
 	modal,

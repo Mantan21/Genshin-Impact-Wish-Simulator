@@ -1,8 +1,8 @@
 // import { fatePoint, selectedCourse } from '$lib/store/stores';
 import { course } from '$lib/store/app-stores';
 import { fatepointManager, guaranteedStatus } from '$lib/store/localstore-manager';
-import { rand, get3StarItem, get4StarItem, get5StarItem } from './itemdrop-base';
-import { prob } from './probabilities';
+import { rand, get3StarItem, get4StarItem, get5StarItem, isRateup } from './itemdrop-base';
+import { getRate, prob } from './probabilities';
 
 const fatepoint = {
 	init({ version, phase, featured, fatesystemON }) {
@@ -41,15 +41,6 @@ const fatepoint = {
 	}
 };
 
-const isRateup = () => {
-	const item = [
-		{ type: 'rateup', chance: 75 },
-		{ type: 'std', chance: 25 }
-	];
-	const { type } = prob(item);
-	return type === 'rateup';
-};
-
 const weaponWish = {
 	init({ rateup, version, phase, featured, fatesystemON } = {}) {
 		this._version = version;
@@ -72,7 +63,7 @@ const weaponWish = {
 		if (rarity === 4) {
 			const { _version: version, _phase: phase, _rateup: rateup } = this;
 			const isGuaranteed = guaranteedStatus.get('weapon-event-4star');
-			const useRateup = isGuaranteed || isRateup();
+			const useRateup = isGuaranteed || isRateup('weapon-event');
 
 			const droplist = get4StarItem({
 				banner: 'weapon-event',
@@ -90,15 +81,29 @@ const weaponWish = {
 		if (rarity === 5) {
 			const { _featured, _fatesystem } = this;
 			const isGuaranteed = guaranteedStatus.get('weapon-event-5star');
-			let useRateup = isGuaranteed || isRateup();
+			let useRateup = isGuaranteed || isRateup('weapon-event');
 
 			let calculateFatepoint = false;
 			let rateupItem = _featured.map(({ name }) => name);
+
+			// Epitomized path is Active and Weapon is Selected
 			if (_fatesystem) {
 				const { selected, point } = _fatesystem.check();
 				calculateFatepoint = selected !== null && selected > -1;
+				let useSelected = false;
+
+				// Probability to get selected Weapon
+				if (calculateFatepoint && useRateup) {
+					const selectedRate = getRate('weapon-event', 'selectedRate');
+					const { item } = prob([
+						{ item: 'selected', chance: selectedRate },
+						{ item: 'random', chance: 100 - selectedRate }
+					]);
+					useSelected = item === 'selected';
+				}
+
 				// Guaranteed after 2 point
-				if (calculateFatepoint && point >= 2) {
+				if (useSelected || (calculateFatepoint && point >= 2)) {
 					useRateup = true;
 					rateupItem = [rateupItem[selected]];
 				}

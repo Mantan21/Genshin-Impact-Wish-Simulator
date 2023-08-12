@@ -15,5 +15,37 @@
 	"welkinReward": {
 		"primogem": 8000,
 		"genesis": 32000
+	},
+	"probabilityRates": {
+		"character-event": {
+			"baseRate5": 0.6,
+			"max5": 90,
+			"hard5": 74,
+			"baseRate4": 5.1,
+			"max4": 10,
+			"hard4": 9,
+			"winRate": 50,
+			"charRate": 50
+		},
+		"weapon-event": {
+			"baseRate5": 0.8,
+			"max5": 80,
+			"hard5": 63,
+			"baseRate4": 6.6,
+			"max4": 10,
+			"hard4": 9,
+			"winRate": 75,
+			"charRate": 50,
+			"selectedRate": 50
+		},
+		"standard": {
+			"baseRate5": 0.6,
+			"max5": 90,
+			"hard5": 74,
+			"baseRate4": 5.1,
+			"max4": 10,
+			"hard4": 9,
+			"charRate": 50
+		}
 	}
 }

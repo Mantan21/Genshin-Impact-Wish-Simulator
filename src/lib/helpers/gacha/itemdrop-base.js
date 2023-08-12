@@ -1,6 +1,7 @@
 import { standard } from '$lib/data/banners/standard.json';
 import { data as weaponsDB } from '$lib/data/weapons.json';
 import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
+import { getRate, prob } from './probabilities';
 
 const standardWeapons = (star) => {
 	return getAllWeapons(star).filter(({ limited }) => !limited);
@@ -90,7 +91,11 @@ export const get4StarItem = ({
 	} else if (type === 'weapon') {
 		items = standardWeapons(4);
 	} else {
-		const itemType = rand(['wp', 'char']);
+		const charRate = getRate(banner, 'charRate');
+		const { itemType } = prob([
+			{ itemType: 'char', chance: charRate },
+			{ itemType: 'wp', chance: 100 - charRate }
+		]);
 		items = itemType === 'wp' ? standardWeapons(4) : char4starList(banner);
 	}
 
@@ -146,7 +151,11 @@ export const get5StarItem = ({
 		} else if (type === 'weapon') {
 			resultList = standardWeapons(5);
 		} else {
-			const itemType = rand(['wp', 'char']);
+			const charRate = getRate(banner, 'charRate');
+			const { itemType } = prob([
+				{ itemType: 'char', chance: charRate },
+				{ itemType: 'wp', chance: 100 - charRate }
+			]);
 			resultList = itemType === 'wp' ? standardWeapons(5) : std5StarCharlist(stdver);
 		}
 		return resultList;
@@ -154,5 +163,16 @@ export const get5StarItem = ({
 
 	// Character List while lose on character banner
 	return std5StarCharlist(stdver).filter(({ name }) => !rateupItem.includes(name));
+};
+
+// RateUp Probability
+export const isRateup = (banner) => {
+	const winRate = getRate(banner, 'winRate');
+	const { item } = prob([
+		{ item: 'rateup', chance: winRate },
+		{ item: 'std', chance: 100 - winRate }
+	]);
+
+	return item === 'rateup';
 };
 

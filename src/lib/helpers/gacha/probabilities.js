@@ -1,9 +1,13 @@
+import { probabilityRates } from '$lib/data/wish-setup.json';
+import { localrate } from '$lib/store/localstore-manager';
+
 export const rates = ({
 	currentPity = 0,
 	maxPity = 90,
 	baseRate = 0.6,
 	rateIncreasedAt = 74
 } = {}) => {
+	if (baseRate <= 0 && currentPity < maxPity) return 0;
 	if (currentPity < rateIncreasedAt) return baseRate;
 
 	if (currentPity >= maxPity) return 100;
@@ -23,4 +27,30 @@ export const prob = (items) => {
 	const random = Math.random() * chances[chances.length - 1];
 	const result = items[chances.findIndex((chance) => chance > random)];
 	return result;
+};
+
+// Read Custom Probability
+export const getRate = (banner, key) => {
+	if (banner === 'beginner') {
+		const initial = probabilityRates['character-event'];
+		return initial[key];
+	}
+
+	const initial = probabilityRates[banner];
+	const local = localrate.get(banner);
+	if (local[key] || local[key] >= 0) return local[key];
+	return initial[key];
+};
+
+export const setRate = (banner, key, val) => {
+	const local = localrate.get(banner);
+	if (typeof val === 'boolean') {
+		local[key] = val;
+	} else {
+		const value = parseFloat(val);
+		if (isNaN(value)) return value;
+		local[key] = value;
+	}
+
+	localrate.set(banner, local);
 };

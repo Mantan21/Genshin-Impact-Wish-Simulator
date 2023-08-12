@@ -53,7 +53,7 @@
 		if (single && rarity !== 3) {
 			videoContent = rarity === 5 ? v5starSingle : v4starSingle;
 		}
-		if (!single) {
+		if (!single && rarity !== 3) {
 			videoContent = rarity === 5 ? v5star : v4star;
 		}
 

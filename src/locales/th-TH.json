@@ -64,6 +64,19 @@
 		"twirling-lotus": "นิโลตบลเริงระบำ",
 		"viridescent-vigil": "พิทักษ์ไพรวัน"
 	},
+	"editor": {
+		"bannerConfig": "{banner} Configuration",
+		"baseRate": "{rarity}-Star Base Rate:",
+		"maxPity": "{rarity}-Star Max Pity:",
+		"hardPity": "Boost {rarity}-Star rate starts from pity:",
+		"winRate": "Chance to get Featured Item:",
+		"charRate": "Chance to get Character instead of Weapon",
+		"nonRateup": "(Non RateUp Item)",
+		"selectedRate": "Selected Weapon Rate:",
+		"disGuaranteed": "Disable Guaranteed System",
+		"backToDefault": "Back to Default",
+		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?"
+	},
 	"wish": {
 		"wishTitle": "การอธิษฐาน",
 		"rollButton": "อธิษฐาน {count}",

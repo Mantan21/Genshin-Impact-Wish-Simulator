@@ -64,6 +64,19 @@
 		"twirling-lotus": "Tarian Limbai Teratai",
 		"viridescent-vigil": "Langkah Suaka Rimba"
 	},
+	"editor": {
+		"bannerConfig": "Konfigurasi {banner}",
+		"baseRate": "Probabilitas Dasar {rarity}★:",
+		"maxPity": "Piti Maksimal {rarity}★:",
+		"hardPity": "Tingkatkan probabilitas {rarity}★ pada piti:",
+		"winRate": "Probabilitas mendapat item RateUP:",
+		"charRate": "Probabilitas mendapat Karakter dibanding Senjata",
+		"nonRateup": "(Item non-RateUP)",
+		"selectedRate": "Probabilitas mendapat senjata terpilih:",
+		"disGuaranteed": "Nonaktifkan sistem jaminan",
+		"backToDefault": "Pengaturan Default",
+		"resetPrompt": "Apakah kamu yakin akan mereset pengaturan probabilitas untuk <b>\"{banner}\"</b>?"
+	},
 	"wish": {
 		"wishTitle": "Permohonan",
 		"rollButton": "Mohon {count}",

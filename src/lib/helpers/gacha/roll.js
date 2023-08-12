@@ -1,7 +1,7 @@
 import { beginnerRemaining, showBeginner } from '$lib/store/app-stores';
 import { HistoryManager } from '$lib/store/IDB-manager';
 import { localPity, owneditem, rollCounter } from '$lib/store/localstore-manager';
-import { prob, rates } from './probabilities';
+import { getRate, prob, rates } from './probabilities';
 
 const { addHistory } = HistoryManager;
 
@@ -15,14 +15,12 @@ const { addHistory } = HistoryManager;
 const roll = async (banner, WishInstance, indexOfBanner) => {
 	const pity5 = localPity.get(`pity5-${banner}`) + 1;
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
-
-	const isWeapon = banner === 'weapon-event';
-	const maxPity = isWeapon ? 80 : 90;
+	const maxPity = getRate(banner, 'max5');
 
 	const rate5star = () => {
 		return rates({
-			baseRate: isWeapon ? 0.8 : 0.6,
-			rateIncreasedAt: isWeapon ? 63 : 74,
+			baseRate: getRate(banner, 'baseRate5'),
+			rateIncreasedAt: getRate(banner, 'hard5'),
 			currentPity: pity5,
 			maxPity
 		});
@@ -30,10 +28,10 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 
 	const rate4star = () => {
 		return rates({
-			baseRate: isWeapon ? 6.6 : 5.1,
+			baseRate: getRate(banner, 'baseRate4'),
 			currentPity: pity4,
-			rateIncreasedAt: 9,
-			maxPity: 10
+			rateIncreasedAt: getRate(banner, 'hard4'),
+			maxPity: getRate(banner, 'max4')
 		});
 	};
 
@@ -41,7 +39,7 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 	let chance4star = rate4star();
 	let chance3star = 100 - chance4star - chance5star;
 
-	if (chance3star < 0 && pity5 >= maxPity) chance4star = 0;
+	if ((chance3star < 0 && pity5 >= maxPity) || chance5star === 100) chance4star = 0;
 	if (chance3star < 0) chance3star = 0;
 	if (chance4star === 100) chance5star = 0;
 
