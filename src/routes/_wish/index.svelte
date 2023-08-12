@@ -170,10 +170,15 @@
 
 	const showObtained = getContext('openObtained');
 	const checkObtained = () => {
+		const stardustQty = countMilestone('stardust');
+		const starglitterQty = countMilestone('starglitter');
+
 		const obtainedItems = [
-			{ item: 'stardust', qty: countMilestone('stardust') },
-			{ item: 'starglitter', qty: countMilestone('starglitter') }
+			{ item: 'stardust', qty: stardustQty },
+			{ item: 'starglitter', qty: starglitterQty }
 		];
+
+		if (!stardustQty && !starglitterQty) return;
 		showObtained(obtainedItems);
 	};
 </script>
@@ -244,7 +249,7 @@
 		position: fixed;
 		width: 100%;
 		height: 100%;
-		z-index: 10;
+		z-index: 15;
 		top: 0;
 		left: 0;
 		pointer-events: none;
