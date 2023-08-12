@@ -383,6 +383,7 @@
 		"showAllitems": "在库存中显示所有物品",
 		"animatedbg": "动画背景",
 		"autoskip": "自动跳过祈愿动画",
+		"multiRoll": "Number per multi-roll",
 		"factoryReset": "清除数据并恢复默认",
 		"resetTitle": "恢复默认",
 		"rotate": "旋转设备以获得更好体验",

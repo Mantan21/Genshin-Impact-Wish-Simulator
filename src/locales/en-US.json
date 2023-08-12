@@ -383,6 +383,7 @@
 		"showAllitems": "Show all items on Inventory",
 		"autoskip": "Auto Skip Splash Art",
 		"animatedbg": "Animated Background",
+		"multiRoll": "Number per multi-roll",
 		"factoryReset": "Clear Data and Restore Default",
 		"resetTitle": "Factory Reset",
 		"rotate": "Rotate for better experience",

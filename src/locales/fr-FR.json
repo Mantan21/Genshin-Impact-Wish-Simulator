@@ -383,6 +383,7 @@
 		"showAllitems": "Afficher tous les objets dans l'inventaire",
 		"autoskip": "Passer automatiquement le Splash Art",
 		"animatedbg": "Arrière-plan animé",
+		"multiRoll": "Number per multi-roll",
 		"factoryReset": "Effacer les données et restaurer les valeurs par défaut",
 		"resetTitle": "Réinitialisation d'usine",
 		"rotate": "Tourner pour une meilleure expérience",

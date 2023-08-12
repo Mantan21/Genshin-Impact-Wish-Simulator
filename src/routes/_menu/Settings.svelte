@@ -185,7 +185,7 @@
 		{/if}
 	{/each}
 
-	<OptionMenu name="multi" inputValue={$multipull} useInput>Number per multi-roll</OptionMenu>
+	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu>
 
 	<OptionMenu
 		showOption={optionToShow === 'audio'}
