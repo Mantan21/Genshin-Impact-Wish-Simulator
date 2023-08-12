@@ -33,11 +33,13 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 		const config = storageLocal.get('config');
 		const pity = storageLocal.get('pity');
 		const balance = storageLocal.get('balance');
+		const probabilityRates = storageLocal.get('probabilityRates');
 		localStorage.removeItem('WishSimulator.App');
 
 		storageLocal.set('config', config);
 		storageLocal.set('pity', pity);
 		storageLocal.set('balance', balance);
+		storageLocal.set('probabilityRates', probabilityRates);
 		return;
 	}
 
