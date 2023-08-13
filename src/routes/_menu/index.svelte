@@ -1,5 +1,5 @@
 <script>
-	import { getContext, setContext } from 'svelte';
+	import { getContext, onDestroy, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
@@ -11,6 +11,7 @@
 	import Updates from './Updates.svelte';
 	import Sidebar from './_sidebar.svelte';
 	import RemoveAds from './RemoveAds.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	let activeContent = 'options';
 
@@ -22,6 +23,15 @@
 	setContext('selectMenu', selectMenu);
 
 	const handleClose = getContext('handleMenu');
+
+	// Shortcut
+	hotkeys('esc,m', 'menu', (e) => {
+		e.preventDefault();
+		handleClose();
+	});
+
+	hotkeys.setScope('menu');
+	onDestroy(() => hotkeys.deleteScope('menu', 'index'));
 </script>
 
 <section transition:fade={{ duration: 200 }}>

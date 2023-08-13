@@ -1,8 +1,10 @@
 <script>
-	import { setContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
+
 	import { activeVersion } from '$lib/store/app-stores';
 	import { ownedOutfits } from '$lib/store/localstore-manager';
 	import { getSplashArtData, outfitsForThisPatch } from '$lib/helpers/outfit';
@@ -80,6 +82,15 @@
 		playSfx('shopnav');
 	};
 	setContext('selectShopMenu', selectShopMenu);
+
+	// Shortcut
+	const navigate = getContext('navigate');
+	hotkeys('esc', 'shop', (e) => {
+		e.preventDefault();
+		if (showSplashArt) return closeResult();
+		playSfx('close');
+		navigate('index');
+	});
 </script>
 
 <svelte:head>

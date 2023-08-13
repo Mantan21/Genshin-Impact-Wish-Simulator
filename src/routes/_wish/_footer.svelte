@@ -1,6 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
 	import {
 		acquaint,
 		assets,
@@ -53,6 +54,31 @@
 		playSfx('roll');
 		roll(isBeginner ? 10 : $multipull, bannerType);
 	};
+
+	// ShortCut
+	const appReady = getContext('appReady');
+	hotkeys('enter', 'index', (e) => {
+		if (!$appReady || $onWish) return;
+		e.preventDefault();
+		handleMultiRollClick();
+	});
+
+	hotkeys('shift+enter', 'index', (e) => {
+		if (!$appReady || $onWish || isBeginner) return;
+		e.preventDefault();
+		handleSingleRollClick();
+	});
+
+	hotkeys('s,c,h,d', 'index', (e) => {
+		if (!$appReady || $onWish) return;
+		e.preventDefault();
+		const [key] = hotkeys.getPressedKeyString();
+		const to = key.toLocaleLowerCase();
+		if (to === 's') return changePage('shop');
+		if (to === 'c') return changePage('inventory');
+		if (to === 'h') return changePage('history');
+		if (to === 'd') return changePage('details');
+	});
 </script>
 
 <div id="footer" style="width: 100%; height: 100%">

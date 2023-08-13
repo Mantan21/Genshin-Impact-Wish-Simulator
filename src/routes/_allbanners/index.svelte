@@ -12,6 +12,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ItemBanner from './_item-banner.svelte';
 	import FormBox from './_form-box.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	let allBanners = [];
 	let dataToShow = [];
@@ -182,6 +183,12 @@
 	});
 
 	onDestroy(() => query.set(''));
+
+	// Shortcut
+	hotkeys('esc', 'allbanners', (e) => {
+		e.preventDefault();
+		handleCLose();
+	});
 </script>
 
 <svelte:head>

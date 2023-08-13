@@ -2,6 +2,7 @@
 	import { getContext, setContext } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
 
 	import { assets } from '$lib/store/app-stores';
 	import { cookie } from '$lib/store/cookie';
@@ -29,6 +30,12 @@
 		tplVersion = v;
 	};
 	setContext('detail-tpl', setTpl);
+
+	// shortcut
+	hotkeys('esc', page, (e) => {
+		e.preventDefault();
+		handleCLose();
+	});
 </script>
 
 <section

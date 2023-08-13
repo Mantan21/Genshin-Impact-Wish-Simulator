@@ -1,7 +1,8 @@
 <script>
-	import { setContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
 
 	import { localrate } from '$lib/store/localstore-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -31,11 +32,15 @@
 			: '';
 
 	const navigateBanner = (target) => {
-		playSfx('changebanner');
-		if (target === 'next') {
+		if (target === 'right') {
+			if ($activeBanner >= $bannerList.length - 1) return;
+			playSfx('changebanner');
 			return activeBanner.update((n) => n + 1);
 		}
-		if (target === 'previous') {
+
+		if (target === 'left') {
+			if ($activeBanner <= 0) return;
+			playSfx('changebanner');
 			return activeBanner.update((n) => n - 1);
 		}
 	};
@@ -68,6 +73,27 @@
 		playSfx('close');
 		showModalReset = false;
 	};
+
+	// Shortcut
+	const onWish = getContext('onWish');
+	hotkeys('right,left,up,down', 'index', (e) => {
+		if ($onWish) return;
+		e.preventDefault();
+		const [to] = hotkeys.getPressedKeyString();
+		if (to === 'up') return navigateBanner('left');
+		if (to === 'down') return navigateBanner('right');
+		navigateBanner(to);
+	});
+
+	hotkeys('1,2,3,4,5', 'index', (e) => {
+		if ($onWish) return;
+		e.preventDefault();
+		const to = hotkeys.getPressedKeyString();
+		const bannerIndex = parseInt(to) - 1;
+		if (to > $bannerList.length) return;
+		activeBanner.set(bannerIndex);
+		playSfx('changebanner');
+	});
 </script>
 
 {#if showModalReset}
@@ -100,7 +126,7 @@
 			<button
 				class="left"
 				style="margin-right: auto;"
-				on:click={() => navigateBanner('previous')}
+				on:click={() => navigateBanner('left')}
 				transition:fade|local={{ duration: 200 }}
 			>
 				<i class="gi-arrow-left" />
@@ -111,7 +137,7 @@
 			<button
 				class="left"
 				style="margin-left: auto;"
-				on:click={() => navigateBanner('next')}
+				on:click={() => navigateBanner('right')}
 				transition:fade|local={{ duration: 200 }}
 			>
 				<i class="gi-arrow-right" />

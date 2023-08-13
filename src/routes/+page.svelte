@@ -15,13 +15,17 @@
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	let status = '';
 	let pageActive = 'index';
 	let showWelcomeModal = true;
 
+	let appReady = writable(false);
 	let onWish = writable(false);
+
 	setContext('onWish', onWish);
+	setContext('appReady', appReady);
 	setContext('query', writable('')); //query store to help finding a banner
 	setContext('readyToPull', writable(true)); // Ready to pull if meteor animation are loaded already
 
@@ -56,6 +60,8 @@
 	// Welcome Modal
 	const closeWelcomeModal = () => {
 		showWelcomeModal = false;
+		appReady.set(true);
+		hotkeys.setScope('index');
 		welkinCheckin();
 		playSfx();
 	};
@@ -74,10 +80,12 @@
 		let beforeNavigate = pageActive;
 		pageActive = page;
 		showMenu = false;
-		if (page === 'allbanners') browserState.set(page);
-		if (beforeNavigate !== 'index') return browserState.back();
+		hotkeys.setScope(page);
+
 		if (beforeNavigate === pageActive) return;
-		if (page === 'allbanners') return;
+		hotkeys.deleteScope(beforeNavigate);
+
+		if (beforeNavigate !== 'index') return browserState.back();
 		browserState.set(page);
 	};
 	setContext('navigate', navigate);
@@ -153,6 +161,7 @@
 		playSfx(showChat ? 'shopnav' : 'close');
 	};
 	setContext('chatToggle', chatToggle);
+	$: hotkeys('o', pageActive, chatToggle);
 </script>
 
 {#if status !== 'ok'}

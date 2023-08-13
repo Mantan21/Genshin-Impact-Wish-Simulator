@@ -1,6 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
+
 	import { acquaint, genesis, intertwined, primogem } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/Icon.svelte';
@@ -12,6 +14,12 @@
 		navigate('index');
 		playSfx('close');
 	};
+
+	// shortcut
+	hotkeys('esc', 'inventory', (e) => {
+		e.preventDefault();
+		handleCLose();
+	});
 </script>
 
 <h1 class="title">{$t('inventory.text')} / {$t(activeItem)}</h1>

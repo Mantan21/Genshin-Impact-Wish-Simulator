@@ -2,6 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+
 	import {
 		genesis,
 		primogem,

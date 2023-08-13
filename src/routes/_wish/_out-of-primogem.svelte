@@ -36,14 +36,14 @@
 			if (isEventBanner) {
 				intertwined.update((n) => {
 					const v = n + fateNeeded;
-					localBalance.set('specialPass', v);
+					localBalance.set('intertwined', v);
 					resolve('ok');
 					return v;
 				});
 			} else {
 				acquaint.update((n) => {
 					const v = n + fateNeeded;
-					localBalance.set('regularPass', v);
+					localBalance.set('acquaint', v);
 					resolve('ok');
 					return v;
 				});

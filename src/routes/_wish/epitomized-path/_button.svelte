@@ -2,6 +2,8 @@
 	import { getContext, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
+
 	import { activeBanner, activeVersion, bannerList, course } from '$lib/store/app-stores';
 	import { fatepointManager } from '$lib/store/localstore-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -11,8 +13,9 @@
 	import EpitomizedIcon from './_icon.svelte';
 
 	let buttonHeight;
-	let patch, phase;
+	let patch, phase, type, fatepointsystem;
 	$: ({ patch, phase } = $activeVersion);
+	$: ({ fatepointsystem, type } = $bannerList[$activeBanner]);
 
 	const checkFatepoint = () => {
 		const localFate = fatepointManager.init({ phase, version: patch });
@@ -28,9 +31,16 @@
 	};
 
 	onMount(() => bannerList.subscribe(checkFatepoint));
+
+	// Shortcut
+	hotkeys('e', 'index', (e) => {
+		e.preventDefault();
+		if (!fatepointsystem || type !== 'weapon-event') return;
+		handleClick();
+	});
 </script>
 
-{#if $bannerList[$activeBanner]?.fatepointsystem}
+{#if fatepointsystem}
 	<button
 		class="container"
 		style="--height:{buttonHeight}px"

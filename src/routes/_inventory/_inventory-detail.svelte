@@ -1,5 +1,5 @@
 <script>
-	import { getContext, setContext } from 'svelte';
+	import { getContext, onDestroy, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
@@ -10,6 +10,7 @@
 	import ItemInfo from './../_wish/wish-result/_item-info.svelte';
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	export let name;
 	export let useOutfit = false;
@@ -45,6 +46,14 @@
 		result.qty = dt.length;
 		return result;
 	};
+
+	// Shortcut
+	hotkeys('esc', 'itemdetail', (e) => {
+		e.preventDefault();
+		closeDetail();
+	});
+	hotkeys.setScope('itemdetail');
+	onDestroy(() => hotkeys.deleteScope('itemdetail', 'inventory'));
 </script>
 
 <div

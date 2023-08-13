@@ -2,6 +2,8 @@
 	import { getContext, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
+
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { assets } from '$lib/store/app-stores';
@@ -69,6 +71,20 @@
 	};
 
 	$: if (show) showVideoHandle(rarity, isSingle);
+
+	// Shortcut
+	hotkeys('esc', 'index', (e) => {
+		if (!show) return;
+		e.preventDefault();
+		skip();
+	});
+
+	hotkeys('enter', 'index', (e) => {
+		if (!show) return;
+		e.preventDefault();
+		if (showSkipButton) return skip();
+		showSkipButton = true;
+	});
 </script>
 
 {#if showToast}

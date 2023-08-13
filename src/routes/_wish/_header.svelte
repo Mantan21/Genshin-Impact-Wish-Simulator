@@ -3,7 +3,6 @@
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
-	import { API_KEY, CHATROOM } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import {
 		acquaint,
@@ -24,6 +23,7 @@
 	import MyFund from '$lib/components/MyFund.svelte';
 	import EpitomizedButton from './epitomized-path/_button.svelte';
 	import BannerButton from './_banner-button.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	export let bannerType = '';
 	$: event = bannerType.match('event');
@@ -66,6 +66,20 @@
 			if (document.msExitFullscreen) return document?.msExitFullscreen();
 		}
 	};
+
+	// Shortcut
+	const onWish = getContext('onWish');
+	hotkeys('esc', 'index', (e) => {
+		if ($onWish) return;
+		e.preventDefault();
+		previousClick();
+	});
+
+	hotkeys('m', 'index', (e) => {
+		if ($onWish) return;
+		e.preventDefault();
+		handleMenu();
+	});
 </script>
 
 <div id="header" style={headerHeightstyle}>
@@ -77,11 +91,9 @@
 				<i class="gi-help" />
 			</button>
 
-			{#if CHATROOM && API_KEY}
-				<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats">
-					<i class="gi-chat" />
-				</button>
-			{/if}
+			<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats">
+				<i class="gi-chat" />
+			</button>
 
 			{#if !$isPWA || !$isMobile}
 				<button

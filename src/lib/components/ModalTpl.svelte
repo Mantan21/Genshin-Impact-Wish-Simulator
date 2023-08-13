@@ -1,8 +1,9 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
+	import hotkeys from 'hotkeys-js';
 
 	import { assets } from '$lib/store/app-stores';
 	import ButtonModal from './ButtonModal.svelte';
@@ -24,6 +25,22 @@
 		if (confirmOnly) return;
 		dispatch('cancel');
 	};
+
+	// Shortcut
+	hotkeys('enter', 'modal', (e) => {
+		e.preventDefault();
+		if (disabled) return;
+		confirmClick();
+	});
+
+	hotkeys('esc', 'modal', (e) => {
+		e.preventDefault();
+		cancelClik();
+	});
+
+	const currentScope = hotkeys.getScope();
+	hotkeys.setScope('modal');
+	onDestroy(() => hotkeys.deleteScope('modal', currentScope));
 </script>
 
 <div

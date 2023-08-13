@@ -2,6 +2,7 @@
 	import { getContext, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t, locale } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
 
 	import { assets } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
@@ -100,6 +101,21 @@
 	onMount(() => {
 		if (!skip || list.length === 1) showItem('start');
 		if (skip || standalone) return (showResultList = true);
+	});
+
+	// Shortcut
+	const onWish = getContext('onWish');
+	hotkeys('enter,space', 'index', (e) => {
+		if (!$onWish) return;
+		e.preventDefault();
+		if (list.length > 1 && !showResultList) showItem();
+	});
+
+	hotkeys('esc', 'index', (e) => {
+		if (!$onWish) return;
+		e.preventDefault();
+		if (list <= 1 || showResultList) return closeHandle();
+		return skipHandle();
 	});
 </script>
 

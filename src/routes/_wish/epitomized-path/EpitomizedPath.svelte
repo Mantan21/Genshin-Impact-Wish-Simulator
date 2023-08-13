@@ -1,5 +1,5 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { getContext, onDestroy, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { t, json } from 'svelte-i18n';
@@ -19,6 +19,7 @@
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import FatepointSVG from './_svg-background.svelte';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
+	import hotkeys from 'hotkeys-js';
 
 	$: half = $viewportWidth < 500;
 	const weapons = $bannerList[$activeBanner].featured;
@@ -45,7 +46,7 @@
 	// Target Course
 	let targetActive = null;
 	const select = (i) => {
-		playSfx();
+		playSfx('click2');
 		targetActive = i;
 	};
 
@@ -70,7 +71,7 @@
 	const setCourse = () => {
 		if (targetActive === null) return;
 
-		playSfx();
+		playSfx('click');
 		const { patch, phase } = $activeVersion;
 
 		// set to local
@@ -97,6 +98,36 @@
 		handleClose();
 		return;
 	};
+
+	// Shortcut
+	hotkeys('left,right', 'epipath', (e) => {
+		e.preventDefault();
+		if (weaponName) return;
+
+		playSfx('click2');
+		const [key] = hotkeys.getPressedKeyString();
+		const to = key.toLocaleLowerCase();
+		if (to === 'left') {
+			targetActive = targetActive <= 0 ? 1 : targetActive - 1;
+		}
+		if (to === 'right') {
+			targetActive = targetActive >= 1 ? 0 : targetActive + 1;
+		}
+	});
+
+	hotkeys('enter', 'epipath', (e) => {
+		e.preventDefault();
+		if (targetActive === null) return;
+		setCourse();
+	});
+
+	hotkeys('esc,e', 'epipath', (e) => {
+		e.preventDefault();
+		closePath();
+	});
+
+	hotkeys.setScope('epipath');
+	onDestroy(() => hotkeys.deleteScope('epipath', 'index'));
 </script>
 
 {#if showCancelConfirmation}

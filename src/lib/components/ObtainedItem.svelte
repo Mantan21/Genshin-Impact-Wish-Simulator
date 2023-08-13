@@ -1,7 +1,8 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { getContext, onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
 
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -14,6 +15,16 @@
 	};
 	const closeObtained = getContext('closeObtained');
 	onMount(() => playSfx('obtain'));
+
+	// Shortcut;
+	const currentScope = hotkeys.getScope();
+	hotkeys('*', 'obtain', (e) => {
+		e.preventDefault();
+		closeObtained();
+	});
+
+	hotkeys.setScope('obtain');
+	onDestroy(() => hotkeys.deleteScope('obtain', currentScope));
 </script>
 
 <section on:mousedown={closeObtained}>
