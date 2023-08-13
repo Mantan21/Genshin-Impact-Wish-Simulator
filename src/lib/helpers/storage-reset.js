@@ -29,6 +29,10 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	await clearIDB();
 	if (clearCache) await clearCacheStorage();
 
+	beginnerRemaining.set(20);
+	showBeginner.set(true);
+	course.set({ point: null, selected: null });
+
 	if (keepSetting) {
 		const config = storageLocal.get('config');
 		const pity = storageLocal.get('pity');
@@ -57,10 +61,6 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	primogem.set(iprimo);
 	stardust.set(0);
 	starglitter.set(0);
-
-	beginnerRemaining.set(20);
-	showBeginner.set(true);
-	course.set({ point: null, selected: null });
 
 	localConfig.set('storageVersion', storageVersion);
 	localConfig.set('version', `${version}-${wishPhase}`);

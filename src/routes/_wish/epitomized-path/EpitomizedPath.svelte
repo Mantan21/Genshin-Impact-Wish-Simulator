@@ -1,6 +1,6 @@
 <script>
 	import { getContext, onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { t, json } from 'svelte-i18n';
 	import {
@@ -34,6 +34,7 @@
 	let selectedCourse = -1;
 
 	onMount(() => {
+		playSfx('bookflip');
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 		course.subscribe(({ selected }) => {
 			weaponName = weapons[selected]?.name;
@@ -49,6 +50,12 @@
 	};
 
 	const handleClose = getContext('handleEpitomizedModal');
+	const closePath = () => {
+		handleClose();
+		playSfx('close');
+		playSfx('bookflip');
+	};
+
 	const closeModal = () => {
 		playSfx('close');
 		showCancelConfirmation = false;
@@ -109,16 +116,15 @@
 	</Modal>
 {/if}
 
-<section class="modal" style="height:{$viewportHeight}px" transition:fade={{ duration: 80 }}>
-	<div class="modal-content" bind:clientWidth style="--modal-width: {clientWidth}px">
+<section class="modal" style="height:{$viewportHeight}px" transition:fade={{ duration: 250 }}>
+	<div
+		class="modal-content"
+		bind:clientWidth
+		style="--modal-width: {clientWidth}px"
+		transition:fly={{ y: 40, duration: 250 }}
+	>
 		<img src={$assets[`fatepointbook${half ? '-half' : ''}.webp`]} alt="Fatepoint Background" />
-		<button
-			class="close-modal"
-			on:click={() => {
-				handleClose();
-				playSfx('close');
-			}}
-		>
+		<button class="close-modal" on:click={closePath}>
 			<i class="gi-close" />
 		</button>
 		<div class="container">
