@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"name": "the-first-great-magic",
+			"rarity": 5,
+			"limited": true,
+			"weaponType": "bow",
+			"buttonOffset": {
+				"t": 10,
+				"w": 75,
+				"l": 30
+			}
+		},
+		{
 			"name": "jadefall-splendor",
 			"rarity": 5,
 			"limited": true,

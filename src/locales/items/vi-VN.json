@@ -66,6 +66,7 @@
 	"summit-shaper": "Kiếm Chước Phong",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
+	"the-first-great-magic": "Màn Ảo Thuật Đầu Tiên",
 	"the-flute": "Kiếm Sáo",
 	"the-stringless": "Tuyệt Huyền",
 	"the-unforged": "Kiếm Vô Công",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "Lisa",
 		"title": "Ma Nữ Tường Vi"
+	},
+	"lynette": {
+		"name": "Lynette",
+		"title": "Bóng Hình Trang Nhã"
+	},
+	"lyney": {
+		"name": "Lyney",
+		"title": "Ảo Ảnh Ngoạn Mục"
 	},
 	"mika": {
 		"name": "Mika",

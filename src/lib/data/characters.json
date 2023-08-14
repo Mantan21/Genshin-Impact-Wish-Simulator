@@ -2,6 +2,20 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "lynette",
+			"vision": "anemo",
+			"rarity": 4,
+			"wishBoxPosition": { "l": 70, "h": 175, "t": 55 },
+			"buttonOffset": { "l": 50, "w": 105, "t": 35 }
+		},
+		{
+			"name": "lyney",
+			"vision": "pyro",
+			"rarity": 5,
+			"wishBoxPosition": { "l": 23, "h": 205, "t": 70 },
+			"buttonOffset": { "l": 55, "w": 105, "t": 20 }
+		},
+		{
 			"name": "kirara",
 			"vision": "dendro",
 			"rarity": 4,

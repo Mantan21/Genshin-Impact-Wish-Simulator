@@ -96,16 +96,6 @@
 	});
 </script>
 
-{#if showModalReset}
-	<ModalTpl title="Back to Default" on:cancel={cancelModal} on:confirm={confirmModal}>
-		<div class="modal-content">
-			<p>
-				{@html $t('editor.resetPrompt', { values: { banner: $t(`wish.banner.${banner}`) } })}
-			</p>
-		</div>
-	</ModalTpl>
-{/if}
-
 <div class="banner-container" {style}>
 	{#each $bannerList as data, i}
 		{#if $activeBanner === i}
@@ -146,6 +136,16 @@
 	</div>
 </div>
 
+{#if showModalReset}
+	<ModalTpl title="Back to Default" on:cancel={cancelModal} on:confirm={confirmModal}>
+		<div class="modal-content">
+			<p>
+				{@html $t('editor.resetPrompt', { values: { banner: $t(`wish.banner.${banner}`) } })}
+			</p>
+		</div>
+	</ModalTpl>
+{/if}
+
 <style>
 	.modal-content {
 		display: flex;
@@ -180,8 +180,7 @@
 		perspective: unset;
 	}
 
-	:global(.banner-item.editorOpen:not(.fullscreen)) {
-		position: relative;
+	.banner-item.editorOpen {
 		z-index: +10;
 	}
 

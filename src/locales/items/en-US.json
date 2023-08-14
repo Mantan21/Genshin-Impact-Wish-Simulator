@@ -66,6 +66,7 @@
 	"summit-shaper": "Summit Shaper",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
+	"the-first-great-magic": "The First Great Magic",
 	"the-flute": "The Flute",
 	"the-stringless": "The Stringless",
 	"the-unforged": "The Unforged",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "Lisa",
 		"title": "Knight of Favonius Librarian"
+	},
+	"lynette": {
+		"name": "Lynette",
+		"title": "Elegance in the Shadows"
+	},
+	"lyney": {
+		"name": "Lyney",
+		"title": "Spectacle of Phantasmagoria"
 	},
 	"mika": {
 		"name": "Mika",

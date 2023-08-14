@@ -66,6 +66,7 @@
 	"summit-shaper": "Cortador de Montanhas",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
+	"the-first-great-magic": "Arcana Original",
 	"the-flute": "The Flute",
 	"the-stringless": "Último Acorde",
 	"the-unforged": "Espada Áspera",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "Lisa",
 		"title": "Bruxa das Rosas"
+	},
+	"lynette": {
+		"name": "Lynette",
+		"title": "Elegância nas Sombras"
+	},
+	"lyney": {
+		"name": "Lyney",
+		"title": "Espetáculo Fantasmagórico"
 	},
 	"mika": {
 		"name": "Mika",

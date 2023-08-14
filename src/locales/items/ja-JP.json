@@ -66,6 +66,7 @@
 	"summit-shaper": "斬山の刃",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
+	"the-first-great-magic": "最初の大魔術",
 	"the-flute": "笛の剣",
 	"the-stringless": "絶弦",
 	"the-unforged": "無工の剣",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "リサ",
 		"title": "薔薇の魔女"
+	},
+	"lynette": {
+		"name": "リネット",
+		"title": "綺影で魅せるエレガンス"
+	},
+	"lyney": {
+		"name": "リネ",
+		"title": "幻光で惑わすトリック"
 	},
 	"mika": {
 		"name": "ミカ",

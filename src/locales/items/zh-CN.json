@@ -66,6 +66,7 @@
 	"summit-shaper": "斫峰之刃",
 	"the-alley-flash": "暗巷闪光",
 	"the-bell": "钟剑",
+	"the-first-great-magic": "最初的大魔术",
 	"the-flute": "笛剑",
 	"the-stringless": "绝弦",
 	"the-unforged": "无工之剑",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "丽莎",
 		"title": "蔷薇魔女"
+	},
+	"lynette": {
+		"name": "琳妮特",
+		"title": "丽影绮行"
+	},
+	"lyney": {
+		"name": "林尼",
+		"title": "惑光幻戏"
 	},
 	"mika": {
 		"name": "米卡",

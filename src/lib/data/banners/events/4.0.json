@@ -1,0 +1,46 @@
+{
+	"patch": 4.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "conjuring-chiaroscuro-1",
+							"character": "lyney",
+							"textOffset": { "l": 50.5, "b": 10.7 }
+						},
+						{
+							"bannerName": "discerner-of-enigmas-3",
+							"character": "yelan",
+							"textOffset": { "l": 50.5, "b": 10.7 }
+						}
+					],
+					"rateup": ["lynette", "barbara", "bennett"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-51",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "the-first-great-magic" },
+						{ "name": "aqua-simulacra", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"sacrificial-sword",
+						"sacrificial-bow",
+						"sacrificial-fragments",
+						"favonius-lance",
+						"favonius-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 70, "w": 29 },
+						"rateup": { "l": 78, "b": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

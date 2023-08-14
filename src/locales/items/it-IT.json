@@ -66,6 +66,7 @@
 	"summit-shaper": "Affettavette",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
+	"the-first-great-magic": "Prima grande magia",
 	"the-flute": "Flauto",
 	"the-stringless": "Monocorda",
 	"the-unforged": "Spadone grezzo",
@@ -218,6 +219,14 @@
 	"lisa": {
 		"name": "Lisa",
 		"title": "Strega della Rosa purpurea"
+	},
+	"lynette": {
+		"name": "Lynette",
+		"title": "Eleganza nell'ombra"
+	},
+	"lyney": {
+		"name": "Lyney",
+		"title": "Spettacolo fantasmagorico"
 	},
 	"mika": {
 		"name": "Mika",

@@ -301,7 +301,7 @@
 	}
 
 	.fullscreenEditor .item {
-		font-size: 85%;
+		font-size: 100%;
 	}
 
 	.item:hover,

@@ -170,7 +170,7 @@
 	setContext('handleSearch', handleSearch);
 
 	const navigate = getContext('navigate');
-	const handleCLose = () => {
+	const handleClose = () => {
 		navigate('index');
 		playSfx('close');
 	};
@@ -187,7 +187,7 @@
 	// Shortcut
 	hotkeys('esc', 'allbanners', (e) => {
 		e.preventDefault();
-		handleCLose();
+		handleClose();
 	});
 </script>
 
@@ -198,7 +198,7 @@
 <section id="previous" style="background-image: url({$assets['constellation.webp']});">
 	<header transition:fly={{ y: -20 }}>
 		<h1>{$t('wish.banner.previous')}</h1>
-		<button class="close" on:click={handleCLose}>
+		<button class="close" on:click={handleClose}>
 			<i class="gi-close" />
 		</button>
 	</header>
