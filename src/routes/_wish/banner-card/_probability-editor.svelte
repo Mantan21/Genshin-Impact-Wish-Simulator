@@ -220,7 +220,7 @@
 
 		{#if type !== 'standard'}
 			<div class="item">
-				<div class="col">{$t('editor.disGuaranteed')}</div>
+				<div class="col">{@html $t('editor.disGuaranteed')}</div>
 				<div class="col checkbox">
 					<input
 						type="checkbox"

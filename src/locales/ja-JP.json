@@ -74,7 +74,7 @@
 		"charRate": "武器ではなくキャラクターを入手する確率",
 		"nonRateup": "(すり抜け時)",
 		"selectedRate": "軌定武器獲得確率:",
-		"disGuaranteed": "確定天井の無効化 (すり抜け後)",
+		"disGuaranteed": "確定天井の無効化 <small>(すり抜け後)</small>",
 		"backToDefault": "初期設定に戻す",
 		"resetPrompt": "<b>\"{banner}\"</b> の確率設定を初期設定に戻しますか？"
 	},

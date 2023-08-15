@@ -74,7 +74,7 @@
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(Non RateUp Item)",
 		"selectedRate": "Selected Weapon Rate:",
-		"disGuaranteed": "Disable Guaranteed System (after getting a non-RateUP item)",
+		"disGuaranteed": "Disable Guaranteed System <small>(after getting a non-RateUP item)</small>",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?"
 	},
@@ -315,7 +315,7 @@
 		"welkinNote": "Peut être acheté plusieurs fois",
 		"limitedOffer": "Offre à durée limitée",
 		"noLimitTime": "Aucun objet à durée limitée disponible",
-		"paymentChilde": "Walking Wallet",
+		"paymentChilde": "Childe",
 		"paymentTears": "Tears",
 		"paymentWakaranai": "Wakaranai",
 		"recomended": {
