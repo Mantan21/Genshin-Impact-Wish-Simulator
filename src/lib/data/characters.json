@@ -5,6 +5,7 @@
 			"name": "lynette",
 			"vision": "anemo",
 			"rarity": 4,
+			"release": "4.0-1",
 			"wishBoxPosition": { "l": 70, "h": 175, "t": 55 },
 			"buttonOffset": { "l": 50, "w": 105, "t": 35 }
 		},
