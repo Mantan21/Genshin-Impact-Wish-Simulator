@@ -5,7 +5,7 @@ import { config as envConfig } from 'dotenv';
 
 envConfig();
 const { VITE_APP_TITLE, VITE_DESCRIPTION, VITE_HOST } = process.env;
-const iconSize = [72, 96, 128, 144, 152, 192, 256, 384, 512];
+const iconSize = [16, 32, 72, 96, 128, 144, 152, 192, 256, 384, 512];
 const icons = iconSize.map((size) => {
 	const iconObj = {
 		src: `./icons/icon-${size}x${size}.png`,
@@ -47,18 +47,31 @@ const screenshots = [
 const manifest = {
 	orientation: 'landscape',
 	name: VITE_APP_TITLE,
+	description: VITE_DESCRIPTION,
+	id: 'wishsimulator.app',
 	short_name: 'WishSimulator.App',
 	theme_color: '#ffffff',
 	background_color: '#ffffff',
 	display: 'fullscreen',
+	display_override: [
+		'fullscreen',
+		'window-controls-overlay',
+		'standalone',
+		'minimal-ui',
+		'browser'
+	],
 	scope: '/',
+	scope_extensions: [{ origin: 'wishsimulator.app' }, { origin: 'wishsimulator.pages.dev' }],
 	start_url: '/?pwasc=homescreen',
 	categories: ['games', 'utilities'],
-	description: VITE_DESCRIPTION,
 	dir: 'auto',
 	icons,
 	screenshots,
+	handle_links: 'preferred',
 	prefer_related_applications: true,
+	launch_handler: {
+		client_mode: ['focus-existing', 'auto']
+	},
 	related_applications: [
 		{
 			platform: 'webapp',
@@ -69,7 +82,10 @@ const manifest = {
 			url: 'https://play.google.com/store/apps/details?id=twa.wishsimulator.app',
 			id: 'twa.wishsimulator.app'
 		}
-	]
+	],
+	edge_side_panel: {
+		preferred_width: 412
+	}
 };
 
 /** @type {import('vite').UserConfig} */
