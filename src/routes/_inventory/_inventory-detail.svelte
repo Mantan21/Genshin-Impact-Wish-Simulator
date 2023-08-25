@@ -2,15 +2,18 @@
 	import { getContext, onDestroy, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import hotkeys from 'hotkeys-js';
+
+	import { HistoryManager } from '$lib/store/IDB-manager';
 	import { assets } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
-	import { HistoryManager } from '$lib/store/IDB-manager';
+	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 
 	// Component
 	import ItemInfo from './../_wish/wish-result/_item-info.svelte';
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
-	import hotkeys from 'hotkeys-js';
+	import { owneditem } from '$lib/store/localstore-manager';
 
 	export let name;
 	export let useOutfit = false;
@@ -42,6 +45,14 @@
 	const loadItem = async () => {
 		if (!name) return;
 		const dt = await HistoryManager.getByName(name);
+
+		// If no data in IDB
+		if (dt.length < 1 || !!dt[0]) {
+			const result = getCharDetails(name);
+			result.qty = owneditem.get(name)?.qty || 0;
+			return result;
+		}
+
 		const result = dt[0];
 		result.qty = dt.length;
 		return result;
