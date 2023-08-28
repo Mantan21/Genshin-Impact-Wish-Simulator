@@ -266,6 +266,7 @@
 		"resetPromptTitle": "重置记录？",
 		"resetPrompt": "它还会从您的库存中删除与 {bannerName} 卡池相关的所有角色和武器。 <br /> 你确定要重置吗？",
 		"resetSuccess": "已成功重置！",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "祈愿类型选择:",
 		"disclaimer": "我们从不将您的数据保存在云存储中。 所有数据都存储到 IndexedDB，这意味着数据保存在您的浏览器存储中。 除非您通过删除/重置按钮手动删除它或清除浏览器数据，否则它永远不会删除。",
 		"currentPity": "当前已垫:",

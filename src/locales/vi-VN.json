@@ -266,6 +266,7 @@
 		"resetPromptTitle": "Xoá Lịch Sử ?",
 		"resetPrompt": "Điều này cũng xoá tất cả vũ khí và nhân vật liên quan đến Banner \"{bannerName}\" ở trong túi đồ của bạn. <br /> Bạn có chắc muốn xoá lịch sử không ?",
 		"resetSuccess": "Xoá lịch sử thành công !",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "Chọn loại Cầu Nguyện:",
 		"disclaimer": "Chúng tôi không bao giờ lưu trữ thông tin của bạn lên đám mây. Tất cả dữ liệu được lưu trữ ở IndexedDB, điều đó có nghĩa là tất cả dữ liệu của bạn được lưu ở trình duyệt. Nó sẽ không bao giờ bị xoá cho đến khi bạn xoá nó thủ công qua nút xoá/đặt lại hoặc nút xoá dữ liệu trình duyệt.",
 		"currentPity": "Tổn hại hiện tại :",

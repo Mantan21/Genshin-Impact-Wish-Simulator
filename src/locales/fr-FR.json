@@ -266,6 +266,7 @@
 		"resetPromptTitle": "Effacer l'historique ?",
 		"resetPrompt": "Cela va aussi supprimer tous les personnages et toutes les armes liées à la bannière \"{bannerName}\" de votre inventaire. <br /> Voulez-vous vraiment réinitialiser ?",
 		"resetSuccess": "Réinitialisation réussie !",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "Sélectionner le type de vœu :",
 		"disclaimer": "Nous ne sauvegardons jamais vos données en ligne. Toutes les données sont stockées dans IndexedDB, ce qui veut dire que les données sont sauvegardées dans votre navigateur. Elle ne seront pas supprimmées tant que vous n'utilisez pas le bouton de suppression/réinitialisation ou tant que vous ne videz pas le cache de votre navigateur.",
 		"currentPity": "Current Pity :",

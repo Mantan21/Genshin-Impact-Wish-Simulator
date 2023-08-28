@@ -98,7 +98,8 @@
 	const setValues = (e) => {
 		const inputVal = e.target.value.substring(0, 9);
 		const numberVal = parseInt(inputVal, 10);
-		const value = !isNaN(numberVal) ? numberVal : 0;
+		const minVal = name === 'multi' ? 1 : 0;
+		const value = !isNaN(numberVal) ? numberVal : minVal;
 		e.target.value = value;
 
 		if (name === 'currencyItem') return setGameCurrencies(value);

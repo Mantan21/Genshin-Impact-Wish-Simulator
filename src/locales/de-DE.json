@@ -266,6 +266,7 @@
 		"resetPromptTitle": "Verlauf löschen?",
 		"resetPrompt": "Es werden auch alle Figuren und Waffen des \"{bannerName}\" Banners aus deinem Inventar gelöscht. <br /> Bist du sicher, dass du alles zurücksetzen möchtest?",
 		"resetSuccess": "Erfolgreich zurückgesetzt!",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "Gebetskategorie:",
 		"disclaimer": "Wir speichern niemals Daten im Cloudspeicher. Alle Daten werden bei IndexedDB gespeichert, das heißt die Daten werden in deinem Browserspeicher gespeichert. Sie gehen niemals verloren, außer du löschst sie manuell durch den Löschen/Zurücksetzen Knopf oder leerst deinen Browserspeicher.",
 		"currentPity": "Aktuelle Pity:",

@@ -266,6 +266,7 @@
 		"resetPromptTitle": "Ripristino della Cronologia ?",
 		"resetPrompt": "Quest'operazione rimuoverà anche tutti i personaggi e tutte le armi relativi al banner \"{bannerName}\" dal tuo inventario. <br /> Sei sicuro di volere ripristinare?",
 		"resetSuccess": "Ripristino effettuato con successo !",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "Seleziona il tipo di wish:",
 		"disclaimer": "Non salviamo mai i tuoi data su archivi cloud. Tutti i dati sono archiviati in IndexedDB, questo significa che sono salvati nella memoria del browser. Non verranno mai eliminati finchè non li elimini manualmente con il pulsante di eliminazione/ripristino, oppure cancellando i dati del browser.",
 		"currentPity": "Pity Corrente :",

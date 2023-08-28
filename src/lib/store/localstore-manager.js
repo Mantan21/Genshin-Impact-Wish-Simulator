@@ -100,13 +100,14 @@ export const owneditem = {
 		return { name: itemName, qty: manual + wish };
 	},
 
-	put({ name, source = 'wish' }) {
+	put({ name, source = 'wish', qty = 1 }) {
 		const allItems = storageLocal.get('ownedItem');
 		const { manual = 0, wish = 0 } = allItems[name] || {};
 		allItems[name] = {
-			manual: source === 'wish' ? manual : 1 + manual,
-			wish: source === 'wish' ? wish + 1 : wish
+			manual: source === 'wish' ? manual : qty + manual,
+			wish: source === 'wish' ? qty + wish : wish
 		};
+
 		storageLocal.set('ownedItem', allItems);
 		return allItems[name];
 	}

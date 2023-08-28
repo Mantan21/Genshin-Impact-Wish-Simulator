@@ -2,6 +2,7 @@
 	import { getContext, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
+	import hotkeys from 'hotkeys-js';
 
 	import browserState from '$lib/helpers/browserState';
 	import { activeVersion, assets, showBeginner } from '$lib/store/app-stores';
@@ -15,7 +16,6 @@
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
-	import hotkeys from 'hotkeys-js';
 
 	let status = '';
 	let pageActive = 'index';
@@ -40,11 +40,13 @@
 		else playSfx('wishBacksound');
 	}
 
-	const bgmHandle = ({ play = true } = {}) => {
+	const bgmHandle = () => {
 		if (showWelcomeModal) return; // User is not ready to Wish
 		if ($onWish) return; // dont resume/pause if user on wishing
 		if (pageActive !== 'index') return; // dont handle BGM if not index page
-		if (play) return playSfx('wishBacksound');
+
+		const mode = document.visibilityState;
+		if (mode === 'visible') return playSfx('wishBacksound');
 		return pauseSfx('wishBacksound');
 	};
 
@@ -127,9 +129,7 @@
 			if (pageActive === 'index') return;
 			navigate('index');
 		});
-
-		window.addEventListener('blur', () => bgmHandle({ play: false }));
-		window.addEventListener('focus', () => bgmHandle({ play: true }));
+		document.addEventListener('visibilitychange', bgmHandle);
 	});
 
 	// Obtained

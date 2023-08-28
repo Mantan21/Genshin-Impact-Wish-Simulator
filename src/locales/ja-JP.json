@@ -266,6 +266,7 @@
 		"resetPromptTitle": "祈願履歴のリセット",
 		"resetPrompt": " {bannerName} から排出されたすべてのキャラクターと武器がインベントリから削除されます。 本当にリセットしますか？",
 		"resetSuccess": "リセット成功！",
+		"keepPity": "Don't reset Pity and Guaranteed Status",
 		"selectWish": "祈願タイプ",
 		"disclaimer": "祈願データをインターネット上に保存することはありません。IndexedDBを利用するため、データはすべてブラウザのキャッシュに保存されることになります。ユーザー自身が削除/リセットボタンで削除するか、ブラウザのデータを消去しない限り削除されません。",
 		"currentPity": "現在の天井カウント:",

@@ -1,10 +1,12 @@
 <script>
 	// Library
 	import { onMount, setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { APP_TITLE } from '$lib/env';
 	import { activeBanner, bannerList } from '$lib/store/app-stores';
+	import { localPity } from '$lib/store/localstore-manager';
 
 	// Components
 	import SelectBanner from './_select-banner.svelte';
@@ -24,7 +26,14 @@
 	let itemPerPage = tplVersion === 'v2' ? 5 : 6;
 	let filterBy = 'All';
 
+	const pity5 = writable(0);
+	const pity4 = writable(0);
+	setContext('pity5', pity5);
+	setContext('pity4', pity4);
+
 	$: banner = $bannerList.find((v, i) => i === $activeBanner).type;
+	$: pity5.set(localPity.get(`pity5-${banner}`));
+	$: pity4.set(localPity.get(`pity4-${banner}`));
 
 	const selectBanner = (path) => {
 		activepage = 1;
@@ -72,7 +81,7 @@
 	<div class="container">
 		<p class="v2">{$t('history.disclaimer')}</p>
 		<div class="row">
-			<Report {dataLength} {banner} v2 />
+			<Report {dataLength} v2 />
 			<Filter {filterBy} v2 />
 		</div>
 		<List v2 {banner} filter={filterBy} page={{ activepage, itemPerPage }} />
@@ -87,7 +96,7 @@
 
 	<div class="info">
 		<div class="left">
-			<Report {dataLength} {banner} />
+			<Report {dataLength} />
 		</div>
 		<div class="right">
 			<Reset {banner} />
