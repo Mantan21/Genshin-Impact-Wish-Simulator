@@ -4,7 +4,7 @@
 	import { t, locale } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { assets } from '$lib/store/app-stores';
+	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { playSfx, pauseSfx as stopSfx } from '$lib/helpers/audio/audio';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
@@ -31,6 +31,13 @@
 
 	const splashBG = isOutfit ? $assets['outfit-background.webp'] : $assets['splash-background.webp'];
 	list = list.map(setActiveOutfit);
+
+	const calculateWrapperHeight = (vw, vh) => {
+		if (vw < vh) return '80vw';
+		if (vw < vh * 1.5) return '65vw';
+		return '100%';
+	};
+	$: wrapperHeight = calculateWrapperHeight($viewportWidth, $viewportHeight);
 
 	let isSplashOut = false;
 	let timer;
@@ -153,7 +160,7 @@
 		<div class="container" in:fade={{ duration: 500, delay: 200 }}>
 			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit }, i}
 				{#if activeIndex === i}
-					<div class="wrapper" on:mousedown={showItem}>
+					<div class="wrapper" on:mousedown={showItem} style="height: {wrapperHeight};">
 						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
 
 						{#if type === 'weapon'}
@@ -253,11 +260,6 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
-	}
-	@media screen and (max-width: 780px) {
-		.wrapper {
-			height: 100vw;
-		}
 	}
 
 	.splash-art {

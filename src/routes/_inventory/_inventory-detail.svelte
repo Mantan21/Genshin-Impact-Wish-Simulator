@@ -5,15 +5,15 @@
 	import hotkeys from 'hotkeys-js';
 
 	import { HistoryManager } from '$lib/store/IDB-manager';
-	import { assets } from '$lib/store/app-stores';
+	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import { owneditem } from '$lib/store/localstore-manager';
 
 	// Component
 	import ItemInfo from './../_wish/wish-result/_item-info.svelte';
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
-	import { owneditem } from '$lib/store/localstore-manager';
 
 	export let name;
 	export let useOutfit = false;
@@ -25,6 +25,13 @@
 	};
 	setContext('previewOutfit', previewOutfit);
 	const closeDetail = getContext('closeDetail');
+
+	const calculateWrapperHeight = (vw, vh) => {
+		if (vw < vh) return '80vw';
+		if (vw < vh * 1.5) return '65vw';
+		return '100%';
+	};
+	$: wrapperHeight = calculateWrapperHeight($viewportWidth, $viewportHeight);
 
 	const getQtyInfo = (type, qty) => {
 		if (type === 'weapon') {
@@ -88,7 +95,7 @@
 				<OutfitToggle charName={name} />
 			{/if}
 
-			<div class="wrapper" in:fade={{ duration: 250 }}>
+			<div class="wrapper" in:fade={{ duration: 250 }} style="height: {wrapperHeight};">
 				{#if type === 'weapon'}
 					<div class="splash-art weapon {weaponType}-parent">
 						<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
@@ -151,12 +158,6 @@
 		top: 0;
 		left: 0;
 		z-index: +100000;
-	}
-
-	@media screen and (max-width: 780px) {
-		.wrapper {
-			height: 100vw;
-		}
 	}
 
 	.splash-art {
