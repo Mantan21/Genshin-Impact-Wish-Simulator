@@ -31,7 +31,7 @@
 							"buttonPosition": { "l": 64 }
 						}
 					],
-					"rateup": ["akuoumaru", "the-flute", "dragon_s-bane", "rust", "the-widtsith"],
+					"rateup": ["akuoumaru", "the-flute", "dragon_s-bane", "rust", "the-widsith"],
 					"textOffset": {
 						"featured": { "l": 52.5, "t": 71, "w": 23 },
 						"rateup": { "l": 74.5, "b": 19 }

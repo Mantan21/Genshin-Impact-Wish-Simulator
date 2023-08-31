@@ -2,12 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "freminet",
+			"vision": "cryo",
+			"rarity": 4,
+			"release": "4.0-2",
+			"wishBoxPosition": { "l": -55, "h": 170, "t": 58 }
+		},
+		{
 			"name": "lynette",
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "4.0-1",
-			"wishBoxPosition": { "l": 70, "h": 175, "t": 55 },
-			"buttonOffset": { "l": 50, "w": 105, "t": 35 }
+			"wishBoxPosition": { "l": 70, "h": 175, "t": 55 }
 		},
 		{
 			"name": "lyney",
