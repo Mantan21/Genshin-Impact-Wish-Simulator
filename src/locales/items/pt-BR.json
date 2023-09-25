@@ -5,6 +5,7 @@
 	"amos-bow": "Arco de Amos",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
+	"ballad-of-the-boundless-blue": "Canção do Vasto Azul",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
 	"bloodtained-greatsword": "Espadão Sangrento",
@@ -42,6 +43,7 @@
 	"mitternachts-waltz": "Valsa do Crepúsculo",
 	"mouun_s-moon": "Lua de Mouun",
 	"polar-star": "Polar Star",
+	"portable-power-saw": "Serra Elétrica Portátil",
 	"primordial-jade-cutter": "Cortador de Jade Primordial",
 	"primordial-jade-winged-spear": "Lança de Jade Primitiva",
 	"rainslasher": "Segadeira da Chuva",
@@ -66,6 +68,7 @@
 	"summit-shaper": "Cortador de Montanhas",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
+	"the-dockhands-assistant": "A Doca",
 	"the-first-great-magic": "Arcana Original",
 	"the-flute": "The Flute",
 	"the-stringless": "Último Acorde",
@@ -73,6 +76,7 @@
 	"the-widsith": "Sinfonia dos Indolentes",
 	"thrilling-tales-of-dragon-slayers": "Histórias Extraordinárias de Caçadores de Dragões",
 	"thundering-pulse": "Agitação Trovejante",
+	"tome-of-the-eternal-flow": "Rito do Fluxo Eterno",
 	"tulaytullah_s-remembrance": "Reminiscências de Tulaytullah",
 	"vortex-vanquisher": "Perfuradora Prismática",
 	"wavebreaker_s-fin": "Barbatana do Quebra Ondas",
@@ -243,6 +247,10 @@
 	"nahida": {
 		"name": "Nahida",
 		"title": "Pureza Restauradora"
+	},
+	"neuvillette": {
+		"name": "Neuvillette",
+		"title": "Ordenador das Marés"
 	},
 	"nilou": {
 		"name": "Nilou",

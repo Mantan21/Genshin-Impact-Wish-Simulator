@@ -5,6 +5,7 @@
 	"amos-bow": "Лук Амоса",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
+	"ballad-of-the-boundless-blue": "Песнь необъятной лазури",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
 	"bloodtained-greatsword": "Меч драконьей крови",
@@ -42,6 +43,7 @@
 	"mitternachts-waltz": "Вальс Нирваны Ночи",
 	"mouun_s-moon": "Луна Моун",
 	"polar-star": "Полярная звезда",
+	"portable-power-saw": "Переносная мотопила",
 	"primordial-jade-cutter": "Драгоценный омут",
 	"primordial-jade-winged-spear": "Нефритовый коршун",
 	"rainslasher": "Дождерез",
@@ -66,6 +68,7 @@
 	"summit-shaper": "Кромсатель пиков",
 	"the-alley-flash": "Вспышка во тьме",
 	"the-bell": "Меч-колокол",
+	"the-dockhands-assistant": "Верфь",
 	"the-first-great-magic": "Первый великий фокус",
 	"the-flute": "Меч-флейта",
 	"the-stringless": "Бесструнный",
@@ -73,6 +76,7 @@
 	"the-widsith": "Песнь странника",
 	"thrilling-tales-of-dragon-slayers": "Эпос о драконоборцах",
 	"thundering-pulse": "Громовой пульс",
+	"tome-of-the-eternal-flow": "Обряд вечного течения",
 	"tulaytullah_s-remembrance": "Воспоминания Тулайтуллы",
 	"vortex-vanquisher": "Покоритель вихря",
 	"wavebreaker_s-fin": "Режущий волны плавник",
@@ -243,6 +247,10 @@
 	"nahida": {
 		"name": "Нахида",
 		"title": "Средоточие чистоты"
+	},
+	"neuvillette": {
+		"name": "Neuvillette",
+		"title": "Распорядитель неумолимого суда"
 	},
 	"nilou": {
 		"name": "Нилу",

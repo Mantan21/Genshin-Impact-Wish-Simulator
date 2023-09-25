@@ -5,6 +5,7 @@
 	"amos-bow": "アモスの弓",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹剣",
+	"ballad-of-the-boundless-blue": "果てなき紺碧の唄",
 	"beacon-of-the-reed-sea": "葦海の標",
 	"black-tassel": "黒纓槍",
 	"bloodtained-greatsword": "龍血を浴びた剣",
@@ -42,6 +43,7 @@
 	"mitternachts-waltz": "幽夜のワルツ",
 	"mouun_s-moon": "曚雲の月",
 	"polar-star": "冬極の白星",
+	"portable-power-saw": "携帯型チェーンソー",
 	"primordial-jade-cutter": "磐岩結緑",
 	"primordial-jade-winged-spear": "和璞鳶",
 	"rainslasher": "雨裁",
@@ -66,6 +68,7 @@
 	"summit-shaper": "斬山の刃",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
+	"the-dockhands-assistant": "船渠剣",
 	"the-first-great-magic": "最初の大魔術",
 	"the-flute": "笛の剣",
 	"the-stringless": "絶弦",
@@ -73,6 +76,7 @@
 	"the-widsith": "流浪楽章",
 	"thrilling-tales-of-dragon-slayers": "龍殺しの英傑譚",
 	"thundering-pulse": "飛雷の鳴弦",
+	"tome-of-the-eternal-flow": "久遠流転の大典",
 	"tulaytullah_s-remembrance": "トゥライトゥーラの記憶",
 	"vortex-vanquisher": "破天の槍",
 	"wavebreaker_s-fin": "斬波のひれ長",
@@ -243,6 +247,10 @@
 	"nahida": {
 		"name": "ナヒーダ",
 		"title": "白草浄華"
+	},
+	"neuvillette": {
+		"name": "ヌヴィレット",
+		"title": "告諭の潮騒"
 	},
 	"nilou": {
 		"name": "ニィロウ",

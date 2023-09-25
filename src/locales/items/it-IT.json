@@ -5,6 +5,7 @@
 	"amos-bow": "Arco di Amos",
 	"aqua-simulacra": "Aqua simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"ballad-of-the-boundless-blue": "Ballata del blu sempiterno",
 	"beacon-of-the-reed-sea": "Faro del Mare dei Giunchi",
 	"black-tassel": "Pennacchio nero",
 	"bloodtained-greatsword": "Spadone insanguinato",
@@ -42,6 +43,7 @@
 	"mitternachts-waltz": "Valzer notturno",
 	"mouun_s-moon": "Luna di Mouun",
 	"polar-star": "Stella polare",
+	"portable-power-saw": "Sega elettrica portatile",
 	"primordial-jade-cutter": "Spada di giada primordiale",
 	"primordial-jade-winged-spear": "Lancia di giada primordiale",
 	"rainslasher": "Fendiluvio",
@@ -66,6 +68,7 @@
 	"summit-shaper": "Affettavette",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
+	"the-dockhands-assistant": "Aiutante del porto",
 	"the-first-great-magic": "Prima grande magia",
 	"the-flute": "Flauto",
 	"the-stringless": "Monocorda",
@@ -73,6 +76,7 @@
 	"the-widsith": "Sinfonia errante",
 	"thrilling-tales-of-dragon-slayers": "Epiche gesta degli Ammazzadraghi",
 	"thundering-pulse": "Battito tonante",
+	"tome-of-the-eternal-flow": "Tomo del flusso perenne",
 	"tulaytullah_s-remembrance": "Rimembranza di Tulaytullah",
 	"vortex-vanquisher": "Squarciavortice",
 	"wavebreaker_s-fin": "Pinna del Frangionde",
@@ -243,6 +247,10 @@
 	"nahida": {
 		"name": "Nahida",
 		"title": "Fisica della purezza"
+	},
+	"neuvillette": {
+		"name": "Neuvillette",
+		"title": "Sentenza ineluttabile"
 	},
 	"nilou": {
 		"name": "Nilou",

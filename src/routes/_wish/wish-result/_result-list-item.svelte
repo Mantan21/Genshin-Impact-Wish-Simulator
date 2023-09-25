@@ -146,10 +146,6 @@
 		font-size: calc(3 / 100 * var(--card-height));
 	}
 
-	.convertion {
-		font-size: calc(3 / 100 * var(--card-height));
-	}
-
 	.cover {
 		display: block;
 		position: absolute;

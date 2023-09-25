@@ -5,6 +5,7 @@
 	"amos-bow": "Cung Amos",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
+	"ballad-of-the-boundless-blue": "Khúc Ca Xanh Bao La",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
@@ -42,6 +43,7 @@
 	"mitternachts-waltz": "Điệu Van Ban Đêm",
 	"mouun_s-moon": "Ánh Trăng Mouun",
 	"polar-star": "Ngôi Sao Cực Đông",
+	"portable-power-saw": "Máy Cưa Cầm Tay",
 	"primordial-jade-cutter": "Bàn Nham Kết Lục",
 	"primordial-jade-winged-spear": "Hòa Phác Diên",
 	"rainslasher": "Vũ Tài",
@@ -66,6 +68,7 @@
 	"summit-shaper": "Kiếm Chước Phong",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
+	"the-dockhands-assistant": "Kiếm Bến Tàu",
 	"the-first-great-magic": "Màn Ảo Thuật Đầu Tiên",
 	"the-flute": "Kiếm Sáo",
 	"the-stringless": "Tuyệt Huyền",
@@ -73,6 +76,7 @@
 	"the-widsith": "Chương Nhạc Lang Thang",
 	"thrilling-tales-of-dragon-slayers": "Câu Chuyện Diệt Rồng",
 	"thundering-pulse": "Sấm Sét Rung Động",
+	"tome-of-the-eternal-flow": "Nghi Thức Dòng Chảy Vĩnh Hằng",
 	"tulaytullah_s-remembrance": "Hồi Ức Tulaytullah",
 	"vortex-vanquisher": "Giáo Nịnh Thần",
 	"wavebreaker_s-fin": "Vây Cá Chẻ Sóng",
@@ -243,6 +247,10 @@
 	"nahida": {
 		"name": "Nahida",
 		"title": "Kết Tinh Bạch Thảo"
+	},
+	"neuvillette": {
+		"name": "Neuvillette",
+		"title": "Tiếng Sóng Phán Quyết"
 	},
 	"nilou": {
 		"name": "Nilou",

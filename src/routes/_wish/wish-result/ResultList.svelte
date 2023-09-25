@@ -86,14 +86,14 @@
 			{/each}
 		</div>
 		<div class="shadows" style="--card-height: {clientHeight}px">
-			{#each sortedWish as { rarity, type, bonusType }, i}
+			{#each sortedWish as { rarity, type, bonusType, isNew }, i}
 				<div
 					class="shadow shadow{rarity}"
 					class:animate={!standalone}
 					style="animation-delay: {0.5 + i * 0.1}s"
 					use:removeAnimClass
 				>
-					{#if bonusType && type === 'character'}
+					{#if type === 'character' && !isNew}
 						<span class="convertion"> {$t('wish.result.convertion')} </span>
 					{/if}
 				</div>
@@ -226,6 +226,10 @@
 		box-shadow: 0 0 4rem rgba(255, 255, 255, 0.6), 0 0 1rem rgb(138, 3, 161),
 			0 0 1.4rem rgb(217, 0, 255), 0 0 2rem rgb(29, 4, 255);
 		background-color: rgb(185, 18, 214);
+	}
+
+	.convertion {
+		font-size: calc(3 / 100 * var(--card-height));
 	}
 
 	@keyframes wishReveal {

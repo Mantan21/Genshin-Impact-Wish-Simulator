@@ -2,6 +2,13 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "neuvillette",
+			"vision": "hydro",
+			"rarity": 5,
+			"wishBoxPosition": { "l": 68, "h": 190, "t": 74 },
+			"buttonOffset": { "l": 54, "w": 105, "t": 20 }
+		},
+		{
 			"name": "freminet",
 			"vision": "cryo",
 			"rarity": 4,

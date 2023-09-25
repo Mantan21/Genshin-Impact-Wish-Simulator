@@ -1,6 +1,35 @@
 {
 	"data": [
 		{
+			"name": "ballad-of-the-boundless-blue",
+			"rarity": 4,
+			"weaponType": "catalyst",
+			"limited": true
+		},
+		{
+			"name": "portable-power-saw",
+			"rarity": 4,
+			"weaponType": "claymore",
+			"limited": true
+		},
+		{
+			"name": "the-dockhands-assistant",
+			"rarity": 4,
+			"weaponType": "sword",
+			"limited": true
+		},
+		{
+			"name": "tome-of-the-eternal-flow",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"buttonOffset": {
+				"t": 15,
+				"w": 80,
+				"l": 35
+			}
+		},
+		{
 			"name": "the-first-great-magic",
 			"rarity": 5,
 			"limited": true,

@@ -351,10 +351,19 @@
 		},
 		{
 			"date": "31-Aug-2023",
-			"featured": true,
 			"description": [
 				"New Character: <b>Freminet ( 4★ )</b>",
 				"Add <b>Zhongli</b> & <b>Tartaglia</b> <b>4rd Rerun</b> Banner"
+			]
+		},
+		{
+			"date": "25-Sep-2023",
+			"featured": true,
+			"description": [
+				"New Character: <b>Neuvillette ( 5★ )</b>",
+				"Add <b>Hu Tao 4rd Rerun</b> Banner",
+				"Top-Up reset Bonus",
+				"Announcement: The AdKey will be changed on <u>October 1, 2023</u>"
 			]
 		}
 	]
