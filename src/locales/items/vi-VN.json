@@ -10,6 +10,7 @@
 	"black-tassel": "Hắc Anh Thương",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
 	"calamity-queller": "Hủy Diệt",
+	"cashflow-supervision": "Quản Đốc Vàng Ròng",
 	"cool-steel": "Lãnh Nhẫn",
 	"debate-club": "Gậy Thu Phục",
 	"dragon_s-bane": "Tai Ương Của Rồng",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "Máy Cưa Cầm Tay",
 	"primordial-jade-cutter": "Bàn Nham Kết Lục",
 	"primordial-jade-winged-spear": "Hòa Phác Diên",
+	"prospector-drill": "Mũi Khoan Thăm Dò",
 	"rainslasher": "Vũ Tài",
+	"range-gauge": "Máy Đo Cự Ly",
 	"raven-bow": "Cung Lông Vịt",
 	"redhorn-stonethresher": "Xích Giác Phá Thạch Đao",
 	"rust": "Cung Rỉ Sét",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "Kẻ Lang Thang",
 		"title": "Đoạn Tuyệt Thế Gian"
+	},
+	"wriothesley": {
+		"name": "Wriothesley",
+		"title": "Sứ Giả Tội Danh Ẩn Mật"
 	},
 	"xiangling": {
 		"name": "Xiangling",

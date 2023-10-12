@@ -10,6 +10,7 @@
 	"black-tassel": "Чёрная кисть",
 	"bloodtained-greatsword": "Меч драконьей крови",
 	"calamity-queller": "Усмиритель бед",
+	"cashflow-supervision": "Казначейский надзор",
 	"cool-steel": "Холодное лезвие",
 	"debate-club": "Дубина переговоров",
 	"dragon_s-bane": "Гроза драконов",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "Переносная мотопила",
 	"primordial-jade-cutter": "Драгоценный омут",
 	"primordial-jade-winged-spear": "Нефритовый коршун",
+	"prospector-drill": "Бур рудоискателя",
 	"rainslasher": "Дождерез",
+	"range-gauge": "Дальномер",
 	"raven-bow": "Лук ворона",
 	"redhorn-stonethresher": "Краснорогий камнеруб",
 	"rust": "Ржавый лук",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "Странник",
 		"title": "Затерявшийся в вечности"
+	},
+	"wriothesley": {
+		"name": "Ризли",
+		"title": "Эмиссар заточённых злодеяний"
 	},
 	"xiangling": {
 		"name": "Сян Лин",

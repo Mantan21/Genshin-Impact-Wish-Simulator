@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "tempestuous-destiny-1",
+							"character": "wriothesley",
+							"textOffset": { "l": 48.5 }
+						},
+						{
+							"bannerName": "ballad-in-goblets-5",
+							"character": "venti",
+							"textOffset": { "l": 48.5 }
+						}
+					],
+					"rateup": ["dori", "thoma", "chongyun"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-54",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "cashflow-supervision" },
+						{ "name": "elegy-for-the-end", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"prospector-drill",
+						"range-gauge",
+						"rainslasher",
+						"favonius-sword",
+						"eye-of-perception"
+					],
+					"textOffset": {
+						"featured": { "l": 41.5, "t": 66, "w": 29 },
+						"rateup": { "l": 75, "b": 26 }
+					}
+				}
+			}
 		}
 	]
 }

@@ -358,12 +358,18 @@
 		},
 		{
 			"date": "25-Sep-2023",
-			"featured": true,
 			"description": [
 				"New Character: <b>Neuvillette ( 5★ )</b>",
 				"Add <b>Hu Tao 4rd Rerun</b> Banner",
-				"Top-Up reset Bonus",
-				"Announcement: The AdKey will be changed on <u>October 1, 2023</u>"
+				"Top-Up reset Bonus"
+			]
+		},
+		{
+			"date": "12-Oct-2023",
+			"featured": true,
+			"description": [
+				"New Character: <b>Wriothesley ( 5★ )</b>",
+				"Add <b>Venti 5th Rerun</b> Banner"
 			]
 		}
 	]

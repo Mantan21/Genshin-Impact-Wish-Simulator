@@ -10,6 +10,7 @@
 	"black-tassel": "黒纓槍",
 	"bloodtained-greatsword": "龍血を浴びた剣",
 	"calamity-queller": "息災",
+	"cashflow-supervision": "凛流の監視者",
 	"cool-steel": "冷刃",
 	"debate-club": "理屈責め",
 	"dragon_s-bane": "匣中滅龍",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "携帯型チェーンソー",
 	"primordial-jade-cutter": "磐岩結緑",
 	"primordial-jade-winged-spear": "和璞鳶",
+	"prospector-drill": "プロスペクタードリル",
 	"rainslasher": "雨裁",
+	"range-gauge": "レンジゲージ",
 	"raven-bow": "鴉羽の弓",
 	"redhorn-stonethresher": "赤角石塵滅砕",
 	"rust": "弓蔵",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "放浪者",
 		"title": "久世浮傾"
+	},
+	"wriothesley": {
+		"name": "リオセスリ",
+		"title": "寂罪の密使"
 	},
 	"xiangling": {
 		"name": "香菱",

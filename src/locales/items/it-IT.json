@@ -10,6 +10,7 @@
 	"black-tassel": "Pennacchio nero",
 	"bloodtained-greatsword": "Spadone insanguinato",
 	"calamity-queller": "Flagello delle calamità",
+	"cashflow-supervision": "Supervisione pecuniaria",
 	"cool-steel": "Lama fredda",
 	"debate-club": "Mazza della persuasione",
 	"dragon_s-bane": "Scacciadraghi",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "Sega elettrica portatile",
 	"primordial-jade-cutter": "Spada di giada primordiale",
 	"primordial-jade-winged-spear": "Lancia di giada primordiale",
+	"prospector-drill": "Trivella mineraria",
 	"rainslasher": "Fendiluvio",
+	"range-gauge": "Indicatore distanziometrico",
 	"raven-bow": "Arco corvino",
 	"redhorn-stonethresher": "Spaccarocce Cornorosso",
 	"rust": "Ossidazione meschina",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "Vagabondo",
 		"title": "Eternamente perduto"
+	},
+	"wriothesley": {
+		"name": "Wriothesley",
+		"title": "Emissario di colpe silenti"
 	},
 	"xiangling": {
 		"name": "Xiangling",

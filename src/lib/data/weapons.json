@@ -1,6 +1,29 @@
 {
 	"data": [
 		{
+			"name": "prospector-drill",
+			"rarity": 4,
+			"weaponType": "polearm",
+			"limited": true
+		},
+		{
+			"name": "range-gauge",
+			"rarity": 4,
+			"weaponType": "bow",
+			"limited": true
+		},
+		{
+			"name": "cashflow-supervision",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"buttonOffset": {
+				"t": 35,
+				"w": 70,
+				"l": 35
+			}
+		},
+		{
 			"name": "ballad-of-the-boundless-blue",
 			"rarity": 4,
 			"weaponType": "catalyst",

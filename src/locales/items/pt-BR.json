@@ -10,6 +10,7 @@
 	"black-tassel": "Borla Preta",
 	"bloodtained-greatsword": "Espadão Sangrento",
 	"calamity-queller": "Subjugadora de Calamidades",
+	"cashflow-supervision": "Supervisão de Caixa",
 	"cool-steel": "Lâmina Fria",
 	"debate-club": "Pacifista",
 	"dragon_s-bane": "Perdição do Dragão",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "Serra Elétrica Portátil",
 	"primordial-jade-cutter": "Cortador de Jade Primordial",
 	"primordial-jade-winged-spear": "Lança de Jade Primitiva",
+	"prospector-drill": "Broca do Prospector",
 	"rainslasher": "Segadeira da Chuva",
+	"range-gauge": "Medidor de Alcance",
 	"raven-bow": "Arco de Corvo",
 	"redhorn-stonethresher": "Chifres Vermelhos Destruidores de Pedras",
 	"rust": "Enferrujado",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "Wanderer",
 		"title": "Caminhante Eterno"
+	},
+	"wriothesley": {
+		"name": "Wriothesley",
+		"title": "Emissário da Culpa Incógnita"
 	},
 	"xiangling": {
 		"name": "Xiangling",

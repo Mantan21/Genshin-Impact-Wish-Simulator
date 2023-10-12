@@ -10,6 +10,7 @@
 	"black-tassel": "Black Tassel",
 	"bloodtained-greatsword": "Bloodtained Greatsword",
 	"calamity-queller": "Calamity Queller",
+	"cashflow-supervision": "Cashflow Supervision",
 	"cool-steel": "Cool Steel",
 	"debate-club": "Debate Club",
 	"dragon_s-bane": "Dragon's Bane",
@@ -46,7 +47,9 @@
 	"portable-power-saw": "Portable Power Saw",
 	"primordial-jade-cutter": "Primordial Jade Cutter",
 	"primordial-jade-winged-spear": "Primordial Jade Winged-Spear",
+	"prospector-drill": "Prospector's Drill",
 	"rainslasher": "Rainslasher",
+	"range-gauge": "Range Gauge",
 	"raven-bow": "Raven Bow",
 	"redhorn-stonethresher": "Redhorn Stonethresher",
 	"rust": "Rust",
@@ -319,6 +322,10 @@
 	"wanderer": {
 		"name": "Wanderer",
 		"title": "Eons Adrift"
+	},
+	"wriothesley": {
+		"name": "Wriothesley",
+		"title": "Emissary of Solitary Iniquity"
 	},
 	"xiangling": {
 		"name": "Xiangling",
