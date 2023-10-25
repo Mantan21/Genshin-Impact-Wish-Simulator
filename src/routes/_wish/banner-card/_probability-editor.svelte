@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { localPity } from '$lib/store/localstore-manager';
 	import { getRate, setRate } from '$lib/helpers/gacha/probabilities';
@@ -27,10 +27,13 @@
 	$: hard5 = getRate(type, 'hard5');
 	$: max4 = getRate(type, 'max4');
 	$: max5 = getRate(type, 'max5');
-	$: disGuaranteed = getRate(type, 'disGuaranteed');
+	$: guaranteed = getRate(type, 'guaranteed') || 'default';
 
-	const guaranteedToggle = () => {
-		setRate(type, 'disGuaranteed', disGuaranteed);
+	let showGuarateedOption = false;
+	const guaranteedToggle = (selected) => {
+		setRate(type, 'guaranteed', selected);
+		guaranteed = selected;
+		showGuarateedOption = false;
 		playSfx('click2');
 	};
 
@@ -92,13 +95,12 @@
 			if (variable === 'hard5') hard5 = finalVal;
 		}
 
-		// Current Pity Changer
-		if (variable.match('now')) {
-			if (variable === 'now4') localPity.set(`pity4-${type}`, val);
-			if (variable === 'now5') localPity.set(`pity5-${type}`, val);
-		}
+		if (!variable.match('now')) return setRate(type, variable, finalVal || 1);
 
-		setRate(type, variable, finalVal || 1);
+		// Current Pity Changer
+		const value = parseInt(val);
+		if (variable === 'now4') localPity.set(`pity4-${type}`, value);
+		if (variable === 'now5') localPity.set(`pity5-${type}`, value);
 	};
 </script>
 
@@ -144,7 +146,7 @@
 			</div>
 		</div>
 
-		<div class="item" class:disabled={baseRate5 >= 100 || !max5 || max5 <= 1}>
+		<div class="item">
 			<div class="col">
 				{$t('editor.currentPity', { values: { rarity: 5 } })}
 			</div>
@@ -198,7 +200,7 @@
 			</div>
 		</div>
 
-		<div class="item" class:disabled={baseRate5 >= 100 || !max5 || max5 <= 1}>
+		<div class="item">
 			<div class="col">
 				{$t('editor.currentPity', { values: { rarity: 4 } })}
 			</div>
@@ -212,10 +214,15 @@
 		</div>
 
 		{#if type !== 'standard'}
-			<div class="item">
+			<div class="item" class:disabled={['always', 'never'].includes(guaranteed)}>
 				<div class="col">{$t('editor.winRate')}</div>
 				<div class="col percent">
-					<input type="number" value={winRate} on:input={(e) => changeRate(e, 'winRate')} />
+					<input
+						type="number"
+						value={winRate}
+						disabled={['always', 'never'].includes(guaranteed)}
+						on:input={(e) => changeRate(e, 'winRate')}
+					/>
 				</div>
 			</div>
 		{/if}
@@ -253,14 +260,30 @@
 
 		{#if type !== 'standard'}
 			<div class="item">
-				<div class="col">{@html $t('editor.disGuaranteed')}</div>
-				<div class="col checkbox">
-					<input
-						type="checkbox"
-						id="dis"
-						bind:checked={disGuaranteed}
-						on:change={guaranteedToggle}
-					/> <label for="dis"> <i class="gi-check" /> </label>
+				<div class="col">{@html $t('editor.guaranteedSystem')}</div>
+				<div class="col select">
+					<button
+						class="selected"
+						on:click={() => {
+							showGuarateedOption = !showGuarateedOption;
+							playSfx('click2');
+						}}
+					>
+						{$t(`editor.${guaranteed}`)}
+					</button>
+					{#if showGuarateedOption}
+						<div class="selection" transition:fly|local={{ y: 10 }}>
+							<button class="option" on:click={() => guaranteedToggle('default')}>
+								{$t('editor.default')}
+							</button>
+							<button class="option" on:click={() => guaranteedToggle('always')}>
+								{$t('editor.always')}
+							</button>
+							<button class="option" on:click={() => guaranteedToggle('never')}>
+								{$t('editor.never')}
+							</button>
+						</div>
+					{/if}
 				</div>
 			</div>
 		{/if}
@@ -386,7 +409,9 @@
 		border-bottom-right-radius: 3rem;
 	}
 
+	.select button.selected,
 	input {
+		background-color: #fff;
 		width: 100%;
 		padding: 0 15%;
 		margin-bottom: 2%;
@@ -403,45 +428,39 @@
 		padding-right: 35%;
 	}
 
-	input:focus {
+	input:focus,
+	.selection {
 		box-shadow: 0 0 0.4rem rgba(227, 149, 48, 0.7);
 	}
 
-	/* Checkbox */
-	.checkbox {
-		font-size: 150%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.checkbox label {
-		text-align: left;
-		display: flex;
-		align-items: center;
-		height: 80%;
-	}
-
-	.checkbox input + label i {
-		color: white;
-		border: 1px solid #aaa;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		aspect-ratio: 1/1;
+	.selection {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		width: 100%;
+		z-index: +10;
 		background-color: #fff;
-		transition: all 0.2s;
-	}
-	.checkbox input:checked + label i {
-		background-color: #06bbff;
+		border-radius: 0.25rem;
+		border: #c3b8a5 1px solid;
 	}
 
-	.checkbox:hover input + label i {
-		border: 1px solid #06bbff;
-		box-shadow: rgba(106, 168, 230, 0.6) 0px 0px 7px 5px;
+	.select button.selected {
+		font-size: 90%;
 	}
-
-	.checkbox input {
-		display: none;
+	.selection button {
+		font-size: 100%;
+		display: block;
+		padding: 10% 15%;
+		width: 100%;
+		text-align: left;
+		border-bottom: #c5bcac 1px solid;
+	}
+	button.selected,
+	.selection button {
+		transition: background 0.25s;
+	}
+	button.selected:hover,
+	.selection button:hover {
+		background-color: #e8e5e0;
 	}
 </style>

@@ -2,6 +2,7 @@ import { standard } from '$lib/data/banners/standard.json';
 import { data as weaponsDB } from '$lib/data/weapons.json';
 import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
 import { getRate, prob } from './probabilities';
+import { guaranteedStatus } from '$lib/store/localstore-manager';
 
 const standardWeapons = (star) => {
 	return getAllWeapons(star).filter(({ limited }) => !limited);
@@ -174,5 +175,14 @@ export const isRateup = (banner) => {
 	]);
 
 	return item === 'rateup';
+};
+
+// CheckGuaranteed
+export const checkGuaranteed = (banner, rarity) => {
+	const status = guaranteedStatus.get(`${banner}-${rarity}star`);
+	const guaranteedSystem = getRate(banner, 'guaranteed');
+	const never = guaranteedSystem === 'never';
+	const always = guaranteedSystem === 'always';
+	return { status, never, always };
 };
 

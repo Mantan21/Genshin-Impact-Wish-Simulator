@@ -77,9 +77,12 @@
 		"charRate": "Probabilitas mendapat Karakter dibanding Senjata",
 		"nonRateup": "(Item non-RateUP)",
 		"selectedRate": "Probabilitas mendapat senjata terpilih:",
-		"disGuaranteed": "Nonaktifkan sistem jaminan setelah mendapat item non-RateUP",
+		"guaranteedSystem": "Sistem Jaminan",
 		"backToDefault": "Pengaturan Default",
-		"resetPrompt": "Apakah kamu yakin akan mereset pengaturan probabilitas untuk <b>\"{banner}\"</b>?"
+		"resetPrompt": "Apakah kamu yakin akan mereset pengaturan probabilitas untuk <b>\"{banner}\"</b>?",
+		"default": "Aktif",
+		"never": "NonAktif",
+		"always": "Selalu"
 	},
 	"wish": {
 		"wishTitle": "Permohonan",

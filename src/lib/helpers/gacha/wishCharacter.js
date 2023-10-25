@@ -1,6 +1,12 @@
 import { guaranteedStatus } from '$lib/store/localstore-manager';
-import { get3StarItem, get4StarItem, rand, get5StarItem, isRateup } from './itemdrop-base';
-import { getRate } from './probabilities';
+import {
+	get3StarItem,
+	get4StarItem,
+	rand,
+	get5StarItem,
+	isRateup,
+	checkGuaranteed
+} from './itemdrop-base';
 
 const characterWish = {
 	init({ indexOfBanner, featured, rateup, version, phase, stdver }) {
@@ -21,9 +27,8 @@ const characterWish = {
 
 		if (rarity === 4) {
 			const { _version: version, _phase: phase, _rateup: rateup } = this;
-			const isGuaranteed = guaranteedStatus.get('character-event-4star');
-			const turnOffGuaranteed = getRate('character-event', 'disGuaranteed');
-			const useRateup = (isGuaranteed && !turnOffGuaranteed) || isRateup('character-event');
+			const { status: isGuaranteed, never, always } = checkGuaranteed('character-event', 4);
+			const useRateup = (isGuaranteed && !never) || always || isRateup('character-event');
 
 			const droplist = get4StarItem({
 				banner: 'character-event',
@@ -39,9 +44,8 @@ const characterWish = {
 
 		if (rarity === 5) {
 			const { _featured, _indexOfBanner, _stdver } = this;
-			const isGuaranteed = guaranteedStatus.get('character-event-5star');
-			const turnOffGuaranteed = getRate('character-event', 'disGuaranteed');
-			const useRateup = (isGuaranteed && !turnOffGuaranteed) || isRateup('character-event');
+			const { status: isGuaranteed, never, always } = checkGuaranteed('character-event', 5);
+			const useRateup = (isGuaranteed && !never) || always || isRateup('character-event');
 
 			const droplist = get5StarItem({
 				banner: 'character-event',
@@ -51,7 +55,8 @@ const characterWish = {
 			});
 			const result = rand(droplist);
 
-			const rateUpStatus = isGuaranteed ? 'guaranteed' : 'win';
+			const statusGuarateed = (isGuaranteed && !never) || always;
+			const rateUpStatus = statusGuarateed ? 'guaranteed' : 'win';
 			const status = useRateup ? rateUpStatus : 'lose';
 			guaranteedStatus.set('character-event-5star', !useRateup);
 			return { ...result, status };

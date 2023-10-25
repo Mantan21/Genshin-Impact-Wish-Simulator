@@ -77,9 +77,12 @@
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(Non RateUp Item)",
 		"selectedRate": "Selected Weapon Rate:",
-		"disGuaranteed": "Disable Guaranteed System (after getting a non-RateUP item)",
+		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
-		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?"
+		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
+		"default": "Default",
+		"never": "Never",
+		"always": "Always"
 	},
 	"wish": {
 		"wishTitle": "Gebet",

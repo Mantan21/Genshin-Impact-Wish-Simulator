@@ -1,7 +1,14 @@
 // import { fatePoint, selectedCourse } from '$lib/store/stores';
 import { course } from '$lib/store/app-stores';
 import { fatepointManager, guaranteedStatus } from '$lib/store/localstore-manager';
-import { rand, get3StarItem, get4StarItem, get5StarItem, isRateup } from './itemdrop-base';
+import {
+	rand,
+	get3StarItem,
+	get4StarItem,
+	get5StarItem,
+	isRateup,
+	checkGuaranteed
+} from './itemdrop-base';
 import { getRate, prob } from './probabilities';
 
 const fatepoint = {
@@ -62,8 +69,8 @@ const weaponWish = {
 		// 4 star items (Character or Weapon)
 		if (rarity === 4) {
 			const { _version: version, _phase: phase, _rateup: rateup } = this;
-			const isGuaranteed = guaranteedStatus.get('weapon-event-4star');
-			const useRateup = isGuaranteed || isRateup('weapon-event');
+			const { status: isGuaranteed, never, always } = checkGuaranteed('weapon-event', 4);
+			const useRateup = (isGuaranteed && !never) || always || isRateup('weapon-event');
 
 			const droplist = get4StarItem({
 				banner: 'weapon-event',
@@ -80,8 +87,8 @@ const weaponWish = {
 		// 5 Star Weapon
 		if (rarity === 5) {
 			const { _featured, _fatesystem } = this;
-			const isGuaranteed = guaranteedStatus.get('weapon-event-5star');
-			let useRateup = isGuaranteed || isRateup('weapon-event');
+			const { status: isGuaranteed, never, always } = checkGuaranteed('weapon-event', 5);
+			let useRateup = (isGuaranteed && !never) || always || isRateup('weapon-event');
 
 			let calculateFatepoint = false;
 			let rateupItem = _featured.map(({ name }) => name);
@@ -118,7 +125,8 @@ const weaponWish = {
 			const result = rand(droplist);
 			const isFatepointFull = _fatesystem?.verify(result);
 
-			const rateUpStatus = isGuaranteed ? 'guaranteed' : 'win';
+			const statusGuarateed = (isGuaranteed && !never) || always;
+			const rateUpStatus = statusGuarateed ? 'guaranteed' : 'win';
 			const fatepointstatus = calculateFatepoint && isFatepointFull ? 'selected' : rateUpStatus;
 			const status = useRateup ? fatepointstatus : 'lose';
 			guaranteedStatus.set('weapon-event-5star', !useRateup);
