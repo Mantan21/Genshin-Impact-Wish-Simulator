@@ -72,6 +72,7 @@
 		"baseRate": "{rarity}-Star Base Rate:",
 		"maxPity": "{rarity}-Star Max Pity:",
 		"hardPity": "Boost {rarity}-Star rate starts from pity:",
+		"currentPity": "{rarity}-Star Current Pity",
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(Non RateUp Item)",

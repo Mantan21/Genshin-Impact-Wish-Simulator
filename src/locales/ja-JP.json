@@ -72,6 +72,7 @@
 		"baseRate": "★{rarity} 基礎出現確率:",
 		"maxPity": "★{rarity} 天井:",
 		"hardPity": "★{rarity} 確率上昇が始まる祈願連数:",
+		"currentPity": "{rarity}-Star Current Pity",
 		"winRate": "ピックアップ獲得確率:",
 		"charRate": "武器ではなくキャラクターを入手する確率",
 		"nonRateup": "(すり抜け時)",

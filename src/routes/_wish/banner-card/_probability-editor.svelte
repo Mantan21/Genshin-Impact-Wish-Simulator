@@ -2,6 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import { localPity } from '$lib/store/localstore-manager';
 	import { getRate, setRate } from '$lib/helpers/gacha/probabilities';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
@@ -91,6 +92,12 @@
 			if (variable === 'hard5') hard5 = finalVal;
 		}
 
+		// Current Pity Changer
+		if (variable.match('now')) {
+			if (variable === 'now4') localPity.set(`pity4-${type}`, val);
+			if (variable === 'now5') localPity.set(`pity5-${type}`, val);
+		}
+
 		setRate(type, variable, finalVal || 1);
 	};
 </script>
@@ -137,6 +144,19 @@
 			</div>
 		</div>
 
+		<div class="item" class:disabled={baseRate5 >= 100 || !max5 || max5 <= 1}>
+			<div class="col">
+				{$t('editor.currentPity', { values: { rarity: 5 } })}
+			</div>
+			<div class="col">
+				<input
+					type="number"
+					value={localPity.get(`pity5-${type}`)}
+					on:input={(e) => changePity(e, 'now5')}
+				/>
+			</div>
+		</div>
+
 		<div class="item" class:disabled={baseRate5 >= 100 || max5 <= 1}>
 			<div class="col">{$t('editor.baseRate', { values: { rarity: 4 } })}</div>
 			<div class="col percent">
@@ -174,6 +194,19 @@
 					value={hard4}
 					disabled={baseRate5 >= 100 || baseRate4 >= 100 || !max4 || max4 <= 1 || max5 <= 1}
 					on:input={(e) => changePity(e, 'hard4')}
+				/>
+			</div>
+		</div>
+
+		<div class="item" class:disabled={baseRate5 >= 100 || !max5 || max5 <= 1}>
+			<div class="col">
+				{$t('editor.currentPity', { values: { rarity: 4 } })}
+			</div>
+			<div class="col">
+				<input
+					type="number"
+					value={localPity.get(`pity4-${type}`)}
+					on:input={(e) => changePity(e, 'now4')}
 				/>
 			</div>
 		</div>
@@ -250,7 +283,7 @@
 		flex-direction: column;
 		min-height: 100%;
 		width: 100%;
-		font-size: 85%;
+		font-size: 80%;
 		position: relative;
 	}
 
@@ -287,7 +320,7 @@
 
 	.footer {
 		margin-top: auto;
-		padding: 1%;
+		padding: 0 1% 1%;
 		text-align: right;
 	}
 
@@ -295,9 +328,9 @@
 		display: flex;
 		align-items: center;
 		width: 100%;
-		padding: 0.28% 0 0.28% 1%;
+		padding: 0.2% 0 0.2% 1%;
 		border-bottom: rgba(20, 18, 15, 0.5) 1px solid;
-		transition: background 0.5s;
+		transition: background 0.25s;
 	}
 
 	.fullscreenEditor .item {
@@ -328,7 +361,7 @@
 	}
 
 	.col:nth-child(2) {
-		height: 2rem;
+		height: 1.8rem;
 		flex-basis: 10%;
 		min-width: 5rem;
 	}

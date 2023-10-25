@@ -72,6 +72,7 @@
 		"baseRate": "Probabilitas Dasar {rarity}★:",
 		"maxPity": "Piti Maksimal {rarity}★:",
 		"hardPity": "Tingkatkan probabilitas {rarity}★ pada piti:",
+		"currentPity": "Pity {rarity}★ saat ini",
 		"winRate": "Probabilitas mendapat item RateUP:",
 		"charRate": "Probabilitas mendapat Karakter dibanding Senjata",
 		"nonRateup": "(Item non-RateUP)",
