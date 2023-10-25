@@ -54,7 +54,7 @@
 		const dt = await HistoryManager.getByName(name);
 
 		// If no data in IDB
-		if (dt.length < 1 || !!dt[0]) {
+		if (dt.length < 1 || !dt[0]) {
 			const result = getCharDetails(name);
 			result.qty = owneditem.get(name)?.qty || 0;
 			return result;

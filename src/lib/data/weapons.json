@@ -24,12 +24,6 @@
 			}
 		},
 		{
-			"name": "ballad-of-the-boundless-blue",
-			"rarity": 4,
-			"weaponType": "catalyst",
-			"limited": true
-		},
-		{
 			"name": "portable-power-saw",
 			"rarity": 4,
 			"weaponType": "claymore",
