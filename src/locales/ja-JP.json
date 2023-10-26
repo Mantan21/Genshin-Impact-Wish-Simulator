@@ -75,7 +75,7 @@
 		"currentPity": "{rarity}-Star Current Pity",
 		"winRate": "ピックアップ獲得確率:",
 		"charRate": "武器ではなくキャラクターを入手する確率",
-		"nonRateup": "(すり抜け時)",
+		"nonRateup": "(When losing 4-Star Item)",
 		"selectedRate": "軌定武器獲得確率:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "初期設定に戻す",

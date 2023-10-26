@@ -45,14 +45,15 @@
 		if (val >= maxVal) e.target.value = capVal;
 		setRate(type, variable, capVal || 0);
 
+		if (variable === 'winRate') return (winRate = capVal);
 		if (variable === 'baseRate4') return (baseRate4 = capVal);
+
 		if (variable === 'baseRate5') {
 			baseRate5 = capVal;
 			const isOverLimit = parseFloat(baseRate5) + parseFloat(baseRate4) > 100;
-			if (isOverLimit) {
-				baseRate4 = 100 - baseRate5;
-				setRate(type, 'baseRate4', baseRate4);
-			}
+			if (!isOverLimit) return;
+			baseRate4 = 100 - baseRate5;
+			setRate(type, 'baseRate4', baseRate4);
 		}
 	};
 
@@ -102,6 +103,8 @@
 		if (variable === 'now4') localPity.set(`pity4-${type}`, value);
 		if (variable === 'now5') localPity.set(`pity5-${type}`, value);
 	};
+
+	$: console.log(winRate);
 </script>
 
 <div class="editor {type}" class:fullscreenEditor out:fade|local>
@@ -214,20 +217,28 @@
 		</div>
 
 		{#if type !== 'standard'}
-			<div class="item" class:disabled={['always', 'never'].includes(guaranteed)}>
+			<div class="item" class:disabled={guaranteed === 'always'}>
 				<div class="col">{$t('editor.winRate')}</div>
 				<div class="col percent">
 					<input
 						type="number"
 						value={winRate}
-						disabled={['always', 'never'].includes(guaranteed)}
+						disabled={guaranteed === 'always'}
 						on:input={(e) => changeRate(e, 'winRate')}
 					/>
 				</div>
 			</div>
 		{/if}
 
-		<div class="item" class:disabled={baseRate5 >= 100 && type !== 'standard'}>
+		<!-- prettier-ignore -->
+		<div
+			class="item"
+			class:disabled={
+				(baseRate5 >= 100 && type !== 'standard')
+				|| guaranteed === 'always'
+				|| winRate >= 100
+			}
+		>
 			<div class="col">
 				{$t('editor.charRate')}
 				{#if type !== 'standard'}
@@ -239,8 +250,8 @@
 				<input
 					type="number"
 					value={charRate}
-					disabled={baseRate5 >= 100 && type !== 'standard'}
 					on:input={(e) => changeRate(e, 'charRate')}
+					disabled={(baseRate5 >= 100 && type !== 'standard') || guaranteed === 'always' || winRate >= 100}
 				/>
 			</div>
 		</div>

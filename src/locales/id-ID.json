@@ -75,7 +75,7 @@
 		"currentPity": "Pity {rarity}★ saat ini",
 		"winRate": "Probabilitas mendapat item RateUP:",
 		"charRate": "Probabilitas mendapat Karakter dibanding Senjata",
-		"nonRateup": "(Item non-RateUP)",
+		"nonRateup": "(Item 4★ saat kalah)",
 		"selectedRate": "Probabilitas mendapat senjata terpilih:",
 		"guaranteedSystem": "Sistem Jaminan",
 		"backToDefault": "Pengaturan Default",
