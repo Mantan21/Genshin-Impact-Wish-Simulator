@@ -12,6 +12,7 @@
 	import Sidebar from './_sidebar.svelte';
 	import RemoveAds from './RemoveAds.svelte';
 	import hotkeys from 'hotkeys-js';
+	import CustomBanner from './CustomBanner.svelte';
 
 	let activeContent = 'options';
 
@@ -51,6 +52,8 @@
 				<Updates />
 			{:else if activeContent === 'removeAds'}
 				<RemoveAds />
+			{:else if activeContent === 'customBanner'}
+				<CustomBanner />
 			{/if}
 
 			{#if $isMobile && !$mobileMode}

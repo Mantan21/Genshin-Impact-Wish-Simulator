@@ -1,46 +1,197 @@
 <script>
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/app-stores';
-	import { fly } from 'svelte/transition';
-	import CardEditor from './_card-editor.svelte';
+	import { setContext } from 'svelte';
+	import { editID } from '$lib/store/app-stores';
+	import { BannerManager } from '$lib/store/IDB-manager';
 
-	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
-	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';
+	import Icon from '$lib/components/Icon.svelte';
+	import FrameEditor from './_frame.svelte';
+	import InfoButton from './_info-face-button.svelte';
+	import SplashartForm from './_splashart-form.svelte';
+	import MainArt from './_main-art.svelte';
+	import VisionPicker from './_vision-picker.svelte';
+	import InfoEditor from './_info-editor.svelte';
+	import { fade } from 'svelte/transition';
 
-	$: mobileBannerStyle = $mobileMode
-		? `max-width: ${(150 / 100) * $viewportHeight}px;`
-		: tabletBannerStyle;
+	let clientHeight;
+	let clientWidth;
+	let onBannerEdit = false;
+	let isInfoEdit = false;
+	let isLoaded = false;
 
-	$: style =
-		$viewportHeight > 800 ||
-		$viewportHeight > $viewportWidth ||
-		$viewportHeight / $viewportWidth > 0.5
-			? 'align-items:center;'
-			: '';
+	// Banner Info
+	let bannerID = $editID;
+	let userID;
+	let bannerName = '';
+	let charName = '';
+	let charTitle = '';
+	let vision = '';
+	let rateup = [];
+
+	let artPosition = { banner: {}, splashart: {}, card: {} };
+	let images = { artURL: '', faceURL: '' };
+	let hostedArt = { deleteURL: '', viewURL: '' };
+	let hostedFace = { deleteURL: '', viewURL: '' };
+	$: hostedImages = { hostedArt, hostedFace };
+
+	const idb = BannerManager;
+	const readIDB = async (id) => {
+		if (isLoaded) return;
+		if (!id) {
+			vision = 'pyro';
+			isLoaded = true;
+			return;
+		}
+
+		const data = await idb.get(id);
+		// prettier-ignore
+		({ userID, bannerName, charName, charTitle, vision, rateup, artPosition, hostedImages, images } = data);
+		isLoaded = true;
+	};
+
+	$: bannerData = {
+		userID,
+		bannerName,
+		charName,
+		charTitle,
+		vision,
+		rateup,
+		artPosition,
+		hostedImages,
+		images
+	};
+
+	const autoSave = async (data) => {
+		if (!isLoaded) return;
+		const lastModified = new Date().toISOString();
+		if ($editID) return idb.put({ id: $editID, ...data, lastModified });
+		const id = await idb.put({ ...data, lastModified });
+		editID.set(id);
+		return;
+	};
+	$: autoSave(bannerData);
+
+	const setPosition = (type, pos) => (artPosition[type] = pos);
+	setContext('setPosition', setPosition);
+
+	const editBanner = (val) => (onBannerEdit = val);
+	setContext('editBanner', editBanner);
+
+	const editInfo = (val) => (isInfoEdit = val);
+	setContext('editInfo', editInfo);
+
+	const setVision = (vi) => (vision = vi);
+	setContext('setVision', setVision);
+
+	const setRateup = (chars) => (rateup = chars);
+	setContext('setRateup', setRateup);
+
+	const setCharName = (name) => (charName = name);
+	setContext('setCharName', setCharName);
+
+	const setCharTitle = (title) => (charTitle = title);
+	setContext('setCharTitle', setCharTitle);
+
+	const setBannerName = (name) => (bannerName = name);
+	setContext('setBannerName', setBannerName);
+
+	const changeArt = (file) => {
+		if (!file) return;
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.addEventListener('load', () => {
+			images.artURL = reader.result;
+			onBannerEdit = true;
+		});
+	};
+	setContext('changeArt', changeArt);
+
+	const changeFace = (file) => {
+		if (!file) return;
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.addEventListener('load', () => {
+			images.faceURL = reader.result;
+		});
+	};
+	setContext('changeFace', changeFace);
 </script>
 
-<div class="banner-container" {style}>
-	<div class="banner-item" style={mobileBannerStyle} in:fly={{ x: 25, duration: 580 }}>
-		<CardEditor />
+{#await readIDB(bannerID)}
+	<div class="loading" out:fade>
+		<div class="loader">
+			<Icon type="loader" width="40px" />
+		</div>
 	</div>
+{/await}
+
+<div
+	class="card"
+	class:isLoaded
+	bind:clientWidth
+	bind:clientHeight
+	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
+>
+	<img src="/images/banner/blank/{vision}.webp" alt="background banner" class="art-bg" />
+
+	<VisionPicker selected={vision} />
+	{#key artPosition}
+		<MainArt
+			{onBannerEdit}
+			width={clientWidth}
+			height={clientHeight}
+			artURL={images?.artURL}
+			bannerPosition={artPosition?.banner}
+		/>
+	{/key}
+	<SplashartForm {onBannerEdit} />
+	<FrameEditor editorMode {onBannerEdit} {vision} {bannerName} {charName} {charTitle} />
+	<InfoButton faceURL={images?.faceURL} {onBannerEdit} />
+
+	{#if isInfoEdit}
+		<InfoEditor {rateup} {bannerName} {charName} {charTitle} />
+	{/if}
 </div>
 
 <style>
-	.banner-container {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	:global(.mobile) .banner-container {
-		align-items: flex-end;
-		padding: 0;
+	.card {
+		/* background-image: linear-gradient(to top, #eee8e3 50%, #f7f5f4); */
+		position: relative;
 	}
 
-	.banner-item {
-		max-width: 900px;
-		width: 80%;
-		max-height: 75vh;
+	.card {
+		width: 100%;
+		height: fit-content;
 		aspect-ratio: 1080/533;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: contain;
+		object-position: center;
+	}
+
+	.loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		transform: translate(-50%, -50%);
+		z-index: +20;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		backdrop-filter: blur(8px);
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+
+	.loader {
+		--text-color: rgba(248, 184, 22, 0.7);
+		aspect-ratio: 1/1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

@@ -81,7 +81,7 @@
 <style>
 	.info {
 		position: absolute;
-		z-index: +15;
+		z-index: +11;
 		left: 5%;
 		bottom: 5%;
 		display: flex;

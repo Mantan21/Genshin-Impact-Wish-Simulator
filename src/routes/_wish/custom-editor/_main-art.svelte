@@ -1,6 +1,5 @@
 <script>
 	import { getContext, onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import Zoomist from 'zoomist';
 
 	export let onBannerEdit = false;
@@ -83,12 +82,12 @@
 </script>
 
 <div class="main-art" class:onBannerEdit>
-	<div class="zoom-slider" out:fade />
-	<div class="zoomer" out:fade>
+	<div class="zoom-slider" />
+	<div class="zoomer">
 		<button class="zoomin"><i class="gi-zoom-in" /></button>
 		<button class="zoomout"><i class="gi-zoom-out" /></button>
 	</div>
-	<button class="setpos" out:fade on:click={setCoordinate}><i class="gi-check" /></button>
+	<button class="setpos" on:click={setCoordinate}><i class="gi-check" /></button>
 
 	<div class="zoomist-container" bind:this={mainArt}>
 		<div class="zoomist-wrapper">

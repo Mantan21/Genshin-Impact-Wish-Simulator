@@ -17,6 +17,10 @@
 			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
 		</div>
 
+		<div class="menu-item" class:active={activeContent === 'customBanner'}>
+			<button on:click={() => selectMenu('customBanner')}> {$t('menu.customBanner')} </button>
+		</div>
+
 		{#if !($isPWA && $isMobile)}
 			<div class="menu-item" class:active={activeContent === 'removeAds'}>
 				<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>

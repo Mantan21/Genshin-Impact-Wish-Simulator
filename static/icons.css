@@ -257,3 +257,6 @@
 .gi-move:before {
 	content: '\2c';
 }
+.gi-lock:before {
+	content: '\2d';
+}

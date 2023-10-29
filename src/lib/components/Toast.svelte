@@ -18,7 +18,7 @@
 	}
 </script>
 
-<div class="toast" transition:fly={{ y: -20 }} on:click={closeHandle}>
+<div class="toast" transition:fly|local={{ y: -20 }} on:click={closeHandle}>
 	<slot />
 </div>
 

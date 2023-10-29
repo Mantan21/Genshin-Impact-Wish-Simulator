@@ -9,6 +9,7 @@
 	import {
 		activeBanner,
 		bannerList,
+		editorMode,
 		isMobile,
 		mobileMode,
 		viewportHeight,
@@ -16,6 +17,7 @@
 	} from '$lib/store/app-stores';
 	import BannerCard from './banner-card/BannerCard.svelte';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
+	import CustomEditor from './custom-editor/CustomEditor.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
 	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';
@@ -96,44 +98,50 @@
 	});
 </script>
 
-<div class="banner-container" {style}>
-	{#each $bannerList as data, i}
-		{#if $activeBanner === i}
-			<div
-				class="banner-item"
-				class:editorOpen={editor}
-				class:fullscreen={$isMobile && $mobileMode}
-				style={mobileBannerStyle}
-				in:fly={{ x: 25, duration: 580 }}
-			>
-				<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
-			</div>
-		{/if}
-	{/each}
+<div class="banner-container" {style} class:editMode={$editorMode}>
+	{#if $editorMode}
+		<div class="banner-item" style={mobileBannerStyle} in:fly={{ x: 25, duration: 580 }}>
+			<CustomEditor />
+		</div>
+	{:else}
+		{#each $bannerList as data, i}
+			{#if $activeBanner === i}
+				<div
+					class="banner-item"
+					class:editorOpen={editor}
+					class:fullscreen={$isMobile && $mobileMode}
+					style={mobileBannerStyle}
+					in:fly={{ x: 25, duration: 580 }}
+				>
+					<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
+				</div>
+			{/if}
+		{/each}
 
-	<div class="navigate">
-		{#if $activeBanner > 0}
-			<button
-				class="left"
-				style="margin-right: auto;"
-				on:click={() => navigateBanner('left')}
-				transition:fade|local={{ duration: 200 }}
-			>
-				<i class="gi-arrow-left" />
-			</button>
-		{/if}
+		<div class="navigate">
+			{#if $activeBanner > 0}
+				<button
+					class="left"
+					style="margin-right: auto;"
+					on:click={() => navigateBanner('left')}
+					transition:fade|local={{ duration: 200 }}
+				>
+					<i class="gi-arrow-left" />
+				</button>
+			{/if}
 
-		{#if $activeBanner < $bannerList.length - 1}
-			<button
-				class="left"
-				style="margin-left: auto;"
-				on:click={() => navigateBanner('right')}
-				transition:fade|local={{ duration: 200 }}
-			>
-				<i class="gi-arrow-right" />
-			</button>
-		{/if}
-	</div>
+			{#if $activeBanner < $bannerList.length - 1}
+				<button
+					class="left"
+					style="margin-left: auto;"
+					on:click={() => navigateBanner('right')}
+					transition:fade|local={{ duration: 200 }}
+				>
+					<i class="gi-arrow-right" />
+				</button>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 {#if showModalReset}
@@ -176,6 +184,13 @@
 		aspect-ratio: 27/14;
 		perspective: 1000px;
 	}
+
+	.editMode .banner-item {
+		aspect-ratio: 1080/533;
+		perspective: unset;
+		position: relative;
+	}
+
 	.fullscreen.banner-item {
 		perspective: unset;
 	}

@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
 
-const version = 2;
+const version = 3;
 const DBName = 'WishSimulator';
 
 let IndexedDB;
@@ -20,6 +20,10 @@ if (browser) {
 
 			if (!db.objectStoreNames.contains('assets')) {
 				db.createObjectStore('assets', { keyPath: 'key', autoIncrement: false });
+			}
+
+			if (!db.objectStoreNames.contains('custombanner')) {
+				db.createObjectStore('custombanner', { keyPath: 'id', autoIncrement: true });
 			}
 		}
 	});
@@ -82,5 +86,26 @@ export const AssetManager = {
 	async delete(key) {
 		if (!key) return;
 		return (await IndexedDB).delete('assets', key);
+	}
+};
+
+// Custom Banner
+export const BannerManager = {
+	async getAll() {
+		return (await IndexedDB).getAll('custombanner');
+	},
+	async put(data) {
+		// eslint-disable-next-line no-prototype-builtins
+		// if (!data.hasOwnProperty('id')) return;
+		const idb = await IndexedDB;
+		return idb.put('custombanner', data);
+	},
+	async get(id) {
+		if (!id) return null;
+		return (await IndexedDB).get('custombanner', id);
+	},
+	async delete(key) {
+		if (!key) return;
+		return (await IndexedDB).delete('custombanner', key);
 	}
 };

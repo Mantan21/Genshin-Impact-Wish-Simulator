@@ -21,12 +21,6 @@
 	setContext('handleOption', handleOption);
 	let isMuted = localConfig.get('muted');
 
-	// const handleSelect = (option, e) => {
-	// 	const { selected } = e.detail;
-	// 	const optionValue = selected === 'yes';
-	// 	localConfig.set(option, optionValue);
-	// };
-
 	// Handle Muted
 	const handleMuted = ({ detail }) => {
 		const { selected } = detail;

@@ -4,14 +4,14 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import { data } from '$lib/data/updates.json';
-	import { isMobile, isPWA } from '$lib/store/app-stores';
+	import { isMobile, isPWA, proUser } from '$lib/store/app-stores';
 	import { adKey } from '$lib/helpers/accessKey';
 	import { browserDetect } from '$lib/helpers/mobileDetect';
 	import Modal from '$lib/components/ModalTpl.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
 
 	let content;
 	let contentHeight;
-	let adKeyValid = false;
 	let savedKey = '';
 	let dateExpired = '';
 
@@ -19,19 +19,35 @@
 	const showAd = getContext('showAd');
 	const updates = data.filter(({ featured }) => !!featured);
 
-	const handleConfirm = () => {
-		closeDisclaimer();
-		if ($isPWA && $isMobile) return;
-		showAd.set(!adKeyValid);
+	const retry = () => {
+		console.log('reconecting...');
+		const timer = setTimeout(() => {
+			clearTimeout(timer);
+			verifyKey();
+		}, 10000);
+	};
+
+	const verifyKey = async () => {
+		const { validity, status } = await adKey.initialLoad();
+		if (status === 'offline') return retry();
+
+		proUser.set(!!validity);
+		if ($isPWA && $isMobile) return showAd.set(false);
+		showAd.set(!validity);
 	};
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-		const { validity, expiryDate, storedKey } = await adKey.checkLocal();
-		adKeyValid = validity;
-		savedKey = storedKey;
+		const { expiryDate, storedKey } = await adKey.initialLoad();
 		dateExpired = expiryDate;
+		savedKey = storedKey;
 	});
+
+	const handleConfirm = () => {
+		playSfx();
+		closeDisclaimer();
+		verifyKey();
+	};
 </script>
 
 <Modal confirmOnly title={$t('title')} on:confirm={handleConfirm}>

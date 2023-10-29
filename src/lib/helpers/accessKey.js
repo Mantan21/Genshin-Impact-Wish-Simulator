@@ -1,4 +1,4 @@
-import { localConfig } from '$lib/store/localstore-manager';
+import { cookie } from '$lib/store/cookie';
 
 const digestMessage = async (message) => {
 	const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
@@ -28,15 +28,15 @@ const checkKey = async (key) => {
 const adKey = {
 	_set(key) {
 		const reversed = key.trim().split('').reverse().join('');
-		localConfig.set('adKey', reversed);
+		cookie.set('adKey', reversed);
 	},
 
 	clear() {
-		return localConfig.set('adKey', null);
+		return cookie.set('adKey', null);
 	},
 
-	async checkLocal() {
-		const storedKey = localConfig.get('adKey');
+	async initialLoad() {
+		const storedKey = cookie.get('adKey');
 		const reversedKey = storedKey?.split('').reverse().join('');
 		try {
 			if (!storedKey) return { validity: false, storedKey: reversedKey, status: 'ok' };

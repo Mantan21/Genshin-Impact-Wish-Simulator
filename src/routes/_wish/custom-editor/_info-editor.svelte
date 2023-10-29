@@ -6,6 +6,7 @@
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import RateupPicker from './_rateup-picker.svelte';
+	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 
 	export let rateup = [];
 
@@ -145,6 +146,15 @@
 								{/if}
 							</div>
 						{/each}
+					</div>
+				</div>
+
+				<div class="field-group">
+					<div class="row">
+						<label for="bannerdesign">Banner Preview</label>
+					</div>
+					<div class="row">
+						<ButtonGeneral>Generate Image</ButtonGeneral>
 					</div>
 				</div>
 			</div>

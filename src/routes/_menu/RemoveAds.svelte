@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
-	import { assets } from '$lib/store/app-stores';
+	import { assets, proUser } from '$lib/store/app-stores';
 	import { adKey } from '$lib/helpers/accessKey';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
@@ -19,7 +19,7 @@
 	let waiting = false;
 	let message = '';
 
-	const removeAds = async () => {
+	const getProAccount = async () => {
 		playSfx();
 		waiting = true;
 		const { msg, validity } = await adKey.verify(input);
@@ -37,7 +37,7 @@
 	let isOffline = false;
 
 	const checkLocal = async () => {
-		const { validity, storedKey, status, expiryDate } = await adKey.checkLocal();
+		const { validity, storedKey, status, expiryDate } = await adKey.initialLoad();
 		isOffline = status === 'offline';
 		userKey = storedKey;
 		userHasKey = !!storedKey;
@@ -54,8 +54,11 @@
 	// Modal
 	let showModal = false;
 	const confirmModal = () => {
+		playSfx();
 		adKey.clear();
 		checkLocal();
+		proUser.set(false);
+		// restartBannerVersion() // if has premium banner
 		showModal = false;
 		input = '';
 	};
@@ -94,7 +97,7 @@
 			<span> {$t('menu.checkingKey')} </span>
 		</div>
 	{:else}
-		<form class="row" on:submit|preventDefault={!waiting ? removeAds : null} in:fade>
+		<form class="row" on:submit|preventDefault={!waiting ? getProAccount : null} in:fade>
 			<label for="key">{$t('menu.inputKeyTxt')}</label>
 			<div class="input">
 				<div class="field" style="position: relative">
@@ -138,7 +141,7 @@
 				{#if userHasKey}
 					<ButtonModal type="cancel" on:click={handleKey}>{$t('menu.removeKey')}</ButtonModal>
 				{:else}
-					<ButtonModal on:click={removeAds} disabled={!input || waiting}>
+					<ButtonModal on:click={getProAccount} disabled={!input || waiting}>
 						{waiting ? $t('waiting') : $t('menu.removeAds')}
 					</ButtonModal>
 				{/if}

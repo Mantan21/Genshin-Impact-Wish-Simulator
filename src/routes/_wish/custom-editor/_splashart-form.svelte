@@ -56,12 +56,12 @@
 >
 	<div class="wrapper">
 		{#if !onDrag}
-			<label class="mainart button" for="uploadFile" transition:fade>
+			<label class="mainart button" for="uploadFile" transition:fade|local>
 				<i class="gi-picture" />
 				<span>Change Splash Art</span>
 			</label>
 
-			<button class="button move" on:click={editBanner} transition:fade>
+			<button class="button move" on:click={editBanner} transition:fade|local>
 				<i class="gi-move" /> <span>Move</span>
 			</button>
 		{/if}

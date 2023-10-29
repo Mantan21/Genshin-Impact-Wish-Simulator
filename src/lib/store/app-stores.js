@@ -30,6 +30,7 @@ export const wishAmount = writable('default');
 export const multipull = writable(10);
 
 // other
+export const proUser = writable(false);
 export const mobileMode = writable(false);
 export const isMobile = writable(false);
 export const isPWA = writable(false);
@@ -38,4 +39,7 @@ export const viewportWidth = writable(0);
 
 export const notice = writable([]);
 export const assets = writable([]);
+
+export const editorMode = writable(false);
+export const editID = writable(0);
 

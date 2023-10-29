@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 
-	export let selected = 'hydro';
+	export let selected = '';
 	const visionList = ['pyro', 'hydro', 'anemo', 'electro', 'dendro', 'cryo', 'geo'];
 	const setVision = getContext('setVision');
 </script>
