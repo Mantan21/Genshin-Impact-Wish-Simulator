@@ -242,3 +242,18 @@
 .gi-gear:before {
 	content: '\27';
 }
+.gi-zoom-in:before {
+	content: '\28';
+}
+.gi-zoom-out:before {
+	content: '\29';
+}
+.gi-reset:before {
+	content: '\2a';
+}
+.gi-pen:before {
+	content: '\2b';
+}
+.gi-move:before {
+	content: '\2c';
+}

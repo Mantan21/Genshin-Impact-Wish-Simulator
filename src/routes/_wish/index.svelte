@@ -26,6 +26,7 @@
 	import EpitomizedModal from './epitomized-path/EpitomizedPath.svelte';
 	import Meteor from './wish-result/_meteor.svelte';
 	import WishResult from './wish-result/WishResult.svelte';
+	import CustomEditor from './custom-editor/CustomEditor.svelte';
 
 	let rollCount = 0;
 	let result = [];
@@ -181,6 +182,9 @@
 		if (!stardustQty && !starglitterQty) return;
 		showObtained(obtainedItems);
 	};
+
+	// CUSTOM
+	let editorMode = true;
 </script>
 
 <svelte:head>
@@ -198,14 +202,24 @@
 
 <section style="background-image: url('{$assets['wish-background.webp']}');">
 	<div class="col top">
-		<Header {bannerType} />
+		{#if !editorMode}
+			<Header {bannerType} />
+		{/if}
 	</div>
+
 	<div class="col banner">
 		<div class="item">
-			<BannerItem />
+			{#if editorMode}
+				<CustomEditor />
+			{:else}
+				<BannerItem />
+			{/if}
 		</div>
+
 		<div class="col button" in:fly={{ y: 20, duration: 1000 }}>
-			<Footer {bannerType} />
+			{#if !editorMode}
+				<Footer {bannerType} />
+			{/if}
 		</div>
 	</div>
 </section>

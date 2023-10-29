@@ -55,6 +55,7 @@
 		"html-to-image": "^1.8.5",
 		"idb": "^6.1.2",
 		"overlayscrollbars": "^1.13.1",
-		"svelte-i18n": "^3.4.0"
+		"svelte-i18n": "^3.4.0",
+		"zoomist": "^2.0.10"
 	}
 }

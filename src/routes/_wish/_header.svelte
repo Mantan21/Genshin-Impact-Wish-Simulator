@@ -26,6 +26,8 @@
 	import hotkeys from 'hotkeys-js';
 
 	export let bannerType = '';
+	export let custom = false;
+
 	$: event = bannerType.match('event');
 	$: balance = event ? $intertwined : $acquaint;
 	$: unlimitedWish = $wishAmount === 'unlimited';

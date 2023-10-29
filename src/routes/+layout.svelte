@@ -6,6 +6,7 @@
 	import { dev } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
+	import 'zoomist/css';
 
 	import {
 		viewportHeight,
