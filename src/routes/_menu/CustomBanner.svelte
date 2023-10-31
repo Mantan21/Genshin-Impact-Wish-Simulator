@@ -3,52 +3,70 @@
 	import { getContext, onMount } from 'svelte';
 	import { assets, editID, editorMode, proUser, viewportWidth } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/store/IDB-manager';
+	import { playSfx } from '$lib/helpers/audio/audio';
+
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
-	import { playSfx } from '$lib/helpers/audio/audio';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let headerHeight;
 	let rowWidth = 0;
 	$: itemWidth = $viewportWidth > 640 ? rowWidth / 3 : rowWidth / 2;
 
 	let ready = false;
+	let showNote = false;
 	let customList = [];
+
+	const toggleInfo = () => {
+		playSfx(ready ? 'click2' : 'click');
+		showNote = !showNote;
+	};
+
 	onMount(async () => {
 		customList = await BannerManager.getAll();
-		if (customList.length < 1) return;
 		ready = true;
+		showNote = customList.length < 1;
 	});
 
 	const handleClose = getContext('handleMenu');
 	const customizeBanner = (bannerID) => {
+		playSfx();
 		editorMode.set(true);
 		editID.set(bannerID || null);
-		handleClose();
+		handleClose('mute');
 	};
 
 	let showToast = false;
 	let showModal = false;
 	let idToDelete = 0;
+	let imgToDelete = '';
+
+	const idb = BannerManager;
 	const removeBanner = async () => {
 		playSfx();
-		const idb = BannerManager;
+		if (idToDelete === $editID) editorMode.set(false);
+
 		await idb.delete(idToDelete);
 		customList = customList.filter(({ id }) => id != idToDelete);
 		showToast = true;
 		showModal = false;
 		idToDelete = 0;
+		imgToDelete = '';
 	};
 
-	const selectToDelete = (id) => {
+	const selectToDelete = (id, thumb) => {
 		if (!id) return;
+		playSfx('modal');
 		idToDelete = id;
 		showModal = true;
-		playSfx('modal');
+		imgToDelete = thumb;
 	};
 
 	const cancelModal = () => {
 		showModal = false;
+		imgToDelete = '';
+		idToDelete = 0;
 		playSfx('close');
 	};
 </script>
@@ -62,6 +80,9 @@
 					If you've shared this banner publicly, The Travelers who have made wishes on your banner
 					will no longer be able to access it.
 				</small>
+				{#if imgToDelete}
+					<img src={imgToDelete} alt="Delete this banner" class="selectedToDelete" />
+				{/if}
 			</div>
 		</div>
 	</ModalTpl>
@@ -79,89 +100,96 @@
 	bind:clientWidth={rowWidth}
 >
 	<div class="header" bind:clientHeight={headerHeight}>
-		{#if !ready}
-			<h1><span> Create a Custom Banner </span></h1>
-		{:else}
+		{#if ready && !showNote}
 			<h1>
 				<span> Your Banners </span>
-				<button class="question" on:click={() => (ready = false)}>i</button>
+				<button class="question" on:click={toggleInfo}>i</button>
 			</h1>
+		{:else}
+			<h1><span> Create a Custom Banner </span></h1>
 		{/if}
 
-		{#if customList.length > 1 && !$proUser}
+		{#if customList.length > 1 && !$proUser && !showNote}
 			<div class="notice">
 				You are not a member, please delete some banners to activate the editor
 			</div>
 		{/if}
 	</div>
 
-	<div class="wrapper">
+	<div class="wrapper" class:ready>
 		{#if !ready}
-			<div class="disclaimer" in:fade|local={{ duration: 250 }}>
-				<article>
-					<p>
-						Every banner you add is saved in your browser's memory. <b>WishSimulator.App</b> does not
-						collect or store your banner data in cloud storage unless you click the Share Button.
-					</p>
-					<p>
-						<b>WishSimulator.App</b> does not collect your personal information. So, if an incident
-						occurs on your device and causes your browser to clear your local storage, you will also
-						lose all your data, and you will not be able to edit the banner(s) you have created.
-						<u>In such a case, what you can do is create a new custom banner</u>.
-					</p>
-
-					<p>
-						If you log in using a Patreon account, <b>WishSimulator.App</b> will save your Patreon ID,
-						allowing you to edit your banner even if you lose data in your browser storage. However,
-						this will only happen if you press the Share button. If you don't share your banner, WishSimulator.App
-						still won't save your data.
-					</p>
-				</article>
-				<ButtonModal width="200px" on:click={() => (ready = true)}>Create Banner</ButtonModal>
+			<div class="row loader">
+				<Icon type="loader" />
 			</div>
-		{/if}
+		{:else}
+			{#if showNote}
+				<div class="disclaimer" transition:fade|local={{ duration: 250 }}>
+					<article>
+						<p>
+							Every banner you add is saved in your browser's memory. <b>WishSimulator.App</b> does not
+							collect or store your banner data in cloud storage unless you click the Share Button.
+						</p>
+						<p>
+							<b>WishSimulator.App</b> does not collect your personal information. So, if an
+							incident occurs on your device and causes your browser to clear your local storage,
+							you will also lose all your data, and you will not be able to edit the banner(s) you
+							have created.
+							<u>In such a case, what you can do is create a new custom banner</u>.
+						</p>
 
-		{#if ready}
-			<div class="row" transition:fade|local={{ duration: 250 }}>
-				{#if customList.length > 0}
-					{#each customList as { id, images }}
-						<div class="item" {id}>
-							<button class="banner-item">
-								<img
-									src="/images/banner/character-events/conjuring-chiaroscuro-1.webp"
-									alt="Custom Banner"
-								/>
-							</button>
-							<div class="action">
-								{#if !(customList.length > 1 && !$proUser)}
-									<button class="edit" on:click={() => customizeBanner(id)}>
-										<i class="gi-pen" /> <span>Edit</span>
-									</button>
-								{/if}
-								<button class="delete" on:click={() => selectToDelete(id)}>
-									<i class="gi-delete" /> <span>Delete</span>
+						<p>
+							If you log in using a Patreon account, <b>WishSimulator.App</b> will save your Patreon
+							ID, allowing you to edit your banner even if you lose data in your browser storage. However,
+							this will only happen if you press the Share button. Therefore, you must press the share
+							button every time you modify your banner.
+						</p>
+					</article>
+					<ButtonModal width="200px" on:click={toggleInfo}>Create Banner</ButtonModal>
+				</div>
+			{:else}
+				<div class="row" transition:fade|local={{ duration: 250 }}>
+					{#if customList.length > 0}
+						{#each customList as { id, images, vision }}
+							{@const { thumbnail } = images}
+							<div class="item" {id}>
+								<button class="banner-item">
+									<img
+										src={thumbnail || `/images/banner/blank/${vision}.webp`}
+										alt="Custom Banner"
+									/>
 								</button>
+								<div class="action">
+									{#if !(customList.length > 1 && !$proUser)}
+										<button class="edit" on:click={() => customizeBanner(id)}>
+											<i class="gi-pen" /> <span>Edit</span>
+										</button>
+									{/if}
+									<button class="delete" on:click={() => selectToDelete(id, thumbnail)}>
+										<i class="gi-delete" /> <span>Delete</span>
+									</button>
+								</div>
 							</div>
-						</div>
-					{/each}
-				{/if}
+						{/each}
+					{/if}
 
-				{#if $proUser || customList.length < 1}
-					<div class="item blank">
-						<button class="add" on:click={() => customizeBanner()}>
-							<i class="gi-plus" />
-							<span>Add Banner</span>
-						</button>
-					</div>
-				{:else}
-					<div class="item blank locked">
-						<button class="add" disabled>
-							<i class="gi-lock" />
-							<span>Become a Member to Add More Banner</span>
-						</button>
-					</div>
-				{/if}
-			</div>
+					{#if $proUser || customList.length < 1}
+						<div class="item blank">
+							<button class="add" on:click={() => customizeBanner()}>
+								<i class="gi-plus" />
+								<span>Add Banner</span>
+							</button>
+						</div>
+					{:else}
+						<div class="item blank locked">
+							<button class="add" disabled>
+								<i class="gi-lock" />
+								<span>Become a Member to Add More Banner</span>
+							</button>
+						</div>
+					{/if}
+				</div>
+			{/if}
+			<!-- End ShowNote -->
 		{/if}
 	</div>
 </div>
@@ -192,6 +220,11 @@
 	}
 	.confirmation small {
 		display: block;
+	}
+
+	.selectedToDelete {
+		width: 45%;
+		margin-top: 3%;
 	}
 
 	.header h1 {
@@ -261,8 +294,11 @@
 	.wrapper {
 		width: 100%;
 		height: calc(100% - var(--height));
-		overflow-y: auto;
 		position: relative;
+	}
+
+	.wrapper.ready {
+		overflow-y: auto;
 	}
 
 	.row {
@@ -271,6 +307,16 @@
 		align-items: center;
 		margin-bottom: 2%;
 		flex-wrap: wrap;
+	}
+
+	.row.loader {
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 
 	.item {

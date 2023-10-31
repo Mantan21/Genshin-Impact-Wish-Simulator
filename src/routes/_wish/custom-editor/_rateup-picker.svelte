@@ -1,20 +1,25 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { fly } from 'svelte/transition';
+	import { getContext } from 'svelte';
+	import { viewportHeight } from '$lib/store/app-stores';
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getAllChars } from '$lib/helpers/gacha/wishBase';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
-	import { viewportHeight } from '$lib/store/app-stores';
-	import { getContext } from 'svelte';
 
 	export let exclude = [];
 	const chars = getAllChars(4).filter(({ name }) => !exclude.includes(name));
 	const selectChar = getContext('selectChar');
+	const pickChar = (char) => {
+		selectChar(char);
+		playSfx('click2');
+	};
 </script>
 
 <div class="picker" transition:fly={{ y: $viewportHeight, duration: 250 }}>
 	<div class="row">
 		{#each chars as { name, vision }}
-			<button class="item" on:click={() => selectChar(name)}>
+			<button class="item" on:click={() => pickChar(name)}>
 				<InventoryItem {name} {vision} localName={$t(`${name}.name`)} type="character" rarity={4} />
 			</button>
 		{/each}

@@ -6,18 +6,19 @@
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import RateupPicker from './_rateup-picker.svelte';
-	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
+	import PreviewGenerator from './_preview-generator.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
 
 	export let rateup = [];
-
-	let pickChar = false;
-	let headerHeight;
-	let rowWidth;
-	$: itemWidth = rowWidth / 4;
-
 	export let bannerName = '';
 	export let charName = '';
 	export let charTitle = '';
+	export let preview = '';
+
+	let showCharPicker = false;
+	let headerHeight;
+	let rowWidth;
+	$: itemWidth = rowWidth / 4;
 
 	const editInfo = getContext('editInfo');
 	const setBannerName = getContext('setBannerName');
@@ -40,9 +41,19 @@
 		setCharTitle(value);
 	};
 
+	const closeInfoEditor = () => {
+		editInfo(false);
+		playSfx('close');
+	};
+
+	const openRateupPicker = () => {
+		showCharPicker = true;
+		playSfx('click');
+	};
+
 	// Rateup Picker
 	const selectChar = (charName) => {
-		pickChar = false;
+		showCharPicker = false;
 		if (!charName) return;
 		if (rateup.includes(charName)) return;
 		if (rateup.length >= 3) return;
@@ -51,22 +62,23 @@
 	setContext('selectChar', selectChar);
 
 	const removeChar = (charName) => {
+		playSfx('close');
 		const afterRemoved = rateup.filter((n) => charName != n);
 		setRateup(afterRemoved);
 	};
 </script>
 
-<section transition:fade={{ duration: 200 }} on:mousedown|self={() => editInfo(false)}>
+<section transition:fade={{ duration: 250 }} on:mousedown|self={closeInfoEditor}>
 	<div
-		class="wrapper"
-		class:pickerActive={pickChar}
-		transition:fly={{ duration: 200, x: 100 }}
+		class="wrapper vision-picker"
+		class:pickerActive={showCharPicker}
+		transition:fly={{ duration: 250, x: 100 }}
 		style="--bg-icon:url('{$assets['modal-bg-icon.png']}'); --header-height:{headerHeight}px"
 	>
 		<div class="header" bind:clientHeight={headerHeight}>
 			<h1>Edit Banner Information</h1>
 			<div class="close-button">
-				<button class="close" on:click={() => editInfo(false)}>
+				<button class="close" on:click={closeInfoEditor}>
 					<i class="gi-close" />
 				</button>
 			</div>
@@ -140,7 +152,7 @@
 										{/key}
 									</button>
 								{:else}
-									<button class="add" on:click={() => (pickChar = true)}>
+									<button class="add" on:click={openRateupPicker}>
 										<i class="gi-plus" />
 									</button>
 								{/if}
@@ -150,15 +162,10 @@
 				</div>
 
 				<div class="field-group">
-					<div class="row">
-						<label for="bannerdesign">Banner Preview</label>
-					</div>
-					<div class="row">
-						<ButtonGeneral>Generate Image</ButtonGeneral>
-					</div>
+					<PreviewGenerator {preview} />
 				</div>
 			</div>
-			{#if pickChar}
+			{#if showCharPicker}
 				<RateupPicker exclude={rateup} />
 			{/if}
 		</div>

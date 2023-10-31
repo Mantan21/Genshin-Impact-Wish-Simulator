@@ -1,16 +1,16 @@
 <script>
 	import { setContext } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { editID } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/store/IDB-manager';
 
 	import Icon from '$lib/components/Icon.svelte';
-	import FrameEditor from './_frame.svelte';
+	import Frame from './_frame.svelte';
 	import InfoButton from './_info-face-button.svelte';
 	import SplashartForm from './_splashart-form.svelte';
 	import MainArt from './_main-art.svelte';
 	import VisionPicker from './_vision-picker.svelte';
 	import InfoEditor from './_info-editor.svelte';
-	import { fade } from 'svelte/transition';
 
 	let clientHeight;
 	let clientWidth;
@@ -28,10 +28,11 @@
 	let rateup = [];
 
 	let artPosition = { banner: {}, splashart: {}, card: {} };
-	let images = { artURL: '', faceURL: '' };
+	let images = { artURL: '', faceURL: '', thumbnail: '' };
 	let hostedArt = { deleteURL: '', viewURL: '' };
 	let hostedFace = { deleteURL: '', viewURL: '' };
-	$: hostedImages = { hostedArt, hostedFace };
+	let hostedThumb = { deleteURL: '', viewURL: '' };
+	$: hostedImages = { hostedArt, hostedFace, hostedThumb };
 
 	const idb = BannerManager;
 	const readIDB = async (id) => {
@@ -114,6 +115,16 @@
 		});
 	};
 	setContext('changeFace', changeFace);
+
+	const changeThumbnail = (file) => {
+		if (!file) return;
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.addEventListener('load', () => {
+			images.thumbnail = reader.result;
+		});
+	};
+	setContext('changeThumbnail', changeThumbnail);
 </script>
 
 {#await readIDB(bannerID)}
@@ -126,6 +137,7 @@
 
 <div
 	class="card"
+	id="cardEditor"
 	class:isLoaded
 	bind:clientWidth
 	bind:clientHeight
@@ -144,11 +156,11 @@
 		/>
 	{/key}
 	<SplashartForm {onBannerEdit} />
-	<FrameEditor editorMode {onBannerEdit} {vision} {bannerName} {charName} {charTitle} />
+	<Frame editorMode {onBannerEdit} {vision} {bannerName} {charName} {charTitle} />
 	<InfoButton faceURL={images?.faceURL} {onBannerEdit} />
 
 	{#if isInfoEdit}
-		<InfoEditor {rateup} {bannerName} {charName} {charTitle} />
+		<InfoEditor {rateup} {bannerName} {charName} {charTitle} preview={images?.thumbnail} />
 	{/if}
 </div>
 

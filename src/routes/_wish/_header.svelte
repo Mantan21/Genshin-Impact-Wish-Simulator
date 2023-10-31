@@ -91,13 +91,13 @@
 
 			{#if !$editorMode}
 				<span> {$t('wish.wishTitle')} </span>
-				<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
-					<i class="gi-help" />
-				</button>
 			{:else}
 				<span> Create Custom Banner </span>
 			{/if}
 
+			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
+				<i class="gi-help" />
+			</button>
 			<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats">
 				<i class="gi-chat" />
 			</button>
@@ -137,7 +137,14 @@
 					<i class="gi-close" />
 				</button>
 			{:else}
-				<button class="close" on:click={() => editorMode.set(false)} title="Cancel Edit">
+				<button
+					class="close"
+					on:click={() => {
+						editorMode.set(false);
+						playSfx('close');
+					}}
+					title="Cancel Edit"
+				>
 					<i class="gi-close" />
 				</button>
 			{/if}

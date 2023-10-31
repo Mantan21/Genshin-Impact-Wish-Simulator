@@ -71,9 +71,10 @@
 
 	// Menu
 	let showMenu = false;
-	const handleMenu = () => {
-		playSfx(showMenu ? 'close' : 'click');
+	const handleMenu = (act) => {
 		showMenu = !showMenu;
+		if (act === 'mute') return;
+		playSfx(!showMenu ? 'close' : 'click');
 	};
 	setContext('handleMenu', handleMenu);
 

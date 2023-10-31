@@ -260,3 +260,6 @@
 .gi-lock:before {
 	content: '\2d';
 }
+.gi-share:before {
+	content: '\2e';
+}

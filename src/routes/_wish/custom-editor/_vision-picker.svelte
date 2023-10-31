@@ -1,9 +1,15 @@
 <script>
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getContext } from 'svelte';
 
 	export let selected = '';
 	const visionList = ['pyro', 'hydro', 'anemo', 'electro', 'dendro', 'cryo', 'geo'];
 	const setVision = getContext('setVision');
+	const pickVision = (vision) => {
+		if (selected === vision) return;
+		setVision(vision);
+		playSfx('click2');
+	};
 </script>
 
 <div class="vision-picker">
@@ -12,7 +18,7 @@
 		<button
 			class:active={isActive}
 			class={isActive ? `bg-${vision}` : ''}
-			on:click={() => setVision(vision)}
+			on:click={() => pickVision(vision)}
 		>
 			<i class="gi-{vision} {!isActive ? `${vision}-flat` : ''}" />
 		</button>

@@ -9,6 +9,7 @@
 	import {
 		activeBanner,
 		bannerList,
+		editID,
 		editorMode,
 		isMobile,
 		mobileMode,
@@ -100,9 +101,11 @@
 
 <div class="banner-container" {style} class:editMode={$editorMode}>
 	{#if $editorMode}
-		<div class="banner-item" style={mobileBannerStyle} in:fly={{ x: 25, duration: 580 }}>
-			<CustomEditor />
-		</div>
+		{#key $editID}
+			<div class="banner-item" style={mobileBannerStyle} in:fly={{ x: 25, duration: 580 }}>
+				<CustomEditor />
+			</div>
+		{/key}
 	{:else}
 		{#each $bannerList as data, i}
 			{#if $activeBanner === i}

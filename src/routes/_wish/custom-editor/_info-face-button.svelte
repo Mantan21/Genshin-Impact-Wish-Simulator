@@ -1,5 +1,6 @@
 <script>
 	import Toast from '$lib/components/Toast.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getContext } from 'svelte';
 
 	export let onBannerEdit = false;
@@ -15,6 +16,11 @@
 	const closeToast = () => {
 		showToast = false;
 		toastMsg = '';
+	};
+
+	const showInfoEditor = () => {
+		editInfo(true);
+		playSfx('modal');
 	};
 
 	const handleImage = (e) => {
@@ -49,7 +55,7 @@
 
 <div class="info" class:onBannerEdit>
 	<div class="pic">
-		<label class="face" for="faceInput">
+		<label class="face" for="faceInput" on:mousedown={() => playSfx()}>
 			<div class="overlay">
 				<i class="gi-picture" />
 				<span>Face Icon</span>
@@ -72,7 +78,7 @@
 	</div>
 
 	<div class="customize">
-		<button class="detail" on:click={() => editInfo(true)}> <i class="gi-pen" /> Edit Info </button>
+		<button class="detail" on:click={showInfoEditor}> <i class="gi-pen" /> Edit Info </button>
 		<br />
 		<button class="splashart"> <i class="gi-pen" /> Adjust Splash Art </button>
 	</div>

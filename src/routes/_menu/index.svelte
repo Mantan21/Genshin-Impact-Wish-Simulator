@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
-	import { isMobile, mobileMode } from '$lib/store/app-stores';
+	import { editorMode, isMobile, mobileMode } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	// Components
@@ -14,7 +14,7 @@
 	import hotkeys from 'hotkeys-js';
 	import CustomBanner from './CustomBanner.svelte';
 
-	let activeContent = 'options';
+	let activeContent = $editorMode ? 'customBanner' : 'options';
 
 	const selectMenu = (menu) => {
 		if (activeContent === menu) return;
