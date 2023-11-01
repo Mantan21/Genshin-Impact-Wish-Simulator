@@ -103,8 +103,6 @@
 		if (variable === 'now4') localPity.set(`pity4-${type}`, value);
 		if (variable === 'now5') localPity.set(`pity5-${type}`, value);
 	};
-
-	$: console.log(winRate);
 </script>
 
 <div class="editor {type}" class:fullscreenEditor out:fade|local>

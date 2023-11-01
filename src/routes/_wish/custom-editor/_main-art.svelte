@@ -5,11 +5,11 @@
 	export let onBannerEdit = false;
 	export let artURL = '';
 	export let bannerPosition = { scale: 2, x: 0, y: 0 };
-	export let width = 0;
-	export let height = 0;
 
 	let mainArt;
 	let zoomist;
+	let clientWidth = 0;
+	let clientHeight = 0;
 
 	let zoomPosition = bannerPosition || {};
 	const zoomOption = {
@@ -31,8 +31,8 @@
 		const { x: X = 0, y: Y = 0 } = zoomPosition;
 
 		// get px value from perentage
-		const x = (X / 100) * width;
-		const y = (Y / 100) * height;
+		const x = (X / 100) * clientWidth;
+		const y = (Y / 100) * clientHeight;
 		return { x, y };
 	};
 
@@ -53,8 +53,8 @@
 		const zoomistImage = mainArt.querySelector('.zoomist-image');
 		const xPx = getPropVal(zoomistImage, '--translate-x');
 		const yPx = getPropVal(zoomistImage, '--translate-y');
-		const x = (xPx / width) * 100;
-		const y = (yPx / height) * 100;
+		const x = (xPx / clientWidth) * 100;
+		const y = (yPx / clientHeight) * 100;
 		zoomPosition = { x, y };
 		setPosition('banner', { scale: zoomOption.initScale, x, y });
 
@@ -81,7 +81,7 @@
 	});
 </script>
 
-<div class="main-art" class:onBannerEdit>
+<div class="main-art" class:onBannerEdit bind:clientHeight bind:clientWidth>
 	<div class="zoom-slider" />
 	<div class="zoomer">
 		<button class="zoomin"><i class="gi-zoom-in" /></button>

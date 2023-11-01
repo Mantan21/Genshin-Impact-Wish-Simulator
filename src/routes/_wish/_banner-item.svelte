@@ -10,7 +10,7 @@
 		activeBanner,
 		bannerList,
 		editID,
-		editorMode,
+		editorMode as editBanner,
 		isMobile,
 		mobileMode,
 		viewportHeight,
@@ -99,27 +99,29 @@
 	});
 </script>
 
-<div class="banner-container" {style} class:editMode={$editorMode}>
-	{#if $editorMode}
+<div class="banner-container" {style} class:editMode={$editBanner}>
+	{#if $editBanner}
 		{#key $editID}
 			<div class="banner-item" style={mobileBannerStyle} in:fly={{ x: 25, duration: 580 }}>
 				<CustomEditor />
 			</div>
 		{/key}
 	{:else}
-		{#each $bannerList as data, i}
-			{#if $activeBanner === i}
-				<div
-					class="banner-item"
-					class:editorOpen={editor}
-					class:fullscreen={$isMobile && $mobileMode}
-					style={mobileBannerStyle}
-					in:fly={{ x: 25, duration: 580 }}
-				>
-					<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
-				</div>
-			{/if}
-		{/each}
+		{#key $bannerList}
+			{#each $bannerList as data, i}
+				{#if $activeBanner === i}
+					<div
+						class="banner-item"
+						class:editorOpen={editor}
+						class:fullscreen={$isMobile && $mobileMode}
+						style={mobileBannerStyle}
+						in:fly={{ x: 25, duration: 580 }}
+					>
+						<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
+					</div>
+				{/if}
+			{/each}
+		{/key}
 
 		<div class="navigate">
 			{#if $activeBanner > 0}

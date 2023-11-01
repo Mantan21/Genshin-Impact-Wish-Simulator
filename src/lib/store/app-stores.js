@@ -3,6 +3,7 @@ import { initialAmount, version, wishPhase } from '$lib/data/wish-setup.json';
 
 const { fates, genesis: igen, primogem: ipri } = initialAmount;
 
+export const preloadVersion = writable({ patch: version, phase: wishPhase });
 export const activeVersion = writable({ patch: version, phase: wishPhase });
 export const bannerList = writable([]);
 export const activeBanner = writable(0);
@@ -42,4 +43,3 @@ export const assets = writable([]);
 
 export const editorMode = writable(false);
 export const editID = writable(0);
-

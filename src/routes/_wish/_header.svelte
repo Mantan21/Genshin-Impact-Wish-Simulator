@@ -19,7 +19,8 @@
 		wishAmount,
 		bannerList,
 		activeBanner,
-		editorMode
+		editorMode,
+		activeVersion
 	} from '$lib/store/app-stores';
 
 	import MyFund from '$lib/components/MyFund.svelte';
@@ -92,7 +93,7 @@
 			{#if !$editorMode}
 				<span> {$t('wish.wishTitle')} </span>
 			{:else}
-				<span> Create Custom Banner </span>
+				<span> Customize Banner </span>
 			{/if}
 
 			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
@@ -151,7 +152,7 @@
 		</div>
 	</div>
 
-	{#if !$editorMode}
+	{#if !$editorMode && !$activeVersion.patch.match(/(local|custom)/)}
 		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
 			<div class="bg" style={headerHeightstyle}>
 				<img src={$assets['brand.png']} alt="Brand" crossorigin="anonymous" />

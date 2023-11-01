@@ -2,7 +2,7 @@
 	import { getContext, setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { assets } from '$lib/store/app-stores';
+	import { activeVersion, assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import BeginnerFrame from './_beginner-frame.svelte';
@@ -11,14 +11,17 @@
 	import WeaponFrame from './_weapon-frame.svelte';
 	import BannerImage from './_banner-image.svelte';
 	import ProbEditor from './_probability-editor.svelte';
+	import FrameCustom from './_frame-custom.svelte';
 
 	export let data = {};
 	export let index = -1;
 	export let fullscreenEditor = false;
 	export let editor = false;
 
-	let type, featured, character, bannerName, rateup, textOffset;
-	$: ({ type, featured, character, bannerName, rateup, textOffset } = data);
+	// prettier-ignore
+	let type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition;
+	// prettier-ignore
+	$: ({ type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition } = data);
 
 	let clientWidth;
 	let clientHeight;
@@ -48,7 +51,19 @@
 		{/if}
 	</div>
 	<div class="front">
-		{#if type === 'beginner'}
+		{#if $activeVersion.patch.match(/(local|custom)/)}
+			<BannerImage
+				custom
+				src={images?.artURL}
+				alt={bannerName}
+				wrapperClass="card-image skeleton"
+				{artPosition}
+				{vision}
+			/>
+			<div class="frame skeleton">
+				<FrameCustom {bannerName} {character} {charTitle} {vision} />
+			</div>
+		{:else if type === 'beginner'}
 			<BannerImage
 				src={$assets['beginner']}
 				isError={imageError}
@@ -200,6 +215,7 @@
 		bottom: 8%;
 		display: flex;
 		align-items: center;
+		z-index: +10;
 	}
 
 	.info button {

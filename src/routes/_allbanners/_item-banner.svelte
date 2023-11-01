@@ -4,8 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { activeBanner, activeVersion } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/store/localstore-manager';
+	import { activeVersion, preloadVersion } from '$lib/store/app-stores';
 
 	export let groupby = 'version';
 	export let groupName;
@@ -19,9 +18,7 @@
 		if (activePhase === phase && activePatch === patch) return navigate('index');
 
 		// Select a banner
-		activeBanner.set(0);
-		activeVersion.set({ patch, phase });
-		localConfig.set('version', `${patch}-${phase}`);
+		preloadVersion.set({ patch, phase });
 		navigate('index');
 	};
 </script>

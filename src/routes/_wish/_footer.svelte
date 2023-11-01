@@ -12,7 +12,9 @@
 		wishAmount,
 		activeVersion,
 		multipull,
-		editorMode
+		editorMode,
+		preloadVersion,
+		editID
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
@@ -21,6 +23,8 @@
 	import NoticeMark from '$lib/components/NoticeMark.svelte';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import EpitomizedButton from './epitomized-path/_button.svelte';
+	import { localBanner } from '$lib/helpers/custom-banner';
+	import Toast from '$lib/components/Toast.svelte';
 
 	export let bannerType = 'beginner';
 
@@ -56,6 +60,18 @@
 		roll(isBeginner ? 10 : $multipull, bannerType);
 	};
 
+	// Footer for Editor
+	let showToast = false;
+	const finishAndWish = async () => {
+		playSfx();
+		const isComplete = await localBanner.isComplete($editID);
+		if (isComplete) return preloadVersion.set({ patch: 'local', phase: $editID });
+
+		// Benner not Complete
+		showToast = true;
+		return;
+	};
+
 	// ShortCut
 	const appReady = getContext('appReady');
 	hotkeys('enter', 'index', (e) => {
@@ -81,6 +97,12 @@
 		if (to === 'd') return changePage('details');
 	});
 </script>
+
+{#if showToast}
+	<Toast autoclose on:close={() => (showToast = false)}>
+		<b>Splash Art</b> and <b>Character Name</b> cannot be empty!
+	</Toast>
+{/if}
 
 <div id="footer" style="width: 100%; height: 100%">
 	{#if !$editorMode}
@@ -168,7 +190,11 @@
 		{:else}
 			<div class="left menu-button" />
 			<div class="right roll-button">
-				<button class="wish-button" style="flex-direction: row; line-height: 0;">
+				<button
+					class="wish-button"
+					style="flex-direction: row; line-height: 0;"
+					on:click={finishAndWish}
+				>
 					<i class="gi-primo-star" style="transform: translateX(-50%);" />
 					<span> Finish and Wish </span>
 				</button>

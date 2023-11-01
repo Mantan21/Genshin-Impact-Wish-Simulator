@@ -1,11 +1,11 @@
 <script>
 	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { editID } from '$lib/store/app-stores';
+	import { activeVersion, bannerList, editID } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/store/IDB-manager';
 
 	import Icon from '$lib/components/Icon.svelte';
-	import Frame from './_frame.svelte';
+	import FrameCustom from '../banner-card/_frame-custom.svelte';
 	import InfoButton from './_info-face-button.svelte';
 	import SplashartForm from './_splashart-form.svelte';
 	import MainArt from './_main-art.svelte';
@@ -17,56 +17,52 @@
 	let onBannerEdit = false;
 	let isInfoEdit = false;
 	let isLoaded = false;
+	let isEdited = false;
 
 	// Banner Info
 	let bannerID = $editID;
-	let userID;
 	let bannerName = '';
-	let charName = '';
+	let character = '';
 	let charTitle = '';
 	let vision = '';
 	let rateup = [];
 
 	let artPosition = { banner: {}, splashart: {}, card: {} };
 	let images = { artURL: '', faceURL: '', thumbnail: '' };
-	let hostedArt = { deleteURL: '', viewURL: '' };
-	let hostedFace = { deleteURL: '', viewURL: '' };
-	let hostedThumb = { deleteURL: '', viewURL: '' };
-	$: hostedImages = { hostedArt, hostedFace, hostedThumb };
+	// let hostedArt = { deleteURL: '', viewURL: '' };
+	// let hostedFace = { deleteURL: '', viewURL: '' };
+	// let hostedThumb = { deleteURL: '', viewURL: '' };
+	// $: hostedImages = { hostedArt, hostedFace, hostedThumb };
 
 	const idb = BannerManager;
 	const readIDB = async (id) => {
 		if (isLoaded) return;
-		if (!id) {
-			vision = 'pyro';
-			isLoaded = true;
-			return;
-		}
-
-		const data = await idb.get(id);
-		// prettier-ignore
-		({ userID, bannerName, charName, charTitle, vision, rateup, artPosition, hostedImages, images } = data);
 		isLoaded = true;
+		const data = await idb.get(id);
+		({
+			bannerName = '',
+			character = '',
+			charTitle = '',
+			vision = 'pyro',
+			rateup = [],
+			artPosition = {},
+			images = {}
+		} = data);
 	};
 
-	$: bannerData = {
-		userID,
-		bannerName,
-		charName,
-		charTitle,
-		vision,
-		rateup,
-		artPosition,
-		hostedImages,
-		images
-	};
+	$: bannerData = { bannerName, character, charTitle, vision, rateup, artPosition, images };
 
 	const autoSave = async (data) => {
 		if (!isLoaded) return;
+		if (!isEdited) return (isEdited = true);
 		const lastModified = new Date().toISOString();
-		if ($editID) return idb.put({ id: $editID, ...data, lastModified });
-		const id = await idb.put({ ...data, lastModified });
-		editID.set(id);
+		const editedData = { id: $editID, lastModified, ...data };
+		idb.put(editedData);
+
+		// Update Store if banner is active
+		const { phase: activeID, patch } = $activeVersion;
+		if (!(patch.match('local') && activeID === bannerID)) return;
+		$bannerList[0] = { ...editedData, type: 'character-event' };
 		return;
 	};
 	$: autoSave(bannerData);
@@ -86,7 +82,7 @@
 	const setRateup = (chars) => (rateup = chars);
 	setContext('setRateup', setRateup);
 
-	const setCharName = (name) => (charName = name);
+	const setCharName = (name) => (character = name);
 	setContext('setCharName', setCharName);
 
 	const setCharTitle = (title) => (charTitle = title);
@@ -147,20 +143,14 @@
 
 	<VisionPicker selected={vision} />
 	{#key artPosition}
-		<MainArt
-			{onBannerEdit}
-			width={clientWidth}
-			height={clientHeight}
-			artURL={images?.artURL}
-			bannerPosition={artPosition?.banner}
-		/>
+		<MainArt {onBannerEdit} artURL={images?.artURL} bannerPosition={artPosition?.banner} />
 	{/key}
 	<SplashartForm {onBannerEdit} />
-	<Frame editorMode {onBannerEdit} {vision} {bannerName} {charName} {charTitle} />
+	<FrameCustom editorMode {onBannerEdit} {vision} {bannerName} {character} {charTitle} />
 	<InfoButton faceURL={images?.faceURL} {onBannerEdit} />
 
 	{#if isInfoEdit}
-		<InfoEditor {rateup} {bannerName} {charName} {charTitle} preview={images?.thumbnail} />
+		<InfoEditor {rateup} {bannerName} {character} {charTitle} preview={images?.thumbnail} />
 	{/if}
 </div>
 

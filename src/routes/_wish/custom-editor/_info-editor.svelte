@@ -11,7 +11,7 @@
 
 	export let rateup = [];
 	export let bannerName = '';
-	export let charName = '';
+	export let character = '';
 	export let charTitle = '';
 	export let preview = '';
 
@@ -108,7 +108,7 @@
 							autocomplete="off"
 							id="charName"
 							placeholder="Character Name"
-							value={charName}
+							value={character}
 							on:input={typeCharName}
 						/>
 					</div>

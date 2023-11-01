@@ -1,7 +1,16 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
-	import { assets, editID, editorMode, proUser, viewportWidth } from '$lib/store/app-stores';
+	import {
+		activeVersion,
+		assets,
+		editID,
+		editorMode,
+		preloadVersion,
+		proUser,
+		viewportWidth
+	} from '$lib/store/app-stores';
+	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { BannerManager } from '$lib/store/IDB-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
@@ -23,18 +32,22 @@
 		showNote = !showNote;
 	};
 
+	const idb = BannerManager;
 	onMount(async () => {
-		customList = await BannerManager.getAll();
+		customList = await idb.getAll();
 		ready = true;
 		showNote = customList.length < 1;
 	});
 
 	const handleClose = getContext('handleMenu');
-	const customizeBanner = (bannerID) => {
+	const customizeBanner = async (bannerID) => {
 		playSfx();
-		editorMode.set(true);
-		editID.set(bannerID || null);
 		handleClose('mute');
+
+		const lastModified = new Date().toISOString();
+		const id = bannerID || (await idb.put({ lastModified }));
+		editID.set(id);
+		editorMode.set(true);
 	};
 
 	let showToast = false;
@@ -42,10 +55,13 @@
 	let idToDelete = 0;
 	let imgToDelete = '';
 
-	const idb = BannerManager;
 	const removeBanner = async () => {
 		playSfx();
 		if (idToDelete === $editID) editorMode.set(false);
+
+		const { patch, phase } = $activeVersion;
+		const isActiveDeleted = patch === 'local' && phase === idToDelete;
+		if (isActiveDeleted) preloadVersion.set({ patch: version, phase: wishPhase });
 
 		await idb.delete(idToDelete);
 		customList = customList.filter(({ id }) => id != idToDelete);
@@ -68,6 +84,14 @@
 		imgToDelete = '';
 		idToDelete = 0;
 		playSfx('close');
+	};
+
+	const wishBanner = (id) => {
+		playSfx();
+		handleClose('mute');
+		const { patch, phase } = $activeVersion;
+		if (patch === 'local' && phase === id && !$editorMode) return;
+		preloadVersion.set({ patch: 'local', phase: id });
 	};
 </script>
 
@@ -149,12 +173,18 @@
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
 					{#if customList.length > 0}
-						{#each customList as { id, images, vision }}
-							{@const { thumbnail } = images}
+						{#each customList as { id, images, vision, character }}
+							{@const { thumbnail, artURL } = images || {}}
+							{@const disabled = !character || !artURL}
 							<div class="item" {id}>
-								<button class="banner-item">
+								<button
+									class="banner-item"
+									data-text={disabled ? 'Incomplete' : ''}
+									on:click={disabled ? null : () => wishBanner(id)}
+									{disabled}
+								>
 									<img
-										src={thumbnail || `/images/banner/blank/${vision}.webp`}
+										src={thumbnail || `/images/banner/blank/${vision || 'pyro'}.webp`}
 										alt="Custom Banner"
 									/>
 								</button>
@@ -355,8 +385,18 @@
 		opacity: 0;
 		transition: opacity 0.15s;
 	}
+	.banner-item:disabled::after {
+		content: attr(data-text);
+		opacity: 1;
+		background-color: rgba(0, 0, 0, 0.25);
+		border-color: transparent;
+		color: rgba(255, 255, 255, 0.85);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-	.banner-item:hover::after {
+	.banner-item:not(:disabled):hover::after {
 		opacity: 1;
 	}
 

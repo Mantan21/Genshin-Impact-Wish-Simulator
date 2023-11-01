@@ -5,7 +5,7 @@
 	import hotkeys from 'hotkeys-js';
 
 	import browserState from '$lib/helpers/browserState';
-	import { activeVersion, assets, showBeginner } from '$lib/store/app-stores';
+	import { assets, preloadVersion, showBeginner } from '$lib/store/app-stores';
 	import { dailyWelkin, localConfig } from '$lib/store/localstore-manager';
 	import { importLocalConfig, setBannerVersionAndPhase } from '$lib/helpers/storage-reader';
 	import { handleShowStarter, initializeBanner } from '$lib/helpers/banner-loader';
@@ -117,7 +117,7 @@
 
 	onMount(() => {
 		setBannerVersionAndPhase();
-		activeVersion.subscribe(loadBanner);
+		preloadVersion.subscribe(loadBanner);
 		showBeginner.subscribe(handleShowStarter);
 
 		importLocalConfig();

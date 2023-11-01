@@ -4,7 +4,7 @@
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
 
 	export let bannerName = '';
-	export let charName = '';
+	export let character = '';
 	export let charTitle = '';
 	export let vision = '';
 	export let editorMode = false;
@@ -50,7 +50,7 @@
 	<div class="character">
 		<div class="char-name">
 			<span>
-				{charName || 'Character Name'}
+				{character || 'Character Name'}
 			</span>
 			<span class="up">{$t('wish.banner.up')}</span>
 

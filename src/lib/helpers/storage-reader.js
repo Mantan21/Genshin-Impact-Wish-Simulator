@@ -1,6 +1,5 @@
 import { storageVersion, version as siteVersion, wishPhase } from '$lib/data/wish-setup.json';
 import {
-	activeVersion,
 	autoskip,
 	beginnerRemaining,
 	wishAmount,
@@ -10,7 +9,8 @@ import {
 	genesis,
 	starglitter,
 	intertwined,
-	multipull
+	multipull,
+	preloadVersion
 } from '$lib/store/app-stores';
 import { localBalance, rollCounter, localConfig } from '$lib/store/localstore-manager';
 import { noticeMark } from './noticeMark';
@@ -65,7 +65,7 @@ export const setBannerVersionAndPhase = () => {
 		localConfig.set('storageVersion', storageVersion);
 		[patch, phase] = [siteVersion, wishPhase];
 	}
-	activeVersion.set({ patch: patch, phase: parseInt(phase) });
+	preloadVersion.set({ patch: patch, phase: parseInt(phase) });
 
 	console.log(`Banner version set to ${patch} phase ${phase}`);
 };
