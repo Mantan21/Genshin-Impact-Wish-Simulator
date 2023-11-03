@@ -2,6 +2,7 @@
 	import { t, json } from 'svelte-i18n';
 	import { APP_TITLE } from '$lib/env';
 	import Ads from '$lib/components/Iklan.svelte';
+	import { customData, isCustomBanner } from '$lib/store/app-stores';
 
 	export let tplVersion = 'v1';
 	export let bannerType;
@@ -18,13 +19,20 @@
 	const highlightBannerName = (bannerName, vision = null) => {
 		const splited = bannerName.split(' ');
 		const divClass = vision || 'epitome';
-		return `<span class="custom ${divClass}-flat"> ${splited[0]} </span>
+		return `<span class="custom ${divClass}-flat">${splited[0]}</span>
           ${splited.slice(1).join(' ')}`;
 	};
 
 	const getFeaturedChars = ({ name, vision }) => {
+		if (!$isCustomBanner) {
+			return `<span class="custom ${vision}-flat">
+			"${$t(`${name}.title`)}" ${$t(`${name}.name`)} (${$t(vision)})
+		</span>`;
+		}
+
+		const { charTitle } = $customData;
 		return `<span class="custom ${vision}-flat">
-			"${$t(`${name}.title`)}" ${$t(`${name}.name`)} (${$t(character.vision)})
+			"${charTitle}" ${name} (${$t(vision)})
 		</span>`;
 	};
 

@@ -89,7 +89,7 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 
 	// Get Item
 	const randomItem = WishInstance.getItem(rarity, banner, indexOfBanner);
-	const { manual, wish } = owneditem.put({ name: randomItem.name });
+	const { manual, wish } = owneditem.put({ itemID: randomItem.itemID });
 	const numberOfOwnedItem = manual + wish - 1;
 	const isNew = numberOfOwnedItem < 1;
 

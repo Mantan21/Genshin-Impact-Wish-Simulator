@@ -24,6 +24,10 @@ export const rand = (array) => {
 	return array[Math.floor(Math.random() * array.length)];
 };
 
+export const randomNumber = (min = 1, max = 9) => {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
 const getAllChars = (star) => {
 	return charsDB
 		.filter(({ rarity }) => rarity === star)
@@ -116,10 +120,26 @@ export const get5StarItem = ({
 	stdver = 1,
 	type = null,
 	useRateup = false,
-	rateupItem = []
+	rateupItem = [],
+	customData = {}
 } = {}) => {
 	// Featured Char Result
 	if (useRateup && banner === 'character-event') {
+		if (Object.keys(customData).length > 0) {
+			const { vision, character, artPosition, itemID } = customData;
+			const { splashArt = {} } = artPosition || {};
+			const result = {
+				vision,
+				itemID,
+				name: character,
+				wishBoxPosition: splashArt,
+				type: 'character',
+				rarity: 5,
+				custom: true
+			};
+			return result;
+		}
+
 		const featured = getAllChars(5).find(({ name }) => name === rateupItem[0]);
 		return featured;
 	}
@@ -185,4 +205,3 @@ export const checkGuaranteed = (banner, rarity) => {
 	const always = guaranteedSystem === 'always';
 	return { status, never, always };
 };
-

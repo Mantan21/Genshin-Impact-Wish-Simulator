@@ -9,13 +9,14 @@ import {
 } from './itemdrop-base';
 
 const characterWish = {
-	init({ indexOfBanner, featured, rateup, version, phase, stdver }) {
+	init({ indexOfBanner, featured, rateup, version, phase, stdver, customData }) {
 		this._featured = featured;
 		this._rateup = rateup;
 		this._indexOfBanner = indexOfBanner;
 		this._version = version;
 		this._phase = phase;
 		this._stdver = stdver;
+		this._customData = customData;
 		return this;
 	},
 
@@ -43,7 +44,7 @@ const characterWish = {
 		}
 
 		if (rarity === 5) {
-			const { _featured, _indexOfBanner, _stdver } = this;
+			const { _featured, _indexOfBanner, _stdver, _customData } = this;
 			const { status: isGuaranteed, never, always } = checkGuaranteed('character-event', 5);
 			const useRateup = (isGuaranteed && !never) || always || isRateup('character-event');
 
@@ -51,6 +52,7 @@ const characterWish = {
 				banner: 'character-event',
 				stdver: _stdver,
 				rateupItem: [_featured[_indexOfBanner].character],
+				customData: _customData,
 				useRateup
 			});
 			const result = rand(droplist);

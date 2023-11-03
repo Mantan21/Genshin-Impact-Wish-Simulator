@@ -20,7 +20,7 @@
 		bannerList,
 		activeBanner,
 		editorMode,
-		activeVersion
+		isCustomBanner
 	} from '$lib/store/app-stores';
 
 	import MyFund from '$lib/components/MyFund.svelte';
@@ -152,7 +152,7 @@
 		</div>
 	</div>
 
-	{#if !$editorMode && !$activeVersion.patch.match(/(local|custom)/)}
+	{#if !$editorMode && !$isCustomBanner}
 		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
 			<div class="bg" style={headerHeightstyle}>
 				<img src={$assets['brand.png']} alt="Brand" crossorigin="anonymous" />

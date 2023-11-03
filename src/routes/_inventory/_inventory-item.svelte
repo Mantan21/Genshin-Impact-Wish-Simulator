@@ -5,6 +5,7 @@
 
 	export let rarity = 3;
 	export let type = 'character';
+	export let itemID = 0;
 	export let name = '';
 	export let localName = '';
 	export let vision = '';
@@ -13,17 +14,19 @@
 	export let isOwned = true;
 	export let useOutfit = false;
 	export let outfitName = '';
+	export let images = {};
+	export let custom = false;
 
 	let countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	}
 
-	const showDetail = getContext('showDetail');
+	const pickItem = getContext('pickItem');
 	const handleShowDetails = () => {
-		if (!showDetail) return;
+		if (!pickItem) return;
 		if (!isOwned) return;
-		showDetail({ name, useOutfit, outfitName });
+		pickItem(itemID);
 	};
 </script>
 
@@ -35,10 +38,19 @@
 		class="star{rarity} {type}"
 		style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
 	>
-		{#if type === 'character'}
+		{#if custom}
+			<img
+				use:lazyLoad={images?.faceURL}
+				data-placeholder={$assets['face-placeholder.webp']}
+				alt={localName}
+				crossorigin="anonymous"
+			/>
+			<span class="gi-{vision} {vision} icon-gradient element" />
+		{:else if type === 'character'}
 			{#key outfitName}
 				<img
 					use:lazyLoad={$assets[`face/${useOutfit ? outfitName : name}`]}
+					data-placeholder={$assets['face-placeholder.webp']}
 					alt={localName}
 					crossorigin="anonymous"
 				/>
@@ -47,6 +59,7 @@
 		{:else}
 			<img
 				use:lazyLoad={$assets[name]}
+				data-placeholder={$assets['face-placeholder.webp']}
 				alt={localName}
 				class={weaponType}
 				crossorigin="anonymous"

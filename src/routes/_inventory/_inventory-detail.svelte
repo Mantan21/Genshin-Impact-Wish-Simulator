@@ -1,5 +1,5 @@
 <script>
-	import { getContext, onDestroy, setContext } from 'svelte';
+	import { getContext, onDestroy, onMount, setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
@@ -7,17 +7,25 @@
 	import { HistoryManager } from '$lib/store/IDB-manager';
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
-	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
-	import { owneditem } from '$lib/store/localstore-manager';
 
 	// Component
 	import ItemInfo from './../_wish/wish-result/_item-info.svelte';
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
 
-	export let name;
+	export let itemID;
 	export let useOutfit = false;
 	export let outfitName = '';
+	export let custom = false;
+	export let rarity = 3;
+	export let type = 'character';
+	export let name = '';
+	export let localName = '';
+	export let vision = '';
+	export let weaponType = '';
+	export let qty = 0;
+	export let isOwned = true;
+	export let images = {};
 
 	const previewOutfit = (outfit) => {
 		outfitName = outfit;
@@ -49,21 +57,11 @@
 		return info;
 	};
 
-	const loadItem = async () => {
-		if (!name) return;
-		const dt = await HistoryManager.getByName(name);
-
-		// If no data in IDB
-		if (dt.length < 1 || !dt[0]) {
-			const result = getCharDetails(name);
-			result.qty = owneditem.get(name)?.qty || 0;
-			return result;
-		}
-
-		const result = dt[0];
-		result.qty = dt.length;
-		return result;
-	};
+	let time = '';
+	onMount(async () => {
+		const idbData = await HistoryManager.getByID(itemID);
+		({ time } = idbData[0]);
+	});
 
 	// Shortcut
 	hotkeys('esc', 'itemdetail', (e) => {
@@ -86,40 +84,36 @@
 	</button>
 
 	<div class="container">
-		{#await loadItem()}
-			<div class="wrapper">
-				<span style="color:#fff">{$t('waiting')}...</span>
-			</div>
-		{:then { time, vision, type, weaponType, rarity, qty }}
-			{#if type === 'character'}
-				<OutfitToggle charName={name} />
+		{#if type === 'character'}
+			<OutfitToggle charName={name} />
+		{/if}
+
+		<div class="wrapper" in:fade={{ duration: 250 }} style="height: {wrapperHeight};">
+			{#if custom}
+				<img use:lazyLoad={images?.artURL} alt={name} crossorigin="anonymous" />
+			{:else if type === 'weapon'}
+				<div class="splash-art weapon {weaponType}-parent">
+					<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
+					<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
+				</div>
+			{:else}
+				<div class="splash-art">
+					{#key outfitName}
+						<img
+							use:lazyLoad={$assets[`splash-art/${useOutfit ? outfitName : name}`]}
+							alt={name}
+							crossorigin="anonymous"
+						/>
+					{/key}
+				</div>
 			{/if}
 
-			<div class="wrapper" in:fade={{ duration: 250 }} style="height: {wrapperHeight};">
-				{#if type === 'weapon'}
-					<div class="splash-art weapon {weaponType}-parent">
-						<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
-						<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
-					</div>
-				{:else}
-					<div class="splash-art">
-						{#key outfitName}
-							<img
-								use:lazyLoad={$assets[`splash-art/${useOutfit ? outfitName : name}`]}
-								alt={name}
-								crossorigin="anonymous"
-							/>
-						{/key}
-					</div>
-				{/if}
-
-				<ItemInfo staticMode itemName={name} {rarity} {vision} {weaponType} />
-			</div>
-			<div class="detail">
-				<span class="qty"> {getQtyInfo(type, qty)} </span>
-				<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
-			</div>
-		{/await}
+			<ItemInfo staticMode itemName={name} {custom} {rarity} {vision} {weaponType} />
+		</div>
+		<div class="detail">
+			<span class="qty"> {getQtyInfo(type, qty)} </span>
+			<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
+		</div>
 	</div>
 
 	<div class="share">

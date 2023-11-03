@@ -1,7 +1,8 @@
 <script>
-	import Toast from '$lib/components/Toast.svelte';
-	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getContext } from 'svelte';
+	import { assets } from '$lib/store/app-stores';
+	import { playSfx } from '$lib/helpers/audio/audio';
+	import Toast from '$lib/components/Toast.svelte';
 
 	export let onBannerEdit = false;
 	export let faceURL = '';
@@ -64,7 +65,7 @@
 			{#if faceURL}
 				<img src={faceURL} alt="Face" />
 			{:else}
-				<img class="placeholder" src="/images/utility/face-placeholder.webp" alt="" />
+				<img class="placeholder" src={$assets['face-placeholder.webp']} alt="" />
 			{/if}
 		</label>
 

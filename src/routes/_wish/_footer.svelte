@@ -99,9 +99,7 @@
 </script>
 
 {#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>
-		<b>Splash Art</b> and <b>Character Name</b> cannot be empty!
-	</Toast>
+	<Toast autoclose on:close={() => (showToast = false)}>Please Complete All Data!</Toast>
 {/if}
 
 <div id="footer" style="width: 100%; height: 100%">

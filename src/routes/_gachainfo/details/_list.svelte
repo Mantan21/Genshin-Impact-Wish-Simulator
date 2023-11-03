@@ -1,6 +1,7 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import Ads from '$lib/components/Iklan.svelte';
+	import { isCustomBanner } from '$lib/store/app-stores';
 
 	export let drop5star;
 	export let drop4star;
@@ -48,10 +49,17 @@
 						<div class="cell">
 							{$t(type)}
 						</div>
-						<div class="cell">
-							{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
-							{#if rateup} <i class="gi-arrow-up" />{/if}
-						</div>
+
+						{#if $isCustomBanner && rateup}
+							<div class="cell">
+								{name} <i class="gi-arrow-up" />
+							</div>
+						{:else}
+							<div class="cell">
+								{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+								{#if rateup} <i class="gi-arrow-up" />{/if}
+							</div>
+						{/if}
 					{/each}
 				</div>
 			</div>

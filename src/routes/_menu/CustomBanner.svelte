@@ -12,6 +12,7 @@
 	} from '$lib/store/app-stores';
 	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { BannerManager } from '$lib/store/IDB-manager';
+	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
@@ -28,24 +29,38 @@
 	let customList = [];
 
 	const toggleInfo = () => {
-		playSfx(ready ? 'click2' : 'click');
+		playSfx();
 		showNote = !showNote;
 	};
 
 	const idb = BannerManager;
 	onMount(async () => {
-		customList = await idb.getAll();
+		const ownedBanner = await idb.getListByStatus('owned');
+		customList = ownedBanner.map((d) => {
+			const { character, images, rateup = [], bannerName } = d;
+			const { artURL } = images || {};
+			d.complete = !!artURL && !!character && rateup.length > 0 && !!bannerName;
+			return d;
+		});
 		ready = true;
 		showNote = customList.length < 1;
 	});
 
 	const handleClose = getContext('handleMenu');
+	const putNewData = () => {
+		const lastModified = new Date().toISOString();
+		return idb.put({
+			lastModified,
+			status: 'owned',
+			itemID: rng(111111111, 999999999)
+		});
+	};
+
 	const customizeBanner = async (bannerID) => {
 		playSfx();
 		handleClose('mute');
 
-		const lastModified = new Date().toISOString();
-		const id = bannerID || (await idb.put({ lastModified }));
+		const id = bannerID || (await putNewData());
 		editID.set(id);
 		editorMode.set(true);
 	};
@@ -173,18 +188,16 @@
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
 					{#if customList.length > 0}
-						{#each customList as { id, images, vision, character }}
-							{@const { thumbnail, artURL } = images || {}}
-							{@const disabled = !character || !artURL}
+						{#each customList as { id, vision, complete, images = { } }}
 							<div class="item" {id}>
 								<button
 									class="banner-item"
-									data-text={disabled ? 'Incomplete' : ''}
-									on:click={disabled ? null : () => wishBanner(id)}
-									{disabled}
+									data-text={!complete ? 'Incomplete' : ''}
+									on:click={!complete ? null : () => wishBanner(id)}
+									disabled={!complete}
 								>
 									<img
-										src={thumbnail || `/images/banner/blank/${vision || 'pyro'}.webp`}
+										src={images?.thumbnail || `/images/banner/blank/${vision || 'pyro'}.webp`}
 										alt="Custom Banner"
 									/>
 								</button>
@@ -194,7 +207,7 @@
 											<i class="gi-pen" /> <span>Edit</span>
 										</button>
 									{/if}
-									<button class="delete" on:click={() => selectToDelete(id, thumbnail)}>
+									<button class="delete" on:click={() => selectToDelete(id, images?.thumbnail)}>
 										<i class="gi-delete" /> <span>Delete</span>
 									</button>
 								</div>
@@ -388,9 +401,9 @@
 	.banner-item:disabled::after {
 		content: attr(data-text);
 		opacity: 1;
-		background-color: rgba(0, 0, 0, 0.25);
+		background-color: rgba(0, 0, 0, 0.5);
 		border-color: transparent;
-		color: rgba(255, 255, 255, 0.85);
+		color: #fff;
 		display: flex;
 		justify-content: center;
 		align-items: center;

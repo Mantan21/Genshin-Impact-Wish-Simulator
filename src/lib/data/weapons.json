@@ -1,18 +1,21 @@
 {
 	"data": [
 		{
+			"itemID": 158,
 			"name": "prospector-drill",
 			"rarity": 4,
 			"weaponType": "polearm",
 			"limited": true
 		},
 		{
+			"itemID": 157,
 			"name": "range-gauge",
 			"rarity": 4,
 			"weaponType": "bow",
 			"limited": true
 		},
 		{
+			"itemID": 156,
 			"name": "cashflow-supervision",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -24,18 +27,21 @@
 			}
 		},
 		{
+			"itemID": 155,
 			"name": "portable-power-saw",
 			"rarity": 4,
 			"weaponType": "claymore",
 			"limited": true
 		},
 		{
+			"itemID": 154,
 			"name": "the-dockhands-assistant",
 			"rarity": 4,
 			"weaponType": "sword",
 			"limited": true
 		},
 		{
+			"itemID": 153,
 			"name": "tome-of-the-eternal-flow",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -47,6 +53,7 @@
 			}
 		},
 		{
+			"itemID": 152,
 			"name": "the-first-great-magic",
 			"rarity": 5,
 			"limited": true,
@@ -58,6 +65,7 @@
 			}
 		},
 		{
+			"itemID": 151,
 			"name": "jadefall-splendor",
 			"rarity": 5,
 			"limited": true,
@@ -69,6 +77,7 @@
 			}
 		},
 		{
+			"itemID": 150,
 			"name": "beacon-of-the-reed-sea",
 			"rarity": 5,
 			"limited": true,
@@ -80,6 +89,7 @@
 			}
 		},
 		{
+			"itemID": 149,
 			"name": "light-of-foliar-incision",
 			"rarity": 5,
 			"limited": true,
@@ -91,6 +101,7 @@
 			}
 		},
 		{
+			"itemID": 148,
 			"name": "tulaytullah_s-remembrance",
 			"rarity": 5,
 			"limited": true,
@@ -102,6 +113,7 @@
 			}
 		},
 		{
+			"itemID": 147,
 			"name": "a-thousand-floating-dreams",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -113,6 +125,7 @@
 			}
 		},
 		{
+			"itemID": 146,
 			"name": "key-of-khaj-nisut",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -124,18 +137,21 @@
 			}
 		},
 		{
+			"itemID": 145,
 			"name": "xiphos-moonlight",
 			"rarity": 4,
 			"weaponType": "sword",
 			"limited": true
 		},
 		{
+			"itemID": 144,
 			"name": "wandering-evenstar",
 			"rarity": 4,
 			"weaponType": "catalyst",
 			"limited": true
 		},
 		{
+			"itemID": 143,
 			"name": "staff-of-the-scarlet-sands",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -143,12 +159,14 @@
 			"buttonOffset": { "w": 80, "t": 15, "l": 60 }
 		},
 		{
+			"itemID": 142,
 			"name": "makhaira-aquamarine",
 			"rarity": 4,
 			"weaponType": "claymore",
 			"limited": true
 		},
 		{
+			"itemID": 141,
 			"name": "hunter_s-path",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -160,6 +178,7 @@
 			}
 		},
 		{
+			"itemID": 140,
 			"name": "aqua-simulacra",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -171,6 +190,7 @@
 			}
 		},
 		{
+			"itemID": 139,
 			"name": "redhorn-stonethresher",
 			"rarity": 5,
 			"weaponType": "claymore",
@@ -182,6 +202,7 @@
 			}
 		},
 		{
+			"itemID": 138,
 			"name": "haran-geppaku-futsu",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -193,6 +214,7 @@
 			}
 		},
 		{
+			"itemID": 137,
 			"name": "kagura_s-verity",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -204,6 +226,7 @@
 			}
 		},
 		{
+			"itemID": 136,
 			"name": "calamity-queller",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -215,18 +238,21 @@
 			}
 		},
 		{
+			"itemID": 135,
 			"name": "mouun_s-moon",
 			"rarity": 4,
 			"weaponType": "bow",
 			"limited": true
 		},
 		{
+			"itemID": 134,
 			"name": "wavebreaker_s-fin",
 			"rarity": 4,
 			"weaponType": "polearm",
 			"limited": true
 		},
 		{
+			"itemID": 133,
 			"name": "polar-star",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -238,12 +264,14 @@
 			}
 		},
 		{
+			"itemID": 132,
 			"name": "akuoumaru",
 			"rarity": 4,
 			"weaponType": "claymore",
 			"limited": true
 		},
 		{
+			"itemID": 131,
 			"name": "everlasting-moonglow",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -255,6 +283,7 @@
 			}
 		},
 		{
+			"itemID": 130,
 			"name": "engulfing-lightning",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -266,6 +295,7 @@
 			}
 		},
 		{
+			"itemID": 129,
 			"name": "thundering-pulse",
 			"rarity": 5,
 			"limited": true,
@@ -277,6 +307,7 @@
 			}
 		},
 		{
+			"itemID": 128,
 			"name": "mistsplitter-reforged",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -288,6 +319,7 @@
 			}
 		},
 		{
+			"itemID": 127,
 			"name": "freedom-sworn",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -299,12 +331,14 @@
 			}
 		},
 		{
+			"itemID": 126,
 			"name": "mitternachts-waltz",
 			"rarity": 4,
 			"weaponType": "bow",
 			"limited": true
 		},
 		{
+			"itemID": 125,
 			"name": "song-of-broken-pines",
 			"rarity": 5,
 			"weaponType": "claymore",
@@ -316,12 +350,14 @@
 			}
 		},
 		{
+			"itemID": 124,
 			"name": "alley-hunter",
 			"rarity": 4,
 			"weaponType": "bow",
 			"limited": true
 		},
 		{
+			"itemID": 123,
 			"name": "elegy-for-the-end",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -333,18 +369,21 @@
 			}
 		},
 		{
+			"itemID": 122,
 			"name": "the-alley-flash",
 			"rarity": 4,
 			"weaponType": "sword",
 			"limited": true
 		},
 		{
+			"itemID": 121,
 			"name": "wine-and-song",
 			"rarity": 4,
 			"weaponType": "catalyst",
 			"limited": true
 		},
 		{
+			"itemID": 120,
 			"name": "staff-of-homa",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -356,18 +395,21 @@
 			}
 		},
 		{
+			"itemID": 119,
 			"name": "lithic-blade",
 			"rarity": 4,
 			"weaponType": "claymore",
 			"limited": true
 		},
 		{
+			"itemID": 118,
 			"name": "lithic-spear",
 			"rarity": 4,
 			"weaponType": "polearm",
 			"limited": true
 		},
 		{
+			"itemID": 117,
 			"name": "primordial-jade-cutter",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -379,6 +421,7 @@
 			}
 		},
 		{
+			"itemID": 116,
 			"name": "primordial-jade-winged-spear",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -389,6 +432,7 @@
 			}
 		},
 		{
+			"itemID": 115,
 			"name": "summit-shaper",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -400,6 +444,7 @@
 			}
 		},
 		{
+			"itemID": 114,
 			"name": "vortex-vanquisher",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -411,6 +456,7 @@
 			}
 		},
 		{
+			"itemID": 113,
 			"name": "the-unforged",
 			"rarity": 5,
 			"weaponType": "claymore",
@@ -422,6 +468,7 @@
 			}
 		},
 		{
+			"itemID": 112,
 			"name": "memory-of-dust",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -433,21 +480,25 @@
 			}
 		},
 		{
+			"itemID": 111,
 			"name": "eye-of-perception",
 			"rarity": 4,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 110,
 			"name": "rainslasher",
 			"rarity": 4,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 109,
 			"name": "rust",
 			"rarity": 4,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 108,
 			"name": "lost-prayer-to-the-sacred-winds",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -458,6 +509,7 @@
 			}
 		},
 		{
+			"itemID": 107,
 			"name": "wolf_s-gravestone",
 			"rarity": 5,
 			"weaponType": "claymore",
@@ -468,6 +520,7 @@
 			}
 		},
 		{
+			"itemID": 106,
 			"name": "amos-bow",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -478,6 +531,7 @@
 			}
 		},
 		{
+			"itemID": 105,
 			"name": "aquila-favonia",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -488,12 +542,14 @@
 			}
 		},
 		{
+			"itemID": 104,
 			"name": "skyward-pride",
 			"rarity": 5,
 			"weaponType": "claymore",
 			"buttonOffset": { "w": 80, "t": 10, "l": 65 }
 		},
 		{
+			"itemID": 103,
 			"name": "skyward-atlas",
 			"rarity": 5,
 			"weaponType": "catalyst",
@@ -504,6 +560,7 @@
 			}
 		},
 		{
+			"itemID": 102,
 			"name": "skyward-harp",
 			"rarity": 5,
 			"weaponType": "bow",
@@ -514,6 +571,7 @@
 			}
 		},
 		{
+			"itemID": 101,
 			"name": "skyward-spine",
 			"rarity": 5,
 			"weaponType": "polearm",
@@ -524,6 +582,7 @@
 			}
 		},
 		{
+			"itemID": 100,
 			"name": "skyward-blade",
 			"rarity": 5,
 			"weaponType": "sword",
@@ -534,141 +593,169 @@
 			}
 		},
 		{
+			"itemID": 99,
 			"name": "the-flute",
 			"rarity": 4,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 98,
 			"name": "the-widsith",
 			"rarity": 4,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 97,
 			"name": "dragon_s-bane",
 			"rarity": 4,
 			"weaponType": "polearm"
 		},
 		{
+			"itemID": 96,
 			"name": "lion_s-roar",
 			"rarity": 4,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 95,
 			"name": "sacrificial-bow",
 			"rarity": 4,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 94,
 			"name": "sacrificial-fragments",
 			"rarity": 4,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 93,
 			"name": "sacrificial-greatsword",
 			"rarity": 4,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 92,
 			"name": "sacrificial-sword",
 			"rarity": 4,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 91,
 			"name": "favonius-greatsword",
 			"rarity": 4,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 90,
 			"name": "favonius-sword",
 			"rarity": 4,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 89,
 			"name": "favonius-warbow",
 			"rarity": 4,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 88,
 			"name": "favonius-codex",
 			"rarity": 4,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 87,
 			"name": "favonius-lance",
 			"rarity": 4,
 			"weaponType": "polearm"
 		},
 		{
+			"itemID": 86,
 			"name": "the-bell",
 			"rarity": 4,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 85,
 			"name": "the-stringless",
 			"rarity": 4,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 84,
 			"name": "black-tassel",
 			"rarity": 3,
 			"weaponType": "polearm"
 		},
 		{
+			"itemID": 83,
 			"name": "bloodtained-greatsword",
 			"rarity": 3,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 82,
 			"name": "cool-steel",
 			"rarity": 3,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 81,
 			"name": "debate-club",
 			"rarity": 3,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 80,
 			"name": "emerald-orb",
 			"rarity": 3,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 79,
 			"name": "ferrous-shadow",
 			"rarity": 3,
 			"weaponType": "claymore"
 		},
 		{
+			"itemID": 78,
 			"name": "harbinger-of-dawn",
 			"rarity": 3,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 77,
 			"name": "magic-guide",
 			"rarity": 3,
 			"weaponType": "catalyst"
 		},
 		{
+			"itemID": 76,
 			"name": "raven-bow",
 			"rarity": 3,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 75,
 			"name": "sharpshooter_s-oath",
 			"rarity": 3,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 74,
 			"name": "skyrider-sword",
 			"rarity": 3,
 			"weaponType": "sword"
 		},
 		{
+			"itemID": 73,
 			"name": "slingshot",
 			"rarity": 3,
 			"weaponType": "bow"
 		},
 		{
+			"itemID": 72,
 			"name": "thrilling-tales-of-dragon-slayers",
 			"rarity": 3,
 			"weaponType": "catalyst"

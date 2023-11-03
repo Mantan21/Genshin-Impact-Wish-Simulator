@@ -2,7 +2,7 @@
 	import { getContext, setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { activeVersion, assets } from '$lib/store/app-stores';
+	import { assets, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import BeginnerFrame from './_beginner-frame.svelte';
@@ -51,7 +51,7 @@
 		{/if}
 	</div>
 	<div class="front">
-		{#if $activeVersion.patch.match(/(local|custom)/)}
+		{#if $isCustomBanner}
 			<BannerImage
 				custom
 				src={images?.artURL}

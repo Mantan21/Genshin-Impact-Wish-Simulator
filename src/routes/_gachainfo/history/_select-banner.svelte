@@ -2,18 +2,16 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { assets, bannerList } from '$lib/store/app-stores';
-	import Reset from './_reset.svelte';
+	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import Reset from './_reset.svelte';
 
 	export let v2 = false;
 	export let banner;
 	let showSelectList = false;
 
-	$: list = $bannerList.filter((item, i, arr) => i === arr.findIndex((v) => v.type === item.type));
-	//  check if beginner banner already gone, push it to hostory list
-	$: if (list.findIndex(({ type }) => type === 'beginner') < 0) list.unshift({ type: 'beginner' });
-	$: nowOpenIndex = list.findIndex(({ type }) => type === banner.toLocaleLowerCase());
+	const list = ['beginner', 'character-event', 'weapon-event', 'standard'];
+	$: nowOpenIndex = list.findIndex((type) => type === banner.toLocaleLowerCase());
 	$: selected = nowOpenIndex < 0 ? 2 : nowOpenIndex;
 
 	const selectBanner = getContext('selectBanner');
@@ -40,7 +38,7 @@
 
 			{#if showSelectList}
 				<div class="select-list" transition:fade={{ duration: 200 }}>
-					{#each list as { type }, i}
+					{#each list as type, i}
 						<button class="item" class:active={selected === i} on:click={() => select(type)}>
 							{@html $t(`wish.banner.${type}`)}
 						</button>

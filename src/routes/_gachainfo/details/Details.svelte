@@ -1,6 +1,13 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { activeBanner, bannerList, assets, activeVersion } from '$lib/store/app-stores';
+	import {
+		activeBanner,
+		bannerList,
+		assets,
+		activeVersion,
+		isCustomBanner,
+		customData
+	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getBannerName } from '$lib/helpers/nameText';
 	import {
@@ -27,7 +34,7 @@
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-	const { vision } = getCharDetails(character);
+	const { vision } = isCustomBanner ? $customData : getCharDetails(character);
 
 	// Get Droplist
 	const { patch: version, phase } = $activeVersion;
@@ -60,7 +67,7 @@
 		rateupItem: type.match('weapon') ? featured.map(({ name }) => name) : [character] || []
 	});
 
-	character = { ...getCharDetails(character), rateup: true };
+	character = { ...($isCustomBanner ? $customData : getCharDetails(character)), rateup: true };
 	const weapons = featured
 		.map(({ name }) => getWpDetails(name))
 		.map((val) => {
@@ -75,7 +82,8 @@
 	// BannerName
 	const bannerSlug = getBannerName(bannerName).name;
 	const isStd = type === 'standard';
-	$: bannerName = $t(`banner.${isStd ? 'wanderlust' : bannerSlug || 'beginner'}`);
+	const defaultName = $t(`banner.${isStd ? 'wanderlust' : bannerSlug || 'beginner'}`);
+	bannerName = $isCustomBanner ? $customData.bannerName : defaultName;
 
 	const noPromo = type.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;

@@ -1,6 +1,6 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { assets } from '$lib/store/app-stores';
+	import { assets, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { getName } from '$lib/helpers/nameText';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 
@@ -27,18 +27,29 @@
 		{#if !isWP}
 			<div class="name">
 				<span class="{character.vision}-flat">
-					{$t(`${character.name}.name`)}
+					{$isCustomBanner ? character.name : $t(`${character.name}.name`)}
 				</span>
 			</div>
 			<div class="pic">
 				<div class="pic-item">
 					<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}');">
 						<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop" />
-						<img
-							crossorigin="anonymous"
-							use:lazyLoad={$assets[`face/${character.name}`]}
-							alt={getName(character.name)}
-						/>
+
+						{#if $isCustomBanner}
+							{@const { images = {}, name = '' } = $customData || {}}
+							<img
+								use:lazyLoad={images?.faceURL}
+								data-placeholder={$assets['face-placeholder.webp']}
+								alt={name}
+								crossorigin="anonymous"
+							/>
+						{:else}
+							<img
+								use:lazyLoad={$assets[`face/${character.name}`]}
+								alt={getName(character.name)}
+								crossorigin="anonymous"
+							/>
+						{/if}
 					</picture>
 					<span class="stars">
 						{#each Array(5) as i}

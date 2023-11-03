@@ -91,25 +91,25 @@ export const owneditem = {
 		return items;
 	},
 
-	get(itemName) {
+	get(itemID) {
 		const db = this.getAll();
-		const selected = db[itemName];
-		if (!selected) return { qty: 0, name: itemName };
+		const selected = db[itemID];
+		if (!selected) return { qty: 0, itemID };
 
 		const { manual, wish } = selected;
-		return { name: itemName, qty: manual + wish };
+		return { itemID, qty: manual + wish };
 	},
 
-	put({ name, source = 'wish', qty = 1 }) {
+	put({ itemID, source = 'wish', qty = 1 }) {
 		const allItems = storageLocal.get('ownedItem');
-		const { manual = 0, wish = 0 } = allItems[name] || {};
-		allItems[name] = {
+		const { manual = 0, wish = 0 } = allItems[itemID] || {};
+		allItems[itemID] = {
 			manual: source === 'wish' ? manual : qty + manual,
 			wish: source === 'wish' ? qty + wish : wish
 		};
 
 		storageLocal.set('ownedItem', allItems);
-		return allItems[name];
+		return allItems[itemID];
 	}
 };
 

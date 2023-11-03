@@ -1,11 +1,17 @@
 import { beginner } from '$lib/data/banners/beginner.json';
+import { standard } from '$lib/data/banners/standard.json';
+import { version, wishPhase } from '$lib/data/wish-setup.json';
+
 import { BannerManager } from '$lib/store/IDB-manager';
 import {
 	activeBanner,
 	activeVersion,
 	bannerList,
+	customData,
 	editorMode,
+	isCustomBanner,
 	isFatepointSystem,
+	preloadVersion,
 	showBeginner
 } from '$lib/store/app-stores';
 import { localConfig, rollCounter } from '$lib/store/localstore-manager';
@@ -15,8 +21,19 @@ const useCustomBanner = async (from, bannerID) => {
 	try {
 		const useLocal = from.match('local');
 		const data = useLocal ? await idb.get(bannerID) : {};
-		// prettier-ignore
-		const { bannerName = '', character = '', rateup = [], images= {}, vision = 'pyro', charTitle = '', artPosition= {} } = data;
+		if (!data) return preloadVersion.set({ patch: version, phase: wishPhase });
+
+		const {
+			bannerName = '',
+			character = '',
+			rateup = [],
+			images = {},
+			hostedImages = {},
+			vision = 'pyro',
+			charTitle = '',
+			artPosition = {}
+		} = data;
+		customData.set({ ...data, name: character, images: useLocal ? images : hostedImages });
 		bannerList.set([
 			{
 				type: 'character-event',
@@ -31,8 +48,9 @@ const useCustomBanner = async (from, bannerID) => {
 		]);
 
 		activeVersion.set({ patch: from, phase: bannerID });
-		editorMode.set(false);
 		activeBanner.set(0);
+		editorMode.set(false);
+		isCustomBanner.set(true);
 		localConfig.set('version', `${from}-${bannerID}`);
 		return { status: 'ok' };
 	} catch (e) {
@@ -58,7 +76,7 @@ export const initializeBanner = async ({ patch, phase }) => {
 		const { data } = await import(`$lib/data/banners/events/${patch}.json`);
 		const { banners } = data.find((b) => b.phase === phase);
 		const { events, weapons, standardVersion: stdver } = banners;
-		const { standard } = await import(`$lib/data/banners/standard/${stdver}.json`);
+		const { featured: stdFeatured } = standard.find(({ version }) => stdver === version) || {};
 
 		const charEventBanner = {
 			type: 'character-event',
@@ -67,7 +85,7 @@ export const initializeBanner = async ({ patch, phase }) => {
 		};
 		events.featured.forEach((eventdata) => list.push({ ...eventdata, ...charEventBanner }));
 		list.push({ type: 'weapon-event', stdver, ...weapons });
-		list.push({ type: 'standard', stdver, ...standard.featured });
+		list.push({ type: 'standard', stdver, ...stdFeatured });
 
 		bannerList.set(list);
 		isFatepointSystem.set(!!weapons.fatepointsystem);
@@ -75,6 +93,9 @@ export const initializeBanner = async ({ patch, phase }) => {
 		activeVersion.set({ patch, phase });
 		activeBanner.set(0);
 		localConfig.set('version', `${patch}-${phase}`);
+
+		customData.set({});
+		isCustomBanner.set(false);
 		return { status: 'ok' };
 	} catch (e) {
 		console.error(e);

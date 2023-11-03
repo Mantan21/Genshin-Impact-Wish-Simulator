@@ -21,6 +21,7 @@
 
 	// Banner Info
 	let bannerID = $editID;
+	let dataToEdit = {};
 	let bannerName = '';
 	let character = '';
 	let charTitle = '';
@@ -38,7 +39,7 @@
 	const readIDB = async (id) => {
 		if (isLoaded) return;
 		isLoaded = true;
-		const data = await idb.get(id);
+		dataToEdit = await idb.get(id);
 		({
 			bannerName = '',
 			character = '',
@@ -47,7 +48,7 @@
 			rateup = [],
 			artPosition = {},
 			images = {}
-		} = data);
+		} = dataToEdit);
 	};
 
 	$: bannerData = { bannerName, character, charTitle, vision, rateup, artPosition, images };
@@ -56,7 +57,7 @@
 		if (!isLoaded) return;
 		if (!isEdited) return (isEdited = true);
 		const lastModified = new Date().toISOString();
-		const editedData = { id: $editID, lastModified, ...data };
+		const editedData = { ...dataToEdit, id: $editID, lastModified, ...data };
 		idb.put(editedData);
 
 		// Update Store if banner is active

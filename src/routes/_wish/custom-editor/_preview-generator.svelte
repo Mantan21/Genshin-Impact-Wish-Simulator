@@ -14,7 +14,7 @@
 	};
 
 	const generate = async () => {
-		playSfx('click2');
+		playSfx();
 		const node = document.querySelector('#cardEditor');
 		const blob = await toBlob(node, { canvasHeight: 106.6, canvasWidth: 216, filter });
 		changeThumbnail(blob);

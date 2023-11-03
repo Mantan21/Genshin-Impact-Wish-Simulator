@@ -1,5 +1,5 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { getContext, onMount, setContext } from 'svelte';
 	import { flip } from 'svelte/animate';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
@@ -7,6 +7,7 @@
 	import { data as charDB } from '$lib/data/characters.json';
 	import { data as weaponDB } from '$lib/data/weapons.json';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/app-stores';
+	import { BannerManager } from '$lib/store/IDB-manager';
 	import { owneditem } from '$lib/store/localstore-manager';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -23,6 +24,13 @@
 	let dataToShow = [];
 	let loadedData = [];
 	let isLoaded = false;
+
+	const showDetail = getContext('showDetail');
+	const pickItem = (itemID) => {
+		const detailData = dataToShow.find(({ itemID: id }) => itemID === id);
+		showDetail(detailData);
+	};
+	setContext('pickItem', pickItem);
 
 	const itemQty = { weapon: 0, character: 0 };
 	const setItemQty = getContext('setItemQty');
@@ -64,17 +72,38 @@
 		if (type === 'weapon') return $t(name);
 		return $t(`${name}.name`);
 	};
-	const loadItems = (type) => {
+
+	const customItem = async () => {
+		const idb = await BannerManager.getAll();
+		const data = idb.reverse().map((d) => {
+			const { character, status, images, hostedImages } = d;
+			d.name = character;
+			d.rarity = 5;
+			d.custom = true;
+			d.images = status != 'owned' ? hostedImages : images;
+			return d;
+		});
+
+		return data.filter(({ character, images }) => {
+			const isComplete = character && images && images?.artURL;
+			return isComplete;
+		});
+	};
+	const loadItems = async (type) => {
 		const isChar = type === 'character';
-		const data = isChar ? charDB : weaponDB;
-		return data.map(({ name, rarity, weaponType, vision }) => {
-			const { wish = 0, manual = 0 } = ownedItems[name] || {};
+		const data = isChar ? [...(await customItem()), ...charDB] : weaponDB;
+		const dataResult = data.map(({ name, itemID, rarity, weaponType, vision, images, custom }) => {
+			const { wish = 0, manual = 0 } = ownedItems[itemID] || {};
 			const qty = wish + manual;
 			const type = weaponType ? 'weapon' : 'character';
-			const localName = itemLocalName(name, type);
+			const localName = custom ? name : itemLocalName(name, type);
+			const isOwned = qty > 0;
 			itemQty[type] = qty > 0 ? itemQty[type] + 1 : itemQty[type];
-			return { name, localName, rarity, type, vision, weaponType, qty, isOwned: qty > 0 };
+
+			// prettier-ignore
+			return { name, localName, rarity, type, vision, weaponType, qty, isOwned, images, itemID, custom };
 		});
+		return dataResult;
 	};
 
 	const outfitHandle = ({ outfitName, charName }) => {
@@ -105,13 +134,13 @@
 		return;
 	};
 
-	const getAll = () => {
-		characters = loadItems('character').map((c) => {
+	const getAll = async () => {
+		characters = (await loadItems('character')).map((c) => {
 			const charData = setActiveOutfit(c);
 			delete charData.wishBoxPosition;
 			return charData;
 		});
-		weapons = loadItems('lightcone');
+		weapons = await loadItems('lightcone');
 		isLoaded = true;
 		proccessData(activeItem);
 	};

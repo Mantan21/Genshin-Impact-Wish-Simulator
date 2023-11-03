@@ -22,7 +22,9 @@
 	{#if !isError}
 		{#if custom}
 			<img src="/images/banner/blank/{vision}.webp" alt="background banner" class="art-bg" />
-			<MainArt artURL={src} bannerPosition={artPosition?.banner} />
+			{#key artPosition}
+				<MainArt artURL={src} bannerPosition={artPosition?.banner} />
+			{/key}
 		{:else}
 			<div style="position: relative; width: 100%;">
 				<div style="position: relative; overflow: hidden;">

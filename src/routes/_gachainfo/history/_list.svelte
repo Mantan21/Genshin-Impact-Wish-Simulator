@@ -59,7 +59,7 @@
 					<div class="cell">{$t('history.noData')}</div>
 				</div>
 			{:else}
-				{#each dataToShow as { name, type, rarity, time, pity, bannerName, status }, i}
+				{#each dataToShow as { name, type, rarity, time, pity, bannerName, status, custom }, i}
 					{#if i > (page.activepage - 1) * page.itemPerPage - 1 && i < page.itemPerPage * page.activepage}
 						<div class="row">
 							<div class="cell cell0 star{rarity}">
@@ -69,16 +69,25 @@
 								{/if}
 							</div>
 							<div class="cell cell1">{$t(type)}</div>
-							<div class="cell cell2 star{rarity}">
-								{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
-								{#if rarity > 3} ( {rarity}★ ) {/if}
-							</div>
+							{#if custom}
+								<div class="cell cell2 star{rarity}">
+									{name} ( 5★ )
+								</div>
+							{:else}
+								<div class="cell cell2 star{rarity}">
+									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+									{#if rarity > 3} ( {rarity}★ ) {/if}
+								</div>
+							{/if}
 							<div class="cell cell3">{time}</div>
 							<div class="cell cell4">
 								{#if bannerName}
-									{#if banner.match('event')}
+									{@const bn = getBannerName(bannerName).name}
+									{#if custom || !bn}
+										<span> {bannerName} </span>
+									{:else if banner.match('event')}
 										<a href="/" on:click|preventDefault={() => search(bannerName)}>
-											{@html $t(`banner.${getBannerName(bannerName).name}`)}
+											{@html $t(`banner.${bn}`)}
 										</a>
 									{:else}
 										{$t(`banner.wanderlust`)}
@@ -156,7 +165,8 @@
 		text-align: center;
 		line-height: 1rem;
 	}
-	.cell a {
+	.cell a,
+	.cell span {
 		color: #dda04f;
 	}
 

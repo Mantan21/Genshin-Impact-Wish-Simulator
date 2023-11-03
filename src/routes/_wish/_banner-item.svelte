@@ -107,21 +107,19 @@
 			</div>
 		{/key}
 	{:else}
-		{#key $bannerList}
-			{#each $bannerList as data, i}
-				{#if $activeBanner === i}
-					<div
-						class="banner-item"
-						class:editorOpen={editor}
-						class:fullscreen={$isMobile && $mobileMode}
-						style={mobileBannerStyle}
-						in:fly={{ x: 25, duration: 580 }}
-					>
-						<BannerCard {data} {editor} index={i} fullscreenEditor={$isMobile && $mobileMode} />
-					</div>
-				{/if}
-			{/each}
-		{/key}
+		{#each $bannerList as data, index}
+			{#if $activeBanner === index}
+				<div
+					class="banner-item"
+					class:editorOpen={editor}
+					class:fullscreen={$isMobile && $mobileMode}
+					style={mobileBannerStyle}
+					in:fly={{ x: 25, duration: 580 }}
+				>
+					<BannerCard {data} {editor} {index} fullscreenEditor={$isMobile && $mobileMode} />
+				</div>
+			{/if}
+		{/each}
 
 		<div class="navigate">
 			{#if $activeBanner > 0}

@@ -1,3 +1,4 @@
+import { standard } from '$lib/data/banners/standard.json';
 import characterWish from './wishCharacter';
 import beginerWish from './wishBeginner';
 import weaponWish from './wishWeapon';
@@ -5,15 +6,30 @@ import standardWish from './wishStandard';
 import roll from './roll';
 
 const WISH = {
-	async init(version, phase) {
-		const { data } = await import(`../../data/banners/events/${version}.json`);
-		const { standardVersion, weapons, events } = data.find((d) => d.phase === phase).banners;
+	async init(version, phase, customData) {
 		this._version = version;
 		this._phase = phase;
+
+		if (version.match(/(custom|local)/)) return this._initCustom(customData);
+		const { data } = await import(`../../data/banners/events/${version}.json`);
+		const { standardVersion, weapons, events } = data.find((d) => d.phase === phase).banners;
+
 		this._characters = events;
 		this._isDualBanner = events.featured?.length > 1;
 		this._weapons = weapons;
 		this._standardVer = standardVersion;
+		this._customData = {};
+		return this;
+	},
+
+	_initCustom(customData) {
+		this._customData = customData;
+		this._standardVer = standard.reverse()[0].version;
+		const { character = '', rateup = [], bannerName = '' } = customData;
+		this._characters = {
+			rateup,
+			featured: [{ bannerName, character }]
+		};
 		return this;
 	},
 
@@ -23,6 +39,7 @@ const WISH = {
 			version: this._version,
 			phase: this._phase,
 			stdver: this._standardVer,
+			customData: this._customData,
 			indexOfBanner,
 			featured,
 			rateup

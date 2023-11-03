@@ -71,6 +71,7 @@ const previewImages = [
 			'bg-claymore.webp',
 			'bg-polearm.webp',
 			'bg-sword.webp',
+			'face-placeholder.webp',
 			'genshin-logo-cn.webp',
 			'genshin-logo.webp',
 			'masterless-stardust.webp',

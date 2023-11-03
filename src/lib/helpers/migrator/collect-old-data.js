@@ -17,7 +17,7 @@ const migrateWpBannerHistory = async () => {
 	if (list.length < 1) return;
 	list.map((d) => {
 		d.banner = 'weapon-event';
-		owneditem.put({ name: d.name });
+		owneditem.put({ itemID: d.itemID });
 		addHistory(d);
 	});
 };
@@ -27,9 +27,21 @@ const migrateCharBannerHistory = async () => {
 	if (list.length < 1) return;
 	list.map((d) => {
 		d.banner = 'character-event';
-		owneditem.put({ name: d.name });
+		owneditem.put({ itemID: d.itemID });
 		addHistory(d);
 	});
+};
+
+const migrateBeginnerHistory = async () => {
+	const list = await getListByBanner('beginner');
+	if (list.length < 1) return;
+	list.forEach(({ itemID }) => owneditem.put(itemID));
+};
+
+const migrateStandardHistory = async () => {
+	const list = await getListByBanner('standard');
+	if (list.length < 1) return;
+	list.forEach(({ itemID }) => owneditem.put(itemID));
 };
 
 const migratePity = () => {
@@ -166,5 +178,7 @@ export const retriveOldData = async () => {
 	// IDB
 	await migrateWpBannerHistory();
 	await migrateCharBannerHistory();
+	await migrateBeginnerHistory();
+	await migrateStandardHistory();
 };
 

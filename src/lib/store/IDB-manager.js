@@ -8,14 +8,18 @@ let IndexedDB;
 
 if (browser) {
 	IndexedDB = openDB(DBName, version, {
-		upgrade(db) {
+		async upgrade(db, oldVer, newVer, transaction) {
 			if (!db.objectStoreNames.contains('history')) {
 				const historyStore = db.createObjectStore('history', {
 					keyPath: 'id',
 					autoIncrement: true
 				});
 				historyStore.createIndex('banner', 'banner', { unique: false });
-				historyStore.createIndex('name', 'name', { unique: false });
+				historyStore.createIndex('itemID', 'itemID', { unique: false });
+			} else {
+				const historyStore = transaction.objectStore('history');
+				const hasID = historyStore.indexNames.contains('itemID');
+				if (!hasID) historyStore.createIndex('itemID', 'itemID', { unique: false });
 			}
 
 			if (!db.objectStoreNames.contains('assets')) {
@@ -23,7 +27,11 @@ if (browser) {
 			}
 
 			if (!db.objectStoreNames.contains('custombanner')) {
-				db.createObjectStore('custombanner', { keyPath: 'id', autoIncrement: true });
+				const bnStore = db.createObjectStore('custombanner', {
+					keyPath: 'id',
+					autoIncrement: true
+				});
+				bnStore.createIndex('status', 'status', { unique: false });
 			}
 		}
 	});
@@ -41,8 +49,8 @@ export const HistoryManager = {
 		return (await IndexedDB).countFromIndex('history', 'name', name);
 	},
 
-	async getByName(name) {
-		return (await IndexedDB).getAllFromIndex('history', 'name', name);
+	async getByID(itemID) {
+		return (await IndexedDB).getAllFromIndex('history', 'itemID', itemID);
 	},
 
 	async clearHistory(banner) {
@@ -104,6 +112,11 @@ export const BannerManager = {
 		if (!id) return null;
 		return (await IndexedDB).get('custombanner', id);
 	},
+
+	async getListByStatus(status) {
+		return (await IndexedDB).getAllFromIndex('custombanner', 'status', status);
+	},
+
 	async delete(key) {
 		if (!key) return;
 		return (await IndexedDB).delete('custombanner', key);

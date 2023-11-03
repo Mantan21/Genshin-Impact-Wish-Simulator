@@ -6,6 +6,7 @@
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
 
 	export let staticMode = false;
+	export let custom = false;
 
 	export let itemName = '';
 	export let type = '';
@@ -32,7 +33,9 @@
 		{/if}
 
 		<div class="text" class:animate={!staticMode} use:removeAnimClass>
-			{#if type === 'outfit'}
+			{#if custom}
+				{itemName}
+			{:else if type === 'outfit'}
 				{$t(`outfit.item.${outfitName}.name`)}
 			{:else if weaponType}
 				{$t(itemName)}

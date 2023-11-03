@@ -4,7 +4,7 @@
 	import { t, locale } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
+	import { assets, customData, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { playSfx, pauseSfx as stopSfx } from '$lib/helpers/audio/audio';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
@@ -158,12 +158,18 @@
 		<ResultList {list} {standalone} />
 	{:else}
 		<div class="container" in:fade={{ duration: 500, delay: 200 }}>
-			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit }, i}
+			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit, custom }, i}
 				{#if activeIndex === i}
 					<div class="wrapper" on:mousedown={showItem} style="height: {wrapperHeight};">
 						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
 
-						{#if type === 'weapon'}
+						{#if custom}
+							{@const { images = {}, status, hostedImages = {} } = $customData || {}}
+							{@const { artURL } = status === 'owned' ? images : hostedImages}
+							<div class="splash-art anim" use:removeClass>
+								<img use:lazyLoad={artURL} alt={name} crossorigin="anonymous" />
+							</div>
+						{:else if type === 'weapon'}
 							<div class="splash-art anim weapon {weaponType}-parent" use:removeClass>
 								<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
 								<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
@@ -195,6 +201,7 @@
 							{bonusQty}
 							{weaponType}
 							{stelaFortuna}
+							{custom}
 						/>
 						<WeaponBonus {type} {bonusQty} {bonusType} />
 
