@@ -156,3 +156,17 @@ export const blobAssets = async (path) => {
 		return 'error';
 	}
 };
+
+export const base64ToBlob = (image) => {
+	const [dataType, base64Data] = image.split(';base64,');
+	const [, contentType] = dataType.split(':');
+	const byteCharacters = atob(base64Data);
+	const byteNumbers = new Array(byteCharacters.length);
+
+	for (let i = 0; i < byteCharacters.length; i++) {
+		byteNumbers[i] = byteCharacters.charCodeAt(i);
+	}
+
+	const byteArray = new Uint8Array(byteNumbers);
+	return new Blob([byteArray], { type: contentType });
+};

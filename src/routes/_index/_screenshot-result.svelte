@@ -68,7 +68,7 @@
 				url: shareLink
 			};
 
-			const files = new File([blob], `HSR.WishSimulator.App - ${new Date().toLocaleString()}.png`, {
+			const files = new File([blob], `WishSimulator.App - ${new Date().toLocaleString()}.png`, {
 				type: blob.type,
 				lastModified: new Date().getTime()
 			});

@@ -3,6 +3,7 @@ import { standard } from '$lib/data/banners/standard.json';
 import { version, wishPhase } from '$lib/data/wish-setup.json';
 
 import { BannerManager } from '$lib/store/IDB-manager';
+import { localConfig, rollCounter } from '$lib/store/localstore-manager';
 import {
 	activeBanner,
 	activeVersion,
@@ -14,13 +15,19 @@ import {
 	preloadVersion,
 	showBeginner
 } from '$lib/store/app-stores';
-import { localConfig, rollCounter } from '$lib/store/localstore-manager';
 
 const idb = BannerManager;
-const useCustomBanner = async (from, bannerID) => {
+
+const useCDN = (imgs) => {
+	Object.keys(imgs).forEach((key) => {
+		imgs[key] = `https://imagecdn.app/v1/images/${imgs[key]}`;
+	});
+	return imgs;
+};
+
+const useCustomBanner = async (bannerID) => {
 	try {
-		const useLocal = from.match('local');
-		const data = useLocal ? await idb.get(bannerID) : {};
+		const data = await idb.get(bannerID);
 		if (!data) return preloadVersion.set({ patch: version, phase: wishPhase });
 
 		const {
@@ -31,9 +38,12 @@ const useCustomBanner = async (from, bannerID) => {
 			hostedImages = {},
 			vision = 'pyro',
 			charTitle = '',
-			artPosition = {}
+			artPosition = {},
+			status = null
 		} = data;
-		customData.set({ ...data, name: character, images: useLocal ? images : hostedImages });
+
+		const dataIMG = status === 'owned' ? images : useCDN(hostedImages);
+		customData.set({ ...data, name: character, images: dataIMG });
 		bannerList.set([
 			{
 				type: 'character-event',
@@ -47,11 +57,11 @@ const useCustomBanner = async (from, bannerID) => {
 			}
 		]);
 
-		activeVersion.set({ patch: from, phase: bannerID });
+		activeVersion.set({ patch: 'Custom', phase: bannerID });
 		activeBanner.set(0);
 		editorMode.set(false);
 		isCustomBanner.set(true);
-		localConfig.set('version', `${from}-${bannerID}`);
+		localConfig.set('version', `Custom-${bannerID}`);
 		return { status: 'ok' };
 	} catch (e) {
 		console.error(e);
@@ -69,7 +79,7 @@ const checkBeginnerBanner = () => {
 export const initializeBanner = async ({ patch, phase }) => {
 	try {
 		if (!patch || !phase) return;
-		if (patch.match(/(local|custom)/)) return useCustomBanner(patch, phase);
+		if (patch.match(/(local|custom)/gi)) return useCustomBanner(phase);
 
 		const list = checkBeginnerBanner() ? [{ type: 'beginner', ...beginner.featured }] : [];
 

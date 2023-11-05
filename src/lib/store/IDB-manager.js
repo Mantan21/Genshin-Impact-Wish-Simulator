@@ -28,8 +28,8 @@ if (browser) {
 
 			if (!db.objectStoreNames.contains('custombanner')) {
 				const bnStore = db.createObjectStore('custombanner', {
-					keyPath: 'id',
-					autoIncrement: true
+					keyPath: 'itemID',
+					autoIncrement: false
 				});
 				bnStore.createIndex('status', 'status', { unique: false });
 			}
@@ -102,15 +102,15 @@ export const BannerManager = {
 	async getAll() {
 		return (await IndexedDB).getAll('custombanner');
 	},
-	async put(data) {
-		// eslint-disable-next-line no-prototype-builtins
-		// if (!data.hasOwnProperty('id')) return;
+	async put(data = {}) {
+		if (!('itemID' in data)) return;
+		const lastModified = new Date().toISOString();
 		const idb = await IndexedDB;
-		return idb.put('custombanner', data);
+		return idb.put('custombanner', { lastModified, ...data });
 	},
-	async get(id) {
-		if (!id) return null;
-		return (await IndexedDB).get('custombanner', id);
+	async get(itemID) {
+		if (!itemID) return null;
+		return (await IndexedDB).get('custombanner', itemID);
 	},
 
 	async getListByStatus(status) {

@@ -140,11 +140,11 @@
 			{:else}
 				<button
 					class="close"
+					title="Cancel Edit"
 					on:click={() => {
 						editorMode.set(false);
 						playSfx('close');
 					}}
-					title="Cancel Edit"
 				>
 					<i class="gi-close" />
 				</button>

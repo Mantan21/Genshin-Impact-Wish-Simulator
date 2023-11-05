@@ -1,7 +1,9 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import { customData, editID, editorMode as editMode } from '$lib/store/app-stores';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
 
 	export let bannerName = '';
 	export let character = '';
@@ -15,6 +17,12 @@
 		const splited = name.split(' ');
 		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
+
+	const editBanner = () => {
+		playSfx();
+		editID.set($customData.itemID);
+		editMode.set(true);
+	};
 </script>
 
 <div class="frame-content" class:editorMode class:onBannerEdit>
@@ -26,6 +34,12 @@
 			{@html highlightBannerName(bannerName, vision)}
 		</div>
 	</h1>
+
+	{#if $customData.status === 'owned' && !editorMode}
+		<button class="edit" on:click={editBanner}>
+			<i class="gi-pen" /> <span>Edit</span>
+		</button>
+	{/if}
 
 	<div class="info">
 		<div class="content">
@@ -110,10 +124,6 @@
 		align-items: center;
 	}
 
-	.editorMode h1 {
-		bottom: 70%;
-	}
-
 	:global(.zh-CN) h1 {
 		font-size: calc(7 / 100 * var(--content-width));
 	}
@@ -122,6 +132,38 @@
 		max-width: 45%;
 		font-size: calc(6 / 100 * var(--content-width));
 		line-height: 100%;
+	}
+
+	.editorMode h1 {
+		bottom: 70%;
+	}
+
+	.edit {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: rgba(255, 255, 255, 0.8);
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 1.5% 2.5%;
+		display: flex;
+		align-items: center;
+		line-height: 0;
+		border-radius: 2%;
+		font-size: calc(1.7 / 100 * var(--content-width));
+		opacity: 0;
+		transition: all 0.25s;
+	}
+	.edit i {
+		transform: translateX(-50%);
+	}
+	.frame-content:hover .edit {
+		opacity: 1;
+	}
+	.edit:active {
+		transform: scale(0.9);
+	}
+	.edit:hover {
+		background-color: rgba(0, 0, 0, 0.8);
 	}
 
 	.top {

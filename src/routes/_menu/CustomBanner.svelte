@@ -12,6 +12,7 @@
 	} from '$lib/store/app-stores';
 	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { BannerManager } from '$lib/store/IDB-manager';
+	import { onlineBanner } from '$lib/helpers/custom-banner';
 	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
@@ -36,23 +37,28 @@
 	const idb = BannerManager;
 	onMount(async () => {
 		const ownedBanner = await idb.getListByStatus('owned');
-		customList = ownedBanner.map((d) => {
+		const list = ownedBanner.map((d) => {
 			const { character, images, rateup = [], bannerName } = d;
 			const { artURL } = images || {};
 			d.complete = !!artURL && !!character && rateup.length > 0 && !!bannerName;
 			return d;
 		});
+
+		customList = (list || []).sort(({ lastModified: a }, { lastModified: b }) => {
+			return new Date(b) - new Date(a);
+		});
+
 		ready = true;
 		showNote = customList.length < 1;
 	});
 
+	const selectMenu = getContext('selectMenu');
 	const handleClose = getContext('handleMenu');
 	const putNewData = () => {
-		const lastModified = new Date().toISOString();
 		return idb.put({
-			lastModified,
 			status: 'owned',
-			itemID: rng(111111111, 999999999)
+			itemID: rng(111111111, 999999999),
+			createdAt: new Date().toISOString()
 		});
 	};
 
@@ -66,24 +72,36 @@
 	};
 
 	let showToast = false;
+	let toastMsg = '';
 	let showModal = false;
+	let showDeleteLoader = false;
 	let idToDelete = 0;
 	let imgToDelete = '';
 
 	const removeBanner = async () => {
-		playSfx();
-		if (idToDelete === $editID) editorMode.set(false);
+		try {
+			playSfx();
+			showDeleteLoader = true;
+			if (idToDelete === $editID) editorMode.set(false);
 
-		const { patch, phase } = $activeVersion;
-		const isActiveDeleted = patch === 'local' && phase === idToDelete;
-		if (isActiveDeleted) preloadVersion.set({ patch: version, phase: wishPhase });
+			const { patch, phase } = $activeVersion;
+			const isActiveDeleted = patch === 'Custom' && phase === idToDelete;
+			if (isActiveDeleted) preloadVersion.set({ patch: version, phase: wishPhase });
+			const { status } = await onlineBanner.deleteBanner(idToDelete);
+			if (status != 'ok') throw new Error();
 
-		await idb.delete(idToDelete);
-		customList = customList.filter(({ id }) => id != idToDelete);
-		showToast = true;
-		showModal = false;
-		idToDelete = 0;
-		imgToDelete = '';
+			customList = customList.filter(({ itemID }) => itemID != idToDelete);
+			toastMsg = 'Banner Removed';
+			showToast = true;
+			showModal = false;
+			showDeleteLoader = false;
+			idToDelete = 0;
+			imgToDelete = '';
+		} catch (e) {
+			toastMsg = 'Failed to Remove';
+			showToast = true;
+			showDeleteLoader = false;
+		}
 	};
 
 	const selectToDelete = (id, thumb) => {
@@ -105,30 +123,39 @@
 		playSfx();
 		handleClose('mute');
 		const { patch, phase } = $activeVersion;
-		if (patch === 'local' && phase === id && !$editorMode) return;
-		preloadVersion.set({ patch: 'local', phase: id });
+		if (patch === 'Custom' && phase === id && !$editorMode) return;
+		preloadVersion.set({ patch: 'Custom', phase: id });
 	};
 </script>
 
 {#if showModal}
 	<ModalTpl title="Remove Banner" on:confirm={removeBanner} on:cancel={cancelModal}>
 		<div class="confirmation">
-			<div class="wrapper">
-				<span> Are You Sure to delete this banner ? </span>
-				<small>
-					If you've shared this banner publicly, The Travelers who have made wishes on your banner
-					will no longer be able to access it.
-				</small>
-				{#if imgToDelete}
-					<img src={imgToDelete} alt="Delete this banner" class="selectedToDelete" />
-				{/if}
-			</div>
+			{#if showDeleteLoader}
+				<div class="row loader" in:fade>
+					<Icon type="loader" />
+				</div>
+			{:else}
+				<div class="wrapper" in:fade>
+					<span> Are You Sure to delete this banner ? </span>
+					<small>
+						If you've shared this banner publicly, The Travelers who have made wishes on your banner
+						will no longer be able to access it.
+					</small>
+
+					{#if imgToDelete}
+						<img src={imgToDelete} alt="Delete this banner" class="selectedToDelete" />
+					{/if}
+				</div>
+			{/if}
 		</div>
 	</ModalTpl>
 {/if}
 
 {#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>Banner Removed</Toast>
+	<Toast autoclose on:close={() => (showToast = false)}>
+		{toastMsg}
+	</Toast>
 {/if}
 
 <div
@@ -188,12 +215,15 @@
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
 					{#if customList.length > 0}
-						{#each customList as { id, vision, complete, images = { } }}
-							<div class="item" {id}>
+						{#each customList as { itemID, vision, complete, images = { }, hostedImages, isChanged }}
+							<div class="item" id={itemID}>
+								{#if hostedImages}
+									<i class="sync gi-{isChanged ? 'cloud-sync' : 'network'}" />
+								{/if}
 								<button
 									class="banner-item"
 									data-text={!complete ? 'Incomplete' : ''}
-									on:click={!complete ? null : () => wishBanner(id)}
+									on:click={!complete ? null : () => wishBanner(itemID)}
 									disabled={!complete}
 								>
 									<img
@@ -203,11 +233,11 @@
 								</button>
 								<div class="action">
 									{#if !(customList.length > 1 && !$proUser)}
-										<button class="edit" on:click={() => customizeBanner(id)}>
+										<button class="edit" on:click={() => customizeBanner(itemID)}>
 											<i class="gi-pen" /> <span>Edit</span>
 										</button>
 									{/if}
-									<button class="delete" on:click={() => selectToDelete(id, images?.thumbnail)}>
+									<button class="delete" on:click={() => selectToDelete(itemID, images?.thumbnail)}>
 										<i class="gi-delete" /> <span>Delete</span>
 									</button>
 								</div>
@@ -224,7 +254,7 @@
 						</div>
 					{:else}
 						<div class="item blank locked">
-							<button class="add" disabled>
+							<button class="add" on:click={() => selectMenu('proAccess')}>
 								<i class="gi-lock" />
 								<span>Become a Member to Add More Banner</span>
 							</button>
@@ -411,6 +441,24 @@
 
 	.banner-item:not(:disabled):hover::after {
 		opacity: 1;
+	}
+
+	.sync {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: +1;
+		line-height: 0;
+		padding: calc(0.02 * var(--item-width));
+		font-size: calc(0.065 * var(--item-width));
+	}
+
+	.gi-cloud-sync {
+		background-color: #eac343;
+	}
+	.gi-network {
+		background-color: #2f9cf4;
+		color: #fff;
 	}
 
 	.item img {

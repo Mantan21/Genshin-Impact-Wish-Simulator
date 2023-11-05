@@ -10,7 +10,7 @@ const WISH = {
 		this._version = version;
 		this._phase = phase;
 
-		if (version.match(/(custom|local)/)) return this._initCustom(customData);
+		if (version.match(/(custom|local)/gi)) return this._initCustom(customData);
 		const { data } = await import(`../../data/banners/events/${version}.json`);
 		const { standardVersion, weapons, events } = data.find((d) => d.phase === phase).banners;
 

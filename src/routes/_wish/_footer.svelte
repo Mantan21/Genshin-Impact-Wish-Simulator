@@ -1,5 +1,5 @@
 <script>
-	import { getContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 	import {
@@ -18,13 +18,14 @@
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
+	import { localBanner } from '$lib/helpers/custom-banner';
 
 	import Icon from '$lib/components/Icon.svelte';
+	import Toast from '$lib/components/Toast.svelte';
 	import NoticeMark from '$lib/components/NoticeMark.svelte';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import EpitomizedButton from './epitomized-path/_button.svelte';
-	import { localBanner } from '$lib/helpers/custom-banner';
-	import Toast from '$lib/components/Toast.svelte';
+	import BannerPublisher from './custom-editor/_publisher.svelte';
 
 	export let bannerType = 'beginner';
 
@@ -62,15 +63,40 @@
 
 	// Footer for Editor
 	let showToast = false;
+	let toastMsg = '';
 	const finishAndWish = async () => {
 		playSfx();
 		const isComplete = await localBanner.isComplete($editID);
-		if (isComplete) return preloadVersion.set({ patch: 'local', phase: $editID });
+		if (isComplete) return preloadVersion.set({ patch: 'Custom', phase: $editID });
 
 		// Benner not Complete
+		toastMsg = 'Please Complete All Data!';
 		showToast = true;
 		return;
 	};
+
+	let showUploader = false;
+	const publishBanner = async () => {
+		playSfx();
+		const isComplete = await localBanner.isComplete($editID);
+		if (isComplete) return (showUploader = true);
+		toastMsg = 'Please Complete All Data!';
+		showToast = true;
+	};
+
+	const publishDone = () => {
+		preloadVersion.set({ patch: 'Custom', phase: $editID });
+		showUploader = false;
+		playSfx('close');
+	};
+	setContext('publishDone', publishDone);
+
+	const publishError = () => {
+		toastMsg = 'Network Error';
+		showToast = true;
+		showUploader = false;
+	};
+	setContext('publishError', publishError);
 
 	// ShortCut
 	const appReady = getContext('appReady');
@@ -99,7 +125,13 @@
 </script>
 
 {#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>Please Complete All Data!</Toast>
+	<Toast autoclose on:close={() => (showToast = false)}>
+		{toastMsg}
+	</Toast>
+{/if}
+
+{#if showUploader}
+	<BannerPublisher />
 {/if}
 
 <div id="footer" style="width: 100%; height: 100%">
@@ -197,9 +229,21 @@
 					<span> Finish and Wish </span>
 				</button>
 
-				<button class="wish-button" style="flex-direction: row; line-height: 0;">
+				<button
+					class="wish-button"
+					style="flex-direction: row; line-height: 0;"
+					on:click={publishBanner}
+				>
 					<i class="gi-share" style="transform: translateX(-50%);" />
-					<span> Share </span>
+					{#await localBanner.isHostedBanner($editID)}
+						<span> Publish Banner </span>
+					{:then isHosted}
+						{#if isHosted}
+							<span> Update & Share </span>
+						{:else}
+							<span> Publish Banner </span>
+						{/if}
+					{/await}
 				</button>
 			</div>
 		{/if}

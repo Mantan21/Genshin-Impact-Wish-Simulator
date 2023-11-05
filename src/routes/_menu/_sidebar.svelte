@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { assets, isMobile, isPWA } from '$lib/store/app-stores';
+	import { assets } from '$lib/store/app-stores';
 
 	export let activeContent;
 	const selectMenu = getContext('selectMenu');
@@ -13,19 +13,18 @@
 		<div class="menu-item" class:active={activeContent === 'options'}>
 			<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 		</div>
-		<div class="menu-item" class:active={activeContent === 'updates'}>
-			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
-		</div>
 
 		<div class="menu-item" class:active={activeContent === 'customBanner'}>
 			<button on:click={() => selectMenu('customBanner')}> {$t('menu.customBanner')} </button>
 		</div>
 
-		{#if !($isPWA && $isMobile)}
-			<div class="menu-item" class:active={activeContent === 'removeAds'}>
-				<button on:click={() => selectMenu('removeAds')}> {$t('menu.removeAds')} </button>
-			</div>
-		{/if}
+		<div class="menu-item" class:active={activeContent === 'proAccess'}>
+			<button on:click={() => selectMenu('proAccess')}> {$t('menu.proAccess')} </button>
+		</div>
+
+		<div class="menu-item" class:active={activeContent === 'updates'}>
+			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
+		</div>
 
 		<div class="menu-item">
 			<button on:click={chatToggle}> {$t('menu.feedback')} </button>

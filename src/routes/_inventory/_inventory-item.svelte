@@ -143,6 +143,7 @@
 
 	picture.character img {
 		height: 100%;
+		width: 100%;
 	}
 	picture.weapon img {
 		width: 100%;

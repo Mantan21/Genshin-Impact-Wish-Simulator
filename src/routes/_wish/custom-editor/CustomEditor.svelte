@@ -28,12 +28,9 @@
 	let vision = '';
 	let rateup = [];
 
+	let imgChanged = { artURL: false, faceURL: false, thumbnail: false };
 	let artPosition = { banner: {}, splashart: {}, card: {} };
-	let images = { artURL: '', faceURL: '', thumbnail: '' };
-	// let hostedArt = { deleteURL: '', viewURL: '' };
-	// let hostedFace = { deleteURL: '', viewURL: '' };
-	// let hostedThumb = { deleteURL: '', viewURL: '' };
-	// $: hostedImages = { hostedArt, hostedFace, hostedThumb };
+	let images = {};
 
 	const idb = BannerManager;
 	const readIDB = async (id) => {
@@ -47,18 +44,20 @@
 			vision = 'pyro',
 			rateup = [],
 			artPosition = {},
-			images = {}
+			images = {},
+			imgChanged = {}
 		} = dataToEdit);
 	};
 
-	$: bannerData = { bannerName, character, charTitle, vision, rateup, artPosition, images };
+	// prettier-ignore
+	$: bannerData = { bannerName, character, charTitle, vision, rateup, artPosition, images, imgChanged };
 
 	const autoSave = async (data) => {
 		if (!isLoaded) return;
 		if (!isEdited) return (isEdited = true);
-		const lastModified = new Date().toISOString();
-		const editedData = { ...dataToEdit, id: $editID, lastModified, ...data };
-		idb.put(editedData);
+		const editedData = { ...dataToEdit, isChanged: true, itemID: $editID, ...data };
+		delete editedData.lastModified; //renew LastModified
+		await idb.put(editedData);
 
 		// Update Store if banner is active
 		const { phase: activeID, patch } = $activeVersion;
@@ -98,6 +97,7 @@
 		reader.readAsDataURL(file);
 		reader.addEventListener('load', () => {
 			images.artURL = reader.result;
+			imgChanged.artURL = true;
 			onBannerEdit = true;
 		});
 	};
@@ -109,6 +109,7 @@
 		reader.readAsDataURL(file);
 		reader.addEventListener('load', () => {
 			images.faceURL = reader.result;
+			imgChanged.faceURL = true;
 		});
 	};
 	setContext('changeFace', changeFace);
@@ -119,6 +120,7 @@
 		reader.readAsDataURL(file);
 		reader.addEventListener('load', () => {
 			images.thumbnail = reader.result;
+			imgChanged.thumbnail = true;
 		});
 	};
 	setContext('changeThumbnail', changeThumbnail);

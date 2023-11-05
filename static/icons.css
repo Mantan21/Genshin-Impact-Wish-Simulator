@@ -263,3 +263,12 @@
 .gi-share:before {
 	content: '\2e';
 }
+.gi-network:before {
+	content: '\2f';
+}
+.gi-cloud:before {
+	content: '\3a';
+}
+.gi-cloud-sync:before {
+	content: '\3b';
+}
