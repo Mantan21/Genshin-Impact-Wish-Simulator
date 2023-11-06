@@ -60,7 +60,7 @@
 	let time = '';
 	onMount(async () => {
 		const idbData = await HistoryManager.getByID(itemID);
-		({ time } = idbData[0]);
+		({ time = 'UnTracked' } = idbData[0] || {});
 	});
 
 	// Shortcut
@@ -245,6 +245,7 @@
 		color: #fff;
 		font-size: large;
 		-webkit-text-stroke: #000 0.015rem;
+		filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.5)) drop-shadow(0 0 1rem rgba(0, 0, 0, 1));
 	}
 	.detail span,
 	.detail small {

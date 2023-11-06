@@ -65,16 +65,16 @@
 	};
 
 	mountLocale();
-	onMount(() => {
+	onMount(async () => {
 		redirectIfNotValidPath();
 
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
 		isPWA.set(searchParams.get('pwa') === 'true' || !!searchParams.get('pwasc'));
 
+		await IDBUpdater();
 		registerSW();
 		wakeLock();
-		IDBUpdater();
 
 		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();

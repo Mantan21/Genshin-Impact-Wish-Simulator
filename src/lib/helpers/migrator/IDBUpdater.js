@@ -23,26 +23,26 @@ const { addHistory, getByName, getAllHistories } = HistoryManager;
 
 export const IDBUpdater = async () => {
 	const idbVer = localConfig.get('idbVer');
-	if (!idbVer) return;
-	if (idbVer >= 2) return;
+	if (idbVer >= 3) return;
 
 	const itemIDs = {};
 	charDB.forEach(({ itemID, name }) => (itemIDs[name] = itemID));
 	wpDB.forEach(({ itemID, name }) => (itemIDs[name] = itemID));
 	const idbData = await getAllHistories();
 
-	idbData.forEach(async (data, i) => {
+	for (let i = 0; i < idbData.length; i++) {
+		const data = idbData[i];
 		data.itemID = itemIDs[data.name];
 		await addHistory(data);
 
-		if (i < idbData.length - 1) return;
+		if (i < idbData.length - 1) continue;
 		await retriveOldData();
-		localConfig.set('idbVer', 2);
-	});
+		localConfig.set('idbVer', 3);
+		console.log('IDB Updated');
+	}
 };
 
 /**
  * This file is Unused for now
  * To use this function, call on Layout.svelte inside onMount Scope
  */
-

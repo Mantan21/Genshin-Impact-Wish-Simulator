@@ -10,38 +10,16 @@ import {
 } from '$lib/store/localstore-manager';
 import { getSplashArtData } from '../outfit';
 
-const { getListByBanner, addHistory } = HistoryManager;
+const { getListByBanner } = HistoryManager;
 
-const migrateWpBannerHistory = async () => {
-	const list = await getListByBanner('weapons');
+const migrateWishHistory = async () => {
+	const beginner = await getListByBanner('beginner');
+	const character = await getListByBanner('character-event');
+	const weapons = await getListByBanner('weapon-event');
+	const standard = await getListByBanner('standard');
+	const list = [...beginner, ...character, ...weapons, ...standard];
 	if (list.length < 1) return;
-	list.map((d) => {
-		d.banner = 'weapon-event';
-		owneditem.put({ itemID: d.itemID });
-		addHistory(d);
-	});
-};
-
-const migrateCharBannerHistory = async () => {
-	const list = await getListByBanner('events');
-	if (list.length < 1) return;
-	list.map((d) => {
-		d.banner = 'character-event';
-		owneditem.put({ itemID: d.itemID });
-		addHistory(d);
-	});
-};
-
-const migrateBeginnerHistory = async () => {
-	const list = await getListByBanner('beginner');
-	if (list.length < 1) return;
-	list.forEach(({ itemID }) => owneditem.put(itemID));
-};
-
-const migrateStandardHistory = async () => {
-	const list = await getListByBanner('standard');
-	if (list.length < 1) return;
-	list.forEach(({ itemID }) => owneditem.put(itemID));
+	list.map(({ itemID }) => owneditem.put({ itemID }));
 };
 
 const migratePity = () => {
@@ -176,9 +154,6 @@ export const retriveOldData = async () => {
 	migrateFirstTimeShare();
 
 	// IDB
-	await migrateWpBannerHistory();
-	await migrateCharBannerHistory();
-	await migrateBeginnerHistory();
-	await migrateStandardHistory();
+	const wish = await migrateWishHistory();
+	return wish;
 };
-
