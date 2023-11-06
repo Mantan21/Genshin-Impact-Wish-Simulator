@@ -1,3 +1,4 @@
+import { proUser } from '$lib/store/app-stores';
 import { cookie } from '$lib/store/cookie';
 
 const digestMessage = async (message) => {
@@ -61,4 +62,18 @@ const adKey = {
 	}
 };
 
-export { adKey };
+const retry = () => {
+	console.log('reconecting...');
+	const timer = setTimeout(() => {
+		clearTimeout(timer);
+		verifyKey();
+	}, 10000);
+};
+
+const verifyKey = async () => {
+	const { validity, status } = await adKey.initialLoad();
+	if (status === 'offline') return retry();
+	proUser.set(!!validity);
+};
+
+export { adKey, verifyKey };

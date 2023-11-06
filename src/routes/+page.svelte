@@ -1,7 +1,8 @@
 <script>
-	import { getContext, onMount, setContext } from 'svelte';
+	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { writable } from 'svelte/store';
+	import { getContext, onMount, setContext } from 'svelte';
 	import hotkeys from 'hotkeys-js';
 
 	import browserState from '$lib/helpers/browserState';
@@ -12,6 +13,7 @@
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
+	import CustomBannerLoader from './_index/CustomBannerLoader.svelte';
 	import ModalWelcome from './_index/ModalWelcome.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
@@ -20,6 +22,8 @@
 	let status = '';
 	let pageActive = 'index';
 	let showWelcomeModal = true;
+	let showCustomLoader = false;
+	let shareID = '';
 
 	let appReady = writable(false);
 	let onWish = writable(false);
@@ -59,15 +63,23 @@
 	};
 	setContext('closeWelkin', () => (showWelkinScreen = false));
 
-	// Welcome Modal
-	const closeWelcomeModal = () => {
-		showWelcomeModal = false;
+	const startApp = () => {
 		appReady.set(true);
 		hotkeys.setScope('index');
 		welkinCheckin();
 		playSfx();
 	};
-	setContext('closeWelcomeModal', closeWelcomeModal);
+	// Welcome Modal
+	setContext('closeWelcomeModal', () => {
+		showWelcomeModal = false;
+		startApp();
+	});
+
+	// Custom Banner
+	setContext('closeCustomModal', () => {
+		showCustomLoader = false;
+		startApp();
+	});
 
 	// Menu
 	let showMenu = false;
@@ -111,7 +123,7 @@
 	const bannerLoaded = getContext('bannerLoaded');
 	const loadBanner = async (patchPhase) => {
 		const initBanner = await initializeBanner(patchPhase);
-		({ status } = initBanner);
+		({ status } = initBanner || {});
 		bannerLoaded();
 	};
 
@@ -131,6 +143,13 @@
 			navigate('index');
 		});
 		document.addEventListener('visibilitychange', bgmHandle);
+
+		// Check Custom Banner
+		const { url } = $page;
+		shareID = url.searchParams.get('banner');
+		if (!shareID) return;
+		showWelcomeModal = false;
+		showCustomLoader = true;
 	});
 
 	// Obtained
@@ -228,8 +247,13 @@
 {#if showWelkinScreen}
 	<WelkinCheckin />
 {/if}
+
 {#if showWelcomeModal}
 	<ModalWelcome />
+{/if}
+
+{#if shareID && showCustomLoader}
+	<CustomBannerLoader {shareID} />
 {/if}
 
 <PreloadMeteor />

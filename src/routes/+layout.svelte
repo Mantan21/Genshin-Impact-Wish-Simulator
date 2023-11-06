@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import 'zoomist/css';
 
 	import {
@@ -13,7 +12,8 @@
 		viewportWidth,
 		isMobile,
 		mobileMode,
-		isPWA
+		isPWA,
+		proUser
 	} from '$lib/store/app-stores';
 	import { IDBUpdater } from '$lib/helpers/migrator/IDBUpdater';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
@@ -29,11 +29,9 @@
 	let innerWidth;
 	let isBannerLoaded = false;
 	let isloaded = false;
-	const showAd = writable(false);
 
 	setContext('bannerLoaded', () => (isBannerLoaded = true));
 	setContext('loaded', () => (isloaded = true));
-	setContext('showAd', showAd);
 
 	let font = '';
 	$: {
@@ -45,7 +43,7 @@
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
 	$: path = $page.url.pathname.split('/');
-	$: directLoad = path[1] !== '';
+	$: directLoad = !!path[1];
 	$: preview = path[1] === 'screen';
 
 	const setMobileMode = () => {
@@ -146,7 +144,7 @@
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
 
-	{#if isloaded && $showAd}
+	{#if isloaded && (!$proUser || !($isPWA && $isMobile))}
 		<Iklan head />
 	{/if}
 </svelte:head>

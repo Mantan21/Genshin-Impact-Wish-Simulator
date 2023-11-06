@@ -12,6 +12,7 @@
 	import { setActiveOutfit } from '$lib/helpers/outfit';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import InventoryItem from './_inventory-item.svelte';
+	import { imageCDN } from '$lib/helpers/assets';
 
 	export let activeItem = 'character';
 	export let orderby = 'rarity';
@@ -80,7 +81,7 @@
 			d.name = character;
 			d.rarity = 5;
 			d.custom = true;
-			d.images = status != 'owned' ? hostedImages : images;
+			d.images = status != 'owned' ? imageCDN(hostedImages) : images;
 			return d;
 		});
 

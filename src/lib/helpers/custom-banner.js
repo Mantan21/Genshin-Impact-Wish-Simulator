@@ -35,51 +35,54 @@ export const localBanner = {
 };
 
 export const onlineBanner = {
-	deleteImage: async ({ hash, id } = {}) => {
-		if (!(hash && id)) return;
+	async _postData({ action, data, id }) {
+		const body = { app: 'genshin', action, data, id };
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
 
-		const formdata = new FormData();
-		formdata.append('action', 'delete');
-		formdata.append('delete', 'image');
-		formdata.append('deleting[id]', id);
-		formdata.append('deleting[hash]', hash);
+		const request = await fetch(apiURL + '/storage', {
+			method: 'POST',
+			body: JSON.stringify(body),
+			headers
+		});
 
-		const data = await fetch('https://ibb.co/json', { method: 'POST', body: formdata });
-		const { status_code } = await data.json();
-		return status_code === 200;
+		const result = await request.json();
+		return result;
 	},
 
-	updateData: async (localID) => {
-		if (!localID) return;
-
-		const date = new Date().toISOString();
-		const idbData = await idb.get(localID);
-		const localData = { ...idbData };
-		const { shareID = null, images, character, isChanged } = localData;
-		const { thumbnail } = images;
-
-		// If nothing changed, dont proccess upload
-		if (!isChanged) return { status: 'ok', shareID, thumbnail, character };
-
-		delete localData.images;
-		delete localData.imgChanged;
-		delete localData.status;
-		delete localData.isChanged;
-		delete localData.shareID;
-		localData.lastModified = date;
-
+	async getData(shareID) {
 		try {
-			const body = { app: 'genshin', action: 'put', data: localData, id: shareID };
-			const headers = new Headers();
-			headers.append('Content-Type', 'application/json');
+			if (!shareID) throw new Error();
+			const response = await fetch(`${apiURL}/storage?app=genshin&id=${shareID}`);
+			const data = await response.json();
+			return data;
+		} catch (e) {
+			return { success: false, message: 'error' };
+		}
+	},
 
-			const request = await fetch(apiURL + '/storage', {
-				method: 'POST',
-				body: JSON.stringify(body),
-				headers
-			});
+	async updateData(localID) {
+		try {
+			if (!localID) throw new Error('no ID');
 
-			const { success, id, message } = await request.json();
+			const date = new Date().toISOString();
+			const idbData = await idb.get(localID);
+			const localData = { ...idbData };
+			const { shareID = null, images, character, isChanged } = localData;
+			const { thumbnail } = images;
+
+			// If nothing changed, dont proccess upload
+			if (!isChanged) return { status: 'ok', shareID, thumbnail, character };
+
+			delete localData.images;
+			delete localData.imgChanged;
+			delete localData.status;
+			delete localData.isChanged;
+			delete localData.shareID;
+			localData.lastModified = date;
+
+			const onlineData = await this._postData({ id: shareID, action: 'put', data: localData });
+			const { success, id, message } = onlineData;
 			if (!success) throw new Error('Failed to Update');
 
 			idbData.shareID = id;
@@ -94,32 +97,43 @@ export const onlineBanner = {
 		}
 	},
 
-	deleteBanner: async (bannerID) => {
+	async deleteBanner(bannerID) {
 		try {
-			const { shareID } = await idb.get(bannerID);
+			const { shareID, imageHash = {} } = (await idb.get(bannerID)) || {};
 			if (!shareID) {
 				await idb.delete(bannerID);
 				return { status: 'ok' };
 			}
 
+			// Remove Images
+			const keys = Object.keys(imageHash);
+			for (let i = 0; i < keys.length; i++) {
+				const hashID = imageHash[keys[i]];
+				await this.deleteImage(hashID);
+			}
+
 			// Remove from Cloud
-			const body = { app: 'genshin', action: 'delete', id: shareID };
-			const headers = new Headers();
-			headers.append('Content-Type', 'application/json');
-
-			const request = await fetch(apiURL + '/storage', {
-				method: 'POST',
-				body: JSON.stringify(body),
-				headers
-			});
-
-			const { success } = await request.json();
+			const { success } = await this._postData({ action: 'delete', id: shareID });
 			if (!success) throw new Error('Failed to Remove');
 			await idb.delete(bannerID);
 			return { status: 'ok' };
 		} catch (e) {
 			return { status: 'error' };
 		}
+	},
+
+	async deleteImage({ hash, id } = {}) {
+		if (!(hash && id)) return;
+
+		const formdata = new FormData();
+		formdata.append('action', 'delete');
+		formdata.append('delete', 'image');
+		formdata.append('deleting[id]', id);
+		formdata.append('deleting[hash]', hash);
+
+		const data = await fetch('https://ibb.co/json', { method: 'POST', body: formdata });
+		const { status_code } = await data.json();
+		console.log(id, hash, status_code);
+		return status_code === 200;
 	}
 };
-

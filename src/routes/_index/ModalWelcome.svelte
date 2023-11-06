@@ -4,11 +4,11 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import { data } from '$lib/data/updates.json';
-	import { isMobile, isPWA, proUser } from '$lib/store/app-stores';
-	import { adKey } from '$lib/helpers/accessKey';
+	import { isPWA } from '$lib/store/app-stores';
+	import { adKey, verifyKey } from '$lib/helpers/accessKey';
 	import { browserDetect } from '$lib/helpers/mobileDetect';
-	import Modal from '$lib/components/ModalTpl.svelte';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import Modal from '$lib/components/ModalTpl.svelte';
 
 	let content;
 	let contentHeight;
@@ -16,25 +16,7 @@
 	let dateExpired = '';
 
 	const closeDisclaimer = getContext('closeWelcomeModal');
-	const showAd = getContext('showAd');
 	const updates = data.filter(({ featured }) => !!featured);
-
-	const retry = () => {
-		console.log('reconecting...');
-		const timer = setTimeout(() => {
-			clearTimeout(timer);
-			verifyKey();
-		}, 10000);
-	};
-
-	const verifyKey = async () => {
-		const { validity, status } = await adKey.initialLoad();
-		if (status === 'offline') return retry();
-
-		proUser.set(!!validity);
-		if ($isPWA && $isMobile) return showAd.set(false);
-		showAd.set(!validity);
-	};
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });

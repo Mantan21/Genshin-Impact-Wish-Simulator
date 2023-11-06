@@ -170,3 +170,13 @@ export const base64ToBlob = (image) => {
 	const byteArray = new Uint8Array(byteNumbers);
 	return new Blob([byteArray], { type: contentType });
 };
+
+export const imageCDN = (imgs) => {
+	const cdnURL = 'https://imagecdn.app/v2/image/';
+	if (typeof imgs === 'string') return cdnURL + imgs;
+
+	Object.keys(imgs).forEach((key) => {
+		imgs[key] = cdnURL + imgs[key];
+	});
+	return imgs;
+};

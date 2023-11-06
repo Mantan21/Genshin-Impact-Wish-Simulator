@@ -2,6 +2,7 @@ import { beginner } from '$lib/data/banners/beginner.json';
 import { standard } from '$lib/data/banners/standard.json';
 import { version, wishPhase } from '$lib/data/wish-setup.json';
 
+import { imageCDN } from './assets';
 import { BannerManager } from '$lib/store/IDB-manager';
 import { localConfig, rollCounter } from '$lib/store/localstore-manager';
 import {
@@ -17,13 +18,6 @@ import {
 } from '$lib/store/app-stores';
 
 const idb = BannerManager;
-
-const useCDN = (imgs) => {
-	Object.keys(imgs).forEach((key) => {
-		imgs[key] = `https://imagecdn.app/v1/images/${imgs[key]}`;
-	});
-	return imgs;
-};
 
 const useCustomBanner = async (bannerID) => {
 	try {
@@ -42,7 +36,7 @@ const useCustomBanner = async (bannerID) => {
 			status = null
 		} = data;
 
-		const dataIMG = status === 'owned' ? images : useCDN(hostedImages);
+		const dataIMG = status === 'owned' ? images : imageCDN(hostedImages);
 		customData.set({ ...data, name: character, images: dataIMG });
 		bannerList.set([
 			{
@@ -50,7 +44,7 @@ const useCustomBanner = async (bannerID) => {
 				bannerName,
 				character,
 				rateup,
-				images,
+				images: dataIMG,
 				vision,
 				charTitle,
 				artPosition
@@ -124,4 +118,3 @@ export const handleShowStarter = (isShow) => {
 		return bn;
 	});
 };
-

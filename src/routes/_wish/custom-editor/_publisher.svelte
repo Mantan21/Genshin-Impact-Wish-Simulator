@@ -21,7 +21,7 @@
 	let shareID = '';
 	let character = '';
 	let thumbnail = '';
-	$: shareLink = `${HOST}/banner/${shareID}`;
+	$: shareLink = `${HOST}/?banner=${shareID}`;
 	$: shareText = `Come and Try Your Luck on my ${character} Banner Simulator`;
 
 	const copyHandle = async () => {
