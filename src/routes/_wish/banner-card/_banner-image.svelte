@@ -21,7 +21,12 @@
 >
 	{#if !isError}
 		{#if custom}
-			<img src="/images/banner/blank/{vision}.webp" alt="background banner" class="art-bg" />
+			<img
+				src="/images/banner/blank/{vision}.webp"
+				alt="background banner"
+				crossorigin="anonymous"
+				class="art-bg"
+			/>
 			{#key artPosition}
 				<MainArt artURL={src} bannerPosition={artPosition?.banner} />
 			{/key}

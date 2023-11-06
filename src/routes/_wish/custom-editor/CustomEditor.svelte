@@ -142,7 +142,12 @@
 	bind:clientHeight
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
 >
-	<img src="/images/banner/blank/{vision}.webp" alt="background banner" class="art-bg" />
+	<img
+		src="/images/banner/blank/{vision}.webp"
+		alt="background banner"
+		crossorigin="anonymous"
+		class="art-bg"
+	/>
 
 	<VisionPicker selected={vision} />
 	{#key artPosition}

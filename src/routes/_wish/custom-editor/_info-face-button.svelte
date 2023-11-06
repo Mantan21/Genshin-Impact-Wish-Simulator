@@ -63,9 +63,14 @@
 			</div>
 
 			{#if faceURL}
-				<img src={faceURL} alt="Face" />
+				<img src={faceURL} alt="Face" crossorigin="anonymous" />
 			{:else}
-				<img class="placeholder" src={$assets['face-placeholder.webp']} alt="" />
+				<img
+					class="placeholder"
+					src={$assets['face-placeholder.webp']}
+					alt=""
+					crossorigin="anonymous"
+				/>
 			{/if}
 		</label>
 

@@ -144,7 +144,12 @@
 					</small>
 
 					{#if imgToDelete}
-						<img src={imgToDelete} alt="Delete this banner" class="selectedToDelete" />
+						<img
+							src={imgToDelete}
+							alt="Delete this banner"
+							class="selectedToDelete"
+							crossorigin="anonymous"
+						/>
 					{/if}
 				</div>
 			{/if}
@@ -229,6 +234,7 @@
 									<img
 										src={images?.thumbnail || `/images/banner/blank/${vision || 'pyro'}.webp`}
 										alt="Custom Banner"
+										crossorigin="anonymous"
 									/>
 								</button>
 								<div class="action">

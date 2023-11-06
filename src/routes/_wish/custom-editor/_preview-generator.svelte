@@ -27,7 +27,7 @@
 </div>
 <div class="row">
 	{#if preview}
-		<img src={preview} alt="Preview Banner" />
+		<img src={preview} alt="Preview Banner" crossorigin="anonymous" />
 	{/if}
 </div>
 
