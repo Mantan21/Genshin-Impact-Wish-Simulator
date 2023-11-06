@@ -366,10 +366,19 @@
 		},
 		{
 			"date": "12-Oct-2023",
-			"featured": true,
 			"description": [
 				"New Character: <b>Wriothesley ( 5★ )</b>",
 				"Add <b>Venti 5th Rerun</b> Banner"
+			]
+		},
+		{
+			"date": "06-Nov-2023",
+			"featured": true,
+			"description": [
+				"New Character: <b>Furina ( 5★ )</b>",
+				"New Character: <b>Charlotte ( 4★ )</b>",
+				"New Weapon: <b>Splendor of Tranquil Waters (Sword 5★)</b>",
+				"Add <b>Baizhu 1st Rerun</b> Banner"
 			]
 		}
 	]

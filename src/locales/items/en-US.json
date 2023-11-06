@@ -65,6 +65,7 @@
 	"skyward-spine": "Skyward Spine",
 	"slingshot": "Slingshot",
 	"song-of-broken-pines": "Song of Broken Pines",
+	"splendor-of-tranquil-waters": "Splendor of Tranquil Waters",
 	"staff-of-homa": "Staff of Homa",
 	"staff-of-the-scarlet-sands": "Staff of the Scarlet Sands",
 	"summit-shaper": "Summit Shaper",
@@ -122,6 +123,10 @@
 		"name": "Candace",
 		"title": "Golden Vow"
 	},
+	"charlotte": {
+		"name": "Charlotte",
+		"title": "Lens of Verity"
+	},
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Frozen Ardor"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "Freminet",
 		"title": "Yearning for Unseen Depths"
+	},
+	"furina": {
+		"name": "Furina",
+		"title": "Endless Solo of Solitude"
 	},
 	"ganyu": {
 		"name": "Ganyu",

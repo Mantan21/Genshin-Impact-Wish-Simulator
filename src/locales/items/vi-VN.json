@@ -65,6 +65,7 @@
 	"skyward-spine": "Xương Sống Thiên Không",
 	"slingshot": "Nỏ Kéo",
 	"song-of-broken-pines": "Tiếng Gió Trong Rừng Thông",
+	"splendor-of-tranquil-waters": "Sắc Nước Lộng Lẫy",
 	"staff-of-homa": "Trượng Hộ Ma",
 	"staff-of-the-scarlet-sands": "Quyền Trượng Cát Đỏ",
 	"summit-shaper": "Kiếm Chước Phong",
@@ -122,6 +123,10 @@
 		"name": "Candace",
 		"title": "Thề Nguyện Ánh Kim"
 	},
+	"charlotte": {
+		"name": "Charlotte",
+		"title": "Ống Kính Sự Thật"
+	},
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Bòng Hình Băng Giá"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "Freminet",
 		"title": "Khát Khao Chìm Đắm"
+	},
+	"furina": {
+		"name": "Furina",
+		"title": "Độc Diễn Vô Tận"
 	},
 	"ganyu": {
 		"name": "Ganyu",
