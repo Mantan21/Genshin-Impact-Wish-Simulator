@@ -5,13 +5,13 @@
 	import { assets, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
-	import BeginnerFrame from './_beginner-frame.svelte';
-	import StandardFrame from './_standard-frame.svelte';
-	import CharacterFrame from './_character-frame.svelte';
-	import WeaponFrame from './_weapon-frame.svelte';
+	import FrameBeginner from './_frame-beginner.svelte';
+	import FrameCharacter from './_frame-character.svelte';
+	import FrameWeapon from './_frame-weapon.svelte';
+	import FrameStandard from './_frame-standard.svelte';
+	import FrameCustom from './_frame-custom.svelte';
 	import BannerImage from './_banner-image.svelte';
 	import ProbEditor from './_probability-editor.svelte';
-	import FrameCustom from './_frame-custom.svelte';
 
 	export let data = {};
 	export let index = -1;
@@ -71,7 +71,7 @@
 				wrapperClass="card-image skeleton"
 			/>
 			<div class="frame skeleton">
-				<BeginnerFrame {character} />
+				<FrameBeginner {character} />
 			</div>
 		{:else if type === 'weapon-event'}
 			<BannerImage
@@ -81,7 +81,7 @@
 				wrapperClass="card-image skeleton-event"
 			/>
 			<div class="frame skeleton-event">
-				<WeaponFrame {featured} {rateup} {textOffset} />
+				<FrameWeapon {featured} {rateup} {textOffset} />
 			</div>
 		{:else if type === 'character-event'}
 			<BannerImage
@@ -102,7 +102,7 @@
 				</div>
 			{/if}
 			<div class="frame skeleton-event">
-				<CharacterFrame {character} {textOffset} {bannerName} event2={index === 2} />
+				<FrameCharacter {character} {textOffset} {bannerName} event2={index === 2} />
 			</div>
 		{:else if type === 'standard'}
 			<BannerImage
@@ -112,7 +112,7 @@
 				wrapperClass="card-image {imageError ? 'skeleton' : ''}"
 			/>
 			<div class="frame">
-				<StandardFrame {bannerName} />
+				<FrameStandard {bannerName} />
 			</div>
 		{/if}
 
