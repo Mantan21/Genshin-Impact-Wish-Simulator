@@ -65,6 +65,7 @@
 	"skyward-spine": "天空の脊",
 	"slingshot": "弾弓",
 	"song-of-broken-pines": "松韻の響く頃",
+	"splendor-of-tranquil-waters": "静水流転の輝き",
 	"staff-of-homa": "護摩の杖",
 	"staff-of-the-scarlet-sands": "赤砂の杖",
 	"summit-shaper": "斬山の刃",
@@ -122,6 +123,10 @@
 		"name": "キャンディス",
 		"title": "浮金の誓願"
 	},
+	"charlotte": {
+		"name": "シャルロット",
+		"title": "真実を求める曇りなきモノクル"
+	},
 	"chongyun": {
 		"name": "重雲",
 		"title": "雪消の跡"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "フレミネ",
 		"title": "夢想の海を沈んで"
+	},
+	"furina": {
+		"name": "フリーナ",
+		"title": "不休のソリスト"
 	},
 	"ganyu": {
 		"name": "甘雨",

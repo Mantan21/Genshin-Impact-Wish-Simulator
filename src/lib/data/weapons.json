@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"name": "splendor-of-tranquil-waters",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"buttonOffset": {
+				"t": -15,
+				"w": 90,
+				"l": 30
+			}
+		},
+		{
 			"name": "prospector-drill",
 			"rarity": 4,
 			"weaponType": "polearm",

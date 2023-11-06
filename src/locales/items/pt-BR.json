@@ -65,6 +65,7 @@
 	"skyward-spine": "Espinha Celestial",
 	"slingshot": "Estilingue",
 	"song-of-broken-pines": "Canção dos Pinhos",
+	"splendor-of-tranquil-waters": "Esplendor das Águas Silenciosas",
 	"staff-of-homa": "Báculo de Homa",
 	"staff-of-the-scarlet-sands": "Báculo das Areias Escarlates",
 	"summit-shaper": "Cortador de Montanhas",
@@ -122,6 +123,10 @@
 		"name": "Candace",
 		"title": "Promessa Dourada"
 	},
+	"charlotte": {
+		"name": "Charlotte",
+		"title": "Lentes em Busca da Verdade"
+	},
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Pegadas na Neve"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "Freminet",
 		"title": "Ansioso por Sonhos Profundos"
+	},
+	"furina": {
+		"name": "Furina",
+		"title": "Dançarina Solitária Eterna"
 	},
 	"ganyu": {
 		"name": "Ganyu",

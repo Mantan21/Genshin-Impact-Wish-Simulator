@@ -65,6 +65,7 @@
 	"skyward-spine": "Lancia d'osso celeste",
 	"slingshot": "Fionda",
 	"song-of-broken-pines": "Canzone silvestre",
+	"splendor-of-tranquil-waters": "Fulgore delle placide acque",
 	"staff-of-homa": "Bastone di Homa",
 	"staff-of-the-scarlet-sands": "Bastone delle sabbie scarlatte",
 	"summit-shaper": "Affettavette",
@@ -122,6 +123,10 @@
 		"name": "Candace",
 		"title": "Voto dorato"
 	},
+	"charlotte": {
+		"name": "Charlotte",
+		"title": "Lente della verità"
+	},
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Ardore ghiacciato"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "Freminet",
 		"title": "Brama di profondità invisibili"
+	},
+	"furina": {
+		"name": "Furina",
+		"title": "Assolo solitario e sempiterno"
 	},
 	"ganyu": {
 		"name": "Ganyu",

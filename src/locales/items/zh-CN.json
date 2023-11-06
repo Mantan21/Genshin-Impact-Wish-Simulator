@@ -65,6 +65,7 @@
 	"skyward-spine": "天空之脊",
 	"slingshot": "弹弓",
 	"song-of-broken-pines": "松籁响起之时",
+	"splendor-of-tranquil-waters": "静水流涌之辉",
 	"staff-of-homa": "护摩之杖",
 	"staff-of-the-scarlet-sands": "赤沙之杖",
 	"summit-shaper": "斫峰之刃",
@@ -122,6 +123,10 @@
 		"name": "坎蒂丝",
 		"title": "浮金的誓愿"
 	},
+	"charlotte": {
+		"name": "夏洛蒂",
+		"title": "朗镜索真"
+	},
 	"chongyun": {
 		"name": "重云",
 		"title": "雪融有踪"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "菲米尼",
 		"title": "潜怀遐梦"
+	},
+	"furina": {
+		"name": "芙宁娜",
+		"title": "不休独舞"
 	},
 	"ganyu": {
 		"name": "甘雨",

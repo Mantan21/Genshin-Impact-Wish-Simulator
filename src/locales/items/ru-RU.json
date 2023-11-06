@@ -65,6 +65,7 @@
 	"skyward-spine": "Небесная ось",
 	"slingshot": "Рогатка",
 	"song-of-broken-pines": "Песнь разбитых сосен",
+	"splendor-of-tranquil-waters": "Блеск тихих вод",
 	"staff-of-homa": "Посох Хомы",
 	"staff-of-the-scarlet-sands": "Посох алых песков",
 	"summit-shaper": "Кромсатель пиков",
@@ -122,6 +123,10 @@
 		"name": "Кандакия",
 		"title": "Позолоченная клятва"
 	},
+	"charlotte": {
+		"name": "Шарлотта",
+		"title": "Объективная реальность"
+	},
 	"chongyun": {
 		"name": "Чун Юнь",
 		"title": "Морозная пылкость"
@@ -165,6 +170,10 @@
 	"freminet": {
 		"name": "Фремине",
 		"title": "Тоска по невиданным глубинам"
+	},
+	"furina": {
+		"name": "Фурина",
+		"title": "Бесконечный танец одиночества"
 	},
 	"ganyu": {
 		"name": "Гань Юй",

@@ -2,6 +2,20 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"name": "furina",
+			"vision": "hydro",
+			"rarity": 5,
+			"wishBoxPosition": { "l": -35, "h": 205, "t": 62 },
+			"buttonOffset": { "l": 52, "w": 130, "t": 35 }
+		},
+		{
+			"name": "charlotte",
+			"vision": "cryo",
+			"rarity": 4,
+			"release": "4.2-1",
+			"wishBoxPosition": { "l": 35, "h": 200, "t": 60 }
+		},
+		{
 			"name": "wriothesley",
 			"vision": "cryo",
 			"rarity": 5,
