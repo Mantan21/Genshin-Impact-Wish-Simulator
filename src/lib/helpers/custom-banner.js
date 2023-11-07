@@ -55,9 +55,12 @@ export const onlineBanner = {
 			if (!shareID) throw new Error();
 			const response = await fetch(`${apiURL}/storage?app=genshin&id=${shareID}`);
 			const parsed = (await response.json()) || {};
-			parsed.data = { ...parsed.data[0] };
+
+			const { data = [] } = parsed;
+			parsed.data = { ...data[0] };
 			return parsed;
 		} catch (e) {
+			console.log(e);
 			return { success: false, message: 'error' };
 		}
 	},

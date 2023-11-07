@@ -22,7 +22,6 @@
 	let status = '';
 	let pageActive = 'index';
 	let showWelcomeModal = true;
-	let showCustomLoader = false;
 	let shareID = '';
 
 	let appReady = writable(false);
@@ -66,20 +65,12 @@
 	const startApp = () => {
 		appReady.set(true);
 		hotkeys.setScope('index');
+		showWelcomeModal = false;
 		welkinCheckin();
 		playSfx();
 	};
-	// Welcome Modal
-	setContext('closeWelcomeModal', () => {
-		showWelcomeModal = false;
-		startApp();
-	});
-
-	// Custom Banner
-	setContext('closeCustomModal', () => {
-		showCustomLoader = false;
-		startApp();
-	});
+	// Welcome Modal && Custom Banner Modal
+	setContext('startApp', startApp);
 
 	// Menu
 	let showMenu = false;
@@ -147,9 +138,6 @@
 		// Check Custom Banner
 		const { url } = $page;
 		shareID = url.searchParams.get('banner');
-		if (!shareID) return;
-		showWelcomeModal = false;
-		showCustomLoader = true;
 	});
 
 	// Obtained
@@ -249,11 +237,11 @@
 {/if}
 
 {#if showWelcomeModal}
-	<ModalWelcome />
-{/if}
-
-{#if shareID && showCustomLoader}
-	<CustomBannerModal {shareID} />
+	{#if shareID}
+		<CustomBannerModal {shareID} />
+	{:else}
+		<ModalWelcome />
+	{/if}
 {/if}
 
 <PreloadMeteor />

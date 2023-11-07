@@ -15,7 +15,7 @@
 	let savedKey = '';
 	let dateExpired = '';
 
-	const closeDisclaimer = getContext('closeWelcomeModal');
+	const startApp = getContext('startApp');
 	const updates = data.filter(({ featured }) => !!featured);
 
 	onMount(async () => {
@@ -27,7 +27,7 @@
 
 	const handleConfirm = () => {
 		playSfx();
-		closeDisclaimer();
+		startApp();
 		verifyKey();
 	};
 </script>

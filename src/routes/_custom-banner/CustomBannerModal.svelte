@@ -18,7 +18,7 @@
 
 	let loaded = false;
 	let isError = false;
-	let networkError = false;
+	let errorType = '';
 
 	let isOwned = false;
 	let itemID = 0;
@@ -26,11 +26,11 @@
 	let bannerName = '';
 	let vision = '';
 
-	const closeCustomModal = getContext('closeCustomModal');
+	const startApp = getContext('startApp');
 
 	const initBanner = () => {
 		verifyKey();
-		closeCustomModal();
+		startApp();
 		if (!itemID) return;
 		preloadVersion.set({ patch: 'Custom', phase: itemID });
 	};
@@ -39,14 +39,21 @@
 		playSfx();
 		loaded = false;
 		isError = false;
-		networkError = false;
+		errorType = '';
 		fetchBannerData(shareID);
 	};
 
 	const fetchBannerData = async (shareID) => {
 		const { data = {}, success, message } = await onlineBanner.getData(shareID);
 		if (!success) {
-			networkError = message != 'Not Found';
+			if (message === 'Not Found') {
+				errorType = 'notFound';
+			} else if (message === 'Invalid ID') {
+				errorType = 'invalid';
+			} else {
+				errorType = 'networkError';
+			}
+
 			isError = true;
 			loaded = true;
 			return;
@@ -77,14 +84,15 @@
 	<div class="container">
 		{#if isError}
 			<div class="content error" in:fade>
-				{#if networkError}
+				{#if errorType === 'networkError'}
 					<div class="error">
 						<caption> Network Error </caption>
 						<ButtonGeneral on:click={retry}>Retry</ButtonGeneral>
 					</div>
 				{:else}
 					<caption>
-						Banner not found, wrong <u>Banner ID</u> or maybe the author has removed it.
+						Error:{errorType}; Banner not found, wrong <u>Banner ID</u> or maybe the author has removed
+						it.
 					</caption>
 				{/if}
 			</div>
