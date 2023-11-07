@@ -22,6 +22,8 @@
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	}
 
+	const bg = custom ? $assets[`${rarity}star-special.webp`] : $assets[`${rarity}star-bg.webp`];
+
 	const pickItem = getContext('pickItem');
 	const handleShowDetails = () => {
 		if (!pickItem) return;
@@ -34,10 +36,7 @@
 	{#if !isOwned}
 		<div class="overlay" />
 	{/if}
-	<picture
-		class="star{rarity} {type}"
-		style="background-image:url('{$assets[`${rarity}star-bg.webp`]}');"
-	>
+	<picture class="star{rarity} {type}" style="background-image:url('{bg}');">
 		{#if custom}
 			<img
 				use:lazyLoad={images?.faceURL}

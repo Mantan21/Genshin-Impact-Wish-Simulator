@@ -25,6 +25,7 @@ const images = [
 			'3star-bg.webp',
 			'4star-bg.webp',
 			'5star-bg.webp',
+			'5star-special.webp',
 			'acquaint-fate.webp',
 			'bg-bonus.webp',
 			'book.webp',

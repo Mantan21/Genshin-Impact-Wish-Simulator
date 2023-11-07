@@ -7,6 +7,7 @@
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
 	const isWP = bannerType === 'weapon-event';
+	const bg = $isCustomBanner ? $assets['5star-special.webp'] : $assets['5star-bg.webp'];
 </script>
 
 {#if bannerType.match('event')}
@@ -32,7 +33,7 @@
 			</div>
 			<div class="pic">
 				<div class="pic-item">
-					<picture class="star5" style="background-image:url('{$assets['5star-bg.webp']}');">
+					<picture class="star5" style="background-image:url('{bg}');">
 						<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop" />
 
 						{#if $isCustomBanner}
