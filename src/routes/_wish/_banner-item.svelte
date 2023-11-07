@@ -18,7 +18,7 @@
 	} from '$lib/store/app-stores';
 	import BannerCard from './banner-card/BannerCard.svelte';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
-	import CustomEditor from './custom-editor/CustomEditor.svelte';
+	import CustomEditor from '../_custom-banner/CustomEditor.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
 	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';

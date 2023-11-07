@@ -5,7 +5,7 @@
 	import { viewportHeight } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getAllChars } from '$lib/helpers/gacha/wishBase';
-	import InventoryItem from '../../_inventory/_inventory-item.svelte';
+	import InventoryItem from '../_inventory/_inventory-item.svelte';
 
 	export let exclude = [];
 	const chars = getAllChars(4).filter(({ name }) => !exclude.includes(name));

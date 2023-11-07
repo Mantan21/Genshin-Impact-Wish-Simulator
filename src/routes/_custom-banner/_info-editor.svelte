@@ -3,11 +3,12 @@
 	import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
+	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
-	import InventoryItem from '../../_inventory/_inventory-item.svelte';
+
+	import InventoryItem from '../_inventory/_inventory-item.svelte';
 	import RateupPicker from './_rateup-picker.svelte';
 	import PreviewGenerator from './_preview-generator.svelte';
-	import { playSfx } from '$lib/helpers/audio/audio';
 
 	export let rateup = [];
 	export let bannerName = '';

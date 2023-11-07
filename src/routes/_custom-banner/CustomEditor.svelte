@@ -5,7 +5,7 @@
 	import { BannerManager } from '$lib/store/IDB-manager';
 
 	import Icon from '$lib/components/Icon.svelte';
-	import FrameCustom from '../banner-card/_frame-custom.svelte';
+	import FrameCustom from '../_wish/banner-card/_frame-custom.svelte';
 	import InfoButton from './_info-face-button.svelte';
 	import SplashartForm from './_splashart-form.svelte';
 	import MainArt from './_main-art.svelte';

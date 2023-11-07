@@ -1,8 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
 	import { toBlob } from 'html-to-image';
-	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 
 	export let preview = '';
 

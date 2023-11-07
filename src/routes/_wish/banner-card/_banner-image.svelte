@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import MainArt from '../custom-editor/_main-art.svelte';
+	import MainArt from '../../_custom-banner/_main-art.svelte';
 
 	export let src = '';
 	export let alt = '';
