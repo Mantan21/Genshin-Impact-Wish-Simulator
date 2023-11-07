@@ -10,16 +10,14 @@
 		proUser,
 		viewportWidth
 	} from '$lib/store/app-stores';
-	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { BannerManager } from '$lib/store/IDB-manager';
-	import { onlineBanner } from '$lib/helpers/custom-banner';
 	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import Toast from '$lib/components/Toast.svelte';
-	import ModalTpl from '$lib/components/ModalTpl.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import ModalDelete from '../_custom-banner/ModalDelete.svelte';
 
 	let headerHeight;
 	let rowWidth = 0;
@@ -74,49 +72,31 @@
 	let showToast = false;
 	let toastMsg = '';
 	let showModal = false;
-	let showDeleteLoader = false;
 	let idToDelete = 0;
-	let imgToDelete = '';
 
-	const removeBanner = async () => {
-		try {
-			playSfx();
-			showDeleteLoader = true;
-			if (idToDelete === $editID) editorMode.set(false);
-
-			const { patch, phase } = $activeVersion;
-			const isActiveDeleted = patch === 'Custom' && phase === idToDelete;
-			if (isActiveDeleted) preloadVersion.set({ patch: version, phase: wishPhase });
-			const { status } = await onlineBanner.deleteBanner(idToDelete);
-			if (status != 'ok') throw new Error();
-
-			customList = customList.filter(({ itemID }) => itemID != idToDelete);
-			toastMsg = 'Banner Removed';
-			showToast = true;
-			showModal = false;
-			showDeleteLoader = false;
-			idToDelete = 0;
-			imgToDelete = '';
-		} catch (e) {
-			toastMsg = 'Failed to Remove';
-			showToast = true;
-			showDeleteLoader = false;
-		}
-	};
-
-	const selectToDelete = (id, thumb) => {
+	const selectToDelete = (id) => {
 		if (!id) return;
 		playSfx('modal');
 		idToDelete = id;
 		showModal = true;
-		imgToDelete = thumb;
 	};
 
 	const cancelModal = () => {
 		showModal = false;
-		imgToDelete = '';
 		idToDelete = 0;
 		playSfx('close');
+	};
+
+	const deleteError = () => {
+		toastMsg = 'Failed to Remove';
+		showToast = true;
+	};
+	const deleteDone = () => {
+		customList = customList.filter(({ itemID }) => itemID != idToDelete);
+		toastMsg = 'Banner Removed';
+		showToast = true;
+		showModal = false;
+		idToDelete = 0;
 	};
 
 	const wishBanner = (id) => {
@@ -129,32 +109,7 @@
 </script>
 
 {#if showModal}
-	<ModalTpl title="Remove Banner" on:confirm={removeBanner} on:cancel={cancelModal}>
-		<div class="confirmation">
-			{#if showDeleteLoader}
-				<div class="row loader" in:fade>
-					<Icon type="loader" />
-				</div>
-			{:else}
-				<div class="wrapper" in:fade>
-					<span> Are You Sure to delete this banner ? </span>
-					<small>
-						If you've shared this banner publicly, The Travelers who have made wishes on your banner
-						will no longer be able to access it.
-					</small>
-
-					{#if imgToDelete}
-						<img
-							src={imgToDelete}
-							alt="Delete this banner"
-							class="selectedToDelete"
-							crossorigin="anonymous"
-						/>
-					{/if}
-				</div>
-			{/if}
-		</div>
-	</ModalTpl>
+	<ModalDelete {idToDelete} on:done={deleteDone} on:error={deleteError} on:cancel={cancelModal} />
 {/if}
 
 {#if showToast}
@@ -291,21 +246,6 @@
 		}
 	}
 
-	.confirmation {
-		padding: 5%;
-		height: 100%;
-		align-items: center;
-		display: flex;
-	}
-	.confirmation small {
-		display: block;
-	}
-
-	.selectedToDelete {
-		width: 45%;
-		margin-top: 3%;
-	}
-
 	.header h1 {
 		display: flex;
 		justify-content: center;
@@ -386,16 +326,6 @@
 		align-items: center;
 		margin-bottom: 2%;
 		flex-wrap: wrap;
-	}
-
-	.row.loader {
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
 	}
 
 	.item {

@@ -104,6 +104,8 @@ export const onlineBanner = {
 	async deleteBanner(bannerID) {
 		try {
 			const { shareID, imageHash = {} } = (await idb.get(bannerID)) || {};
+
+			// Only delete local data if not shared
 			if (!shareID) {
 				await idb.delete(bannerID);
 				return { status: 'ok' };

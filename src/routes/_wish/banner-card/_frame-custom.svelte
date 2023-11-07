@@ -1,9 +1,15 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { customData, editID, editorMode as editMode } from '$lib/store/app-stores';
-	import SvgIcon from '$lib/components/SVGIcon.svelte';
+	import {
+		customData,
+		editID,
+		editorMode as editMode,
+		isCustomBanner
+	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import SvgIcon from '$lib/components/SVGIcon.svelte';
 
 	export let bannerName = '';
 	export let character = '';
@@ -23,6 +29,8 @@
 		editID.set($customData.itemID);
 		editMode.set(true);
 	};
+
+	const deleteBanner = getContext('deleteBanner');
 </script>
 
 <div class="frame-content" class:editorMode class:onBannerEdit>
@@ -35,10 +43,16 @@
 		</div>
 	</h1>
 
-	{#if $customData.status === 'owned' && !editorMode}
-		<button class="edit" on:click={editBanner}>
-			<i class="gi-pen" /> <span>Edit</span>
-		</button>
+	{#if $isCustomBanner}
+		<div class="action">
+			{#if $customData.status === 'owned' && !editorMode}
+				<button class="edit" on:click={editBanner}>
+					<i class="gi-pen" /> <span>Edit</span>
+				</button>
+			{/if}
+
+			<button class="delete" on:click={deleteBanner}> <i class="gi-delete" /> Delete </button>
+		</div>
 	{/if}
 
 	<div class="info">
@@ -138,32 +152,49 @@
 		bottom: 70%;
 	}
 
-	.edit {
+	.action {
 		position: absolute;
 		top: 0;
 		right: 0;
+		opacity: 0;
+		transition: all 0.25s;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	.action button {
 		color: rgba(255, 255, 255, 0.8);
-		background-color: rgba(0, 0, 0, 0.5);
-		padding: 1.5% 2.5%;
+		padding: calc(1.7 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
 		display: flex;
 		align-items: center;
 		line-height: 0;
 		border-radius: 2%;
 		font-size: calc(1.7 / 100 * var(--content-width));
-		opacity: 0;
 		transition: all 0.25s;
 	}
-	.edit i {
+	button.edit {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	button.edit:hover {
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+
+	button.delete {
+		background-color: rgba(234, 37, 37, 0.5);
+	}
+	button.delete:hover {
+		background-color: rgba(234, 37, 37, 1);
+	}
+
+	.action i {
 		transform: translateX(-50%);
 	}
-	.frame-content:hover .edit {
+	.frame-content:hover .action {
 		opacity: 1;
 	}
-	.edit:active {
+	.action button:active {
 		transform: scale(0.9);
-	}
-	.edit:hover {
-		background-color: rgba(0, 0, 0, 0.8);
 	}
 
 	.top {

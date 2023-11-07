@@ -13,7 +13,7 @@
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
-	import CustomBannerModal from './_custom-banner/CustomBannerModal.svelte';
+	import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
 	import ModalWelcome from './_index/ModalWelcome.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
@@ -238,7 +238,7 @@
 
 {#if showWelcomeModal}
 	{#if shareID}
-		<CustomBannerModal {shareID} />
+		<ModalInitBanner {shareID} />
 	{:else}
 		<ModalWelcome />
 	{/if}
