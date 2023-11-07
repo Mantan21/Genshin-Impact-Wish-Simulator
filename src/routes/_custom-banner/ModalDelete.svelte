@@ -15,6 +15,7 @@
 	export let idToDelete = 0;
 
 	let thumbnail = '';
+	let isOwned = false;
 	let showDeleteLoader = false;
 	const dispatch = createEventDispatcher();
 
@@ -40,13 +41,20 @@
 
 	onMount(async () => {
 		const { images = {}, hostedImages = {}, status } = await BannerManager.get(idToDelete);
-		if (status === 'owned') return ({ thumbnail = '' } = images);
+		isOwned = status === 'owned';
+		if (isOwned) return ({ thumbnail = '' } = images);
+
 		const { thumbnail: thumb = '' } = hostedImages;
 		thumbnail = imageCDN(thumb);
 	});
 </script>
 
-<ModalTpl title="Remove Banner" on:confirm={removeBanner} on:cancel={() => dispatch('cancel')}>
+<ModalTpl
+	title="Remove Banner"
+	disabled={showDeleteLoader}
+	on:confirm={removeBanner}
+	on:cancel={() => dispatch('cancel')}
+>
 	<div class="confirmation">
 		{#if showDeleteLoader}
 			<div class="row loader" in:fade>
@@ -55,10 +63,17 @@
 		{:else}
 			<div class="wrapper" in:fade>
 				<span> Are You Sure to delete this banner ? </span>
-				<small>
-					If you've shared this banner publicly, The Travelers who have made wishes on your banner
-					will no longer be able to access it.
-				</small>
+				{#if isOwned}
+					<small>
+						If you've shared this banner publicly, The Travelers who have made wishes on your banner
+						will no longer be able to access it.
+					</small>
+				{:else}
+					<small>
+						The history of Wishing on this banner will not be deleted, but you will not be able to
+						pull on this banner again.
+					</small>
+				{/if}
 
 				{#if thumbnail}
 					<img
@@ -78,6 +93,7 @@
 		padding: 5%;
 		height: 100%;
 		align-items: center;
+		justify-content: center;
 		display: flex;
 	}
 	.confirmation small {
