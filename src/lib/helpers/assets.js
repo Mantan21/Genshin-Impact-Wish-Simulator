@@ -173,10 +173,10 @@ export const base64ToBlob = (image) => {
 
 export const imageCDN = (imgs) => {
 	const cdnURL = 'https://imagecdn.app/v2/image/';
-	if (typeof imgs === 'string') return cdnURL + imgs;
+	if (typeof imgs === 'string') return cdnURL + imgs + '?format=webp';
 
 	Object.keys(imgs).forEach((key) => {
-		imgs[key] = cdnURL + imgs[key];
+		imgs[key] = cdnURL + imgs[key] + '?format=webp';
 	});
 	return imgs;
 };

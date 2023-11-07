@@ -44,7 +44,7 @@
 	};
 
 	const fetchBannerData = async (shareID) => {
-		const { data = [], success, message } = await onlineBanner.getData(shareID);
+		const { data = {}, success, message } = await onlineBanner.getData(shareID);
 		if (!success) {
 			networkError = message != 'Not Found';
 			isError = true;
@@ -62,6 +62,7 @@
 		delete data.imageHash;
 		data.status = 'cloud';
 		await BannerManager.put(data);
+		loaded = true;
 		return;
 	};
 
