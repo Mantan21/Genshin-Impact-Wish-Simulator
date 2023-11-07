@@ -20,6 +20,7 @@
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { wakeLock } from '$lib/helpers/wakeLock';
+	import { syncCustomBanner } from '$lib/helpers/custom-banner';
 	import '../app.css';
 
 	import Iklan from '$lib/components/Iklan.svelte';
@@ -70,9 +71,10 @@
 		const searchParams = new URLSearchParams(url.search);
 		isPWA.set(searchParams.get('pwa') === 'true' || !!searchParams.get('pwasc'));
 
-		await IDBUpdater();
 		registerSW();
 		wakeLock();
+		await IDBUpdater();
+		syncCustomBanner();
 
 		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();

@@ -50,13 +50,17 @@ export const onlineBanner = {
 		return result;
 	},
 
-	async getData(shareID) {
+	async getData(shareID, multi = false) {
 		try {
 			if (!shareID) throw new Error();
 			const response = await fetch(`${apiURL}/storage?app=genshin&id=${shareID}`);
 			const parsed = (await response.json()) || {};
-
 			const { data = [] } = parsed;
+
+			// Multi ID
+			if (multi === 'multi') return parsed;
+
+			// Single ID
 			parsed.data = { ...data[0] };
 			return parsed;
 		} catch (e) {
@@ -141,5 +145,36 @@ export const onlineBanner = {
 		const { status_code } = await data.json();
 		console.log(id, hash, status_code);
 		return status_code === 200;
+	}
+};
+
+export const syncCustomBanner = async () => {
+	try {
+		const storedBanner = (await idb.getListByStatus('cloud')) || [];
+		if (storedBanner.length < 1) return;
+
+		const localBannerIDs = storedBanner.map(({ id }) => id);
+		const ids = localBannerIDs.join(',');
+		const { success, data = [] } = (await onlineBanner.getData(ids, 'multi')) || {};
+		if (!success) return;
+
+		// Renew Data
+		for (let x = 0; x < data.length; x++) {
+			const dataToStore = data[x];
+			delete dataToStore.imageHash;
+			dataToStore.status = 'cloud';
+			await idb.put(dataToStore);
+		}
+
+		// Remove UnAvailable Banner from IDB;
+		const cloudBannerIDs = data.map(({ id }) => id);
+		const unAvailableBanner = localBannerIDs.filter((id) => !cloudBannerIDs.includes(id));
+		for (let i = 0; i < unAvailableBanner.length; i++) {
+			const sharedID = unAvailableBanner[i];
+			const { itemID } = storedBanner.find(({ id }) => id === sharedID);
+			await idb.delete(itemID);
+		}
+	} catch (e) {
+		console.error('sync custom banner failed', e);
 	}
 };
