@@ -51,6 +51,15 @@ If you are not familiar with javascript especially sveltekit or don't know how t
          </td>
       </tr>
       <tr>
+         <td> Chinese (Traditional) </td>
+         <td>
+            <a href="https://github.com/wibe01204 ">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/90883053?s=20" />
+               wibe01204
+            </a>
+         </td>
+      </tr>
+      <tr>
          <td> Deutsch </td>
          <td>
             <a href="https://github.com/LA1211">
