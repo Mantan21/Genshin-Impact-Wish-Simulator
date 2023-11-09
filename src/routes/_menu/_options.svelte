@@ -129,11 +129,7 @@
 				style="width: 100%; height:100%"
 				on:click|stopPropagation={openOption}
 			>
-				<img
-					src="data:image/png;base64,{flags[activeIndicator.substring(0, 2)]}"
-					alt="flag"
-					class="flag"
-				/>
+				<img src="data:image/png;base64,{flags[activeIndicator]}" alt="flag" class="flag" />
 				{localeName[activeIndicator]}
 			</button>
 			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
@@ -145,11 +141,7 @@
 							on:click|stopPropagation={() => setLang(locale)}
 						>
 							<span style="text-align:right; padding-right: 1rem; width:50%">
-								<img
-									src="data:image/png;base64,{flags[locale.substring(0, 2)]}"
-									alt="flag"
-									class="flag"
-								/>
+								<img src="data:image/png;base64,{flags[locale]}" alt="flag" class="flag" />
 							</span>
 							<span style="text-align:left;width:100%"> {localeName[locale]} </span>
 						</button>
