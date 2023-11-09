@@ -152,6 +152,12 @@
 				<div class="disclaimer" transition:fade|local={{ duration: 250 }}>
 					<article>
 						<p>
+							This is an <u>Experimental Feature</u>, and I will be monitoring it over the coming
+							period. If this feature is not found to be useful or is misused to share inappropriate
+							content, I may limit or even disable it. I hope you are willing to provide feedback to
+							help improve the quality of this simulator site.
+						</p>
+						<p>
 							Every banner you add is saved in your browser's memory. <b>WishSimulator.App</b> does not
 							collect or store your banner data in cloud storage unless you click the Share Button.
 						</p>
