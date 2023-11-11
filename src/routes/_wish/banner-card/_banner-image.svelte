@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import MainArt from '../../_custom-banner/_main-art.svelte';
+	import BannerArt from '../../_custom-banner/BannerEditor/BannerArt.svelte';
 
 	export let src = '';
 	export let alt = '';
@@ -28,7 +28,7 @@
 				class="art-bg"
 			/>
 			{#key artPosition}
-				<MainArt artURL={src} bannerPosition={artPosition?.banner} />
+				<BannerArt artURL={src} bannerPosition={artPosition?.banner} />
 			{/key}
 		{:else}
 			<div style="position: relative; width: 100%;">

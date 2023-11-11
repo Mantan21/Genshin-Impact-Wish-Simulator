@@ -5,15 +5,15 @@
 	import { getName } from '$lib/helpers/nameText';
 	import { owneditem } from '$lib/store/localstore-manager';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import positionToStyle from '$lib/helpers/cssPosition';
+	import { positionToStyle } from '$lib/helpers/cssPosition';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import ModalConfirm from '../character-outfit/_modal-confirm.svelte';
 
 	export let data = {};
-	let name, cardBoxPosition, promoPrice, price, isOwned, characterName, rarity;
-	$: ({ name, cardBoxPosition, promoPrice, price, isOwned, characterName, rarity } = data);
+	let name, offset, promoPrice, price, isOwned, characterName, rarity;
+	$: ({ name, offset, promoPrice, price, isOwned, characterName, rarity } = data);
 
 	let showConfirmModal = false;
 	const cancelConfirm = () => {
@@ -56,7 +56,7 @@
 	class="outfit-art"
 	src={$assets[`splash-art/${name}`]}
 	alt={getName(name)}
-	style={positionToStyle(cardBoxPosition)}
+	style={positionToStyle(offset?.storeCard || {})}
 />
 
 <div class="remaining card-stroke">{$t('shop.limitedOffer')}</div>

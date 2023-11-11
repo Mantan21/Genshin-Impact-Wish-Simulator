@@ -19,7 +19,9 @@
 			"name": "flowing-fate",
 			"characterName": "mona",
 			"rarity": 4,
-			"wishBoxPosition": { "l": 35, "h": 190 }
+			"offset": {
+				"wishCard": { "l": 35, "h": 190 }
+			}
 		},
 		{
 			"release": 1.6,
@@ -28,7 +30,9 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"wishBoxPosition": { "t": 90, "h": 200, "l": 20 }
+			"offset": {
+				"wishCard": { "t": 90, "h": 200, "l": 20 }
+			}
 		},
 		{
 			"release": 1.6,
@@ -36,7 +40,9 @@
 			"characterName": "barbara",
 			"rarity": 4,
 			"price": 1680,
-			"wishBoxPosition": { "t": 72, "l": 140, "h": 185 }
+			"offset": {
+				"wishCard": { "t": 72, "l": 140, "h": 185 }
+			}
 		},
 		{
 			"release": 2.4,
@@ -45,7 +51,9 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"wishBoxPosition": { "t": 83 }
+			"offset": {
+				"wishCard": { "t": 83 }
+			}
 		},
 		{
 			"release": 2.4,
@@ -53,7 +61,9 @@
 			"characterName": "ningguang",
 			"rarity": 4,
 			"price": 1680,
-			"wishBoxPosition": { "h": 200, "t": 90, "l": 23 }
+			"offset": {
+				"wishCard": { "h": 200, "t": 90, "l": 23 }
+			}
 		},
 		{
 			"release": 2.8,
@@ -61,7 +71,9 @@
 			"characterName": "fischl",
 			"rarity": 4,
 			"price": 1680,
-			"wishBoxPosition": { "l": 15 }
+			"offset": {
+				"wishCard": { "l": 15 }
+			}
 		},
 		{
 			"release": 2.8,
@@ -70,8 +82,10 @@
 			"rarity": 5,
 			"price": 2480,
 			"promoPrice": 1980,
-			"wishBoxPosition": { "l": -54, "h": 200, "t": 85 },
-			"cardBoxPosition": { "l": -45 }
+			"offset": {
+				"wishCard": { "l": -54, "h": 200, "t": 85 },
+				"storeCard": { "l": -45 }
+			}
 		},
 		{
 			"release": 3.4,
@@ -79,7 +93,9 @@
 			"characterName": "lisa",
 			"rarity": 4,
 			"price": 1680,
-			"wishBoxPosition": { "l": -45, "t": 70 }
+			"offset": {
+				"wishCard": { "l": -45, "t": 70 }
+			}
 		},
 		{
 			"release": 3.4,
@@ -88,8 +104,10 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"wishBoxPosition": { "l": 60, "h": 190, "t": 70 },
-			"cardBoxPosition": { "l": -10, "w": 90, "t": -35 }
+			"offset": {
+				"wishCard": { "l": 60, "h": 190, "t": 70 },
+				"storeCard": { "l": -10, "w": 90, "t": -35 }
+			}
 		},
 		{
 			"release": 3.8,
@@ -97,7 +115,9 @@
 			"characterName": "kaeya",
 			"rarity": 4,
 			"price": 1680,
-			"wishBoxPosition": { "l": 23, "t": 70, "h": 210 }
+			"offset": {
+				"wishCard": { "l": 23, "t": 70, "h": 210 }
+			}
 		},
 		{
 			"release": 3.8,
@@ -106,8 +126,10 @@
 			"rarity": 4,
 			"price": 1680,
 			"promoPrice": 1350,
-			"wishBoxPosition": { "l": 80, "h": 185, "t": 50 },
-			"cardBoxPosition": { "l": -20, "w": 120, "t": -42 }
+			"offset": {
+				"wishCard": { "l": 80, "h": 185, "t": 50 },
+				"storeCard": { "l": -20, "w": 120, "t": -42 }
+			}
 		}
 	]
 }

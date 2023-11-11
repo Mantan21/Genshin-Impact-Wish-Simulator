@@ -114,8 +114,7 @@ const saveResult = async (result) => {
 	const data = { ...result };
 	delete data.release;
 	delete data.limited;
-	delete data.wishBoxPosition;
-	delete data.buttonOffset;
+	delete data.offset;
 	await addHistory(data);
 };
 

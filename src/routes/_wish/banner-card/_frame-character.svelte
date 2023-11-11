@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import positionToStyle from '$lib/helpers/cssPosition';
+	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { getBannerName } from '$lib/helpers/nameText';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 

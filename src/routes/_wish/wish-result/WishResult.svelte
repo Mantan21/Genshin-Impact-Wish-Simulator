@@ -4,11 +4,10 @@
 	import { t, locale } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { assets, customData, viewportHeight, viewportWidth } from '$lib/store/app-stores';
+	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { playSfx, pauseSfx as stopSfx } from '$lib/helpers/audio/audio';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
-	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { createLink } from '$lib/helpers/shareable-link';
 
 	// Component
@@ -17,6 +16,7 @@
 	import ItemInfo from './_item-info.svelte';
 	import WeaponBonus from './_weapon-bonus.svelte';
 	import ScreenshotShare from '../../_index/ScreenshotShare.svelte';
+	import SplashArt from './_splash-art.svelte';
 
 	export let list = [];
 	export let skip = false;
@@ -32,6 +32,8 @@
 	const splashBG = isOutfit ? $assets['outfit-background.webp'] : $assets['splash-background.webp'];
 	list = list.map(setActiveOutfit);
 
+	let clientHeight = 0;
+	let clientWidth = 0;
 	const calculateWrapperHeight = (vw, vh) => {
 		if (vw < vh) return '80vw';
 		if (vw < vh * 1.5) return '65vw';
@@ -100,11 +102,6 @@
 		showResultList = true;
 	};
 
-	const removeClass = (el) => {
-		el.addEventListener('animationend', () => {
-			el.classList.remove('anim');
-		});
-	};
 	onMount(() => {
 		if (!skip || list.length === 1) showItem('start');
 		if (skip || standalone) return (showResultList = true);
@@ -157,41 +154,21 @@
 	{#if showResultList && list.length > 1}
 		<ResultList {list} {standalone} />
 	{:else}
-		<div class="container" in:fade={{ duration: 500, delay: 200 }}>
-			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit, custom }, i}
+		<div
+			class="zoomist-container"
+			style="height: {wrapperHeight};--width:{clientWidth}px;--height:{clientHeight}px"
+			bind:clientHeight
+			bind:clientWidth
+			in:fade={{ duration: 500, delay: 200 }}
+		>
+			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit, offset, custom }, i}
 				{#if activeIndex === i}
-					<div class="wrapper" on:mousedown={showItem} style="height: {wrapperHeight};">
+					<div class="art-wrapper" on:mousedown={showItem}>
 						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
 
-						{#if custom}
-							{@const { images = {}, status, hostedImages = {} } = $customData || {}}
-							{@const { artURL } = status === 'owned' ? images : hostedImages}
-							<div class="splash-art anim" use:removeClass>
-								<img use:lazyLoad={artURL} alt={name} crossorigin="anonymous" />
-							</div>
-						{:else if type === 'weapon'}
-							<div class="splash-art anim weapon {weaponType}-parent" use:removeClass>
-								<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
-								<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
-							</div>
-						{:else if type === 'outfit'}
-							<div class="splash-art anim" use:removeClass>
-								<img
-									use:lazyLoad={$assets[`splash-art/${outfitName}`]}
-									alt={name}
-									crossorigin="anonymous"
-								/>
-							</div>
-						{:else}
-							<div class="splash-art anim" use:removeClass>
-								<img
-									use:lazyLoad={$assets[`splash-art/${useOutfit ? outfitName : name}`]}
-									alt={name}
-									crossorigin="anonymous"
-								/>
-							</div>
-						{/if}
-
+						<div class="art-wrapper">
+							<SplashArt {custom} {name} {type} {outfitName} {weaponType} {useOutfit} />
+						</div>
 						<ItemInfo
 							itemName={name}
 							{type}
@@ -204,7 +181,6 @@
 							{custom}
 						/>
 						<WeaponBonus {type} {bonusQty} {bonusType} />
-
 						{#if isSplashOut} <SplashLight type="out" {rarity} /> {/if}
 					</div>
 				{/if}
@@ -258,9 +234,7 @@
 		background-position: center;
 	}
 
-	.wish-result,
-	.container,
-	.wrapper {
+	.wish-result {
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -269,80 +243,12 @@
 		position: relative;
 	}
 
-	.splash-art {
+	.zoomist-container {
+		aspect-ratio: 1/1;
+	}
+	.art-wrapper {
 		width: 100%;
 		height: 100%;
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		transform: translateX(2%);
-	}
-
-	.splash-art.anim {
-		filter: brightness(0) opacity(0);
-		animation: splashart forwards 1.5s 1;
-	}
-
-	.splash-art img {
-		height: 120%;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		top: 50%;
-	}
-
-	.splash-art.weapon img.weaponbg {
-		height: 85%;
-	}
-	.splash-art.weapon.anim img.weaponbg {
-		opacity: 0;
-		animation: weaponbg forwards 1.5s 1;
-	}
-
-	.bow-parent .weaponbg {
-		height: 90% !important;
-		transform: translate(-53%, -50%) !important;
-	}
-	.catalyst-parent .weaponbg {
-		height: 90% !important;
-	}
-
-	.anim .bow,
-	.anim .polearm,
-	.anim .sword,
-	.anim .claymore,
-	.anim .catalyst {
-		animation: weaponShadow forwards 0.1s 1;
-		animation-delay: 1.2s;
-		filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-	}
-
-	.bow,
-	.polearm,
-	.sword,
-	.claymore,
-	.catalyst {
-		filter: drop-shadow(0.6rem 0.6rem 0.05rem rgb(0, 0, 0));
-	}
-
-	.bow {
-		height: 100%;
-	}
-
-	.claymore {
-		height: 105% !important;
-	}
-
-	.catalyst {
-		height: 40% !important;
-	}
-
-	.polearm {
-		top: 65% !important;
-		left: 48% !important;
-		height: 130% !important;
 	}
 
 	.share {
@@ -391,47 +297,5 @@
 	.logo.cn {
 		max-height: 20vh;
 		width: 20vh;
-	}
-
-	@keyframes splashart {
-		0% {
-			transform: scale(2) translate(0, -5%);
-			filter: brightness(0);
-		}
-
-		20% {
-			transform: scale(1);
-			filter: brightness(0);
-		}
-		75% {
-			transform: scale(1);
-			filter: brightness(0);
-		}
-		95% {
-			transform: scale(1) translate(2%, 0);
-			filter: brightness(1);
-		}
-		100% {
-			transform: scale(1) translate(2%, 0);
-			filter: brightness(1);
-		}
-	}
-
-	@keyframes weaponbg {
-		80% {
-			opacity: 0;
-		}
-		85% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-
-	@keyframes weaponShadow {
-		to {
-			filter: drop-shadow(0.7rem 0.6rem 0.2rem rgba(0, 0, 0, 0.7));
-		}
 	}
 </style>

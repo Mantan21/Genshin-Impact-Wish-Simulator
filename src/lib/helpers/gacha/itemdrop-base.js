@@ -127,12 +127,11 @@ export const get5StarItem = ({
 	if (useRateup && banner === 'character-event') {
 		if (Object.keys(customData).length > 0) {
 			const { vision, character, artPosition, itemID } = customData;
-			const { splashArt = {} } = artPosition || {};
 			const result = {
 				vision,
 				itemID,
 				name: character,
-				wishBoxPosition: splashArt,
+				offset: artPosition || {},
 				type: 'character',
 				rarity: 5,
 				custom: true

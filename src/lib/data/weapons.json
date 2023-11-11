@@ -6,10 +6,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"t": -15,
-				"w": 90,
-				"l": 30
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
 			}
 		},
 		{
@@ -32,10 +30,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"t": 35,
-				"w": 70,
-				"l": 35
+			"offset": {
+				"button": { "t": 35, "w": 70, "l": 35 }
 			}
 		},
 		{
@@ -58,10 +54,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"t": 15,
-				"w": 80,
-				"l": 35
+			"offset": {
+				"button": { "t": 15, "w": 80, "l": 35 }
 			}
 		},
 		{
@@ -70,10 +64,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "bow",
-			"buttonOffset": {
-				"t": 10,
-				"w": 75,
-				"l": 30
+			"offset": {
+				"button": { "t": 10, "w": 75, "l": 30 }
 			}
 		},
 		{
@@ -82,10 +74,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "catalyst",
-			"buttonOffset": {
-				"w": 65,
-				"t": 35,
-				"l": 65
+			"offset": {
+				"button": { "w": 65, "t": 35, "l": 65 }
 			}
 		},
 		{
@@ -94,10 +84,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "claymore",
-			"buttonOffset": {
-				"t": 10,
-				"w": 70,
-				"l": 30
+			"offset": {
+				"button": { "t": 10, "w": 70, "l": 30 }
 			}
 		},
 		{
@@ -106,10 +94,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "sword",
-			"buttonOffset": {
-				"t": -15,
-				"w": 90,
-				"l": 30
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
 			}
 		},
 		{
@@ -118,10 +104,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "catalyst",
-			"buttonOffset": {
-				"w": 70,
-				"t": 30,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 35 }
 			}
 		},
 		{
@@ -130,10 +114,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"t": 30,
-				"l": 65
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 65 }
 			}
 		},
 		{
@@ -142,10 +124,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"t": -10,
-				"w": 90,
-				"l": 30
+			"offset": {
+				"button": { "t": -10, "w": 90, "l": 30 }
 			}
 		},
 		{
@@ -168,7 +148,9 @@
 			"rarity": 5,
 			"weaponType": "polearm",
 			"limited": true,
-			"buttonOffset": { "w": 80, "t": 15, "l": 60 }
+			"offset": {
+				"button": { "w": 80, "t": 15, "l": 60 }
+			}
 		},
 		{
 			"itemID": 142,
@@ -183,10 +165,8 @@
 			"rarity": 5,
 			"weaponType": "bow",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"l": 35,
-				"t": 0
+			"offset": {
+				"button": { "w": 70, "l": 35, "t": 0 }
 			}
 		},
 		{
@@ -195,10 +175,8 @@
 			"rarity": 5,
 			"weaponType": "bow",
 			"limited": true,
-			"buttonOffset": {
-				"t": 5,
-				"w": 80,
-				"l": 35
+			"offset": {
+				"button": { "t": 5, "w": 80, "l": 35 }
 			}
 		},
 		{
@@ -207,10 +185,8 @@
 			"rarity": 5,
 			"weaponType": "claymore",
 			"limited": true,
-			"buttonOffset": {
-				"t": 10,
-				"w": 80,
-				"l": 60
+			"offset": {
+				"button": { "t": 10, "w": 80, "l": 60 }
 			}
 		},
 		{
@@ -219,10 +195,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"t": -35,
-				"w": 120,
-				"l": 55
+			"offset": {
+				"button": { "t": -35, "w": 120, "l": 55 }
 			}
 		},
 		{
@@ -231,10 +205,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"t": 25,
-				"l": 37
+			"offset": {
+				"button": { "w": 70, "t": 25, "l": 37 }
 			}
 		},
 		{
@@ -243,10 +215,8 @@
 			"rarity": 5,
 			"weaponType": "polearm",
 			"limited": true,
-			"buttonOffset": {
-				"w": 80,
-				"t": 10,
-				"l": 60
+			"offset": {
+				"button": { "w": 80, "t": 10, "l": 60 }
 			}
 		},
 		{
@@ -269,10 +239,8 @@
 			"rarity": 5,
 			"weaponType": "bow",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"t": 2,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 2, "l": 35 }
 			}
 		},
 		{
@@ -288,10 +256,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"t": 40,
-				"l": 60
+			"offset": {
+				"button": { "w": 70, "t": 40, "l": 60 }
 			}
 		},
 		{
@@ -300,10 +266,8 @@
 			"rarity": 5,
 			"weaponType": "polearm",
 			"limited": true,
-			"buttonOffset": {
-				"w": 80,
-				"t": 20,
-				"l": 30
+			"offset": {
+				"button": { "w": 80, "t": 20, "l": 30 }
 			}
 		},
 		{
@@ -312,10 +276,8 @@
 			"rarity": 5,
 			"limited": true,
 			"weaponType": "bow",
-			"buttonOffset": {
-				"w": 70,
-				"t": 10,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 10, "l": 35 }
 			}
 		},
 		{
@@ -324,10 +286,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"w": 100,
-				"t": -20,
-				"l": 30
+			"offset": {
+				"button": { "w": 100, "t": -20, "l": 30 }
 			}
 		},
 		{
@@ -336,10 +296,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"w": 100,
-				"t": -20,
-				"l": 30
+			"offset": {
+				"button": { "w": 100, "t": -20, "l": 30 }
 			}
 		},
 		{
@@ -355,10 +313,8 @@
 			"rarity": 5,
 			"weaponType": "claymore",
 			"limited": true,
-			"buttonOffset": {
-				"w": 80,
-				"t": 10,
-				"l": 35
+			"offset": {
+				"button": { "w": 80, "t": 10, "l": 35 }
 			}
 		},
 		{
@@ -374,10 +330,8 @@
 			"rarity": 5,
 			"weaponType": "bow",
 			"limited": true,
-			"buttonOffset": {
-				"w": 70,
-				"t": 10,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 10, "l": 35 }
 			}
 		},
 		{
@@ -400,10 +354,8 @@
 			"rarity": 5,
 			"weaponType": "polearm",
 			"limited": true,
-			"buttonOffset": {
-				"w": 90,
-				"t": 15,
-				"l": 60
+			"offset": {
+				"button": { "w": 90, "t": 15, "l": 60 }
 			}
 		},
 		{
@@ -426,10 +378,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"w": 100,
-				"t": -14,
-				"l": 60
+			"offset": {
+				"button": { "w": 100, "t": -14, "l": 60 }
 			}
 		},
 		{
@@ -437,10 +387,8 @@
 			"name": "primordial-jade-winged-spear",
 			"rarity": 5,
 			"weaponType": "polearm",
-			"buttonOffset": {
-				"w": 80,
-				"t": 10,
-				"l": 30
+			"offset": {
+				"button": { "w": 80, "t": 10, "l": 30 }
 			}
 		},
 		{
@@ -449,10 +397,8 @@
 			"rarity": 5,
 			"weaponType": "sword",
 			"limited": true,
-			"buttonOffset": {
-				"w": 90,
-				"t": -10,
-				"l": 30
+			"offset": {
+				"button": { "w": 90, "t": -10, "l": 30 }
 			}
 		},
 		{
@@ -461,10 +407,8 @@
 			"rarity": 5,
 			"weaponType": "polearm",
 			"limited": true,
-			"buttonOffset": {
-				"w": 90,
-				"t": 20,
-				"l": 30
+			"offset": {
+				"button": { "w": 90, "t": 20, "l": 30 }
 			}
 		},
 		{
@@ -473,10 +417,8 @@
 			"rarity": 5,
 			"weaponType": "claymore",
 			"limited": true,
-			"buttonOffset": {
-				"w": 60,
-				"t": 20,
-				"l": 60
+			"offset": {
+				"button": { "w": 60, "t": 20, "l": 60 }
 			}
 		},
 		{
@@ -485,10 +427,8 @@
 			"rarity": 5,
 			"weaponType": "catalyst",
 			"limited": true,
-			"buttonOffset": {
-				"w": 65,
-				"t": 30,
-				"l": 65
+			"offset": {
+				"button": { "w": 65, "t": 30, "l": 65 }
 			}
 		},
 		{
@@ -514,10 +454,8 @@
 			"name": "lost-prayer-to-the-sacred-winds",
 			"rarity": 5,
 			"weaponType": "catalyst",
-			"buttonOffset": {
-				"w": 55,
-				"t": 40,
-				"l": 40
+			"offset": {
+				"button": { "w": 55, "t": 40, "l": 40 }
 			}
 		},
 		{
@@ -525,10 +463,8 @@
 			"name": "wolf_s-gravestone",
 			"rarity": 5,
 			"weaponType": "claymore",
-			"buttonOffset": {
-				"w": 80,
-				"t": 15,
-				"l": 65
+			"offset": {
+				"button": { "w": 80, "t": 15, "l": 65 }
 			}
 		},
 		{
@@ -536,10 +472,8 @@
 			"name": "amos-bow",
 			"rarity": 5,
 			"weaponType": "bow",
-			"buttonOffset": {
-				"w": 70,
-				"t": 0,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 0, "l": 35 }
 			}
 		},
 		{
@@ -547,10 +481,8 @@
 			"name": "aquila-favonia",
 			"rarity": 5,
 			"weaponType": "sword",
-			"buttonOffset": {
-				"w": 80,
-				"t": -10,
-				"l": 65
+			"offset": {
+				"button": { "w": 80, "t": -10, "l": 65 }
 			}
 		},
 		{
@@ -558,17 +490,17 @@
 			"name": "skyward-pride",
 			"rarity": 5,
 			"weaponType": "claymore",
-			"buttonOffset": { "w": 80, "t": 10, "l": 65 }
+			"offset": {
+				"button": { "w": 80, "t": 10, "l": 65 }
+			}
 		},
 		{
 			"itemID": 103,
 			"name": "skyward-atlas",
 			"rarity": 5,
 			"weaponType": "catalyst",
-			"buttonOffset": {
-				"w": 65,
-				"t": 40,
-				"l": 70
+			"offset": {
+				"button": { "w": 65, "t": 40, "l": 70 }
 			}
 		},
 		{
@@ -576,10 +508,8 @@
 			"name": "skyward-harp",
 			"rarity": 5,
 			"weaponType": "bow",
-			"buttonOffset": {
-				"w": 70,
-				"t": 10,
-				"l": 35
+			"offset": {
+				"button": { "w": 70, "t": 10, "l": 35 }
 			}
 		},
 		{
@@ -587,10 +517,8 @@
 			"name": "skyward-spine",
 			"rarity": 5,
 			"weaponType": "polearm",
-			"buttonOffset": {
-				"w": 80,
-				"t": 10,
-				"l": 60
+			"offset": {
+				"button": { "w": 80, "t": 10, "l": 60 }
 			}
 		},
 		{
@@ -598,10 +526,8 @@
 			"name": "skyward-blade",
 			"rarity": 5,
 			"weaponType": "sword",
-			"buttonOffset": {
-				"w": 90,
-				"t": -10,
-				"l": 60
+			"offset": {
+				"button": { "w": 90, "t": -10, "l": 60 }
 			}
 		},
 		{

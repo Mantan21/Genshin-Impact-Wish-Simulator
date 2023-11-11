@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
-	import positionToStyle from '$lib/helpers/cssPosition';
+	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/Icon.svelte';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
@@ -15,7 +15,7 @@
 		weaponType,
 		type,
 		vision,
-		wishBoxPosition,
+		offset,
 		stelaFortuna,
 		isNew,
 		bonusType,
@@ -42,7 +42,7 @@
 						src={$assets[name]}
 						alt={name}
 						class="wishpic {weaponType}-item"
-						style={positionToStyle(wishBoxPosition)}
+						style={positionToStyle(offset?.wishCard)}
 						crossorigin="anonymous"
 					/>
 				{:else}
@@ -51,7 +51,7 @@
 						alt={name}
 						class="wishpic"
 						crossorigin="anonymous"
-						style={positionToStyle(wishBoxPosition)}
+						style={positionToStyle(offset?.wishCard)}
 					/>
 				{/if}
 

@@ -6,8 +6,11 @@
 			"name": "furina",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": -35, "h": 205, "t": 62 },
-			"buttonOffset": { "l": 52, "w": 130, "t": 35 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -35, "h": 205, "t": 62 },
+				"button": { "l": 52, "w": 130, "t": 35 }
+			}
 		},
 		{
 			"itemID": 159,
@@ -15,23 +18,32 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "4.2-1",
-			"wishBoxPosition": { "l": 35, "h": 200, "t": 60 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 35, "h": 200, "t": 60 }
+			}
 		},
 		{
 			"itemID": 71,
 			"name": "wriothesley",
 			"vision": "cryo",
 			"rarity": 5,
-			"wishBoxPosition": { "l": -32, "h": 210, "t": 88 },
-			"buttonOffset": { "l": 50, "w": 120, "t": 25 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -32, "h": 210, "t": 88 },
+				"button": { "l": 50, "w": 120, "t": 25 }
+			}
 		},
 		{
 			"itemID": 70,
 			"name": "neuvillette",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 68, "h": 190, "t": 74 },
-			"buttonOffset": { "l": 54, "w": 105, "t": 20 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 68, "h": 190, "t": 74 },
+				"button": { "l": 54, "w": 105, "t": 20 }
+			}
 		},
 		{
 			"itemID": 69,
@@ -39,7 +51,10 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "4.0-2",
-			"wishBoxPosition": { "l": -55, "h": 170, "t": 58 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -55, "h": 170, "t": 58 }
+			}
 		},
 		{
 			"itemID": 68,
@@ -47,15 +62,21 @@
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "4.0-1",
-			"wishBoxPosition": { "l": 70, "h": 175, "t": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 70, "h": 175, "t": 55 }
+			}
 		},
 		{
 			"itemID": 67,
 			"name": "lyney",
 			"vision": "pyro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 23, "h": 205, "t": 70 },
-			"buttonOffset": { "l": 55, "w": 105, "t": 20 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 23, "h": 205, "t": 70 },
+				"button": { "l": 55, "w": 105, "t": 20 }
+			}
 		},
 		{
 			"itemID": 66,
@@ -63,15 +84,21 @@
 			"vision": "dendro",
 			"rarity": 4,
 			"release": "3.7-1",
-			"wishBoxPosition": { "l": 98, "h": 200, "t": 78 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 98, "h": 200, "t": 78 }
+			}
 		},
 		{
 			"itemID": 65,
 			"name": "baizhu",
 			"vision": "dendro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 128, "h": 205, "t": 74 },
-			"buttonOffset": { "l": 50, "w": 105, "t": 35 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 128, "h": 205, "t": 74 },
+				"button": { "l": 50, "w": 105, "t": 35 }
+			}
 		},
 		{
 			"itemID": 64,
@@ -79,7 +106,10 @@
 			"vision": "dendro",
 			"rarity": 4,
 			"release": "3.6-2",
-			"wishBoxPosition": { "l": 20, "h": 215, "t": 85 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 20, "h": 215, "t": 85 }
+			}
 		},
 		{
 			"itemID": 63,
@@ -87,23 +117,32 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "3.5-2",
-			"wishBoxPosition": { "l": 85, "h": 160, "t": 70 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 85, "h": 160, "t": 70 }
+			}
 		},
 		{
 			"itemID": 62,
 			"name": "dehya",
 			"vision": "pyro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 89, "l": 25, "h": 220 },
-			"buttonOffset": { "w": 130, "t": 24, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 89, "l": 25, "h": 220 },
+				"button": { "w": 130, "t": 24, "l": 55 }
+			}
 		},
 		{
 			"itemID": 61,
 			"name": "alhaitham",
 			"vision": "dendro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 90, "l": 80, "h": 200 },
-			"buttonOffset": { "w": 130, "t": 24, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 90, "l": 80, "h": 200 },
+				"button": { "w": 130, "t": 24, "l": 55 }
+			}
 		},
 		{
 			"itemID": 60,
@@ -111,15 +150,21 @@
 			"vision": "dendro",
 			"rarity": 4,
 			"release": "3.4-1",
-			"wishBoxPosition": { "t": 63, "l": 35, "h": 140 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 63, "l": 35, "h": 140 }
+			}
 		},
 		{
 			"itemID": 59,
 			"name": "wanderer",
 			"vision": "anemo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 73, "l": 60, "h": 185 },
-			"buttonOffset": { "w": 120, "t": 27 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 73, "l": 60, "h": 185 },
+				"button": { "w": 120, "t": 27 }
+			}
 		},
 		{
 			"itemID": 58,
@@ -127,7 +172,10 @@
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "3.3-1",
-			"wishBoxPosition": { "t": 73, "l": 78, "h": 185 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 73, "l": 78, "h": 185 }
+			}
 		},
 		{
 			"itemID": 57,
@@ -135,31 +183,43 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "3.2-2",
-			"wishBoxPosition": { "h": 160, "t": 65 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 160, "t": 65 }
+			}
 		},
 		{
 			"itemID": 56,
 			"name": "nahida",
 			"vision": "dendro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 70, "t": 45 },
-			"buttonOffset": { "w": 130, "t": 30 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 70, "t": 45 },
+				"button": { "w": 130, "t": 30 }
+			}
 		},
 		{
 			"itemID": 55,
 			"name": "nilou",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 70, "h": 200, "t": 66 },
-			"buttonOffset": { "w": 145, "t": 35, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 70, "h": 200, "t": 66 },
+				"button": { "w": 145, "t": 35, "l": 55 }
+			}
 		},
 		{
 			"itemID": 54,
 			"name": "cyno",
 			"vision": "electro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 83, "l": 40, "h": 195 },
-			"buttonOffset": { "w": 160, "t": 35, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 83, "l": 40, "h": 195 },
+				"button": { "w": 160, "t": 35, "l": 55 }
+			}
 		},
 		{
 			"itemID": 53,
@@ -167,7 +227,10 @@
 			"vision": "hydro",
 			"rarity": 4,
 			"release": "3.1-1",
-			"wishBoxPosition": { "l": 35, "h": 170, "t": 60 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 35, "h": 170, "t": 60 }
+			}
 		},
 		{
 			"itemID": 52,
@@ -175,15 +238,21 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "3.0-2",
-			"wishBoxPosition": { "l": -15, "h": 180, "t": 65 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -15, "h": 180, "t": 65 }
+			}
 		},
 		{
 			"itemID": 51,
 			"name": "tighnari",
 			"vision": "dendro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 50, "h": 195, "t": 85 },
-			"buttonOffset": { "w": 95, "t": 35, "l": 30 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 50, "h": 195, "t": 85 },
+				"button": { "w": 95, "t": 35, "l": 30 }
+			}
 		},
 		{
 			"itemID": 50,
@@ -191,7 +260,10 @@
 			"vision": "dendro",
 			"rarity": 4,
 			"release": "3.0-1",
-			"wishBoxPosition": { "l": 140, "h": 170, "t": 65 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 140, "h": 170, "t": 65 }
+			}
 		},
 		{
 			"itemID": 49,
@@ -199,7 +271,10 @@
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "2.8-1",
-			"wishBoxPosition": { "t": 65, "l": 25 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 65, "l": 25 }
+			}
 		},
 		{
 			"itemID": 48,
@@ -207,39 +282,54 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "2.7-2",
-			"wishBoxPosition": { "h": 160, "t": 66, "l": 15 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 160, "t": 66, "l": 15 }
+			}
 		},
 		{
 			"itemID": 47,
 			"name": "yelan",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 220, "t": 82, "l": 80 },
-			"buttonOffset": { "w": 100, "t": 32, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 220, "t": 82, "l": 80 },
+				"button": { "w": 100, "t": 32, "l": 50 }
+			}
 		},
 		{
 			"itemID": 46,
 			"name": "kamisato-ayato",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 210, "l": 100, "t": 90 },
-			"buttonOffset": { "w": 140, "t": 35, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 210, "l": 100, "t": 90 },
+				"button": { "w": 140, "t": 35, "l": 50 }
+			}
 		},
 		{
 			"itemID": 45,
 			"name": "yae-miko",
 			"vision": "electro",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 210, "t": 87, "l": 10 },
-			"buttonOffset": { "w": 170, "t": 24, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 210, "t": 87, "l": 10 },
+				"button": { "w": 170, "t": 24, "l": 50 }
+			}
 		},
 		{
 			"itemID": 44,
 			"name": "shenhe",
 			"vision": "cryo",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 190, "l": -15, "t": 78 },
-			"buttonOffset": { "w": 170, "t": 20, "l": 30 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 190, "l": -15, "t": 78 },
+				"button": { "w": 170, "t": 20, "l": 30 }
+			}
 		},
 		{
 			"itemID": 43,
@@ -247,15 +337,21 @@
 			"vision": "geo",
 			"rarity": 4,
 			"release": "2.4-1",
-			"wishBoxPosition": { "h": 165, "l": 70, "t": 70 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 165, "l": 70, "t": 70 }
+			}
 		},
 		{
 			"itemID": 42,
 			"name": "arataki-itto",
 			"vision": "geo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 85, "l": 75, "h": 195 },
-			"buttonOffset": { "w": 190, "t": 30, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 85, "l": 75, "h": 195 },
+				"button": { "w": 190, "t": 30, "l": 50 }
+			}
 		},
 		{
 			"itemID": 41,
@@ -263,7 +359,10 @@
 			"vision": "geo",
 			"rarity": 4,
 			"release": "2.3-2",
-			"wishBoxPosition": { "l": 100, "h": 165, "t": 65 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 100, "h": 165, "t": 65 }
+			}
 		},
 		{
 			"itemID": 40,
@@ -271,23 +370,32 @@
 			"vision": "pyro",
 			"rarity": 4,
 			"release": "2.2-2",
-			"wishBoxPosition": { "l": 80, "h": 160, "t": 70 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 80, "h": 160, "t": 70 }
+			}
 		},
 		{
 			"itemID": 39,
 			"name": "sangonomiya-kokomi",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 190, "l": 65 },
-			"buttonOffset": { "w": 180, "t": 25, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 190, "l": 65 },
+				"button": { "w": 180, "t": 25, "l": 55 }
+			}
 		},
 		{
 			"itemID": 38,
 			"name": "raiden-shogun",
 			"vision": "electro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 80, "l": 95, "h": 200 },
-			"buttonOffset": { "w": 160, "t": 5 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 80, "l": 95, "h": 200 },
+				"button": { "w": 160, "t": 5 }
+			}
 		},
 		{
 			"itemID": 37,
@@ -295,15 +403,21 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "2.1-1",
-			"wishBoxPosition": { "h": 210, "t": 85 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 210, "t": 85 }
+			}
 		},
 		{
 			"itemID": 36,
 			"name": "yoimiya",
 			"vision": "pyro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 66, "l": 40 },
-			"buttonOffset": { "w": 150, "t": 20, "l": 40 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 66, "l": 40 },
+				"button": { "w": 150, "t": 20, "l": 40 }
+			}
 		},
 		{
 			"itemID": 35,
@@ -311,31 +425,43 @@
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "2.0-2",
-			"wishBoxPosition": { "t": 63, "h": 185, "l": -50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 63, "h": 185, "l": -50 }
+			}
 		},
 		{
 			"itemID": 34,
 			"name": "kamisato-ayaka",
 			"vision": "cryo",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 40 },
-			"buttonOffset": { "w": 82, "t": 32 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 40 },
+				"button": { "w": 82, "t": 32 }
+			}
 		},
 		{
 			"itemID": 33,
 			"name": "kaedehara-kazuha",
 			"vision": "anemo",
 			"rarity": 5,
-			"wishBoxPosition": { "h": 230, "t": 90, "l": 70 },
-			"buttonOffset": { "w": 110, "t": 32 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 230, "t": 90, "l": 70 },
+				"button": { "w": 110, "t": 32 }
+			}
 		},
 		{
 			"itemID": 32,
 			"name": "eula",
 			"vision": "cryo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 83, "h": 200 },
-			"buttonOffset": { "w": 140, "t": 32 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 83, "h": 200 },
+				"button": { "w": 140, "t": 32 }
+			}
 		},
 		{
 			"itemID": 31,
@@ -343,7 +469,10 @@
 			"vision": "pyro",
 			"rarity": 4,
 			"release": "1.5-1",
-			"wishBoxPosition": { "l": 160, "t": 70 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 160, "t": 70 }
+			}
 		},
 		{
 			"itemID": 30,
@@ -351,47 +480,65 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "1.4-2",
-			"wishBoxPosition": { "h": 175, "t": 80, "l": 60 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 175, "t": 80, "l": 60 }
+			}
 		},
 		{
 			"itemID": 29,
 			"name": "hu-tao",
 			"vision": "pyro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": -110, "h": 200, "t": 70 },
-			"buttonOffset": { "w": 160, "t": 22 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -110, "h": 200, "t": 70 },
+				"button": { "w": 160, "t": 22 }
+			}
 		},
 		{
 			"itemID": 28,
 			"name": "xiao",
 			"vision": "anemo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 50 },
-			"buttonOffset": { "w": 120, "t": 30, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 50 },
+				"button": { "w": 120, "t": 30, "l": 50 }
+			}
 		},
 		{
 			"itemID": 27,
 			"name": "ganyu",
 			"vision": "cryo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 79, "h": 175, "l": 55 },
-			"buttonOffset": { "w": 200, "t": 25 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 79, "h": 175, "l": 55 },
+				"button": { "w": 200, "t": 25 }
+			}
 		},
 		{
 			"itemID": 26,
 			"name": "albedo",
 			"vision": "geo",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 22, "t": 72, "h": 190 },
-			"buttonOffset": { "w": 170, "t": 28, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 22, "t": 72, "h": 190 },
+				"button": { "w": 170, "t": 28, "l": 50 }
+			}
 		},
 		{
 			"itemID": 25,
 			"name": "zhongli",
 			"vision": "geo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 80, "l": 80, "h": 200 },
-			"buttonOffset": { "w": 120, "t": 25, "l": 70 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 80, "l": 80, "h": 200 },
+				"button": { "w": 120, "t": 25, "l": 70 }
+			}
 		},
 		{
 			"itemID": 24,
@@ -399,15 +546,21 @@
 			"vision": "pyro",
 			"rarity": 4,
 			"release": "1.1-2",
-			"wishBoxPosition": { "h": 200, "t": 72 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 200, "t": 72 }
+			}
 		},
 		{
 			"itemID": 23,
 			"name": "tartaglia",
 			"vision": "hydro",
 			"rarity": 5,
-			"wishBoxPosition": { "l": 120, "h": 225, "t": 75 },
-			"buttonOffset": { "w": 160, "t": 22 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 120, "h": 225, "t": 75 },
+				"button": { "w": 160, "t": 22 }
+			}
 		},
 		{
 			"itemID": 22,
@@ -415,23 +568,32 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "1.1-1",
-			"wishBoxPosition": { "t": 50, "l": 80, "h": 190 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 50, "l": 80, "h": 190 }
+			}
 		},
 		{
 			"itemID": 21,
 			"name": "klee",
 			"vision": "pyro",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 43, "h": 160, "l": 45 },
-			"buttonOffset": { "w": 110, "t": 32 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 43, "h": 160, "l": 45 },
+				"button": { "w": 110, "t": 32 }
+			}
 		},
 		{
 			"itemID": 20,
 			"name": "venti",
 			"vision": "anemo",
 			"rarity": 5,
-			"wishBoxPosition": { "t": 70, "l": 90 },
-			"buttonOffset": { "w": 180, "t": 30, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 70, "l": 90 },
+				"button": { "w": 180, "t": 30, "l": 50 }
+			}
 		},
 		{
 			"itemID": 19,
@@ -439,8 +601,11 @@
 			"vision": "electro",
 			"rarity": 5,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 70, "l": 25 },
-			"buttonOffset": { "w": 150, "t": 22, "l": 50 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 70, "l": 25 },
+				"button": { "w": 150, "t": 22, "l": 50 }
+			}
 		},
 		{
 			"itemID": 18,
@@ -448,7 +613,10 @@
 			"vision": "hydro",
 			"rarity": 5,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": 55, "h": 190 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 55, "h": 190 }
+			}
 		},
 		{
 			"itemID": 17,
@@ -456,15 +624,22 @@
 			"vision": "cryo",
 			"rarity": 5,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 55 },
-			"buttonOffset": { "w": 100, "t": 30 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 55 },
+				"button": { "w": 100, "t": 30 }
+			}
 		},
 		{
 			"itemID": 16,
 			"name": "diluc",
 			"vision": "pyro",
 			"rarity": 5,
-			"release": "1.0-0"
+			"release": "1.0-0",
+			"offset": {
+				"splashArt": {},
+				"wishCard": {}
+			}
 		},
 		{
 			"itemID": 15,
@@ -472,8 +647,11 @@
 			"vision": "anemo",
 			"rarity": 5,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 80, "h": 190, "l": 85 },
-			"buttonOffset": { "w": 90, "t": 35, "l": 55 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 80, "h": 190, "l": 85 },
+				"button": { "w": 90, "t": 35, "l": 55 }
+			}
 		},
 		{
 			"itemID": 14,
@@ -481,7 +659,10 @@
 			"vision": "anemo",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "h": 175, "t": 72 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 175, "t": 72 }
+			}
 		},
 		{
 			"itemID": 13,
@@ -489,7 +670,10 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 70, "l": 40, "h": 190 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 70, "l": 40, "h": 190 }
+			}
 		},
 		{
 			"itemID": 12,
@@ -497,8 +681,11 @@
 			"vision": "geo",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 70 },
-			"buttonOffset": { "w": 100, "t": 30 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 70 },
+				"button": { "w": 100, "t": 30 }
+			}
 		},
 		{
 			"itemID": 11,
@@ -506,7 +693,10 @@
 			"vision": "pyro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": -22, "t": 55, "h": 190 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -22, "t": 55, "h": 190 }
+			}
 		},
 		{
 			"itemID": 10,
@@ -514,14 +704,21 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 65, "l": 10, "h": 170 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 65, "l": 10, "h": 170 }
+			}
 		},
 		{
 			"itemID": 9,
 			"name": "ningguang",
 			"vision": "geo",
 			"rarity": 4,
-			"release": "1.0-0"
+			"release": "1.0-0",
+			"offset": {
+				"splashArt": {},
+				"wishCard": {}
+			}
 		},
 		{
 			"itemID": 8,
@@ -529,7 +726,10 @@
 			"vision": "hydro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "h": 200, "t": 80, "l": 40 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "h": 200, "t": 80, "l": 40 }
+			}
 		},
 		{
 			"itemID": 7,
@@ -537,7 +737,10 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": 35 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 35 }
+			}
 		},
 		{
 			"itemID": 6,
@@ -545,7 +748,10 @@
 			"vision": "pyro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": 120, "t": 66, "h": 175 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 120, "t": 66, "h": 175 }
+			}
 		},
 		{
 			"itemID": 5,
@@ -553,7 +759,10 @@
 			"vision": "electro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": -5, "t": 65 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": -5, "t": 65 }
+			}
 		},
 		{
 			"itemID": 4,
@@ -561,14 +770,21 @@
 			"vision": "hydro",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 75, "h": 155 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "t": 75, "h": 155 }
+			}
 		},
 		{
 			"itemID": 3,
 			"name": "lisa",
 			"vision": "electro",
 			"rarity": 4,
-			"release": "1.0-0"
+			"release": "1.0-0",
+			"offset": {
+				"splashArt": {},
+				"wishCard": {}
+			}
 		},
 		{
 			"itemID": 2,
@@ -576,7 +792,10 @@
 			"vision": "cryo",
 			"rarity": 4,
 			"release": "1.0-0",
-			"wishBoxPosition": { "l": 20, "t": 82, "h": 190 }
+			"offset": {
+				"splashArt": {},
+				"wishCard": { "l": 20, "t": 82, "h": 190 }
+			}
 		},
 		{
 			"itemID": 1,
@@ -584,7 +803,10 @@
 			"rarity": 4,
 			"vision": "pyro",
 			"release": "1.0-0",
-			"wishBoxPosition": { "t": 55, "h": 170, "l": 120 }
+			"offset": {
+				"splashArt": { "x": 0 },
+				"wishCard": { "t": 55, "h": 170, "l": 120 }
+			}
 		}
 	]
 }

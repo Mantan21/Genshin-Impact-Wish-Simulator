@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { course } from '$lib/store/app-stores';
-	import positionToStyle from '$lib/helpers/cssPosition';
+	import { positionToStyle } from '$lib/helpers/cssPosition';
 
 	export let featured = {};
 	export let rateup = {};

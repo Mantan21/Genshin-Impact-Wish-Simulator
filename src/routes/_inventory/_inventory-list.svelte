@@ -138,7 +138,7 @@
 	const getAll = async () => {
 		characters = (await loadItems('character')).map((c) => {
 			const charData = setActiveOutfit(c);
-			delete charData.wishBoxPosition;
+			delete charData.offset;
 			return charData;
 		});
 		weapons = await loadItems('lightcone');

@@ -264,8 +264,8 @@
 	.character {
 		--text-width: calc(30 / 100 * var(--content-width));
 		width: calc(30 / 100 * var(--content-width));
-		left: 54%;
-		bottom: 10%;
+		left: 50%;
+		bottom: 8%;
 	}
 
 	.character .char-name {
