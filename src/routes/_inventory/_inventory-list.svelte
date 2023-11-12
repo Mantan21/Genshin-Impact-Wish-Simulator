@@ -11,8 +11,8 @@
 	import { owneditem } from '$lib/store/localstore-manager';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import InventoryItem from './_inventory-item.svelte';
 	import { imageCDN } from '$lib/helpers/assets';
+	import InventoryItem from './_inventory-item.svelte';
 
 	export let activeItem = 'character';
 	export let orderby = 'rarity';

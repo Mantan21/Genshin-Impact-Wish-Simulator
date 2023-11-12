@@ -9,7 +9,7 @@
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
-	import factoryReset from '$lib/helpers/storage-reset';
+	import { factoryReset } from '$lib/helpers/storage-reset';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Toast from '$lib/components/Toast.svelte';

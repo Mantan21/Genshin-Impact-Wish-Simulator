@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { activeVersion, preloadVersion } from '$lib/store/app-stores';
+	import { activeVersion, assets, preloadVersion } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { imageCDN } from '$lib/helpers/assets';
 
@@ -61,7 +61,7 @@
 					{:else}
 						{#key bannerName}
 							<img
-								use:lazyLoad={`/images/banner/thumbnail/${bannerName}.webp`}
+								use:lazyLoad={$assets[`thumbnail/${bannerName}`]}
 								alt={getName(character)}
 								class="dual{i + 1}"
 								crossorigin="anonymous"
@@ -75,7 +75,7 @@
 			{#if !isCustom}
 				<div class="weapon">
 					<img
-						use:lazyLoad={`/images/banner/thumbnail/${weapons.bannerName}.webp`}
+						use:lazyLoad={$assets[`thumbnail/${weapons.bannerName}`]}
 						alt={getName(weapons.bannerName)}
 						crossorigin="anonymous"
 						loading="lazy"

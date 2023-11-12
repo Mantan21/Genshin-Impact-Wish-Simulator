@@ -38,8 +38,6 @@
 
 	$: sortList(list);
 
-	$: console.log(list);
-
 	onMount(async () => {
 		clientWidth = (clientHeight * 7) / 30;
 

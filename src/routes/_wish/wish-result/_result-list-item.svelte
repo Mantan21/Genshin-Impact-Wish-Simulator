@@ -38,7 +38,7 @@
 		<div class="new">{$t('wish.result.new')}</div>
 	{/if}
 	<div class="zoomist-container item-body {weaponType || ''}">
-		<div class="zoomist-wrapper item-content" style="--bg: url({$assets['resultcard-bg.svg']})">
+		<div class="zoomist-wrapper item-content" style="--bg: url({$assets['resultcard-bg.webp']})">
 			{#if custom}
 				{@const { images = {}, hostedImages = {}, status, artPosition } = $customData || {}}
 				{@const { artURL } = status === 'owned' ? images : hostedImages}

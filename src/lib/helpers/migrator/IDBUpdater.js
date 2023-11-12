@@ -4,6 +4,7 @@ import { data as wpDB } from '$lib/data/weapons.json';
 import { HistoryManager } from '$lib/store/IDB-manager';
 import { localConfig } from '$lib/store/localstore-manager';
 import { retriveOldData } from './collect-old-data';
+import { clearCacheStorage } from '../storage-reset';
 
 const { addHistory, getByName, getAllHistories } = HistoryManager;
 
@@ -24,6 +25,8 @@ const { addHistory, getByName, getAllHistories } = HistoryManager;
 export const IDBUpdater = async () => {
 	const idbVer = localConfig.get('idbVer');
 	if (idbVer >= 3) return;
+
+	await clearCacheStorage();
 
 	const itemIDs = {};
 	charDB.forEach(({ itemID, name }) => (itemIDs[name] = itemID));

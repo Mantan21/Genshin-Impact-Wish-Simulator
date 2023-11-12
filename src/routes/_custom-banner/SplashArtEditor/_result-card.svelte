@@ -108,7 +108,7 @@
 		class="wishlist"
 		style="--card-height:{clientHeight}px;--card-width:{clientWidth}px"
 	>
-		<div class="item-box" style="--bg:url({$assets['resultcard-bg.svg']})">
+		<div class="item-box" style="--bg:url({$assets['resultcard-bg.webp']})">
 			<!--  -->
 			<div id="wish1" class="item star5 character">
 				<div class="new">{$t('wish.result.new')}</div>

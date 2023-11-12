@@ -602,7 +602,7 @@
 			"rarity": 5,
 			"release": "1.0-0",
 			"offset": {
-				"splashArt": {},
+				"splashArt": { "scale": 2.5 },
 				"wishCard": { "t": 70, "l": 25 },
 				"button": { "w": 150, "t": 22, "l": 50 }
 			}

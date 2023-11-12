@@ -1,6 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import BannerArt from '../../_custom-banner/BannerEditor/BannerArt.svelte';
+	import { assets } from '$lib/store/app-stores';
 
 	export let src = '';
 	export let alt = '';
@@ -22,7 +23,7 @@
 	{#if !isError}
 		{#if custom}
 			<img
-				src="/images/banner/blank/{vision}.webp"
+				src={$assets[`blank/${vision}`]}
 				alt="background banner"
 				crossorigin="anonymous"
 				class="art-bg"

@@ -7,6 +7,7 @@
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import ShopGroup from '../_shop-group.svelte';
 	import ShopGroupItem from '../_shop-group-item.svelte';
+	import { assets } from '$lib/store/app-stores';
 
 	let showCryptoModal = false;
 	let showToast = false;
@@ -37,7 +38,7 @@
 		<div class="modal-donate">
 			<div class="pop-item">
 				<div class="icon">
-					<img src="/images/utility/donate-ethereum.png" alt="Ethereum" />
+					<img src={$assets['donate-ethereum.png']} alt="Ethereum" />
 				</div>
 				<div class="address">
 					<span> Ethereum ( erc20 ) </span>
@@ -52,7 +53,7 @@
 
 			<div class="pop-item">
 				<div class="icon">
-					<img src="/images/utility/donate-bnb.png" alt="Binance Coin" />
+					<img src={$assets['donate-bnb.png']} alt="Binance Coin" />
 				</div>
 				<div class="address">
 					<span> Binance Coin ( bep20 )</span>
@@ -67,7 +68,7 @@
 
 			<div class="pop-item">
 				<div class="icon">
-					<img src="/images/utility/donate-solana.png" alt="Solana" />
+					<img src={$assets['donate-solana.png']} alt="Solana" />
 				</div>
 				<div class="address">
 					<span> Solana </span>
@@ -101,8 +102,8 @@
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 				>
 					<div class="donate-icon">
-						<img src="/images/utility/donate-kofi.png" alt="Ko-fi Icon" />
-						<img src="/images/utility/paypal.png" alt="paypal" />
+						<img src={$assets['donate-kofi.png']} alt="Ko-fi Icon" />
+						<img src={$assets['paypal.png']} alt="paypal" />
 					</div>
 				</div>
 				<span> Support me on Ko-fi </span>
@@ -122,7 +123,7 @@
 				>
 					<div class="donate-icon">
 						{#each ['ovo', 'dana', 'linkaja'] as im}
-							<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
+							<img src={$assets[`donate-${im}.png`]} alt="{im} icon" />
 						{/each}
 					</div>
 				</div>
@@ -142,7 +143,7 @@
 				>
 					<div class="donate-icon">
 						{#each ['btc', 'ethereum', 'bnb', 'solana'] as im}
-							<img src="/images/utility/donate-{im}.png" alt="{im} icon" />
+							<img src={$assets[`donate-${im}.png`]} alt="{im} icon" />
 						{/each}
 					</div>
 				</div>

@@ -23,13 +23,13 @@ import {
 
 const { clearIDB } = HistoryManager;
 
-const clearCacheStorage = async () => {
+export const clearCacheStorage = async () => {
 	const keys = await caches.keys();
 	for (const key of keys) await caches.delete(key);
 	return true;
 };
 
-const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
+export const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	await clearIDB();
 	if (clearCache) await clearCacheStorage();
 
@@ -80,5 +80,3 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	autoskip.set(false);
 	wishAmount.set('default');
 };
-
-export default factoryReset;

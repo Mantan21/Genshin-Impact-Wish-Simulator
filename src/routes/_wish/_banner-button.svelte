@@ -62,7 +62,7 @@
 			{:else}
 				<img
 					in:fade
-					src="/images/characters/banner-button/{character}.webp"
+					src={$assets[`button/${character}`]}
 					alt="{type} Wish"
 					style={positionToStyle(buttonOffset(character))}
 					on:error={(e) => e.target.remove()}

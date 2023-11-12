@@ -1,7 +1,7 @@
 <script>
 	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { activeVersion, bannerList, editID } from '$lib/store/app-stores';
+	import { activeVersion, assets, bannerList, editID } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/store/IDB-manager';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -150,7 +150,7 @@
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
 >
 	<img
-		src="/images/banner/blank/{vision}.webp"
+		src={$assets[`blank/${vision}`]}
 		alt="background banner"
 		crossorigin="anonymous"
 		class="art-bg"

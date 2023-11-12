@@ -193,7 +193,7 @@
 									disabled={!complete}
 								>
 									<img
-										src={images?.thumbnail || `/images/banner/blank/${vision || 'pyro'}.webp`}
+										src={images?.thumbnail || $assets[`blank/${vision || 'pyro'}`]}
 										alt="Custom Banner"
 										crossorigin="anonymous"
 									/>
