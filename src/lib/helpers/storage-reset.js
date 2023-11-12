@@ -10,11 +10,15 @@ import {
 	starglitter,
 	showBeginner,
 	wishAmount,
-	activeVersion,
 	beginnerRemaining,
 	course,
 	activeBanner,
-	autoskip
+	autoskip,
+	editID,
+	editorMode,
+	customData,
+	isCustomBanner,
+	preloadVersion
 } from '$lib/store/app-stores';
 
 const { clearIDB } = HistoryManager;
@@ -29,9 +33,9 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	await clearIDB();
 	if (clearCache) await clearCacheStorage();
 
-	beginnerRemaining.set(20);
-	showBeginner.set(true);
 	course.set({ point: null, selected: null });
+	showBeginner.set(true);
+	beginnerRemaining.set(20);
 
 	if (keepSetting) {
 		const config = storageLocal.get('config');
@@ -62,9 +66,14 @@ const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
 	stardust.set(0);
 	starglitter.set(0);
 
+	editID.set(0);
+	editorMode.set(0);
+	customData.set({});
+	isCustomBanner.set(false);
+
 	localConfig.set('storageVersion', storageVersion);
 	localConfig.set('version', `${version}-${wishPhase}`);
-	activeVersion.set({ patch: version, phase: wishPhase });
+	preloadVersion.set({ patch: version, phase: wishPhase });
 	activeBanner.set(0);
 
 	// Setting

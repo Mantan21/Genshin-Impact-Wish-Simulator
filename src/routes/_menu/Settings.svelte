@@ -5,7 +5,7 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { autoskip, multipull, wishAmount } from '$lib/store/app-stores';
+	import { autoskip, isCustomBanner, multipull, wishAmount } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
@@ -81,7 +81,7 @@
 	const confirmReset = async () => {
 		playSfx();
 		showResetModal = false;
-		await factoryReset({ clearCache, keepSetting });
+		await factoryReset({ clearCache, keepSetting, isCustom: $isCustomBanner });
 		showToast = true;
 		if (keepSetting) return;
 
