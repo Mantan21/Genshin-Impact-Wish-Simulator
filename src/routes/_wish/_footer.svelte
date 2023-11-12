@@ -287,6 +287,7 @@
 		transition: all 0.2s;
 		color: #4a5265;
 		text-decoration: none;
+		z-index: +5;
 		position: relative;
 	}
 

@@ -47,7 +47,7 @@
 				<div class="row">
 					{#each drop5star as { name, type, rateup }}
 						<div class="cell">
-							{$t(type)}
+							{$t(type || 'character')}
 						</div>
 
 						{#if $isCustomBanner && rateup}

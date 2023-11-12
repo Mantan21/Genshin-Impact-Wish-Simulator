@@ -172,12 +172,16 @@ export const base64ToBlob = (image) => {
 	return new Blob([byteArray], { type: contentType });
 };
 
-export const imageCDN = (imgs) => {
+export const imageCDN = (imgs, width = 0) => {
 	const cdnURL = 'https://imagecdn.app/v2/image/';
-	if (typeof imgs === 'string') return cdnURL + imgs + '?format=webp';
+	if (typeof imgs === 'string') {
+		const w = width && !isNaN(width) ? `&width=${width}` : '';
+		return cdnURL + imgs + '?format=webp' + w;
+	}
 
 	Object.keys(imgs).forEach((key) => {
-		imgs[key] = cdnURL + imgs[key] + '?format=webp';
+		const width = key === 'faceURL' ? '&width=226' : '';
+		imgs[key] = cdnURL + imgs[key] + '?format=webp' + width;
 	});
 	return imgs;
 };

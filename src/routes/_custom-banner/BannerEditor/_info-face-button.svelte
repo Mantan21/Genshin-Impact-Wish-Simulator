@@ -12,6 +12,7 @@
 
 	const editInfo = getContext('editInfo');
 	const changeFace = getContext('changeFace');
+	const editSplashArt = getContext('editSplashArt');
 	const allowedType = 'image/png, image/webp, image/jpeg';
 
 	const closeToast = () => {
@@ -22,6 +23,11 @@
 	const showInfoEditor = () => {
 		editInfo(true);
 		playSfx('modal');
+	};
+
+	const showSplashArtEdit = () => {
+		editSplashArt(true);
+		playSfx();
 	};
 
 	const handleImage = (e) => {
@@ -86,7 +92,9 @@
 	<div class="customize">
 		<button class="detail" on:click={showInfoEditor}> <i class="gi-pen" /> Edit Info </button>
 		<br />
-		<button class="splashart"> <i class="gi-pen" /> Adjust Splash Art </button>
+		<button class="splashart" on:click={showSplashArtEdit}>
+			<i class="gi-pen" /> Adjust Splash Art
+		</button>
 	</div>
 </div>
 

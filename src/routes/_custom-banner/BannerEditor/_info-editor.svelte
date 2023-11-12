@@ -6,7 +6,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 
-	import InventoryItem from '../_inventory/_inventory-item.svelte';
+	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import RateupPicker from './_rateup-picker.svelte';
 	import PreviewGenerator from './_preview-generator.svelte';
 
@@ -73,8 +73,8 @@
 	<div
 		class="wrapper vision-picker"
 		class:pickerActive={showCharPicker}
+		style="--bg-icon:url('{$assets['modal-bg-icon.png']}'); --header-height:{headerHeight}px;"
 		transition:fly={{ duration: 250, x: 100 }}
-		style="--bg-icon:url('{$assets['modal-bg-icon.png']}'); --header-height:{headerHeight}px"
 	>
 		<div class="header" bind:clientHeight={headerHeight}>
 			<h1>Edit Banner Information</h1>
@@ -200,12 +200,20 @@
 		color: var(--text-color);
 	}
 
+	:global(.mobile) .wrapper {
+		width: 350px;
+	}
+
 	.header {
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 2%;
+	}
+
+	h1 {
+		font-size: calc(0.2 * var(--item-width));
 	}
 
 	.body {

@@ -6,16 +6,18 @@
 
 	import Icon from '$lib/components/Icon.svelte';
 	import FrameCustom from '../_wish/banner-card/_frame-custom.svelte';
-	import InfoButton from './_info-face-button.svelte';
-	import SplashartForm from './_splashart-form.svelte';
-	import MainArt from './_main-art.svelte';
-	import VisionPicker from './_vision-picker.svelte';
-	import InfoEditor from './_info-editor.svelte';
+	import InfoButton from './BannerEditor/_info-face-button.svelte';
+	import SplashartForm from './BannerEditor/_splashart-form.svelte';
+	import MainArt from './BannerEditor/BannerArt.svelte';
+	import VisionPicker from './BannerEditor/_vision-picker.svelte';
+	import InfoEditor from './BannerEditor/_info-editor.svelte';
+	import SplashArtEditor from './SplashArtEditor/SplashArtEditor.svelte';
 
 	let clientHeight;
 	let clientWidth;
 	let onBannerEdit = false;
 	let isInfoEdit = false;
+	let isSplashArtEdit = false;
 	let isLoaded = false;
 	let isEdited = false;
 
@@ -29,7 +31,7 @@
 	let rateup = [];
 
 	let imgChanged = { artURL: false, faceURL: false, thumbnail: false };
-	let artPosition = { banner: {}, splashart: {}, card: {} };
+	let artPosition = { banner: {}, splashArt: {}, wishCard: {} };
 	let images = {};
 
 	const idb = BannerManager;
@@ -67,6 +69,11 @@
 	};
 	$: autoSave(bannerData);
 
+	// Splash Art
+	const editSplashArt = (val) => (isSplashArtEdit = val);
+	setContext('editSplashArt', editSplashArt);
+
+	// Banner
 	const setPosition = (type, pos) => (artPosition[type] = pos);
 	setContext('setPosition', setPosition);
 
@@ -156,11 +163,15 @@
 	<SplashartForm {onBannerEdit} />
 	<FrameCustom editorMode {onBannerEdit} {vision} {bannerName} {character} {charTitle} />
 	<InfoButton faceURL={images?.faceURL} {onBannerEdit} />
-
-	{#if isInfoEdit}
-		<InfoEditor {rateup} {bannerName} {character} {charTitle} preview={images?.thumbnail} />
-	{/if}
 </div>
+
+{#if isInfoEdit}
+	<InfoEditor {rateup} {bannerName} {character} {charTitle} preview={images?.thumbnail} />
+{/if}
+
+{#if isSplashArtEdit}
+	<SplashArtEditor artURL={images?.artURL} position={artPosition} {character} {vision} />
+{/if}
 
 <style>
 	.card {

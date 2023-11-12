@@ -167,8 +167,19 @@
 						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
 
 						<div class="art-wrapper">
-							<SplashArt {custom} {name} {type} {outfitName} {weaponType} {useOutfit} />
+							<SplashArt
+								offset={offset?.splashArt}
+								{custom}
+								{name}
+								{type}
+								{outfitName}
+								{weaponType}
+								{useOutfit}
+								{clientHeight}
+								{clientWidth}
+							/>
 						</div>
+
 						<ItemInfo
 							itemName={name}
 							{type}

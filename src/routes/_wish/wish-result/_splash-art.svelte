@@ -1,8 +1,8 @@
 <script>
-	import { calculatePosition } from '$lib/helpers/cssPosition';
-	import { lazyLoad } from '$lib/helpers/lazyload';
-	import { removeAnimClass } from '$lib/helpers/transition';
 	import { assets, customData } from '$lib/store/app-stores';
+	import { removeAnimClass } from '$lib/helpers/transition';
+	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { getCssVarPosition as pos } from '$lib/helpers/cssPosition';
 
 	export let name;
 	export let type;
@@ -10,27 +10,37 @@
 	export let weaponType;
 	export let useOutfit;
 	export let custom;
+	export let clientHeight = 0;
+	export let clientWidth = 0;
+	export let offset = {};
 </script>
 
 <div class="zoomist-wrapper splash-art anim {type}" style="overflow: visible;" use:removeAnimClass>
+	<!-- Custom Art -->
 	{#if custom}
 		{@const { images = {}, hostedImages = {}, status, artPosition } = $customData || {}}
 		{@const { artURL } = status === 'owned' ? images : hostedImages}
 		{@const { splashArt = {} } = artPosition || {}}
-		<div class="zoomist-image" style={calculatePosition(splashArt)}>
+		<div class="zoomist-image" style={pos(splashArt, clientHeight, clientWidth)}>
 			<img use:lazyLoad={artURL} alt={name} crossorigin="anonymous" />
 		</div>
+
+		<!-- Weapon -->
 	{:else if type === 'weapon'}
 		<div class="zoomist-image weapon anim {weaponType}-parent" use:removeAnimClass>
 			<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
 			<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
 		</div>
+
+		<!-- Character OutFit -->
 	{:else if type === 'outfit'}
-		<div class="zoomist-image">
+		<div class="zoomist-image" style={pos(offset, clientHeight, clientWidth)}>
 			<img use:lazyLoad={$assets[`splash-art/${outfitName}`]} alt={name} crossorigin="anonymous" />
 		</div>
+
+		<!-- Character Art -->
 	{:else}
-		<div class="zoomist-image">
+		<div class="zoomist-image" style={pos(offset, clientHeight, clientWidth)}>
 			<img
 				use:lazyLoad={$assets[`splash-art/${useOutfit ? outfitName : name}`]}
 				alt={name}
@@ -72,16 +82,6 @@
 		object-fit: contain;
 		object-position: center;
 	}
-
-	/* .splash-art {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		transform: translateX(2%);
-	} */
 
 	.splash-art.anim {
 		filter: brightness(0) opacity(0);

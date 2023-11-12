@@ -173,6 +173,8 @@
 				<EpitomizedButton />
 			{/if}
 		</div>
+	{:else}
+		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }} />
 	{/if}
 </div>
 
