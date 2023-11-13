@@ -52,7 +52,7 @@
 		isChanged = false;
 
 		if (!dev) return;
-		console.log('WishCard Position', zoomPosition);
+		console.log('WishCard Position', JSON.stringify(zoomPosition));
 	};
 
 	onMount(() => {
@@ -148,7 +148,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transform: scale(1.2);
 	}
 
 	/* Wish List */

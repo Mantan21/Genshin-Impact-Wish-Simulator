@@ -66,7 +66,7 @@
 		playSfx('click2');
 
 		if (!dev) return;
-		console.log('SplashArt Position: ', zoomPosition);
+		console.log('SplashArt Position: ', JSON.stringify(zoomPosition));
 	};
 
 	onMount(() => {
