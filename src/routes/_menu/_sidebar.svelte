@@ -1,7 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { assets } from '$lib/store/app-stores';
 
 	export let activeContent;
 	const selectMenu = getContext('selectMenu');
@@ -9,7 +8,7 @@
 </script>
 
 <div class="sidebar">
-	<div class="menu-list" style="--bg-active: url('{$assets['menu-active.png']}')">
+	<div class="menu-list" style="--bg-active: url('/menu-active.png')">
 		<div class="menu-item" class:active={activeContent === 'options'}>
 			<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 		</div>

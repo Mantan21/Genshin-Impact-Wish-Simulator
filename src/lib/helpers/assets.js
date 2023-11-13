@@ -79,7 +79,6 @@ const images = [
 			'history-select-bg.webp',
 			'imbroke.webp',
 			'intertwined-fate.webp',
-			'menu-active.png',
 			'modal-bg-icon.png',
 			'payment-childe.webp',
 			'payment-tears.webp',
