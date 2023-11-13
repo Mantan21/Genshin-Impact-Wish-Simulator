@@ -21,7 +21,7 @@
 	// prettier-ignore
 	let type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition;
 	// prettier-ignore
-	$: ({ type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition } = data);
+	$: ({ type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition, watermark } = data);
 
 	let clientWidth;
 	let clientHeight;
@@ -61,7 +61,7 @@
 				{vision}
 			/>
 			<div class="frame skeleton">
-				<FrameCustom {bannerName} {character} {charTitle} {vision} />
+				<FrameCustom {bannerName} {character} {charTitle} {vision} {watermark} />
 			</div>
 		{:else if type === 'beginner'}
 			<BannerImage

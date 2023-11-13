@@ -28,6 +28,7 @@
 	let character = '';
 	let charTitle = '';
 	let vision = '';
+	let watermark = '';
 	let rateup = [];
 
 	let imgChanged = { artURL: false, faceURL: false, thumbnail: false };
@@ -43,6 +44,7 @@
 			bannerName = '',
 			character = '',
 			charTitle = '',
+			watermark = '',
 			vision = 'pyro',
 			rateup = [],
 			artPosition = {},
@@ -52,7 +54,7 @@
 	};
 
 	// prettier-ignore
-	$: bannerData = { bannerName, character, charTitle, vision, rateup, artPosition, images, imgChanged };
+	$: bannerData = { bannerName, character, charTitle, watermark, vision, rateup, artPosition, images, imgChanged };
 
 	const autoSave = async (data) => {
 		if (!isLoaded) return;
@@ -97,6 +99,9 @@
 
 	const setBannerName = (name) => (bannerName = name);
 	setContext('setBannerName', setBannerName);
+
+	const setWatermark = (text) => (watermark = text);
+	setContext('setWatermark', setWatermark);
 
 	const changeArt = (file) => {
 		if (!file) return;
@@ -161,12 +166,27 @@
 		<MainArt {onBannerEdit} artURL={images?.artURL} bannerPosition={artPosition?.banner} />
 	{/key}
 	<SplashartForm {onBannerEdit} />
-	<FrameCustom editorMode {onBannerEdit} {vision} {bannerName} {character} {charTitle} />
+	<FrameCustom
+		editorMode
+		{onBannerEdit}
+		{vision}
+		{bannerName}
+		{character}
+		{charTitle}
+		{watermark}
+	/>
 	<InfoButton faceURL={images?.faceURL} {onBannerEdit} />
 </div>
 
 {#if isInfoEdit}
-	<InfoEditor {rateup} {bannerName} {character} {charTitle} preview={images?.thumbnail} />
+	<InfoEditor
+		{rateup}
+		{bannerName}
+		{character}
+		{charTitle}
+		preview={images?.thumbnail}
+		{watermark}
+	/>
 {/if}
 
 {#if isSplashArtEdit}

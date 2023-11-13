@@ -17,6 +17,7 @@
 	export let vision = '';
 	export let editorMode = false;
 	export let onBannerEdit = false;
+	export let watermark = '';
 
 	const highlightBannerName = (bannerName, vision) => {
 		const name = bannerName || 'Banner Name';
@@ -98,6 +99,8 @@
 			{charTitle || 'Character Title'}
 		</div>
 	</div>
+
+	<div class="watermark">{watermark || ''}</div>
 </div>
 
 <style>
@@ -344,5 +347,14 @@
 	.icon-vision :global(svg) {
 		width: 100%;
 		height: 100%;
+	}
+
+	.watermark {
+		right: 2%;
+		bottom: 2%;
+		font-style: italic;
+		color: #fff;
+		font-size: calc(3 / 100 * var(--content-height));
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 </style>

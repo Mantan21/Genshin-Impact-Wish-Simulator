@@ -80,7 +80,7 @@
 		playSfx();
 		const isComplete = await localBanner.isComplete($editID);
 		if (isComplete) return (showUploader = true);
-		toastMsg = 'Please Complete All Data!';
+		toastMsg = 'Please Complete All Required Field!';
 		showToast = true;
 	};
 

@@ -33,6 +33,7 @@ const useCustomBanner = async (bannerID) => {
 			vision = 'pyro',
 			charTitle = '',
 			artPosition = {},
+			watermark = '',
 			status = null
 		} = data;
 
@@ -47,7 +48,8 @@ const useCustomBanner = async (bannerID) => {
 				images: dataIMG,
 				vision,
 				charTitle,
-				artPosition
+				artPosition,
+				watermark
 			}
 		]);
 

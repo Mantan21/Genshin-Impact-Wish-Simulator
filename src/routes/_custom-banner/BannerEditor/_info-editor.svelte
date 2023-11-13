@@ -15,6 +15,7 @@
 	export let character = '';
 	export let charTitle = '';
 	export let preview = '';
+	export let watermark = '';
 
 	let showCharPicker = false;
 	let headerHeight;
@@ -26,6 +27,7 @@
 	const setCharName = getContext('setCharName');
 	const setCharTitle = getContext('setCharTitle');
 	const setRateup = getContext('setRateup');
+	const setWatermark = getContext('setWatermark');
 
 	const typeBannerName = ({ target }) => {
 		const { value } = target;
@@ -40,6 +42,11 @@
 	const typeCharTitle = ({ target }) => {
 		const { value } = target;
 		setCharTitle(value);
+	};
+
+	const typeWatermark = ({ target }) => {
+		const { value } = target;
+		setWatermark(value);
 	};
 
 	const closeInfoEditor = () => {
@@ -88,7 +95,7 @@
 		<div class="body" bind:clientWidth={rowWidth} style="--item-width:{itemWidth}px">
 			<div class="body-wrapper">
 				<div class="field-group">
-					<label for="bannerName">Banner Name:</label>
+					<label for="bannerName">Banner Name: *</label>
 					<div class="col">
 						<input
 							type="text"
@@ -102,7 +109,7 @@
 				</div>
 
 				<div class="field-group">
-					<label for="charName">Character Name:</label>
+					<label for="charName">Character Name: *</label>
 					<div class="col">
 						<input
 							type="text"
@@ -130,8 +137,22 @@
 				</div>
 
 				<div class="field-group">
+					<label for="watermark">Watermark:</label>
+					<div class="col">
+						<input
+							type="text"
+							autocomplete="off"
+							id="watermark"
+							placeholder="Banner By @Traveler"
+							value={watermark}
+							on:input={typeWatermark}
+						/>
+					</div>
+				</div>
+
+				<div class="field-group">
 					<div class="row">
-						<label for="rateup">Rate Up Characters: </label>
+						<label for="rateup">Rate Up Characters: *</label>
 					</div>
 					<div class="row">
 						{#each Array(3) as _, i}
