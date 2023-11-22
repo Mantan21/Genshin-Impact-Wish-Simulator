@@ -3,15 +3,18 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import CheckBox from '$lib/components/CheckBox.svelte';
 
 	export let activeItem;
 	export let itemQty;
 	export let showAll;
 	export let orderby;
 
-	const showAllInventory = getContext('showAll');
 	const order = getContext('orderby');
 	const reverse = getContext('reverse');
+
+	const showAllInventory = getContext('showAll');
+	const handleShowAll = ({ detail }) => showAllInventory(!!detail.checked);
 
 	let showOrderOption = false;
 	const handleShowOrderOption = () => {
@@ -22,11 +25,6 @@
 	const selectOrder = (val) => {
 		order(val);
 		handleShowOrderOption();
-	};
-
-	const handleShowAll = ({ target }) => {
-		playSfx();
-		showAllInventory(target.checked);
 	};
 
 	onMount(() => {
@@ -73,22 +71,13 @@
 				</div>
 			{/if}
 		</div>
-		<div class="showAll">
-			<input
-				type="checkbox"
-				name="showAll"
-				id="showAll"
-				bind:checked={showAll}
-				on:change={handleShowAll}
-			/>
-			<label for="showAll">
-				<i>✔</i>
-				{$t(`inventory.showAllOption`, {
-					values: { item: $t(activeItem) }
-				})}
-				<span> {itemQty.owned}/{itemQty.all}</span>
-			</label>
-		</div>
+
+		<CheckBox on:change={handleShowAll} checked={showAll}>
+			{$t(`inventory.showAllOption`, {
+				values: { item: $t(activeItem) }
+			})}
+			<span> {itemQty.owned}/{itemQty.all}</span>
+		</CheckBox>
 	</div>
 </div>
 
@@ -109,33 +98,8 @@
 	.selector button {
 		width: 100%;
 	}
-	.showAll {
-		margin-left: 0.5rem;
+
+	.filter :global(.checkbox) {
 		color: var(--tertiary-color);
-		text-transform: capitalize;
-	}
-	label {
-		cursor: inherit;
-	}
-	.showAll input + label i {
-		color: white;
-		display: inline-block;
-		padding: 0.1rem 0.2rem 0.1rem 0.1rem;
-		line-height: 1rem;
-		background-color: #fff;
-		border: 1px solid transparent;
-		transition: all 0.2s;
-	}
-	.showAll input:checked + label i {
-		background-color: #06bbff;
-	}
-
-	.showAll:hover input + label i {
-		border: 1px solid #06bbff;
-		box-shadow: rgba(106, 168, 230, 0.6) 0px 0px 7px 5px;
-	}
-
-	.showAll input {
-		display: none;
 	}
 </style>

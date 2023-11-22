@@ -14,6 +14,7 @@
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import CheckBox from '$lib/components/CheckBox.svelte';
 	import OptionMenu from './_options.svelte';
 
 	let optionToShow = '';
@@ -60,6 +61,13 @@
 		wishAmount.set(detail);
 	};
 
+	// Multipull Amount
+	const setMultiPull = (value) => {
+		localConfig.set('multipull', value);
+		multipull.set(value);
+	};
+	setContext('setMultiPull', setMultiPull);
+
 	// Reset
 	let showResetModal = false;
 	let keepSetting = false;
@@ -88,6 +96,7 @@
 		playSfx('wishBacksound');
 		handleAnimatedBG();
 		selectedAmount = 'default';
+		setMultiPull(10);
 	};
 
 	const cancelReset = () => {
@@ -104,43 +113,32 @@
 {#if showResetModal}
 	<Modal title={$t('menu.resetTitle')} on:confirm={confirmReset} on:cancel={cancelReset}>
 		<div class="confirmation">
-			<div style="padding: 0 1rem">
+			<caption>
 				{@html $t('menu.resetPrompt')}
+			</caption>
 
-				<div class="checkbox keep-setting" style="margin-top: 5%;">
-					<input
-						type="checkbox"
-						name="keepsetting"
-						id="keepsetting"
-						style="margin-right: 2%;"
-						bind:checked={keepSetting}
-						on:change={() => playSfx()}
-					/>
-					<label for="keepsetting">
-						<i>✔</i>
-						<span> {@html $t('menu.keepSetting')}</span>
-					</label>
-				</div>
-				<div class="checkbox clear-cache">
-					<input
-						type="checkbox"
-						name="cache"
-						id="cache"
-						style="margin-right: 2%;"
-						bind:checked={clearCache}
-						on:change={() => playSfx()}
-					/>
-					<label for="cache">
-						<i>✔</i>
-						{#await getStorageSize()}
-							<span>..B</span>
-						{:then size}
-							<span>
-								{@html $t('menu.clearCache', { values: { size: size } })}
-							</span>
-						{/await}
-					</label>
-				</div>
+			<div class="delete-option">
+				<CheckBox
+					id="_setting"
+					checked={keepSetting}
+					on:change={({ detail }) => (keepSetting = !!detail.checked)}
+				>
+					<span> {@html $t('menu.keepSetting')}</span>
+				</CheckBox>
+
+				<CheckBox
+					id="_cache"
+					checked={clearCache}
+					on:change={({ detail }) => (clearCache = !!detail.checked)}
+				>
+					{#await getStorageSize()}
+						<span>..B</span>
+					{:then size}
+						<span>
+							{@html $t('menu.clearCache', { values: { size: size } })}
+						</span>
+					{/await}
+				</CheckBox>
 			</div>
 		</div>
 	</Modal>
@@ -256,49 +254,32 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
 	}
 
-	.checkbox {
+	.delete-option {
 		font-size: 80%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		margin: 2% 0;
-	}
-	.checkbox label {
 		width: 80%;
+	}
+
+	.delete-option :global(.checkbox) {
+		margin-top: 3% !important;
+	}
+
+	.delete-option :global(label) {
 		text-align: left;
 		display: flex;
 		align-items: center;
 	}
-	.checkbox :global(small) {
+	.delete-option :global(small) {
 		display: block;
 	}
 
-	.checkbox input + label i {
-		color: white;
-		border: 1px solid #aaa;
-		display: inline-block;
-		width: 1rem;
-		aspect-ratio: 1/1;
-		line-height: 1rem;
+	.delete-option :global(label i) {
 		margin-right: 2%;
-		background-color: #fff;
-		transition: all 0.2s;
-	}
-	.checkbox input:checked + label i {
-		background-color: #06bbff;
-	}
-
-	.checkbox:hover input + label i {
-		border: 1px solid #06bbff;
-		box-shadow: rgba(106, 168, 230, 0.6) 0px 0px 7px 5px;
-	}
-
-	.checkbox input {
-		display: none;
 	}
 
 	.notes {

@@ -8,8 +8,7 @@
 		acquaint as ac,
 		intertwined as iw,
 		stardust as sd,
-		starglitter as sg,
-		multipull
+		starglitter as sg
 	} from '$lib/store/app-stores';
 	import { localBalance, localConfig } from '$lib/store/localstore-manager';
 	import { cookie } from '$lib/store/cookie';
@@ -84,15 +83,11 @@
 	};
 
 	$: balance = gameCurrencyList[inputValue];
+	const setMultiPull = getContext('setMultiPull');
 
 	const setGameCurrencies = (value) => {
 		gameCurrencyList[inputValue]?.set(value);
 		localBalance.set(inputValue, value);
-	};
-
-	const setMultiPull = (value) => {
-		localConfig.set('multipull', value);
-		multipull.set(value);
 	};
 
 	const setValues = (e) => {

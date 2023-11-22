@@ -13,6 +13,7 @@
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Toast from '$lib/components/Toast.svelte';
+	import CheckBox from '$lib/components/CheckBox.svelte';
 
 	export let banner;
 	export let v2 = false;
@@ -83,19 +84,10 @@
 					})}
 				</p>
 
-				<div class="checkbox keep-setting" style="margin-top: 5%;">
-					<input
-						type="checkbox"
-						name="keepsetting"
-						id="keepsetting"
-						style="margin-right: 2%;"
-						bind:checked={keepPity}
-						on:change={() => playSfx()}
-					/>
-					<label for="keepsetting">
-						<i>✔</i>
-						<span> {@html $t('history.keepPity')}</span>
-					</label>
+				<div class="keep-setting" style="margin-top: 5%;">
+					<CheckBox checked={keepPity} on:change={({ detail }) => (keepPity = !!detail.checked)}>
+						<small> {@html $t('history.keepPity')}</small>
+					</CheckBox>
 				</div>
 			</div>
 		</div>
@@ -132,47 +124,5 @@
 	}
 	.reset:hover {
 		text-decoration: underline;
-	}
-
-	/*  */
-	.checkbox {
-		font-size: 80%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 2% 0;
-	}
-	.checkbox label {
-		width: 80%;
-		text-align: left;
-		display: flex;
-		align-items: center;
-	}
-	.checkbox :global(small) {
-		display: block;
-	}
-
-	.checkbox input + label i {
-		color: white;
-		border: 1px solid #aaa;
-		display: inline-block;
-		width: 1rem;
-		aspect-ratio: 1/1;
-		line-height: 1rem;
-		margin-right: 2%;
-		background-color: #fff;
-		transition: all 0.2s;
-	}
-	.checkbox input:checked + label i {
-		background-color: #06bbff;
-	}
-
-	.checkbox:hover input + label i {
-		border: 1px solid #06bbff;
-		box-shadow: rgba(106, 168, 230, 0.6) 0px 0px 7px 5px;
-	}
-
-	.checkbox input {
-		display: none;
 	}
 </style>
