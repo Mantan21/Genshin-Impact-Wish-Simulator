@@ -39,8 +39,22 @@ registerRoute(
 );
 
 registerRoute(
-	({ url }) =>
-		url.href.includes('videos') || url.href.includes('images') || url.href.includes('sfx'),
+	({ url, request }) => {
+		const isAudio = url.href.includes('sfx');
+		const isVideo = url.href.includes('/videos');
+
+		const imgPath = url.pathname.includes('/internal/immutable/assets');
+		const iconPath = url.pathname.includes('/icons');
+		const ibbPath = url.href.includes('i.ibb.co');
+		const imagePaths = imgPath || iconPath || ibbPath;
+
+		const matchImage = url.href.match(new RegExp('.(?:svg|webp|jpg|png|jpeg)')) || [];
+		const isMatch = matchImage.length > 0;
+
+		const isImage = (request.destination === 'image' || isMatch) && imagePaths;
+
+		return isAudio || isImage || isVideo;
+	},
 	new CacheFirst({
 		cacheName: `Static-${cacheVersion}`
 	})

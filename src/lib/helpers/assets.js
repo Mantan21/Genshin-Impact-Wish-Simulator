@@ -4,8 +4,20 @@ const imageModules = import.meta.glob(['@images/**/*'], {
 	eager: true
 });
 
-const cdnURL = ''; //!dev ? 'https://cdn.wishsimulator.app' : '';
-// const cdn_url = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/static`;
+// const generateURL = (url = '') => {
+// 	const cdnURL = ''; //!dev ? 'https://cdn.wishsimulator.app/' : '/';
+// 	if (!url || !url.match('http')) return url;
+
+// 	const [, pathDomain] = url.split('://');
+// 	if (!pathDomain) return url;
+
+// 	const removedDomain = pathDomain.split('/').slice(1);
+// 	const pathURI = removedDomain.join('/');
+// 	if (!pathURI) return url;
+
+// 	const finalURL = cdnURL + pathURI;
+// 	return finalURL;
+// };
 
 export const itemList = () => {
 	const pathList = {};
@@ -17,21 +29,19 @@ export const itemList = () => {
 		const { src = '' } = img;
 
 		if (key.match(/face\//)) {
-			pathList[`face/${keyNoExt}`] = cdnURL + src;
+			pathList[`face/${keyNoExt}`] = src;
 		} else if (key.match(/splash-art/)) {
-			pathList[`splash-art/${keyNoExt}`] = cdnURL + src;
+			pathList[`splash-art/${keyNoExt}`] = src;
 		} else if (key.match(/banner-button/)) {
-			pathList[`button/${keyNoExt}`] = cdnURL + src;
+			pathList[`button/${keyNoExt}`] = src;
 		} else if (key.match(/thumbnail/)) {
-			pathList[`thumbnail/${keyNoExt}`] = cdnURL + src;
+			pathList[`thumbnail/${keyNoExt}`] = src;
 		} else if (key.match(/blank/)) {
-			pathList[`blank/${keyNoExt}`] = cdnURL + src;
+			pathList[`blank/${keyNoExt}`] = src;
 		} else if (key.match(/(banner|weapons)/)) {
-			pathList[keyNoExt] = cdnURL + src;
-		} else if (key.match(/weapons/)) {
-			pathList[keyNoExt];
+			pathList[keyNoExt] = src;
 		} else {
-			pathList[keyName] = cdnURL + src;
+			pathList[keyName] = src;
 		}
 	});
 	return pathList;
