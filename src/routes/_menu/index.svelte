@@ -13,6 +13,7 @@
 	import Sidebar from './_sidebar.svelte';
 	import ProAccess from './ProAccess.svelte';
 	import CustomBanner from './CustomBanner.svelte';
+	import BackupRestore from './BackupRestore.svelte';
 
 	let activeContent = $editorMode ? 'customBanner' : 'options';
 
@@ -54,6 +55,8 @@
 				<ProAccess />
 			{:else if activeContent === 'customBanner'}
 				<CustomBanner />
+			{:else if activeContent === 'backupRestore'}
+				<BackupRestore />
 			{/if}
 
 			{#if $isMobile && !$mobileMode}
