@@ -373,12 +373,20 @@
 		},
 		{
 			"date": "06-Nov-2023",
-			"featured": true,
 			"description": [
 				"New Character: <b>Furina ( 5★ )</b>",
 				"New Character: <b>Charlotte ( 4★ )</b>",
 				"New Weapon: <b>Splendor of Tranquil Waters (Sword 5★)</b>",
 				"Add <b>Baizhu 1st Rerun</b> Banner"
+			]
+		},
+		{
+			"featured": true,
+			"date": "23-Nov-2023",
+			"description": [
+				"Add <b>Cyno 3th Rerun</b> Banner",
+				"Add <b>Ayato 3th Rerun</b> Banner",
+				"Update Weapon Banner: <b> Haran Geppaku Futsu </b> and <b>Staff of The Scarlet Sands</b>"
 			]
 		}
 	]
