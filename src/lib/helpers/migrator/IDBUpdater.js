@@ -1,33 +1,25 @@
-import { deleteDB } from 'idb';
+// import { deleteDB } from 'idb';
 import { data as charDB } from '$lib/data/characters.json';
 import { data as wpDB } from '$lib/data/weapons.json';
 import { HistoryManager } from '$lib/store/IDB-manager';
+import { cookie } from '$lib/store/cookie';
 import { localConfig } from '$lib/store/localstore-manager';
 import { retriveOldData } from './collect-old-data';
 import { clearCacheStorage } from '../storage-reset';
 
-const { addHistory, getByName, getAllHistories } = HistoryManager;
-
-// const updateNameFromIDB = async (before, after) => {
-// 	const kokomi = await getByName(before);
-// 	kokomi.forEach(async (item) => {
-// 		item.name = after;
-// 		await addHistory(item);
-// 	});
-// };
-
-// export const IDBUpdater = async () => {
-// 	updateNameFromIDB('sagonomiya-kokomi', 'sangonomiya-kokomi');
-// 	updateNameFromIDB('alhaitam', 'alhaitham');
-// 	await deleteDB('workbox-expiration');
-// };
+const { addHistory, getAllHistories } = HistoryManager;
 
 export const IDBUpdater = async () => {
 	const idbVer = localConfig.get('idbVer');
 	if (idbVer >= 3) return;
 
+	const accessKey = cookie.get('adKey');
+	if (accessKey) cookie.set('accessKey', accessKey);
+
+	// Clear Storage
 	await clearCacheStorage();
 
+	// Update IDB
 	const itemIDs = {};
 	charDB.forEach(({ itemID, name }) => (itemIDs[name] = itemID));
 	wpDB.forEach(({ itemID, name }) => (itemIDs[name] = itemID));

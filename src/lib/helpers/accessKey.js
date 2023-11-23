@@ -29,15 +29,15 @@ const checkKey = async (key) => {
 const adKey = {
 	_set(key) {
 		const reversed = key.trim().split('').reverse().join('');
-		cookie.set('adKey', reversed);
+		cookie.set('accessKey', reversed);
 	},
 
 	clear() {
-		return cookie.set('adKey', null);
+		return cookie.set('accessKey', null);
 	},
 
 	async initialLoad() {
-		const storedKey = cookie.get('adKey');
+		const storedKey = cookie.get('accessKey');
 		const reversedKey = storedKey?.split('').reverse().join('');
 		try {
 			if (!storedKey) return { validity: false, storedKey: reversedKey, status: 'ok' };

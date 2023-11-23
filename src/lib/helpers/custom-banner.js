@@ -1,7 +1,7 @@
+import { API_HOST } from '$lib/env';
 import { BannerManager } from '$lib/store/IDB-manager';
 
 const idb = BannerManager;
-const apiURL = 'https://api.wishsimulator.app';
 
 export const localBanner = {
 	isComplete: async (id) => {
@@ -40,7 +40,7 @@ export const onlineBanner = {
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 
-		const request = await fetch(apiURL + '/storage', {
+		const request = await fetch(API_HOST + '/storage', {
 			method: 'POST',
 			body: JSON.stringify(body),
 			headers
@@ -53,7 +53,7 @@ export const onlineBanner = {
 	async getData(shareID, multi = false) {
 		try {
 			if (!shareID) throw new Error();
-			const response = await fetch(`${apiURL}/storage?app=genshin&id=${shareID}`);
+			const response = await fetch(`${API_HOST}/storage?app=genshin&id=${shareID}`);
 			const parsed = (await response.json()) || {};
 			const { data = [] } = parsed;
 
