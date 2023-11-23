@@ -14,6 +14,8 @@
 		starglitter,
 		customData
 	} from '$lib/store/app-stores';
+	import { autoExport } from '$lib/store/filesystem-store';
+	import { autoSync } from '$lib/helpers/dataAPI/sync';
 	import { localBalance, localConfig } from '$lib/store/localstore-manager';
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -81,9 +83,10 @@
 
 		result = tmp;
 		handleMeteorAnimation();
-		if (isUnlimited) return;
+		if (isUnlimited) return autoSync($autoExport);
 		updateMilestones();
 		updateFatesBalance(bannerToRoll);
+		autoSync($autoExport);
 	};
 	setContext('doRoll', doRoll);
 

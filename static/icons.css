@@ -272,3 +272,12 @@
 .gi-cloud-sync:before {
 	content: '\3b';
 }
+.gi-drive:before {
+	content: '\3c';
+}
+.gi-local:before {
+	content: '\3d';
+}
+.gi-import:before {
+	content: '\3e';
+}

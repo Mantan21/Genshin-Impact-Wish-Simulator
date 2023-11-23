@@ -3,6 +3,7 @@
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import SyncCloud from './_sync-cloud.svelte';
+	import SyncLocal from './_sync-local.svelte';
 
 	let activeSync = 'local';
 	const buttonNavigation = (section) => {
@@ -22,10 +23,16 @@
 			<i class="gi-drive" />
 			<span> Cloud Sync</span>
 		</button>
+		<button class:active={activeSync === 'local'} on:click={() => buttonNavigation('local')}>
+			<i class="gi-local" />
+			<span> Local Backup/Restore</span>
+		</button>
 	</nav>
 	<div class="content">
 		{#if activeSync === 'cloud'}
 			<SyncCloud />
+		{:else}
+			<SyncLocal />
 		{/if}
 	</div>
 </div>
