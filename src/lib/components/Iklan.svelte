@@ -1,53 +1,18 @@
 <script>
 	import { dev } from '$app/environment';
-	import { getContext, onMount } from 'svelte';
-	import { isMobile } from '$lib/store/app-stores';
-	import { randomLetter } from '$lib/helpers/nameText';
+	import { isMobile, showAd } from '$lib/store/app-stores';
 
 	export let type = '';
 	export let head = false;
-
-	const showAd = getContext('showAd');
 
 	// onMount(() => {
 	// 	if (type !== 'banner') return;
 	// 	(window.adsbygoogle = window.adsbygoogle || []).push({});
 	// 	return;
 	// });
-	const kadamAdId = randomLetter(6);
-
-	onMount(() => {
-		if (!$showAd) return;
-		if (head) {
-			window.k_init = window.k_init || [];
-		}
-
-		if (type === 'banner') {
-			const obj = {
-				id: `${kadamAdId}342003`,
-				type: 'bn',
-				domain: 'hdbkome.com',
-				refresh: false,
-				next: 0
-			};
-			window.k_init.push(obj);
-		}
-
-		if (type === 'pop') {
-			const obj = {
-				id: `${kadamAdId}342006`,
-				type: 'cu',
-				domain: 'hdbkell.com',
-				next: 1,
-				rerun: true,
-				newtab: 1
-			};
-			window.k_init.push(obj);
-		}
-	});
 </script>
 
-{#if $showAd}
+{#if $showAd && !dev}
 	{#if type === 'banner'}
 		<!-- <ins
 		class="adsbygoogle"
@@ -57,24 +22,9 @@
 		data-ad-format="auto"
 		data-full-width-responsive="true"
 	/> -->
-		<div class="{kadamAdId}342003" />
 	{/if}
 
-	{#if type === 'pop'}
-		<div class="{kadamAdId}342006" />
-	{/if}
-
-	{#if head && !dev}
-		<!-- <script src="https://adncdnend.azureedge.net/adnimation/agustinusyohannes.js"></script> -->
-
-		<!-- Banner -->
-		<script
-			src="https://hdbkome.com/08rk18tq.js"
-			charset="utf-8"
-			async
-			data-cfasync="false"></script>
-		<!-- Banner -->
-
+	{#if head}
 		<!-- Autotag -->
 		<script
 			data-cfasync="false"

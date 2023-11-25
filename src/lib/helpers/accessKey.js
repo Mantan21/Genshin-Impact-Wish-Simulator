@@ -1,4 +1,4 @@
-import { proUser } from '$lib/store/app-stores';
+import { proUser, showAd } from '$lib/store/app-stores';
 import { cookie } from '$lib/store/cookie';
 
 const digestMessage = async (message) => {
@@ -74,6 +74,7 @@ const verifyKey = async () => {
 	const { validity, status } = await adKey.initialLoad();
 	if (status === 'offline') return retry();
 	proUser.set(!!validity);
+	showAd.set(!validity);
 };
 
 export { adKey, verifyKey };

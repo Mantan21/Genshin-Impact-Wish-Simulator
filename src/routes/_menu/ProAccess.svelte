@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
-	import { assets, proUser } from '$lib/store/app-stores';
+	import { assets, proUser, showAd } from '$lib/store/app-stores';
 	import { adKey } from '$lib/helpers/accessKey';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
@@ -58,6 +58,7 @@
 		adKey.clear();
 		checkLocal();
 		proUser.set(false);
+		showAd.set(true);
 		// restartBannerVersion() // if has premium banner
 		showModal = false;
 		input = '';

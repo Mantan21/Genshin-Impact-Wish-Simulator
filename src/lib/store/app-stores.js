@@ -32,6 +32,7 @@ export const multipull = writable(10);
 
 // other
 export const proUser = writable(false);
+export const showAd = writable(false);
 export const mobileMode = writable(false);
 export const isMobile = writable(false);
 export const isPWA = writable(false);
