@@ -7,6 +7,7 @@
 
 	import { autoskip, isCustomBanner, multipull, wishAmount } from '$lib/store/app-stores';
 	import { localConfig } from '$lib/store/localstore-manager';
+	import { calculateByteSize } from '$lib/helpers/dataAPI/filesystem';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
 	import { factoryReset } from '$lib/helpers/storage-reset';
@@ -75,9 +76,10 @@
 	let showToast = false;
 
 	const getStorageSize = async () => {
-		const { usage } = await navigator.storage.estimate();
-		const size = (usage / 1000000).toFixed(2);
-		return `${size}MB`;
+		const { usageDetails = {} } = await navigator.storage.estimate();
+		const { caches = 0 } = usageDetails;
+		const size = calculateByteSize(caches);
+		return size;
 	};
 
 	const reset = () => {

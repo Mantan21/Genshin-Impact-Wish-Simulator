@@ -16,7 +16,7 @@ export const FSSupported = () => {
 };
 
 export const calculateByteSize = (size) => {
-	if (!size || isNaN(size)) return '...B';
+	if (isNaN(size)) return '...B';
 	const mb = (size / (1024 * 1024)).toFixed(2);
 	return `${mb}MB`;
 };
