@@ -11,7 +11,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { storageLocal } from '$lib/store/localstore-manager';
 	import { timeAgo } from '$lib/helpers/timeago';
-	import { syncData } from '$lib/helpers/dataAPI/sync';
+	import { updateRemoteStorage } from '$lib/helpers/dataAPI/sync';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 
 	export let hasPermission = false;
@@ -39,7 +39,7 @@
 
 	const checkAndUpdate = async () => {
 		isFileExist = await checkFileExist($fileHandle);
-		await syncData({ to: 'local' }); // Export once
+		await updateRemoteStorage({ to: 'local' }); // Export once
 		autoExport.set(true); // Turn on Auto export
 	};
 
@@ -99,7 +99,7 @@
 	</div>
 {:else if isFileExist === false}
 	<button class="savedFile error" disabled in:fade>
-		<span> Cannot find backup file location, please trying to Import/Export again </span>
+		<span> Cannot find backup file location, please try to Export again </span>
 	</button>
 {/if}
 

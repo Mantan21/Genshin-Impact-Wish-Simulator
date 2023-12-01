@@ -15,6 +15,18 @@ export const storageLocal = {
 		const { data } = this.getData();
 		data[key] = value;
 		localStorage.setItem('WishSimulator.App', JSON.stringify({ data }));
+	},
+
+	initEvent() {
+		const localStore = localStorage.setItem;
+		localStorage.setItem = function (key) {
+			if (key === 'WishSimulator.App') {
+				const event = new Event('storageUpdate');
+				document.dispatchEvent(event);
+			}
+
+			localStore.apply(this, arguments);
+		};
 	}
 };
 

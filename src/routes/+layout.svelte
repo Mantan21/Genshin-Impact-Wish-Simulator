@@ -16,11 +16,15 @@
 		proUser
 	} from '$lib/store/app-stores';
 	import { IDBUpdater } from '$lib/helpers/migrator/IDBUpdater';
+	import { storageLocal } from '$lib/store/localstore-manager';
+	import { sync } from '$lib/helpers/dataAPI/sync';
+	import { autoExport } from '$lib/store/filesystem-store';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { wakeLock } from '$lib/helpers/wakeLock';
 	import { syncCustomBanner } from '$lib/helpers/custom-banner';
+	// import { initializeDriveAPI } from '$lib/helpers/dataAPI/google-api';
 	import '../app.css';
 
 	import Iklan from '$lib/components/Iklan.svelte';
@@ -71,11 +75,6 @@
 		const searchParams = new URLSearchParams(url.search);
 		isPWA.set(searchParams.get('pwa') === 'true' || !!searchParams.get('pwasc'));
 
-		registerSW();
-		wakeLock();
-		await IDBUpdater();
-		syncCustomBanner();
-
 		isMobile.set(mobileDetect() || innerWidth < 601);
 		if ($isMobile) setMobileMode();
 
@@ -83,6 +82,14 @@
 			if ($isMobile) setMobileMode();
 		});
 
+		storageLocal.initEvent();
+		registerSW();
+		wakeLock();
+		await IDBUpdater();
+		syncCustomBanner();
+		// initializeDriveAPI();
+
+		document.addEventListener('storageUpdate', () => sync($autoExport));
 		// prevent Righ click (hold on android) on production mode
 		if (!dev) document.addEventListener('contextmenu', (e) => e.preventDefault());
 	});

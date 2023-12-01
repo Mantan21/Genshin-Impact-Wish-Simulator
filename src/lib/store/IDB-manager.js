@@ -37,6 +37,11 @@ if (browser) {
 	});
 }
 
+const createEvent = () => {
+	const event = new Event('storageUpdate');
+	document.dispatchEvent(event);
+};
+
 export const HistoryManager = {
 	async historyCount() {
 		return (await IndexedDB).count('history');
@@ -57,26 +62,39 @@ export const HistoryManager = {
 		try {
 			const idb = await IndexedDB;
 			const keys = await idb.getAllKeysFromIndex('history', 'banner', banner);
-			keys.forEach((key) => idb.delete('history', key));
+			for (let i = 0; i < keys.length; i++) {
+				await idb.delete('history', keys[i]);
+			}
 			return 'success';
 		} catch (e) {
 			return 'failed';
 		}
 	},
+
 	async clearIDB() {
-		return (await IndexedDB).clear('history');
+		const idb = await IndexedDB;
+		const clear = await idb.clear('history');
+		createEvent();
+		return clear;
 	},
+
 	async getAllHistories() {
 		return (await IndexedDB).getAll('history');
 	},
+
 	async addHistory(data) {
 		// eslint-disable-next-line no-prototype-builtins
 		if (!data.hasOwnProperty('banner')) return;
-		return (await IndexedDB).put('history', data);
+		const idb = await IndexedDB;
+		const put = await idb.put('history', data);
+		return put;
 	},
+
 	async delete(id) {
 		if (!id) return;
-		return (await IndexedDB).delete('history', id);
+		const idb = await IndexedDB;
+		const remove = await idb.delete('history', id);
+		return remove;
 	}
 };
 
@@ -87,10 +105,12 @@ export const AssetManager = {
 		if (!data.hasOwnProperty('key')) return;
 		return (await IndexedDB).put('assets', data);
 	},
+
 	async get(key) {
 		if (!key) return null;
 		return (await IndexedDB).get('assets', key);
 	},
+
 	async delete(key) {
 		if (!key) return;
 		return (await IndexedDB).delete('assets', key);
@@ -102,12 +122,16 @@ export const BannerManager = {
 	async getAll() {
 		return (await IndexedDB).getAll('custombanner');
 	},
+
 	async put(data = {}) {
 		if (!('itemID' in data)) return;
 		const lastModified = new Date().toISOString();
 		const idb = await IndexedDB;
-		return idb.put('custombanner', { lastModified, ...data });
+		const put = await idb.put('custombanner', { lastModified, ...data });
+		createEvent();
+		return put;
 	},
+
 	async get(itemID) {
 		if (!itemID) return null;
 		return (await IndexedDB).get('custombanner', itemID);
@@ -119,10 +143,16 @@ export const BannerManager = {
 
 	async delete(key) {
 		if (!key) return;
-		return (await IndexedDB).delete('custombanner', key);
+		const idb = await IndexedDB;
+		const remove = idb.delete('custombanner', key);
+		createEvent();
+		return remove;
 	},
 
 	async clear() {
-		return (await IndexedDB).clear('custombanner');
+		const idb = await IndexedDB;
+		const remove = idb.clear('custombanner');
+		createEvent();
+		return remove;
 	}
 };
