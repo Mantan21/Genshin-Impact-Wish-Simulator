@@ -187,6 +187,7 @@ export const imageCDN = (imgs, width = 0) => {
 		return cdnURL + imgs + '?format=webp' + w;
 	}
 
+	if (typeof imgs !== 'object') return imgs;
 	Object.keys(imgs).forEach((key) => {
 		const width = key === 'faceURL' ? '&width=226' : '';
 		imgs[key] = cdnURL + imgs[key] + '?format=webp' + width;

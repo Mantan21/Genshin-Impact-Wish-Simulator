@@ -4,15 +4,15 @@ import { BannerManager } from '$lib/store/IDB-manager';
 const idb = BannerManager;
 
 export const localBanner = {
-	isComplete: async (id) => {
-		const { character, images, rateup = [], bannerName } = (await idb.get(id)) || {};
+	isComplete: async (itemID) => {
+		const { character, images, rateup = [], bannerName } = (await idb.get(itemID)) || {};
 		const { artURL } = images || {};
 		const complete = !!artURL && !!character && rateup.length > 0 && !!bannerName;
 		return complete;
 	},
 
-	isHostedBanner: async (id) => {
-		const data = await idb.get(id);
+	isHostedBanner: async (itemID) => {
+		const data = await idb.get(itemID);
 		return 'hostedImages' in data;
 	},
 
@@ -105,13 +105,13 @@ export const onlineBanner = {
 		}
 	},
 
-	async deleteBanner(bannerID) {
+	async deleteBanner(itemID) {
 		try {
-			const { shareID, imageHash = {} } = (await idb.get(bannerID)) || {};
+			const { shareID, status, imageHash = {} } = (await idb.get(itemID)) || {};
 
 			// Only delete local data if not shared
-			if (!shareID) {
-				await idb.delete(bannerID);
+			if (status === 'cloud' || !shareID) {
+				await idb.delete(itemID);
 				return { status: 'ok' };
 			}
 
@@ -125,7 +125,7 @@ export const onlineBanner = {
 			// Remove from Cloud
 			const { success } = await this._postData({ action: 'delete', id: shareID });
 			if (!success) throw new Error('Failed to Remove');
-			await idb.delete(bannerID);
+			await idb.delete(itemID);
 			return { status: 'ok' };
 		} catch (e) {
 			return { status: 'error' };
@@ -135,25 +135,30 @@ export const onlineBanner = {
 	async deleteImage({ hash, id } = {}) {
 		if (!(hash && id)) return;
 
-		const formdata = new FormData();
-		formdata.append('action', 'delete');
-		formdata.append('delete', 'image');
-		formdata.append('deleting[id]', id);
-		formdata.append('deleting[hash]', hash);
+		try {
+			const formdata = new FormData();
+			formdata.append('action', 'delete');
+			formdata.append('delete', 'image');
+			formdata.append('deleting[id]', id);
+			formdata.append('deleting[hash]', hash);
 
-		const data = await fetch('https://ibb.co/json', { method: 'POST', body: formdata });
-		const { status_code } = await data.json();
-		console.log(id, hash, status_code);
-		return status_code === 200;
+			const data = await fetch('https://ibb.co/json', { method: 'POST', body: formdata });
+			const { status_code } = await data.json();
+			console.log(id, hash, status_code);
+			return status_code === 200;
+		} catch (e) {
+			console.error(e);
+			return false;
+		}
 	}
 };
 
 export const syncCustomBanner = async () => {
 	try {
-		const storedBanner = (await idb.getListByStatus('cloud')) || [];
+		const storedBanner = (await idb.getAll()) || [];
 		if (storedBanner.length < 1) return;
 
-		const localBannerIDs = storedBanner.map(({ id }) => id);
+		const localBannerIDs = storedBanner.map(({ shareID }) => shareID).filter((id) => !!id);
 		const ids = localBannerIDs.join(',');
 		const { success, data = [] } = (await onlineBanner.getData(ids, 'multi')) || {};
 		if (!success) return;
@@ -161,18 +166,48 @@ export const syncCustomBanner = async () => {
 		// Renew Data
 		for (let x = 0; x < data.length; x++) {
 			const dataToStore = data[x];
-			delete dataToStore.imageHash;
-			dataToStore.status = 'cloud';
-			await idb.put(dataToStore);
+			const dataToModify = storedBanner.find(({ shareID }) => shareID === dataToStore.id);
+			dataToStore.status = dataToModify.status;
+			dataToStore.shareID = dataToStore.id;
+			delete dataToStore.id;
+
+			if (dataToModify.status === 'cloud') {
+				delete dataToStore.imageHash;
+				await idb.put(dataToStore);
+			}
+
+			if (dataToModify.status === 'owned') {
+				const { images = {}, imgChanged = {}, isChanged = false } = dataToModify;
+				const modifiedData = { ...dataToStore, images, imgChanged, isChanged };
+				await idb.put(modifiedData);
+			}
 		}
 
-		// Remove UnAvailable Banner from IDB;
-		const cloudBannerIDs = data.map(({ id }) => id);
+		// Update CustomBanner Data on IDB
+		const cloudBannerIDs = data.map(({ shareID }) => shareID);
 		const unAvailableBanner = localBannerIDs.filter((id) => !cloudBannerIDs.includes(id));
 		for (let i = 0; i < unAvailableBanner.length; i++) {
 			const sharedID = unAvailableBanner[i];
-			const { itemID } = storedBanner.find(({ id }) => id === sharedID);
-			await idb.delete(itemID);
+			const { itemID, status } = storedBanner.find(({ shareID: id }) => id === sharedID);
+
+			// Remove Unavailable Banner
+			if (status === 'cloud') {
+				await idb.delete(itemID);
+				continue;
+			}
+
+			// Update shared status to unshared if not found in online storage
+			if (status === 'owned') {
+				const data = await idb.get(itemID);
+				if (data.shareID) continue;
+
+				delete data.imgChanged;
+				delete data.shareID;
+				data.isChanged = true;
+				data.imgChanged = { artURL: true, faceURL: true, thumbnail: true };
+				data.lastModified = new Date().toISOString();
+				await idb.put(data);
+			}
 		}
 	} catch (e) {
 		console.error('sync custom banner failed', e);

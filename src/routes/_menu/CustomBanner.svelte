@@ -152,10 +152,10 @@
 				<div class="disclaimer" transition:fade|local={{ duration: 250 }}>
 					<article>
 						<p>
-							This is an <u>Experimental Feature</u>, and I will be monitoring it over the coming
-							period. If this feature is not found to be useful or is misused to share inappropriate
-							content, I may limit or even disable it. I hope you are willing to provide feedback to
-							help improve the quality of this simulator site.
+							I will be monitoring this Feature over the coming period. If this feature is not found
+							to be useful or is misused to share inappropriate content, I may limit or even disable
+							it. I hope you are willing to provide feedback to help improve the quality of this
+							simulator site.
 						</p>
 						<p>
 							Every banner you add is saved in your browser's memory. <b>WishSimulator.App</b> does not
@@ -256,6 +256,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		font-size: 120%;
 	}
 
 	.question {
@@ -278,6 +279,11 @@
 
 	.question:active {
 		transform: scale(0.9);
+	}
+
+	:global(.mobile) .question {
+		width: 20px;
+		font-size: 80%;
 	}
 
 	/* Disclaimer */

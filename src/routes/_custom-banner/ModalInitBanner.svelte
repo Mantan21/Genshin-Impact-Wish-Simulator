@@ -67,7 +67,9 @@
 		if (isOwned) return (loaded = true);
 
 		delete data.imageHash;
+		delete data.id;
 		data.status = 'cloud';
+		data.shareID = parseInt(shareID);
 		await BannerManager.put(data);
 		loaded = true;
 		return;
