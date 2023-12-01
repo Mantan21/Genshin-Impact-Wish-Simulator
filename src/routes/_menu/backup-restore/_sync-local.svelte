@@ -7,7 +7,7 @@
 		saveExport,
 		verifyFSPermission,
 		readFileHandle
-	} from '$lib/helpers/dataAPI/filesystem';
+	} from '$lib/helpers/dataAPI/api-filesystem';
 	import { exportFileLegacy } from '$lib/helpers/dataAPI/export-import';
 	import { playSfx } from '$lib/helpers/audio/audio';
 

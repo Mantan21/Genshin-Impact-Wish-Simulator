@@ -1,4 +1,4 @@
-import { HistoryManager } from '$lib/store/IDB-manager';
+import { HistoryManager } from '../dataAPI/api-indexeddb';
 import {
 	guaranteedStatus,
 	localBalance,
@@ -7,7 +7,7 @@ import {
 	localPity,
 	rollCounter,
 	localConfig
-} from '$lib/store/localstore-manager';
+} from '../dataAPI/api-localstore';
 import { getSplashArtData } from '../outfit';
 
 const { getListByBanner } = HistoryManager;

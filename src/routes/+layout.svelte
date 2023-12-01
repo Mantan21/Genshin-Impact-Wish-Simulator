@@ -16,7 +16,7 @@
 		proUser
 	} from '$lib/store/app-stores';
 	import { IDBUpdater } from '$lib/helpers/migrator/IDBUpdater';
-	import { storageLocal } from '$lib/store/localstore-manager';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { sync } from '$lib/helpers/dataAPI/sync';
 	import { autoExport } from '$lib/store/filesystem-store';
 	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';

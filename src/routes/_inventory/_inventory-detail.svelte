@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { HistoryManager } from '$lib/store/IDB-manager';
+	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 

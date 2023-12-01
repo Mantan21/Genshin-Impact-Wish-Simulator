@@ -24,7 +24,6 @@
 <style>
 	.checkbox {
 		margin: 1%;
-		text-transform: capitalize;
 	}
 
 	label {

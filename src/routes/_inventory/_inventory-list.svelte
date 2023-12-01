@@ -7,8 +7,8 @@
 	import { data as charDB } from '$lib/data/characters.json';
 	import { data as weaponDB } from '$lib/data/weapons.json';
 	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/app-stores';
-	import { BannerManager } from '$lib/store/IDB-manager';
-	import { owneditem } from '$lib/store/localstore-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
+	import { owneditem } from '$lib/helpers/dataAPI/api-localstore';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { imageCDN } from '$lib/helpers/assets';

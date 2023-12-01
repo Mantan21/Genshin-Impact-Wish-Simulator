@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 
 	import { assets, activeVersion } from '$lib/store/app-stores';
-	import { owneditem } from '$lib/store/localstore-manager';
+	import { owneditem } from '$lib/helpers/dataAPI/api-localstore';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getName } from '$lib/helpers/nameText';

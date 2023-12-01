@@ -5,7 +5,7 @@
 
 	import { imageCDN } from '$lib/helpers/assets';
 	import { preloadVersion } from '$lib/store/app-stores';
-	import { BannerManager } from '$lib/store/IDB-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { onlineBanner } from '$lib/helpers/custom-banner';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { verifyKey } from '$lib/helpers/accessKey';

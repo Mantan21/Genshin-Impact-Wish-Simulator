@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import { readDropedFile } from '$lib/helpers/dataAPI/filesystem';
+	import { readDropedFile } from '$lib/helpers/dataAPI/api-filesystem';
 	import { allowedType, importFileLegacy } from '$lib/helpers/dataAPI/export-import';
 
 	export let legacyFileHandler = false;

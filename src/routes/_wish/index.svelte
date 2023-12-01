@@ -14,7 +14,7 @@
 		starglitter,
 		customData
 	} from '$lib/store/app-stores';
-	import { localBalance, localConfig } from '$lib/store/localstore-manager';
+	import { localBalance, localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import WISH, { roll } from '$lib/helpers/gacha/Wish';

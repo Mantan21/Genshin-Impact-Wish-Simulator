@@ -5,7 +5,7 @@
 	import hotkeys from 'hotkeys-js';
 
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/store/localstore-manager';
+	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx, pauseSfx as stopSfx } from '$lib/helpers/audio/audio';
 	import { setActiveOutfit } from '$lib/helpers/outfit';
 	import { createLink } from '$lib/helpers/shareable-link';

@@ -9,7 +9,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { viewportHeight } from '$lib/store/app-stores';
-	import { cookie } from '$lib/store/cookie';
+	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
 
 	import Background from './_background.svelte';
 	import Header from './_header.svelte';

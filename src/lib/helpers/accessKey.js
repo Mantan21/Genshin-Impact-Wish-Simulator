@@ -1,5 +1,5 @@
 import { proUser, showAd } from '$lib/store/app-stores';
-import { cookie } from '$lib/store/cookie';
+import { cookie } from './dataAPI/api-cookie';
 
 const digestMessage = async (message) => {
 	const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array

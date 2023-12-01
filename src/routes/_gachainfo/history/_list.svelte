@@ -3,7 +3,7 @@
 	import { afterUpdate, getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
-	import { HistoryManager } from '$lib/store/IDB-manager';
+	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { getBannerName, getName } from '$lib/helpers/nameText';
 
 	export let v2 = false;

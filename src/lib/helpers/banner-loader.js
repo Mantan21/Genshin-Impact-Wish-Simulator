@@ -3,8 +3,8 @@ import { standard } from '$lib/data/banners/standard.json';
 import { version, wishPhase } from '$lib/data/wish-setup.json';
 
 import { imageCDN } from './assets';
-import { BannerManager } from '$lib/store/IDB-manager';
-import { localConfig, rollCounter } from '$lib/store/localstore-manager';
+import { BannerManager } from './dataAPI/api-indexeddb';
+import { localConfig, rollCounter } from './dataAPI/api-localstore';
 import {
 	activeBanner,
 	activeVersion,

@@ -5,8 +5,8 @@
 
 	import { genesisBonus } from '$lib/data/pricelist.json';
 	import { activeVersion, assets, pricelist } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/store/localstore-manager';
-	import { cookie } from '$lib/store/cookie';
+	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
+	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Icon from '$lib/components/Icon.svelte';

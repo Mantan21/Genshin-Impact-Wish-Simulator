@@ -6,9 +6,9 @@
 		localPity,
 		guaranteedStatus,
 		owneditem
-	} from '$lib/store/localstore-manager';
+	} from '$lib/helpers/dataAPI/api-localstore';
 	import { showBeginner, beginnerRemaining } from '$lib/store/app-stores';
-	import { HistoryManager } from '$lib/store/IDB-manager';
+	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Modal from '$lib/components/ModalTpl.svelte';

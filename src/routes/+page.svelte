@@ -7,8 +7,8 @@
 
 	import browserState from '$lib/helpers/browserState';
 	import { assets, preloadVersion, showBeginner } from '$lib/store/app-stores';
-	import { dailyWelkin, localConfig } from '$lib/store/localstore-manager';
-	import { importLocalConfig, setBannerVersionAndPhase } from '$lib/helpers/storage-reader';
+	import { dailyWelkin, localConfig } from '$lib/helpers/dataAPI/api-localstore';
+	import { importLocalConfig, setBannerVersionAndPhase } from '$lib/helpers/dataAPI/storage-reader';
 	import { handleShowStarter, initializeBanner } from '$lib/helpers/banner-loader';
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';

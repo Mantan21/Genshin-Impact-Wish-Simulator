@@ -1,6 +1,6 @@
-import { BannerManager, HistoryManager } from '$lib/store/IDB-manager';
-import { cookie } from '$lib/store/cookie';
-import { storageLocal } from '$lib/store/localstore-manager';
+import { BannerManager, HistoryManager } from './api-indexeddb';
+import { cookie } from './api-cookie';
+import { storageLocal } from './api-localstore';
 import { randomNumber } from '../gacha/itemdrop-base';
 
 const generateExportID = () => {

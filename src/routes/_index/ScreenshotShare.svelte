@@ -6,7 +6,7 @@
 
 	import { primogem } from '$lib/store/app-stores';
 	import { initialAmount } from '$lib/data/wish-setup.json';
-	import { localBalance, localConfig } from '$lib/store/localstore-manager';
+	import { localBalance, localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Icon from '$lib/components/Icon.svelte';

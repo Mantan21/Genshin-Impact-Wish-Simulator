@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher, getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { calculateByteSize } from '$lib/helpers/dataAPI/filesystem';
+	import { calculateByteSize } from '$lib/helpers/dataAPI/api-filesystem';
 	import { placeDataToAppDB } from '$lib/helpers/dataAPI/data-merger';
 	import { playSfx } from '$lib/helpers/audio/audio';
 

@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { localrate } from '$lib/store/localstore-manager';
+	import { localrate } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import {
 		activeBanner,

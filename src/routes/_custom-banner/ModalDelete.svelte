@@ -5,7 +5,7 @@
 	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { imageCDN } from '$lib/helpers/assets';
 	import { activeVersion, editID, editorMode, preloadVersion } from '$lib/store/app-stores';
-	import { BannerManager } from '$lib/store/IDB-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { onlineBanner } from '$lib/helpers/custom-banner';

@@ -1,4 +1,4 @@
-import { AssetManager } from '$lib/store/IDB-manager';
+import { AssetManager } from './api-indexeddb';
 import {
 	autoExport,
 	fileData,

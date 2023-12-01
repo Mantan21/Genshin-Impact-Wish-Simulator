@@ -10,8 +10,8 @@
 		stardust as sd,
 		starglitter as sg
 	} from '$lib/store/app-stores';
-	import { localBalance, localConfig } from '$lib/store/localstore-manager';
-	import { cookie } from '$lib/store/cookie';
+	import { localBalance, localConfig } from '$lib/helpers/dataAPI/api-localstore';
+	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { localeName, flags } from '$lib/data/country.json';
 	import { availableCurrencies, userCurrencies } from '$lib/helpers/currencies';

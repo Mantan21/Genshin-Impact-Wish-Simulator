@@ -1,4 +1,4 @@
-import { guaranteedStatus } from '$lib/store/localstore-manager';
+import { guaranteedStatus } from '../dataAPI/api-localstore';
 import {
 	get3StarItem,
 	get4StarItem,

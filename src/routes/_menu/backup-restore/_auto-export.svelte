@@ -7,9 +7,9 @@
 		checkFileExist,
 		readFileHandle,
 		verifyFSPermission
-	} from '$lib/helpers/dataAPI/filesystem';
+	} from '$lib/helpers/dataAPI/api-filesystem';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { storageLocal } from '$lib/store/localstore-manager';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { timeAgo } from '$lib/helpers/timeago';
 	import { updateRemoteStorage } from '$lib/helpers/dataAPI/sync';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';

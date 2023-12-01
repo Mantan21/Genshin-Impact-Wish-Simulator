@@ -1,5 +1,5 @@
 import { API_HOST, GOOGLE_API_KEY, GOOGLE_CLIENT_ID } from '$lib/env';
-import { cookie } from '$lib/store/cookie';
+import { cookie } from './api-cookie';
 import { isSignedIn, userEmail } from '$lib/store/drive-store';
 
 let gapi = {};

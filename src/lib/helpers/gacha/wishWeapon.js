@@ -1,6 +1,6 @@
 // import { fatePoint, selectedCourse } from '$lib/store/stores';
 import { course } from '$lib/store/app-stores';
-import { fatepointManager, guaranteedStatus } from '$lib/store/localstore-manager';
+import { fatepointManager, guaranteedStatus } from '../dataAPI/api-localstore';
 import {
 	rand,
 	get3StarItem,

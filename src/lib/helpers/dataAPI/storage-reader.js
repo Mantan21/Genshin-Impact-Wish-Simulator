@@ -12,8 +12,8 @@ import {
 	multipull,
 	preloadVersion
 } from '$lib/store/app-stores';
-import { localBalance, rollCounter, localConfig } from '$lib/store/localstore-manager';
-import { noticeMark } from './noticeMark';
+import { localBalance, rollCounter, localConfig } from './api-localstore';
+import { noticeMark } from '../noticeMark';
 
 /**
  * Read Balance From LocalStorage

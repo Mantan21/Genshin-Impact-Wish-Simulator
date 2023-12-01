@@ -2,7 +2,7 @@
 	import { setContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { activeVersion, assets, bannerList, editID } from '$lib/store/app-stores';
-	import { BannerManager } from '$lib/store/IDB-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import FrameCustom from '../_wish/banner-card/_frame-custom.svelte';

@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
-	import { localConfig } from '$lib/store/localstore-manager';
+	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { assets } from '$lib/store/app-stores';
 	import Toast from '$lib/components/Toast.svelte';

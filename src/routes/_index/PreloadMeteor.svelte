@@ -4,7 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { check, loadAnimation, loadProggress } from '$lib/helpers/meteor-loader';
 	import { assets, autoskip } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/store/localstore-manager';
+	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 

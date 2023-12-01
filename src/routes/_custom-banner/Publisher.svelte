@@ -3,7 +3,7 @@
 	import { getContext, onMount } from 'svelte';
 	import { HOST, IBB_KEY } from '$lib/env';
 	import { editID, isMobile } from '$lib/store/app-stores';
-	import { BannerManager } from '$lib/store/IDB-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { base64ToBlob } from '$lib/helpers/assets';
 	import { localBanner, onlineBanner } from '$lib/helpers/custom-banner';
 	import { copy } from '$lib/helpers/nameText';

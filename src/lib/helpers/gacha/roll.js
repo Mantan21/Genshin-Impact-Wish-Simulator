@@ -1,6 +1,6 @@
 import { beginnerRemaining, showBeginner } from '$lib/store/app-stores';
-import { HistoryManager } from '$lib/store/IDB-manager';
-import { localPity, owneditem, rollCounter } from '$lib/store/localstore-manager';
+import { HistoryManager } from '../dataAPI/api-indexeddb';
+import { localPity, owneditem, rollCounter } from '../dataAPI/api-localstore';
 import { getRate, prob, rates } from './probabilities';
 
 const { addHistory } = HistoryManager;

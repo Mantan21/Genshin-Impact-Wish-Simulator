@@ -1,8 +1,8 @@
 import { locale } from 'svelte-i18n';
 import { initialAmount } from '$lib/data/wish-setup.json';
-import { BannerManager, HistoryManager } from '$lib/store/IDB-manager';
 import * as stores from '$lib/store/app-stores';
-import { cookie } from '$lib/store/cookie';
+import { BannerManager, HistoryManager } from './api-indexeddb';
+import { cookie } from './api-cookie';
 import {
 	fatepointManager,
 	localBalance,
@@ -10,7 +10,7 @@ import {
 	storageLocal,
 	rollCounter as rq,
 	ownedOutfits as costumeManager
-} from '$lib/store/localstore-manager';
+} from './api-localstore';
 import { adKey } from '../accessKey';
 import { onlineBanner } from '../custom-banner';
 

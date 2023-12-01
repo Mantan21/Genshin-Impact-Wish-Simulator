@@ -6,7 +6,7 @@
 	import hotkeys from 'hotkeys-js';
 
 	import { activeVersion } from '$lib/store/app-stores';
-	import { ownedOutfits } from '$lib/store/localstore-manager';
+	import { ownedOutfits } from '$lib/helpers/dataAPI/api-localstore';
 	import { getSplashArtData, outfitsForThisPatch } from '$lib/helpers/outfit';
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';

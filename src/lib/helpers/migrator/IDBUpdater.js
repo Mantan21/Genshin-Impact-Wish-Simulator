@@ -1,11 +1,11 @@
 // import { deleteDB } from 'idb';
 import { data as charDB } from '$lib/data/characters.json';
 import { data as wpDB } from '$lib/data/weapons.json';
-import { BannerManager, HistoryManager } from '$lib/store/IDB-manager';
-import { cookie } from '$lib/store/cookie';
-import { localConfig } from '$lib/store/localstore-manager';
+import { BannerManager, HistoryManager } from '../dataAPI/api-indexeddb';
+import { cookie } from '../dataAPI/api-cookie';
+import { localConfig } from '../dataAPI/api-localstore';
 import { retriveOldData } from './collect-old-data';
-import { clearCacheStorage } from '../storage-reset';
+import { clearCacheStorage } from '../dataAPI/storage-reset';
 
 const { addHistory, getAllHistories } = HistoryManager;
 const { getAll: getAllCustomBanner, put: putCustomBanner } = BannerManager;

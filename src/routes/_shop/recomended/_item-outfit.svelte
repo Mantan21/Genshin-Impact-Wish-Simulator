@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
-	import { owneditem } from '$lib/store/localstore-manager';
+	import { owneditem } from '$lib/helpers/dataAPI/api-localstore';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';

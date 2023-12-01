@@ -1,6 +1,6 @@
 import { wishPhase, version, initialAmount, storageVersion } from '$lib/data/wish-setup.json';
-import { HistoryManager } from '$lib/store/IDB-manager';
-import { localConfig, storageLocal } from '$lib/store/localstore-manager';
+import { HistoryManager } from './api-indexeddb';
+import { localConfig, storageLocal } from './api-localstore';
 import {
 	acquaint,
 	genesis,

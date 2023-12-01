@@ -1,5 +1,5 @@
 import { API_HOST } from '$lib/env';
-import { BannerManager } from '$lib/store/IDB-manager';
+import { BannerManager } from './dataAPI/api-indexeddb';
 
 const idb = BannerManager;
 

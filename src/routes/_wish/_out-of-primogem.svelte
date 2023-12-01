@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { acquaint, intertwined, primogem } from '$lib/store/app-stores';
-	import { localBalance } from '$lib/store/localstore-manager';
+	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
 
 	export let isEventBanner = false;

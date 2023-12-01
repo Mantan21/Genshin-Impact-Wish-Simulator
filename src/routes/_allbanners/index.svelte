@@ -8,7 +8,7 @@
 
 	import { allPatch } from '$lib/data/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
-	import { BannerManager } from '$lib/store/IDB-manager';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { assets } from '$lib/store/app-stores';
 	import { getBannerName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';

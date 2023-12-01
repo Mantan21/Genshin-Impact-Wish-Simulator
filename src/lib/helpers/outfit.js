@@ -1,5 +1,5 @@
 import { outfits } from '$lib/data/outfits.json';
-import { ownedOutfits } from '$lib/store/localstore-manager';
+import { ownedOutfits } from './dataAPI/api-localstore';
 
 export const setActiveOutfit = (obj = {}) => {
 	if (!obj.name) return obj;

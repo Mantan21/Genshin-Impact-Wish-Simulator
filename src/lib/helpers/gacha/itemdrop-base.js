@@ -2,7 +2,7 @@ import { standard } from '$lib/data/banners/standard.json';
 import { data as weaponsDB } from '$lib/data/weapons.json';
 import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
 import { getRate, prob } from './probabilities';
-import { guaranteedStatus } from '$lib/store/localstore-manager';
+import { guaranteedStatus } from '../dataAPI/api-localstore';
 
 const standardWeapons = (star) => {
 	return getAllWeapons(star).filter(({ limited }) => !limited);

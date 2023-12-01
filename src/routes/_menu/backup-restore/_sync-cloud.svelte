@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { signIn } from '$lib/helpers/dataAPI/google-api';
+	// import { signIn } from '$lib/helpers/dataAPI/api-google';
 </script>
 
 <div class="cloud-sync" in:fade>

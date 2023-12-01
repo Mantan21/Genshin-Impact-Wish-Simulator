@@ -6,11 +6,11 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 
 	import { autoskip, isCustomBanner, multipull, wishAmount } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/store/localstore-manager';
-	import { calculateByteSize } from '$lib/helpers/dataAPI/filesystem';
+	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
+	import { calculateByteSize } from '$lib/helpers/dataAPI/api-filesystem';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
-	import { factoryReset } from '$lib/helpers/storage-reset';
+	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Toast from '$lib/components/Toast.svelte';

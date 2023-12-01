@@ -6,7 +6,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { APP_TITLE } from '$lib/env';
 	import { activeBanner, bannerList } from '$lib/store/app-stores';
-	import { localPity } from '$lib/store/localstore-manager';
+	import { localPity } from '$lib/helpers/dataAPI/api-localstore';
 
 	// Components
 	import SelectBanner from './_select-banner.svelte';

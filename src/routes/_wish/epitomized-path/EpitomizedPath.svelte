@@ -12,7 +12,7 @@
 		assets,
 		course
 	} from '$lib/store/app-stores';
-	import { fatepointManager } from '$lib/store/localstore-manager';
+	import { fatepointManager } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Modal from '$lib/components/ModalTpl.svelte';

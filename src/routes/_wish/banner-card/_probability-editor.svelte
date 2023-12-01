@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { localPity } from '$lib/store/localstore-manager';
+	import { localPity } from '$lib/helpers/dataAPI/api-localstore';
 	import { getRate, setRate } from '$lib/helpers/gacha/probabilities';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';

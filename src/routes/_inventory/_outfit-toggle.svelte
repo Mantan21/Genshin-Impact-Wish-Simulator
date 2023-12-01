@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
-	import { ownedOutfits } from '$lib/store/localstore-manager';
+	import { ownedOutfits } from '$lib/helpers/dataAPI/api-localstore';
 	import { outfitListForChar } from '$lib/helpers/outfit';
 	import { getName } from '$lib/helpers/nameText';
 	import { lazyLoad } from '$lib/helpers/lazyload';

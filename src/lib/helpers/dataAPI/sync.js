@@ -1,4 +1,4 @@
-import { renewSavedFile } from './filesystem';
+import { renewSavedFile } from './api-filesystem';
 
 export const updateRemoteStorage = ({ to } = {}) => {
 	if (to === 'local') return renewSavedFile();
