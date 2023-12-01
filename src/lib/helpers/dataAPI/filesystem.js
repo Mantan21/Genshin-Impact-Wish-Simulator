@@ -1,11 +1,24 @@
 import { AssetManager } from '$lib/store/IDB-manager';
-import { autoExport, fileData, fileHandle, savingToSystem } from '$lib/store/filesystem-store';
+import {
+	autoExport,
+	fileData,
+	fileHandle as storeHandle,
+	savingToSystem
+} from '$lib/store/filesystem-store';
 import { browserDetect } from '../mobileDetect';
-import { generateFileString } from './export-import';
+import { generateFileString, parseFileObj } from './export-import';
 
 export const FSSupported = () => {
-	const { isSupported } = browserDetect();
-	return isSupported && ('chooseFileSystemEntries' in window || 'showOpenFilePicker' in window);
+	const { isSupported: browserSupported } = browserDetect();
+	const oldMethodSuppported = 'chooseFileSystemEntries' in window;
+	const newMethodSupported = 'showSaveFilePicker' in window;
+	return browserSupported && (oldMethodSuppported || newMethodSupported);
+};
+
+export const calculateByteSize = (size) => {
+	if (!size || isNaN(size)) return '...B';
+	const mb = (size / (1024 * 1024)).toFixed(2);
+	return `${mb}MB`;
 };
 
 const setFileStore = async (fileHandle) => {
@@ -21,10 +34,10 @@ const saveHandle = async (fileHandle) => {
 };
 
 export const readFileHandle = async () => {
-	const { fileHandle: file } = (await AssetManager.get('savedFile')) || {};
-	if (!file) return null;
-	fileData.set({ name: file.name });
-	fileHandle.set(file);
+	const { fileHandle } = (await AssetManager.get('savedFile')) || {};
+	if (!fileHandle) return null;
+	fileData.set({ name: fileHandle.name });
+	storeHandle.set(fileHandle);
 };
 
 const clearLocalFile = async () => {
@@ -106,6 +119,7 @@ export const saveExport = async () => {
 		await saveHandle(fileHandle);
 
 		setFileStore(fileHandle);
+		storeHandle.set(fileHandle);
 		autoExport.set(true);
 		savingToSystem.set(false);
 		return fileHandle;
@@ -122,7 +136,9 @@ export const renewSavedFile = async () => {
 		if (!fileHandle) return savingToSystem.set(false); //no filehandle detected
 
 		const isExist = await checkFileExist(fileHandle);
-		if (!isExist) throw new Error('Target File is not exist, Auto Export will be turned off');
+		if (!isExist) {
+			throw new Error('Destination File does not exist, Auto Export will be turned off');
+		}
 
 		const fileString = await generateFileString();
 		await writeFile(fileHandle, fileString);
@@ -133,4 +149,44 @@ export const renewSavedFile = async () => {
 		savingToSystem.set(false);
 	}
 };
+
+// Read Import File
+const getFileData = async (handle) => {
+	const { fileHandle: currentHandle } = await AssetManager.get('savedFile');
+	const isSameHandle = await handle.isSameEntry(currentHandle);
+	if (isSameHandle) throw new Error('You cannot import the currently exported file.');
+
+	const file = await handle.getFile();
+	const parsedFile = await parseFileObj(file);
+	return { handle, file, parsedFile };
+};
+
+export const readDropedFile = async (items) => {
+	const fileHandlesPromises = [...items]
+		.filter((item) => item.kind === 'file')
+		.map((item) => item.getAsFileSystemHandle());
+
+	for await (const handle of fileHandlesPromises) {
+		if (handle.kind !== 'file') continue;
+		return getFileData(handle);
+	}
+};
+
+// export const showFilePicker = async () => {
+// 	const pickerOptions = {
+// 		types: [
+// 			{
+// 				accept: {
+// 					'application/octet-stream': ['.bin'],
+// 					'application/json': ['.json'],
+// 					'text/plain': ['.txt']
+// 				}
+// 			}
+// 		],
+// 		excludeAcceptAllOption: true,
+// 		multiple: false
+// 	};
+// 	const [handle] = await window.showOpenFilePicker(pickerOptions);
+// 	return getFileData(handle);
+// };
 

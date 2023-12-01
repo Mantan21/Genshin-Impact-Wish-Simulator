@@ -1,5 +1,5 @@
 export const storageLocal = {
-	_getData() {
+	getData() {
 		const data = localStorage.getItem('WishSimulator.App');
 		if (!data) return { data: {} };
 		const parsed = JSON.parse(data);
@@ -7,12 +7,12 @@ export const storageLocal = {
 	},
 
 	get(key) {
-		const { data } = this._getData();
+		const { data } = this.getData();
 		return data[key] || {};
 	},
 
 	set(key, value) {
-		const { data } = this._getData();
+		const { data } = this.getData();
 		data[key] = value;
 		localStorage.setItem('WishSimulator.App', JSON.stringify({ data }));
 	}
@@ -54,8 +54,16 @@ export const rollCounter = {
 		return rollCount[banner] || 0;
 	},
 	set(banner, rollNumber) {
+		if (!banner) return;
 		const rollCount = storageLocal.get('rollCounter');
 		rollCount[banner] = rollNumber;
+		storageLocal.set('rollCounter', rollCount);
+	},
+	put(banner) {
+		if (!banner) return;
+		const rollCount = storageLocal.get('rollCounter');
+		const before = rollCount[banner] || 0;
+		rollCount[banner] = before + 1;
 		storageLocal.set('rollCounter', rollCount);
 	}
 };
@@ -114,6 +122,18 @@ export const owneditem = {
 };
 
 export const fatepointManager = {
+	getAll() {
+		const storedData = storageLocal.get('fatepoint');
+		const allPoint = Array.isArray(storedData) ? storedData : [];
+		return allPoint;
+	},
+
+	restore(data) {
+		const localData = this.getAll();
+		localData.push(data);
+		storageLocal.set('fatepoint', localData);
+	},
+
 	init({ version, phase } = {}) {
 		this._version = version;
 		this._phase = phase;
@@ -242,4 +262,3 @@ export const localrate = {
 		storageLocal.set('probabilityRates', rates);
 	}
 };
-

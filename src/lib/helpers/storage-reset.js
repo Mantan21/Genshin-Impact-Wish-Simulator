@@ -29,7 +29,7 @@ export const clearCacheStorage = async () => {
 	return true;
 };
 
-export const factoryReset = async ({ clearCache = false, keepSetting = false }) => {
+export const factoryReset = async ({ clearCache = false, keepSetting = false } = {}) => {
 	await clearIDB();
 	if (clearCache) await clearCacheStorage();
 
@@ -42,21 +42,23 @@ export const factoryReset = async ({ clearCache = false, keepSetting = false }) 
 		const pity = storageLocal.get('pity');
 		const balance = storageLocal.get('balance');
 		const probabilityRates = storageLocal.get('probabilityRates');
+		const exportData = storageLocal.get('export');
 		localStorage.removeItem('WishSimulator.App');
 
 		storageLocal.set('config', config);
 		storageLocal.set('pity', pity);
 		storageLocal.set('balance', balance);
 		storageLocal.set('probabilityRates', probabilityRates);
+		if (exportData?.id) storageLocal.set('export', exportData);
 		return;
 	}
 
 	// Remove all Settings
 	const locale = localConfig.get('locale');
-	const adKey = localConfig.get('adKey');
+	const exportData = storageLocal.get('export');
 	localStorage.removeItem('WishSimulator.App');
 	if (locale) localConfig.set('locale', locale);
-	if (adKey) localConfig.set('adKey', adKey);
+	if (exportData?.id) storageLocal.set('export', exportData);
 
 	const { fates, genesis: igen, primogem: iprimo } = initialAmount;
 	acquaint.set(fates);

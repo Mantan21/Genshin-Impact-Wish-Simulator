@@ -2,8 +2,8 @@
 	import { fade } from 'svelte/transition';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import SyncCloud from './_sync-cloud.svelte';
-	import SyncLocal from './_sync-local.svelte';
+	import SyncCloud from './backup-restore/_sync-cloud.svelte';
+	import SyncLocal from './backup-restore/_sync-local.svelte';
 
 	let activeSync = 'local';
 	const buttonNavigation = (section) => {

@@ -120,5 +120,9 @@ export const BannerManager = {
 	async delete(key) {
 		if (!key) return;
 		return (await IndexedDB).delete('custombanner', key);
+	},
+
+	async clear() {
+		return (await IndexedDB).clear('custombanner');
 	}
 };
