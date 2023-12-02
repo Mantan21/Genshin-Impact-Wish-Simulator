@@ -2,6 +2,7 @@
 	import { dev } from '$app/environment';
 	import { getContext, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import Zoomist from 'zoomist';
 
 	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
@@ -103,9 +104,9 @@
 		{#if !preview}
 			<div class="confirm">
 				{#if isChanged}
-					<ButtonModal light on:click={setCoordinate}>Set Position</ButtonModal>
+					<ButtonModal light on:click={setCoordinate}>{$t('customBanner.setPosition')}</ButtonModal>
 				{:else}
-					<ButtonModal light on:click={nextArt}>Next &raquo;</ButtonModal>
+					<ButtonModal light on:click={nextArt}>{$t('customBanner.next')} &raquo;</ButtonModal>
 				{/if}
 			</div>
 		{/if}

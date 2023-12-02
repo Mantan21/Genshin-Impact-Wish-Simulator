@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 
 	import { imageCDN } from '$lib/helpers/assets';
 	import { preloadVersion } from '$lib/store/app-stores';
@@ -47,9 +48,9 @@
 		const { data = {}, success, message } = await onlineBanner.getData(shareID);
 		if (!success) {
 			if (message === 'Not Found') {
-				errorType = 'notFound';
+				errorType = 'bannerNotFound';
 			} else if (message === 'Invalid ID') {
-				errorType = 'invalid';
+				errorType = 'invalidBanner';
 			} else {
 				errorType = 'networkError';
 			}
@@ -82,25 +83,29 @@
 	});
 </script>
 
-<ModalTpl confirmOnly title="Looking for a Banner" on:confirm={initBanner} disabled={!loaded}>
+<ModalTpl
+	confirmOnly
+	title={$t('customBanner.findBanner')}
+	on:confirm={initBanner}
+	disabled={!loaded}
+>
 	<div class="container">
 		{#if isError}
 			<div class="content error" in:fade>
 				{#if errorType === 'networkError'}
 					<div class="error">
-						<caption> Network Error </caption>
-						<ButtonGeneral on:click={retry}>Retry</ButtonGeneral>
+						<caption> {$t('customBanner.networkError')} </caption>
+						<ButtonGeneral on:click={retry}>{$t('customBanner.retry')}</ButtonGeneral>
 					</div>
 				{:else}
 					<caption>
-						Error:{errorType}; Banner not found, wrong <u>Banner ID</u> or maybe the author has removed
-						it.
+						{@html $t(`customBanner.${errorType}`)}
 					</caption>
 				{/if}
 			</div>
 		{:else if !loaded}
 			<div class="content" in:fade>
-				<caption class="load-text">Identifying Banner</caption>
+				<caption class="load-text">{$t('customBanner.identifying')}</caption>
 				<div class="loader">
 					<Icon type="loader" />
 				</div>
@@ -110,12 +115,15 @@
 			<div class="content" in:fade>
 				{#if isOwned}
 					<caption>
-						You're the owner of "<span class="{vision}-flat">{bannerName}</span>" banner, your local
-						data will be used instead of the data you've shared online.
+						{@html $t('customBanner.loadOwnedBanner', {
+							values: { ownedBanner: `<span class="${vision}-flat">${bannerName}</span>` }
+						})}
 					</caption>
 				{:else}
 					<caption>
-						"<span class="{vision}-flat">{bannerName}</span>" is ready to Wish
+						{@html $t('customBanner.loadReady', {
+							values: { banner: `<span class="${vision}-flat">${bannerName}</span>` }
+						})}
 					</caption>
 				{/if}
 				{#if thumbnail}

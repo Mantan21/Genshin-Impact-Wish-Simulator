@@ -1,6 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { HOST, IBB_KEY } from '$lib/env';
 	import { editID, isMobile } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
@@ -22,7 +23,7 @@
 	let character = '';
 	let thumbnail = '';
 	$: shareLink = `${HOST}/?banner=${shareID}`;
-	$: shareText = `Come and Try Your Luck on my ${character} Banner Simulator`;
+	$: shareText = $t('customBanner.shareText');
 
 	const copyHandle = async () => {
 		playSfx();
@@ -153,7 +154,9 @@
 		{#if uploadProccess}
 			<div class="content" in:fade>
 				<caption class="load-text" style="position: relative;">
-					Uploading <span>{itemName[itemInProccess]}</span>
+					{@html $t('customBanner.uploading', {
+						values: { item: `<span>${itemName[itemInProccess]}</span>` }
+					})}
 				</caption>
 				<div class="progress-bar" style="--per:{percentage}%">
 					<span />
@@ -161,7 +164,7 @@
 			</div>
 		{:else if cloudProccess}
 			<div class="content" in:fade>
-				<caption class="load-text"> Almost Done </caption>
+				<caption class="load-text"> {$t('customBanner.almostDone')} </caption>
 				<div class="loader">
 					<Icon type="loader" />
 				</div>
@@ -207,7 +210,7 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.load-text span {
+	.load-text :global(span) {
 		color: #ff9615;
 	}
 

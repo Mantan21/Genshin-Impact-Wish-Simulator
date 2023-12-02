@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -21,11 +22,11 @@
 	<nav>
 		<button class:active={activeSync === 'cloud'} on:click={() => buttonNavigation('cloud')}>
 			<i class="gi-drive" />
-			<span> Cloud Sync</span>
+			<span> {$t('backupRestore.cloudSync')}</span>
 		</button>
 		<button class:active={activeSync === 'local'} on:click={() => buttonNavigation('local')}>
 			<i class="gi-local" />
-			<span> Local Backup/Restore</span>
+			<span> {$t('backupRestore.localSync')}</span>
 		</button>
 	</nav>
 	<div class="content">

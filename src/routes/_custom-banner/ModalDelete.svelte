@@ -1,6 +1,7 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 
 	import { wishPhase, version } from '$lib/data/wish-setup.json';
 	import { imageCDN } from '$lib/helpers/assets';
@@ -62,17 +63,11 @@
 			</div>
 		{:else}
 			<div class="wrapper" in:fade>
-				<span> Are You Sure to delete this banner ? </span>
+				<span> {$t('customBanner.deletePrompt')} </span>
 				{#if isOwned}
-					<small>
-						If you've shared this banner publicly, The Travelers who have made wishes on your banner
-						will no longer be able to access it.
-					</small>
+					<small> {$t('customBanner.ownerDeleteNote')} </small>
 				{:else}
-					<small>
-						The history of Wishing on this banner will not be deleted, but you will not be able to
-						pull on this banner again.
-					</small>
+					<small> {$t('customBanner.userDeleteNote')} </small>
 				{/if}
 
 				{#if thumbnail}

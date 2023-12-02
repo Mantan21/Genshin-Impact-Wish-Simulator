@@ -156,7 +156,7 @@
 >
 	<img
 		src={$assets[`blank/${vision}`]}
-		alt="background banner"
+		alt="Background Banner"
 		crossorigin="anonymous"
 		class="art-bg"
 	/>
@@ -180,11 +180,11 @@
 
 {#if isInfoEdit}
 	<InfoEditor
+		preview={images?.thumbnail}
 		{rateup}
 		{bannerName}
 		{character}
 		{charTitle}
-		preview={images?.thumbnail}
 		{watermark}
 	/>
 {/if}

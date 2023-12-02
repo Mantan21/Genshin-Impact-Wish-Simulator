@@ -1,6 +1,7 @@
 <script>
 	import { createEventDispatcher, getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { t } from 'svelte-i18n';
 	import { calculateByteSize } from '$lib/helpers/dataAPI/api-filesystem';
 	import { placeDataToAppDB } from '$lib/helpers/dataAPI/data-merger';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -39,11 +40,11 @@
 </script>
 
 <ModalTpl
+	noDimiss
 	title="Import Data"
+	disabled={!action || processing}
 	on:cancel={closeModal}
 	on:confirm={confirm}
-	disabled={!action || processing}
-	noDimiss
 >
 	{#if processing}
 		<div class="import-content">
@@ -54,8 +55,9 @@
 	{:else}
 		<div class="import-content">
 			<caption>
-				<strong> {file.name} ({calculateByteSize(file.size)}) </strong> will be added to the App, please
-				choose what action you want to perform!
+				{@html $t('backupRestore', {
+					values: { fileInfo: `<strong> ${file.name} (${calculateByteSize(file.size)}) </strong>` }
+				})}
 			</caption>
 
 			<div class="import-option">
@@ -64,9 +66,7 @@
 					checked={action === 'merge'}
 					on:change={(e) => checkboxHandle('merge', e)}
 				>
-					<span>
-						Merge Data <small>Automatically remove duplicate item(s) and insert new item(s)</small>
-					</span>
+					<span> {@html $t('customBanner.mergeAction')} </span>
 				</CheckBox>
 
 				<CheckBox
@@ -75,8 +75,7 @@
 					on:change={(e) => checkboxHandle('replace', e)}
 				>
 					<span>
-						Replace Data
-						<small> Erase the current App Data and replace it with the imported one. </small>
+						{@html $t('backupRestore.replaceAction')}
 					</span>
 				</CheckBox>
 			</div>

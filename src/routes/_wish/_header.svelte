@@ -93,7 +93,7 @@
 			{#if !$editorMode}
 				<span> {$t('wish.wishTitle')} </span>
 			{:else}
-				<span> Customize Banner </span>
+				<span> {$t('customBanner.title')} </span>
 			{/if}
 
 			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">

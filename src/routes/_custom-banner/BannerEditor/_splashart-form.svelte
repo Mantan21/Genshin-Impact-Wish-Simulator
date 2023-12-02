@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { getContext } from 'svelte';
 	import { isMobile } from '$lib/store/app-stores';
@@ -58,11 +59,11 @@
 		{#if !onDrag}
 			<label class="mainart button" for="uploadFile" transition:fade|local>
 				<i class="gi-picture" />
-				<span>Change Splash Art</span>
+				<span>{$t('customBanner.changeSplashArt')}</span>
 			</label>
 
 			<button class="button move" on:click={editBanner} transition:fade|local>
-				<i class="gi-move" /> <span>Move</span>
+				<i class="gi-move" /> <span>{$t('customBanner.move')}</span>
 			</button>
 		{/if}
 	</div>
@@ -70,7 +71,7 @@
 		<div class="drophere">
 			<div class="drop button">
 				<i class="gi-picture" />
-				<span>Drop Here!</span>
+				<span>{$t('customBanner.dropHere')}</span>
 			</div>
 		</div>
 	{/if}

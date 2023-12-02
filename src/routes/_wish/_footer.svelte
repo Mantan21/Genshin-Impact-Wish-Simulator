@@ -70,7 +70,7 @@
 		if (isComplete) return preloadVersion.set({ patch: 'Custom', phase: $editID });
 
 		// Benner not Complete
-		toastMsg = 'Please Complete All Data!';
+		toastMsg = $t('customBanner.completeAllField');
 		showToast = true;
 		return;
 	};
@@ -80,7 +80,7 @@
 		playSfx();
 		const isComplete = await localBanner.isComplete($editID);
 		if (isComplete) return (showUploader = true);
-		toastMsg = 'Please Complete All Required Field!';
+		toastMsg = $t('customBanner.completeAllField');
 		showToast = true;
 	};
 
@@ -92,7 +92,7 @@
 	setContext('publishDone', publishDone);
 
 	const publishError = () => {
-		toastMsg = 'Network Error';
+		toastMsg = $t('customBanner.networkError');
 		showToast = true;
 		showUploader = false;
 	};
@@ -226,7 +226,7 @@
 					on:click={finishAndWish}
 				>
 					<i class="gi-primo-star" style="transform: translateX(-50%);" />
-					<span> Finish and Wish </span>
+					<span> {$t('customBanner.finishAndWish')} </span>
 				</button>
 
 				<button
@@ -236,12 +236,12 @@
 				>
 					<i class="gi-share" style="transform: translateX(-50%);" />
 					{#await localBanner.isHostedBanner($editID)}
-						<span> Publish Banner </span>
+						<span> {$t('customBanner.publish')} </span>
 					{:then isHosted}
 						{#if isHosted}
-							<span> Update & Share </span>
+							<span> {$t('customBanner.updateAndShare')} </span>
 						{:else}
-							<span> Publish Banner </span>
+							<span> {$t('customBanner.publish')} </span>
 						{/if}
 					{/await}
 				</button>

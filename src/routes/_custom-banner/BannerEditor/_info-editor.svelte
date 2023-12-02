@@ -84,7 +84,7 @@
 		transition:fly={{ duration: 250, x: 100 }}
 	>
 		<div class="header" bind:clientHeight={headerHeight}>
-			<h1>Edit Banner Information</h1>
+			<h1>{$t('customBanner.editBanner')}</h1>
 			<div class="close-button">
 				<button class="close" on:click={closeInfoEditor}>
 					<i class="gi-close" />
@@ -95,13 +95,13 @@
 		<div class="body" bind:clientWidth={rowWidth} style="--item-width:{itemWidth}px">
 			<div class="body-wrapper">
 				<div class="field-group">
-					<label for="bannerName">Banner Name: *</label>
+					<label for="bannerName">{$t('customBanner.bannerName')}: *</label>
 					<div class="col">
 						<input
 							type="text"
 							autocomplete="off"
 							id="bannerName"
-							placeholder="Banner Name"
+							placeholder={$t('customBanner.bannerName')}
 							value={bannerName}
 							on:input={typeBannerName}
 						/>
@@ -109,13 +109,13 @@
 				</div>
 
 				<div class="field-group">
-					<label for="charName">Character Name: *</label>
+					<label for="charName">{$t('customBanner.charName')}: *</label>
 					<div class="col">
 						<input
 							type="text"
 							autocomplete="off"
 							id="charName"
-							placeholder="Character Name"
+							placeholder={$t('customBanner.charName')}
 							value={character}
 							on:input={typeCharName}
 						/>
@@ -123,13 +123,13 @@
 				</div>
 
 				<div class="field-group">
-					<label for="charTitle">Character Title:</label>
+					<label for="charTitle">{$t('customBanner.charTitle')}:</label>
 					<div class="col">
 						<input
 							type="text"
 							autocomplete="off"
 							id="charTitle"
-							placeholder="Character Title"
+							placeholder={$t('customBanner.charTitle')}
 							value={charTitle}
 							on:input={typeCharTitle}
 						/>
@@ -137,7 +137,7 @@
 				</div>
 
 				<div class="field-group">
-					<label for="watermark">Watermark:</label>
+					<label for="watermark">{$t('customBanner.watermark')}:</label>
 					<div class="col">
 						<input
 							type="text"
@@ -152,7 +152,7 @@
 
 				<div class="field-group">
 					<div class="row">
-						<label for="rateup">Rate Up Characters: *</label>
+						<label for="rateup">{$t('customBanner.rateupChar')}: *</label>
 					</div>
 					<div class="row">
 						{#each Array(3) as _, i}
