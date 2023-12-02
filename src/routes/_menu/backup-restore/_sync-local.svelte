@@ -79,7 +79,7 @@
 
 		<div class="button">
 			<ButtonModal icon="import" on:click={handleImport}>{$t('backupRestore.import')}</ButtonModal>
-			<ButtonModal icon="save" on:click={saveLocal}>{$t('customBanner.export')}</ButtonModal>
+			<ButtonModal icon="save" on:click={saveLocal}>{$t('backupRestore.export')}</ButtonModal>
 		</div>
 	</div>
 </div>
