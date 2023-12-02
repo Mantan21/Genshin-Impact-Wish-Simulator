@@ -3,6 +3,7 @@
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Toast from '$lib/components/Toast.svelte';
+	import { t } from 'svelte-i18n';
 
 	export let onBannerEdit = false;
 	export let faceURL = '';
@@ -36,7 +37,7 @@
 			const isImage = allowedType.match(file.type);
 
 			if (!isImage) {
-				toastMsg = 'not an Image';
+				toastMsg = $t('customBanner.notAnImage');
 				showToast = true;
 				throw new Error(toastMsg);
 			}
@@ -44,7 +45,7 @@
 			const fileSize = file.size;
 			const maxSize = 1024 * 1024 * 2; // 2MB
 			if (fileSize > maxSize) {
-				toastMsg = 'Image is too Large, max size: 2MB';
+				toastMsg = $t('customBanner.imageTooLarge', { values: { maxSize: '2MB' } });
 				showToast = true;
 				throw new Error(toastMsg);
 			}
@@ -65,7 +66,7 @@
 		<label class="face" for="faceInput" on:mousedown={() => playSfx()}>
 			<div class="overlay">
 				<i class="gi-picture" />
-				<span>Face Icon</span>
+				<span>{$t('customBanner.faceIcon')}</span>
 			</div>
 
 			{#if faceURL}
@@ -74,7 +75,7 @@
 				<img
 					class="placeholder"
 					src={$assets['face-placeholder.webp']}
-					alt=""
+					alt="face placeholder"
 					crossorigin="anonymous"
 				/>
 			{/if}
@@ -90,10 +91,14 @@
 	</div>
 
 	<div class="customize">
-		<button class="detail" on:click={showInfoEditor}> <i class="gi-pen" /> Edit Info </button>
+		<button class="detail" on:click={showInfoEditor}>
+			<i class="gi-pen" />
+			{$t('customBanner.editInfo')}
+		</button>
 		<br />
 		<button class="splashart" on:click={showSplashArtEdit}>
-			<i class="gi-pen" /> Adjust Splash Art
+			<i class="gi-pen" />
+			{$t('customBanner.adjustSplashArt')}
 		</button>
 	</div>
 </div>

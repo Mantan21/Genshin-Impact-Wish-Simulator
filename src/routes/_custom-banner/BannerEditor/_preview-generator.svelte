@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { getContext } from 'svelte';
 	import { toBlob } from 'html-to-image';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -22,8 +23,8 @@
 </script>
 
 <div class="row">
-	<label for="bannerdesign">Banner Preview</label>
-	<ButtonGeneral on:click={generate}>Generate Image</ButtonGeneral>
+	<label for="bannerdesign">{$t('customBanner.preview')}</label>
+	<ButtonGeneral on:click={generate}>{$t('customBanner.generateImage')}</ButtonGeneral>
 </div>
 <div class="row">
 	{#if preview}

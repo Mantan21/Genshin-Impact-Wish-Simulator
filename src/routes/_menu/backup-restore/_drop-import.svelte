@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { readDropedFile } from '$lib/helpers/dataAPI/api-filesystem';
 	import { allowedType, importFileLegacy } from '$lib/helpers/dataAPI/export-import';
 
@@ -47,7 +48,7 @@
 </script>
 
 <div class="drop-content" class:onDrag on:dragenter={dragenter}>
-	<span> Drop Your File Here </span>
+	<span> {$t('backupRestore.dropFiles')} </span>
 
 	<input
 		class="inputFile"

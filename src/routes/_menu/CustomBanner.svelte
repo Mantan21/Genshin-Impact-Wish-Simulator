@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
 	import {
@@ -88,12 +89,12 @@
 	};
 
 	const deleteError = () => {
-		toastMsg = 'Failed to Remove';
+		toastMsg = $t('customBanner.deleteFailed');
 		showToast = true;
 	};
 	const deleteDone = () => {
 		customList = customList.filter(({ itemID }) => itemID != idToDelete);
-		toastMsg = 'Banner Removed';
+		toastMsg = $t('customBanner.bannerRemoved');
 		showToast = true;
 		showModal = false;
 		idToDelete = 0;
@@ -128,16 +129,16 @@
 	<div class="header" bind:clientHeight={headerHeight}>
 		{#if ready && !showNote}
 			<h1>
-				<span> Your Banners </span>
+				<span> {$t('customBanner.yourBanners')} </span>
 				<button class="question" on:click={toggleInfo}>i</button>
 			</h1>
 		{:else}
-			<h1><span> Create a Custom Banner </span></h1>
+			<h1><span> {$t('customBanner.createBanner')} </span></h1>
 		{/if}
 
 		{#if customList.length > 1 && !$proUser && !showNote}
 			<div class="notice">
-				You are not a member, please delete some banners to activate the editor
+				{$t('customBanner.limitation')}
 			</div>
 		{/if}
 	</div>
@@ -168,13 +169,6 @@
 							have created.
 							<u>In such a case, what you can do is create a new custom banner</u>.
 						</p>
-
-						<p>
-							If you log in using a Patreon account, <b>WishSimulator.App</b> will save your Patreon
-							ID, allowing you to edit your banner even if you lose data in your browser storage. However,
-							this will only happen if you press the Share button. Therefore, you must press the share
-							button every time you modify your banner.
-						</p>
 					</article>
 					<ButtonModal width="200px" on:click={toggleInfo}>Create Banner</ButtonModal>
 				</div>
@@ -188,9 +182,9 @@
 								{/if}
 								<button
 									class="banner-item"
-									data-text={!complete ? 'Incomplete' : ''}
-									on:click={!complete ? null : () => wishBanner(itemID)}
 									disabled={!complete}
+									data-text={!complete ? $t('customBanner.incomplete') : ''}
+									on:click={!complete ? null : () => wishBanner(itemID)}
 								>
 									<img
 										src={images?.thumbnail || $assets[`blank/${vision || 'pyro'}`]}
@@ -201,11 +195,11 @@
 								<div class="action">
 									{#if !(customList.length > 1 && !$proUser)}
 										<button class="edit" on:click={() => customizeBanner(itemID)}>
-											<i class="gi-pen" /> <span>Edit</span>
+											<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 										</button>
 									{/if}
 									<button class="delete" on:click={() => selectToDelete(itemID, images?.thumbnail)}>
-										<i class="gi-delete" /> <span>Delete</span>
+										<i class="gi-delete" /> <span>{$t('customBanner.delete')}</span>
 									</button>
 								</div>
 							</div>
@@ -216,14 +210,14 @@
 						<div class="item blank">
 							<button class="add" on:click={() => customizeBanner()}>
 								<i class="gi-plus" />
-								<span>Add Banner</span>
+								<span>{$t('customBanner.addBanner')}</span>
 							</button>
 						</div>
 					{:else}
 						<div class="item blank locked">
 							<button class="add" on:click={() => selectMenu('proAccess')}>
 								<i class="gi-lock" />
-								<span>Become a Member to Add More Banner</span>
+								<span>{$t('customBanner.memberToUnlock')}</span>
 							</button>
 						</div>
 					{/if}

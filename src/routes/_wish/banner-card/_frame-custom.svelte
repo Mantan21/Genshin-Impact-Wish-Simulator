@@ -6,7 +6,8 @@
 		customData,
 		editID,
 		editorMode as editMode,
-		isCustomBanner
+		isCustomBanner,
+		proUser
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
@@ -20,7 +21,7 @@
 	export let watermark = '';
 
 	const highlightBannerName = (bannerName, vision) => {
-		const name = bannerName || 'Banner Name';
+		const name = bannerName || $t('customBanner.bannerName');
 		const splited = name.split(' ');
 		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
@@ -46,13 +47,16 @@
 
 	{#if $isCustomBanner}
 		<div class="action">
-			{#if $customData.status === 'owned' && !editorMode}
+			{#if $customData.status === 'owned' && !editorMode && $proUser}
 				<button class="edit" on:click={editBanner}>
-					<i class="gi-pen" /> <span>Edit</span>
+					<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 				</button>
 			{/if}
 
-			<button class="delete" on:click={deleteBanner}> <i class="gi-delete" /> Delete </button>
+			<button class="delete" on:click={deleteBanner}>
+				<i class="gi-delete" />
+				{$t('customBanner.delete')}
+			</button>
 		</div>
 	{/if}
 
@@ -79,7 +83,7 @@
 	<div class="character">
 		<div class="char-name">
 			<span>
-				{character || 'Character Name'}
+				{character || $t('customBanner.charName')}
 			</span>
 			<span class="up">{$t('wish.banner.up')}</span>
 
@@ -96,7 +100,7 @@
 		</div>
 
 		<div class="char-title">
-			{charTitle || 'Character Title'}
+			{charTitle || $t('customBanner.charTitle')}
 		</div>
 	</div>
 

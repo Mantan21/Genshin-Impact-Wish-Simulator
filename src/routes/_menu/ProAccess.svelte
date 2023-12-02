@@ -143,7 +143,7 @@
 					<ButtonModal type="cancel" on:click={handleKey}>{$t('menu.removeKey')}</ButtonModal>
 				{:else}
 					<ButtonModal on:click={getProAccount} disabled={!input || waiting}>
-						{waiting ? $t('waiting') : $t('menu.removeAds')}
+						{waiting ? $t('waiting') : $t('menu.getpro')}
 					</ButtonModal>
 				{/if}
 			</div>

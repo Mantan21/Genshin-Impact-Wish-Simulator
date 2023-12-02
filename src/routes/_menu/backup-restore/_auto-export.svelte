@@ -1,4 +1,5 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { getContext, onDestroy, onMount } from 'svelte';
 	import { autoExport, fileData, fileHandle, savingToSystem } from '$lib/store/filesystem-store';
@@ -76,14 +77,14 @@
 					{:else}
 						<i class="gi-{autoSave ? 'check' : 'cancel'}" />
 					{/if}
-					<span> Auto Export </span>
+					<span> {$t('backupRestore.autoExport')} </span>
 				</div>
 			</ButtonGeneral>
 		</div>
 		<div class="fileName">
 			<table>
 				<tr>
-					<td>Destination</td>
+					<td>{$t('backupRestore.destination')}</td>
 					<td> <span> {fileName} </span></td>
 				</tr>
 				<tr>
@@ -91,7 +92,7 @@
 					<td>{calculateByteSize($fileData.size)}</td>
 				</tr>
 				<tr>
-					<td>Last Export</td>
+					<td> {$t('backupRestore.lastExport')} </td>
 					<td> {lastExport} </td>
 				</tr>
 			</table>
@@ -99,7 +100,7 @@
 	</div>
 {:else if isFileExist === false}
 	<button class="savedFile error" disabled in:fade>
-		<span> Cannot find backup file location, please try to Export again </span>
+		<span> {$t('backupRestore.desNotFound')} </span>
 	</button>
 {/if}
 

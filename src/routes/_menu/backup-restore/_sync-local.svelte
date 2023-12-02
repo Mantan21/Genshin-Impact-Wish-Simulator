@@ -1,5 +1,6 @@
 <script>
 	import { onMount, setContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { fileData, fileHandle } from '$lib/store/filesystem-store';
 	import {
@@ -77,8 +78,8 @@
 		{/if}
 
 		<div class="button">
-			<ButtonModal icon="import" on:click={handleImport}>Import Data</ButtonModal>
-			<ButtonModal icon="save" on:click={saveLocal}>Export Data</ButtonModal>
+			<ButtonModal icon="import" on:click={handleImport}>{$t('backupRestore.import')}</ButtonModal>
+			<ButtonModal icon="save" on:click={saveLocal}>{$t('backupRestore.export')}</ButtonModal>
 		</div>
 	</div>
 </div>
