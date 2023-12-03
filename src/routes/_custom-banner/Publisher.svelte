@@ -110,7 +110,7 @@
 					const newData = JSON.parse(request.responseText);
 					if (request.status != 200) return reject({ success: false, ...newData });
 					await localBanner.renewImage({ id: $editID, newData, key });
-					return resolve({ ...newData, status_code: 200 });
+					resolve({ ...newData, status_code: 200 });
 				});
 				request.send(data);
 			} catch (e) {

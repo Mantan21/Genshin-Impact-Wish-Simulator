@@ -20,13 +20,21 @@ export const localBanner = {
 		const { data = {} } = newData;
 		const { url: imageURL, delete_url } = data;
 		const [, , , imgID, hash] = delete_url.split('/');
-
 		const idbData = await idb.get(id);
-		idbData.hostedImages = idbData.hostedImages || {};
-		idbData.imageHash = idbData.imageHash || {};
-		idbData.imgChanged = idbData.imgChanged || {};
 
-		await onlineBanner.deleteImage(idbData.imageHash[key] || {});
+		// create placeholder
+		const { hostedImages = {}, imageHash = {}, imgChanged = {} } = idbData;
+		const hashList = Object.keys(imageHash).map((k) => imageHash[k].id);
+		idbData.hostedImages = hostedImages;
+		idbData.imageHash = imageHash;
+		idbData.imgChanged = imgChanged;
+
+		const dontRemoveImage = hashList.filter((id) => id === imageHash[key]?.id).length > 1;
+		if (!dontRemoveImage) {
+			await onlineBanner.deleteImage(imageHash[key] || {});
+		}
+
+		// Set new values
 		idbData.hostedImages[key] = imageURL;
 		idbData.imageHash[key] = { id: imgID, hash };
 		idbData.imgChanged[key] = false;
@@ -177,8 +185,8 @@ export const syncCustomBanner = async () => {
 			}
 
 			if (dataToModify.status === 'owned') {
-				const { images = {}, imgChanged = {}, isChanged = false } = dataToModify;
-				const modifiedData = { ...dataToStore, images, imgChanged, isChanged };
+				const { hostedImages = {}, imageHash = {} } = dataToStore;
+				const modifiedData = { ...dataToModify, hostedImages, imageHash };
 				await idb.put(modifiedData);
 			}
 		}
