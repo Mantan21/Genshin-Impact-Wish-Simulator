@@ -4,7 +4,7 @@
 	import { locale, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
-	import { getBannerName } from '$lib/helpers/nameText';
+	import { getBannerName, highlightBannerName } from '$lib/helpers/nameText';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 
 	export let bannerName = '';
@@ -15,11 +15,6 @@
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
 	$: vision = getCharDetails(character).vision;
 	$: featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
-
-	const highlightBannerName = (bannerName) => {
-		const splited = bannerName.split(' ');
-		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
-	};
 
 	let bannerInfo;
 	onMount(() => {
@@ -37,7 +32,7 @@
 		{event2 ? ($locale === 'ja-JP' ? '2' : '— 2') : ''}
 	</div>
 	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
-		{@html highlightBannerName(localeBannerName)}
+		{@html highlightBannerName(localeBannerName, vision)}
 	</h1>
 
 	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>

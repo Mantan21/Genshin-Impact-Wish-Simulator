@@ -34,6 +34,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: flex-end;
+		z-index: +10;
 	}
 
 	button {

@@ -4,14 +4,10 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { beginnerRemaining } from '$lib/store/app-stores';
+	import { highlightBannerName } from '$lib/helpers/nameText';
 
 	export let character = '';
 	$: char = $t(`${character}.name`);
-
-	const highlightBannerName = (bannerName) => {
-		const splited = bannerName.split(' ');
-		return `${splited[0]} <span class="geo"> ${splited.slice(1).join(' ')}</span>`;
-	};
 
 	let bannerInfo;
 	onMount(() => {
@@ -28,7 +24,7 @@
 		{$t('wish.banner.novice')}
 	</div>
 	<h1 class="card-stroke" in:fly={{ x: 10, duration: 700 }}>
-		{@html highlightBannerName($t(`banner.beginner`))}
+		{@html highlightBannerName($t(`banner.beginner`), 'geo')}
 	</h1>
 
 	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>

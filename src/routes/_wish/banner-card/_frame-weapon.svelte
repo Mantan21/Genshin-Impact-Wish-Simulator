@@ -3,17 +3,13 @@
 	import { t } from 'svelte-i18n';
 	import { course } from '$lib/store/app-stores';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
+	import { highlightBannerName } from '$lib/helpers/nameText';
 
 	export let featured = {};
 	export let rateup = {};
 	export let textOffset = {};
 	const w = textOffset?.featured?.w || 29;
 	const featuredW = `--text-width: calc(${w} / 100 * var(--content-width));`;
-
-	const highlightBannerName = (bannerName) => {
-		const splited = bannerName.split(' ');
-		return `<span class="epitome-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
-	};
 </script>
 
 <div class="frame-content">
@@ -21,7 +17,7 @@
 		{$t('wish.banner.weapon-event')}
 	</div>
 	<h1 in:fly={{ x: 10, duration: 700 }}>
-		{@html highlightBannerName($t(`banner.epitome-invocation`))}
+		{@html highlightBannerName($t(`banner.epitome-invocation`), 'epitome')}
 	</h1>
 
 	<div class="info" in:fly={{ x: 10, duration: 700 }}>

@@ -12,6 +12,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
+	import { highlightBannerName } from '$lib/helpers/nameText';
 
 	export let bannerName = '';
 	export let character = '';
@@ -20,12 +21,6 @@
 	export let editorMode = false;
 	export let onBannerEdit = false;
 	export let watermark = '';
-
-	const highlightBannerName = (bannerName, vision) => {
-		const name = bannerName || $t('customBanner.bannerName');
-		const splited = name.split(' ');
-		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
-	};
 
 	const deleteBanner = getContext('deleteBanner');
 	const editBanner = () => {
@@ -49,7 +44,7 @@
 	</div>
 	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
 		<div class="wrap">
-			{@html highlightBannerName(bannerName, vision)}
+			{@html highlightBannerName(bannerName || $t('customBanner.bannerName'), vision)}
 		</div>
 	</h1>
 
