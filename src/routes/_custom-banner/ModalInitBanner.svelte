@@ -46,10 +46,11 @@
 
 	const fetchBannerData = async (shareID) => {
 		const { data = {}, success, message } = await onlineBanner.getData(shareID);
-		if (!success) {
+		const isBlocked = !!data.blocked;
+		if (!success || isBlocked) {
 			if (message === 'Not Found') {
 				errorType = 'bannerNotFound';
-			} else if (message === 'Invalid ID') {
+			} else if (message === 'Invalid ID' || isBlocked) {
 				errorType = 'invalidBanner';
 			} else {
 				errorType = 'networkError';

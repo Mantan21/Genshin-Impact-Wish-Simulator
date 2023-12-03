@@ -43,7 +43,7 @@ export const localBanner = {
 };
 
 export const onlineBanner = {
-	async _postData({ action, data, id }) {
+	async _postData({ action, data = {}, id }) {
 		const body = { app: 'genshin', action, data, id };
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
@@ -158,6 +158,17 @@ export const onlineBanner = {
 			console.error(e);
 			return false;
 		}
+	},
+
+	async block(id) {
+		if (!id) return;
+		try {
+			const { success } = await this._postData({ action: 'block', id });
+			return success;
+		} catch (e) {
+			console.error(e);
+			return false;
+		}
 	}
 };
 
@@ -172,9 +183,11 @@ export const syncCustomBanner = async () => {
 		if (!success) return;
 
 		// Renew Data
+		const blockList = [];
 		for (let x = 0; x < data.length; x++) {
 			const dataToStore = data[x];
 			const dataToModify = storedBanner.find(({ shareID }) => shareID === dataToStore.id);
+			if (dataToStore.blocked) blockList.push(dataToStore.id); //save id if blocked
 			dataToStore.status = dataToModify.status;
 			dataToStore.shareID = dataToStore.id;
 			delete dataToStore.id;
@@ -185,15 +198,20 @@ export const syncCustomBanner = async () => {
 			}
 
 			if (dataToModify.status === 'owned') {
-				const { hostedImages = {}, imageHash = {} } = dataToStore;
-				const modifiedData = { ...dataToModify, hostedImages, imageHash };
+				const { hostedImages = {}, imageHash = {}, blocked = false } = dataToStore;
+				const modifiedData = { ...dataToModify, hostedImages, imageHash, blocked };
 				await idb.put(modifiedData);
 			}
 		}
 
 		// Update CustomBanner Data on IDB
 		const cloudBannerIDs = data.map(({ shareID }) => shareID);
-		const unAvailableBanner = localBannerIDs.filter((id) => !cloudBannerIDs.includes(id));
+		const unAvailableBanner = localBannerIDs.filter((id) => {
+			const isBlocked = blockList.includes(id);
+			const unavailable = !cloudBannerIDs.includes(id);
+			return unavailable || isBlocked;
+		});
+
 		for (let i = 0; i < unAvailableBanner.length; i++) {
 			const sharedID = unAvailableBanner[i];
 			const { itemID, status } = storedBanner.find(({ shareID: id }) => id === sharedID);
@@ -206,15 +224,16 @@ export const syncCustomBanner = async () => {
 
 			// Update shared status to unshared if not found in online storage
 			if (status === 'owned') {
-				const data = await idb.get(itemID);
-				if (data.shareID) continue;
+				const updatedData = await idb.get(itemID);
 
-				delete data.imgChanged;
-				delete data.shareID;
-				data.isChanged = true;
-				data.imgChanged = { artURL: true, faceURL: true, thumbnail: true };
-				data.lastModified = new Date().toISOString();
-				await idb.put(data);
+				if (updatedData.shareID) continue;
+
+				delete updatedData.imgChanged;
+				delete updatedData.shareID;
+				updatedData.isChanged = true;
+				updatedData.imgChanged = { artURL: true, faceURL: true, thumbnail: true };
+				updatedData.lastModified = new Date().toISOString();
+				await idb.put(updatedData);
 			}
 		}
 	} catch (e) {

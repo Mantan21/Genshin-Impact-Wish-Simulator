@@ -134,7 +134,8 @@
 		"createBanner": "Create a Custom Banner",
 		"limitation": "You are not a member, please delete some banners to activate the editor",
 		"memberToUnlock": "Become a Member to Add More Banner",
-		"incomplete": "Incomplete"
+		"incomplete": "Incomplete",
+		"inappropriate": "Inappropriate Content!"
 	},
 	"backupRestore": {
 		"cloudSync": "Cloud Sync",

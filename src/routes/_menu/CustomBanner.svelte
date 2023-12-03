@@ -175,15 +175,15 @@
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
 					{#if customList.length > 0}
-						{#each customList as { itemID, vision, complete, images = { }, hostedImages, isChanged }}
+						{#each customList as { itemID, vision, complete, images = { }, hostedImages, isChanged, blocked }}
 							<div class="item" id={itemID}>
 								{#if hostedImages}
 									<i class="sync gi-{isChanged ? 'cloud-sync' : 'network'}" />
 								{/if}
 								<button
 									class="banner-item"
-									disabled={!complete}
-									data-text={!complete ? $t('customBanner.incomplete') : ''}
+									disabled={!complete || blocked}
+									data-text={!complete ? $t('customBanner.incomplete') : 'Inappropriate Content!'}
 									on:click={!complete ? null : () => wishBanner(itemID)}
 								>
 									<img
@@ -193,7 +193,7 @@
 									/>
 								</button>
 								<div class="action">
-									{#if !(customList.length > 1 && !$proUser)}
+									{#if !(customList.length > 1 && !$proUser) && !blocked}
 										<button class="edit" on:click={() => customizeBanner(itemID)}>
 											<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 										</button>
@@ -375,7 +375,7 @@
 		opacity: 1;
 		background-color: rgba(0, 0, 0, 0.5);
 		border-color: transparent;
-		color: #fff;
+		color: rgba(255, 255, 255, 0.85);
 		display: flex;
 		justify-content: center;
 		align-items: center;

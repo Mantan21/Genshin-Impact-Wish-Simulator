@@ -58,7 +58,7 @@
 		mobileMode.set(rotate);
 	};
 
-	const validPaths = ['adkey', 'install', 'privacy-policy', 'screen'];
+	const validPaths = ['adkey', 'bnlist', 'install', 'privacy-policy', 'screen'];
 	$: isPathValid = validPaths.includes(path[1].toLowerCase());
 
 	const redirectIfNotValidPath = () => {

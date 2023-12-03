@@ -134,7 +134,8 @@
 		"createBanner": "Buat Bannermu Sendiri",
 		"limitation": "Kamu bukan Member, Hapus beberapa banner untuk mengaktifkan fitur Edit",
 		"memberToUnlock": "Jadilah Member untuk menambah lebih banyak Banner",
-		"incomplete": "Incomplete"
+		"incomplete": "Incomplete",
+		"inappropriate": "Konten Tidak Pantas!"
 	},
 	"backupRestore": {
 		"cloudSync": "Cloud Sync",
