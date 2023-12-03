@@ -1,6 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import {
 		customData,
@@ -11,6 +11,7 @@
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
+	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
 	export let bannerName = '';
 	export let character = '';
@@ -26,13 +27,20 @@
 		return `<span class="${vision}-flat">${splited[0]}</span> ${splited.slice(1).join(' ')}`;
 	};
 
+	const deleteBanner = getContext('deleteBanner');
 	const editBanner = () => {
 		playSfx();
 		editID.set($customData.itemID);
 		editMode.set(true);
 	};
 
-	const deleteBanner = getContext('deleteBanner');
+	let myBannerCount = 0;
+	$: disableEdit = !$proUser && myBannerCount > 1;
+	onMount(async () => {
+		const { getListByStatus } = BannerManager;
+		const list = (await getListByStatus('owned')) || [];
+		myBannerCount = list.length;
+	});
 </script>
 
 <div class="frame-content" class:editorMode class:onBannerEdit>
@@ -47,7 +55,7 @@
 
 	{#if $isCustomBanner}
 		<div class="action">
-			{#if $customData.status === 'owned' && !editorMode && $proUser}
+			{#if $customData.status === 'owned' && !editorMode && !disableEdit}
 				<button class="edit" on:click={editBanner}>
 					<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 				</button>

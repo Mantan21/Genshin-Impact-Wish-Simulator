@@ -99,6 +99,8 @@
 		"loadOwnedBanner": "Kamu adalah kreator dari banner \"{ownedBanner}\", data banner yang tersimpan pada perangkatmu akan digunakan untuk setiap permohonan yang kamu lakukan",
 		"loadReady": "\"{banner}\" susah siap",
 		"uploading": "Sedang mengunggah {item}",
+		"uploadFailed": "Gagal mengunggah, silahkan coba beberapa saat lagi!",
+		"close": "Tutup",
 		"almostDone": "Hampir Selesai",
 		"shareText": "Come and Try Your Luck on my {character} Banner Simulator",
 		"setPosition": "Atur Koordinat",

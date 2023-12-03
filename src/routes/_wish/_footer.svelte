@@ -84,19 +84,18 @@
 		showToast = true;
 	};
 
-	const publishDone = () => {
+	setContext('closePublisher', () => (showUploader = false));
+	setContext('publishDone', () => {
 		preloadVersion.set({ patch: 'Custom', phase: $editID });
 		showUploader = false;
 		playSfx('close');
-	};
-	setContext('publishDone', publishDone);
+	});
 
-	const publishError = () => {
+	setContext('publishError', () => {
 		toastMsg = $t('customBanner.networkError');
 		showToast = true;
 		showUploader = false;
-	};
-	setContext('publishError', publishError);
+	});
 
 	// ShortCut
 	const appReady = getContext('appReady');

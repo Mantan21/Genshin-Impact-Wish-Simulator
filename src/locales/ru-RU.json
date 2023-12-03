@@ -100,6 +100,8 @@
 		"loadOwnedBanner": "You're the owner of \"{ownedBanner}\" banner, your local data will be used instead of the data you've shared online.",
 		"loadReady": "\"{banner}\" is ready to Wish",
 		"uploading": "Uploading {item}",
+		"uploadFailed": "Image Upload Failed, please try again later!",
+		"close": "Close",
 		"almostDone": "Almost Done",
 		"shareText": "Come and Try Your Luck on my {character} Banner Simulator",
 		"setPosition": "Set Position",

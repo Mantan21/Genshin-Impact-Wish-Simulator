@@ -15,6 +15,7 @@
 	let percentage = 0;
 	let uploadProccess = true;
 	let cloudProccess = false;
+	let uploadError = false;
 	let itemInProccess = '';
 	const itemName = { artURL: 'SplashArt', faceURL: 'Face', thumbnail: 'Banner Preview' };
 
@@ -74,6 +75,7 @@
 	// Publish
 	const publishError = getContext('publishError');
 	const publishDone = getContext('publishDone');
+	const closePublisher = getContext('closePublisher');
 	const closeModal = () => {
 		playSfx();
 		publishDone();
@@ -105,14 +107,14 @@
 
 				// request finished event
 				request.addEventListener('load', async () => {
-					if (request.status != 200) reject({ success: false });
 					const newData = JSON.parse(request.responseText);
+					if (request.status != 200) return reject({ success: false, ...newData });
 					await localBanner.renewImage({ id: $editID, newData, key });
-					resolve(newData);
+					return resolve({ ...newData, status_code: 200 });
 				});
 				request.send(data);
 			} catch (e) {
-				reject({ success: false });
+				return reject({ success: false });
 			}
 		});
 		return result;
@@ -135,10 +137,16 @@
 			const file = images[imgKey].split(',')[1];
 			if (!file) continue;
 
-			itemInProccess = imgKey;
-			await upload({ file, number: i, total: changedImgs.length, key: imgKey });
-			if (i < changedImgs.length) continue;
-			saveToCloud();
+			try {
+				itemInProccess = imgKey;
+				await upload({ file, number: i, total: changedImgs.length, key: imgKey });
+				if (i < changedImgs.length) continue;
+				saveToCloud();
+			} catch (e) {
+				uploadProccess = false;
+				cloudProccess = false;
+				uploadError = true;
+			}
 		}
 	};
 
@@ -167,6 +175,13 @@
 				<caption class="load-text"> {$t('customBanner.almostDone')} </caption>
 				<div class="loader">
 					<Icon type="loader" />
+				</div>
+			</div>
+		{:else if uploadError}
+			<div class="content" in:fade>
+				<caption class="load-text"> {$t('customBanner.uploadFailed')} </caption>
+				<div style="margin-top: 1rem;">
+					<ButtonModal on:click={closePublisher}>{$t('customBanner.close')}</ButtonModal>
 				</div>
 			</div>
 		{:else}

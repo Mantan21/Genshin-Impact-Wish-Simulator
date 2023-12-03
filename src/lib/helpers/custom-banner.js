@@ -17,7 +17,7 @@ export const localBanner = {
 	},
 
 	renewImage: async ({ id = 0, newData = {}, key = '' }) => {
-		const { data } = newData;
+		const { data = {} } = newData;
 		const { url: imageURL, delete_url } = data;
 		const [, , , imgID, hash] = delete_url.split('/');
 
