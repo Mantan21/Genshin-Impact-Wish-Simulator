@@ -181,17 +181,16 @@ export const base64ToBlob = (image) => {
 };
 
 export const imageCDN = (imgs, width = 0) => {
-	const cdnURL = 'https://imagecdn.app/v2/image/';
+	const cdnURL = 'https://imagecdn.wishsimulator.app/transform/';
 	if (typeof imgs === 'string') {
-		const w = width && !isNaN(width) ? `&width=${width}` : '';
-		return cdnURL + imgs + '?format=webp' + w;
+		const w = width && !isNaN(width) ? `&w=${width}` : '';
+		return cdnURL + imgs + w;
 	}
 
 	if (typeof imgs !== 'object') return imgs;
 	Object.keys(imgs).forEach((key) => {
-		const width = key === 'faceURL' ? '&width=226' : '';
-		imgs[key] = cdnURL + imgs[key] + '?format=webp' + width;
+		const width = key === 'faceURL' ? '&w=226' : '';
+		imgs[key] = cdnURL + imgs[key] + width;
 	});
 	return imgs;
 };
-
