@@ -11,9 +11,9 @@
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
 	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
+	import { pushToast } from '$lib/helpers/toast';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import CheckBox from '$lib/components/CheckBox.svelte';
 	import OptionMenu from './_options.svelte';
@@ -73,7 +73,6 @@
 	let showResetModal = false;
 	let keepSetting = false;
 	let clearCache = false;
-	let showToast = false;
 
 	const getStorageSize = async () => {
 		const { usageDetails = {} } = await navigator.storage.estimate();
@@ -92,7 +91,7 @@
 		playSfx();
 		showResetModal = false;
 		await factoryReset({ clearCache, keepSetting, isCustom: $isCustomBanner });
-		showToast = true;
+		pushToast({ message: $t('menu.resetSuccess'), type: 'success' });
 		if (keepSetting) return;
 
 		playSfx('wishBacksound');
@@ -144,10 +143,6 @@
 			</div>
 		</div>
 	</Modal>
-{/if}
-
-{#if showToast}
-	<Toast on:close={() => (showToast = false)}>{$t('menu.resetSuccess')}</Toast>
 {/if}
 
 <div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>

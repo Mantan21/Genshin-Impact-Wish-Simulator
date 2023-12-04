@@ -17,11 +17,11 @@
 		viewportWidth,
 		customData
 	} from '$lib/store/app-stores';
-	import BannerCard from './banner-card/BannerCard.svelte';
+	import { pushToast } from '$lib/helpers/toast';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
+	import BannerCard from './banner-card/BannerCard.svelte';
 	import CustomEditor from '../_custom-banner/CustomEditor.svelte';
 	import ModalDelete from '../_custom-banner/ModalDelete.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 
 	$: landscape = $viewportWidth / 2.1 > $viewportHeight;
 	$: tabletBannerStyle = landscape ? 'width: 90vh' : '';
@@ -64,8 +64,6 @@
 
 	let showModalReset = false;
 	let ModalDeleteCustom = false;
-	let showToast = false;
-	let toastMsg = '';
 
 	setContext('showModalReset', () => {
 		showModalReset = true;
@@ -92,14 +90,13 @@
 	});
 
 	const deleteDone = () => {
-		toastMsg = 'Banner Removed';
-		showToast = true;
+		const message = 'Banner Removed';
+		pushToast({ message, type: 'success' });
 		ModalDeleteCustom = false;
 	};
-
 	const deleteError = () => {
-		toastMsg = 'Failed to Remove';
-		showToast = true;
+		const message = 'Failed to Remove';
+		pushToast({ message, type: 'error' });
 	};
 
 	// Shortcut
@@ -189,10 +186,6 @@
 		on:done={deleteDone}
 		on:error={deleteError}
 	/>
-{/if}
-
-{#if showToast}
-	<Toast on:close={() => (showToast = false)} autoclose>{toastMsg}</Toast>
 {/if}
 
 <style>

@@ -3,38 +3,31 @@
 	import { fade } from 'svelte/transition';
 	import { getContext } from 'svelte';
 	import { isMobile } from '$lib/store/app-stores';
-	import Toast from '$lib/components/Toast.svelte';
+	import { pushToast } from '$lib/helpers/toast';
 
 	export let onBannerEdit = false;
-	let showToast = false;
-	let toastMsg = '';
 	let onDrag = false;
 
 	const allowedType = 'image/png, image/webp, image/jpeg';
 	const editBanner = getContext('editBanner');
 	const changeImage = getContext('changeArt');
 
-	const closeToast = () => {
-		showToast = false;
-		toastMsg = '';
-	};
-
 	const dragNdrop = (e) => {
 		try {
 			const file = e.target.files[0];
 			const isImage = allowedType.match(file.type);
 			if (!isImage) {
-				toastMsg = 'not an Image';
-				showToast = true;
-				throw new Error(toastMsg);
+				const message = $t('customBanner.notAnImage');
+				pushToast({ message });
+				throw new Error(message);
 			}
 
 			const fileSize = file.size;
 			const maxSize = 1024 * 1024 * 2; // 2MB
 			if (fileSize > maxSize) {
-				toastMsg = 'Image is too Large, max size: 2MB';
-				showToast = true;
-				throw new Error(toastMsg);
+				const message = $t('customBanner.imageTooLarge', { values: { maxSize: '2MB' } });
+				pushToast({ message, timeout: 5000 });
+				throw new Error(message);
 			}
 
 			changeImage(file);
@@ -43,10 +36,6 @@
 		}
 	};
 </script>
-
-{#if showToast}
-	<Toast autoclose on:close={closeToast}>{toastMsg}</Toast>
-{/if}
 
 <div
 	class="hoverable"

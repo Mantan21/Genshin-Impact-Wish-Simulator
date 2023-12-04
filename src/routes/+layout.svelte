@@ -28,6 +28,7 @@
 	import '../app.css';
 
 	import Iklan from '$lib/components/Iklan.svelte';
+	import Toasts from '$lib/components/Toasts.svelte';
 	import Loader from './_index/InitialLoader.svelte';
 
 	let innerHeight;
@@ -169,6 +170,8 @@
 		: '100vh'};--screen-width: {$viewportWidth}px;
 		--genshin-font: var(--gi-{font}-font);"
 >
+	<Toasts />
+
 	{#if !$isLoading && isloaded}
 		<slot />
 	{/if}

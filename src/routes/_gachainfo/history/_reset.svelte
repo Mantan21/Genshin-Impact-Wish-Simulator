@@ -10,16 +10,15 @@
 	import { showBeginner, beginnerRemaining } from '$lib/store/app-stores';
 	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { pushToast } from '$lib/helpers/toast';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import CheckBox from '$lib/components/CheckBox.svelte';
 
 	export let banner;
 	export let v2 = false;
 
 	let showModal = false;
-	let showToast = false;
 	let keepPity = false;
 	const pity5 = getContext('pity5');
 	const pity4 = getContext('pity4');
@@ -65,7 +64,8 @@
 		playSfx();
 
 		showModal = false;
-		showToast = true;
+		const message = $t('history.resetSuccess');
+		pushToast({ message, type: 'success' });
 	};
 
 	const handleModal = () => {
@@ -92,10 +92,6 @@
 			</div>
 		</div>
 	</Modal>
-{/if}
-
-{#if showToast}
-	<Toast on:close={() => (showToast = false)}>{$t('history.resetSuccess')}</Toast>
 {/if}
 
 <button class="reset" class:v2 on:click={handleModal}>

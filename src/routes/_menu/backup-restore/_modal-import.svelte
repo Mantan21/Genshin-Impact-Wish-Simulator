@@ -55,7 +55,7 @@
 	{:else}
 		<div class="import-content">
 			<caption>
-				{@html $t('backupRestore', {
+				{@html $t('backupRestore.importAction', {
 					values: { fileInfo: `<strong> ${file.name} (${calculateByteSize(file.size)}) </strong>` }
 				})}
 			</caption>
@@ -66,7 +66,7 @@
 					checked={action === 'merge'}
 					on:change={(e) => checkboxHandle('merge', e)}
 				>
-					<span> {@html $t('customBanner.mergeAction')} </span>
+					<span> {@html $t('backupRestore.mergeAction')} </span>
 				</CheckBox>
 
 				<CheckBox

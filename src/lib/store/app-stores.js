@@ -41,6 +41,7 @@ export const viewportWidth = writable(0);
 
 export const notice = writable([]);
 export const assets = writable([]);
+export const toastMsg = writable([]);
 
 export const editorMode = writable(false);
 export const editID = writable(0);

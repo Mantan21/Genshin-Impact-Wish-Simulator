@@ -6,28 +6,25 @@
 	import { assets, proUser, showAd } from '$lib/store/app-stores';
 	import { adKey } from '$lib/helpers/accessKey';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { pushToast } from '$lib/helpers/toast';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
-	let showToast = false;
 	let input = '';
 	let userKey = '';
 	let error = false;
 	let waiting = false;
-	let message = '';
 
 	const getProAccount = async () => {
 		playSfx();
 		waiting = true;
-		const { msg, validity } = await adKey.verify(input);
-		error = !validity;
+		const { msg: message, validity } = await adKey.verify(input);
 		if (validity) return window.location.reload();
-		message = msg;
+		error = !validity;
+		pushToast({ message, type: error ? 'error' : '' });
 		waiting = false;
-		showToast = true;
 	};
 
 	let checkingLocal = true;
@@ -81,10 +78,6 @@
 			</span>
 		</div>
 	</Modal>
-{/if}
-
-{#if showToast}
-	<Toast on:close={() => (showToast = false)}>{$t(message)}</Toast>
 {/if}
 
 <div
@@ -207,6 +200,8 @@
 
 	label {
 		font-size: 1.5rem;
+		text-align: center;
+		padding: 0 5%;
 	}
 
 	.input {

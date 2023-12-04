@@ -14,9 +14,9 @@
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { pushToast } from '$lib/helpers/toast';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import ModalDelete from '../_custom-banner/ModalDelete.svelte';
 
@@ -70,8 +70,6 @@
 		editorMode.set(true);
 	};
 
-	let showToast = false;
-	let toastMsg = '';
 	let showModal = false;
 	let idToDelete = 0;
 
@@ -89,13 +87,13 @@
 	};
 
 	const deleteError = () => {
-		toastMsg = $t('customBanner.deleteFailed');
-		showToast = true;
+		const message = $t('customBanner.deleteFailed');
+		pushToast({ message, type: 'error' });
 	};
 	const deleteDone = () => {
 		customList = customList.filter(({ itemID }) => itemID != idToDelete);
-		toastMsg = $t('customBanner.bannerRemoved');
-		showToast = true;
+		const message = $t('customBanner.bannerRemoved');
+		pushToast({ message, type: 'success' });
 		showModal = false;
 		idToDelete = 0;
 	};
@@ -111,12 +109,6 @@
 
 {#if showModal}
 	<ModalDelete {idToDelete} on:done={deleteDone} on:error={deleteError} on:cancel={cancelModal} />
-{/if}
-
-{#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>
-		{toastMsg}
-	</Toast>
 {/if}
 
 <div

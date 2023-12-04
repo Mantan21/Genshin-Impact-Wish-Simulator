@@ -1,25 +1,17 @@
 <script>
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import Toast from '$lib/components/Toast.svelte';
-	import { t } from 'svelte-i18n';
+	import { pushToast } from '$lib/helpers/toast';
 
 	export let onBannerEdit = false;
 	export let faceURL = '';
-
-	let showToast = false;
-	let toastMsg = '';
 
 	const editInfo = getContext('editInfo');
 	const changeFace = getContext('changeFace');
 	const editSplashArt = getContext('editSplashArt');
 	const allowedType = 'image/png, image/webp, image/jpeg';
-
-	const closeToast = () => {
-		showToast = false;
-		toastMsg = '';
-	};
 
 	const showInfoEditor = () => {
 		editInfo(true);
@@ -37,17 +29,17 @@
 			const isImage = allowedType.match(file.type);
 
 			if (!isImage) {
-				toastMsg = $t('customBanner.notAnImage');
-				showToast = true;
-				throw new Error(toastMsg);
+				const message = $t('customBanner.notAnImage');
+				pushToast({ message });
+				throw new Error(message);
 			}
 
 			const fileSize = file.size;
 			const maxSize = 1024 * 1024 * 2; // 2MB
 			if (fileSize > maxSize) {
-				toastMsg = $t('customBanner.imageTooLarge', { values: { maxSize: '2MB' } });
-				showToast = true;
-				throw new Error(toastMsg);
+				const message = $t('customBanner.imageTooLarge', { values: { maxSize: '2MB' } });
+				pushToast({ message, timeout: 5000 });
+				throw new Error(message);
 			}
 
 			changeFace(file);
@@ -56,10 +48,6 @@
 		}
 	};
 </script>
-
-{#if showToast}
-	<Toast autoclose on:close={closeToast}>{toastMsg}</Toast>
-{/if}
 
 <div class="info" class:onBannerEdit>
 	<div class="pic">

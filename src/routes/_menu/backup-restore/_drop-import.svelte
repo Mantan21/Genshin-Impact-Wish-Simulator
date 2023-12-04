@@ -3,15 +3,13 @@
 	import { t } from 'svelte-i18n';
 	import { readDropedFile } from '$lib/helpers/dataAPI/api-filesystem';
 	import { allowedType, importFileLegacy } from '$lib/helpers/dataAPI/export-import';
+	import { pushToast } from '$lib/helpers/toast';
 
 	export let legacyFileHandler = false;
 	let onDrag = false;
 	let importHandler;
 
 	const handleModalImport = getContext('handleModalImport');
-	const toastHandle = getContext('showToastHandle');
-	const setToastMsg = getContext('setToastMsg');
-
 	const dragenter = () => {
 		onDrag = true;
 		importHandler = 'drop';
@@ -28,8 +26,8 @@
 			const dataToImport = await readDropedFile(e.dataTransfer.items);
 			return handleModalImport(dataToImport);
 		} catch (e) {
-			setToastMsg(e.message);
-			toastHandle(true);
+			const { message } = e;
+			pushToast({ message, type: 'error' });
 			console.error(e);
 		}
 	};
@@ -40,8 +38,8 @@
 			const dataToImport = await importFileLegacy(e.target.files);
 			return handleModalImport(dataToImport);
 		} catch (e) {
-			setToastMsg(e.message);
-			toastHandle(true);
+			const { message } = e;
+			pushToast({ message, type: 'error' });
 			console.error(e);
 		}
 	};

@@ -19,9 +19,9 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
 	import { localBanner } from '$lib/helpers/custom-banner';
+	import { pushToast } from '$lib/helpers/toast';
 
 	import Icon from '$lib/components/Icon.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import NoticeMark from '$lib/components/NoticeMark.svelte';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import EpitomizedButton from './epitomized-path/_button.svelte';
@@ -62,16 +62,14 @@
 	};
 
 	// Footer for Editor
-	let showToast = false;
-	let toastMsg = '';
 	const finishAndWish = async () => {
 		playSfx();
 		const isComplete = await localBanner.isComplete($editID);
 		if (isComplete) return preloadVersion.set({ patch: 'Custom', phase: $editID });
 
 		// Benner not Complete
-		toastMsg = $t('customBanner.completeAllField');
-		showToast = true;
+		const toastMsg = $t('customBanner.completeAllField');
+		pushToast({ message: toastMsg, type: 'error' });
 		return;
 	};
 
@@ -80,8 +78,8 @@
 		playSfx();
 		const isComplete = await localBanner.isComplete($editID);
 		if (isComplete) return (showUploader = true);
-		toastMsg = $t('customBanner.completeAllField');
-		showToast = true;
+		const toastMsg = $t('customBanner.completeAllField');
+		pushToast({ message: toastMsg, type: 'error' });
 	};
 
 	setContext('closePublisher', () => (showUploader = false));
@@ -92,8 +90,8 @@
 	});
 
 	setContext('publishError', () => {
-		toastMsg = $t('customBanner.networkError');
-		showToast = true;
+		const toastMsg = $t('customBanner.networkError');
+		pushToast({ message: toastMsg, type: 'error' });
 		showUploader = false;
 	});
 
@@ -122,12 +120,6 @@
 		if (to === 'd') return changePage('details');
 	});
 </script>
-
-{#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>
-		{toastMsg}
-	</Toast>
-{/if}
 
 {#if showUploader}
 	<BannerPublisher />

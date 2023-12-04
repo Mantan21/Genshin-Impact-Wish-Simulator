@@ -13,7 +13,6 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
-	import Toast from '$lib/components/Toast.svelte';
 	import DropImport from './_drop-import.svelte';
 	import ModalImport from './_modal-import.svelte';
 	import AutoExport from './_auto-export.svelte';
@@ -21,12 +20,8 @@
 	let showModalImport = false;
 	let hasPermission, legacyFileHandler;
 	let importData = {};
-	let toastMsg = '';
-	let showToast = false;
 
 	setContext('setPermission', (val) => (hasPermission = val));
-	setContext('setToastMsg', (msg) => (toastMsg = msg));
-	setContext('showToastHandle', (val) => (showToast = val));
 	setContext('handleModalImport', (data = null) => {
 		importData = data;
 		showModalImport = !!data;
@@ -58,10 +53,6 @@
 		readFileHandle();
 	});
 </script>
-
-{#if showToast}
-	<Toast autoclose on:close={() => (showToast = false)}>{toastMsg}</Toast>
-{/if}
 
 {#if showModalImport}
 	<ModalImport {importData} on:cancel={() => (showModalImport = false)} />
