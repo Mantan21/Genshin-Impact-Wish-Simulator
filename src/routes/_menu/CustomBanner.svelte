@@ -136,7 +136,7 @@
 			<h1><span> {$t('customBanner.createBanner')} </span></h1>
 		{/if}
 
-		{#if customList.length > 1 && !$proUser && !showNote}
+		{#if customList.length > 3 && !$proUser && !showNote}
 			<div class="notice">
 				{$t('customBanner.limitation')}
 			</div>
@@ -183,7 +183,9 @@
 								<button
 									class="banner-item"
 									disabled={!complete || blocked}
-									data-text={!complete ? $t('customBanner.incomplete') : 'Inappropriate Content!'}
+									data-text={!complete
+										? $t('customBanner.incomplete')
+										: $t('customBanner.inappropriate')}
 									on:click={!complete ? null : () => wishBanner(itemID)}
 								>
 									<img
@@ -193,7 +195,7 @@
 									/>
 								</button>
 								<div class="action">
-									{#if !(customList.length > 1 && !$proUser) && !blocked}
+									{#if !(customList.length > 3 && !$proUser) && !blocked}
 										<button class="edit" on:click={() => customizeBanner(itemID)}>
 											<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 										</button>
@@ -206,7 +208,7 @@
 						{/each}
 					{/if}
 
-					{#if $proUser || customList.length < 1}
+					{#if $proUser || customList.length < 3}
 						<div class="item blank">
 							<button class="add" on:click={() => customizeBanner()}>
 								<i class="gi-plus" />

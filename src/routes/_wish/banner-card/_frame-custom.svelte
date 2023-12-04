@@ -30,7 +30,7 @@
 	};
 
 	let myBannerCount = 0;
-	$: disableEdit = !$proUser && myBannerCount > 1;
+	$: disableEdit = !$proUser && myBannerCount > 3;
 	onMount(async () => {
 		const { getListByStatus } = BannerManager;
 		const list = (await getListByStatus('owned')) || [];
