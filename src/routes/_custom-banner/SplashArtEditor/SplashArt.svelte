@@ -115,7 +115,7 @@
 	{#if preview && !isOwned}
 		<div class="overlay">
 			<div class="not-owned">
-				<span>Not Owned Yet</span>
+				<span>{$t('inventory.notOwned')}</span>
 			</div>
 		</div>
 	{/if}
