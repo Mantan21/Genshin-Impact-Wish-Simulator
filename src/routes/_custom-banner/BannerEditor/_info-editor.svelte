@@ -165,11 +165,7 @@
 									<button class="item-wrapper">
 										{#key name}
 											<InventoryItem
-												{name}
-												{vision}
-												localName={$t(`${name}.name`)}
-												type="character"
-												rarity={4}
+												itemdata={{ localName: $t(`${name}.name`), name, vision, rarity: 4 }}
 											/>
 										{/key}
 									</button>

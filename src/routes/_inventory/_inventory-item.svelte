@@ -3,31 +3,32 @@
 	import { assets } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 
-	export let rarity = 3;
-	export let type = 'character';
-	export let itemID = 0;
-	export let name = '';
-	export let localName = '';
-	export let vision = '';
-	export let weaponType = '';
-	export let qty = 0;
-	export let isOwned = true;
-	export let useOutfit = false;
-	export let outfitName = '';
-	export let images = {};
-	export let custom = false;
+	export let itemdata = {};
+	const {
+		rarity = 3,
+		type = 'character',
+		itemID = 0,
+		name = '',
+		localName = '',
+		vision = '',
+		weaponType = '',
+		qty = 0,
+		isOwned = true,
+		custom = false
+	} = itemdata;
+
+	let useOutfit, outfitName, images;
+	$: ({ useOutfit = false, outfitName = '', images = {} } = itemdata);
+	const bg = custom ? $assets[`${rarity}star-special.webp`] : $assets[`${rarity}star-bg.webp`];
 
 	let countInfo = `R${qty > 5 ? `5 + ${qty - 5}` : qty}`;
 	if (type === 'character') {
 		countInfo = `C${qty > 7 ? `6 + ${qty - 7}` : qty - 1}`;
 	}
 
-	const bg = custom ? $assets[`${rarity}star-special.webp`] : $assets[`${rarity}star-bg.webp`];
-
-	const pickItem = getContext('pickItem');
+	const pickItem = getContext('showDetail');
 	const handleShowDetails = () => {
 		if (!pickItem) return;
-		if (!isOwned) return;
 		pickItem(itemID);
 	};
 </script>
@@ -46,9 +47,10 @@
 			/>
 			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else if type === 'character'}
+			{@const outfitKey = useOutfit ? outfitName : null}
 			{#key outfitName}
 				<img
-					use:lazyLoad={$assets[`face/${useOutfit ? outfitName : name}`]}
+					use:lazyLoad={$assets[`face/${useOutfit ? outfitKey : name}`]}
 					data-placeholder={$assets['face-placeholder.webp']}
 					alt={localName}
 					crossorigin="anonymous"
@@ -57,8 +59,8 @@
 			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else}
 			<img
-				use:lazyLoad={$assets[name]}
-				data-placeholder={$assets['face-placeholder.webp']}
+				src={$assets[name]}
+				loading="lazy"
 				alt={localName}
 				class={weaponType}
 				crossorigin="anonymous"
@@ -93,7 +95,7 @@
 		position: relative;
 	}
 
-	.content.owned::after {
+	.content::after {
 		content: '';
 		position: absolute;
 		z-index: -1;
@@ -103,12 +105,15 @@
 		width: 100%;
 		height: 100%;
 		border-radius: calc(5 / 100 * var(--item-width));
-		border: 0.3rem solid #eac343;
 		opacity: 0;
 		transition: opacity 0.15s;
 	}
-	.content.owned:hover::after {
+	.content:hover::after {
 		opacity: 1;
+		border: 0.1rem solid #fff;
+	}
+	.content.owned:hover::after {
+		border: 0.3rem solid #eac343;
 	}
 
 	.overlay {

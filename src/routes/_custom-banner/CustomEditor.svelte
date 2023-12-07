@@ -11,7 +11,7 @@
 	import MainArt from './BannerEditor/BannerArt.svelte';
 	import VisionPicker from './BannerEditor/_vision-picker.svelte';
 	import InfoEditor from './BannerEditor/_info-editor.svelte';
-	import SplashArtEditor from './SplashArtEditor/SplashArtEditor.svelte';
+	import SplashArtEditor from './SplashArtEditor/SplashArt.svelte';
 
 	let clientHeight;
 	let clientWidth;
@@ -190,7 +190,13 @@
 {/if}
 
 {#if isSplashArtEdit}
-	<SplashArtEditor artURL={images?.artURL} position={artPosition} {character} {vision} />
+	<SplashArtEditor
+		on:close={() => editSplashArt(false)}
+		artURL={images?.artURL}
+		position={artPosition}
+		{character}
+		{vision}
+	/>
 {/if}
 
 <style>

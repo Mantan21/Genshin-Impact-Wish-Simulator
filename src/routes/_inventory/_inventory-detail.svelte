@@ -4,14 +4,14 @@
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
+	import { assets } from '$lib/store/app-stores';
 	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
-	import { assets, viewportHeight, viewportWidth } from '$lib/store/app-stores';
-	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { playSfx } from '$lib/helpers/audio/audio';
 
 	// Component
-	import ItemInfo from './../_wish/wish-result/_item-info.svelte';
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
+	import SplashArt from '../_custom-banner/SplashArtEditor/SplashArt.svelte';
 
 	export let itemID;
 	export let useOutfit = false;
@@ -26,20 +26,24 @@
 	export let qty = 0;
 	export let isOwned = true;
 	export let images = {};
+	export let offset = {};
 
-	const previewOutfit = (outfit) => {
+	let hideInfo = false;
+	setContext('toggleInfoHide', () => {
+		hideInfo = !hideInfo;
+		playSfx();
+	});
+
+	const previewOutfit = (outfit, position) => {
 		outfitName = outfit;
+		offset = position;
 		useOutfit = outfit !== 'default';
 	};
 	setContext('previewOutfit', previewOutfit);
-	const closeDetail = getContext('closeDetail');
 
-	const calculateWrapperHeight = (vw, vh) => {
-		if (vw < vh) return '80vw';
-		if (vw < vh * 1.5) return '65vw';
-		return '100%';
-	};
-	$: wrapperHeight = calculateWrapperHeight($viewportWidth, $viewportHeight);
+	let onshot = false;
+	const closeDetail = getContext('closeDetail');
+	setContext('preview', (val) => (onshot = val));
 
 	const getQtyInfo = (type, qty) => {
 		if (type === 'weapon') {
@@ -57,6 +61,15 @@
 		return info;
 	};
 
+	const getArtURL = (outfitName) => {
+		if (custom) return images?.artURL;
+		if (type === 'weapon') return $assets[name];
+
+		const useOutfit = outfitName && outfitName !== 'default';
+		const artKey = useOutfit ? outfitName : name;
+		return $assets[`splash-art/${artKey}`];
+	};
+
 	let time = '';
 	onMount(async () => {
 		const idbData = await HistoryManager.getByID(itemID);
@@ -72,70 +85,55 @@
 	onDestroy(() => hotkeys.deleteScope('itemdetail', 'inventory'));
 </script>
 
-<div
-	class="wish-result"
-	style="background-image: url({$assets['detailbg.webp']});"
-	transition:fade={{ duration: 250 }}
->
-	<div class="uid">WishSimulator.App</div>
+<SplashArt
+	character={name}
+	artURL={getArtURL(outfitName)}
+	position={offset}
+	preview
+	{weaponType}
+	{localName}
+	{vision}
+	{onshot}
+	{isOwned}
+	{rarity}
+	{hideInfo}
+	on:close={closeDetail}
+/>
 
-	<button class="close" on:click={closeDetail}>
-		<i class="gi-close" />
-	</button>
+{#if !hideInfo}
+	<div transition:fade={{ duration: 250 }} class="handler-container">
+		<div class="wrapper">
+			{#if type === 'character'}
+				<OutfitToggle charName={name} />
+			{/if}
 
-	<div class="container">
-		{#if type === 'character'}
-			<OutfitToggle charName={name} />
-		{/if}
-
-		<div class="wrapper" in:fade={{ duration: 250 }} style="height: {wrapperHeight};">
-			{#if custom}
-				<img use:lazyLoad={images?.artURL} alt={name} crossorigin="anonymous" />
-			{:else if type === 'weapon'}
-				<div class="splash-art weapon {weaponType}-parent">
-					<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
-					<img use:lazyLoad={$assets[name]} alt={name} class={weaponType} />
-				</div>
-			{:else}
-				<div class="splash-art">
-					{#key outfitName}
-						<img
-							use:lazyLoad={$assets[`splash-art/${useOutfit ? outfitName : name}`]}
-							alt={name}
-							crossorigin="anonymous"
-						/>
-					{/key}
+			{#if qty > 0}
+				<div class="detail">
+					<span class="qty"> {getQtyInfo(type, qty)} </span>
+					<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
 				</div>
 			{/if}
 
-			<ItemInfo staticMode itemName={name} {custom} {rarity} {vision} {weaponType} />
-		</div>
-		<div class="detail">
-			<span class="qty"> {getQtyInfo(type, qty)} </span>
-			<small> {$t('inventory.firstSummon', { values: { date: time } })} </small>
+			{#if qty > 0}
+				<div class="share">
+					<ScreenshotShare />
+				</div>
+			{/if}
 		</div>
 	</div>
-
-	<div class="share">
-		<ScreenshotShare />
-	</div>
-</div>
+{/if}
 
 <style>
-	.close {
+	.handler-container {
+		width: 100%;
+		height: 100%;
 		position: fixed;
-		top: 30px;
-		right: 2%;
-		z-index: 10;
+		top: 0;
+		left: 0;
+		z-index: +15;
+		pointer-events: none;
 	}
 
-	:global(.mobile) .close {
-		top: 0.3rem;
-		right: 6%;
-	}
-
-	.wish-result,
-	.container,
 	.wrapper {
 		width: 100%;
 		height: 100%;
@@ -145,69 +143,9 @@
 		position: relative;
 	}
 
-	.wish-result {
-		background-size: cover;
-		background-position: center;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: +100000;
-	}
-
-	.splash-art {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.splash-art img {
-		height: 120%;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		top: 50%;
-	}
-
-	.splash-art.weapon img.weaponbg {
-		height: 85%;
-	}
-
-	.bow-parent .weaponbg {
-		height: 90% !important;
-		transform: translate(-53%, -50%) !important;
-	}
-	.catalyst-parent .weaponbg {
-		height: 90% !important;
-	}
-
-	.bow,
-	.polearm,
-	.sword,
-	.claymore,
-	.catalyst {
-		filter: drop-shadow(0.6rem 0.6rem 0.05rem rgb(0, 0, 0));
-	}
-
-	.bow {
-		height: 100%;
-	}
-
-	.claymore {
-		height: 105% !important;
-	}
-
-	.catalyst {
-		height: 40% !important;
-	}
-
-	.polearm {
-		top: 65% !important;
-		left: 48% !important;
-		height: 130% !important;
+	.wrapper > :global(div),
+	.wrapper :global(button) {
+		pointer-events: initial;
 	}
 
 	.share {
@@ -222,19 +160,6 @@
 		color: #fff;
 		font-size: 0.8rem;
 		z-index: 999;
-	}
-
-	button:active {
-		transform: scale(0.9);
-	}
-
-	.uid {
-		left: unset;
-		right: 5%;
-		width: fit-content;
-		display: none;
-		font-size: x-large;
-		font-family: var(--gi-font);
 	}
 
 	.detail {

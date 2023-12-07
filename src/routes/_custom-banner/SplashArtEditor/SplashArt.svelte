@@ -1,6 +1,6 @@
 <script>
 	import { dev } from '$app/environment';
-	import { getContext, onMount } from 'svelte';
+	import { createEventDispatcher, getContext, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import Zoomist from 'zoomist';
@@ -12,11 +12,18 @@
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import ResultCard from './_result-card.svelte';
 
-	export let preview = false;
 	export let character;
+	export let rarity = 5;
 	export let vision;
 	export let artURL = '';
 	export let position = {};
+
+	export let preview = false;
+	export let onshot = false;
+	export let isOwned = false;
+	export let weaponType = '';
+	export let localName = '';
+	export let hideInfo = false;
 
 	let mainArt;
 	let clientHeight = 0;
@@ -34,13 +41,14 @@
 	};
 	$: wrapperHeight = calculateWrapperHeight($viewportWidth, $viewportHeight);
 
-	const editSplashArt = getContext('editSplashArt');
+	const dispatch = createEventDispatcher();
 	const closeHandle = () => {
 		playSfx('close');
-		editSplashArt(false);
+		dispatch('close');
 		return;
 	};
 
+	const toggleEye = getContext('toggleInfoHide');
 	const setPosition = getContext('setPosition');
 	const zoomOption = {
 		initScale: artPosition.scale || 1,
@@ -70,10 +78,18 @@
 		console.log('SplashArt Position: ', JSON.stringify(zoomPosition));
 	};
 
-	onMount(() => {
-		const zoomist = new Zoomist(mainArt, zoomOption);
+	let zoomist;
+	let isLoaded = false;
+	const movePos = (artPosition) => {
+		if (!isLoaded || !artPosition || typeof artPosition !== 'object') return;
 		const pos = getPxPosition(artPosition, clientHeight, clientWidth);
+		zoomist.zoomTo(artPosition?.scale || 1.1);
 		zoomist.moveTo(pos);
+	};
+
+	onMount(() => {
+		zoomist = new Zoomist(mainArt, zoomOption);
+		isLoaded = true;
 		zoomist.on('dragEnd', () => (isChanged = true));
 		zoomist.on('zoom', () => (isChanged = true));
 	});
@@ -85,7 +101,25 @@
 	};
 </script>
 
-<div class="splash-art" class:preview style="--bg: url({bg});" transition:fade={{ duration: 250 }}>
+<div
+	class="splash-art wish-result"
+	class:preview
+	class:hideInfo
+	style="--bg: url({bg});"
+	transition:fade={{ duration: 250 }}
+>
+	{#if onshot}
+		<div class="uid">WishSimulator.App</div>
+	{/if}
+
+	{#if preview && !isOwned}
+		<div class="overlay">
+			<div class="not-owned">
+				<span>Not Owned Yet</span>
+			</div>
+		</div>
+	{/if}
+
 	<button class="close" on:click={closeHandle}>
 		<i class="gi-close" />
 	</button>
@@ -93,13 +127,18 @@
 	{#if wishCard}
 		<ResultCard {artURL} {character} {vision} {position} />
 	{:else}
-		<div class="zoomer">
-			<div class="slider">
-				<div class="zoomSlider" />
+		{#if !(preview && !isOwned)}
+			<div class="zoomer">
+				<div class="slider">
+					<div class="zoomSlider" />
+				</div>
+				<button class="art-zoomin"><i class="gi-zoom-in" /></button>
+				<button class="art-zoomout"><i class="gi-zoom-out" /></button>
+				{#if preview}
+					<button on:click={toggleEye}> <i class="gi-eye{!hideInfo ? '' : '-slash'}" /></button>
+				{/if}
 			</div>
-			<button class="art-zoomin"><i class="gi-zoom-in" /></button>
-			<button class="art-zoomout"><i class="gi-zoom-out" /></button>
-		</div>
+		{/if}
 
 		{#if !preview}
 			<div class="confirm">
@@ -118,13 +157,38 @@
 			bind:clientHeight
 			bind:clientWidth
 		>
-			<div class="zoomist-wrapper" style="overflow: visible;">
+			<div
+				class="zoomist-wrapper {weaponType}"
+				style="overflow: visible;"
+				class:notOwned={preview && !isOwned}
+				class:weapon={weaponType}
+			>
 				<div class="zoomist-image">
-					<img src={artURL} alt={character} crossorigin="anonymous" />
+					{#if weaponType}
+						<img src={$assets[`bg-${weaponType}.webp`]} alt={weaponType} class="weaponbg" />
+					{/if}
+
+					<img
+						src={artURL}
+						alt={localName || character}
+						crossorigin="anonymous"
+						on:load={() => movePos(position?.splashArt || {})}
+					/>
 				</div>
 				<div class="dragable" />
 			</div>
-			<ItemInfo staticMode custom itemName={character} type="character" rarity={5} {vision} />
+
+			{#if !hideInfo}
+				<ItemInfo
+					custom
+					staticMode
+					itemName={localName || character}
+					type="character"
+					{rarity}
+					{vision}
+					{weaponType}
+				/>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -155,6 +219,29 @@
 		right: 6%;
 	}
 
+	.overlay {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		z-index: +10;
+		font-size: calc(0.1 * var(--screen-height));
+		color: var(--tertiary-color);
+		opacity: 0.5;
+	}
+	.not-owned {
+		max-width: var(--screen-height);
+		transform: rotate(-30deg);
+		line-height: 0.9;
+	}
+	.notOwned {
+		filter: brightness(40%);
+	}
+
 	.splash-art {
 		background-image: var(--bg);
 		background-size: cover;
@@ -167,6 +254,8 @@
 
 	.zoomist-container {
 		aspect-ratio: 1/1;
+		opacity: 1;
+		transition: opacity 0.25s;
 	}
 
 	.splash-art,
@@ -186,6 +275,10 @@
 		cursor: move;
 		background-color: unset;
 		position: relative;
+	}
+
+	.zoomist-wrapper.weapon {
+		--scale: 1.1;
 	}
 
 	.dragable {
@@ -230,12 +323,33 @@
 		object-position: center;
 	}
 
-	/* Zoomist */
+	.weapon img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.weapon img:not(.weaponbg) {
+		filter: drop-shadow(0.6rem 0.6rem 0.05rem rgba(0, 0, 0, 0.9));
+	}
+
+	.weapon img.weaponbg {
+		height: 80%;
+	}
+
+	.catalyst img:not(.weaponbg) {
+		height: 40%;
+	}
+
+	.polearm img:not(.weaponbg) {
+		transform: translate(-53%, -35%) scale(1.2) !important;
+	}
+
 	.slider {
 		display: grid;
 		background-color: rgba(255, 255, 255, 0.75);
 		padding: 1rem 0;
-		transition: background 0.25s;
+		transition: background 0.25s, opacity 0.25s;
 	}
 
 	.slider:hover {
@@ -294,5 +408,19 @@
 
 	:global(.mobile) .confirm {
 		transform: scale(0.8);
+	}
+
+	.uid {
+		left: unset;
+		right: 5%;
+		width: fit-content;
+		font-size: x-large;
+		font-family: var(--gi-font);
+	}
+
+	.hideInfo .slider,
+	.hideInfo .art-zoomin,
+	.hideInfo .art-zoomout {
+		opacity: 0;
 	}
 </style>

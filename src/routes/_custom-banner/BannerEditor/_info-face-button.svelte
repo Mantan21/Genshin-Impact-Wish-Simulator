@@ -138,6 +138,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		text-align: center;
 		align-items: center;
 		opacity: 0;
 		transition: all 0.25s;

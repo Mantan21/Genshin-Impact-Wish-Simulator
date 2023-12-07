@@ -40,7 +40,7 @@
 	const preview = (val) => (previewDOM ? previewDOM(val) : null);
 
 	const filterShot = (node) => {
-		const notIncluded = ['close', 'share', 'skip', 'outfit-toggle'];
+		const notIncluded = ['close', 'share', 'skip', 'outfit-toggle', 'zoomer'];
 		if (node.classList) return !notIncluded.some((cl) => node.classList.contains(cl));
 		return true;
 	};

@@ -18,9 +18,9 @@
 
 <div class="picker" transition:fly={{ y: $viewportHeight, duration: 250 }}>
 	<div class="row">
-		{#each chars as { name, vision }}
-			<button class="item" on:click={() => pickChar(name)}>
-				<InventoryItem {name} {vision} localName={$t(`${name}.name`)} type="character" rarity={4} />
+		{#each chars as char}
+			<button class="item" on:click={() => pickChar(char.name)}>
+				<InventoryItem itemdata={{ ...char, localName: $t(`${char.name}.name`) }} />
 			</button>
 		{/each}
 	</div>
