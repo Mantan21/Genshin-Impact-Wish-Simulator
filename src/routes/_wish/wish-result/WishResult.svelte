@@ -154,6 +154,7 @@
 	{#if showResultList && list.length > 1}
 		<ResultList {list} {standalone} />
 	{:else}
+		<div class="touch-box" on:mousedown={showItem} />
 		<div
 			class="zoomist-container"
 			style="height: {wrapperHeight};--width:{clientWidth}px;--height:{clientHeight}px"
@@ -163,7 +164,7 @@
 		>
 			{#each list as { name, rarity, type, outfitName, vision, weaponType, bonusQty, bonusType, stelaFortuna, useOutfit, offset, custom }, i}
 				{#if activeIndex === i}
-					<div class="art-wrapper" on:mousedown={showItem}>
+					<div class="art-wrapper">
 						{#if !isSplashOut} <SplashLight type="in" {rarity} /> {/if}
 
 						<div class="art-wrapper">
@@ -252,6 +253,15 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
+	}
+
+	.touch-box {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: +5;
 	}
 
 	.zoomist-container {

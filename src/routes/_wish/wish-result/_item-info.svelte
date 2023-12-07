@@ -132,6 +132,11 @@
 		-webkit-text-stroke: 0.04rem #000;
 	}
 
+	.text,
+	.star {
+		filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
+	}
+
 	:global(.zh-CN) .name .text,
 	:global(.ja-JP) .name .text {
 		font-size: 3em;
