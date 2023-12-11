@@ -5,7 +5,6 @@
 	import { getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { activeVersion, assets, preloadVersion } from '$lib/store/app-stores';
-	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { imageCDN } from '$lib/helpers/assets';
 
 	export let groupby = 'version';
@@ -57,11 +56,11 @@
 			<div class:dual={chars?.length > 1}>
 				{#each chars as { character, bannerName, images }, i}
 					{#if isCustom}
-						<img use:lazyLoad={imageCDN(images)} alt={character} crossorigin="anonymous" />
+						<img src={imageCDN(images)} alt={character} crossorigin="anonymous" loading="lazy" />
 					{:else}
 						{#key bannerName}
 							<img
-								use:lazyLoad={$assets[`thumbnail/${bannerName}`]}
+								src={$assets[`thumbnail/${bannerName}`]}
 								alt={getName(character)}
 								class="dual{i + 1}"
 								crossorigin="anonymous"
@@ -75,7 +74,7 @@
 			{#if !isCustom}
 				<div class="weapon">
 					<img
-						use:lazyLoad={$assets[`thumbnail/${weapons.bannerName}`]}
+						src={$assets[`thumbnail/${weapons.bannerName}`]}
 						alt={getName(weapons.bannerName)}
 						crossorigin="anonymous"
 						loading="lazy"

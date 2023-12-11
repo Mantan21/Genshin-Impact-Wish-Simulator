@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		customData,
 		editID,
@@ -10,9 +11,9 @@
 		proUser
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import SvgIcon from '$lib/components/SVGIcon.svelte';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { highlightBannerName } from '$lib/helpers/nameText';
+	import SvgIcon from '$lib/components/SVGIcon.svelte';
 
 	export let bannerName = '';
 	export let character = '';
@@ -29,12 +30,20 @@
 		editMode.set(true);
 	};
 
+	let infoContainer;
 	let myBannerCount = 0;
 	$: disableEdit = !$proUser && myBannerCount > 3;
 	onMount(async () => {
 		const { getListByStatus } = BannerManager;
 		const list = (await getListByStatus('owned')) || [];
 		myBannerCount = list.length;
+
+		if (onBannerEdit) return;
+		OverlayScrollbars(infoContainer, {
+			sizeAutoCapable: false,
+			className: 'os-theme-light',
+			scrollbars: { visibility: 'hidden' }
+		});
 	});
 </script>
 
@@ -63,7 +72,7 @@
 		</div>
 	{/if}
 
-	<div class="info">
+	<div class="info" bind:this={infoContainer}>
 		<div class="content">
 			<div class="set card-stroke">
 				{$t('wish.banner.probIncreased')}
@@ -222,9 +231,12 @@
 		left: 0;
 		top: 40%;
 		width: 40%;
-		height: 45%;
+		height: 42%;
 		display: block;
 		padding-left: 4%;
+	}
+	.onBannerEdit .info {
+		overflow: hidden;
 	}
 
 	.editorMode .info {

@@ -17,12 +17,16 @@
 	import Footer from './_footer.svelte';
 	import InventoryList from './_inventory-list.svelte';
 	import InventoryDetail from './_inventory-detail.svelte';
+	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
 
 	let headerHeight = 0;
-	let activeItem = 'character';
+	let activeItem = cookie.get('inventoryTab') || 'character';
+	$: cookie.set('inventoryTab', activeItem);
 
+	let loaded = false;
 	const itemList = writable([]);
 	const loadedList = writable([]);
+	setContext('loaded', () => (loaded = true));
 	setContext('itemList', itemList);
 	setContext('loadedList', loadedList);
 
@@ -79,7 +83,7 @@
 				bind:this={content}
 				style="--headerHeight:{$viewportHeight - headerHeight}px;"
 			>
-				<InventoryList />
+				<InventoryList {loaded} />
 			</div>
 			<Footer {activeItem} />
 		</div>

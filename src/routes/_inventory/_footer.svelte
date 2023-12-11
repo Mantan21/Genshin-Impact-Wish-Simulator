@@ -13,6 +13,7 @@
 	import Order, { orderData } from './_order.svelte';
 
 	export let activeItem;
+	const loaded = getContext('loaded');
 	const loadedList = getContext('loadedList');
 	const itemList = getContext('itemList');
 
@@ -99,6 +100,7 @@
 		weapons = await loadItems('weapon');
 		isLoaded = true;
 		proccessData(activeItem, showAll);
+		loaded();
 	});
 </script>
 

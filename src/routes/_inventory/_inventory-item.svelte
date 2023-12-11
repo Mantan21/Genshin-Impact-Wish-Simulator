@@ -59,11 +59,12 @@
 			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else}
 			<img
-				src={$assets[name]}
 				loading="lazy"
+				crossorigin="anonymous"
+				src={$assets[name]}
 				alt={localName}
 				class={weaponType}
-				crossorigin="anonymous"
+				on:error={(e) => e.target.remove()}
 			/>
 		{/if}
 		{#if qty > 1}

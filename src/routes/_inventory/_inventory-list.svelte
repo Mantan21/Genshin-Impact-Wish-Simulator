@@ -3,9 +3,10 @@
 	import { flip } from 'svelte/animate';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { mobileMode, viewportHeight, viewportWidth } from '$lib/store/app-stores';
+	import { isMobile, mobileMode, viewportHeight, viewportWidth } from '$lib/store/app-stores';
 	import InventoryItem from './_inventory-item.svelte';
 
+	export let loaded = false;
 	const itemList = getContext('itemList');
 
 	// Layout
@@ -31,10 +32,20 @@
 </script>
 
 <div class="list-item" style="--item-width: {itemWidth}px">
-	{#if !$itemList || $itemList.length < 1}
+	{#if !loaded}
+		<span style="color: white; padding: 2rem; font-size: 1.2rem">
+			{$t('history.waiting')}
+		</span>
+	{:else if !$itemList || $itemList.length < 1}
 		<span style="color: white; padding: 2rem; font-size: 1.2rem">
 			{$t('history.noData')}
 		</span>
+	{:else if $isMobile}
+		{#each $itemList as d}
+			<div class="item" in:fade={{ duration: 300 }}>
+				{#key d} <InventoryItem itemdata={d} /> {/key}
+			</div>
+		{/each}
 	{:else}
 		{#each $itemList as d, i (d)}
 			<div

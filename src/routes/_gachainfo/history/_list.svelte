@@ -1,8 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
-	import { afterUpdate, getContext } from 'svelte';
+	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import OverlayScrollbars from 'overlayscrollbars';
 	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { getBannerName, getName } from '$lib/helpers/nameText';
 
@@ -11,12 +10,20 @@
 	export let filter = '';
 	export let page = { itemPerPage: 0, activepage: 0 };
 
-	let table;
 	let data = [];
 	let dataToShow = [];
 
 	const { getListByBanner } = HistoryManager;
 	const setDataLength = getContext('setDataLength');
+
+	const getItemPage = (data, { itemPerPage = 0, activepage = 0 } = {}) => {
+		const result = data.filter((d, i) => {
+			const begining = i > (activepage - 1) * itemPerPage - 1;
+			const end = i < itemPerPage * activepage;
+			return begining && end;
+		});
+		return result;
+	};
 
 	const filterData = (filterBy) => data.filter(({ rarity }) => rarity === filterBy);
 	const readData = async (banner, filter) => {
@@ -36,14 +43,9 @@
 		query.set(getName(bannerName));
 		navigate('allbanners');
 	};
-
-	afterUpdate(() => {
-		if (v2) return;
-		OverlayScrollbars(table, { sizeAutoCapable: false, className: 'os-theme-light' });
-	});
 </script>
 
-<div class="table" class:v2 bind:this={table}>
+<div class="table" class:v2>
 	<div style="min-width: max-content;">
 		<div class="row head">
 			<div class="cell cell0">{$t('history.pity')}</div>
@@ -59,45 +61,43 @@
 					<div class="cell">{$t('history.noData')}</div>
 				</div>
 			{:else}
-				{#each dataToShow as { name, type, rarity, time, pity, bannerName, status, custom }, i}
-					{#if i > (page.activepage - 1) * page.itemPerPage - 1 && i < page.itemPerPage * page.activepage}
-						<div class="row">
-							<div class="cell cell0 star{rarity}">
-								{pity}
-								{#if status}
-									<span class="status"> <i class="gi-{status}" /> </span>
-								{/if}
-							</div>
-							<div class="cell cell1">{$t(type)}</div>
-							{#if custom}
-								<div class="cell cell2 star{rarity}">
-									{name} ( 5★ )
-								</div>
-							{:else}
-								<div class="cell cell2 star{rarity}">
-									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
-									{#if rarity > 3} ( {rarity}★ ) {/if}
-								</div>
+				{#each getItemPage(dataToShow, page) as { name, type, rarity, time, pity, bannerName, status, custom }}
+					<div class="row">
+						<div class="cell cell0 star{rarity}">
+							{pity}
+							{#if status}
+								<span class="status"> <i class="gi-{status}" /> </span>
 							{/if}
-							<div class="cell cell3">{time}</div>
-							<div class="cell cell4">
-								{#if bannerName}
-									{@const bn = getBannerName(bannerName).name}
-									{#if custom || !bn}
-										<span> {bannerName} </span>
-									{:else if banner.match('event')}
-										<a href="/" on:click|preventDefault={() => search(bannerName)}>
-											{@html $t(`banner.${bn}`)}
-										</a>
-									{:else}
-										{$t(`banner.wanderlust`)}
-									{/if}
-								{:else}
-									{$t('history.untracked')}
-								{/if}
-							</div>
 						</div>
-					{/if}
+						<div class="cell cell1">{$t(type)}</div>
+						{#if custom}
+							<div class="cell cell2 star{rarity}">
+								{name} ( 5★ )
+							</div>
+						{:else}
+							<div class="cell cell2 star{rarity}">
+								{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+								{#if rarity > 3} ( {rarity}★ ) {/if}
+							</div>
+						{/if}
+						<div class="cell cell3">{time}</div>
+						<div class="cell cell4">
+							{#if bannerName}
+								{@const bn = getBannerName(bannerName).name}
+								{#if custom || !bn}
+									<span> {bannerName} </span>
+								{:else if banner.match('event')}
+									<a href="/" on:click|preventDefault={() => search(bannerName)}>
+										{@html $t(`banner.${bn}`)}
+									</a>
+								{:else}
+									{$t(`banner.wanderlust`)}
+								{/if}
+							{:else}
+								{$t('history.untracked')}
+							{/if}
+						</div>
+					</div>
 				{/each}
 			{/if}
 		</div>

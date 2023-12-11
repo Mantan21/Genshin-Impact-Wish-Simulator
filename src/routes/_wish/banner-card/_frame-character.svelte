@@ -35,8 +35,8 @@
 		{@html highlightBannerName(localeBannerName, vision)}
 	</h1>
 
-	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
-		<div class="content">
+	<div class="info" bind:this={bannerInfo}>
+		<div class="content" in:fly={{ x: 15, duration: 700 }}>
 			<div class="set card-stroke">
 				{$t('wish.banner.probIncreased')}
 			</div>
@@ -125,7 +125,7 @@
 		left: 0;
 		top: 40%;
 		width: 40%;
-		height: 45%;
+		height: 42%;
 		display: block;
 		padding-left: 4%;
 	}

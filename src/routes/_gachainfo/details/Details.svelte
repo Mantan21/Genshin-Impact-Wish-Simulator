@@ -1,5 +1,7 @@
 <script>
 	import { t } from 'svelte-i18n';
+	import { afterUpdate } from 'svelte';
+	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		activeBanner,
 		bannerList,
@@ -30,11 +32,11 @@
 		bannerName,
 		type,
 		stdver,
-		character = {},
+		character = '',
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-	const { vision } = isCustomBanner ? $customData : getCharDetails(character);
+	const { vision } = $isCustomBanner ? $customData : getCharDetails(character);
 
 	// Get Droplist
 	const { patch: version, phase } = $activeVersion;
@@ -94,9 +96,14 @@
 		activeContent = selected;
 		playSfx();
 	};
+
+	let scrollable;
+	afterUpdate(() => {
+		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
+	});
 </script>
 
-<Title {type} {bannerName} {vision} {tplVersion} />
+<Title {type} {vision} {bannerName} {tplVersion} />
 
 {#if tplVersion === 'v2'}
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
@@ -112,14 +119,24 @@
 			<button on:click={() => select(3)}> {$t('details.itemlist')} </button>
 		</div>
 	</nav>
-	<div class="content">
-		{#if activeContent === 1}
-			<PromotionalV2 data={{ weapons, character, bannerType: type, rateup }} />
-		{:else if activeContent === 2}
-			<Description bannerType={type} {bannerName} {weapons} {character} {rateup} tplVersion="v2" />
-		{:else if activeContent === 3}
-			<List {drop5star} {drop4star} {drop3star} bannerType={type} tplVersion="v2" />
-		{/if}
+
+	<div class="content" bind:this={scrollable}>
+		<div class="wrapper">
+			{#if activeContent === 1}
+				<PromotionalV2 data={{ weapons, character, bannerType: type, rateup }} />
+			{:else if activeContent === 2}
+				<Description
+					bannerType={type}
+					{bannerName}
+					{weapons}
+					{character}
+					{rateup}
+					tplVersion="v2"
+				/>
+			{:else if activeContent === 3}
+				<List {drop5star} {drop4star} {drop3star} bannerType={type} tplVersion="v2" />
+			{/if}
+		</div>
 	</div>
 {:else}
 	<PromotionalV1 data={{ weapons, character, bannerType: type, rateup }} />
@@ -168,6 +185,5 @@
 
 	.content {
 		height: 100%;
-		overflow-y: auto;
 	}
 </style>

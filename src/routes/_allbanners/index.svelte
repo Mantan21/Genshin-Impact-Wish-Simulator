@@ -9,7 +9,7 @@
 	import { allPatch } from '$lib/data/wish-setup.json';
 	import { APP_TITLE } from '$lib/env';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
-	import { assets } from '$lib/store/app-stores';
+	import { assets, isMobile } from '$lib/store/app-stores';
 	import { getBannerName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import ItemBanner from './_item-banner.svelte';
@@ -226,15 +226,24 @@
 			<div id="content">
 				{#await loadData() then _}
 					{@const bn = customBanner[1].length < 1 ? dataToShow : [customBanner, ...dataToShow]}
-					{#each bn as [groupName, data], i (groupName)}
-						<div
-							animate:flip={{ duration: (i) => 10 * Math.sqrt(i) }}
-							in:fade={{ duration: 300, delay: Math.sqrt(i * 20000) }}
-							class:custom={groupName.match(/custom/gi)}
-						>
-							<ItemBanner {data} {groupName} {groupby} />
-						</div>
-					{/each}
+
+					{#if $isMobile}
+						{#each bn as [groupName, data]}
+							<div in:fade={{ duration: 300 }} class:custom={groupName.match(/custom/gi)}>
+								<ItemBanner {data} {groupName} {groupby} />
+							</div>
+						{/each}
+					{:else}
+						{#each bn as [groupName, data], i (groupName)}
+							<div
+								animate:flip={{ duration: (i) => 10 * Math.sqrt(i) }}
+								in:fade={{ duration: 300, delay: Math.sqrt(i * 20000) }}
+								class:custom={groupName.match(/custom/gi)}
+							>
+								<ItemBanner {data} {groupName} {groupby} />
+							</div>
+						{/each}
+					{/if}
 				{/await}
 			</div>
 		</div>

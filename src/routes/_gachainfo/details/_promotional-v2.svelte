@@ -3,6 +3,7 @@
 	import { assets, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { getName } from '$lib/helpers/nameText';
 	import { lazyLoad } from '$lib/helpers/lazyload';
+	import Iklan from '$lib/components/Iklan.svelte';
 
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
@@ -90,6 +91,8 @@
 			</div>
 		{/if}
 	</div>
+
+	<Iklan type="banner" />
 
 	<!-- 4 Star Item -->
 	<h3 class="star4">

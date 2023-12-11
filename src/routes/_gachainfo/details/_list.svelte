@@ -1,6 +1,5 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import Ads from '$lib/components/Iklan.svelte';
 	import { isCustomBanner } from '$lib/store/app-stores';
 
 	export let drop5star;
@@ -100,8 +99,6 @@
 			</div>
 		</div>
 	</div>
-
-	<Ads type="banner" />
 
 	<h3 class="star3">
 		<div class="star">

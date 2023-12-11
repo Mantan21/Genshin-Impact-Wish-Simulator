@@ -12,8 +12,7 @@
 		viewportWidth,
 		isMobile,
 		mobileMode,
-		isPWA,
-		proUser
+		isPWA
 	} from '$lib/store/app-stores';
 	import { IDBUpdater } from '$lib/helpers/migrator/IDBUpdater';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
@@ -154,9 +153,7 @@
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
 
-	{#if isloaded && (!$proUser || !($isPWA && $isMobile))}
-		<Iklan head />
-	{/if}
+	<Iklan head />
 </svelte:head>
 
 <Loader {isBannerLoaded} {directLoad} />
@@ -184,8 +181,6 @@
 		WishSimulator.App
 	</a>
 </main>
-
-<Iklan type="pop" />
 
 <style global>
 	@import '../../node_modules/overlayscrollbars/css/OverlayScrollbars.css';

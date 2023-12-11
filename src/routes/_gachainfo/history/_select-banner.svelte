@@ -107,7 +107,7 @@
 		color: #757575;
 		text-decoration: none;
 		padding: 6px 15px;
-		transition: all 0.2s;
+		transition: background 0.2s;
 	}
 	.item.active,
 	.item:hover {
@@ -139,24 +139,24 @@
 		background-repeat: no-repeat;
 		aspect-ratio: 201/11;
 		justify-content: flex-start;
-		font-size: calc(0.016 * var(--content-width));
+		font-size: calc(0.014 * var(--content-width));
 		margin-bottom: calc(0.005 * var(--content-width));
 	}
 
 	.wish-type.v2 > span {
-		padding: 0 calc(0.02 * var(--content-width));
-		width: calc(0.215 * var(--content-width));
+		width: calc(0.23 * var(--content-width));
 		text-align: right;
 		line-height: 90%;
 	}
 
 	.v2 .select-box {
-		width: calc(0.525 * var(--content-width));
+		width: 100%;
 		margin: 0;
 	}
 
 	.v2 .selected {
-		font-size: calc(0.0175 * var(--content-width));
+		padding-left: calc(0.035 * var(--content-width));
+		font-size: calc(0.014 * var(--content-width));
 		color: var(--text-color);
 		background-color: transparent;
 		border: transparent;
@@ -195,7 +195,8 @@
 	}
 
 	.selectType.v2 .reset {
-		width: calc(0.08 * var(--content-width));
+		width: calc(0.13 * var(--content-width));
+		text-align: center;
 	}
 
 	.arrow.icon {
