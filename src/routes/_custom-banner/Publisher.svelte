@@ -73,6 +73,7 @@
 	};
 
 	// Publish
+	const chatToggle = getContext('chatToggle');
 	const publishError = getContext('publishError');
 	const publishDone = getContext('publishDone');
 	const closePublisher = getContext('closePublisher');
@@ -96,7 +97,10 @@
 
 				const request = new XMLHttpRequest();
 				request.open('POST', `https://api.imgbb.com/1/upload?key=${IBB_KEY}`);
+				request.send(data);
+				request.addEventListener('error', () => reject({ success: false }));
 
+				// Track Upload Proggress
 				request.upload.addEventListener('progress', (e) => {
 					const proggress = e.loaded / e.total;
 					const maxPrgPerItem = 1 / total;
@@ -112,7 +116,6 @@
 					await localBanner.renewImage({ id: $editID, newData, key });
 					resolve({ ...newData, status_code: 200 });
 				});
-				request.send(data);
 			} catch (e) {
 				return reject({ success: false });
 			}
@@ -180,6 +183,9 @@
 		{:else if uploadError}
 			<div class="content" in:fade>
 				<caption class="load-text"> {$t('customBanner.uploadFailed')} </caption>
+				<div class="report">
+					Please <button on:click={chatToggle}>Report</button> if you think this is a mistake!
+				</div>
 				<div style="margin-top: 1rem;">
 					<ButtonModal on:click={closePublisher}>{$t('customBanner.close')}</ButtonModal>
 				</div>
@@ -278,6 +284,23 @@
 
 	.loader {
 		margin: 3% 0;
+	}
+
+	.report {
+		padding-top: 0.5rem;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-style: italic;
+	}
+
+	.report button {
+		color: orange;
+		font-weight: bold;
+		font-style: inherit;
+		transition: all 0.25s;
+	}
+
+	.report button:hover {
+		text-decoration: underline;
 	}
 
 	@media screen and (max-width: 640px) {
