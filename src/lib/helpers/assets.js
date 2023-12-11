@@ -182,6 +182,7 @@ export const base64ToBlob = (image) => {
 
 export const imageCDN = (imgs, width = 0) => {
 	const cdnURL = 'https://imagecdn.wishsimulator.app/transform/';
+	if (!imgs) return null;
 	if (typeof imgs === 'string') {
 		const w = width && !isNaN(width) ? `&w=${width}` : '';
 		return cdnURL + imgs + w;

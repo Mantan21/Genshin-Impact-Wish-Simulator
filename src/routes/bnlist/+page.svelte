@@ -83,4 +83,7 @@
 	.col.button {
 		padding-top: 1rem;
 	}
+	h1 {
+		padding: 1rem;
+	}
 </style>
