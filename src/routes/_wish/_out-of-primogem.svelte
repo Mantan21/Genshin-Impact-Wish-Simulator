@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { acquaint, intertwined, primogem } from '$lib/store/app-stores';
+	import { acquaint, intertwined, multipull, primogem } from '$lib/store/app-stores';
 	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
 
@@ -20,7 +20,7 @@
 
 	const convertAndRoll = async () => {
 		await updateBalance();
-		return reroll();
+		return reroll($multipull);
 	};
 
 	const updateBalance = async () => {

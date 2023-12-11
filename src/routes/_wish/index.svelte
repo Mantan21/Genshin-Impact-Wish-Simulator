@@ -155,9 +155,10 @@
 	};
 	setContext('closeModal', closeModal);
 
-	const reroll = () => {
+	const reroll = (amount) => {
 		playSfx();
-		doRoll(multi ? 10 : 1, bannerType);
+		const multiAmount = bannerType === 'beginner' ? 10 : amount;
+		doRoll(multi ? multiAmount : 1, bannerType);
 		showConvertModal = false;
 	};
 	setContext('reroll', reroll);
