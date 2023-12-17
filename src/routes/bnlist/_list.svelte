@@ -1,11 +1,11 @@
 <script>
 	import { onMount, setContext } from 'svelte';
 	import { API_HOST } from '$lib/env';
-	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { imageCDN } from '$lib/helpers/assets';
+	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { timeAgo } from '$lib/helpers/timeago';
 	import { onlineBanner } from '$lib/helpers/custom-banner';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
-	import { timeAgo } from '$lib/helpers/timeago';
 	import Pagination from '../_gachainfo/history/_pagination.svelte';
 
 	let activepage = 1;

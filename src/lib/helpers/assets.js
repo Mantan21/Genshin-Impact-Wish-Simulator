@@ -1,23 +1,10 @@
+import { API_HOST, HOST } from '$lib/env';
+
 const imageModules = import.meta.glob(['@images/**/*'], {
 	query: { as: 'picture' },
 	import: 'default',
 	eager: true
 });
-
-// const generateURL = (url = '') => {
-// 	const cdnURL = ''; //!dev ? 'https://cdn.wishsimulator.app/' : '/';
-// 	if (!url || !url.match('http')) return url;
-
-// 	const [, pathDomain] = url.split('://');
-// 	if (!pathDomain) return url;
-
-// 	const removedDomain = pathDomain.split('/').slice(1);
-// 	const pathURI = removedDomain.join('/');
-// 	if (!pathURI) return url;
-
-// 	const finalURL = cdnURL + pathURI;
-// 	return finalURL;
-// };
 
 export const itemList = () => {
 	const pathList = {};
@@ -180,18 +167,29 @@ export const base64ToBlob = (image) => {
 	return new Blob([byteArray], { type: contentType });
 };
 
-export const imageCDN = (imgs, width = 0) => {
-	const cdnURL = 'https://imagecdn.wishsimulator.app/transform/';
-	if (!imgs) return null;
-	if (typeof imgs === 'string') {
-		const w = width && !isNaN(width) ? `&w=${width}` : '';
-		return cdnURL + imgs + w;
-	}
+export const initCDNURL = async () => {
+	const check = document.head.querySelector('.imagecdn');
+	if (check) return;
 
-	if (typeof imgs !== 'object') return imgs;
-	Object.keys(imgs).forEach((key) => {
-		const width = key === 'faceURL' ? '&w=226' : '';
-		imgs[key] = cdnURL + imgs[key] + width;
-	});
-	return imgs;
+	try {
+		const loadScript = new Promise((resolve, reject) => {
+			const cdn = document.createElement('script');
+			cdn.crossOrigin = 'anonymous';
+			cdn.src = API_HOST + '/js/image-cdn';
+			cdn.classList.add('imagecdn');
+			document.head.append(cdn);
+
+			cdn.addEventListener('load', () => resolve('ok'));
+			cdn.addEventListener('error', () => reject('cannot use imagecdn'));
+		});
+		return loadScript;
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+export const imageCDN = (imgs, width = 0) => {
+	if (!('getCDNImageURL' in window)) return imgs;
+	const finalURL = window.getCDNImageURL(imgs, width, HOST);
+	return finalURL;
 };

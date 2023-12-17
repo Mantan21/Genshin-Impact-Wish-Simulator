@@ -1,5 +1,6 @@
 import { API_HOST } from '$lib/env';
 import { BannerManager } from './dataAPI/api-indexeddb';
+import { initCDNURL } from './assets';
 
 const idb = BannerManager;
 
@@ -176,6 +177,9 @@ export const syncCustomBanner = async () => {
 	try {
 		const storedBanner = (await idb.getAll()) || [];
 		if (storedBanner.length < 1) return;
+
+		// Initialize cdn url generator for custom banner images
+		await initCDNURL();
 
 		const localBannerIDs = storedBanner.map(({ shareID }) => shareID).filter((id) => !!id);
 		const ids = localBannerIDs.join(',');

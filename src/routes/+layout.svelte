@@ -16,9 +16,9 @@
 	} from '$lib/store/app-stores';
 	import { IDBUpdater } from '$lib/helpers/migrator/IDBUpdater';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { sync } from '$lib/helpers/dataAPI/sync';
 	import { autoExport } from '$lib/store/filesystem-store';
-	import { HOST, DESCRIPTION, KEYWORDS, APP_TITLE } from '$lib/env';
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { wakeLock } from '$lib/helpers/wakeLock';
@@ -47,9 +47,20 @@
 
 	$: viewportWidth.set(innerWidth);
 	$: viewportHeight.set(innerHeight);
-	$: path = $page.url.pathname.split('/');
-	$: directLoad = !!path[1];
-	$: preview = path[1] === 'screen';
+
+	let directLoad = false;
+	let preview = false;
+
+	const checkPath = () => {
+		const path = $page.url.pathname.split('/');
+		directLoad = !!path[1];
+		preview = path[1] === 'screen';
+
+		const validPaths = ['adkey', 'bnlist', 'install', 'privacy-policy', 'screen'];
+		const isPathValid = validPaths.includes(path[1].toLowerCase());
+		const redirect = path[1] && !isPathValid;
+		return redirect;
+	};
 
 	const setMobileMode = () => {
 		if ($isPWA) return mobileMode.set(true);
@@ -58,18 +69,9 @@
 		mobileMode.set(rotate);
 	};
 
-	const validPaths = ['adkey', 'bnlist', 'install', 'privacy-policy', 'screen'];
-	$: isPathValid = validPaths.includes(path[1].toLowerCase());
-
-	const redirectIfNotValidPath = () => {
-		const isCDNHost = $page.url.host.includes('cdn.');
-		if (isCDNHost) return window.location.replace('https://wishsimulator.app/');
-		if (path[1] && !isPathValid) return window.location.replace('/');
-	};
-
 	mountLocale();
 	onMount(async () => {
-		redirectIfNotValidPath();
+		if (checkPath()) return window.location.replace('/');
 
 		const url = new URL(window.location.href);
 		const searchParams = new URLSearchParams(url.search);
@@ -82,12 +84,12 @@
 			if ($isMobile) setMobileMode();
 		});
 
-		storageLocal.initEvent();
-		registerSW();
-		wakeLock();
-		await IDBUpdater();
-		syncCustomBanner();
-		// initializeDriveAPI();
+		storageLocal.initEvent(); //for autoexport
+		registerSW(); // Service Worker for faster load
+		wakeLock(); // Prevent screen off while open the app
+		await IDBUpdater(); // Update site data to the newer Version
+		syncCustomBanner(); // Sync Custom Banner
+		// initializeDriveAPI(); // Drive API for cloud Sync
 
 		document.addEventListener('storageUpdate', () => sync($autoExport));
 		// prevent Righ click (hold on android) on production mode
@@ -115,10 +117,6 @@
 	<meta name="twitter:title" content={APP_TITLE} />
 	<meta name="twitter:description" content={DESCRIPTION} />
 	<meta name="twitter:image" content="{HOST}/meta-picture.jpg" />
-
-	{#if path[1] && !isPathValid}
-		<link rel="canonical" href={HOST} />
-	{/if}
 
 	<link
 		rel="preload"

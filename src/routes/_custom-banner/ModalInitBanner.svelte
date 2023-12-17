@@ -1,10 +1,9 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 
-	import { imageCDN } from '$lib/helpers/assets';
+	import { imageCDN, initCDNURL } from '$lib/helpers/assets';
 	import { preloadVersion } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { onlineBanner } from '$lib/helpers/custom-banner';
@@ -78,7 +77,7 @@
 	};
 
 	onMount(() => {
-		goto('/');
+		initCDNURL(); // CDN for customBanner Images
 		if (!shareID) return;
 		return fetchBannerData(shareID);
 	});

@@ -45,8 +45,8 @@ registerRoute(
 
 		const imgPath = url.pathname.includes('/internal/immutable/assets');
 		const iconPath = url.pathname.includes('/icons');
-		const ibbPath = url.href.includes('i.ibb.co');
-		const imagePaths = imgPath || iconPath || ibbPath;
+		const transformPath = url.href.match(/(\/transform\/|\/cb\/)/);
+		const imagePaths = imgPath || iconPath || transformPath;
 
 		const matchImage = url.href.match(new RegExp('.(?:svg|webp|jpg|png|jpeg)')) || [];
 		const isMatch = matchImage.length > 0;
@@ -75,5 +75,13 @@ registerRoute(
 	new RegExp('.(?:css|js|json)$'),
 	new NetworkFirst({
 		cacheName: 'Chunks'
+	})
+);
+
+registerRoute(
+	({ url }) => url.href.match('/js/image-cdn'),
+	new NetworkFirst({
+		cacheName: 'Chunks',
+		plugins: [new CacheableResponsePlugin({ statuses: [0, 200] })]
 	})
 );
