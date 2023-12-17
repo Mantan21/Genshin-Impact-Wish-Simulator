@@ -11,7 +11,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
-	import Background from './_background.svelte';
+	import Background from '$lib/components/RandomBackground.svelte';
 	import Header from './_header.svelte';
 	import Aside from './_aside.svelte';
 	import ModalExchange from './_modal-exchange.svelte';

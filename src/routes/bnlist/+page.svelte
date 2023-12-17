@@ -1,6 +1,6 @@
 <script>
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
-	import Background from '../_shop/_background.svelte';
+	import Background from '$lib/components/RandomBackground.svelte';
 	import List from './_list.svelte';
 
 	let loggedIn = false;
