@@ -2,6 +2,17 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 162,
+			"name": "navia",
+			"vision": "geo",
+			"rarity": 5,
+			"offset": {
+				"splashArt": { "x": -5.14436090225564, "y": -0.968421052631579, "scale": 1.48 },
+				"wishCard": { "x": -82.53611556982344, "y": 68.28539325842696, "scale": 10.9 },
+				"button": { "l": 55, "w": 110, "t": 35 }
+			}
+		},
+		{
 			"itemID": 160,
 			"name": "furina",
 			"vision": "hydro",

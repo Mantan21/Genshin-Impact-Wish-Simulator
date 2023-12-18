@@ -381,7 +381,6 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "23-Nov-2023",
 			"description": [
 				"Add <b>Cyno 3th Rerun</b> Banner",
@@ -396,6 +395,15 @@
 				"<b>New Features:</b>",
 				"- Custom Banner Editor, Share your Own Banner!",
 				"- Backup & Restore, Cloud Sync will be available soon"
+			]
+		},
+		{
+			"featured": true,
+			"date": "18-Dec-2023",
+			"description": [
+				"New Character: <b>Navia ( 5★ )</b>",
+				"New Weapon: <b>Verdict (Claymore 5★)</b>",
+				"Add <b>Ayaka's 4th Rerun</b> Banner"
 			]
 		}
 	]

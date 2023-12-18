@@ -1,6 +1,16 @@
 {
 	"data": [
 		{
+			"itemID": 163,
+			"name": "verdict",
+			"rarity": 5,
+			"weaponType": "claymore",
+			"limited": true,
+			"offset": {
+				"button": { "t": 1, "w": 70, "l": 38 }
+			}
+		},
+		{
 			"itemID": 161,
 			"name": "splendor-of-tranquil-waters",
 			"rarity": 5,
@@ -287,7 +297,7 @@
 			"weaponType": "sword",
 			"limited": true,
 			"offset": {
-				"button": { "w": 100, "t": -20, "l": 30 }
+				"button": { "w": 90, "t": -22, "l": 30 }
 			}
 		},
 		{
