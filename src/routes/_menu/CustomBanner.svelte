@@ -15,6 +15,7 @@
 	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { pushToast } from '$lib/helpers/toast';
+	import { html } from '$post/banner-guidelines.md';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -143,25 +144,7 @@
 		{:else}
 			{#if showNote}
 				<div class="disclaimer" transition:fade|local={{ duration: 250 }}>
-					<article>
-						<p>
-							I will be monitoring this Feature over the coming period. If this feature is not found
-							to be useful or is misused to share inappropriate content, I may limit or even disable
-							it. I hope you are willing to provide feedback to help improve the quality of this
-							simulator site.
-						</p>
-						<p>
-							Every banner you add is saved in your browser's memory. <b>WishSimulator.App</b> does not
-							collect or store your banner data in cloud storage unless you click the Share Button.
-						</p>
-						<p>
-							<b>WishSimulator.App</b> does not collect your personal information. So, if an
-							incident occurs on your device and causes your browser to clear your local storage,
-							you will also lose all your data, and you will not be able to edit the banner(s) you
-							have created.
-							<u>In such a case, what you can do is create a new custom banner</u>.
-						</p>
-					</article>
+					<article>{@html html}</article>
 					<ButtonModal width="200px" on:click={toggleInfo}>Create Banner</ButtonModal>
 				</div>
 			{:else}
@@ -293,9 +276,15 @@
 		background-color: #fff;
 		margin-bottom: 2%;
 		border-radius: 0.5rem;
+		font-size: 90%;
 	}
-	p {
+	.disclaimer :global(p) {
 		margin-bottom: 3%;
+	}
+	.disclaimer :global(ol),
+	.disclaimer :global(ul) {
+		line-height: 1.5;
+		list-style-position: inside;
 	}
 
 	/*  */
