@@ -3,6 +3,7 @@ import { init, register, getLocaleFromNavigator } from 'svelte-i18n';
 import { localConfig } from './dataAPI/api-localstore';
 
 const supportedLocales = [
+	'uk-UA',
 	'zh-CN',
 	'zh-TW',
 	'de-DE',
