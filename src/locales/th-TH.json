@@ -471,7 +471,7 @@
 		"resetPrompt": "คุณแน่ใจหรือไม่ว่า <strong> ข้อมูลทั้งหมด </strong> และกู้คืนเป็นค่าเริ่มต้น?",
 		"resetSuccess": "รีเซ็ตประสบความสำเร็จ",
 		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"getpro": "Unlock Pro Access",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "Get a new one Here!",
@@ -484,6 +484,11 @@
 		"inputKeyPlaceholder": "Enter Key",
 		"inputKeyTxt": "Input a Key to get more Benefits !",
 		"checkingKey": "Verifying Stored Access Key",
-		"authorNotes": "* I need to say sorry about the ads. Actually I don't want to ruin your wishing experience, but I don't have any Team or Sponsor to keep this app alive. If you don't want to spend anythings, You can still turn on the Ad Blocker or just use custom DNS, I will not forbid you."
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }

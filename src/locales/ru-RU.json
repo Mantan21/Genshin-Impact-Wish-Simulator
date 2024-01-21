@@ -471,7 +471,7 @@
 		"resetPrompt": "Вы уверены, что хотите удалить <strong> все данные </strong> и восстановить настройки по умолчанию?",
 		"resetSuccess": "Сброс произведён успешно!",
 		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"getpro": "Unlock Pro Access",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "Получить его вы можете здесь!",
@@ -484,6 +484,11 @@
 		"inputKeyPlaceholder": "Введите ключ",
 		"inputKeyTxt": "Input a Key to get more Benefits !",
 		"checkingKey": "Verifying Stored Access Key",
-		"authorNotes": "* Мне необходимо попросить прощения за рекламу. Мне не хочется портить ваш процесс молитвы, но у меня нет команды или спонсора для поддерживания этого приложения. Если вы не хотите ничего тратить, вы можете включить адблок или использовать пользовательский DNS-сервер, я не буду вам запрещать."
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }

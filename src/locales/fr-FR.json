@@ -471,7 +471,7 @@
 		"resetPrompt": "Voulez-vous vraiment supprimer <strong> Toutes les Données </strong> et restaurer l'état par défaut?",
 		"resetSuccess": "Réinitialisation réussie",
 		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"getpro": "Unlock Pro Access",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "Obtenez-en une nouvelle ici !",
@@ -484,6 +484,11 @@
 		"inputKeyPlaceholder": "Entrez la clé",
 		"inputKeyTxt": "Input a Key to get more Benefits !",
 		"checkingKey": "Verifying Stored Access Key",
-		"authorNotes": "* Je suis désolé pour les publicités. En fait, je ne veux pas gâcher votre expérience de navigation, mais je n'ai pas d'équipe ou de sponsor pour maintenir cette application en vie. Si vous ne voulez rien dépenser, vous pouvez toujours activer le bloqueur de publicité ou simplement utiliser des DNS personnalisés, je ne vous l'interdirai pas."
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }

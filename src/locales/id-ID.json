@@ -470,20 +470,25 @@
 		"resetButton": "Reset Sekarang",
 		"resetPrompt": "Apakah kamu yakin untuk menghapus <strong> Semua Data </strong> dan mengembalikan aplikasi seperti semula?",
 		"resetSuccess": "Berhasil me-Reset",
-		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"proAccess": "Akses Pro",
+		"getpro": "Dapatkan Akses Pro",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "Dapatkan Access Key baru di sini!",
 		"noKey": "Belum memiliki Access Key?",
 		"verifyFail": "Gagal terhubung untuk memverifikasi Access Key!",
-		"invalidKey": "Access Key tidak valid",
+		"invalidKey": "Access tidak valid",
 		"keyExpired1": "Access Key Kadaluarsa!",
 		"keyExpired2": "Access Key \"{key}\" sudah kadaluarsa sejak {date}!",
 		"adFreeUser": "Kamu sudah memiliki akses Pro!",
 		"inputKeyPlaceholder": "Masukkan Access Key",
 		"inputKeyTxt": "Masukkan Access Key untuk mendapatkan Akses Pro!",
 		"checkingKey": "Sedang memverifikasi Access Key Tersimpan",
-		"authorNotes": "* I need to say sorry about the ads. Actually I don't want to ruin your wishing experience, but I don't have any Team or Sponsor to keep this app alive. If you don't want to spend anythings, You can still turn on the Ad Blocker or just use custom DNS, I will not forbid you."
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }

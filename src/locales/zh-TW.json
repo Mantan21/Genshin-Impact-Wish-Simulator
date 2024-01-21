@@ -471,7 +471,7 @@
 		"resetPrompt": "您確定清除<strong>所有資料</strong>並恢復預設嗎？",
 		"resetSuccess": "已成功重置",
 		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"getpro": "Unlock Pro Access",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "在這裡獲得一個新的！",
@@ -484,6 +484,11 @@
 		"inputKeyPlaceholder": "輸入贊助碼",
 		"inputKeyTxt": "Input a Key to get more Benefits !",
 		"checkingKey": "Verifying Stored Access Key",
-		"authorNotes": "* 我需要對置入廣告行為表示歉意。 實際上我也不想破壞您的操作體驗，但我沒有任何團隊或贊助商來維持這個應用程式的運作。 如果你不想花錢的話，你仍舊可以透過啟用廣告攔截插件或自訂DNS，我不會對其進行限制。"
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }

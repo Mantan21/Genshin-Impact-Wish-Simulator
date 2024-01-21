@@ -23,7 +23,7 @@
 		const { msg: message, validity } = await adKey.verify(input);
 		if (validity) return window.location.reload();
 		error = !validity;
-		pushToast({ message, type: error ? 'error' : '' });
+		pushToast({ message: $t(message), type: error ? 'error' : '' });
 		waiting = false;
 	};
 
@@ -56,7 +56,6 @@
 		checkLocal();
 		proUser.set(false);
 		showAd.set(true);
-		// restartBannerVersion() // if has premium banner
 		showModal = false;
 		input = '';
 	};
@@ -122,12 +121,23 @@
 						{:else}
 							<span> {$t('menu.noKey')} </span>
 						{/if}
+						<br />
+
 						<a
+							style="color: #127399;"
 							href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
 							target="_blank"
 							on:click|stopPropagation
 						>
 							{$t('menu.getNewKey')}
+						</a>
+						or
+						<a
+							style="color: #be1e2d;"
+							target="_blank"
+							href="https://trakteer.id/mantan21/showcase/access-key-untuk-membership-SJ9X6"
+						>
+							Here for Indonesian!
 						</a>
 					{/if}
 				</div>
@@ -144,11 +154,23 @@
 	{/if}
 	<div class="admin-note">
 		<picture>
-			<img src={$assets['imbroke.webp']} alt="I'm Broke" crossorigin="anonymous" />
+			<img src={$assets['qiqi.webp']} alt="Benefits" crossorigin="anonymous" />
 		</picture>
-		<p>
-			{$t('menu.authorNotes')}
-		</p>
+
+		<h3>{$t('menu.benefit')}</h3>
+		<ol>
+			{#each $t('menu.authorNotes') as benefit}
+				<li>
+					{@html $t(benefit, {
+						values: {
+							HSRWishSim: `<a href="https://hsr.wishsimulator.app" target="_blank">
+									"Honkai: Star Rail" Wrap Simulator
+								</a>`
+						}
+					})}
+				</li>
+			{/each}
+		</ol>
 	</div>
 </div>
 
@@ -271,18 +293,25 @@
 
 	.admin-note {
 		padding: 1% 5% 5%;
-		text-align: center;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
+	.admin-note ol {
+		width: 50%;
+	}
+
 	picture {
 		width: 15%;
+		margin-bottom: -1rem;
 	}
 
 	@media screen and (max-width: 530px) {
+		.admin-note ol {
+			width: 90%;
+		}
 		picture {
 			width: 30%;
 		}
@@ -290,9 +319,5 @@
 
 	img {
 		width: 100%;
-	}
-
-	.admin-note p {
-		padding-left: 2%;
 	}
 </style>

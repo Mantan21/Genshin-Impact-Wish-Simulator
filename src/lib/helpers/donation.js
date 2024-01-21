@@ -4,10 +4,10 @@ const getFromSheet = async () => {
 			'https://opensheet.elk.sh/1qQZXxfa8pKrjFkCh4cLYyEbPIaFLMWimVaQmvFkRzlU/1'
 		);
 		const result = await data.json();
-		return result.reverse().map(({ message, name, amount, currency, timestamp, platform }) => {
+		return result.reverse().map(({ message, name, amount, currency, timestamp, payment_type }) => {
 			const formatedAmount = setAmmount(amount, currency);
 			const date = formatDate(timestamp);
-			return { message, name, amount: formatedAmount, date, platform };
+			return { message, name, amount: formatedAmount, date, type: payment_type };
 		});
 	} catch (e) {
 		console.error('failed to process data');

@@ -110,11 +110,11 @@
 			</a>
 		</ShopGroupItem>
 
-		<!-- Donaate By Saweria -->
+		<!-- Donate By Trakteer -->
 		<ShopGroupItem>
 			<a
-				class="content Saweria"
-				href="https://saweria.co/AguzzTN54"
+				class="content trakteer"
+				href="https://trakteer.id/mantan21"
 				target="_blank"
 				in:fade={{ duration: 300, delay: Math.sqrt(1 * 5000) }}
 			>
@@ -122,12 +122,15 @@
 					style="display: flex;justify-content: center; align-items: center; width: 100%; height: 100%"
 				>
 					<div class="donate-icon">
-						{#each ['ovo', 'dana', 'linkaja'] as im}
-							<img src={$assets[`donate-${im}.png`]} alt="{im} icon" />
-						{/each}
+						<img
+							style="height: 2.2rem;"
+							src={$assets[`donate-trakteer.png`]}
+							alt="Indonesian Payment"
+						/>
+						<img src={$assets[`donate-card.png`]} alt="Indonesian Payment" />
 					</div>
 				</div>
-				<span> Support me on Saweria </span>
+				<span> Support me on Trakteer </span>
 			</a>
 		</ShopGroupItem>
 
@@ -156,7 +159,9 @@
 	<div class="recent">
 		{#await supporterList() then listOfSupporters}
 			{#if listOfSupporters.length > 0}
-				{#each listOfSupporters as { name, message, amount, date, platform }}
+				{#each listOfSupporters as { name, message, amount, date, type }}
+					{@const platform =
+						type === 'tip' ? 'trakteer' : type === 'donation' ? 'saweria' : 'ko-fi'}
 					<div class="donation-item {platform}" in:fade={{ duration: 300 }}>
 						<div class="supporter">
 							<div class="info">
@@ -362,18 +367,22 @@
 		padding: 0.4rem 1rem;
 	}
 
-	.ko-fi .platform {
-		color: #127399;
-		margin-right: 0.5rem;
-	}
-	.sociabuzz .platform {
-		color: #4f8d28;
+	.platform {
+		text-transform: capitalize;
 		margin-right: 0.5rem;
 	}
 
+	.ko-fi .platform {
+		color: #127399;
+	}
+	.sociabuzz .platform {
+		color: #4f8d28;
+	}
 	.saweria .platform {
 		color: rgb(213, 142, 18);
-		margin-right: 0.5rem;
+	}
+	.trakteer .platform {
+		color: #be1e2d;
 	}
 
 	.time {
@@ -396,8 +405,10 @@
 	.donation-item.saweria .amount span {
 		background-color: #e2a12d;
 	}
-
 	.donation-item.sociabuzz .amount span {
 		background-image: linear-gradient(45deg, #3fa9f5 30%, #78c845);
+	}
+	.donation-item.trakteer .amount span {
+		background-color: #be1e2d;
 	}
 </style>

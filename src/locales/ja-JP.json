@@ -471,7 +471,7 @@
 		"resetPrompt": "本当に <strong>すべてのデータ</strong> を消去して初期状態に戻しますか？",
 		"resetSuccess": "リセット成功",
 		"proAccess": "Pro Access",
-		"getpro": "Get Pro Access",
+		"getpro": "Unlock Pro Access",
 		"removeKey": "Remove Key",
 		"removeKeyConfirm": "Are you sure to delete the current Key? You will lose all of these benefits until you re-enter the new key!",
 		"getNewKey": "こちらから入手できます！",
@@ -484,6 +484,11 @@
 		"inputKeyPlaceholder": "キーを入力",
 		"inputKeyTxt": "Input a Key to get more Benefits !",
 		"checkingKey": "Verifying Stored Access Key",
-		"authorNotes": "*広告については申し訳ありません。実際、あなたが望むような体験を台無しにはしたくないのですが、このアプリを維持するために結成されたチームやスポンサーはいません。お金をかけたくない場合、あなたは広告ブロッカーをオンにしたり、カスタム DNS を使用したりすることもできます。禁止はしません。"
+		"benefit": "Benefits",
+		"authorNotes": [
+			"Ads Removed",
+			"Unlimited Custom Banners",
+			"You can use the same key for {HSRWishSim} to get the same benefits"
+		]
 	}
 }
