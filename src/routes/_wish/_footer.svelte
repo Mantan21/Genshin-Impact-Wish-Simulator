@@ -18,7 +18,7 @@
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
-	import { localBanner } from '$lib/helpers/custom-banner';
+	import { localBanner } from '$lib/helpers/banner-custom';
 	import { pushToast } from '$lib/helpers/toast';
 
 	import Icon from '$lib/components/Icon.svelte';

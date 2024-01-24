@@ -9,7 +9,7 @@
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { onlineBanner } from '$lib/helpers/custom-banner';
+	import { onlineBanner } from '$lib/helpers/banner-custom';
 	import Icon from '$lib/components/Icon.svelte';
 	import ModalTpl from '$lib/components/ModalTpl.svelte';
 

@@ -22,7 +22,7 @@
 	import { mountLocale } from '$lib/helpers/i18n';
 	import { mobileDetect } from '$lib/helpers/mobileDetect';
 	import { wakeLock } from '$lib/helpers/wakeLock';
-	import { syncCustomBanner } from '$lib/helpers/custom-banner';
+	import { syncCustomBanner } from '$lib/helpers/banner-custom';
 	// import { initializeDriveAPI } from '$lib/helpers/dataAPI/google-api';
 	import '../app.css';
 

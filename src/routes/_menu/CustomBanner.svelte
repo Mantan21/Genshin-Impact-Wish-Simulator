@@ -15,6 +15,7 @@
 	import { randomNumber as rng } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { pushToast } from '$lib/helpers/toast';
+	import { timeAgo } from '$lib/helpers/timeago';
 	import { html } from '$post/banner-guidelines.md';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
@@ -150,9 +151,11 @@
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
 					{#if customList.length > 0}
-						{#each customList as { itemID, vision, complete, images = { }, hostedImages, isChanged, blocked }}
+						{#each customList as { itemID, vision, complete, images = { }, hostedImages, isChanged, blocked, lastSync, deleted }}
 							<div class="item" id={itemID}>
-								{#if hostedImages}
+								{#if deleted}
+									<i class="sync gi-cloud-deleted" />
+								{:else if hostedImages}
 									<i class="sync gi-{isChanged ? 'cloud-sync' : 'network'}" />
 								{/if}
 								<button
@@ -169,6 +172,17 @@
 										crossorigin="anonymous"
 									/>
 								</button>
+								<div class="time">
+									{#if deleted}
+										<span> {$t('customBanner.inactive')} </span>
+									{:else if !lastSync}
+										<span>{$t('customBanner.unshared')} </span>
+									{:else}
+										<span>
+											{$t('customBanner.lastSync', { values: { time: timeAgo(lastSync) } })}
+										</span>
+									{/if}
+								</div>
 								<div class="action">
 									{#if !(customList.length > 3 && !$proUser) && !blocked}
 										<button class="edit" on:click={() => customizeBanner(itemID)}>
@@ -357,7 +371,8 @@
 		content: attr(data-text);
 		opacity: 1;
 		background-color: rgba(0, 0, 0, 0.5);
-		border-color: transparent;
+		border: none;
+		border-radius: unset;
 		color: rgba(255, 255, 255, 0.85);
 		display: flex;
 		justify-content: center;
@@ -378,6 +393,10 @@
 		font-size: calc(0.065 * var(--item-width));
 	}
 
+	.gi-cloud-deleted {
+		background-color: #da2133;
+		color: #fff;
+	}
 	.gi-cloud-sync {
 		background-color: #eac343;
 	}
@@ -390,6 +409,13 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.time {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-style: italic;
+		font-size: 90%;
+		text-align: center;
 	}
 
 	.action {

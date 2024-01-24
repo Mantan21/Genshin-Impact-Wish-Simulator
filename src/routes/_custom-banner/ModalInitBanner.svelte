@@ -6,7 +6,7 @@
 	import { imageCDN, initCDNURL } from '$lib/helpers/assets';
 	import { preloadVersion } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
-	import { onlineBanner } from '$lib/helpers/custom-banner';
+	import { onlineBanner } from '$lib/helpers/banner-custom';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { verifyKey } from '$lib/helpers/accessKey';
 
@@ -46,8 +46,10 @@
 	const fetchBannerData = async (shareID) => {
 		const { data = {}, success, message } = await onlineBanner.getData(shareID);
 		const isBlocked = !!data.blocked;
-		if (!success || isBlocked) {
-			if (message === 'Not Found') {
+		const isDeleted = !!data.deleted;
+
+		if (!success || isBlocked || isDeleted) {
+			if (message === 'Not Found' || isDeleted) {
 				errorType = 'bannerNotFound';
 			} else if (message === 'Invalid ID' || isBlocked) {
 				errorType = 'invalidBanner';

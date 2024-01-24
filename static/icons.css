@@ -281,3 +281,6 @@
 .gi-import:before {
 	content: '\3e';
 }
+.gi-cloud-deleted:before {
+	content: '\3f';
+}

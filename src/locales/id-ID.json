@@ -98,7 +98,7 @@
 		"invalidBanner": "Invalid Banner ID",
 		"identifying": "Mengidentifikasi Banner",
 		"loadOwnedBanner": "Kamu adalah kreator dari banner \"{ownedBanner}\", data banner yang tersimpan pada perangkatmu akan digunakan untuk setiap permohonan yang kamu lakukan",
-		"loadReady": "\"{banner}\" susah siap",
+		"loadReady": "\"{banner}\" sudah siap",
 		"uploading": "Sedang mengunggah {item}",
 		"uploadFailed": "Gagal mengunggah, silahkan coba beberapa saat lagi!",
 		"close": "Tutup",
@@ -136,7 +136,10 @@
 		"limitation": "Kamu bukan Member, Hapus beberapa banner untuk mengaktifkan fitur Edit",
 		"memberToUnlock": "Jadilah Member untuk menambah lebih banyak Banner",
 		"incomplete": "Incomplete",
-		"inappropriate": "Konten Tidak Pantas!"
+		"inappropriate": "Konten Tidak Pantas!",
+		"lastSync": "Last Sync: {time}",
+		"inactive": "Tidak Aktif",
+		"unshared": "Belum Dibagikan"
 	},
 	"backupRestore": {
 		"cloudSync": "Cloud Sync",
@@ -150,6 +153,7 @@
 		"autoExport": "Auto Export",
 		"destination": "Target",
 		"lastExport": "Export Terakhir",
+		"fileSize": "File Size",
 		"desNotFound": "Tidak dapat menemukan Target Export, silahkan menekan tombol export kembali!"
 	},
 	"wish": {

@@ -88,7 +88,7 @@
 					<td> <span> {fileName} </span></td>
 				</tr>
 				<tr>
-					<td>File Size</td>
+					<td>{$t('backupRestore.fileSize')}</td>
 					<td>{calculateByteSize($fileData.size)}</td>
 				</tr>
 				<tr>

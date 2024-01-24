@@ -12,7 +12,7 @@ import {
 	ownedOutfits as costumeManager
 } from './api-localstore';
 import { adKey } from '../accessKey';
-import { onlineBanner } from '../custom-banner';
+import { onlineBanner } from '../banner-custom';
 
 export const placeDataToAppDB = async (parsedFile, action) => {
 	if (action === 'replace') await replaceData(parsedFile);
@@ -182,4 +182,3 @@ const mergeSettings = (settings = {}) => {
 	const { data: finalSettings } = storageLocal.getData();
 	return finalSettings;
 };
-

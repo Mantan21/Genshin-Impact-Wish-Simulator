@@ -4,7 +4,7 @@
 	import { imageCDN } from '$lib/helpers/assets';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { timeAgo } from '$lib/helpers/timeago';
-	import { onlineBanner } from '$lib/helpers/custom-banner';
+	import { onlineBanner } from '$lib/helpers/banner-custom';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import Pagination from '../_gachainfo/history/_pagination.svelte';
 

@@ -96,7 +96,9 @@ export const onlineBanner = {
 			delete localData.status;
 			delete localData.isChanged;
 			delete localData.shareID;
+			delete localData.lastSync;
 			localData.lastModified = date;
+			if (localData.deleted) localData.deleted = false;
 
 			const onlineData = await this._postData({ id: shareID, action: 'put', data: localData });
 			const { success, id, message } = onlineData;
@@ -104,7 +106,9 @@ export const onlineBanner = {
 
 			idbData.shareID = id;
 			idbData.lastModified = date;
+			idbData.lastSync = date;
 			idbData.isChanged = false;
+			delete idbData.deleted;
 			await idb.put(idbData);
 
 			return { status: 'ok', shareID: id, thumbnail, message, character };
@@ -188,10 +192,14 @@ export const syncCustomBanner = async () => {
 
 		// Renew Data
 		const blockList = [];
+		const deletedList = [];
+
 		for (let x = 0; x < data.length; x++) {
-			const dataToStore = data[x];
+			const dataToStore = { ...data[x] };
 			const dataToModify = storedBanner.find(({ shareID }) => shareID === dataToStore.id);
 			if (dataToStore.blocked) blockList.push(dataToStore.id); //save id if blocked
+			if (dataToStore.deleted) deletedList.push(dataToStore.id);
+
 			dataToStore.status = dataToModify.status;
 			dataToStore.shareID = dataToStore.id;
 			delete dataToStore.id;
@@ -202,18 +210,37 @@ export const syncCustomBanner = async () => {
 			}
 
 			if (dataToModify.status === 'owned') {
-				const { hostedImages = {}, imageHash = {}, blocked = false } = dataToStore;
-				const modifiedData = { ...dataToModify, hostedImages, imageHash, blocked };
+				if (dataToStore.deleted) {
+					delete dataToModify.imageHash;
+					delete dataToModify.hostedImages;
+
+					const imgObj = {};
+					Object.keys(dataToModify.images).forEach((key) => (imgObj[key] = true));
+					dataToModify.imgChanged = imgObj;
+					dataToModify.isChanged = true;
+					await idb.put({ ...dataToModify, deleted: true });
+					continue;
+				}
+
+				const { hostedImages = {}, imageHash = {}, blocked = false, lastModified } = dataToStore;
+				const modifiedData = {
+					...dataToModify,
+					hostedImages,
+					imageHash,
+					blocked,
+					lastSync: lastModified
+				};
 				await idb.put(modifiedData);
 			}
 		}
 
 		// Update CustomBanner Data on IDB
-		const cloudBannerIDs = data.map(({ shareID }) => shareID);
+		const cloudBannerIDs = data.map(({ id }) => id);
 		const unAvailableBanner = localBannerIDs.filter((id) => {
 			const isBlocked = blockList.includes(id);
+			const isDeleted = deletedList.includes(id);
 			const unavailable = !cloudBannerIDs.includes(id);
-			return unavailable || isBlocked;
+			return unavailable || isBlocked || isDeleted;
 		});
 
 		for (let i = 0; i < unAvailableBanner.length; i++) {

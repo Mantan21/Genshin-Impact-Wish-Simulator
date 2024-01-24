@@ -6,7 +6,7 @@
 	import { editID, isMobile } from '$lib/store/app-stores';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { base64ToBlob } from '$lib/helpers/assets';
-	import { localBanner, onlineBanner } from '$lib/helpers/custom-banner';
+	import { localBanner, onlineBanner } from '$lib/helpers/banner-custom';
 	import { copy } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/Icon.svelte';
