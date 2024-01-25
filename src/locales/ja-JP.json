@@ -139,7 +139,8 @@
 		"inappropriate": "不適切な内容です！",
 		"lastSync": "Last Sync: {time}",
 		"inactive": "Inactive",
-		"unshared": "Not shared yet"
+		"unshared": "Not shared yet",
+		"create": "Create Banner"
 	},
 	"backupRestore": {
 		"cloudSync": "クラウド同期",

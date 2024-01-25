@@ -139,7 +139,8 @@
 		"inappropriate": "Konten Tidak Pantas!",
 		"lastSync": "Last Sync: {time}",
 		"inactive": "Tidak Aktif",
-		"unshared": "Belum Dibagikan"
+		"unshared": "Belum Dibagikan",
+		"create": "Buat Banner"
 	},
 	"backupRestore": {
 		"cloudSync": "Cloud Sync",

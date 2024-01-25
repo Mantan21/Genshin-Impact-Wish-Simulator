@@ -139,7 +139,8 @@
 		"inappropriate": "Inappropriate Content!",
 		"lastSync": "Last Sync: {time}",
 		"inactive": "Inactive",
-		"unshared": "Not shared yet"
+		"unshared": "Not shared yet",
+		"create": "Create Banner"
 	},
 	"backupRestore": {
 		"cloudSync": "Cloud Sync",

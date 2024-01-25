@@ -146,7 +146,9 @@
 			{#if showNote}
 				<div class="disclaimer" transition:fade|local={{ duration: 250 }}>
 					<article>{@html html}</article>
-					<ButtonModal width="200px" on:click={toggleInfo}>Create Banner</ButtonModal>
+					<ButtonModal width="200px" on:click={toggleInfo}>
+						{$t('customBanner.create')}
+					</ButtonModal>
 				</div>
 			{:else}
 				<div class="row" transition:fade|local={{ duration: 250 }}>
@@ -292,6 +294,7 @@
 		border-radius: 0.5rem;
 		font-size: 90%;
 	}
+
 	.disclaimer :global(p) {
 		margin-bottom: 3%;
 	}
@@ -342,6 +345,9 @@
 	@media screen and (max-width: 640px) {
 		.item {
 			width: 45%;
+		}
+		article {
+			font-size: 120%;
 		}
 	}
 
