@@ -75,7 +75,8 @@
 	let clearCache = false;
 
 	const getStorageSize = async () => {
-		const { usageDetails = {} } = await navigator.storage.estimate();
+		const storageApi = navigator?.storage || {};
+		const { usageDetails = {} } = 'estimate' in storageApi ? await storageApi.estimate() : 0;
 		const { caches = 0 } = usageDetails;
 		const size = calculateByteSize(caches);
 		return size;
