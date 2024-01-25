@@ -38,7 +38,8 @@
 			// customList = data.sort(({ lastModified: a }, { lastModified: b }) => {
 			// 	return new Date(b) - new Date(a);
 			// });
-			customList = window._.orderBy(data, ['lastModified'], ['desc']);
+			const dataToShow = data.filter(({ bannerName }) => bannerName);
+			customList = window._.orderBy(dataToShow, ['lastModified'], ['desc']);
 		} catch (e) {
 			console.error(e);
 			customList = [];
