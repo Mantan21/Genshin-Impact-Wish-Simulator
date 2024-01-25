@@ -1,5 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
+	import { assets } from '$lib/store/app-stores';
+	import { timeAgo } from '$lib/helpers/timeago';
 	import { supporterList } from '$lib/helpers/donation';
 	import { copy } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -7,7 +9,6 @@
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import ShopGroup from '../_shop-group.svelte';
 	import ShopGroupItem from '../_shop-group-item.svelte';
-	import { assets } from '$lib/store/app-stores';
 
 	let showCryptoModal = false;
 	let showToast = false;
@@ -168,7 +169,7 @@
 								<div class="name">New support from <span> {name} </span></div>
 								<span class="message">{message ? `"${message}"` : ''}</span>
 								<span class="platform">✧ &nbsp; via {platform}</span>
-								<span class="time"> ✧ &nbsp; {date}</span>
+								<span class="time"> ✧ &nbsp; {timeAgo(date)}</span>
 							</div>
 							<div class="amount">
 								<span>{amount}</span>

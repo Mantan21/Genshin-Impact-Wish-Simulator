@@ -66,6 +66,8 @@ function get_format(diff, tense) {
 
 export const timeAgo = (pastDate, dateLater = null) => {
 	const date = new Date(pastDate);
+	if (isNaN(date.getTime())) return 'Invalid Date';
+
 	const ref_date = dateLater ? new Date(dateLater) : new Date();
 	const seconds_diff = (ref_date - date) / 1000;
 
@@ -76,4 +78,3 @@ export const timeAgo = (pastDate, dateLater = null) => {
 	const timeFormat = get_format(diff, tense);
 	return render_date(timeFormat, diff);
 };
-
