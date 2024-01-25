@@ -88,10 +88,5 @@
 		.primogem {
 			margin-bottom: 2px;
 		}
-
-		.gi-plus {
-			right: 2px;
-			transform: translateY(-50%) scale(0.9);
-		}
 	}
 </style>
