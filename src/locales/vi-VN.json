@@ -62,6 +62,7 @@
 		"sparkling-steps": "Dấu Chân Của Lửa",
 		"tapestry-of-golden-flames": "Thiên Hà Rực Lửa",
 		"tempestuous-destiny": "Sóng Gió Vận Mệnh",
+		"the-crane-soars-skyward": "Vân Phủ Hạc Hành",
 		"the-heron_s-court": "Bạch Hạc Đình",
 		"the-moongrass-enlightenment": "Giác Ngộ Nguyệt Thảo",
 		"the-transcendent-one-returns": "Xuất Trần Nhập Thế",
@@ -279,6 +280,18 @@
 			"sailwind-shadow": {
 				"name": "Cánh Buồm Lướt Gió",
 				"description": "Trang phục Kaeya đã mặc khi diễn vở \"Đạo Chích Dao Găm\", là bộ trang phục lộng lẫy được thiết kế với nguyên tắc \"thu hút ánh nhìn\". Việc mặc trang phục không phiền phức lắm, chỉ mất thời gian ở chỗ gắn trang sức và dao găm."
+			},
+			"frostflower-dew": {
+				"name": "Giọt Sương Hoa Băng",
+				"description": "Món quà Tết Hải Đăng mà Shenhe nhận được. Lễ phục tao nhã do sư phụ Lưu Vân Tá Phong Chân Quân nhờ người may, sợi dây đỏ trên hai tay vẫn còn, nhưng cảm giác lạnh lẽo trong lòng Shenhe đã tiêu tan."
+			},
+			"twilight-blossom": {
+				"name": "Hoa Ngọc Ngát Hương",
+				"description": "Trang phục lễ hội nhẹ nhàng tao nhã, lấy hoa sen tím đen và lam ngọc làm chủ đạo, trang sức tóc sáng như Thanh Tâm, chính là sự kết hợp mà Ganyu yêu thích nhất."
+			},
+			"bamboo-rain": {
+				"name": "Màn Mưa Rừng Trúc",
+				"description": "Trang phục dự tiệc do Thương Hội Phi Vân chuẩn bị cho Xingqiu. Hoa văn hình trúc thanh tao, những đường cắt xẻ tuyệt mỹ, nhưng Xingqiu hài lòng nhất vẫn là chiếc túi bên trong, đủ để nhét một quyển tiểu thuyết mỏng vào."
 			}
 		}
 	},

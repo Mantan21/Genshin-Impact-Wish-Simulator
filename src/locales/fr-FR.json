@@ -62,6 +62,7 @@
 		"sparkling-steps": "Foulées étincelantes",
 		"tapestry-of-golden-flames": "Draperie d'étincelles dorées",
 		"tempestuous-destiny": "Destin tumultueux",
+		"the-crane-soars-skyward": "La grue s'envole vers les cieux",
 		"the-heron_s-court": "Prestance du héron",
 		"the-moongrass-enlightenment": "Dessillement de l'herbe lunaire",
 		"the-transcendent-one-returns": "Retour de la sublimée",
@@ -279,6 +280,18 @@
 			"sailwind-shadow": {
 				"name": "Ombre nautique",
 				"description": "La tenue que Kaeya porte en jouant le Bandit au poignard. Bien qu'il s'agisse d'une tenue flamboyante conçue pour être aussi accrocheuse que possible, elle n'est pas difficile à enfiler, bien qu'il faille un certain temps pour arranger tous les accessoires et son poignard."
+			},
+			"frostflower-dew": {
+				"name": "Rosée de fleur de givre",
+				"description": "Ce cadeau du Festival des lanternes que Shenhe a reçu est une tenue formelle élégante que son maître, Souffle-Nuages, a commandée pour elle. Des cordelettes rouges ornent toujours ses bras, mais le froid glacial dans le cœur de Shenhe s'est estompé."
+			},
+			"twilight-blossom": {
+				"name": "Bourgeon du crépuscule",
+				"description": "Une tenue festive légère et gracieuse avec des accents principaux de noir et de bleu. Ses accessoires pour cheveux sont aussi radieux que des fleurs de Qingxin, une association que Ganyu affectionne particulièrement."
+			},
+			"bamboo-rain": {
+				"name": "Pluie de bambous",
+				"description": "Une tenue de banquet préparée par la Guilde des marchands de Feiyun pour Xingqiu. Les imprimés en bambou sont raffinés et la coupe est des plus flatteuses, mais l'aspect préféré de Xingqiu réside dans ses poches intérieures, dans lesquelles on pourrait glisser un petit roman."
 			}
 		}
 	},

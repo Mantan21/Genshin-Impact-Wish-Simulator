@@ -62,6 +62,7 @@
 		"sparkling-steps": "Flammende Schritte",
 		"tapestry-of-golden-flames": "Flammengalaxie",
 		"tempestuous-destiny": "Stürmisches Schicksal",
+		"the-crane-soars-skyward": "Kranichsilhouette inmitten der Wolken",
 		"the-heron_s-court": "Kranichhof",
 		"the-moongrass-enlightenment": "Erleuchtung des Mondgrases",
 		"the-transcendent-one-returns": "Rückkehr aus der Abgeschiedenheit",
@@ -279,6 +280,18 @@
 			"sailwind-shadow": {
 				"name": "Schatten flatternder Segel",
 				"description": "Kaeyas Kostüm aus seiner Darbietung als „Großer Räuber Kurzklinge“. Ein prächtiges Kleidungsstück, das als absoluter „Hingucker“ entworfen wurde. Das Kostüm selbst ist nicht aufwendig anzuziehen; ganz anders sieht es da allerdings mit den Accessoires und dem Messer aus."
+			},
+			"frostflower-dew": {
+				"name": "Cencellada rociofloral",
+				"description": "Dieses Geschenk vom Laternenritual, das Shenhe erhalten hat, ist eine elegante Festkleidung, die ihre Meisterin, die Fürstin der stehenden Wolken und des stillen Windes, für sie in Auftrag gegeben hatte. Rote Seile zieren noch immer ihre Arme, doch die Kälte in Shenhes Herzen wurde gelindert."
+			},
+			"twilight-blossom": {
+				"name": "Zwielichtblüte",
+				"description": "Ein leichtes und anmutiges Festtagsgewand, bei dem vor allem in dunklem Violett und Himmelblau Akzente gesetzt worden sind. Der Haarschmuck ist ebenso strahlend wie eine Qingxin, eine Kombination, die Ganyu am liebsten hat."
+			},
+			"bamboo-rain": {
+				"name": "Bambusregen",
+				"description": "Eine formelle Kleidung, die die Händlergilde Feiyun für Xingqiu hat anfertigen lassen. Die Bambusdrucke sind raffiniert und der Schnitt ist sehr schmeichelhaft, aber Xingqius Lieblingsaspekt dieser Kleidung sind die Innentaschen, in die man einen dünnen Roman stecken kann."
 			}
 		}
 	},

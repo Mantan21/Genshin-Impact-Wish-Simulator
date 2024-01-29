@@ -62,6 +62,7 @@
 		"sparkling-steps": "Passos Flamejantes",
 		"tapestry-of-golden-flames": "Chama da Via Láctea",
 		"tempestuous-destiny": "Inundado Junto à Calamidade",
+		"the-crane-soars-skyward": "Moradia Etérea da Garça",
 		"the-heron_s-court": "Jardim da Garça",
 		"the-moongrass-enlightenment": "A Sabedoria da Erva da Lua",
 		"the-transcendent-one-returns": "A Volta do Transcendente",
@@ -279,6 +280,18 @@
 			"sailwind-shadow": {
 				"name": "Sombra da Vela Tremulante",
 				"description": "Vestimenta do Kaeya enquanto fazia o papel de Bandido da Adaga. Embora seja uma vestimenta extravagante, feita para chamar o máximo de atenção possível, não é difícil de vestir, embora seja necessário um bom tempo para lidar com todos os acessórios e adagas."
+			},
+			"frostflower-dew": {
+				"name": "Orvalho das Flores Congeladas",
+				"description": "Esse presente do Ritual de Lanternas que Shenhe ganhou é um conjunto elegante e formal que sua Mestre, Retentora de Nuvem, pediu para ela. Cordas vermelhas adornam seus braços, mas o frio do coração de Shenhe desapareceu."
+			},
+			"twilight-blossom": {
+				"name": "Fragrância Preciosa do Jade Preto",
+				"description": "Um vestuário festivo leve e gracioso predominantemente preto e azul. O acessório no cabelo é radiante como a Qingxin, uma combinação que Ganyu adora."
+			},
+			"bamboo-rain": {
+				"name": "Bambu da Chuva",
+				"description": "Roupas formais da Guilda de Comerciantes de Feiyun para Xingqiu. Os bordados de bambu são refinados e lhe fazem vantagem, mas o aspecto favorito da roupa para Xingqiu são os bolsos internos, assim ele pode guardar uma novel."
 			}
 		}
 	},
