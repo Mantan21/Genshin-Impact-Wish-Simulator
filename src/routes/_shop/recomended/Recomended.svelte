@@ -4,6 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { activeVersion } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 
 	import ShopGroup from '../_shop-group.svelte';
 	import NavlinkTop from '../_navlink-top.svelte';
@@ -14,24 +15,37 @@
 	let contentWidth;
 	const outfits = getContext('outfits');
 	const { patch } = $activeVersion;
-	$: newOutfit = $outfits.find(({ release, promoPrice }) => patch === `${release}` && promoPrice);
-	$: activeItem = newOutfit ? 'outfit' : 'welkin';
 
-	const selectSubShop = ({ detail }) => {
-		if (activeItem === detail.selected) return;
-		activeItem = detail.selected;
+	const findOutfit = ({ release, characterName }) => {
+		const matchPatch = patch === `${release}`;
+		const { rarity } = getCharDetails(characterName) || {};
+		const isLimitedChar = rarity === 5;
+		return isLimitedChar && matchPatch;
+	};
+
+	let activeIndex = 0;
+	$: newOutfit = $outfits.filter(findOutfit);
+	const selectSubShop = (index) => {
+		if (activeIndex === index) return;
+		activeIndex = index;
 		playSfx('shopsubnav');
 	};
 </script>
 
 <NavlinkTop>
-	{#if newOutfit}
-		<NavlinkTopButton name="outfit" active={activeItem === 'outfit'} on:click={selectSubShop}>
-			{$t('outfit.heading')}
-		</NavlinkTopButton>
+	{#if newOutfit.length > 0}
+		{#each newOutfit as _, i}
+			<NavlinkTopButton name="outfit" active={i === activeIndex} on:click={() => selectSubShop(i)}>
+				{$t('outfit.heading')}
+			</NavlinkTopButton>
+		{/each}
 	{/if}
 
-	<NavlinkTopButton name="welkin" active={activeItem === 'welkin'} on:click={selectSubShop}>
+	<NavlinkTopButton
+		name="welkin"
+		active={activeIndex > newOutfit.length - 1}
+		on:click={() => selectSubShop(newOutfit.length)}
+	>
 		{$t('shop.recomended.welkin')}
 	</NavlinkTopButton>
 </NavlinkTop>
@@ -42,14 +56,16 @@
 		bind:clientHeight={contentWidth}
 		style="--content-width: {contentWidth}px"
 	>
-		{#if activeItem === 'outfit'}
-			<div class="card outfit" in:fade={{ duration: 400 }}>
-				<OutfitCard data={newOutfit} />
-			</div>
-		{:else}
+		{#if activeIndex > newOutfit.length - 1}
 			<div class="card welkin" in:fade={{ duration: 400 }}>
 				<WelkinCard />
 			</div>
+		{:else}
+			{#key activeIndex}
+				<div class="card outfit" in:fade={{ duration: 400 }}>
+					<OutfitCard data={newOutfit[activeIndex]} />
+				</div>
+			{/key}
 		{/if}
 	</div>
 </ShopGroup>
