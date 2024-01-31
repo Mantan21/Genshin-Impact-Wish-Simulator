@@ -116,7 +116,7 @@
 	.description {
 		width: 50%;
 		text-align: right;
-		color: #787b84;
+		color: #3b4152;
 		text-shadow: 0 0 1rem #f7f3eb;
 	}
 
