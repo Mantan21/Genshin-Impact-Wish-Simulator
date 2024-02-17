@@ -19,6 +19,8 @@ export const itemList = () => {
 			pathList[`face/${keyNoExt}`] = src;
 		} else if (key.match(/splash-art/)) {
 			pathList[`splash-art/${keyNoExt}`] = src;
+		} else if (key.match(/art-nobg/)) {
+			pathList[`nobg/${keyNoExt}`] = src;
 		} else if (key.match(/banner-button/)) {
 			pathList[`button/${keyNoExt}`] = src;
 		} else if (key.match(/thumbnail/)) {

@@ -59,6 +59,7 @@
 				wrapperClass="card-image skeleton"
 				{artPosition}
 				{vision}
+				{rateup}
 			/>
 			<div class="frame skeleton">
 				<FrameCustom {bannerName} {character} {charTitle} {vision} {watermark} />

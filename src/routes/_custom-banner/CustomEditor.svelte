@@ -162,8 +162,8 @@
 	/>
 
 	<VisionPicker selected={vision} />
-	{#key artPosition}
-		<MainArt {onBannerEdit} artURL={images?.artURL} bannerPosition={artPosition?.banner} />
+	{#key artPosition && rateup}
+		<MainArt {onBannerEdit} {rateup} artURL={images?.artURL} bannerPosition={artPosition?.banner} />
 	{/key}
 	<SplashartForm {onBannerEdit} />
 	<FrameCustom

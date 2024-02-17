@@ -286,7 +286,7 @@
 	.character {
 		--text-width: calc(30 / 100 * var(--content-width));
 		width: calc(30 / 100 * var(--content-width));
-		left: 50%;
+		left: 48.5%;
 		bottom: 8%;
 	}
 
