@@ -413,7 +413,6 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "29-Jan-2024",
 			"description": [
 				"Add New Character: <strong> Xianyun ( 5★ )</strong>",
@@ -424,6 +423,14 @@
 				"- <b>Springbloom Missive</b> (Shenhe)",
 				"- <b>A Sobriquet Under Shade </b> (Ganyu)",
 				"- <b>Bamboo Rain</b> (Xingqiu)"
+			]
+		},
+		{
+			"featured": true,
+			"date": "5-Jan-2024",
+			"description": [
+				"Activate <b>Xiao's 5th Rerun</b> Banner",
+				"Activate <b>Yae Miko's 4th Rerun</b> Banner"
 			]
 		}
 	]
