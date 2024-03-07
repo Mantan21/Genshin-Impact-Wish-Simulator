@@ -1,4 +1,4 @@
-import { initialAmount } from '$lib/data/wish-setup.json';
+import { initialAmount, version, wishPhase } from '$lib/data/wish-setup.json';
 import * as stores from '$lib/store/app-stores';
 import { BannerManager, HistoryManager } from './api-indexeddb';
 import { cookie } from './api-cookie';
@@ -77,9 +77,11 @@ const updateSiteSettings = (settings = {}) => {
 
 	// other store setting
 	const { autoskip, wishAmount, multipull } = config;
-	stores.autoskip.set(autoskip);
+	stores.autoskip.set(!!autoskip);
 	stores.wishAmount.set(wishAmount);
-	stores.multipull.set(multipull);
+	stores.multipull.set(multipull || 10);
+	stores.isCustomBanner.set(false);
+	stores.preloadVersion.set({ patch: version, phase: wishPhase });
 };
 
 const mergeCustomBanner = async (banners = []) => {
