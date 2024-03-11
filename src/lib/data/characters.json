@@ -2,6 +2,17 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 168,
+			"name": "chiori",
+			"vision": "geo",
+			"rarity": 5,
+			"offset": {
+				"splashArt": { "x": -0.1204644412191582, "y": -2.7576197387518144, "scale": 1.35 },
+				"wishCard": { "x": 5.630053908355795, "y": 62.905660377358494, "scale": 10.69 },
+				"button": { "l": 50, "w": 105, "t": 25 }
+			}
+		},
+		{
 			"itemID": 166,
 			"name": "gaming",
 			"vision": "pyro",
