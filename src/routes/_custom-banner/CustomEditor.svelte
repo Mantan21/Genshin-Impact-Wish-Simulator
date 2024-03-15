@@ -155,7 +155,7 @@
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
 >
 	<img
-		src={$assets[`blank/${vision}`]}
+		src={$assets[`blank/character-${vision}`]}
 		alt="Background Banner"
 		crossorigin="anonymous"
 		class="art-bg"

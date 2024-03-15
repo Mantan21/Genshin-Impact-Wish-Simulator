@@ -169,7 +169,7 @@
 									on:click={!complete ? null : () => wishBanner(itemID)}
 								>
 									<img
-										src={images?.thumbnail || $assets[`blank/${vision || 'pyro'}`]}
+										src={images?.thumbnail || $assets[`blank/character-${vision || 'pyro'}`]}
 										alt="Custom Banner"
 										crossorigin="anonymous"
 									/>

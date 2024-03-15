@@ -24,7 +24,7 @@
 	{#if !isError}
 		{#if custom}
 			<img
-				src={$assets[`blank/${vision}`]}
+				src={$assets[`blank/character-${vision}`]}
 				alt="background banner"
 				crossorigin="anonymous"
 				class="art-bg"
