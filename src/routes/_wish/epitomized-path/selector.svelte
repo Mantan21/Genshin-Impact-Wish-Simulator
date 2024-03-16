@@ -4,18 +4,19 @@
 	import { course, bannerList, activeBanner, viewportHeight } from '$lib/store/app-stores';
 	import { getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import hotkeys from 'hotkeys-js';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 	import FatepointSVG from './_svg-background.svelte';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
-	import hotkeys from 'hotkeys-js';
 
 	let itemWidth;
+	let weaponName = '';
+	let selectedCourse = -1;
+
 	$: defaultItemWidth = (16.5 / 100) * $viewportHeight;
 	$: if (itemWidth < 150) itemWidth = 150;
 	else itemWidth = defaultItemWidth;
-	let weaponName = '';
-	let selectedCourse = -1;
 
 	const weapons = $bannerList[$activeBanner].featured.map(({ name }) => getWpDetails(name));
 	onMount(() =>
@@ -61,7 +62,7 @@
 	<div class="bg">
 		<FatepointSVG mode={weaponName ? 'counter' : 'bg'} />
 	</div>
-	<div class="top">{$t('wish.epitomizedPath.selectWeapon')}</div>
+	<h2 class="top">{$t('wish.epitomizedPath.selectWeapon')}</h2>
 	<div class="weapon-item">
 		<div class="weapon-list" style="--item-width: {itemWidth}px">
 			{#if weaponName}
@@ -142,7 +143,14 @@
 
 	.top {
 		font-size: calc(3 / 100 * var(--modal-width));
+		margin-bottom: calc(3 / 100 * var(--modal-width));
 		white-space: nowrap;
+		display: block;
+	}
+
+	:global(.half) .top {
+		font-size: calc(6 / 100 * var(--modal-width));
+		margin-bottom: calc(7 / 100 * var(--modal-width));
 	}
 
 	.weapon-item {

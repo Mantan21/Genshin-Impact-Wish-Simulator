@@ -11,11 +11,16 @@
 	import Details from './details.svelte';
 	import Selector from './selector.svelte';
 
-	$: half = $viewportWidth < 500;
+	let activeSection = 1;
 	let clientWidth;
+	$: half = $viewportWidth < 500;
+
+	const flipSection = (to) => {
+		playSfx('bookflip');
+		activeSection = to;
+	};
 
 	onMount(() => playSfx('bookflip'));
-
 	const handleClose = getContext('handleEpitomizedModal');
 	const closePath = () => {
 		handleClose();
@@ -36,29 +41,20 @@
 
 	setContext('setCourse', (target) => {
 		if (target === null) return;
-
 		playSfx('click');
 		const { patch, phase } = $activeVersion;
-
-		// set to local
 		const localFate = fatepointManager.init({ version: patch, phase });
-		localFate.set(0, target);
-
-		// set to App
-		course.set({ selected: target, point: 0 });
+		localFate.set(0, target); // set to local
+		course.set({ selected: target, point: 0 }); // set to App
 		handleClose();
 	});
 
 	const confirmCancel = () => {
 		playSfx();
 		const { patch, phase } = $activeVersion;
-		// clear local
 		const localFate = fatepointManager.init({ version: patch, phase });
-		localFate.remove();
-
-		// clear App
-		course.set({ point: 0, selected: null });
-
+		localFate.remove(); // clear local
+		course.set({ point: 0, selected: null }); // clear App
 		showCancelConfirmation = false;
 		handleClose();
 		return;
@@ -94,19 +90,49 @@
 	<div
 		class="modal-content"
 		style="--modal-width: {clientWidth}px"
-		transition:fly={{ y: 40, duration: 250 }}
+		class:half
 		bind:clientWidth
+		transition:fly={{ y: 40, duration: 250 }}
 	>
 		<img src={$assets[`epitomized-${half ? 'half' : 'bg'}.webp`]} alt="Epitomized Book" />
 		<button class="close-modal" on:click={closePath}>
 			<i class="gi-close" />
 		</button>
 		<div class="container">
-			{#if !half}
+			{#if !half || activeSection < 1}
 				<Details />
 			{/if}
-			<Selector />
+
+			{#if (activeSection > 0 && half) || !half}
+				<Selector />
+			{/if}
 		</div>
+
+		{#if half}
+			<div class="pagination">
+				{#if activeSection > 0}
+					<button
+						class="left"
+						style="margin-right: auto;"
+						on:click={() => flipSection(0)}
+						transition:fade|local={{ duration: 200 }}
+					>
+						<i class="gi-arrow-left" />
+					</button>
+				{/if}
+
+				{#if activeSection < 1}
+					<button
+						class="right"
+						style="margin-left: auto;"
+						on:click={() => flipSection(1)}
+						transition:fade|local={{ duration: 200 }}
+					>
+						<i class="gi-arrow-right" />
+					</button>
+				{/if}
+			</div>
+		{/if}
 	</div>
 </section>
 
@@ -126,13 +152,17 @@
 	}
 
 	.modal-content {
-		width: 1000px;
 		max-width: 90%;
+		max-height: 90%;
 		min-width: 250px;
 		aspect-ratio: 919/549;
 		text-align: center;
 		position: relative;
 		overflow: hidden;
+	}
+
+	.modal-content.half {
+		aspect-ratio: 599/719;
 	}
 
 	:global(.mobile) .modal-content {
@@ -150,9 +180,10 @@
 		top: 1.5rem;
 		right: -0.2rem;
 		z-index: +10;
+		margin-right: 2rem;
 	}
+
 	.gi-close {
-		font-size: 1.3rem;
 		background-color: transparent;
 		color: #383b40;
 	}
@@ -176,12 +207,25 @@
 	button i {
 		width: 2rem;
 		height: 2rem;
-		background-color: #353533;
 		border-radius: 100%;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 1rem;
-		margin-right: 2rem;
+		font-size: 1.3rem;
+	}
+
+	/* pagination */
+	.pagination {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		display: flex;
+		padding: 0 2.5%;
+		z-index: +10;
+	}
+
+	.pagination button i {
+		font-size: 1.75rem;
 	}
 </style>

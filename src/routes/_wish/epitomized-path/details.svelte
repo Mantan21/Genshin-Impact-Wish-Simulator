@@ -5,7 +5,6 @@
 	import { assets } from '$lib/store/app-stores';
 
 	let content;
-
 	onMount(() => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
@@ -36,12 +35,20 @@
 		padding: 3.5% 5%;
 	}
 
+	:global(.half) .article {
+		font-size: calc(3 / 100 * var(--modal-width));
+	}
+
 	.ribbon {
 		position: absolute;
 		top: 0;
 		left: 8.5%;
 		transform: translateY(-1.5%);
 		width: calc(5.3 / 100 * var(--modal-width));
+	}
+
+	:global(.half) .ribbon {
+		width: calc(7 / 100 * var(--modal-width));
 	}
 
 	.wrapper {
@@ -74,6 +81,10 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: flex-start;
+	}
+	:global(.half) h1 {
+		height: calc(10 / 100 * var(--modal-width));
+		font-size: calc(5 / 100 * var(--modal-width));
 	}
 
 	p :global(span) {
