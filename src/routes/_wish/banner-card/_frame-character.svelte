@@ -1,8 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { locale, t } from 'svelte-i18n';
-	import OverlayScrollbars from 'overlayscrollbars';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { getBannerName, highlightBannerName } from '$lib/helpers/nameText';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
@@ -15,15 +13,6 @@
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
 	$: vision = getCharDetails(character).vision;
 	$: featuredC = `--text-width: calc(${textOffset?.w || 30} / 100 * var(--content-width));`;
-
-	let bannerInfo;
-	onMount(() => {
-		OverlayScrollbars(bannerInfo, {
-			sizeAutoCapable: false,
-			className: 'os-theme-light',
-			scrollbars: { visibility: 'hidden' }
-		});
-	});
 </script>
 
 <div class="frame-content">
@@ -35,8 +24,8 @@
 		{@html highlightBannerName(localeBannerName, vision)}
 	</h1>
 
-	<div class="info" bind:this={bannerInfo}>
-		<div class="content" in:fly={{ x: 15, duration: 700 }}>
+	<div class="info" in:fly={{ x: 15, duration: 700 }}>
+		<div class="content">
 			<div class="set card-stroke">
 				{$t('wish.banner.probIncreased')}
 			</div>
@@ -128,6 +117,10 @@
 		height: 42%;
 		display: block;
 		padding-left: 4%;
+		overflow: auto;
+	}
+	.info::-webkit-scrollbar {
+		display: none;
 	}
 
 	.content {

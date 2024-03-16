@@ -24,7 +24,6 @@
 	} from '$lib/store/app-stores';
 
 	import MyFund from '$lib/components/MyFund.svelte';
-	import EpitomizedButton from './epitomized-path/_button.svelte';
 	import BannerButton from './_banner-button.svelte';
 
 	export let bannerType = '';
@@ -168,10 +167,6 @@
 					on:click={() => selectBanner(i)}
 				/>
 			{/each}
-
-			{#if $mobileMode && bannerType === 'weapon-event'}
-				<EpitomizedButton />
-			{/if}
 		</div>
 	{:else}
 		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }} />

@@ -1,9 +1,10 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { course } from '$lib/store/app-stores';
+	import { course, mobileMode } from '$lib/store/app-stores';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { highlightBannerName } from '$lib/helpers/nameText';
+	import EpitomizedButton from '../epitomized-path/_button.svelte';
 
 	export let featured = {};
 	export let rateup = {};
@@ -21,21 +22,29 @@
 	</h1>
 
 	<div class="info" in:fly={{ x: 10, duration: 700 }}>
-		<div class="set card-stroke">
-			{$t('wish.banner.probIncreased')}
-		</div>
-		<div class="desc bg-epitome " style="opacity: 90%;">
-			<div class="icon">
-				<i class="gi-primo-star" />
+		<div class="content">
+			<div class="set card-stroke">
+				{$t('wish.banner.probIncreased')}
 			</div>
-			<div class="text">
-				{$t('wish.banner.wishDescription')}
+			<div class="desc bg-epitome " style="opacity: 90%;">
+				<div class="icon">
+					<i class="gi-primo-star" />
+				</div>
+				<div class="text">
+					{$t('wish.banner.wishDescription')}
+				</div>
 			</div>
-		</div>
-		<div class="note card-stroke">
-			{$t('wish.banner.viewDetails')}
+			<div class="note card-stroke">
+				{$t('wish.banner.viewDetails')}
+			</div>
 		</div>
 	</div>
+
+	{#if $mobileMode}\
+		<div class="epitomized">
+			<EpitomizedButton />
+		</div>
+	{/if}
 
 	<div
 		class="featured"
@@ -97,6 +106,9 @@
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
+	:global(.mobile) h1 {
+		bottom: 71%;
+	}
 
 	:global(.zh-CN) h1,
 	:global(.ja-JP) h1 {
@@ -115,12 +127,22 @@
 	}
 
 	.info {
-		left: 4%;
+		left: 0;
 		top: 40%;
-		width: 36%;
+		width: 40%;
 		display: block;
+		overflow: auto;
+		padding-left: 4%;
 	}
-	.info::after {
+	.info::-webkit-scrollbar {
+		display: none;
+	}
+
+	.content {
+		position: relative;
+	}
+
+	.info .content::after {
 		content: '';
 		display: block;
 		width: calc(0.55 / 100 * var(--content-width));
@@ -131,13 +153,16 @@
 		top: 0;
 	}
 
+	:global(.mobile) .info {
+		top: 30%;
+		height: calc(0.13 * var(--content-width));
+	}
+
 	.set {
 		font-size: calc(2.4 / 100 * var(--content-width));
 	}
 
 	.desc {
-		left: 7.5%;
-		top: 49.7%;
 		color: #fff;
 		min-height: calc(9 / 100 * var(--content-height));
 		display: flex;
@@ -160,6 +185,11 @@
 
 	.note {
 		width: 85%;
+	}
+
+	.epitomized {
+		top: 59%;
+		left: 5%;
 	}
 
 	.featured {
