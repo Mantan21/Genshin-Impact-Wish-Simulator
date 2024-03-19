@@ -3,6 +3,7 @@ import { BannerManager } from './dataAPI/api-indexeddb';
 import { initCDNURL } from './assets';
 
 const idb = BannerManager;
+export const maintenance = false;
 
 export const localBanner = {
 	isComplete: async (itemID) => {

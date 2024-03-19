@@ -12,6 +12,7 @@
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
+	import { maintenance } from '$lib/helpers/banner-custom';
 	import { highlightBannerName } from '$lib/helpers/nameText';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
 
@@ -65,10 +66,12 @@
 				</button>
 			{/if}
 
-			<button class="delete" on:click={deleteBanner}>
-				<i class="gi-delete" />
-				{$t('customBanner.delete')}
-			</button>
+			{#if !maintenance}
+				<button class="delete" on:click={deleteBanner}>
+					<i class="gi-delete" />
+					{$t('customBanner.delete')}
+				</button>
+			{/if}
 		</div>
 	{/if}
 

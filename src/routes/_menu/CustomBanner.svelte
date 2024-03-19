@@ -16,6 +16,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { pushToast } from '$lib/helpers/toast';
 	import { timeAgo } from '$lib/helpers/timeago';
+	import { maintenance } from '$lib/helpers/banner-custom';
 	import { html } from '$post/banner-guidelines.md';
 
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
@@ -191,29 +192,43 @@
 											<i class="gi-pen" /> <span>{$t('customBanner.edit')}</span>
 										</button>
 									{/if}
-									<button class="delete" on:click={() => selectToDelete(itemID, images?.thumbnail)}>
-										<i class="gi-delete" /> <span>{$t('customBanner.delete')}</span>
-									</button>
+
+									{#if !maintenance}
+										<button
+											class="delete"
+											on:click={() => selectToDelete(itemID, images?.thumbnail)}
+										>
+											<i class="gi-delete" /> <span>{$t('customBanner.delete')}</span>
+										</button>
+									{/if}
 								</div>
 							</div>
 						{/each}
 					{/if}
 
-					{#if $proUser || customList.length < 3}
-						<div class="item blank">
-							<button class="add" on:click={() => customizeBanner()}>
-								<i class="gi-plus" />
-								<span>{$t('customBanner.addBanner')}</span>
-							</button>
-						</div>
+					{#if !maintenance}
+						{#if $proUser || customList.length < 3}
+							<div class="item blank">
+								<button class="add" on:click={() => customizeBanner()}>
+									<i class="gi-plus" />
+									<span>{$t('customBanner.addBanner')}</span>
+								</button>
+							</div>
+						{:else}
+							<div class="item blank locked">
+								<button class="add" on:click={() => selectMenu('proAccess')}>
+									<i class="gi-lock" />
+									<span>{$t('customBanner.memberToUnlock')}</span>
+								</button>
+							</div>
+						{/if}
 					{:else}
-						<div class="item blank locked">
-							<button class="add" on:click={() => selectMenu('proAccess')}>
-								<i class="gi-lock" />
-								<span>{$t('customBanner.memberToUnlock')}</span>
+						<div class="item blank locke disabled">
+							<button class="add" disabled>
+								<i class="gi-gear" />
+								<span>Some Features are Disabled for Maintenance!</span>
 							</button>
-						</div>
-					{/if}
+						</div>{/if}
 				</div>
 			{/if}
 			<!-- End ShowNote -->
@@ -476,7 +491,7 @@
 		transition: border 0.25s;
 		border: 2px dashed #c3b8a5;
 	}
-	.item.blank:hover {
+	.item.blank:not(.disabled):hover {
 		border-color: #857d71;
 	}
 
@@ -492,7 +507,7 @@
 		transition: color 0.25s;
 	}
 
-	.add:hover {
+	.item:not(.disabled) .add:hover {
 		color: #857d71;
 	}
 

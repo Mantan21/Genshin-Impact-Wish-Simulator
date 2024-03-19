@@ -18,7 +18,7 @@
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
-	import { localBanner } from '$lib/helpers/banner-custom';
+	import { localBanner, maintenance } from '$lib/helpers/banner-custom';
 	import { pushToast } from '$lib/helpers/toast';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -220,22 +220,24 @@
 					<span> {$t('customBanner.finishAndWish')} </span>
 				</button>
 
-				<button
-					class="wish-button"
-					style="flex-direction: row; line-height: 0;"
-					on:click={publishBanner}
-				>
-					<i class="gi-share" style="transform: translateX(-50%);" />
-					{#await localBanner.isHostedBanner($editID)}
-						<span> {$t('customBanner.publish')} </span>
-					{:then isHosted}
-						{#if isHosted}
-							<span> {$t('customBanner.updateAndShare')} </span>
-						{:else}
+				{#if !maintenance}
+					<button
+						class="wish-button"
+						style="flex-direction: row; line-height: 0;"
+						on:click={publishBanner}
+					>
+						<i class="gi-share" style="transform: translateX(-50%);" />
+						{#await localBanner.isHostedBanner($editID)}
 							<span> {$t('customBanner.publish')} </span>
-						{/if}
-					{/await}
-				</button>
+						{:then isHosted}
+							{#if isHosted}
+								<span> {$t('customBanner.updateAndShare')} </span>
+							{:else}
+								<span> {$t('customBanner.publish')} </span>
+							{/if}
+						{/await}
+					</button>
+				{/if}
 			</div>
 		{/if}
 	</div>
