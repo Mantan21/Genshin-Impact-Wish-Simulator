@@ -101,9 +101,10 @@ export const onlineBanner = {
 			if (localData.deleted) localData.deleted = false;
 
 			const onlineData = await this._postData({ id: shareID, action: 'put', data: localData });
-			const { success, id, message } = onlineData;
+			const { success, id, db, message } = onlineData;
 			if (!success) throw new Error('Failed to Update');
 
+			idbData.db = db;
 			idbData.shareID = id;
 			idbData.lastModified = date;
 			idbData.lastSync = date;
@@ -120,7 +121,7 @@ export const onlineBanner = {
 
 	async deleteBanner(itemID) {
 		try {
-			const { shareID, status, imageHash = {} } = (await idb.get(itemID)) || {};
+			const { shareID, status, db, imageHash = {} } = (await idb.get(itemID)) || {};
 
 			// Only delete local data if not shared
 			if (status === 'cloud' || !shareID) {
@@ -136,7 +137,7 @@ export const onlineBanner = {
 			}
 
 			// Remove from Cloud
-			const { success } = await this._postData({ action: 'delete', id: shareID });
+			const { success } = await this._postData({ action: 'delete', id: shareID, data: { db } });
 			if (!success) throw new Error('Failed to Remove');
 			await idb.delete(itemID);
 			return { status: 'ok' };
@@ -165,10 +166,10 @@ export const onlineBanner = {
 		}
 	},
 
-	async block(id) {
+	async block(id, db) {
 		if (!id) return;
 		try {
-			const { success } = await this._postData({ action: 'block', id });
+			const { success } = await this._postData({ action: 'block', id, data: { db } });
 			return success;
 		} catch (e) {
 			console.error(e);
@@ -222,12 +223,14 @@ export const syncCustomBanner = async () => {
 					continue;
 				}
 
-				const { hostedImages = {}, imageHash = {}, blocked = false, lastModified } = dataToStore;
+				// prettier-ignore
+				const { hostedImages = {}, imageHash = {}, blocked = false, lastModified, db = 1 } = dataToStore;
 				const modifiedData = {
 					...dataToModify,
 					hostedImages,
 					imageHash,
 					blocked,
+					db,
 					lastSync: lastModified
 				};
 				await idb.put(modifiedData);

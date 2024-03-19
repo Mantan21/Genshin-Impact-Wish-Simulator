@@ -12,8 +12,8 @@
 	let itemPerPage = 10;
 	let customList = [];
 
-	const block = async (id) => {
-		await onlineBanner.block(id);
+	const block = async (id, db) => {
+		await onlineBanner.block(id, db);
 		const index = customList.findIndex(({ id: lID }) => id === lID);
 		customList[index].blocked = true;
 	};
@@ -35,9 +35,6 @@
 			const request = await fetch(API_HOST + '/storage');
 			const { success, data = [] } = await request.json();
 			if (!success) return;
-			// customList = data.sort(({ lastModified: a }, { lastModified: b }) => {
-			// 	return new Date(b) - new Date(a);
-			// });
 			const dataToShow = data.filter(({ bannerName }) => bannerName);
 			customList = window._.orderBy(dataToShow, ['lastModified'], ['desc']);
 		} catch (e) {
@@ -73,7 +70,7 @@
 			<span> waiting ...</span>
 		</div>
 	{:else}
-		{#each getItemPage(customList, activepage) as { bannerName, hostedImages = { }, blocked, id, lastModified }}
+		{#each getItemPage(customList, activepage) as { bannerName, hostedImages = { }, blocked, id, db, lastModified }}
 			<div class="row" {id}>
 				<div class="col img">
 					{#each ['artURL', 'faceURL', 'thumbnail'] as key}
@@ -96,7 +93,7 @@
 					{#if blocked}
 						<ButtonGeneral disabled>Blocked</ButtonGeneral>
 					{:else}
-						<ButtonGeneral on:click={() => block(id)}>Block</ButtonGeneral>
+						<ButtonGeneral on:click={() => block(id, db)}>Block</ButtonGeneral>
 					{/if}
 				</div>
 			</div>
