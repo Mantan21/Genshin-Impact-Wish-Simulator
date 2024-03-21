@@ -5,6 +5,7 @@
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { highlightBannerName } from '$lib/helpers/nameText';
 	import EpitomizedButton from '../epitomized-path/_button.svelte';
+	import Dropnotes from './__dropnotes.svelte';
 
 	export let featured = {};
 	export let rateup = {};
@@ -22,22 +23,7 @@
 	</h1>
 
 	<div class="info" in:fly={{ x: 10, duration: 700 }}>
-		<div class="content">
-			<div class="set card-stroke">
-				{$t('wish.banner.probIncreased')}
-			</div>
-			<div class="desc bg-epitome " style="opacity: 90%;">
-				<div class="icon">
-					<i class="gi-primo-star" />
-				</div>
-				<div class="text">
-					{$t('wish.banner.wishDescription')}
-				</div>
-			</div>
-			<div class="note card-stroke">
-				{$t('wish.banner.viewDetails')}
-			</div>
-		</div>
+		<Dropnotes element="epitome" banner="weapon-event" />
 	</div>
 
 	{#if $mobileMode}\
@@ -138,53 +124,9 @@
 		display: none;
 	}
 
-	.content {
-		position: relative;
-	}
-
-	.info .content::after {
-		content: '';
-		display: block;
-		width: calc(0.55 / 100 * var(--content-width));
-		height: 100%;
-		background-color: #565654;
-		position: absolute;
-		left: calc(-3 / 100 * var(--content-width));
-		top: 0;
-	}
-
 	:global(.mobile) .info {
 		top: 30%;
 		height: calc(0.13 * var(--content-width));
-	}
-
-	.set {
-		font-size: calc(2.4 / 100 * var(--content-width));
-	}
-
-	.desc {
-		color: #fff;
-		min-height: calc(9 / 100 * var(--content-height));
-		display: flex;
-		align-items: center;
-		margin: calc(0.7 / 100 * var(--content-width)) 0;
-	}
-
-	.icon {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: calc(1 / 100 * var(--content-width));
-		font-size: calc(1.1 / 100 * var(--content-width));
-	}
-
-	.desc .text {
-		width: calc(32.5 / 100 * var(--content-width));
-		padding: calc(0.3 / 100 * var(--content-width));
-	}
-
-	.note {
-		width: 85%;
 	}
 
 	.epitomized {

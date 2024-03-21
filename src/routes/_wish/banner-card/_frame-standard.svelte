@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
+	import Dropnotes from './__dropnotes.svelte';
 
 	export let bannerName = '';
 	const oldStd = bannerName === 'wanderlust-invocation-1';
@@ -34,24 +35,7 @@
 		{@html highlightBannerName($t('banner.wanderlust'))}
 	</h1>
 	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
-		<div class="content">
-			<div class="set card-stroke">
-				{$t('wish.banner.standard')}
-			</div>
-
-			<div class="desc">
-				<div class="icon">
-					<i class="gi-primo-star" />
-				</div>
-				<div class="text">
-					{$t('wish.banner.wishDescription')}
-				</div>
-			</div>
-			<div class="note card-stroke">
-				{$t('wish.banner.standardNote')}
-				{$t('wish.banner.viewDetails')}
-			</div>
-		</div>
+		<Dropnotes banner="standard" element="standard" />
 	</div>
 
 	{#each chars as char}
@@ -137,36 +121,6 @@
 
 	.old .top {
 		background-color: #c9a07b;
-	}
-
-	.set {
-		font-size: calc(2.4 / 100 * var(--content-width));
-	}
-
-	.desc {
-		color: #fff;
-		min-height: calc(9 / 100 * var(--content-height));
-		display: flex;
-		align-items: center;
-		margin: calc(0.7 / 100 * var(--content-width)) 0;
-		background-color: rgba(101, 107, 202, 0.9);
-	}
-
-	.old .desc {
-		background-color: rgba(48, 143, 148, 0.9);
-	}
-
-	.desc .text {
-		width: calc(32.5 / 100 * var(--content-width));
-		padding: calc(0.3 / 100 * var(--content-width));
-	}
-
-	.icon {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: calc(1 / 100 * var(--content-width));
-		font-size: calc(1.1 / 100 * var(--content-width));
 	}
 
 	.group-content {

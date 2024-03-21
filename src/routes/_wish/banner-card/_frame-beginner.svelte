@@ -5,6 +5,7 @@
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { beginnerRemaining } from '$lib/store/app-stores';
 	import { highlightBannerName } from '$lib/helpers/nameText';
+	import Dropnotes from './__dropnotes.svelte';
 
 	export let character = '';
 	$: char = $t(`${character}.name`);
@@ -28,22 +29,7 @@
 	</h1>
 
 	<div class="info" bind:this={bannerInfo} in:fly={{ x: 15, duration: 700 }}>
-		<div class="content">
-			<div class="set">
-				{$t('wish.banner.beginnerSet', { values: { character: char } })}
-			</div>
-			<div class="desc">
-				<div class="icon">
-					<i class="gi-primo-star" />
-				</div>
-				<p class="text">
-					{$t('wish.banner.wishDescription')}
-				</p>
-			</div>
-			<div class="note">
-				{$t('wish.banner.beginnerNote')}
-			</div>
-		</div>
+		<Dropnotes element="beginner" banner="beginner" />
 	</div>
 
 	<div class="featured" in:fly={{ x: 10, duration: 700 }}>
@@ -115,33 +101,6 @@
 		top: 0;
 		left: 0;
 		transform: translate(-3%, -15%);
-	}
-
-	.set {
-		font-size: calc(2.4 / 100 * var(--content-width));
-	}
-
-	.desc {
-		color: #fff;
-		min-height: calc(9 / 100 * var(--content-height));
-		display: flex;
-		align-items: center;
-		margin: calc(0.7 / 100 * var(--content-width)) 0;
-		background-color: rgba(224, 85, 94, 0.85);
-	}
-
-	.desc .text {
-		width: calc(32.5 / 100 * var(--content-width));
-		padding: calc(0.3 / 100 * var(--content-width));
-		line-height: 125%;
-	}
-
-	.icon {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: calc(1 / 100 * var(--content-width));
-		font-size: calc(1.1 / 100 * var(--content-width));
 	}
 
 	.featured {

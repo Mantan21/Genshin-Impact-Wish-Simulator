@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
-	import BannerArt from '../../_custom-banner/BannerEditor/BannerArt.svelte';
 	import { assets } from '$lib/store/app-stores';
+	import BannerArt from '../../_custom-banner/BannerEditor/BannerArt.svelte';
 
 	export let src = '';
 	export let alt = '';
@@ -33,13 +33,9 @@
 				<BannerArt artURL={src} bannerPosition={artPosition?.banner} {rateup} />
 			{/key}
 		{:else}
-			<div style="position: relative; width: 100%;">
-				<div style="position: relative; overflow: hidden;">
-					<picture>
-						<img {src} {alt} on:error={imageError} crossorigin="anonymous" />
-					</picture>
-				</div>
-			</div>
+			<picture style="position: relative; width: 100%; overflow: hidden">
+				<img {src} {alt} on:error={imageError} crossorigin="anonymous" />
+			</picture>
 		{/if}
 	{/if}
 </div>
@@ -55,7 +51,6 @@
 		bottom: 0;
 		left: 0;
 	}
-
 	.image-error {
 		background-image: linear-gradient(to top, #eee8e3 50%, #f7f5f4);
 	}
