@@ -214,6 +214,6 @@
 	}
 
 	.selected.fill {
-		background-color: #62c5ff;
+		background-color: #52b5f0;
 	}
 </style>

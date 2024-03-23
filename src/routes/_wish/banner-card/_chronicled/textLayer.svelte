@@ -234,6 +234,6 @@
 	}
 
 	.current-selection.fill {
-		background-color: #3ca3df;
+		background-color: #52b5f0;
 	}
 </style>

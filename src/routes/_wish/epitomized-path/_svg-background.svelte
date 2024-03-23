@@ -1,12 +1,12 @@
 <script>
-	import { course } from '$lib/store/app-stores';
-	export let mode = '';
-
-	$: fatepoint = $course.point;
+	export let flat = true;
+	export let point = 0;
+	export let steps = 1;
 </script>
 
 <svg
-	class="{mode} {fatepoint > 1 ? 'full' : ''} "
+	class:flat
+	class:full={point >= steps}
 	xmlns="http://www.w3.org/2000/svg"
 	xml:space="preserve"
 	width="100%"
@@ -21,11 +21,13 @@
 	<g id="Layer_x0020_1">
 		<metadata id="CorelCorpID_0Corel-Layer" />
 		<path
-			class="{fatepoint > 0 ? 'filled' : ''} {mode === 'bg' ? 'fil1' : 'fil0'}"
+			class:filled={point > 0}
+			class={flat ? 'fil1' : 'fil0'}
 			d="M1237835 754784c-41627,24154 -57713,54476 -62457,79583 -33219,176299 -172756,315073 -349462,347141 -25370,4606 -50457,11941 -76748,59882 -22997,-39721 -55914,-55418 -81993,-60308 -179134,-33502 -319645,-176741 -349037,-357292 -3738,-22943 -12543,-47658 -61831,-69006l107099 0c804,211542 172526,382804 384273,382804 211731,0 383470,-171245 384274,-382804l105882 0z"
 		/>
 		<path
-			class="{fatepoint === 2 ? 'filled' : ''} {mode === 'bg' ? 'fil1' : 'fil0'}"
+			class:filled={point >= steps}
+			class={flat ? 'fil1' : 'fil0'}
 			d="M752463 258628c26291,50936 54372,62469 82613,68209 168468,34335 301555,166006 337946,333729 6484,29871 16476,66296 70689,90940 -2014,1079 -3971,2172 -5876,3278l-105882 0c2,-498 19,-991 19,-1489 0,-212228 -172047,-384292 -384293,-384292 -212228,0 -384292,172047 -384292,384292 0,498 17,991 19,1489l-107099 0c52566,-19719 58058,-48597 61725,-71328 28241,-175111 160956,-315250 332170,-354422 31341,-7175 75987,-11250 102279,-70406l-18 0z"
 		/>
 		<path
@@ -57,7 +59,7 @@
 	.fil1 {
 		fill: #d7d0c7;
 	}
-	.bg .fil1 {
+	.flat .fil1 {
 		fill: #e1ddd4;
 	}
 	.filled {

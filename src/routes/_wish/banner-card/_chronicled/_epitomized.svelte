@@ -39,7 +39,7 @@
 	.courseActive {
 		margin-top: auto;
 		width: 100%;
-		height: calc(0.13 * var(--content-width));
+		height: calc(0.125 * var(--content-width));
 		margin-bottom: 2.75%;
 	}
 	.box {

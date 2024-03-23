@@ -6,36 +6,38 @@
 </script>
 
 <div class="dropNotes" class:chronicle={banner === 'chronicled'}>
-	<div class="set card-stroke">
-		{#if banner === 'beginner'}
-			{$t('wish.banner.beginnerSet', { values: { character: $t('noelle.name') } })}
-		{:else}
-			{$t('wish.banner.probIncreased')}
-		{/if}
-	</div>
-	<div class="desc bg-{element}" style="opacity: 90%;">
-		<div class="icon">
-			<i class="gi-primo-star" />
-		</div>
-		<div class="text">
-			{$t('wish.banner.wishDescription')}
-		</div>
-	</div>
-	<div class="note card-stroke">
-		{#if banner !== 'chronicled'}
-			{#if banner.match('character')}
-				{$t('wish.banner.eventNote')}
-			{/if}
-			{#if banner === 'standard'}
-				{$t('wish.banner.standardNote')}
-			{/if}
-
+	<div class="scrollable">
+		<div class="set card-stroke">
 			{#if banner === 'beginner'}
-				{$t('wish.banner.beginnerNote')}
+				{$t('wish.banner.beginnerSet', { values: { character: $t('noelle.name') } })}
 			{:else}
-				{$t('wish.banner.viewDetails')}
+				{$t('wish.banner.probIncreased')}
 			{/if}
-		{/if}
+		</div>
+		<div class="desc bg-{element}" style="opacity: 90%;">
+			<div class="icon">
+				<i class="gi-primo-star" />
+			</div>
+			<div class="text">
+				{$t('wish.banner.wishDescription')}
+			</div>
+		</div>
+		<div class="note card-stroke">
+			{#if banner !== 'chronicled'}
+				{#if banner.match('character')}
+					{$t('wish.banner.eventNote')}
+				{/if}
+				{#if banner === 'standard'}
+					{$t('wish.banner.standardNote')}
+				{/if}
+
+				{#if banner === 'beginner'}
+					{$t('wish.banner.beginnerNote')}
+				{:else}
+					{$t('wish.banner.viewDetails')}
+				{/if}
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -43,7 +45,7 @@
 	.dropNotes {
 		position: relative;
 	}
-	.dropNotes.chronicle {
+	.dropNotes.chronicle .scrollable {
 		max-height: calc(22 / 100 * var(--content-height));
 		overflow: auto;
 	}

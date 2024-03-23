@@ -26,6 +26,7 @@
 		return getCharDetails(selected);
 	};
 
+	$: ({ point } = isChronicled ? $chCourse : $wpCourse);
 	$: selectedData = featuredWp[$wpCourse.selected] || getChronicledData($chCourse);
 	$: hasCourse = !!selectedData?.name;
 
@@ -63,7 +64,7 @@
 
 <div class="item-picker" class:counter={hasCourse} class:isChronicled>
 	<div class="bg">
-		<FatepointSVG mode={hasCourse ? 'counter' : 'bg'} />
+		<FatepointSVG flat={!hasCourse} {point} steps={isChronicled ? 1 : 2} />
 	</div>
 
 	{#if !isChronicled}
@@ -124,7 +125,7 @@
 		{:else if hasCourse}
 			<div class="text card-stroke">
 				<div>
-					{$t('wish.epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/1
+					{$t('wish.epitomizedPath.fatePoint')} : <span>{point}</span>/1
 				</div>
 			</div>
 		{/if}
