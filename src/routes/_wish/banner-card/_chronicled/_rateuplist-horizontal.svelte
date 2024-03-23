@@ -2,6 +2,8 @@
 	import { assets } from '$lib/store/app-stores';
 
 	export let rateupList = [];
+	export let exclude = '';
+	const list = rateupList.filter(({ name }) => name !== exclude);
 	let scrollElement;
 </script>
 
@@ -11,7 +13,7 @@
 	on:mousewheel={(e) => (scrollElement.scrollLeft += e.deltaY)}
 >
 	<div class="row">
-		{#each rateupList as { type, name, weaponType = '' }, i}
+		{#each list as { type, name, weaponType = '' }, i}
 			{@const src = type === 'weapon' ? $assets[name] : $assets[`face/${name}`]}
 			<div class="col">
 				<picture class="{type} {weaponType}">

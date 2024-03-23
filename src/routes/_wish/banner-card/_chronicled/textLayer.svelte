@@ -1,8 +1,9 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
+	import { chronicledCourse } from '$lib/store/app-stores';
 	import { getBannerName, highlightBannerName } from '$lib/helpers/nameText';
-	import { get5StarItem, getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import { get5StarItem } from '$lib/helpers/gacha/itemdrop-base';
 	import RateUpSelector from './rateupSelector.svelte';
 	import Epitomized from './_epitomized.svelte';
 	import Dropnotes from '../__dropnotes.svelte';
@@ -17,20 +18,11 @@
 	let { bannerName, characters, weapons, stdver, region } = bannerData;
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
 
-	const nonStdChar = characters['5star'].map((name) => getCharDetails(name));
-	const nonStdWp = weapons['5star'].map((name) => getWpDetails(name));
-	const standardList = get5StarItem({
+	const rateupList = get5StarItem({
 		banner: `chronicled`,
 		rateupItem: [...characters['5star'], ...weapons['5star']],
 		region,
 		stdver
-	});
-
-	const featuredList = [...nonStdChar, ...nonStdWp, ...standardList];
-	const rateupList = featuredList.sort(({ type: aType }, { type: bType }) => {
-		if (aType < bType) return -1;
-		if (aType > bType) return 1;
-		return 0;
 	});
 </script>
 
@@ -51,7 +43,7 @@
 			<Dropnotes {element} banner="chronicled" />
 			<div style="margin-top: auto;" in:fly|local={{ x: 20 }}>
 				<Epitomized {courseData} />
-				<RateuplistHorizontal {rateupList} />
+				<RateuplistHorizontal {rateupList} exclude={$chronicledCourse.selected} />
 			</div>
 		{:else}
 			<div class="courseNote">Chart course towards one of the following Characters or Weapons</div>
@@ -71,7 +63,9 @@
 					{/each}
 				</div>
 				{#if courseData.selected}
-					<div class="current-selection">Current Selection: 5-Star {courseData.type} Wish</div>
+					<div class="current-selection" class:fill={$chronicledCourse.point > 0}>
+						Current Selection: 5-Star {courseData.type} Wish
+					</div>
 				{/if}
 			</div>
 		</div>
@@ -231,9 +225,9 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		line-height: 100%;
+		line-height: 120%;
 		transform: translateY(95%);
-		font-size: calc(3.05 / 100 * var(--content-height));
+		font-size: calc(2.9 / 100 * var(--content-height));
 		min-width: calc(30 / 100 * var(--content-width));
 		padding: calc(0.75 / 100 * var(--content-height)) calc(3 / 100 * var(--content-height));
 		background-color: rgba(85, 109, 139, 0.9);

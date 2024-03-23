@@ -1,21 +1,19 @@
 <script>
 	import { t } from 'svelte-i18n';
-	import { get5StarItem, getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import { get5StarItem } from '$lib/helpers/gacha/itemdrop-base';
 	import { activeBanner, assets, bannerList, chronicledCourse } from '$lib/store/app-stores';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	const { characters, weapons, region, stdver } = $bannerList[$activeBanner];
-	const nonStdChar = characters['5star'].map((name) => getCharDetails(name));
-	const nonStdWp = weapons['4star'].map((name) => getWpDetails(name));
-	const stdCharList = get5StarItem({
+	const featuredChar = get5StarItem({
 		banner: 'chronicled',
 		rateupItem: [...characters['5star']],
 		type: 'character',
 		region,
 		stdver
 	});
-	const stdWpList = get5StarItem({
+	const featuredWp = get5StarItem({
 		banner: 'chronicled',
 		rateupItem: [...weapons['5star']],
 		type: 'weapon',
@@ -24,8 +22,8 @@
 	});
 
 	const featuredList = [
-		{ type: 'character', list: [...nonStdChar, ...stdCharList] },
-		{ type: 'weapon', list: [...nonStdWp, ...stdWpList] }
+		{ type: 'character', list: featuredChar },
+		{ type: 'weapon', list: featuredWp }
 	];
 
 	let activeNav = 'detail';

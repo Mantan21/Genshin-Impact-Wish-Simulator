@@ -4,8 +4,8 @@ import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
 import { getRate, prob } from './probabilities';
 import { guaranteedStatus } from '../dataAPI/api-localstore';
 
-const standardWeapons = (star) => {
-	return getAllWeapons(star).filter(({ limited }) => !limited);
+const standardWeapons = (star, includes = []) => {
+	return getAllWeapons(star).filter(({ limited, name }) => !limited || includes.includes(name));
 };
 
 const filterByReleased = (charlist, version = null, phase = null) => {
@@ -67,6 +67,7 @@ export const get3StarItem = () => standardWeapons(3);
 
 export const get4StarItem = ({
 	banner = 'standard',
+	region = null,
 	version = null,
 	phase = null,
 	type = null,
@@ -101,22 +102,32 @@ export const get4StarItem = ({
 			{ itemType: 'char', chance: charRate },
 			{ itemType: 'wp', chance: 100 - charRate }
 		]);
-		items = itemType === 'wp' ? standardWeapons(4) : char4starList(banner);
+
+		const isWp = itemType === 'wp';
+		if (banner.match('chronicled')) {
+			const ls = isWp ? getAllWeapons(4) : getAllChars(4);
+			items = ls.filter(({ origin, name }) => origin === region || rateupNamelist.includes(name));
+		} else items = isWp ? standardWeapons(4) : char4starList(banner);
 	}
 
 	const filtered = filterByReleased(items, version, phase);
+	if (banner.match('chronicled')) return filtered; // chronicled Result
+
+	// General Result
 	const itemList = filtered.filter(({ name }) => !rateupNamelist.includes(name));
 	return itemList;
 };
 
-const std5StarCharlist = (stdver = 1) => {
+const std5StarCharlist = (stdver = 1, includes = []) => {
 	const { characters: stdCharNames } = standard.find(({ version }) => version === stdver);
-	const resultList = getAllChars(5).filter(({ name }) => stdCharNames.includes(name));
-	return resultList;
+	return getAllChars(5).filter(({ name }) => {
+		return stdCharNames.includes(name) || includes.includes(name);
+	});
 };
 
 export const get5StarItem = ({
 	banner = 'standard',
+	region = null,
 	stdver = 1,
 	type = null,
 	useRateup = false,
@@ -124,7 +135,7 @@ export const get5StarItem = ({
 	customData = {}
 } = {}) => {
 	// Featured or selected Character Result
-	if (useRateup && banner.match(/character|chronicled/)) {
+	if (useRateup && banner.match(/character/)) {
 		if (Object.keys(customData).length > 0) {
 			const { vision, character, artPosition, itemID } = customData;
 			const result = {
@@ -138,21 +149,24 @@ export const get5StarItem = ({
 			};
 			return result;
 		}
-
 		const featured = getAllChars(5).find(({ name }) => name === rateupItem[0]);
 		return featured;
 	}
 
 	// Losing Chronicled Result
 	if (banner.match('chronicled')) {
-		const [, region] = banner.split('-');
 		let resultList = [];
-		if (!type || type === 'all') resultList = [...standardWeapons(5), ...std5StarCharlist(stdver)];
-		else resultList = type === 'weapon' ? standardWeapons(5) : std5StarCharlist(stdver);
+		if (!type || type === 'all') {
+			resultList = [...std5StarCharlist(stdver, rateupItem), ...standardWeapons(5, rateupItem)];
+		} else if (type === 'weapon') {
+			resultList = standardWeapons(5, rateupItem);
+		} else {
+			resultList = std5StarCharlist(stdver, rateupItem);
+		}
 
-		const filtered = resultList
-			.filter(({ origin }) => origin === region)
-			.filter(({ name }) => !rateupItem.includes(name));
+		const filtered = resultList.filter(({ origin, name }) => {
+			return origin === region || rateupItem.includes(name);
+		});
 		return filtered;
 	}
 

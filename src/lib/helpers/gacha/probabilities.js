@@ -36,6 +36,7 @@ export const getRate = (banner, key) => {
 		return initial[key];
 	}
 
+	banner = 'character-event';
 	const initial = probabilityRates[banner];
 	const local = localrate.get(banner);
 	if (!(local[key] || local[key] >= 0)) return initial[key];

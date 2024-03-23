@@ -3,7 +3,7 @@
 	import { json, t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import { assets } from '$lib/store/app-stores';
-	import CronicledDetails from './_cronicled-details.svelte';
+	import CronicledDetails from './_chronicled-details.svelte';
 
 	export let isChronicled = false;
 	let content;
