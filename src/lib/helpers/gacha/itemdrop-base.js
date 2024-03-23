@@ -123,8 +123,8 @@ export const get5StarItem = ({
 	rateupItem = [],
 	customData = {}
 } = {}) => {
-	// Featured Char Result
-	if (useRateup && banner === 'character-event') {
+	// Featured or selected Character Result
+	if (useRateup && banner.match(/character|chronicled/)) {
 		if (Object.keys(customData).length > 0) {
 			const { vision, character, artPosition, itemID } = customData;
 			const result = {
@@ -141,6 +141,19 @@ export const get5StarItem = ({
 
 		const featured = getAllChars(5).find(({ name }) => name === rateupItem[0]);
 		return featured;
+	}
+
+	// Losing Chronicled Result
+	if (banner.match('chronicled')) {
+		const [, region] = banner.split('-');
+		let resultList = [];
+		if (!type || type === 'all') resultList = [...standardWeapons(5), ...std5StarCharlist(stdver)];
+		else resultList = type === 'weapon' ? standardWeapons(5) : std5StarCharlist(stdver);
+
+		const filtered = resultList
+			.filter(({ origin }) => origin === region)
+			.filter(({ name }) => !rateupItem.includes(name));
+		return filtered;
 	}
 
 	// Featured Weapon Result

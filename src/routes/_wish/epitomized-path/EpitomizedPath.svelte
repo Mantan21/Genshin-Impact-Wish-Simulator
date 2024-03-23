@@ -3,7 +3,16 @@
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
-	import { viewportWidth, activeVersion, course, assets } from '$lib/store/app-stores';
+	import {
+		viewportWidth,
+		activeVersion,
+		course,
+		assets,
+		viewportHeight,
+		bannerList,
+		activeBanner,
+		chronicledCourse
+	} from '$lib/store/app-stores';
 	import { fatepointManager } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
@@ -12,8 +21,15 @@
 	import Selector from './selector.svelte';
 
 	let activeSection = 1;
-	let clientWidth;
+	let clientHeight;
+	let itemWidth;
 	$: half = $viewportWidth < 500;
+	$: defaultItemWidth = (16.5 / 100) * $viewportHeight;
+	$: if (itemWidth < 150) itemWidth = 150;
+	else itemWidth = defaultItemWidth;
+
+	const { type: banner } = $bannerList[$activeBanner];
+	const { patch, phase } = $activeVersion;
 
 	const flipSection = (to) => {
 		playSfx('bookflip');
@@ -51,12 +67,16 @@
 
 	const confirmCancel = () => {
 		playSfx();
-		const { patch, phase } = $activeVersion;
-		const localFate = fatepointManager.init({ version: patch, phase });
-		localFate.remove(); // clear local
-		course.set({ point: 0, selected: null }); // clear App
 		showCancelConfirmation = false;
 		handleClose();
+
+		// clear local
+		const localFate = fatepointManager.init({ version: patch, phase, banner });
+		localFate.remove();
+
+		// clear browser Storage
+		if (banner.match('weapon')) return course.set({ point: 0, selected: null });
+		chronicledCourse.set({ selected: null, point: 0, type: null });
 		return;
 	};
 
@@ -89,9 +109,9 @@
 <section class="modal" transition:fade={{ duration: 250 }}>
 	<div
 		class="modal-content"
-		style="--modal-width: {clientWidth}px"
+		style="--modal-height:{clientHeight}px;--item-width: {itemWidth}px"
 		class:half
-		bind:clientWidth
+		bind:clientHeight
 		transition:fly={{ y: 40, duration: 250 }}
 	>
 		<img src={$assets[`epitomized-${half ? 'half' : 'bg'}.webp`]} alt="Epitomized Book" />
@@ -100,7 +120,7 @@
 		</button>
 		<div class="container">
 			{#if !half || activeSection < 1}
-				<Details />
+				<Details isChronicled={banner === 'chronicled'} />
 			{/if}
 
 			{#if (activeSection > 0 && half) || !half}
@@ -154,6 +174,7 @@
 	.modal-content {
 		max-width: 90%;
 		max-height: 90%;
+		width: 1100px;
 		min-width: 250px;
 		aspect-ratio: 919/549;
 		text-align: center;
@@ -177,10 +198,9 @@
 
 	.close-modal {
 		position: absolute;
-		top: 1.5rem;
-		right: -0.2rem;
+		top: calc(0.045 * var(--modal-height));
+		right: calc(0.045 * var(--modal-height));
 		z-index: +10;
-		margin-right: 2rem;
 	}
 
 	.gi-close {

@@ -1,11 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { data as charDB } from '$lib/data/characters.json';
-	import { data as weaponDB } from '$lib/data/weapons.json';
+	import { activeVersion, isFatepointSystem, assets } from '$lib/store/app-stores';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { noticeMark } from '$lib/helpers/noticeMark';
-	import { activeVersion, isFatepointSystem, assets } from '$lib/store/app-stores';
+	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import NoticeMark from '$lib/components/NoticeMark.svelte';
 
 	export let active = false;
@@ -15,8 +14,8 @@
 	export let index = 0;
 
 	const buttonOffset = (itemName, buttonPosition = {}) => {
-		const data = type === 'weapon-event' ? weaponDB : charDB;
-		const { offset = {} } = data.find(({ name }) => name === itemName) || {};
+		const getDetails = type === 'weapon-event' ? getWpDetails : getCharDetails;
+		const { offset = {} } = getDetails(itemName) || {};
 		const { button = {} } = offset;
 		Object.keys(buttonPosition).forEach((key) => (button[key] = buttonPosition[key]));
 		return button;
@@ -29,7 +28,7 @@
 	$: noticeName = isWeapon ? `fatepoint${patch}-${phase}` : baseNoticeName;
 
 	const setNotice = () => {
-		if (!active || !type.match('event')) return;
+		if (!active || !type.match(/event|chronicled/)) return;
 		noticeMark.openNotice(baseNoticeName);
 	};
 	const dispatch = createEventDispatcher();
@@ -38,7 +37,7 @@
 </script>
 
 <button class="button {type}" class:active on:click={buttonClick}>
-	{#if type.match('event')}
+	{#if type.match(/event|chronicled/)}
 		<NoticeMark
 			name={noticeName}
 			style="transform: translateY(-130%) translateX(50%); z-index:+10"
@@ -48,24 +47,33 @@
 	<i class="gi-companion" />
 	<div class="picture">
 		<div class="wrapper">
-			{#if type === 'weapon-event'}
+			{#if type === 'chronicled'}
+				<img
+					in:fade
+					on:error={(e) => e.target.remove()}
+					src={$assets[`chronicled-${featured}.webp`]}
+					alt="Chronicled Wish"
+					class="chronicled"
+					crossorigin="anonymous"
+				/>
+			{:else if type === 'weapon-event'}
 				{#each featured as { name, buttonPosition }}
 					<img
 						in:fade
-						src={$assets[name]}
-						alt="Weapon Wish"
-						style={positionToStyle(buttonOffset(name, buttonPosition))}
 						on:error={(e) => e.target.remove()}
+						src={$assets[name]}
+						style={positionToStyle(buttonOffset(name, buttonPosition))}
+						alt="Weapon Wish"
 						crossorigin="anonymous"
 					/>
 				{/each}
 			{:else}
 				<img
 					in:fade
-					src={$assets[`button/${character}`]}
-					alt="{type} Wish"
-					style={positionToStyle(buttonOffset(character))}
 					on:error={(e) => e.target.remove()}
+					src={$assets[`button/${character}`]}
+					style={positionToStyle(buttonOffset(character))}
+					alt="{type} Wish"
 					crossorigin="anonymous"
 				/>
 			{/if}
@@ -84,7 +92,7 @@
 		width: 90px;
 		min-width: 50px;
 		aspect-ratio: 2.4/1;
-		margin: 0.6em;
+		margin: 0.6em 0.5em;
 		position: relative;
 		transition: all.2s;
 	}
@@ -190,6 +198,11 @@
 		z-index: +1;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	img.chronicled {
+		width: 75%;
+		top: 35%;
 	}
 
 	.discount {

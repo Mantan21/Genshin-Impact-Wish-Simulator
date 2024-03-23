@@ -284,3 +284,6 @@
 .gi-cloud-deleted:before {
 	content: '\3f';
 }
+.gi-refresh:before {
+	content: '\40';
+}

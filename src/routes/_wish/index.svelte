@@ -36,7 +36,7 @@
 	$: nowBanner = $bannerList[$activeBanner] || {};
 	$: ({ type } = nowBanner);
 	$: bannerType = type || '';
-	$: isEvent = bannerType.match('event');
+	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: currencyUsed = isEvent ? $intertwined : $acquaint;
 	$: isUnlimited = $wishAmount === 'unlimited';
 

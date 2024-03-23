@@ -12,9 +12,10 @@ export const activeBanner = writable(0);
 export const showBeginner = writable(true);
 export const beginnerRemaining = writable(20);
 
-// Weapon
-export const isFatepointSystem = writable(false);
+// Epitomized Path
+export const isFatepointSystem = writable(false); // Weapon
 export const course = writable({ selected: null, point: 0 });
+export const chronicledCourse = writable({ selected: null, type: null, point: 0 });
 
 // Game Currencies
 export const genesis = writable(igen);

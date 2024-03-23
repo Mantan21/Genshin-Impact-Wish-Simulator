@@ -81,7 +81,7 @@ export const initializeBanner = async ({ patch, phase }) => {
 
 		const { data } = await import(`$lib/data/banners/events/${patch}.json`);
 		const { banners } = data.find((b) => b.phase === phase);
-		const { events, weapons, standardVersion: stdver } = banners;
+		const { events, weapons, standardVersion: stdver, chronicled = null } = banners;
 		const { featured: stdFeatured } = standard.find(({ version }) => stdver === version) || {};
 
 		const charEventBanner = {
@@ -91,6 +91,7 @@ export const initializeBanner = async ({ patch, phase }) => {
 		};
 		events.featured.forEach((eventdata) => list.push({ ...eventdata, ...charEventBanner }));
 		list.push({ type: 'weapon-event', stdver, ...weapons });
+		if (chronicled) list.push({ type: 'chronicled', stdver, ...chronicled });
 		list.push({ type: 'standard', stdver, ...stdFeatured });
 
 		bannerList.set(list);

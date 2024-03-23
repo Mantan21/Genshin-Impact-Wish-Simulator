@@ -1,8 +1,13 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { course, bannerList, activeBanner, viewportHeight } from '$lib/store/app-stores';
-	import { getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import {
+		chronicledCourse as chCourse,
+		course as wpCourse,
+		bannerList,
+		activeBanner
+	} from '$lib/store/app-stores';
+	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import hotkeys from 'hotkeys-js';
 
@@ -10,21 +15,19 @@
 	import FatepointSVG from './_svg-background.svelte';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 
-	let itemWidth;
-	let weaponName = '';
-	let selectedCourse = -1;
+	const { featured = [], type: bannerType } = $bannerList[$activeBanner];
+	const featuredWp = featured.map(({ name }) => getWpDetails(name));
+	const isChronicled = bannerType.match('chronicled');
 
-	$: defaultItemWidth = (16.5 / 100) * $viewportHeight;
-	$: if (itemWidth < 150) itemWidth = 150;
-	else itemWidth = defaultItemWidth;
+	const getChronicledData = (course) => {
+		if (bannerType.match('weapon')) return null;
+		const { selected, type } = course;
+		if (type === 'weapon') return getWpDetails(selected);
+		return getCharDetails(selected);
+	};
 
-	const weapons = $bannerList[$activeBanner].featured.map(({ name }) => getWpDetails(name));
-	onMount(() =>
-		course.subscribe(({ selected }) => {
-			weaponName = weapons[selected]?.name;
-			selectedCourse = selected;
-		})
-	);
+	$: selectedData = featuredWp[$wpCourse.selected] || getChronicledData($chCourse);
+	$: hasCourse = !!selectedData?.name;
 
 	let targetActive = null;
 	const cancelCourse = getContext('cancelCourse');
@@ -38,7 +41,7 @@
 	// Hotkeys
 	hotkeys('left,right', 'epipath', (e) => {
 		e.preventDefault();
-		if (weaponName) return;
+		if (hasCourse || isChronicled) return;
 
 		playSfx('click2');
 		const [key] = hotkeys.getPressedKeyString();
@@ -58,58 +61,81 @@
 	});
 </script>
 
-<div class="weapon-selector" class:counter={weaponName}>
+<div class="item-picker" class:counter={hasCourse} class:isChronicled>
 	<div class="bg">
-		<FatepointSVG mode={weaponName ? 'counter' : 'bg'} />
+		<FatepointSVG mode={hasCourse ? 'counter' : 'bg'} />
 	</div>
-	<h2 class="top">{$t('wish.epitomizedPath.selectWeapon')}</h2>
-	<div class="weapon-item">
-		<div class="weapon-list" style="--item-width: {itemWidth}px">
-			{#if weaponName}
-				<div class="weapon-content">
-					<button>
+
+	{#if !isChronicled}
+		<h2 class="top card-stroke">{$t('wish.epitomizedPath.selectWeapon')}</h2>
+	{:else if hasCourse}
+		<h2 class="top">Pilihan ditentukan untuk:</h2>
+		<div class="note">Hanya Senjata 5* yang dapat diperoleh dari permohonan</div>
+	{:else}
+		<h2 class="top float">Belum Menentukan Pilihan</h2>
+	{/if}
+
+	<!--  -->
+	<div class="item-wrapper">
+		<div class="item-row">
+			{#if hasCourse}
+				{@const { name, weaponType, type: itemType = 'weapon' } = selectedData || {}}
+				{@const isWp = itemType === 'weapon' || bannerType.match('weapon')}
+				{@const localName = isWp ? $t(name) : $t(`${name}.name`)}
+				<div class="item-col">
+					<button style="pointer-events: none; transform: scale(.9)">
 						<InventoryItem
-							itemdata={{
-								name: weaponName,
-								weaponType: weapons[selectedCourse].weaponType,
-								type: 'weapon',
-								rarity: 5
-							}}
+							noStars
+							itemdata={{ name, weaponType, localName, rarity: 5, type: itemType }}
 						/>
 					</button>
 				</div>
 			{:else}
-				{#each weapons as { name, weaponType }, i}
-					<div class="weapon-content" class:active={targetActive === i} on:click={() => select(i)}>
+				{#each featuredWp as { name, weaponType }, i}
+					<div class="item-col" class:active={targetActive === i} on:click={() => select(i)}>
 						<button>
-							<InventoryItem itemdata={{ name, weaponType, type: 'weapon', rarity: 5 }} />
+							<InventoryItem
+								noStars
+								itemdata={{ name, weaponType, localName: $t(name), rarity: 5, type: 'weapon' }}
+							/>
 						</button>
 					</div>
 				{/each}
 			{/if}
 		</div>
-		<div class="text">
-			<div>
-				{#if weaponName}
-					{$t('wish.epitomizedPath.fatePoint')} : <span>{$course.point}</span>/2
-				{:else if targetActive === null}
-					{$t('wish.epitomizedPath.selectWeapon')}
-				{:else}
-					{@html $t('wish.epitomizedPath.chartCourseOf', {
-						values: {
-							target: `<span> ${$t(weapons[targetActive].name)} </span>`
-						}
-					})}
-				{/if}
+
+		<!-- Weapon Epitomized -->
+		{#if !isChronicled}
+			<div class="text card-stroke">
+				<div>
+					{#if hasCourse}
+						{$t('wish.epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/2
+					{:else if targetActive === null}
+						{$t('wish.epitomizedPath.selectWeapon')}
+					{:else}
+						{@html $t('wish.epitomizedPath.chartCourseOf', {
+							values: { target: `<span> ${$t(featuredWp[targetActive].name)} </span>` }
+						})}
+					{/if}
+				</div>
 			</div>
-		</div>
+
+			<!-- CHronicled Epitomized -->
+		{:else if hasCourse}
+			<div class="text card-stroke">
+				<div>
+					{$t('wish.epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/1
+				</div>
+			</div>
+		{/if}
 	</div>
+
 	<div class="button">
-		{#if weaponName}
+		{#if hasCourse}
 			<ButtonModal on:click={cancelCourse} type="cancel">
 				{$t('wish.epitomizedPath.cancelCourse')}
 			</ButtonModal>
-		{:else}
+		{:else if !isChronicled}
 			<ButtonModal on:click={() => setCourse(targetActive)} disabled={targetActive === null}>
 				{$t('wish.epitomizedPath.chartCourse')}
 			</ButtonModal>
@@ -118,42 +144,56 @@
 </div>
 
 <style>
-	.weapon-selector {
+	.item-picker {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		color: #383b40;
 	}
-	.weapon-selector,
-	.weapon-selector > div {
+	.item-picker,
+	.item-picker > div {
 		position: relative;
 		padding: 5%;
 	}
-	.weapon-selector .bg {
+	.item-picker .bg {
 		position: absolute;
-		width: 90%;
+		width: 100%;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
-	.counter.weapon-selector .bg {
-		width: 90%;
-		top: 48%;
+	.counter.item-picker .bg {
+		width: 85%;
+		top: 47%;
 	}
 
-	.top {
-		font-size: calc(3 / 100 * var(--modal-width));
-		margin-bottom: calc(3 / 100 * var(--modal-width));
-		white-space: nowrap;
+	h2.top {
+		font-size: calc(4.75 / 100 * var(--modal-height));
+		margin-bottom: calc(4 / 100 * var(--modal-height));
 		display: block;
+		position: relative;
 	}
 
-	:global(.half) .top {
-		font-size: calc(6 / 100 * var(--modal-width));
-		margin-bottom: calc(7 / 100 * var(--modal-width));
+	h2.float.top {
+		color: #aa9077;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 75%;
+		transform: translate(-50%, -50%);
+	}
+	.note {
+		font-size: calc(2.75 / 100 * var(--modal-height));
+		padding: 0 !important;
+		position: absolute !important;
+		top: 15%;
+		left: 50%;
+		width: 75%;
+		color: #ea930e;
+		transform: translateX(-50%);
 	}
 
-	.weapon-item {
+	.item-wrapper {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -163,12 +203,12 @@
 		padding-left: 0 !important;
 		padding-right: 0 !important;
 	}
-
-	.counter .weapon-item {
-		border: 0;
+	.isChronicled .item-wrapper,
+	.counter .item-wrapper {
+		border: none;
 	}
 
-	.weapon-list {
+	.item-row {
 		height: 100%;
 		width: 100%;
 		padding: 0 10%;
@@ -181,35 +221,49 @@
 		color: #3a4156;
 		line-height: 1.2rem;
 	}
-	.counter .weapon-list {
+	.isChronicled .item-row {
 		background-color: transparent;
 	}
-
-	.weapon-content {
-		display: inline-block;
-		padding: 5%;
-		width: 50%;
+	.counter .item-row {
+		background-color: transparent;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
-	.weapon-content button {
+	@media screen and (min-width: 800px) {
+		main:not(.mobile) .counter .item-row {
+			top: 47%;
+		}
+	}
+
+	.item-col {
+		display: inline-block;
+		padding: 5%;
+		width: 45%;
+	}
+	@media screen and (max-width: 800px) {
+		.item-picker:not(.isChronicled) .item-col {
+			transform: translateY(2.5%);
+		}
+	}
+
+	.item-col button {
 		font-size: small;
 		aspect-ratio: 8.75 / 10;
 		position: relative;
-		vertical-align: middle;
 		width: 100%;
 	}
-	:global(.mobile) .weapon-content button {
-		font-size: xx-small;
-	}
 
-	.weapon-content.active button::after,
-	.weapon-content.active button::before {
+	.item-col.active button::after,
+	.item-col.active button::before {
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
 
-	.weapon-content.active button::after {
+	.item-col.active button::after {
 		display: block;
 		content: '';
 		width: 100%;
@@ -218,7 +272,7 @@
 		border-width: 0.2rem 0;
 		border-radius: 0.3rem;
 	}
-	.weapon-content.active button::before {
+	.item-col.active button::before {
 		content: '✔';
 		font-size: 1.2rem;
 		color: #759a28;
@@ -238,6 +292,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		font-size: calc(0.045 * var(--modal-height));
 	}
 
 	.counter .text {
@@ -246,23 +301,6 @@
 	}
 
 	.text :global(span) {
-		color: #f0b164;
-	}
-
-	@media screen and (max-width: 800px) and (min-width: 500px) {
-		.weapon-item {
-			font-size: medium;
-		}
-	}
-
-	:global(.mobile) .text {
-		height: 30%;
-	}
-	:global(.mobile) .counter .text {
-		height: unset;
-		margin-bottom: -1rem;
-	}
-	:global(.mobile) .weapon-item {
-		font-size: small;
+		color: #ea930e;
 	}
 </style>

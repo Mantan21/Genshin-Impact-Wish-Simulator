@@ -1,11 +1,10 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import hotkeys from 'hotkeys-js';
 
 	import { activeBanner, activeVersion, bannerList, course } from '$lib/store/app-stores';
-	import { fatepointManager } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { noticeMark } from '$lib/helpers/noticeMark';
 
@@ -17,20 +16,12 @@
 	$: ({ patch, phase } = $activeVersion);
 	$: ({ fatepointsystem, type } = $bannerList[$activeBanner]);
 
-	const checkFatepoint = () => {
-		const localFate = fatepointManager.init({ phase, version: patch });
-		const { selected, point } = localFate.getInfo();
-		course.set({ point, selected });
-	};
-
 	const handleEpitomizedModal = getContext('handleEpitomizedModal');
 	const handleClick = () => {
 		playSfx('exchange');
 		handleEpitomizedModal();
 		noticeMark.openNotice(`fatepoint${patch}-${phase}`);
 	};
-
-	onMount(() => bannerList.subscribe(checkFatepoint));
 
 	// Shortcut
 	hotkeys('e', 'index', (e) => {

@@ -146,18 +146,22 @@ export const fatepointManager = {
 		storageLocal.set('fatepoint', localData);
 	},
 
-	init({ version, phase } = {}) {
+	init({ version, phase, banner = 'weapon-event' } = {}) {
 		this._version = version;
 		this._phase = phase;
+		this._banner = banner;
 		const storedData = storageLocal.get('fatepoint');
 		this._db = Array.isArray(storedData) ? storedData : [];
-		this._recordIndex = this._db.findIndex((d) => d.phase === phase && d.version === version);
+		this._recordIndex = this._db.findIndex(({ phase: p, version: v, banner: b }) => {
+			return p === phase && v === version && b === banner;
+		});
 		return this;
 	},
 
-	set(point, selectedIndex) {
-		const { _recordIndex: i, _version: version, _phase: phase, _db: db } = this;
-		const newData = { version, phase, point, selected: selectedIndex };
+	set(point, selectedIndex, type = 'weapon') {
+		const { _recordIndex: i, _version: version, _phase: phase, _db: db, _banner: banner } = this;
+		const newData = { version, phase, banner, point, type, selected: selectedIndex };
+
 		if (i < 0) db.push(newData);
 		else db[i] = newData;
 
@@ -167,9 +171,9 @@ export const fatepointManager = {
 
 	getInfo() {
 		const { _recordIndex: i, _db: db } = this;
-		if (i < 0) return { selected: null, point: null };
-		const { selected, point } = db[i];
-		return { selected, point };
+		if (i < 0) return { selected: null, point: null, banner: null, type: null };
+		const { selected, point, type = 'weapon', banner = 'weapon-event' } = db[i];
+		return { selected, point, banner, type };
 	},
 
 	remove() {

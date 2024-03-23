@@ -28,8 +28,8 @@
 
 	export let bannerType = '';
 
-	$: event = bannerType.match('event');
-	$: balance = event ? $intertwined : $acquaint;
+	$: isEvent = bannerType.match(/(event|chronicled)/);
+	$: balance = isEvent ? $intertwined : $acquaint;
 	$: unlimitedWish = $wishAmount === 'unlimited';
 
 	const inTransition = (node, args) => {
@@ -128,7 +128,7 @@
 					<MyFund type="primogem" plusbutton>
 						{unlimitedWish ? '∞' : $primogem}
 					</MyFund>
-					<MyFund type={event ? 'intertwined' : 'acquaint'}>
+					<MyFund type={isEvent ? 'intertwined' : 'acquaint'}>
 						{unlimitedWish ? '∞' : balance}
 					</MyFund>
 				</div>
@@ -157,16 +157,18 @@
 				<img src={$assets['brand.png']} alt="Brand" crossorigin="anonymous" />
 			</div>
 
-			{#each $bannerList as { type, featured, character }, i}
-				<BannerButton
-					{type}
-					{featured}
-					{character}
-					index={i}
-					active={$activeBanner === i}
-					on:click={() => selectBanner(i)}
-				/>
-			{/each}
+			<div class="button-wrapper" style={$bannerList.length > 5 ? 'flex-wrap: wrap' : ''}>
+				{#each $bannerList as { type, featured, character, region }, i}
+					<BannerButton
+						{type}
+						{character}
+						index={i}
+						featured={featured || region}
+						active={$activeBanner === i}
+						on:click={() => selectBanner(i)}
+					/>
+				{/each}
+			</div>
 		</div>
 	{:else}
 		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }} />
@@ -247,7 +249,8 @@
 		align-items: center;
 	}
 
-	.banner-button {
+	.banner-button,
+	.button-wrapper {
 		text-align: center;
 		display: flex;
 		justify-content: center;
@@ -275,7 +278,7 @@
 		display: none;
 	}
 
-	:global(.mobile) .banner-button {
+	:global(.mobile) .button-wrapper {
 		flex-direction: column;
 		align-items: center;
 		width: 120px;
@@ -283,7 +286,6 @@
 		height: 100%;
 		justify-content: flex-start;
 		padding-top: 2.5rem;
-		z-index: -10;
 	}
 
 	:global(.mobile) .bg {
@@ -312,6 +314,11 @@
 			left: 50%;
 			transform: translateX(-50%);
 			margin-top: 0;
+		}
+	}
+	@media screen and (max-width: 975px) {
+		:global(main):not(.mobile) .button-wrapper {
+			flex-wrap: wrap;
 		}
 	}
 </style>

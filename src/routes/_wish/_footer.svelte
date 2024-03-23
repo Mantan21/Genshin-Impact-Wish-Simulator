@@ -14,7 +14,8 @@
 		multipull,
 		editorMode,
 		preloadVersion,
-		editID
+		editID,
+		chronicledCourse
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
@@ -30,7 +31,7 @@
 	export let bannerType = 'beginner';
 
 	$: isBeginner = bannerType === 'beginner';
-	$: isEvent = bannerType.match('event');
+	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: currencyUsed = isEvent ? $intertwined : $acquaint;
 	$: fateType = isEvent ? 'intertwined' : 'acquaint';
 	$: isUnlimited = $wishAmount === 'unlimited';
@@ -164,50 +165,55 @@
 				</ButtonGeneral>
 			</div>
 
-			<div class="right roll-button">
-				{#if !isBeginner}
-					<button
-						class="single wish-button"
-						on:click={handleSingleRollClick}
-						disabled={$onWish || !$readyToPull}
-					>
-						<div class="top">{$t('wish.rollButton', { values: { count: '×1' } })}</div>
-						<div class="bottom">
-							<Icon type={fateType} />
-							<span style="margin-left: 7px" class:red={currencyUsed < 1 && !isUnlimited}>
-								x 1
-							</span>
-						</div>
-					</button>
-				{/if}
-
-				<button
-					class="ten wish-button"
-					on:click={handleMultiRollClick}
-					disabled={$onWish || !$readyToPull}
-				>
-					{#if bannerType === 'beginner'}
-						<span class="discount">-20%</span>
+			{#if (bannerType === 'chronicled' && $chronicledCourse.selected) || bannerType !== 'chronicled'}
+				<div class="right roll-button">
+					{#if !isBeginner}
+						<button
+							class="single wish-button"
+							on:click={handleSingleRollClick}
+							disabled={$onWish || !$readyToPull}
+						>
+							<div class="top">{$t('wish.rollButton', { values: { count: '×1' } })}</div>
+							<div class="bottom">
+								<Icon type={fateType} />
+								<span style="margin-left: 7px" class:red={currencyUsed < 1 && !isUnlimited}>
+									x 1
+								</span>
+							</div>
+						</button>
 					{/if}
 
-					<div class="top">
-						{$t('wish.rollButton', { values: { count: `×${isBeginner ? 10 : $multipull}` } })}
-					</div>
-
-					<div class="bottom">
-						<Icon type={fateType} />
-						{#if isBeginner}
-							<span style="margin-left: 7px" class:red={currencyUsed < 8 && !isUnlimited}>
-								x 8
-							</span>
-						{:else}
-							<span style="margin-left: 7px" class:red={currencyUsed < $multipull && !isUnlimited}>
-								x {$multipull}
-							</span>
+					<button
+						class="ten wish-button"
+						on:click={handleMultiRollClick}
+						disabled={$onWish || !$readyToPull}
+					>
+						{#if bannerType === 'beginner'}
+							<span class="discount">-20%</span>
 						{/if}
-					</div>
-				</button>
-			</div>
+
+						<div class="top">
+							{$t('wish.rollButton', { values: { count: `×${isBeginner ? 10 : $multipull}` } })}
+						</div>
+
+						<div class="bottom">
+							<Icon type={fateType} />
+							{#if isBeginner}
+								<span style="margin-left: 7px" class:red={currencyUsed < 8 && !isUnlimited}>
+									x 8
+								</span>
+							{:else}
+								<span
+									style="margin-left: 7px"
+									class:red={currencyUsed < $multipull && !isUnlimited}
+								>
+									x {$multipull}
+								</span>
+							{/if}
+						</div>
+					</button>
+				</div>
+			{/if}
 		{:else}
 			<div class="left menu-button" />
 			<div class="right roll-button">

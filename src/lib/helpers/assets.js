@@ -19,6 +19,8 @@ export const itemList = () => {
 			pathList[`face/${keyNoExt}`] = src;
 		} else if (key.match(/splash-art/)) {
 			pathList[`splash-art/${keyNoExt}`] = src;
+		} else if (key.match(/wishcard/)) {
+			pathList[`wishcard/${keyNoExt}`] = src;
 		} else if (key.match(/art-nobg/)) {
 			pathList[`nobg/${keyNoExt}`] = src;
 		} else if (key.match(/banner-button/)) {
@@ -65,6 +67,7 @@ const images = [
 			'book-select-bg.webp',
 			'brand.png',
 			'button.webp',
+			'chronicled-mondstadt.webp',
 			'epitomized-bg.webp',
 			'epitomized-half.webp',
 			'epitomized-ribbon.webp',
