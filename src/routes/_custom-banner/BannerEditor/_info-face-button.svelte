@@ -62,7 +62,7 @@
 			{:else}
 				<img
 					class="placeholder"
-					src={$assets['face-placeholder.webp']}
+					src={$assets['placeholder-face.webp']}
 					alt="face placeholder"
 					crossorigin="anonymous"
 				/>

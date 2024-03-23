@@ -6,6 +6,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { activeVersion, assets, preloadVersion } from '$lib/store/app-stores';
 	import { imageCDN } from '$lib/helpers/assets';
+	import { lazyLoad } from '$lib/helpers/lazyload';
 
 	export let groupby = 'version';
 	export let groupName;
@@ -56,7 +57,13 @@
 			<div class:dual={chars?.length > 1}>
 				{#each chars as { character, bannerName, images }, i}
 					{#if isCustom}
-						<img src={imageCDN(images)} alt={character} crossorigin="anonymous" loading="lazy" />
+						<img
+							use:lazyLoad={imageCDN(images)}
+							data-placeholder={$assets['placeholder-general.webp']}
+							alt={character}
+							crossorigin="anonymous"
+							loading="lazy"
+						/>
 					{:else}
 						{#key bannerName}
 							<img
@@ -74,6 +81,7 @@
 			{#if !isCustom}
 				<div class="weapon">
 					<img
+						on:error={(e) => e.target.remove()}
 						src={$assets[`thumbnail/${weapons.bannerName}`]}
 						alt={getName(weapons.bannerName)}
 						crossorigin="anonymous"

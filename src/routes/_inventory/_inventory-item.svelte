@@ -3,6 +3,7 @@
 	import { assets } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 
+	export let noStars = false;
 	export let itemdata = {};
 	const {
 		rarity = 3,
@@ -41,7 +42,7 @@
 		{#if custom}
 			<img
 				use:lazyLoad={images?.faceURL}
-				data-placeholder={$assets['face-placeholder.webp']}
+				data-placeholder={$assets['placeholder-face.webp']}
 				alt={localName}
 				crossorigin="anonymous"
 			/>
@@ -51,7 +52,7 @@
 			{#key outfitName}
 				<img
 					use:lazyLoad={$assets[`face/${useOutfit ? outfitKey : name}`]}
-					data-placeholder={$assets['face-placeholder.webp']}
+					data-placeholder={$assets['placeholder-face.webp']}
 					alt={localName}
 					crossorigin="anonymous"
 				/>
@@ -72,11 +73,13 @@
 		{/if}
 	</picture>
 	<div class="caption">
-		<div class="star">
-			{#each Array(rarity) as _}
-				<i class="gi-star" />
-			{/each}
-		</div>
+		{#if !noStars}
+			<div class="star">
+				{#each Array(rarity) as _}
+					<i class="gi-star" />
+				{/each}
+			</div>
+		{/if}
 		<span>
 			{localName}
 		</span>
@@ -160,7 +163,7 @@
 	}
 	.element {
 		left: 0;
-		font-size: 2rem;
+		font-size: calc(0.2 * var(--item-width));
 	}
 	.qty {
 		right: 0;
@@ -202,7 +205,7 @@
 	}
 
 	img.claymore {
-		transform: rotate(18deg) scale(1.15) translateX(-1.5em);
+		transform: rotate(18deg) scale(1.15) translateX(-1em);
 	}
 
 	img.bow {

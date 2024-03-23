@@ -151,12 +151,13 @@
 	const handleSearch = (e) => {
 		groupby = 'version';
 		const queryValue = typeof e === 'string' ? e : e.target.value;
-		const query = queryValue.toLocaleLowerCase().trim().replace(/'/, '');
-		if (query.length < 1) return (dataToShow = allBanners);
+		query.set(queryValue);
+		const escapedQuery = queryValue.toLocaleLowerCase().trim().replace(/'/, '');
+		if (escapedQuery.length < 1) return (dataToShow = allBanners);
 
 		const check = (t) => {
 			const text = t.toLocaleLowerCase();
-			return text.replace(/_/g, '').replace(/-/g, ' ').includes(query);
+			return text.replace(/_/g, '').replace(/-/g, ' ').includes(escapedQuery);
 		};
 
 		const newArr = allBanners.map(([a, b]) => {
@@ -225,7 +226,8 @@
 		<div class="content" bind:this={content}>
 			<div id="content">
 				{#await loadData() then _}
-					{@const bn = customBanner[1].length < 1 ? dataToShow : [customBanner, ...dataToShow]}
+					{@const showCustom = customBanner[1].length > 0 && !$query}
+					{@const bn = showCustom ? [customBanner, ...dataToShow] : dataToShow}
 
 					{#if $isMobile}
 						{#each bn as [groupName, data]}
