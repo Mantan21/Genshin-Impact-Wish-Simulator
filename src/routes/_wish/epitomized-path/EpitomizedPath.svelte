@@ -17,8 +17,8 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
-	import Details from './details.svelte';
-	import Selector from './selector.svelte';
+	import ItemSelection from './_item-selection.svelte';
+	import Description from './_description.svelte';
 
 	let activeSection = 1;
 	let clientHeight;
@@ -120,11 +120,11 @@
 		</button>
 		<div class="container">
 			{#if !half || activeSection < 1}
-				<Details isChronicled={banner === 'chronicled'} />
+				<Description isChronicled={banner === 'chronicled'} />
 			{/if}
 
 			{#if (activeSection > 0 && half) || !half}
-				<Selector />
+				<ItemSelection />
 			{/if}
 		</div>
 

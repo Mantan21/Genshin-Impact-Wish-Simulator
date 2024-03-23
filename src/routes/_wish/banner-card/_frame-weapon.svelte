@@ -4,7 +4,7 @@
 	import { course, mobileMode } from '$lib/store/app-stores';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { highlightBannerName } from '$lib/helpers/nameText';
-	import EpitomizedButton from '../epitomized-path/_button.svelte';
+	import EpitomizedButton from '../epitomized-path/WeaponButton.svelte';
 	import Dropnotes from './__dropnotes.svelte';
 
 	export let featured = {};

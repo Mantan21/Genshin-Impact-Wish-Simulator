@@ -25,7 +25,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import NoticeMark from '$lib/components/NoticeMark.svelte';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
-	import EpitomizedButton from './epitomized-path/_button.svelte';
+	import EpitomizedButton from './epitomized-path/WeaponButton.svelte';
 	import BannerPublisher from '../_custom-banner/Publisher.svelte';
 
 	export let bannerType = 'beginner';
