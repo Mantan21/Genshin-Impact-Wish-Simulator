@@ -332,6 +332,11 @@
 		"limited": "期間限定イベント",
 		"permanent": "期限なし",
 		"alert": "※当祈願は「{wishName}」です。祈願回数の累計は「{wishName}」のみで数えられ、他の祈願とは別カウントされます。",
+		"designatable": "Designatable Items",
+		"targetList": "When the Designated Item is a 5-Star {itemType}, the list of 5-Star Items is as follows:",
+		"chronicledRate": "(If there are no guarantees or Chronicled Path in effect, the base probability of all characters or weapons will be evenly distributed.)",
+		"chronicledPeriod": "5-Star Designatable Items in This Period",
+		"chronicledCourse": "Chart a course towards one of the following 5-Star Items where the probability of it appearing in 5-Star Item Drops:",
 		"beginner": [
 			"初心者応援祈願は日時による期限がありません。当祈願はテイワットの新米旅人向けの応援祈願となります。当祈願では、10連で消耗する出会いの縁の数が<span>20%オフ</span>になります。なお、初回10連で<span>必ず</span>「{character}」が出現し、次の10連で必ず<span>他の</span>★4、またはそれ以上のキャラクターが出現します！当祈願は祈願回数の上限があります。お一人様<span>20連</span>限りとなります。20連を引き終えることで祈願終了になります。",
 			"※通常、全てのキャラクターと武器は基礎出現確率が適用されます。確率UPがある、または天井が発動した場合の確率は、該当する祈願の詳細説明をご確認ください。",
@@ -361,6 +366,19 @@
 			"今期のイベント祈願・「{bannerName}」において、★5武器の基礎出現確率は<span>0.700%</span>です。総合出現確率（天井を含めて）は<span>1.850%</span>です。最大<span>80</span>連祈願で必ず★5武器を獲得できます。<br/>★5武器が出現した時、<span>75.000%</span>の確率で今期のピックアップ武器「{featuredWeapon1}」、「{featuredWeapon2}」から1本を獲得できます。獲得した★5武器がピックアップ武器ではなかった場合、次に当祈願で★5武器を獲得した時に<span>必ず</span>ピックアップの★5武器を獲得できます。命定値が上限に達していない状況で、祈願で★5武器を獲得した場合、今期のピックアップ武器ごとの出現確率は均等です。<br/>今期のイベント祈願・「{bannerName}」では、「神鋳軌定」を使ってピックアップ★5武器を軌定できます。軌定武器の選択は今期のイベント祈願・「{bannerName}」期間中のみ有効です。<br/>今期のイベント祈願・「{bannerName}」において、「神鋳軌定」を使って武器を軌定した後に獲得した★5武器が軌定武器ではなかった場合、命定値を1点獲得します。命定値が<span>上限</span>に達した時、次に今期の祈願で★5武器を獲得した場合、<span>必ず</span>現在の軌定武器を獲得できます。現在の軌定武器を獲得した時、命定値が上限に達しているか否かに関わらず、<span>0</span>にリセットされ再カウントされます。<br/>「神鋳軌定」を使って武器を軌定していない場合、命定値は<span>累計されません</span>。<br/>軌定武器を変更またはキャンセルすることができます。現在の軌定武器を変更またはキャンセルした場合、命定値は<span>0</span>にリセットされ再カウントされます。<br/>※今期の祈願の命定値は今期のイベント祈願・「{bannerName}」期間中のみ有効です。今期の祈願が終了した後、命定値は<span>0</span>にリセットされます。",
 			"【★4アイテム】",
 			"今期のイベント祈願・「{bannerName}」において、★4アイテムの基礎出現確率は<span>6.000%</span>です。★4キャラクターの基礎出現確率は<span>3.000%</span>です。★4武器の基礎出現確率は<span>3.000%</span>です。★4アイテムの総合出現確率（天井を含めて）は<span>14.500%</span>です。最大<span>10</span>連祈願で必ず★4、またはそれ以上のアイテムを獲得できます。<span>10</span>連の確定枠で★4アイテムを獲得できる確率は<span>99.300%</span>、★5アイテムを獲得できる確率は<span>0.700%</span>です。 <br/>★4アイテムが出現した時、<span>75.000%</span>の確率で今期のピックアップ武器「{rateupWeapons}」から1本を獲得できます。獲得した★4アイテムがピックアップ武器ではなかった場合、次に当祈願で★4アイテムを獲得した時に<span>必ず</span>ピックアップの★4武器を獲得できます。祈願で獲得できる今期のピックアップ★4武器の出現確率は均等です。"
+		],
+		"chronicled": [
+			"Chronicled Wish \"{bannerName}\" is now available. During this event wish, the <span>event-exclusive</span> 5-star characters {featuredCharacter}, the <span>event-exclusive</span> 5-star weapons {featuredWeapon} will be available for a limited time.",
+			"※ In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
+			"〓Rules〓",
+			"5-Star Items",
+			"For Chronicled Wish \"{bannerName}\": Base probability of winning 5-star item = <span>0.600%</span>; consolidated probability of winning 5-star item (incl. guarantee) = <span>1.600%</span>; guaranteed to win 5-star item at least once per <span>90</span> attempts. For Chronicled Wish \"{bannerName}\", you can chart a course towards your chosen boosted 5-star character or weapon amongst all 5-star items with \"Chronicled Path.\" The choice of item will only be valid for this period of Chronicled Wish \"{bannerName}\".",
+			"※ When the Designated Item is a <span>5-Star Character</span>, the 5-star items you can obtain in the Wish are: <span>5-Star Characters</span>. When the Designated Item is a <span>5-Star Weapon</span>, the 5-star items you can obtain in the Wish are: <span>5-Star Weapons</span>.",
+			"When you obtain a 5-star item in this event wish, there is a <span>50.000%</span> chance it will be the Designated Item. If you obtain a 5-star item that was not your chosen item, you will receive 1 Fate Point. Once you have reached the <span>maximum amount</span> of Fate Points, the next 5-star item will be <span>guaranteed</span> to be your chosen item. Once you have obtained the chosen item, the number of Fate Points will reset to <span>0</span> whether or not you have reached maximum points, and you will have to accumulate them again.",
+			"After charting a course towards a Designated Item, you can change your choice, but doing so will reset the Fate Points to <span>0</span> and you will have to accumulate them again.",
+			"※ The Fate Points for this Wish are only valid for the current period of Chronicled Wish \"{bannerName}\". Once the Wish event is over, the number of Fate Points will reset to <span>0</span>, and you will have to accumulate them again.",
+			"4-Star Items",
+			"For Chronicled Wish \"{bannerName}\": Base probability of winning 4-star item = <span>5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>13.000%</span>; guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>."
 		],
 		"convertion": {
 			"fiveStar": "祈願で★5武器を獲得した時、同時に{starglitter}を10個獲得できます。",

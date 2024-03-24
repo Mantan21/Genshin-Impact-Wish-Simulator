@@ -17,7 +17,8 @@
 		get4StarItem,
 		get5StarItem,
 		getCharDetails,
-		getWpDetails
+		getWpDetails,
+		regionElement
 	} from '$lib/helpers/gacha/itemdrop-base';
 
 	import List from './_list.svelte';
@@ -30,12 +31,17 @@
 
 	let {
 		bannerName,
-		type,
 		stdver,
+		region,
+		type: banner,
 		character = '',
+		characters: ch = {},
+		weapons: wp = {},
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
+	const isChronicled = banner === 'chronicled';
+	const isWp = banner.match('weapon');
 	const { vision } = $isCustomBanner ? $customData : getCharDetails(character);
 
 	// Get Droplist
@@ -46,12 +52,13 @@
 	const list4star = get4StarItem({
 		phase,
 		version,
-		banner: type,
+		region,
+		banner,
 		type: 'all',
-		rateupNamelist: rateup
+		rateupNamelist: !isChronicled ? rateup : [...ch['4star'], ...wp['4star']]
 	});
 	rateup = rateup
-		.map((name) => (type.match('weapon') ? getWpDetails(name) : getCharDetails(name)))
+		.map((name) => (isWp ? getWpDetails(name) : getCharDetails(name)))
 		.map((val) => {
 			const item = { ...val };
 			item.rateup = true;
@@ -60,13 +67,15 @@
 	const drop4star = [...rateup, ...list4star];
 
 	// drop 5star
+	const rateup5Star = isWp ? featured.map(({ name }) => name) : [character];
 	const list5star = get5StarItem({
 		phase,
 		version,
 		stdver,
-		type: type === 'standard' ? 'all' : type.split('-')[0],
-		banner: type,
-		rateupItem: type.match('weapon') ? featured.map(({ name }) => name) : [character] || []
+		banner,
+		region,
+		type: banner.match(/standard|chronicled/) ? 'all' : banner.split('-')[0],
+		rateupItem: !isChronicled ? rateup5Star : [...ch['5star'], ...wp['5star']]
 	});
 
 	character = { ...($isCustomBanner ? $customData : getCharDetails(character)), rateup: true };
@@ -78,16 +87,16 @@
 			return item;
 		});
 
-	const rateup5 = type.match('character') ? [character] : weapons;
+	const rateup5 = banner.match('character') ? [character] : weapons;
 	const drop5star = [...(rateup5 || []), ...list5star];
 
 	// BannerName
 	const bannerSlug = getBannerName(bannerName).name;
-	const isStd = type === 'standard';
+	const isStd = banner === 'standard';
 	const defaultName = $t(`banner.${isStd ? 'wanderlust' : bannerSlug || 'beginner'}`);
 	bannerName = $isCustomBanner ? $customData.bannerName : defaultName;
 
-	const noPromo = type.match(/(standard|beginner)/);
+	const noPromo = banner.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;
 
 	// Click Handler
@@ -103,13 +112,19 @@
 	});
 </script>
 
-<Title {type} {vision} {bannerName} {tplVersion} />
+<Title type={banner} vision={regionElement(region) || vision} {bannerName} {tplVersion} />
 
 {#if tplVersion === 'v2'}
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		{#if !noPromo}
 			<div class="nav-item" class:active={activeContent === 1}>
-				<button on:click={() => select(1)}> {$t('details.promotional')} </button>
+				<button on:click={() => select(1)}>
+					{#if banner.match('chronicled')}
+						{$t('details.designatable')}
+					{:else}
+						{$t('details.promotional')}
+					{/if}
+				</button>
 			</div>
 		{/if}
 		<div class="nav-item" class:active={activeContent === 2}>
@@ -123,26 +138,44 @@
 	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
-				<PromotionalV2 data={{ weapons, character, bannerType: type, rateup }} />
+				<PromotionalV2
+					chronicledList={isChronicled ? drop5star : []}
+					data={{ weapons, character, bannerType: banner, rateup }}
+				/>
 			{:else if activeContent === 2}
 				<Description
-					bannerType={type}
+					bannerType={banner}
 					{bannerName}
 					{weapons}
 					{character}
 					{rateup}
+					{region}
+					{drop4star}
+					{drop5star}
 					tplVersion="v2"
 				/>
 			{:else if activeContent === 3}
-				<List {drop5star} {drop4star} {drop3star} bannerType={type} tplVersion="v2" />
+				<List {drop5star} {drop4star} {drop3star} bannerType={banner} tplVersion="v2" />
 			{/if}
 		</div>
 	</div>
 {:else}
-	<PromotionalV1 data={{ weapons, character, bannerType: type, rateup }} />
-	<Description bannerType={type} {bannerName} {weapons} {character} {rateup} />
+	<PromotionalV1
+		chronicledList={isChronicled ? drop5star : []}
+		data={{ weapons, character, bannerType: banner, rateup }}
+	/>
+	<Description
+		bannerType={banner}
+		{bannerName}
+		{weapons}
+		{character}
+		{rateup}
+		{region}
+		{drop4star}
+		{drop5star}
+	/>
 	<br />
-	<List {drop5star} {drop4star} {drop3star} bannerType={type} />
+	<List {drop5star} {drop4star} {drop3star} bannerType={banner} />
 {/if}
 
 <style>

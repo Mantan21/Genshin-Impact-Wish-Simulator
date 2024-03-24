@@ -11,6 +11,13 @@
 	let value5star;
 	let value4star;
 	let value3star;
+	const isChronicled = bannerType === 'chronicled';
+
+	const grouped5Star = {};
+	drop5star.forEach((d) => {
+		grouped5Star[d.type] = grouped5Star[d.type] || [];
+		grouped5Star[d.type].push(d);
+	});
 
 	if (bannerType === 'weapon-event') {
 		value5star = { singlePercentage: '0.700%', avgPercentage: '1.850%', rarity: 5 };
@@ -25,45 +32,64 @@
 
 <div class="list" class:v2={tplVersion === 'v2'}>
 	<h4>{$t('details.itemWishFor')}</h4>
-	<h3 class="star5">
-		<div class="star">
-			{#each Array(5) as i} <i class="gi-star" /> {/each}
-		</div>
-		<span>
-			{$t('details.probInfo', { values: value5star })}
-		</span>
-	</h3>
-	<div class="table">
-		<div>
-			<div class="row head">
-				<div class="cell">{$t('details.itemType')}</div>
-				<div class="cell">{$t('details.itemName')}</div>
-				<div class="cell">{$t('details.itemType')}</div>
-				<div class="cell">{$t('details.itemName')}</div>
+
+	{#each Object.keys(grouped5Star) as key}
+		{#if isChronicled}
+			<h5>
+				<i class="gi-primo-star" />
+				<span>
+					{@html $t('details.targetList', {
+						values: { itemType: `<b style="color:#bd6932">${$t(key)}</b>` }
+					})}
+				</span>
+			</h5>
+		{/if}
+
+		<h3 class="star5">
+			<div class="star">
+				{#each Array(5) as i} <i class="gi-star" /> {/each}
 			</div>
+			<span>
+				{$t('details.probInfo', { values: value5star })}
+			</span>
+		</h3>
 
-			<div class="body">
-				<div class="row">
-					{#each drop5star as { name, type, rateup }}
-						<div class="cell">
-							{$t(type || 'character')}
-						</div>
+		<div class="table">
+			<div>
+				<div class="row head">
+					<div class="cell">{$t('details.itemType')}</div>
+					<div class="cell">{$t('details.itemName')}</div>
+					<div class="cell">{$t('details.itemType')}</div>
+					<div class="cell">{$t('details.itemName')}</div>
+				</div>
 
-						{#if $isCustomBanner && rateup}
+				<div class="body">
+					<div class="row">
+						{#each grouped5Star[key] as { name, type, rateup }}
 							<div class="cell">
-								{name} <i class="gi-arrow-up" />
+								{$t(type || 'character')}
 							</div>
-						{:else}
-							<div class="cell">
-								{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
-								{#if rateup} <i class="gi-arrow-up" />{/if}
-							</div>
-						{/if}
-					{/each}
+
+							{#if $isCustomBanner && rateup}
+								<div class="cell">
+									{name} <i class="gi-arrow-up" />
+								</div>
+							{:else}
+								<div class="cell">
+									{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+									{#if rateup} <i class="gi-arrow-up" />{/if}
+								</div>
+							{/if}
+						{/each}
+					</div>
 				</div>
 			</div>
+
+			{#if isChronicled}
+				<h5>{$t('details.chronicledRate')}</h5>
+			{/if}
 		</div>
-	</div>
+	{/each}
 
 	<h3 class="star4">
 		<div class="star">
@@ -98,6 +124,9 @@
 				</div>
 			</div>
 		</div>
+		{#if isChronicled}
+			<h5>{$t('details.chronicledRate')}</h5>
+		{/if}
 	</div>
 
 	<h3 class="star3">
@@ -132,6 +161,9 @@
 				</div>
 			</div>
 		</div>
+		{#if isChronicled}
+			<h5>{$t('details.chronicledRate')}</h5>
+		{/if}
 	</div>
 </div>
 
@@ -194,7 +226,8 @@
 		background-color: #aabdc9;
 	}
 
-	h4 {
+	h4,
+	h5 {
 		color: #a28052;
 		font-weight: 500;
 		font-size: larger;
@@ -202,9 +235,17 @@
 		margin-bottom: 2%;
 	}
 
-	.v2 h4 {
+	.v2 h4,
+	.v2 h5 {
 		color: var(--text-color);
 		font-size: calc(0.015 * var(--content-width));
+	}
+
+	h5 {
+		margin: 1%;
+	}
+	h5 i {
+		color: #a28052;
 	}
 
 	.table {
@@ -212,6 +253,10 @@
 		width: 100%;
 		font-size: 0.9rem;
 	}
+	.v2 .table {
+		padding: 0 0 calc(0.02 * var(--content-width));
+	}
+
 	.row {
 		display: flex;
 		flex-wrap: wrap;
@@ -223,6 +268,9 @@
 	.row.head {
 		background-color: #dbd7d3;
 		font-family: var(--genshin-font);
+	}
+	.v2 .row.head {
+		background-color: #ede1ca;
 	}
 	.body .row {
 		border-top: 0;
@@ -259,5 +307,12 @@
 		border: solid #b5b2ae;
 		border-width: 0 0.07rem 0.07rem 0;
 		color: #a7865a;
+	}
+	.v2 .head .cell {
+		border-color: #d3bc8e;
+	}
+	.v2 .body .cell {
+		border-color: #d3bc8e;
+		color: #5b5453;
 	}
 </style>

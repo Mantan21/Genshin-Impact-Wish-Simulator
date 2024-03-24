@@ -103,32 +103,30 @@ export const get4StarItem = ({
 
 	// General Wish Result
 	let items;
+	const isChron = banner === 'chronicled';
+	const lsChars = isChron ? getAllChars(4) : char4starList(banner);
+	const lsWp = isChron ? getAllWeapons(4) : standardWeapons(4);
+
 	if (type == 'all') {
-		items = [...char4starList(banner), ...standardWeapons(4)];
+		items = [...lsChars, ...lsWp];
 	} else if (type === 'character') {
-		items = char4starList(banner);
+		items = lsChars;
 	} else if (type === 'weapon') {
-		items = standardWeapons(4);
+		items = lsWp;
 	} else {
 		const charRate = getRate(banner, 'charRate');
 		const { itemType } = prob([
 			{ itemType: 'char', chance: charRate },
 			{ itemType: 'wp', chance: 100 - charRate }
 		]);
-
-		const isWp = itemType === 'wp';
-		if (banner.match('chronicled')) {
-			const ls = isWp ? getAllWeapons(4) : getAllChars(4);
-			items = ls.filter(({ origin, name }) => origin === region || rateupNamelist.includes(name));
-		} else items = isWp ? standardWeapons(4) : char4starList(banner);
+		items = itemType === 'wp' ? lsWp : lsChars;
 	}
 
-	const filtered = filterByReleased(items, version, phase);
-	if (banner.match('chronicled')) return filtered; // chronicled Result
-
+	const result = filterByReleased(items, version, phase);
 	// General Result
-	const itemList = filtered.filter(({ name }) => !rateupNamelist.includes(name));
-	return itemList;
+	if (!isChron) return result.filter(({ name }) => !rateupNamelist.includes(name));
+	// chronicled Result
+	return result.filter(({ origin, name }) => origin === region || rateupNamelist.includes(name));
 };
 
 const std5StarCharlist = (stdver = 1, includes = []) => {

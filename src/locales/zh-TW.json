@@ -332,6 +332,11 @@
 		"limited": "限時活動",
 		"permanent": "永久",
 		"alert": "※ 本祈願屬於「{wishName}」，其祈願次數保底會一直累計在「{wishName}」中，與其他祈願的祈願次數保底相互獨立計算，互不影響。",
+		"designatable": "Designatable Items",
+		"targetList": "When the Designated Item is a 5-Star {itemType}, the list of 5-Star Items is as follows:",
+		"chronicledRate": "(If there are no guarantees or Chronicled Path in effect, the base probability of all characters or weapons will be evenly distributed.)",
+		"chronicledPeriod": "5-Star Designatable Items in This Period",
+		"chronicledCourse": "Chart a course towards one of the following 5-Star Items where the probability of it appearing in 5-Star Item Drops:",
 		"beginner": [
 			"初行者推薦祈願為<span>永久</span>性祈願活動，是面向新加入提瓦特大陸的旅行者的推薦祈願。 在本祈願內，十連所消耗的相遇之緣數量可享8折優惠，且首次十連必會獲取“{character}”，第二次十連必會獲取4星或以上的角色！ 本祈願存在祈願次數上限，最高為<span>20</span>次，抽取20次後<span>本活動祈願介面將關閉</span>。",
 			"※一般情況下所有角色或武器均適用基礎機率，如觸發機率UP、保底等以具體規則為準。",
@@ -361,6 +366,19 @@
 			"在本期「{bannerName}」活動祈願中，5星武器祈願的基礎機率為<span>0.700%</span>，綜合機率（含保底）為<span>1.850%</span>，最多 <span>80</span>次祈願必定能透過保底獲取5星角色。 當祈願獲取到5星角色時，有<span>75.000%</span>的機率為本期5星UP武器「{featuredWeapon1}」、「{featuredWeapon2}」。 如果本次祈願獲取的5星角色非本期5星UP武器，下次祈願獲取的5星武器<span>必定</span>為本期5星UP武器。 <br/>在未通過命定值達到滿值獲取定軌武器的情況下，當祈願獲取到5星UP物品時，每把本期5星UP武器的獲取機率均等。 <br/>在本期「{bannerName}」活動祈願中，可使用「神鑄定軌」對本期5星UP武器進行定軌，定軌武器的選擇僅在本期「{bannerName}」 活動祈願中生效。 <br/>在本期「{bannerName}」活動祈願中，使用「神鑄定軌」定軌武器後，當取得到的5星武器為非目前定軌武器時，獲得1點命定值 ，命定值達到<span>滿值</span>後，在本祈願中獲得的下一把5星武器<span>必定</span>為當前定軌武器。 當取得目前定軌武器時，無論目前命定值是否達到滿值，都會重設為<span>0</span>，重新累積。 <br/>未使用「神鑄定軌」定軌武器時，將<span>不會</span>累積命定值。 <br/>定軌武器可進行更換或取消。 更換或取消目前定軌武器時，命定值將會重設為<span>0</span>，重新累積。 <br/>※本祈願中的命定值僅在本期「{bannerName}」活動祈願中生效，祈願結束後命定值將會重置為<span>0</span>，重新 累計。",
 			"【4星物品】",
 			"在本期「{bannerName}」活動祈願中，4星物品祈願的基礎機率為<span>6.000%</span>，4星角色祈願的基礎機率為<span>3.000%</span> ，4星武器祈願的基礎機率為<span>3.000%</span>，4星物祈願的綜合機率（含保底）為<span>14.500%</span>。 最多10次祈願必定能透過保底獲取4星或以上物品，透過保底獲取4星物品的機率為99.300%，獲取5星物品的機率為0.700%。 <br/> 當祈願獲取到4星物品時，有<span>75.000%</span>的機率為本期4星UP武器{rateupWeapons}中的一個。 如果本次祈願獲取的4星物品非本期4星UP武器，下次祈願獲取的4星物品<span>必定</span>為本期4星UP武器。 當祈願獲取到4星UP物品時，每把本期4星UP武器的獲取機率均等。"
+		],
+		"chronicled": [
+			"Chronicled Wish \"{bannerName}\" is now available. During this event wish, the <span>event-exclusive</span> 5-star characters {featuredCharacter}, the <span>event-exclusive</span> 5-star weapons {featuredWeapon} will be available for a limited time.",
+			"※ In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
+			"〓Rules〓",
+			"5-Star Items",
+			"For Chronicled Wish \"{bannerName}\": Base probability of winning 5-star item = <span>0.600%</span>; consolidated probability of winning 5-star item (incl. guarantee) = <span>1.600%</span>; guaranteed to win 5-star item at least once per <span>90</span> attempts. For Chronicled Wish \"{bannerName}\", you can chart a course towards your chosen boosted 5-star character or weapon amongst all 5-star items with \"Chronicled Path.\" The choice of item will only be valid for this period of Chronicled Wish \"{bannerName}\".",
+			"※ When the Designated Item is a <span>5-Star Character</span>, the 5-star items you can obtain in the Wish are: <span>5-Star Characters</span>. When the Designated Item is a <span>5-Star Weapon</span>, the 5-star items you can obtain in the Wish are: <span>5-Star Weapons</span>.",
+			"When you obtain a 5-star item in this event wish, there is a <span>50.000%</span> chance it will be the Designated Item. If you obtain a 5-star item that was not your chosen item, you will receive 1 Fate Point. Once you have reached the <span>maximum amount</span> of Fate Points, the next 5-star item will be <span>guaranteed</span> to be your chosen item. Once you have obtained the chosen item, the number of Fate Points will reset to <span>0</span> whether or not you have reached maximum points, and you will have to accumulate them again.",
+			"After charting a course towards a Designated Item, you can change your choice, but doing so will reset the Fate Points to <span>0</span> and you will have to accumulate them again.",
+			"※ The Fate Points for this Wish are only valid for the current period of Chronicled Wish \"{bannerName}\". Once the Wish event is over, the number of Fate Points will reset to <span>0</span>, and you will have to accumulate them again.",
+			"4-Star Items",
+			"For Chronicled Wish \"{bannerName}\": Base probability of winning 4-star item = <span>5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>13.000%</span>; guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>."
 		],
 		"convertion": {
 			"fiveStar": "祈願獲得5星武器時，會同時獲得10個{starglitter}作為副產物；",

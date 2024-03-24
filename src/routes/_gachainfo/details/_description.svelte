@@ -3,6 +3,7 @@
 	import { APP_TITLE } from '$lib/env';
 	import { customData, isCustomBanner } from '$lib/store/app-stores';
 	import { highlightBannerName } from '$lib/helpers/nameText';
+	import { regionElement } from '$lib/helpers/gacha/itemdrop-base';
 
 	export let tplVersion = 'v1';
 	export let bannerType;
@@ -10,6 +11,8 @@
 	export let rateup;
 	export let weapons;
 	export let character;
+	export let drop5star = [];
+	export let region = null;
 
 	const charNameAndTitle = (name, vision) => {
 		const element = `(${$t(vision)})`;
@@ -55,6 +58,16 @@
 		return translated.join('');
 	};
 
+	const getRateupChron = (itemType) => {
+		const list = drop5star.filter(({ type }) => type === itemType);
+		const getItem = itemType === 'weapon' ? getFeaturedWeapon : getFeaturedChars;
+		const arrayString = list.map(({ name, weaponType: type, vision }) => {
+			return getItem({ name, type, vision });
+		});
+		const str = arrayString.join(',');
+		return str;
+	};
+
 	const valuesToToChange = {
 		starglitter: `<span class="starglitter"> ${$t('shop.item.starglitter')}</span>`,
 		stardust: `<span class="stardust"> ${$t('shop.item.stardust')}</span>`,
@@ -87,17 +100,20 @@
 
 <div class="description" class:v2={tplVersion === 'v2'}>
 	{#if tplVersion === 'v2'}
-		<h2><span>{$t('details.wishDetails')} </span> <span class="line" /></h2>
+		<h2>
+			<span>{$t('details.wishDetails')} </span> <span class="line" />
+		</h2>
 	{/if}
 
 	{#if bannerType === 'beginner'}
 		<h3>{$t('details.beginnerInfo')}</h3>
-	{:else if bannerType.match('event')}
+	{:else if bannerType.match(/event|chronicled/)}
 		<h3>{$t('details.limited')}</h3>
 	{:else}
 		<h3>{$t('details.permanent')}</h3>
 	{/if}
 
+	<!-- Beginner Wish Description -->
 	{#if bannerType === 'beginner'}
 		{@const { name, vision } = character}
 		{#each $json('details.beginner') as text}
@@ -112,6 +128,8 @@
 				})}
 			</p>
 		{/each}
+
+		<!-- Standard Wish Description -->
 	{:else if bannerType === 'standard'}
 		{#each $json('details.standard') as text}
 			<p>
@@ -120,6 +138,8 @@
 				})}
 			</p>
 		{/each}
+
+		<!-- Character Wish Description -->
 	{:else if bannerType === 'character-event'}
 		{#each $json('details.events') as text}
 			<p>
@@ -132,6 +152,8 @@
 				})}
 			</p>
 		{/each}
+
+		<!-- Weapon Wish Description -->
 	{:else if bannerType === 'weapon-event'}
 		{#each $json('details.weapons') as text}
 			<p>
@@ -145,10 +167,24 @@
 				})}
 			</p>
 		{/each}
+
+		<!-- Chronicled Wish Description -->
+	{:else if bannerType === 'chronicled'}
+		{#each $json('details.chronicled') as text}
+			<p>
+				{@html $t(text, {
+					values: {
+						bannerName: highlightBannerName(bannerName, regionElement(region)),
+						featuredCharacter: getRateupChron('character'),
+						featuredWeapon: getRateupChron('weapon')
+					}
+				})}
+			</p>
+		{/each}
 	{/if}
 
 	<p>
-		{#if bannerType.match(/(weapon|standard)/)}
+		{#if bannerType.match(/(weapon|standard|chronicled)/)}
 			{@html convertion('fiveStar')}
 		{/if}
 		{@html convertion('fourStar')}

@@ -5,6 +5,7 @@
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import Iklan from '$lib/components/Iklan.svelte';
 
+	export let chronicledList = [];
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
 	const isWP = bannerType === 'weapon-event';
@@ -12,7 +13,7 @@
 </script>
 
 {#if bannerType.match('event')}
-	<h2><span> {$t('details.increasedRate')} </span> <span class="line" /></h2>
+	<h2><span> {$t('details.increasedRate')} </span></h2>
 
 	<h3 class="star5">
 		<div class="star">
@@ -66,7 +67,7 @@
 		{:else}
 			<div class="name">
 				{#each weapons as { name }}
-					<span style="color: #bd6932;">{$t(name)}</span>
+					<span class="weapon-flat">{$t(name)}</span>
 				{/each}
 			</div>
 			<div class="pic">
@@ -156,6 +157,50 @@
 			{/if}
 		</div>
 	</div>
+
+	<!-- Chronicled banner -->
+{:else if bannerType.match('chronicled')}
+	<h2>
+		{$t('details.chronicledCourse')} <strong class="weapon-flat">50.000%</strong>
+	</h2>
+
+	<h3 class="star5">
+		<div class="star">
+			{#each Array(5) as i} <i class="gi-star" /> {/each}
+		</div>
+		<span> {$t('details.chronicledPeriod')} </span>
+	</h3>
+
+	<div class="row">
+		<div class="name">
+			{#each chronicledList as { name, vision, type }}
+				<span class="{vision || 'weapon'}-flat">
+					{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+				</span>
+			{/each}
+		</div>
+
+		<div class="pic">
+			{#each chronicledList as { name, vision, type }}
+				<div class="pic-item">
+					<picture class="star5" style="background-image:url('{bg}');">
+						<i class="gi-{vision} {vision} icon-gradient filter-drop" />
+						<img
+							use:lazyLoad={type === 'weapon' ? $assets[name] : $assets[`face/${name}`]}
+							alt={$t(`${name}.name`)}
+							crossorigin="anonymous"
+						/>
+					</picture>
+					<span class="stars">
+						{#each Array(5) as i}
+							<i class="gi-star" />
+						{/each}
+					</span>
+					<caption>Lv.1</caption>
+				</div>
+			{/each}
+		</div>
+	</div>
 {/if}
 
 <style>
@@ -170,14 +215,6 @@
 	h2 {
 		font-size: calc(0.015 * var(--content-width));
 		padding: calc(0.007 * var(--content-width)) 0;
-		display: flex;
-	}
-
-	h2 span {
-		color: var(--text-color);
-		width: fit-content;
-		white-space: nowrap;
-		padding-right: 1rem;
 	}
 
 	h3 {
@@ -200,6 +237,9 @@
 	h3.star4 {
 		background-color: #b5a8c9;
 	}
+	.weapon-flat {
+		color: #bd6932;
+	}
 
 	.row {
 		display: flex;
@@ -212,7 +252,7 @@
 	.name span {
 		font-size: calc(0.014 * var(--content-width));
 		display: block;
-		padding: 1% 0;
+		padding: 2% 0;
 	}
 	.pic {
 		flex-basis: 65%;

@@ -4,6 +4,7 @@
 	import { assets, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 
+	export let chronicledList = [];
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
 	const isWP = bannerType === 'weapon-event';
@@ -86,7 +87,43 @@
 			</div>
 		{/each}
 	{/if}
+
+	<!-- Chronicled Banner -->
+{:else if bannerType.match('chronicled')}
+	<h2 class="chartcourse">
+		<span style="white-space: wrap;">
+			{$t('details.chronicledCourse')} <strong class="weapon-flat">50.000%</strong>
+		</span> <span class="line" />
+	</h2>
+
+	<h3 class="star5">
+		<div class="star">
+			{#each Array(5) as i} <i class="gi-star" /> {/each}
+		</div>
+		<span> {$t('details.chronicledPeriod')} </span>
+	</h3>
+
+	{#each chronicledList as { name, type }}
+		<div class="character-card star5 weapons">
+			<picture style="background-image:url('{$assets['5star-bg.webp']}')">
+				{#if type === 'weapon'}
+					<img src={$assets[name]} alt={$t(name)} class={type} crossorigin="anonymous" />
+				{:else}
+					<img
+						src={$assets[`face/${name}`]}
+						alt={$t(`${name}.name`)}
+						class={type}
+						crossorigin="anonymous"
+					/>
+				{/if}
+			</picture>
+			<caption class="name">
+				{type === 'weapon' ? $t(name) : $t(`${name}.name`)}
+			</caption>
+		</div>
+	{/each}
 {/if}
+
 <h2><span>{$t('details.wishDetails')} </span> <span class="line" /></h2>
 
 <style>
@@ -109,6 +146,8 @@
 		font-weight: 500;
 		padding: 1rem 0;
 		margin: 1.5rem 0 0.5rem;
+	}
+	h2:not(.chartcourse) {
 		display: flex;
 	}
 	:global(.mobile) h2 {
