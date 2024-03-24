@@ -4,6 +4,7 @@
 	import { t } from 'svelte-i18n';
 	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { getBannerName, getName } from '$lib/helpers/nameText';
+	import { playSfx } from '$lib/helpers/audio/audio';
 
 	export let v2 = false;
 	export let banner = 'beginner';
@@ -41,7 +42,8 @@
 	const navigate = getContext('navigate');
 	const search = (bannerName) => {
 		query.set(getName(bannerName));
-		navigate('allbanners');
+		navigate('allbanners', false);
+		playSfx();
 	};
 </script>
 
@@ -83,12 +85,14 @@
 						<div class="cell cell3">{time}</div>
 						<div class="cell cell4">
 							{#if bannerName}
-								{@const bn = getBannerName(bannerName).name}
-								{#if custom || !bn}
+								{@const { name } = getBannerName(bannerName)}
+								{#if banner.match('beginner')}
+									{$t('banner.beginner')}
+								{:else if custom || !name}
 									<span> {bannerName} </span>
-								{:else if banner.match('event')}
+								{:else if banner.match(/event|chronicled/)}
 									<a href="/" on:click|preventDefault={() => search(bannerName)}>
-										{@html $t(`banner.${bn}`)}
+										{@html $t(`banner.${name}`)}
 									</a>
 								{:else}
 									{$t(`banner.wanderlust`)}

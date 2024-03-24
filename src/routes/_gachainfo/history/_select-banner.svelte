@@ -10,7 +10,7 @@
 	export let banner;
 	let showSelectList = false;
 
-	const list = ['beginner', 'character-event', 'weapon-event', 'standard'];
+	const list = ['beginner', 'character-event', 'weapon-event', 'chronicled', 'standard'];
 	$: nowOpenIndex = list.findIndex((type) => type === banner.toLocaleLowerCase());
 	$: selected = nowOpenIndex < 0 ? 2 : nowOpenIndex;
 

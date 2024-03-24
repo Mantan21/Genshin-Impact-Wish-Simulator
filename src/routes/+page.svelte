@@ -82,7 +82,7 @@
 	setContext('handleMenu', handleMenu);
 
 	// Page Navigation
-	const navigate = (page) => {
+	const navigate = (page, updateState = true) => {
 		let beforeNavigate = pageActive;
 		pageActive = page;
 		showMenu = false;
@@ -91,6 +91,7 @@
 		if (beforeNavigate === pageActive) return;
 		hotkeys.deleteScope(beforeNavigate);
 
+		if (!updateState) return;
 		if (beforeNavigate !== 'index') return browserState.back();
 		browserState.set(page);
 	};
