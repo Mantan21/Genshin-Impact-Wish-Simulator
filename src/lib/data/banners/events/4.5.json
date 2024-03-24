@@ -35,6 +35,18 @@
 						"featured": { "l": 47, "t": 73, "w": 28 },
 						"rateup": { "l": 77, "b": 19 }
 					}
+				},
+				"chronicled": {
+					"bannerName": "ode-to-the-dawn-breeze-1",
+					"region": "mondstadt",
+					"characters": {
+						"5star": ["eula", "albedo", "klee"],
+						"4star": []
+					},
+					"weapons": {
+						"5star": ["beacon-of-the-reed-sea", "song-of-broken-pines", "hunter_s-path"],
+						"4star": ["rust", "lion_s-roar", "rainslasher", "eye-of-perception", "dragon_s-bane"]
+					}
 				}
 			}
 		}

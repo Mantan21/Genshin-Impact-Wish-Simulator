@@ -440,6 +440,11 @@
 				"Add New Weapon: <b> Uraku Misugiri (5★)</b>",
 				"Add <strong> Arataki Itto 3rd Rerun </strong> Banner"
 			]
+		},
+		{
+			"featured": true,
+			"date": "24 Mar 2024",
+			"description": ["Add New Banner: <b>Chronicled Wish</b>"]
 		}
 	]
 }
