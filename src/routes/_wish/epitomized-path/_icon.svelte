@@ -1,10 +1,15 @@
 <script>
-	export let active = false;
+	export let point = 0;
+	export let steps = 1;
 	export let blank = false;
 	export let responsive = false;
 </script>
 
-<div class:fixedSize={!responsive} class:active>
+<div
+	class:fixedSize={!responsive}
+	class:full={point >= steps}
+	class:half={point >= steps / 2 && point < steps}
+>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		xml:space="preserve"
@@ -15,6 +20,13 @@
 		viewBox="0 0 508847 506460"
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 	>
+		<defs>
+			<linearGradient id="halfFilled">
+				<stop offset="50%" stop-color="transparent" />
+				<stop offset="50%" stop-color="#62c5ff" />
+			</linearGradient>
+		</defs>
+
 		<g id="Layer_x0020_1">
 			<metadata id="CorelCorpID_0Corel-Layer" />
 			<circle class="fil0" cx="254424" cy="253230" r="235000" />
@@ -54,7 +66,7 @@
 </div>
 
 <style>
-	.active svg {
+	.full svg {
 		filter: drop-shadow(0 0 0.5rem rgb(0, 183, 255));
 	}
 
@@ -78,9 +90,14 @@
 	}
 	.fil3 {
 		fill: transparent;
+		transform: rotate(90deg);
+		transform-origin: center;
 	}
-	.active .fil3 {
+	.full .fil3 {
 		fill: #62c5ff;
+	}
+	.half .fil3 {
+		fill: url(#halfFilled);
 	}
 	.fil0 {
 		fill: #a0907d;

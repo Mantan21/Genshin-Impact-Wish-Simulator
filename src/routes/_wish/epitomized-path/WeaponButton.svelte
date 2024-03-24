@@ -40,7 +40,7 @@
 		bind:clientHeight={buttonHeight}
 	>
 		<NoticeMark name="fatepoint{patch}-{phase}" />
-		<EpitomizedIcon active={$course.point === 2} />
+		<EpitomizedIcon point={$course.point} steps="2" />
 		<div class="point-number">
 			{#if $course.selected !== null}
 				<span>{$course.point}</span>/2

@@ -20,7 +20,7 @@
 <div class="courseActive">
 	<button class="box" on:click={openDetail}>
 		<div class="icon" class:active={point > 0}>
-			<EpitomizedIcon blank responsive active={point > 0} />
+			<EpitomizedIcon blank responsive steps="1" {point} />
 			<picture class="{type} {weaponType}">
 				<img {src} alt="Item Icon" />
 			</picture>
