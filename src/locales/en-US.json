@@ -169,7 +169,7 @@
 		"details": "Details",
 		"rules": "Chronicled Path Rules",
 		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
-		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"currentSelection": "Current Selection: 5-Star {itemType} wish",
 		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
 		"cancelPrompt": "Do you wish to cancel your curent Course ?",
 		"cancelDesc": "Cancelation will reset your accumulated Fate Points",

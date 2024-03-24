@@ -169,7 +169,7 @@
 		"details": "Details",
 		"rules": "Chronicled Path Rules",
 		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
-		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"currentSelection": "Current Selection: 5-Star {itemType} wish",
 		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
 		"cancelPrompt": "Bạn có muốn huỷ định chuẩn vũ khí này không?",
 		"cancelDesc": "Huỷ bỏ sẽ đặt lại điểm vận mệnh của bạn",

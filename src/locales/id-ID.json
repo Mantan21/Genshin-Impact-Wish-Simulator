@@ -169,7 +169,7 @@
 		"details": "Detail",
 		"rules": "Penjelasan Chronicled Path",
 		"chartChronicled": "Kamu dapat menentukan pilihan untuk Karakter atau Senjata berikut",
-		"currentSelection": "Pilihan Saat Ini: 5-Star {itemType}",
+		"currentSelection": "Pilihan Saat Ini: Permohonan {itemType} 5★",
 		"dropType": "Hanya {itemType} 5* yang dapat diperoleh dari permohonan",
 		"cancelPrompt": "Apakah kamu ingin membatalkan pilihanmu saat ini ?",
 		"cancelDesc": "Pembatalan akan me-reset akumulasi Poin Takdir",
