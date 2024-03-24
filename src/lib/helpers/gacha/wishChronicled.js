@@ -1,7 +1,7 @@
 import { chronicledCourse } from '$lib/store/app-stores';
 import { fatepointManager } from '../dataAPI/api-localstore';
 import { get3StarItem, get4StarItem, get5StarItem, rand } from './itemdrop-base';
-import { getRate, prob } from './probabilities';
+import { getChronicledRate, prob } from './probabilities';
 
 const fatepoint = {
 	init({ version, phase }) {
@@ -85,11 +85,10 @@ const chronicledWish = {
 
 			// choose random item
 			if (!useRateup) {
-				const baseChance = 100 / droplist.length;
-				const selectedRate = getRate('chronicled', 'selectedRate') || baseChance;
-				const nonTargetRate = (100 - selectedRate) / (droplist.length - 1);
+				const { targetRate, nonTargetRate, baseRate } = getChronicledRate(droplist);
 				const rateList = droplist.map(({ name }) => {
-					const chance = name === selected ? selectedRate : nonTargetRate;
+					const targetChance = name === selected ? targetRate : nonTargetRate;
+					const chance = !selected ? baseRate : targetChance;
 					return { name, chance };
 				});
 
@@ -112,3 +111,4 @@ const chronicledWish = {
 };
 
 export default chronicledWish;
+

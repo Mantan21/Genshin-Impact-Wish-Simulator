@@ -59,7 +59,7 @@
 >
 	<div class="back" on:mousedown|self={openRateEditor}>
 		{#if editor}
-			<ProbEditor {type} {fullscreenEditor} />
+			<ProbEditor {fullscreenEditor} element={vision} />
 		{/if}
 	</div>
 	<div class="front">

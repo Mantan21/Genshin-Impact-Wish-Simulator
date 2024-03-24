@@ -4,6 +4,19 @@ import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
 import { getRate, prob } from './probabilities';
 import { guaranteedStatus } from '../dataAPI/api-localstore';
 
+export const regionElement = (region) => {
+	const base = {
+		mondstadt: 'anemo',
+		liyue: 'geo',
+		inazuma: 'electro',
+		sumeru: 'dendro',
+		fontaine: 'hydro',
+		natlan: 'pyro',
+		snezhnaya: 'cryo'
+	};
+	return base[region];
+};
+
 const standardWeapons = (star, includes = []) => {
 	return getAllWeapons(star).filter(({ limited, name }) => !limited || includes.includes(name));
 };

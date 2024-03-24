@@ -36,14 +36,13 @@ export const getRate = (banner, key) => {
 		return initial[key];
 	}
 
-	banner = 'character-event';
 	const initial = probabilityRates[banner];
 	const local = localrate.get(banner);
-	if (!(local[key] || local[key] >= 0)) return initial[key];
+	if (!(local[key] || local[key] >= 0)) return initial[key] || 0;
 
 	const val = parseFloat(local[key]);
-	if (isNaN(val)) return local[key];
-	return val;
+	if (isNaN(val)) return local[key] || 0;
+	return val || 0;
 };
 
 export const setRate = (banner, key, val) => {
@@ -57,4 +56,11 @@ export const setRate = (banner, key, val) => {
 	}
 
 	localrate.set(banner, local);
+};
+
+export const getChronicledRate = (droplist) => {
+	const baseRate = 100 / droplist.length;
+	const targetRate = getRate('chronicled', 'selectedRate') || baseRate;
+	const nonTargetRate = (100 - targetRate) / (droplist.length - 1);
+	return { targetRate, nonTargetRate, baseRate };
 };

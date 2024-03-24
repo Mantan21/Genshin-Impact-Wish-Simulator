@@ -9,20 +9,10 @@
 		activeVersion
 	} from '$lib/store/app-stores';
 	import { fatepointManager } from '$lib/helpers/dataAPI/api-localstore';
-	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import { getCharDetails, getWpDetails, regionElement } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Artwork from './artwork.svelte';
 	import TextLayer from './textLayer.svelte';
-
-	const regionElements = {
-		mondstadt: 'anemo',
-		liyue: 'geo',
-		inazuma: 'electro',
-		sumeru: 'dendro',
-		fontaine: 'hydro',
-		natlan: 'pyro',
-		snezhnaya: 'cryo'
-	};
 
 	const chronicled = $bannerList[$activeBanner];
 	const { region, characters } = chronicled;
@@ -33,7 +23,7 @@
 	$: selectedType = pickedType || type || 'character';
 	$: isWp = selectedType === 'weapon';
 	$: details = isWp ? getWpDetails(selectedItem) : getCharDetails(selectedItem);
-	$: element = details.vision || regionElements[region];
+	$: element = details.vision || regionElement(region);
 	$: courseData = { selected, type, weaponType: details.weaponType, point };
 
 	setContext('itemPicker', (picked) => {
