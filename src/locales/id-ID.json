@@ -35,6 +35,7 @@
 		"beginner": "Permohonan Pemula",
 		"wanderlust": "Wanderlust Invocation",
 		"epitome-invocation": "Epitome Invocation",
+		"ode-to-the-dawn-breeze": "Balada Angin Fajar",
 		"adrift-in-the-harbor": "Misteri Keabadian",
 		"auric-blaze": "Kilauan Bara Api Surya",
 		"azure-excursion": "Ketenangan Riak Air",
@@ -80,7 +81,7 @@
 		"winRate": "Probabilitas mendapat item RateUP:",
 		"charRate": "Probabilitas mendapat Karakter dibanding Senjata",
 		"nonRateup": "(Item 4★ saat kalah)",
-		"selectedRate": "Probabilitas mendapat senjata terpilih:",
+		"selectedRate": "Probabilitas mendapat {itemType} terpilih:",
 		"guaranteedSystem": "Sistem Jaminan",
 		"backToDefault": "Pengaturan Default",
 		"resetPrompt": "Apakah kamu yakin akan mereset pengaturan probabilitas untuk <b>\"{banner}\"</b>?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Buat Bannermu Sendiri",
+		"byTraveler": "Banner dari Traveler",
 		"deletePrompt": "Kamu yakin untuk menghapus banner ini ?",
 		"ownerDeleteNote": "Jika kamu telah membagikan banner ini secara publik, Traveler tidak akan dapat mengakses banner ini lagi",
 		"userDeleteNote": "Riwayat permohonan tidak akan dihapus dengan aksi ini, tetapi kamu tidak akan bisa melakukan permohonan pada banner ini lagi",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Tidak dapat menemukan Target Export, silahkan menekan tombol export kembali!"
 	},
+	"epitomizedPath": {
+		"heading": "Epitomized Path",
+		"fatePoint": "Poin Takdir",
+		"confirm": "Konfirmasi Pilihan",
+		"viewDetails": "Lihat Detail",
+		"details": "Detail",
+		"rules": "Penjelasan Chronicled Path",
+		"chartChronicled": "Kamu dapat menentukan pilihan untuk Karakter atau Senjata berikut",
+		"currentSelection": "Pilihan Saat Ini: 5-Star {itemType}",
+		"dropType": "Hanya {itemType} 5* yang dapat diperoleh dari permohonan",
+		"cancelPrompt": "Apakah kamu ingin membatalkan pilihanmu saat ini ?",
+		"cancelDesc": "Pembatalan akan me-reset akumulasi Poin Takdir",
+		"selectWeapon": "Senjata yang Dipilih",
+		"chartCourseOf": "Pilih {target}",
+		"cancelCourse": "Batalkan Pilihan",
+		"chartCourse": "Pilih",
+		"courseSetFor": "Pilihan Ditentukan untuk: {selectedCourse}",
+		"setFor": "Pilihan ditentukan untuk: ",
+		"notSetYet": "Belum Menentukan Pilihan",
+		"description": [
+			"\"Epitomized Path\" adalah sistem yang termasuk dalam \"Epitome Invocation\" ini:",
+			"Setelah kamu menentukan senjata pilihanmu, jika kamu <span> menerima senjata bintang 5 yang bukan pilihanmu</span>, kamu akan mendapatkan 1 poin takdir.",
+			"Setelah kamu mengumpulkan Poin Takdir yang cukup, senjata bintang 5 berikutnya akan menjadi senjata yang kamu pilih melalui \"Epitomized Path\"",
+			"Point Takdir kamu <span> akan di-reset setelah mendapatkan senjata \"Epitomized Path\"</span> dalam \"Epitome Invocation\" ini.",
+			"Jika kamu tidak memilih senjata, Poin Takdir tidak akan terkumpul dari Permohonanmu",
+			"Kamu dapat mengubah atau membatalkan pilihanmu, tetapi tindakan ini <span> akan me-reset Poin Takdir yang telah terkumpul. </span>",
+			"<span>Saat \"Epitome Invocation\" ini berakhir, Poin Takdir yang terkumpul juga akan di-reset</span>."
+		],
+		"chronicledRules": [
+			"Chronicled Path adalah mekanisme unik dari Chronicled Wish:",
+			"Sebelum melakukan permohonan di Chronicled Wish, kamu harus memilih target Chronicled Path, yaitu antara Karakter 5 atau Senjata 5*. Setelah menentukan pilihan, selama periode Chronicled Wish ini, <span>satu-satunya Item 5* yang kamu dapatkan akan berjenis sama dengan target Chronicled Path yang kamu pilih</span>.",
+			"Saat periode Chronicled Wish ini, <span>jika kamu mendapatkan Senjata atau Karakter 5* yang bukan pilihanmu, maka kamu akan menerima 1 Poin Takdir</span>.",
+			"Setelah Poin Takdir terisi penuh, Karakter atau Senjata 5 berikutnya yang kamu dapatkan melalui Chronicled Wish di periode ini akan sesuai dengan yang kamu pilih melalui Chronicled Path.",
+			"Saat periode Chronicled Wish ini, <span>jika kamu mendapatkan Senjata atau Karakter yang kamu pilih, maka Poin Takdir yang sudah terakumulasi akan di-reset</span>.",
+			"Kamu dapat mengubah atau membatalkan Pilihan yang sudah kamu pilih. <span>Melakukan hal ini akan me-reset Poin Takdir yang sudah terakumulasi</span>.",
+			"<span>Saat periode Chronicled Wish ini berakhir, Poin Takdir yang terakumulasi akan di-reset</span>."
+		]
+	},
 	"wish": {
 		"wishTitle": "Permohonan",
 		"rollButton": "Mohon {count}",
@@ -178,6 +218,7 @@
 			"beginner": "Permohonan Pemula",
 			"character-event": "Event Permohonan Karakter",
 			"weapon-event": "Permohonan Senjata",
+			"chronicled": "Chronicled Wish",
 			"standard": "Permohonan Standar",
 			"novice": "Permohonan Pemula",
 			"wishDescription": "Setiap 10 kali Permohonan pasti mendapatkan item 4★ ke atas",
@@ -191,26 +232,6 @@
 			"probIncreased": "Kesempatan untuk memperoleh ditingkatkan !",
 			"eventNote": "Karakter 5★ Eksklusif hanya dapat diperoleh di Event Permohonan tertentu selama periode event.",
 			"viewDetails": "Tekan Rincian untuk info lebih lanjut."
-		},
-		"epitomizedPath": {
-			"text": "Epitomized Path",
-			"fatePoint": "Poin Takdir",
-			"cancelPrompt": "Apakah kamu ingin membatalkan pilihanmu saat ini ?",
-			"cancelDesc": "Pembatalan akan me-reset akumulasi poin takdir",
-			"selectWeapon": "Senjata yang Dipilih",
-			"chartCourseOf": "Pilih {target}",
-			"cancelCourse": "Batalkan Pilihan",
-			"chartCourse": "Pilih",
-			"courseSetFor": "Pilihan Ditentukan untuk: {selectedCourse}",
-			"description": [
-				"\"Epitomized Path\" adalah sistem yang termasuk dalam \"Epitome Invocation\" ini:",
-				"Setelah kamu menentukan senjata pilihanmu, jika kamu <span> menerima senjata bintang 5 yang bukan pilihanmu</span>, kamu akan mendapatkan 1 poin takdir.",
-				"Setelah kamu mengumpulkan Poin Takdir yang cukup, senjata bintang 5 berikutnya akan menjadi senjata yang kamu pilih melalui \"Epitomized Path\"",
-				"Point Takdir kamu <span> akan di-reset setelah mendapatkan senjata \"Epitomized Path\"</span> dalam \"Epitome Invocation\" ini.",
-				"Jika kamu tidak memilih senjata, Poin Takdir tidak akan terkumpul dari Permohonanmu",
-				"Kamu dapat mengubah atau membatalkan pilihanmu, tetapi tindakan ini <span> akan me-reset Poin Takdir yang telah terkumpul. </span>",
-				"<span>Saat \"Epitome Invocation\" ini berakhir, Poin Takdir yang terkumpul juga akan di-reset</span>."
-			]
 		},
 		"result": {
 			"skip": "Lewati",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "Rincian",
 		"promotional": "Item UP",

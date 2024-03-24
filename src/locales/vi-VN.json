@@ -35,6 +35,7 @@
 		"beginner": "Cầu Nguyện Dành Cho Nhà Lữ Hành Mới",
 		"wanderlust": "Du Hành Thế Gian",
 		"epitome-invocation": "Thân hình Thần Đúc",
+		"ode-to-the-dawn-breeze": "Áng Thơ Gió Sớm",
 		"adrift-in-the-harbor": "Hội Ngộ Nơi Trần Thế",
 		"auric-blaze": "Nắng Vàng Rực Rỡ",
 		"azure-excursion": "Dạo Bước Bên Hoa",
@@ -80,7 +81,7 @@
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected Weapon Rate:",
+		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Customize Banner",
+		"byTraveler": "Created by Travelers",
 		"deletePrompt": "Are You Sure to delete this banner ?",
 		"ownerDeleteNote": "If you've shared this banner publicly, The Travelers who have made wishes on your banner will no longer be able to access it.",
 		"userDeleteNote": "The Wishing History on this banner will not be deleted, but you will not be able to pull on this banner again.",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Cannot find backup file location, please try to Export again"
 	},
+	"epitomizedPath": {
+		"heading": "Định Chuẩn Thần Đúc",
+		"fatePoint": "Điểm Vận Mệnh",
+		"confirm": "Confirm Selection",
+		"viewDetails": "View Details",
+		"details": "Details",
+		"rules": "Chronicled Path Rules",
+		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
+		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
+		"cancelPrompt": "Bạn có muốn huỷ định chuẩn vũ khí này không?",
+		"cancelDesc": "Huỷ bỏ sẽ đặt lại điểm vận mệnh của bạn",
+		"selectWeapon": "Chọn Vũ Khí",
+		"chartCourseOf": "Định Chuẩn Cho {target}",
+		"cancelCourse": "Huỷ Định Chuẩn",
+		"chartCourse": "Định Chuẩn",
+		"courseSetFor": "Đang Định Chuẩn: {selectedCourse}",
+		"setFor": "Path Set For: ",
+		"notSetYet": "No Path Set",
+		"description": [
+			"\"Định Chuẩn Thần Đúc là cơ chế cầu nguyện ở Thân Hình Thần Đúc kì này",
+			"Sau khi định chuẩn cho vũ khí UP 5 sao mong muốn, khi cầu nguyện Thân Hình Thần Đúc nhận được vũ khí 5 Sao không phải như đã định chuẩn, sẽ nhận được <span> 1 </span> điểm vận mệnh.",
+			"Sau khi điểm vận mệnh đầy, vũ khí 5 sao tiếp theo nhận được trong lần cầu nguyện này chắc chắn là vũ khí định chuẩn của lần này.",
+			"Khi nhận được vũ khí định chuẩn lần này, dù điểm vận mệnh của lần đó đã đầy hay chưa cũng sẽ thiết lập lại về <span> 0 </span>.",
+			"Khi chưa sử dụng Định Chuẩn Thần Đúc để định chuẩn vũ khí, sẽ không tích luỹ điểm vận mệnh.",
+			"Vũ khí định chuẩn có thể thay đổi, hoặc huỷ bỏ. Khi thay đổi hoặc huỷ bỏ vũ khí định chuẩn hiện tại, điểm vận mệnh sẽ được thiết lập lại về <span> 0 </span>.",
+			"Khi Thân Hình Thần Đúc kỳ này kết thúc, điểm vận mệnh cũng sẽ bị xoá sạch."
+		],
+		"chronicledRules": [
+			"Chronicled Path is a unique mechanism for Chronicled Wishes:",
+			"Before making a Chronicled Wish, you must select a target amongst the 5-star characters or 5-star weapons for your Chronicled Path. After making a selection, during this Chronicled Wish period, <span>the 5-star items you receive from the Wish will only be of the same item type as the target you selected for your Chronicled Path</span>.",
+			"<span>You will receive 1 Fate Point when you receive a 5-star weapon or character that is not the one you chose </span> for this Chronicled Wish period.",
+			"Once you have accumulated enough Fate Points, the next 5-star character or weapon you receive through Chronicled Wish in this period will be the one you chose through Chronicled Path.",
+			"<span>Your already accumulated Fate Points will be reset when you receive the character or weapon you selected</span> in this Chronicled Wish period.",
+			"You may change or cancel the Path you have set. <span>Doing so will reset your already accumulated Fate Points</span>.",
+			"<span>When this Chronicled Wish period ends, accumulated Fate Points will be reset</span>."
+		]
+	},
 	"wish": {
 		"wishTitle": "Cầu Nguyện",
 		"rollButton": "Cầu Nguyện {count}",
@@ -178,6 +218,7 @@
 			"beginner": "Cầu Nguyện Dành Cho Nhà Lữ Hành Mới",
 			"character-event": "Sự Kiện Cầu Nguyện Nhân Vật",
 			"weapon-event": "Cầu Nguyện Vũ Khí",
+			"chronicled": "Chronicled Wish",
 			"standard": "Cầu Nguyện Thường",
 			"wishDescription": "Mỗi khi cầu nguyện 10 lần chắc chắn sẽ nhận tối thiểu 1 vật phẩm từ 4 sao trở lên.",
 			"novice": "Cầu Nguyện Cho Người Mới",
@@ -191,26 +232,6 @@
 			"probIncreased": "Tỉ Lệ Cầu Nguyện Tăng!",
 			"eventNote": "Chỉ có thể nhận được các nhân vật 5 sao dành riêng cho sự kiện cầu nguyện đã được chỉ định trong khoảng thời gian cụ thể.",
 			"viewDetails": "Xem chi tiết để biết thêm."
-		},
-		"epitomizedPath": {
-			"text": "Định Chuẩn Thần Đúc",
-			"fatePoint": "Điểm Vận Mệnh",
-			"cancelPrompt": "Bạn có muốn huỷ định chuẩn vũ khí này không?",
-			"cancelDesc": "Huỷ bỏ sẽ đặt lại điểm vận mệnh của bạn",
-			"selectWeapon": "Chọn Vũ Khí",
-			"chartCourseOf": "Định Chuẩn Cho {target}",
-			"cancelCourse": "Huỷ Định Chuẩn",
-			"chartCourse": "Định Chuẩn",
-			"courseSetFor": "Đang Định Chuẩn: {selectedCourse}",
-			"description": [
-				"\"Định Chuẩn Thần Đúc là cơ chế cầu nguyện ở Thân Hình Thần Đúc kì này",
-				"Sau khi định chuẩn cho vũ khí UP 5 sao mong muốn, khi cầu nguyện Thân Hình Thần Đúc nhận được vũ khí 5 Sao không phải như đã định chuẩn, sẽ nhận được <span> 1 </span> điểm vận mệnh.",
-				"Sau khi điểm vận mệnh đầy, vũ khí 5 sao tiếp theo nhận được trong lần cầu nguyện này chắc chắn là vũ khí định chuẩn của lần này.",
-				"Khi nhận được vũ khí định chuẩn lần này, dù điểm vận mệnh của lần đó đã đầy hay chưa cũng sẽ thiết lập lại về <span> 0 </span>.",
-				"Khi chưa sử dụng Định Chuẩn Thần Đúc để định chuẩn vũ khí, sẽ không tích luỹ điểm vận mệnh.",
-				"Vũ khí định chuẩn có thể thay đổi, hoặc huỷ bỏ. Khi thay đổi hoặc huỷ bỏ vũ khí định chuẩn hiện tại, điểm vận mệnh sẽ được thiết lập lại về <span> 0 </span>.",
-				"Khi Thân Hình Thần Đúc kỳ này kết thúc, điểm vận mệnh cũng sẽ bị xoá sạch."
-			]
 		},
 		"result": {
 			"skip": "Bỏ Qua",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "Thông Tin Chi Tiết",
 		"promotional": "Đồ Khuyến Mãi",

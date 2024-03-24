@@ -35,14 +35,9 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .gi-anemo:before {
 	content: '\61';
-}
-.gi-arrow-left:before {
-	content: '\62';
-}
-.gi-arrow-right:before {
-	content: '\63';
 }
 .gi-bow:before {
 	content: '\7a';
@@ -74,9 +69,6 @@
 .gi-dragonspine:before {
 	content: '\6d';
 }
-.gi-sword:before {
-	content: '\6a';
-}
 .gi-rotate-phone:before {
 	content: '\77';
 }
@@ -92,7 +84,7 @@
 .gi-polearm:before {
 	content: '\73';
 }
-.gi-montstad:before {
+.gi-mondstadt:before {
 	content: '\75';
 }
 .gi-inazuma:before {
@@ -286,4 +278,22 @@
 }
 .gi-refresh:before {
 	content: '\40';
+}
+.gi-fontaine:before {
+	content: '\5b';
+}
+.gi-sword:before {
+	content: '\6a';
+}
+.gi-sumeru:before {
+	content: '\5d';
+}
+.gi-liyue:before {
+	content: '\5e';
+}
+.gi-arrow-right:before {
+	content: '\5f';
+}
+.gi-arrow-left:before {
+	content: '\60';
 }

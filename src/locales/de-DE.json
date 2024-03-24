@@ -35,6 +35,7 @@
 		"beginner": "Anfängergebet",
 		"wanderlust": "Wanderlust",
 		"epitome-invocation": "Göttliches Werk",
+		"ode-to-the-dawn-breeze": "Ballade der Morgenbrise",
 		"adrift-in-the-harbor": "Flüchtige Bekanntschaft",
 		"auric-blaze": "Sengende Sonne und glühendes Gold",
 		"azure-excursion": "Fluss der blassen Blätter",
@@ -80,7 +81,7 @@
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected Weapon Rate:",
+		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Customize Banner",
+		"byTraveler": "Created by Travelers",
 		"deletePrompt": "Are You Sure to delete this banner ?",
 		"ownerDeleteNote": "If you've shared this banner publicly, The Travelers who have made wishes on your banner will no longer be able to access it.",
 		"userDeleteNote": "The Wishing History on this banner will not be deleted, but you will not be able to pull on this banner again.",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Cannot find backup file location, please try to Export again"
 	},
+	"epitomizedPath": {
+		"heading": "Göttlicher Kurs",
+		"fatePoint": "Schicksalspunkte",
+		"confirm": "Confirm Selection",
+		"viewDetails": "View Details",
+		"details": "Details",
+		"rules": "Chronicled Path Rules",
+		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
+		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
+		"cancelPrompt": "Willst du den aktuellen Kurs abbrechen?",
+		"cancelDesc": "Nach dem Abbrechen werden deine gesammelten Schicksalspunkte zurückgesetzt.",
+		"selectWeapon": "Gewählte Waffe",
+		"chartCourseOf": "Kurs zu {target} setzen",
+		"cancelCourse": "Kurs abbrechen",
+		"chartCourse": "Kurs setzen",
+		"courseSetFor": "Aktueller Kurs: {selectedCourse}",
+		"setFor": "Path Set For: ",
+		"notSetYet": "No Path Set",
+		"description": [
+			"\"Göttlicher Kurs\" ist ein besonderer Gebetsmechanismus des neusten Aktionsgebets \"Göttliches Werk\".",
+			"Sobald du einen Kurs zu deiner gewählten Waffe gesetzt hast, erhältst du einen Schicksalspunkt, <span> wenn du eine 5-Sterne-Waffe erhältst, die nicht von dir gewählt ist</span>.",
+			"Sobald du genug Schicksalspunkte gesammelt hast, wird deine nächste 5-Sterne-Waffe diejenige sein, du die durch \"Göttlicher Kurs\" gewählt hast.",
+			"<span>Deine Schicksalspunkte werden zurückgesetzt</span>, wenn du eine Waffe von \"Göttlicher Kurs\" während des Aktionsgebets \"Göttliches Werk\" erhältst.",
+			"Wenn du keine Waffe auswählst, werden deine Gebete keine Schicksalspunkte ansammeln.",
+			"Du kannst deine Auswahl ändern oder abbrechen. Dadurch werden deine gesammelten Schicksalspunkte zurückgesetzt.",
+			"Wenn das Aktionsgebet \"Göttliches Werk\" beendet ist, werden auch deine gesammelten Schicksalspunkte zurückgesetzt."
+		],
+		"chronicledRules": [
+			"Chronicled Path is a unique mechanism for Chronicled Wishes:",
+			"Before making a Chronicled Wish, you must select a target amongst the 5-star characters or 5-star weapons for your Chronicled Path. After making a selection, during this Chronicled Wish period, <span>the 5-star items you receive from the Wish will only be of the same item type as the target you selected for your Chronicled Path</span>.",
+			"<span>You will receive 1 Fate Point when you receive a 5-star weapon or character that is not the one you chose </span> for this Chronicled Wish period.",
+			"Once you have accumulated enough Fate Points, the next 5-star character or weapon you receive through Chronicled Wish in this period will be the one you chose through Chronicled Path.",
+			"<span>Your already accumulated Fate Points will be reset when you receive the character or weapon you selected</span> in this Chronicled Wish period.",
+			"You may change or cancel the Path you have set. <span>Doing so will reset your already accumulated Fate Points</span>.",
+			"<span>When this Chronicled Wish period ends, accumulated Fate Points will be reset</span>."
+		]
+	},
 	"wish": {
 		"wishTitle": "Gebet",
 		"rollButton": "Gebet {count}",
@@ -178,6 +218,7 @@
 			"beginner": "Anfängergebet",
 			"character-event": "Figurenaktionsgebet",
 			"weapon-event": "Waffenaktionsgebet",
+			"chronicled": "Chronicled Wish",
 			"standard": "Standardgebet",
 			"wishDescription": "Alle 10 Ziehungen erhältst du sicher Objekte mit mindestens vier Sternen",
 			"novice": "Gebet für Anfänger",
@@ -191,26 +232,6 @@
 			"probIncreased": "Höhere Wahrscheinlichkeit!",
 			"eventNote": "Die limitierten Figuren mit fünft Sternen gibt es nur während des jeweiligen Aktionszeitraums über das entsprechende Gebet.",
 			"viewDetails": "Wähle 'Details', um mehr zu erfahren."
-		},
-		"epitomizedPath": {
-			"text": "Göttlicher Kurs",
-			"fatePoint": "Schicksalspunkte",
-			"cancelPrompt": "Willst du den aktuellen Kurs abbrechen?",
-			"cancelDesc": "Nach dem Abbrechen werden deine gesammelten Schicksalspunkte zurückgesetzt.",
-			"selectWeapon": "Gewählte Waffe",
-			"chartCourseOf": "Kurs zu {target} setzen",
-			"cancelCourse": "Kurs abbrechen",
-			"chartCourse": "Kurs setzen",
-			"courseSetFor": "Aktueller Kurs: {selectedCourse}",
-			"description": [
-				"\"Göttlicher Kurs\" ist ein besonderer Gebetsmechanismus des neusten Aktionsgebets \"Göttliches Werk\".",
-				"Sobald du einen Kurs zu deiner gewählten Waffe gesetzt hast, erhältst du einen Schicksalspunkt, <span> wenn du eine 5-Sterne-Waffe erhältst, die nicht von dir gewählt ist</span>.",
-				"Sobald du genug Schicksalspunkte gesammelt hast, wird deine nächste 5-Sterne-Waffe diejenige sein, du die durch \"Göttlicher Kurs\" gewählt hast.",
-				"<span>Deine Schicksalspunkte werden zurückgesetzt</span>, wenn du eine Waffe von \"Göttlicher Kurs\" während des Aktionsgebets \"Göttliches Werk\" erhältst.",
-				"Wenn du keine Waffe auswählst, werden deine Gebete keine Schicksalspunkte ansammeln.",
-				"Du kannst deine Auswahl ändern oder abbrechen. Dadurch werden deine gesammelten Schicksalspunkte zurückgesetzt.",
-				"Wenn das Aktionsgebet \"Göttliches Werk\" beendet ist, werden auch deine gesammelten Schicksalspunkte zurückgesetzt."
-			]
 		},
 		"result": {
 			"skip": "Überspringen",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "Detailierte Erläuterung",
 		"promotional": "Höhere Wahrscheinlichkeit",

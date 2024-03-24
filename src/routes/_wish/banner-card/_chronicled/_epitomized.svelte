@@ -1,5 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import EpitomizedIcon from '../../epitomized-path/_icon.svelte';
@@ -27,7 +28,7 @@
 
 		<div class="point">
 			<div class="frame">
-				<span> Poin Takdir:</span>
+				<span> {$t('epitomizedPath.fatePoint')}:</span>
 				<div class="number"><span>{point || 0}</span>/1</div>
 				<i class="gi-refresh" />
 			</div>

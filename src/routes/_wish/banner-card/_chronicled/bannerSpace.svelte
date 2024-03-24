@@ -78,12 +78,12 @@
 		<div class="epibutton">
 			<div class="col" style="margin-right: 1%;">
 				<button class="detail" on:click={openDetail}>
-					<i> <b>i</b></i> <span>Lihat Detail</span>
+					<i> <b>i</b></i> <span>{$t('epitomizedPath.viewDetails')}</span>
 				</button>
 			</div>
 			<div class="col" style="margin: 0 1%;">
 				<button class="confirm" on:click={confirmCourse}>
-					<i class="gi-circle-o" /> <span> Konfirmasi</span>
+					<i class="gi-circle-o" /> <span> {$t('epitomizedPath.confirm')}</span>
 				</button>
 			</div>
 		</div>

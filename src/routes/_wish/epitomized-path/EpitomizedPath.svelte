@@ -66,9 +66,8 @@
 	});
 
 	const confirmCancel = () => {
-		playSfx();
 		showCancelConfirmation = false;
-		handleClose();
+		closePath();
 
 		// clear local
 		const localFate = fatepointManager.init({ version: patch, phase, banner });
@@ -96,10 +95,10 @@
 			style="display: flex; width:100%; height:100%; justify-content: center; align-items:center;"
 		>
 			<div>
-				{$t('wish.epitomizedPath.cancelPrompt')}
+				{$t('epitomizedPath.cancelPrompt')}
 				<br />
 				<span style="font-size: smaller; padding: 2rem">
-					{$t('wish.epitomizedPath.cancelDesc')}
+					{$t('epitomizedPath.cancelDesc')}
 				</span>
 			</div>
 		</div>

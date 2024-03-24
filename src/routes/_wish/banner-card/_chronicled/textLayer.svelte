@@ -27,7 +27,7 @@
 </script>
 
 <div class="frame-content">
-	<div class="top bg-{element}">Chronicled Wish</div>
+	<div class="top bg-{element}">{$t('wish.banner.chronicled')}</div>
 	<div class="heading" in:fly={{ x: 15, duration: 700 }}>
 		<h1 class="card-stroke">
 			{@html highlightBannerName(localeBannerName, element)}
@@ -46,7 +46,7 @@
 				<RateuplistHorizontal {rateupList} exclude={$chronicledCourse.selected} />
 			</div>
 		{:else}
-			<div class="courseNote">Chart course towards one of the following Characters or Weapons</div>
+			<div class="courseNote">{$t('epitomizedPath.chartChronicled')}</div>
 			<RateUpSelector {rateupList} {picked} />
 		{/if}
 	</div>
@@ -64,7 +64,7 @@
 				</div>
 				{#if courseData.selected}
 					<div class="current-selection" class:fill={$chronicledCourse.point > 0}>
-						Current Selection: 5-Star {courseData.type} Wish
+						{$t('epitomizedPath.currentSelection', { values: { itemType: $t(courseData.type) } })}
 					</div>
 				{/if}
 			</div>
@@ -99,6 +99,7 @@
 		left: 0;
 		margin: 0 4%;
 		height: calc(9.5 / 100 * var(--content-width));
+		width: 70%;
 	}
 
 	h1 {
@@ -199,6 +200,7 @@
 		background-color: rgba(0, 0, 0, 0.75);
 		margin-top: calc(-3 / 100 * var(--content-height));
 		width: calc(100% + (0.1 * var(--content-height)));
+		min-width: calc(0.25 * var(--content-height));
 		height: calc(70% + (0.08 * var(--content-height)));
 		transform: translate(
 			calc(3 / 100 * var(--content-height) * -1),

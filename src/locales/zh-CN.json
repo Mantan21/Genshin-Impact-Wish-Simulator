@@ -35,6 +35,7 @@
 		"beginner": " 初行者推荐祈愿",
 		"wanderlust": " 奔行世间",
 		"epitome-invocation": "神铸赋形",
+		"ode-to-the-dawn-breeze": "晨风之诗",
 		"adrift-in-the-harbor": "浮生孰来",
 		"auric-blaze": "烈阳烁金",
 		"azure-excursion": "苍流踏花",
@@ -80,7 +81,7 @@
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected Weapon Rate:",
+		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Customize Banner",
+		"byTraveler": "Created by Travelers",
 		"deletePrompt": "Are You Sure to delete this banner ?",
 		"ownerDeleteNote": "If you've shared this banner publicly, The Travelers who have made wishes on your banner will no longer be able to access it.",
 		"userDeleteNote": "The Wishing History on this banner will not be deleted, but you will not be able to pull on this banner again.",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Cannot find backup file location, please try to Export again"
 	},
+	"epitomizedPath": {
+		"heading": "神铸定轨",
+		"fatePoint": "命定值",
+		"confirm": "Confirm Selection",
+		"viewDetails": "View Details",
+		"details": "Details",
+		"rules": "Chronicled Path Rules",
+		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
+		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
+		"cancelPrompt": "是否确认取消当前的定轨？",
+		"cancelDesc": "取消后，已积累的命定值将清空。",
+		"selectWeapon": "选择定轨武器",
+		"chartCourseOf": "为{target}定轨",
+		"cancelCourse": "取消定轨",
+		"chartCourse": "定轨",
+		"courseSetFor": "当前定轨: {selectedCourse}",
+		"setFor": "Path Set For: ",
+		"notSetYet": "No Path Set",
+		"description": [
+			"「神铸定轨」是本期「神铸赋形」所特有的祈愿机制：",
+			"对期望的5星UP武器进行定轨后，当通过祈愿在本期「神铸赋形」中<span>获取非定轨的5星武器时，将获得1点命定值</span>。",
+			"命定值充满后，在本期「神铸赋形」中祈愿获得的下一件5星武器将会是通过「神铸定轨」选定的武器。",
+			"在本期「神铸赋形」中祈愿<span>获得「神铸定轨」的武器时，已积累的命定值将会清除</span>。",
+			"未通过「神铸定轨」定轨武器时，祈愿将不会累积命定值。",
+			"武器的定轨状态可以进行更换，也可以取消定轨。<span>更换或取消时，会清除已积累的命定值</span>。",
+			"<span>本期「神铸赋形」结束时，已积累的命定值也将清除</span>。"
+		],
+		"chronicledRules": [
+			"Chronicled Path is a unique mechanism for Chronicled Wishes:",
+			"Before making a Chronicled Wish, you must select a target amongst the 5-star characters or 5-star weapons for your Chronicled Path. After making a selection, during this Chronicled Wish period, <span>the 5-star items you receive from the Wish will only be of the same item type as the target you selected for your Chronicled Path</span>.",
+			"<span>You will receive 1 Fate Point when you receive a 5-star weapon or character that is not the one you chose </span> for this Chronicled Wish period.",
+			"Once you have accumulated enough Fate Points, the next 5-star character or weapon you receive through Chronicled Wish in this period will be the one you chose through Chronicled Path.",
+			"<span>Your already accumulated Fate Points will be reset when you receive the character or weapon you selected</span> in this Chronicled Wish period.",
+			"You may change or cancel the Path you have set. <span>Doing so will reset your already accumulated Fate Points</span>.",
+			"<span>When this Chronicled Wish period ends, accumulated Fate Points will be reset</span>."
+		]
+	},
 	"wish": {
 		"rollButton": "祈愿{count}次",
 		"stellaFortuna": "对应角色的命星",
@@ -178,6 +218,7 @@
 			"beginner": " 初行者推荐祈愿",
 			"character-event": "角色活动祈愿",
 			"weapon-event": "武器活动祈愿",
+			"chronicled": "Chronicled Wish",
 			"standard": "常驻祈愿",
 			"wishDescription": "每十次祈愿必出四星或以上物品。",
 			"novice": "新手祈愿",
@@ -191,26 +232,6 @@
 			"probIncreased": "获取概率提升！",
 			"eventNote": "活动限定五星角色仅在UP期间，通过对应祈愿获得。",
 			"viewDetails": "具体内容查看【详情】"
-		},
-		"epitomizedPath": {
-			"text": "神铸定轨",
-			"fatePoint": "命定值",
-			"cancelPrompt": "是否确认取消当前的定轨？",
-			"cancelDesc": "取消后，已积累的命定值将清空。",
-			"selectWeapon": "选择定轨武器",
-			"chartCourseOf": "为{target}定轨",
-			"cancelCourse": "取消定轨",
-			"chartCourse": "定轨",
-			"courseSetFor": "当前定轨: {selectedCourse}",
-			"description": [
-				"「神铸定轨」是本期「神铸赋形」所特有的祈愿机制：",
-				"对期望的5星UP武器进行定轨后，当通过祈愿在本期「神铸赋形」中<span>获取非定轨的5星武器时，将获得1点命定值</span>。",
-				"命定值充满后，在本期「神铸赋形」中祈愿获得的下一件5星武器将会是通过「神铸定轨」选定的武器。",
-				"在本期「神铸赋形」中祈愿<span>获得「神铸定轨」的武器时，已积累的命定值将会清除</span>。",
-				"未通过「神铸定轨」定轨武器时，祈愿将不会累积命定值。",
-				"武器的定轨状态可以进行更换，也可以取消定轨。<span>更换或取消时，会清除已积累的命定值</span>。",
-				"<span>本期「神铸赋形」结束时，已积累的命定值也将清除</span>。"
-			]
 		},
 		"result": {
 			"skip": "跳过",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "详情",
 		"promotional": "UP物品",

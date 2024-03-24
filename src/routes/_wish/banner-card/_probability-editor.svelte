@@ -279,10 +279,12 @@
 			</div>
 		</div>
 
-		{#if type === 'weapon' || (type === 'chronicled' && !!$chronicledCourse.type)}
+		{#if type.match('weapon') || (type === 'chronicled' && !!$chronicledCourse.type)}
 			<div class="item">
 				<div class="col">
-					{$t('editor.selectedRate', { values: { item: $chronicledCourse.type || 'weapon' } })}
+					{$t('editor.selectedRate', {
+						values: { itemType: type === 'chronicled' ? $t($chronicledCourse.type) : $t('weapon') }
+					})}
 				</div>
 				<div class="col percent">
 					<input

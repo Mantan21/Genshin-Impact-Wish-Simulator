@@ -29,7 +29,7 @@
 
 <div class="group-title">
 	{#if isCustom}
-		<h2>Created by Travelers <i class="gi-primo-star" /></h2>
+		<h2>{$t('customBanner.byTraveler')} <i class="gi-primo-star" /></h2>
 	{:else}
 		<h2>
 			{#if groupby === 'version'}

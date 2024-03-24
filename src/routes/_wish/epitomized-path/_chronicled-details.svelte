@@ -1,9 +1,10 @@
 <script>
-	import { t } from 'svelte-i18n';
-	import { get5StarItem } from '$lib/helpers/gacha/itemdrop-base';
+	import { json, t } from 'svelte-i18n';
+	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
 	import { activeBanner, assets, bannerList, chronicledCourse } from '$lib/store/app-stores';
-	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { get5StarItem } from '$lib/helpers/gacha/itemdrop-base';
+	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 
 	const { characters, weapons, region, stdver } = $bannerList[$activeBanner];
 	const featuredChar = get5StarItem({
@@ -26,29 +27,30 @@
 		{ type: 'weapon', list: featuredWp }
 	];
 
-	let activeNav = 'detail';
-	const switchPage = (target) => {
-		if (activeNav === target) return;
-		activeNav = target;
+	let activeTab = cookie.get('chronTab') || 'rules';
+	$: cookie.set('chronTab', activeTab);
+	const switchTab = (target) => {
+		if (activeTab === target) return;
+		activeTab = target;
 		playSfx('shopsubnav');
 	};
 </script>
 
 <div class="wrapper">
 	<nav class="nav-item-list" style="--bg-active: url('{$assets['shop-nav-bg.webp']}')">
-		{#each ['penjelasan', 'detail'] as nav}
+		{#each ['rules', 'details'] as nav}
 			<button
 				class="nav-link-item"
-				class:active={nav === activeNav}
-				on:click={() => switchPage(nav)}
+				class:active={nav === activeTab}
+				on:click={() => switchTab(nav)}
 			>
-				<div class="border">{nav}</div>
+				<div class="border">{$t(`epitomizedPath.${nav}`)}</div>
 			</button>
 		{/each}
 	</nav>
 
 	<!-- Details List -->
-	{#if activeNav === 'detail'}
+	{#if activeTab === 'details'}
 		<div class="list">
 			<div class="scrollable">
 				{#each featuredList as { type, list }}
@@ -56,7 +58,7 @@
 						<span>{$t(type)}</span>
 						{#if $chronicledCourse.type === type}
 							<span style="margin-left: auto;">
-								Pilihan Ditentukan Untuk: <i class="gi-arrow-up" />
+								{$t('epitomizedPath.setFor')}<i class="gi-arrow-up" />
 							</span>
 						{/if}
 					</h2>
@@ -79,25 +81,9 @@
 	{:else}
 		<div class="list">
 			<div class="scrollable">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, ab unde blanditiis
-					minima eius dolor necessitatibus tempore dolores quod sed ex id at voluptatum laborum
-					excepturi eos temporibus aut quas placeat soluta voluptas cum qui tempora! In, minima quia
-					cupiditate voluptatibus distinctio cum quisquam velit quod quis esse hic sit odio, eum
-					nisi maxime error optio? Dignissimos optio neque omnis fuga distinctio doloremque
-					quibusdam id nesciunt veniam illum! Incidunt cumque rem ad ea deserunt voluptatem beatae
-					ab, repellendus blanditiis esse deleniti iusto assumenda exercitationem <span>
-						consectetur ipsum nam fugiat illo at quos hic voluptatibus non sint eius quae
-					</span>. Eum nihil asperiores assumenda ad sunt, facere, fuga odit, qui reprehenderit nemo
-					vero cumque suscipit in atque. Dignissimos qui cum placeat amet magnam quod incidunt
-					laudantium illum ex. Obcaecati mollitia laudantium a veritatis ducimus vel velit atque, et
-					alias commodi delectus tenetur optio, officiis eveniet libero quibusdam aut. Earum
-					voluptates labore blanditiis accusantium in ipsam vel quia alias quidem aut, praesentium,
-					at ad modi rem. Deserunt, nemo, eos quia in possimus quas, facere a quaerat ad harum sunt
-					excepturi earum autem at! Est architecto nihil accusamus aliquid atque distinctio, at iste
-					repudiandae magnam temporibus voluptas animi sunt nesciunt, commodi ab earum eius
-					perspiciatis?
-				</p>
+				{#each $json('epitomizedPath.chronicledRules') as article}
+					<p>· {@html article}</p>
+				{/each}
 			</div>
 		</div>
 	{/if}
@@ -114,9 +100,9 @@
 		background-image: linear-gradient(
 			to right,
 			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.5) 15%,
 			rgba(0, 0, 0, 0.5),
-			rgba(0, 0, 0, 0.5),
-			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0.5) 85%,
 			rgba(0, 0, 0, 0)
 		);
 	}

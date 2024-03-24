@@ -26,7 +26,7 @@
 		return getCharDetails(selected);
 	};
 
-	$: ({ point } = isChronicled ? $chCourse : $wpCourse);
+	$: ({ point, type: itemType } = isChronicled ? $chCourse : $wpCourse);
 	$: selectedData = featuredWp[$wpCourse.selected] || getChronicledData($chCourse);
 	$: hasCourse = !!selectedData?.name;
 
@@ -68,12 +68,12 @@
 	</div>
 
 	{#if !isChronicled}
-		<h2 class="top card-stroke">{$t('wish.epitomizedPath.selectWeapon')}</h2>
+		<h2 class="top card-stroke">{$t('epitomizedPath.selectWeapon')}</h2>
 	{:else if hasCourse}
-		<h2 class="top">Pilihan ditentukan untuk:</h2>
-		<div class="note">Hanya Senjata 5* yang dapat diperoleh dari permohonan</div>
+		<h2 class="top">{$t('epitomizedPath.setFor')}</h2>
+		<div class="note">{$t('epitomizedPath.dropType', { values: { itemType: $t(itemType) } })}</div>
 	{:else}
-		<h2 class="top float">Belum Menentukan Pilihan</h2>
+		<h2 class="top float">{$t('epitomizedPath.notSetYet')}</h2>
 	{/if}
 
 	<!--  -->
@@ -110,22 +110,22 @@
 			<div class="text card-stroke">
 				<div>
 					{#if hasCourse}
-						{$t('wish.epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/2
+						{$t('epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/2
 					{:else if targetActive === null}
-						{$t('wish.epitomizedPath.selectWeapon')}
+						{$t('epitomizedPath.selectWeapon')}
 					{:else}
-						{@html $t('wish.epitomizedPath.chartCourseOf', {
+						{@html $t('epitomizedPath.chartCourseOf', {
 							values: { target: `<span> ${$t(featuredWp[targetActive].name)} </span>` }
 						})}
 					{/if}
 				</div>
 			</div>
 
-			<!-- CHronicled Epitomized -->
+			<!-- Chronicled Epitomized -->
 		{:else if hasCourse}
 			<div class="text card-stroke">
 				<div>
-					{$t('wish.epitomizedPath.fatePoint')} : <span>{point}</span>/1
+					{$t('epitomizedPath.fatePoint')} : <span>{point}</span>/1
 				</div>
 			</div>
 		{/if}
@@ -134,11 +134,11 @@
 	<div class="button">
 		{#if hasCourse}
 			<ButtonModal on:click={cancelCourse} type="cancel">
-				{$t('wish.epitomizedPath.cancelCourse')}
+				{$t('epitomizedPath.cancelCourse')}
 			</ButtonModal>
 		{:else if !isChronicled}
 			<ButtonModal on:click={() => setCourse(targetActive)} disabled={targetActive === null}>
-				{$t('wish.epitomizedPath.chartCourse')}
+				{$t('epitomizedPath.chartCourse')}
 			</ButtonModal>
 		{/if}
 	</div>

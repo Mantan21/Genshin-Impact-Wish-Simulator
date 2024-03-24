@@ -22,12 +22,12 @@
 		<div class="wrapper">
 			<h1>
 				<span>
-					{$t('wish.epitomizedPath.text')}
+					{$t('epitomizedPath.heading')}
 				</span>
 			</h1>
 			<div class="content" bind:this={content}>
 				<div class="description">
-					{#each $json('wish.epitomizedPath.description') as desc}
+					{#each $json('epitomizedPath.description') as desc}
 						<p>· {@html desc}</p>
 					{/each}
 				</div>

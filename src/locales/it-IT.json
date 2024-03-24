@@ -35,6 +35,7 @@
 		"beginner": "Wish per Principianti",
 		"wanderlust": "Wanderlust Invocation",
 		"epitome-invocation": "Incarnazione divina",
+		"ode-to-the-dawn-breeze": "Poesia del vento mattutino",
 		"adrift-in-the-harbor": "Alla deriva nel porto",
 		"auric-blaze": "Fiamma dorata",
 		"azure-excursion": "Azure Excursion",
@@ -80,7 +81,7 @@
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected Weapon Rate:",
+		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Customize Banner",
+		"byTraveler": "Created by Travelers",
 		"deletePrompt": "Are You Sure to delete this banner ?",
 		"ownerDeleteNote": "If you've shared this banner publicly, The Travelers who have made wishes on your banner will no longer be able to access it.",
 		"userDeleteNote": "The Wishing History on this banner will not be deleted, but you will not be able to pull on this banner again.",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Cannot find backup file location, please try to Export again"
 	},
+	"epitomizedPath": {
+		"heading": "Epitomized Path",
+		"fatePoint": "Punti Fato",
+		"confirm": "Confirm Selection",
+		"viewDetails": "View Details",
+		"details": "Details",
+		"rules": "Chronicled Path Rules",
+		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
+		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
+		"cancelPrompt": "Desideri cancellare il tuo Percorso attuale ?",
+		"cancelDesc": "La cancellazione azzererà i Punti Fato accumulati",
+		"selectWeapon": "Seleziona l'Arma",
+		"chartCourseOf": "Grafico del Percorso per {target}",
+		"cancelCourse": "Annulla Percorso",
+		"chartCourse": "Grafico del Percorso",
+		"courseSetFor": "Percorso deciso per: {selectedCourse}",
+		"setFor": "Path Set For: ",
+		"notSetYet": "No Path Set",
+		"description": [
+			"\"Epitomized Path\" è una meccanica dei desideri per \"Epitome Invication\". I viaggiatori possono tracciare un percorso verso un'arma a 5 stelle che sperano di ottenere.",
+			"Una volta che avrai tracciato un percorso verso l'arma scelta, otterrai un Punto Fato se <span> riceverai un'arma a 5 stelle che non è quella che hai scelto</span>. Puoi ottenere un massimo di 2 Punti Fato.",
+			"Una volta che avrai raggiunto la quantità massima di Punti Fato, la prossima arma a 5 stelle che sceglierai sarà quella scelta con \"Epitomized Path\".",
+			"Quando otterrai l'arma scelta in Epitome Invocation con Epitomized Path, <span> i Punti Fato accumulati verranno cancellati</span>.",
+			"Se non usi Epitomized Path per ottenere un'arma, non accumulerai Punti Fato.",
+			"Il percorso tracciato verso un'arma può essere modificato o annullato. Tuttavia, dopo averlo fatto, tutti i Punti Fato correnti verranno cancellati.",
+			"Al termine del periodo di Epitome Invocation, tutti i Punti Fato correnti verranno cancellati."
+		],
+		"chronicledRules": [
+			"Chronicled Path is a unique mechanism for Chronicled Wishes:",
+			"Before making a Chronicled Wish, you must select a target amongst the 5-star characters or 5-star weapons for your Chronicled Path. After making a selection, during this Chronicled Wish period, <span>the 5-star items you receive from the Wish will only be of the same item type as the target you selected for your Chronicled Path</span>.",
+			"<span>You will receive 1 Fate Point when you receive a 5-star weapon or character that is not the one you chose </span> for this Chronicled Wish period.",
+			"Once you have accumulated enough Fate Points, the next 5-star character or weapon you receive through Chronicled Wish in this period will be the one you chose through Chronicled Path.",
+			"<span>Your already accumulated Fate Points will be reset when you receive the character or weapon you selected</span> in this Chronicled Wish period.",
+			"You may change or cancel the Path you have set. <span>Doing so will reset your already accumulated Fate Points</span>.",
+			"<span>When this Chronicled Wish period ends, accumulated Fate Points will be reset</span>."
+		]
+	},
 	"wish": {
 		"wishTitle": "Wish",
 		"rollButton": "Wish {count}",
@@ -178,6 +218,7 @@
 			"beginner": "Wish per Principianti",
 			"character-event": "Wish dell'Evento del Personaggio",
 			"weapon-event": "Wish per Armi",
+			"chronicled": "Chronicled Wish",
 			"standard": "Wish Standard",
 			"wishDescription": "Ogni 10 wish se ne ha almeno uno a 4 o più stelle",
 			"novice": "Wish per Principianti",
@@ -191,26 +232,6 @@
 			"probIncreased": "Probabilità aumentata !",
 			"eventNote": "I personaggi a 5 stelle esclusivi dell'evento possono essere ottenuti solo nel wish specifico durante il periodo/i determinato.",
 			"viewDetails": "Visualizza i Dettagli per maggiori informazioni."
-		},
-		"epitomizedPath": {
-			"text": "Epitomized Path",
-			"fatePoint": "Punti Fato",
-			"cancelPrompt": "Desideri cancellare il tuo Percorso attuale ?",
-			"cancelDesc": "La cancellazione azzererà i Punti Fato accumulati",
-			"selectWeapon": "Seleziona l'Arma",
-			"chartCourseOf": "Grafico del Percorso per {target}",
-			"cancelCourse": "Annulla Percorso",
-			"chartCourse": "Grafico del Percorso",
-			"courseSetFor": "Percorso deciso per: {selectedCourse}",
-			"description": [
-				"\"Epitomized Path\" è una meccanica dei desideri per \"Epitome Invication\". I viaggiatori possono tracciare un percorso verso un'arma a 5 stelle che sperano di ottenere.",
-				"Una volta che avrai tracciato un percorso verso l'arma scelta, otterrai un Punto Fato se <span> riceverai un'arma a 5 stelle che non è quella che hai scelto</span>. Puoi ottenere un massimo di 2 Punti Fato.",
-				"Una volta che avrai raggiunto la quantità massima di Punti Fato, la prossima arma a 5 stelle che sceglierai sarà quella scelta con \"Epitomized Path\".",
-				"Quando otterrai l'arma scelta in Epitome Invocation con Epitomized Path, <span> i Punti Fato accumulati verranno cancellati</span>.",
-				"Se non usi Epitomized Path per ottenere un'arma, non accumulerai Punti Fato.",
-				"Il percorso tracciato verso un'arma può essere modificato o annullato. Tuttavia, dopo averlo fatto, tutti i Punti Fato correnti verranno cancellati.",
-				"Al termine del periodo di Epitome Invocation, tutti i Punti Fato correnti verranno cancellati."
-			]
 		},
 		"result": {
 			"skip": "Salta",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "Dettagli",
 		"promotional": "Promotional Items",

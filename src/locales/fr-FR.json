@@ -35,6 +35,7 @@
 		"beginner": "Vœux pour les débutants",
 		"wanderlust": "Envie de voyage",
 		"epitome-invocation": "Incarnation divine",
+		"ode-to-the-dawn-breeze": "Ode à la brise matinale",
 		"adrift-in-the-harbor": "Doute passager",
 		"auric-blaze": "Brasier aurique",
 		"azure-excursion": "Excursion azurée",
@@ -80,7 +81,7 @@
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
 		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected Weapon Rate:",
+		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
 		"backToDefault": "Back to Default",
 		"resetPrompt": "Are you sure to Reset <b>\"{banner}\"</b> probabilities back to default?",
@@ -90,6 +91,7 @@
 	},
 	"customBanner": {
 		"title": "Customize Banner",
+		"byTraveler": "Created by Travelers",
 		"deletePrompt": "Are You Sure to delete this banner ?",
 		"ownerDeleteNote": "If you've shared this banner publicly, The Travelers who have made wishes on your banner will no longer be able to access it.",
 		"userDeleteNote": "The Wishing History on this banner will not be deleted, but you will not be able to pull on this banner again.",
@@ -159,6 +161,44 @@
 		"fileSize": "File Size",
 		"desNotFound": "Cannot find backup file location, please try to Export again"
 	},
+	"epitomizedPath": {
+		"heading": "Chemin divin",
+		"fatePoint": "Points de destin",
+		"confirm": "Confirm Selection",
+		"viewDetails": "View Details",
+		"details": "Details",
+		"rules": "Chronicled Path Rules",
+		"chartChronicled": "Chart course towards one of the following Characters or Weapons",
+		"currentSelection": "Current Selection: 5-Star {itemType}",
+		"dropType": "Only 5-Star {itemType} will be obtained from the Wish",
+		"cancelPrompt": "Souhaitez-vous annuler la sélection actuelle ?",
+		"cancelDesc": "Vos points de destin seront réinitialisés après l'annulation",
+		"selectWeapon": "Choisir une arme",
+		"chartCourseOf": "Vous obtiendez : {target}",
+		"cancelCourse": "Réinitialiser",
+		"chartCourse": "Choisir",
+		"courseSetFor": "Chemin défini pour: {selectedCourse}",
+		"setFor": "Path Set For: ",
+		"notSetYet": "No Path Set",
+		"description": [
+			"Le Chemin divin est un nouveau mécanisme inclus dans les vœux Incarnation divine:",
+			"Une fois que vous choisissez une arme 5*, vous recevez 1 point de destin <span>si l'arme 5* que vous obtenez via les vœux n'est pas celle souhaitée</span>.",
+			"Une fois suffisamment de points de destin accumulés, la prochaine arme 5* que vous obtiendrez via les vœux Incarnation divine sera celle choisie dans le Chemin divin.",
+			"Vos points de destin <span>se réinitialisent lorsque vous obtenez une arme du Chemin divin</span> pendant ces vœux Incarnation divine.",
+			"Vous ne cumulez pas de points de destin si vous n'avez pas choisi d'arme vers laquelle vous frayer un chemin.",
+			"Vous pouvez modifier ou annuler votre sélection, <span>mais cela réinitialisera vos points de destin déjà accumulés</span>.",
+			"<span>Les points de destin acccumulés lors de ces vœux Incarnation divine disparaissent lorsque ces vœux événements prennent fin</span>."
+		],
+		"chronicledRules": [
+			"Chronicled Path is a unique mechanism for Chronicled Wishes:",
+			"Before making a Chronicled Wish, you must select a target amongst the 5-star characters or 5-star weapons for your Chronicled Path. After making a selection, during this Chronicled Wish period, <span>the 5-star items you receive from the Wish will only be of the same item type as the target you selected for your Chronicled Path</span>.",
+			"<span>You will receive 1 Fate Point when you receive a 5-star weapon or character that is not the one you chose </span> for this Chronicled Wish period.",
+			"Once you have accumulated enough Fate Points, the next 5-star character or weapon you receive through Chronicled Wish in this period will be the one you chose through Chronicled Path.",
+			"<span>Your already accumulated Fate Points will be reset when you receive the character or weapon you selected</span> in this Chronicled Wish period.",
+			"You may change or cancel the Path you have set. <span>Doing so will reset your already accumulated Fate Points</span>.",
+			"<span>When this Chronicled Wish period ends, accumulated Fate Points will be reset</span>."
+		]
+	},
 	"wish": {
 		"wishTitle": "Vœux",
 		"rollButton": "Faire {count} vœu(x)",
@@ -178,6 +218,7 @@
 			"beginner": "Vœux pour les débutants",
 			"character-event": "Vœux événements de personnage",
 			"weapon-event": "Vœux événements d'arme",
+			"chronicled": "Chronicled Wish",
 			"standard": "Vœux permanents",
 			"wishDescription": "Garantie d'obtention d'un personnage 4* ou plus tous les 10 vœux",
 			"novice": "Vœux des débutants",
@@ -191,26 +232,6 @@
 			"probIncreased": "Chance d'obtention augmentée !",
 			"eventNote": "Les personnages 5* exclusifs de l'événement ne peuvent qu'être obtenus pendant une période limitée par le biais de vœux spécifiques. Pour en savoir plus, rendez-vous dans les détails de l'événement.",
 			"viewDetails": "Pour en savoir plus, rendez-vous dans les détails de l'événement."
-		},
-		"epitomizedPath": {
-			"text": "Chemin divin",
-			"fatePoint": "Points de destin",
-			"cancelPrompt": "Souhaitez-vous annuler la sélection actuelle ?",
-			"cancelDesc": "Vos points de destin seront réinitialisés après l'annulation",
-			"selectWeapon": "Choisir une arme",
-			"chartCourseOf": "Vous obtiendez : {target}",
-			"cancelCourse": "Réinitialiser",
-			"chartCourse": "Choisir",
-			"courseSetFor": "Chemin défini pour: {selectedCourse}",
-			"description": [
-				"Le Chemin divin est un nouveau mécanisme inclus dans les vœux Incarnation divine:",
-				"Une fois que vous choisissez une arme 5*, vous recevez 1 point de destin <span>si l'arme 5* que vous obtenez via les vœux n'est pas celle souhaitée</span>.",
-				"Une fois suffisamment de points de destin accumulés, la prochaine arme 5* que vous obtiendrez via les vœux Incarnation divine sera celle choisie dans le Chemin divin.",
-				"Vos points de destin <span>se réinitialisent lorsque vous obtenez une arme du Chemin divin</span> pendant ces vœux Incarnation divine.",
-				"Vous ne cumulez pas de points de destin si vous n'avez pas choisi d'arme vers laquelle vous frayer un chemin.",
-				"Vous pouvez modifier ou annuler votre sélection, <span>mais cela réinitialisera vos points de destin déjà accumulés</span>.",
-				"<span>Les points de destin acccumulés lors de ces vœux Incarnation divine disparaissent lorsque ces vœux événements prennent fin</span>."
-			]
 		},
 		"result": {
 			"skip": "Passer",
@@ -296,7 +317,6 @@
 			}
 		}
 	},
-
 	"details": {
 		"text": "Détails",
 		"promotional": "Objets boostés",

@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
+	import { t, json } from 'svelte-i18n';
 
 	import { assets, proUser, showAd } from '$lib/store/app-stores';
 	import { adKey } from '$lib/helpers/accessKey';
@@ -159,7 +159,7 @@
 
 		<h3>{$t('menu.benefit')}</h3>
 		<ol>
-			{#each $t('menu.authorNotes') as benefit}
+			{#each $json('menu.authorNotes') as benefit}
 				<li>
 					{@html $t(benefit, {
 						values: {
