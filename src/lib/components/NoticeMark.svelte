@@ -19,7 +19,7 @@
 
 {#if active}
 	<div class="notice" {style}>
-		<span>i</span>
+		<span>!</span>
 	</div>
 {/if}
 
