@@ -101,7 +101,7 @@
 	};
 
 	const generateQueryKey = (ver, phase, banners) => {
-		const { events, weapons } = banners;
+		const { events, weapons, chronicled: ch } = banners;
 		const { rateup, bannerName, featured } = weapons;
 
 		const translatedRateupWp = rateup.map((wp) => $t(wp));
@@ -119,12 +119,14 @@
 
 		const result = {
 			queryKey,
+			phase,
+			patch: ver,
 			rateup: [...events.rateup, ...weapons.rateup],
 			weapons: { bannerName: weapons.bannerName, list: weapons.featured },
-			chars: events.featured,
-			patch: ver,
-			phase
+			chars: events.featured
 		};
+
+		if (ch) result.chronicled = { bannerName: ch?.bannerName };
 		return result;
 	};
 
@@ -182,6 +184,7 @@
 		});
 		customBanner = ['Custom', proccessed];
 	};
+
 	const loadData = async () => {
 		await checkAllBanner();
 		await readSavedCustomBanner();

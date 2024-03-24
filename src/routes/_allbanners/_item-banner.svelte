@@ -44,7 +44,7 @@
 	{/if}
 </div>
 
-{#each data as { patch, phase, chars, weapons }, i (i)}
+{#each data as { patch, phase, chars, weapons, chronicled }, i (i)}
 	<a
 		href="/"
 		class="item"
@@ -69,7 +69,7 @@
 							<img
 								src={$assets[`thumbnail/${bannerName}`]}
 								alt={getName(character)}
-								class="dual{i + 1}"
+								class="dual{i + 1} "
 								crossorigin="anonymous"
 								loading="lazy"
 							/>
@@ -79,14 +79,25 @@
 			</div>
 
 			{#if !isCustom}
-				<div class="weapon">
+				{@const { bannerName: chName = null } = chronicled || {}}
+				<div class:dual={!!chName}>
 					<img
-						on:error={(e) => e.target.remove()}
 						src={$assets[`thumbnail/${weapons.bannerName}`]}
 						alt={getName(weapons.bannerName)}
+						class="dual1"
 						crossorigin="anonymous"
 						loading="lazy"
 					/>
+
+					{#if chName}
+						<img
+							src={$assets[`thumbnail/${chName}`]}
+							alt={$t('wish.banner.chronicled')}
+							class="dual2 chronicled"
+							crossorigin="anonymous"
+							loading="lazy"
+						/>
+					{/if}
 				</div>
 			{/if}
 		</div>
@@ -187,15 +198,18 @@
 
 	.dual .dual1 {
 		object-position: 60%;
-		width: 40% !important;
-		aspect-ratio: 81.1/99.35;
 		margin-right: auto;
+		width: 40%;
+		aspect-ratio: 81.1/99.35;
 	}
 	.dual .dual2 {
 		margin-left: auto;
 		object-position: 100%;
 		width: 60% !important;
 		aspect-ratio: 121.65/99.35;
+	}
+	.dual .dual2.chronicled {
+		object-position: 95%;
 	}
 
 	.item .name {
