@@ -53,11 +53,11 @@
 	<div class="top bg-{vision}">
 		{$t('wish.banner.character-event')}
 	</div>
-	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
-		<div class="wrap">
-			{@html highlightBannerName(bannerName || $t('customBanner.bannerName'), vision)}
-		</div>
-	</h1>
+	<div class="heading" in:fly={{ x: 15, duration: 700 }}>
+		<h1 class="card-stroke">
+			{@html highlightBannerName(bannerName || $t('customBanner.titleOfBanner'), vision)}
+		</h1>
+	</div>
 
 	{#if $isCustomBanner}
 		<div class="action">
@@ -125,34 +125,34 @@
 		opacity: 0.5;
 	}
 
-	h1 :global(span) {
-		display: block;
-	}
-
-	h1,
 	.frame-content > div {
 		text-align: left;
 		position: absolute;
 	}
-	h1 {
+
+	.heading {
+		position: absolute;
+		display: flex;
+		align-items: center;
 		bottom: 67%;
 		left: 0;
 		margin: 0 4%;
-		line-height: 125%;
-		font-size: calc(4.5 / 100 * var(--content-width));
 		height: calc(0.23 * var(--content-height));
-		display: flex;
-		align-items: center;
+		width: 50%;
+	}
+
+	h1 {
+		text-align: left;
+		line-height: 100%;
+		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
 	:global(.zh-CN) h1 {
 		font-size: calc(7 / 100 * var(--content-width));
 	}
-
 	:global(.ja-JP) h1 {
-		max-width: 45%;
+		max-width: 80%;
 		font-size: calc(6 / 100 * var(--content-width));
-		line-height: 100%;
 	}
 
 	.editorMode h1 {
@@ -320,8 +320,10 @@
 		right: 2%;
 		bottom: 2%;
 		font-style: italic;
+		font-weight: bold;
 		color: #fff;
-		font-size: calc(3 / 100 * var(--content-height));
+		font-size: calc(0.035 * var(--content-height));
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		text-shadow: 0 0 calc(0.05 * var(--content-height)) #000;
 	}
 </style>

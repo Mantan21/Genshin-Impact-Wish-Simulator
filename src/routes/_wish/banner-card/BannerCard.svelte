@@ -196,6 +196,9 @@
 	.card :global(.skeleton) {
 		aspect-ratio: 738.55/382.95;
 	}
+	.card :global(h1 .block) {
+		display: block;
+	}
 
 	.card {
 		position: relative;

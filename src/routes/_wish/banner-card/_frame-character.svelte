@@ -21,9 +21,11 @@
 		{$t('wish.banner.character-event')}
 		{event2 ? ($locale === 'ja-JP' ? '2' : '— 2') : ''}
 	</div>
-	<h1 class="card-stroke" in:fly={{ x: 15, duration: 700 }}>
-		{@html highlightBannerName(localeBannerName, vision)}
-	</h1>
+	<div class="heading" in:fly={{ x: 15, duration: 700 }}>
+		<h1 class="card-stroke">
+			{@html highlightBannerName(localeBannerName, vision)}
+		</h1>
+	</div>
 
 	<div class="description" in:fly={{ x: 15, duration: 700 }}>
 		<Dropnotes element={vision} banner="character-event" />
@@ -57,31 +59,34 @@
 		line-height: 130%;
 	}
 
-	h1 :global(span) {
-		display: block;
-	}
-
-	h1,
 	.frame-content > div {
 		text-align: left;
 		position: absolute;
 	}
-	h1 {
+
+	.heading {
+		position: absolute;
+		display: flex;
+		align-items: center;
 		bottom: 67%;
 		left: 0;
 		margin: 0 4%;
-		line-height: 125%;
+		height: calc(0.23 * var(--content-height));
+		width: 50%;
+	}
+
+	h1 {
+		text-align: left;
+		line-height: 100%;
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) h1 {
-		font-size: calc(7 / 100 * var(--content-width));
-	}
-
+	:global(.zh-CN) h1,
 	:global(.ja-JP) h1 {
-		max-width: 45%;
 		font-size: calc(6 / 100 * var(--content-width));
-		line-height: 100%;
+	}
+	:global(.ja-JP) h1 {
+		max-width: 80%;
 	}
 
 	.top {

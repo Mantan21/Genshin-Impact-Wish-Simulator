@@ -76,10 +76,6 @@
 		line-height: 130%;
 	}
 
-	h1 :global(span) {
-		display: block;
-	}
-
 	h1,
 	.frame-content > div {
 		text-align: left;
@@ -92,6 +88,7 @@
 		line-height: 125%;
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
+
 	:global(.mobile) h1 {
 		bottom: 71%;
 	}

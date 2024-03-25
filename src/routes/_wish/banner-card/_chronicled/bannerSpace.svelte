@@ -114,9 +114,9 @@
 		color: rgba(0, 0, 0, 0.75);
 		border-radius: 20rem;
 		border: #ddc889 calc(0.006 * var(--content-height)) solid;
-		font-size: calc(2 / 100 * var(--content-width));
+		font-size: calc(1.75 / 100 * var(--content-width));
 		transition: background 0.25s, color 0.25s, transform 0.25s;
-		padding: calc(0.01 * var(--content-width)) calc(0.05 * var(--content-width));
+		padding: calc(0.01 * var(--content-width)) calc(0.04 * var(--content-width));
 		position: relative;
 	}
 

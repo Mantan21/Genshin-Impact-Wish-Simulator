@@ -210,6 +210,9 @@
 		height: fit-content;
 		aspect-ratio: 1080/533;
 	}
+	.card :global(h1 .block) {
+		display: block;
+	}
 
 	img {
 		width: 100%;

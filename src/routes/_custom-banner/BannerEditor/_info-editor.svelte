@@ -6,6 +6,7 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { getCharDetails } from '$lib/helpers/gacha/itemdrop-base';
 
+	import ToolTip from '$lib/components/ToolTip.svelte';
 	import InventoryItem from '../../_inventory/_inventory-item.svelte';
 	import RateupPicker from './_rateup-picker.svelte';
 	import PreviewGenerator from './_preview-generator.svelte';
@@ -95,13 +96,16 @@
 		<div class="body" bind:clientWidth={rowWidth} style="--item-width:{itemWidth}px">
 			<div class="body-wrapper">
 				<div class="field-group">
-					<label for="bannerName">{$t('customBanner.bannerName')}: *</label>
+					<label for="bannerName">
+						<span> {$t('customBanner.bannerName')}: * </span>
+						<ToolTip>{$t('customBanner.titleNote')}</ToolTip>
+					</label>
 					<div class="col">
 						<input
 							type="text"
 							autocomplete="off"
 							id="bannerName"
-							placeholder={$t('customBanner.bannerName')}
+							placeholder={$t('customBanner.titleOfBanner')}
 							value={bannerName}
 							on:input={typeBannerName}
 						/>

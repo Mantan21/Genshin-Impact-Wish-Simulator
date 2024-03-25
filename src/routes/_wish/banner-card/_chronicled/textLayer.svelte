@@ -83,10 +83,6 @@
 		line-height: 130%;
 	}
 
-	h1 :global(span) {
-		display: block;
-	}
-
 	.frame-content > div {
 		position: absolute;
 	}
@@ -99,7 +95,7 @@
 		left: 0;
 		margin: 0 4%;
 		height: calc(9.5 / 100 * var(--content-width));
-		width: 70%;
+		width: 50%;
 	}
 
 	h1 {
@@ -108,14 +104,12 @@
 		font-size: calc(4.5 / 100 * var(--content-width));
 	}
 
-	:global(.zh-CN) h1 {
-		font-size: calc(7 / 100 * var(--content-width));
-	}
-
+	:global(.zh-CN) h1,
 	:global(.ja-JP) h1 {
-		max-width: 45%;
-		font-size: calc(6 / 100 * var(--content-width));
-		line-height: 100%;
+		font-size: calc(5.5 / 100 * var(--content-width));
+	}
+	:global(.ja-JP) h1 {
+		max-width: 80%;
 	}
 
 	.top {
@@ -165,10 +159,8 @@
 		position: relative;
 	}
 
-	:global(.zh-CN) .selected .item {
-		font-size: calc(17 / 100 * var(--text-width));
-	}
-	:global(.ja-JP) .selected .item {
+	:global(.zh-CN) .selected .item span:not(.up),
+	:global(.ja-JP) .selected .item span:not(.up) {
 		font-size: calc(15 / 100 * var(--text-width));
 	}
 

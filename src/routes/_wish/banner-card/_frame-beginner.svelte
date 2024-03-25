@@ -67,7 +67,6 @@
 	}
 	h1 :global(span) {
 		color: #cba885;
-		display: block;
 	}
 	h1 {
 		bottom: 73.5%;
