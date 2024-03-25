@@ -10,7 +10,7 @@
 	import SplashartForm from './BannerEditor/_splashart-form.svelte';
 	import MainArt from './BannerEditor/BannerArt.svelte';
 	import VisionPicker from './BannerEditor/_vision-picker.svelte';
-	import InfoEditor from './BannerEditor/_info-editor.svelte';
+	import DetailsEditor from './BannerEditor/_details-editor.svelte';
 	import SplashArtEditor from './SplashArtEditor/SplashArt.svelte';
 
 	let clientHeight;
@@ -179,7 +179,7 @@
 </div>
 
 {#if isInfoEdit}
-	<InfoEditor
+	<DetailsEditor
 		preview={images?.thumbnail}
 		{rateup}
 		{bannerName}

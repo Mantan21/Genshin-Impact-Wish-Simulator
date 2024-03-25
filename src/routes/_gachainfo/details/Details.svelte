@@ -58,6 +58,7 @@
 		rateupNamelist: !isChronicled ? rateup : [...ch['4star'], ...wp['4star']]
 	});
 	rateup = rateup
+		.filter((name) => name)
 		.map((name) => (isWp ? getWpDetails(name) : getCharDetails(name)))
 		.map((val) => {
 			const item = { ...val };
@@ -150,7 +151,6 @@
 					{character}
 					{rateup}
 					{region}
-					{drop4star}
 					{drop5star}
 					tplVersion="v2"
 				/>
@@ -171,7 +171,6 @@
 		{character}
 		{rateup}
 		{region}
-		{drop4star}
 		{drop5star}
 	/>
 	<br />

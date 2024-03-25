@@ -1,15 +1,19 @@
 <script>
+	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
+
 	export let rateup = [];
 	export let onBannerEdit = false;
 </script>
 
 <div class="rateup-art" class:onBannerEdit>
 	<div class="wrapper">
-		{#each rateup as char, i}
-			<div class="art art-{i + 1}">
-				<img src={$assets[`nobg/${char}`]} alt="haiya" />
-			</div>
+		{#each rateup as name, i}
+			{#if name}
+				<div class="art art-{i + 1}">
+					<img src={$assets[`nobg/${name}`]} alt={$t(`${name}.name`)} />
+				</div>
+			{/if}
 		{/each}
 	</div>
 </div>

@@ -19,6 +19,7 @@
 	export let watermark = '';
 
 	let showCharPicker = false;
+	let charPosition = -1;
 	let headerHeight;
 	let rowWidth;
 	$: itemWidth = rowWidth / 4;
@@ -55,25 +56,29 @@
 		playSfx('close');
 	};
 
-	const openRateupPicker = () => {
+	const openRateupPicker = (index) => {
 		showCharPicker = true;
+		charPosition = index;
 		playSfx('click');
 	};
 
 	// Rateup Picker
+	$: rateUpList = ['', '', ''].map((x, i) => rateup[i] || '');
 	const selectChar = (charName) => {
 		showCharPicker = false;
 		if (!charName) return;
 		if (rateup.includes(charName)) return;
-		if (rateup.length >= 3) return;
-		setRateup([...rateup, charName]);
+		const newArray = rateUpList.map((v, i) => (i !== charPosition ? v : charName));
+		setRateup(newArray);
+		charPosition = -1;
 	};
 	setContext('selectChar', selectChar);
 
 	const removeChar = (charName) => {
 		playSfx('close');
-		const afterRemoved = rateup.filter((n) => charName != n);
+		const afterRemoved = rateUpList.map((v) => (charName !== v ? v : ''));
 		setRateup(afterRemoved);
+		charPosition = -1;
 	};
 </script>
 
@@ -156,10 +161,13 @@
 
 				<div class="field-group">
 					<div class="row">
-						<label for="rateup">{$t('customBanner.rateupChar')}: *</label>
+						<label for="rateup">
+							<span> {$t('customBanner.rateupChar')}: * </span>
+							<ToolTip>{$t('customBanner.rateupNote')}</ToolTip>
+						</label>
 					</div>
 					<div class="row">
-						{#each Array(3) as _, i}
+						{#each rateUpList as _, i}
 							{@const { name, vision } = getCharDetails(rateup[i]) || {}}
 							<div class="rateup-item" class:blank={!name}>
 								{#if name}
@@ -174,7 +182,7 @@
 										{/key}
 									</button>
 								{:else}
-									<button class="add" on:click={openRateupPicker}>
+									<button class="add" on:click={() => openRateupPicker(i)}>
 										<i class="gi-plus" />
 									</button>
 								{/if}

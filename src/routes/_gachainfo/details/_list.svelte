@@ -15,8 +15,9 @@
 
 	const grouped5Star = {};
 	drop5star.forEach((d) => {
-		grouped5Star[d.type] = grouped5Star[d.type] || [];
-		grouped5Star[d.type].push(d);
+		const { type = 'character' } = d;
+		grouped5Star[type] = grouped5Star[type] || [];
+		grouped5Star[type].push(d);
 	});
 
 	if (bannerType === 'weapon-event') {

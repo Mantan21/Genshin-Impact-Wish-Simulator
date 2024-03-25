@@ -38,7 +38,7 @@
 		padding: 0.5rem;
 		border-radius: 6px;
 		position: absolute;
-		z-index: 1;
+		z-index: +10;
 		opacity: 0;
 		transition: opacity 0.25s;
 		pointer-events: none;

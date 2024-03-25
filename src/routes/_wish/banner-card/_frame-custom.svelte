@@ -99,9 +99,11 @@
 			</div>
 		</div>
 
-		<div class="char-title">
-			{charTitle || $t('customBanner.charTitle')}
-		</div>
+		{#if charTitle}
+			<div class="char-title">
+				{charTitle || $t('customBanner.charTitle')}
+			</div>
+		{/if}
 	</div>
 
 	<div class="watermark">{watermark || ''}</div>
@@ -235,7 +237,7 @@
 		--text-width: calc(30 / 100 * var(--content-width));
 		width: calc(30 / 100 * var(--content-width));
 		left: 48.5%;
-		bottom: 8%;
+		bottom: 10%;
 	}
 
 	.character .char-name {
