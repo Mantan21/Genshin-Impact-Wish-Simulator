@@ -49,6 +49,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "decree-of-the-deeps-2",
+							"character": "neuvillette",
+							"textOffset": { "l": 50, "b": 10.75 }
+						},
+						{
+							"bannerName": "leaves-in-the-wind-4",
+							"character": "kaedehara-kazuha",
+							"textOffset": { "l": 51, "b": 10.75 }
+						}
+					],
+					"rateup": ["yanfei", "xingqiu", "barbara"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-62",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "tome-of-the-eternal-flow" },
+						{ "name": "freedom-sworn", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"wine-and-song",
+						"the-flute",
+						"favonius-lance",
+						"favonius-greatsword",
+						"mitternachts-waltz"
+					],
+					"textOffset": {
+						"featured": { "l": 44, "t": 73, "w": 28 },
+						"rateup": { "l": 77, "b": 19 }
+					}
+				}
+			}
 		}
 	]
 }
