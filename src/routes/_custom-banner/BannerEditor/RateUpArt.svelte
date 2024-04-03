@@ -25,7 +25,7 @@
 		left: 0;
 		width: inherit;
 		aspect-ratio: 1080/533;
-		z-index: +10;
+		z-index: +4;
 		pointer-events: none;
 	}
 

@@ -152,7 +152,7 @@
 							type="text"
 							autocomplete="off"
 							id="watermark"
-							placeholder="Banner By @Traveler"
+							placeholder="Artwork By @Traveler"
 							value={watermark}
 							on:input={typeWatermark}
 						/>

@@ -181,7 +181,7 @@
 		justify-content: center;
 		align-items: center;
 		backdrop-filter: blur(8px);
-		z-index: +10;
+		z-index: +15;
 	}
 
 	.front,
@@ -250,7 +250,7 @@
 	}
 
 	:global(.mobile) .info {
-		z-index: +1;
+		z-index: +10;
 	}
 
 	.info button {

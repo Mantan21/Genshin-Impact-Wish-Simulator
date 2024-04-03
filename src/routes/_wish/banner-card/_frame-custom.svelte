@@ -140,7 +140,7 @@
 		left: 0;
 		margin: 0 4%;
 		height: calc(0.23 * var(--content-height));
-		width: 50%;
+		width: 45%;
 	}
 
 	h1 {

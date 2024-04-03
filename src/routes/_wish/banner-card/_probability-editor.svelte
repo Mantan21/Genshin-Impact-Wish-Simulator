@@ -253,32 +253,6 @@
 			</div>
 		{/if}
 
-		<!-- prettier-ignore -->
-		<div
-			class="item"
-			class:disabled={
-				(baseRate5 >= 100 && type !== 'standard')
-				|| guaranteed === 'always'
-				|| winRate >= 100
-			}
-		>
-			<div class="col">
-				{$t('editor.charRate')}
-				{#if !type.match(/chronicled|standard/)}
-					<small>{$t('editor.nonRateup')}</small>
-				{/if}
-				:
-			</div>
-			<div class="col percent">
-				<input
-					type="number"
-					value={charRate}
-					on:input={(e) => changeRate(e, 'charRate')}
-					disabled={(baseRate5 >= 100 && type !== 'standard') || guaranteed === 'always' || winRate >= 100}
-				/>
-			</div>
-		</div>
-
 		{#if type.match('weapon') || (type === 'chronicled' && !!$chronicledCourse.type)}
 			<div class="item">
 				<div class="col">
@@ -295,6 +269,32 @@
 				</div>
 			</div>
 		{/if}
+
+		<!-- prettier-ignore -->
+		<div
+			class="item"
+			class:disabled={
+				(baseRate5 >= 100 && type !== 'standard')
+				|| guaranteed === 'always'
+				|| winRate >= 100
+			}
+		>
+			<div class="col">
+				{$t('editor.charRate')}
+				{#if !type.match(/standard/)}
+					<small>{$t('editor.nonRateup')}</small>
+				{/if}
+				:
+			</div>
+			<div class="col percent">
+				<input
+					type="number"
+					value={charRate}
+					on:input={(e) => changeRate(e, 'charRate')}
+					disabled={(baseRate5 >= 100 && type !== 'standard') || guaranteed === 'always' || winRate >= 100}
+				/>
+			</div>
+		</div>
 
 		{#if !type.match(/standard|chronicled/)}
 			<div class="item">

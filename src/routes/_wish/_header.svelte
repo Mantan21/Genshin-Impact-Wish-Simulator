@@ -171,7 +171,10 @@
 			</div>
 		</div>
 	{:else}
-		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }} />
+		<div class="banner-button" in:inTransition={{ mobile: $mobileMode }}>
+			<div class="bg" />
+			<div class="button-wrapper" />
+		</div>
 	{/if}
 </div>
 
