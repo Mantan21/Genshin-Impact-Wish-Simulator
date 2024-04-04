@@ -1,5 +1,6 @@
 {
 	"title": "原神祈愿模拟器",
+	"item": "物品",
 	"character": "角色",
 	"weapon": "武器",
 	"vision": "神之眼",
@@ -414,7 +415,6 @@
 		"waiting": "请稍等",
 		"noData": "无可用数据",
 		"untracked": "未追踪",
-		"item": "物品",
 		"win": "小保底",
 		"lose": "歪",
 		"guaranteed": "大保底",

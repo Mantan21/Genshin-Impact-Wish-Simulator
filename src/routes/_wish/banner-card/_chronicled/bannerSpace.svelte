@@ -19,6 +19,7 @@
 
 	let pickedItem, pickedType, selected, type, point;
 	$: ({ type, selected, point } = $chronicledCourse);
+	$: type = selected && type; // reset type if no selected item
 	$: selectedItem = selected || pickedItem || characters['5star'][0];
 	$: selectedType = pickedType || type || 'character';
 	$: isWp = selectedType === 'weapon';

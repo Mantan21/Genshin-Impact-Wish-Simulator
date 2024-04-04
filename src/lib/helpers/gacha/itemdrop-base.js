@@ -146,7 +146,7 @@ export const get5StarItem = ({
 	customData = {}
 } = {}) => {
 	// Featured or selected Character Result
-	if (useRateup && banner.match(/character/)) {
+	if (useRateup && banner.match(/character|chronicled/)) {
 		if (Object.keys(customData).length > 0) {
 			const { vision, character, artPosition, itemID } = customData;
 			const result = {
@@ -160,8 +160,9 @@ export const get5StarItem = ({
 			};
 			return result;
 		}
-		const featured = getAllChars(5).find(({ name }) => name === rateupItem[0]);
-		return featured;
+		const loadItems = type === 'weapon' ? getAllWeapons : getAllChars;
+		const featured = loadItems(5).find(({ name }) => name === rateupItem[0]);
+		return featured || {};
 	}
 
 	// Losing Chronicled Result

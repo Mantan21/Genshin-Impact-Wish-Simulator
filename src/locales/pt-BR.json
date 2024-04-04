@@ -1,5 +1,6 @@
 {
 	"title": "Simulador De Orações Do Genshin Impact",
+	"item": "Item",
 	"character": "Personagem",
 	"weapon": "Arma",
 	"vision": "Visão",
@@ -414,7 +415,6 @@
 		"waiting": "Aguardando",
 		"noData": "Sem dados disponíveis.",
 		"untracked": "Não rastreado",
-		"item": "Item",
 		"win": "Ganhar 50/50",
 		"lose": "Perder 50/50",
 		"guaranteed": "Garantido",

@@ -4,16 +4,16 @@
 	import { t } from 'svelte-i18n';
 	import { activeBanner, bannerList, chronicledCourse } from '$lib/store/app-stores';
 	import { localPity } from '$lib/helpers/dataAPI/api-localstore';
-	import { getChronicledRate, getRate, setRate } from '$lib/helpers/gacha/probabilities';
+	import { getRate, setRate } from '$lib/helpers/gacha/probabilities';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { get5StarItem, regionElement } from '$lib/helpers/gacha/itemdrop-base';
+	import { regionElement } from '$lib/helpers/gacha/itemdrop-base';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 
 	export let element = 'default';
 	export let fullscreenEditor = false;
 
-	const { type: banner, region, stdver, characters: ch, weapons: wp } = $bannerList[$activeBanner];
+	const { type: banner, region } = $bannerList[$activeBanner];
 	const type = banner || 'character-event';
 	const isChronicled = type === 'chronicled';
 	element = isChronicled ? regionElement(region) : element;
@@ -25,25 +25,11 @@
 		playSfx();
 	};
 
-	const targetRate = (banner) => {
-		if (banner !== 'chronicled') return getRate(type, 'selectedRate');
-		const { type: itemType } = $chronicledCourse;
-		const droplist = get5StarItem({
-			banner: 'chronicled',
-			region: region,
-			stdver: stdver,
-			rateupItem: itemType === 'weapon' ? wp['5star'] : ch['5star'],
-			type: itemType
-		});
-		const { targetRate } = getChronicledRate(droplist);
-		return targetRate;
-	};
-
 	$: baseRate4 = getRate(type, 'baseRate4');
 	$: baseRate5 = getRate(type, 'baseRate5');
 	$: charRate = getRate(type, 'charRate');
 	$: winRate = getRate(type, 'winRate');
-	$: selectedRate = targetRate(type);
+	$: selectedRate = getRate(type, 'selectedRate');
 	$: hard4 = getRate(type, 'hard4');
 	$: hard5 = getRate(type, 'hard5');
 	$: max4 = getRate(type, 'max4');
@@ -253,11 +239,13 @@
 			</div>
 		{/if}
 
-		{#if type.match('weapon') || (type === 'chronicled' && !!$chronicledCourse.type)}
+		{#if type.match('weapon') || type === 'chronicled'}
 			<div class="item">
 				<div class="col">
 					{$t('editor.selectedRate', {
-						values: { itemType: type === 'chronicled' ? $t($chronicledCourse.type) : $t('weapon') }
+						values: {
+							itemType: type === 'chronicled' ? $t($chronicledCourse?.type || 'item') : $t('weapon')
+						}
 					})}
 				</div>
 				<div class="col percent">

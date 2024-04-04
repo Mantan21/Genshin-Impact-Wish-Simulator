@@ -1,5 +1,6 @@
 {
 	"title": "Giả Lập Cầu Nguyện Genshin Impact",
+	"item": "Item",
 	"character": "Nhân Vật",
 	"weapon": "Vũ Khí",
 	"vision": "Vision",
@@ -414,7 +415,6 @@
 		"waiting": "Đang Chờ",
 		"noData": "Không Có Dữ Liệu .",
 		"untracked": "Không Được Theo Dõi",
-		"item": "Item",
 		"win": "Thắng 50/50",
 		"lose": "Thua 50/50",
 		"guaranteed": "Được Đảm Bảo",

@@ -1,5 +1,6 @@
 {
 	"title": "Simulateur de vœux Genshin Impact",
+	"item": "Item",
 	"character": "Personnage",
 	"weapon": "Arme",
 	"vision": "Vision",
@@ -414,7 +415,6 @@
 		"waiting": "En attente",
 		"noData": "Aucune donnée disponible.",
 		"untracked": "Non suivi",
-		"item": "Item",
 		"win": "50/50 gagné",
 		"lose": "50/50 perdu",
 		"guaranteed": "Garanti",

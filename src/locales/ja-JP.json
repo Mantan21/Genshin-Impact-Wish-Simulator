@@ -1,5 +1,6 @@
 {
 	"title": "原神祈願シミュ",
+	"item": "アイテム",
 	"character": "キャラクター",
 	"weapon": "武器",
 	"vision": "神の目",
@@ -414,7 +415,6 @@
 		"waiting": "お待ちください",
 		"noData": "データがありません",
 		"untracked": "トラッキングされていません",
-		"item": "アイテム",
 		"win": "50%に勝利",
 		"lose": "50%に敗北",
 		"guaranteed": "確定獲得",
@@ -545,10 +545,6 @@
 		"inputKeyTxt": "キーを入力して特典を獲得",
 		"checkingKey": "保存されたキーの検証中",
 		"benefit": "特典",
-		"authorNotes": [
-			"広告の除去",
-			"無制限の自作祈願",
-			"{HSRWishSim} でも同じキーで特典を得られます"
-		]
+		"authorNotes": ["広告の除去", "無制限の自作祈願", "{HSRWishSim} でも同じキーで特典を得られます"]
 	}
 }

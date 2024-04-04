@@ -45,7 +45,8 @@
 			"baseRate4": 5.1,
 			"max4": 10,
 			"hard4": 9,
-			"charRate": 50
+			"charRate": 50,
+			"selectedRate": 50
 		},
 		"standard": {
 			"baseRate5": 0.6,

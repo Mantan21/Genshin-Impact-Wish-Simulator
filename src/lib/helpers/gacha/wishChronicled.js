@@ -1,7 +1,7 @@
 import { chronicledCourse } from '$lib/store/app-stores';
 import { fatepointManager } from '../dataAPI/api-localstore';
 import { get3StarItem, get4StarItem, get5StarItem, rand } from './itemdrop-base';
-import { getChronicledRate, prob } from './probabilities';
+import { getRate, prob } from './probabilities';
 
 const fatepoint = {
 	init({ version, phase }) {
@@ -69,42 +69,37 @@ const chronicledWish = {
 		// 5 Star Weapon
 		if (rarity === 5) {
 			const { _characters: ch, _weapons: wp, _region, _stdver, _epitomized } = this;
-
-			let result = {};
 			const { point, selected, type } = _epitomized.check();
-			const useRateup = point > 0 && !!selected;
+
+			const rateUpNameList = type === 'weapon' ? wp['5star'] : ch['5star'];
+			const rateupList = rateUpNameList.filter((name) => name !== selected);
+			let useRateup = point > 0 && !!selected;
+
+			// Probability to get Selected Item
+			if (point < 1 && !!selected) {
+				const selectedRate = getRate('chronicled', 'selectedRate');
+				const { item } = prob([
+					{ item: 'selected', chance: selectedRate },
+					{ item: 'random', chance: 100 - selectedRate }
+				]);
+				useRateup = item === 'selected';
+			}
 
 			// list all available
 			const droplist = get5StarItem({
 				banner: 'chronicled',
 				region: _region,
 				stdver: _stdver,
-				rateupItem: type === 'weapon' ? wp['5star'] : ch['5star'],
+				rateupItem: useRateup ? [selected] : rateupList,
+				useRateup,
 				type
 			});
 
-			// choose random item
-			if (!useRateup) {
-				const { targetRate, nonTargetRate, baseRate } = getChronicledRate(droplist);
-				const rateList = droplist.map(({ name }) => {
-					const targetChance = name === selected ? targetRate : nonTargetRate;
-					const chance = !selected ? baseRate : targetChance;
-					return { name, chance };
-				});
-
-				const { name } = prob(rateList);
-				result = droplist.find(({ name: resultName }) => resultName === name);
-			}
-
-			// Maximum point providing Selected Item
-			if (useRateup) {
-				result = droplist.find(({ name: resultName }) => resultName === selected);
-			}
-
+			const result = rand(droplist);
 			const isFatepointFull = _epitomized?.verify(result);
 			const randomStatus = !selected ? 'unset' : 'lose';
 			const fatepointstatus = isFatepointFull ? 'selected' : randomStatus;
-			result.status = point < 1 && result.name === selected ? 'win' : fatepointstatus;
+			result.status = point < 1 && result?.name === selected ? 'win' : fatepointstatus;
 			return result;
 		}
 	}

@@ -57,10 +57,3 @@ export const setRate = (banner, key, val) => {
 
 	localrate.set(banner, local);
 };
-
-export const getChronicledRate = (droplist) => {
-	const baseRate = 100 / droplist.length;
-	const targetRate = getRate('chronicled', 'selectedRate') || baseRate;
-	const nonTargetRate = (100 - targetRate) / (droplist.length - 1);
-	return { targetRate, nonTargetRate, baseRate };
-};
