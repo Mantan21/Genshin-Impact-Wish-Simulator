@@ -40,11 +40,23 @@
 					"bannerName": "ode-to-the-dawn-breeze-1",
 					"region": "mondstadt",
 					"characters": {
-						"5star": ["eula", "albedo", "klee"],
+						"5star": ["eula", "mona", "albedo", "klee", "diluc", "jean"],
 						"4star": []
 					},
 					"weapons": {
-						"5star": ["beacon-of-the-reed-sea", "song-of-broken-pines", "hunter_s-path"],
+						"5star": [
+							"skyward-blade",
+							"aquila-favonia",
+							"beacon-of-the-reed-sea",
+							"song-of-broken-pines",
+							"wolf_s-gravestone",
+							"skyward-pride",
+							"skyward-spine",
+							"lost-prayer-to-the-sacred-winds",
+							"skyward-atlas",
+							"hunter_s-path",
+							"skyward-harp"
+						],
 						"4star": ["rust", "lion_s-roar", "rainslasher", "eye-of-perception", "dragon_s-bane"]
 					}
 				}

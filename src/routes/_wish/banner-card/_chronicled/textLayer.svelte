@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { chronicledCourse } from '$lib/store/app-stores';
 	import { getBannerName, highlightBannerName } from '$lib/helpers/nameText';
-	import { get5StarItem } from '$lib/helpers/gacha/itemdrop-base';
+	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import RateUpSelector from './rateupSelector.svelte';
 	import Epitomized from './_epitomized.svelte';
 	import Dropnotes from '../__dropnotes.svelte';
@@ -15,15 +15,12 @@
 	export let translated = '';
 	export let element = 'anemo';
 
-	let { bannerName, characters, weapons, stdver, region } = bannerData;
+	const { bannerName, characters, weapons } = bannerData;
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
 
-	const rateupList = get5StarItem({
-		banner: `chronicled`,
-		rateupItem: [...characters['5star'], ...weapons['5star']],
-		region,
-		stdver
-	});
+	const rateupChar = characters['5star'].map((name) => getCharDetails(name));
+	const rateupWp = weapons['5star'].map((name) => ({ ...getWpDetails(name), type: 'weapon' }));
+	const rateupList = [...rateupChar, ...rateupWp];
 </script>
 
 <div class="frame-content">
