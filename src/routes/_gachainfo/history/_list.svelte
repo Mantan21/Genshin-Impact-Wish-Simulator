@@ -92,7 +92,7 @@
 									<span> {bannerName} </span>
 								{:else if banner.match(/event|chronicled/)}
 									<a href="/" on:click|preventDefault={() => search(bannerName)}>
-										{@html $t(`banner.${name}`)}
+										{@html $t(`banner.${name}`).replaceAll(/(#)/gi, '')}
 									</a>
 								{:else}
 									{$t(`banner.wanderlust`)}

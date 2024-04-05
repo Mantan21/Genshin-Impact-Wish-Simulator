@@ -50,7 +50,7 @@
 
 	<div class="rateup" style={positionToStyle(textOffset?.rateup)} in:fly={{ x: 10, duration: 700 }}>
 		<div class="weapon-name">
-			<span>{$t(`${rateup[0]}`)},</span>
+			<span>{$t(`${rateup[0]}`)}</span>
 			<span class="etc"> {$t('wish.banner.etc')}</span>
 			<span class="up">{$t('wish.banner.up')}</span>
 		</div>
@@ -190,7 +190,7 @@
 
 	:global(.zh-CN) .rateup .weapon-name,
 	:global(.ja-JP) .rateup .weapon-name {
-		font-size: calc(3.5 / 100 * var(--content-width));
+		font-size: calc(2.7 / 100 * var(--content-width));
 	}
 
 	span.etc {

@@ -113,6 +113,12 @@
 	});
 </script>
 
+<svelte:head>
+	<title>
+		{bannerName.replaceAll(/(#)/gi, '')} | {$t('title')}
+	</title>
+</svelte:head>
+
 <Title type={banner} vision={regionElement(region) || vision} {bannerName} {tplVersion} />
 
 {#if tplVersion === 'v2'}
