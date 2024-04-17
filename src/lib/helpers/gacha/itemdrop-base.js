@@ -44,19 +44,13 @@ export const randomNumber = (min = 1, max = 9) => {
 const getAllChars = (star) => {
 	return charsDB
 		.filter(({ rarity }) => rarity === star)
-		.map((arr) => {
-			arr.type = 'character';
-			return arr;
-		});
+		.map((arr) => ({ type: 'character', ...arr }));
 };
 
 const getAllWeapons = (star) => {
 	return weaponsDB
 		.filter(({ rarity }) => rarity === star)
-		.map((arr) => {
-			arr.type = 'weapon';
-			return arr;
-		});
+		.map((arr) => ({ type: 'weapon', ...arr }));
 };
 
 export const getCharDetails = (charName) => {
@@ -69,6 +63,15 @@ export const getWpDetails = (weaponName) => {
 	if (!weaponName) return {};
 	const findWP = weaponsDB.find(({ name }) => name === weaponName);
 	return findWP || {};
+};
+
+export const getDetails = (itemName) => {
+	if (!itemName) return {};
+	const characterList = charsDB.map((d) => ({ type: 'character', ...d }));
+	const weaponList = weaponsDB.map((d) => ({ type: 'weapon', ...d }));
+	const list = [...characterList, ...weaponList];
+	const findItems = list.find(({ name }) => itemName === name);
+	return findItems || {};
 };
 
 const char4starList = (banner) => {

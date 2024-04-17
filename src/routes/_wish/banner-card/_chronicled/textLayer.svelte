@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import { chronicledCourse } from '$lib/store/app-stores';
 	import { getBannerName, highlightBannerName } from '$lib/helpers/nameText';
-	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
+	import { getDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import RateUpSelector from './rateupSelector.svelte';
 	import Epitomized from './_epitomized.svelte';
 	import Dropnotes from '../__dropnotes.svelte';
@@ -18,9 +18,8 @@
 	const { bannerName, characters, weapons } = bannerData;
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
 
-	const rateupChar = characters['5star'].map((name) => getCharDetails(name));
-	const rateupWp = weapons['5star'].map((name) => ({ ...getWpDetails(name), type: 'weapon' }));
-	const rateupList = [...rateupChar, ...rateupWp];
+	const listOfItem = [...characters['5star'], ...weapons['5star']];
+	const rateupList = listOfItem.map((name) => getDetails(name));
 </script>
 
 <div class="frame-content">

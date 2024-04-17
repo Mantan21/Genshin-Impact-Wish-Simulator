@@ -8,7 +8,7 @@
 	export let courseData = {};
 	let selected, type, point;
 	$: ({ type, weaponType, selected, point } = courseData);
-	$: src = type === 'character' ? $assets[`face/${selected}`] : $assets[selected];
+	$: src = type === 'weapon' ? $assets[selected] : $assets[`face/${selected}`];
 
 	const openModal = getContext('handleEpitomizedModal');
 	const openDetail = () => {

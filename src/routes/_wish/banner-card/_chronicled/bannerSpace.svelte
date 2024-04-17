@@ -9,7 +9,7 @@
 		activeVersion
 	} from '$lib/store/app-stores';
 	import { fatepointManager } from '$lib/helpers/dataAPI/api-localstore';
-	import { getCharDetails, getWpDetails, regionElement } from '$lib/helpers/gacha/itemdrop-base';
+	import { getDetails, regionElement } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Artwork from './artwork.svelte';
 	import TextLayer from './textLayer.svelte';
@@ -17,21 +17,17 @@
 	const chronicled = $bannerList[$activeBanner];
 	const { region, characters } = chronicled;
 
-	let pickedItem, pickedType, selected, type, point;
-	$: ({ type, selected, point } = $chronicledCourse);
-	$: type = selected && type; // reset type if no selected item
+	let pickedItem, selected, point;
+	$: ({ selected, point } = $chronicledCourse);
 	$: selectedItem = selected || pickedItem || characters['5star'][0];
-	$: selectedType = pickedType || type || 'character';
-	$: isWp = selectedType === 'weapon';
-	$: details = isWp ? getWpDetails(selectedItem) : getCharDetails(selectedItem);
+	$: details = getDetails(selectedItem);
 	$: element = details.vision || regionElement(region);
-	$: courseData = { selected, type, weaponType: details.weaponType, point };
+	$: courseData = { selected, type: details.type, weaponType: details.weaponType, point };
 
 	setContext('itemPicker', (picked) => {
-		const { name, type: itemType } = picked;
+		const { name } = picked;
 		if (pickedItem === name) return;
 		playSfx('click2');
-		pickedType = itemType;
 		pickedItem = name;
 	});
 
@@ -60,7 +56,7 @@
 	</picture>
 
 	<Artwork
-		type={selectedType}
+		type={details.type}
 		item={selectedItem}
 		weaponType={details?.weaponType}
 		position={details?.offset?.banner}
@@ -72,7 +68,7 @@
 		{courseData}
 		bannerData={chronicled}
 		picked={selectedItem}
-		translated={isWp ? $t(selectedItem) : $t(`${selectedItem}.name`)}
+		translated={details.type === 'weapon' ? $t(selectedItem) : $t(`${selectedItem}.name`)}
 	/>
 
 	{#if !selected}

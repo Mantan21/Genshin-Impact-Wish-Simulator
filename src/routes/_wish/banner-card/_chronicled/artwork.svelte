@@ -3,7 +3,7 @@
 	import { assets } from '$lib/store/app-stores';
 	import { fly } from 'svelte/transition';
 
-	export let type = 'weapon';
+	export let type;
 	export let item = '';
 	export let weaponType = null;
 	export let position = {};

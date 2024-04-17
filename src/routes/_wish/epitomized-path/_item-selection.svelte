@@ -80,15 +80,13 @@
 	<div class="item-wrapper">
 		<div class="item-row">
 			{#if hasCourse}
-				{@const { name, weaponType, type: itemType = 'weapon' } = selectedData || {}}
-				{@const isWp = itemType === 'weapon' || bannerType.match('weapon')}
+				{@const { name, weaponType } = selectedData || {}}
+				{@const isWp = !!weaponType || bannerType.match('weapon')}
 				{@const localName = isWp ? $t(name) : $t(`${name}.name`)}
+				{@const type = isWp ? 'weapon' : 'character'}
 				<div class="item-col">
 					<button style="pointer-events: none; transform: scale(.9)">
-						<InventoryItem
-							noStars
-							itemdata={{ name, weaponType, localName, rarity: 5, type: itemType }}
-						/>
+						<InventoryItem noStars itemdata={{ name, weaponType, localName, rarity: 5, type }} />
 					</button>
 				</div>
 			{:else}

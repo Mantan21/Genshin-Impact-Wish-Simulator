@@ -23,6 +23,35 @@
 		<i class="gi-primo-star top" />
 		<i class="gi-primo-star bottom" />
 
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			xml:space="preserve"
+			version="1.1"
+			style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+			viewBox="0 0 66.21 129.27"
+		>
+			<defs>
+				<linearGradient
+					id="rateup-item-bg"
+					gradientUnits="userSpaceOnUse"
+					x1="30.95"
+					y1="117.73"
+					x2="30.16"
+					y2="6.36"
+				>
+					<stop offset="0" style="stop-opacity:0; stop-color:#dcd3c1" />
+					<stop offset="0.2" style="stop-opacity:0.4; stop-color:#dcd3c1" />
+					<stop offset="1" style="stop-opacity:1; stop-color:#dcd3c1" />
+				</linearGradient>
+			</defs>
+			<g id="Layer_x0020_1">
+				<path
+					class="fil0"
+					d="M-0 63.43c0.99,-11.34 5.72,-22.43 14.02,-33.53 -3.96,-3.39 -8.32,-6.81 -13.08,-10.26 -0.61,2.51 -0.94,5.13 -0.94,7.83l0 35.96zm33.34 65.84c31.22,-33.57 42.6,-65.64 11.51,-101.13 4.61,-4.61 12.57,-10.59 18.26,-14.61 -2.57,-5.49 -6.6,-10.17 -11.59,-13.53 -6.19,4.38 -14.87,11.29 -19.72,16.14l0 0c-38.4,35.99 -38.63,71.68 1.53,113.13zm31.07 -112.55c-5.56,4 -10.58,7.94 -15.08,11.84 10.47,12.83 16.18,25.62 16.88,38.76l0 -39.85c0,-3.76 -0.63,-7.37 -1.8,-10.75zm-62.44 -0.48c5.18,3.69 9.89,7.34 14.15,10.95 3.76,-4.7 8.16,-9.39 13.19,-14.12 -4.75,-4 -10.05,-8.05 -15.93,-12.16 -5.17,3.85 -9.18,9.17 -11.42,15.33z"
+				/>
+			</g>
+		</svg>
+
 		<picture class="wd">
 			{#if type === 'weapon'}
 				<img class={weaponType} src={$assets[name]} alt={$t(name)} />
@@ -34,6 +63,25 @@
 </div>
 
 <style>
+	/* SVG */
+	svg {
+		position: absolute;
+		top: 42.5%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		aspect-ratio: 1/2;
+		transition: opacity 0.25s;
+	}
+	.active svg,
+	.item-wrapper:hover svg {
+		opacity: 0.35;
+	}
+	.fil0 {
+		fill: url(#rateup-item-bg);
+	}
+	/* SVG */
+
 	.wd {
 		width: 100%;
 		height: 100%;
@@ -42,7 +90,7 @@
 
 	.item-wrapper {
 		position: relative;
-		background-color: #e5ddd2;
+		background-color: #e7ded2;
 		border: calc(0.03 * var(--col-width)) solid #cfba8d;
 		padding: calc(0.03 * var(--col-width));
 		box-shadow: inset 0 0 calc(0.1 * var(--col-width)) rgba(251, 188, 5, 0.5);
