@@ -12,6 +12,7 @@
 	"cashflow-supervision": "金流监督",
 	"cool-steel": "冷刃",
 	"cranes-echoing-call": "鹤鸣余音",
+	"crimson_moon_s-semblance": "赤月之形",
 	"debate-club": "以理服人",
 	"dragon_s-bane": "匣里灭辰",
 	"elegy-for-the-end": "终末嗟叹之诗",
@@ -97,6 +98,10 @@
 	"alhaitham": {
 		"name": "艾尔海森",
 		"title": "诲韬诤言"
+	},
+	"arlecchino": {
+		"name": "阿蕾奇诺",
+		"title": "孤暝厄月"
 	},
 	"amber": {
 		"name": "安柏",

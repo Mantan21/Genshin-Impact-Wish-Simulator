@@ -66,6 +66,7 @@
 		"tapestry-of-golden-flames": "#焰色#天河",
 		"tempestuous-destiny": "#劫中#泛滥",
 		"the-crane-soars-skyward": "#云府#鹤行",
+		"the-hearths-ashen-shadow": "#炉边#烬影",
 		"the-heron_s-court": "#白鹭#之庭",
 		"the-moongrass-enlightenment": "#月草#的赐慧",
 		"the-transcendent-one-returns": "#出尘#入世",
@@ -354,7 +355,7 @@
 			"5星物品祈愿的基础概率为<span>0.600%</span>，5星角色祈愿的基础概率为<span>0.300%</span>，5星武器祈愿的基础概率为<span>0.300%</span>，5星物品祈愿综合概率（含保底）为<span>1.600%</span>，最多<span>90</span>次祈愿必定能通过保底获取5星物品。<br> 4星物品祈愿的基础概率为<span>5.100%</span>，4星角色祈愿的基础概率为<span>2.550%</span>，4星武器祈愿的基础概率为<span>2.550%</span>，4星物品祈愿的综合概率（含保底）为<span>13.000%</span>。最多<span>10</span>次祈愿必定能通过保底获取4星或以上物品，通过保底获取4星物品的概率为<span>99.400%</span>，获取5星物品的概率为<span>0.600%</span>。"
 		],
 		"events": [
-			"「{bannerName}」活动祈愿已开启。活动期间内，限定5星角色「{featuredCharacter} 」以及4星角色 {rateupCharacters} 的祈愿获取概率将<span>大幅提升</span>！ <span> ※以上角色中，限定角色不会进入「奔行世间」常驻祈愿。 </span>",
+			"「{bannerName}」活动祈愿已开启。活动期间内，限定5星角色「{featuredCharacter}」以及4星角色 {rateupCharacters} 的祈愿获取概率将<span>大幅提升</span>！ <span> ※以上角色中，限定角色不会进入「奔行世间」常驻祈愿。 </span>",
 			"※ 一般情况下所有角色或武器均适用基础概率，如触发概率UP、保底等以具体规则为准。",
 			"〓祈愿规则〓",
 			"【5星物品】",
@@ -363,7 +364,7 @@
 			"在本期「叶落风随」活动祈愿中，4星物品祈愿的基础概率为<span>5.100%</span>，4星角色祈愿的基础概率为<span>2.550%</span>，4星武器祈愿的基础概率为<span>2.550%</span>，4星物品祈愿的综合概率（含保底）为<span>13.000%</span>。最多<span>10</span>次祈愿必定能通过保底获取4星或以上物品，通过保底获取4星物品的概率为<span>99.400%</span>，获取5星物品的概率为<span>0.600%</span>。当祈愿获取到4星物品时，有<span>50.000%</span>的概率为本期4星UP角色{rateupCharacters}中的一个。如果本次祈愿获取的4星物品非本期4星UP角色，下次祈愿获取的4星物品<span>必定</span>为本期4星UP角色。当祈愿获取到4星UP物品时，每个本期4星UP角色的获取概率均等。"
 		],
 		"weapons": [
-			"「{bannerName}」活动祈愿现已开启。活动期间内，限定5星武器{featuredWeapon1}、5星武器{featuredWeapon2}以及4星武器{rateupWeapons}的祈愿获取概率将<span>大幅提升</span>！<br/> <span> ※以上武器中，限定武器不会进入「奔行世间」常驻祈愿。</span>",
+			"「{bannerName}」活动祈愿现已开启。活动期间内，限定5星武器「{featuredWeapon1}」、5星武器「{featuredWeapon2}」以及4星武器{rateupWeapons}的祈愿获取概率将<span>大幅提升</span>！<br/> <span> ※以上武器中，限定武器不会进入「奔行世间」常驻祈愿。</span>",
 			"※一般情况下所有角色或武器均适用基础概率，如触发概率UP、保底等以具体规则为准。",
 			"〓祈愿规则〓",
 			"【5星物品】",
