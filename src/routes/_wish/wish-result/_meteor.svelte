@@ -13,11 +13,7 @@
 	export let show = false;
 	export let isSingle = false;
 
-	let v3star;
-	let v4starSingle;
-	let v4star;
-	let v5starSingle;
-	let v5star;
+	let videoContent;
 	let showSkipButton = false;
 
 	const showSplashArt = getContext('showSplashArt');
@@ -28,41 +24,37 @@
 
 	const skip = () => {
 		playSfx();
-		const videoDOMS = [v3star, v4starSingle, v4star, v5starSingle, v5star];
 		meteorEnd({ skip: true });
-		videoDOMS.forEach((video) => {
-			video.load();
-			video.style.display = 'none';
-		});
+		videoContent.load();
+		videoContent.style.display = 'none';
 	};
 
 	onMount(() => {
-		const videoDOMS = [v3star, v4starSingle, v4star, v5starSingle, v5star];
-		videoDOMS.forEach((video) => {
-			video.addEventListener('ended', () => {
-				video.style.display = 'none';
-				video.load();
-				meteorEnd();
-			});
+		videoContent.addEventListener('ended', () => {
+			videoContent.style.display = 'none';
+			videoContent.load();
+			meteorEnd();
+		});
+
+		videoContent.addEventListener('error', () => {
+			const message = $t('wish.result.meteorFailed');
+			pushToast({ message });
+			console.error('Failed to load the Falling Star Animation', videoContent.error);
+			return meteorEnd();
 		});
 	});
 
 	const showVideoHandle = async (rarity, single = true) => {
 		const muted = localConfig.get('muted');
-		let videoContent = v3star;
+		let vidSrc = '3star-single';
 		if (single && rarity !== 3) {
-			videoContent = rarity === 5 ? v5starSingle : v4starSingle;
+			vidSrc = rarity === 5 ? '5star-single' : '4star-single';
 		}
 		if (!single && rarity !== 3) {
-			videoContent = rarity === 5 ? v5star : v4star;
+			vidSrc = rarity === 5 ? '5star-multi' : '4star-multi';
 		}
 
-		if (!videoContent || videoContent.error || isNaN(videoContent.duration)) {
-			const message = $t('wish.result.meteorFailed');
-			pushToast({ message });
-			console.error("Can't play Meteor Animation because it cannot be loaded", videoContent.error);
-			return meteorEnd();
-		}
+		videoContent.src = $assets[`${vidSrc}.mp4`];
 		videoContent.style.display = 'unset';
 		videoContent.muted = !!muted;
 		await videoContent.play();
@@ -88,26 +80,9 @@
 
 <div class="meteor-wrapper" class:show on:mousedown={() => (showSkipButton = true)}>
 	<div class="video">
-		<video bind:this={v3star} src={$assets['3star-single.mp4']} type="video/mp4">
+		<video playsinline bind:this={videoContent} type="video/mp4">
 			<track kind="captions" />
 		</video>
-
-		<video bind:this={v4starSingle} src={$assets['4star-single.mp4']} type="video/mp4">
-			<track kind="captions" />
-		</video>
-
-		<video bind:this={v4star} src={$assets['4star-multi.mp4']} type="video/mp4">
-			<track kind="captions" />
-		</video>
-
-		<video bind:this={v5starSingle} src={$assets['5star-single.mp4']} type="video/mp4">
-			<track kind="captions" />
-		</video>
-
-		<video bind:this={v5star} src={$assets['5star-multi.mp4']} type="video/mp4">
-			<track kind="captions" />
-		</video>
-
 		{#if showSkipButton}
 			<button class="skip" on:click={skip} in:fade={{ duration: 250 }}>
 				{$t('wish.result.skip')} <i class="gi-caret-up" />
@@ -123,10 +98,13 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		opacity: 0;
+		transition: opacity 0.25s;
 	}
 	.meteor-wrapper.show {
 		display: block;
 		background-color: #fff;
+		opacity: 1;
 	}
 	.video {
 		position: relative;
