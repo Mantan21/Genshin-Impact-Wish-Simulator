@@ -44,8 +44,8 @@ export const browserDetect = () => {
 
 export const isSafari = () => {
 	const userAgent = window.navigator?.userAgent?.toLowerCase();
-	const chromeFn = window.chrome;
-	const chromeAgent = userAgent?.indexOf('chrome');
-	const safariAgent = userAgent?.match('safari') && !chromeAgent && !chromeFn;
-	return safariAgent;
+	const safariAgent = /^((?!chrome|android).)*safari/i.test(userAgent);
+	const iosDevice = /ipad|iphone|ipod|macintosh/.test(userAgent) && !window?.MSStream;
+	const isSafariBrowser = safariAgent || iosDevice;
+	return isSafariBrowser;
 };

@@ -37,9 +37,11 @@
 		});
 
 		videoContent.addEventListener('error', () => {
-			const message = $t('wish.result.meteorFailed');
+			const statusCode = videoContent.error.message;
+			const message = `${$t('wish.result.meteorFailed')} "${statusCode}" - ${videoContent.src}`;
 			pushToast({ message });
-			console.error('Failed to load the Falling Star Animation', videoContent.error);
+
+			console.error(`Failed to load the Falling Star Animation`);
 			return meteorEnd();
 		});
 	});

@@ -43,9 +43,10 @@
 		{#if !browserDetect().isSupported && isPWA}
 			<div class="updates adExpired">
 				<strong>
-					We highly recommend you to install
-					<span style="display: inline; color:#5ab3ff"> Google Chrome </span>
-					First, Maybe some features won't work properly for now!
+					We highly recommend installing <span style="display: inline; color:#5ab3ff">
+						Google Chrome
+					</span>
+					for optimal performance as some features may not be fully supported on.
 				</strong>
 			</div>
 		{:else if dateExpired && dateExpired !== 'none'}
