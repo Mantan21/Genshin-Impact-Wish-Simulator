@@ -64,21 +64,21 @@
 		<!-- Autotag -->
 
 		<!-- Desktop Only -->
-		{#if !$isMobile}
-			<!-- PopAds -->
-			{#if randomNumber(1, 2) === 1}
+		<!-- {#if !$isMobile} -->
+		<!-- PopAds -->
+		<!-- {#if randomNumber(1, 2) === 1}
 				<script
 					type="text/javascript"
 					src="//pl17416355.profitablecpmgate.com/3e/70/98/3e7098724a8a6321d737e1bd39d9ffed.js"></script>
-			{/if}
-			<!-- PopAds -->
+			{/if} -->
+		<!-- PopAds -->
 
-			<!-- In-Push Page -->
-			<script
+		<!-- In-Push Page -->
+		<!-- <script
 				type="text/javascript"
-				src="//pl17419889.profitablecpmgate.com/fb/35/45/fb3545e433a3f40f53c83f80f24037ec.js"></script>
-			<!-- In-Push Page -->
-		{/if}
+				src="//pl17419889.profitablecpmgate.com/fb/35/45/fb3545e433a3f40f53c83f80f24037ec.js"></script> -->
+		<!-- In-Push Page -->
+		<!-- {/if} -->
 	{/if}
 {/if}
 
