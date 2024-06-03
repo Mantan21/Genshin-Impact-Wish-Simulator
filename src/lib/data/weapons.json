@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 11515,
+			"name": "absolution",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "fontaine",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
 			"itemID": 13512,
 			"name": "crimson_moon_s-semblance",
 			"rarity": 5,

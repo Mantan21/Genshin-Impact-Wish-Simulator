@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000097,
+			"name": "sethos",
+			"vision": "electro",
+			"rarity": 4,
+			"release": "4.7-1",
+			"origin": "sumeru",
+			"offset": {
+				"splashArt": { "x": 1.3598382749326146, "y": -1.446091644204852, "scale": 1.32 },
+				"wishCard": { "x": 33.621187800963085, "y": 54.912359550561796, "scale": 10.37 }
+			}
+		},
+		{
+			"itemID": 10000098,
+			"name": "clorinde",
+			"vision": "electro",
+			"rarity": 5,
+			"origin": "fontaine",
+			"offset": {
+				"splashArt": { "x": -2.6630727762803237, "y": -1.7830188679245285, "scale": 1.64 },
+				"wishCard": { "x": -44.831460674157306, "y": 56.07191011235956, "scale": 11.64 },
+				"button": { "l": 50, "w": 125, "t": 35 }
+			}
+		},
+		{
 			"itemID": 10000096,
 			"name": "arlecchino",
 			"vision": "pyro",
