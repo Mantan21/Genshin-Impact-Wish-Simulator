@@ -17,6 +17,7 @@
 		get4StarItem,
 		get5StarItem,
 		getCharDetails,
+		getDetails,
 		getWpDetails,
 		regionElement
 	} from '$lib/helpers/gacha/itemdrop-base';
@@ -59,12 +60,8 @@
 	});
 	rateup = rateup
 		.filter((name) => name)
-		.map((name) => (isWp ? getWpDetails(name) : getCharDetails(name)))
-		.map((val) => {
-			const item = { ...val };
-			item.rateup = true;
-			return item;
-		});
+		.map((name) => getDetails(name))
+		.map((val) => ({ ...val, rateup: true }));
 	const drop4star = [...rateup, ...list4star];
 
 	// drop 5star
@@ -82,11 +79,7 @@
 	character = { ...($isCustomBanner ? $customData : getCharDetails(character)), rateup: true };
 	const weapons = featured
 		.map(({ name }) => getWpDetails(name))
-		.map((val) => {
-			const item = { ...val };
-			item.rateup = true;
-			return item;
-		});
+		.map((val) => ({ ...val, rateup: true, type: 'weapon' }));
 
 	const rateup5 = banner.match('character') ? [character] : weapons;
 	const drop5star = [...(rateup5 || []), ...list5star];
