@@ -13,6 +13,7 @@
 	import BannerImage from './_banner-image.svelte';
 	import ProbEditor from './_probability-editor.svelte';
 	import ChronicledSpace from './_chronicled/bannerSpace.svelte';
+	import { isSafari } from '$lib/helpers/mobileDetect';
 
 	export let data = {};
 	export let index = -1;
@@ -52,6 +53,7 @@
 	class:editor
 	class:fullscreenEditor
 	class:animate
+	class:safari={isSafari()}
 	bind:clientWidth
 	bind:clientHeight
 	style="--content-width:{clientWidth}px; --content-height:{clientHeight}px"
@@ -211,6 +213,10 @@
 
 	.card.editor:not(.fullscreenEditor) {
 		transform: rotateX(180deg);
+	}
+
+	.card.editor.safari:not(.fullscreenEditor) .front {
+		display: none;
 	}
 
 	.editor .front {
