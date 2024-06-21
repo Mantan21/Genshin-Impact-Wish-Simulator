@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "Đại Kiếm Tế Lễ",
 	"sacrificial-sword": "Kiếm Tế Lễ",
 	"sharpshooter_s-oath": "Lời Thề Xạ Thủ Thần",
+	"silvershower-heartstrings": "Màn Mưa Tơ Lòng",
 	"skyrider-sword": "Kiếm Phi Thiên",
 	"skyward-atlas": "Quyển Thiên Không",
 	"skyward-blade": "Thiên Không Kiếm",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "Shikanoin Heizou",
 		"title": "Con Tim Giao Hòa"
+	},
+	"sigewinne": {
+		"name": "Sigewinne",
+		"title": "Long Nữ Diệu Biến"
 	},
 	"sucrose": {
 		"name": "Sucrose",

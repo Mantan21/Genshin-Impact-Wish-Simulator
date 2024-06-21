@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "Espadão do Sacrifício",
 	"sacrificial-sword": "Espada do Sacrifício",
 	"sharpshooter_s-oath": "Juramento de Sagitário",
+	"silvershower-heartstrings": "Cordas da Chuva Branca",
 	"skyrider-sword": "Espadão do Cavaleiro do Céu",
 	"skyward-atlas": "Atlas Celestial",
 	"skyward-blade": "Espada Celestial",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "Shikanoin Heizou",
 		"title": "Mente Condizente"
+	},
+	"sigewinne": {
+		"name": "Sigewinne",
+		"title": "A Filha Transmutada do Dragão"
 	},
 	"sucrose": {
 		"name": "Sucrose",

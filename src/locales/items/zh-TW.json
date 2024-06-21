@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "祭禮大劍",
 	"sacrificial-sword": "祭禮劍",
 	"sharpshooter_s-oath": "神射手之誓",
+	"silvershower-heartstrings": "白雨心弦",
 	"skyrider-sword": "飛天禦劍",
 	"skyward-atlas": "天空之卷",
 	"skyward-blade": "天空之刃",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "鹿野院平藏",
 		"title": "心朝乂安"
+	},
+	"sigewinne": {
+		"name": "希格雯",
+		"title": "龍女妙變"
 	},
 	"sucrose": {
 		"name": "砂糖",

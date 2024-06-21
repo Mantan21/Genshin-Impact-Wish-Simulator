@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "Spadone sacrificale",
 	"sacrificial-sword": "Spada sacrificale",
 	"sharpshooter_s-oath": "Patto del cecchino",
+	"silvershower-heartstrings": "Candido cuore della pioggia",
 	"skyrider-sword": "Spadone del Cavalcacieli",
 	"skyward-atlas": "Atlante celeste",
 	"skyward-blade": "Lama celeste",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "Shikanoin Heizou",
 		"title": "Armonia analitica"
+	},
+	"sigewinne": {
+		"name": "Sigewinne",
+		"title": "Prodigiosa erede del drago"
 	},
 	"sucrose": {
 		"name": "Sucrose",

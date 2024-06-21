@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000095,
+			"name": "sigewinne",
+			"vision": "hydro",
+			"rarity": 5,
+			"origin": "fontaine",
+			"offset": {
+				"splashArt": { "x": -4.485175202156334, "y": -12.950134770889488, "scale": 1.42 },
+				"wishCard": { "x": -31.30979133226324, "y": 24.140515222482435, "scale": 10.17 },
+				"button": { "l": 52, "w": 115, "t": 37 }
+			}
+		},
+		{
 			"itemID": 10000097,
 			"name": "sethos",
 			"vision": "electro",

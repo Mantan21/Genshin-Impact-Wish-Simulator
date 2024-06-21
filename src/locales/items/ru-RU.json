@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "Церемониальный двуручный меч",
 	"sacrificial-sword": "Церемониальный меч",
 	"sharpshooter_s-oath": "Клятва стрелка",
+	"silvershower-heartstrings": "Сердечные струны дождя",
 	"skyrider-sword": "Меч небесного всадника",
 	"skyward-atlas": "Небесный атлас",
 	"skyward-blade": "Небесный меч",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "Хэйдзо",
 		"title": "Невозмутимое спокойствие"
+	},
+	"sigewinne": {
+		"name": "Сиджвин",
+		"title": "Преображённая дочь дракона"
 	},
 	"sucrose": {
 		"name": "Сахароза",

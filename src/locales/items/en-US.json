@@ -60,6 +60,7 @@
 	"sacrificial-greatsword": "Sacrificial Greatsword",
 	"sacrificial-sword": "Sacrificial Sword",
 	"sharpshooter_s-oath": "Sharpshooter's Oath",
+	"silvershower-heartstrings": "Silvershower Heartstrings",
 	"skyrider-sword": "Skyrider Sword",
 	"skyward-atlas": "Skyward Atlas",
 	"skyward-blade": "Skyward Blade",
@@ -339,6 +340,10 @@
 	"shikanoin-heizou": {
 		"name": "Shikanoin Heizou",
 		"title": "Analytical Harmoni"
+	},
+	"sigewinne": {
+		"name": "Sigewinne",
+		"title": "Wondrous Dragonheir"
 	},
 	"sucrose": {
 		"name": "Sucrose",

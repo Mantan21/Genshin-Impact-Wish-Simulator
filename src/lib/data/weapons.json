@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 15513,
+			"name": "silvershower-heartstrings",
+			"rarity": 5,
+			"weaponType": "bow",
+			"limited": true,
+			"origin": "inazuma",
+			"offset": {
+				"button": { "t": 10, "w": 75, "l": 30 }
+			}
+		},
+		{
 			"itemID": 11515,
 			"name": "absolution",
 			"rarity": 5,
