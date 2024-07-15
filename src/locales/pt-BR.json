@@ -321,6 +321,14 @@
 			"bamboo-rain": {
 				"name": "Bambu da Chuva",
 				"description": "Roupas formais da Guilda de Comerciantes de Feiyun para Xingqiu. Os bordados de bambu são refinados e lhe fazem vantagem, mas o aspecto favorito da roupa para Xingqiu são os bolsos internos, assim ele pode guardar uma novel."
+			},
+			"phantom-in-boots": {
+				"name": "Phantom in Boots",
+				"description": ""
+			},
+			"breeze-of-sabaa": {
+				"name": "Breeze of Sabaa",
+				"description": ""
 			}
 		}
 	},

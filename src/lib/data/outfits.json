@@ -194,6 +194,31 @@
 				"splashArt": { "x": 1.9204851752021566, "y": 1.6388140161725067, "scale": 1.14 },
 				"wishCard": { "x": 42.722311396468704, "y": 66.40449438202248, "scale": 7.65 }
 			}
+		},
+		{
+			"release": 4.8,
+			"name": "breeze-of-sabaa",
+			"characterName": "nilou",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"storeCard": { "l": -28, "w": 115, "t": -35 },
+				"splashArt": { "x": 0.13314037626628075, "y": 0.17221418234442837, "scale": 1.38 },
+				"wishCard": { "x": -43.8453781512605, "y": 50.53882352941176, "scale": 8.98 }
+			}
+		},
+		{
+			"release": 4.8,
+			"name": "phantom-in-boots",
+			"characterName": "kirara",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"splashArt": { "x": -0.24457308248914617, "y": 2.082489146164978, "scale": 1.48 },
+				"wishCard": { "x": 35.35473515248796, "y": 57.37411764705882, "scale": 10.35 }
+			}
 		}
 	]
 }

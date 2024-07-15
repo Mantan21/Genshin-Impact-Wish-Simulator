@@ -385,6 +385,9 @@
 	.trakteer .platform {
 		color: #be1e2d;
 	}
+	.patreon .platform {
+		color: #f96854;
+	}
 
 	.time {
 		color: #575859;

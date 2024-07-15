@@ -321,6 +321,14 @@
 			"bamboo-rain": {
 				"name": "Bambusregen",
 				"description": "Eine formelle Kleidung, die die Händlergilde Feiyun für Xingqiu hat anfertigen lassen. Die Bambusdrucke sind raffiniert und der Schnitt ist sehr schmeichelhaft, aber Xingqius Lieblingsaspekt dieser Kleidung sind die Innentaschen, in die man einen dünnen Roman stecken kann."
+			},
+			"phantom-in-boots": {
+				"name": "Phantom in Boots",
+				"description": ""
+			},
+			"breeze-of-sabaa": {
+				"name": "Breeze of Sabaa",
+				"description": ""
 			}
 		}
 	},

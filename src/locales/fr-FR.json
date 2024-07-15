@@ -321,6 +321,14 @@
 			"bamboo-rain": {
 				"name": "Pluie de bambous",
 				"description": "Une tenue de banquet préparée par la Guilde des marchands de Feiyun pour Xingqiu. Les imprimés en bambou sont raffinés et la coupe est des plus flatteuses, mais l'aspect préféré de Xingqiu réside dans ses poches intérieures, dans lesquelles on pourrait glisser un petit roman."
+			},
+			"phantom-in-boots": {
+				"name": "Phantom in Boots",
+				"description": ""
+			},
+			"breeze-of-sabaa": {
+				"name": "Breeze of Sabaa",
+				"description": ""
 			}
 		}
 	},
