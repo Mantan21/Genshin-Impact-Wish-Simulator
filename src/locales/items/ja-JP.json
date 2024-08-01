@@ -39,6 +39,7 @@
 	"lithic-blade": "千岩古剣",
 	"lithic-spear": "千岩長槍",
 	"lost-prayer-to-the-sacred-winds": "四風原典",
+	"lumidouce-elegy": "ルミドゥースの挽歌",
 	"magic-guide": "魔導緒論",
 	"makhaira-aquamarine": "マカイラの水色",
 	"memory-of-dust": "浮世の錠",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "ドリー",
 		"title": "夢の庭に隠せし財宝"
+	},
+	"emilie": {
+		"name": "エミリエ",
+		"title": "千の跡を辿って"
 	},
 	"eula": {
 		"name": "エウルア",

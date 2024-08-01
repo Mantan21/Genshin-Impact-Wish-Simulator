@@ -39,6 +39,7 @@
 	"lithic-blade": "Lithic Blade",
 	"lithic-spear": "Lithic Spear",
 	"lost-prayer-to-the-sacred-winds": "Lost Prayer to the Sacred Winds",
+	"lumidouce-elegy": "Lumidouce Elegy",
 	"magic-guide": "Magic Guide",
 	"makhaira-aquamarine": "Makhaira Aquamarine",
 	"memory-of-dust": "Memory of Dust",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "Dori",
 		"title": "Treasure of Dream Garden"
+	},
+	"emilie": {
+		"name": "Emilie",
+		"title": "A Thousand Scents Traced"
 	},
 	"eula": {
 		"name": "Eula",

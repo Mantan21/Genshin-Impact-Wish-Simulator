@@ -485,12 +485,20 @@
 		},
 		{
 			"date": "15 Jul 2024",
-			"featured": true,
 			"description": [
 				"Add new Outfit: <b>\"Breeze of Sabaa)\"</b> (Nillou)",
 				"Add new Outfit: <b>\"Phantom in Boots)\"</b> (Kirara)",
 				"Add <b>Navia's 1st Rerun</b> Banner",
 				"Add <b>Nilou's 2nd Rerun</b> Banner"
+			]
+		},
+		{
+			"date": "01 Aug 2024",
+			"featured": true,
+			"description": [
+				"Add New Character: <strong> Emilie (5★)</strong>",
+				"Add New Weapon: <b> Lumidouce Elegy (5★)</b>",
+				"Add <strong> Yelan 3rd rerun </strong> Banner"
 			]
 		}
 	]

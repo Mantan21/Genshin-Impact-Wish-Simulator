@@ -39,6 +39,7 @@
 	"lithic-blade": "Thiên Nham Cổ Kiếm",
 	"lithic-spear": "Thương Thiên Nham",
 	"lost-prayer-to-the-sacred-winds": "Điển Tích Tây Phong",
+	"lumidouce-elegy": "Bi Ca Lumidouce",
 	"magic-guide": "Tóm Tắt Ma Pháp",
 	"makhaira-aquamarine": "Sắc Nước Makhaira",
 	"memory-of-dust": "Khóa Trần Thế",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "Dori",
 		"title": "Kho Báu Vườn Mơ"
+	},
+	"emilie": {
+		"name": "Emilie",
+		"title": "Muôn Ngàn Hương Thơm"
 	},
 	"eula": {
 		"name": "Eula",

@@ -34,6 +34,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "ambrosial-essence-1",
+							"character": "emilie",
+							"textOffset": { "l": 50.5, "b": 10.75 }
+						},
+						{
+							"bannerName": "discerner-of-enigmas-4",
+							"character": "yelan",
+							"textOffset": { "l": 50.5, "b": 10.75 }
+						}
+					],
+					"rateup": ["razor", "xiangling", "yanfei"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-68",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "lumidouce-elegy" },
+						{ "name": "aqua-simulacra", "buttonPosition": { "l": 75 } }
+					],
+					"rateup": [
+						"makhaira-aquamarine",
+						"the-flute",
+						"favonius-warbow",
+						"favonius-lance",
+						"wandering-evenstar"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 62 },
+						"rateup": { "l": 77, "b": 28, "w": 17 }
+					}
+				}
+			}
 		}
 	]
 }

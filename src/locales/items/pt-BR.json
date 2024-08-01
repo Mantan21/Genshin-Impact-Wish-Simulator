@@ -39,6 +39,7 @@
 	"lithic-blade": "Espada Antiga de Millelith",
 	"lithic-spear": "Lança de Millelith",
 	"lost-prayer-to-the-sacred-winds": "Oração Perdida aos Ventos Sagrados",
+	"lumidouce-elegy": "Elegia Lumidouce",
 	"magic-guide": "Guia de Magia",
 	"makhaira-aquamarine": "Água-Marinha de Mahara",
 	"memory-of-dust": "Memória da Poeira",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "Dori",
 		"title": "Tesouro do Jardim dos Sonhos"
+	},
+	"emilie": {
+		"name": "Emilie",
+		"title": "Vislumbres de Mil Aromas"
 	},
 	"eula": {
 		"name": "Eula",

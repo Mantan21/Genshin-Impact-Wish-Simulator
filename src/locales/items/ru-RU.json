@@ -39,6 +39,7 @@
 	"lithic-blade": "Каменный меч",
 	"lithic-spear": "Каменное копьё",
 	"lost-prayer-to-the-sacred-winds": "Молитва святым ветрам",
+	"lumidouce-elegy": "Элегия Люмидус",
 	"magic-guide": "Руководство по магии",
 	"makhaira-aquamarine": "Аквамарин махайры",
 	"memory-of-dust": "Память о пыли",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "Дори",
 		"title": "Сокровище сада снов"
+	},
+	"emilie": {
+		"name": "Эмилия",
+		"title": "След тысячи ароматов"
 	},
 	"eula": {
 		"name": "Эола",

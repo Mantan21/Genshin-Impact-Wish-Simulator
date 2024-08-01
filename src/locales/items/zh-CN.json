@@ -39,6 +39,7 @@
 	"lithic-blade": "千岩古剑",
 	"lithic-spear": "千岩长枪",
 	"lost-prayer-to-the-sacred-winds": "四风原典",
+	"lumidouce-elegy": "柔灯挽歌",
 	"magic-guide": "魔导绪论",
 	"makhaira-aquamarine": "玛海菈的水色",
 	"memory-of-dust": "尘世之锁",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "多莉",
 		"title": "梦园藏金"
+	},
+	"emilie": {
+		"name": "艾梅莉埃",
+		"title": "千缕之踪"
 	},
 	"eula": {
 		"name": "优菈",

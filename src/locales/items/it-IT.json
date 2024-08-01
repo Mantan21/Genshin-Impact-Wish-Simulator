@@ -39,6 +39,7 @@
 	"lithic-blade": "Lama litica",
 	"lithic-spear": "Lancia litica",
 	"lost-prayer-to-the-sacred-winds": "Origine dei venti sacri",
+	"lumidouce-elegy": "Elegia di Lumidouce",
 	"magic-guide": "Manuale di magia",
 	"makhaira-aquamarine": "Acquamarina di Makhaira",
 	"memory-of-dust": "Memorie terrene",
@@ -176,6 +177,10 @@
 	"dori": {
 		"name": "Dori",
 		"title": "Tesoro del giardino dei sogni"
+	},
+	"emilie": {
+		"name": "Émilie",
+		"title": "Scie di mille profumi"
 	},
 	"eula": {
 		"name": "Eula",

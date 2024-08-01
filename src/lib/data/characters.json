@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000099,
+			"name": "emilie",
+			"vision": "dendro",
+			"rarity": 5,
+			"origin": "fontaine",
+			"offset": {
+				"splashArt": { "x": -1.2103658536585367, "y": -1.0807926829268293, "scale": 1.35 },
+				"wishCard": { "x": -16.73974540311174, "y": 74.44554455445544, "scale": 12.05 },
+				"button": { "l": 45, "w": 86, "t": 36 }
+			}
+		},
+		{
 			"itemID": 10000095,
 			"name": "sigewinne",
 			"vision": "hydro",
