@@ -5,7 +5,7 @@
 	export let v2;
 
 	$: wpLegends = ['win', 'lose', 'guaranteed', 'selected'];
-	$: chLegends = ['win', 'lose', 'guaranteed'];
+	$: chLegends = ['win', 'lose', 'guaranteed', 'captured'];
 	$: legends = banner === 'character-event' ? chLegends : wpLegends;
 </script>
 

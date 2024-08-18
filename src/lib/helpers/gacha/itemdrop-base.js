@@ -152,16 +152,8 @@ export const get5StarItem = ({
 	if (useRateup && banner.match(/character|chronicled/)) {
 		if (Object.keys(customData).length > 0) {
 			const { vision, character, artPosition, itemID } = customData;
-			const result = {
-				vision,
-				itemID,
-				name: character,
-				offset: artPosition || {},
-				type: 'character',
-				rarity: 5,
-				custom: true
-			};
-			return result;
+			const result = { name: character, offset: artPosition || {}, type: 'character' };
+			return { vision, itemID, rarity: 5, custom: true, ...result };
 		}
 		const loadItems = type === 'weapon' ? getAllWeapons : getAllChars;
 		const featured = loadItems(5).find(({ name }) => name === rateupItem[0]);
@@ -223,7 +215,7 @@ export const get5StarItem = ({
 		return resultList;
 	}
 
-	// Character List while lose on character banner
+	// Character Banner Result while lose on character banner
 	return std5StarCharlist(stdver).filter(({ name }) => !rateupItem.includes(name));
 };
 

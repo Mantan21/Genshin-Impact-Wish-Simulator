@@ -85,6 +85,8 @@
 		"currentPity": "Piti {rarity}★ saat ini",
 		"winRate": "Peluang mendapat item RateUP:",
 		"charRate": "Peluang mendapat Karakter dibanding Senjata",
+		"radRate": "Peluang memicu Capturing Radiance",
+		"radTrigger": "(Terjadi ketika kalah 50:50)",
 		"nonRateup": "(Item 4★ saat kalah)",
 		"selectedRate": "Peluang mendapat {itemType} terpilih:",
 		"guaranteedSystem": "Sistem Jaminan",
@@ -430,6 +432,7 @@
 		"win": "Menang 50/50",
 		"lose": "Kalah 50/50",
 		"guaranteed": "Item Jaminan",
+		"captured": "Capturing Radiance",
 		"selected": "Item Pilihan",
 		"olderLayout": "Layout Lama",
 		"switchv2": "Ganti ke V2"

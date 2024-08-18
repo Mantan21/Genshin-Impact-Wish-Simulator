@@ -10,7 +10,8 @@ const meteorList = [
 	'4star-single.mp4',
 	'4star-multi.mp4',
 	'5star-single.mp4',
-	'5star-multi.mp4'
+	'5star-multi.mp4',
+	'radiance-multi.mp4'
 ];
 
 export const check = async () => {
@@ -97,4 +98,3 @@ const readStream = (controller, reader, contentLength) => {
 		readStream(controller, reader, contentLength);
 	});
 };
-

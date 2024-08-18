@@ -12,6 +12,7 @@
 	export let rarity = 3;
 	export let show = false;
 	export let isSingle = false;
+	export let radiance = false;
 
 	let videoContent;
 	let showSkipButton = false;
@@ -46,14 +47,18 @@
 		});
 	});
 
-	const showVideoHandle = async (rarity, single = true) => {
+	const showVideoHandle = async (rarity, single = true, radiance) => {
 		const muted = localConfig.get('muted');
 		let vidSrc = '3star-single';
-		if (single && rarity !== 3) {
-			vidSrc = rarity === 5 ? '5star-single' : '4star-single';
-		}
-		if (!single && rarity !== 3) {
-			vidSrc = rarity === 5 ? '5star-multi' : '4star-multi';
+		if (radiance) {
+			vidSrc = 'radiance-multi';
+		} else {
+			if (single && rarity !== 3) {
+				vidSrc = rarity === 5 ? '5star-single' : '4star-single';
+			}
+			if (!single && rarity !== 3) {
+				vidSrc = rarity === 5 ? '5star-multi' : '4star-multi';
+			}
 		}
 
 		videoContent.src = $assets[`${vidSrc}.mp4`];
@@ -63,7 +68,7 @@
 		return;
 	};
 
-	$: if (show) showVideoHandle(rarity, isSingle);
+	$: if (show) showVideoHandle(rarity, isSingle, radiance);
 
 	// Shortcut
 	hotkeys('esc', 'index', (e) => {

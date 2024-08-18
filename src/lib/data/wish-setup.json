@@ -25,6 +25,7 @@
 			"max4": 10,
 			"hard4": 9,
 			"winRate": 50,
+			"radRate": 10,
 			"charRate": 50
 		},
 		"weapon-event": {

@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { activeBanner, bannerList, chronicledCourse } from '$lib/store/app-stores';
+	import { activeBanner, bannerList, chronicledCourse, activeVersion } from '$lib/store/app-stores';
 	import { localPity } from '$lib/helpers/dataAPI/api-localstore';
 	import { getRate, setRate } from '$lib/helpers/gacha/probabilities';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -29,6 +29,7 @@
 	$: baseRate5 = getRate(type, 'baseRate5');
 	$: charRate = getRate(type, 'charRate');
 	$: winRate = getRate(type, 'winRate');
+	$: radRate = getRate(type, 'radRate');
 	$: selectedRate = getRate(type, 'selectedRate');
 	$: hard4 = getRate(type, 'hard4');
 	$: hard5 = getRate(type, 'hard5');
@@ -234,6 +235,20 @@
 						value={winRate}
 						disabled={guaranteed === 'always'}
 						on:input={(e) => changeRate(e, 'winRate')}
+					/>
+				</div>
+			</div>
+		{/if}
+
+		{#if type.match(/character/) && $activeVersion.patch >= 5.0}
+			<div class="item" class:disabled={winRate >= 100 || guaranteed === 'always'}>
+				<div class="col">{$t('editor.radRate')} <small> {$t('editor.radTrigger')} </small></div>
+				<div class="col percent">
+					<input
+						type="number"
+						value={radRate}
+						disabled={winRate >= 100 || guaranteed === 'always'}
+						on:input={(e) => changeRate(e, 'radRate')}
 					/>
 				</div>
 			</div>

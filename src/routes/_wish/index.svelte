@@ -120,6 +120,7 @@
 	let showWishResult = false;
 	let showMeteor = false;
 	let single = true;
+	let radiance = false;
 	let meteorStar = 3;
 
 	const closeResult = () => {
@@ -144,7 +145,11 @@
 		single = stars.length === 1;
 		meteorStar = 3;
 		if (stars.includes(4)) meteorStar = 4;
-		if (stars.includes(5)) meteorStar = 5;
+		if (stars.includes(5)) {
+			const captureStatus = result.map(({ captured = false }) => captured);
+			radiance = captureStatus.includes(true);
+			meteorStar = 5;
+		}
 		showMeteor = true;
 	};
 
@@ -192,7 +197,7 @@
 <div class="overlay" in:fade|local />
 
 <div class="wish-container" class:show={showMeteor || showWishResult}>
-	<Meteor show={showMeteor} isSingle={single} rarity={meteorStar} />
+	<Meteor show={showMeteor} isSingle={single} rarity={meteorStar} {radiance} />
 	{#if showWishResult}
 		<WishResult list={result} skip={skipSplashArt} />
 	{/if}

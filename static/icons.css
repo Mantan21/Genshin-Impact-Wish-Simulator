@@ -78,7 +78,8 @@
 .gi-pyro:before {
 	content: '\4c';
 }
-.gi-primo-star:before {
+.gi-primo-star:before,
+.gi-captured:before {
 	content: '\72';
 }
 .gi-polearm:before {

@@ -85,6 +85,8 @@
 		"currentPity": "{rarity}-Star Current Pity",
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
+		"radRate": "Capturing Radiance Rate",
+		"radTrigger": "(Triggered when losing 50:50)",
 		"nonRateup": "(When losing 4-Star Item)",
 		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
@@ -430,6 +432,7 @@
 		"win": "50/50 gagné",
 		"lose": "50/50 perdu",
 		"guaranteed": "Garanti",
+		"captured": "Capturing Radiance",
 		"selected": "Arme sélectionnée",
 		"olderLayout": "Ancienne mise en page",
 		"switchv2": "Changer pour la V2"

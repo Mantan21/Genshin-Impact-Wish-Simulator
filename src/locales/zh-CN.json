@@ -85,6 +85,8 @@
 		"currentPity": "{rarity}-Star Current Pity",
 		"winRate": "Chance to get Featured Item:",
 		"charRate": "Chance to get Character instead of Weapon",
+		"radRate": "Capturing Radiance Rate",
+		"radTrigger": "(Triggered when losing 50:50)",
 		"nonRateup": "(When losing 4-Star Item)",
 		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "Guaranteed System",
@@ -430,6 +432,7 @@
 		"win": "小保底",
 		"lose": "歪",
 		"guaranteed": "大保底",
+		"captured": "Capturing Radiance",
 		"selected": "已定轨",
 		"olderLayout": "旧布局",
 		"switchv2": "切换到新版布局"

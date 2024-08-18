@@ -85,6 +85,8 @@
 		"currentPity": "★{rarity} 現在の天井カウント",
 		"winRate": "ピックアップ獲得確率:",
 		"charRate": "武器ではなくキャラを入手する確率",
+		"radRate": "Capturing Radiance Rate",
+		"radTrigger": "(Triggered when losing 50:50)",
 		"nonRateup": "(★4PUキャラを引けなかった場合)",
 		"selectedRate": "Selected {itemType} Rate:",
 		"guaranteedSystem": "ピックアップ確定",
@@ -430,6 +432,7 @@
 		"win": "50%に勝利",
 		"lose": "50%に敗北",
 		"guaranteed": "確定獲得",
+		"captured": "Capturing Radiance",
 		"selected": "軌定獲得",
 		"olderLayout": "Ver.1レイアウトに切替",
 		"switchv2": "Ver.2レイアウトに切替"

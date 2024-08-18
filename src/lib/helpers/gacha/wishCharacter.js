@@ -1,4 +1,5 @@
 import { guaranteedStatus } from '../dataAPI/api-localstore';
+import { getRate, prob } from './probabilities';
 import {
 	get3StarItem,
 	get4StarItem,
@@ -44,24 +45,36 @@ const characterWish = {
 		}
 
 		if (rarity === 5) {
-			const { _featured, _indexOfBanner, _stdver, _customData } = this;
+			const { _featured, _indexOfBanner, _stdver, _customData, _version } = this;
 			const { status: isGuaranteed, never, always } = checkGuaranteed('character-event', 5);
 			const useRateup = (isGuaranteed && !never) || always || isRateup('character-event');
+
+			// capturing Radiance
+			let captured = false;
+			if (_version >= 5.0 && !useRateup) {
+				const radianceRate = getRate('character-event', 'radRate');
+				const { captureRadiance } = prob([
+					{ captureRadiance: 'lose', chance: 100 - radianceRate },
+					{ captureRadiance: 'win', chance: radianceRate }
+				]);
+				captured = captureRadiance === 'win';
+			}
 
 			const droplist = get5StarItem({
 				banner: 'character-event',
 				stdver: _stdver,
 				rateupItem: [_featured[_indexOfBanner].character],
 				customData: _customData,
-				useRateup
+				useRateup: useRateup || captured
 			});
 			const result = rand(droplist);
 
 			const statusGuarateed = (isGuaranteed && !never) || always;
 			const rateUpStatus = statusGuarateed ? 'guaranteed' : 'win';
-			const status = useRateup ? rateUpStatus : 'lose';
-			guaranteedStatus.set('character-event-5star', !useRateup);
-			return { ...result, status };
+			const regularStatus = useRateup ? rateUpStatus : 'lose';
+			const status = captured ? 'captured' : regularStatus;
+			guaranteedStatus.set('character-event-5star', !(useRateup || captured));
+			return { ...result, status, captured };
 		}
 	}
 };
