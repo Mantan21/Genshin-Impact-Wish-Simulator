@@ -65,7 +65,7 @@
 	// Multipull Amount
 	const setMultiPull = (value) => {
 		localConfig.set('multipull', value);
-		multipull.set(value);
+		multipull.set(value || 1);
 	};
 	setContext('setMultiPull', setMultiPull);
 

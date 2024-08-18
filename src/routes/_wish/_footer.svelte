@@ -59,7 +59,7 @@
 	};
 	const handleMultiRollClick = () => {
 		playSfx('roll');
-		roll(isBeginner ? 10 : $multipull, bannerType);
+		roll(isBeginner ? 10 : $multipull || 1, bannerType);
 	};
 
 	// Footer for Editor
