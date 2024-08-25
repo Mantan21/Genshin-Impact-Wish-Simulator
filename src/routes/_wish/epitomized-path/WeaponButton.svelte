@@ -14,6 +14,7 @@
 	let buttonHeight;
 	let patch, phase, type, fatepointsystem;
 	$: ({ patch, phase } = $activeVersion);
+	$: steps = patch >= 5.0 ? 1 : 2;
 	$: ({ fatepointsystem, type } = $bannerList[$activeBanner]);
 
 	const handleEpitomizedModal = getContext('handleEpitomizedModal');
@@ -40,10 +41,10 @@
 		bind:clientHeight={buttonHeight}
 	>
 		<NoticeMark name="fatepoint{patch}-{phase}" />
-		<EpitomizedIcon point={$course.point} steps="2" />
+		<EpitomizedIcon point={$course.point} {steps} />
 		<div class="point-number">
 			{#if $course.selected !== null}
-				<span>{$course.point}</span>/2
+				<span>{$course.point}</span>/{steps}
 			{:else}
 				<span class="small">{$t('epitomizedPath.heading')}</span>
 			{/if}

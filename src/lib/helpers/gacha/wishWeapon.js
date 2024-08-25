@@ -16,6 +16,7 @@ const fatepoint = {
 		this._fatesystemON = fatesystemON;
 		if (!fatesystemON) return null;
 		this._featured = featured;
+		this._version = version;
 		this._fatepointManager = fatepointManager.init({ version, phase });
 		return this;
 	},
@@ -27,7 +28,7 @@ const fatepoint = {
 
 	verify(result) {
 		if (!this._fatesystemON) return null;
-		const { _featured, _info, _fatepointManager } = this;
+		const { _featured, _info, _fatepointManager, _version } = this;
 		const { selected, point } = _info;
 		if (selected === null) return false;
 
@@ -38,7 +39,8 @@ const fatepoint = {
 		if (resultName === selectedWeapon) {
 			_fatepointManager.remove();
 			course.set({ point: 0, selected: null });
-			return point === 2;
+			const maxPoint = _version >= 5.0 ? 1 : 2;
+			return point === maxPoint;
 		}
 
 		// Update Fatepoint if not a selected item
@@ -86,7 +88,7 @@ const weaponWish = {
 
 		// 5 Star Weapon
 		if (rarity === 5) {
-			const { _featured, _fatesystem } = this;
+			const { _featured, _fatesystem, _version: version } = this;
 			const { status: isGuaranteed, never, always } = checkGuaranteed('weapon-event', 5);
 			let useRateup = (isGuaranteed && !never) || always || isRateup('weapon-event');
 
@@ -109,8 +111,9 @@ const weaponWish = {
 					useSelected = item === 'selected';
 				}
 
-				// Guaranteed after 2 point
-				if (useSelected || (calculateFatepoint && point >= 2)) {
+				// Guaranteed after max point
+				const maxPoint = version >= 5.0 ? 1 : 2;
+				if (useSelected || (calculateFatepoint && point >= maxPoint)) {
 					useRateup = true;
 					rateupItem = [rateupItem[selected]];
 				}

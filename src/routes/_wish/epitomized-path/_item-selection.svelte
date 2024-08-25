@@ -5,7 +5,8 @@
 		chronicledCourse as chCourse,
 		course as wpCourse,
 		bannerList,
-		activeBanner
+		activeBanner,
+		activeVersion
 	} from '$lib/store/app-stores';
 	import { getCharDetails, getWpDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -29,6 +30,7 @@
 	$: ({ point, type: itemType } = isChronicled ? $chCourse : $wpCourse);
 	$: selectedData = featuredWp[$wpCourse.selected] || getChronicledData($chCourse);
 	$: hasCourse = !!selectedData?.name;
+	$: steps = $activeVersion.patch >= 5.0 ? 1 : 2;
 
 	let targetActive = null;
 	const cancelCourse = getContext('cancelCourse');
@@ -64,7 +66,7 @@
 
 <div class="item-picker" class:counter={hasCourse} class:isChronicled>
 	<div class="bg">
-		<FatepointSVG flat={!hasCourse} {point} steps={isChronicled ? 1 : 2} />
+		<FatepointSVG flat={!hasCourse} {point} steps={isChronicled ? 1 : steps} />
 	</div>
 
 	{#if !isChronicled}
@@ -108,7 +110,7 @@
 			<div class="text card-stroke">
 				<div>
 					{#if hasCourse}
-						{$t('epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/2
+						{$t('epitomizedPath.fatePoint')} : <span>{$wpCourse.point}</span>/{steps}
 					{:else if targetActive === null}
 						{$t('epitomizedPath.selectWeapon')}
 					{:else}

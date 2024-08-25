@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { course, mobileMode } from '$lib/store/app-stores';
+	import { course, mobileMode, activeVersion } from '$lib/store/app-stores';
 	import { positionToStyle } from '$lib/helpers/cssPosition';
 	import { highlightBannerName } from '$lib/helpers/nameText';
 	import EpitomizedButton from '../epitomized-path/WeaponButton.svelte';
@@ -12,6 +12,7 @@
 	export let textOffset = {};
 	const w = textOffset?.featured?.w || 29;
 	const featuredW = `--text-width: calc(${w} / 100 * var(--content-width));`;
+	$: steps = $activeVersion.patch >= 5.0 ? 1 : 2;
 </script>
 
 <div class="frame-content">
@@ -57,7 +58,7 @@
 	</div>
 
 	{#if $course.selected !== null}
-		<div class="selected" class:fill={$course.point === 2}>
+		<div class="selected" class:fill={$course.point >= steps}>
 			{$t('epitomizedPath.courseSetFor', {
 				values: { selectedCourse: $t(featured[$course.selected]?.name) }
 			})}
