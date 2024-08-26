@@ -74,6 +74,7 @@
 	"staff-of-homa": "护摩之杖",
 	"staff-of-the-scarlet-sands": "赤沙之杖",
 	"summit-shaper": "斫峰之刃",
+	"surfs-up": "冲浪时光",
 	"the-alley-flash": "暗巷闪光",
 	"the-bell": "钟剑",
 	"the-dockhands-assistant": "船坞长剑",
@@ -222,6 +223,10 @@
 		"name": "琴",
 		"title": "蒲公英骑士"
 	},
+	"kachina": {
+		"name": "卡齐娜",
+		"title": "斑金矿朴"
+	},
 	"kaedehara-kazuha": {
 		"name": "枫原万叶",
 		"title": "红叶逐荒波"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "莫娜",
 		"title": "星天水镜"
+	},
+	"mualani": {
+		"name": "玛拉妮",
+		"title": "哗啦啦逐浪客"
 	},
 	"nahida": {
 		"name": "纳西妲",

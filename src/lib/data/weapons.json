@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 14516,
+			"name": "surfs-up",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": 30, "w": 60, "l": 35 }
+			}
+		},
+		{
 			"itemID": 13513,
 			"name": "lumidouce-elegy",
 			"rarity": 5,

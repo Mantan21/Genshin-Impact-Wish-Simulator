@@ -74,6 +74,7 @@
 	"staff-of-homa": "護摩の杖",
 	"staff-of-the-scarlet-sands": "赤砂の杖",
 	"summit-shaper": "斬山の刃",
+	"surfs-up": "サーフィンタイム",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
 	"the-dockhands-assistant": "船渠剣",
@@ -222,6 +223,10 @@
 		"name": "ジン",
 		"title": "蒲公英騎士"
 	},
+	"kachina": {
+		"name": "カチーナ",
+		"title": "金の混じる原鉱"
+	},
 	"kaedehara-kazuha": {
 		"name": "楓原万葉",
 		"title": "風波流浪の紅葉"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "モナ",
 		"title": "星天水鏡"
+	},
+	"mualani": {
+		"name": "ムアラニ",
+		"title": "ざぶざぶウェーブチェイサー"
 	},
 	"nahida": {
 		"name": "ナヒーダ",

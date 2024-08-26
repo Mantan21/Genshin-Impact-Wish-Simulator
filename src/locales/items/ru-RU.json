@@ -74,6 +74,7 @@
 	"staff-of-homa": "Посох Хомы",
 	"staff-of-the-scarlet-sands": "Посох алых песков",
 	"summit-shaper": "Кромсатель пиков",
+	"surfs-up": "Лови волну",
 	"the-alley-flash": "Вспышка во тьме",
 	"the-bell": "Меч-колокол",
 	"the-dockhands-assistant": "Верфь",
@@ -222,6 +223,10 @@
 		"name": "Джинн",
 		"title": "Рыцарь Одуванчик"
 	},
+	"kachina": {
+		"name": "Качина",
+		"title": "Крапчатое самородное золото"
+	},
 	"kaedehara-kazuha": {
 		"name": "Кадзуха",
 		"title": "Багряные листья и неистовые волны"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "Мона",
 		"title": "Звёздное отражение"
+	},
+	"mualani": {
+		"name": "Муалани",
+		"title": "Укротительница волн"
 	},
 	"nahida": {
 		"name": "Нахида",

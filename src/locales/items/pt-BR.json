@@ -74,6 +74,7 @@
 	"staff-of-homa": "Báculo de Homa",
 	"staff-of-the-scarlet-sands": "Báculo das Areias Escarlates",
 	"summit-shaper": "Cortador de Montanhas",
+	"surfs-up": "Hora do Surfe",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
 	"the-dockhands-assistant": "A Doca",
@@ -222,6 +223,10 @@
 		"name": "Jean",
 		"title": "Cavaleira de Dandelion"
 	},
+	"kachina": {
+		"name": "Kachina",
+		"title": "Minério de Ouro Não Fundido"
+	},
 	"kaedehara-kazuha": {
 		"name": "Kaedehara Kazuha",
 		"title": "Samurai Errante que se Separa da sua Terra"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Reflexão Astral"
+	},
+	"mualani": {
+		"name": "Mualani",
+		"title": "Surfista Perseguidora das Ondas"
 	},
 	"nahida": {
 		"name": "Nahida",

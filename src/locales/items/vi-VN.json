@@ -74,6 +74,7 @@
 	"staff-of-homa": "Trượng Hộ Ma",
 	"staff-of-the-scarlet-sands": "Quyền Trượng Cát Đỏ",
 	"summit-shaper": "Kiếm Chước Phong",
+	"surfs-up": "Thời Khắc Lướt Sóng",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
 	"the-dockhands-assistant": "Kiếm Bến Tàu",
@@ -222,6 +223,10 @@
 		"name": "Jean",
 		"title": "Kỵ Sĩ Bồ Công Anh"
 	},
+	"kachina": {
+		"name": "Kachina",
+		"title": "Khoáng Thạch Ánh Vàng"
+	},
 	"kaedehara-kazuha": {
 		"name": "Kaedehara Kazuha",
 		"title": "Lá Đỏ Đuổi Sóng"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Thủy Kính Thiên Tinh"
+	},
+	"mualani": {
+		"name": "Mualani",
+		"title": "Người Đuổi Theo Sóng"
 	},
 	"nahida": {
 		"name": "Nahida",

@@ -74,6 +74,7 @@
 	"staff-of-homa": "Staff of Homa",
 	"staff-of-the-scarlet-sands": "Staff of the Scarlet Sands",
 	"summit-shaper": "Summit Shaper",
+	"surfs-up": "Surf's Up",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
 	"the-dockhands-assistant": "The Dockhand's Assistant",
@@ -222,6 +223,10 @@
 		"name": "Jean",
 		"title": "Dandelion Knight"
 	},
+	"kachina": {
+		"name": "Kachina",
+		"title": "Mottled Gold Yet Unsmelted"
+	},
 	"kaedehara-kazuha": {
 		"name": "Kaedehara Kazuha",
 		"title": "Scarlet Leaves Pursue Wild Waves"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Astral Reflection"
+	},
+	"mualani": {
+		"name": "Mualani",
+		"title": "Splish-Splash Wavechaser"
 	},
 	"nahida": {
 		"name": "Nahida",

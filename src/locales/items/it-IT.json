@@ -74,6 +74,7 @@
 	"staff-of-homa": "Bastone di Homa",
 	"staff-of-the-scarlet-sands": "Bastone delle sabbie scarlatte",
 	"summit-shaper": "Affettavette",
+	"surfs-up": "Vai col surf",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
 	"the-dockhands-assistant": "Aiutante del porto",
@@ -222,6 +223,10 @@
 		"name": "Jean",
 		"title": "Cavaliere del Dente di leone"
 	},
+	"kachina": {
+		"name": "Kachina",
+		"title": "Oro screziato allo stato grezzo"
+	},
 	"kaedehara-kazuha": {
 		"name": "Kaedehara Kazuha",
 		"title": "Vortice delle foglie scarlatte"
@@ -285,6 +290,10 @@
 	"mona": {
 		"name": "Mona",
 		"title": "Riflesso astrale"
+	},
+	"mualani": {
+		"name": "Mualani",
+		"title": "Cacciatrice di onde gorgoglianti"
 	},
 	"nahida": {
 		"name": "Nahida",

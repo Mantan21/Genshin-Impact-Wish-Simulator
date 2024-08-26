@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000102,
+			"name": "mualani",
+			"vision": "hydro",
+			"rarity": 5,
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": 3.6693766937669374, "y": 3.781842818428184, "scale": 1.57 },
+				"wishCard": { "x": -56.16326530612245, "y": 61.77857142857144, "scale": 11.13 },
+				"button": { "l": 52, "w": 115, "t": 37 }
+			}
+		},
+		{
+			"itemID": 10000100,
+			"name": "kachina",
+			"vision": "geo",
+			"rarity": 4,
+			"release": "5.0-1",
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": -0.5203252032520325, "y": 0.5040650406504066, "scale": 1.1 },
+				"wishCard": { "x": -20.722347629796843, "y": 51.65237020316027, "scale": 7.88 }
+			}
+		},
+		{
 			"itemID": 10000099,
 			"name": "emilie",
 			"vision": "dendro",
