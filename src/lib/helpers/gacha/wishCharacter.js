@@ -1,5 +1,5 @@
-import { guaranteedStatus } from '../dataAPI/api-localstore';
-import { getRate, prob } from './probabilities';
+import { guaranteedStatus, rollCounter } from '../dataAPI/api-localstore';
+import { prob } from './probabilities';
 import {
 	get3StarItem,
 	get4StarItem,
@@ -52,12 +52,14 @@ const characterWish = {
 			// capturing Radiance
 			let captured = false;
 			if (_version >= 5.0 && !useRateup) {
-				const radianceRate = getRate('character-event', 'radRate');
+				const radianceRoll = (rollCounter.get('radiance') || 0) + 1;
+				const radianceRate = radianceRoll < 2 ? 0 : radianceRoll * 25;
 				const { captureRadiance } = prob([
 					{ captureRadiance: 'lose', chance: 100 - radianceRate },
 					{ captureRadiance: 'win', chance: radianceRate }
 				]);
 				captured = captureRadiance === 'win';
+				rollCounter.set('radiance', captured ? 0 : radianceRoll);
 			}
 
 			const droplist = get5StarItem({
@@ -74,6 +76,7 @@ const characterWish = {
 			const regularStatus = useRateup ? rateUpStatus : 'lose';
 			const status = captured ? 'captured' : regularStatus;
 			guaranteedStatus.set('character-event-5star', !(useRateup || captured));
+			if (status === 'win') rollCounter.set('radiance', 0);
 			return { ...result, status, captured };
 		}
 	}
