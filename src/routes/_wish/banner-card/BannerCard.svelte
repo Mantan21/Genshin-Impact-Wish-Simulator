@@ -192,6 +192,10 @@
 		backface-visibility: hidden;
 	}
 
+	.editor .front {
+		transform: rotateX(0deg);
+	}
+
 	.card :global(.skeleton-event) {
 		aspect-ratio: 1080/533;
 	}
@@ -236,6 +240,7 @@
 
 	.character {
 		position: absolute;
+		z-index: +10;
 		height: 100%;
 		right: 0;
 		top: 0;
