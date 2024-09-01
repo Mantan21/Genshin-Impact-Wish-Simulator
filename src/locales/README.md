@@ -84,6 +84,15 @@ If you are not familiar with javascript especially sveltekit or don't know how t
          </td>
       </tr>
       <tr>
+         <td> Deutsch </td>
+         <td>
+            <a href="https://github.com/Alextocode">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/11820339?s=20" />
+               Alexander Schüßler
+            </a>
+         </td>
+      </tr>
+      <tr>
          <td> Italiano </td>
          <td>
             <a href="https://github.com/OCTIPI1">
