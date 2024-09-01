@@ -83,9 +83,9 @@ Based on the formula above, it can be concluded that the probability table is as
    - 4★ item guaranteed at `10` roll and promoted 4★ item guaranteed at `20` roll.
    - Base rate to get 4★ item is `6.6%`, guaranteed to get 4★ item at pity `10`
 
-   | **Pity** |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |   9    | ≥10  |
-   | -------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :----: | :--: |
-   | **Rate** | 6.6% | 6.6% | 6.6% | 6.6% | 6.6% | 6.6% | 6.6% | 6.6% | 53.30% | 100% |
+   | **Pity** |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |   9   | ≥10  |
+   | -------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :---: | :--: |
+   | **Rate** | 6.0% | 6.0% | 6.0% | 6.0% | 6.0% | 6.0% | 6.0% | 6.0% | 53.0% | 100% |
 
 3. Weapon Wish Probability
 
