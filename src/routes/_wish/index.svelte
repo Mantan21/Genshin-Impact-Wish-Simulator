@@ -145,11 +145,9 @@
 		single = stars.length === 1;
 		meteorStar = 3;
 		if (stars.includes(4)) meteorStar = 4;
-		if (stars.includes(5)) {
-			const captureStatus = result.map(({ captured = false }) => captured);
-			radiance = captureStatus.includes(true);
-			meteorStar = 5;
-		}
+		if (stars.includes(5)) meteorStar = 5;
+		const captureStatus = result.map(({ captured = false }) => captured);
+		radiance = captureStatus.includes(true);
 		showMeteor = true;
 	};
 
