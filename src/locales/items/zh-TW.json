@@ -21,6 +21,7 @@
 	"engulfing-lightning": "薙草之稻光",
 	"everlasting-moonglow": "不滅月華",
 	"eye-of-perception": "昭心",
+	"fang-of-the-mountain-king": "山王長牙",
 	"favonius-codex": "西風秘典",
 	"favonius-greatsword": "西風大劍",
 	"favonius-lance": "西風長槍",
@@ -246,6 +247,10 @@
 	"keqing": {
 		"name": "刻晴",
 		"title": "霆霓快雨"
+	},
+	"kinich": {
+		"name": "基尼奇",
+		"title": "回火之狩"
 	},
 	"klee": {
 		"name": "可莉",

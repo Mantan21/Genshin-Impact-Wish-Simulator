@@ -21,6 +21,7 @@
 	"engulfing-lightning": "草薙の稲光",
 	"everlasting-moonglow": "不滅の月華",
 	"eye-of-perception": "昭心",
+	"fang-of-the-mountain-king": "山の王の長牙",
 	"favonius-codex": "西風秘典",
 	"favonius-greatsword": "西風大剣",
 	"favonius-lance": "西風長槍",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "刻晴",
 		"title": "疾雷快雨"
+	},
+	"kinich": {
+		"name": "キィニチ",
+		"title": "廻焔を継ぐ狩人"
 	},
 	"kirara": {
 		"name": "綺良々",

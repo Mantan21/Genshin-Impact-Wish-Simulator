@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Fulmine fagocitante",
 	"everlasting-moonglow": "Luna perenne",
 	"eye-of-perception": "Occhio della percezione",
+	"fang-of-the-mountain-king": "Zanna del Re della Montagna",
 	"favonius-codex": "Codice di Favonius",
 	"favonius-greatsword": "Spadone di Favonius",
 	"favonius-lance": "Lancia di Favonius",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Keqing",
 		"title": "Dominatrice del tuono"
+	},
+	"kinich": {
+		"name": "Kinich",
+		"title": "Cacciatore del Voltafuoco"
 	},
 	"kirara": {
 		"name": "Kirara",

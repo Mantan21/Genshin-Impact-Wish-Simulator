@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Đoạn Thảo Trường Đao",
 	"everlasting-moonglow": "Vầng Trăng Bất Diệt",
 	"eye-of-perception": "Chiêu Tâm",
+	"fang-of-the-mountain-king": "Nanh Sơn Vương",
 	"favonius-codex": "Tây Phong Mật Điển",
 	"favonius-greatsword": "Đại Kiếm Tây Phong",
 	"favonius-lance": "Thương Tây Phong",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Keqing",
 		"title": "Sấm Chớp Trước Cơn Mưa"
+	},
+	"kinich": {
+		"name": "Kinich",
+		"title": "Thợ Săn Hồi Hỏa"
 	},
 	"kirara": {
 		"name": "Kirara",

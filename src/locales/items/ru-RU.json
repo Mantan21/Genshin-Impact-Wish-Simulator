@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Сияющая жатва",
 	"everlasting-moonglow": "Вечное лунное сияние",
 	"eye-of-perception": "Око сознания",
+	"fang-of-the-mountain-king": "Клык Горного короля",
 	"favonius-codex": "Кодекс Фавония",
 	"favonius-greatsword": "Двуручный меч Фавония",
 	"favonius-lance": "Копьё Фавония",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Кэ Цин",
 		"title": "Раскаты грома"
+	},
+	"kinich": {
+		"name": "Кинич",
+		"title": "Охотник Пламени поворота"
 	},
 	"kirara": {
 		"name": "Кирара",

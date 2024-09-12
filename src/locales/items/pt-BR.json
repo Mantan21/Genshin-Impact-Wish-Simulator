@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Luz do Cortador de Grama",
 	"everlasting-moonglow": "Fumetsu Gekka",
 	"eye-of-perception": "Olho da Percepção",
+	"fang-of-the-mountain-king": "Presa do Rei da Montanhag",
 	"favonius-codex": "Codex de Favonius",
 	"favonius-greatsword": "Espadão de Favonius",
 	"favonius-lance": "Lança de Favonius",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Keqing",
 		"title": "Trovão Condutor"
+	},
+	"kinich": {
+		"name": "Kinich",
+		"title": "Caçador da Têmpera"
 	},
 	"kirara": {
 		"name": "Kirara",

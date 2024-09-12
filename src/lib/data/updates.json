@@ -502,13 +502,21 @@
 		},
 		{
 			"date": "26 Aug 2023",
-			"featured": true,
 			"description": [
 				"<b>WELCOME TO NATLAN!</b>",
 				"New Character: <b>Mualani ( 5★ )</b> & <b>Kachina ( 4★ )</b>",
 				"New Weapon: <b>Surf's Up ( 5★ ) </b>",
 				"<b>New Mechanism:</b> Capturing Radiance - Can be triggered during 50:50 Condition",
 				"<b>Adjustment:</b> Reduce Fatepoint needed from 2 to 1, starting from v5.0"
+			]
+		},
+		{
+			"date": "12 Sep 2024",
+			"featured": true,
+			"description": [
+				"Add New Character: <strong> Kinich (5★)</strong>",
+				"Add New Weapon: <b> Fang of The Mountain King (5★)</b>",
+				"Add <strong> Raiden Shogun 4th rerun </strong> Banner"
 			]
 		}
 	]

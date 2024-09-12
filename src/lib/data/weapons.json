@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 12513,
+			"name": "fang-of-the-mountain-king",
+			"rarity": 5,
+			"weaponType": "claymore",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": 1, "w": 70, "l": 38 }
+			}
+		},
+		{
 			"itemID": 14516,
 			"name": "surfs-up",
 			"rarity": 5,

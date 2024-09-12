@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Engulfing Lightning",
 	"everlasting-moonglow": "Everlasting Moonglow",
 	"eye-of-perception": "Eye of Perception",
+	"fang-of-the-mountain-king": "Fang of The Mountain King",
 	"favonius-codex": "Favonius Codex",
 	"favonius-greatsword": "Favonius Greatsword",
 	"favonius-lance": "Favonius Lance",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Keqing",
 		"title": "Driving Thunder"
+	},
+	"kinich": {
+		"name": "Kinich",
+		"title": "Turnfire Hunt"
 	},
 	"kirara": {
 		"name": "Kirara",

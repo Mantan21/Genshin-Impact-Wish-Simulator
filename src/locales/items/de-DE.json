@@ -21,6 +21,7 @@
 	"engulfing-lightning": "Grasschnittstrahl",
 	"everlasting-moonglow": "Ewiger Mondschein",
 	"eye-of-perception": "Herzensblick",
+	"fang-of-the-mountain-king": "Zahn des Bergkönigs",
 	"favonius-codex": "Favonius-Kodex",
 	"favonius-greatsword": "Favonius-Großschwert",
 	"favonius-lance": "Favonius-Lanze",
@@ -250,6 +251,10 @@
 	"keqing": {
 		"name": "Keqing",
 		"title": "Donnerwetter"
+	},
+	"kinich": {
+		"name": "Kinich",
+		"title": "Wendefeuerjagd"
 	},
 	"kirara": {
 		"name": "Kirara",
