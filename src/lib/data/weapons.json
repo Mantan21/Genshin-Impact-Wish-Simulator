@@ -1,6 +1,41 @@
 {
 	"data": [
 		{
+			"itemID": 11430,
+			"name": "sturdy-bone",
+			"rarity": 4,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "natlan"
+		},
+		{
+			"itemID": 12430,
+			"name": "fruitful-hook",
+			"rarity": 4,
+			"weaponType": "claymore",
+			"limited": true,
+			"origin": "natlan"
+		},
+		{
+			"itemID": 13430,
+			"name": "mountain-bracing-bolt",
+			"rarity": 4,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "natlan"
+		},
+		{
+			"itemID": 11516,
+			"name": "peak-patrol-song",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
 			"itemID": 12513,
 			"name": "fang-of-the-mountain-king",
 			"rarity": 5,

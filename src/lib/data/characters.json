@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000103,
+			"name": "xilonen",
+			"vision": "geo",
+			"rarity": 5,
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": 0.45528455284552843, "y": -0.09891598915989158, "scale": 1.57 },
+				"wishCard": { "x": -15.98194130925508, "y": 65.66591422121896, "scale": 11.45 },
+				"button": { "l": 52, "w": 115, "t": 25 }
+			}
+		},
+		{
 			"itemID": 10000101,
 			"name": "kinich",
 			"vision": "dendro",

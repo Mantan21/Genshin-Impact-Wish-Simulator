@@ -29,6 +29,7 @@
 	"favonius-warbow": "Favonius Warbow",
 	"ferrous-shadow": "Ferrous Shadow",
 	"freedom-sworn": "Freedom-Sworn",
+	"fruitful-hook": "Fruitful Hook",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Harbinger of Dawn",
 	"hunter_s-path": "Hunter's Path",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Memory of Dust",
 	"mistsplitter-reforged": "Mistsplitter Reforged",
 	"mitternachts-waltz": "Mitternachts Waltz",
+	"mountain-bracing-bolt": "Mountain-Bracing Bolt",
 	"mouun_s-moon": "Mouun's Moon",
+	"peak-patrol-song": "Peak Patrol Song",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Portable Power Saw",
 	"primordial-jade-cutter": "Primordial Jade Cutter",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Splendor of Tranquil Waters",
 	"staff-of-homa": "Staff of Homa",
 	"staff-of-the-scarlet-sands": "Staff of the Scarlet Sands",
+	"sturdy-bone": "Sturdy Bone",
 	"summit-shaper": "Summit Shaper",
 	"surfs-up": "Surf's Up",
 	"the-alley-flash": "The Alley Flash",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Xiao",
 		"title": "Vigilant Yaksha"
+	},
+	"xilonen": {
+		"name": "Xilonen",
+		"title": "Ardent Flames Forge the Soul"
 	},
 	"xingqiu": {
 		"name": "Xingqiu",

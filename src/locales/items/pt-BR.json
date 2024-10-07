@@ -29,6 +29,7 @@
 	"favonius-warbow": "Arco de Favonius",
 	"ferrous-shadow": "Espadão de Ferro Branco",
 	"freedom-sworn": "Juramento pela Liberdade",
+	"fruitful-hook": "Gancho Frutífero",
 	"haran-geppaku-futsu": "Maremoto da Lua de Futsu",
 	"harbinger-of-dawn": "Prenúncio do Alvorecer",
 	"hunter_s-path": "Caminho do Caçador",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Memória da Poeira",
 	"mistsplitter-reforged": "Cortadora da Neblina Reforjada",
 	"mitternachts-waltz": "Valsa do Crepúsculo",
+	"mountain-bracing-bolt": "Prego Esmagador de Montanhas",
 	"mouun_s-moon": "Lua de Mouun",
+	"peak-patrol-song": "Canção da Patrulha do Pico",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Serra Elétrica Portátil",
 	"primordial-jade-cutter": "Cortador de Jade Primordial",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Esplendor das Águas Silenciosas",
 	"staff-of-homa": "Báculo de Homa",
 	"staff-of-the-scarlet-sands": "Báculo das Areias Escarlates",
+	"sturdy-bone": "Osso Robusto",
 	"summit-shaper": "Cortador de Montanhas",
 	"surfs-up": "Hora do Surfe",
 	"the-alley-flash": "Brilho do Beco",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Xiao",
 		"title": "Guardião Yaksha"
+	},
+	"xilonen": {
+		"name": "Xilonen",
+		"title": "Fogo Ardente Forja a Alma"
 	},
 	"xingqiu": {
 		"name": "Xingqiu",

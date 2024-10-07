@@ -29,6 +29,7 @@
 	"favonius-warbow": "Arco da guerra di Favonius",
 	"ferrous-shadow": "Ombra di ferro",
 	"freedom-sworn": " Giuramento di libertà",
+	"fruitful-hook": "Gancio fruttuoso",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Messaggera dell'alba",
 	"hunter_s-path": "Sentiero del cacciatore",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Memorie terrene",
 	"mistsplitter-reforged": "Squarcianebbia riforgiata",
 	"mitternachts-waltz": "Valzer notturno",
+	"mountain-bracing-bolt": "Chiodo reggimonti",
 	"mouun_s-moon": "Luna di Mouun",
+	"peak-patrol-song": "Canzone della Pattuglia delle Sommità",
 	"polar-star": "Stella polare",
 	"portable-power-saw": "Sega elettrica portatile",
 	"primordial-jade-cutter": "Spada di giada primordiale",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Fulgore delle placide acque",
 	"staff-of-homa": "Bastone di Homa",
 	"staff-of-the-scarlet-sands": "Bastone delle sabbie scarlatte",
+	"sturdy-bone": "Osso tenace",
 	"summit-shaper": "Affettavette",
 	"surfs-up": "Vai col surf",
 	"the-alley-flash": "Luce nei vicoli",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Xiao",
 		"title": "Custode Yaksha"
+	},
+	"xilonen": {
+		"name": "Xilonen",
+		"title": "Anima forgiata da fiamme ardenti"
 	},
 	"xingqiu": {
 		"name": "Xingqiu",

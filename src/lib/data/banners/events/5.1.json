@@ -1,0 +1,46 @@
+{
+	"patch": 5.1,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "forgefires-blessing-1",
+							"character": "xilonen",
+							"textOffset": { "l": 50, "b": 10.5 }
+						},
+						{
+							"bannerName": "of-silken-clouds-woven-2",
+							"character": "chiori",
+							"textOffset": { "l": 50, "b": 10.5 }
+						}
+					],
+					"rateup": ["collei", "dori", "candace"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-71",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "peak-patrol-song" },
+						{ "name": "uraku-misugiri", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"favonius-greatsword",
+						"rust",
+						"sturdy-bone",
+						"mountain-bracing-bolt",
+						"fruitful-hook"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 70 },
+						"rateup": { "l": 78, "b": 20, "w": 18 }
+					}
+				}
+			}
+		}
+	]
+}
+

@@ -29,6 +29,7 @@
 	"favonius-warbow": "Боевой лук Фавония",
 	"ferrous-shadow": "Металлическая тень",
 	"freedom-sworn": "Клятва свободы",
+	"fruitful-hook": "Плодотворный крюк",
 	"haran-geppaku-futsu": "Харан гэппаку фуцу",
 	"harbinger-of-dawn": "Предвестник зари",
 	"hunter_s-path": "Охотничья тропа",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Память о пыли",
 	"mistsplitter-reforged": "Рассекающий туман",
 	"mitternachts-waltz": "Вальс Нирваны Ночи",
+	"mountain-bracing-bolt": "Крепящий горы шип",
 	"mouun_s-moon": "Луна Моун",
+	"peak-patrol-song": "Песнь патруля пиков",
 	"polar-star": "Полярная звезда",
 	"portable-power-saw": "Переносная мотопила",
 	"primordial-jade-cutter": "Драгоценный омут",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Блеск тихих вод",
 	"staff-of-homa": "Посох Хомы",
 	"staff-of-the-scarlet-sands": "Посох алых песков",
+	"sturdy-bone": "Крепкая кость",
 	"summit-shaper": "Кромсатель пиков",
 	"surfs-up": "Лови волну",
 	"the-alley-flash": "Вспышка во тьме",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Сяо",
 		"title": "Защитник Якса"
+	},
+	"xilonen": {
+		"name": "Шилонен",
+		"title": "Закалённая пламенем душа"
 	},
 	"xingqiu": {
 		"name": "Син Цю",

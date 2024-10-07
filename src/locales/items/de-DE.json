@@ -29,6 +29,7 @@
 	"favonius-warbow": "Favonius-Jagdbogen",
 	"ferrous-shadow": "Eiserner Schatten",
 	"freedom-sworn": "Blasser Schwur der Freiheit",
+	"fruitful-hook": "Fruchtbarer Haken",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Schwert der Dämmerung",
 	"hunter_s-path": "Pfad des Jägers",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Ketten des Diesseits",
 	"mistsplitter-reforged": "Widerschein des Nebelsplitters",
 	"mitternachts-waltz": "Mitternachtswalzer",
+	"mountain-bracing-bolt": "Bergschützer-Bolzen",
 	"mouun_s-moon": "Mouun-Mond",
+	"peak-patrol-song": "Lied der Gipfelpatrouille",
 	"polar-star": "Polarstern",
 	"portable-power-saw": "Tragbare motorisierte Säge",
 	"primordial-jade-cutter": "Moosgrüner Fels",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Pracht des stillen Wasser",
 	"staff-of-homa": "Homa-Stab",
 	"staff-of-the-scarlet-sands": "Stab der roten Sande",
+	"sturdy-bone": "Robuster Knochen",
 	"summit-shaper": "Gipfelbrecher",
 	"surfs-up": "Zeit zum Wellenreiten",
 	"the-alley-flash": "Gassenleuchte",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Xiao",
 		"title": "Schützender Yaksha"
+	},
+	"xilonen": {
+		"name": "Xilonen",
+		"title": "Im Feuer geschmiedete Seele"
 	},
 	"xingqiu": {
 		"name": "Xingqiu",

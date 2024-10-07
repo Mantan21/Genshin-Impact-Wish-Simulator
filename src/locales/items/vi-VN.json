@@ -29,6 +29,7 @@
 	"favonius-warbow": "Cung Tây Phong",
 	"ferrous-shadow": "Kiếm Thiết Ảnh",
 	"freedom-sworn": "Lời Thề Tự Do Cổ Xưa",
+	"fruitful-hook": "Móc Trĩu Quả",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
 	"harbinger-of-dawn": "Thần Kiếm Lê Minh",
 	"hunter_s-path": "Con Đường Thợ Săn",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "Khóa Trần Thế",
 	"mistsplitter-reforged": "Ánh Sáng Đêm Sương Mù",
 	"mitternachts-waltz": "Điệu Van Ban Đêm",
+	"mountain-bracing-bolt": "Mũi Đinh Trấn Núi",
 	"mouun_s-moon": "Ánh Trăng Mouun",
+	"peak-patrol-song": "Khúc Ca Núi Đá",
 	"polar-star": "Ngôi Sao Cực Đông",
 	"portable-power-saw": "Máy Cưa Cầm Tay",
 	"primordial-jade-cutter": "Bàn Nham Kết Lục",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "Sắc Nước Lộng Lẫy",
 	"staff-of-homa": "Trượng Hộ Ma",
 	"staff-of-the-scarlet-sands": "Quyền Trượng Cát Đỏ",
+	"sturdy-bone": "Xương Cứng",
 	"summit-shaper": "Kiếm Chước Phong",
 	"surfs-up": "Thời Khắc Lướt Sóng",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "Xiao",
 		"title": "Hộ Pháp Dạ Xoa"
+	},
+	"xilonen": {
+		"name": "Xilonen",
+		"title": "Lửa Nung Đúc Hồn"
 	},
 	"xingqiu": {
 		"name": "Xingqiu",

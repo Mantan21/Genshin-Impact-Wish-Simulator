@@ -29,6 +29,7 @@
 	"favonius-warbow": "西风猎弓",
 	"ferrous-shadow": "铁影阔剑",
 	"freedom-sworn": "苍古自由之誓",
+	"fruitful-hook": "硕果钩",
 	"haran-geppaku-futsu": "波乱月白经津",
 	"harbinger-of-dawn": "黎明神剑",
 	"hunter_s-path": "猎人之径",
@@ -46,7 +47,9 @@
 	"memory-of-dust": "尘世之锁",
 	"mistsplitter-reforged": "雾切之回光",
 	"mitternachts-waltz": "幽夜华尔兹",
+	"mountain-bracing-bolt": "镇山之钉",
 	"mouun_s-moon": "曚云之月",
+	"peak-patrol-song": "岩峰巡歌",
 	"polar-star": "冬极白星",
 	"portable-power-saw": "便携动力锯",
 	"primordial-jade-cutter": "磐岩结绿",
@@ -74,6 +77,7 @@
 	"splendor-of-tranquil-waters": "静水流涌之辉",
 	"staff-of-homa": "护摩之杖",
 	"staff-of-the-scarlet-sands": "赤沙之杖",
+	"sturdy-bone": "弥坚骨",
 	"summit-shaper": "斫峰之刃",
 	"surfs-up": "冲浪时光",
 	"the-alley-flash": "暗巷闪光",
@@ -403,6 +407,10 @@
 	"xiao": {
 		"name": "魈",
 		"title": "护法夜叉"
+	},
+	"xilonen": {
+		"name": "希諾寧",
+		"title": "焮火鑄魂"
 	},
 	"xingqiu": {
 		"name": "行秋",
