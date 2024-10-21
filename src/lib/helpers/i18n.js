@@ -16,7 +16,7 @@ const supportedLocales = [
 	'th-TH',
 	'vi-VN'
 ];
-const itemLocales = ['zh-CN', 'zh-TW', 'en-US', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN'];
+const itemLocales = ['zh-CN', 'zh-TW', 'en-US', 'de-DE', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN'];
 
 const checkLocale = () => {
 	const savedLocale = browser ? localConfig.get('locale') : null;

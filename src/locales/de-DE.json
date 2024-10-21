@@ -256,7 +256,7 @@
 	},
 	"outfit": {
 		"heading": "Figurenzierde",
-		"default": "Standart",
+		"default": "Standard",
 		"setOutfit": "Outfit auswählen",
 		"owned": "Bereits vorhanden",
 		"purchasePrompt": "Du hast die Figur für dieses Outfit nicht, bist du sicher das du es kaufen möchtest?",
@@ -371,7 +371,7 @@
 			"Basiswahrscheinlichkeit zum Ziehen von 5-Sterne-Objekten = <span>0.600%</span>; Basiswahrscheinlichkeit zum Ziehen von 5-Sterne-Figuren = <span>0.300%</span>, und die Basiswahrscheinlichkeit zum Ziehen von 5-Sterne-Waffen = <span>0.300%</span>; Gesamtwahrscheinlichkeit (inkl. Garantie) für Ziehen von 5-Sterne Gegenstand = <span>1.600%</span>; Nach höchstens <span>90</span> Gebeten erhältst du aufgrund der Garantie auf jeden Fall ein 5-Sterne-Objekt. <br> Basiswahrscheinlichkeit zum Ziehen von 4-Sterne-Objekten = <span>5.100%</span>; Basiswahrscheinlichkeit zum Ziehen von 4-Sterne-Figuren = <span>2.550%</span>, und Basiswahrscheinlichkeit zum Ziehen von 4-Sterne-Waffen = <span>2.550%</span>; Gesamtwahrscheinlichkeit (inkl. Garantie) für Ziehen von 4-Sterne-Gegenständen  = <span>13.000%</span>; Nach höchstens <span>10</span> Gebeten erhältst du aufgrund der Garantie auf jeden Fall ein 4-Sterne-Objekt.; Wahrscheinlichkeit ein 4-Sterne-Objekt durch die Garantie zu erhalten = <span>99.400%</span>, und Wahrscheinlichkeit ein 5-Sterne-Objekt durch die Garantie zu erhalten = <span>0.600%</span>. "
 		],
 		"events": [
-			"Das Aktionsgebet \"{bannerName}\" ist jetzt verfügbar. Während des Aktionszeitraums, steigt die Wahrscheinlichkeit zum Ziehen der <span>limitierten</span> 5-Sterne-Figur {featuredCharacter} sowie der 4-Sterne-Figuren {rateupCharacters} <span>stark an</span>! <br/> <span> ※ Hinweis: Die limitierten Figuren dieser Aktion werden nicht im Standartgebet \"Wanderlust\" verfügbar sein.</span>",
+			"Das Aktionsgebet \"{bannerName}\" ist jetzt verfügbar. Während des Aktionszeitraums, steigt die Wahrscheinlichkeit zum Ziehen der <span>limitierten</span> 5-Sterne-Figur {featuredCharacter} sowie der 4-Sterne-Figuren {rateupCharacters} <span>stark an</span>! <br/> <span> ※ Hinweis: Die limitierten Figuren dieser Aktion werden nicht im Standardgebet \"Wanderlust\" verfügbar sein.</span>",
 			"※ Im Normalfall besteht dieselbe Basiswahrscheinlichkeit für alle Figuren oder Waffen. Richte dich bei erhöhten Wahrscheinlichkeiten, Garantien oder Ähnlichem bitte nach den jeweiligen Regeln.",
 			"〓Regeln〓",
 			"5-Sterne-Objekte",
@@ -380,7 +380,7 @@
 			"Für das Aktionsgebet \"{bannerName}\": Basiswahrscheinlichkeit ein 4-Sterne-Objekt zu erhalten = <span> 5.100%</span>; Basiswahrscheinlichkeit eine 4-Sterne-Figur zu erhalten = <span>2.550%</span>, und Basiswahrscheinlichkeit eine 4-Sterne-Waffe zu erhalten = <span>2.550%</span>; Basiswahrscheinlichkeit einen 4-Sterne-Gegenstand zu erhalten = <span> 13.000%</span>; Nach höchsten <span>10<span> Gebeten erhältst du aufgrund der Garantie mindestens 1 4-Sterne-Objekt.; Wahrscheinlichkeit ein 4-Sterne-Objekt durch die Garantie zu erhalten = <span>99.400%</span>, und Wahrscheinlichkeit ein 5-Sterne-Objekt durch die Garantie zu erhalten = <span>0.600%</span>. <br/> Sobald du bei einem Gebet eine 5-Sterne-Figur ziehst, besteht die Wahrscheinlichkeit von <span>50.000%</span> eine der Aktionsfiguren {rateupCharacters} zu erhalten. Wenn du bei diesem Gebet ein 4-Sterne-Objekt ziehst, das keine Aktionsfigur ist, bekommst du beim nächsten Ziehen eines 4-Sterne-Objektes <span>auf jeden Fall</span> eine Aktionsfigur. Wenn du beim Gebet ein 4-Sterne-Aktionsobjekt erhältst, ist die Wahrscheinlichkeit zum Erhalten aller 4-Sterne-Aktionsfiguren bei diesem Gebet identisch."
 		],
 		"weapons": [
-			"Das Aktionsgebet \"{bannerName}\" ist nun verfügbar. Während des Aktionszeitraums, steigt die Wahrscheinlichkeit zum Ziehen der <span>limitierten</span> 5-Sterne-Waffen {featuredWeapon1} und {featuredWeapon2} sowie der <span>limitierten</span> 4-Sterne-Waffen {rateupWeapons} <span>stark an</span>! <br/> <span> ※ Hinweis: Die limitierten Waffen dieser Aktion werden nicht im Standartgebet \"Wanderlust\" verfügbar sein.</span>",
+			"Das Aktionsgebet \"{bannerName}\" ist nun verfügbar. Während des Aktionszeitraums, steigt die Wahrscheinlichkeit zum Ziehen der <span>limitierten</span> 5-Sterne-Waffen {featuredWeapon1} und {featuredWeapon2} sowie der <span>limitierten</span> 4-Sterne-Waffen {rateupWeapons} <span>stark an</span>! <br/> <span> ※ Hinweis: Die limitierten Waffen dieser Aktion werden nicht im Standardgebet \"Wanderlust\" verfügbar sein.</span>",
 			"※ Im Normalfall besteht dieselbe Basiswahrscheinlichkeit für alle Figuren oder Waffen. Richte dich bei erhöhten Wahrscheinlichkeiten, Garantien oder Ähnlichem bitte nach den jeweiligen Regeln.",
 			" Regeln ",
 			"5-Sterne-Objekte",
@@ -546,10 +546,10 @@
 		"keepSetting": "Einstellungen behalten? <small> Aktueller Pity, Kontostände und Einstellungen werden nicht zurück gesetzt.</small>",
 		"clearCache": "Zwischenspeicher leeren ( {size} )? <small>Zwischengespeicherten Dateien werden danach erneut heruntergeladen! </small>",
 		"resetButton": "Jetzt Zurücksetzen",
-		"resetPrompt": "Bist du dir sicher dass du <strong> alle Daten </strong> löschen willst and zu den Standarteinstellungen zurückkehren möchtest?",
+		"resetPrompt": "Bist du dir sicher dass du <strong> alle Daten </strong> löschen willst and zu den Standardeinstellungen zurückkehren möchtest?",
 		"resetSuccess": "Erfolgreich zurückgesetzt!",
 		"proAccess": "Premiumzugang",
-		"getpro": "Premiumzugang freischalten",
+		"getpro": "Hier freischalten",
 		"removeKey": "Premiumschlüssel löschen",
 		"removeKeyConfirm": "Möchtest du deinen aktuellen Oremiumschlüssel wirklich löschen? Du verlierst alle Vorteile des Premiumzugangs, solange du keinen neuen Schlüssel hinterlegst!",
 		"getNewKey": "Neuen Schlüssel hier erhalten!",
