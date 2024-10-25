@@ -32,11 +32,51 @@
 						"rust",
 						"sturdy-bone",
 						"mountain-bracing-bolt",
-						"fruitful-hook"
+						"favonius-codex"
 					],
 					"textOffset": {
 						"featured": { "l": 48.5, "t": 70 },
 						"rateup": { "l": 78, "b": 20, "w": 18 }
+					}
+				}
+			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "the-moongrass-enlightenment-4",
+							"character": "nahida",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "moment-of-bloom-5",
+							"character": "hu-tao",
+							"textOffset": { "l": 50.5, "b": 8.5 }
+						}
+					],
+					"rateup": ["kuki-shinobu", "xingqiu", "candace"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-72",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "a-thousand-floating-dreams", "buttonPosition": { "l": 35 } },
+						{ "name": "staff-of-homa", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"fruitful-hook",
+						"favonius-warbow",
+						"lion_s-roar",
+						"dragon_s-bane",
+						"eye-of-perception"
+					],
+					"textOffset": {
+						"featured": { "l": 47.5, "t": 70 },
+						"rateup": { "l": 77, "b": 22, "w": 18 }
 					}
 				}
 			}

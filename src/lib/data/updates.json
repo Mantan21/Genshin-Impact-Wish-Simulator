@@ -520,11 +520,18 @@
 		},
 		{
 			"date": "6 Oct 2024",
-			"featured": true,
 			"description": [
 				"Add New Character: <strong> Xilonen (5★)</strong>",
 				"Add New Weapon: <b> Peak Patrol Song (5★)</b>",
 				"Add New Weapons: <b>Sturdy Bone</b>, <b>Fruitful Hook</b> & <b>Mountain-Bracing Bolt</b> (4★)"
+			]
+		},
+		{
+			"date": "6 Oct 2024",
+			"featured": true,
+			"description": [
+				"Add <strong> Nahida 3rd rerun (5★)</strong>",
+				"Add <b> Hu Tao 4rd rerun (5★)</b>"
 			]
 		}
 	]
