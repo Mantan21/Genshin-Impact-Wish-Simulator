@@ -44,7 +44,6 @@
 								use:lazyLoad={images?.faceURL}
 								data-placeholder={$assets['face-placeholder.webp']}
 								alt={name}
-								crossorigin="anonymous"
 							/>
 						{:else}
 							<img

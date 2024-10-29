@@ -44,7 +44,7 @@
 				{@const { artURL } = status === 'owned' ? images : hostedImages}
 				{@const { wishCard = {} } = artPosition || {}}
 				<div class="zoomist-image" style={getCssVarPosition(wishCard, clientHeight, clientWidth)}>
-					<img src={artURL} alt={name} class="wishpic" crossorigin="anonymous" />
+					<img src={artURL} alt={name} class="wishpic" />
 				</div>
 
 				<!-- Weapon -->

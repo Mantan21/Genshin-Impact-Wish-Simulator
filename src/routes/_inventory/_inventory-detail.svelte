@@ -90,6 +90,7 @@
 	artURL={getArtURL(outfitName)}
 	position={offset}
 	preview
+	isCustom={custom}
 	{weaponType}
 	{localName}
 	{vision}

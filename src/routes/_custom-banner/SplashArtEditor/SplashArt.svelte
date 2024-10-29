@@ -24,6 +24,7 @@
 	export let weaponType = '';
 	export let localName = '';
 	export let hideInfo = false;
+	export let isCustom = false;
 
 	let mainArt;
 	let clientHeight = 0;
@@ -171,7 +172,7 @@
 					<img
 						src={artURL}
 						alt={localName || character}
-						crossorigin="anonymous"
+						{...!isCustom ? { crossorigin: 'anonymous' } : {}}
 						on:load={() => movePos(position?.splashArt || {})}
 					/>
 				</div>

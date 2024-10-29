@@ -71,12 +71,7 @@
 				{/if}
 
 				{#if thumbnail}
-					<img
-						use:lazyLoad={thumbnail}
-						alt="Delete this banner"
-						class="selectedToDelete"
-						crossorigin="anonymous"
-					/>
+					<img use:lazyLoad={thumbnail} alt="Delete this banner" class="selectedToDelete" />
 				{/if}
 			</div>
 		{/if}

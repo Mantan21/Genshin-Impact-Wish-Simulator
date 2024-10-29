@@ -44,7 +44,6 @@
 				use:lazyLoad={images?.faceURL}
 				data-placeholder={$assets['placeholder-face.webp']}
 				alt={localName}
-				crossorigin="anonymous"
 			/>
 			<span class="gi-{vision} {vision} icon-gradient element" />
 		{:else if type === 'character'}

@@ -30,7 +30,7 @@
 				<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop" />
 				{#if $isCustomBanner}
 					{@const { images = {}, character = '' } = $customData || {}}
-					<img use:lazyLoad={images?.faceURL} alt={character} crossorigin="anonymous" />
+					<img use:lazyLoad={images?.faceURL} alt={character} />
 				{:else}
 					<img
 						use:lazyLoad={$assets[`face/${character.name}`]}

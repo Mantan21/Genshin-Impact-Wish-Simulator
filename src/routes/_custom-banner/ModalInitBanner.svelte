@@ -129,7 +129,7 @@
 					</caption>
 				{/if}
 				{#if thumbnail}
-					<img src={thumbnail} alt="Banner Thumbnail" class="thumb" crossorigin="anonymous" />
+					<img src={thumbnail} alt="Banner Thumbnail" class="thumb" />
 				{/if}
 			</div>
 		{/if}

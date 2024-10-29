@@ -61,7 +61,6 @@
 							use:lazyLoad={imageCDN(images)}
 							data-placeholder={$assets['placeholder-general.webp']}
 							alt={character}
-							crossorigin="anonymous"
 							loading="lazy"
 						/>
 					{:else}

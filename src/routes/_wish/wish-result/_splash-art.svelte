@@ -22,7 +22,7 @@
 		{@const { artURL } = status === 'owned' ? images : hostedImages}
 		{@const { splashArt = {} } = artPosition || {}}
 		<div class="zoomist-image" style={pos(splashArt, clientHeight, clientWidth)}>
-			<img use:lazyLoad={artURL} alt={name} crossorigin="anonymous" />
+			<img use:lazyLoad={artURL} alt={name} />
 		</div>
 
 		<!-- Weapon -->

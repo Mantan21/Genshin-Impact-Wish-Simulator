@@ -96,7 +96,7 @@
 	<div class="zoomist-container" bind:this={mainArt}>
 		<div class="zoomist-wrapper">
 			<div class="zoomist-image">
-				<img src={artURL} alt="Uploaded Splash Art" crossorigin="anonymous" />
+				<img src={artURL} alt="Uploaded Splash Art" />
 			</div>
 		</div>
 	</div>
