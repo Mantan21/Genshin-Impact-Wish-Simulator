@@ -4,6 +4,7 @@
 	"akuoumaru": "恶王丸",
 	"alley-hunter": "暗巷猎手",
 	"amos-bow": "阿莫斯之弓",
+	"astral-vultures-crimson-plumage": "星鹫赤羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "风鹰剑",
 	"beacon-of-the-reed-sea": "苇海信标",
@@ -28,6 +29,7 @@
 	"favonius-sword": "西风剑",
 	"favonius-warbow": "西风猎弓",
 	"ferrous-shadow": "铁影阔剑",
+	"flower-wreathed-feathers": "缀花之翎",
 	"freedom-sworn": "苍古自由之誓",
 	"fruitful-hook": "硕果钩",
 	"haran-geppaku-futsu": "波乱月白经津",
@@ -96,8 +98,9 @@
 	"verdict": "裁断",
 	"vortex-vanquisher": "贯虹之槊",
 	"wavebreaker_s-fin": "断浪长鳍",
-	"wine-and-song": "暗巷的酒与诗",
 	"wandering-evenstar": "流浪的晚星",
+	"waveriding-whirl": "乘浪的回旋",
+	"wine-and-song": "暗巷的酒与诗",
 	"wolf_s-gravestone": "狼的末路",
 	"xiphos-moonlight": "西福斯的月光",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "夏洛蒂",
 		"title": "朗镜索真"
+	},
+	"chasca": {
+		"name": "恰斯卡",
+		"title": "巡宇翦定"
 	},
 	"chevreuse": {
 		"name": "夏沃蕾",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "诺艾尔",
 		"title": "未受勋之花"
+	},
+	"ororon": {
+		"name": "欧洛伦",
+		"title": "深黯的谜烟"
 	},
 	"qiqi": {
 		"name": "七七",

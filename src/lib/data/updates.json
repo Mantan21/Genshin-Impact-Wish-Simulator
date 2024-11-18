@@ -527,11 +527,18 @@
 			]
 		},
 		{
-			"date": "6 Oct 2024",
-			"featured": true,
+			"date": "20 Oct 2024",
 			"description": [
 				"Add <strong> Nahida 3rd rerun (5★)</strong>",
 				"Add <b> Hu Tao 4rd rerun (5★)</b>"
+			]
+		},
+		{
+			"date": "18 Nov 2024",
+			"description": [
+				"Add New Character: <strong> Chasca (5★)</strong>",
+				"Add New Weapon: <b> Astral Vulture's Crimson Plumage (5★)</b>",
+				"Add New Weapons: <b>Sturdy Bone</b>, <b>Flower-Wreathed Feathers</b> & <b>Waveriding Whirl</b> (4★)"
 			]
 		}
 	]

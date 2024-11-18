@@ -4,6 +4,7 @@
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Caçador do Beco",
 	"amos-bow": "Arco de Amos",
+	"astral-vultures-crimson-plumage": "Plumagem Escarlate do Abutre Astral",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
@@ -28,6 +29,7 @@
 	"favonius-sword": "Espada de Favonius",
 	"favonius-warbow": "Arco de Favonius",
 	"ferrous-shadow": "Espadão de Ferro Branco",
+	"flower-wreathed-feathers": "Penas Cercadas de Flores",
 	"freedom-sworn": "Juramento pela Liberdade",
 	"fruitful-hook": "Gancho Frutífero",
 	"haran-geppaku-futsu": "Maremoto da Lua de Futsu",
@@ -96,8 +98,9 @@
 	"verdict": "Veredito",
 	"vortex-vanquisher": "Perfuradora Prismática",
 	"wavebreaker_s-fin": "Barbatana do Quebra Ondas",
-	"wine-and-song": "Vinho e Música",
 	"wandering-evenstar": "Estrela Itinerante",
+	"waveriding-whirl": "Redemoinho das Ondas",
+	"wine-and-song": "Vinho e Música",
 	"wolf_s-gravestone": "Túmulo do Lobo",
 	"xiphos-moonlight": "Luz Lunar de Xiphos",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "Charlotte",
 		"title": "Lentes em Busca da Verdade"
+	},
+	"chasca": {
+		"name": "Chasca",
+		"title": "Exploradora Celestial"
 	},
 	"chevreuse": {
 		"name": "Chevreuse",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "Noelle",
 		"title": "Flor da Cavalaria"
+	},
+	"ororon": {
+		"name": "Ororon",
+		"title": "Sombra do Vento Noturno"
 	},
 	"qiqi": {
 		"name": "Qiqi",

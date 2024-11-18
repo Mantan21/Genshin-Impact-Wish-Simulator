@@ -4,6 +4,7 @@
 	"akuoumaru": "Акуомару",
 	"alley-hunter": "Охотник во тьме",
 	"amos-bow": "Лук Амоса",
+	"astral-vultures-crimson-plumage": "Алое перо звёздного грифа",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
@@ -28,6 +29,7 @@
 	"favonius-sword": "Меч Фавония",
 	"favonius-warbow": "Боевой лук Фавония",
 	"ferrous-shadow": "Металлическая тень",
+	"flower-wreathed-feathers": "Украшенные цветами перья",
 	"freedom-sworn": "Клятва свободы",
 	"fruitful-hook": "Плодотворный крюк",
 	"haran-geppaku-futsu": "Харан гэппаку фуцу",
@@ -96,8 +98,9 @@
 	"verdict": "Вердикт",
 	"vortex-vanquisher": "Покоритель вихря",
 	"wavebreaker_s-fin": "Режущий волны плавник",
-	"wine-and-song": "Вино и песни",
 	"wandering-evenstar": "Скитающаяся звезда",
+	"waveriding-whirl": "Вихрь на волнах",
+	"wine-and-song": "Вино и песни",
 	"wolf_s-gravestone": "Волчья погибель",
 	"xiphos-moonlight": "Лунное сияние ксифоса",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "Шарлотта",
 		"title": "Объективная реальность"
+	},
+	"chasca": {
+		"name": "Часка",
+		"title": "Небесный примиритель"
 	},
 	"chevreuse": {
 		"name": "Шеврёз",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "Ноэлль",
 		"title": "Нераспустившийся цветок"
+	},
+	"ororon": {
+		"name": "Оророн",
+		"title": "Тень Ночного Ветра"
 	},
 	"qiqi": {
 		"name": "Ци Ци",

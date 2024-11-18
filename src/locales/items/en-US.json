@@ -4,6 +4,7 @@
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Alley Hunter",
 	"amos-bow": "Amos' Bow",
+	"astral-vultures-crimson-plumage": "Astral Vulture's Crimson Plumage",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
@@ -28,6 +29,7 @@
 	"favonius-sword": "Favonius Sword",
 	"favonius-warbow": "Favonius Warbow",
 	"ferrous-shadow": "Ferrous Shadow",
+	"flower-wreathed-feathers": "Flower-Wreathed Feathers",
 	"freedom-sworn": "Freedom-Sworn",
 	"fruitful-hook": "Fruitful Hook",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -96,8 +98,9 @@
 	"verdict": "Verdict",
 	"vortex-vanquisher": "Vortex Vanquisher",
 	"wavebreaker_s-fin": "Wavebreaker's Fin",
-	"wine-and-song": "Wine and Song",
 	"wandering-evenstar": "Wandering Evenstar",
+	"waveriding-whirl": "Waveriding Whirl",
+	"wine-and-song": "Wine and Song",
 	"wolf_s-gravestone": "Wolf's Gravestone",
 	"xiphos-moonlight": "Xiphos' Moonlight",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "Charlotte",
 		"title": "Lens of Verity"
+	},
+	"chasca": {
+		"name": "Chasca",
+		"title": "Skyborne Arbiter"
 	},
 	"chevreuse": {
 		"name": "Chevreuse",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "Noelle",
 		"title": "Chivalric Blossom"
+	},
+	"ororon": {
+		"name": "Ororon",
+		"title": "Shadow of the Night-Wind"
 	},
 	"qiqi": {
 		"name": "Qiqi",

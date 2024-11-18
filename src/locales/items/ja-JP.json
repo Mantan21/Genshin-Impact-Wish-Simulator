@@ -4,6 +4,7 @@
 	"akuoumaru": "惡王丸",
 	"alley-hunter": "ダークアレイの狩人",
 	"amos-bow": "アモスの弓",
+	"astral-vultures-crimson-plumage": "星鷲の紅き羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹剣",
 	"beacon-of-the-reed-sea": "葦海の標",
@@ -28,6 +29,7 @@
 	"favonius-sword": "西風剣",
 	"favonius-warbow": "西風猟弓",
 	"ferrous-shadow": "鉄影段平",
+	"flower-wreathed-feathers": "花飾りの羽",
 	"freedom-sworn": "蒼古なる自由への誓い",
 	"fruitful-hook": "フルートゥフル・フック",
 	"haran-geppaku-futsu": "波乱月白経津",
@@ -96,8 +98,9 @@
 	"verdict": "裁断",
 	"vortex-vanquisher": "破天の槍",
 	"wavebreaker_s-fin": "斬波のひれ長",
-	"wine-and-song": "ダークアレイの酒と詩",
+	"waveriding-whirl": "波乗りの旋回",
 	"wandering-evenstar": "彷徨える星",
+	"wine-and-song": "ダークアレイの酒と詩",
 	"wolf_s-gravestone": "狼の末路",
 	"xiphos-moonlight": "サイフォスの月明かり",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "シャルロット",
 		"title": "真実を求める曇りなきモノクル"
+	},
+	"chasca": {
+		"name": "チャスカ",
+		"title": "巡空の裁翼"
 	},
 	"chevreuse": {
 		"name": "シュヴルーズ",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "ノエル",
 		"title": "騎士道の花咲"
+	},
+	"ororon": {
+		"name": "オロルン",
+		"title": "暗黒の謎煙"
 	},
 	"qiqi": {
 		"name": "七七",

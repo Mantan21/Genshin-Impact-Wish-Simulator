@@ -4,6 +4,7 @@
 	"akuoumaru": "Akuoumaru",
 	"alley-hunter": "Thợ Săn Hẻm Tối",
 	"amos-bow": "Cung Amos",
+	"astral-vultures-crimson-plumage": "Xích Vũ Tinh Tựu",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
@@ -28,6 +29,7 @@
 	"favonius-sword": "Tây Phong Kiếm",
 	"favonius-warbow": "Cung Tây Phong",
 	"ferrous-shadow": "Kiếm Thiết Ảnh",
+	"flower-wreathed-feathers": "Lông Vũ Thêu Hoa",
 	"freedom-sworn": "Lời Thề Tự Do Cổ Xưa",
 	"fruitful-hook": "Móc Trĩu Quả",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -96,8 +98,9 @@
 	"verdict": "Phán Quyết",
 	"vortex-vanquisher": "Giáo Nịnh Thần",
 	"wavebreaker_s-fin": "Vây Cá Chẻ Sóng",
-	"wine-and-song": "Rượu Và Thơ Nơi Hẻm Tối",
 	"wandering-evenstar": "Sao Đêm Rong Ruổi",
+	"waveriding-whirl": "Vòng Xoáy Cưỡi Sóng",
+	"wine-and-song": "Rượu Và Thơ Nơi Hẻm Tối",
 	"wolf_s-gravestone": "Đường Cùng Của Sói",
 	"xiphos-moonlight": "Ánh Trăng Xiphos",
 	"albedo": {
@@ -143,6 +146,10 @@
 	"charlotte": {
 		"name": "Charlotte",
 		"title": "Ống Kính Sự Thật"
+	},
+	"chasca": {
+		"name": "Chasca",
+		"title": "Phán Quyết Trên Cao"
 	},
 	"chevreuse": {
 		"name": "Chevreuse",
@@ -327,6 +334,10 @@
 	"noelle": {
 		"name": "Noelle",
 		"title": "Đóa Hoa Chưa Vinh Danh"
+	},
+	"ororon": {
+		"name": "Ororon",
+		"title": "Làn Khói U Ám"
 	},
 	"qiqi": {
 		"name": "Qiqi",

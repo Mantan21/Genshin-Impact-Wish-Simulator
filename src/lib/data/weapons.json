@@ -1,6 +1,33 @@
 {
 	"data": [
 		{
+			"itemID": 14430,
+			"name": "waveriding-whirl",
+			"rarity": 4,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "natlan"
+		},
+		{
+			"itemID": 15430,
+			"name": "flower-wreathed-feathers",
+			"rarity": 4,
+			"weaponType": "bow",
+			"limited": true,
+			"origin": "natlan"
+		},
+		{
+			"itemID": 15514,
+			"name": "astral-vultures-crimson-plumage",
+			"rarity": 5,
+			"weaponType": "bow",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": 10, "w": 75, "l": 30 }
+			}
+		},
+		{
 			"itemID": 11430,
 			"name": "sturdy-bone",
 			"rarity": 4,
