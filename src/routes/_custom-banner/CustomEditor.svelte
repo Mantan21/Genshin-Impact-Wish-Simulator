@@ -218,7 +218,7 @@
 		width: 100%;
 		height: 100%;
 		display: block;
-		object-fit: contain;
+		object-fit: fill;
 		object-position: center;
 	}
 
