@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "decree-of-the-deeps-3",
+							"character": "neuvillette",
+							"textOffset": { "l": 52, "b": 8.5 }
+						},
+						{
+							"bannerName": "gentry-of-hermitage-6",
+							"character": "zhongli",
+							"textOffset": { "l": 52, "b": 8.5 }
+						}
+					],
+					"rateup": ["yaoyao", "fischl", "shikanoin-heizou"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-74",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "tome-of-the-eternal-flow" },
+						{ "name": "vortex-vanquisher", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"mitternachts-waltz",
+						"favonius-sword",
+						"sacrificial-fragments",
+						"dragon_s-bane",
+						"favonius-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 49.5, "t": 63 },
+						"rateup": { "l": 78, "b": 23 }
+					}
+				}
+			}
 		}
 	]
 }
