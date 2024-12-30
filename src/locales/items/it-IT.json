@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Mille soli ardenti",
 	"a-thousand-floating-dreams": "Mille sogni fluttuanti",
 	"absolution": "Assoluzione",
 	"akuoumaru": "Spada di Akuou",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "Fulgore delle placide acque",
 	"staff-of-homa": "Bastone di Homa",
 	"staff-of-the-scarlet-sands": "Bastone delle sabbie scarlatte",
+	"starcallers-watch": "Veglia del Chiamastelle",
 	"sturdy-bone": "Osso tenace",
 	"summit-shaper": "Affettavette",
 	"surfs-up": "Vai col surf",
@@ -162,6 +164,10 @@
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Ardore ghiacciato"
+	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Fulgistella d'ossidiana"
 	},
 	"clorinde": {
 		"name": "Clorinde",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Spettacolo fantasmagorico"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Fiamma che incendia la notte"
 	},
 	"mika": {
 		"name": "Mika",

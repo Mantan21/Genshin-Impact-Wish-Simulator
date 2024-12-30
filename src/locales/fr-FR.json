@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "Ode à la #brise matinale#",
 		"adrift-in-the-harbor": "Doute #passager#",
 		"ambrosial-essence": "Essence #ambrosiale#",
+		"ancient-flame-ablaze": "Embrasement du feu #ancien#",
 		"auric-blaze": "Brasier #aurique#",
 		"azure-excursion": "Excursion #azurée#",
 		"ballad-in-goblets": "Ballade #en pintes#",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#Nouvelles# mystérieuses",
 		"seeker-of-flame-wrought-secrets": "#Recherche# de secrets nés du feu",
 		"sparkling-steps": "Foulées #étincelantes#",
+		"starry-nights-whispers": "Murmures d'une nuit #étoilée#",
 		"tapestry-of-golden-flames": "Draperie d'#étincelles dorées#",
 		"tempestuous-destiny": "#Destin# tumultueux",
 		"the-crane-soars-skyward": "La grue s'envole #vers les cieux#",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Brise de Sabaa",
 				"description": "Une tenue élégante pour Nilou. Cette robe légère est apparemment tissée d'innombrables fleurs, et avec elle dérive un léger parfum comme le vent d'est à l'aube, transportant de belles bénédictions venues d'un pays de conte de fées."
+			},
+			"cherries-snow-laden": {
+				"name": "Cerises sous neige",
+				"description": "Tenue de Hu Tao. La robe, qui arbore une palette de couleurs plus claire que les tenues de cérémonie sombres du Funérarium Wangsheng, est un cadeau spécial de sa bonne amie Xiangling. Les lunettes de soleil, quant à elles, proviennent de la collection personnelle de Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Gaieté du Nouvel An",
+				"description": "Tenue de Xiangling. La tenue rouge brille comme un poêle au milieu des vents froids, surmontée d'un chapeau qui, à la suggestion de Hu Tao, est inspiré de l'apparence de Gooba... Un style qui convient parfaitement à Xiangling."
 			}
 		}
 	},

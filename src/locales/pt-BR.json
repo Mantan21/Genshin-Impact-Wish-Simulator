@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "#Poesia da# Manhã",
 		"adrift-in-the-harbor": "Perguntas Temporárias",
 		"ambrosial-essence": "#Fragrância do# Orvalho",
+		"ancient-flame-ablaze": "Chama Ancestral",
 		"auric-blaze": "Fulgor Dourado",
 		"azure-excursion": "Correntes Florais",
 		"ballad-in-goblets": "#Poemas# em Taças",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "Noites Enigmáticas",
 		"seeker-of-flame-wrought-secrets": "#Caça aos Segredos# das Chamas",
 		"sparkling-steps": "Passos #Flamejantes#",
+		"starry-nights-whispers": "#Sussurros# Estelares",
 		"tapestry-of-golden-flames": "#Chama# da Via Láctea",
 		"tempestuous-destiny": "#Inundado# Junto à Calamidade",
 		"the-crane-soars-skyward": "Moradia Etérea da #Garça#",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Suspiro do Acrídio",
 				"description": "Um traje elegante para Nilou, este vestido leve parece ser tecido de inúmeras flores, e com ele flutua uma fragrância suave como o vento leste ao amanhecer, trazendo belas bênçãos de uma terra de contos de fadas."
+			},
+			"cherries-snow-laden": {
+				"name": "Cerejas Cobertas de Neve",
+				"description": "Vestuário de Hutao. Diferente do traje cerimonial escuro da Funerária Wangsheng, este vestido em tons sóbrios foi um presente especial de sua amiga Xiangling. Os óculos escuros são da coleção pessoal dela."
+			},
+			"new-years-cheers": {
+				"name": "Alegria de Ano Novo",
+				"description": "Vestuário de Xiangling. O casaco vermelho brilha como um forno em meio a ventos gelados, combinado com um chapéu, sob sugestão de Hutao, ele tirou inspiração da aparência de Guoba — um design que está bem no estilo de Xiangling."
 			}
 		}
 	},

@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "#晨風#之詩",
 		"adrift-in-the-harbor": "#浮生#孰來",
 		"ambrosial-essence": "#凝露#輕芳",
+		"ancient-flame-ablaze": "#宿古#的赫炎",
 		"auric-blaze": "#烈陽#爍金",
 		"azure-excursion": "#蒼流#踏花",
 		"ballad-in-goblets": "#杯裝#之詩",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#深秘#之息",
 		"seeker-of-flame-wrought-secrets": "#巡火#獵秘",
 		"sparkling-steps": "#閃焰#的駐足",
+		"starry-nights-whispers": "#星邊#夜語",
 		"tapestry-of-golden-flames": "#焰色#天河",
 		"tempestuous-destiny": "#劫中#泛濫",
 		"the-crane-soars-skyward": "#雲府#鶴行",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "莎邦之息",
 				"description": "妮露的典雅服飾，千花編織般的輕盈裙裝，如有黎明時東風捎來的淡香，承載著童話世界的美好祝福。"
+			},
+			"cherries-snow-laden": {
+				"name": "宿雪桃紅",
+				"description": "胡桃的裝扮款式。有別於往生堂深色儀服的素色連身裙，是好友香菱為胡桃特別準備的禮物，墨鏡則是她自己的收藏。"
+			},
+			"new-years-cheers": {
+				"name": "歲夜歡譁",
+				"description": "香菱的裝扮款式。冷風中的一抹紅色灶火，帽子在胡桃的提議下特別根據鍋巴的形象設計而成，很受香菱喜愛。"
 			}
 		}
 	},

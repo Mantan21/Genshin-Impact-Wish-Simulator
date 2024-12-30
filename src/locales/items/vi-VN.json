@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Thiên Dương Rực Lửa",
 	"a-thousand-floating-dreams": "Cõi Mộng Ngàn Đêm",
 	"absolution": "Xá Tội",
 	"akuoumaru": "Akuoumaru",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "Sắc Nước Lộng Lẫy",
 	"staff-of-homa": "Trượng Hộ Ma",
 	"staff-of-the-scarlet-sands": "Quyền Trượng Cát Đỏ",
+	"starcallers-watch": "Ánh Nhìn Tư Tế",
 	"sturdy-bone": "Xương Cứng",
 	"summit-shaper": "Kiếm Chước Phong",
 	"surfs-up": "Thời Khắc Lướt Sóng",
@@ -162,6 +164,10 @@
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Bòng Hình Băng Giá"
+	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Tinh Tú Obsidian"
 	},
 	"clorinde": {
 		"name": "Clorinde",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Ảo Ảnh Ngoạn Mục"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Lửa Thiêu Đêm Đen"
 	},
 	"mika": {
 		"name": "Mika",

@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "Poesia del vento mattutino",
 		"adrift-in-the-harbor": "Alla deriva nel porto",
 		"ambrosial-essence": "Essenza #d'ambrosia#",
+		"ancient-flame-ablaze": "Fiamma #ancestrale#",
 		"auric-blaze": "Fiamma dorata",
 		"azure-excursion": "Azure Excursion",
 		"ballad-in-goblets": "Ballad in Goblets",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "Secretum Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Segreti# plasmati nel fuoco",
 		"sparkling-steps": "Sparkling Steps",
+		"starry-nights-whispers": "#Sussurri della notte# stellata",
 		"tapestry-of-golden-flames": "Tapestry of Golden Flames",
 		"tempestuous-destiny": "Destino tempestoso",
 		"the-crane-soars-skyward": "La gru solca i cieli",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Brezza di Sabaa",
 				"description": "Un abito elegante per Nilou. Sembra che il tessuto di questo leggerissimo abito sia composto da innumerevoli fiori, e per tale motivo emana una fragranza delicata come il vento orientale all'alba, portando con sé graziose benedizioni di una terra fiabesca."
+			},
+			"cherries-snow-laden": {
+				"name": "Ciliegie cariche di neve",
+				"description": "Il completo di Hu Tao. In contrasto con l'abbigliamento da cerimonia usato dai Servizi Funebri Wangsheng, questo vestito è un regalo speciale che ha ricevuto dalla sua buona amica Xiangling. Gli occhiali, invece, sono parte della collezione personale di Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Celebrazione per l'anno nuovo",
+				"description": "Il completo di Xiangling. Il cappotto rosso brilla come una stufetta nel vento gelido, e il cappello, suggerito da Hu Tao, è ispirato all'aspetto di Guoba. Un design perfetto per i gusti di Xiangling."
 			}
 		}
 	},

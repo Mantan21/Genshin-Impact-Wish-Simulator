@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "千烈の日輪",
 	"a-thousand-floating-dreams": "千夜に浮かぶ夢",
 	"absolution": "赦罪",
 	"akuoumaru": "惡王丸",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "静水流転の輝き",
 	"staff-of-homa": "護摩の杖",
 	"staff-of-the-scarlet-sands": "赤砂の杖",
+	"starcallers-watch": "祭星者の眺め",
 	"sturdy-bone": "ストロング・ボーン",
 	"summit-shaper": "斬山の刃",
 	"surfs-up": "サーフィンタイム",
@@ -162,6 +164,10 @@
 	"chongyun": {
 		"name": "重雲",
 		"title": "雪消の跡"
+	},
+	"citlali": {
+		"name": "シトラリ",
+		"title": "白星黒曜"
 	},
 	"clorinde": {
 		"name": "クロリンデ",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "リネ",
 		"title": "幻光で惑わすトリック"
+	},
+	"mavuika": {
+		"name": "マーヴィカ",
+		"title": "夜を焼き尽くす炎"
 	},
 	"mika": {
 		"name": "ミカ",

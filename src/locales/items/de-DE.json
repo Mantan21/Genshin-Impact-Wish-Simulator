@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Die tausend flammenden Sonnen",
 	"a-thousand-floating-dreams": "Fließende Träume von tausend Nächten",
 	"absolution": "Absolution",
 	"akuoumaru": "Akuoumaru",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "Pracht des stillen Wasser",
 	"staff-of-homa": "Homa-Stab",
 	"staff-of-the-scarlet-sands": "Stab der roten Sande",
+	"starcallers-watch": "Wacht des Sternenopfers",
 	"sturdy-bone": "Robuster Knochen",
 	"summit-shaper": "Gipfelbrecher",
 	"surfs-up": "Zeit fürs Wellenreiten",
@@ -162,6 +164,10 @@
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Spuren im schmelzenden Schnee"
+	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Sternenobsidian"
 	},
 	"clorinde": {
 		"name": "Clorinde",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Das Spektakel von Fantasmagoria"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Flamme der Nachterhellung"
 	},
 	"mika": {
 		"name": "Mika",

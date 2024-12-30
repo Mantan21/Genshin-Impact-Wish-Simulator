@@ -1,0 +1,46 @@
+{
+	"patch": 5.3,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "ancient-flame-ablaze-1",
+							"character": "mavuika",
+							"textOffset": { "l": 50.5, "b": 11 }
+						},
+						{
+							"bannerName": "starry-nights-whispers-1",
+							"character": "citlali",
+							"textOffset": { "l": 51, "b": 11 }
+						}
+					],
+					"rateup": ["bennett", "kachina", "diona"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-75",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "a-thousand-blazing-suns", "buttonPosition": { "l": 30 } },
+						{ "name": "starcallers-watch", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"lithic-blade",
+						"the-stringless",
+						"favonius-codex",
+						"sacrificial-sword",
+						"favonius-lance"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 72 },
+						"rateup": { "l": 78, "b": 18 }
+					}
+				}
+			}
+		}
+	]
+}
+

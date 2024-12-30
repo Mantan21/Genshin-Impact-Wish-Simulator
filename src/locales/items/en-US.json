@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "A Thousand Blazing Suns",
 	"a-thousand-floating-dreams": "A Thousand Floating Dreams",
 	"absolution": "Absolution",
 	"akuoumaru": "Akuoumaru",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "Splendor of Tranquil Waters",
 	"staff-of-homa": "Staff of Homa",
 	"staff-of-the-scarlet-sands": "Staff of the Scarlet Sands",
+	"starcallers-watch": "Starcaller's Watch",
 	"sturdy-bone": "Sturdy Bone",
 	"summit-shaper": "Summit Shaper",
 	"surfs-up": "Surf's Up",
@@ -158,6 +160,10 @@
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Frozen Ardor"
+	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Obsidian Opalstar"
 	},
 	"clorinde": {
 		"name": "Clorinde",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Spectacle of Phantasmagoria"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Night-Igniting Flame"
 	},
 	"mika": {
 		"name": "Mika",

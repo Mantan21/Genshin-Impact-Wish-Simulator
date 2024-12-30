@@ -1,6 +1,28 @@
 {
 	"data": [
 		{
+			"itemID": 14517,
+			"name": "starcallers-watch",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "w": 60, "t": 35, "l": 65 }
+			}
+		},
+		{
+			"itemID": 12514,
+			"name": "a-thousand-blazing-suns",
+			"rarity": 5,
+			"weaponType": "claymore",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": 1, "w": 70, "l": 38 }
+			}
+		},
+		{
 			"itemID": 14430,
 			"name": "waveriding-whirl",
 			"rarity": 4,

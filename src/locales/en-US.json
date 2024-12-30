@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "Ode to the #Dawn Breeze#",
 		"adrift-in-the-harbor": "#Adrift# in The Harbor",
 		"ambrosial-essence": "Ambrosial Essence",
+		"ancient-flame-ablaze": "#Ancient# Flame Ablaze",
 		"auric-blaze": "#Auric# Blaze",
 		"azure-excursion": "#Azure# Excursion",
 		"ballad-in-goblets": "#Ballad# in Goblets",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#Secretum# Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Seeker# of Flame-Wrought Secrets",
 		"sparkling-steps": "#Sparkling# Steps",
+		"starry-nights-whispers": "#Starry# Night's Whispers",
 		"tapestry-of-golden-flames": "Tapestry of #Golden Flames#",
 		"tempestuous-destiny": "Tempestuous #Destiny#",
 		"the-crane-soars-skyward": "The Crane Soars #Skyward#",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Breeze of Sabaa",
 				"description": "An elegant outfit for Nilou, this featherweight dress is seemingly woven of countless flowers, and with it drifts a light fragrance like the east wind at dawn, carrying beauteous blessings from a fairytale land."
+			},
+			"cherries-snow-laden": {
+				"name": "Cherries Snow-Laden",
+				"description": "Hu Tao's outfit. Styled in a palette lighter than the dark ceremonial wear favored by the Wangsheng Funeral Parlor, the dress is a special gift from her good friend Xiangling. The sunglasses, for their part, are from Hu Tao's personal collection"
+			},
+			"new-years-cheers": {
+				"name": "New Year's Cheers",
+				"description": "Xiangling's outfit. The red coat glows like a stove amidst cold winds, topped with a hat that, at Hu Tao's suggestion, took inspiration from Guoba's appearance — a design that's right up Xiangling's alley."
 			}
 		}
 	},

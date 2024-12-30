@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "#Ballade# der Morgenbrise",
 		"adrift-in-the-harbor": "#Flüchtige# Bekanntschaft",
 		"ambrosial-essence": "Ambrosische Essenz",
+		"ancient-flame-ablaze": "#Alte Flamme# lodernd hell",
 		"auric-blaze": "#Sengende Sonne# und glühendes Gold",
 		"azure-excursion": "#Fluss# der blassen Blätter",
 		"ballad-in-goblets": "Balladen in #Bechern#",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#Rätselhafte# Worte",
 		"seeker-of-flame-wrought-secrets": "#Flammenjäger# der Geheimnisse",
 		"sparkling-steps": "#Flammende# Schritte",
+		"starry-nights-whispers": "#Flüstern der# Sternennacht",
 		"tapestry-of-golden-flames": "Flammengalaxie",
 		"tempestuous-destiny": "Stürmisches #Schicksal#",
 		"the-crane-soars-skyward": "#Kranichsilhouette# inmitten der Wolken",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Atem des Sabaa",
 				"description": "Nilous elegante Kleidung. Ein federleichtes, scheinbar aus tausend Blumen gewobenes Kleid, das wie der Ostwind zur Morgendämmerung von einem feinen Duft begleitet gute Wünsche aus dem Land der Märchen mitbringt."
+			},
+			"cherries-snow-laden": {
+				"name": "Schneebedeckte Kirschen",
+				"description": "Hu Taos Kleidung. Sie ist in einer helleren Farbe gehalten als die dunkle Zeremonienkleidung des Bestattungsinstituts Wangsheng und ein besonderes Geschenk ihrer guten Freundin Xiangling. Die Sonnenbrille wiederum stammt aus der persönlichen Sammlung von Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Neujahrsjubel",
+				"description": "Xianglings Kleidung. Der rote Mantel leuchtet wie ein angeheizter Herd im kalten Wind und wird von einer Mütze gekrönt, die auf Anregung von Hu Tao von Guobas Aussehen inspiriert wurde, was Xiangling natürlich sehr gefällt."
 			}
 		}
 	},

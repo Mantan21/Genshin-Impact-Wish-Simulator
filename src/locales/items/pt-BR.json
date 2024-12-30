@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Mil Sóis Ardentes",
 	"a-thousand-floating-dreams": "Sonhos Flutuantes das Mil Noites",
 	"absolution": "Absolvição",
 	"akuoumaru": "Akuoumaru",
@@ -79,6 +80,7 @@
 	"splendor-of-tranquil-waters": "Esplendor das Águas Silenciosas",
 	"staff-of-homa": "Báculo de Homa",
 	"staff-of-the-scarlet-sands": "Báculo das Areias Escarlates",
+	"starcallers-watch": "Observatório do Chamador de Estrelas",
 	"sturdy-bone": "Osso Robusto",
 	"summit-shaper": "Cortador de Montanhas",
 	"surfs-up": "Hora do Surfe",
@@ -162,6 +164,10 @@
 	"chongyun": {
 		"name": "Chongyun",
 		"title": "Pegadas na Neve"
+	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Estrela Branca e Obsidiana"
 	},
 	"clorinde": {
 		"name": "Clorinde",
@@ -298,6 +304,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Espetáculo Fantasmagórico"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Chama da Noite Ardente"
 	},
 	"mika": {
 		"name": "Mika",

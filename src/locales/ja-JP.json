@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "#暁風#の詩",
 		"adrift-in-the-harbor": "#逸俗#逡巡",
 		"ambrosial-essence": "ひとしずくの#馨香#",
+		"ancient-flame-ablaze": "古に宿る#烈炎#",
 		"auric-blaze": "黄金を熔かす#烈日#",
 		"azure-excursion": "花踏み歩む#蒼流#",
 		"ballad-in-goblets": "#杯に#注がれた詩",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#神秘#の生息",
 		"seeker-of-flame-wrought-secrets": "#火を巡る#秘の狩り人",
 		"sparkling-steps": "#フレア#の訪れ",
+		"starry-nights-whispers": "#星夜#のささやき",
 		"tapestry-of-golden-flames": "天の川に咲きし#大輪#",
 		"tempestuous-destiny": "#万劫#に渡る氾濫",
 		"the-crane-soars-skyward": "#雲府#飛鶴",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "東風はこぶ花の吐息",
 				"description": "ニィロウの優雅な衣装。まるで千の花で織ったかのような、軽やかなスカート。夜明けの東風に運ばれてきたと錯覚する淡い香りには、童話の世界の美しい祝福が秘められている。"
+			},
+			"cherries-snow-laden": {
+				"name": "残雪に咲く紅",
+				"description": "胡桃の衣装。暗い色を基調とした往生堂の服とは異なり、明るい色のワンピース。服は友人の香菱が胡桃のために用意してくれたプレゼントで、サングラスは胡桃の自前である。"
+			},
+			"new-years-cheers": {
+				"name": "大つごもりの歓声",
+				"description": "香菱の衣装。冷たい風の中を燃えるかまどの炎のように暖かい。帽子は胡桃の提案により、グゥオパァーをイメージして特別にデザインされたもので、香菱のお気に入り。"
 			}
 		}
 	},

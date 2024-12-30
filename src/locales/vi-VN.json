@@ -39,6 +39,7 @@
 		"ode-to-the-dawn-breeze": "Áng Thơ #Gió Sớm#",
 		"adrift-in-the-harbor": "#Hội Ngộ# Nơi Trần Thế",
 		"ambrosial-essence": "#Làn Hương# Phảng Phất",
+		"ancient-flame-ablaze": "Nguồn Lửa Cổ Xưa",
 		"auric-blaze": "#Nắng Vàng# Rực Rỡ",
 		"azure-excursion": "#Dạo Bước# Bên Hoa",
 		"ballad-in-goblets": "#Bài Thơ# Cốc Thánh",
@@ -70,6 +71,7 @@
 		"secretum-secretorum": "#Hơi Thở# Thần Bí",
 		"seeker-of-flame-wrought-secrets": "#Đi Săn# Trong Lửa",
 		"sparkling-steps": "Dấu Chân #Của Lửa#",
+		"starry-nights-whispers": "#Trời Sao# Thì Thầm",
 		"tapestry-of-golden-flames": "Thiên Hà #Rực Lửa#",
 		"tempestuous-destiny": "Sóng Gió #Vận Mệnh#",
 		"the-crane-soars-skyward": "#Vân Phủ# Hạc Hành",
@@ -336,6 +338,14 @@
 			"breeze-of-sabaa": {
 				"name": "Ngọn Gió Sabaa",
 				"description": "Trang phục tao nhã của Nilou. Chiếc váy nhẹ nhàng như hàng ngàn bông hoa, mang theo hương thơm nhẹ nhàng của gió đông khi bình minh đến, chứa đựng lời chúc phúc tuyệt vời của thế giới cổ tích."
+			},
+			"cherries-snow-laden": {
+				"name": "Tuyết Phủ Hồng Đào",
+				"description": "Phong cách của Hu Tao. Không giống với bộ lễ phục đậm màu của Vãng Sinh Đường, đây là món quà do người bạn thân Xiangling chuẩn bị cho cô ấy. Còn kính râm là nằm trong bộ sưu tập cá nhân của Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Niềm Vui Xuân Về",
+				"description": "Phong cách của Xiangling. Chiếc áo khoác đỏ rực rỡ như bếp lò giữa những cơn gió lạnh. Theo góp ý của Hu Tao thì phần mũ được thiết kế dựa theo hình tượng Guoba, rất được Xiangling yêu thích."
 			}
 		}
 	},

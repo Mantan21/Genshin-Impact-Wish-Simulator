@@ -535,11 +535,20 @@
 		},
 		{
 			"date": "18 Nov 2024",
-			"featured": true,
 			"description": [
 				"Add New Character: <strong> Chasca (5★)</strong>",
 				"Add New Weapon: <b> Astral Vulture's Crimson Plumage (5★)</b>",
 				"Add New Weapons: <b>Sturdy Bone</b>, <b>Flower-Wreathed Feathers</b> & <b>Waveriding Whirl</b> (4★)"
+			]
+		},
+		{
+			"date": "30 Dec 2024",
+			"featured": true,
+			"description": [
+				"Add New Character: <strong> Mavuika (5★)</strong>",
+				"Add New Character: <strong> Citlali (5★)</strong>",
+				"Add New Outfit: <b> Cherries Snow-Laden (4★)</b>",
+				"Add New Outfit: <b> New Year's Cheers (4★)</b>"
 			]
 		}
 	]
