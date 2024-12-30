@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000108,
+			"name": "lan-yan",
+			"vision": "anemo",
+			"rarity": 4,
+			"release": "5.3-2",
+			"origin": "liyue",
+			"offset": {
+				"splashArt": { "x": 1.2168021680216803, "y": 1.8685636856368562, "scale": 1.2 },
+				"wishCard": { "x": 23.41180264430829, "y": 61.07900677200902, "scale": 7.54 }
+			}
+		},
+		{
 			"itemID": 10000107,
 			"name": "citlali",
 			"vision": "cryo",

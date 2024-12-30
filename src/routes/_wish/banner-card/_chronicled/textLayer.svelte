@@ -13,10 +13,19 @@
 	export let courseData = {};
 	export let picked = '';
 	export let translated = '';
-	export let element = 'anemo';
 
-	const { bannerName, characters, weapons } = bannerData;
+	const regions = {
+		mondstadt: 'anemo',
+		liyue: 'geo',
+		inazuma: 'electro',
+		sumeru: 'dendro',
+		fontaine: 'hydro',
+		natlan: 'pyro'
+	};
+
+	const { bannerName, characters, weapons, region } = bannerData;
 	$: localeBannerName = $t(`banner.${getBannerName(bannerName).name}`);
+	$: element = regions[region] || 'anemo';
 
 	const listOfItem = [...characters['5star'], ...weapons['5star']];
 	const rateupList = listOfItem.map((name) => getDetails(name));
@@ -227,3 +236,4 @@
 		background-color: #52b5f0;
 	}
 </style>
+
