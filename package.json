@@ -2,13 +2,9 @@
 	"name": "wishsimulator.app",
 	"description": "Realistic Genshin Impact Wish Simulator, Unlimited Gacha, 100% running on browser",
 	"version": "2.0.0",
-	"author": {
-		"name": "AguzzTN54",
-		"email": "admin@wishsimulator.app",
-		"url": "https://github.com/AguzzTN54"
-	},
+	"author": "AguzzTN54 <admin@wishsimulator.app> (https://github.com/AguzzTN54)",
 	"repository": {
-		"url": "https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator"
+		"url": "git+https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator.git"
 	},
 	"license": "MIT",
 	"homepage": "https://wishsimulator.app",
@@ -58,5 +54,10 @@
 		"overlayscrollbars": "^1.13.1",
 		"svelte-i18n": "^3.4.0",
 		"zoomist": "^2.0.10"
+	},
+	"main": "postcss.config.js",
+	"keywords": [],
+	"bugs": {
+		"url": "https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues"
 	}
 }
