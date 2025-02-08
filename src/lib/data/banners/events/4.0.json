@@ -4,77 +4,34 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 4,
+				"standardVersion": 1,
 				"events": {
 					"featured": [
 						{
-							"bannerName": "conjuring-chiaroscuro-1",
-							"character": "lyney",
-							"textOffset": { "l": 50.5, "b": 10.7 }
-						},
-						{
-							"bannerName": "discerner-of-enigmas-3",
-							"character": "yelan",
-							"textOffset": { "l": 50.5, "b": 10.7 }
+							"bannerName": "sparkling-steps-4",
+							"character": "klee",
+							"textOffset": { "l": 50, "b": 11.5 }
 						}
 					],
-					"rateup": ["lynette", "barbara", "bennett"]
+					"rateup": ["razor", "xinyan", "chongyun"]
 				},
 				"weapons": {
-					"bannerName": "epitome-invocation-51",
-					"fatepointsystem": true,
-					"featured": [
-						{ "name": "the-first-great-magic" },
-						{ "name": "aqua-simulacra", "buttonPosition": { "l": 70 } }
-					],
+					"bannerName": "epitome-invocation-4",
+					"fatepointsystem": false,
+					"featured": [{ "name": "vortex-vanquisher" }, { "name": "the-unforged" }],
 					"rateup": [
-						"sacrificial-sword",
-						"sacrificial-bow",
-						"sacrificial-fragments",
-						"favonius-lance",
-						"favonius-greatsword"
+						"favonius-warbow",
+						"the-bell",
+						"favonius-codex",
+						"dragon_s-bane",
+						"lion_s-roar"
 					],
 					"textOffset": {
-						"featured": { "l": 48.5, "t": 70, "w": 29 },
-						"rateup": { "l": 78, "b": 20 }
-					}
-				}
-			}
-		},
-		{
-			"phase": 2,
-			"banners": {
-				"standardVersion": 4,
-				"events": {
-					"featured": [
-						{
-							"bannerName": "gentry-of-hermitage-5",
-							"character": "zhongli",
-							"textOffset": { "l": 50.5, "b": 10.7 }
-						},
-						{
-							"bannerName": "farewell-of-snezhnaya-5",
-							"character": "tartaglia",
-							"textOffset": { "l": 50.5, "b": 10.7 }
-						}
-					],
-					"rateup": ["freminet", "sayu", "noelle"]
-				},
-				"weapons": {
-					"bannerName": "epitome-invocation-52",
-					"fatepointsystem": true,
-					"featured": [
-						{ "name": "vortex-vanquisher", "buttonPosition": { "l": 30 } },
-						{ "name": "polar-star", "buttonPosition": { "l": 70 } }
-					],
-					"rateup": ["the-flute", "rust", "dragon_s-bane", "the-widsith", "sacrificial-greatsword"],
-					"textOffset": {
-						"featured": { "l": 49, "t": 70 },
-						"rateup": { "l": 78, "b": 20 }
+						"featured": { "l": 41.5, "t": 75 },
+						"rateup": { "l": 77, "b": 17 }
 					}
 				}
 			}
 		}
 	]
 }
-

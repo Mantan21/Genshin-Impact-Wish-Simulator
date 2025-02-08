@@ -1,0 +1,31 @@
+{
+	"patch": 10.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 2,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "leaves-in-the-wind-5",
+							"character": "kaedehara-kazuha",
+							"textOffset": { "l": 50, "b": 14 }
+						}
+					],
+					"rateup": ["yanfei", "chongyun", "ningguang"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-19",
+					"fatepointsystem": true,
+					"featured": [{ "name": "polar-star" }, { "name": "memory-of-dust" }],
+					"rateup": ["favonius-lance", "rust", "eye-of-perception", "akuoumaru", "favonius-sword"],
+					"textOffset": {
+						"featured": { "l": 42.2, "t": 67 },
+						"rateup": { "l": 76.5, "b": 19 }
+					}
+				}
+			}
+		}
+	]
+}

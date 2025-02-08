@@ -151,18 +151,18 @@
 		{$t('menu.language')}
 	</OptionMenu>
 
-	<OptionMenu name="currency" showOption={optionToShow === 'currency'}>
-		{$t('menu.currency')}
-	</OptionMenu>
+<!--	<OptionMenu name="currency" showOption={optionToShow === 'currency'}> -->
+<!--		{$t('menu.currency')} -->
+<!--	</OptionMenu> -->
 
-	<OptionMenu
-		name="wishAmount"
-		showOption={optionToShow === 'wishAmount'}
-		activeIndicator={selectedAmount}
-		on:select={handleSelectAmount}
-	>
-		{$t('menu.fates')}
-	</OptionMenu>
+<!--	<OptionMenu -->
+<!--		name="wishAmount" -->
+<!--		showOption={optionToShow === 'wishAmount'} -->
+<!--		activeIndicator={selectedAmount} -->
+<!--		on:select={handleSelectAmount} -->
+<!--	> -->
+<!--		{$t('menu.fates')} -->
+<!--	</OptionMenu> -->
 
 	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
 		{#if selectedAmount === 'manual'}
@@ -175,7 +175,7 @@
 		{/if}
 	{/each}
 
-	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu>
+<!--	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu> -->
 
 	<OptionMenu
 		showOption={optionToShow === 'audio'}
@@ -204,9 +204,9 @@
 		{$t('menu.animatedbg')}
 	</OptionMenu>
 
-	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu>
+<!--	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu> -->
 
-	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu>
+<!--	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu> -->
 
 	<h2>Notes :</h2>
 	<div class="notes">

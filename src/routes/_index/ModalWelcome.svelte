@@ -49,21 +49,21 @@
 					for optimal performance as some features may not be fully supported on.
 				</strong>
 			</div>
-		{:else if dateExpired && dateExpired !== 'none'}
-			<div class="updates adExpired">
-				<div>
-					{@html $t('menu.keyExpired2', {
-						values: { key: `<b>${savedKey}</b>`, date: `<u>${dateExpired}</u>` }
-					})}
-					<a
-						href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O"
-						target="_blank"
-					>
-						{$t('menu.getNewKey')}
-					</a>
-				</div>
-			</div>
-		{:else}
+<!--		{:else if dateExpired && dateExpired !== 'none'} -->
+<!--			<div class="updates adExpired"> -->
+<!--				<div> -->
+<!--					{@html $t('menu.keyExpired2', { -->
+<!--						values: { key: `<b>${savedKey}</b>`, date: `<u>${dateExpired}</u>` } -->
+<!--					})} -->
+<!--					<a -->
+<!--						href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O" -->
+<!--						target="_blank" -->
+<!--					> -->
+<!--						{$t('menu.getNewKey')} -->
+<!--					</a> -->
+<!--				</div> -->
+<!--			</div> -->
+		{:else} 
 			<div class="updates" bind:this={content}>
 				{#each updates.reverse() as { description, date }, i (i)}
 					<span>

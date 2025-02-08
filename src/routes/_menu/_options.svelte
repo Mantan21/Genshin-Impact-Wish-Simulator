@@ -182,22 +182,22 @@
 		<!-- Wish Amount -->
 	{:else if name === 'wishAmount'}
 		<div class="option-select wishAmount">
-			<button
-				class="selected"
-				style="width: 100%; height:100%"
-				on:click|stopPropagation={openOption}
-			>
-				{activeIndicator === 'default' ? $t('outfit.default') : $t(`menu.${activeIndicator}`)}
-			</button>
+<!--			<button -->
+<!--				class="selected" -->
+<!--				style="width: 100%; height:100%" -->
+<!--				on:click|stopPropagation={openOption} -->
+<!--			> -->
+<!--				{activeIndicator === 'default' ? $t('outfit.default') : $t(`menu.${activeIndicator}`)} -->
+<!--			</button> -->
 			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
 			{#if showOption}
 				<div class="select" in:fly={{ duration: 200, y: -10 }}>
 					{#each ['default', 'unlimited', 'manual'] as item}
-						<button class:selected={activeIndicator === item} on:click={() => selectAmount(item)}>
-							<span style="text-align:center;width:100%;padding: 3%">
-								{item === 'default' ? $t('outfit.default') : $t(`menu.${item}`)}
-							</span>
-						</button>
+						<!-- <button class:selected={activeIndicator === item} on:click={() => selectAmount(item)}> -->
+						<!--	<span style="text-align:center;width:100%;padding: 3%"> -->
+						<!--		{item === 'default' ? $t('outfit.default') : $t(`menu.${item}`)} -->
+						<!--	</span> -->
+						<!-- </button> -->
 					{/each}
 				</div>
 			{/if}

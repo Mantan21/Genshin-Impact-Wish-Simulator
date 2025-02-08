@@ -229,9 +229,9 @@
 	<svelte:component this={ModalConvert} />
 {/if}
 
-{#if chatLoaded}
-	<svelte:component this={Feedback} show={showChat} />
-{/if}
+<!-- {#if chatLoaded} -->
+<!-- 	<svelte:component this={Feedback} show={showChat} /> -->
+<!-- {/if} -->
 
 {#if showWelkinScreen}
 	<WelkinCheckin />

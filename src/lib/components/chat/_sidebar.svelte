@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	const close = getContext('chatToggle');
+<!--	const close = getContext('chatToggle'); -->
 </script>
 
 <div class="sidebar" on:click|stopPropagation transition:fly={{ x: -50, duration: 100 }}>
@@ -11,14 +11,14 @@
 			<i class="gi-reply" />
 		</button>
 	</div>
-	<div class="nav-item">
-		<a href="#chat" class="link active" on:click|preventDefault>
-			<span>
-				<i class="gi-team" />
-				WishSimulator.App
-			</span>
-		</a>
-	</div>
+<!--	<div class="nav-item"> -->
+<!--		<a href="#chat" class="link active" on:click|preventDefault> -->
+<!--			<span> -->
+<!--				<i class="gi-team" /> -->
+<!--				WishSimulator.Appon -->
+<!--			</span> -->
+<!--		</a> -->
+<!--	</div> -->
 </div>
 
 <style>
