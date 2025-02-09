@@ -3,7 +3,7 @@
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { data } from '$lib/data/updates.json';
+	// import { data } from '$lib/data/updates.json';
 	import { isPWA } from '$lib/store/app-stores';
 	import { adKey, verifyKey } from '$lib/helpers/accessKey';
 	import { browserDetect } from '$lib/helpers/mobileDetect';
@@ -16,7 +16,7 @@
 	let dateExpired = '';
 
 	const startApp = getContext('startApp');
-	const updates = data.filter(({ featured }) => !!featured);
+	// const updates = data.filter(({ featured }) => !!featured);
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
@@ -37,7 +37,7 @@
 		<p class="sp">
 			{$t('fanmade')} <br />
 			{#if !$isPWA}
-				<a href="/install">{$t('installInstruction')}</a>
+				<a href="/install">{$t('originalAuthor')}</a>
 			{/if}
 		</p>
 		{#if !browserDetect().isSupported && isPWA}
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		{:else}
-			<div class="updates" bind:this={content}>
+			<!-- <div class="updates" bind:this={content}>
 				{#each updates.reverse() as { description, date }, i (i)}
 					<span>
 						<i class="tgl"> {date} </i>
@@ -73,6 +73,10 @@
 					{#each description as txt} <p>{@html txt}</p> {/each}
 				{/each}
 				<div style="height: .5rem" />
+			</div> -->
+			<div class="signup" bind:this={content}>
+				<h1>Sign Up</h1>
+				<p>Please fill in this form to create an account.</p>
 			</div>
 		{/if}
 		<p class="credit">{$t('disclaimer')}</p>
@@ -88,6 +92,17 @@
 	.credit {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 0.9rem;
+	}
+
+	.signup {
+		text-align: left;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		background-color: #fff;
+		font-size: 0.97rem;
+		height: calc(0.7 * var(--modalHeight));
+		padding: 0 1rem;
+		display: block;
+		overflow: hidden;
 	}
 
 	.updates {
