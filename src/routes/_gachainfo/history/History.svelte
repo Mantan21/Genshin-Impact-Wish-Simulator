@@ -36,6 +36,16 @@
 	$: pity5.set(localPity.get(`pity5-${banner}`));
 	$: pity4.set(localPity.get(`pity4-${banner}`));
 
+
+	let data = [];
+
+	async function fetchData() {
+	const response = await fetch('http://localhost:3001/');
+	data = await response.json();
+	}
+
+	fetchData();
+
 	const selectBanner = (path) => {
 		activepage = 1;
 		banner = path;
@@ -82,6 +92,10 @@
 	<div class="container" bind:this={container}>
 		<div class="wrapper">
 			<p class="v2">{$t('history.disclaimer')}</p>
+			<p> {#each data as item}
+				<li>{item.group}</li>
+				{/each}
+			</p>
 			<div class="row">
 				<Report {dataLength} v2 />
 				<Filter {filterBy} v2 />
