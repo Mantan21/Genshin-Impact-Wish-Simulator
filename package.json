@@ -45,12 +45,15 @@
 		"workbox-routing": "^6.5.4"
 	},
 	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.21.2",
 		"file-saver": "^2.0.5",
 		"firebase": "^9.19.1",
 		"hotkeys-js": "^3.12.0",
 		"howler": "^2.2.3",
 		"html-to-image": "^1.8.5",
 		"idb": "^6.1.2",
+		"mysql2": "^3.12.0",
 		"overlayscrollbars": "^1.13.1",
 		"svelte-i18n": "^3.4.0",
 		"zoomist": "^2.0.10"
