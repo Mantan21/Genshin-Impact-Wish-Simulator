@@ -25,18 +25,32 @@ db.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
-// Example API: Fetch data from MySQL
-app.get('/', (req, res) => {
-  const query = 'SELECT * FROM player'; // Replace with your table name
-  db.query(query, (err, results) => {
+// Route for Signup
+app.post('/', (req,res) => {
+  const { ign, group } = req.body;
+  const query = 'INSERT INTO player (ign,`group`) VALUES (?,?)';
+  db.query (query, [ign, group], (err, result) => {
     if (err) {
-      console.error('Error fetching data:', err);
-      res.status(500).send('Error fetching data');
+      console.error('Error inserting data:', err);
+      res.status(500).send('Error inserting data');
       return;
     }
-    res.json(results);
-  });
+    res.json({ message: 'Data inserted successfully' });
+  })
 });
+
+// Example API: Fetch data from MySQL
+// app.get('/', (req, res) => {
+//   const query = 'SELECT * FROM player'; // Replace with your table name
+//   db.query(query, (err, results) => {
+//     if (err) {
+//       console.error('Error fetching data:', err);
+//       res.status(500).send('Error fetching data');
+//       return;
+//     }
+//     res.json(results);
+//   });
+// });
 
 // Start the server
 app.listen(port, () => {
