@@ -1,6 +1,16 @@
 {
 	"data": [
 		{
+			"itemID": 14518,
+			"name": "sunny-morning-sleep-in",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"origin": "inazuma",
+			"offset": {
+				"button": { "t": 30, "w": 65, "l": 30 }
+			}
+		},
+		{
 			"itemID": 14517,
 			"name": "starcallers-watch",
 			"rarity": 5,

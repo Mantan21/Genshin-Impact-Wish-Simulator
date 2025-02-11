@@ -83,6 +83,7 @@
 	"starcallers-watch": "祭星者之望",
 	"sturdy-bone": "彌堅骨",
 	"summit-shaper": "斫峰之刃",
+	"sunny-morning-sleep-in": "寢正月初晴",
 	"surfs-up": "衝浪時光",
 	"the-alley-flash": "暗巷閃光",
 	"the-bell": "鐘劍",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "宵宫",
 		"title": "琉焰華舞"
+	},
+	"yumemizuki-mizuki": {
+		"name": "夢見月瑞希",
+		"title": "綺夢繾綣"
 	},
 	"yun-jin": {
 		"name": "雲堇",

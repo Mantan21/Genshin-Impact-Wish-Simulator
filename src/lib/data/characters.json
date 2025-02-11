@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000109,
+			"name": "yumemizuki-mizuki",
+			"vision": "anemo",
+			"rarity": 5,
+			"origin": "inazuma",
+			"offset": {
+				"splashArt": { "x": 0.8346883468834689, "y": 1.0284552845528454, "scale": 1.25 },
+				"wishCard": { "x": -28.2005804579168, "y": 53.783295711060944, "scale": 8.79 },
+				"button": { "l": 52, "w": 105, "t": 35 }
+			}
+		},
+		{
 			"itemID": 10000108,
 			"name": "lan-yan",
 			"vision": "anemo",

@@ -83,6 +83,7 @@
 	"starcallers-watch": "Wacht des Sternenopfers",
 	"sturdy-bone": "Robuster Knochen",
 	"summit-shaper": "Gipfelbrecher",
+	"sunny-morning-sleep-in": "Frühjahrsschlaf",
 	"surfs-up": "Zeit fürs Wellenreiten",
 	"the-alley-flash": "Gassenleuchte",
 	"the-bell": "Glocke",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Ausgelassene Flammen"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Umarmt von süßen Träumen"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

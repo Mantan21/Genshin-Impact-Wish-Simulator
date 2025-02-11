@@ -83,6 +83,7 @@
 	"starcallers-watch": "Observatório do Chamador de Estrelas",
 	"sturdy-bone": "Osso Robusto",
 	"summit-shaper": "Cortador de Montanhas",
+	"sunny-morning-sleep-in": "Hibernação Matinal do Ano Novo",
 	"surfs-up": "Hora do Surfe",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Dança das Chamas"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Sonhos Entrelaçados"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

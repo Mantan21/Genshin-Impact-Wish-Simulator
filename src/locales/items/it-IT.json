@@ -83,6 +83,7 @@
 	"starcallers-watch": "Veglia del Chiamastelle",
 	"sturdy-bone": "Osso tenace",
 	"summit-shaper": "Affettavette",
+	"sunny-morning-sleep-in": "Sonnellino mattutino",
 	"surfs-up": "Vai col surf",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Euforia di fuochi"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Intreccio di sogni incantevoli"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

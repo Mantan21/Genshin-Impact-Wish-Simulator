@@ -83,6 +83,7 @@
 	"starcallers-watch": "Starcaller's Watch",
 	"sturdy-bone": "Sturdy Bone",
 	"summit-shaper": "Summit Shaper",
+	"sunny-morning-sleep-in": "Sunny Morning Sleep In",
 	"surfs-up": "Surf's Up",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Frolicking Flames"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Embrace of Enchanting Dreams"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

@@ -543,7 +543,6 @@
 		},
 		{
 			"date": "30 Dec 2024",
-			"featured": true,
 			"description": [
 				"<b>HAPPY NEW YEAR!!</b>",
 				"Add New Character: <strong> Mavuika (5★)</strong>",
@@ -551,6 +550,14 @@
 				"Add New Character: <strong> Lan Yan (4★)</strong>",
 				"Add New Outfit: <b> Cherries Snow-Laden (4★)</b>",
 				"Add New Outfit: <b> New Year's Cheers (4★)</b>"
+			]
+		},
+		{
+			"date": "11 Feb 2024",
+			"featured": true,
+			"description": [
+				"Add New Character: <strong> Yumemizuki Mizuki (5★)</strong>",
+				"Add New Outfit: <b> Silvershower Heartstrings (5★)</b>"
 			]
 		}
 	]

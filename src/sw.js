@@ -23,13 +23,7 @@ let precache = self.__WB_MANIFEST;
 precache = [];
 precacheAndRoute(precache, { ignoreURLParametersMatching: [/.*/] });
 
-registerRoute(
-	'/',
-	new NetworkFirst({
-		cacheName: `Static-${cacheVersion}`,
-		plugins: [new ExpirationPlugin({ maxEntries, maxAgeSeconds })]
-	})
-);
+registerRoute('/', new NetworkFirst({ cacheName: `Static-${cacheVersion}` }));
 
 registerRoute(
 	new RegExp('.(?:/?pwa=true|/?pwasc)'),

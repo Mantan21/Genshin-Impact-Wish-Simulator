@@ -83,6 +83,7 @@
 	"starcallers-watch": "Бдение взывающего к звёздам",
 	"sturdy-bone": "Крепкая кость",
 	"summit-shaper": "Кромсатель пиков",
+	"sunny-morning-sleep-in": "Сон солнечным утром",
 	"surfs-up": "Лови волну",
 	"the-alley-flash": "Вспышка во тьме",
 	"the-bell": "Меч-колокол",
@@ -464,6 +465,10 @@
 	"yoimiya": {
 		"name": "Ёимия",
 		"title": "Пляшущие огоньки"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "ห้วงนิทราคะนึงฝัน"
 	},
 	"yun-jin": {
 		"name": "Юнь Цзинь",
