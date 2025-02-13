@@ -46,6 +46,7 @@
 	},
 	"dependencies": {
 		"axios": "^1.7.9",
+		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.5",
 		"express": "^4.21.2",
 		"file-saver": "^2.0.5",
@@ -54,6 +55,7 @@
 		"howler": "^2.2.3",
 		"html-to-image": "^1.8.5",
 		"idb": "^6.1.2",
+		"jsonwebtoken": "^9.0.2",
 		"mysql2": "^3.12.0",
 		"overlayscrollbars": "^1.13.1",
 		"svelte-i18n": "^3.4.0",

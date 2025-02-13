@@ -13,8 +13,8 @@
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
-	import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
-	import ModalWelcome from './_index/ModalWelcome.svelte';
+	// import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
+	// import ModalWelcome from './_index/ModalWelcome.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
@@ -237,13 +237,13 @@
 	<WelkinCheckin />
 {/if}
 
-{#if showWelcomeModal}
+<!-- {#if showWelcomeModal}
 	{#if shareID}
 		<ModalInitBanner {shareID} />
 	{:else}
 		<ModalWelcome />
 	{/if}
-{/if}
+{/if} -->
 
 <PreloadMeteor />
 
