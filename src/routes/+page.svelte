@@ -4,6 +4,7 @@
 	import { writable } from 'svelte/store';
 	import { getContext, onMount, setContext } from 'svelte';
 	import hotkeys from 'hotkeys-js';
+	import { isAuthenticated, checkSession } from "$lib/store/authStore.js";
 
 	import browserState from '$lib/helpers/browserState';
 	import { assets, preloadVersion, showBeginner } from '$lib/store/app-stores';
@@ -14,10 +15,11 @@
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
 	// import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
-	// import ModalWelcome from './_index/ModalWelcome.svelte';
+	import ModalWelcome from './_index/ModalWelcome.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
+	// import { check } from '$lib/helpers/meteor-loader.js';
 
 	let status = '';
 	let pageActive = 'index';
@@ -119,7 +121,13 @@
 		bannerLoaded();
 	};
 
-	onMount(() => {
+	onMount(() => { 
+	// Run checkSession asynchronously without making onMount async
+		(async () => {
+			await checkSession();
+			$isAuthenticated ? (pageActive = "index") : (pageActive = "welcome");
+		})();
+
 		setBannerVersionAndPhase();
 		preloadVersion.subscribe(loadBanner);
 		showBeginner.subscribe(handleShowStarter);
@@ -140,6 +148,7 @@
 		const { url } = $page;
 		shareID = url.searchParams.get('banner');
 	});
+
 
 	// Obtained
 	let showObtained = false;
@@ -193,7 +202,11 @@
 
 <!-- Main Banner -->
 {#if pageActive === 'index'}
+	<!-- <ModalWelcome /> -->
 	<MainWish />
+<!-- 
+{:else if pageActive === 'index'}
+	<MainWish /> -->
 
 	{#if showMenu}
 		<svelte:component this={Menu} />
@@ -237,13 +250,9 @@
 	<WelkinCheckin />
 {/if}
 
-<!-- {#if showWelcomeModal}
-	{#if shareID}
-		<ModalInitBanner {shareID} />
-	{:else}
-		<ModalWelcome />
-	{/if}
-{/if} -->
+{#if showWelcomeModal}
+	<ModalWelcome />
+{/if}
 
 <PreloadMeteor />
 

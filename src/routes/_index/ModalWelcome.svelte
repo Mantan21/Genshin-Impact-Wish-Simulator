@@ -1,5 +1,6 @@
 <script>
 	import axios from "axios";
+	import { user, isAuthenticated, checkSession } from '$lib/store/authStore.js';
 
 	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
@@ -23,11 +24,13 @@
 
 	async function signUp() {
 		try {
-			const response = await axios.post("http://localhost:3001/", { ign, group });
+			const response = await axios.post("http://localhost:3001/api/signup", { ign, group }, { withCredentials: true });
 			message = "Sign-up successful! 🎉";
 			messageType = "success";
+			await checkSession();
 			return response;
 		} catch (error) {
+			console.error("Sign-up error:", error.response ? error.response.data : error.message); // Logs detailed error
 			message = "❌ Sign-up failed! Please try again.";
 			messageType = "error";
 			throw new Error("Sign-up failed");
@@ -43,12 +46,10 @@
 
 
 	const handleConfirm = async () => {
-		try {
-			const response = await signUp();
-			startApp();
-			verifyKey();
-		} catch (error) {
-		}
+    try {
+      await signUp();
+      startApp();
+    } catch (error) {}
 	};
 </script>
 

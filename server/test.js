@@ -16,67 +16,82 @@ app.use(express.json());
 app.use(cookieParser());
 
 // MySQL Connection
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "1234",
   database: "simdb",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-db.connect((err) => {
-  if (err) {
+
+// Test Database Connection
+
+(async () => {
+  try {
+    const connection = await db.promise().getConnection(); // Use .promise() for async/await
+    console.log("Connected to MySQL database");
+    connection.release(); // Properly release the connection
+  } catch (err) {
     console.error("Error connecting to MySQL:", err);
-    return;
+    process.exit(1);
   }
-  console.log("Connected to MySQL database");
+})();
+
+app.post("/api/signup", async (req, res) => {
+  const { ign, group } = req.body;
+
+  // Validate input
+  if (!ign || !group || typeof ign !== "string" || typeof group !== "string") {
+    return res.status(400).json({ error: "Invalid input data" });
+  }
+
+  try {
+    const query = "INSERT INTO player (ign, `group`) VALUES (?, ?)";
+    const [result] = await db.promise().execute(query, [ign, group]);
+
+    const token = jwt.sign({ id: result.insertId, ign, group }, SECRET_KEY, {
+      expiresIn: "3h",
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Use HTTPS in production
+      sameSite: "strict",
+      maxAge: 3 * 60 * 60 * 1000,
+    });
+
+    res.status(201).json({ message: "Signup successful", id: result.insertId });
+  } catch (err) {
+    console.error("Error signing up:", err);
+    res.status(500).json({ error: "Signup failed", details: err.message });
+  }
 });
 
-// 🔹 SIGNUP & AUTO LOGIN
-app.post("/signup", (req, res) => {
-  const { ign, group } = req.body;
-  const query = "INSERT INTO player (ign, `group`) VALUES (?, ?)";
+// Session Route
+app.get("/api/session", (req, res) => {
+  const token = req.cookies.token;
 
-  db.query(query, [ign, group], (err, result) => {
+  if (!token) {
+    console.log("No session found");
+    return res.status(401).json({ error: "No session found" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
     if (err) {
-      console.error("Error inserting data:", err);
-      return res.status(500).send("Error inserting data");
+      console.log("Invalid session:", err.message);
+      return res.status(403).json({ error: "Invalid session" });
     }
 
-    // Generate JWT token
-    const token = jwt.sign({ id: result.insertId, ign }, SECRET_KEY, { expiresIn: "1h" });
-
-    // Set secure HTTP-only cookie
-    res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "Strict" });
-    res.json({ message: "Signup successful, auto-logged in", token });
+    console.log("Session Active:", user); // Log the active session details
+    res.json(user);
   });
 });
 
-// 🔹 PROTECTED DASHBOARD ROUTE
-app.get("/", (req, res) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ message: "Unauthorized" });
-
-  jwt.verify(token, SECRET_KEY, (err, decoded) => {
-    if (err) return res.status(403).json({ message: "Invalid token" });
-    res.json({ message: "Welcome to the dashboard!", user: decoded });
-  });
-});
 
 // Start Server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
-
-// Example API: Fetch data from MySQL
-// app.get('/', (req, res) => {
-//   const query = 'SELECT * FROM player'; // Replace with your table name
-//   db.query(query, (err, results) => {
-//     if (err) {
-//       console.error('Error fetching data:', err);
-//       res.status(500).send('Error fetching data');
-//       return;
-//     }
-//     res.json(results);
-//   });
-// });
-

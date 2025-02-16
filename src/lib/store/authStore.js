@@ -1,26 +1,20 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
-// Initialize auth store
-export const authStore = writable({
-  isAuthenticated: false,
-  user: null
-});
+export const user = writable(null); // Stores the logged-in user session
+export const isAuthenticated = writable(false); // Tracks session status
 
-// Function to check authentication status
-export async function checkAuth() {
+export async function checkSession() {
   try {
-    const response = await fetch("http://localhost:3001/", {
+    const res = await fetch("http://localhost:3001/api/session", {
       credentials: "include",
     });
+    if (!res.ok) throw new Error("Session not found");
 
-    if (response.ok) {
-      const data = await response.json();
-      authStore.set({ isAuthenticated: true, user: data.user });
-    } else {
-      authStore.set({ isAuthenticated: false, user: null });
-    }
+    const data = await res.json();
+    user.set(data);
+    isAuthenticated.set(true);
   } catch (error) {
-    console.error("Auth check failed:", error);
-    authStore.set({ isAuthenticated: false, user: null });
+    console.error("Session check failed:", error);
+    isAuthenticated.set(false);
   }
 }
