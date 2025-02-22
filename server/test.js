@@ -28,7 +28,6 @@ const db = mysql.createPool({
 
 
 // Test Database Connection
-
 (async () => {
   try {
     const connection = await db.promise().getConnection(); // Use .promise() for async/await
@@ -69,6 +68,12 @@ app.post("/api/signup", async (req, res) => {
     res.status(500).json({ error: "Signup failed", details: err.message });
   }
 });
+
+app.post("/api/logout", (req, res) => {
+  res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
+  res.json({ message: "Logged out successfully" });
+});
+
 
 // Session Route
 app.get("/api/session", (req, res) => {
