@@ -122,11 +122,6 @@
 	};
 
 	onMount(() => { 
-	// Run checkSession asynchronously without making onMount async
-		(async () => {
-			await checkSession();
-			$isAuthenticated ? (pageActive = "index") : (pageActive = "welcome");
-		})();
 
 		setBannerVersionAndPhase();
 		preloadVersion.subscribe(loadBanner);
@@ -147,6 +142,11 @@
 		// Check Custom Banner
 		const { url } = $page;
 		shareID = url.searchParams.get('banner');
+
+		// Check Session		
+		(async () => {
+        await checkSession();
+		})();
 	});
 
 
@@ -202,11 +202,7 @@
 
 <!-- Main Banner -->
 {#if pageActive === 'index'}
-	<!-- <ModalWelcome /> -->
 	<MainWish />
-<!-- 
-{:else if pageActive === 'index'}
-	<MainWish /> -->
 
 	{#if showMenu}
 		<svelte:component this={Menu} />
