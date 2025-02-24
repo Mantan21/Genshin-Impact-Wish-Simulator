@@ -2,6 +2,7 @@
 	"data": [
 		{
 			"itemID": 14518,
+			"limited": true,
 			"name": "sunny-morning-sleep-in",
 			"rarity": 5,
 			"weaponType": "catalyst",
