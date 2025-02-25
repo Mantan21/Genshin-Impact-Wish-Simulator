@@ -21,9 +21,9 @@
 <!--			<button on:click={() => selectMenu('proAccess')}> {$t('menu.proAccess')} </button> -->
 <!--		</div> -->
 
-<!--		<div class="menu-item" class:active={activeContent === 'updates'}> -->
-<!--			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button> -->
-<!--		</div> -->
+		<div class="menu-item" class:active={activeContent === 'updates'}>
+			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
+		</div>
 
 <!--		<div class="menu-item" class:active={activeContent === 'backupRestore'}> -->
 <!--			<button on:click={() => selectMenu('backupRestore')}> {$t('menu.backupRestore')} </button> -->
@@ -32,10 +32,6 @@
 <!--		<div class="menu-item"> -->
 <!--			<button on:click={chatToggle}> {$t('menu.feedback')} </button> -->
 <!--		</div> -->
-
-		<div class="menu-item" class:active={activeContent === 'preview'}>
-			<button on:click={() => selectMenu('preview')}> {$t('menu.preview')} </button>
-		</div>
 	</div>
 </div>
 

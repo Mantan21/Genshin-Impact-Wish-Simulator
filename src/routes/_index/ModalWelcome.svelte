@@ -75,32 +75,6 @@
 					for optimal performance as some features may not be fully supported on.
 				</strong>
 			</div>
-<<<<<<< HEAD
-<!--		{:else if dateExpired && dateExpired !== 'none'} -->
-<!--			<div class="updates adExpired"> -->
-<!--				<div> -->
-<!--					{@html $t('menu.keyExpired2', { -->
-<!--						values: { key: `<b>${savedKey}</b>`, date: `<u>${dateExpired}</u>` } -->
-<!--					})} -->
-<!--					<a -->
-<!--						href="https://ko-fi.com/post/AdFree-Wish-Simulator-Enjoy-Simulator-Without-Ads-G2G2DQ57O" -->
-<!--						target="_blank" -->
-<!--					> -->
-<!--						{$t('menu.getNewKey')} -->
-<!--					</a> -->
-<!--				</div> -->
-<!--			</div> -->
-		{:else} 
-			<div class="updates" bind:this={content}>
-				{#each updates.reverse() as { description, date }, i (i)}
-					<span>
-						<i class="tgl"> {date} </i>
-						{#if i === 0} ( Latest Update ) {/if}
-					</span>
-					{#each description as txt} <p>{@html txt}</p> {/each}
-				{/each}
-				<div style="height: .5rem" />
-=======
 		{:else}
 			<div class="signup" bind:this={content}>
 				<h1>Please fill in this form to create an account.</h1>
@@ -116,7 +90,6 @@
 						<option value="whale">Whale Account</option>
 					</select>
 				</div>
->>>>>>> origin/master
 			</div>
 		{/if}
 		<p class="credit">{$t('disclaimer')}</p>

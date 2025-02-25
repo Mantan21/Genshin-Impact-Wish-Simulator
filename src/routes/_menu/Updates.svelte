@@ -21,12 +21,16 @@
 		</a>. You can submit an issue if you find something wrong !
 	</div>
 	<div class="update-item" bind:this={updatesContainer}>
-		{#each [...updates.data].reverse() as { description, date }, i (i)}
+		{#each [...updates.data].reverse() as { video, description, date }, i (i)}
 			<h2>
 				<i class="tgl"> {date} </i>
-				{#if i === 0} ( Latest Update ) {/if}
+				{#if i === 0} ( Latest Banner ) {/if}
 			</h2>
 			{#each description as txt} <p>{@html txt}</p> {/each}
+			<br>
+			<div align="center"><iframe width="640" height="360"
+			src={video} title="Preview">
+			</iframe></div>
 		{/each}
 	</div>
 </div>
