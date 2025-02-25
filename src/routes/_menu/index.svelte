@@ -57,6 +57,8 @@
 				<CustomBanner />
 			{:else if activeContent === 'backupRestore'}
 				<BackupRestore />
+			{:else if activeContent === 'preview'}
+				<Preview />
 			{/if}
 
 			{#if $isMobile && !$mobileMode}

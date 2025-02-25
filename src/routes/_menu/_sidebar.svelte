@@ -32,6 +32,10 @@
 <!--		<div class="menu-item"> -->
 <!--			<button on:click={chatToggle}> {$t('menu.feedback')} </button> -->
 <!--		</div> -->
+
+		<div class="menu-item" class:active={activeContent === 'preview'}>
+			<button on:click={() => selectMenu('preview')}> {$t('menu.preview')} </button>
+		</div>
 	</div>
 </div>
 
