@@ -22,20 +22,21 @@ USE `simdb`;
 -- Dumping structure for table simdb.banner
 CREATE TABLE IF NOT EXISTS `banner` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ign_char_id` varchar(50) NOT NULL DEFAULT '0',
-  `player_id` int NOT NULL,
-  `copy` int NOT NULL DEFAULT (0),
-  `pity` json NOT NULL,
+  `char_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
+  `player_ign` varchar(50) NOT NULL DEFAULT '',
+  `copy` int DEFAULT '0',
+  `pity` json NOT NULL COMMENT '[pity,status]',
   `p_prime` int NOT NULL DEFAULT (0),
   `c` int NOT NULL DEFAULT (0),
   `c_total` int NOT NULL DEFAULT (0),
   `c_limited` int NOT NULL DEFAULT (0),
   `action` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `player_id` (`player_id`),
-  KEY `banner_char` (`ign_char_id`),
-  CONSTRAINT `banner_char` FOREIGN KEY (`ign_char_id`) REFERENCES `character` (`id`),
-  CONSTRAINT `banner_player` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE CASCADE
+  UNIQUE KEY `copy` (`copy`),
+  KEY `banner_char` (`char_id`) USING BTREE,
+  KEY `player_ign` (`player_ign`),
+  CONSTRAINT `banner_char` FOREIGN KEY (`char_id`) REFERENCES `character` (`id`),
+  CONSTRAINT `banner_ign` FOREIGN KEY (`player_ign`) REFERENCES `player` (`ign`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
@@ -63,35 +64,33 @@ CREATE TABLE IF NOT EXISTS `character` (
 CREATE TABLE IF NOT EXISTS `inventory` (
   `id` int NOT NULL AUTO_INCREMENT,
   `player_id` int NOT NULL DEFAULT '0',
-  `ign_char_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '<ID><name>',
-  `banner_id` int DEFAULT '0',
+  `banner_id` int DEFAULT NULL,
+  `ign_char_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '''000_char''',
   `cons` int DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_player` (`player_id`),
-  KEY `ign_char_id` (`ign_char_id`),
-  CONSTRAINT `invent_char` FOREIGN KEY (`ign_char_id`) REFERENCES `character` (`id`),
-  CONSTRAINT `inventory_player_fk` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `player_id` (`player_id`),
+  KEY `cons` (`cons`),
+  KEY `banner_id` (`banner_id`),
+  CONSTRAINT `invent_banner` FOREIGN KEY (`banner_id`) REFERENCES `banner` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `invent_player` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table simdb.player
 CREATE TABLE IF NOT EXISTS `player` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ign` varchar(50) DEFAULT NULL,
+  `ign` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `group` enum('whale','dolphin','f2p') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'f2p',
-  `inventory_id` int DEFAULT (0),
-  `banner_id` int DEFAULT '0',
-  `starglitter` int NOT NULL DEFAULT '0',
-  `stardust` int NOT NULL DEFAULT '0',
-  `fate` int NOT NULL DEFAULT '0',
+  `starglitter` int DEFAULT '0',
+  `stardust` int DEFAULT '0',
+  `fate` int DEFAULT '0',
   `tp_banner` int DEFAULT '0',
   `tp_total` int DEFAULT '0',
-  `boss` tinyint(1) DEFAULT '1',
+  `boss` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_inventory` (`inventory_id`),
-  UNIQUE KEY `banner_id` (`banner_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `ign` (`ign`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -99,8 +98,22 @@ CREATE TABLE IF NOT EXISTS `player` (
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
 CREATE TRIGGER `auto_insert_invent` AFTER INSERT ON `player` FOR EACH ROW BEGIN
-    INSERT INTO inventory (player_id, ign_char_id, banner_id, cons)
-    VALUES (NEW.id, NULL, NULL, NULL);
+    DECLARE new_inventory_id INT;
+
+    -- Insert inventory for the new player
+    INSERT INTO inventory (player_id, cons) VALUES (NEW.id, 0);
+    
+    
+END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
+
+-- Dumping structure for trigger simdb.insert_formatted_invent
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+DELIMITER //
+CREATE TRIGGER `insert_formatted_invent` BEFORE INSERT ON `inventory` FOR EACH ROW BEGIN
+	SET NEW.ign_char_id = CONCAT((SELECT ign FROM player WHERE id = NEW.player_id), '-000-char');    
+    
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;

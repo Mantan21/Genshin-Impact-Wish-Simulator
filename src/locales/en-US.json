@@ -1,5 +1,6 @@
 {
-	"title": "Genshin Impact Wish Simulator",
+	"title": "GachaImpact: Genshin Impact Wish Simulator",
+	"signup": "",
 	"item": "Item",
 	"character": "Character",
 	"weapon": "Weapon",
@@ -26,6 +27,7 @@
 	"fanmade": "This is purely a fan made Application, enjoy it !",
 	"pressToContinue": "Press anywhere in the blank area to continue",
 	"installInstruction": "Instructions to Install to Home Screen/Desktop",
+	"originalAuthor": "Original Source Code",
 	"share": "Share",
 	"screenshot": "Take Picture",
 	"capturing": "Capturing",

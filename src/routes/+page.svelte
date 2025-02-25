@@ -4,6 +4,7 @@
 	import { writable } from 'svelte/store';
 	import { getContext, onMount, setContext } from 'svelte';
 	import hotkeys from 'hotkeys-js';
+	import { isAuthenticated, checkSession } from "$lib/store/authStore.js";
 
 	import browserState from '$lib/helpers/browserState';
 	import { assets, preloadVersion, showBeginner } from '$lib/store/app-stores';
@@ -13,11 +14,12 @@
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { pauseSfx, playSfx } from '$lib/helpers/audio/audio';
 
-	import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
+	// import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
 	import ModalWelcome from './_index/ModalWelcome.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
+	// import { check } from '$lib/helpers/meteor-loader.js';
 
 	let status = '';
 	let pageActive = 'index';
@@ -119,7 +121,8 @@
 		bannerLoaded();
 	};
 
-	onMount(() => {
+	onMount(() => { 
+
 		setBannerVersionAndPhase();
 		preloadVersion.subscribe(loadBanner);
 		showBeginner.subscribe(handleShowStarter);
@@ -139,7 +142,13 @@
 		// Check Custom Banner
 		const { url } = $page;
 		shareID = url.searchParams.get('banner');
+
+		// Check Session		
+		(async () => {
+        await checkSession();
+		})();
 	});
+
 
 	// Obtained
 	let showObtained = false;
@@ -238,11 +247,7 @@
 {/if}
 
 {#if showWelcomeModal}
-	{#if shareID}
-		<ModalInitBanner {shareID} />
-	{:else}
-		<ModalWelcome />
-	{/if}
+	<ModalWelcome />
 {/if}
 
 <PreloadMeteor />

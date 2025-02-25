@@ -1,72 +1,88 @@
 <script>
-	import { setContext } from 'svelte';
-	import { fade } from 'svelte/transition';
-	import { t } from 'svelte-i18n';
+    import { setContext, onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import { t } from 'svelte-i18n';
 
-	import { genesisBonus } from '$lib/data/pricelist.json';
-	import { activeVersion, assets, pricelist } from '$lib/store/app-stores';
-	import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
-	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
-	import { playSfx } from '$lib/helpers/audio/audio';
+    import { user, checkSession } from "$lib/store/authStore.js";
+    import { genesisBonus } from '$lib/data/pricelist.json';
+    import { activeVersion, assets, pricelist } from '$lib/store/app-stores';
+    import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
+    import { cookie } from '$lib/helpers/dataAPI/api-cookie';
+    import { playSfx } from '$lib/helpers/audio/audio';
 
-	import Icon from '$lib/components/Icon.svelte';
-	import ShopGroup from '../_shop-group.svelte';
-	import ShopGroupItem from '../_shop-group-item.svelte';
-	import ModalTopup from './_modal-topup.svelte';
-	import CheckBox from '$lib/components/CheckBox.svelte';
+    import Icon from '$lib/components/Icon.svelte';
+    import ShopGroup from '../_shop-group.svelte';
+    import ShopGroupItem from '../_shop-group-item.svelte';
+    import ModalTopup from './_modal-topup.svelte';
+    import CheckBox from '$lib/components/CheckBox.svelte';
 
-	const checkCookie = cookie.get('initialTopup');
-	let initialTopup = checkCookie === undefined ? true : checkCookie;
-	const initialCheck = ({ detail }) => (initialTopup = !!detail?.checked);
-	$: cookie.set('initialTopup', initialTopup);
+    $: userGroup = $user?.group;
 
-	const { versionReset, topupBonus } = genesisBonus;
-	const localTopup = localConfig.get('topupBonus') || {};
-	const filterVersion = (arr) => {
-		const { patch } = $activeVersion;
-		return arr.filter((v) => v <= parseFloat(patch)).sort((a, b) => b - a)[0] || 0;
-	};
-	const defaultVersionBase = filterVersion(versionReset);
-	const localVersionBase = filterVersion(Object.keys(localTopup));
-	const versionBase = defaultVersionBase > localVersionBase ? defaultVersionBase : localVersionBase;
+    // Check session on mount and update userGroup
+    onMount(async () => {
+        const userSession = await checkSession();
+        userGroup = userSession?.group;
+    });
 
-	const genesisList = [];
-	const genesis = $pricelist.genesis;
-	Object.keys(genesis).forEach((key) => {
-		const list = Array.isArray(localTopup[versionBase]) ? localTopup[versionBase] : [];
-		const doubleBonus = !list.includes(parseFloat(key));
-		const item = { qty: parseInt(key), price: genesis[key], doubleBonus };
-		genesisList.push(item);
-	});
+    const checkCookie = cookie.get('initialTopup');
+    let initialTopup = checkCookie === undefined ? true : checkCookie;
+    const initialCheck = ({ detail }) => (initialTopup = !!detail?.checked);
+    $: cookie.set('initialTopup', initialTopup);
 
-	let data = {};
-	let showPaymentModal = false;
-	const selectGenesis = ({ qty, isDoubleBonus, price }) => {
+    const { versionReset, topupBonus } = genesisBonus;
+    const localTopup = localConfig.get('topupBonus') || {};
+    const filterVersion = (arr) => {
+        const { patch } = $activeVersion;
+        return arr.filter((v) => v <= parseFloat(patch)).sort((a, b) => b - a)[0] || 0;
+    };
+    const defaultVersionBase = filterVersion(versionReset);
+    const localVersionBase = filterVersion(Object.keys(localTopup));
+    const versionBase = defaultVersionBase > localVersionBase ? defaultVersionBase : localVersionBase;
+
+    const genesisList = [];
+    const genesis = $pricelist.genesis;
+    Object.keys(genesis).forEach((key) => {
+        const list = Array.isArray(localTopup[versionBase]) ? localTopup[versionBase] : [];
+        const doubleBonus = !list.includes(parseFloat(key));
+        const item = { qty: parseInt(key), price: genesis[key], doubleBonus };
+        genesisList.push(item);
+    });
+
+    let data = {};
+    let showPaymentModal = false;
+
+    const selectGenesis = ({ qty, isDoubleBonus, price }) => {
 		playSfx('exchange');
+
+		if ($user?.group === "f2p" || $user?.group === "dolphin") {
+			return;
+		}
+
 		showPaymentModal = true;
 		const isDouble = isDoubleBonus && initialTopup;
 		data = { qty, bonus: isDouble ? qty : topupBonus[qty] || 0, price };
 	};
 
-	const closePaymentModal = () => {
-		playSfx('close');
-		showPaymentModal = false;
-	};
-	setContext('closeModal', closePaymentModal);
 
-	const confirmBuy = ({ qty, bonus }) => {
-		showPaymentModal = false;
-		playSfx();
+    const closePaymentModal = () => {
+        playSfx('close');
+        showPaymentModal = false;
+    };
+    setContext('closeModal', closePaymentModal);
 
-		if (qty === bonus) {
-			localTopup[versionBase] = localTopup[versionBase] || [];
-			if (!localTopup[versionBase].includes(qty)) localTopup[versionBase].push(qty);
-			localConfig.set('topupBonus', localTopup);
-			const i = genesisList.findIndex((v) => v.qty === qty);
-			genesisList[i].doubleBonus = false;
-		}
-	};
-	setContext('confirmBuy', confirmBuy);
+    const confirmBuy = ({ qty, bonus }) => {
+        showPaymentModal = false;
+        playSfx();
+
+        if (qty === bonus) {
+            localTopup[versionBase] = localTopup[versionBase] || [];
+            if (!localTopup[versionBase].includes(qty)) localTopup[versionBase].push(qty);
+            localConfig.set('topupBonus', localTopup);
+            const i = genesisList.findIndex((v) => v.qty === qty);
+            genesisList[i].doubleBonus = false;
+        }
+    };
+    setContext('confirmBuy', confirmBuy);
 </script>
 
 {#if showPaymentModal}
@@ -77,9 +93,11 @@
 	{#each genesisList as { qty, price, doubleBonus }, i}
 		<ShopGroupItem>
 			<button
+				disabled={$user?.group === "f2p" || $user?.group === "dolphin"}
 				on:click={() => selectGenesis({ qty, price, isDoubleBonus: doubleBonus })}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
+
 				{#if doubleBonus && initialTopup}
 					<div class="bonus firstBonus" style="background-image: url({$assets['bg-bonus.webp']})">
 						<div class="wrap">

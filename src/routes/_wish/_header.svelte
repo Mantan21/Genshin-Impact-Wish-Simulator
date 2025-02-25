@@ -1,4 +1,7 @@
 <script>
+	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
+	import {  user, isAuthenticated  } from "$lib/store/authStore.js";
+
 	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
@@ -32,6 +35,21 @@
 	$: balance = isEvent ? $intertwined : $acquaint;
 	$: unlimitedWish = $wishAmount === 'unlimited';
 
+
+	const dataReset = async () => {
+		await factoryReset({ clearCache: true, keepSetting: false });
+
+		// Logout the user
+		await fetch("http://localhost:3001/api/logout", { method: "POST", credentials: "include" });
+
+		// Reset session data
+		user.set(null);
+		isAuthenticated.set(false);
+
+		location.reload(); // Refresh the page to apply the reset
+	};
+
+
 	const inTransition = (node, args) => {
 		return args.mobile
 			? fly(node, { x: -20, duration: 1000 })
@@ -45,12 +63,12 @@
 	};
 
 	const chatToggle = getContext('chatToggle');
-	const navigate = getContext('navigate');
+	// const navigate = getContext('navigate');
 
-	const previousClick = () => {
-		navigate('allbanners');
-		playSfx();
-	};
+	// const previousClick = () => {
+	// 	navigate('allbanners');
+	// 	playSfx();
+	// };
 
 	const handleMenu = getContext('handleMenu');
 	$: headerHeightstyle = $mobileMode ? `height: ${$viewportHeight}px` : '';
@@ -133,9 +151,13 @@
 					</MyFund>
 				</div>
 
-				<button class="close" on:click={previousClick} title="Change Banner">
+				<button class="close" on:click={dataReset} title="Factory Reset">
 					<i class="gi-close" />
 				</button>
+
+				<!-- <button class="close" on:click={previousClick} title="Change Banner">
+					<i class="gi-close" />
+				</button> -->
 			{:else}
 				<button
 					class="close"

@@ -1,22 +1,41 @@
 <script>
+	import axios from "axios";
+	import { user, isAuthenticated, checkSession } from '$lib/store/authStore.js';
+
 	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import OverlayScrollbars from 'overlayscrollbars';
 
-	import { data } from '$lib/data/updates.json';
 	import { isPWA } from '$lib/store/app-stores';
 	import { adKey, verifyKey } from '$lib/helpers/accessKey';
 	import { browserDetect } from '$lib/helpers/mobileDetect';
-	import { playSfx } from '$lib/helpers/audio/audio';
 	import Modal from '$lib/components/ModalTpl.svelte';
 
 	let content;
 	let contentHeight;
-	let savedKey = '';
-	let dateExpired = '';
+
+	let message = "";
+	let messageType = "";
+
+	let ign = "";
+	let group = "";
 
 	const startApp = getContext('startApp');
-	const updates = data.filter(({ featured }) => !!featured);
+
+	async function signUp() {
+		try {
+			const response = await axios.post("http://localhost:3001/api/signup", { ign, group }, { withCredentials: true });
+			message = "Sign-up successful! 🎉";
+			messageType = "success";
+			await checkSession();
+			return response;
+		} catch (error) {
+			console.error("Sign-up error:", error.response ? error.response.data : error.message); // Logs detailed error
+			message = "❌ Sign-up failed! Please try again.";
+			messageType = "error";
+			throw new Error("Sign-up failed");
+		}
+	};
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
@@ -25,10 +44,12 @@
 		savedKey = storedKey;
 	});
 
-	const handleConfirm = () => {
-		playSfx();
-		startApp();
-		verifyKey();
+
+	const handleConfirm = async () => {
+    try {
+      await signUp();
+      startApp();
+    } catch (error) {}
 	};
 </script>
 
@@ -37,9 +58,14 @@
 		<p class="sp">
 			{$t('fanmade')} <br />
 			{#if !$isPWA}
-				<a href="/install">{$t('installInstruction')}</a>
+				<a href="/install">{$t('originalAuthor')}</a>
 			{/if}
 		</p>
+		{#if message}
+			<div class="message {messageType}">
+				{message}
+			</div>
+		{/if}
 		{#if !browserDetect().isSupported && isPWA}
 			<div class="updates adExpired">
 				<strong>
@@ -49,6 +75,7 @@
 					for optimal performance as some features may not be fully supported on.
 				</strong>
 			</div>
+<<<<<<< HEAD
 <!--		{:else if dateExpired && dateExpired !== 'none'} -->
 <!--			<div class="updates adExpired"> -->
 <!--				<div> -->
@@ -73,6 +100,23 @@
 					{#each description as txt} <p>{@html txt}</p> {/each}
 				{/each}
 				<div style="height: .5rem" />
+=======
+		{:else}
+			<div class="signup" bind:this={content}>
+				<h1>Please fill in this form to create an account.</h1>
+				<div class="form-group">
+					<input type="text" placeholder="Enter your Username" bind:value={ign} required />
+				</div>
+      			<!-- <label for="group">Choose Your Account Type</label> -->
+				<div class="form-group">
+					<select id="group" bind:value={group} required>
+						<option value="" disabled selected>Choose Your Account Type</option>
+						<option value="f2p">Free to Play</option>
+						<option value="dolphin">Dolphin Account</option>
+						<option value="whale">Whale Account</option>
+					</select>
+				</div>
+>>>>>>> origin/master
 			</div>
 		{/if}
 		<p class="credit">{$t('disclaimer')}</p>
@@ -85,74 +129,104 @@
 		height: 100%;
 		padding: 0 1.5rem;
 	}
+
 	.credit {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 0.9rem;
 	}
 
-	.updates {
+	.signup {
 		text-align: left;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		background-color: #fff;
 		font-size: 0.97rem;
-		height: calc(0.7 * var(--modalHeight));
-		padding: 0 1rem;
+		height: calc(0.6 * var(--modalHeight));
+		padding: 0.5rem;
 		display: block;
 		overflow: hidden;
 	}
 
-	:global(.mobile) .updates {
-		height: calc(0.6 * var(--modalHeight));
+	.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+	.signup h1 {
+		font-style: 'Segoe UI';
+		font-size: 1.2rem;
+		color: #858181;
+		font-weight: bold;
+		margin-bottom: 1rem;
 	}
 
-	.adExpired {
-		text-align: center;
-		font-size: 125%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	.signup input, .signup select {
+	width: 100%;
+	max-width: 300px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1rem;
+	background: #fff;
+	transition: 0.3s;
 	}
 
-	.adExpired a {
+	.signup input:focus, .signup select:focus {
+		border-color: #5ab3ff;
+		outline: none;
+		box-shadow: 0 0 5px rgba(90, 179, 255, 0.5);
+	}
+
+	.signup select {
+		width: 100%;
+		padding: 0.5rem;
+		margin-top: 0.5rem; 
+		cursor: pointer;
+	}
+
+	.signup label {
 		display: block;
+		font-weight: bold;
+		color: #555;
 		margin-top: 1rem;
 	}
 
-	.updates span {
-		font-weight: bold;
-		color: #f7cf33;
-		display: block;
-		padding-top: 0.5rem;
-	}
-	.updates .tgl {
-		color: #bd6932;
-	}
-
-	.updates :global(a) {
-		color: #f29f0f;
-	}
-	.updates :global(a:hover) {
-		text-decoration: underline;
+	.signup button {
+		background: #5ab3ff;
+		color: #fff;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 5px;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: 0.3s;
 	}
 
-	.updates p {
-		padding-left: 1rem;
-		position: relative;
-		line-height: 1rem;
-		margin: 0.5rem 0;
+	.signup button:hover {
+		background: #479ce6;
 	}
-	.updates p::before {
-		content: '*';
-		display: inline-block;
-		width: 10px;
-		line-height: 0;
-		font-size: 1.3rem;
-		padding-top: 0.5rem;
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
-	}
+
+
+	.message {
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
 
 	.sp {
 		font-size: 0.9rem;

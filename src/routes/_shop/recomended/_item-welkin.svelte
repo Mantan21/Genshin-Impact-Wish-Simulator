@@ -44,9 +44,9 @@
 	setContext('buyWelkin', buyWelkin);
 </script>
 
-{#if showWelkinModal}
+<!-- {#if showWelkinModal}
 	<ModalWelkin />
-{/if}
+{/if} -->
 
 <img src={$assets['welkin-card.webp']} alt="Welkin of the Blessing Moon" />
 <div class="welkin-item">
