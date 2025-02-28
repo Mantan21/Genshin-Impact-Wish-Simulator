@@ -14,42 +14,6 @@
 			}
 		},
 		{
-			"itemID": 10000107,
-			"name": "citlali",
-			"vision": "cryo",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": 0.5501355013550135, "y": 4.318428184281843, "scale": 1.51 },
-				"wishCard": { "x": -14.646888100612706, "y": 53.32505643340858, "scale": 10.5 },
-				"button": { "l": 52, "w": 105, "t": 35 }
-			}
-		},
-		{
-			"itemID": 10000106,
-			"name": "mavuika",
-			"vision": "pyro",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": 7.662601626016259, "y": -5.4593495934959355, "scale": 1.97 },
-				"wishCard": { "x": 89.31312479845211, "y": 40.893905191873586, "scale": 15.44 },
-				"button": { "l": 52, "w": 130, "t": 35 }
-			}
-		},
-		{
-			"itemID": 10000104,
-			"name": "chasca",
-			"vision": "anemo",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": -0.5081300813008129, "y": 7.1436314363143625, "scale": 1.8 },
-				"wishCard": { "x": 11.357626572073526, "y": 59.379232505643344, "scale": 13.08 },
-				"button": { "l": 52, "w": 130, "t": 35 }
-			}
-		},
-		{
 			"itemID": 10000105,
 			"name": "ororon",
 			"vision": "electro",
@@ -59,42 +23,6 @@
 			"offset": {
 				"splashArt": { "x": -1.6282245827010624, "y": 1.0440060698027314, "scale": 1.27 },
 				"wishCard": { "x": -38.149190710767066, "y": 80.44334975369458, "scale": 11.45 }
-			}
-		},
-		{
-			"itemID": 10000103,
-			"name": "xilonen",
-			"vision": "geo",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": 0.45528455284552843, "y": -0.09891598915989158, "scale": 1.57 },
-				"wishCard": { "x": -15.98194130925508, "y": 65.66591422121896, "scale": 11.45 },
-				"button": { "l": 52, "w": 115, "t": 25 }
-			}
-		},
-		{
-			"itemID": 10000101,
-			"name": "kinich",
-			"vision": "dendro",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": 0.49189189189189186, "y": -0.5472972972972973, "scale": 1.44 },
-				"wishCard": { "x": 54.05998065140278, "y": 33.25507900677201, "scale": 9.55 },
-				"button": { "l": 52, "w": 115, "t": 37 }
-			}
-		},
-		{
-			"itemID": 10000102,
-			"name": "mualani",
-			"vision": "hydro",
-			"rarity": 5,
-			"origin": "natlan",
-			"offset": {
-				"splashArt": { "x": 3.6693766937669374, "y": 3.781842818428184, "scale": 1.57 },
-				"wishCard": { "x": -56.16326530612245, "y": 61.77857142857144, "scale": 11.13 },
-				"button": { "l": 52, "w": 115, "t": 37 }
 			}
 		},
 		{
@@ -110,30 +38,6 @@
 			}
 		},
 		{
-			"itemID": 10000099,
-			"name": "emilie",
-			"vision": "dendro",
-			"rarity": 5,
-			"origin": "fontaine",
-			"offset": {
-				"splashArt": { "x": 0.12195121951219512, "y": -3.384823848238482, "scale": 1.38 },
-				"wishCard": { "x": -5.291841341502741, "y": 55.98194130925508, "scale": 10.38 },
-				"button": { "l": 45, "w": 86, "t": 36 }
-			}
-		},
-		{
-			"itemID": 10000095,
-			"name": "sigewinne",
-			"vision": "hydro",
-			"rarity": 5,
-			"origin": "fontaine",
-			"offset": {
-				"splashArt": { "x": -4.485175202156334, "y": -12.950134770889488, "scale": 1.42 },
-				"wishCard": { "x": -31.30979133226324, "y": 24.140515222482435, "scale": 10.17 },
-				"button": { "l": 52, "w": 115, "t": 37 }
-			}
-		},
-		{
 			"itemID": 10000097,
 			"name": "sethos",
 			"vision": "electro",
@@ -146,38 +50,16 @@
 			}
 		},
 		{
-			"itemID": 10000098,
-			"name": "clorinde",
-			"vision": "electro",
-			"rarity": 5,
-			"origin": "fontaine",
-			"offset": {
-				"splashArt": { "x": 0.42140921409214094, "y": 0.39701897018970195, "scale": 1.24 },
-				"wishCard": { "x": -57.94904869396969, "y": 54.09706546275396, "scale": 9.55 },
-				"button": { "l": 50, "w": 125, "t": 35 }
-			}
-		},
-		{
 			"itemID": 10000096,
 			"name": "arlecchino",
+			"gender": "f",	
+			"category": "limited",
 			"vision": "pyro",
 			"rarity": 5,
 			"origin": "fontaine",
 			"offset": {
 				"splashArt": { "x": 3.778461538461538, "y": -9.604615384615386, "scale": 2 },
 				"wishCard": { "x": 42.50357142857143, "y": 54, "scale": 15.72 },
-				"button": { "l": 50, "w": 105, "t": 25 }
-			}
-		},
-		{
-			"itemID": 168,
-			"name": "chiori",
-			"vision": "geo",
-			"rarity": 5,
-			"origin": "inazuma",
-			"offset": {
-				"splashArt": { "x": 1.7650602409638554, "y": 0.5783132530120482, "scale": 1.44 },
-				"wishCard": { "x": 2.451973454418442, "y": 69.08068459657703, "scale": 10.95 },
 				"button": { "l": 50, "w": 105, "t": 25 }
 			}
 		},
@@ -194,18 +76,6 @@
 			}
 		},
 		{
-			"itemID": 165,
-			"name": "xianyun",
-			"vision": "anemo",
-			"rarity": 5,
-			"origin": "liyue",
-			"offset": {
-				"splashArt": { "x": -3.095687331536388, "y": 2.7439353099730455, "scale": 1.64 },
-				"wishCard": { "x": -52.757624398073844, "y": 77.34831460674158, "scale": 14.35 },
-				"button": { "l": 50, "w": 125, "t": 25 }
-			}
-		},
-		{
 			"itemID": 164,
 			"name": "chevreuse",
 			"vision": "pyro",
@@ -218,20 +88,10 @@
 			}
 		},
 		{
-			"itemID": 162,
-			"name": "navia",
-			"vision": "geo",
-			"rarity": 5,
-			"origin": "fontaine",
-			"offset": {
-				"splashArt": { "x": -5.14436090225564, "y": -0.968421052631579, "scale": 1.48 },
-				"wishCard": { "x": -82.53611556982344, "y": 68.28539325842696, "scale": 10.9 },
-				"button": { "l": 55, "w": 110, "t": 35 }
-			}
-		},
-		{
 			"itemID": 160,
 			"name": "furina",
+			"gender": "f",	
+			"category": "limited",
 			"vision": "hydro",
 			"rarity": 5,
 			"origin": "fontaine",
@@ -256,6 +116,8 @@
 		{
 			"itemID": 71,
 			"name": "wriothesley",
+			"gender": "m",	
+			"category": "limited",
 			"vision": "cryo",
 			"rarity": 5,
 			"origin": "fontaine",
@@ -268,6 +130,8 @@
 		{
 			"itemID": 70,
 			"name": "neuvillette",
+			"gender": "m",	
+			"category": "limited",
 			"vision": "hydro",
 			"rarity": 5,
 			"origin": "fontaine",
@@ -302,18 +166,6 @@
 			}
 		},
 		{
-			"itemID": 67,
-			"name": "lyney",
-			"vision": "pyro",
-			"rarity": 5,
-			"origin": "fontaine",
-			"offset": {
-				"splashArt": { "x": -1.8581871345029242, "y": 2.621345029239766, "scale": 1.76 },
-				"wishCard": { "x": -37.45164574143197, "y": 65, "scale": 12.4 },
-				"button": { "l": 55, "w": 105, "t": 20 }
-			}
-		},
-		{
 			"itemID": 66,
 			"name": "kirara",
 			"vision": "dendro",
@@ -328,6 +180,14 @@
 		{
 			"itemID": 65,
 			"name": "baizhu",
+			"gender": "m",	
+			"category": "limited",
+			"class": "spt",
+			"tier":"op",
+			"b_dmg": 2800,
+			"b_mult": 2.5,
+			"c4_mult": 4,
+			"c6_mult": 5,
 			"vision": "dendro",
 			"rarity": 5,
 			"origin": "liyue",
@@ -365,24 +225,19 @@
 		{
 			"itemID": 62,
 			"name": "dehya",
+			"gender": "f",	
+			"category": "standard",
+			"class": "dps",
+			"tier": "none",
+			"b_dmg": 1800,
+			"c4_dmg": 1804.5,
+			"c6_dmg": 1809,
 			"vision": "pyro",
 			"rarity": 5,
 			"origin": "sumeru",
 			"offset": {
 				"splashArt": { "x": -2.3304093567251463, "y": -0.3494152046783626, "scale": 1.72 },
 				"wishCard": { "x": -10.831353919239906, "y": 74.64133016627078, "scale": 13.16 },
-				"button": { "w": 130, "t": 24, "l": 55 }
-			}
-		},
-		{
-			"itemID": 61,
-			"name": "alhaitham",
-			"vision": "dendro",
-			"rarity": 5,
-			"origin": "sumeru",
-			"offset": {
-				"splashArt": { "x": 0.09502923976608187, "y": -1.4181286549707601, "scale": 1.28 },
-				"wishCard": { "x": -6.65761791652528, "y": 77.5059382422803, "scale": 9.98 },
 				"button": { "w": 130, "t": 24, "l": 55 }
 			}
 		},
@@ -396,18 +251,6 @@
 			"offset": {
 				"splashArt": { "x": -2.118421052631579, "y": -2.416666666666667, "scale": 1.2 },
 				"wishCard": { "x": -21.072276891754328, "y": 34.06175771971496, "scale": 5.94 }
-			}
-		},
-		{
-			"itemID": 59,
-			"name": "wanderer",
-			"vision": "anemo",
-			"rarity": 5,
-			"origin": "sumeru",
-			"offset": {
-				"splashArt": { "x": 2.8084795321637426, "y": -0.9035087719298245, "scale": 1.33 },
-				"wishCard": { "x": -10.851713607058025, "y": 57.80522565320665, "scale": 9.34 },
-				"button": { "w": 120, "t": 27 }
 			}
 		},
 		{
@@ -432,42 +275,6 @@
 			"offset": {
 				"splashArt": { "x": 2.103801169590643, "y": -2.5350877192982457, "scale": 1.19 },
 				"wishCard": { "x": 2.9216152019002375, "y": 42.89786223277909, "scale": 6.7 }
-			}
-		},
-		{
-			"itemID": 56,
-			"name": "nahida",
-			"vision": "dendro",
-			"rarity": 5,
-			"origin": "sumeru",
-			"offset": {
-				"splashArt": { "x": 0.7383040935672515, "y": -1.6695906432748537, "scale": 1.53 },
-				"wishCard": { "x": 41.136749236511704, "y": 35.771971496437054, "scale": 9.94 },
-				"button": { "w": 130, "t": 30 }
-			}
-		},
-		{
-			"itemID": 55,
-			"name": "nilou",
-			"vision": "hydro",
-			"rarity": 5,
-			"origin": "sumeru",
-			"offset": {
-				"splashArt": { "x": -2.320175438596491, "y": -1.6754385964912282, "scale": 1.44 },
-				"wishCard": { "x": -18.50695622667119, "y": 59.363420427553436, "scale": 9.74 },
-				"button": { "w": 145, "t": 35, "l": 55 }
-			}
-		},
-		{
-			"itemID": 54,
-			"name": "cyno",
-			"vision": "electro",
-			"rarity": 5,
-			"origin": "sumeru",
-			"offset": {
-				"splashArt": { "x": 3.491228070175439, "y": -9.956140350877192, "scale": 1.36 },
-				"wishCard": { "x": -0.01017984390906006, "y": 42.16627078384798, "scale": 9.55 },
-				"button": { "w": 160, "t": 35, "l": 55 }
 			}
 		},
 		{
@@ -497,6 +304,13 @@
 		{
 			"itemID": 51,
 			"name": "tighnari",
+			"gender": "m",	
+			"category": "standard",
+			"class": "dps",
+			"tier": "none",
+			"b_dmg": 1800,
+			"c4_dmg": 1804.5,
+			"c6_dmg": 1809,
 			"vision": "dendro",
 			"rarity": 5,
 			"origin": "sumeru",
@@ -543,20 +357,15 @@
 			}
 		},
 		{
-			"itemID": 47,
-			"name": "yelan",
-			"vision": "hydro",
-			"origin": "liyue",
-			"rarity": 5,
-			"offset": {
-				"splashArt": { "x": 0.43713450292397665, "y": -5.400584795321637, "scale": 1.24 },
-				"wishCard": { "x": 22.212419409569055, "y": 59.54394299287411, "scale": 9.19 },
-				"button": { "w": 100, "t": 32, "l": 50 }
-			}
-		},
-		{
 			"itemID": 46,
 			"name": "kamisato-ayato",
+			"gender": "m",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "low",
+			"b_dmg": 2000,
+			"c4_dmg": 2010,
+			"c6_dmg": 2030.1,
 			"vision": "hydro",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -567,20 +376,10 @@
 			}
 		},
 		{
-			"itemID": 45,
-			"name": "yae-miko",
-			"vision": "electro",
-			"rarity": 5,
-			"origin": "inazuma",
-			"offset": {
-				"splashArt": { "x": -3.988304093567251, "y": -1.3157894736842104, "scale": 1.21 },
-				"wishCard": { "x": -33.15575161180862, "y": 62.634204275534444, "scale": 8.44 },
-				"button": { "w": 170, "t": 24, "l": 50 }
-			}
-		},
-		{
 			"itemID": 44,
 			"name": "shenhe",
+			"gender": "f",	
+			"category": "limited",
 			"vision": "cryo",
 			"rarity": 5,
 			"origin": "liyue",
@@ -606,6 +405,13 @@
 		{
 			"itemID": 42,
 			"name": "arataki-itto",
+			"gender": "m",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "op",
+			"b_dmg": 2800,
+			"c4_dmg": 2856,
+			"c6_dmg": 2927.4,
 			"vision": "geo",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -642,6 +448,14 @@
 		{
 			"itemID": 39,
 			"name": "sangonomiya-kokomi",
+			"gender": "f",	
+			"category": "limited",
+			"class": "spt",
+			"tier":"op",
+			"b_dmg":2200,
+			"b_mult": 2,
+			"c4_mult": 3.5,
+			"c6_mult": 5,
 			"vision": "hydro",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -654,6 +468,14 @@
 		{
 			"itemID": 38,
 			"name": "raiden-shogun",
+			"gender": "f",	
+			"category": "limited",
+			"class": "spt",
+			"tier":"mid",
+			"b_dmg": 1600,
+			"b_mult": 1.5,
+			"c4_mult": 2,
+			"c6_mult": 3.5,
 			"vision": "electro",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -676,18 +498,6 @@
 			}
 		},
 		{
-			"itemID": 36,
-			"name": "yoimiya",
-			"vision": "pyro",
-			"rarity": 5,
-			"origin": "inazuma",
-			"offset": {
-				"splashArt": { "x": -3.887426900584795, "y": -5.245614035087719, "scale": 1.5 },
-				"wishCard": { "x": -14.211062097047847, "y": 40.53681710213777, "scale": 8.27 },
-				"button": { "w": 150, "t": 20, "l": 40 }
-			}
-		},
-		{
 			"itemID": 35,
 			"name": "sayu",
 			"vision": "anemo",
@@ -702,6 +512,13 @@
 		{
 			"itemID": 34,
 			"name": "kamisato-ayaka",
+			"gender": "f",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "mid",
+			"b_dmg": 2222,
+			"c4_dmg": 2244.22,
+			"c6_dmg": 2277.8833,
 			"vision": "cryo",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -714,6 +531,14 @@
 		{
 			"itemID": 33,
 			"name": "kaedehara-kazuha",
+			"gender": "m",	
+			"category": "limited",
+			"class": "spt",
+			"tier":"mid",
+			"b_dmg": 1800,
+			"b_mult": 1.5,
+			"c4_mult": 2,
+			"c6_mult": 3,
 			"vision": "anemo",
 			"rarity": 5,
 			"origin": "inazuma",
@@ -721,19 +546,6 @@
 				"splashArt": { "x": -1.4853801169590644, "y": 2.1505847953216377, "scale": 1.33 },
 				"wishCard": { "x": 21.418391584662366, "y": 70.61520190023754, "scale": 9.52 },
 				"button": { "w": 110, "t": 32 }
-			}
-		},
-		{
-			"itemID": 32,
-			"name": "eula",
-			"vision": "cryo",
-			"rarity": 5,
-			"origin": "mondstadt",
-			"offset": {
-				"splashArt": { "x": 3.56140350877193, "y": -1.8128654970760234, "scale": 1.34 },
-				"wishCard": { "x": 6.118086189345096, "y": 64.99287410926365, "scale": 9.74 },
-				"button": { "w": 140, "t": 32 },
-				"banner": { "w": 170, "t": 80, "l": 55 }
 			}
 		},
 		{
@@ -763,6 +575,13 @@
 		{
 			"itemID": 29,
 			"name": "hu-tao",
+			"gender": "f",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "low",
+			"b_dmg":1800,
+			"c4_dmg": 1809,
+			"c6_dmg": 1827.09,
 			"vision": "pyro",
 			"rarity": 5,
 			"origin": "liyue",
@@ -773,47 +592,10 @@
 			}
 		},
 		{
-			"itemID": 28,
-			"name": "xiao",
-			"vision": "anemo",
-			"rarity": 5,
-			"origin": "liyue",
-			"offset": {
-				"splashArt": { "x": -0.4035087719298246, "y": -17.27777777777778, "scale": 1.56 },
-				"wishCard": { "x": 14.475738038683408, "y": 17.52256532066508, "scale": 9.55 },
-				"button": { "w": 120, "t": 30, "l": 50 },
-				"banner": { "w": 163, "l": 56, "t": 32 }
-			}
-		},
-		{
-			"itemID": 27,
-			"name": "ganyu",
-			"vision": "cryo",
-			"rarity": 5,
-			"origin": "liyue",
-			"offset": {
-				"splashArt": { "x": 2.703216374269006, "y": -2.995614035087719, "scale": 1.36 },
-				"wishCard": { "x": 14.577536477774009, "y": 54.7790973871734, "scale": 8.03 },
-				"button": { "w": 200, "t": 25 },
-				"banner": { "w": 158, "t": 71, "l": 60 }
-			}
-		},
-		{
-			"itemID": 26,
-			"name": "albedo",
-			"vision": "geo",
-			"rarity": 5,
-			"origin": "mondstadt",
-			"offset": {
-				"splashArt": { "x": 0.35233918128654973, "y": -3.8289473684210527, "scale": 1.59 },
-				"wishCard": { "x": -44.16016287750254, "y": 57.07600950118764, "scale": 11.09 },
-				"button": { "w": 170, "t": 28, "l": 50 },
-				"banner": { "w": 180, "t": 70 }
-			}
-		},
-		{
 			"itemID": 25,
 			"name": "zhongli",
+			"gender": "m",	
+			"category": "limited",
 			"vision": "geo",
 			"rarity": 5,
 			"origin": "liyue",
@@ -838,6 +620,13 @@
 		{
 			"itemID": 23,
 			"name": "tartaglia",
+			"gender": "m",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "mid",
+			"b_dmg": 2800,
+			"c4_dmg": 2828,
+			"c6_dmg": 2870.42,
 			"vision": "hydro",
 			"rarity": 5,
 			"origin": "snezhnaya",
@@ -863,6 +652,13 @@
 		{
 			"itemID": 21,
 			"name": "klee",
+			"gender": "f",	
+			"category": "limited",
+			"class": "dps",
+			"tier": "op",
+			"b_dmg": 3000,
+			"c4_dmg": 3060,
+			"c6_dmg": 3136.5,
 			"vision": "pyro",
 			"rarity": 5,
 			"origin": "mondstadt",
@@ -874,20 +670,15 @@
 			}
 		},
 		{
-			"itemID": 20,
-			"name": "venti",
-			"vision": "anemo",
-			"rarity": 5,
-			"origin": "mondstadt",
-			"offset": {
-				"splashArt": { "x": -2.776315789473684, "y": -3.442982456140351, "scale": 1.35 },
-				"wishCard": { "x": 33.0335934848999, "y": 43.27553444180523, "scale": 7.8 },
-				"button": { "w": 180, "t": 30, "l": 50 }
-			}
-		},
-		{
 			"itemID": 19,
 			"name": "keqing",
+			"gender": "f",	
+			"category": "standard",
+			"class": "dps",
+			"tier": "none",
+			"b_dmg": 1800,
+			"c4_dmg": 1804.5,
+			"c6_dmg": 1809,
 			"vision": "electro",
 			"rarity": 5,
 			"release": "1.0-0",
@@ -902,6 +693,14 @@
 		{
 			"itemID": 18,
 			"name": "mona",
+			"gender": "f",	
+			"category": "standard",
+			"class": "spt",
+			"tier":"none",
+			"b_dmg": 1600,
+			"b_mult": 1.2,
+			"c4_mult": 1.5,
+			"c6_mult": 2,
 			"vision": "hydro",
 			"rarity": 5,
 			"release": "1.0-0",
@@ -915,6 +714,14 @@
 		{
 			"itemID": 17,
 			"name": "qiqi",
+			"gender": "f",	
+			"category": "standard",
+			"class": "spt",
+			"tier":"none",
+			"b_dmg": 1600,
+			"b_mult": 1.2,
+			"c4_mult": 1.5,
+			"c6_mult": 2,
 			"vision": "cryo",
 			"rarity": 5,
 			"release": "1.0-0",
@@ -929,6 +736,13 @@
 		{
 			"itemID": 16,
 			"name": "diluc",
+			"gender": "m",	
+			"category": "standard",
+			"class": "dps",
+			"tier": "none",
+			"b_dmg": 1800,
+			"c4_dmg": 1804.5,
+			"c6_dmg": 1809,
 			"vision": "pyro",
 			"rarity": 5,
 			"release": "1.0-0",
@@ -942,6 +756,14 @@
 		{
 			"itemID": 15,
 			"name": "jean",
+			"gender": "f",	
+			"category": "standard",
+			"class": "spt",
+			"tier":"none",
+			"b_dmg": 1600,
+			"b_mult": 1.2,
+			"c4_mult": 1.5,
+			"c6_mult": 2,
 			"vision": "anemo",
 			"rarity": 5,
 			"release": "1.0-0",
