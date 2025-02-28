@@ -119,14 +119,14 @@
 		<!-- Languages -->
 	{:else if name === 'locale'}
 		<div class="option-select locale">
-			<button
+<!--			<button
 				class="selected"
 				style="width: 100%; height:100%"
 				on:click|stopPropagation={openOption}
 			>
 				<img src="data:image/png;base64,{flags[activeIndicator]}" alt="flag" class="flag" />
 				{localeName[activeIndicator]}
-			</button>
+			</button> -->
 			<i class="gi-caret-{showOption ? 'up' : 'down'}" />
 			{#if showOption}
 				<div class="select" in:fly={{ duration: 200, y: -10 }}>
