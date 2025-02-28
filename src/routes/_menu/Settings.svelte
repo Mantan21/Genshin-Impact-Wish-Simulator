@@ -146,23 +146,23 @@
 	</Modal>
 {/if}
 
-<div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
+<!-- <div in:fade={{ duration: 200 }} class="content-container" bind:this={optionsContainer}>
 	<OptionMenu name="locale" activeIndicator={$locale} showOption={optionToShow === 'locale'}>
 		{$t('menu.language')}
-	</OptionMenu>
+	</OptionMenu> 
 
-<!--	<OptionMenu name="currency" showOption={optionToShow === 'currency'}> -->
-<!--		{$t('menu.currency')} -->
-<!--	</OptionMenu> -->
+	<OptionMenu name="currency" showOption={optionToShow === 'currency'}> 
+		{$t('menu.currency')} 
+	</OptionMenu> 
 
-<!--	<OptionMenu -->
-<!--		name="wishAmount" -->
-<!--		showOption={optionToShow === 'wishAmount'} -->
-<!--		activeIndicator={selectedAmount} -->
-<!--		on:select={handleSelectAmount} -->
-<!--	> -->
-<!--		{$t('menu.fates')} -->
-<!--	</OptionMenu> -->
+	<OptionMenu 
+		name="wishAmount" 
+		showOption={optionToShow === 'wishAmount'} 
+		activeIndicator={selectedAmount} 
+		on:select={handleSelectAmount} 
+	> 
+		{$t('menu.fates')} 
+	</OptionMenu> -->
 
 	{#each ['intertwined', 'acquaint', 'starglitter', 'stardust', 'primogem'] as item, i}
 		{#if selectedAmount === 'manual'}
@@ -204,7 +204,7 @@
 		{$t('menu.animatedbg')}
 	</OptionMenu>
 
-<!--	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu> -->
+	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu>
 
 <!--	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu> -->
 
@@ -245,7 +245,6 @@
 			</li>
 		</ol>
 	</div>
-</div>
 
 <style>
 	.confirmation {

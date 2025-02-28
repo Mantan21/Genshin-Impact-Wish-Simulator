@@ -13,25 +13,25 @@
 			<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 		</div>
 
-<!--		<div class="menu-item" class:active={activeContent === 'customBanner'}> -->
-<!--			<button on:click={() => selectMenu('customBanner')}> {$t('menu.customBanner')} </button> -->
-<!--		</div> -->
+<!--		<div class="menu-item" class:active={activeContent === 'customBanner'}>
+			<button on:click={() => selectMenu('customBanner')}> {$t('menu.customBanner')} </button>
+		</div> -->
 
-<!--		<div class="menu-item" class:active={activeContent === 'proAccess'}> -->
-<!--			<button on:click={() => selectMenu('proAccess')}> {$t('menu.proAccess')} </button> -->
-<!--		</div> -->
+<!--		<div class="menu-item" class:active={activeContent === 'proAccess'}>
+			<button on:click={() => selectMenu('proAccess')}> {$t('menu.proAccess')} </button>
+		</div> -->
 
 		<div class="menu-item" class:active={activeContent === 'updates'}>
 			<button on:click={() => selectMenu('updates')}> {$t('menu.updates')} </button>
 		</div>
 
-<!--		<div class="menu-item" class:active={activeContent === 'backupRestore'}> -->
-<!--			<button on:click={() => selectMenu('backupRestore')}> {$t('menu.backupRestore')} </button> -->
-<!--		</div> -->
+		<div class="menu-item" class:active={activeContent === 'backupRestore'}>
+			<button on:click={() => selectMenu('backupRestore')}> {$t('menu.backupRestore')} </button>
+		</div>
 
-<!--		<div class="menu-item"> -->
-<!--			<button on:click={chatToggle}> {$t('menu.feedback')} </button> -->
-<!--		</div> -->
+<!--		<div class="menu-item">
+			<button on:click={chatToggle}> {$t('menu.feedback')} </button>
+		</div> -->
 	</div>
 </div>
 

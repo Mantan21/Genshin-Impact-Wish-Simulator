@@ -146,9 +146,9 @@
 
 		<div class="info">
 			<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			{#if type !== 'beginner'}
+			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
-			{/if}
+			{/if} -->
 		</div>
 	</div>
 </div>
