@@ -425,6 +425,8 @@
 			"text": "On obtaining a {rarity}-Star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted into that character's {stellaFortuna} ×1 and {starglitter} {constBonus}; from the 8th time onwards it will be converted into {starglitter} {fullConstBonus}."
 		}
 	},
+	"skip": {
+		"text": "Skip"},
 	"history": {
 		"title": "Wish History",
 		"text": "History",
