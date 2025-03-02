@@ -146,9 +146,10 @@
 
 		<div class="info">
 			<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			{#if type !== 'beginner'}
+			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
-			{/if}
+			{/if} -->
+			<button class="skip"> {$t('skip.text')} </button>
 		</div>
 	</div>
 </div>
@@ -291,5 +292,10 @@
 
 	.info button.detail {
 		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
+	}
+
+	.info button.skip {
+		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
+		margin-left: calc(1 / 100 * var(--content-width));
 	}
 </style>
