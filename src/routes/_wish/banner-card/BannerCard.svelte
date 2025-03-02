@@ -2,7 +2,7 @@
 	import { getContext, setContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { activeVersion, assets, isCustomBanner, preloadVersion } from '$lib/store/app-stores';
+	import { assets, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import FrameBeginner from './_frame-beginner.svelte';
@@ -46,8 +46,6 @@
 		navigate('details');
 		return playSfx();
 	};
-
-	let showModalSkip = false;
 </script>
 
 <div
@@ -148,10 +146,9 @@
 
 		<div class="info">
 			<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			<!-- {#if type !== 'beginner'}
+			{#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
-			{/if} -->
-			
+			{/if}
 		</div>
 	</div>
 </div>
@@ -294,10 +291,5 @@
 
 	.info button.detail {
 		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
-	}
-
-	.info button.skip {
-		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
-		margin-left: calc(1 / 100 * var(--content-width));
 	}
 </style>

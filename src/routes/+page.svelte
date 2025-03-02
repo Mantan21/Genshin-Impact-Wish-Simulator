@@ -16,7 +16,6 @@
 
 	// import ModalInitBanner from './_custom-banner/ModalInitBanner.svelte';
 	import ModalWelcome from './_index/ModalWelcome.svelte';
-	import ModalSkip from './_index/ModalSkip.svelte';
 	import WelkinCheckin from './_index/WelkinCheckin.svelte';
 	import PreloadMeteor from './_index/PreloadMeteor.svelte';
 	import MainWish from './_wish/index.svelte';
@@ -237,11 +236,6 @@
 <!-- Utility -->
 {#if showConvertModal}
 	<svelte:component this={ModalConvert} />
-{/if}
-
-<!-- Skip Preview -->
-{#if showSkipModal}
-	<svelte:component this={ModalSkip} />
 {/if}
 
 <!-- {#if chatLoaded} -->
