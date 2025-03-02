@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
 
-const version = 3;
+const version = 5;
 const DBName = 'WishSimulator';
 
 let IndexedDB;
@@ -14,12 +14,22 @@ if (browser) {
 					keyPath: 'id',
 					autoIncrement: true
 				});
-				historyStore.createIndex('banner', 'banner', { unique: false });
+				historyStore.createIndex('bannerName', 'bannerName', { unique: false });
 				historyStore.createIndex('itemID', 'itemID', { unique: false });
+				historyStore.createIndex('name', 'name', { unique: false });
+
 			} else {
 				const historyStore = transaction.objectStore('history');
+				
+				const hasBanner = historyStore.indexNames.contains('bannerName');
+				if (!hasBanner) historyStore.createIndex('bannerName', 'bannerName', { unique: false });
+
 				const hasID = historyStore.indexNames.contains('itemID');
 				if (!hasID) historyStore.createIndex('itemID', 'itemID', { unique: false });
+				
+				const hasName = historyStore.indexNames.contains('name');
+				if (!hasName) historyStore.createIndex('name', 'name', { unique: false });
+
 			}
 
 			if (!db.objectStoreNames.contains('assets')) {
@@ -46,16 +56,47 @@ export const HistoryManager = {
 	async historyCount() {
 		return (await IndexedDB).count('history');
 	},
-	async getListByBanner(banner) {
-		return (await IndexedDB).getAllFromIndex('history', 'banner', banner);
+
+	async getListByBanner(bannerName) {
+		return (await IndexedDB).getAllFromIndex('history', 'bannerName', bannerName);
 	},
 
+	async filterHistory(filters = {}) {
+		let entries = [];
+
+		if (filters.bannerName) {
+			const bannerNames = Array.isArray(filters.bannerName) ? filters.bannerName : [filters.bannerName];
+			const sortedBannerNames = bannerNames.sort();
+
+			// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
+			const range = IDBKeyRange.bound(sortedBannerNames[0], sortedBannerNames[bannerNames.length - 1]);
+			entries = await this.getListByBanner(range);
+
+			// Filter entires by bannerName
+			entries = entries.filter((entry) => bannerNames.includes(entry.bannerName));
+		}
+		if (filters.rarity) {
+			entries = entries.filter((entry) => entry.rarity === filters.rarity);
+		}
+
+		if (filters.type) {
+			entries = entries.filter((entry) => entry.type === filters.type);
+		}
+
+		return entries;	
+	},	
+
 	async countItem(name) {
+		console.log('countItem', name);
 		return (await IndexedDB).countFromIndex('history', 'name', name);
 	},
 
 	async getByID(itemID) {
 		return (await IndexedDB).getAllFromIndex('history', 'itemID', itemID);
+	},
+
+	async getByName(name) {
+		return (await IndexedDB).getAllFromIndex('history', 'name', name);
 	},
 
 	async clearHistory(banner) {
@@ -156,3 +197,32 @@ export const BannerManager = {
 		return remove;
 	}
 };
+
+
+async function printDatabase() {
+    try {
+        // Open the database
+        const db = await IndexedDB;
+        
+        // Get all object stores
+        const objectStores = Array.from(db.objectStoreNames);
+        
+        // Print each object store's data
+        for (const storeName of objectStores) {
+            console.log(`\n=== ${storeName} Store ===`);
+            
+            // Get all records from the store
+            const records = await db.getAll(storeName);
+            console.log('Records:', records);
+            
+            // Get all indexes for this store
+            const indexes = Array.from(db.transaction(storeName).objectStore(storeName).indexNames);
+            console.log('Indexes:', indexes);
+        }
+    } catch (error) {
+        console.error('Error printing database:', error);
+    }
+}
+
+// Call the function
+printDatabase();
