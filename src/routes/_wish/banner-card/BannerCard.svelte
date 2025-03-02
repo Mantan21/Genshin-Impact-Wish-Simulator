@@ -15,8 +15,6 @@
 	import ChronicledSpace from './_chronicled/bannerSpace.svelte';
 	import { isSafari } from '$lib/helpers/mobileDetect';
 
-	import ModalSkip from './_index/ModalSkip.svelte';
-
 	export let data = {};
 	export let index = -1;
 	export let fullscreenEditor = false;
@@ -153,7 +151,7 @@
 			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
 			{/if} -->
-			<button class="skip" on:click={() => showModalSkip = true}> {$t('skip.text')} </button>
+			
 		</div>
 	</div>
 </div>
