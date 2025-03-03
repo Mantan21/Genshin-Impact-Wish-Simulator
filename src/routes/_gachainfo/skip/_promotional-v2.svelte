@@ -28,6 +28,8 @@
 		<div align="center"><iframe width="512" height="288"
 		src={video} title="Preview">
 		</iframe></div>
+	{:else if i === null || newPatchIndex === null}
+		<h1>End of Session</h1>
 	{/if}
 {/each}
 

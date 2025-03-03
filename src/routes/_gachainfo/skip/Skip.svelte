@@ -57,7 +57,13 @@
 
     let patch = processedUpdates[newPatchIndex]?.patch ?? version;
 
-    patch = patch.toFixed(1);
+    console.log("Patch:", patch)
+
+    if (patch !== undefined || patch == Number(patch)){
+        patch = patch.toFixed(1);
+    }
+
+
 
     let phase = 1;
 

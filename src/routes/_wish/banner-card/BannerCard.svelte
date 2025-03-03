@@ -4,6 +4,9 @@
 	import { t } from 'svelte-i18n';
 	import { assets, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import {
+		activeVersion
+	} from '$lib/store/app-stores';
 
 	import FrameBeginner from './_frame-beginner.svelte';
 	import FrameCharacter from './_frame-character.svelte';
@@ -21,6 +24,8 @@
 	export let index = -1;
 	export let fullscreenEditor = false;
 	export let editor = false;
+
+	const { patch: version, phase: activePhase } = $activeVersion
 
 	// prettier-ignore
 	let type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition;
@@ -161,7 +166,9 @@
 			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
 			{/if} -->
-			<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
+			{#if version && String(version) !== '9.0' }
+				<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
+			{/if}
 		</div>
 	</div>
 </div>
