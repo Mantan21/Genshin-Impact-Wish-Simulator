@@ -8,6 +8,11 @@
 				"events": {
 					"featured": [
 						{
+							"bannerName": "decree-of-the-deeps-3",
+							"character": "neuvillette",
+							"textOffset": { "l": 52, "b": 8.5 }
+						},
+						{
 							"bannerName": "leaves-in-the-wind-5",
 							"character": "kaedehara-kazuha",
 							"textOffset": { "l": 50, "b": 14 }

@@ -8,6 +8,11 @@
 				"events": {
 					"featured": [
 						{
+							"bannerName": "the-hearths-ashen-shadow-2",
+							"character": "arlecchino",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
 							"bannerName": "immaculate-pulse-3",
 							"character": "baizhu",
 							"textOffset": { "l": 55, "b": 13 }

@@ -3,102 +3,108 @@
 		{
 			"date": "Version 10.0",
 			"featured": true,
-			"character": "kaedehara-kazuha",
+			"character": ["neuvillette", "kaedehara-kazuha"],
 			"patch": 10.0,
 			"description": [
+				"Add New Character: <strong> Neuvillette (5★)</strong>",
 				"Add New Character: <strong> Kaedehara Kazuha (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/zif0Lmhrivc"
+			"video": ["https://www.youtube.com/embed/v2QSNQXRSkE","https://www.youtube.com/embed/zif0Lmhrivc"]
 		},
 		{
 			"date": "Version 9.0",
 			"featured": true,
-			"character": "kamisato-ayato",
+			"character": ["wriothesley","kamisato-ayato"],
 			"patch": 9.0,
 			"description": [
+				"Add New Character: <strong> Wriothesley (5★)</strong>",
 				"Add New Character: <strong> Kamisato Ayato (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/KxMs7IsSTgs"
+			"video": ["https://www.youtube.com/embed/kdQOis0VRoo","https://www.youtube.com/embed/KxMs7IsSTgs"]
 		},
 		{
 			"date": "Version 8.0",
 			"featured": true,
-			"character": "arataki-itto",
+			"character": ["arataki-itto", "furina"],
 			"patch": 8.0,
 			"description": [
-				"Add New Character: <strong> Arataki Itto (5★)</strong>"
+				"Add New Character: <strong> Arataki Itto (5★)</strong>",
+				"Add New Character: <strong> Furina (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/iXeJ94AFZDw"
+			"video": ["https://www.youtube.com/embed/iXeJ94AFZDw","https://www.youtube.com/embed/EN79SfbcvIE"]
 		},
 		{
 			"date": "Version 7.0",
 			"featured": true,
-			"character": "kamisato-ayaka",
+			"character": ["kamisato-ayaka","shenhe"],
 			"patch": 7.0,
 			"description": [
-				"Add New Character: <strong> Kamisato Ayaka (5★)</strong>"
+				"Add New Character: <strong> Kamisato Ayaka (5★)</strong>",
+				"Add New Character: <strong> Shenhe (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/5RCsr1Y8UZA"
+			"video": ["https://www.youtube.com/embed/5RCsr1Y8UZA","https://www.youtube.com/embed/piiSGbsxMRQ"]
 		},
 		{
 			"date": "Version 6.0",
 			"featured": true,
-			"character": "raiden-shogun",
+			"character": ["raiden-shogun"],
 			"patch": 6.0,
 			"description": [
 				"Add New Character: <strong> Raiden Shogun (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/mvrW4aKwAXw"
+			"video": ["https://www.youtube.com/embed/mvrW4aKwAXw"]
 		},
 		{
 			"date": "Version 5.0",
 			"featured": true,
-			"character": "baizhu",
+			"character": ["arlecchino","baizhu"],
 			"patch": 5.0,
 			"description": [
+				"Add New Character: <strong> Arlecchino (5★)</strong>",
 				"Add New Character: <strong> Baizhu (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/HtiJkMsNtHg"
+			"video": ["https://www.youtube.com/embed/TnYFVP3c_bs","https://www.youtube.com/embed/HtiJkMsNtHg"]
 		},
 		{
 			"date": "Version 4.0",
 			"featured": true,
-			"character": "klee",
+			"character": ["klee"],
 			"patch": 4.0,
 			"description": [
 				"Add New Character: <strong> Klee (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/C_duDk5e8yU"
+			"video": ["https://www.youtube.com/embed/C_duDk5e8yU"]
 		},
 		{
 			"date": "Version 3.0",
 			"featured": true,
-			"character": "hu-tao",
+			"character": ["hu-tao","zhongli"],
 			"patch": 3.0,
 			"description": [
-				"Add New Character: <strong> Hu Tao (5★)</strong>"
+				"Add New Character: <strong> Hu Tao (5★)</strong>",
+				"Add New Character: <strong> Zhongli (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/qrH9vMZBwAk"
+			"video": ["https://www.youtube.com/embed/qrH9vMZBwAk","https://www.youtube.com/embed/4oBpaBEMBIM"]
 		},
 		{
 			"date": "Version 2.0",
 			"featured": true,
-			"character": "sangonomiya-kokomi",
+			"character": ["sangonomiya-kokomi"],
 			"patch": 2.0,
 			"description": [
 				"Add New Character: <strong> Sangonomiya Kokomi (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/fVf0RB3nvOU"
+			"video": ["https://www.youtube.com/embed/fVf0RB3nvOU"]
 		},
 		{
 			"date": "Version 1.0",
 			"featured": true,
-			"character": "tartaglia",
+			"character": ["tartaglia"],
 			"patch": 1.0,
 			"description": [
 				"Add New Character: <strong> Tartaglia (5★)</strong>"
 			],
-			"video": "https://www.youtube.com/embed/3f2-EANyrNM"
+			"video": ["https://www.youtube.com/embed/3f2-EANyrNM"]
 		}
 	]
 }

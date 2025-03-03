@@ -11,6 +11,11 @@
 							"bannerName": "moment-of-bloom-5",
 							"character": "hu-tao",
 							"textOffset": { "l": 50.5, "b": 8.5 }
+						},
+						{
+							"bannerName": "gentry-of-hermitage-6",
+							"character": "zhongli",
+							"textOffset": { "l": 52, "b": 8.5 }
 						}
 					],
 					"rateup": ["beidou", "ningguang", "diona"]

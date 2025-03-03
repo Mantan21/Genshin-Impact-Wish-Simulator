@@ -11,6 +11,11 @@
                             "bannerName": "oni_s-royale-4",
                             "character": "arataki-itto",
                             "textOffset": { "l": 51, "b": 10.75 }
+                        },
+                        {
+                            "bannerName": "chanson-of-many-waters-2",
+							"character": "furina",
+							"textOffset": { "l": 50.5, "b": 10.75 }
                         }
                     ],
                     "rateup": ["barbara", "bennett", "ningguang"]

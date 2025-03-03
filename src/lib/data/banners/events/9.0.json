@@ -8,6 +8,11 @@
 				"events": {
 					"featured": [
 						{
+							"bannerName": "tempestuous-destiny-1",
+							"character": "wriothesley",
+							"textOffset": { "l": 48.5 }
+						},
+						{
 							"bannerName": "azure-excursion-3",
 							"character": "kamisato-ayato",
 							"textOffset": { "l": 50, "b": 11 }

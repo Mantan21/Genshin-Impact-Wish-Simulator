@@ -5,6 +5,7 @@
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import Iklan from '$lib/components/Iklan.svelte';
 	import updates from '$lib/data/updates.json';
+	import characters from '$lib/data/characters.json';
 
 
 	const { patch: version, phase } = $activeVersion;
@@ -13,23 +14,80 @@
 
 	let latestIndex = processedUpdates.findIndex(item => item.patch == version);
 	let newPatchIndex = latestIndex + 1;
+
+	function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);}
+
+	function caps(str) {
+    return str.toUpperCase();
+}
 </script>
 
-{#each [...updates.data].reverse() as { video, description, date, patch }, i (i)}
+{#each processedUpdates as { video, description, date, patch, character }, i (i)}
 	{#if i == newPatchIndex}
+		<br>
 		<h2>
 			<i class="tgl"> {date} </i>
 				( New Patch )
 		</h2>
-		{#each description as txt} 
-			<p>{@html txt}</p> 
+		{#each character as name, i (i)}
+			{#each [...characters.data] as characterName}
+				{#if characterName.name === name}
+					<p>{@html description[i]}</p> 
+					<br>
+					<table>
+						<tr>
+							<th>{$t('skip.origin')}</th>
+							{#if characterName.class != null}
+								<th>{$t('skip.class')}</th>
+							{/if}
+							<th>{$t('skip.vision')}</th>
+						</tr>
+						<tr>
+							<td>{capitalize(characterName.origin)}</td>
+							{#if characterName.class != null}
+								<td>{caps(characterName.class)}</td>
+							{/if}
+							<td>{capitalize(characterName.vision)}</td>
+						</tr>
+					</table>
+					<br>
+					{#if characterName.b_dmg != null}
+						<table>
+							<tr>
+								<th>{$t('skip.bdmg')}</th>
+								{#if characterName.b_mult != null}
+									<th>{$t('skip.bmult')}</th>
+									<th>{$t('skip.c4mult')}</th>
+									<th>{$t('skip.c6mult')}</th>
+								{:else}
+									<th>{$t('skip.c4dmg')}</th>
+									<th>{$t('skip.c6dmg')}</th>
+								{/if}
+							</tr>
+							<tr>
+								<td>{characterName.b_dmg}</td>
+								{#if characterName.b_mult != null}
+									<td>{characterName.b_mult}</td>
+									<td>{characterName.c4_mult}</td>
+									<td>{characterName.c6_mult}</td>
+								{:else}
+									<td>{characterName.c4_dmg}</td>
+									<td>{characterName.c6_dmg}</td>
+								{/if}
+							</tr>
+						</table>
+					<br>
+					{/if}
+					<div align="center"><iframe width="640" height="360"
+						src={video[i]} title="Preview">
+						</iframe></div>
+					<br>
+				{/if}
+			{/each}
 		{/each}
-		<br>
-		<div align="center"><iframe width="512" height="288"
-		src={video} title="Preview">
-		</iframe></div>
 	{:else if i === null || newPatchIndex === null}
-		<h1>End of Session</h1>
+			<h1>End of Session</h1>
 	{/if}
 {/each}
 
@@ -71,10 +129,6 @@
 		color: #bd6932;
 	}
 
-	.row {
-		display: flex;
-		width: 100%;
-	}
 	.name {
 		flex-basis: 35%;
 		padding: 1.5%;
@@ -158,4 +212,30 @@
 		position: absolute;
 		padding: 3%;
 	}
+
+	table {
+		padding: 0 0 calc(0.02 * var(--content-width));
+		width: 100%;
+		font-size: 0.9rem;
+		border: 1px solid #CFB383;
+    	border-collapse: collapse;
+	}
+	.v2 .table {
+		padding: 0 0 calc(0.02 * var(--content-width));
+	}
+
+	th, td {
+        padding: 8px 12px;
+		margin: 1px;
+		border: 1px solid #CFB383;
+    }
+
+	th {
+        text-align: center;
+        background-color: #ede1ca;
+    }
+
+	td {
+        text-align: left;
+    }
 </style>

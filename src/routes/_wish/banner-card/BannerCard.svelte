@@ -1,5 +1,5 @@
 <script>
-	import { getContext, setContext } from 'svelte';
+	import { getContext, setContext, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets, isCustomBanner } from '$lib/store/app-stores';
@@ -27,6 +27,10 @@
 
 	const { patch: version, phase: activePhase } = $activeVersion
 
+	let hideSkip = false;
+
+	$: hideSkip = $activeVersion.patch === '10.0';
+
 	// prettier-ignore
 	let type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition;
 	// prettier-ignore
@@ -37,8 +41,6 @@
 
 	let animate = !!editor;
 	let imageError = false;
-
-	let showModalSkip;
 
 	setContext('imageError', () => (imageError = true));
 	const editProb = getContext('editprob');
@@ -59,6 +61,7 @@
 
 	const skipper = getContext('navigate');
 	const openPreview = () => {
+		console.log("Version:", version)
 		navigate('skip');
 		return playSfx();
 	};
@@ -161,12 +164,14 @@
 			</div>
 		{/if}
 
+		
+
 		<div class="info">
 			<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
 			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
 			{/if} -->
-			{#if version && String(version) !== '9.0' }
+			{#if !hideSkip}
 				<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
 			{/if}
 		</div>

@@ -11,6 +11,14 @@
 							"bannerName": "the-heron_s-court-4",
 							"character": "kamisato-ayaka",
 							"textOffset": { "l": 51, "b": 10 }
+						},
+						{
+							"bannerName": "the-transcendent-one-returns-2",
+							"character": "shenhe",
+							"textOffset": {
+								"t": 67,
+								"l": 50.5
+							}
 						}
 					],
 					"rateup": ["xinyan", "beidou", "diona"]

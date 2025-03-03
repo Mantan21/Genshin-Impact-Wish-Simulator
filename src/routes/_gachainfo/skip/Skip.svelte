@@ -63,8 +63,6 @@
         patch = patch.toFixed(1);
     }
 
-
-
     let phase = 1;
 
     const navigate = getContext('navigate');
@@ -105,18 +103,13 @@
 {#if tplVersion === 'v2'}
 <br>
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
-		{#if !noPromo}
-			<div class="nav-item" class:active={activeContent === 1}>
-				<button on:click={() => select(1)}>
-					{$t('skip.promotional')}
-				</button>
-			</div>
-		{/if}
-		<div class="nav-item" class:active={activeContent === 2}>
-			<button on:click={() => select(2)}> {$t('skip.boss')} </button>
+		<div class="nav-item" class:active={activeContent === 1}>
+			<button on:click={() => select(1)}>
+				{$t('skip.promotional')}
+			</button>
 		</div>
-		<div class="nav-item" class:active={activeContent === 3}>
-			<button on:click={() => select(3)}> {$t('skip.details')} </button>
+		<div class="nav-item" class:active={activeContent === 2}>
+			<button on:click={() => select(3)}> {$t('skip.boss')} </button>
 		</div>
 	</nav>
 
@@ -126,10 +119,6 @@
 				<PromotionalV2
 				/>
 			{:else if activeContent === 2}
-				<Description
-					tplVersion="v2"
-				/>
-			{:else if activeContent === 3}
 				<List tplVersion="v2" />
 			{/if}
 		</div>
@@ -137,12 +126,13 @@
 {:else}
 	<PromotionalV2
 	/>
-	<Description
+	<List
 	/>
 	<br />
 	<List/>
 {/if}
 
+<br>
 <div align="center">
     {#each [...updates.data].reverse() as { patch }, i (i)}
 	    {#if i === newPatchIndex}
