@@ -29,9 +29,6 @@
 	import PromotionalV1 from './_promotional-v1.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Title from '../_title.svelte';
-    import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
-
-    import ItemBanner from './_item-banner.svelte';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
 
@@ -48,54 +45,9 @@
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-	const isChronicled = banner === 'chronicled';
-	const isWp = banner.match('weapon');
-	const { vision } = $isCustomBanner ? $customData : getCharDetails(character);
 
 	// Get Droplist
 	const { patch: version, phase } = $activeVersion;
-	const drop3star = get3StarItem();
-
-	// Drop4star
-	const list4star = get4StarItem({
-		phase,
-		version,
-		region,
-		banner,
-		type: 'all',
-		rateupNamelist: !isChronicled ? rateup : [...ch['4star'], ...wp['4star']]
-	});
-	rateup = rateup
-		.filter((name) => name)
-		.map((name) => getDetails(name))
-		.map((val) => ({ ...val, rateup: true }));
-	const drop4star = [...rateup, ...list4star];
-
-	// drop 5star
-	const rateup5Star = isWp ? featured.map(({ name }) => name) : [character];
-	const list5star = get5StarItem({
-		phase,
-		version,
-		stdver,
-		banner,
-		region,
-		type: banner.match(/standard|chronicled/) ? 'all' : banner.split('-')[0],
-		rateupItem: !isChronicled ? rateup5Star : [...ch['5star'], ...wp['5star']]
-	});
-
-	character = { ...($isCustomBanner ? $customData : getCharDetails(character)), rateup: true };
-	const weapons = featured
-		.map(({ name }) => getWpDetails(name))
-		.map((val) => ({ ...val, rateup: true, type: 'weapon' }));
-
-	const rateup5 = banner.match('character') ? [character] : weapons;
-	const drop5star = [...(rateup5 || []), ...list5star];
-
-	// BannerName
-	const bannerSlug = getBannerName(bannerName).name;
-	const isStd = banner === 'standard';
-	const defaultName = $t(`banner.${isStd ? 'wanderlust' : bannerSlug || 'beginner'}`);
-	bannerName = $isCustomBanner ? $customData.bannerName : defaultName;
 
 	const noPromo = banner.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;
@@ -111,17 +63,15 @@
 	afterUpdate(() => {
 		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
-
 </script>
 
 <svelte:head>
 	<title>
-		{$t('title')}
+		{bannerName.replaceAll(/(#)/gi, '')} | {$t('title')}
 	</title>
 </svelte:head>
 
 {#if tplVersion === 'v2'}
-    <br>
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		{#if !noPromo}
 			<div class="nav-item" class:active={activeContent === 1}>
@@ -141,32 +91,24 @@
 	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
-				<PromotionalV2/>
+				<PromotionalV2
+				/>
 			{:else if activeContent === 2}
 				<Description
 					tplVersion="v2"
 				/>
 			{:else if activeContent === 3}
-				<List {drop5star} {drop4star} {drop3star} bannerType={banner} tplVersion="v2" />
+				<List tplVersion="v2" />
 			{/if}
 		</div>
 	</div>
 {:else}
-	<PromotionalV1
-		chronicledList={isChronicled ? drop5star : []}
-		data={{ weapons, character, bannerType: banner, rateup }}
+	<PromotionalV2
 	/>
 	<Description
-		bannerType={banner}
-		{bannerName}
-		{weapons}
-		{character}
-		{rateup}
-		{region}
-		{drop5star}
 	/>
 	<br />
-	<List {drop5star} {drop4star} {drop3star} bannerType={banner} />
+	<List/>
 {/if}
 
 <div align="center">
