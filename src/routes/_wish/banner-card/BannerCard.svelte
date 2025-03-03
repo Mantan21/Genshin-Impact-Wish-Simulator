@@ -15,6 +15,8 @@
 	import ChronicledSpace from './_chronicled/bannerSpace.svelte';
 	import { isSafari } from '$lib/helpers/mobileDetect';
 
+	import Modal from './ModalSkip.svelte';
+
 	export let data = {};
 	export let index = -1;
 	export let fullscreenEditor = false;
@@ -30,6 +32,9 @@
 
 	let animate = !!editor;
 	let imageError = false;
+
+	let showModalSkip;
+
 	setContext('imageError', () => (imageError = true));
 	const editProb = getContext('editprob');
 	const openRateEditor = () => {
@@ -46,6 +51,13 @@
 		navigate('details');
 		return playSfx();
 	};
+
+	const skipper = getContext('navigate');
+	const openPreview = () => {
+		navigate('skip');
+		return playSfx();
+	};
+
 </script>
 
 <div
@@ -149,7 +161,7 @@
 			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
 			{/if} -->
-			<button class="skip"> {$t('skip.text')} </button>
+			<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
 		</div>
 	</div>
 </div>

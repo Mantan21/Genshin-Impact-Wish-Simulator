@@ -426,7 +426,12 @@
 		}
 	},
 	"skip": {
-		"text": "Skip"},
+		"title": "New Character Banner",
+		"text": "Skip",
+		"promotional": "Promotional Character",
+		"details": "Details",
+		"boss": "Boss Fight Preview"
+	},
 	"history": {
 		"title": "Wish History",
 		"text": "History",

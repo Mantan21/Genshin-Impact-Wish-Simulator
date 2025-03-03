@@ -47,8 +47,8 @@
 
 	const handleConfirm = async () => {
     try {
-      await signUp();
-      startApp();
+		await signUp();
+		startApp();
     } catch (error) {}
 	};
 </script>

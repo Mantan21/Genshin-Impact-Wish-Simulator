@@ -3,6 +3,14 @@
 	import { fade } from 'svelte/transition';
 	import OverlayScrollbars from 'overlayscrollbars';
 	import updates from '$lib/data/updates.json';
+	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+
+	const { patch: version, phase } = $activeVersion;
+
+	let processedUpdates = [...updates.data].reverse();
+
+	let latestIndex = processedUpdates.findIndex(item => item.patch == version);
+	let newPatchIndex = latestIndex + 1;
 
 	let updatesContainer;
 	onMount(() => {
@@ -21,13 +29,21 @@
 		</a>. You can submit an issue if you find something wrong !
 	</div>
 	<div class="update-item" bind:this={updatesContainer}>
-		{#each [...updates.data].reverse() as { description, date }, i (i)}
+		{#each [...updates.data].reverse() as { description, date, video, patch }, i (i)}
 			<h2>
 				<i class="tgl"> {date} </i>
-				{#if i === 0} ( Latest Update ) {/if}
+				{#if version == patch}
+					( Latest Banner )
+				{:else if i == newPatchIndex}
+					( New Patch )
+				{/if}
 			</h2>
 			{#each description as txt} <p>{@html txt}</p> {/each}
-		{/each}
+			<br>
+			<div align="center"><iframe width="640" height="360"
+			src={video} title="Preview">
+			</iframe></div>
+			{/each}
 	</div>
 </div>
 
