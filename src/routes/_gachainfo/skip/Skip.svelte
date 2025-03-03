@@ -1,4 +1,6 @@
 <script>
+    import { getContext, setContext } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -26,7 +28,6 @@
 
 	import List from './_list.svelte';
 	import Description from './_description.svelte';
-	import PromotionalV1 from './_promotional-v1.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Title from '../_title.svelte';
 
@@ -47,7 +48,31 @@
 	} = $bannerList[$activeBanner];
 
 	// Get Droplist
-	const { patch: version, phase } = $activeVersion;
+	const { patch: version, phase: activePhase } = $activeVersion;
+
+    let processedUpdates = [...updates.data].reverse();
+
+    let latestIndex = processedUpdates.findIndex(item => Number(item.patch) === Number(version));
+    let newPatchIndex = latestIndex + 1;
+
+    let patch = processedUpdates[newPatchIndex]?.patch ?? version;
+
+    patch = patch.toFixed(1);
+
+    let phase = 1;
+
+    const navigate = getContext('navigate');
+	const skipBanner = () => {
+        playSfx();
+		// If select the same banner with the active one, change nothing just back to index
+        console.log("Skipping to:", patch, phase); // Debug log
+		const { patch: version, phase: activePhase } = $activeVersion;
+		navigate('index');
+		if (activePhase === phase && version === patch) return;
+
+		// Select a banner
+		preloadVersion.set({ patch, phase });
+	};
 
 	const noPromo = banner.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;
@@ -67,11 +92,12 @@
 
 <svelte:head>
 	<title>
-		{bannerName.replaceAll(/(#)/gi, '')} | {$t('title')}
+		{$t('New Character')}
 	</title>
 </svelte:head>
 
 {#if tplVersion === 'v2'}
+<br>
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		{#if !noPromo}
 			<div class="nav-item" class:active={activeContent === 1}>
@@ -112,7 +138,12 @@
 {/if}
 
 <div align="center">
-    <ButtonModal>Skip</ButtonModal>
+    {#each [...updates.data].reverse() as { patch }, i (i)}
+	    {#if i === newPatchIndex}
+            <ButtonModal on:click={() => skipBanner( updates.patch, 1 )}>Skip</ButtonModal>
+	    {/if}
+    {/each}
+    
 </div>
 
 <style>

@@ -4,6 +4,7 @@
 	import updates from '$lib/data/updates.json';
 	import characters from '$lib/data/characters.json';
 
+
 	export let tplVersion = 'v1';
 
 	const { patch: version, phase } = $activeVersion;
