@@ -29,6 +29,7 @@
 	import PromotionalV1 from './_promotional-v1.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Title from '../_title.svelte';
+    import { HistoryManager, BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
 
@@ -108,6 +109,7 @@
 	afterUpdate(() => {
 		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
+
 </script>
 
 <svelte:head>
@@ -137,19 +139,9 @@
 	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
-				<PromotionalV2
-					chronicledList={isChronicled ? drop5star : []}
-					data={{ weapons, character, bannerType: banner, rateup }}
-				/>
+				<PromotionalV2/>
 			{:else if activeContent === 2}
 				<Description
-					bannerType={banner}
-					{bannerName}
-					{weapons}
-					{character}
-					{rateup}
-					{region}
-					{drop5star}
 					tplVersion="v2"
 				/>
 			{:else if activeContent === 3}

@@ -3,19 +3,10 @@
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
 	import updates from '$lib/data/updates.json';
 	import characters from '$lib/data/characters.json';
-	import { HistoryManager, BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
-	export let drop5star;
-	export let bannerType = '';
 	export let tplVersion = 'v1';
 
 	const { patch: version, phase } = $activeVersion;
-
-	const navigate = getContext('navigate');
-	const openPrevious = () => {
-		playSfx('prevbanner');
-		navigate('allbanners');
-	};
 
 	let processedUpdates = [...updates.data].reverse();
 

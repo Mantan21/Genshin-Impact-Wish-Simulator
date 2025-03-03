@@ -6,6 +6,7 @@
 	import Iklan from '$lib/components/Iklan.svelte';
 	import updates from '$lib/data/updates.json';
 
+
 	const { patch: version, phase } = $activeVersion;
 
 	let processedUpdates = [...updates.data].reverse();

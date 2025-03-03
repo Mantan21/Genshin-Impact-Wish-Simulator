@@ -4,7 +4,7 @@
 		{
             "phase": 1,
             "banners": {
-                "standardVersion": 2,
+                "standardVersion": 1,
                 "events": {
                     "featured": [
                         {

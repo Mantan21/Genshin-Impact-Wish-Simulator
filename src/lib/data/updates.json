@@ -2,7 +2,7 @@
 	"data": [
 		{
 			"date": "Version 10.0",
-			"featured": false,
+			"featured": true,
 			"character": "kaedehara-kazuha",
 			"patch": 10.0,
 			"description": [
@@ -12,7 +12,7 @@
 		},
 		{
 			"date": "Version 9.0",
-			"featured": false,
+			"featured": true,
 			"character": "kamisato-ayato",
 			"patch": 9.0,
 			"description": [
@@ -22,7 +22,7 @@
 		},
 		{
 			"date": "Version 8.0",
-			"featured": false,
+			"featured": true,
 			"character": "arataki-itto",
 			"patch": 8.0,
 			"description": [
@@ -32,7 +32,7 @@
 		},
 		{
 			"date": "Version 7.0",
-			"featured": false,
+			"featured": true,
 			"character": "kamisato-ayaka",
 			"patch": 7.0,
 			"description": [
@@ -42,7 +42,7 @@
 		},
 		{
 			"date": "Version 6.0",
-			"featured": false,
+			"featured": true,
 			"character": "raiden-shogun",
 			"patch": 6.0,
 			"description": [
@@ -52,7 +52,7 @@
 		},
 		{
 			"date": "Version 5.0",
-			"featured": false,
+			"featured": true,
 			"character": "baizhu",
 			"patch": 5.0,
 			"description": [
