@@ -29,7 +29,9 @@
 	import PromotionalV1 from './_promotional-v1.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Title from '../_title.svelte';
-    import { HistoryManager, BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
+    import { BannerManager } from '$lib/helpers/dataAPI/api-indexeddb';
+
+    import ItemBanner from './_item-banner.svelte';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
 
