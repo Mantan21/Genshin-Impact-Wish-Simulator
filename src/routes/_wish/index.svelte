@@ -75,8 +75,15 @@
 		onWish.set(true);
 
 		for (let i = 0; i < count; i++) {
-			const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner);
-			tmp.push(result);
+
+			if (count > 1) {
+				const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner, is10Pull=true);
+				tmp.push(result);	
+			} else {
+				const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner);
+				tmp.push(result);
+			}
+			
 		}
 
 		result = tmp;

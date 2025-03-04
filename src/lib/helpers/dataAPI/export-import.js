@@ -16,7 +16,6 @@ export const generateFileString = async () => {
 	const histories = await HistoryManager.filterHistory({ bannerName: ['sparkling-steps-1', 'wanderlust-invocation-1'], rarity: 5, type: "character" } );
 	const accessKey = cookie.get('accessKey');
 	console.log('klee count', histories);
-	console.log('genFileString');
 	generateExportID();
 	const settings = storageLocal.getData();
 	const dataToExport = { banners, histories, settings, accessKey };

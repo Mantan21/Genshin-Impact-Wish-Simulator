@@ -1,5 +1,7 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
+import { storageLocal } from './api-localstore';
+
 
 const version = 5;
 const DBName = 'WishSimulator';
@@ -83,7 +85,34 @@ export const HistoryManager = {
 			entries = entries.filter((entry) => entry.type === filters.type);
 		}
 
-		return entries;	
+		const transEntries = entries.map((entry) => ({
+			name: entry.name,
+			gender: entry.gender,
+			category: entry.category,
+			class: entry.class,
+			tier: entry.tier,
+			pity: entry.pity,
+			bannerName: entry.bannerName
+		}));
+
+		//Group entries by bannerName
+		const groupedEntries = transEntries.reduce((acc, entry) => {
+			const { bannerName } = entry;
+			if (!acc[bannerName]) {
+				acc[bannerName] = [];
+			}
+			acc[bannerName].push({
+				name: entry.name,
+				gender: entry.gender,
+				category: entry.category,
+				class: entry.class,
+				tier: entry.tier,
+				pity: entry.pity
+			});
+			return acc;
+		}, {});
+
+		return groupedEntries;
 	},	
 
 	async countItem(name) {
@@ -218,6 +247,8 @@ async function printDatabase() {
             // Get all indexes for this store
             const indexes = Array.from(db.transaction(storeName).objectStore(storeName).indexNames);
             console.log('Indexes:', indexes);
+			console.log('data', storageLocal.getData());
+
         }
     } catch (error) {
         console.error('Error printing database:', error);
