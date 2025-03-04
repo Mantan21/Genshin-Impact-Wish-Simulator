@@ -553,12 +553,16 @@
 			]
 		},
 		{
-			"date": "11 Feb 2024",
-			"featured": true,
+			"date": "11 Feb 2025",
 			"description": [
 				"Add New Character: <strong> Yumemizuki Mizuki (5★)</strong>",
 				"Add New Outfit: <b> Silvershower Heartstrings (5★)</b>"
 			]
+		},
+		{
+			"date": "04 Mar 2025",
+			"featured": true,
+			"description": ["Add <strong> Wriothesley 1st rerun</strong>", "Add <b> Furina 2nd rerun</b>"]
 		}
 	]
 }
