@@ -4,83 +4,39 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 4,
+				"standardVersion": 1,
 				"events": {
 					"featured": [
 						{
-							"bannerName": "sharktacular-surfari-1",
-							"character": "mualani",
-							"textOffset": { "l": 49, "b": 14 }
+							"bannerName": "the-hearths-ashen-shadow-2",
+							"character": "arlecchino",
+							"textOffset": { "l": 50.5, "b": 10.5 }
 						},
 						{
-							"bannerName": "leaves-in-the-wind-5",
-							"character": "kaedehara-kazuha",
-							"textOffset": { "l": 50, "b": 14 }
+							"bannerName": "immaculate-pulse-3",
+							"character": "baizhu",
+							"textOffset": { "l": 55, "b": 13 }
 						}
 					],
-					"rateup": ["kachina", "bennett", "xinyan"]
+					"rateup": ["bennett", "sucrose", "fischl"]
 				},
 				"weapons": {
-					"bannerName": "epitome-invocation-69",
-					"fatepointsystem": true,
-					"featured": [
-						{ "name": "surfs-up" },
-						{ "name": "freedom-sworn", "buttonPosition": { "l": 65 } }
-					],
+					"bannerName": "epitome-invocation-5",
+					"fatepointsystem": false,
+					"featured": [{ "name": "summit-shaper" }, { "name": "skyward-atlas" }],
 					"rateup": [
-						"favonius-sword",
 						"the-stringless",
-						"dragon_s-bane",
-						"sacrificial-fragments",
-						"favonius-greatsword"
-					],
-					"textOffset": {
-						"featured": { "l": 49.5, "t": 71 },
-						"rateup": { "l": 79.5, "b": 18, "w": 17 }
-					}
-				}
-			}
-		},
-		{
-			"phase": 2,
-			"banners": {
-				"standardVersion": 4,
-				"events": {
-					"featured": [
-						{
-							"bannerName": "seeker-of-flame-wrought-secrets-1",
-							"character": "kinich",
-							"textOffset": { "l": 51, "b": 13 }
-						},
-						{
-							"bannerName": "reign-of-serenity-5",
-							"character": "raiden-shogun",
-							"textOffset": { "l": 47, "b": 13 }
-						}
-					],
-					"rateup": ["chevreuse", "kujou-sara", "thoma"]
-				},
-				"weapons": {
-					"bannerName": "epitome-invocation-70",
-					"fatepointsystem": true,
-					"featured": [
-						{ "name": "fang-of-the-mountain-king" },
-						{ "name": "engulfing-lightning", "buttonPosition": { "l": 65 } }
-					],
-					"rateup": [
-						"sacrificial-sword",
-						"the-widsith",
-						"sacrificial-bow",
 						"favonius-lance",
-						"rainslasher"
+						"favonius-greatsword",
+						"lion_s-roar",
+						"the-widsith"
 					],
 					"textOffset": {
-						"featured": { "l": 48.5, "t": 68 },
-						"rateup": { "l": 78.5, "b": 21 }
+						"featured": { "l": 46, "t": 76 },
+						"rateup": { "l": 76, "b": 18.5 }
 					}
 				}
 			}
 		}
 	]
 }
-

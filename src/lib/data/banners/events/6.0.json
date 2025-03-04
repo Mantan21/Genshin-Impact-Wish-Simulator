@@ -1,0 +1,37 @@
+{
+	"patch": 6.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 1,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "reign-of-serenity-4",
+							"character": "raiden-shogun",
+							"textOffset": { "l": 50, "b": 11 }
+						}
+					],
+					"rateup": ["beidou", "xinyan", "xingqiu"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-6",
+					"fatepointsystem": false,
+					"featured": [{ "name": "amos-bow" }, { "name": "skyward-pride" }],
+					"rateup": [
+						"favonius-warbow",
+						"the-bell",
+						"eye-of-perception",
+						"dragon_s-bane",
+						"sacrificial-sword"
+					],
+					"textOffset": {
+						"featured": { "l": 46, "t": 77 },
+						"rateup": { "l": 75, "b": 17 }
+					}
+				}
+			}
+		}
+	]
+}

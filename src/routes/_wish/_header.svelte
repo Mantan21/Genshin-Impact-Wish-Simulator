@@ -62,6 +62,12 @@
 		playSfx('changebanner');
 	};
 
+	const skipBanner = (banner) => {
+		if ($activeBanner === banner) return;
+		activeBanner.set(banner);
+		playSfx('changebanner');
+	};
+
 	const chatToggle = getContext('chatToggle');
 	// const navigate = getContext('navigate');
 
@@ -116,8 +122,11 @@
 			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
 				<i class="gi-help" />
 			</button>
-			<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats">
-				<i class="gi-chat" />
+<!--			<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats"> -->
+<!--				<i class="gi-chat" /> -->
+<!--			</button> -->
+			<button class="skip" on:click={skipBanner} title="Skip" aria-label="Skip">
+				<i class="gi-skip" />
 			</button>
 
 			{#if !$isPWA || !$isMobile}

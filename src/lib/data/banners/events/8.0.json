@@ -1,0 +1,48 @@
+{
+	"patch": 8.0,
+	"data": [
+		{
+            "phase": 1,
+            "banners": {
+                "standardVersion": 1,
+                "events": {
+                    "featured": [
+                        {
+                            "bannerName": "oni_s-royale-4",
+                            "character": "arataki-itto",
+                            "textOffset": { "l": 51, "b": 10.75 }
+                        },
+                        {
+                            "bannerName": "chanson-of-many-waters-2",
+							"character": "furina",
+							"textOffset": { "l": 50.5, "b": 10.75 }
+                        }
+                    ],
+                    "rateup": ["barbara", "bennett", "ningguang"]
+                },
+                "weapons": {
+                    "bannerName": "epitome-invocation-8",
+                    "fatepointsystem": false,
+                    "featured": [
+                        {
+                            "name": "wolf_s-gravestone",
+                            "buttonPosition": { "l": 35 }
+                        },
+                        { "name": "staff-of-homa" }
+                    ],
+                    "rateup": [
+                        "lion_s-roar",
+                        "lithic-blade",
+                        "lithic-spear",
+                        "sacrificial-bow",
+                        "the-widsith"
+                    ],
+                    "textOffset": {
+                        "featured": { "l": 45, "t": 77 },
+                        "rateup": { "l": 75, "b": 14 }
+                    }
+                }
+            }
+        }
+	]
+}

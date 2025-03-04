@@ -4,63 +4,34 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"featured": [
 						{
-							"bannerName": "the-heron_s-court-1",
-							"character": "kamisato-ayaka",
-							"textOffset": { "l": 51, "w": 28 }
+							"bannerName": "drifting-luminescence-4",
+							"character": "sangonomiya-kokomi",
+							"textOffset": { "l": 50, "b": 10.5 }
 						}
 					],
-					"rateup": ["yanfei", "chongyun", "ningguang"]
+					"rateup": ["sucrose", "xingqiu", "noelle"]
 				},
 				"weapons": {
-					"bannerName": "epitome-invocation-15",
-					"fatepointsystem": true,
-					"featured": [{ "name": "mistsplitter-reforged" }, { "name": "skyward-spine" }],
+					"bannerName": "epitome-invocation-2",
+					"fatepointsystem": false,
+					"featured": [
+						{ "name": "lost-prayer-to-the-sacred-winds" },
+						{ "name": "wolf_s-gravestone" }
+					],
 					"rateup": [
-						"the-stringless",
-						"favonius-codex",
 						"sacrificial-greatsword",
-						"favonius-lance",
-						"favonius-sword"
-					],
-					"textOffset": {
-						"featured": { "l": 42, "w": 30 },
-						"rateup": { "l": 79, "b": 16 }
-					}
-				}
-			}
-		},
-		{
-			"phase": 2,
-			"banners": {
-				"standardVersion": 2,
-				"events": {
-					"featured": [
-						{
-							"bannerName": "tapestry-of-golden-flames-1",
-							"character": "yoimiya",
-							"textOffset": { "l": 50 }
-						}
-					],
-					"rateup": ["sayu", "xinyan", "diona"]
-				},
-				"weapons": {
-					"bannerName": "epitome-invocation-16",
-					"fatepointsystem": true,
-					"featured": [{ "name": "thundering-pulse" }, { "name": "skyward-blade" }],
-					"rateup": [
 						"sacrificial-sword",
 						"sacrificial-fragments",
-						"favonius-warbow",
-						"rainslasher",
-						"dragon_s-bane"
+						"dragon_s-bane",
+						"sacrificial-bow"
 					],
 					"textOffset": {
-						"featured": { "l": 43, "t": 66 },
-						"rateup": { "l": 76, "b": 18 }
+						"featured": { "l": 41, "t": 78, "w": 20 },
+						"rateup": { "l": 76, "b": 17 }
 					}
 				}
 			}

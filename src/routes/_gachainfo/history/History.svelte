@@ -53,12 +53,6 @@
 	};
 	setContext('selectBanner', selectBanner);
 
-	const clearHistory = () => {
-		filterBy = 'clear';
-		activepage = 1;
-	};
-	setContext('clearHistory', clearHistory);
-
 	const filter = (selected) => {
 		filterBy = selected;
 		activepage = 1;
@@ -117,7 +111,6 @@
 			<Report {dataLength} />
 		</div>
 		<div class="right">
-			<Reset {banner} />
 			<Filter {filterBy} />
 		</div>
 	</div>
