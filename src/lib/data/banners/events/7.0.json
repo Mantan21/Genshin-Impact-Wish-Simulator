@@ -1,0 +1,48 @@
+{
+	"patch": 7.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 1,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "the-heron_s-court-4",
+							"character": "kamisato-ayaka",
+							"textOffset": { "l": 51, "b": 10 }
+						},
+						{
+							"bannerName": "the-transcendent-one-returns-2",
+							"character": "shenhe",
+							"textOffset": {
+								"t": 67,
+								"l": 50.5
+							}
+						}
+					],
+					"rateup": ["xinyan", "beidou", "diona"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-7",
+					"fatepointsystem": false,
+					"featured": [
+						{ "name": "primordial-jade-winged-spear" },
+						{ "name": "primordial-jade-cutter" }
+					],
+					"rateup": [
+						"rust",
+						"the-flute",
+						"favonius-lance",
+						"sacrificial-greatsword",
+						"eye-of-perception"
+					],
+					"textOffset": {
+						"featured": { "l": 44.5, "t": 72 },
+						"rateup": { "l": 73.5, "b": 16 }
+					}
+				}
+			}
+		}
+	]
+}

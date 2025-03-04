@@ -97,27 +97,27 @@ const WISH = {
 		return result;
 	},
 
-	_beginnerWish(rarity) {
-		const result = beginerWish(rarity);
-		result.bannerName = 'beginner';
-		return result;
-	},
+	//_beginnerWish(rarity) {
+	//	const result = beginerWish(rarity);
+	//	result.bannerName = 'beginner';
+	//	return result;
+	//},
 
-	_standardWish(rarity) {
-		const { _standardVer: stdver, _phase: phase, _version: version } = this;
-		const standardBanner = standardWish.init({ stdver, phase, version });
-		const result = standardBanner.get(rarity);
-		result.bannerName = `wanderlust-invocation-${stdver}`;
-		return result;
-	},
+	//_standardWish(rarity) {
+	//	const { _standardVer: stdver, _phase: phase, _version: version } = this;
+	//	const standardBanner = standardWish.init({ stdver, phase, version });
+	//	const result = standardBanner.get(rarity);
+	//	result.bannerName = `wanderlust-invocation-${stdver}`;
+	//	return result;
+	//},
 
 	getItem(rarity, banner, indexOfBanner) {
 		const date = new Date();
 		const time = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 		const resultObj = { time, banner };
 
-		if (banner === 'beginner') return { ...resultObj, ...this._beginnerWish(rarity) };
-		if (banner === 'standard') return { ...resultObj, ...this._standardWish(rarity) };
+		//if (banner === 'beginner') return { ...resultObj, ...this._beginnerWish(rarity) };
+		//if (banner === 'standard') return { ...resultObj, ...this._standardWish(rarity) };
 		if (banner === 'weapon-event') return { ...resultObj, ...this._weaponWish(rarity) };
 		if (banner === 'chronicled') return { ...resultObj, ...this._chronicledWish(rarity) };
 		if (banner === 'character-event') {

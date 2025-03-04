@@ -19,26 +19,9 @@
 </script>
 
 <div class="table-filter" class:v2>
-	<span class="filter-selected" on:click={() => (showTableFilterOption = !showTableFilterOption)}>
+	<span class="filter-selected" on:click={() => filter(5)}>
 		{$t('history.filterTxt')} / {filterTxt}
-		<i class="gi-caret-{showTableFilterOption ? 'up' : 'down'}" />
 	</span>
-	{#if showTableFilterOption}
-		<div class="options" transition:fade={{ duration: 200 }}>
-			<span on:click={() => filter('All')} class:active={isNaN(filterBy)}>
-				{$t('history.filterAll')}
-			</span>
-			<span on:click={() => filter(5)} class:active={filterBy === 5}>
-				{$t('history.filter', { values: { rarity: 5 } })}
-			</span>
-			<span on:click={() => filter(4)} class:active={filterBy === 4}>
-				{$t('history.filter', { values: { rarity: 4 } })}
-			</span>
-			<span on:click={() => filter(3)} class:active={filterBy === 3}>
-				{$t('history.filter', { values: { rarity: 3 } })}
-			</span>
-		</div>
-	{/if}
 </div>
 
 <style>

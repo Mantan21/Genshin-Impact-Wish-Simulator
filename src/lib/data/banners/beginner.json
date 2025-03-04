@@ -2,8 +2,8 @@
 	"beginner": {
 		"featured": {
 			"bannerName": "beginner",
-			"character": "noelle",
-			"vision": "geo"
+			"character": "klee",
+			"vision": "pyro"
 		}
 	}
 }

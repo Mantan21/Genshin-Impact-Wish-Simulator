@@ -52,15 +52,15 @@
 		<div class="modal-content">
 			<div class="msg">
 				An error occurred while trying to load some assets, this may affect your wish experience.
-				<br />
-				<small>
-					<small>
-						If you think this is a mistake, please contact me on
-						<a href="https://discord.com/users/523179264116523018" style="color: #7289da">
-							Discord
-						</a>!
-					</small>
-				</small>
+<!--				<br /> -->
+<!--				<small> -->
+<!--					<small> -->
+<!--						If you think this is a mistake, please contact me on -->
+<!--						<a href="https://discord.com/users/523179264116523018" style="color: #7289da"> -->
+<!--							Discord -->
+<!--						</a>! -->
+<!--					</small> -->
+<!--				</small> -->
 			</div>
 			<div class="btn">
 				<button class="reload" on:click={() => window.location.reload()}>Reload</button>

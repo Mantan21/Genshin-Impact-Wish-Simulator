@@ -425,6 +425,22 @@
 			"text": "On obtaining a {rarity}-Star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted into that character's {stellaFortuna} ×1 and {starglitter} {constBonus}; from the 8th time onwards it will be converted into {starglitter} {fullConstBonus}."
 		}
 	},
+	"skip": {
+		"title": "New Character Banner",
+		"text": "Skip",
+		"promotional": "Promotional Character",
+		"details": "Details",
+		"boss": "Boss Fight",
+		"origin": "Origin",
+		"class": "Class",
+		"vision": "Vision",
+		"bdmg": "Base Damage",
+		"bmult": "Base Multiplier",
+		"c4mult": "C4 Multiplier",
+		"c6mult": "C6 Multiplier",
+		"c4dmg": "C4 Damage",
+		"c6dmg": "C6 Damage"
+	},
 	"history": {
 		"title": "Wish History",
 		"text": "History",
@@ -540,7 +556,7 @@
 		"text": "Menu",
 		"feedback": "Feedback",
 		"options": "Options",
-		"updates": "Update History",
+		"updates": "Banner Preview",
 		"customBanner": "Custom Banner",
 		"backupRestore": "Backup & Restore",
 		"language": "Language",

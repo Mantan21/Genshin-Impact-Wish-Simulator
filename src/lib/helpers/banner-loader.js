@@ -77,7 +77,7 @@ export const initializeBanner = async ({ patch, phase }) => {
 		if (!patch || !phase) return;
 		if (patch.match(/(local|custom)/gi)) return useCustomBanner(phase);
 
-		const list = checkBeginnerBanner() ? [{ type: 'beginner', ...beginner.featured }] : [];
+		const list = []; //checkBeginnerBanner() ? [{ type: 'beginner', ...beginner.featured }] : [];
 
 		const { data } = await import(`$lib/data/banners/events/${patch}.json`);
 		const { banners } = data.find((b) => b.phase === phase);
@@ -90,9 +90,9 @@ export const initializeBanner = async ({ patch, phase }) => {
 			stdver
 		};
 		events.featured.forEach((eventdata) => list.push({ ...eventdata, ...charEventBanner }));
-		list.push({ type: 'weapon-event', stdver, ...weapons });
-		if (chronicled) list.push({ type: 'chronicled', stdver, ...chronicled });
-		list.push({ type: 'standard', stdver, ...stdFeatured });
+		//list.push({ type: 'weapon-event', stdver, ...weapons });
+		//if (chronicled) list.push({ type: 'chronicled', stdver, ...chronicled });
+		//list.push({ type: 'standard', stdver, ...stdFeatured });
 
 		bannerList.set(list);
 		isFatepointSystem.set(!!weapons.fatepointsystem);

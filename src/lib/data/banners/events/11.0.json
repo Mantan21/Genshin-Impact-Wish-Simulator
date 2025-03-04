@@ -1,0 +1,60 @@
+{
+	"patch": 11.0,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 1,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "azure-excursion-3",
+							"character": "kamisato-ayato",
+							"textOffset": { "l": 50, "b": 11 }
+						}
+					],
+					"rateup": ["xiangling", "bennett", "yun-jin"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-56",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "haran-geppaku-futsu", "buttonPosition": { "l": 30 } },
+						{ "name": "haran-geppaku-futsu" }
+					],
+					"rateup": [
+						"haran-geppaku-futsu",
+						"haran-geppaku-futsu",
+						"haran-geppaku-futsu",
+						"haran-geppaku-futsu",
+						"haran-geppaku-futsu"
+					],
+					"textOffset": {
+						"featured": { "l": 47, "t": 73, "w": 29 },
+						"rateup": { "l": 80.5, "b": 19 }
+					}
+				},
+				"chronicled": {
+					"bannerName": "azure-excursion-3",
+					"region": "liyue",
+					"characters": {
+						"5star": ["kamisato-ayato", "xianyun", "wriothesley", "shenhe", "venti", "kaedehara-kazuha", "ganyu", "mualani"],
+						"4star": []
+					},
+					"weapons": {
+						"5star": [
+							"haran-geppaku-futsu",
+							"primordial-jade-cutter",
+                            "cranes-echoing-call",
+                            "surfs-up",
+                            "cashflow-supervision",
+                            "mistsplitter-reforged"
+						],
+						"4star": []
+					}
+				}
+			}
+		}
+	]
+}
+

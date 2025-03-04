@@ -51,16 +51,16 @@ const characterWish = {
 
 			// capturing Radiance
 			let captured = false;
-			if (_version >= 5.0 && !useRateup) {
-				const radianceRoll = (rollCounter.get('radiance') || 0) + 1;
-				const radianceRate = radianceRoll < 2 ? 0 : radianceRoll * 25;
-				const { captureRadiance } = prob([
-					{ captureRadiance: 'lose', chance: 100 - radianceRate },
-					{ captureRadiance: 'win', chance: radianceRate }
-				]);
-				captured = captureRadiance === 'win';
-				rollCounter.set('radiance', captured ? 0 : radianceRoll);
-			}
+//			if (_version >= 5.0 && !useRateup) {
+//				const radianceRoll = (rollCounter.get('radiance') || 0) + 1;
+//				const radianceRate = radianceRoll < 2 ? 0 : radianceRoll * 25;
+//				const { captureRadiance } = prob([
+//					{ captureRadiance: 'lose', chance: 100 - radianceRate },
+//					{ captureRadiance: 'win', chance: radianceRate }
+//				]);
+//				captured = captureRadiance === 'win';
+//				rollCounter.set('radiance', captured ? 0 : radianceRoll);
+//			}
 
 			const droplist = get5StarItem({
 				banner: 'character-event',
