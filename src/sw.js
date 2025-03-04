@@ -5,7 +5,7 @@ import { CacheFirst, NetworkFirst } from 'workbox-strategies';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { ExpirationPlugin } from 'workbox-expiration/ExpirationPlugin';
 
-const cacheVersion = 'v2';
+const cacheVersion = 'v3';
 const maxAgeSeconds = 15 * 24 * 60 * 60; // 15 Days
 const maxEntries = 60;
 
@@ -58,7 +58,10 @@ registerRoute(
 	},
 	new CacheFirst({
 		cacheName: `Static-${cacheVersion}`,
-		plugins: [new ExpirationPlugin({ maxEntries, maxAgeSeconds })]
+		plugins: [
+			new CacheableResponsePlugin({ statuses: [0, 200] }),
+			new ExpirationPlugin({ maxEntries, maxAgeSeconds })
+		]
 	})
 );
 
@@ -89,13 +92,11 @@ registerRoute(
 		const cdnParser = url.href.match('/js/image-cdn');
 		const isIcons = url.pathname.match('/icons');
 		const isStatic = url.pathname.match(new RegExp('.(?:css|js|json)$'));
-		return cdnParser || isIcons || isStatic;
+		const validOrigin = url.origin.match(new RegExp(/wishsimulator/));
+		return (cdnParser || isIcons || isStatic) && validOrigin;
 	},
 	new NetworkFirst({
 		cacheName: `Chunks-${cacheVersion}`,
-		plugins: [
-			new CacheableResponsePlugin({ statuses: [0, 200] }),
-			new ExpirationPlugin({ maxEntries, maxAgeSeconds })
-		]
+		plugins: [new ExpirationPlugin({ maxEntries, maxAgeSeconds })]
 	})
 );
