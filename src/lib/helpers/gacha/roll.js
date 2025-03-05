@@ -13,29 +13,50 @@ const { addHistory } = HistoryManager;
  * @returns Wish Result Object
  */
 const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
+	let isInitialized = localStorage.getItem(`isInitialized-${banner}`);
+	
+	if (isInitialized === 'false' || !isInitialized) {
+		//Initialize values
+		localStorage.setItem(`extraPity-${banner}`, 0);
+		localStorage.setItem(`current10PullCount-${banner}`, 0);
+		localStorage.setItem(`totalPulls-${banner}`, 0);
+		console.log("initialized");
+		localStorage.setItem(`isInitialized-${banner}`, true);
+	}
+
+
 	let lastIndexOfBanner = localStorage.getItem(`lastIndexOfBanner-${banner}`);
 	let lastPity5 = localStorage.getItem(`lastPity5-${banner}`); //to delete
+	let extraPity = parseInt(localStorage.getItem(`extraPity-${banner}`)) || 0;
+	let current10PullCount = parseInt(localStorage.getItem(`current10PullCount-${banner}`)) || 0;
+	let totalPullsTemp = parseInt(localStorage.getItem(`totalPulls-${banner}`)) || 0;
+	console.log("init extraPity: ", extraPity)
 
-	// Check for banner change
-	if (lastIndexOfBanner !== null && lastIndexOfBanner !== indexOfBanner) {
-		console.log('Banner Change Detected');
 
-		// Add carry over pity
-		const extraPity = localStorage.getItem(`extraPity-${banner}`) || 0;
-	}
-
-	localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
-	localStorage.setItem(`extraPity-${banner}`, extraPity);
 
 	if (is10Pull) {
-		let current10PullCount = parseInt(localStorage.getItem(`current10PullCount-${banner}`)) || 0;
 		current10PullCount += 1;
-	}
+		if (current10PullCount === 1) totalPullsTemp += 10;
 
+	}	else {
+		totalPullsTemp += 1;
+	}
 
 	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
 	const maxPity = getRate(banner, 'max5');
+
+	// Check for banner change
+	// if (lastIndexOfBanner !== null && lastIndexOfBanner !== indexOfBanner) {
+	//  	console.log('Banner Change Detected');
+
+	//  	// Add carry over pity
+	//  	extraPity += pity5;
+	//  }
+
+	// localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
+	//localStorage.setItem(`extraPity-${banner}`, extraPity);
+	// extraPity should be the pity5 of the last banner and totalNumber of pulls should be reset to 0
 
 	const rate5star = () => {
 		return rates({
@@ -80,6 +101,7 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 
 	const { rarity } = prob(item);
 	let pity = 1;
+	let pityCarry = 0;
 	let totalPulls = 0;
 
 	const rollQty = rollCounter.get(banner);
@@ -96,17 +118,17 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		localPity.set(`pity4-${banner}`, pity4);
 		localPity.set(`pity5-${banner}`, 0);
 		pity = pity5;
-		totalPulls = rollQty + 1;
+		pityCarry = extraPity;
 		//Put pity before pulling (Total number of pulls spent - pity5)
 		//make sure to yoink number of pulls per 5 star
 		//if you're going to implement a counter for number of pulls per 5 star	
 
-		if(is10Pull) {
-			const remainingPulls = 10 - current10PullCount;
-			extraPity += remainingPulls;
-			current10PullCount = 0;
-			console.log('Extra Pity:', extraPity);
-		}
+		totalPulls = totalPullsTemp;
+		totalPullsTemp = 0;
+		pityCarry = (totalPulls + extraPity) - pity5;
+
+		console.log("pityCarry", pityCarry);
+		localStorage.setItem(`extraPity-${banner}`, pityCarry); //Pity Carry of next 5-star
 	}
 
 	if (rarity === 4) {
@@ -120,8 +142,15 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		localPity.set(`pity5-${banner}`, pity5);
 	}
 
+	if (current10PullCount >= 10) {
+		current10PullCount = 0;
+		console.log('10 Pull Reset');
+	}
+
 	localStorage.setItem(`current10PullCount-${banner}`, current10PullCount);
-	localStorage.setItem(`extraPity-${banner}`, extraPity);
+	localStorage.setItem(`totalPulls-${banner}`, totalPullsTemp);
+	console.log("totalPulls: ", totalPullsTemp);
+
 
 	// Get Item
 	const randomItem = WishInstance.getItem(rarity, banner, indexOfBanner);
