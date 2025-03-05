@@ -1,12 +1,10 @@
 <script>
 	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
-
-	const close = getContext('chatToggle');
 </script>
 
 <div class="sidebar" on:click|stopPropagation transition:fly={{ x: -50, duration: 100 }}>
-	<div class="top">
+<!--	<div class="top">
 		<button class="close" on:click={close}>
 			<i class="gi-reply" />
 		</button>
@@ -15,10 +13,10 @@
 		<a href="#chat" class="link active" on:click|preventDefault>
 			<span>
 				<i class="gi-team" />
-				WishSimulator.App
+				WishSimulator.Appon
 			</span>
 		</a>
-	</div>
+	</div> -->
 </div>
 
 <style>

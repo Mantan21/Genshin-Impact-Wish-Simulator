@@ -94,11 +94,6 @@
 	</Modal>
 {/if}
 
-<button class="reset" class:v2 on:click={handleModal}>
-	<i class="gi-delete" />
-	{$t('history.resetButton')}
-</button>
-
 <style>
 	.confirmation {
 		display: flex;

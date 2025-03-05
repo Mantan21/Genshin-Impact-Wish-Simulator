@@ -1,9 +1,12 @@
 <script>
-	import { getContext, setContext } from 'svelte';
+	import { getContext, setContext, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { assets, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import {
+		activeVersion
+	} from '$lib/store/app-stores';
 
 	import FrameBeginner from './_frame-beginner.svelte';
 	import FrameCharacter from './_frame-character.svelte';
@@ -15,10 +18,18 @@
 	import ChronicledSpace from './_chronicled/bannerSpace.svelte';
 	import { isSafari } from '$lib/helpers/mobileDetect';
 
+	import Modal from './ModalSkip.svelte';
+
 	export let data = {};
 	export let index = -1;
 	export let fullscreenEditor = false;
 	export let editor = false;
+
+	const { patch: version, phase: activePhase } = $activeVersion
+
+	let hideSkip = false;
+
+	$: hideSkip = $activeVersion.patch === '10.0';
 
 	// prettier-ignore
 	let type, featured, character, bannerName, rateup, textOffset, charTitle, vision, images, artPosition;
@@ -30,6 +41,7 @@
 
 	let animate = !!editor;
 	let imageError = false;
+
 	setContext('imageError', () => (imageError = true));
 	const editProb = getContext('editprob');
 	const openRateEditor = () => {
@@ -46,6 +58,14 @@
 		navigate('details');
 		return playSfx();
 	};
+
+	const skipper = getContext('navigate');
+	const openPreview = () => {
+		console.log("Version:", version)
+		navigate('skip');
+		return playSfx();
+	};
+
 </script>
 
 <div
@@ -144,10 +164,15 @@
 			</div>
 		{/if}
 
+		
+
 		<div class="info">
 			<button class="detail" on:click={openDetails}> {$t('details.text')} </button>
-			{#if type !== 'beginner'}
+			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
+			{/if} -->
+			{#if !hideSkip}
+				<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
 			{/if}
 		</div>
 	</div>
@@ -291,5 +316,10 @@
 
 	.info button.detail {
 		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
+	}
+
+	.info button.skip {
+		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
+		margin-left: calc(1 / 100 * var(--content-width));
 	}
 </style>

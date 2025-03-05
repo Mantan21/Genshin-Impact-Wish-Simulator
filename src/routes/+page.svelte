@@ -216,6 +216,10 @@
 {:else if pageActive === 'details'}
 	<svelte:component this={GachaInfo} page="details" />
 
+	<!-- Wish Details -->
+{:else if pageActive === 'skip'}
+	<svelte:component this={GachaInfo} page="skip" />
+
 	<!-- Wish Record -->
 {:else if pageActive === 'history'}
 	<svelte:component this={GachaInfo} page="history" />
@@ -238,9 +242,9 @@
 	<svelte:component this={ModalConvert} />
 {/if}
 
-{#if chatLoaded}
-	<svelte:component this={Feedback} show={showChat} />
-{/if}
+<!-- {#if chatLoaded} -->
+<!-- 	<svelte:component this={Feedback} show={showChat} /> -->
+<!-- {/if} -->
 
 {#if showWelkinScreen}
 	<WelkinCheckin />

@@ -4,80 +4,30 @@
 		{
 			"phase": 1,
 			"banners": {
-				"standardVersion": 2,
+				"standardVersion": 1,
 				"events": {
 					"featured": [
 						{
-							"bannerName": "viridescent-vigil-1",
-							"character": "tighnari"
+							"bannerName": "moment-of-bloom-5",
+							"character": "hu-tao",
+							"textOffset": { "l": 50.5, "b": 8.5 }
 						},
 						{
-							"bannerName": "gentry-of-hermitage-4",
+							"bannerName": "gentry-of-hermitage-6",
 							"character": "zhongli",
-							"textOffset": { "l": 57, "b": 13 }
+							"textOffset": { "l": 52, "b": 8.5 }
 						}
 					],
-
-					"rateup": ["collei", "fischl", "diona"]
+					"rateup": ["beidou", "ningguang", "diona"]
 				},
 				"weapons": {
-					"bannerName": "epitome-invocation-33",
-					"fatepointsystem": true,
-					"featured": [
-						{ "name": "hunter_s-path" },
-						{
-							"name": "vortex-vanquisher",
-							"buttonPosition": { "l": 60 }
-						}
-					],
-					"rateup": [
-						"favonius-sword",
-						"the-stringless",
-						"the-bell",
-						"favonius-codex",
-						"favonius-lance"
-					],
+					"bannerName": "epitome-invocation-3",
+					"fatepointsystem": false,
+					"featured": [{ "name": "skyward-harp" }, { "name": "memory-of-dust" }],
+					"rateup": ["rust", "favonius-lance", "rainslasher", "the-flute", "eye-of-perception"],
 					"textOffset": {
-						"featured": { "l": 42, "t": 68, "w": 32 },
-						"rateup": { "l": 75.5, "b": 20, "w": 15 }
-					}
-				}
-			}
-		},
-		{
-			"phase": 2,
-			"banners": {
-				"standardVersion": 2,
-				"events": {
-					"featured": [
-						{
-							"bannerName": "drifting-luminescence-3",
-							"character": "sangonomiya-kokomi",
-							"textOffset": { "l": 51, "b": 8 }
-						},
-						{
-							"bannerName": "adrift-in-the-harbor-3",
-							"character": "ganyu",
-							"textOffset": { "l": 57, "b": 12.8 }
-						}
-					],
-
-					"rateup": ["dori", "xingqiu", "sucrose"]
-				},
-				"weapons": {
-					"bannerName": "epitome-invocation-34",
-					"fatepointsystem": true,
-					"featured": [{ "name": "amos-bow" }, { "name": "everlasting-moonglow" }],
-					"rateup": [
-						"sacrificial-sword",
-						"rust",
-						"dragon_s-bane",
-						"favonius-greatsword",
-						"eye-of-perception"
-					],
-					"textOffset": {
-						"featured": { "l": 44, "t": 71, "w": 28 },
-						"rateup": { "l": 78.5, "b": 19, "w": 15 }
+						"featured": { "l": 41, "t": 76 },
+						"rateup": { "l": 76.5, "b": 19 }
 					}
 				}
 			}
