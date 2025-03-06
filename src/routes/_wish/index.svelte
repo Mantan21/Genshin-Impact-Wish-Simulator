@@ -77,7 +77,7 @@
 		for (let i = 0; i < count; i++) {
 
 			if (count > 1) {
-				const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner, is10Pull=true);
+				const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner, true);
 				tmp.push(result);	
 			} else {
 				const result = await roll(bannerToRoll, WishInstance, indexOfCharBanner);

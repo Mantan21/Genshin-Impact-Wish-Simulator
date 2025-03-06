@@ -1,7 +1,8 @@
 import { beginnerRemaining, showBeginner } from '$lib/store/app-stores';
 import { HistoryManager } from '../dataAPI/api-indexeddb';
-import { localPity, owneditem, rollCounter } from '../dataAPI/api-localstore';
+import { localPity, owneditem, rollCounter, localConfig } from '../dataAPI/api-localstore';
 import { getRate, prob, rates } from './probabilities';
+
 
 const { addHistory } = HistoryManager;
 
@@ -14,24 +15,53 @@ const { addHistory } = HistoryManager;
  */
 const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 	let isInitialized = localStorage.getItem(`isInitialized-${banner}`);
-	
+
 	if (isInitialized === 'false' || !isInitialized) {
 		//Initialize values
 		localStorage.setItem(`extraPity-${banner}`, 0);
 		localStorage.setItem(`current10PullCount-${banner}`, 0);
 		localStorage.setItem(`totalPulls-${banner}`, 0);
 		console.log("initialized");
+		localStorage.setItem(`lastversion`, null);
+		localStorage.setItem(`lastIndexOfBanner-${banner}`, -1);
 		localStorage.setItem(`isInitialized-${banner}`, true);
 	}
 
+	const localVersion = localConfig.get('version') || '';
+	let [patch, phase] = localVersion.split('-');
+	let lastVersion = localStorage.getItem(`lastversion`);
 
-	let lastIndexOfBanner = localStorage.getItem(`lastIndexOfBanner-${banner}`);
-	let lastPity5 = localStorage.getItem(`lastPity5-${banner}`); //to delete
+	let lastIndexOfBanner = parseInt(localStorage.getItem(`lastIndexOfBanner-${banner}`));
+	console.log("lastIndexOfBanner: ", lastIndexOfBanner);
 	let extraPity = parseInt(localStorage.getItem(`extraPity-${banner}`)) || 0;
 	let current10PullCount = parseInt(localStorage.getItem(`current10PullCount-${banner}`)) || 0;
 	let totalPullsTemp = parseInt(localStorage.getItem(`totalPulls-${banner}`)) || 0;
 	console.log("init extraPity: ", extraPity)
 
+
+	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
+	const pity4 = localPity.get(`pity4-${banner}`) + 1;
+	const maxPity = getRate(banner, 'max5');
+
+	console.log('Condition Values:', {
+		lastIndexOfBanner,
+		indexOfBanner,
+		lastVersion,
+		patch
+	});
+	//Check for banner change
+	if ((lastIndexOfBanner !== -1 && lastIndexOfBanner !== indexOfBanner) || (lastVersion !== patch && lastVersion !== "null")) {
+		console.log('Banner Change Detected');
+		totalPullsTemp = 0;
+	 	// Add carry over pity
+		extraPity = localPity.get(`pity5-${banner}`);
+		console.log("change Pity: ", extraPity);
+		localStorage.setItem(`extraPity-${banner}`, extraPity);
+
+	}
+	localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
+	localStorage.setItem(`lastversion`, patch);	
+	//extraPity should be the pity5 of the last banner and totalNumber of pulls should be reset to 0
 
 
 	if (is10Pull) {
@@ -41,23 +71,6 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 	}	else {
 		totalPullsTemp += 1;
 	}
-
-	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
-	const pity4 = localPity.get(`pity4-${banner}`) + 1;
-	const maxPity = getRate(banner, 'max5');
-
-	// Check for banner change
-	// if (lastIndexOfBanner !== null && lastIndexOfBanner !== indexOfBanner) {
-	//  	console.log('Banner Change Detected');
-
-	//  	// Add carry over pity
-	//  	extraPity += pity5;
-	//  }
-
-	// localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
-	//localStorage.setItem(`extraPity-${banner}`, extraPity);
-	// extraPity should be the pity5 of the last banner and totalNumber of pulls should be reset to 0
-
 	const rate5star = () => {
 		return rates({
 			baseRate: getRate(banner, 'baseRate5'),
@@ -102,7 +115,7 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 	const { rarity } = prob(item);
 	let pity = 1;
 	let pityCarry = 0;
-	let totalPulls = 0;
+	let totalPulls = totalPullsTemp;;
 
 	const rollQty = rollCounter.get(banner);
 	rollCounter.set(banner, rollQty + 1);
@@ -123,7 +136,6 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		//make sure to yoink number of pulls per 5 star
 		//if you're going to implement a counter for number of pulls per 5 star	
 
-		totalPulls = totalPullsTemp;
 		totalPullsTemp = 0;
 		pityCarry = (totalPulls + extraPity) - pity5;
 
