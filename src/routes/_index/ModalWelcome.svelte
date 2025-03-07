@@ -39,9 +39,9 @@
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-		const { expiryDate, storedKey } = await adKey.initialLoad();
-		dateExpired = expiryDate;
-		savedKey = storedKey;
+		// const { expiryDate, storedKey } = await adKey.initialLoad();
+		// dateExpired = expiryDate;
+		// savedKey = storedKey;
 	});
 
 
