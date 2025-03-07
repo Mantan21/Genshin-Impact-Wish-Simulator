@@ -67,12 +67,17 @@
 	const startApp = () => {
 		appReady.set(true);
 		hotkeys.setScope('index');
-		showWelcomeModal = false;
 		welkinCheckin();
 		playSfx();
 	};
 	// Welcome Modal && Custom Banner Modal
 	setContext('startApp', startApp);
+
+    $: {
+        if ($isAuthenticated) {
+            showWelcomeModal = false;
+        }
+    }
 
 	// Menu
 	let showMenu = false;
@@ -145,10 +150,12 @@
 
 		// Check Session		
 		(async () => {
-        await checkSession();
+			const session = await checkSession();
+			if (session) {
+				showWelcomeModal = false;
+			}
 		})();
 	});
-
 
 	// Obtained
 	let showObtained = false;
@@ -242,9 +249,6 @@
 	<svelte:component this={ModalConvert} />
 {/if}
 
-<!-- {#if chatLoaded} -->
-<!-- 	<svelte:component this={Feedback} show={showChat} /> -->
-<!-- {/if} -->
 
 {#if showWelkinScreen}
 	<WelkinCheckin />
