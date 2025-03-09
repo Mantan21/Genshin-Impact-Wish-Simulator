@@ -66,51 +66,53 @@ export const HistoryManager = {
 	async filterHistory(filters = {}) {
 		let entries = [];
 
-		if (filters.bannerName) {
-			const bannerNames = Array.isArray(filters.bannerName) ? filters.bannerName : [filters.bannerName];
-			const sortedBannerNames = bannerNames.sort();
+		//Initialize 
+		const groupedEntries = {}
 
-			// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
-			const range = IDBKeyRange.bound(sortedBannerNames[0], sortedBannerNames[bannerNames.length - 1]);
-			entries = await this.getListByBanner(range);
+		// Sort bannerNames
+		const sortedBanners = filters.bannerName.sort();
+		console.log('sortedBanners', sortedBanners);
+		
+		sortedBanners.forEach((bannerName) => {
+			groupedEntries[bannerName] = { // Initialize item ID and action state
+				item: [], 
+				action: "skipped"
+			};
+		});
 
-			// Filter entires by bannerName
-			entries = entries.filter((entry) => bannerNames.includes(entry.bannerName));
-		}
+		// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
+		const range = IDBKeyRange.bound(sortedBanners[0], sortedBanners[sortedBanners.length - 1]);
+		entries = await this.getListByBanner(range);
+
+		// Filter entires by bannerName
+		entries = entries.filter((entry) => sortedBanners.includes(entry.bannerName)); //check if can delete
+		
 		if (filters.rarity) {
 			entries = entries.filter((entry) => entry.rarity === filters.rarity);
 		}
 
-		if (filters.type) {
+		if (filters.type) { //To be deleted
 			entries = entries.filter((entry) => entry.type === filters.type);
 		}
 
-		const transEntries = entries.map((entry) => ({
-			name: entry.name,
-			gender: entry.gender,
-			category: entry.category,
-			class: entry.class,
-			tier: entry.tier,
-			pity: entry.pity,
-			bannerName: entry.bannerName
-		}));
-
-		//Group entries by bannerName
-		const groupedEntries = transEntries.reduce((acc, entry) => {
+		entries.forEach((entry) => {
 			const { bannerName } = entry;
-			if (!acc[bannerName]) {
-				acc[bannerName] = [];
+			if (groupedEntries[bannerName]) {
+				groupedEntries[bannerName].item.push({
+					id: entry.id,
+					name: entry.name,
+					gender: entry.gender,
+					category: entry.category,
+					class: entry.class,
+					tier: entry.tier,
+					pity: entry.pity,
+					extraPity: entry.extraPity,
+					totalPulls: entry.totalPulls,
+					status: entry.status
+				});
+				groupedEntries[bannerName].action = "pulled";
 			}
-			acc[bannerName].push({
-				name: entry.name,
-				gender: entry.gender,
-				category: entry.category,
-				class: entry.class,
-				tier: entry.tier,
-				pity: entry.pity
-			});
-			return acc;
-		}, {});
+		});
 
 		return groupedEntries;
 	},	

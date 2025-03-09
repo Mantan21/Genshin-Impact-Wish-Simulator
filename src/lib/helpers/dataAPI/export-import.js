@@ -11,14 +11,17 @@ const generateExportID = () => {
 };
 
 export const generateFileString = async () => {
-	const banners = await BannerManager.getAll();
+	//const banners = await BannerManager.getAll();
 	//const histories =  await HistoryManager.getAllHistories(); 
-	const histories = await HistoryManager.filterHistory({ bannerName: ['sparkling-steps-1', 'wanderlust-invocation-1'], rarity: 5, type: "character" } );
+
+	const histories = await HistoryManager.filterHistory({ bannerName: ['farewell-of-snezhnaya-5', 'drifting-luminescence-4', 'moment-of-bloom-5', 'gentry-of-hermitage-6', 'sparkling-steps-4','the-hearths-ashen-shadow-2', 'immaculate-pulse-3', 'reign-of-serenity-4', 'the-heron_s-court-4', 'the-transcendent-one-returns-2', 'oni_s-royale-4', 'chanson-of-many-waters-2', 'tempestuous-destiny-1', 'azure-excursion-3', 'decree-of-the-deeps-3', 'leaves-in-the-wind-5'], rarity: 5, type: "character" } );
 	const accessKey = cookie.get('accessKey');
-	console.log('klee count', histories);
+	
+	console.log('History Exported', histories);
+	
 	generateExportID();
-	const settings = storageLocal.getData();
-	const dataToExport = { banners, histories, settings, accessKey };
+	//const settings = storageLocal.getData();
+	const dataToExport = { histories, accessKey };
 	return JSON.stringify(dataToExport);
 };
 

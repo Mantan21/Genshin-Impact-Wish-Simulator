@@ -2,6 +2,7 @@ import { beginnerRemaining, showBeginner } from '$lib/store/app-stores';
 import { HistoryManager } from '../dataAPI/api-indexeddb';
 import { localPity, owneditem, rollCounter, localConfig } from '../dataAPI/api-localstore';
 import { getRate, prob, rates } from './probabilities';
+import { initialize, checkBanner, getPulls } from './historyUtils'
 
 
 const { addHistory } = HistoryManager;
@@ -14,63 +15,41 @@ const { addHistory } = HistoryManager;
  * @returns Wish Result Object
  */
 const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
-	let isInitialized = localStorage.getItem(`isInitialized-${banner}`);
-
-	if (isInitialized === 'false' || !isInitialized) {
-		//Initialize values
-		localStorage.setItem(`extraPity-${banner}`, 0);
-		localStorage.setItem(`current10PullCount-${banner}`, 0);
-		localStorage.setItem(`totalPulls-${banner}`, 0);
-		console.log("initialized");
-		localStorage.setItem(`lastversion`, null);
-		localStorage.setItem(`lastIndexOfBanner-${banner}`, -1);
-		localStorage.setItem(`isInitialized-${banner}`, true);
-	}
-
-	const localVersion = localConfig.get('version') || '';
-	let [patch, phase] = localVersion.split('-');
-	let lastVersion = localStorage.getItem(`lastversion`);
-
-	let lastIndexOfBanner = parseInt(localStorage.getItem(`lastIndexOfBanner-${banner}`));
-	console.log("lastIndexOfBanner: ", lastIndexOfBanner);
-	let extraPity = parseInt(localStorage.getItem(`extraPity-${banner}`)) || 0;
-	let current10PullCount = parseInt(localStorage.getItem(`current10PullCount-${banner}`)) || 0;
-	let totalPullsTemp = parseInt(localStorage.getItem(`totalPulls-${banner}`)) || 0;
-	console.log("init extraPity: ", extraPity)
-
+	initialize(banner);
 
 	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
 	const maxPity = getRate(banner, 'max5');
 
-	console.log('Condition Values:', {
-		lastIndexOfBanner,
-		indexOfBanner,
-		lastVersion,
-		patch
-	});
-	//Check for banner change
-	if ((lastIndexOfBanner !== -1 && lastIndexOfBanner !== indexOfBanner) || (lastVersion !== patch && lastVersion !== "null")) {
-		console.log('Banner Change Detected');
+	let extraPity = parseInt(localStorage.getItem(`extraPity-${banner}`)) || 0;
+	let { current10PullCount, totalPullsTemp } = getPulls(banner);
+	
+	//Check if banner changed
+	let bannerChanged = checkBanner(banner, indexOfBanner);
+	
+	if (bannerChanged.bool) {
+		console.log('Banner Change true');
 		totalPullsTemp = 0;
-	 	// Add carry over pity
 		extraPity = localPity.get(`pity5-${banner}`);
-		console.log("change Pity: ", extraPity);
 		localStorage.setItem(`extraPity-${banner}`, extraPity);
-
 	}
 	localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
-	localStorage.setItem(`lastversion`, patch);	
-	//extraPity should be the pity5 of the last banner and totalNumber of pulls should be reset to 0
+	localStorage.setItem(`lastversion`, bannerChanged.patch);	
+	console.log("init extraPity: ", extraPity);
 
-
+	
 	if (is10Pull) {
 		current10PullCount += 1;
-		if (current10PullCount === 1) totalPullsTemp += 10;
+		if (current10PullCount === 1) {
+			totalPullsTemp += 10;
+			console.log("totalPulls: ", totalPullsTemp);
+		}
 
 	}	else {
 		totalPullsTemp += 1;
 	}
+
+
 	const rate5star = () => {
 		return rates({
 			baseRate: getRate(banner, 'baseRate5'),
@@ -131,17 +110,13 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		localPity.set(`pity4-${banner}`, pity4);
 		localPity.set(`pity5-${banner}`, 0);
 		pity = pity5;
-		pityCarry = extraPity;
-		//Put pity before pulling (Total number of pulls spent - pity5)
-		//make sure to yoink number of pulls per 5 star
-		//if you're going to implement a counter for number of pulls per 5 star	
 
 		totalPullsTemp = 0;
 		pityCarry = (totalPulls + extraPity) - pity5;
 
 		console.log("pityCarry", pityCarry);
 		localStorage.setItem(`extraPity-${banner}`, pityCarry); //Pity Carry of next 5-star
-	}
+	}  
 
 	if (rarity === 4) {
 		localPity.set(`pity4-${banner}`, 0);
@@ -161,7 +136,7 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 
 	localStorage.setItem(`current10PullCount-${banner}`, current10PullCount);
 	localStorage.setItem(`totalPulls-${banner}`, totalPullsTemp);
-	console.log("totalPulls: ", totalPullsTemp);
+	
 
 
 	// Get Item
