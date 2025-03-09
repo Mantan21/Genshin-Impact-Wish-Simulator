@@ -29,13 +29,14 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 	
 	if (bannerChanged.bool) {
 		console.log('Banner Change true');
+		console.log("init extraPity: ", extraPity);
 		totalPullsTemp = 0;
 		extraPity = localPity.get(`pity5-${banner}`);
 		localStorage.setItem(`extraPity-${banner}`, extraPity);
 	}
 	localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
 	localStorage.setItem(`lastversion`, bannerChanged.patch);	
-	console.log("init extraPity: ", extraPity);
+	
 
 	
 	if (is10Pull) {
