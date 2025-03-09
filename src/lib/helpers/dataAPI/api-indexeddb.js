@@ -66,7 +66,7 @@ export const HistoryManager = {
 	async filterHistory(filters = {}) {
 		let entries = [];
 
-		//Initialize 
+		//Initialize return value
 		const groupedEntries = {}
 
 		// Sort bannerNames

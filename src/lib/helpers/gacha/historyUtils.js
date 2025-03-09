@@ -22,9 +22,6 @@ export function checkBanner(banner, indexOfBanner) {
 
     let lastIndexOfBanner = parseInt(localStorage.getItem(`lastIndexOfBanner-${banner}`));
 
-    console.log({"checkBanner": {banner, indexOfBanner, lastIndexOfBanner, patch, phase, lastVersion}}
-        
-    )
     if ((lastIndexOfBanner !== -1 && lastIndexOfBanner !== indexOfBanner) || (lastVersion !== patch && lastVersion !== "null")) {
 		console.log('Banner Change Detected');
 		

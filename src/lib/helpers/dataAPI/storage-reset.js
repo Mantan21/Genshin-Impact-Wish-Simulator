@@ -22,6 +22,8 @@ import {
 } from '$lib/store/app-stores';
 
 const { clearIDB } = HistoryManager;
+const banner = 'character-event';
+
 
 export const clearCacheStorage = async () => {
 	const keys = await caches.keys();
@@ -53,10 +55,20 @@ export const factoryReset = async ({ clearCache = false, keepSetting = false } =
 		return;
 	}
 
+	
 	// Remove all Settings
 	const locale = localConfig.get('locale');
 	const exportData = storageLocal.get('export');
 	localStorage.removeItem('WishSimulator.App');
+
+	// Remove temporary memory
+	localStorage.setItem(`extraPity-${banner}`, 0);
+	localStorage.setItem(`current10PullCount-${banner}`, 0);
+	localStorage.setItem(`totalPulls-${banner}`, 0);
+	console.log("initialized");
+	localStorage.setItem(`lastversion`, null);
+	localStorage.setItem(`lastIndexOfBanner-${banner}`, -1);
+
 	if (locale) localConfig.set('locale', locale);
 	if (exportData?.id) storageLocal.set('export', exportData);
 
@@ -67,6 +79,7 @@ export const factoryReset = async ({ clearCache = false, keepSetting = false } =
 	primogem.set(iprimo);
 	stardust.set(0);
 	starglitter.set(0);
+
 
 	editID.set(0);
 	editorMode.set(0);
