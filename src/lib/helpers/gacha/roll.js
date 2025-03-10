@@ -15,8 +15,6 @@ const { addHistory } = HistoryManager;
  * @returns Wish Result Object
  */
 const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
-	initialize(banner);
-
 	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
 	const maxPity = getRate(banner, 'max5');
@@ -43,7 +41,6 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		current10PullCount += 1;
 		if (current10PullCount === 1) {
 			totalPullsTemp += 10;
-			console.log("totalPulls: ", totalPullsTemp);
 		}
 
 	}	else {
@@ -116,6 +113,7 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 		pityCarry = (totalPulls + extraPity) - pity5;
 
 		console.log("pityCarry", pityCarry);
+		console.log("totalPulls", totalPulls);
 		localStorage.setItem(`extraPity-${banner}`, pityCarry); //Pity Carry of next 5-star
 	}  
 
@@ -132,7 +130,6 @@ const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
 
 	if (current10PullCount >= 10) {
 		current10PullCount = 0;
-		console.log('10 Pull Reset');
 	}
 
 	localStorage.setItem(`current10PullCount-${banner}`, current10PullCount);

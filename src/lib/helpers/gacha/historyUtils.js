@@ -20,7 +20,7 @@ export function checkBanner(banner, indexOfBanner) {
 	let [patch, phase] = localVersion.split('-');
 	let lastVersion = localStorage.getItem(`lastversion`);
 
-    let lastIndexOfBanner = parseInt(localStorage.getItem(`lastIndexOfBanner-${banner}`));
+    let lastIndexOfBanner = parseInt(localStorage.getItem(`lastIndexOfBanner-${banner}`)) || -1;
 
     if ((lastIndexOfBanner !== -1 && lastIndexOfBanner !== indexOfBanner) || (lastVersion !== patch && lastVersion !== "null")) {
 		console.log('Banner Change Detected');

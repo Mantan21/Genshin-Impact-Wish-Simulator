@@ -75,7 +75,6 @@ export const HistoryManager = {
 
 		// Sort bannerNames
 		const sortedBanners = filters.bannerName.sort();
-		console.log('sortedBanners', sortedBanners);
 		
 		sortedBanners.forEach((bannerName) => {
 			groupedEntries[bannerName] = { // Initialize item ID and action state
