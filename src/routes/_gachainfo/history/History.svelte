@@ -76,7 +76,7 @@
 	<SelectBanner v2 {banner} />
 	<div class="container" bind:this={container}>
 		<div class="wrapper">
-			<p class="v2">{$t('history.disclaimer')}</p>S
+			<p class="v2">{$t('history.disclaimer')}</p>
 			<div class="row">
 				<Report {dataLength} v2 />
 				<Filter {filterBy} v2 />

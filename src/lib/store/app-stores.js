@@ -7,6 +7,23 @@ export const preloadVersion = writable({ patch: version, phase: wishPhase });
 export const activeVersion = writable({ patch: version, phase: wishPhase });
 export const bannerList = writable([]);
 export const activeBanner = writable(0);
+export const bannerNames = [
+                'farewell-of-snezhnaya-5', 
+                'drifting-luminescence-4', 
+                'moment-of-bloom-5', 
+                'gentry-of-hermitage-6', 
+                'sparkling-steps-4',
+                'the-hearths-ashen-shadow-2', 
+                'immaculate-pulse-3', 
+                'reign-of-serenity-4', 
+                'the-heron_s-court-4', 
+                'the-transcendent-one-returns-2', 
+                'oni_s-royale-4', 
+                'chanson-of-many-waters-2', 
+                'tempestuous-destiny-1', 
+                'azure-excursion-3', 
+                'decree-of-the-deeps-3', 
+                'leaves-in-the-wind-5'];
 
 // Beginner
 export const showBeginner = writable(true);

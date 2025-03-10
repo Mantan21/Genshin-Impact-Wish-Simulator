@@ -59,7 +59,11 @@ export const HistoryManager = {
 		return (await IndexedDB).count('history');
 	},
 
-	async getListByBanner(bannerName) {
+	async getListByBanner(banner) {
+		return (await IndexedDB).getAllFromIndex('history', 'banner', banner);
+	},
+
+	async getListBannerNames(bannerName) {
 		return (await IndexedDB).getAllFromIndex('history', 'bannerName', bannerName);
 	},
 
@@ -82,10 +86,8 @@ export const HistoryManager = {
 
 		// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
 		const range = IDBKeyRange.bound(sortedBanners[0], sortedBanners[sortedBanners.length - 1]);
-		entries = await this.getListByBanner(range);
+		entries = await this.getListBannerNames(range);
 
-		// Filter entires by bannerName
-		entries = entries.filter((entry) => sortedBanners.includes(entry.bannerName)); //check if can delete
 		
 		if (filters.rarity) {
 			entries = entries.filter((entry) => entry.rarity === filters.rarity);
@@ -99,7 +101,7 @@ export const HistoryManager = {
 			const { bannerName } = entry;
 			if (groupedEntries[bannerName]) {
 				groupedEntries[bannerName].item.push({
-					id: entry.id,
+					itemID: entry.itemID,
 					name: entry.name,
 					gender: entry.gender,
 					category: entry.category,
