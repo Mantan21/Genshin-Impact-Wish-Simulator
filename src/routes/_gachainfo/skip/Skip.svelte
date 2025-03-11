@@ -64,6 +64,7 @@
     }
 
     let phase = 1;
+	let listRef;
 
     const navigate = getContext('navigate');
 	const skipBanner = () => {
@@ -109,7 +110,7 @@
 			</button>
 		</div>
 		<div class="nav-item" class:active={activeContent === 2}>
-			<button on:click={() => select(3)}> {$t('skip.boss')} </button>
+			<button on:click={() => select(2)}> {$t('skip.boss')} </button>
 		</div>
 	</nav>
 
@@ -119,7 +120,7 @@
 				<PromotionalV2
 				/>
 			{:else if activeContent === 2}
-				<List tplVersion="v2" />
+				<List />
 			{/if}
 		</div>
 	</div>
@@ -128,8 +129,6 @@
 	/>
 	<List
 	/>
-	<br />
-	<List/>
 {/if}
 
 <br>

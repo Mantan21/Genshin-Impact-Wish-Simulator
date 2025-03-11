@@ -1,32 +1,143 @@
 <script>
+	console.log("Component is loading!");
+	import { onDestroy, onMount, tick } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
 	import characters from '$lib/data/characters.json';
+	import HealthBar from '$lib/helpers/health-bar.js';
+	import DieBar from '$lib/helpers/damage.js';
 
+	let canvas;
+	let health = 3000;
+	const healthBarWidth = 480;
+	const healthBarHeight = 10;
+	let healthBar;
+	
+	async function setupCanvas() {
+		await tick();
+		console.log("onMount() is running!");
+    	if (!canvas) {
+    		console.error("Canvas not found!");
+			return;
+    }
+		const context = canvas.getContext("2d");
+		if (!context) {
+    	console.error("Failed to get 2D context!");
+    	return;
+    }
+		
+		const width = canvas.width = 640;
+		const height = canvas.height = 280;
 
-	export let tplVersion = 'v1';
+		const x = width / 2 - healthBarWidth / 2;
+		const y = 20;
 
-	const { patch: version, phase } = $activeVersion;
+		healthBar = new HealthBar(x, y, healthBarWidth, healthBarHeight, health, "red");
 
-	let processedUpdates = [...updates.data].reverse();
+		const frame = function() {
+		context.clearRect(0, 0, width, height);
+		healthBar.show(context);
+		requestAnimationFrame(frame);
+	}
 
-	let latestIndex = processedUpdates.findIndex(item => item.patch == version);
-	let newPatchIndex = latestIndex + 1;
+		frame();
+	};
+
+	function dealDamage() {
+		DieBar();
+    	health -= 10;
+		healthBar.updateHealth(health);
+	}
+
+	onMount(setupCanvas);
+
+	onDestroy(() => {
+		console.log("✅ Cleaning up!");
+		healthBar = null; // Ensure it runs after mount
+	});
+
 
 </script>
 
-<div class="list" class:v2={tplVersion === 'v2'}>
-	<h4>{$t('details.itemWishFor')}</h4>
-	{#each [...updates.data].reverse() as { character }, i (i)}
-		{#if i == newPatchIndex}
-			<i>
-			</i>
-		{/if}	
-	{/each}
+<div class="list">
+	<div class="center-container">
+		<img src="videos/dvalin_boss.webp" alt="boss" class="background-gif"/>
+		<p class=overlay-name>Stormterror - Dvalin</p>
+		<canvas bind:this={canvas} width={640} height={640} class="overlay-canvas">
+		</canvas>
+		<button class="overlay-button" on:click={dealDamage}>Fight</button>
+	</div>
 </div>
 
 <style>
+	.center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+	canvas {
+	background: none;
+	display: block;
+	margin: 0 auto;
+	border: none;
+	}
+
+	.background-gif {
+		align-items: center;
+		width: 95%;
+		height: auto;
+		display: block;
+		
+	}
+
+	.overlay-canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.overlay-name {
+		position: absolute;
+		top: 0.5%;
+        left: 40%;
+		color: white;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.overlay-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(162, 128, 82, 0.7);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .overlay-button:hover {
+        background-color: rgba(162, 128, 82, 0.9);
+    }
+
+	.v2 canvas {
+	background: #EEE;
+	display: block;
+	margin: 0 auto;
+	border: solid 6px #444;
+	}
+
+
 	.gi-arrow-up {
 		font-size: 1.2rem;
 		vertical-align: middle;
@@ -174,4 +285,5 @@
 		border-color: #d3bc8e;
 		color: #5b5453;
 	}
+
 </style>
