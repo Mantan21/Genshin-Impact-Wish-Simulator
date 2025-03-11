@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
 
-const version = 3;
+const version = 5;
 const DBName = 'WishSimulator';
 
 let IndexedDB;

@@ -1,6 +1,6 @@
 <script>
 	console.log("Component is loading!");
-	import { onDestroy, onMount, tick } from 'svelte';
+	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
@@ -9,12 +9,30 @@
 	import HealthBar from '$lib/helpers/health-bar.js';
 	import DieBar from '$lib/helpers/damage.js';
 
+	const { patch: version} = $activeVersion;
+
 	let canvas;
 	let health = 3000;
 	const healthBarWidth = 480;
 	const healthBarHeight = 10;
 	let healthBar;
 	let boom;
+	let bossFought = false;
+	const sendBoss = createEventDispatcher();
+
+	function healthier(){ //HP Scaling
+		let mult = Number(version);
+
+		if(mult > 1){
+			health = health * (10 * mult);
+			
+			console.log("mult: ",mult);
+			console.log("health: ",health);
+		}
+
+		return health;
+
+	}
 	
 	async function setupCanvas() {
 		await tick();
@@ -28,6 +46,8 @@
     	console.error("Failed to get 2D context!");
     	return;
     }
+
+		health = healthier();
 		
 		const width = canvas.width = 640;
 		const height = canvas.height = 280;
@@ -46,9 +66,20 @@
 		frame();
 	};
 
-	function dealDamage() {
-		boom = DieBar();
+	async function dealDamage() {
+		boom = await DieBar();
+		console.log("Boom sent:", boom);
     	health -= boom;
+
+		if(health < 0){
+			health = 0;
+		}
+
+		bossFought = true;
+
+		sendBoss("didFight", bossFought);
+
+		console.log("health:",health);
 		healthBar.updateHealth(health);
 	}
 
@@ -68,7 +99,9 @@
 		<p class=overlay-name>Stormterror - Dvalin</p>
 		<canvas bind:this={canvas} width={640} height={640} class="overlay-canvas">
 		</canvas>
-		<button class="overlay-button" on:click={dealDamage}>Fight</button>
+		{#if !bossFought}
+			<button class="overlay-button" on:click={dealDamage}>Fight</button>
+		{/if}
 	</div>
 </div>
 

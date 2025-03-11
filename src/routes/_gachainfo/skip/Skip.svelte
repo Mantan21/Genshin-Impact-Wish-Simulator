@@ -65,6 +65,7 @@
 
     let phase = 1;
 	let listRef;
+	let bossFought = false;
 
     const navigate = getContext('navigate');
 	const skipBanner = () => {
@@ -93,6 +94,10 @@
 	afterUpdate(() => {
 		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
+
+	function wasFought(event){
+		bossFought = event.detail;
+	}
 </script>
 
 <svelte:head>
@@ -114,31 +119,33 @@
 		</div>
 	</nav>
 
-	<div class="content" bind:this={scrollable}>
+	<div class="content" bind:this={scrollable} style="overflow: {activeContent === 2 ? 'hidden' : 'auto'}">
 		<div class="wrapper">
 			{#if activeContent === 1}
 				<PromotionalV2
 				/>
 			{:else if activeContent === 2}
-				<List />
+				<List on:didFight={wasFought}/>
 			{/if}
 		</div>
 	</div>
 {:else}
-	<PromotionalV2
-	/>
-	<List
-	/>
+	<PromotionalV2 />
+	<List on:didFight={wasFought}/>
 {/if}
 
 <br>
 <div align="center">
-    {#each [...updates.data].reverse() as { patch }, i (i)}
-	    {#if i === newPatchIndex}
-            <ButtonModal on:click={() => skipBanner( updates.patch, 1 )}>Skip</ButtonModal>
-	    {/if}
-    {/each}
-    
+	<div class="tooltip-wrapper">
+    	{#each [...updates.data].reverse() as { patch }, i (i)}
+	    	{#if i === newPatchIndex}
+            	<ButtonModal on:click={() => skipBanner( updates.patch, 1 )} disabled={!bossFought}>Skip</ButtonModal>
+	    	{/if}
+    	{/each}
+		{#if !bossFought}
+		<span class="tooltip">You need to defeat the boss first!</span>
+		{/if}
+	</div>
 </div>
 
 <style>
@@ -179,7 +186,39 @@
 		opacity: 1;
 	}
 
+	button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
 	.content {
 		height: 100%;
 	}
+
+	.tooltip-wrapper {
+    	position: relative;
+    	display: inline-block;
+	}
+
+	.tooltip {
+    	visibility: hidden;
+    	background-color: rgba(162, 128, 82, 0.9);
+    	color: #fff;
+    	text-align: center;
+    	padding: 5px;
+    	border-radius: 5px;
+    	position: absolute;
+    	bottom: 120%;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	white-space: nowrap;
+    	opacity: 0;
+    	transition: opacity 0.3s;
+	}
+
+	.tooltip-wrapper:hover .tooltip {
+    	visibility: visible;
+    	opacity: 1;
+	}
+	
 </style>
