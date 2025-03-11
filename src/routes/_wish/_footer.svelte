@@ -163,9 +163,6 @@
 				<ButtonGeneral on:click={() => changePage('history')}>
 					{$t('history.text')}
 				</ButtonGeneral>
-				<ButtonGeneral on:click={() => changePage('boss')}>
-					{$t('boss.text')}
-				</ButtonGeneral>
 			</div>
 
 			{#if (bannerType === 'chronicled' && $chronicledCourse.selected) || bannerType !== 'chronicled'}

@@ -66,6 +66,13 @@
 		return playSfx();
 	};
 
+	const bossy = getContext('navigate');
+	const openBoss = () => {
+		console.log("Version:", version)
+		navigate('boss');
+		return playSfx();
+	};
+
 </script>
 
 <div
@@ -174,6 +181,7 @@
 			{#if !hideSkip}
 				<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
 			{/if}
+
 		</div>
 	</div>
 </div>
@@ -319,6 +327,11 @@
 	}
 
 	.info button.skip {
+		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
+		margin-left: calc(1 / 100 * var(--content-width));
+	}
+
+	.info button.boss {
 		padding: calc(0.5 / 100 * var(--content-width)) calc(2.5 / 100 * var(--content-width));
 		margin-left: calc(1 / 100 * var(--content-width));
 	}

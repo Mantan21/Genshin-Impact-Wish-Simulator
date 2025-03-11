@@ -22,10 +22,6 @@ async function CompDMG(){
     }
 
     consINV = Object.entries(cons).map(([name, count]) => ({ name, count }));
-    console.log("consINV: ",consINV);
-
-    console.log("charDPS: ",charDPS);
-    console.log("charSPT: ",charSPT);
 
     let boom = 0; //total damage
     let mulSPT = 1; //support multipliers
@@ -56,6 +52,8 @@ async function CompDMG(){
 
             if (char.name == peep.name){
                 boom = boom + charDMG;
+
+                console.log(boom)
         
             if (mulSPT == 1){
                 mulSPT = char.b_mult;}
@@ -68,13 +66,14 @@ async function CompDMG(){
             if (peep.count <= 6){
                 mulSPT = mulSPT + char.c6_mult;}
 
-            boom = boom * mulSPT;
-
             console.log("Boom spt: ",boom);
         
             } 
         }
     }
+
+    boom = boom * mulSPT;
+
 
     console.log(boom);
 

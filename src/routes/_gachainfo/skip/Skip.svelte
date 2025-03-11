@@ -27,7 +27,6 @@
     import updates from '$lib/data/updates.json';
 
 	import List from './_list.svelte';
-	import Description from './_description.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 	import Title from '../_title.svelte';
 
@@ -119,7 +118,7 @@
 		</div>
 	</nav>
 
-	<div class="content" bind:this={scrollable} style="overflow: {activeContent === 2 ? 'hidden' : 'auto'}">
+	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
 				<PromotionalV2
@@ -220,5 +219,4 @@
     	visibility: visible;
     	opacity: 1;
 	}
-	
 </style>
