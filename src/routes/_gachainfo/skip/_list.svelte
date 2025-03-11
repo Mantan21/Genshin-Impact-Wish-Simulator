@@ -14,6 +14,7 @@
 	const healthBarWidth = 480;
 	const healthBarHeight = 10;
 	let healthBar;
+	let boom;
 	
 	async function setupCanvas() {
 		await tick();
@@ -46,8 +47,8 @@
 	};
 
 	function dealDamage() {
-		DieBar();
-    	health -= 10;
+		boom = DieBar();
+    	health -= boom;
 		healthBar.updateHealth(health);
 	}
 
