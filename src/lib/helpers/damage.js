@@ -80,7 +80,8 @@ function CompDMG(){
 export default function DieBar(){
     let boom;
 
-    boom = await CompDMG();
+    
+    
 
-
+    return boom;
 }
