@@ -1,7 +1,9 @@
 import { beginnerRemaining, showBeginner } from '$lib/store/app-stores';
 import { HistoryManager } from '../dataAPI/api-indexeddb';
-import { localPity, owneditem, rollCounter } from '../dataAPI/api-localstore';
+import { localPity, owneditem, rollCounter, localConfig } from '../dataAPI/api-localstore';
 import { getRate, prob, rates } from './probabilities';
+import { initialize, checkBanner, getPulls } from './historyUtils'
+
 
 const { addHistory } = HistoryManager;
 
@@ -12,10 +14,39 @@ const { addHistory } = HistoryManager;
  * @param {number} indexOfBanner Index Of active banner among the dual banner
  * @returns Wish Result Object
  */
-const roll = async (banner, WishInstance, indexOfBanner) => {
-	const pity5 = localPity.get(`pity5-${banner}`) + 1;
+const roll = async (banner, WishInstance, indexOfBanner, is10Pull=false) => {
+	const pity5 = localPity.get(`pity5-${banner}`) + 1; 	
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
 	const maxPity = getRate(banner, 'max5');
+
+	let extraPity = parseInt(localStorage.getItem(`extraPity-${banner}`)) || 0;
+	let { current10PullCount, totalPullsTemp } = getPulls(banner);
+	
+	//Check if banner changed
+	let bannerChanged = checkBanner(banner, indexOfBanner);
+	
+	if (bannerChanged.bool) {
+		console.log('Banner Change true');
+		console.log("init extraPity: ", extraPity);
+		totalPullsTemp = 0;
+		extraPity = localPity.get(`pity5-${banner}`);
+		localStorage.setItem(`extraPity-${banner}`, extraPity);
+	}
+	localStorage.setItem(`lastIndexOfBanner-${banner}`, indexOfBanner);
+	localStorage.setItem(`lastversion`, bannerChanged.patch);	
+	
+
+	
+	if (is10Pull) {
+		current10PullCount += 1;
+		if (current10PullCount === 1) {
+			totalPullsTemp += 10;
+		}
+
+	}	else {
+		totalPullsTemp += 1;
+	}
+
 
 	const rate5star = () => {
 		return rates({
@@ -60,9 +91,12 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 
 	const { rarity } = prob(item);
 	let pity = 1;
+	let pityCarry = 0;
+	let totalPulls = totalPullsTemp;;
 
 	const rollQty = rollCounter.get(banner);
 	rollCounter.set(banner, rollQty + 1);
+	
 
 	if (banner === 'beginner') {
 		// hide beginner banner after 20 roll
@@ -74,7 +108,14 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 		localPity.set(`pity4-${banner}`, pity4);
 		localPity.set(`pity5-${banner}`, 0);
 		pity = pity5;
-	}
+
+		totalPullsTemp = 0;
+		pityCarry = (totalPulls + extraPity) - pity5;
+
+		console.log("pityCarry", pityCarry);
+		console.log("totalPulls", totalPulls);
+		localStorage.setItem(`extraPity-${banner}`, pityCarry); //Pity Carry of next 5-star
+	}  
 
 	if (rarity === 4) {
 		localPity.set(`pity4-${banner}`, 0);
@@ -87,6 +128,15 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 		localPity.set(`pity5-${banner}`, pity5);
 	}
 
+	if (current10PullCount >= 10) {
+		current10PullCount = 0;
+	}
+
+	localStorage.setItem(`current10PullCount-${banner}`, current10PullCount);
+	localStorage.setItem(`totalPulls-${banner}`, totalPullsTemp);
+	
+
+
 	// Get Item
 	const randomItem = WishInstance.getItem(rarity, banner, indexOfBanner);
 	const { manual, wish } = owneditem.put({ itemID: randomItem.itemID });
@@ -94,7 +144,7 @@ const roll = async (banner, WishInstance, indexOfBanner) => {
 	const isNew = numberOfOwnedItem < 1;
 
 	// storing item to storage
-	await saveResult({ pity, ...randomItem });
+	await saveResult({ pity, totalPulls, extraPity, ...randomItem });
 
 	// Set Constellation
 	const isFullConstellation = numberOfOwnedItem > 6;

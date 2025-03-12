@@ -2,6 +2,7 @@ import { BannerManager, HistoryManager } from './api-indexeddb';
 import { cookie } from './api-cookie';
 import { storageLocal } from './api-localstore';
 import { randomNumber } from '../gacha/itemdrop-base';
+import { bannerNames } from '$lib/store/app-stores';
 
 const generateExportID = () => {
 	const { id } = storageLocal.get('export');
@@ -11,13 +12,15 @@ const generateExportID = () => {
 };
 
 export const generateFileString = async () => {
-	const banners = await BannerManager.getAll();
-	const histories = await HistoryManager.getAllHistories();
-	const accessKey = cookie.get('accessKey');
+	//const banners = await BannerManager.getAll();
 
+	const histories = await HistoryManager.filterHistory({ bannerName: bannerNames, rarity: 5, type: "character" } );
+	const accessKey = cookie.get('accessKey');
+	console.log('History Exported', histories);
+	
 	generateExportID();
-	const settings = storageLocal.getData();
-	const dataToExport = { banners, histories, settings, accessKey };
+	//const settings = storageLocal.getData();
+	const dataToExport = { histories, accessKey };
 	return JSON.stringify(dataToExport);
 };
 
