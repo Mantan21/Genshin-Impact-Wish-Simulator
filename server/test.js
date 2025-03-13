@@ -100,14 +100,11 @@ app.post("/api/boss", async (req, res) => {
   }
   const decoded = jwt.verify(token, SECRET_KEY);
   const { id } = decoded;
-  const boss_data = JSON.parse(req.body.boss_data);
+  const boss_data = JSON.parse(req.body.bossStatus);
 
   try {
-    const query = "UPDATE player SET banner_data =  ? WHERE id = ?";
+    const query = "UPDATE player SET boss_data =  ? WHERE id = ?";
     await db.promise().execute(query, [JSON.stringify(boss_data), id]);
-    
-    res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
-    res.json({ message: "Logged out successfully" });
     
   } catch (err) {
     console.error("Error signing up:", err);

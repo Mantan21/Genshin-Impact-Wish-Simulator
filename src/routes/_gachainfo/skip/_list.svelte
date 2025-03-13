@@ -3,6 +3,7 @@
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+	import axios from 'axios';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
 	import characters from '$lib/data/characters.json';
@@ -20,6 +21,10 @@
 	let bossFought = false;
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
+
+	async function statusBoss(bossStatus){
+		await axios.post("http://localhost:3001/api/boss", { bossStatus }, { withCredentials: true });
+	}
 
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
@@ -79,7 +84,9 @@
 
 		bossFought = true;
 
-		let bossStatus = { "version": version, "status": bossDefeated }
+		let bossStatus = JSON.stringify({ "version": version, "status": bossDefeated })
+
+		statusBoss(bossStatus);
 
 		sendBoss("didFight", bossFought);
 
