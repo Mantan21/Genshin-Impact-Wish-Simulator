@@ -19,7 +19,7 @@ app.use(cookieParser());
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "pass123",
+  password: "1234",
   database: "simdb",
   waitForConnections: true,
   connectionLimit: 10,
@@ -69,9 +69,27 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-app.post("/api/logout", (req, res) => {
-  res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
-  res.json({ message: "Logged out successfully" });
+app.post("/api/logout", async (req, res) => {
+  //Retrieve token
+  const token = req.cookies.token;
+  if(!token){
+    return res.status(401).json({error: "No session found"});
+  }
+  const decoded = jwt.verify(token, SECRET_KEY);
+  const { id } = decoded;
+  const banner_data = JSON.parse(req.body.banner_data);
+
+  try {
+    const query = "UPDATE player SET banner_data =  ? WHERE id = ?";
+    await db.promise().execute(query, [JSON.stringify(banner_data), id]);
+    
+    res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
+    res.json({ message: "Logged out successfully" });
+    
+  } catch (err) {
+    console.error("Error signing up:", err);
+    res.status(500).json({ error: "Signup failed", details: err.message });
+  }
 });
 
 

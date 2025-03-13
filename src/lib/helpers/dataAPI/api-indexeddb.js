@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
+import { storageLocal } from './api-localstore';
 
 const version = 5;
 const DBName = 'WishSimulator';
@@ -14,12 +15,22 @@ if (browser) {
 					keyPath: 'id',
 					autoIncrement: true
 				});
-				historyStore.createIndex('banner', 'banner', { unique: false });
+				historyStore.createIndex('bannerName', 'bannerName', { unique: false });
 				historyStore.createIndex('itemID', 'itemID', { unique: false });
+				historyStore.createIndex('name', 'name', { unique: false });
+
 			} else {
 				const historyStore = transaction.objectStore('history');
+				
+				const hasBanner = historyStore.indexNames.contains('bannerName');
+				if (!hasBanner) historyStore.createIndex('bannerName', 'bannerName', { unique: false });
+
 				const hasID = historyStore.indexNames.contains('itemID');
 				if (!hasID) historyStore.createIndex('itemID', 'itemID', { unique: false });
+				
+				const hasName = historyStore.indexNames.contains('name');
+				if (!hasName) historyStore.createIndex('name', 'name', { unique: false });
+
 			}
 
 			if (!db.objectStoreNames.contains('assets')) {
@@ -46,16 +57,77 @@ export const HistoryManager = {
 	async historyCount() {
 		return (await IndexedDB).count('history');
 	},
+
 	async getListByBanner(banner) {
 		return (await IndexedDB).getAllFromIndex('history', 'banner', banner);
 	},
 
+	async getListBannerNames(bannerName) {
+		return (await IndexedDB).getAllFromIndex('history', 'bannerName', bannerName);
+	},
+
+	async filterHistory(filters = {}) {
+		let entries = [];
+
+		//Initialize return value
+		const groupedEntries = {}
+
+		// Sort bannerNames
+		const sortedBanners = filters.bannerName.sort();
+		
+		sortedBanners.forEach((bannerName) => {
+			groupedEntries[bannerName] = { // Initialize item ID and action state
+				item: [], 
+				action: "skipped"
+			};
+		});
+
+		// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
+		const range = IDBKeyRange.bound(sortedBanners[0], sortedBanners[sortedBanners.length - 1]);
+		entries = await this.getListBannerNames(range);
+
+		
+		if (filters.rarity) {
+			entries = entries.filter((entry) => entry.rarity === filters.rarity);
+		}
+
+		if (filters.type) { //To be deleted
+			entries = entries.filter((entry) => entry.type === filters.type);
+		}
+
+		entries.forEach((entry) => {
+			const { bannerName } = entry;
+			if (groupedEntries[bannerName]) {
+				groupedEntries[bannerName].item.push({
+					itemID: entry.itemID,
+					name: entry.name,
+					gender: entry.gender,
+					category: entry.category,
+					class: entry.class,
+					tier: entry.tier,
+					pity: entry.pity,
+					extraPity: entry.extraPity,
+					totalPulls: entry.totalPulls,
+					status: entry.status
+				});
+				groupedEntries[bannerName].action = "pulled";
+			}
+		});
+
+		return groupedEntries;
+	},	
+
 	async countItem(name) {
+		console.log('countItem', name);
 		return (await IndexedDB).countFromIndex('history', 'name', name);
 	},
 
 	async getByID(itemID) {
 		return (await IndexedDB).getAllFromIndex('history', 'itemID', itemID);
+	},
+
+	async getByName(name) {
+		return (await IndexedDB).getAllFromIndex('history', 'name', name);
 	},
 
 	async clearHistory(banner) {
@@ -156,3 +228,34 @@ export const BannerManager = {
 		return remove;
 	}
 };
+
+
+async function printDatabase() {
+    try {
+        // Open the database
+        const db = await IndexedDB;
+        
+        // Get all object stores
+        const objectStores = Array.from(db.objectStoreNames);
+        
+        // Print each object store's data
+        for (const storeName of objectStores) {
+            console.log(`\n=== ${storeName} Store ===`);
+            
+            // Get all records from the store
+            const records = await db.getAll(storeName);
+            console.log('Records:', records);
+            
+            // Get all indexes for this store
+            const indexes = Array.from(db.transaction(storeName).objectStore(storeName).indexNames);
+            console.log('Indexes:', indexes);
+			console.log('data', storageLocal.getData());
+
+        }
+    } catch (error) {
+        console.error('Error printing database:', error);
+    }
+}
+
+// Call the function
+printDatabase();

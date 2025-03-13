@@ -1,7 +1,9 @@
 <script>
 	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
 	import {  user, isAuthenticated  } from "$lib/store/authStore.js";
+	//import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
+	import axios from 'axios';
 	import { getContext } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
@@ -24,12 +26,15 @@
 		activeBanner,
 		editorMode,
 		isCustomBanner
+		//bannerNames
 	} from '$lib/store/app-stores';
+	import { generateFileString } from '$lib/helpers/dataAPI/export-import';
 
 	import MyFund from '$lib/components/MyFund.svelte';
 	import BannerButton from './_banner-button.svelte';
 
 	export let bannerType = '';
+	//const { filterHistory } = HistoryManager;
 
 	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: balance = isEvent ? $intertwined : $acquaint;
@@ -37,14 +42,16 @@
 
 
 	const dataReset = async () => {
+		let banner_data = await generateFileString();
+
 		await factoryReset({ clearCache: true, keepSetting: false });
-
 		// Logout the user
-		await fetch("http://localhost:3001/api/logout", { method: "POST", credentials: "include" });
-
+		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
+		
 		// Reset session data
 		user.set(null);
 		isAuthenticated.set(false);
+		banner_data = null;
 
 		location.reload(); // Refresh the page to apply the reset
 	};
