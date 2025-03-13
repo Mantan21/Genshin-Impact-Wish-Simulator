@@ -79,7 +79,9 @@
 
 		bossFought = true;
 
-		let bossStatus = {  }
+		let bossStatus = { version: version, status: bossDefeated }
+
+		updateBoss(bossStatus);
 
 		sendBoss("didFight", bossFought);
 

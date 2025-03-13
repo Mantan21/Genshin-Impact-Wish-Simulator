@@ -95,6 +95,29 @@ app.get("/api/session", (req, res) => {
   });
 });
 
+async function updateBoss(bossStatus){
+  const token = req.cookies.token;
+  if(!token){
+    return res.status(401).json({error: "No session found"});
+  }
+  const decoded = jwt.verify(token, SECRET_KEY);
+  const { id } = decoded;
+  const boss_data = bossStatus;
+
+  try {
+    const query = "UPDATE player SET banner_data =  ? WHERE id = ?";
+    await db.promise().execute(query, [JSON.stringify(boss_data), id]);
+    
+    res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
+    res.json({ message: "Logged out successfully" });
+    
+  } catch (err) {
+    console.error("Error signing up:", err);
+    res.status(500).json({ error: "Signup failed", details: err.message });
+  }
+}
+
+module.exports = { updateJsonInDatabase };
 
 // Start Server
 app.listen(port, () => {
