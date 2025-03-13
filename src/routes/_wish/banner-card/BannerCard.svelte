@@ -178,7 +178,9 @@
 			<!-- {#if type !== 'beginner'}
 				<button class="gear" on:click={openRateEditor}><i class="gi-gear" /></button>
 			{/if} -->
-			{#if !hideSkip}
+			{#if hideSkip}
+				<button class="boss" on:click={openBoss}> {$t('boss.text')} </button>
+			{:else}
 				<button class="skip" on:click={openPreview}> {$t('skip.text')} </button>
 			{/if}
 

@@ -1,6 +1,4 @@
 <script>
-    import { getContext, setContext } from 'svelte';
-	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -8,19 +6,19 @@
 		activeBanner,
 		bannerList,
 		assets,
-        preloadVersion,
 		activeVersion,
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-    import updates from '$lib/data/updates.json';
 
 	import List from './_list.svelte';
-	import PromotionalV2 from './_promotional-v2.svelte';
+	import Description from './_description.svelte';
 	import Title from '../_title.svelte';
 
-    import ButtonModal from '$lib/components/ButtonModal.svelte';
-
 	export let tplVersion = 'v2';
+
+	let wasFought = false;
+
+	console.log("Here")
 
 	let {
 		bannerName,
@@ -33,38 +31,6 @@
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-
-	// Get Droplist
-	const { patch: version, phase: activePhase } = $activeVersion;
-
-    let processedUpdates = [...updates.data].reverse();
-
-    let latestIndex = processedUpdates.findIndex(item => Number(item.patch) === Number(version));
-    let newPatchIndex = latestIndex + 1;
-
-    let patch = processedUpdates[newPatchIndex]?.patch ?? version;
-
-    console.log("Patch:", patch)
-
-    if (patch !== undefined || patch == Number(patch)){
-        patch = patch.toFixed(1);
-    }
-
-    let phase = 1;
-	let bossFought = false;
-
-    const navigate = getContext('navigate');
-	const skipBanner = () => {
-        playSfx();
-		// If select the same banner with the active one, change nothing just back to index
-        console.log("Skipping to:", patch, phase); // Debug log
-		const { patch: version, phase: activePhase } = $activeVersion;
-		navigate('index');
-		if (activePhase === phase && version === patch) return;
-
-		// Select a banner
-		preloadVersion.set({ patch, phase });
-	};
 
 	const noPromo = banner.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;
@@ -80,25 +46,19 @@
 	afterUpdate(() => {
 		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
-
-	function wasFought(event){
-		bossFought = event.detail;
-	}
 </script>
 
 <svelte:head>
 	<title>
-		{$t('New Character')}
+		{$t('End of Session')}
 	</title>
 </svelte:head>
 
 {#if tplVersion === 'v2'}
-<br>
+	<br>
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		<div class="nav-item" class:active={activeContent === 1}>
-			<button on:click={() => select(1)}>
-				{$t('skip.promotional')}
-			</button>
+			<button on:click={() => select(1)}> {$t("End of Session Instructions")} </button>
 		</div>
 		<div class="nav-item" class:active={activeContent === 2}>
 			<button on:click={() => select(2)}> {$t('skip.boss')} </button>
@@ -108,31 +68,18 @@
 	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
-				<PromotionalV2
+				<Description
 				/>
 			{:else if activeContent === 2}
-				<List on:didFight={wasFought}/>
+				<List on:didFight={wasFought} />
 			{/if}
 		</div>
 	</div>
 {:else}
-	<PromotionalV2 />
+	<Description	/>
+	<br />
 	<List on:didFight={wasFought}/>
 {/if}
-
-<br>
-<div align="center">
-	<div class="tooltip-wrapper">
-    	{#each [...updates.data].reverse() as { patch }, i (i)}
-	    	{#if i === newPatchIndex}
-            	<ButtonModal on:click={() => skipBanner( updates.patch, 1 )} disabled={!bossFought}>Skip</ButtonModal>
-	    	{/if}
-    	{/each}
-		{#if !bossFought}
-		<span class="tooltip">You need to defeat the boss first!</span>
-		{/if}
-	</div>
-</div>
 
 <style>
 	nav {
@@ -172,38 +119,7 @@
 		opacity: 1;
 	}
 
-	button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
 	.content {
 		height: 100%;
-	}
-
-	.tooltip-wrapper {
-    	position: relative;
-    	display: inline-block;
-	}
-
-	.tooltip {
-    	visibility: hidden;
-    	background-color: rgba(162, 128, 82, 0.9);
-    	color: #fff;
-    	text-align: center;
-    	padding: 5px;
-    	border-radius: 5px;
-    	position: absolute;
-    	bottom: 120%;
-    	left: 50%;
-    	transform: translateX(-50%);
-    	white-space: nowrap;
-    	opacity: 0;
-    	transition: opacity 0.3s;
-	}
-
-	.tooltip-wrapper:hover .tooltip {
-    	visibility: visible;
-    	opacity: 1;
 	}
 </style>

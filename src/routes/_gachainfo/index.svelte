@@ -12,6 +12,7 @@
 	import Book from './_book-bg.svelte';
 	import Details from './details/Details.svelte';
 	import Skip from './skip/Skip.svelte';
+	import Boss from './boss/Boss.svelte';
 	import History from './history/History.svelte';
 
 	export let page = '';
@@ -63,6 +64,8 @@
 				<History {tplVersion} />
 			{:else if page === 'skip'}
 				<Skip {tplVersion} />
+			{:else if page === 'boss'}
+				<Boss {tplVersion} />
 			{/if}
 		</Book>
 	</div>
