@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { openDB } from 'idb';
 import { storageLocal } from './api-localstore';
 
+
 const version = 5;
 const DBName = 'WishSimulator';
 
