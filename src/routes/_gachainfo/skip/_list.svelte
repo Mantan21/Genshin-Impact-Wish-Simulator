@@ -18,6 +18,7 @@
 	let healthBar;
 	let boom;
 	let bossFought = false;
+	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
 
 	function healthier(){ //HP Scaling
@@ -71,11 +72,14 @@
 		console.log("Boom sent:", boom);
     	health -= boom;
 
-		if(health < 0){
+		if(health <= 0){
 			health = 0;
+			bossDefeated = true;
 		}
 
 		bossFought = true;
+
+		let bossStatus = {  }
 
 		sendBoss("didFight", bossFought);
 
