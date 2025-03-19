@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { assets } from '$lib/store/app-stores';
+	import { assets, exchange } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -10,13 +10,16 @@
 	import ShopGroupItem from '../_shop-group-item.svelte';
 	import NavlinkTop from '../_navlink-top.svelte';
 	import NavlinkTopButton from '../_navlink-top-button.svelte';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 
 	let activeCurrency = 'starglitter';
+	
+	exchange.set(parseInt(storageLocal.get('exchanges')) || 0);
 
 	const pricelist = {
 		starglitter: { price: 5, rarity: 5 },
-		stardust: { price: 125, rarity: 4 },
-		primogem: { price: 160, rarity: 5 }
+		stardust: { price: 125, rarity: 4 }
+		//primogem: { price: 160, rarity: 5 }
 	};
 
 	const openExchangeModal = getContext('openExchangeModal');
@@ -36,7 +39,7 @@
 </script>
 
 <NavlinkTop>
-	{#each ['starglitter', 'stardust', 'primogem'] as val}
+	{#each ['starglitter', 'stardust'] as val}
 		<NavlinkTopButton on:click={handlePaimonClick} name={val} active={activeCurrency === val}>
 			{$t(`shop.exchange.${val}`)}
 		</NavlinkTopButton>
@@ -44,9 +47,10 @@
 </NavlinkTop>
 
 <ShopGroup>
-	{#each ['intertwined', 'acquaint'] as fate, i}
+	{#each ['intertwined'] as fate, i}
 		<ShopGroupItem>
 			<button
+				disabled={activeCurrency === 'stardust' && $exchange >= 5}
 				on:click={() => selectItem(fate)}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
@@ -76,6 +80,7 @@
 		transition: all 0.2s;
 		position: relative;
 	}
+
 	button::after {
 		content: '';
 		position: absolute;
@@ -95,6 +100,20 @@
 	}
 	button:active {
 		transform: scale(0.95);
+	}
+
+	/*button:disabled .content {
+		/* opacity: 0.5; /* Reduce opacity to make it look disabled 
+		color: black;
+	} */
+
+	button:disabled .content picture,
+	button:disabled .content .price {
+  		filter: grayscale(25%); /* Make images/icons grayscale */
+	}
+
+	button:disabled .price {
+		color: lightgrey;
 	}
 
 	.content {

@@ -5,12 +5,13 @@
 		assets,
 		acquaint,
 		intertwined,
+		exchange,
 		genesis as gs,
 		primogem as primo,
 		stardust as sd,
 		starglitter as sg
 	} from '$lib/store/app-stores';
-	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
+	import { localBalance, storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -20,7 +21,9 @@
 
 	export let data = {};
 	const { itemToExchange, currency, price, rarity, isOutfit, isOwned } = data;
-
+	let exchanges = parseInt(storageLocal.get('exchanges')) || 0;
+	console.log('currency:', currency);
+	
 	const balanceList = {
 		starglitter: sg,
 		stardust: sd,
@@ -65,7 +68,11 @@
 			localBalance.set(itemToExchange, newVal);
 			return newVal;
 		});
-
+		if (currency === 'stardust') {
+			exchanges += 1;
+			storageLocal.set('exchanges', exchanges);
+			exchange.update((v) => exchanges);
+		}
 		openObtained([{ qty: value, item: itemToExchange }]);
 	};
 
