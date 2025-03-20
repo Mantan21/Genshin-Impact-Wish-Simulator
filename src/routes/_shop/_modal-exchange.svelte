@@ -21,9 +21,8 @@
 
 	export let data = {};
 	const { itemToExchange, currency, price, rarity, isOutfit, isOwned } = data;
-	let exchanges = parseInt(storageLocal.get('exchanges')) || 0;
-	console.log('currency:', currency);
-	
+	$: exchanges = parseInt(storageLocal.get('exchanges')) || 0;
+
 	const balanceList = {
 		starglitter: sg,
 		stardust: sd,

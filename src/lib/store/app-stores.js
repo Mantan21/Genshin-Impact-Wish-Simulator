@@ -67,3 +67,4 @@ export const customData = writable({});
 export const isCustomBanner = writable(false);
 
 export const exchange = writable(0);
+export const expenses = writable(true);

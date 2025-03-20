@@ -5,10 +5,11 @@
 
     import { user, checkSession } from "$lib/store/authStore.js";
     import { genesisBonus } from '$lib/data/pricelist.json';
-    import { activeVersion, assets, pricelist } from '$lib/store/app-stores';
-    import { localConfig } from '$lib/helpers/dataAPI/api-localstore';
+    import { activeVersion, assets, expenses, pricelist } from '$lib/store/app-stores';
+    import { localConfig, storageLocal } from '$lib/helpers/dataAPI/api-localstore';
     import { cookie } from '$lib/helpers/dataAPI/api-cookie';
     import { playSfx } from '$lib/helpers/audio/audio';
+	import { userCurrencies } from '$lib/helpers/currencies';
 
     import Icon from '$lib/components/Icon.svelte';
     import ShopGroup from '../_shop-group.svelte';
@@ -17,6 +18,7 @@
     import CheckBox from '$lib/components/CheckBox.svelte';
 
     $: userGroup = $user?.group;
+	expenses.set(parseFloat(storageLocal.get('expenses') || 0));
 
     // Check session on mount and update userGroup
     onMount(async () => {
@@ -27,6 +29,7 @@
     const checkCookie = cookie.get('initialTopup');
     let initialTopup = checkCookie === undefined ? true : checkCookie;
     const initialCheck = ({ detail }) => (initialTopup = !!detail?.checked);
+
     $: cookie.set('initialTopup', initialTopup);
 
     const { versionReset, topupBonus } = genesisBonus;
@@ -48,8 +51,16 @@
         genesisList.push(item);
     });
 
+	let disabledButtons = [];
     let data = {};
     let showPaymentModal = false;
+
+	$: {
+		disabledButtons = genesisList.map(({ price }) => {
+			const priceFloat = parseFloat(price.replace(/[^0-9.]/g, ''));
+			return $expenses + priceFloat > 1000;
+		})
+	}
 
     const selectGenesis = ({ qty, isDoubleBonus, price }) => {
 		playSfx('exchange');
@@ -81,6 +92,9 @@
             const i = genesisList.findIndex((v) => v.qty === qty);
             genesisList[i].doubleBonus = false;
         }
+
+		userCurrencies.getTotalExp(data.price);
+		console.log('data.price', data.price);
     };
     setContext('confirmBuy', confirmBuy);
 </script>
@@ -93,7 +107,7 @@
 	{#each genesisList as { qty, price, doubleBonus }, i}
 		<ShopGroupItem>
 			<button
-				disabled={$user?.group === "f2p" || $user?.group === "dolphin"}
+				disabled={$user?.group === "f2p" || $user?.group === "dolphin" || disabledButtons[i]}
 				on:click={() => selectGenesis({ qty, price, isDoubleBonus: doubleBonus })}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>

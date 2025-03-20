@@ -32,6 +32,7 @@
 	import Title from '../_title.svelte';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 
 	export let tplVersion = 'v2';
 
@@ -74,6 +75,8 @@
 		navigate('index');
 		if (activePhase === phase && version === patch) return;
 
+		storageLocal.set('exchanges', 0); // reset exchanges storage
+		storageLocal.set('expenses', 0); // reset gacha storage
 		// Select a banner
 		preloadVersion.set({ patch, phase });
 	};
