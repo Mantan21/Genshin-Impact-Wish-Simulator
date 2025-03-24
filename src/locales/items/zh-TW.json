@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "圖萊拉拉的回憶",
 	"uraku-misugiri": "有樂御簾切",
 	"verdict": "裁斷",
+	"vivid-notions": "溢彩心念",
 	"vortex-vanquisher": "貫虹之槊",
 	"wavebreaker_s-fin": "斷浪長鰭",
 	"wandering-evenstar": "流浪的晚星",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "胡桃",
 		"title": "雪霽梅香"
+	},
+	"iansan": {
+		"name": "伊安珊",
+		"title": "熔石百煉"
 	},
 	"jean": {
 		"name": "琴",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "渡來介者",
 		"title": "淺蔚輕行"
+	},
+	"varesa": {
+		"name": "瓦雷莎",
+		"title": "悠暇豪勁"
 	},
 	"venti": {
 		"name": "溫迪",

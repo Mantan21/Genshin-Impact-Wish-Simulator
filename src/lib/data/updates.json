@@ -561,8 +561,15 @@
 		},
 		{
 			"date": "04 Mar 2025",
-			"featured": true,
 			"description": ["Add <strong> Wriothesley 1st rerun</strong>", "Add <b> Furina 2nd rerun</b>"]
+		},
+		{
+			"date": "24 Mar 2025",
+			"featured": true,
+			"description": [
+				"Add New Character: <strong> Varesa (5★)</strong>",
+				"Add New Character: <strong> Iansan (4★)</strong>"
+			]
 		}
 	]
 }

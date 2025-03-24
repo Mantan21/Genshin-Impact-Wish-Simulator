@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "トゥライトゥーラの記憶",
 	"uraku-misugiri": "有楽御簾切",
 	"verdict": "裁断",
+	"vivid-notions": "ヴィヴィッド・ハート",
 	"vortex-vanquisher": "破天の槍",
 	"wavebreaker_s-fin": "斬波のひれ長",
 	"waveriding-whirl": "波乗りの旋回",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "胡桃",
 		"title": "雪晴梅香"
+	},
+	"iansan": {
+		"name": "イアンサ",
+		"title": "百折不撓の熔岩"
 	},
 	"jean": {
 		"name": "ジン",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "ティナリ",
 		"title": "緑土逍遥"
+	},
+	"varesa": {
+		"name": "ヴァレサ",
+		"title": "おっとりパワフル！"
 	},
 	"venti": {
 		"name": "ウェンティ",

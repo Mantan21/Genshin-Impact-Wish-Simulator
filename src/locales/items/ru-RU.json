@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "Воспоминания Тулайтуллы",
 	"uraku-misugiri": "Ураку мисугири",
 	"verdict": "Вердикт",
+	"vivid-notions": "Переливающиеся чаяния",
 	"vortex-vanquisher": "Покоритель вихря",
 	"wavebreaker_s-fin": "Режущий волны плавник",
 	"wandering-evenstar": "Скитающаяся звезда",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "Ху Тао",
 		"title": "Весенний аромат"
+	},
+	"iansan": {
+		"name": "Иансан",
+		"title": "Непрерывная закалка"
 	},
 	"jean": {
 		"name": "Джинн",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "Тигнари",
 		"title": "Зелёный странник"
+	},
+	"varesa": {
+		"name": "Вареса",
+		"title": "Безмятежная сила"
 	},
 	"venti": {
 		"name": "Венти",

@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "Reminiscências de Tulaytullah",
 	"uraku-misugiri": "Urakugo Rensai",
 	"verdict": "Veredito",
+	"vivid-notions": "Coração Resplandecente",
 	"vortex-vanquisher": "Perfuradora Prismática",
 	"wavebreaker_s-fin": "Barbatana do Quebra Ondas",
 	"wandering-evenstar": "Estrela Itinerante",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragrância de Ameixa Descongelada"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Forjada na Pedra Ardente"
 	},
 	"jean": {
 		"name": "Jean",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Andarilho Verdejante"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Ócio Vigoroso"
 	},
 	"venti": {
 		"name": "Venti",

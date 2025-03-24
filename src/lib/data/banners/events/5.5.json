@@ -1,0 +1,46 @@
+{
+	"patch": 5.5,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "cornucopia-of-contention-1",
+							"character": "varesa",
+							"textOffset": { "l": 46.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "the-crane-soars-skyward-2",
+							"character": "xianyun",
+							"textOffset": { "l": 46.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["iansan", "gaming", "chevreuse"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-79",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "vivid-notions" },
+						{ "name": "cranes-echoing-call", "buttonPosition": { "l": 70, "t": 30 } }
+					],
+					"rateup": [
+						"sturdy-bone",
+						"mountain-bracing-bolt",
+						"fruitful-hook",
+						"mountain-bracing-bolt",
+						"flower-wreathed-feathers"
+					],
+					"textOffset": {
+						"featured": { "l": 50, "t": 70 },
+						"rateup": { "l": 78.5, "b": 21 }
+					}
+				}
+			}
+		}
+	]
+}
+

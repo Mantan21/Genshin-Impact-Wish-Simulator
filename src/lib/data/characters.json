@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000110,
+			"name": "iansan",
+			"vision": "electro",
+			"rarity": 4,
+			"release": "5.5-1",
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": 4.855013550135501, "y": 5.098915989159892, "scale": 1.18 },
+				"wishCard": { "x": 41.89938729442116, "y": 32.02257336343116, "scale": 7.3 }
+			}
+		},
+		{
+			"itemID": 10000111,
+			"name": "varesa",
+			"vision": "electro",
+			"rarity": 5,
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": 6.746612466124661, "y": -0.5284552845528455, "scale": 1.61 },
+				"wishCard": { "x": 28.819735569171236, "y": 49.846501128668166, "scale": 10.12 },
+				"button": { "l": 52, "w": 120, "t": 32 }
+			}
+		},
+		{
 			"itemID": 10000109,
 			"name": "yumemizuki-mizuki",
 			"vision": "anemo",

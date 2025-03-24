@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 14519,
+			"limited": true,
+			"name": "vivid-notions",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"origin": "inazuma",
+			"offset": {
+				"button": { "t": 30, "w": 65, "l": 30 }
+			}
+		},
+		{
 			"itemID": 14518,
 			"limited": true,
 			"name": "sunny-morning-sleep-in",

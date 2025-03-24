@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "Tulaytullah's Remembrance",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Verdict",
+	"vivid-notions": "Vivid Notions",
 	"vortex-vanquisher": "Vortex Vanquisher",
 	"wavebreaker_s-fin": "Wavebreaker's Fin",
 	"wandering-evenstar": "Wandering Evenstar",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragrance in Thaw"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Tempered in Molten Stone"
 	},
 	"jean": {
 		"name": "Jean",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Verdant Strider"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Strength in Serenity"
 	},
 	"venti": {
 		"name": "Venti",

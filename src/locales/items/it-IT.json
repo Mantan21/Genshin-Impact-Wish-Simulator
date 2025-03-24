@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "Rimembranza di Tulaytullah",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Verdetto",
+	"vivid-notions": "Pensieri vivaci",
 	"vortex-vanquisher": "Squarciavortice",
 	"wavebreaker_s-fin": "Pinna del Frangionde",
 	"wandering-evenstar": "Astro del vespro errante",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragranza del disgelo"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Temprata nella roccia lavica"
 	},
 	"jean": {
 		"name": "Jean",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Vagabondo verdeggiante"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Forza nella serenità"
 	},
 	"venti": {
 		"name": "Venti",

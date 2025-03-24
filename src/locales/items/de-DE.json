@@ -99,6 +99,7 @@
 	"tulaytullah_s-remembrance": "Tulaytullahs Erinnerung",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Urteilsspruch",
+	"vivid-notions": "Farbenfrohe Gedanken",
 	"vortex-vanquisher": "Regenbogenstecher",
 	"wavebreaker_s-fin": "Wellenbrecherflosse",
 	"wandering-evenstar": "Wandernder Abendstern",
@@ -237,6 +238,10 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Pflaumenduft bei Tauwetter"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Von geschmolzenem Gestein gehärtet"
 	},
 	"jean": {
 		"name": "Jean",
@@ -409,6 +414,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Wanderer im Grünen"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Gelassene Stärke"
 	},
 	"venti": {
 		"name": "Venti",
