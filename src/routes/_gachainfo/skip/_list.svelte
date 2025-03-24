@@ -3,6 +3,7 @@
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import axios from 'axios';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
@@ -12,8 +13,23 @@
 
 	const { patch: version} = $activeVersion;
 
+	let banner;
+
+	let processedUpdates = [...updates.data].reverse();
+
+	for(let uppy of processedUpdates){
+		console.log("Checking update:", uppy.patch, "against version:", version);
+
+    	if (Number(uppy.patch) === Number(version)) {
+			console.log(uppy.banner)
+			banner = uppy.banner;
+        	console.log("Match found! Banner set to:", banner);
+        	break;
+    	}
+	}
+
 	let canvas;
-	let health = 3000;
+	let health = 300;
 	const healthBarWidth = 480;
 	const healthBarHeight = 10;
 	let healthBar;
@@ -70,6 +86,12 @@
 	}
 
 		frame();
+
+		let boss = storageLocal.get('boss')
+		if (!boss) {
+    		boss = {};
+		}
+		storageLocal.set('boss', boss);
 	};
 
 	async function dealDamage() {
@@ -92,6 +114,14 @@
 
 		console.log("health:",health);
 		healthBar.updateHealth(health);
+
+		let boss = storageLocal.get('boss')
+		for(let ban of banner){
+			boss[ban] = bossDefeated;
+			console.log(boss, ban, boss[ban])
+			storageLocal.set('boss', boss);
+		}
+		console.log("After setting boss:", storageLocal.get("boss"));
 	}
 
 	onMount(setupCanvas);

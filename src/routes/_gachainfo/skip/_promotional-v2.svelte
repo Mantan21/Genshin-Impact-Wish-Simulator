@@ -4,6 +4,7 @@
 	import { getName } from '$lib/helpers/nameText';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import Iklan from '$lib/components/Iklan.svelte';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import updates from '$lib/data/updates.json';
 	import characters from '$lib/data/characters.json';
 

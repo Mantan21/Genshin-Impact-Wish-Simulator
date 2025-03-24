@@ -103,7 +103,7 @@ app.post("/api/boss", async (req, res) => {
   const boss_data = JSON.parse(req.body.bossStatus);
 
   try {
-    const query = "UPDATE player SET boss_data =  ? WHERE id = ?";
+    const query = "UPDATE player SET boss_data = JSON_ARRAY_APPEND(boss_data, '$', CAST(? AS JSON)) WHERE id = ?";
     await db.promise().execute(query, [JSON.stringify(boss_data), id]);
     
   } catch (err) {
