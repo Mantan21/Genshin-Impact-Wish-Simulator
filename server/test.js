@@ -19,7 +19,7 @@ app.use(cookieParser());
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "1234",
+  password: "pass123",
   database: "simdb",
   waitForConnections: true,
   connectionLimit: 10,
@@ -92,7 +92,6 @@ app.post("/api/logout", async (req, res) => {
   }
 });
 
-
 // Session Route
 app.get("/api/session", (req, res) => {
   const token = req.cookies.token;
@@ -112,7 +111,6 @@ app.get("/api/session", (req, res) => {
     res.json(user);
   });
 });
-
 
 // Start Server
 app.listen(port, () => {

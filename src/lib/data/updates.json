@@ -3,6 +3,7 @@
 		{
 			"date": "Version 10.0",
 			"featured": true,
+			"banner": ["decree-of-the-deeps-3", "leaves-in-the-wind-5"],
 			"character": ["neuvillette", "kaedehara-kazuha"],
 			"patch": 10.0,
 			"description": [
@@ -14,6 +15,7 @@
 		{
 			"date": "Version 9.0",
 			"featured": true,
+			"banner": ["tempestuous-destiny-1","azure-excursion-3"],
 			"character": ["wriothesley","kamisato-ayato"],
 			"patch": 9.0,
 			"description": [
@@ -25,6 +27,7 @@
 		{
 			"date": "Version 8.0",
 			"featured": true,
+			"banner":["oni_s-royale-4","chanson-of-many-waters-2"],
 			"character": ["arataki-itto", "furina"],
 			"patch": 8.0,
 			"description": [
@@ -36,6 +39,7 @@
 		{
 			"date": "Version 7.0",
 			"featured": true,
+			"banner": ["the-heron_s-court-4","the-transcendent-one-returns-2"],
 			"character": ["kamisato-ayaka","shenhe"],
 			"patch": 7.0,
 			"description": [
@@ -47,6 +51,7 @@
 		{
 			"date": "Version 6.0",
 			"featured": true,
+			"banner": ["reign-of-serenity-4"],
 			"character": ["raiden-shogun"],
 			"patch": 6.0,
 			"description": [
@@ -57,6 +62,7 @@
 		{
 			"date": "Version 5.0",
 			"featured": true,
+			"banner": ["the-hearths-ashen-shadow-2","immaculate-pulse-3"],
 			"character": ["arlecchino","baizhu"],
 			"patch": 5.0,
 			"description": [
@@ -68,6 +74,7 @@
 		{
 			"date": "Version 4.0",
 			"featured": true,
+			"banner": ["sparkling-steps-4"],
 			"character": ["klee"],
 			"patch": 4.0,
 			"description": [
@@ -78,6 +85,7 @@
 		{
 			"date": "Version 3.0",
 			"featured": true,
+			"banner": ["moment-of-bloom-5","gentry-of-hermitage-6"],
 			"character": ["hu-tao","zhongli"],
 			"patch": 3.0,
 			"description": [
@@ -89,6 +97,7 @@
 		{
 			"date": "Version 2.0",
 			"featured": true,
+			"banner": ["drifting-luminescence-4"],
 			"character": ["sangonomiya-kokomi"],
 			"patch": 2.0,
 			"description": [
@@ -99,6 +108,7 @@
 		{
 			"date": "Version 1.0",
 			"featured": true,
+			"banner": ["farewell-of-snezhnaya-5"],
 			"character": ["tartaglia"],
 			"patch": 1.0,
 			"description": [

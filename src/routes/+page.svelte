@@ -223,9 +223,13 @@
 {:else if pageActive === 'details'}
 	<svelte:component this={GachaInfo} page="details" />
 
-	<!-- Wish Details -->
+	<!-- Wish Skip -->
 {:else if pageActive === 'skip'}
 	<svelte:component this={GachaInfo} page="skip" />
+
+<!-- Boss -->
+{:else if pageActive === 'boss'}
+	<svelte:component this={GachaInfo} page="boss" />
 
 	<!-- Wish Record -->
 {:else if pageActive === 'history'}
