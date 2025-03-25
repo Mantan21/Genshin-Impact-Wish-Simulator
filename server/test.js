@@ -92,26 +92,6 @@ app.post("/api/logout", async (req, res) => {
   }
 });
 
-app.post("/api/boss", async (req, res) => {
-  //Retrieve token
-  const token = req.cookies.token;
-  if(!token){
-    return res.status(401).json({error: "No session found"});
-  }
-  const decoded = jwt.verify(token, SECRET_KEY);
-  const { id } = decoded;
-  const boss_data = JSON.parse(req.body.bossStatus);
-
-  try {
-    const query = "UPDATE player SET boss_data = JSON_ARRAY_APPEND(boss_data, '$', CAST(? AS JSON)) WHERE id = ?";
-    await db.promise().execute(query, [JSON.stringify(boss_data), id]);
-    
-  } catch (err) {
-    console.error("Error signing up:", err);
-    res.status(500).json({ error: "Signup failed", details: err.message });
-  }
-});
-
 // Session Route
 app.get("/api/session", (req, res) => {
   const token = req.cookies.token;

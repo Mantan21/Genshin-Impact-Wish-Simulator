@@ -22,10 +22,6 @@
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
 
-	async function statusBoss(bossStatus){
-		await axios.post("http://localhost:3001/api/boss", { bossStatus }, { withCredentials: true });
-	}
-
 	let banner;
 
 	let processedUpdates = [...updates.data].reverse();
@@ -104,10 +100,6 @@
 		}
 
 		bossFought = true;
-
-		let bossStatus = JSON.stringify({ "version": version, "status": bossDefeated })
-
-		statusBoss(bossStatus);
 
 		sendBoss("didFight", bossFought);
 
