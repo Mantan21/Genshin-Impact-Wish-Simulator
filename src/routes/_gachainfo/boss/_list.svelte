@@ -22,10 +22,6 @@
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
 
-	async function statusBoss(bossStatus){
-		await axios.post("http://localhost:3001/api/boss", { bossStatus }, { withCredentials: true });
-	}
-
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
 
@@ -83,10 +79,6 @@
 		}
 
 		bossFought = true;
-
-		let bossStatus = JSON.stringify({ "version": version, "status": bossDefeated })
-
-		statusBoss(bossStatus);
 
 		sendBoss("didFight", bossFought);
 
