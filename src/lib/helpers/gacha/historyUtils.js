@@ -1,4 +1,4 @@
-import { localPity, owneditem, rollCounter, localConfig } from '../dataAPI/api-localstore';
+import { localPity, localConfig, startBalance, endBalance, topUp, topExp, purchases } from '../dataAPI/api-localstore';
 
 export function initialize (banner) {
 	let isInitialized = localStorage.getItem(`isInitialized-${banner}`);
@@ -40,3 +40,37 @@ export function getPulls(banner){
     return { current10PullCount, totalPullsTemp }
 }
 
+export function setSBalance(bannerName, primogem, intertwined) {
+	if(bannerName && !startBalance.get(bannerName)) {
+		console.log('expenses', bannerName, primogem, intertwined);
+		startBalance.set(bannerName, primogem, intertwined);
+		console.log('get balance', startBalance.get(bannerName));
+	}		
+}
+
+export function setEBalance(bannerName, primogem, intertwined, genesis) {
+	if(bannerName && !endBalance.get(bannerName)) {
+		console.log('bannerName', bannerName);
+		endBalance.set(bannerName, primogem, intertwined, genesis);
+		console.log('endBalance', endBalance.get(bannerName));
+	}		
+	
+}
+
+export function setBalance(banners, currencies, type) {
+	if(banners.length > 0) { 
+		for(let i=0; i<2; i++) {
+			let bannerName = banners[i]?.bannerName;
+			
+			if (type === 'start') {
+				setSBalance(bannerName, currencies.primos, currencies.fates);
+			}
+
+			if (type === 'end') {
+				setEBalance(bannerName, currencies.primos, currencies.fates, currencies.crysts);
+			}	
+			if (type === 'topup') topUp.set(bannerName, currencies.price);
+			if (type === 'topexp') topExp.set(bannerName);
+			if (type === 'purchase') purchases.set(bannerName, currencies.value, currencies.currency);
+	}}
+}

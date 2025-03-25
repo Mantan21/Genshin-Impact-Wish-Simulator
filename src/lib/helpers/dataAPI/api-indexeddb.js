@@ -1,6 +1,8 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
-import { storageLocal } from './api-localstore';
+import { storageLocal, startBalance, endBalance, topUp, topExp, purchases } from './api-localstore';
+import { genesis } from '$lib/store/app-stores';
+
 
 
 const version = 5;
@@ -70,23 +72,38 @@ export const HistoryManager = {
 	async filterHistory(filters = {}) {
 		let entries = [];
 
-		//Initialize return value
-		const groupedEntries = {}
-
 		// Sort bannerNames
 		const sortedBanners = filters.bannerName.sort();
 		
-		sortedBanners.forEach((bannerName) => {
-			groupedEntries[bannerName] = { // Initialize item ID and action state
-				item: [], 
-				action: "skipped"
-			};
-		});
-
 		// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
 		const range = IDBKeyRange.bound(sortedBanners[0], sortedBanners[sortedBanners.length - 1]);
 		entries = await this.getListBannerNames(range);
-
+		
+		// Initialize groupedEntries
+		const groupedEntries = Object.fromEntries(
+			sortedBanners.map((bannerName) => {
+				const pullsSpent = entries.filter(entry => entry.bannerName === bannerName).length;
+				const hasEntry = pullsSpent > 0;
+				
+				return [
+					bannerName, { 
+						item: [], 
+						action: hasEntry ? "pulled": "skipped",
+						expenses: {
+							startBalance: startBalance.get(bannerName),
+							pullsSpent: pullsSpent,
+							pullsLeft: endBalance.get(bannerName),
+							purchases: {
+								topUp: topUp.get(bannerName),
+								dollars: topExp.get(bannerName) || 0,
+								genesis: purchases.get(bannerName, "genesis"),
+								fates: purchases.get(bannerName, "fates"),
+								primogems: purchases.get(bannerName, "primogems")
+							}
+						}
+					}];
+			})
+		);
 		
 		if (filters.rarity) {
 			entries = entries.filter((entry) => entry.rarity === filters.rarity);
@@ -111,7 +128,6 @@ export const HistoryManager = {
 					totalPulls: entry.totalPulls,
 					status: entry.status
 				});
-				groupedEntries[bannerName].action = "pulled";
 			}
 		});
 

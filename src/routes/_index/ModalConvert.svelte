@@ -1,9 +1,10 @@
 <script>
 	import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
-	import { genesis, primogem } from '$lib/store/app-stores';
+	import { genesis, primogem, bannerList } from '$lib/store/app-stores';
 	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import Modal from '$lib/components/ModalTpl.svelte';
@@ -26,6 +27,7 @@
 		primogem.update((v) => {
 			const newVal = v + value;
 			localBalance.set('primogem', newVal);
+			setBalance($bannerList, { value: value, currency: 'primogems' }, "purchase");
 			return newVal;
 		});
 

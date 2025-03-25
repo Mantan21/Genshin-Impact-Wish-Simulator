@@ -6,6 +6,7 @@
 		acquaint,
 		intertwined,
 		exchange,
+		bannerList,
 		genesis as gs,
 		primogem as primo,
 		stardust as sd,
@@ -13,6 +14,7 @@
 	} from '$lib/store/app-stores';
 	import { localBalance, storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import Modal from '$lib/components/ModalTpl.svelte';
@@ -65,6 +67,7 @@
 		fates.update((v) => {
 			const newVal = v + value;
 			localBalance.set(itemToExchange, newVal);
+			setBalance($bannerList, { value: value, currency: 'fates' }, "purchase");
 			return newVal;
 		});
 		if (currency === 'stardust') {

@@ -2,9 +2,10 @@
 	import { getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { cookie } from '$lib/helpers/dataAPI/api-cookie';
-	import { assets, genesis, primogem } from '$lib/store/app-stores';
+	import { assets, genesis, primogem, bannerList } from '$lib/store/app-stores';
 	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -31,6 +32,8 @@
 		primogem.update((v) => {
 			const afterUpdate = v + data.qty + data.bonus;
 			localBalance.set('primogem', afterUpdate);
+			setBalance($bannerList, { value: (data.qty + data.bonus), currency: 'genesis' }, "purchase");
+			setBalance($bannerList, { value: (data.qty + data.bonus), currency: 'primogems' }, "purchase");
 			return afterUpdate;
 		});
 	};
@@ -44,6 +47,7 @@
 		genesis.update((v) => {
 			const afterUpdate = v + data.qty + data.bonus;
 			localBalance.set('genesis', afterUpdate);
+			setBalance($bannerList, { value: (data.qty + data.bonus), currency: 'genesis' }, "purchase");
 			return afterUpdate;
 		});
 	};

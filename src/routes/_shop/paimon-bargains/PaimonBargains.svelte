@@ -102,14 +102,9 @@
 		transform: scale(0.95);
 	}
 
-	/*button:disabled .content {
-		/* opacity: 0.5; /* Reduce opacity to make it look disabled 
-		color: black;
-	} */
-
 	button:disabled .content picture,
 	button:disabled .content .price {
-  		filter: grayscale(25%); /* Make images/icons grayscale */
+  		filter: grayscale(75%); /* Make images/icons grayscale */
 	}
 
 	button:disabled .price {

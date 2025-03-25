@@ -1,5 +1,5 @@
 import { currencies } from '$lib/data/pricelist.json';
-import { expenses, pricelist } from '$lib/store/app-stores';
+import { expenses, pricelist, primogem, intertwined } from '$lib/store/app-stores';
 import { cookie } from './dataAPI/api-cookie';
 import { storageLocal } from './dataAPI/api-localstore';
 import { checkLocale } from './i18n';
@@ -56,5 +56,13 @@ export const userCurrencies = {
 			console.log("Expenses so faw", totalExp + price);
 			//expenses.(totalExp + price);
 		} 
+	},
+	
+	currReplenish(group) {
+		if (group === 'f2p') primogem.update((n) => n + 6047);
+		if (group === 'dolphin' || group === 'whale') {
+			intertwined.update((n) => n + 4);
+			primogem.update((n) => n + 9727);
+		}
 	}
 };

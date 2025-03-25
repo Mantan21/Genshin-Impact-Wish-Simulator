@@ -4,7 +4,7 @@
 	import { writable } from 'svelte/store';
 	import { getContext, onMount, setContext } from 'svelte';
 	import hotkeys from 'hotkeys-js';
-	import { isAuthenticated, checkSession } from "$lib/store/authStore.js";
+	import { isAuthenticated, checkSession, user } from "$lib/store/authStore.js";
 
 	import browserState from '$lib/helpers/browserState';
 	import { assets, preloadVersion, showBeginner } from '$lib/store/app-stores';
@@ -123,6 +123,7 @@
 	const loadBanner = async (patchPhase) => {
 		const initBanner = await initializeBanner(patchPhase);
 		({ status } = initBanner || {});
+		userCurrencies.currReplenish($user?.group);
 		bannerLoaded();
 	};
 
@@ -130,8 +131,7 @@
 
 		setBannerVersionAndPhase();
 		preloadVersion.subscribe(loadBanner);
-		showBeginner.subscribe(handleShowStarter);
-
+		//showBeginner.subscribe(handleShowStarter);
 		importLocalConfig();
 		userCurrencies.init();
 		asyncLoadComponent();

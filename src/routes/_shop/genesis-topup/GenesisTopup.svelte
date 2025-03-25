@@ -5,11 +5,12 @@
 
     import { user, checkSession } from "$lib/store/authStore.js";
     import { genesisBonus } from '$lib/data/pricelist.json';
-    import { activeVersion, assets, expenses, pricelist } from '$lib/store/app-stores';
-    import { localConfig, storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+    import { activeVersion, assets, expenses, pricelist, bannerList, activeBanner } from '$lib/store/app-stores';
+    import { localConfig, storageLocal, topUp } from '$lib/helpers/dataAPI/api-localstore';
     import { cookie } from '$lib/helpers/dataAPI/api-cookie';
     import { playSfx } from '$lib/helpers/audio/audio';
 	import { userCurrencies } from '$lib/helpers/currencies';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
     import Icon from '$lib/components/Icon.svelte';
     import ShopGroup from '../_shop-group.svelte';
@@ -61,7 +62,7 @@
 			return $expenses + priceFloat > 1000;
 		})
 	}
-
+	
     const selectGenesis = ({ qty, isDoubleBonus, price }) => {
 		playSfx('exchange');
 
@@ -84,6 +85,8 @@
     const confirmBuy = ({ qty, bonus }) => {
         showPaymentModal = false;
         playSfx();
+		console.log('bannerList', topUp.get($bannerList[$activeBanner].bannerName));
+		setBalance($bannerList, { price: data.price }, "topup");
 
         if (qty === bonus) {
             localTopup[versionBase] = localTopup[versionBase] || [];
@@ -92,8 +95,8 @@
             const i = genesisList.findIndex((v) => v.qty === qty);
             genesisList[i].doubleBonus = false;
         }
-
 		userCurrencies.getTotalExp(data.price);
+		setBalance($bannerList, {}, "topexp");
 		console.log('data.price', data.price);
     };
     setContext('confirmBuy', confirmBuy);

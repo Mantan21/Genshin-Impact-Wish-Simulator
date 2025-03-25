@@ -39,7 +39,7 @@
 	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: currencyUsed = isEvent ? $intertwined : $acquaint;
 	$: isUnlimited = $wishAmount === 'unlimited';
-
+	
 	// Load Wish Configuration When changing banner Version
 	const initialWish = async ({ patch, phase }) => {
 		if (!patch || !phase) return;

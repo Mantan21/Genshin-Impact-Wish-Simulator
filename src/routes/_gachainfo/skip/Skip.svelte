@@ -10,6 +10,9 @@
 		assets,
         preloadVersion,
 		activeVersion,
+		primogem,
+		intertwined,
+		genesis,
 		isCustomBanner,
 		customData
 	} from '$lib/store/app-stores';
@@ -25,6 +28,8 @@
 		regionElement
 	} from '$lib/helpers/gacha/itemdrop-base';
     import updates from '$lib/data/updates.json';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import List from './_list.svelte';
 	import Description from './_description.svelte';
@@ -32,7 +37,6 @@
 	import Title from '../_title.svelte';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
-	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 
 	export let tplVersion = 'v2';
 
@@ -47,7 +51,7 @@
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-
+	
 	// Get Droplist
 	const { patch: version, phase: activePhase } = $activeVersion;
 
@@ -69,6 +73,7 @@
     const navigate = getContext('navigate');
 	const skipBanner = () => {
         playSfx();
+		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
 		// If select the same banner with the active one, change nothing just back to index
         console.log("Skipping to:", patch, phase); // Debug log
 		const { patch: version, phase: activePhase } = $activeVersion;

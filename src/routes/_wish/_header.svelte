@@ -17,6 +17,7 @@
 		primogem,
 		stardust,
 		starglitter,
+		genesis,
 		viewportHeight,
 		assets,
 		isPWA,
@@ -29,31 +30,41 @@
 		//bannerNames
 	} from '$lib/store/app-stores';
 	import { generateFileString } from '$lib/helpers/dataAPI/export-import';
+	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+	
 
 	import MyFund from '$lib/components/MyFund.svelte';
 	import BannerButton from './_banner-button.svelte';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
+	
 
 	export let bannerType = '';
 	//const { filterHistory } = HistoryManager;
-
+	console.log(storageLocal.get('startBalance'));
+	console.log($primogem, $intertwined, $genesis);
 	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: balance = isEvent ? $intertwined : $acquaint;
 	$: unlimitedWish = $wishAmount === 'unlimited';
-
+	$: setBalance($bannerList, { primos: $primogem, fates: $intertwined }, "start");  
+	
 
 	const dataReset = async () => {
+		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
 		let banner_data = await generateFileString();
 
+		console.log("endBalance data", storageLocal.get('endBalance'));
 		await factoryReset({ clearCache: true, keepSetting: false });
 		// Logout the user
 		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
-		
+
 		// Reset session data
 		user.set(null);
 		isAuthenticated.set(false);
 		banner_data = null;
-
+		storageLocal.set('startBalance', {});
+	
 		location.reload(); // Refresh the page to apply the reset
+
 	};
 
 
