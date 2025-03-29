@@ -10,6 +10,7 @@
 
 	// Component
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
+	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
 	import SplashArt from '../_custom-banner/SplashArtEditor/SplashArt.svelte';
 
@@ -104,8 +105,10 @@
 {#if !hideInfo}
 	<div transition:fade={{ duration: 250 }} class="handler-container">
 		<div class="wrapper">
-			{#if type === 'character'}
-				<OutfitToggle charName={name} />
+			{#if type === 'character' && rarity === 5}
+				<ButtonGeneral>
+					{$t('details.text')}
+				</ButtonGeneral>
 			{/if}
 
 			{#if qty > 0}

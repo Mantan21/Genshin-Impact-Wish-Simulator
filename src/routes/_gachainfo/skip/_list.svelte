@@ -133,7 +133,7 @@
 		<canvas bind:this={canvas} width={640} height={640} class="overlay-canvas">
 		</canvas>
 		{#if !bossFought}
-			<button class="overlay-button" on:click={dealDamage}>Fight</button>
+			<button class="overlay-button" on:click={dealDamage} style="--bg:url({$assets['button-fight.webp']})"></button>
 		{/if}
 	</div>
 </div>
@@ -180,21 +180,31 @@
 	}
 
 	.overlay-button {
+        background-image: var(--bg);
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
         position: absolute;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		aspect-ratio: unset;
+		clip-path: circle(50%);
+		margin: 0 1px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba(162, 128, 82, 0.7);
-        color: white;
-        padding: 10px 20px;
+        color: #a49a90;
+        padding: 1px 1px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
+		opacity: 0.7;
     }
 
     .overlay-button:hover {
-        background-color: rgba(162, 128, 82, 0.9);
+        opacity: 0.9;
     }
 
 	.v2 canvas {
