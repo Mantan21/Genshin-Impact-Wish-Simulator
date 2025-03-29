@@ -8,12 +8,17 @@ export default class HealthBar {
     this.maxWidth = w;
     this.health = maxHealth;
     this.color = color;
+    this.targetWidth = w;
+    this.animationSpeed = 0.2;
   }
 
   show(context) {
     context.lineWidth = 2;
     context.strokeStyle = "#AF0B15";
     context.fillStyle = this.color;
+
+    this.w += (this.targetWidth - this.w) * this.animationSpeed;
+
     context.fillRect(this.x, this.y, this.w, this.h);
     context.strokeRect(this.x, this.y, this.maxWidth, this.h);
   }
@@ -21,7 +26,7 @@ export default class HealthBar {
   updateHealth(val) {
     if (val >= 0) {
       this.health = val;
-      this.w = (this.health / this.maxHealth) * this.maxWidth;
+      this.targetWidth = (this.health / this.maxHealth) * this.maxWidth;
     }
   }
 }

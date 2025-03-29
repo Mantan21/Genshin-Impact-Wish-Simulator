@@ -2,6 +2,7 @@
 	console.log("Component is loading!");
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import { fade } from 'svelte/transition';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import axios from 'axios';
@@ -28,6 +29,8 @@
     	}
 	}
 
+	let eleDMG = ['#7BB42D','#E2311D','#D376F0','#1C72FD','#33CCB3','#98C8E8','#CFA726'];
+
 	let canvas;
 	let health = 300;
 	const healthBarWidth = 480;
@@ -35,8 +38,11 @@
 	let healthBar;
 	let boom;
 	let bossFought = false;
+	let bossFighting = false;
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
+
+	let color = '#ffffff';
 
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
@@ -91,8 +97,10 @@
 	};
 
 	async function dealDamage() {
+		color = eleDMG[Math.floor(Math.random()*eleDMG.length)];
 		boom = await DieBar();
 		console.log("Boom sent:", boom);
+		bossFighting = true;
     	health -= boom;
 
 		if(health <= 0){
@@ -133,6 +141,9 @@
 		{#if !bossFought}
 			<button class="overlay-button" on:click={dealDamage} style="--bg:url({$assets['button-fight.webp']})"></button>
 		{/if}
+		{#if bossFighting}
+			<p class=overlay-damage style="--boom:{color}">{boom}</p>
+		{/if}
 	</div>
 </div>
 
@@ -170,11 +181,33 @@
 	.overlay-name {
 		position: absolute;
 		top: 0.5%;
-        left: 40%;
+		text-align: center;
 		color: white;
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
+		outline: 2px solid red;
+	}
+
+	.overlay-damage {
+		position: absolute;
+		top: 12%;
+		text-align: center;
+		color: white;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		animation:boomOut 0.5s 1;
+		animation-duration: 2s;
+	}
+
+	@keyframes boomOut {
+	0%   {font-size: 70px; left:0px; top:20%; opacity :0; color: var(--boom,white)}
+	5%  {font-size: 80px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	20%  {font-size: 80px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	25%	{opacity :0.5; olor: var(--boom,white)}
+	70% {font-size: 70px; left:0px; top:80%; opacity :0;}
+	100% {font-size: 0px; left:0px; top:80%; opacity :0;}
 	}
 
 	.overlay-button {
