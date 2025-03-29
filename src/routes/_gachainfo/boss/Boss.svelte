@@ -58,6 +58,9 @@
 	}
 
 	const dataReset = async () => {
+		
+		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
+
 		let banner_data = await generateFileString();
 
 		await factoryReset({ clearCache: true, keepSetting: false });
@@ -71,15 +74,6 @@
 
 		location.reload(); // Refresh the page to apply the reset
 	};
-
-	function redirect() {
-		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
-        }
-
-	function logOut(){
-		dataReset;
-		redirect;
-	}
 
 </script>
 
@@ -119,7 +113,7 @@
 <br>
 <div align="center">
 	<div class="tooltip-wrapper"> 	
-        <ButtonModal on:click={logOut} redirect disabled={!bossFought}>Log Out</ButtonModal>
+        <ButtonModal on:click={dataReset} redirect disabled={!bossFought}>Log Out</ButtonModal>
 		{#if !bossFought}
 		<span class="tooltip">You need to fight the boss first!</span>
 		{/if}
