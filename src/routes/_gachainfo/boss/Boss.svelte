@@ -111,7 +111,7 @@
 	<div class="tooltip-wrapper"> 	
         <ButtonModal on:click={dataReset} disabled={!bossFought}>Log Out</ButtonModal>
 		{#if !bossFought}
-		<span class="tooltip">You need to defeat the boss first!</span>
+		<span class="tooltip">You need to fight the boss first!</span>
 		{/if}
 	</div>
 </div>

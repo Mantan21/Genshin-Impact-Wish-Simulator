@@ -37,7 +37,7 @@ async function CompDMG(){
                 if (peep.count == 4){
                     charDMG = char.c4_dmg;} //c4 multiplier
                             
-                if(peep.count <=6){
+                if(peep.count >=6){
                     charDMG = char.c6_dmg} //c6 multiplier
                 
                 boom = boom + charDMG;
@@ -60,10 +60,10 @@ async function CompDMG(){
             else{
                 mulSPT = mulSPT + char.b_mult;}
         
-            if (peep.count <= 4){
+            if (peep.count >= 4){
                 mulSPT = mulSPT + char.c4_mult;}
         
-            if (peep.count <= 6){
+            if (peep.count >= 6){
                 mulSPT = mulSPT + char.c6_mult;}
 
             console.log("Boom spt: ",boom);
@@ -71,6 +71,8 @@ async function CompDMG(){
             } 
         }
     }
+
+    console.log("MulSpt: ", mulSPT);
 
     boom = boom * mulSPT;
 
