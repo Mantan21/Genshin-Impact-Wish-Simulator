@@ -18,8 +18,6 @@
 	import ChronicledSpace from './_chronicled/bannerSpace.svelte';
 	import { isSafari } from '$lib/helpers/mobileDetect';
 
-	import Modal from './ModalSkip.svelte';
-
 	export let data = {};
 	export let index = -1;
 	export let fullscreenEditor = false;
