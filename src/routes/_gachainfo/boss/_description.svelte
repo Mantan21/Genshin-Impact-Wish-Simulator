@@ -10,9 +10,9 @@
 
 <div class="description" class:v2={tplVersion === 'v2'}>
 	<br>
-	<h1>Please fill out the Google form below:</h1>
+	<h1>Thank you for playing!</h1>
 	<br>
-	<iframe width="840" height="360" src="https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=sharing" title="Preview">
+	<p>You may get your snacks outside after logging out and filling up the survey form.</p>
 </div>
 
 <style>

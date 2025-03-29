@@ -22,6 +22,21 @@
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
 
+	let banner;
+
+	let processedUpdates = [...updates.data].reverse();
+
+	for(let uppy of processedUpdates){
+		console.log("Checking update:", uppy.patch, "against version:", version);
+
+    	if (Number(uppy.patch) === Number(version)) {
+			console.log(uppy.banner)
+			banner = uppy.banner;
+        	console.log("Match found! Banner set to:", banner);
+        	break;
+    	}
+	}
+
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
 
@@ -66,6 +81,12 @@
 	}
 
 		frame();
+
+		let boss = storageLocal.get('boss')
+		if (!boss) {
+    		boss = {};
+		}
+		storageLocal.set('boss', boss);
 	};
 
 	async function dealDamage() {
@@ -84,6 +105,14 @@
 
 		console.log("health:",health);
 		healthBar.updateHealth(health);
+
+		let boss = storageLocal.get('boss')
+		for(let ban of banner){
+			boss[ban] = bossDefeated;
+			console.log(boss, ban, boss[ban])
+			storageLocal.set('boss', boss);
+		}
+		console.log("After setting boss:", storageLocal.get("boss"));
 	}
 
 	onMount(setupCanvas);
