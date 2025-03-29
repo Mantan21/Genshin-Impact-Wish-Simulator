@@ -20,7 +20,7 @@
 	<slot />
 {:else}
 	<div class="content-container" transition:customFLy={{ y: 25, tpl: tplVersion }}>
-		<button class="old" on:click={() => setTpl('v1')}> {$t('history.olderLayout')}</button>
+		<!-- <button class="old" on:click={() => setTpl('v1')}> {$t('history.olderLayout')}</button> -->
 		<div class="wrapper">
 			<div
 				class="book"

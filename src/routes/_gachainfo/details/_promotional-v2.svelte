@@ -3,14 +3,36 @@
 	import { assets, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { getName } from '$lib/helpers/nameText';
 	import { lazyLoad } from '$lib/helpers/lazyload';
-	import Iklan from '$lib/components/Iklan.svelte';
+	import { playSfx } from '$lib/helpers/audio/audio';
+
+	import ModalDetail from './_modal-character-detail.svelte';
+
+	import characters from '$lib/data/characters.json';
+	import { setContext } from 'svelte';
 
 	export let chronicledList = [];
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
 	const isWP = bannerType === 'weapon-event';
 	const bg = $isCustomBanner ? $assets['5star-special.webp'] : $assets['5star-bg.webp'];
+
+	let showDetailModal = false
+    const closeModal = () => {
+        showDetailModal = false;
+		playSfx('close');
+    };
+    setContext('closeModal', closeModal);
+
+	const openModal = () => {
+		showDetailModal = true;
+		playSfx();
+	};
+
 </script>
+
+{#if showDetailModal}
+	<ModalDetail character={character.name} charion={character.vision}/>
+{/if}
 
 {#if bannerType.match('event')}
 	<h2><span> {$t('details.increasedRate')} </span></h2>
@@ -34,9 +56,9 @@
 				</span>
 			</div>
 			<div class="pic">
-				<div class="pic-item">
+				<div class="pic-item" on:click={openModal} style="--bright:0.8">
 					<picture class="star5" style="background-image:url('{bg}');">
-						<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop" />
+						<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop"/>
 
 						{#if $isCustomBanner}
 							{@const { images = {}, name = '' } = $customData || {}}
@@ -44,6 +66,7 @@
 								use:lazyLoad={images?.faceURL}
 								data-placeholder={$assets['face-placeholder.webp']}
 								alt={name}
+								
 							/>
 						{:else}
 							<img
@@ -91,8 +114,6 @@
 			</div>
 		{/if}
 	</div>
-
-	<Iklan type="banner" />
 
 	<!-- 4 Star Item -->
 	<h3 class="star4">
@@ -266,6 +287,10 @@
 		background-color: #fff;
 		border-radius: 4%;
 		overflow: hidden;
+	}
+
+	.pic-item:hover {
+		filter: brightness(var(--bright,1.0));
 	}
 
 	picture {
