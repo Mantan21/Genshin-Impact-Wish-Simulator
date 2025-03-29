@@ -122,8 +122,6 @@
 		console.log("✅ Cleaning up!");
 		healthBar = null; // Ensure it runs after mount
 	});
-
-
 </script>
 
 <div class="list">

@@ -81,6 +81,9 @@ export const HistoryManager = {
 				action: "skipped",
 				defeat: false
 			};
+			getBoss(bannerName).then((result) => {
+				groupedEntries[bannerName].defeat = result;
+			});
 		});
 
 		// Use IDBKeyRange.bound to retrieve entries  for multiple bannerNames
@@ -112,9 +115,6 @@ export const HistoryManager = {
 					status: entry.status
 				});
 				groupedEntries[bannerName].action = "pulled";
-				getBoss(bannerName).then((result) => {
-					groupedEntries[bannerName].defeat = result;
-				});
 			}
 		});
 

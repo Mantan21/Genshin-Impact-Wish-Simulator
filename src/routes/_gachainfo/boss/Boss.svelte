@@ -1,6 +1,9 @@
 <script>
 	import { t } from 'svelte-i18n';
 	import { afterUpdate } from 'svelte';
+	import axios from 'axios';
+	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
+	import {  user, isAuthenticated  } from "$lib/store/authStore.js";
 	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		activeBanner,
@@ -9,14 +12,17 @@
 		activeVersion,
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { generateFileString } from '$lib/helpers/dataAPI/export-import';
 
 	import List from './_list.svelte';
 	import Description from './_description.svelte';
 	import Title from '../_title.svelte';
+	import updates from '$lib/data/updates.json';
+	import ButtonModal from '$lib/components/ButtonModal.svelte';
 
 	export let tplVersion = 'v2';
 
-	let wasFought = false;
+	let bossFought = false;
 
 	console.log("Here")
 
@@ -46,6 +52,29 @@
 	afterUpdate(() => {
 		OverlayScrollbars(scrollable, { sizeAutoCapable: false, className: 'os-theme-light' });
 	});
+
+	function wasFought(event){
+		bossFought = event.detail;
+	}
+
+	const dataReset = async () => {
+		
+		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
+
+		let banner_data = await generateFileString();
+
+		await factoryReset({ clearCache: true, keepSetting: false });
+		// Logout the user
+		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
+		
+		// Reset session data
+		user.set(null);
+		isAuthenticated.set(false);
+		banner_data = null;
+
+		location.reload(); // Refresh the page to apply the reset
+	};
+
 </script>
 
 <svelte:head>
@@ -80,6 +109,16 @@
 	<br />
 	<List on:didFight={wasFought}/>
 {/if}
+
+<br>
+<div align="center">
+	<div class="tooltip-wrapper"> 	
+        <ButtonModal on:click={dataReset} redirect disabled={!bossFought}>Log Out</ButtonModal>
+		{#if !bossFought}
+		<span class="tooltip">You need to fight the boss first!</span>
+		{/if}
+	</div>
+</div>
 
 <style>
 	nav {
@@ -121,5 +160,31 @@
 
 	.content {
 		height: 100%;
+	}
+
+	.tooltip-wrapper {
+    	position: relative;
+    	display: inline-block;
+	}
+
+	.tooltip {
+    	visibility: hidden;
+    	background-color: rgba(162, 128, 82, 0.9);
+    	color: #fff;
+    	text-align: center;
+    	padding: 5px;
+    	border-radius: 5px;
+    	position: absolute;
+    	bottom: 120%;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	white-space: nowrap;
+    	opacity: 0;
+    	transition: opacity 0.3s;
+	}
+
+	.tooltip-wrapper:hover .tooltip {
+    	visibility: visible;
+    	opacity: 1;
 	}
 </style>
