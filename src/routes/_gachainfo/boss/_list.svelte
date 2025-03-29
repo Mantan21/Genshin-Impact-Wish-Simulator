@@ -8,7 +8,7 @@
 	import axios from 'axios';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
-	import characters from '$lib/data/characters.json';
+	import bosses from '$lib/data/boss.json';
 	import HealthBar from '$lib/helpers/health-bar.js';
 	import DieBar from '$lib/helpers/damage.js';
 
@@ -17,14 +17,29 @@
 	let banner;
 
 	let processedUpdates = [...updates.data].reverse();
+	let bossSeq = [...bosses.data].reverse();
+
+	let image;
+	let name;
 
 	for(let uppy of processedUpdates){
 		console.log("Checking update:", uppy.patch, "against version:", version);
 
     	if (Number(uppy.patch) === Number(version)) {
-			console.log(uppy.banner)
+			console.log(uppy.banner);
 			banner = uppy.banner;
         	console.log("Match found! Banner set to:", banner);
+        	break;
+    	}
+	}
+
+	for(let boss of bossSeq){
+		console.log("Checking update:", boss.patch, "against version:", version);
+
+    	if (Number(boss.patch) === Number(version)) {
+			name = boss.name;
+			image = boss.path;
+        	console.log("Match found! Banner set to:", boss.banner);
         	break;
     	}
 	}
@@ -134,8 +149,8 @@
 
 <div class="list">
 	<div class="center-container">
-		<img src="videos/dvalin_boss.webp" alt="boss" class="background-gif"/>
-		<p class=overlay-name>Stormterror - Dvalin</p>
+		<img src={image} alt="boss" class="background-gif"/>
+		<p class=overlay-name>{name}</p>
 		<canvas bind:this={canvas} width={640} height={640} class="overlay-canvas">
 		</canvas>
 		{#if !bossFought}
@@ -185,6 +200,7 @@
 		color: white;
 		width: 100%;
 		height: 100%;
+		top: 2px;
 		pointer-events: none;
 		outline: 2px solid red;
 	}
@@ -203,9 +219,9 @@
 
 	@keyframes boomOut {
 	0%   {font-size: 70px; left:0px; top:20%; opacity :0; color: var(--boom,white)}
-	5%  {font-size: 80px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
-	20%  {font-size: 80px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
-	25%	{opacity :0.5; olor: var(--boom,white)}
+	5%  {font-size: 100px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	20%  {font-size: 100px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	25%	{opacity :0.5; color: var(--boom,white)}
 	70% {font-size: 70px; left:0px; top:80%; opacity :0;}
 	100% {font-size: 0px; left:0px; top:80%; opacity :0;}
 	}
