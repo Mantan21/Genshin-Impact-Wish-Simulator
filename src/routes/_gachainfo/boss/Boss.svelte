@@ -71,6 +71,16 @@
 
 		location.reload(); // Refresh the page to apply the reset
 	};
+
+	function redirect() {
+		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
+        }
+
+	function logOut(){
+		dataReset;
+		redirect;
+	}
+
 </script>
 
 <svelte:head>
@@ -109,7 +119,7 @@
 <br>
 <div align="center">
 	<div class="tooltip-wrapper"> 	
-        <ButtonModal on:click={dataReset} disabled={!bossFought}>Log Out</ButtonModal>
+        <ButtonModal on:click={logOut} redirect disabled={!bossFought}>Log Out</ButtonModal>
 		{#if !bossFought}
 		<span class="tooltip">You need to fight the boss first!</span>
 		{/if}
