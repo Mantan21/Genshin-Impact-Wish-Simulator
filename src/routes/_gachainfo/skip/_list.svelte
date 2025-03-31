@@ -166,7 +166,7 @@
 	.center-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: top center;
     }
 
 	canvas {
@@ -178,8 +178,12 @@
 
 	.background-gif {
 		align-items: center;
-		width: 95%;
-		height: auto;
+		height: 380px;
+		width: 1000px;
+		top: 0;
+		object-fit: cover;
+		object-position: top center;
+		overflow: hidden;
 		display: block;
 	}
 
@@ -201,7 +205,6 @@
 		height: 100%;
 		top: 2px;
 		pointer-events: none;
-		outline: 2px solid red;
 	}
 
 	.overlay-damage {
