@@ -6,8 +6,8 @@
 		1.0, 2.0, 2.3, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0
 	],
 	"initialAmount": {
-		"primogem": 8000,
-		"fates": 25,
+		"primogem": 6400,
+		"fates": 0,
 		"genesis": 0,
 		"shareReward": 16000
 	},

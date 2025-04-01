@@ -60,6 +60,82 @@ export const localBalance = {
 	}
 };
 
+export const purchases = {
+	get(bannerName, currency) {
+		const balance = storageLocal.get('purchases');
+		if (!balance[bannerName]) balance[bannerName] = {};
+		return balance[bannerName][currency] || 0;
+	},
+	set(bannerName, value, currency) {
+		const balance = storageLocal.get('purchases') || {};
+		if (bannerName){
+			if (!balance[bannerName]) balance[bannerName] = {};
+			if (!balance[bannerName][currency]) balance[bannerName][currency] = 0;
+			balance[bannerName][currency] += value;
+		} 
+		storageLocal.set('purchases', balance);
+	}
+};
+
+export const startBalance = {
+	get(bannerName) {
+		const balance = storageLocal.get('startBalance') || {};
+		return balance[bannerName] || null;
+	},
+	set(bannerName, primos, fates) {
+		const balance = storageLocal.get('startBalance') || {};
+		balance[bannerName] = { primos, fates }; // Overwrite unconditionally
+		storageLocal.set('startBalance', balance);
+	}
+};
+
+export const endBalance = {
+	get(bannerName) {
+		const balance = storageLocal.get('endBalance');
+		return balance[bannerName] || null;
+	},
+	set(bannerName, primos, fates, genesis) {
+		const balance = storageLocal.get('endBalance') || {};
+		const pulls = ((primos + genesis) / 160 | 0) + fates;
+		balance[bannerName] = pulls;
+		storageLocal.set('endBalance', balance);
+	}
+}
+
+export const topExp = {
+	get(bannerName) {
+		const balance = storageLocal.get('topExp');
+		return balance[bannerName] || null;
+	},
+	set(bannerName) {
+		const balance = storageLocal.get('topExp') || {};
+		if (bannerName) balance[bannerName] = parseFloat(storageLocal.get('expenses')) || 0;
+		storageLocal.set('topExp', balance);
+	}
+}
+
+export const topUp = {
+	get(bannerName) {
+		const balance = storageLocal.get('topUp') || {};
+		if(!balance[bannerName]) {
+			balance[bannerName] = {
+				"0.99": 0, "4.99": 0, "14.99": 0, "29.99": 0, "49.99": 0, "99.99": 0	
+			};
+		}
+		return balance[bannerName] || null;
+	},
+	set(bannerName, price) {
+		price = price.replace(/[^0-9.]/g, '');
+		const balance = storageLocal.get('topUp') || {};
+		if (bannerName && !balance[bannerName]) {
+			balance[bannerName] = {
+				"0.99": 0, "4.99": 0, "14.99": 0, "29.99": 0, "49.99": 0, "99.99": 0	
+			};
+		} if (bannerName && balance[bannerName].hasOwnProperty(price)) balance[bannerName][price] += 1;
+		storageLocal.set('topUp', balance);
+	}
+}
+
 export const rollCounter = {
 	get(banner) {
 		const rollCount = storageLocal.get('rollCounter');

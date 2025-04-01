@@ -5,13 +5,16 @@
 		assets,
 		acquaint,
 		intertwined,
+		exchange,
+		bannerList,
 		genesis as gs,
 		primogem as primo,
 		stardust as sd,
 		starglitter as sg
 	} from '$lib/store/app-stores';
-	import { localBalance } from '$lib/helpers/dataAPI/api-localstore';
+	import { localBalance, storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import Modal from '$lib/components/ModalTpl.svelte';
@@ -20,6 +23,7 @@
 
 	export let data = {};
 	const { itemToExchange, currency, price, rarity, isOutfit, isOwned } = data;
+	$: exchanges = parseInt(storageLocal.get('exchanges')) || 0;
 
 	const balanceList = {
 		starglitter: sg,
@@ -63,9 +67,14 @@
 		fates.update((v) => {
 			const newVal = v + value;
 			localBalance.set(itemToExchange, newVal);
+			setBalance($bannerList, { value: value, currency: 'fates' }, "purchase");
 			return newVal;
 		});
-
+		if (currency === 'stardust') {
+			exchanges += 1;
+			storageLocal.set('exchanges', exchanges);
+			exchange.update((v) => exchanges);
+		}
 		openObtained([{ qty: value, item: itemToExchange }]);
 	};
 

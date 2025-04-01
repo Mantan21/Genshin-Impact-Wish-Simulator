@@ -55,7 +55,8 @@ export const factoryReset = async ({ clearCache = false, keepSetting = false } =
 		return;
 	}
 
-	
+	activeBanner.set(0);
+
 	// Remove all Settings
 	const locale = localConfig.get('locale');
 	const exportData = storageLocal.get('export');
@@ -89,7 +90,7 @@ export const factoryReset = async ({ clearCache = false, keepSetting = false } =
 	localConfig.set('storageVersion', storageVersion);
 	localConfig.set('version', `${version}-${wishPhase}`);
 	preloadVersion.set({ patch: version, phase: wishPhase });
-	activeBanner.set(0);
+	
 
 	// Setting
 	autoskip.set(false);
