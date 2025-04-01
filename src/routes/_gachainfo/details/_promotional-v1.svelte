@@ -3,12 +3,34 @@
 	import { getName } from '$lib/helpers/nameText';
 	import { assets, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { playSfx } from '$lib/helpers/audio/audio';
+
+	import ModalDetail from './_modal-character-detail.svelte';
+
+	import characters from '$lib/data/characters.json';
+	import { setContext } from 'svelte';
 
 	export let chronicledList = [];
 	export let data = {};
 	let { weapons = [], character = {}, bannerType = null, rateup = [] } = data;
 	const isWP = bannerType === 'weapon-event';
+
+	let showDetailModal = false
+    const closeModal = () => {
+		showDetailModal = false;
+        playSfx('close');
+    };
+	setContext('closeModal', closeModal)
+
+	const openModal = () => {
+		showDetailModal = true;
+		playSfx();
+	};
 </script>
+
+{#if showDetailModal}
+	<ModalDetail character={character.name} charion={character.vision}/>
+{/if}
 
 {#if bannerType.match('event')}
 	<h2><span> {$t('details.increasedRate')} </span> <span class="line" /></h2>
@@ -25,7 +47,7 @@
 	</h3>
 
 	{#if bannerType === 'character-event'}
-		<div class="character-card star5">
+		<div class="character-card star5" on:click={openModal} style="--bright:0.8">
 			<picture style="background-image:url('{$assets['5star-bg.webp']}')">
 				<i class="gi-{character.vision} {character.vision} icon-gradient filter-drop" />
 				{#if $isCustomBanner}
@@ -220,6 +242,10 @@
 		border: 0.1rem solid #6d6a63;
 		width: calc(100% - 0.8rem);
 		height: calc(100% - 0.8rem);
+	}
+
+	.character-card:hover {
+		filter: brightness(var(--bright,1.0));
 	}
 
 	:global(.mobile) .character-card {

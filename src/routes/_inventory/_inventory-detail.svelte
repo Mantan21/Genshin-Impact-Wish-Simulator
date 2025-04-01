@@ -10,8 +10,12 @@
 
 	// Component
 	import ScreenshotShare from '../_index/ScreenshotShare.svelte';
+	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import OutfitToggle from './_outfit-toggle.svelte';
 	import SplashArt from '../_custom-banner/SplashArtEditor/SplashArt.svelte';
+
+	// Modal
+	import ModalDetail from './_modal-inventory-detail.svelte';
 
 	export let itemID;
 	export let useOutfit = false;
@@ -33,6 +37,18 @@
 		hideInfo = !hideInfo;
 		playSfx();
 	});
+
+	let showModal = false
+    const closeModal = () => {
+        playSfx('close');
+        showModal = false;
+    };
+    setContext('closeModal', closeModal);
+
+	const openModal = () => {
+		showModal = true;
+		playSfx();
+	};
 
 	const previewOutfit = (outfit, position) => {
 		outfitName = outfit;
@@ -85,6 +101,10 @@
 	onDestroy(() => hotkeys.deleteScope('itemdetail', 'inventory'));
 </script>
 
+{#if showModal}
+<ModalDetail character={name} charion={vision} charpon={weaponType} outfit={outfitName}/>
+{/if}
+
 <SplashArt
 	character={name}
 	artURL={getArtURL(outfitName)}
@@ -104,9 +124,13 @@
 {#if !hideInfo}
 	<div transition:fade={{ duration: 250 }} class="handler-container">
 		<div class="wrapper">
-			{#if type === 'character'}
-				<OutfitToggle charName={name} />
-			{/if}
+			<div class="boomboom">
+				{#if type === 'character' && rarity === 5}
+				<button class="damage" on:click={openModal} style="--bg:url({$assets['button.webp']})">
+					{$t('details.text')}
+				</button>
+				{/if}
+			</div>
 
 			{#if qty > 0}
 				<div class="detail">
@@ -161,6 +185,32 @@
 		color: #fff;
 		font-size: 0.8rem;
 		z-index: 999;
+	}
+
+	.boomboom {
+		position: absolute;
+		left: 5%;
+		top: 2%;
+	}
+
+	.damage {
+		background-image: var(--bg);
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 200px;
+		aspect-ratio: 355/88;
+		margin: 0 5px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		color: rgba(0, 0, 0, 0.65);
+		transition: all 0.2s;
+	}
+
+	.damage:hover {
+		filter: brightness(0.7);
 	}
 
 	.detail {

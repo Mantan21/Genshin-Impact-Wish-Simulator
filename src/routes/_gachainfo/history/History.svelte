@@ -82,7 +82,6 @@
 				<Filter {filterBy} v2 />
 			</div>
 			<List v2 {banner} filter={filterBy} page={{ activepage, itemPerPage }} />
-			<Iklan type="banner" />
 		</div>
 	</div>
 	<Legends {banner} v2 />
