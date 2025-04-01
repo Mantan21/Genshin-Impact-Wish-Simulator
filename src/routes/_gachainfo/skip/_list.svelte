@@ -2,12 +2,13 @@
 	console.log("Component is loading!");
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
+	import { fade } from 'svelte/transition';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import axios from 'axios';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
-	import characters from '$lib/data/characters.json';
+	import bosses from '$lib/data/boss.json';
 	import HealthBar from '$lib/helpers/health-bar.js';
 	import DieBar from '$lib/helpers/damage.js';
 
@@ -16,17 +17,34 @@
 	let banner;
 
 	let processedUpdates = [...updates.data].reverse();
+	let bossSeq = [...bosses.data].reverse();
+
+	let image;
+	let name;
 
 	for(let uppy of processedUpdates){
 		console.log("Checking update:", uppy.patch, "against version:", version);
 
     	if (Number(uppy.patch) === Number(version)) {
-			console.log(uppy.banner)
+			console.log(uppy.banner);
 			banner = uppy.banner;
         	console.log("Match found! Banner set to:", banner);
         	break;
     	}
 	}
+
+	for(let boss of bossSeq){
+		console.log("Checking update:", boss.patch, "against version:", version);
+
+    	if (Number(boss.patch) === Number(version)) {
+			name = boss.name;
+			image = boss.path;
+        	console.log("Match found! Banner set to:", boss.banner);
+        	break;
+    	}
+	}
+
+	let eleDMG = ['#7BB42D','#E2311D','#D376F0','#1C72FD','#33CCB3','#98C8E8','#CFA726'];
 
 	let canvas;
 	let health = 300;
@@ -35,8 +53,11 @@
 	let healthBar;
 	let boom;
 	let bossFought = false;
+	let bossFighting = false;
 	let bossDefeated = false;
 	const sendBoss = createEventDispatcher();
+
+	let color = '#ffffff';
 
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
@@ -91,8 +112,10 @@
 	};
 
 	async function dealDamage() {
+		color = eleDMG[Math.floor(Math.random()*eleDMG.length)];
 		boom = await DieBar();
 		console.log("Boom sent:", boom);
+		bossFighting = true;
     	health -= boom;
 
 		if(health <= 0){
@@ -126,12 +149,15 @@
 
 <div class="list">
 	<div class="center-container">
-		<img src="videos/dvalin_boss.webp" alt="boss" class="background-gif"/>
-		<p class=overlay-name>Stormterror - Dvalin</p>
+		<img src={image} alt="boss" class="background-gif"/>
+		<p class=overlay-name>{name}</p>
 		<canvas bind:this={canvas} width={640} height={640} class="overlay-canvas">
 		</canvas>
 		{#if !bossFought}
-			<button class="overlay-button" on:click={dealDamage}>Fight</button>
+			<button class="overlay-button" on:click={dealDamage} style="--bg:url({$assets['button-fight.webp']})"></button>
+		{/if}
+		{#if bossFighting}
+			<p class=overlay-damage style="--boom:{color}">{boom}</p>
 		{/if}
 	</div>
 </div>
@@ -140,7 +166,7 @@
 	.center-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: top center;
     }
 
 	canvas {
@@ -152,10 +178,13 @@
 
 	.background-gif {
 		align-items: center;
-		width: 95%;
-		height: auto;
+		height: 380px;
+		width: 1000px;
+		top: 0;
+		object-fit: cover;
+		object-position: top center;
+		overflow: hidden;
 		display: block;
-		
 	}
 
 	.overlay-canvas {
@@ -170,29 +199,61 @@
 	.overlay-name {
 		position: absolute;
 		top: 0.5%;
-        left: 40%;
+		text-align: center;
+		color: white;
+		width: 100%;
+		height: 100%;
+		top: 2px;
+		pointer-events: none;
+	}
+
+	.overlay-damage {
+		position: absolute;
+		top: 12%;
+		text-align: center;
 		color: white;
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
+		animation:boomOut 0.5s 1;
+		animation-duration: 2s;
+	}
+
+	@keyframes boomOut {
+	0%   {font-size: 70px; left:0px; top:20%; opacity :0; color: var(--boom,white)}
+	5%  {font-size: 100px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	20%  {font-size: 100px; left:0px; top:15%; opacity :1; color: var(--boom,white)}
+	25%	{opacity :0.5; color: var(--boom,white)}
+	70% {font-size: 70px; left:0px; top:80%; opacity :0;}
+	100% {font-size: 0px; left:0px; top:80%; opacity :0;}
 	}
 
 	.overlay-button {
+        background-image: var(--bg);
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
         position: absolute;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		aspect-ratio: unset;
+		clip-path: circle(50%);
+		margin: 0 1px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba(162, 128, 82, 0.7);
-        color: white;
-        padding: 10px 20px;
+        color: #a49a90;
+        padding: 1px 1px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
+		opacity: 0.7;
     }
 
     .overlay-button:hover {
-        background-color: rgba(162, 128, 82, 0.9);
+        opacity: 0.9;
     }
 
 	.v2 canvas {
