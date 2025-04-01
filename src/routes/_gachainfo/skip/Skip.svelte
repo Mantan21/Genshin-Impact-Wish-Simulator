@@ -1,6 +1,5 @@
 <script>
     import { getContext, setContext } from 'svelte';
-	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 	import { afterUpdate } from 'svelte';
 	import OverlayScrollbars from 'overlayscrollbars';
@@ -12,29 +11,17 @@
 		activeVersion,
 		primogem,
 		intertwined,
-		genesis,
-		isCustomBanner,
-		customData
+		genesis
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-	import { getBannerName } from '$lib/helpers/nameText';
-	import {
-		get3StarItem,
-		get4StarItem,
-		get5StarItem,
-		getCharDetails,
-		getDetails,
-		getWpDetails,
-		regionElement
-	} from '$lib/helpers/gacha/itemdrop-base';
     import updates from '$lib/data/updates.json';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import { setBalance } from '$lib/helpers/gacha/historyUtils';
+	import { userCurrencies } from '$lib/helpers/currencies';
+	import { user } from '$lib/store/authStore.js';
 
 	import List from './_list.svelte';
-	import Description from './_description.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
-	import Title from '../_title.svelte';
 
     import ButtonModal from '$lib/components/ButtonModal.svelte';
 
@@ -80,6 +67,7 @@
 		navigate('index');
 		if (activePhase === phase && version === patch) return;
 
+		userCurrencies.currReplenish($user?.group);
 		storageLocal.set('exchanges', 0); // reset exchanges storage
 		storageLocal.set('expenses', 0); // reset gacha storage
 		// Select a banner

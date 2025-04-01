@@ -123,7 +123,6 @@
 	const loadBanner = async (patchPhase) => {
 		const initBanner = await initializeBanner(patchPhase);
 		({ status } = initBanner || {});
-		userCurrencies.currReplenish($user?.group);
 		bannerLoaded();
 	};
 

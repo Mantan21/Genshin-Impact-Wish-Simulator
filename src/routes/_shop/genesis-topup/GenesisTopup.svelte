@@ -97,7 +97,6 @@
         }
 		userCurrencies.getTotalExp(data.price);
 		setBalance($bannerList, {}, "topexp");
-		console.log('data.price', data.price);
     };
     setContext('confirmBuy', confirmBuy);
 </script>

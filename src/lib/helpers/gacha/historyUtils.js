@@ -42,17 +42,13 @@ export function getPulls(banner){
 
 export function setSBalance(bannerName, primogem, intertwined) {
 	if(bannerName && !startBalance.get(bannerName)) {
-		console.log('expenses', bannerName, primogem, intertwined);
 		startBalance.set(bannerName, primogem, intertwined);
-		console.log('get balance', startBalance.get(bannerName));
 	}		
 }
 
 export function setEBalance(bannerName, primogem, intertwined, genesis) {
 	if(bannerName && !endBalance.get(bannerName)) {
-		console.log('bannerName', bannerName);
 		endBalance.set(bannerName, primogem, intertwined, genesis);
-		console.log('endBalance', endBalance.get(bannerName));
 	}		
 	
 }
@@ -65,7 +61,6 @@ export function setBalance(banners, currencies, type) {
 			if (type === 'start') {
 				setSBalance(bannerName, currencies.primos, currencies.fates);
 			}
-
 			if (type === 'end') {
 				setEBalance(bannerName, currencies.primos, currencies.fates, currencies.crysts);
 			}	

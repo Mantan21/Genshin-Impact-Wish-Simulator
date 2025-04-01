@@ -37,16 +37,12 @@
 	import BannerButton from './_banner-button.svelte';
 	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 	
-
 	export let bannerType = '';
-	//const { filterHistory } = HistoryManager;
-	console.log(storageLocal.get('startBalance'));
-	console.log($primogem, $intertwined, $genesis);
 	$: isEvent = bannerType.match(/(event|chronicled)/);
 	$: balance = isEvent ? $intertwined : $acquaint;
 	$: unlimitedWish = $wishAmount === 'unlimited';
 	$: setBalance($bannerList, { primos: $primogem, fates: $intertwined }, "start");  
-	
+
 
 	const dataReset = async () => {
 		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");

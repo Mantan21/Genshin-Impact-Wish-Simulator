@@ -67,15 +67,12 @@ export const purchases = {
 		return balance[bannerName][currency] || 0;
 	},
 	set(bannerName, value, currency) {
-		console.log('value', value);
 		const balance = storageLocal.get('purchases') || {};
 		if (bannerName){
 			if (!balance[bannerName]) balance[bannerName] = {};
 			if (!balance[bannerName][currency]) balance[bannerName][currency] = 0;
 			balance[bannerName][currency] += value;
 		} 
-
-		console.log('purchases', balance);
 		storageLocal.set('purchases', balance);
 	}
 };
@@ -113,7 +110,6 @@ export const topExp = {
 	set(bannerName) {
 		const balance = storageLocal.get('topExp') || {};
 		if (bannerName) balance[bannerName] = parseFloat(storageLocal.get('expenses')) || 0;
-		console.log("topExp", balance);
 		storageLocal.set('topExp', balance);
 	}
 }
@@ -130,15 +126,12 @@ export const topUp = {
 	},
 	set(bannerName, price) {
 		price = price.replace(/[^0-9.]/g, '');
-		console.log('price', price);
 		const balance = storageLocal.get('topUp') || {};
 		if (bannerName && !balance[bannerName]) {
 			balance[bannerName] = {
 				"0.99": 0, "4.99": 0, "14.99": 0, "29.99": 0, "49.99": 0, "99.99": 0	
 			};
 		} if (bannerName && balance[bannerName].hasOwnProperty(price)) balance[bannerName][price] += 1;
-		
-		console.log("topup dict", balance);
 		storageLocal.set('topUp', balance);
 	}
 }

@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 import { initialAmount, version, wishPhase } from '$lib/data/wish-setup.json';
+import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+import { browser } from '$app/environment';
 
 const { fates, genesis: igen, primogem: ipri } = initialAmount;
 
@@ -34,10 +36,24 @@ export const isFatepointSystem = writable(false); // Weapon
 export const course = writable({ selected: null, point: 0 });
 export const chronicledCourse = writable({ selected: null, type: null, point: 0 });
 
+function persistStore(key, initVal) {
+    if (!browser) {
+        // Server-side: Just return a normal writable store
+        return writable(initVal);
+    }
+    
+    const storedVal = JSON.stringify(storageLocal.get(key));
+    const store = writable(storedVal != '{}' ? JSON.parse(storedVal) : initVal);
+
+    store.subscribe((val) => {
+        storageLocal.set(key, val);
+    });
+    return store;
+}
 // Game Currencies
 export const genesis = writable(igen);
-export const primogem = writable(ipri);
-export const acquaint = writable(fates);
+export const primogem = persistStore('primogem', ipri);
+export const acquaint = persistStore('acquaint', fates  );
 export const intertwined = writable(fates);
 export const stardust = writable(0);
 export const starglitter = writable(0);
