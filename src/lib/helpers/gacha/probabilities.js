@@ -5,7 +5,7 @@ export const rates = ({
 	currentPity = 0,
 	maxPity = 90,
 	baseRate = 0.6,
-	rateIncreasedAt = 74
+	rateIncreasedAt = 72
 } = {}) => {
 	if (baseRate <= 0 && currentPity < maxPity) return 0;
 	if (currentPity < rateIncreasedAt) return baseRate;

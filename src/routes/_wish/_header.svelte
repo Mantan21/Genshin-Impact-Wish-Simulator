@@ -82,6 +82,10 @@
 		playSfx('changebanner');
 	};
 
+	const statusBoss = async (bossStatus) => {
+		await axios.post("http://localhost:3001/api/boss", { bossStatus }, { withCredentials: true });
+	} 
+
 	const chatToggle = getContext('chatToggle');
 	// const navigate = getContext('navigate');
 

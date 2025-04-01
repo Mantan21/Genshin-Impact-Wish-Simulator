@@ -1,23 +1,19 @@
 <script>
 	import { t, json, locale } from 'svelte-i18n';
-	import { preloadVersion, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+	import { customData, isCustomBanner } from '$lib/store/app-stores';
 	import { highlightBannerName } from '$lib/helpers/nameText';
 	import { regionElement } from '$lib/helpers/gacha/itemdrop-base';
-	import updates from '$lib/data/updates.json';
 
 	export let tplVersion = 'v1';
-	export let bannerType;
-	export let bannerName = '';
-	export let rateup;
-	export let weapons;
-	export let character;
-	export let drop5star = [];
-	export let region = null;
-
-	$: isSpecial = $locale.toLocaleLowerCase().match(/ja|cn/);
 
 </script>
 
+<div class="description" class:v2={tplVersion === 'v2'}>
+	<br>
+	<h1>Thank you for playing!</h1>
+	<br>
+	<p>You may get your snacks outside after logging out and filling up the survey form.</p>
+</div>
 
 <style>
 	p :global(span):not([class*='-flat']) {

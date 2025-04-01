@@ -92,7 +92,6 @@ app.post("/api/logout", async (req, res) => {
   }
 });
 
-
 // Session Route
 app.get("/api/session", (req, res) => {
   const token = req.cookies.token;
@@ -112,7 +111,6 @@ app.get("/api/session", (req, res) => {
     res.json(user);
   });
 });
-
 
 // Start Server
 app.listen(port, () => {

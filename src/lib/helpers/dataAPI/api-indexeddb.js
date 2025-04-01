@@ -100,7 +100,8 @@ export const HistoryManager = {
 								fates: purchases.get(bannerName, "fates"),
 								primogems: purchases.get(bannerName, "primogems")
 							}
-						}
+						},
+						defeat: getBoss(bannerName)
 					}];
 			})
 		);
@@ -145,7 +146,7 @@ export const HistoryManager = {
 
 	async getByName(name) {
 		return (await IndexedDB).getAllFromIndex('history', 'name', name);
-	},
+	},	
 
 	async clearHistory(banner) {
 		try {
@@ -185,6 +186,11 @@ export const HistoryManager = {
 		const remove = await idb.delete('history', id);
 		return remove;
 	}
+};
+
+async function getBoss(banner) {
+	const boss = storageLocal.get('boss');
+	return boss[banner] !== undefined ? boss[banner] : false;;
 };
 
 // Assets Manager

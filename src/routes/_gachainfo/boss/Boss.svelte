@@ -1,31 +1,30 @@
 <script>
-    import { getContext, setContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { afterUpdate } from 'svelte';
+	import axios from 'axios';
+	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
+	import {  user, isAuthenticated  } from "$lib/store/authStore.js";
 	import OverlayScrollbars from 'overlayscrollbars';
 	import {
 		activeBanner,
 		bannerList,
 		assets,
-        preloadVersion,
 		activeVersion,
-		primogem,
-		intertwined,
-		genesis
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
-    import updates from '$lib/data/updates.json';
-	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
-	import { setBalance } from '$lib/helpers/gacha/historyUtils';
-	import { userCurrencies } from '$lib/helpers/currencies';
-	import { user } from '$lib/store/authStore.js';
+	import { generateFileString } from '$lib/helpers/dataAPI/export-import';
 
 	import List from './_list.svelte';
-	import PromotionalV2 from './_promotional-v2.svelte';
-
-    import ButtonModal from '$lib/components/ButtonModal.svelte';
+	import Description from './_description.svelte';
+	import Title from '../_title.svelte';
+	import updates from '$lib/data/updates.json';
+	import ButtonModal from '$lib/components/ButtonModal.svelte';
 
 	export let tplVersion = 'v2';
+
+	let bossFought = false;
+
+	console.log("Here")
 
 	let {
 		bannerName,
@@ -38,42 +37,6 @@
 		featured = [],
 		rateup = []
 	} = $bannerList[$activeBanner];
-	
-	// Get Droplist
-	const { patch: version, phase: activePhase } = $activeVersion;
-
-    let processedUpdates = [...updates.data].reverse();
-
-    let latestIndex = processedUpdates.findIndex(item => Number(item.patch) === Number(version));
-    let newPatchIndex = latestIndex + 1;
-
-    let patch = processedUpdates[newPatchIndex]?.patch ?? version;
-
-    console.log("Patch:", patch)
-
-    if (patch !== undefined || patch == Number(patch)){
-        patch = patch.toFixed(1);
-    }
-
-    let phase = 1;
-	let bossFought = false;
-
-    const navigate = getContext('navigate');
-	const skipBanner = () => {
-        playSfx();
-		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
-		// If select the same banner with the active one, change nothing just back to index
-        console.log("Skipping to:", patch, phase); // Debug log
-		const { patch: version, phase: activePhase } = $activeVersion;
-		navigate('index');
-		if (activePhase === phase && version === patch) return;
-
-		userCurrencies.currReplenish($user?.group);
-		storageLocal.set('exchanges', 0); // reset exchanges storage
-		storageLocal.set('expenses', 0); // reset gacha storage
-		// Select a banner
-		preloadVersion.set({ patch, phase });
-	};
 
 	const noPromo = banner.match(/(standard|beginner)/);
 	let activeContent = noPromo ? 2 : 1;
@@ -93,21 +56,38 @@
 	function wasFought(event){
 		bossFought = event.detail;
 	}
+
+	const dataReset = async () => {
+		
+		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
+
+		let banner_data = await generateFileString();
+
+		await factoryReset({ clearCache: true, keepSetting: false });
+		// Logout the user
+		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
+		
+		// Reset session data
+		user.set(null);
+		isAuthenticated.set(false);
+		banner_data = null;
+
+		location.reload(); // Refresh the page to apply the reset
+	};
+
 </script>
 
 <svelte:head>
 	<title>
-		{$t('New Character')}
+		{$t('End of Session')}
 	</title>
 </svelte:head>
 
 {#if tplVersion === 'v2'}
-<br>
+	<br>
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		<div class="nav-item" class:active={activeContent === 1}>
-			<button on:click={() => select(1)}>
-				{$t('skip.promotional')}
-			</button>
+			<button on:click={() => select(1)}> {$t("End of Session Instructions")} </button>
 		</div>
 		<div class="nav-item" class:active={activeContent === 2}>
 			<button on:click={() => select(2)}> {$t('skip.boss')} </button>
@@ -117,26 +97,23 @@
 	<div class="content" bind:this={scrollable}>
 		<div class="wrapper">
 			{#if activeContent === 1}
-				<PromotionalV2
+				<Description
 				/>
 			{:else if activeContent === 2}
-				<List on:didFight={wasFought}/>
+				<List on:didFight={wasFought} />
 			{/if}
 		</div>
 	</div>
 {:else}
-	<PromotionalV2 />
+	<Description	/>
+	<br />
 	<List on:didFight={wasFought}/>
 {/if}
 
 <br>
 <div align="center">
-	<div class="tooltip-wrapper">
-    	{#each [...updates.data].reverse() as { patch }, i (i)}
-	    	{#if i === newPatchIndex}
-            	<ButtonModal on:click={() => skipBanner( updates.patch, 1 )} disabled={!bossFought}>Skip</ButtonModal>
-	    	{/if}
-    	{/each}
+	<div class="tooltip-wrapper"> 	
+        <ButtonModal on:click={dataReset} redirect disabled={!bossFought}>Log Out</ButtonModal>
 		{#if !bossFought}
 		<span class="tooltip">You need to fight the boss first!</span>
 		{/if}
@@ -180,11 +157,6 @@
 	.nav-item.active button {
 		opacity: 1;
 	}
-
-	button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
 
 	.content {
 		height: 100%;

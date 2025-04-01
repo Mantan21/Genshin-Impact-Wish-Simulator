@@ -3,7 +3,6 @@
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
-	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 	import axios from 'axios';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import updates from '$lib/data/updates.json';
@@ -12,6 +11,16 @@
 	import DieBar from '$lib/helpers/damage.js';
 
 	const { patch: version} = $activeVersion;
+
+	let canvas;
+	let health = 3000;
+	const healthBarWidth = 480;
+	const healthBarHeight = 10;
+	let healthBar;
+	let boom;
+	let bossFought = false;
+	let bossDefeated = false;
+	const sendBoss = createEventDispatcher();
 
 	let banner;
 
@@ -27,16 +36,6 @@
         	break;
     	}
 	}
-
-	let canvas;
-	let health = 300;
-	const healthBarWidth = 480;
-	const healthBarHeight = 10;
-	let healthBar;
-	let boom;
-	let bossFought = false;
-	let bossDefeated = false;
-	const sendBoss = createEventDispatcher();
 
 	function healthier(){ //HP Scaling
 		let mult = Number(version);
@@ -122,6 +121,8 @@
 		console.log("✅ Cleaning up!");
 		healthBar = null; // Ensure it runs after mount
 	});
+
+
 </script>
 
 <div class="list">

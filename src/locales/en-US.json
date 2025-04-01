@@ -550,6 +550,11 @@
 		"owned": "Owned",
 		"showAllOption": "Show All {item}s"
 	},
+	"boss": {
+		"title": "Boss Fight",
+		"text": "Boss",
+		"resetButton": "Reset"
+	},
 	"menu": {
 		"no": "No",
 		"yes": "Yes",

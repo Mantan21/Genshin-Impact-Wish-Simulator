@@ -17,10 +17,9 @@
 	},
 	"probabilityRates": {
 		"character-event": {
-			"baseRate5": 0.006,
+			"baseRate5": 0.6,
 			"max5": 90,
-			"bonusRate5": 0.06,
-			"hard5": 60,
+			"hard5": 72,
 			"baseRate4": 5.1,
 			"max4": 10,
 			"hard4": 9,

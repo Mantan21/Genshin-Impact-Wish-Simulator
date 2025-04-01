@@ -153,7 +153,7 @@
 
 	<OptionMenu name="currency" showOption={optionToShow === 'currency'}> 
 		{$t('menu.currency')} 
-	</OptionMenu> 
+	</OptionMenu>
 
 	<OptionMenu 
 		name="wishAmount" 
@@ -175,7 +175,7 @@
 		{/if}
 	{/each}
 
-<!--	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu> -->
+	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu>
 
 	<OptionMenu
 		showOption={optionToShow === 'audio'}
