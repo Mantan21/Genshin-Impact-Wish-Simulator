@@ -18,8 +18,7 @@
 
 	const pricelist = {
 		starglitter: { price: 5, rarity: 5 },
-		stardust: { price: 125, rarity: 4 },
-		primogem: { price: 160, rarity: 5 }
+		stardust: { price: 125, rarity: 4 }
 	};
 
 	const openExchangeModal = getContext('openExchangeModal');
