@@ -71,7 +71,7 @@
 			return newVal;
 		});
 		if (currency === 'stardust') {
-			exchanges += 1;
+			exchanges += value*price;
 			storageLocal.set('exchanges', exchanges);
 			exchange.update((v) => exchanges);
 		}
