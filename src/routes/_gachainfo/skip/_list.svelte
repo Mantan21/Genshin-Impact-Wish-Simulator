@@ -1,8 +1,8 @@
 <script>
-	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
+	import { onDestroy, onMount, tick, createEventDispatcher, getContext } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
-	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
+	import { assets, activeVersion, customData, isCustomBanner, primogem } from '$lib/store/app-stores';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
 
 	import updates from '$lib/data/updates.json';
@@ -11,6 +11,8 @@
 	import DieBar from '$lib/helpers/damage.js';
 
 	const { patch: version} = $activeVersion;
+
+	const openObtained = getContext('openObtained');
 
 	let banner;
 
@@ -107,7 +109,15 @@
 		if(health <= 0){
 			health = 0;
 			bossDefeated = true;
-		}
+
+			let boss = storageLocal.get('boss')
+			for(let ban of banner){
+				if(!boss[ban]) {
+					openObtained([{ item: 'primogem', qty: 800 }]);
+					primogem.update((n) => n + 800)
+				}	
+			}
+		} 
 
 		bossFought = true;
 
@@ -121,6 +131,8 @@
 			storageLocal.set('boss', boss);
 		}
 	}
+
+
 
 	onMount(setupCanvas);
 

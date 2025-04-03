@@ -4,7 +4,6 @@ import { storageLocal, startBalance, endBalance, topUp, topExp, purchases } from
 import { genesis } from '$lib/store/app-stores';
 
 
-
 const version = 5;
 const DBName = 'WishSimulator';
 
