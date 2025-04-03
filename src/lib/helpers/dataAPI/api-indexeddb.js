@@ -188,7 +188,7 @@ export const HistoryManager = {
 	}
 };
 
-async function getBoss(banner) {
+function getBoss(banner) {
 	const boss = storageLocal.get('boss');
 	return boss[banner] !== undefined ? boss[banner] : false;;
 };

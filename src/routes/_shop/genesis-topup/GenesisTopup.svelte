@@ -148,11 +148,11 @@
 	{/each}
 </ShopGroup>
 
-<CheckBox checked={initialTopup} on:change={initialCheck}>
+<!-- <CheckBox checked={initialTopup} on:change={initialCheck}>
 	<span style="color: var(--tertiary-color);">
 		{$t('shop.initialBonus')}
 	</span>
-</CheckBox>
+</CheckBox> -->
 
 <style>
 	button {

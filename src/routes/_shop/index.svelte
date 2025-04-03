@@ -142,8 +142,8 @@
 					<Recomended />
 
 					<!-- Characters Outfits -->
-				{:else if activeShop === 'outfits'}
-					<CharacterOutfits />
+				<!-- {:else if activeShop === 'outfits'}
+					<CharacterOutfits /> -->
 
 					<!-- Donate -->
 				{:else if activeShop === 'donate'}
