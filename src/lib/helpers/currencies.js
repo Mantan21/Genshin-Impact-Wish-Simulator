@@ -64,8 +64,5 @@ export const userCurrencies = {
 			intertwined.update((n) => n + 4);
 			primogem.update((n) => n + 9727);
 		}
-		const boss_fight = storageLocal.get('boss') || 0;
-		if (boss_fight[banner]) primogem.update((n) => n + 800);
-		console.log("boss fight", boss_fight[banner], boss_fight);
 	}
 };
