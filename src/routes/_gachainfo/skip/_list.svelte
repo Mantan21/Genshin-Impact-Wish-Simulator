@@ -1,12 +1,10 @@
 <script>
-	console.log("Component is loading!");
 	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 	import { assets, activeVersion, customData, isCustomBanner } from '$lib/store/app-stores';
 	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
-	import axios from 'axios';
-	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
+
 	import updates from '$lib/data/updates.json';
 	import bosses from '$lib/data/boss.json';
 	import HealthBar from '$lib/helpers/health-bar.js';
@@ -23,23 +21,16 @@
 	let name;
 
 	for(let uppy of processedUpdates){
-		console.log("Checking update:", uppy.patch, "against version:", version);
-
     	if (Number(uppy.patch) === Number(version)) {
-			console.log(uppy.banner);
 			banner = uppy.banner;
-        	console.log("Match found! Banner set to:", banner);
         	break;
     	}
 	}
 
 	for(let boss of bossSeq){
-		console.log("Checking update:", boss.patch, "against version:", version);
-
     	if (Number(boss.patch) === Number(version)) {
 			name = boss.name;
 			image = boss.path;
-        	console.log("Match found! Banner set to:", boss.banner);
         	break;
     	}
 	}
@@ -59,14 +50,11 @@
 
 	let color = '#ffffff';
 
-	function healthier(){ //HP Scaling
+	function healthier(){ // HP Scaling
 		let mult = Number(version);
 
 		if(mult > 1){
 			health = health * (10 * mult);
-			
-			console.log("mult: ",mult);
-			console.log("health: ",health);
 		}
 
 		return health;
@@ -75,7 +63,6 @@
 	
 	async function setupCanvas() {
 		await tick();
-		console.log("onMount() is running!");
     	if (!canvas) {
     		console.error("Canvas not found!");
 			return;
@@ -114,7 +101,6 @@
 	async function dealDamage() {
 		color = eleDMG[Math.floor(Math.random()*eleDMG.length)];
 		boom = await DieBar();
-		console.log("Boom sent:", boom);
 		bossFighting = true;
     	health -= boom;
 
@@ -127,23 +113,19 @@
 
 		sendBoss("didFight", bossFought);
 
-		console.log("health:",health);
 		healthBar.updateHealth(health);
 
 		let boss = storageLocal.get('boss')
 		for(let ban of banner){
 			boss[ban] = bossDefeated;
-			console.log(boss, ban, boss[ban])
 			storageLocal.set('boss', boss);
 		}
-		console.log("After setting boss:", storageLocal.get("boss"));
 	}
 
 	onMount(setupCanvas);
 
 	onDestroy(() => {
-		console.log("✅ Cleaning up!");
-		healthBar = null; // Ensure it runs after mount
+		healthBar = null;
 	});
 </script>
 
