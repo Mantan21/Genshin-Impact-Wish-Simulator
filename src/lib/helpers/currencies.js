@@ -58,11 +58,14 @@ export const userCurrencies = {
 		} 
 	},
 	
-	currReplenish(group) {
-		if (group === 'f2p') primogem.update((n) => n + 6047);
-		if (group === 'dolphin' || group === 'whale') {
+	currReplenish(group, banner) {
+		if (group === 'f2p') primogem.update((n) => n + 6047)
+		else {
 			intertwined.update((n) => n + 4);
 			primogem.update((n) => n + 9727);
 		}
+		const boss_fight = storageLocal.get('boss') || 0;
+		if (boss_fight[banner]) primogem.update((n) => n + 800);
+		console.log("boss fight", boss_fight[banner], boss_fight);
 	}
 };

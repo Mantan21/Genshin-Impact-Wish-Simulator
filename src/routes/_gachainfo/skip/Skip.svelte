@@ -68,7 +68,7 @@
 		navigate('index');
 		if (activePhase === phase && version === patch) return;
 
-		userCurrencies.currReplenish($user?.group);
+		userCurrencies.currReplenish($user?.group, bannerName);
 		storageLocal.set('exchanges', 0); // reset exchanges storage
 		storageLocal.set('expenses', 0); // reset gacha storage
 		// Select a banner
