@@ -11,8 +11,6 @@ async function CompDMG(){
     let consINV = [];
     
     inv = await HistoryManager.getAllHistories()
-
-    console.log("inv: ",inv);
     
     for (let cop of inv) {
         if (cop.rarity == 5){
@@ -25,8 +23,6 @@ async function CompDMG(){
 
     let boom = 0; //total damage
     let mulSPT = 1; //support multipliers
-
-    console.log("Boom init: ",boom);
 
     for (let peep of consINV){
         for (let char of charDPS){
@@ -41,8 +37,6 @@ async function CompDMG(){
                     charDMG = char.c6_dmg} //c6 multiplier
                 
                 boom = boom + charDMG;
-
-                console.log("Boom dps: ",boom);
             
             }            
         }
@@ -52,8 +46,6 @@ async function CompDMG(){
 
             if (char.name == peep.name){
                 boom = boom + charDMG;
-
-                console.log(boom)
         
             if (mulSPT == 1){
                 mulSPT = char.b_mult;}
@@ -65,21 +57,12 @@ async function CompDMG(){
         
             if (peep.count >= 7){
                 mulSPT = mulSPT + char.c6_mult;}
-
-            console.log("Boom spt: ",boom);
         
             } 
         }
     }
 
-    console.log("MulSpt: ", mulSPT);
-
     boom = boom * mulSPT;
-
-
-    console.log(boom);
-
-    console.log("Boom total:", boom);
 
     return boom;
 }
@@ -89,6 +72,6 @@ export default async function DieBar(){
     let boom;
 
     boom = await CompDMG();
-    console.log("Boom from:", boom);
+
     return boom;
 }
