@@ -85,7 +85,6 @@
     const confirmBuy = ({ qty, bonus }) => {
         showPaymentModal = false;
         playSfx();
-		console.log('bannerList', topUp.get($bannerList[$activeBanner].bannerName));
 		setBalance($bannerList, { price: data.price }, "topup");
 
         if (qty === bonus) {

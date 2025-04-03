@@ -47,8 +47,6 @@
 	const dataReset = async () => {
 		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
 		let banner_data = await generateFileString();
-
-		console.log("endBalance data", storageLocal.get('endBalance'));
 		await factoryReset({ clearCache: true, keepSetting: false });
 		// Logout the user
 		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
