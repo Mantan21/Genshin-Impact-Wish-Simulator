@@ -22,7 +22,7 @@
 	};
 </script>
 
-<div class="selectType" class:v2>
+<!-- <div class="selectType" class:v2>
 	<div style="--bg:url({$assets['history-select-bg.webp']})" class="wish-type" class:v2>
 		<span> {$t('history.selectWish')} </span>
 		<div class="select-box">
@@ -53,7 +53,7 @@
 			<Reset {banner} v2 />
 		</div>
 	{/if}
-</div>
+</div> -->
 
 <style>
 	.selectType {

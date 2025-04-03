@@ -15,6 +15,11 @@
 		<span> {$t('history.title')}</span>
 	</h1>
 
+{:else if type === 'banner'}
+	<h1 class="v2">
+		<img src={$assets['brand.png']} alt="Icon" crossorigin="anonymous" />
+		<span> {$t('Version Update')}</span>
+	</h1>
 	<!-- Details Page -->
 {:else}
 	{@const divclass = type === 'standard' ? 'wanderlust' : vision}
