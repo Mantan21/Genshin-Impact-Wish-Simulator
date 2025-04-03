@@ -38,7 +38,7 @@
 </script>
 
 <NavlinkTop>
-	{#each ['starglitter', 'stardust'] as val}
+	{#each ['starglitter', 'stardust', 'primogem'] as val}
 		<NavlinkTopButton on:click={handlePaimonClick} name={val} active={activeCurrency === val}>
 			{$t(`shop.exchange.${val}`)}
 		</NavlinkTopButton>
@@ -49,7 +49,7 @@
 	{#each ['intertwined'] as fate, i}
 		<ShopGroupItem>
 			<button
-				disabled={activeCurrency === 'stardust' && $exchange >= 5}
+				disabled={activeCurrency === 'stardust' && $exchange >= 625}
 				on:click={() => selectItem(fate)}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
