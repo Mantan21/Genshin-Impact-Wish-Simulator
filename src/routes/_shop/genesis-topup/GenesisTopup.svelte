@@ -85,7 +85,6 @@
     const confirmBuy = ({ qty, bonus }) => {
         showPaymentModal = false;
         playSfx();
-		console.log('bannerList', topUp.get($bannerList[$activeBanner].bannerName));
 		setBalance($bannerList, { price: data.price }, "topup");
 
         if (qty === bonus) {
@@ -148,11 +147,11 @@
 	{/each}
 </ShopGroup>
 
-<CheckBox checked={initialTopup} on:change={initialCheck}>
+<!-- <CheckBox checked={initialTopup} on:change={initialCheck}>
 	<span style="color: var(--tertiary-color);">
 		{$t('shop.initialBonus')}
 	</span>
-</CheckBox>
+</CheckBox> -->
 
 <style>
 	button {

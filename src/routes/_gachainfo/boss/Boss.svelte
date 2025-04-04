@@ -16,15 +16,12 @@
 
 	import List from './_list.svelte';
 	import Description from './_description.svelte';
-	import Title from '../_title.svelte';
-	import updates from '$lib/data/updates.json';
+
 	import ButtonModal from '$lib/components/ButtonModal.svelte';
 
 	export let tplVersion = 'v2';
 
 	let bossFought = false;
-
-	console.log("Here")
 
 	let {
 		bannerName,

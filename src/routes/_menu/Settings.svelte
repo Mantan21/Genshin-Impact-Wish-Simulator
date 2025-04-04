@@ -155,7 +155,7 @@
 		{$t('menu.currency')} 
 	</OptionMenu>-->
 
-	<OptionMenu 
+<!--<OptionMenu 
 		name="wishAmount" 
 		showOption={optionToShow === 'wishAmount'} 
 		activeIndicator={selectedAmount} 
@@ -173,7 +173,7 @@
 				</OptionMenu>
 			</div>
 		{/if}
-	{/each}
+	{/each} -->
 
 	<OptionMenu name="multi" inputValue={$multipull} useInput>{$t('menu.multiRoll')}</OptionMenu>
 
@@ -208,7 +208,7 @@
 
 <!--	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu> -->
 
-	<h2>Notes :</h2>
+<!--	<h2>Notes :</h2>
 	<div class="notes">
 		<ol>
 			<li>
@@ -244,7 +244,7 @@
 				and is not collected by me in any way.
 			</li>
 		</ol>
-	</div>
+	</div> -->
 
 <style>
 	.confirmation {

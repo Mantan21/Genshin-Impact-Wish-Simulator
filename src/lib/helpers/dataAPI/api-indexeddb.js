@@ -4,7 +4,6 @@ import { storageLocal, startBalance, endBalance, topUp, topExp, purchases } from
 import { genesis } from '$lib/store/app-stores';
 
 
-
 const version = 5;
 const DBName = 'WishSimulator';
 
@@ -136,7 +135,6 @@ export const HistoryManager = {
 	},	
 
 	async countItem(name) {
-		console.log('countItem', name);
 		return (await IndexedDB).countFromIndex('history', 'name', name);
 	},
 
@@ -188,7 +186,7 @@ export const HistoryManager = {
 	}
 };
 
-async function getBoss(banner) {
+function getBoss(banner) {
 	const boss = storageLocal.get('boss');
 	return boss[banner] !== undefined ? boss[banner] : false;;
 };
@@ -263,16 +261,11 @@ async function printDatabase() {
         
         // Print each object store's data
         for (const storeName of objectStores) {
-            console.log(`\n=== ${storeName} Store ===`);
-            
             // Get all records from the store
             const records = await db.getAll(storeName);
-            console.log('Records:', records);
             
             // Get all indexes for this store
             const indexes = Array.from(db.transaction(storeName).objectStore(storeName).indexNames);
-            console.log('Indexes:', indexes);
-			console.log('data', storageLocal.getData());
 
         }
     } catch (error) {

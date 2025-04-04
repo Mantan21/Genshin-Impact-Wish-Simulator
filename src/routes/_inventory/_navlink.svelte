@@ -22,14 +22,14 @@
 			<i class="gi-character" />
 			{$mobileMode ? '' : $t('character')}
 		</button>
-		<button
+		<!--<button
 			class="nav-link"
 			class:active={activeItem === 'weapon'}
 			on:click={() => select('weapon')}
 		>
 			<i class="gi-weapon" />
 			{$mobileMode ? '' : $t('weapon')}
-		</button>
+		</button>-->
 	</nav>
 </div>
 

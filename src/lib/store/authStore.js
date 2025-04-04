@@ -17,14 +17,10 @@ export async function checkSession() {
     isAuthenticated.set(true);
 
     const group = data.group;
-    console.log(storageLocal.get("added"));
     const isAdded = JSON.stringify(storageLocal.get("added"));
-    console.log("isadded", typeof(isAdded));
     if (isAdded === "{}" && (group === "whale" || group === "dolphin")) {
-      console.log("added");
       primogem.update((v) => v + 5120);
       storageLocal.set('added', 1);
-      console.log(storageLocal.get("added"));
     }
     
   } catch (error) {

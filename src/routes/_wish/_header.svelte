@@ -47,8 +47,6 @@
 	const dataReset = async () => {
 		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
 		let banner_data = await generateFileString();
-
-		console.log("endBalance data", storageLocal.get('endBalance'));
 		await factoryReset({ clearCache: true, keepSetting: false });
 		// Logout the user
 		await axios.post("http://localhost:3001/api/logout", { banner_data }, { withCredentials: true });
@@ -81,10 +79,6 @@
 		activeBanner.set(banner);
 		playSfx('changebanner');
 	};
-
-	const statusBoss = async (bossStatus) => {
-		await axios.post("http://localhost:3001/api/boss", { bossStatus }, { withCredentials: true });
-	} 
 
 	const chatToggle = getContext('chatToggle');
 	// const navigate = getContext('navigate');
@@ -178,11 +172,11 @@
 					</MyFund>
 				</div>
 
-				<button class="close" on:click={dataReset} title="Factory Reset">
+				<!-- <button class="close" on:click={dataReset} title="Factory Reset">
 					<i class="gi-close" />
 				</button>
 
-				<!-- <button class="close" on:click={previousClick} title="Change Banner">
+				<button class="close" on:click={previousClick} title="Change Banner">
 					<i class="gi-close" />
 				</button> -->
 			{:else}

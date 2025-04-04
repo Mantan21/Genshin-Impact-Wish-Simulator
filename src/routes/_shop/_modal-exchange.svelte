@@ -71,7 +71,7 @@
 			return newVal;
 		});
 		if (currency === 'stardust') {
-			exchanges += 1;
+			exchanges += value*price;
 			storageLocal.set('exchanges', exchanges);
 			exchange.update((v) => exchanges);
 		}
@@ -153,7 +153,7 @@
 				<Range
 					{value}
 					min={max < 1 || isOutfit ? 0 : 1}
-					max={isOutfit ? 1 : max || 1}
+					max={(isOutfit ? 1 : max || 1) && (currency === 'stardust' ? 5 : max)}
 					disabled={max < 1 || isOutfit}
 				/>
 				{#if isOwned}

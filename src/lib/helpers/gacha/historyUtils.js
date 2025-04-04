@@ -8,7 +8,6 @@ export function initialize (banner) {
 		localStorage.setItem(`extraPity-${banner}`, 0);
 		localStorage.setItem(`current10PullCount-${banner}`, 0);
 		localStorage.setItem(`totalPulls-${banner}`, 0);
-		console.log("initialized");
 		localStorage.setItem(`lastversion`, null);
 		localStorage.setItem(`lastIndexOfBanner-${banner}`, -1);
 		localStorage.setItem(`isInitialized-${banner}`, true);

@@ -19,7 +19,8 @@
 	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { user } from '$lib/store/authStore.js';
-
+	
+	import Title from '../_title.svelte';
 	import List from './_list.svelte';
 	import PromotionalV2 from './_promotional-v2.svelte';
 
@@ -68,7 +69,7 @@
 		navigate('index');
 		if (activePhase === phase && version === patch) return;
 
-		userCurrencies.currReplenish($user?.group);
+		userCurrencies.currReplenish($user?.group, bannerName);
 		storageLocal.set('exchanges', 0); // reset exchanges storage
 		storageLocal.set('expenses', 0); // reset gacha storage
 		// Select a banner
@@ -102,7 +103,7 @@
 </svelte:head>
 
 {#if tplVersion === 'v2'}
-<br>
+<Title type="banner" />
 	<nav style="background-image: url({$assets['book-select-bg.webp']});">
 		<div class="nav-item" class:active={activeContent === 1}>
 			<button on:click={() => select(1)}>

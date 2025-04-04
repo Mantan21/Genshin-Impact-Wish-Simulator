@@ -49,18 +49,16 @@ export const userCurrencies = {
 	getTotalExp(priceString, add=true) {
 		const price = parseFloat(priceString.replace(/[^0-9.]/g, ''));
 		let totalExp = parseFloat(storageLocal.get('expenses')) || 0;
-		console.log("totalExp", totalExp);
 		if (totalExp + price <= 1000) {
 			expenses.set(totalExp + price);
 			storageLocal.set('expenses', totalExp + price);
-			console.log("Expenses so faw", totalExp + price);
 			//expenses.(totalExp + price);
 		} 
 	},
 	
-	currReplenish(group) {
-		if (group === 'f2p') primogem.update((n) => n + 6047);
-		if (group === 'dolphin' || group === 'whale') {
+	currReplenish(group, banner) {
+		if (group === 'f2p') primogem.update((n) => n + 6047)
+		else {
 			intertwined.update((n) => n + 4);
 			primogem.update((n) => n + 9727);
 		}

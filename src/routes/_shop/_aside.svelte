@@ -58,7 +58,7 @@
 			</span>
 		</button>
 
-		{#if $outfits.length > 0}
+		<!-- {#if $outfits.length > 0}
 			<button
 				class="link"
 				class:active={activeShop === 'outfits'}
@@ -69,7 +69,7 @@
 				{/if}
 				<span><i class="gi-outfit" /> {$t('outfit.heading')}</span>
 			</button>
-		{/if}
+		{/if} -->
 
 		<button
 			class="link"
@@ -91,7 +91,7 @@
 				{$t('shop.crystalTopup')}
 			</span>
 		</button>
-		<button
+		<!-- <button
 			class="link"
 			class:active={activeShop === 'donate'}
 			on:click={() => selectShop('donate')}
@@ -100,7 +100,7 @@
 				<i class="gi-companion" />
 				{$t('donate')}
 			</span>
-		</button>
+		</button> -->
 	</div>
 </aside>
 
