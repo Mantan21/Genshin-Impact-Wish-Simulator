@@ -50,6 +50,7 @@ function persistStore(key, initVal) {
     });
     return store;
 }
+
 // Game Currencies
 export const genesis = writable(igen);
 export const primogem = persistStore('primogem', ipri);
@@ -84,3 +85,19 @@ export const isCustomBanner = writable(false);
 
 export const exchange = writable(0);
 export const expenses = writable(true);
+
+// Button counters
+export const history = writable(0);
+export const inventory = writable(0);
+export const shop = writable(0);
+export const pull_roll = writable(0);
+export const details = writable(0);
+
+
+export function resetStore() {
+    history.set(0);
+    inventory.set(0);  
+    shop.set(0);
+    pull_roll.set(0);
+    details.set(0);
+}

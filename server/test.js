@@ -19,7 +19,7 @@ app.use(cookieParser());
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "pass123",
+  password: "1234",
   database: "simdb",
   waitForConnections: true,
   connectionLimit: 10,
