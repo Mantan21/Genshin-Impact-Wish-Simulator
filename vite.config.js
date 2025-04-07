@@ -5,6 +5,8 @@ import { imagetools } from 'vite-imagetools';
 import { plugin as MdPlugin } from 'vite-plugin-markdown';
 import { config as envConfig } from 'dotenv';
 
+import { defineConfig } from 'vite';
+
 envConfig();
 const { VITE_APP_TITLE, VITE_DESCRIPTION, VITE_HOST } = process.env;
 const iconSize = [16, 32, 72, 96, 128, 144, 152, 192, 256, 384, 512];
@@ -90,8 +92,37 @@ const manifest = {
 	}
 };
 
-/** @type {import('vite').UserConfig} */
-const config = {
+// /** @type {import('vite').UserConfig} */
+// const config = {
+// 	plugins: [
+// 		imagetools(),
+// 		sveltekit(),
+// 		MdPlugin({ mode: 'html' }),
+// 		VitePWA({
+// 			strategies: 'injectManifest',
+// 			srcDir: 'src',
+// 			outDir: '.vercel/output/static',
+// 			filename: 'sw.js',
+// 			registerType: 'prompt',
+// 			manifestFilename: 'appmanifest.json',
+// 			manifest
+// 		})
+// 	],
+// 	resolve: {
+// 		alias: {
+// 			$post: path.resolve(__dirname, './src/post'),
+// 			'@images': path.resolve(__dirname, './src/images')
+// 		}
+// 	},
+// 	build: {
+// 		chunkSizeWarningLimit: 350,
+// 		target: ['es2020']
+// 	}
+// };
+// export default defineConfig(config);
+
+
+export default defineConfig({
 	plugins: [
 		imagetools(),
 		sveltekit(),
@@ -112,10 +143,31 @@ const config = {
 			'@images': path.resolve(__dirname, './src/images')
 		}
 	},
+	server: {
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3001',
+				changeOrigin: true,
+			}
+		}
+	},
 	build: {
 		chunkSizeWarningLimit: 350,
-		target: ['es2020']
-	}
-};
-
-export default config;
+		target: ['es2020'],
+		manifest: true,
+		rollupOptions: {
+			input: './src/app.html'
+		}
+	},
+	// server: {
+	// 	host: '0.0.0.0',
+	// 	port: '5173',
+	// 	proxy: {
+	// 		'/api': {
+    //     	target: 'http://localhost:3001',
+    //     	changeOrigin: true,
+    //     	rewrite: (path) => path.replace(/^\/api/, '')
+	// 	}
+	//   }, 
+	// }	
+});

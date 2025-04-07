@@ -3,9 +3,7 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
 
-dotenv.config();
 const app = express();
 const port = 3001;
 const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";

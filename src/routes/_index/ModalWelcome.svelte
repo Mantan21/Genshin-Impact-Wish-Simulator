@@ -24,7 +24,7 @@
 
 	async function signUp() {
 		try {
-			const response = await axios.post("http://localhost:3001/api/signup", { ign, group }, { withCredentials: true });
+			const response = await axios.post("/api/signup", { ign, group }, { withCredentials: true });
 			message = "Sign-up successful! 🎉";
 			messageType = "success";
 			await checkSession();
