@@ -92,36 +92,6 @@ const manifest = {
 	}
 };
 
-// /** @type {import('vite').UserConfig} */
-// const config = {
-// 	plugins: [
-// 		imagetools(),
-// 		sveltekit(),
-// 		MdPlugin({ mode: 'html' }),
-// 		VitePWA({
-// 			strategies: 'injectManifest',
-// 			srcDir: 'src',
-// 			outDir: '.vercel/output/static',
-// 			filename: 'sw.js',
-// 			registerType: 'prompt',
-// 			manifestFilename: 'appmanifest.json',
-// 			manifest
-// 		})
-// 	],
-// 	resolve: {
-// 		alias: {
-// 			$post: path.resolve(__dirname, './src/post'),
-// 			'@images': path.resolve(__dirname, './src/images')
-// 		}
-// 	},
-// 	build: {
-// 		chunkSizeWarningLimit: 350,
-// 		target: ['es2020']
-// 	}
-// };
-// export default defineConfig(config);
-
-
 export default defineConfig({
 	plugins: [
 		imagetools(),
@@ -153,10 +123,7 @@ export default defineConfig({
 	},
 	build: {
 		chunkSizeWarningLimit: 350,
-		target: ['es2020'],
-		manifest: true,
-		rollupOptions: {
-			input: './src/app.html'
+		target: ['es2020']
 		}
 	},
 	// server: {
@@ -170,4 +137,4 @@ export default defineConfig({
 	// 	}
 	//   }, 
 	// }	
-});
+);

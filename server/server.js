@@ -9,7 +9,10 @@ const port = 3001;
 const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";
 
 // Middleware
-app.use(cors({ credentials: true, origin: "http://localhost:5173" })); // Update if using Vite
+app.use(cors({ origin: ["http://localhost:5173",
+                        "http://local-ipaddr:port"],
+               methods: ["GET", "POST"],
+               credentials: true})); // Update if using Vite
 app.use(express.json());
 app.use(cookieParser());
 
