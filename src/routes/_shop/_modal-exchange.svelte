@@ -78,6 +78,15 @@
 		openObtained([{ qty: value, item: itemToExchange }]);
 	};
 
+	const checkExchanges = () => {
+		if ($exchange < 625) {
+			let count = $balance - $exchange;
+			
+			if (count > 625) return parseInt(Math.floor((625-$exchange) / price));
+			return parseInt(Math.floor(count / price));
+		}
+	};
+
 	// Get Content Height for layouting
 	let contentHeight;
 </script>
@@ -153,7 +162,7 @@
 				<Range
 					{value}
 					min={max < 1 || isOutfit ? 0 : 1}
-					max={(isOutfit ? 1 : max || 1) && (currency === 'stardust' ? 5 : max)}
+					max={(isOutfit ? 1 : max || 1) && (currency === 'stardust' ? checkExchanges() : max)}
 					disabled={max < 1 || isOutfit}
 				/>
 				{#if isOwned}

@@ -71,7 +71,7 @@
 		}
 
 		showPaymentModal = true;
-		const isDouble = false
+		const isDouble = isDoubleBonus && initialTopup;
 		data = { qty, bonus: isDouble ? qty : topupBonus[qty] || 0, price };
 	};
 
@@ -109,11 +109,18 @@
 		<ShopGroupItem>
 			<button
 				disabled={$user?.group === "f2p" || $user?.group === "dolphin" || disabledButtons[i]}
-				on:click={() => selectGenesis({ qty, price, isDoubleBonus: false })}
+				on:click={() => selectGenesis({ qty, price, isDoubleBonus: doubleBonus })}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
-
-				{#if qty !== 60}
+				{#if doubleBonus && initialTopup}
+				<div class="bonus firstBonus" style="background-image: url({$assets['bg-bonus.webp']})">
+					<div class="wrap">
+						<Icon type="genesis" style="position: absolute; top:-50%;" width="35%" />
+						<span>{$t('shop.bonus')}!</span>
+						<span class="amount">+{qty}</span>
+					</div>
+				</div>
+				{:else if qty !== 60}
 					<div class="topup-bonus bonus">
 						<div class="wrap">
 							<span>{$t('shop.bonus')}</span>
