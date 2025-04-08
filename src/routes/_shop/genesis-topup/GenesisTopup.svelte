@@ -47,7 +47,7 @@
     const genesis = $pricelist.genesis;
     Object.keys(genesis).forEach((key) => {
         const list = Array.isArray(localTopup[versionBase]) ? localTopup[versionBase] : [];
-        const doubleBonus = $bonusGen[key] === null ? true : $bonusGen[key];
+        const doubleBonus = $bonusGen[key] === undefined ? true : $bonusGen[key];
 		bonusGen.update((v) => {
 			v[key] = doubleBonus; 
 			return v;
@@ -97,7 +97,7 @@
             localConfig.set('topupBonus', localTopup);
             const i = genesisList.findIndex((v) => v.qty === qty);
 			bonusGen.update((v) => {
-				v[Object.keys(genesis)[i]] = false;	
+				v[genesisList[i].qty] = false;	
 				return v;
 			});
             genesisList[i].doubleBonus = false;
