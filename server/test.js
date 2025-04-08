@@ -110,7 +110,6 @@ app.get("/api/session", (req, res) => {
     }
 
     if (!check) {
-      console.log(check);
       console.log("Session Active:", user);
       check = true;    
     } // Log the active session details
