@@ -85,6 +85,7 @@ export const isCustomBanner = writable(false);
 
 export const exchange = writable(0);
 export const expenses = writable(true);
+export const bonusGen = writable({});
 
 // Button counters
 export const history = writable(0);

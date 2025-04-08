@@ -79,11 +79,11 @@
 	};
 
 	const checkExchanges = () => {
-		if ($exchange < 625) {
-			let count = $balance - $exchange;
+		if ($exchange < 625 ) {
+			const exRemaining = Math.floor((625 - $exchange) / price);
+			const afford = Math.floor($balance / price);
+			return Math.min(exRemaining, afford);
 			
-			if (count > 625) return parseInt(Math.floor((625-$exchange) / price));
-			return parseInt(Math.floor(count / price));
 		}
 	};
 
@@ -162,7 +162,7 @@
 				<Range
 					{value}
 					min={max < 1 || isOutfit ? 0 : 1}
-					max={(isOutfit ? 1 : max || 1) && (currency === 'stardust' ? checkExchanges() : max)}
+					max={(isOutfit ? 1 : max || 1) && (currency === 'stardust' && $balance >= 125 ? checkExchanges() : max)}
 					disabled={max < 1 || isOutfit}
 				/>
 				{#if isOwned}

@@ -9,6 +9,7 @@ dotenv.config();
 const app = express();
 const port = 3001;
 const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";
+let check = false;
 
 // Middleware
 app.use(cors({ credentials: true, origin: "http://localhost:5173" })); // Update if using Vite
@@ -83,6 +84,7 @@ app.post("/api/logout", async (req, res) => {
     const query = "UPDATE player SET banner_data =  ? WHERE id = ?";
     await db.promise().execute(query, [JSON.stringify(banner_data), id]);
     
+    check = false;
     res.cookie("token", "", { expires: new Date(0) }); // Expire cookie
     res.json({ message: "Logged out successfully" });
     
@@ -107,7 +109,11 @@ app.get("/api/session", (req, res) => {
       return res.status(403).json({ error: "Invalid session" });
     }
 
-    console.log("Session Active:", user); // Log the active session details
+    if (!check) {
+      console.log(check);
+      console.log("Session Active:", user);
+      check = true;    
+    } // Log the active session details
     res.json(user);
   });
 });
