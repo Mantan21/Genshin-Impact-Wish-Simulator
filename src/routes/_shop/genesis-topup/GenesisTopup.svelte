@@ -5,7 +5,7 @@
 
     import { user, checkSession } from "$lib/store/authStore.js";
     import { genesisBonus } from '$lib/data/pricelist.json';
-    import { activeVersion, assets, expenses, pricelist, bannerList, activeBanner } from '$lib/store/app-stores';
+    import { activeVersion, assets, expenses, pricelist, bannerList, activeBanner, bonusGen } from '$lib/store/app-stores';
     import { localConfig, storageLocal, topUp } from '$lib/helpers/dataAPI/api-localstore';
     import { cookie } from '$lib/helpers/dataAPI/api-cookie';
     import { playSfx } from '$lib/helpers/audio/audio';
@@ -47,7 +47,11 @@
     const genesis = $pricelist.genesis;
     Object.keys(genesis).forEach((key) => {
         const list = Array.isArray(localTopup[versionBase]) ? localTopup[versionBase] : [];
-        const doubleBonus = !list.includes(parseFloat(key));
+        const doubleBonus = $bonusGen[key] === undefined ? true : $bonusGen[key];
+		bonusGen.update((v) => {
+			v[key] = doubleBonus; 
+			return v;
+		});
         const item = { qty: parseInt(key), price: genesis[key], doubleBonus };
         genesisList.push(item);
     });
@@ -92,6 +96,10 @@
             if (!localTopup[versionBase].includes(qty)) localTopup[versionBase].push(qty);
             localConfig.set('topupBonus', localTopup);
             const i = genesisList.findIndex((v) => v.qty === qty);
+			bonusGen.update((v) => {
+				v[genesisList[i].qty] = false;	
+				return v;
+			});
             genesisList[i].doubleBonus = false;
         }
 		userCurrencies.getTotalExp(data.price);
@@ -112,15 +120,14 @@
 				on:click={() => selectGenesis({ qty, price, isDoubleBonus: doubleBonus })}
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
-
-				{#if doubleBonus && initialTopup}
-					<div class="bonus firstBonus" style="background-image: url({$assets['bg-bonus.webp']})">
-						<div class="wrap">
-							<Icon type="genesis" style="position: absolute; top:-50%;" width="35%" />
-							<span>{$t('shop.bonus')}!</span>
-							<span class="amount">+{qty}</span>
-						</div>
+				{#if genesisList[i].doubleBonus === true && (doubleBonus && initialTopup)}
+				<div class="bonus firstBonus" style="background-image: url({$assets['bg-bonus.webp']})">
+					<div class="wrap">
+						<Icon type="genesis" style="position: absolute; top:-50%;" width="35%" />
+						<span>{$t('shop.bonus')}!</span>
+						<span class="amount">+{qty}</span>
 					</div>
+				</div>
 				{:else if qty !== 60}
 					<div class="topup-bonus bonus">
 						<div class="wrap">

@@ -11,11 +11,16 @@
 		activeVersion,
 		primogem,
 		intertwined,
-		genesis
+		genesis, history,
+		inventory,
+		shop,
+		pull_roll,
+		resetStore,
+		details
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
     import updates from '$lib/data/updates.json';
-	import { storageLocal } from '$lib/helpers/dataAPI/api-localstore';
+	import { storageLocal, buttons } from '$lib/helpers/dataAPI/api-localstore';
 	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 	import { userCurrencies } from '$lib/helpers/currencies';
 	import { user } from '$lib/store/authStore.js';
@@ -69,9 +74,14 @@
 		navigate('index');
 		if (activePhase === phase && version === patch) return;
 
+		buttons.set($bannerList, { history: $history, inventory: $inventory, shop: $shop, pull_roll: $pull_roll, details: $details });
+		
 		userCurrencies.currReplenish($user?.group, bannerName);
-		storageLocal.set('exchanges', 0); // reset exchanges storage
-		storageLocal.set('expenses', 0); // reset gacha storage
+		storageLocal.set('exchanges', 0);
+		storageLocal.set('expenses', 0);
+
+
+		resetStore();
 		// Select a banner
 		preloadVersion.set({ patch, phase });
 	};

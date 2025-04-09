@@ -12,7 +12,7 @@
 		intertwined,
 		stardust,
 		starglitter,
-		customData
+		customData, pull_roll
 	} from '$lib/store/app-stores';
 	import { localBalance, localConfig } from '$lib/helpers/dataAPI/api-localstore';
 	import { APP_TITLE } from '$lib/env';
@@ -73,6 +73,7 @@
 		if (!isUnlimited && rollCost > currencyUsed) return (showConvertModal = true);
 		const indexOfCharBanner = bannerToRoll === 'character-event' ? getIndexOfCharBanner() : 0;
 		onWish.set(true);
+		pull_roll.update(((p) => p + 1));
 
 		for (let i = 0; i < count; i++) {
 
