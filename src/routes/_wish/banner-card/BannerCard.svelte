@@ -2,7 +2,7 @@
 	import { getContext, setContext, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
-	import { assets, isCustomBanner } from '$lib/store/app-stores';
+	import { assets, details, isCustomBanner } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import {
 		activeVersion
@@ -54,6 +54,7 @@
 	const navigate = getContext('navigate');
 	const openDetails = () => {
 		navigate('details');
+		details.update((d) => d + 1);
 		return playSfx();
 	};
 
