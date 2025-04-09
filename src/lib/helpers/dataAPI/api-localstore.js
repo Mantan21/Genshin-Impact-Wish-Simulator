@@ -76,6 +76,24 @@ export const purchases = {
 		storageLocal.set('purchases', balance);
 	}
 };
+export const buttons = {
+	get(bannerName, type) {
+		const count = storageLocal.get('buttons');
+		if (!count[bannerName]) count[bannerName] = {};
+		return count[bannerName][type] || 0;
+	},
+	set(bannerList, object) {
+		const count = storageLocal.get('buttons') || {};
+		for (const banner of bannerList) {
+			if (!count[banner.bannerName]) count[banner.bannerName] = {};
+
+			Object.entries(object).forEach(([type, value]) => {
+				count[banner.bannerName][type] = value;
+			});
+		}
+		storageLocal.set('buttons', count);
+	}
+};
 
 export const startBalance = {
 	get(bannerName) {

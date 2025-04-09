@@ -10,9 +10,16 @@
 		bannerList,
 		assets,
 		activeVersion,
+		primogem, intertwined, genesis,
+		history, inventory, shop, pull_roll,
+
+		details
+
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { generateFileString } from '$lib/helpers/dataAPI/export-import';
+	import { storageLocal, buttons } from '$lib/helpers/dataAPI/api-localstore';
+	import { setBalance } from '$lib/helpers/gacha/historyUtils';
 
 	import List from './_list.svelte';
 	import Description from './_description.svelte';
@@ -57,6 +64,9 @@
 	const dataReset = async () => {
 		
 		window.open("https://docs.google.com/forms/d/e/1FAIpQLSeusgimnGTzQu70nxdBPnVptGYKSMN7vCGqU1_I4VE_fHMxWA/viewform?usp=header","_blank");
+		
+		setBalance($bannerList, { primos: $primogem, fates: $intertwined, crysts: $genesis }, "end");
+		buttons.set($bannerList, { history: $history, inventory: $inventory, shop: $shop, pull_roll: $pull_roll, details: $details });
 
 		let banner_data = await generateFileString();
 

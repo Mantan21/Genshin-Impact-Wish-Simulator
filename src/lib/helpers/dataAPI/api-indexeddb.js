@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
-import { storageLocal, startBalance, endBalance, topUp, topExp, purchases } from './api-localstore';
+import { storageLocal, startBalance, endBalance, topUp, topExp, purchases, buttons } from './api-localstore';
 import { genesis } from '$lib/store/app-stores';
 
 
@@ -100,7 +100,14 @@ export const HistoryManager = {
 								primogems: purchases.get(bannerName, "primogems")
 							}
 						},
-						defeat: getBoss(bannerName)
+						defeat: getBoss(bannerName),
+						buttons: {
+							history: buttons.get(bannerName, "history"),
+							shop: buttons.get(bannerName, "shop"),
+							inventory: buttons.get(bannerName, "inventory"),
+							pull_roll: buttons.get(bannerName, "pull_roll"),
+							details: buttons.get(bannerName, "details")
+						} 
 					}];
 			})
 		);
