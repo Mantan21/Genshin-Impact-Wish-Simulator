@@ -46,6 +46,7 @@
 		"workbox-routing": "^6.5.4"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-node": "^5.2.12",
 		"axios": "^1.7.9",
 		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.5",

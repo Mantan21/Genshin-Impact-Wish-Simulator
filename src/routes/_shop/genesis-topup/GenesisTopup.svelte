@@ -25,10 +25,11 @@
     onMount(async () => {
         const userSession = await checkSession();
         userGroup = userSession?.group;
+		console.log("userGroup", $user?.group);
     });
 
-    const checkCookie = cookie.get('initialTopup');
-    let initialTopup = checkCookie === undefined ? true : checkCookie;
+    // const checkCookie = cookie.get('initialTopup');
+    let initialTopup = true;
     const initialCheck = ({ detail }) => (initialTopup = !!detail?.checked);
 
     $: cookie.set('initialTopup', initialTopup);

@@ -172,8 +172,8 @@
 
 	.background-gif {
 		align-items: center;
-		height: 380px;
-		width: 1000px;
+		height: 680px;
+		width: 1200px;
 		top: 0;
 		object-fit: cover;
 		object-position: top center;

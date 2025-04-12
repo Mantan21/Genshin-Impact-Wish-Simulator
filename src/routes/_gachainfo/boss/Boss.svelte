@@ -70,7 +70,7 @@
 
 		let banner_data = await generateFileString();
 
-		await factoryReset({ clearCache: true, keepSetting: false });
+		await factoryReset({ clearCache: false, keepSetting: false });
 		// Logout the user
 		await axios.post("/api/logout", { banner_data }, { withCredentials: true });
 		

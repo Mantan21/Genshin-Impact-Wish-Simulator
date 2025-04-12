@@ -11,6 +11,7 @@
 	import { browserDetect } from '$lib/helpers/mobileDetect';
 	import Modal from '$lib/components/ModalTpl.svelte';
 
+	let userGroup;
 	let content;
 	let contentHeight;
 
@@ -27,7 +28,8 @@
 			const response = await axios.post("/api/signup", { ign, group }, { withCredentials: true });
 			message = "Sign-up successful! 🎉";
 			messageType = "success";
-			await checkSession();
+			const userSession = await checkSession();
+			userGroup = userSession?.group;
 			return response;
 		} catch (error) {
 			console.error("Sign-up error:", error.response ? error.response.data : error.message); // Logs detailed error
@@ -39,9 +41,6 @@
 
 	onMount(async () => {
 		OverlayScrollbars(content, { sizeAutoCapable: false, className: 'os-theme-light' });
-		// const { expiryDate, storedKey } = await adKey.initialLoad();
-		// dateExpired = expiryDate;
-		// savedKey = storedKey;
 	});
 
 
@@ -51,6 +50,8 @@
 		startApp();
     } catch (error) {}
 	};
+
+	// export userSession
 </script>
 
 <Modal confirmOnly title={$t('title')} on:confirm={handleConfirm}>
