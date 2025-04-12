@@ -1,10 +1,9 @@
 import { browser } from '$app/environment';
 import { openDB } from 'idb';
 import { storageLocal, startBalance, endBalance, topUp, topExp, purchases, buttons } from './api-localstore';
-import { genesis } from '$lib/store/app-stores';
 
 
-const version = 5;
+const version = 6;
 const DBName = 'WishSimulator';
 
 let IndexedDB;
@@ -20,12 +19,16 @@ if (browser) {
 				historyStore.createIndex('bannerName', 'bannerName', { unique: false });
 				historyStore.createIndex('itemID', 'itemID', { unique: false });
 				historyStore.createIndex('name', 'name', { unique: false });
+				historyStore.createIndex('banner', 'banner', { unique: false });
 
 			} else {
 				const historyStore = transaction.objectStore('history');
 				
 				const hasBanner = historyStore.indexNames.contains('bannerName');
 				if (!hasBanner) historyStore.createIndex('bannerName', 'bannerName', { unique: false });
+				
+				const hasBannerType = historyStore.indexNames.contains('banner');
+				if (!hasBannerType) historyStore.createIndex('banner', 'banner', { unique: false });
 
 				const hasID = historyStore.indexNames.contains('itemID');
 				if (!hasID) historyStore.createIndex('itemID', 'itemID', { unique: false });
@@ -256,29 +259,3 @@ export const BannerManager = {
 		return remove;
 	}
 };
-
-
-async function printDatabase() {
-    try {
-        // Open the database
-        const db = await IndexedDB;
-        
-        // Get all object stores
-        const objectStores = Array.from(db.objectStoreNames);
-        
-        // Print each object store's data
-        for (const storeName of objectStores) {
-            // Get all records from the store
-            const records = await db.getAll(storeName);
-            
-            // Get all indexes for this store
-            const indexes = Array.from(db.transaction(storeName).objectStore(storeName).indexNames);
-
-        }
-    } catch (error) {
-        console.error('Error printing database:', error);
-    }
-}
-
-// Call the function
-printDatabase();

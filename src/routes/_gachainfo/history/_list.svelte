@@ -1,20 +1,19 @@
 <script>
 	import { browser } from '$app/environment';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { t } from 'svelte-i18n';
 	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 	import { getBannerName, getName } from '$lib/helpers/nameText';
 	import { playSfx } from '$lib/helpers/audio/audio';
 
 	export let v2 = false;
-	export let banner = 'beginner';
+	export let banner = 'character';
 	export let filter = '';
 	export let page = { itemPerPage: 0, activepage: 0 };
 
 	let data = [];
 	let dataToShow = [];
 
-	const { getListByBanner } = HistoryManager;
 	const setDataLength = getContext('setDataLength');
 
 	const getItemPage = (data, { itemPerPage = 0, activepage = 0 } = {}) => {
@@ -29,14 +28,15 @@
 	const filterData = (filterBy) => data.filter(({ rarity }) => rarity === filterBy);
 	const readData = async (banner, filter) => {
 		if (!browser) return [];
-		const bannerList = await getListByBanner(banner);
+		const bannerList = await HistoryManager.getListByBanner(banner);
 		data = bannerList.map((d) => d).reverse();
 		dataToShow = filter && filter !== 'All' ? filterData(filter) : data;
 		setDataLength(data.length, dataToShow.length);
 		return data;
 	};
-
-	$: readData(banner, filter);
+	onMount(() => {
+		readData(banner, filter);	
+	});
 
 	const query = getContext('query');
 	const navigate = getContext('navigate');
