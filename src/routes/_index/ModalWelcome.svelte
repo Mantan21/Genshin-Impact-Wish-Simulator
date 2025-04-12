@@ -28,8 +28,8 @@
 			const response = await axios.post("/api/signup", { ign, group }, { withCredentials: true });
 			message = "Sign-up successful! 🎉";
 			messageType = "success";
-			const userSession = await checkSession();
-			userGroup = userSession?.group;
+			await checkSession();
+			// userGroup = userSession?.group;
 			return response;
 		} catch (error) {
 			console.error("Sign-up error:", error.response ? error.response.data : error.message); // Logs detailed error
