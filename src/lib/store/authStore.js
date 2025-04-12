@@ -20,7 +20,7 @@ export async function checkSession() {
     const isAdded = storageLocal.get("added");
     
     console.log('added?', isAdded);
-    if (Object.keys(isAdded).length === 0 && (group === "whale" || group === "dolphin")) {
+    if (isAdded != 1 && (group === "whale" || group === "dolphin")) {
       primogem.update((v) => v + 5120);
       storageLocal.set('added', 1);
     }
