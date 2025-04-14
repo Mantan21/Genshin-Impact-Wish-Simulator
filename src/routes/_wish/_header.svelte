@@ -131,9 +131,9 @@
 				<span> {$t('customBanner.title')} </span>
 			{/if}
 
-			<button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
+			<!-- <button class="help" on:click={handleMenu} title="Setting" aria-label="Setting">
 				<i class="gi-help" />
-			</button>
+			</button> -->
 <!--			<button class="chat" on:click={chatToggle} title="Chats" aria-label="Chats"> -->
 <!--				<i class="gi-chat" /> -->
 <!--			</button> -->

@@ -80,7 +80,6 @@
 			<br>
 			<div class="row">
 				<Report {dataLength} v2 />
-				<Filter {filterBy} v2 />
 			</div>
 			<List v2 {banner} filter={filterBy} page={{ activepage, itemPerPage }} />
 		</div>
