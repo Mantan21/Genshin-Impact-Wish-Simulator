@@ -565,11 +565,15 @@
 		},
 		{
 			"date": "24 Mar 2025",
-			"featured": true,
 			"description": [
 				"Add New Character: <strong> Varesa (5★)</strong>",
 				"Add New Character: <strong> Iansan (4★)</strong>"
 			]
+		},
+		{
+			"featured": true,
+			"date": "15 Apr 2025",
+			"description": ["Add <b> Xilonen 1st rerun</b>", "Add <strong> Venti 5th rerun</strong>"]
 		}
 	]
 }

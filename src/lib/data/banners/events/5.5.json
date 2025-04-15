@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "forgefires-blessing-2",
+							"character": "xilonen",
+							"textOffset": { "l": 50, "b": 10.5 }
+						},
+						{
+							"bannerName": "ballad-in-goblets-6",
+							"character": "venti",
+							"textOffset": { "l": 50, "b": 10.5 }
+						}
+					],
+					"rateup": ["beidou", "yanfei", "faruzan"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-80",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "peak-patrol-song" },
+						{ "name": "elegy-for-the-end", "buttonPosition": { "l": 70, "t": 30 } }
+					],
+					"rateup": [
+						"sacrificial-sword",
+						"favonius-codex",
+						"favonius-lance",
+						"the-bell",
+						"favonius-warbow"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 73 },
+						"rateup": { "l": 75, "b": 21 }
+					}
+				}
+			}
 		}
 	]
 }
