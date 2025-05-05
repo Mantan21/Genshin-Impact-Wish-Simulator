@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000113,
+			"name": "ifa",
+			"vision": "anemo",
+			"rarity": 4,
+			"release": "5.6-1",
+			"origin": "natlan",
+			"offset": {
+				"splashArt": { "x": 1.5867208672086721, "y": -3.6910569105691056, "scale": 1.27 },
+				"wishCard": { "x": -91.25765881973558, "y": 50.59367945823927, "scale": 11.02 }
+			}
+		},
+		{
+			"itemID": 10000112,
+			"name": "escoffier",
+			"vision": "cryo",
+			"rarity": 5,
+			"origin": "fontaine",
+			"offset": {
+				"splashArt": { "x": 5.464769647696476, "y": 3.560975609756098, "scale": 1.43 },
+				"wishCard": { "x": -21.47694292163818, "y": 52.67268623024831, "scale": 10.12 },
+				"button": { "l": 52, "w": 130, "t": 32 }
+			}
+		},
+		{
 			"itemID": 10000110,
 			"name": "iansan",
 			"vision": "electro",

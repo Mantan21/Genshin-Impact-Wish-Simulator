@@ -571,9 +571,16 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "15 Apr 2025",
 			"description": ["Add <b> Xilonen 1st rerun</b>", "Add <strong> Venti 5th rerun</strong>"]
+		},
+		{
+			"featured": true,
+			"date": "05 Apr 2025",
+			"description": [
+				"Add New Character: <strong> Escoffier (5★)</strong>",
+				"Add New Character: <strong> Ifa (4★)</strong>"
+			]
 		}
 	]
 }

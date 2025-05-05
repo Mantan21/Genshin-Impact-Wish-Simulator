@@ -85,6 +85,7 @@
 	"summit-shaper": "斫峰之刃",
 	"sunny-morning-sleep-in": "寝正月初晴",
 	"surfs-up": "冲浪时光",
+	"symphonist-of-scents": "香韵奏者",
 	"the-alley-flash": "暗巷闪光",
 	"the-bell": "钟剑",
 	"the-dockhands-assistant": "船坞长剑",
@@ -203,6 +204,10 @@
 		"name": "艾梅莉埃",
 		"title": "千缕之踪"
 	},
+	"escoffier": {
+		"name": "爱可菲",
+		"title": "明绚千韵"
+	},
 	"eula": {
 		"name": "优菈",
 		"title": "浪沫的旋舞"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "伊安珊",
 		"title": "熔石百炼"
+	},
+	"ifa": {
+		"name": "伊法",
+		"title": "蔚风引灵"
 	},
 	"jean": {
 		"name": "琴",

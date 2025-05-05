@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 13514,
+			"name": "symphonist-of-scents",
+			"rarity": 5,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "fontaine",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
 			"itemID": 14519,
 			"limited": true,
 			"name": "vivid-notions",

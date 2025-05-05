@@ -85,6 +85,7 @@
 	"summit-shaper": "Kiếm Chước Phong",
 	"sunny-morning-sleep-in": "Hòa Giấc Trong Nắng Mai",
 	"surfs-up": "Thời Khắc Lướt Sóng",
+	"symphonist-of-scents": "Nhạc Sĩ Hương Thơm",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
 	"the-dockhands-assistant": "Kiếm Bến Tàu",
@@ -203,6 +204,10 @@
 		"name": "Emilie",
 		"title": "Muôn Ngàn Hương Thơm"
 	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Muôn Hương Hòa Quyện"
+	},
 	"eula": {
 		"name": "Eula",
 		"title": "Vũ Điệu Bọt Biển"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "Iansan",
 		"title": "Phôi Đá Bách Luyện"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "Gió Xanh Dẫn Lối"
 	},
 	"jean": {
 		"name": "Jean",

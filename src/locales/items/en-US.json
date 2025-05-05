@@ -85,6 +85,7 @@
 	"summit-shaper": "Summit Shaper",
 	"sunny-morning-sleep-in": "Sunny Morning Sleep In",
 	"surfs-up": "Surf's Up",
+	"symphonist-of-scents": "Symphonist of Scents",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
 	"the-dockhands-assistant": "The Dockhand's Assistant",
@@ -203,6 +204,10 @@
 		"name": "Emilie",
 		"title": "A Thousand Scents Traced"
 	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Tasteful Excellence"
+	},
 	"eula": {
 		"name": "Eula",
 		"title": "The Sprindrift Knight"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "Iansan",
 		"title": "Tempered in Molten Stone"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In the Wake of Wandering Winds"
 	},
 	"jean": {
 		"name": "Jean",

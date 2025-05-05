@@ -1,0 +1,46 @@
+{
+	"patch": 5.6,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "la-chanson-cerise-1",
+							"character": "escoffier",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "in-the-name-of-the-rosula-3",
+							"character": "navia",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["layla", "ororon", "ifa"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-81",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "symphonist-of-scents" },
+						{ "name": "verdict", "buttonPosition": { "l": 70, "t": 30 } }
+					],
+					"rateup": [
+						"prospector-drill",
+						"portable-power-saw",
+						"range-gauge",
+						"the-dockhands-assistant",
+						"the-widsith"
+					],
+					"textOffset": {
+						"featured": { "l": 47.5, "t": 70 },
+						"rateup": { "l": 77.5, "b": 18, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

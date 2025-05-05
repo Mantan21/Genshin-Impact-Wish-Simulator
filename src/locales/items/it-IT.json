@@ -85,6 +85,7 @@
 	"summit-shaper": "Affettavette",
 	"sunny-morning-sleep-in": "Sonnellino mattutino",
 	"surfs-up": "Vai col surf",
+	"symphonist-of-scents": "Sinfonista di fragranze",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
 	"the-dockhands-assistant": "Aiutante del porto",
@@ -203,6 +204,10 @@
 		"name": "Émilie",
 		"title": "Scie di mille profumi"
 	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Eccellenza di sapori"
+	},
 	"eula": {
 		"name": "Eula",
 		"title": "Danza dell'onda luccicante"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "Iansan",
 		"title": "Temprata nella roccia lavica"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In balia di venti erranti"
 	},
 	"jean": {
 		"name": "Jean",

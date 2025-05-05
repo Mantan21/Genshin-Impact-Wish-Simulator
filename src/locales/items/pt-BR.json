@@ -85,6 +85,7 @@
 	"summit-shaper": "Cortador de Montanhas",
 	"sunny-morning-sleep-in": "Hibernação Matinal do Ano Novo",
 	"surfs-up": "Hora do Surfe",
+	"symphonist-of-scents": "Sinfonista de Aromas",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
 	"the-dockhands-assistant": "A Doca",
@@ -203,6 +204,10 @@
 		"name": "Emilie",
 		"title": "Vislumbres de Mil Aromas"
 	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Brilho de Mil Melodias"
+	},
 	"eula": {
 		"name": "Eula",
 		"title": "Dança da Onda Quebradora"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "Iansan",
 		"title": "Forjada na Pedra Ardente"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "Brisa Espiritual"
 	},
 	"jean": {
 		"name": "Jean",

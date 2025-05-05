@@ -85,6 +85,7 @@
 	"summit-shaper": "Gipfelbrecher",
 	"sunny-morning-sleep-in": "Frühjahrsschlaf",
 	"surfs-up": "Zeit fürs Wellenreiten",
+	"symphonist-of-scents": "Sinfoniker der Düfte",
 	"the-alley-flash": "Gassenleuchte",
 	"the-bell": "Glocke",
 	"the-dockhands-assistant": "Werftklinge",
@@ -203,6 +204,10 @@
 		"name": "Emilie",
 		"title": "Spur der tausend Düfte"
 	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Kulinarischer Glanz"
+	},
 	"eula": {
 		"name": "Eula",
 		"title": "Wirbeltanz der Gischt"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "Iansan",
 		"title": "Von geschmolzenem Gestein gehärtet"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In den Spuren schweifender Winde"
 	},
 	"jean": {
 		"name": "Jean",

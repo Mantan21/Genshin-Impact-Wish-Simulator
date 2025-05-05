@@ -85,6 +85,7 @@
 	"summit-shaper": "斬山の刃",
 	"sunny-morning-sleep-in": "寝正月の初晴",
 	"surfs-up": "サーフィンタイム",
+	"symphonist-of-scents": "香りのシンフォニスト",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
 	"the-dockhands-assistant": "船渠剣",
@@ -203,6 +204,10 @@
 		"name": "エミリエ",
 		"title": "千の跡を辿って"
 	},
+	"escoffier": {
+		"name": "エスコフィエ",
+		"title": "絢爛のフレーバー"
+	},
 	"eula": {
 		"name": "エウルア",
 		"title": "波沫のワルツ"
@@ -242,6 +247,10 @@
 	"iansan": {
 		"name": "イアンサ",
 		"title": "百折不撓の熔岩"
+	},
+	"ifa": {
+		"name": "イファ",
+		"title": "魂を導く疾風"
 	},
 	"jean": {
 		"name": "ジン",
