@@ -113,8 +113,14 @@
 			let boss = storageLocal.get('boss')
 			for(let ban of banner){
 				if(!boss[ban]) {
-					openObtained([{ item: 'primogem', qty: 800 }]);
-					primogem.update((n) => n + 800)
+					if(banner.length >= 2){
+						openObtained([{ item: 'primogem', qty: 800 }]);
+						primogem.update((n) => n + 400)
+					}
+					else{
+						openObtained([{ item: 'primogem', qty: 800 }]);
+						primogem.update((n) => n + 800)
+					}
 				}	
 			}
 		} 
