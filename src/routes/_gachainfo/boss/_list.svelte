@@ -114,12 +114,12 @@
 			for(let ban of banner){
 				if(!boss[ban]) {
 					if(banner.length >= 2){
-						openObtained([{ item: 'primogem', qty: 800 }]);
-						primogem.update((n) => n + 400)
+						openObtained([{ item: 'primogem', qty: 900 }]);
+						primogem.update((n) => n + 450)
 					}
 					else{
-						openObtained([{ item: 'primogem', qty: 800 }]);
-						primogem.update((n) => n + 800)
+						openObtained([{ item: 'primogem', qty: 900 }]);
+						primogem.update((n) => n + 900)
 					}
 				}	
 			}
