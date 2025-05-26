@@ -40,6 +40,76 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "seeker-of-flame-wrought-secrets-2",
+							"character": "kinich",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "reign-of-serenity-6",
+							"character": "raiden-shogun",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["lynette", "kujou-sara", "thoma"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-82",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "fang-of-the-mountain-king" },
+						{ "name": "engulfing-lightning", "buttonPosition": { "l": 62.5, "t": 30 } }
+					],
+					"rateup": [
+						"lion_s-roar",
+						"dragon_s-bane",
+						"the-stringless",
+						"eye-of-perception",
+						"favonius-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 43.5, "t": 70, "w": 29 },
+						"rateup": { "l": 78.5, "b": 21 }
+					}
+				},
+				"chronicled": {
+					"bannerName": "thunder-rends-the-plains-on-high-1",
+					"region": "inazuma",
+					"characters": {
+						"5star": [
+							"kamisato-ayaka",
+							"kamisato-ayato",
+							"yoimiya",
+							"chiori",
+							"yae-miko",
+							"arataki-itto",
+							"sangonomiya-kokomi",
+							"kaedehara-kazuha"
+						],
+						"4star": []
+					},
+					"weapons": {
+						"5star": [
+							"uraku-misugiri",
+							"haran-geppaku-futsu",
+							"mistsplitter-reforged",
+							"freedom-sworn",
+							"redhorn-stonethresher",
+							"kagura_s-verity",
+							"everlasting-moonglow",
+							"thundering-pulse"
+						],
+						"4star": ["akuoumaru", "wavebreaker_s-fin", "mouun_s-moon"]
+					}
+				}
+			}
 		}
 	]
 }

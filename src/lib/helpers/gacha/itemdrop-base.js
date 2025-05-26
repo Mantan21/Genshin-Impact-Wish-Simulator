@@ -172,7 +172,7 @@ export const get5StarItem = ({
 		}
 
 		const filtered = resultList.filter(({ origin, name }) => {
-			return origin === region || rateupItem.includes(name);
+			return rateupItem.includes(name);
 		});
 		return filtered;
 	}

@@ -575,11 +575,19 @@
 			"description": ["Add <b> Xilonen 1st rerun</b>", "Add <strong> Venti 5th rerun</strong>"]
 		},
 		{
-			"featured": true,
 			"date": "05 Apr 2025",
 			"description": [
 				"Add New Character: <strong> Escoffier (5★)</strong>",
 				"Add New Character: <strong> Ifa (4★)</strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "25 Mar 2025",
+			"description": [
+				"Add <strong> Raiden Shogun 5th rerun Banner</strong>",
+				"Add <strong> Kinich 1st rerun </strong>",
+				"Add <strong> Inazuma Chronicled Banned </strong>"
 			]
 		}
 	]
