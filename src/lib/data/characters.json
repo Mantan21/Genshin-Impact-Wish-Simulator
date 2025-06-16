@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000115,
+			"name": "dahlia",
+			"vision": "hydro",
+			"rarity": 4,
+			"release": "5.7-1",
+			"origin": "mondstadt",
+			"offset": {
+				"splashArt": { "x": 2.548780487804878, "y": 3.5027100271002714, "scale": 1 },
+				"wishCard": { "x": -12.828119961302805, "y": 69.18735891647856, "scale": 7.23 }
+			}
+		},
+		{
+			"itemID": 10000114,
+			"name": "skirk",
+			"vision": "cryo",
+			"rarity": 5,
+			"origin": "abyss",
+			"offset": {
+				"splashArt": { "x": 12.990514905149054, "y": -1.3672086720867207, "scale": 1.96 },
+				"wishCard": { "x": 135.565946468881, "y": 63.5079006772009, "scale": 13.73 },
+				"button": { "l": 52, "w": 112, "t": 32 }
+			}
+		},
+		{
 			"itemID": 10000113,
 			"name": "ifa",
 			"vision": "anemo",

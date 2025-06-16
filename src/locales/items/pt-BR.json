@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Plumagem Escarlate do Abutre Astral",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
+	"azurelight": "Azul Brilhante",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
 	"bloodtained-greatsword": "Espadão Sangrento",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Juiz dos Segredos"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode and Oblation"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "Sigewinne",
 		"title": "A Filha Transmutada do Dragão"
+	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Diácono da Ode Divina"
 	},
 	"sucrose": {
 		"name": "Sucrose",

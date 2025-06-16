@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Алое перо звёздного грифа",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
+	"azurelight": "Лазурное сияние",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
 	"bloodtained-greatsword": "Меч драконьей крови",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "Сайно",
 		"title": "Вершитель таинств"
+	},
+	"dahlia": {
+		"name": "Далия",
+		"title": "Хвала и подношение"
 	},
 	"dehya": {
 		"name": "Дэхья",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "Сиджвин",
 		"title": "Преображённая дочь дракона"
+	},
+	"skirk": {
+		"name": "Скирк",
+		"title": "Звезда пустоты"
 	},
 	"sucrose": {
 		"name": "Сахароза",

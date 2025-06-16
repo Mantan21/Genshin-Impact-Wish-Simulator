@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Piuma cremisi dell'avvoltoio astrale",
 	"aqua-simulacra": "Aqua simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"azurelight": "Luce azzurra",
 	"beacon-of-the-reed-sea": "Faro del Mare dei Giunchi",
 	"black-tassel": "Pennacchio nero",
 	"bloodtained-greatsword": "Spadone insanguinato",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Giustiziere dei segreti"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode e oblazione"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "Sigewinne",
 		"title": "Prodigiosa erede del drago"
+	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Astro del Vuoto"
 	},
 	"sucrose": {
 		"name": "Sucrose",

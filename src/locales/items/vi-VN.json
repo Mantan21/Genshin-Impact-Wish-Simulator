@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Xích Vũ Tinh Tựu",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
+	"azurelight": "Thương Diệu",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Phán Quyết Ẩn Mật"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Hoan Ca Tế Lễ"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "Sigewinne",
 		"title": "Long Nữ Diệu Biến"
+	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Ánh Sao Hư Không"
 	},
 	"sucrose": {
 		"name": "Sucrose",

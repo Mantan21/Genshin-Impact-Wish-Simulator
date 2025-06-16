@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鷲赤羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹劍",
+	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海信標",
 	"black-tassel": "黑纓槍",
 	"bloodtained-greatsword": "沐浴龍血的劍",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "賽諾",
 		"title": "緘秘的裁遣"
+	},
+	"dahlia": {
+		"name": "塔利雅",
+		"title": "頌禮祝祭"
 	},
 	"dehya": {
 		"name": "迪希雅",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "希格雯",
 		"title": "龍女妙變"
+	},
+	"skirk": {
+		"name": "絲柯克",
+		"title": "虛淵暗星"
 	},
 	"sucrose": {
 		"name": "砂糖",

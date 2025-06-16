@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 11517,
+			"name": "azurelight",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "abyss",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
 			"itemID": 13514,
 			"name": "symphonist-of-scents",
 			"rarity": 5,

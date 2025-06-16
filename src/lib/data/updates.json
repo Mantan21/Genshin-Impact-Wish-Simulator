@@ -582,12 +582,19 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "25 Mar 2025",
 			"description": [
 				"Add <strong> Raiden Shogun 5th rerun Banner</strong>",
 				"Add <strong> Kinich 1st rerun </strong>",
 				"Add <strong> Inazuma Chronicled Banned </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "16 Jun 2025",
+			"description": [
+				"Add New Character: <strong> Skirk (5★)</strong>",
+				"Add New Character: <strong> Dahlia (4★)</strong>"
 			]
 		}
 	]

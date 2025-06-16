@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Astral Vulture's Crimson Plumage",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"azurelight": "Azurelight",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
 	"black-tassel": "Black Tassel",
 	"bloodtained-greatsword": "Bloodtained Greatsword",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Judicator of Secrets"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode and Oblation"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "Sigewinne",
 		"title": "Wondrous Dragonheir"
+	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Void Star"
 	},
 	"sucrose": {
 		"name": "Sucrose",

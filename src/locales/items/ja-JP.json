@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鷲の紅き羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹剣",
+	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海の標",
 	"black-tassel": "黒纓槍",
 	"bloodtained-greatsword": "龍血を浴びた剣",
@@ -183,6 +184,10 @@
 	"cyno": {
 		"name": "セノ",
 		"title": "緘秘の裁き"
+	},
+	"dahlia": {
+		"name": "ダリア",
+		"title": "礼賛の祝祭"
 	},
 	"dehya": {
 		"name": "ディシア",
@@ -407,6 +412,10 @@
 	"sigewinne": {
 		"name": "シグウィン",
 		"title": "龍の愛娘"
+	},
+	"skirk": {
+		"name": "スカーク",
+		"title": "虚淵の暗星"
 	},
 	"sucrose": {
 		"name": "スクロース",
