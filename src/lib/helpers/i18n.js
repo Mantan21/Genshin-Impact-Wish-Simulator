@@ -14,7 +14,8 @@ const supportedLocales = [
 	'pt-BR',
 	'ru-RU',
 	'th-TH',
-	'vi-VN'
+	'vi-VN',
+	'ko-KR'
 ];
 const itemLocales = ['zh-CN', 'zh-TW', 'en-US', 'de-DE', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN'];
 
