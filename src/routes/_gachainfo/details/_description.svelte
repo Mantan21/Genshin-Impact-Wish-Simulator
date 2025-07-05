@@ -13,7 +13,7 @@
 	export let drop5star = [];
 	export let region = null;
 
-	$: isSpecial = $locale.toLocaleLowerCase().match(/ja|cn/);
+	$: isSpecial = $locale.toLocaleLowerCase().match(/ja|cn|ko/);
 
 	const charNameAndTitle = (name, vision) => {
 		const element = `(${$t(vision)})`;
