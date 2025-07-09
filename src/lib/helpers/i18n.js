@@ -11,13 +11,24 @@ const supportedLocales = [
 	'id-ID',
 	'it-IT',
 	'ja-JP',
+	'ko-KR',
 	'pt-BR',
 	'ru-RU',
 	'th-TH',
-	'vi-VN',
-	'ko-KR'
+	'vi-VN'
 ];
-const itemLocales = ['zh-CN', 'zh-TW', 'en-US', 'de-DE', 'it-IT', 'ja-JP', 'pt-BR', 'ru-RU', 'vi-VN'];
+
+const itemLocales = [
+	'zh-CN',
+	'zh-TW',
+	'en-US',
+	'de-DE',
+	'it-IT',
+	'ja-JP',
+	'pt-BR',
+	'ru-RU',
+	'vi-VN'
+];
 
 const checkLocale = () => {
 	const savedLocale = browser ? localConfig.get('locale') : null;

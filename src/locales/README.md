@@ -110,6 +110,15 @@ If you are not familiar with javascript especially sveltekit or don't know how t
          </td>
       </tr>
       <tr>
+         <td> Korean </td>
+         <td>
+            <a href="https://github.com/jwdjk392">
+               <img width="20px" src="https://avatars.githubusercontent.com/u/108386744?s=20" />
+               jwdjk392
+            </a>
+         </td>
+      </tr>
+      <tr>
          <td> Portuguese </td>
          <td>
             <a href="https://github.com/natrodrigo">
