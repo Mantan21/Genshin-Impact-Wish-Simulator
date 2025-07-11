@@ -3,7 +3,7 @@
 	"item": "아이템",
 	"character": "캐릭터",
 	"weapon": "무기",
-	"vision": "Vision",
+	"vision": "신의 눈",
 	"anemo": "바람",
 	"cryo": "얼음",
 	"dendro": "풀",
@@ -91,16 +91,16 @@
 	},
 	"editor": {
 		"bannerConfig": "{banner} 설정",
-		"baseRate": "{rarity}성 기본 확률:",
-		"maxPity": "{rarity}성 천장:",
-		"hardPity": "Boost {rarity}-Star rate starts from pity:",
-		"currentPity": "{rarity}-Star Current Pity:",
-		"winRate": "Chance to get Featured Item:",
-		"charRate": "Chance to get Character instead of Weapon",
-		"radRate": "Capturing Radiance Rate",
-		"radTrigger": "(Triggered when losing 50:50)",
-		"nonRateup": "(When losing 4-Star Item)",
-		"selectedRate": "Selected {itemType} Rate:",
+		"baseRate": "★{rarity} 기본 확률:",
+		"maxPity": "★{rarity} 천장:",
+		"hardPity": "★{rarity} 확률 증가 시작 스택:",
+		"currentPity": "★{rarity} 현재 스택:",
+		"winRate": "반천장 확률:",
+		"charRate": "무기 대신 캐릭터를 획득할 확률",
+		"radRate": "별빛 포착 확률",
+		"radTrigger": "(반천장 픽뚫시 발동)",
+		"nonRateup": "(★4 픽뚫시)",
+		"selectedRate": "선택된 {itemType} 확률:",
 		"guaranteedSystem": "확정 천장",
 		"backToDefault": "초기화",
 		"resetPrompt": "<b>\"{banner}\"</b>의 확률을 기본값으로 초기화하시겠습니까?",
@@ -236,21 +236,21 @@
 			"allBanner": "모든 픽업 배너",
 			"previous": "이전 픽업 배너",
 			"findBanner": "픽업 배너 찾기",
-			"group": "Group",
+			"group": "분류",
 			"beginner": "초심자 기원",
-			"character-event": "캐릭터 이벤트 기원 및 캐릭터 이벤트 기원-2",
+			"character-event": "캐릭터 이벤트 기원",
 			"weapon-event": "무기 이벤트 기원",
 			"chronicled": "묶음 기원",
 			"standard": "상주 기원",
 			"wishDescription": "10연차 시 ★4 이상의 아이템 100% 획득",
-			"novice": "Novice Wishes",
+			"novice": "초심자 기원",
 			"up": "UP!",
-			"beginnerSet": "10-set 20% off. First 10-set will receive {character}.",
-			"beginnerNote": "\"As a dutiful maid would.\"",
-			"beginnerChance": "Chances Remaining: {chances}",
+			"beginnerSet": "10연차 20% 할인, 초회 뽑기 시 {character} 100% 획득",
+			"beginnerNote": "「 메이드의 예절에 주의할게요 」",
+			"beginnerChance": "남은 횟수: {chances}",
 			"standardNote": "일반 기원은 영구성 기원 이벤트입니다.",
-			"allWeaponTypes": "All Weapon Types",
-			"etc": "etc.",
+			"allWeaponTypes": "모든 타입",
+			"etc": "등",
 			"probIncreased": "획득 확률 UP !",
 			"eventNote": "이벤트 한정 ★5 캐릭터는 픽업 기간에 대응하는 기원을 통해 획득할 수 있습니다.",
 			"viewDetails": "자세한 내용은 [상세]를 확인해주세요"
@@ -260,18 +260,18 @@
 			"meteorFailed": "유성 애니메이션 불러오기 실패",
 			"new": "New",
 			"convertion": "전환",
-			"title": "Wish Result for {item} et al"
+			"title": "{item}등에 대한 기원 결과"
 		}
 	},
 	"outfit": {
 		"heading": "코스튬",
-		"default": "Default",
-		"setOutfit": "Set Outfit",
+		"default": "기본",
+		"setOutfit": "교체",
 		"owned": "Already Owned",
 		"purchasePrompt": "해당 코스튬을 사용할 수 있는 캐릭터가 없습니다. 그래도 구매하시겠습니까?",
 		"promptInfo": "구매 후 캐릭터 도감에서 장비 후 효과를 확인할 수 있으며, 캐릭터 획득 후 해당 코스튬을 장착해 게임을 진행할 수 있습니다",
-		"obtained": "New Outfit Obtained",
-		"unlocked": "{character}: Outfit Unlocked",
+		"obtained": "신규 코스튬 획득",
+		"unlocked": "{character} · 코스튬 해금",
 		"item": {
 			"5-star-outrider": {
 				"name": "5-Star Outrider"
@@ -287,31 +287,31 @@
 			},
 			"sea-breeze-dandelion": {
 				"name": "바닷바람의 꿈",
-				"description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside."
+				"description": "진의 여름 코스튬. 시원하면서도 우아하며 해변과 잘 어울린다."
 			},
 			"summertime-sparkle": {
 				"name": "빛나는 협주",
-				"description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze."
+				"description": "바바라의 해변 코스튬. 상큼한 여름 분위기를 물씬 풍기는 예쁜 스커트로 시원한 바다 내음이 나는 듯하다."
 			},
 			"opulent-splendor": {
 				"name": "살랑이는 무지개 자락",
-				"description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance."
+				"description": "각청의 예복 코스튬. 해등절의 아름다운 경치 속에서, 지난날의 노력으로 이루어진 먹의 선들이 오늘 밤, 가볍고 아름다운 자태로 엮인다."
 			},
 			"orchid_s-evening-gown": {
 				"name": "비단 속 난초",
-				"description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace."
+				"description": "응광의 예복 코스튬. 군청색의 긴 치마는 우와하고 아름다운 곡선을 그리고, 복사뼈에 달린 나비 날개는 경쾌한 느낌을 더해준다."
 			},
 			"ein-immernachtstraum": {
 				"name": "극야의 진실된 꿈",
-				"description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her."
+				"description": "황녀 피슬의 제례복. 고귀한 자에게 용기와 진실 그리고 선한 마음이 깃들기를. 그래야만 사악한 기운이 그녀를 꺾을 수 없을지니."
 			},
 			"red-dead-of-night": {
 				"name": "진홍빛 종야",
-				"description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever."
+				"description": "다이루크가 은밀한 행동을 할 때 착용하는 복장 중 하나. 그림자 속에서 활활 타오르는 불꽃과도 같다. 적의 시야 끝에 진홍빛 잔흔을 남겨서 영원히 잊지 못할 악몽을 선사한다."
 			},
 			"a-sobriquet-under-shade": {
 				"name": "잎새에 숨겨진 이름",
-				"description": "An outfit Lisa had someone commission for her when she revisited Sumeru. A perfect balance between practicality and elegance, the dress bears a resemblance to Lisa’s old uniform from the Akademiya days."
+				"description": "리사가 수메르를 다시 방문했을 때 주문 제작한 코스튬. 우아하면서도 세련된 이 옷은 리사의 학창 시절 교복과도 닮았다."
 			},
 			"springbloom-missive": {
 				"name": "꽃 피는 날의 편지",
@@ -359,27 +359,27 @@
 		"text": "상세",
 		"promotional": "UP 아이템",
 		"itemlist": "아이템 리스트",
-		"increasedRate": "Increased Drop Rates",
+		"increasedRate": "아래의 내용 [확률 UP!!!]",
 		"percentageDrop": "★{rarity} 아이템 출현 확률의: {percentage}",
 		"wishDetails": "Wish Details",
 		"probInfo": "★{rarity} 아이템 기본 획득 확률: {singlePercentage} (천장 포함 종합 확률: {avgPercentage})",
 		"itemWishFor": "기원 아이템 리스트 :",
 		"itemType": "아이템 유형",
 		"itemName": "아이템 이름",
-		"beginnerInfo": "No time limit (Closes after 20 wishes)",
+		"beginnerInfo": "영구적(기원 20회 후 종료)",
 		"limited": "기간 한정 이벤트",
 		"permanent": "영구",
-		"alert": "※ This is a {wishName}. The wish guarantee count is accumulated within this event only and is independent of the guarantee counts of other wishes.",
+		"alert": "※ 이번 기원은 「{wishName}」 으로 다른 기원과는 기원 횟수가 따로 계산됩니다.",
 		"designatable": "Designatable Items",
 		"targetList": "When the Designated Item is a 5-Star {itemType}, the list of 5-Star Items is as follows:",
 		"chronicledRate": "(If there are no guarantees or Chronicled Path in effect, the base probability of all characters or weapons will be evenly distributed.)",
 		"chronicledPeriod": "5-Star Designatable Items in This Period",
 		"chronicledCourse": "Chart a course towards one of the following 5-Star Items where the probability of it appearing in 5-Star Item Drops:",
 		"beginner": [
-			"Beginners' <span> Wish </span> has no time limit and is aimed at Travelers who have recently landed in Teyvat. Non-promotional characters and weapons are available. <br /> In Beginners' Wish, 10-wish sets cost <span> 20%</span> less Acquaint Fate, and your first 10-wish set is guaranteed to include {character} , and your second 10-wish set is guaranteed to include one <span> other </span> min. 4-Star character! <br/> Beginners' Wish expires after <span> 20 </span> attempts. After the wish expires, the page will disappear.",
-			"※In most cases, the base probability of all characters and weapons is evenly distributed. If there is a boost or guarantee in effect, please refer to the corresponding rules.",
-			"〓Rules〓",
-			"Base probability of winning 5-Star character = <span> 0.600%</span> <br /> Base probability of winning 4-Star character = <span> 5.100%</span>; consolidated probability (incl. guarantee) = <span> 13.000%</span>;"
+			"초보자 추천 <span>기원</span>은 영구성 기원 이벤트로 처음 티바트 대륙에 발을 들인 여행자들에게 추천하는 기원으로 유저는 비한정 캐릭터와 무기를 획득할 수 있습니다. <br /> 이번 기원의 10연차에 소모되는 만남의 인연 개수 <span>20%</span> 할인. 그리고 10연차 시 {character} <span>100%</span> 획득. 다음번 10연차 시 ★4 이상 캐릭터 100% 획득! <br /> 이번 기원은 <span>20회</span>의 횟수 제한이 있으며, 20회 뽑기 후 해당 이벤트 기원이 사라집니다.",
+			"※일반적인 상황에서 모든 캐릭터와 무기는 기본 확률이 적용되고, 확률 UP 혹은 천장 등이 발동되면 대응하는 확률을 기준으로 합니다.",
+			"〓기원 규칙〓",
+			"★5 캐릭터 기원의 기본 획득 확률은 <span>0.600%</span>입니다. <br /> ★4 캐릭터 기원의 기본 획득 확률은 <span>5.100%</span>로 총 확률(천장 포함)은 <span>13.000%</span>입니다. 최대 <span>10회</span> 기원 시 ★4 혹은 이상의 캐릭터를 반드시 획득합니다."
 		],
 		"standard": [
 			"\"{bannerName}\" is a standard wish with no time limit. Non-event-exclusive characters and weapons are available.<br/> In this wish, <span>guaranteed</span> to win 4-star or above item at least once per 10 attempts.",
@@ -388,13 +388,13 @@
 			"Base probability of winning 5-star item = <span>0.600%</span>; base probability of winning 5-star character = <span>0.300%</span>, and base probability of winning 5-star weapon = <span>0.300%</span>; consolidated probability (incl. guarantee) of winning 5-star item = <span>1.600%</span>; guaranteed to win 5-star item at least once per <span>90</span> attempts. <br> Base probability of winning 4-star item = <span>5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span>13.000%</span>; guaranteed to win 4-star or above item at least once per <span>10</span> attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. "
 		],
 		"events": [
-			"Event Wish \"{bannerName}\" is now available. During this event wish, the  <span>event-exclusive</span> 5-star character {featuredCharacter} as well as 4-star characters {rateupCharacters} will get a <span> huge drop-rate boost</span>! <br/> <span> ※ Of the above characters, the event-exclusive character will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
-			"※ In most cases, drifting base probability of all characters and weapons is evenly distributed. If driftingre is a boost or guarantee in effect, please refer to drifting corresponding rules.",
-			"〓Rules〓",
-			"5-Star Items",
-			"For Event Wish \"{bannerName}\": Base probability of winning 5-star character = <span> 0.600% </span>; consolidated probability (incl. guarantee) = <span>1.600%</span>; guaranteed to win 5-star character at least once per <span> 90</span> attempts.<br/> The first time you win a 5-star item in this event wish, there is a <span> 50.000%</span> chance it will be the promotional character {featuredCharacter}. If the first 5-star character you win in this event wish is not the promotional character, then the next 5-star character you win is <span> guaranteed</span> to be the promotional character.",
-			"4-Star Items",
-			"For Event Wish  \"{bannerName}\": Base probability of winning 4-star item = <span> 5.100%</span>; base probability of winning 4-star character = <span>2.550%</span>, and base probability of winning 4-star weapon = <span>2.550%</span>; consolidated probability (incl. guarantee) of winning 4-star item = <span> 13.000%</span>; guaranteed to win 4-star or above item at least once per 10 attempts; probability of winning 4-star item through the guarantee = <span>99.400%</span>, and probability of winning 5-star item through the guarantee = <span>0.600%</span>. <br/> The first time you win a 4-star item in this event wish, there is a <span>50.000%</span> chance it will be one of the featured characters {rateupCharacters}. If the first 4-star item you win in this event wish is not one of the featured characters, then the next 4-star item you win is <span>guaranteed</span> to be a featured character. When you win a featured 4-star item, the probability of obtaining each featured 4-star character is equal between all of them."
+			"「 {bannerName} 」 이벤트 기원 오픈. 이벤트 기간 동안 <span>한정</span> ★5 캐릭터 {featuredCharacter} 및 ★4 캐릭터 {rateupCharacters}의 기원 획득 확률이 <span>대폭 증가</span>합니다! <br/> <span> ※ 이번 기원은 기간 한정으로 오픈되며, 이벤트 내 모든 아이템은 추후 재출시 가능성이 있습니다. 해당 캐릭터 중 한정 캐릭터는 「 세상 여행 」 일반 기원에 추가되지 않습니다.",
+			"※ 일반적인 상황에서는 모든 캐릭터와 무기에 기본 확률이 적용되며, 확률 UP 또는 천장이 발동되면 그에 상응하는 확률이 적용됩니다.",
+			"〓기원 규칙〓",
+			"[★5 아이템]",
+			"이번 「 {bannerName} 」 이벤트 기원에서 ★5 캐릭터의 기본 획득 확률은 <span>0.600%</span>이고, 총 획득 확률(천장 포함)은 <span>1.600%</span>입니다. 최대 <span>90</span>회 기원 시 ★5 캐릭터를 반드시 획득합니다.<br/>기원에서 ★5 캐릭터 획득 시, <span>50.000%</span>의 기본 확률(즉, [별빛 포착]이 발동한 경우는 제외)로 이번 확률 UP ★5 캐릭터인 {featuredCharacter}이(가) 출현합니다.<br/>만약 이번 기원에서 획득한 ★5 캐릭터가 확률 UP 캐릭터가 아닐 경우, 다음에 획득하는 ★5 캐릭터는 <span>반드시</span> 확률 UP 캐릭터가 됩니다.<br/>「 별빛 포착 」의 기본 발동 확률은 <span>0.018%</span>이며, 「 별빛 포착 」이 발동할 때를 포함할 경우 기원에서 ★5 캐릭터 획득 시 총 <span>55.000%</span>의 확률로 해당 회차의 확률 UP ★5 캐릭터 {featuredCharacter}이(가) 출현하게 됩니다. 또한, <span>3회 연속</span>으로 두 번째에 해당 회차의 확률 UP ★5 캐릭터를 획득한 경우, 다음번에 ★5 캐릭터 기원을 진행해서 ★5 캐릭터를 획득하면 <span>확정적으로</span> 「 별빛 포착 」이 발동합니다.<br/>이번 「 {bannerName} 」 이벤트 기원에서 확률 UP ★5 캐릭터의 총 획득 확률(천장 및 별빛 포착 포함)은 <span>1.103%</span>입니다.",
+			"[★5 아이템]",
+			"이번 「 {bannerName} 」 이벤트 기원에서 ★4 아이템 기원의 획득 확률은 <span>5.100%</span>이고 ★4 캐릭터 기원의 획득 확률은 <span>2.550%</span>, ★4 무기 기원의 획득 확률은 <span>2.550%</span>로 ★4 아이템 기원의 총 확률(천장 포함)은 <span>13.000%</span>로 최대 <span>10</span>회 기원 시 ★4 이상의 아이템을 반드시 획득합니다.<br/>기원에서 ★4 아이템 획득 시 <span>50.000%</span>의 확률은 이번 UP 캐릭터인 {rateupCharacters} 중 하나입니다. 만약 이번 기원에서 획득한 ★4 캐릭터가 UP 캐릭터가 아닐 경우 다음에 획득할 ★4 캐릭터는 <span>무조건</span> UP 캐릭터입니다. 기원에서 ★4 UP 캐릭터를 획득하였을 시 이번 ★4 UP 캐릭터를 획득할 확률은 균등합니다."
 		],
 		"weapons": [
 			"Event Wish \"{bannerName}\" is now available. During this event wish, the <span>event-exclusive</span> 5-star weapon {featuredWeapon1} and the 5-star weapon {featuredWeapon2} as well as the <span>event-exclusive</span> 4-star weapon {rateupWeapons}  will get a <span>huge drop-rate boost!</span> <br/> <span> ※ Of the above weapons, the event-exclusive weapons will not be available in the standard wish \"Wanderlust Invocation.\"</span>",
@@ -424,7 +424,7 @@
 			"threeStar": "3-star weapons won in this wish come with {stardust} ×15."
 		},
 		"duplicate": {
-			"heading": "〓Duplicate Characters〓",
+			"heading": "〓중복된 캐릭터 획득 시〓",
 			"text": "On obtaining a {rarity}-Star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): The 2nd - 7th time you obtain the character, it will be converted into that character's {stellaFortuna} ×1 and {starglitter} {constBonus}; from the 8th time onwards it will be converted into {starglitter} {fullConstBonus}."
 		}
 	},
@@ -470,7 +470,7 @@
 		"pay": "결제 정보",
 		"product": "상품",
 		"consume": "Consume",
-		"selectPayment": "결제 방식을 선택해 주세요.",
+		"selectPayment": "결제 수단을 선택해 주세요.",
 		"unrealWallet": "(가짜) 지갑",
 		"convertPrimo": "원석으로 자동 변환?",
 		"proceedPayment": "결제하기",
@@ -480,26 +480,26 @@
 		"initialBonus": "초회 보너스",
 		"doubleBonus": "2배",
 		"bonus": "추가 증정",
-		"buyGenesisHeading": "Buy Genesis Crystal",
+		"buyGenesisHeading": "창세의 결정 구매",
 		"recomendedHeading": "추천 상품",
 		"paimonHeading": "더스트 라이트 교환",
 		"welkinNote": "누적 구매 가능",
 		"limitedOffer": "Limited Time Offer",
-		"noLimitTime": "No Limit time items available",
+		"noLimitTime": "기간 제한 상품 없음.",
 		"paymentChilde": "타르탈리아",
 		"paymentTears": "눈물",
-		"paymentWakaranai": "Wakaranai",
+		"paymentWakaranai": "치치야 사랑해",
 		"recomended": {
 			"welkin": "공월 축복",
 			"newOutfit": "New Character Outfits",
-			"dayRemaining": "Days remaining: {days}",
-			"alreadyClaimed": "Already Claimed today",
+			"dayRemaining": "잔여 기간: {days}일",
+			"alreadyClaimed": "금일 수령 완료",
 			"instantlyGet": "구매 시 획득",
 			"dailyGift": "매일 지급",
 			"obtainTotal": "창세의 결정 x{totalGenesis}와 원석x{totalPrimo} 누적 획득 가능!",
-			"claimingBlessing": "Click to claim your daily Blessing of the Welkin Moon rewards",
-			"issuedPurchase": "Issued on purchase",
-			"collect": "Collect daily login rewards for 30 days"
+			"claimingBlessing": "눌러서 금일 공월 축복 보상 수령",
+			"issuedPurchase": "구매시 획득",
+			"collect": "30일 동안 일일 접속 보상 수령"
 		},
 		"exchange": {
 			"starglitter": "스타라이트 교환",
@@ -561,7 +561,7 @@
 		"factoryReset": "데이터를 지우고 초기값으로 되돌리기",
 		"resetTitle": "초기화",
 		"rotate": "더 나은 경험을 위해 화면을 회전하세요.",
-		"keepSetting": "설정을 유지하시겠습니까? <small> Current Pity, Balance and the Settings will not be deleted </small>",
+		"keepSetting": "설정을 유지하시겠습니까? <small> 스택, 설정값, 그리고 소비한 재화량은 삭제되지 않습니다.</small>",
 		"clearCache": "캐시를 삭제하시겠습니까 ( {size} ) ? <small> 이 작업 이후로 캐시된 리소스를 다시 불러옵니다. </small>",
 		"resetButton": "지금 지우기",
 		"resetPrompt": "<strong> 모든 데이터 </strong>를 삭제하고 초기값으로 되돌리시겠습니까?",
