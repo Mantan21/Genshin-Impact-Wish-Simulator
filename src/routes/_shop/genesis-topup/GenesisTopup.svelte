@@ -84,7 +84,13 @@
 					<div class="bonus firstBonus" style="background-image: url({$assets['bg-bonus.webp']})">
 						<div class="wrap">
 							<Icon type="genesis" style="position: absolute; top:-50%;" width="35%" />
-							<span>{$t('shop.bonus')}!</span>
+							<span>
+								{#if $t('shop.doubleBonus') !== "shop.doubleBonus"}
+									<span>{$t('shop.doubleBonus')}!</span>
+								{:else}
+									<span>{$t('shop.bonus')}!</span>
+								{/if}
+							</span>
 							<span class="amount">+{qty}</span>
 						</div>
 					</div>
