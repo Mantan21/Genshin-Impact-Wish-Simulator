@@ -25,6 +25,7 @@ const itemLocales = [
 	'de-DE',
 	'it-IT',
 	'ja-JP',
+	'ko-KR',
 	'pt-BR',
 	'ru-RU',
 	'vi-VN'
