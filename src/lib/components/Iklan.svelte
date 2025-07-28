@@ -18,7 +18,9 @@
 	onMount(() => {
 		if (type !== 'banner' || head || (type === 'banner' && !show)) return;
 		try {
+			// Google Ads
 			(window.adsbygoogle = window.adsbygoogle || []).push({});
+			// End Google Ads
 		} catch (e) {
 			console.error(e);
 		}
@@ -37,7 +39,18 @@
 		sc.addEventListener('load', () => window.aclib.runAutoTag({ zoneId: 'v1xd6wvvpe' }));
 	};
 
-	$: if ($showAd && !dev && head && !type && !($isPWA && $isMobile)) loadAdcash();
+	const loadHeaderAds = () => {
+		loadAdcash();
+		// Ezoic
+		window.ezstandalone = window.ezstandalone || {};
+		window.ezstandalone.cmd = window.ezstandalone.cmd || [];
+		window.ezstandalone.cmd.push(function () {
+			window.ezstandalone.showAds();
+		});
+		// End Ezoic
+	};
+
+	$: if ($showAd && !dev && head && !type && !($isPWA && $isMobile)) loadHeaderAds();
 </script>
 
 {#if dev && type === 'banner' && show}
@@ -65,6 +78,12 @@
 			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1874822310102113"
 			crossorigin="anonymous"></script>
 		<!-- Google Ad -->
+
+		<!-- Ezoic -->
+		<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+		<script src="https://the.gatekeeperconsent.com/ccpa/v2/standalone.js" async></script>
+		<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+		<!-- Ezoic -->
 
 		<!-- Autotag -->
 		<!-- don't show autotag if PWA -->

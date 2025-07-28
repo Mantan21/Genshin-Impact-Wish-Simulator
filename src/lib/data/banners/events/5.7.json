@@ -1,0 +1,80 @@
+{
+	"patch": 5.7,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "void-stars-advent-1",
+							"character": "skirk",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "the-transcendent-one-returns-3",
+							"character": "shenhe",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["diona", "dahlia", "candace"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-83",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "azurelight" },
+						{ "name": "calamity-queller", "buttonPosition": { "l": 60, "t": 30 } }
+					],
+					"rateup": [
+						"xiphos-moonlight",
+						"favonius-lance",
+						"makhaira-aquamarine",
+						"wandering-evenstar",
+						"sacrificial-bow"
+					],
+					"textOffset": {
+						"featured": { "l": 47.5, "t": 70 },
+						"rateup": { "l": 79.5, "b": 18, "w": 20 }
+					}
+				}
+			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "ancient-flame-ablaze-2",
+							"character": "mavuika",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "ambrosial-essence-2",
+							"character": "emilie",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["iansan", "xiangling", "yaoyao"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-84",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "a-thousand-blazing-suns" },
+						{ "name": "lumidouce-elegy", "buttonPosition": { "l": 60, "t": 30 } }
+					],
+					"rateup": ["the-flute", "rust", "dragon_s-bane", "rainslasher", "sacrificial-fragments"],
+					"textOffset": {
+						"featured": { "l": 42, "t": 70 },
+						"rateup": { "l": 79.5, "b": 22 }
+					}
+				}
+			}
+		}
+	]
+}
+

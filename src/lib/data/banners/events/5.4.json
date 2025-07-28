@@ -1,0 +1,86 @@
+{
+	"patch": 5.4,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "dawns-drifting-reverie-1",
+							"character": "yumemizuki-mizuki",
+							"textOffset": { "l": 50.5, "b": 11 }
+						},
+						{
+							"bannerName": "romaritime-meluserenity-2",
+							"character": "sigewinne",
+							"textOffset": { "l": 51, "b": 11 }
+						}
+					],
+					"rateup": ["sayu", "xiangling", "gorou"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-77",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "sunny-morning-sleep-in" },
+						{ "name": "silvershower-heartstrings", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"akuoumaru",
+						"the-flute",
+						"eye-of-perception",
+						"wavebreaker_s-fin",
+						"mouun_s-moon"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 72 },
+						"rateup": { "l": 78, "b": 18 }
+					}
+				}
+			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "chanson-of-many-waters-3",
+							"character": "furina",
+							"textOffset": { "l": 51, "b": 11 }
+						},
+						{
+							"bannerName": "tempestuous-destiny-2",
+							"character": "wriothesley",
+							"textOffset": { "l": 50.5, "b": 11 }
+						}
+					],
+					"rateup": ["mika", "chongyun", "charlotte"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-78",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "splendor-of-tranquil-waters" },
+						{ "name": "cashflow-supervision", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"favonius-sword",
+						"rust",
+						"favonius-sword",
+						"sacrificial-fragments",
+						"dragon_s-bane"
+					],
+					"textOffset": {
+						"featured": { "l": 47.5, "t": 65 },
+						"rateup": { "l": 76, "b": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

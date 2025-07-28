@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Ode to the #Dawn Breeze#",
 		"adrift-in-the-harbor": "#Adrift# in The Harbor",
 		"ambrosial-essence": "Ambrosial Essence",
+		"ancient-flame-ablaze": "#Ancient# Flame Ablaze",
+		"astral-actuation": "Astral Actuation",
 		"auric-blaze": "#Auric# Blaze",
 		"azure-excursion": "#Azure# Excursion",
 		"ballad-in-goblets": "#Ballad# in Goblets",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Caution# in Confidence",
 		"chanson-of-many-waters": "Chanson of #Many Waters#",
 		"conjuring-chiaroscuro": "Conjuring #Chiaroscuro#",
+		"cornucopia-of-contention": "#Cornucopia# of Contention",
 		"dance-of-lantern": "#Dance# of Lantern",
+		"dawns-drifting-reverie": "#Dawn's# Drifting Reverie",
 		"decree-of-the-deeps": "Decree of the #Deeps#",
 		"discerner-of-enigmas": "Discerner of #Enigmas#",
 		"drifting-luminescence": "#Drifting# Luminescence",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "Immaculate #Pulse#",
 		"in-the-name-of-the-rosula": "In the Name of the #Rosula#",
 		"invitation-to-mundane-life": "Invitation to #Mundane Life#",
+		"la-chanson-cerise": "La Chanson #Cerise#",
 		"leaves-in-the-wind": "#Leaves# in The Wind",
 		"moment-of-bloom": "#Moment of# Bloom",
 		"of-silken-clouds-woven": "Of #Silken Clouds# Woven",
 		"oni_s-royale": "#Oni's# Royale",
 		"piercing-shots-crimson-wake": "#Piercing Shot's# Crimson Wake",
 		"reign-of-serenity": "Reign of #Serenity#",
+		"remembrance-of-jade-and-stone": "Remembrance of #Jade and Stone#",
 		"romaritime-meluserenity": "Romaritime Meluserenity",
 		"sharktacular-surfari": "Sharktacular Surfari",
 		"secretum-secretorum": "#Secretum# Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Seeker# of Flame-Wrought Secrets",
 		"sparkling-steps": "#Sparkling# Steps",
+		"starry-nights-whispers": "#Starry# Night's Whispers",
 		"tapestry-of-golden-flames": "Tapestry of #Golden Flames#",
 		"tempestuous-destiny": "Tempestuous #Destiny#",
 		"the-crane-soars-skyward": "The Crane Soars #Skyward#",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "#The Heron's# Court",
 		"the-moongrass-enlightenment": "The #Moongrass'# Enlightenment",
 		"the-transcendent-one-returns": "The #Transcendent One# Returns",
+		"thunder-rends-the-plains-on-high": "#Thunder# Rends the Plains on High",
 		"twilight-arbiter": "Twilight #Arbiter#",
 		"twirling-lotus": "#Twirling# Lotus",
-		"viridescent-vigil": "Viridescent #Vigil#"
+		"viridescent-vigil": "Viridescent #Vigil#",
+		"void-stars-advent": "#Void Star's# Advent"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Breeze of Sabaa",
 				"description": "An elegant outfit for Nilou, this featherweight dress is seemingly woven of countless flowers, and with it drifts a light fragrance like the east wind at dawn, carrying beauteous blessings from a fairytale land."
+			},
+			"cherries-snow-laden": {
+				"name": "Cherries Snow-Laden",
+				"description": "Hu Tao's outfit. Styled in a palette lighter than the dark ceremonial wear favored by the Wangsheng Funeral Parlor, the dress is a special gift from her good friend Xiangling. The sunglasses, for their part, are from Hu Tao's personal collection"
+			},
+			"new-years-cheers": {
+				"name": "New Year's Cheers",
+				"description": "Xiangling's outfit. The red coat glows like a stove amidst cold winds, topped with a hat that, at Hu Tao's suggestion, took inspiration from Guoba's appearance — a design that's right up Xiangling's alley."
+			},
+			"tranquil-banquet": {
+				"name": "Tranquil Banquet",
+				"description": "The outfit Yelan has prepared for her holiday. Elegant yet neat, it conveys a sense of leisure while somehow still carrying a hint of concealed aggression…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Adventures in Blazing Hue",
+				"description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn."
 			}
 		}
 	},

@@ -1,0 +1,108 @@
+{
+	"patch": 5.3,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "ancient-flame-ablaze-1",
+							"character": "mavuika",
+							"textOffset": { "l": 50.5, "b": 11 }
+						},
+						{
+							"bannerName": "starry-nights-whispers-1",
+							"character": "citlali",
+							"textOffset": { "l": 51, "b": 11 }
+						}
+					],
+					"rateup": ["bennett", "kachina", "diona"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-75",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "a-thousand-blazing-suns", "buttonPosition": { "l": 30 } },
+						{ "name": "starcallers-watch", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"lithic-blade",
+						"the-stringless",
+						"favonius-codex",
+						"sacrificial-sword",
+						"favonius-lance"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 72 },
+						"rateup": { "l": 78, "b": 18 }
+					}
+				}
+			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 4,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "the-hearths-ashen-shadow-2",
+							"character": "arlecchino",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "illuminating-lightning-2",
+							"character": "clorinde",
+							"textOffset": { "l": 51, "b": 10.5 }
+						}
+					],
+					"rateup": ["rosaria", "chevreuse", "lan-yan"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-76",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "crimson_moon_s-semblance" },
+						{ "name": "absolution", "buttonPosition": { "l": 65 } }
+					],
+					"rateup": [
+						"lithic-spear",
+						"lion_s-roar",
+						"the-widsith",
+						"rainslasher",
+						"sacrificial-bow"
+					],
+					"textOffset": {
+						"featured": { "l": 45.5, "t": 68 },
+						"rateup": { "l": 77.5, "b": 20 }
+					}
+				},
+				"chronicled": {
+					"bannerName": "remembrance-of-jade-and-stone-1",
+					"region": "liyue",
+					"characters": {
+						"5star": ["baizhu", "shenhe", "keqing", "ganyu", "xiao", "tartaglia", "qiqi"],
+						"4star": []
+					},
+					"weapons": {
+						"5star": [
+							"primordial-jade-cutter",
+							"summit-shaper",
+							"the-unforged",
+							"calamity-queller",
+							"primordial-jade-winged-spear",
+							"jadefall-splendor",
+							"memory-of-dust",
+							"polar-star",
+							"amos-bow"
+						],
+						"4star": ["rust", "lion_s-roar", "rainslasher", "eye-of-perception", "dragon_s-bane"]
+					}
+				}
+			}
+		}
+	]
+}
+

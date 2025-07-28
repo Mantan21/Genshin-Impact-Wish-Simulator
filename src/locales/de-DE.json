@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "#Ballade# der Morgenbrise",
 		"adrift-in-the-harbor": "#Flüchtige# Bekanntschaft",
 		"ambrosial-essence": "Ambrosische Essenz",
+		"ancient-flame-ablaze": "#Alte Flamme# lodernd hell",
+		"astral-actuation": "Astrale Aktivierung",
 		"auric-blaze": "#Sengende Sonne# und glühendes Gold",
 		"azure-excursion": "#Fluss# der blassen Blätter",
 		"ballad-in-goblets": "Balladen in #Bechern#",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Verhaltene# Zuversicht",
 		"chanson-of-many-waters": "Chanson der #Ströme#",
 		"conjuring-chiaroscuro": "Zauber zwischen #Licht und Schatten#",
+		"cornucopia-of-contention": "#Füllhorn# des Wettstreits",
 		"dance-of-lantern": "Tanz der #Laternen#",
+		"dawns-drifting-reverie": "#Träumerei# zur Morgenstund",
 		"decree-of-the-deeps": "Gebot über die #Meerestiefen#",
 		"discerner-of-enigmas": "Lüftung himmlischer #Geheimnisse#",
 		"drifting-luminescence": "Treibende #Perle#",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "Pulsierendes #Leben#",
 		"in-the-name-of-the-rosula": "Im Namen der #Rosula#",
 		"invitation-to-mundane-life": "Bombastische #Einladung#",
+		"la-chanson-cerise": "La Chanson #Cerise#",
 		"leaves-in-the-wind": "#Blätter# im Wind",
 		"moment-of-bloom": "#Augenblick# des Erblühens",
 		"of-silken-clouds-woven": "Gewebt aus #seidenen Wolken#",
 		"oni_s-royale": "#Oni#bankett",
 		"piercing-shots-crimson-wake": "Sprudelndes Rot am #Ende des Pfeils#",
 		"reign-of-serenity": "Im Schatten der #Welt#",
+		"remembrance-of-jade-and-stone": "Gedenken an #Jade und Stein#",
 		"romaritime-meluserenity": "#Sanfte# Meluseele",
 		"sharktacular-surfari": "Haiterer Wellenritt",
 		"secretum-secretorum": "#Rätselhafte# Worte",
 		"seeker-of-flame-wrought-secrets": "#Flammenjäger# der Geheimnisse",
 		"sparkling-steps": "#Flammende# Schritte",
+		"starry-nights-whispers": "#Flüstern der# Sternennacht",
 		"tapestry-of-golden-flames": "Flammengalaxie",
 		"tempestuous-destiny": "Stürmisches #Schicksal#",
 		"the-crane-soars-skyward": "#Kranichsilhouette# inmitten der Wolken",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "#Kranich#hof",
 		"the-moongrass-enlightenment": "Erleuchtung des #Mondgrases#",
 		"the-transcendent-one-returns": "Rückkehr aus der #Abgeschiedenheit#",
+		"thunder-rends-the-plains-on-high": "#Donnerhall# durchzieht die Himmel",
 		"twilight-arbiter": "#Schiedsspruch# der Dämmerung",
 		"twirling-lotus": "Wirbelnder #Lotos#",
-		"viridescent-vigil": "Wachgang im #Dickicht#"
+		"viridescent-vigil": "Wachgang im #Dickicht#",
+		"void-stars-advent": "Ankunft des #Sterns der Leere#"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Einstellung",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Atem des Sabaa",
 				"description": "Nilous elegante Kleidung. Ein federleichtes, scheinbar aus tausend Blumen gewobenes Kleid, das wie der Ostwind zur Morgendämmerung von einem feinen Duft begleitet gute Wünsche aus dem Land der Märchen mitbringt."
+			},
+			"cherries-snow-laden": {
+				"name": "Schneebedeckte Kirschen",
+				"description": "Hu Taos Kleidung. Sie ist in einer helleren Farbe gehalten als die dunkle Zeremonienkleidung des Bestattungsinstituts Wangsheng und ein besonderes Geschenk ihrer guten Freundin Xiangling. Die Sonnenbrille wiederum stammt aus der persönlichen Sammlung von Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Neujahrsjubel",
+				"description": "Xianglings Kleidung. Der rote Mantel leuchtet wie ein angeheizter Herd im kalten Wind und wird von einer Mütze gekrönt, die auf Anregung von Hu Tao von Guobas Aussehen inspiriert wurde, was Xiangling natürlich sehr gefällt."
+			},
+			"tranquil-banquet": {
+				"name": "Ruhiges Festmah",
+				"description": "Yelans Kleidung für Feiertage, elegant und dennoch schick. Sie vermittelt eine entspannte Stimmung, ist aber gleichzeitig auch eine Art „aggressiver“ Tarnung …"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Feurige Wanderung",
+				"description": "Bennetts Kleidung für seine Reise durch Natlan. In einem glücksbringenden Seeblau mit einem Hauch von leuchtendem Orange gefärbt, strahlt diese Kleidung eine überbordende Vitalität aus, die zu dem Land passt, in dem sie getragen wird."
 			}
 		}
 	},

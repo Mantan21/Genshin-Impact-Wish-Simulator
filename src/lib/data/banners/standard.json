@@ -31,6 +31,23 @@
 				"bannerName": "wanderlust-invocation-2",
 				"character": "qiqi"
 			}
+		},
+		{
+			"version": 5,
+			"characters": [
+				"qiqi",
+				"keqing",
+				"diluc",
+				"mona",
+				"jean",
+				"tighnari",
+				"dehya",
+				"yumemizuki-mizuki"
+			],
+			"featured": {
+				"bannerName": "wanderlust-invocation-2",
+				"character": "qiqi"
+			}
 		}
 	]
 }

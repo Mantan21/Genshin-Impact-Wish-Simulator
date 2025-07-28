@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Balada #Angin Fajar#",
 		"adrift-in-the-harbor": "#Misteri# Keabadian",
 		"ambrosial-essence": "#Semerbak# Sari Wewangian",
+		"ancient-flame-ablaze": "#Golakan# Api Purbakala",
+		"astral-actuation": "Penggerak Bintang-Bintang",
 		"auric-blaze": "Kilauan Bara #Api Surya#",
 		"azure-excursion": "Ketenangan #Riak Air#",
 		"ballad-in-goblets": "Syair Dalam #Piala#",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Perintah# dan Siasat",
 		"chanson-of-many-waters": "Kidung #Semesta Perairan#",
 		"conjuring-chiaroscuro": "Muslihat #Bayang dan Terang#",
+		"cornucopia-of-contention": "#Perjamuan# Tanduk Beradu",
 		"dance-of-lantern": "#Tarian# Lentera",
+		"dawns-drifting-reverie": "#Lamunan Fajar# Mimpi",
 		"decree-of-the-deeps": "Titah di #Kedalaman Lautan#",
 		"discerner-of-enigmas": "Sang #Pengungkap Misteri#",
 		"drifting-luminescence": "Mutiara #di Atas Laut#",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "Hati Semurni #Mutiara#",
 		"in-the-name-of-the-rosula": "Ikrar Sekuntum #Mawar#",
 		"invitation-to-mundane-life": "Panggilan #Cahaya#",
+		"la-chanson-cerise": "La Chanson #Cerise#",
 		"leaves-in-the-wind": "Dedaunan di #Tengah Angin#",
 		"moment-of-bloom": "Bunga #Bersemi#",
 		"of-silken-clouds-woven": "Tenunan Warna #Ribuan Awan#",
 		"oni_s-royale": "Perjamuan #Oni#",
 		"piercing-shots-crimson-wake": "#Sayap Merah# Penembus Cakrawala",
 		"reign-of-serenity": "Sang Penguasa #Tunggal#",
+		"remembrance-of-jade-and-stone": "Kenangan Akan #Giok dan Bebatuan#",
 		"romaritime-meluserenity": "Romaritime #Rahayu#",
 		"sharktacular-surfari": "#Hiu# Penakluk Ombak Biru",
 		"secretum-secretorum": "#Enigma# Kehidupan",
 		"seeker-of-flame-wrought-secrets": "#Pengejar Rahasia# Dalam Bara Api",
 		"sparkling-steps": "Percikan Langkah #Api#",
+		"starry-nights-whispers": "#Bisikan# Malam Berbintang",
 		"tapestry-of-golden-flames": "#Pijar Api# di Angkasa",
 		"tempestuous-destiny": "#Lilitan Takdir# Menggelora",
 		"the-crane-soars-skyward": "Bangau Terbang di #Awan#",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "Pelataran #Bangau Putih#",
 		"the-moongrass-enlightenment": "Anugerah Kebijaksanaan #Rumput Rembulan#",
 		"the-transcendent-one-returns": "Kembali ke #Dunia Fana#",
+		"thunder-rends-the-plains-on-high": "#Gemuruh Guntur# di Taman Langit",
 		"twilight-arbiter": "#Hakim# Senja",
 		"twirling-lotus": "Tarian #Limbai Teratai#",
-		"viridescent-vigil": "#Langkah# Suaka Rimba"
+		"viridescent-vigil": "#Langkah# Suaka Rimba",
+		"void-stars-advent": "Hadirnya #Bintang Kehampaan#"
 	},
 	"editor": {
 		"bannerConfig": "Konfigurasi {banner}",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Breeze of Sabaa",
 				"description": "Gaun elegan yang dibuat untuk Nilou. Gaun ringan yang ditenun dari begitu banyaknya jenis bunga ini beraroma sangat harum tatkala ia diterpa oleh angin timur di kala fajar, dan juga membawakan berkah yang begitu indah dari negeri dongeng."
+			},
+			"cherries-snow-laden": {
+				"name": "Cherries Snow-Laden",
+				"description": "Model pakaian Hu Tao. Berbeda dengan baju formal warna gelap yang dikenakan untuk urusan Wangsheng Funeral Parlor, gaun ini adalah hadiah spesial dari Xiangling untuk Hu Tao. Kalau kacamata hitamnya sih dari koleksi pribadi yang bersangkutan ya."
+			},
+			"new-years-cheers": {
+				"name": "New Year's Cheers",
+				"description": "Model pakaian Xiangling. Jaketnya berwarna merah menyala bagai api di tengah dinginnya terpaan angin, dan topinya dibuat khusus berdasarkan penampilan Guoba atas saran Hu Tao. Xiangling sangat menyukai desain ini."
+			},
+			"tranquil-banquet": {
+				"name": "Tranquil Banquet",
+				"description": "Pakaian yang dikenakan Yelan saat liburan. Sangat elegan dan sama sekali tidak terkesan sembarangan. Bukan hanya menyampaikan suasana hati, tapi juga merupakan sebuah penyamaran yang “penuh dengan ancaman” …."
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Adventures in Blazing Hue",
+				"description": "Pakaian Bennett untuk perjalanannya di Natlan. Diwarnai dengan warna biru air danau yang membawa keberuntungan dengan sedikit warna jingga menyala, pakaian ini memancarkan vitalitas yang meluap-luap, sesuai dengan tanah tempat pakaian itu dikenakan."
 			}
 		}
 	},

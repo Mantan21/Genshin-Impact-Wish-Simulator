@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Стихи #утреннего ветра#",
 		"adrift-in-the-harbor": "#Эфемерное# недоверие",
 		"ambrosial-essence": "Эссенция #амброзии#",
+		"ancient-flame-ablaze": "Ослепительное #пламя древности#",
+		"astral-actuation": "Звёздное пробуждение",
 		"auric-blaze": "#Пылающее# золото",
 		"azure-excursion": "#Лазурный# поход",
 		"ballad-in-goblets": "#Стихи из# винного кубка",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Сдержанное# благоразумие",
 		"chanson-of-many-waters": "Песнь #водам мира#",
 		"conjuring-chiaroscuro": "Волшебство #света и тени#",
+		"cornucopia-of-contention": "Пиршество зрелищ",
 		"dance-of-lantern": "Танец фонарей",
+		"dawns-drifting-reverie": "#Витающие грёзы# на рассвете",
 		"decree-of-the-deeps": "#Завет# глубин",
 		"discerner-of-enigmas": "Белая #радуга#",
 		"drifting-luminescence": "#Дрейфующее# свечение",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "#Биение# мудрого сердца",
 		"in-the-name-of-the-rosula": "Во имя #розы#",
 		"invitation-to-mundane-life": "#Приглашение# к мирской жизни",
+		"la-chanson-cerise": "#Ла шансон# сериз",
 		"leaves-in-the-wind": "#Листья# на ветру",
 		"moment-of-bloom": "#Момент# цветения",
 		"of-silken-clouds-woven": "Сплетение #шёлковых облаков#",
 		"oni_s-royale": "#Пиршество# о́ни",
 		"piercing-shots-crimson-wake": "#Багровый всполох# меткого выстрела",
 		"reign-of-serenity": "Господство безмятежности",
+		"remembrance-of-jade-and-stone": "Думы #нефрита и камня#",
 		"romaritime-meluserenity": "Ромаринская #безмятежность#",
 		"sharktacular-surfari": "Зубастый сёрф",
 		"secretum-secretorum": "#Таинственные# секреты",
 		"seeker-of-flame-wrought-secrets": "#Искатель# огненных тайн",
 		"sparkling-steps": "#Сверкающая# поступь",
+		"starry-nights-whispers": "Шёпот #звёздной ночи#",
 		"tapestry-of-golden-flames": "Гобелен #золотого пламени#",
 		"tempestuous-destiny": "Бушующий #рок#",
 		"the-crane-soars-skyward": "Журавль взлетает #в небеса#",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "Сад #белой цапли#",
 		"the-moongrass-enlightenment": "#Озарение# лунной травы",
 		"the-transcendent-one-returns": "#Возвращение# в мир смертных",
+		"thunder-rends-the-plains-on-high": "#Гром# сотрясает неба равнины",
 		"twilight-arbiter": "#Сумеречный# вершитель",
 		"twirling-lotus": "Кружащийся #лотос#",
-		"viridescent-vigil": "Патруль лесной #чащи#"
+		"viridescent-vigil": "Патруль лесной #чащи#",
+		"void-stars-advent": "Пришествие #Звезды пустоты#"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Дыхание Сабаа",
 				"description": "Элегантный наряд Нилу. Нежное платье, как будто сотканное из множества цветов, с ароматом, словно восточный ветер на рассвете, несущий благословения сказочной страны."
+			},
+			"cherries-snow-laden": {
+				"name": "Вишни под снегом",
+				"description": "Наряд Ху Тао. Костюм создан в светлой гамме, которая отличается от её привычного тёмного церемониального облачения из ритуального бюро «Ваншэн». Этот наряд - особый подарок от подруги Сян Лин, а очки Ху Тао выбрала из своей личной коллекции."
+			},
+			"new-years-cheers": {
+				"name": "Новогоднее веселье",
+				"description": "Костюм Сян Лин. Ярко-красная, словно раскалённая печь среди холодных ветров, куртка и шапка, которые по совету Ху Тао были вдохновлены внешностью Гобы. Идеальное сочетание для Сян Лин."
+			},
+			"tranquil-banquet": {
+				"name": "Банкет безмятежности",
+				"description": "Наряд, который Е Лань подготовила для отдыха. Изысканный и утончённый, он передаёт атмосферу безмятежности, но при этом в нём чувствуется скрытая угроза…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Пылающие приключения",
+				"description": "Наряд Беннета для путешествий по Натлану окрашен в удачный озёрно-голубой с вкраплениями пламенного жёлто-оранжевого. Он излучает неукротимую жизненную силу, как и сама эта огненная земля."
 			}
 		}
 	},

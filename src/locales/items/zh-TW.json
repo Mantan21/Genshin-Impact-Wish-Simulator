@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "焚曜千陽",
 	"a-thousand-floating-dreams": "千夜浮夢",
 	"absolution": "赦罪",
 	"akuoumaru": "惡王丸",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鷲赤羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹劍",
+	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海信標",
 	"black-tassel": "黑纓槍",
 	"bloodtained-greatsword": "沐浴龍血的劍",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "西風獵弓",
 	"ferrous-shadow": "鐵影闊劍",
 	"flower-wreathed-feathers": "綴花之翎",
+	"fractured-halo": "支離輪光",
 	"freedom-sworn": "蒼古自由之誓",
 	"fruitful-hook": "碩果鉤",
 	"haran-geppaku-futsu": "波乱月白经津",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "靜水流湧之輝",
 	"staff-of-homa": "護摩之杖",
 	"staff-of-the-scarlet-sands": "赤沙之杖",
+	"starcallers-watch": "祭星者之望",
 	"sturdy-bone": "彌堅骨",
 	"summit-shaper": "斫峰之刃",
+	"sunny-morning-sleep-in": "寢正月初晴",
 	"surfs-up": "衝浪時光",
+	"symphonist-of-scents": "香韻奏者",
 	"the-alley-flash": "暗巷閃光",
 	"the-bell": "鐘劍",
 	"the-dockhands-assistant": "船塢長劍",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "圖萊拉拉的回憶",
 	"uraku-misugiri": "有樂御簾切",
 	"verdict": "裁斷",
+	"vivid-notions": "溢彩心念",
 	"vortex-vanquisher": "貫虹之槊",
 	"wavebreaker_s-fin": "斷浪長鰭",
 	"wandering-evenstar": "流浪的晚星",
@@ -163,6 +170,10 @@
 		"name": "重雲",
 		"title": "雪融有踪"
 	},
+	"citlali": {
+		"name": "茜特菈莉",
+		"title": "白星黑曜"
+	},
 	"clorinde": {
 		"name": "克洛琳德",
 		"title": "秉燭獮影"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "賽諾",
 		"title": "緘秘的裁遣"
+	},
+	"dahlia": {
+		"name": "塔利雅",
+		"title": "頌禮祝祭"
 	},
 	"dehya": {
 		"name": "迪希雅",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "艾梅莉埃",
 		"title": "千縷之蹤"
+	},
+	"escoffier": {
+		"name": "愛可菲",
+		"title": "明絢千韻"
 	},
 	"eula": {
 		"name": "優菈",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "胡桃",
 		"title": "雪霽梅香"
+	},
+	"iansan": {
+		"name": "伊安珊",
+		"title": "熔石百煉"
+	},
+	"ifa": {
+		"name": "伊法",
+		"title": "蔚風引靈"
+	},
+	"ineffa": {
+		"name": "伊涅芙",
+		"title": "轟隆雷鳴波"
 	},
 	"jean": {
 		"name": "琴",
@@ -283,6 +314,10 @@
 		"name": "久岐忍",
 		"title": "煩惱刈除"
 	},
+	"lan-yan": {
+		"name": "藍硯",
+		"title": "翦玉編春"
+	},
 	"layla": {
 		"name": "萊依拉",
 		"title": "綺思晚星"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "林尼",
 		"title": "惑光幻戲"
+	},
+	"mavuika": {
+		"name": "瑪薇卡",
+		"title": "焚夜以炎"
 	},
 	"mika": {
 		"name": "米卡",
@@ -379,6 +418,10 @@
 		"name": "希格雯",
 		"title": "龍女妙變"
 	},
+	"skirk": {
+		"name": "絲柯克",
+		"title": "虛淵暗星"
+	},
 	"sucrose": {
 		"name": "砂糖",
 		"title": "無害甜度"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "渡來介者",
 		"title": "淺蔚輕行"
+	},
+	"varesa": {
+		"name": "瓦雷莎",
+		"title": "悠暇豪勁"
 	},
 	"venti": {
 		"name": "溫迪",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "宵宫",
 		"title": "琉焰華舞"
+	},
+	"yumemizuki-mizuki": {
+		"name": "夢見月瑞希",
+		"title": "綺夢繾綣"
 	},
 	"yun-jin": {
 		"name": "雲堇",

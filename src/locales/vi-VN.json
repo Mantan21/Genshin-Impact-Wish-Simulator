@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Áng Thơ #Gió Sớm#",
 		"adrift-in-the-harbor": "#Hội Ngộ# Nơi Trần Thế",
 		"ambrosial-essence": "#Làn Hương# Phảng Phất",
+		"ancient-flame-ablaze": "Nguồn Lửa Cổ Xưa",
+		"astral-actuation": "#Tinh Nguyên# Vận Hành",
 		"auric-blaze": "#Nắng Vàng# Rực Rỡ",
 		"azure-excursion": "#Dạo Bước# Bên Hoa",
 		"ballad-in-goblets": "#Bài Thơ# Cốc Thánh",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Chìa Khóa# Sắc Lệnh",
 		"chanson-of-many-waters": "#Muôn Nước# Ca Tụng",
 		"conjuring-chiaroscuro": "Ảo Thuật #Tương Phản#",
+		"cornucopia-of-contention": "#Cặp Sừng# Giác Đấu",
 		"dance-of-lantern": "#Ánh Đèn# Ngư Long",
+		"dawns-drifting-reverie": "Bình Minh #Mơ Màng#",
 		"decree-of-the-deeps": "Decree of the #Deeps#",
 		"discerner-of-enigmas": "#Tố Nghê# Hiện Thiên",
 		"drifting-luminescence": "#Hồng Châu# Trôi Nổi",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "#Tâm Sáng# Tựa Ngọc",
 		"in-the-name-of-the-rosula": "Nhân Danh #Rosula#",
 		"invitation-to-mundane-life": "#Lời Mời# Pháo Hoa",
+		"la-chanson-cerise": "La Chanson #Cerise#",
 		"leaves-in-the-wind": "#Lá Rụng# Theo Gió",
 		"moment-of-bloom": "#Xích Đoàn# Khai Mở",
 		"of-silken-clouds-woven": "#Thêu Mây# Dệt Gấm",
 		"oni_s-royale": "#Quỷ Môn# Đấu Yến",
 		"piercing-shots-crimson-wake": "Sắc Đỏ #Xuyên Phá#",
 		"reign-of-serenity": "#Cô Độc# Giữa Nhân Gian",
+		"remembrance-of-jade-and-stone": "Ký Ức #Ngọc Nham#",
 		"romaritime-meluserenity": "Romaritime #Dịu Dàng#",
 		"sharktacular-surfari": "#Cá Mập# Lướt Sóng",
 		"secretum-secretorum": "#Hơi Thở# Thần Bí",
 		"seeker-of-flame-wrought-secrets": "#Đi Săn# Trong Lửa",
 		"sparkling-steps": "Dấu Chân #Của Lửa#",
+		"starry-nights-whispers": "#Trời Sao# Thì Thầm",
 		"tapestry-of-golden-flames": "Thiên Hà #Rực Lửa#",
 		"tempestuous-destiny": "Sóng Gió #Vận Mệnh#",
 		"the-crane-soars-skyward": "#Vân Phủ# Hạc Hành",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "#Bạch# Hạc Đình",
 		"the-moongrass-enlightenment": "Giác Ngộ #Nguyệt Thảo#",
 		"the-transcendent-one-returns": "#Xuất Trần# Nhập Thế",
+		"thunder-rends-the-plains-on-high": "#Sấm Sét# Liên Hoàn",
 		"twilight-arbiter": "Tà Dương #Phán Quyết#",
 		"twirling-lotus": "Cánh Sen #Đung Đưa#",
-		"viridescent-vigil": "Thủ Hộ #Sắc Xanh#"
+		"viridescent-vigil": "Thủ Hộ #Sắc Xanh#",
+		"void-stars-advent": "#Ánh Sao# Ngang Qua"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Ngọn Gió Sabaa",
 				"description": "Trang phục tao nhã của Nilou. Chiếc váy nhẹ nhàng như hàng ngàn bông hoa, mang theo hương thơm nhẹ nhàng của gió đông khi bình minh đến, chứa đựng lời chúc phúc tuyệt vời của thế giới cổ tích."
+			},
+			"cherries-snow-laden": {
+				"name": "Tuyết Phủ Hồng Đào",
+				"description": "Phong cách của Hu Tao. Không giống với bộ lễ phục đậm màu của Vãng Sinh Đường, đây là món quà do người bạn thân Xiangling chuẩn bị cho cô ấy. Còn kính râm là nằm trong bộ sưu tập cá nhân của Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Niềm Vui Xuân Về",
+				"description": "Phong cách của Xiangling. Chiếc áo khoác đỏ rực rỡ như bếp lò giữa những cơn gió lạnh. Theo góp ý của Hu Tao thì phần mũ được thiết kế dựa theo hình tượng Guoba, rất được Xiangling yêu thích."
+			},
+			"tranquil-banquet": {
+				"name": "Yến Tiệc Tĩnh Lặng",
+				"description": "Trang phục mà Yelan mặc cho ngày nghỉ, vừa trang nhã vừa không mất đi phong thái lạnh lùng, mang đến cảm giác nhàn nhã, nhưng cũng không kém phần “sắc bén”…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Hành Trình Sắc Lửa",
+				"description": "Trang phục du ngoạn Natlan của Bennett, màu chủ đạo là màu xanh lam may mắn cùng màu vàng cam rực rỡ, cũng giống như vùng đất tràn trề sức sống này vậy."
 			}
 		}
 	},

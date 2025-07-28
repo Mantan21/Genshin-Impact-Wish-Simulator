@@ -11,7 +11,7 @@ const meteorList = [
 	'4star-multi.mp4',
 	'5star-single.mp4',
 	'5star-multi.mp4',
-	'radiance-multi.mp4'
+	'capturing-radiance.mp4'
 ];
 
 export const check = async () => {

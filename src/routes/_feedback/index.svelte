@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<script src="https://gi-wishsim.disqus.com/embed.js" data-timestamp={+new Date()} async>
+	<script src="https://gisim.disqus.com/embed.js" data-timestamp={+new Date()} async>
 	</script>
 </svelte:head>
 

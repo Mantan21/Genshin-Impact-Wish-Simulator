@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Die tausend flammenden Sonnen",
 	"a-thousand-floating-dreams": "Fließende Träume von tausend Nächten",
 	"absolution": "Absolution",
 	"akuoumaru": "Akuoumaru",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Karmesinrotes Federkleid des Astralgeiers",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Windfalke",
+	"azurelight": "Azurglanz",
 	"beacon-of-the-reed-sea": "Schilfmeer-Bake",
 	"black-tassel": "Schwarze Quaste",
 	"bloodtained-greatsword": "Drachenblutschwert",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Favonius-Jagdbogen",
 	"ferrous-shadow": "Eiserner Schatten",
 	"flower-wreathed-feathers": "Mit Blumen gebundene Federn",
+	"fractured-halo": "Zerstreutes Licht",
 	"freedom-sworn": "Blasser Schwur der Freiheit",
 	"fruitful-hook": "Fruchtbarer Haken",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Pracht des stillen Wasser",
 	"staff-of-homa": "Homa-Stab",
 	"staff-of-the-scarlet-sands": "Stab der roten Sande",
+	"starcallers-watch": "Wacht des Sternenopfers",
 	"sturdy-bone": "Robuster Knochen",
 	"summit-shaper": "Gipfelbrecher",
+	"sunny-morning-sleep-in": "Frühjahrsschlaf",
 	"surfs-up": "Zeit fürs Wellenreiten",
+	"symphonist-of-scents": "Sinfoniker der Düfte",
 	"the-alley-flash": "Gassenleuchte",
 	"the-bell": "Glocke",
 	"the-dockhands-assistant": "Werftklinge",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Tulaytullahs Erinnerung",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Urteilsspruch",
+	"vivid-notions": "Farbenfrohe Gedanken",
 	"vortex-vanquisher": "Regenbogenstecher",
 	"wavebreaker_s-fin": "Wellenbrecherflosse",
 	"wandering-evenstar": "Wandernder Abendstern",
@@ -163,6 +170,10 @@
 		"name": "Chongyun",
 		"title": "Spuren im schmelzenden Schnee"
 	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Sternenobsidian"
+	},
 	"clorinde": {
 		"name": "Clorinde",
 		"title": "Kerzenträgerin, Häscherin der Schatten"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Richter über Geheimnisse"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode und Oblation"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Emilie",
 		"title": "Spur der tausend Düfte"
+	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Kulinarischer Glanz"
 	},
 	"eula": {
 		"name": "Eula",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Pflaumenduft bei Tauwetter"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Von geschmolzenem Gestein gehärtet"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In den Spuren schweifender Winde"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Krachend donnernde Welle"
 	},
 	"jean": {
 		"name": "Jean",
@@ -283,6 +314,10 @@
 		"name": "Kuki Shinobu",
 		"title": "Besänftigerin des Leids"
 	},
+	"lan-yan": {
+		"name": "Lan Yan",
+		"title": "Aus Jade geflochtener Frühling"
+	},
 	"layla": {
 		"name": "Layla",
 		"title": "Verträumer Abendstern"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Das Spektakel von Fantasmagoria"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Flamme der Nachterhellung"
 	},
 	"mika": {
 		"name": "Mika",
@@ -379,6 +418,10 @@
 		"name": "Sigewinne",
 		"title": "Wunderbare Drachenerbin"
 	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Stern der Leere"
+	},
 	"sucrose": {
 		"name": "Saccharose",
 		"title": "Harmlos und süß"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Wanderer im Grünen"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Gelassene Stärke"
 	},
 	"venti": {
 		"name": "Venti",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Ausgelassene Flammen"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Umarmt von süßen Träumen"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

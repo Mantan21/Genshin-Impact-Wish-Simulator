@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Poesia del vento mattutino",
 		"adrift-in-the-harbor": "Alla deriva nel porto",
 		"ambrosial-essence": "Essenza #d'ambrosia#",
+		"ancient-flame-ablaze": "Fiamma #ancestrale#",
+		"astral-actuation": "Attivazione #astrale#",
 		"auric-blaze": "Fiamma dorata",
 		"azure-excursion": "Azure Excursion",
 		"ballad-in-goblets": "Ballad in Goblets",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "Monito implacabile",
 		"chanson-of-many-waters": "Ode alle Mille Acque",
 		"conjuring-chiaroscuro": "Apparizione di #Chiaroscuro#",
+		"cornucopia-of-contention": "#Cornucopia# della contesa",
 		"dance-of-lantern": "Dance of Lantern",
+		"dawns-drifting-reverie": "#Sogno fuggevole# dell'alba",
 		"decree-of-the-deeps": "Decree of the Deeps",
 		"discerner-of-enigmas": "L'Enigmista",
 		"drifting-luminescence": "Drifting Luminescence",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "Battito immacolato",
 		"in-the-name-of-the-rosula": "Nel nome della Rosula",
 		"invitation-to-mundane-life": "Invito alla Vita mondana",
+		"la-chanson-cerise": "La chanson #cerise#",
 		"leaves-in-the-wind": "Leaves in The Wind",
 		"moment-of-bloom": "Tempo di fioritura",
 		"of-silken-clouds-woven": "Seta delle mille nuvole",
 		"oni_s-royale": "Contesa di Oni",
 		"piercing-shots-crimson-wake": "Dispersione #cremisi#",
 		"reign-of-serenity": "Reign of Serenity",
+		"remembrance-of-jade-and-stone": "Ricordi di #giada e pietra#",
 		"romaritime-meluserenity": "Meluserenità di Romaritime",
 		"sharktacular-surfari": "Surfari squalorditivo",
 		"secretum-secretorum": "Secretum Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Segreti# plasmati nel fuoco",
 		"sparkling-steps": "Sparkling Steps",
+		"starry-nights-whispers": "#Sussurri della notte# stellata",
 		"tapestry-of-golden-flames": "Tapestry of Golden Flames",
 		"tempestuous-destiny": "Destino tempestoso",
 		"the-crane-soars-skyward": "La gru solca i cieli",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "La corte dell'airone",
 		"the-moongrass-enlightenment": "L'illuminazione dell'Erba lunare",
 		"the-transcendent-one-returns": "Evento trascendentale",
+		"thunder-rends-the-plains-on-high": "Rombi di #tuono# sugli altopiani",
 		"twilight-arbiter": "Giudice del crepuscolo",
 		"twirling-lotus": "Loto volteggiante",
-		"viridescent-vigil": "Viridescent Vigil"
+		"viridescent-vigil": "Viridescent Vigil",
+		"void-stars-advent": "Avvento dell'#Astro del Vuoto#"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Brezza di Sabaa",
 				"description": "Un abito elegante per Nilou. Sembra che il tessuto di questo leggerissimo abito sia composto da innumerevoli fiori, e per tale motivo emana una fragranza delicata come il vento orientale all'alba, portando con sé graziose benedizioni di una terra fiabesca."
+			},
+			"cherries-snow-laden": {
+				"name": "Ciliegie cariche di neve",
+				"description": "Il completo di Hu Tao. In contrasto con l'abbigliamento da cerimonia usato dai Servizi Funebri Wangsheng, questo vestito è un regalo speciale che ha ricevuto dalla sua buona amica Xiangling. Gli occhiali, invece, sono parte della collezione personale di Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Celebrazione per l'anno nuovo",
+				"description": "Il completo di Xiangling. Il cappotto rosso brilla come una stufetta nel vento gelido, e il cappello, suggerito da Hu Tao, è ispirato all'aspetto di Guoba. Un design perfetto per i gusti di Xiangling."
+			},
+			"tranquil-banquet": {
+				"name": "Banchetto sereno",
+				"description": "Il completo che Yelan ha preparato per la sua vacanza. Elegante e raffinato, trasmette un senso di tranquillità, ma ha anche un tocco nascosto di aggressività…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Avventure tra colori sfolgoranti",
+				"description": "L’abbigliamento da viaggio di Bennett per i suoi viaggi a Natlan. D’un blu lacustre portafortuna e con sfumature arancione acceso, questi vestiti emanano una vitalità che richiama la terra dove sono stati indossati."
 			}
 		}
 	},

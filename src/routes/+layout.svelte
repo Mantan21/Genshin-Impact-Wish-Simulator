@@ -41,8 +41,8 @@
 	let font = '';
 	$: {
 		const lc = $locale?.toLowerCase() || '';
-		const isYuanshen = lc.match(/(cn|ja)/);
-		font = isYuanshen || lc.includes('th') ? lc.split('-')[0] : 'global';
+		const isSpecial = lc.match(/(cn|ja|kr)/);
+		font = isSpecial || lc.includes('th') ? lc.split('-')[0] : 'global';
 	}
 
 	$: viewportWidth.set(innerWidth);
@@ -134,7 +134,7 @@
 	/>
 	<link
 		rel="preload"
-		href="/fonts/optimized_jp_web.woff2"
+		href="/fonts/optimized_ja_web.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin
@@ -142,6 +142,13 @@
 	<link
 		rel="preload"
 		href="/fonts/optimized_zh_web.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	/>
+	<link
+		rel="preload"
+		href="/fonts/optimized_ko_web.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin
@@ -192,7 +199,14 @@
 
 	@font-face {
 		font-family: 'GI_JA_Web';
-		src: url('/fonts/optimized_jp_web.woff2') format('woff2');
+		src: url('/fonts/optimized_ja_web.woff2') format('woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'GI_KO_Web';
+		src: url('/fonts/optimized_ko_web.woff2') format('woff2');
 		font-weight: normal;
 		font-style: normal;
 	}

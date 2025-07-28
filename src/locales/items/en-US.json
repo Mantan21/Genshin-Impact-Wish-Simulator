@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "A Thousand Blazing Suns",
 	"a-thousand-floating-dreams": "A Thousand Floating Dreams",
 	"absolution": "Absolution",
 	"akuoumaru": "Akuoumaru",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Astral Vulture's Crimson Plumage",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"azurelight": "Azurelight",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
 	"black-tassel": "Black Tassel",
 	"bloodtained-greatsword": "Bloodtained Greatsword",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Favonius Warbow",
 	"ferrous-shadow": "Ferrous Shadow",
 	"flower-wreathed-feathers": "Flower-Wreathed Feathers",
+	"fractured-halo": "Fractured Halo",
 	"freedom-sworn": "Freedom-Sworn",
 	"fruitful-hook": "Fruitful Hook",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Splendor of Tranquil Waters",
 	"staff-of-homa": "Staff of Homa",
 	"staff-of-the-scarlet-sands": "Staff of the Scarlet Sands",
+	"starcallers-watch": "Starcaller's Watch",
 	"sturdy-bone": "Sturdy Bone",
 	"summit-shaper": "Summit Shaper",
+	"sunny-morning-sleep-in": "Sunny Morning Sleep In",
 	"surfs-up": "Surf's Up",
+	"symphonist-of-scents": "Symphonist of Scents",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
 	"the-dockhands-assistant": "The Dockhand's Assistant",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Tulaytullah's Remembrance",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Verdict",
+	"vivid-notions": "Vivid Notions",
 	"vortex-vanquisher": "Vortex Vanquisher",
 	"wavebreaker_s-fin": "Wavebreaker's Fin",
 	"wandering-evenstar": "Wandering Evenstar",
@@ -159,6 +166,10 @@
 		"name": "Chongyun",
 		"title": "Frozen Ardor"
 	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Obsidian Opalstar"
+	},
 	"clorinde": {
 		"name": "Clorinde",
 		"title": "Candlebearer, Shadowhunter"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Judicator of Secrets"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode and Oblation"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Emilie",
 		"title": "A Thousand Scents Traced"
+	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Tasteful Excellence"
 	},
 	"eula": {
 		"name": "Eula",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragrance in Thaw"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Tempered in Molten Stone"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In the Wake of Wandering Winds"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Boom Boom Thunderwave"
 	},
 	"jean": {
 		"name": "Jean",
@@ -283,6 +314,10 @@
 		"name": "Kuki Shinobu",
 		"title": "Mender of Tribulations"
 	},
+	"lan-yan": {
+		"name": "Lan Yan",
+		"title": "Spring Woven From Jade"
+	},
 	"layla": {
 		"name": "Layla",
 		"title": "Fantastical Evening Star"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Spectacle of Phantasmagoria"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Night-Igniting Flame"
 	},
 	"mika": {
 		"name": "Mika",
@@ -379,6 +418,10 @@
 		"name": "Sigewinne",
 		"title": "Wondrous Dragonheir"
 	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Void Star"
+	},
 	"sucrose": {
 		"name": "Sucrose",
 		"title": "Harmless Sweetie"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Verdant Strider"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Strength in Serenity"
 	},
 	"venti": {
 		"name": "Venti",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Frolicking Flames"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Embrace of Enchanting Dreams"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

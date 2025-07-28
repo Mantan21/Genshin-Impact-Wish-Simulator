@@ -51,7 +51,7 @@
 		const muted = localConfig.get('muted');
 		let vidSrc = '3star-single';
 		if (radiance) {
-			vidSrc = 'radiance-multi';
+			vidSrc = 'capturing-radiance';
 		} else {
 			if (single && rarity !== 3) {
 				vidSrc = rarity === 5 ? '5star-single' : '4star-single';

@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Тысяча ослепительных солнц",
 	"a-thousand-floating-dreams": "Сновидения тысячи ночей",
 	"absolution": "Отпущение грехов",
 	"akuoumaru": "Акуомару",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Алое перо звёздного грифа",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
+	"azurelight": "Лазурное сияние",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
 	"bloodtained-greatsword": "Меч драконьей крови",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Боевой лук Фавония",
 	"ferrous-shadow": "Металлическая тень",
 	"flower-wreathed-feathers": "Украшенные цветами перья",
+	"fractured-halo": "Расколотый ореол",
 	"freedom-sworn": "Клятва свободы",
 	"fruitful-hook": "Плодотворный крюк",
 	"haran-geppaku-futsu": "Харан гэппаку фуцу",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Блеск тихих вод",
 	"staff-of-homa": "Посох Хомы",
 	"staff-of-the-scarlet-sands": "Посох алых песков",
+	"starcallers-watch": "Бдение взывающего к звёздам",
 	"sturdy-bone": "Крепкая кость",
 	"summit-shaper": "Кромсатель пиков",
+	"sunny-morning-sleep-in": "Сон солнечным утром",
 	"surfs-up": "Лови волну",
+	"symphonist-of-scents": "Симфонист ароматов",
 	"the-alley-flash": "Вспышка во тьме",
 	"the-bell": "Меч-колокол",
 	"the-dockhands-assistant": "Верфь",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Воспоминания Тулайтуллы",
 	"uraku-misugiri": "Ураку мисугири",
 	"verdict": "Вердикт",
+	"vivid-notions": "Переливающиеся чаяния",
 	"vortex-vanquisher": "Покоритель вихря",
 	"wavebreaker_s-fin": "Режущий волны плавник",
 	"wandering-evenstar": "Скитающаяся звезда",
@@ -163,6 +170,10 @@
 		"name": "Чун Юнь",
 		"title": "Морозная пылкость"
 	},
+	"citlali": {
+		"name": "Ситлали",
+		"title": "Чёрный отблеск белой звезды"
+	},
 	"clorinde": {
 		"name": "Клоринда",
 		"title": "Хранительница света, теневая охотница"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Сайно",
 		"title": "Вершитель таинств"
+	},
+	"dahlia": {
+		"name": "Далия",
+		"title": "Хвала и подношение"
 	},
 	"dehya": {
 		"name": "Дэхья",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Эмилия",
 		"title": "След тысячи ароматов"
+	},
+	"escoffier": {
+		"name": "Эскофье",
+		"title": "Изысканное великолепие"
 	},
 	"eula": {
 		"name": "Эола",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Ху Тао",
 		"title": "Весенний аромат"
+	},
+	"iansan": {
+		"name": "Иансан",
+		"title": "Непрерывная закалка"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "Вслед за блуждающим ветром"
+	},
+	"ineffa": {
+		"name": "Инеффа",
+		"title": "Взрывная громовая волна"
 	},
 	"jean": {
 		"name": "Джинн",
@@ -283,6 +314,10 @@
 		"name": "Синобу",
 		"title": "Избавительница"
 	},
+	"lan-yan": {
+		"name": "Лань Янь",
+		"title": "Нефритовая весна"
+	},
 	"layla": {
 		"name": "Лайла",
 		"title": "Дивная вечерняя звезда"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Лини",
 		"title": "Зрелищные фантасмагории"
+	},
+	"mavuika": {
+		"name": "Мавуика",
+		"title": "Пылающая ночь"
 	},
 	"mika": {
 		"name": "Мика",
@@ -379,6 +418,10 @@
 		"name": "Сиджвин",
 		"title": "Преображённая дочь дракона"
 	},
+	"skirk": {
+		"name": "Скирк",
+		"title": "Звезда пустоты"
+	},
 	"sucrose": {
 		"name": "Сахароза",
 		"title": "Безобидная карамелька"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Тигнари",
 		"title": "Зелёный странник"
+	},
+	"varesa": {
+		"name": "Вареса",
+		"title": "Безмятежная сила"
 	},
 	"venti": {
 		"name": "Венти",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Ёимия",
 		"title": "Пляшущие огоньки"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "ห้วงนิทราคะนึงฝัน"
 	},
 	"yun-jin": {
 		"name": "Юнь Цзинь",

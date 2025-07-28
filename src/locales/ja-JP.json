@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "#暁風#の詩",
 		"adrift-in-the-harbor": "#逸俗#逡巡",
 		"ambrosial-essence": "ひとしずくの#馨香#",
+		"ancient-flame-ablaze": "古に宿る#烈炎#",
+		"astral-actuation": "#新星#の駆動",
 		"auric-blaze": "黄金を熔かす#烈日#",
 		"azure-excursion": "花踏み歩む#蒼流#",
 		"ballad-in-goblets": "#杯に#注がれた詩",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#戒勅#枢策",
 		"chanson-of-many-waters": "#衆の水#の頌歌",
 		"conjuring-chiaroscuro": "#光と影#のトリック",
+		"cornucopia-of-contention": "競争と#饗宴#",
 		"dance-of-lantern": "#魚龍#灯昼",
+		"dawns-drifting-reverie": "枕に夢む#朝顔#",
 		"decree-of-the-deeps": "#淵海#に令する者",
 		"discerner-of-enigmas": "天を諜知せし#白袖#",
 		"drifting-luminescence": "#海原#に浮かぶ虹珠",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "#心珠#循琅",
 		"in-the-name-of-the-rosula": "#棘薔薇#の誓い",
 		"invitation-to-mundane-life": "#灯宴#の招き",
+		"la-chanson-cerise": "#苺色#のシャンソン",
 		"leaves-in-the-wind": "辻風に舞う#落葉#",
 		"moment-of-bloom": "#彼岸#満開",
 		"of-silken-clouds-woven": "#千の雲#で彩なす羽織",
 		"oni_s-royale": "#鬼門#闘宴",
 		"piercing-shots-crimson-wake": "紅を散らす#矢羽#",
 		"reign-of-serenity": "#影寂#の天下人",
+		"remembrance-of-jade-and-stone": "#玉岩#の憶",
 		"romaritime-meluserenity": "ロマリタイム#ハート#",
 		"sharktacular-surfari": "#波追い#のサメ",
 		"secretum-secretorum": "#神秘#の生息",
 		"seeker-of-flame-wrought-secrets": "#火を巡る#秘の狩り人",
 		"sparkling-steps": "#フレア#の訪れ",
+		"starry-nights-whispers": "#星夜#のささやき",
 		"tapestry-of-golden-flames": "天の川に咲きし#大輪#",
 		"tempestuous-destiny": "#万劫#に渡る氾濫",
 		"the-crane-soars-skyward": "#雲府#飛鶴",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "#白鷺#の庭",
 		"the-moongrass-enlightenment": "叡智を恵む#月見草#",
 		"the-transcendent-one-returns": "塵世に戻りし#一鶴#",
+		"thunder-rends-the-plains-on-high": "天を裂く#雷鳴#",
 		"twilight-arbiter": "#冥昼#の裁定",
 		"twirling-lotus": "優々たる#蓮歌の舞#",
-		"viridescent-vigil": "深き森の#巡回者#"
+		"viridescent-vigil": "深き森の#巡回者#",
+		"void-stars-advent": "#虚星#の来臨"
 	},
 	"editor": {
 		"bannerConfig": "{banner}  確率設定",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "東風はこぶ花の吐息",
 				"description": "ニィロウの優雅な衣装。まるで千の花で織ったかのような、軽やかなスカート。夜明けの東風に運ばれてきたと錯覚する淡い香りには、童話の世界の美しい祝福が秘められている。"
+			},
+			"cherries-snow-laden": {
+				"name": "残雪に咲く紅",
+				"description": "胡桃の衣装。暗い色を基調とした往生堂の服とは異なり、明るい色のワンピース。服は友人の香菱が胡桃のために用意してくれたプレゼントで、サングラスは胡桃の自前である。"
+			},
+			"new-years-cheers": {
+				"name": "大つごもりの歓声",
+				"description": "香菱の衣装。冷たい風の中を燃えるかまどの炎のように暖かい。帽子は胡桃の提案により、グゥオパァーをイメージして特別にデザインされたもので、香菱のお気に入り。"
+			},
+			"tranquil-banquet": {
+				"name": "静謐の饗宴",
+				"description": "夜蘭が休暇のために選んだ衣装。スマートな優雅さがあり、余裕綽々な彼女の品位を一層引き立てている。 同時にそれは、「攻撃的な」偽装でもある…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "燃えろ！ラクガキ大冒険",
+				"description": "ベネットがナタの旅で着ていた衣装。ラッキーカラーのターコイズブルーと、燃えるようなオレンジ色は、生命力に満ち溢れたナタの地を彷彿とさせる。"
 			}
 		}
 	},

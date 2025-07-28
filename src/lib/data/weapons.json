@@ -1,6 +1,83 @@
 {
 	"data": [
 		{
+			"itemID": 13515,
+			"name": "fractured-halo",
+			"rarity": 5,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
+			"itemID": 11517,
+			"name": "azurelight",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "abyss",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
+			"itemID": 13514,
+			"name": "symphonist-of-scents",
+			"rarity": 5,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "fontaine",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
+			"itemID": 14519,
+			"limited": true,
+			"name": "vivid-notions",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"origin": "inazuma",
+			"offset": {
+				"button": { "t": 30, "w": 65, "l": 30 }
+			}
+		},
+		{
+			"itemID": 14518,
+			"limited": true,
+			"name": "sunny-morning-sleep-in",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"origin": "inazuma",
+			"offset": {
+				"button": { "t": 30, "w": 65, "l": 30 }
+			}
+		},
+		{
+			"itemID": 14517,
+			"name": "starcallers-watch",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "w": 60, "t": 35, "l": 65 }
+			}
+		},
+		{
+			"itemID": 12514,
+			"name": "a-thousand-blazing-suns",
+			"rarity": 5,
+			"weaponType": "claymore",
+			"limited": true,
+			"origin": "natlan",
+			"offset": {
+				"button": { "t": 1, "w": 70, "l": 38 }
+			}
+		},
+		{
 			"itemID": 14430,
 			"name": "waveriding-whirl",
 			"rarity": 4,

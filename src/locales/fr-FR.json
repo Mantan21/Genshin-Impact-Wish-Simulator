@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "Ode à la #brise matinale#",
 		"adrift-in-the-harbor": "Doute #passager#",
 		"ambrosial-essence": "Essence #ambrosiale#",
+		"ancient-flame-ablaze": "Embrasement du feu #ancien#",
+		"astral-actuation": "Exaltation #astrale#",
 		"auric-blaze": "Brasier #aurique#",
 		"azure-excursion": "Excursion #azurée#",
 		"ballad-in-goblets": "Ballade #en pintes#",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#Prudence# en toute confidence",
 		"chanson-of-many-waters": "Chant de #toutes les eaux#",
 		"conjuring-chiaroscuro": "L'artifice du #clair-obscur#",
+		"cornucopia-of-contention": "#Cornucopia# de la discorde",
 		"dance-of-lantern": "Danse des #lanternes#",
+		"dawns-drifting-reverie": "#Rêverie dérivant# à l'aube",
 		"decree-of-the-deeps": "Décret des #profondeurs#",
 		"discerner-of-enigmas": "Discerneuse d'#énigmes#",
 		"drifting-luminescence": "#Luminescence# à la dérive",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "#Pouls# immaculé",
 		"in-the-name-of-the-rosula": "Au nom de la #Rosula#",
 		"invitation-to-mundane-life": "Invitation #scintillante#",
+		"la-chanson-cerise": "La chanson #cerise#",
 		"leaves-in-the-wind": "#Feuilles# dans le vent",
 		"moment-of-bloom": "Floraison #Écarlate#",
 		"of-silken-clouds-woven": "Tissé de #nuages soyeux#",
 		"oni_s-royale": "Baroud d'#Oni#",
 		"piercing-shots-crimson-wake": "#Transpercement# au sillage écarlate",
 		"reign-of-serenity": "#Règne# de sérénité",
+		"remembrance-of-jade-and-stone": "Mémoire #des jades et des pierres#",
 		"romaritime-meluserenity": "Mélusinité romaritime ",
 		"sharktacular-surfari": "Surfari #requinfini#",
 		"secretum-secretorum": "#Nouvelles# mystérieuses",
 		"seeker-of-flame-wrought-secrets": "#Recherche# de secrets nés du feu",
 		"sparkling-steps": "Foulées #étincelantes#",
+		"starry-nights-whispers": "Murmures d'une nuit #étoilée#",
 		"tapestry-of-golden-flames": "Draperie d'#étincelles dorées#",
 		"tempestuous-destiny": "#Destin# tumultueux",
 		"the-crane-soars-skyward": "La grue s'envole #vers les cieux#",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "Prestance du #héron#",
 		"the-moongrass-enlightenment": "Dessillement de l'#herbe lunaire#",
 		"the-transcendent-one-returns": "#Retour# de la sublimée",
+		"thunder-rends-the-plains-on-high": "#Tonnerre# déchirant les hautes plaines",
 		"twilight-arbiter": "#Arbitre# du crépuscule",
 		"twirling-lotus": "Lotus #tournoyant#",
-		"viridescent-vigil": "Veillée #écologique#"
+		"viridescent-vigil": "Veillée #écologique#",
+		"void-stars-advent": "Avènement de l#'étoile du néant#"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "Brise de Sabaa",
 				"description": "Une tenue élégante pour Nilou. Cette robe légère est apparemment tissée d'innombrables fleurs, et avec elle dérive un léger parfum comme le vent d'est à l'aube, transportant de belles bénédictions venues d'un pays de conte de fées."
+			},
+			"cherries-snow-laden": {
+				"name": "Cerises sous neige",
+				"description": "Tenue de Hu Tao. La robe, qui arbore une palette de couleurs plus claire que les tenues de cérémonie sombres du Funérarium Wangsheng, est un cadeau spécial de sa bonne amie Xiangling. Les lunettes de soleil, quant à elles, proviennent de la collection personnelle de Hu Tao."
+			},
+			"new-years-cheers": {
+				"name": "Gaieté du Nouvel An",
+				"description": "Tenue de Xiangling. La tenue rouge brille comme un poêle au milieu des vents froids, surmontée d'un chapeau qui, à la suggestion de Hu Tao, est inspiré de l'apparence de Gooba... Un style qui convient parfaitement à Xiangling."
+			},
+			"tranquil-banquet": {
+				"name": "Banquet paisible",
+				"description": "La tenue que Yelan a préparée pour ses vacances. Élégante et soignée, elle évoque la détente tout en conservant un soupçon d’agressivité dissimulée…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Aventures en flamboyantes couleurs",
+				"description": "La tenue de voyage de Bennett pour ses péripéties à Natlan. Teints d’un bleu lacustre propice à la fortune, rehaussé de touches d’orange flamboyant, ces vêtements dégagent une vitalité débordante, à l’image du territoire où ils sont portés."
 			}
 		}
 	},

@@ -2,6 +2,7 @@
 	import { getContext } from 'svelte';
 	import { assets } from '$lib/store/app-stores';
 	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { isFirefox } from '$lib/helpers/mobileDetect';
 
 	export let noStars = false;
 	export let itemdata = {};
@@ -57,6 +58,14 @@
 				/>
 			{/key}
 			<span class="gi-{vision} {vision} icon-gradient element" />
+		{:else if weaponType === 'sword' && isFirefox()}
+			<img
+				crossorigin="anonymous"
+				src={$assets[name]}
+				alt={localName}
+				class={weaponType}
+				on:error={(e) => e.target.remove()}
+			/>
 		{:else}
 			<img
 				loading="lazy"

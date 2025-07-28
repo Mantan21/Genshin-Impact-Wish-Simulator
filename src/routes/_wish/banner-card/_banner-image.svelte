@@ -47,6 +47,7 @@
 		display: block;
 	}
 	.art-bg {
+		aspect-ratio: 1080/533;
 		position: absolute;
 		bottom: 0;
 		left: 0;

@@ -18,6 +18,8 @@
 
 	<article>
 		{@html html}
+
+		<span id="ezoic-privacy-policy-embed" />
 	</article>
 </section>
 

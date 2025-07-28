@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "千烈の日輪",
 	"a-thousand-floating-dreams": "千夜に浮かぶ夢",
 	"absolution": "赦罪",
 	"akuoumaru": "惡王丸",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鷲の紅き羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹剣",
+	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海の標",
 	"black-tassel": "黒纓槍",
 	"bloodtained-greatsword": "龍血を浴びた剣",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "西風猟弓",
 	"ferrous-shadow": "鉄影段平",
 	"flower-wreathed-feathers": "花飾りの羽",
+	"fractured-halo": "砕け散る光輪",
 	"freedom-sworn": "蒼古なる自由への誓い",
 	"fruitful-hook": "フルートゥフル・フック",
 	"haran-geppaku-futsu": "波乱月白経津",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "静水流転の輝き",
 	"staff-of-homa": "護摩の杖",
 	"staff-of-the-scarlet-sands": "赤砂の杖",
+	"starcallers-watch": "祭星者の眺め",
 	"sturdy-bone": "ストロング・ボーン",
 	"summit-shaper": "斬山の刃",
+	"sunny-morning-sleep-in": "寝正月の初晴",
 	"surfs-up": "サーフィンタイム",
+	"symphonist-of-scents": "香りのシンフォニスト",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
 	"the-dockhands-assistant": "船渠剣",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "トゥライトゥーラの記憶",
 	"uraku-misugiri": "有楽御簾切",
 	"verdict": "裁断",
+	"vivid-notions": "ヴィヴィッド・ハート",
 	"vortex-vanquisher": "破天の槍",
 	"wavebreaker_s-fin": "斬波のひれ長",
 	"waveriding-whirl": "波乗りの旋回",
@@ -163,6 +170,10 @@
 		"name": "重雲",
 		"title": "雪消の跡"
 	},
+	"citlali": {
+		"name": "シトラリ",
+		"title": "白星黒曜"
+	},
 	"clorinde": {
 		"name": "クロリンデ",
 		"title": "燭火を携えた影の狩人"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "セノ",
 		"title": "緘秘の裁き"
+	},
+	"dahlia": {
+		"name": "ダリア",
+		"title": "礼賛の祝祭"
 	},
 	"dehya": {
 		"name": "ディシア",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "エミリエ",
 		"title": "千の跡を辿って"
+	},
+	"escoffier": {
+		"name": "エスコフィエ",
+		"title": "絢爛のフレーバー"
 	},
 	"eula": {
 		"name": "エウルア",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "胡桃",
 		"title": "雪晴梅香"
+	},
+	"iansan": {
+		"name": "イアンサ",
+		"title": "百折不撓の熔岩"
+	},
+	"ifa": {
+		"name": "イファ",
+		"title": "魂を導く疾風"
+	},
+	"ineffa": {
+		"name": "イネファ",
+		"title": "ブンブンサンダーウェーブ"
 	},
 	"jean": {
 		"name": "ジン",
@@ -283,6 +314,10 @@
 		"name": "久岐忍",
 		"title": "煩悩刈除"
 	},
+	"lan-yan": {
+		"name": "藍硯",
+		"title": "春を編む翦玉"
+	},
 	"layla": {
 		"name": "レイラ",
 		"title": "綺思と夜星"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "リネ",
 		"title": "幻光で惑わすトリック"
+	},
+	"mavuika": {
+		"name": "マーヴィカ",
+		"title": "夜を焼き尽くす炎"
 	},
 	"mika": {
 		"name": "ミカ",
@@ -379,6 +418,10 @@
 		"name": "シグウィン",
 		"title": "龍の愛娘"
 	},
+	"skirk": {
+		"name": "スカーク",
+		"title": "虚淵の暗星"
+	},
 	"sucrose": {
 		"name": "スクロース",
 		"title": "無害の甘味"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "ティナリ",
 		"title": "緑土逍遥"
+	},
+	"varesa": {
+		"name": "ヴァレサ",
+		"title": "おっとりパワフル！"
 	},
 	"venti": {
 		"name": "ウェンティ",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "宵宮",
 		"title": "琉焔に舞う大輪"
+	},
+	"yumemizuki-mizuki": {
+		"name": "夢見月瑞希",
+		"title": "睦み合う綺羅の夢"
 	},
 	"yun-jin": {
 		"name": "雲菫",

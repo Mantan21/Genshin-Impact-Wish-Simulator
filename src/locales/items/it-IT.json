@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Mille soli ardenti",
 	"a-thousand-floating-dreams": "Mille sogni fluttuanti",
 	"absolution": "Assoluzione",
 	"akuoumaru": "Spada di Akuou",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Piuma cremisi dell'avvoltoio astrale",
 	"aqua-simulacra": "Aqua simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"azurelight": "Luce azzurra",
 	"beacon-of-the-reed-sea": "Faro del Mare dei Giunchi",
 	"black-tassel": "Pennacchio nero",
 	"bloodtained-greatsword": "Spadone insanguinato",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Arco da guerra di Favonius",
 	"ferrous-shadow": "Ombra di ferro",
 	"flower-wreathed-feathers": "Piume coronate di fiori",
+	"fractured-halo": "Aureola frammentata",
 	"freedom-sworn": " Giuramento di libertà",
 	"fruitful-hook": "Gancio fruttuoso",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Fulgore delle placide acque",
 	"staff-of-homa": "Bastone di Homa",
 	"staff-of-the-scarlet-sands": "Bastone delle sabbie scarlatte",
+	"starcallers-watch": "Veglia del Chiamastelle",
 	"sturdy-bone": "Osso tenace",
 	"summit-shaper": "Affettavette",
+	"sunny-morning-sleep-in": "Sonnellino mattutino",
 	"surfs-up": "Vai col surf",
+	"symphonist-of-scents": "Sinfonista di fragranze",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
 	"the-dockhands-assistant": "Aiutante del porto",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Rimembranza di Tulaytullah",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Verdetto",
+	"vivid-notions": "Pensieri vivaci",
 	"vortex-vanquisher": "Squarciavortice",
 	"wavebreaker_s-fin": "Pinna del Frangionde",
 	"wandering-evenstar": "Astro del vespro errante",
@@ -163,6 +170,10 @@
 		"name": "Chongyun",
 		"title": "Ardore ghiacciato"
 	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Fulgistella d'ossidiana"
+	},
 	"clorinde": {
 		"name": "Clorinde",
 		"title": "Cacciatrice d'ombre"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Giustiziere dei segreti"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode e oblazione"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Émilie",
 		"title": "Scie di mille profumi"
+	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Eccellenza di sapori"
 	},
 	"eula": {
 		"name": "Eula",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragranza del disgelo"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Temprata nella roccia lavica"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "In balia di venti erranti"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Fulmine roboante"
 	},
 	"jean": {
 		"name": "Jean",
@@ -283,6 +314,10 @@
 		"name": "Kuki Shinobu",
 		"title": "Risolutrice di ogni problema"
 	},
+	"lan-yan": {
+		"name": "Lan Yan",
+		"title": "Intreccio di giada primaverile"
+	},
 	"layla": {
 		"name": "Layla",
 		"title": "Stella fantastica della sera"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Spettacolo fantasmagorico"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Fiamma che incendia la notte"
 	},
 	"mika": {
 		"name": "Mika",
@@ -379,6 +418,10 @@
 		"name": "Sigewinne",
 		"title": "Prodigiosa erede del drago"
 	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Astro del Vuoto"
+	},
 	"sucrose": {
 		"name": "Sucrose",
 		"title": "Dolcezza innocua"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Vagabondo verdeggiante"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Forza nella serenità"
 	},
 	"venti": {
 		"name": "Venti",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Euforia di fuochi"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Intreccio di sogni incantevoli"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

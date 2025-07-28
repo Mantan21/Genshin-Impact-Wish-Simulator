@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Thiên Dương Rực Lửa",
 	"a-thousand-floating-dreams": "Cõi Mộng Ngàn Đêm",
 	"absolution": "Xá Tội",
 	"akuoumaru": "Akuoumaru",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Xích Vũ Tinh Tựu",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
+	"azurelight": "Thương Diệu",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Cung Tây Phong",
 	"ferrous-shadow": "Kiếm Thiết Ảnh",
 	"flower-wreathed-feathers": "Lông Vũ Thêu Hoa",
+	"fractured-halo": "Hào Quang Tách Rời",
 	"freedom-sworn": "Lời Thề Tự Do Cổ Xưa",
 	"fruitful-hook": "Móc Trĩu Quả",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Sắc Nước Lộng Lẫy",
 	"staff-of-homa": "Trượng Hộ Ma",
 	"staff-of-the-scarlet-sands": "Quyền Trượng Cát Đỏ",
+	"starcallers-watch": "Ánh Nhìn Tư Tế",
 	"sturdy-bone": "Xương Cứng",
 	"summit-shaper": "Kiếm Chước Phong",
+	"sunny-morning-sleep-in": "Hòa Giấc Trong Nắng Mai",
 	"surfs-up": "Thời Khắc Lướt Sóng",
+	"symphonist-of-scents": "Nhạc Sĩ Hương Thơm",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
 	"the-dockhands-assistant": "Kiếm Bến Tàu",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Hồi Ức Tulaytullah",
 	"uraku-misugiri": "Uraku Misugiri",
 	"verdict": "Phán Quyết",
+	"vivid-notions": "Tâm Niệm Sắc Màu",
 	"vortex-vanquisher": "Giáo Nịnh Thần",
 	"wavebreaker_s-fin": "Vây Cá Chẻ Sóng",
 	"wandering-evenstar": "Sao Đêm Rong Ruổi",
@@ -163,6 +170,10 @@
 		"name": "Chongyun",
 		"title": "Bòng Hình Băng Giá"
 	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Tinh Tú Obsidian"
+	},
 	"clorinde": {
 		"name": "Clorinde",
 		"title": "Thắp Nến Diệt Bóng Tối"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Phán Quyết Ẩn Mật"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Hoan Ca Tế Lễ"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Emilie",
 		"title": "Muôn Ngàn Hương Thơm"
+	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Muôn Hương Hòa Quyện"
 	},
 	"eula": {
 		"name": "Eula",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Tuyết Tễ Mai Hương"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Phôi Đá Bách Luyện"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "Gió Xanh Dẫn Lối"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Sóng Điện Rền Vang"
 	},
 	"jean": {
 		"name": "Jean",
@@ -283,6 +314,10 @@
 		"name": "Kuki Shinobu",
 		"title": "Gạt Bỏ Phiền Não"
 	},
+	"lan-yan": {
+		"name": "Lan Yan",
+		"title": "Cắt Ngọc Đan Xuân"
+	},
 	"layla": {
 		"name": "Layla",
 		"title": "Sao Đêm Kỳ Ảo"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Ảo Ảnh Ngoạn Mục"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Lửa Thiêu Đêm Đen"
 	},
 	"mika": {
 		"name": "Mika",
@@ -379,6 +418,10 @@
 		"name": "Sigewinne",
 		"title": "Long Nữ Diệu Biến"
 	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Ánh Sao Hư Không"
+	},
 	"sucrose": {
 		"name": "Sucrose",
 		"title": "Độ Ngọt Vô Hại"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Dạo Bước Rừng Xanh"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Sức Mạnh Nhàn Nhã"
 	},
 	"venti": {
 		"name": "Venti",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Vũ Điệu Bão Lửa"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Ảo Mộng Trùng Điệp"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

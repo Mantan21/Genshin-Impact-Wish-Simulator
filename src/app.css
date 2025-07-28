@@ -1,9 +1,11 @@
 :root {
 	letter-spacing: -0.02rem;
-	--gi-global-font: 'GI_Global_Web', 'GI_JA_Web', 'GI_TH_Web', 'GI_ZH_Web', Arial, -apple-system,
-		BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-		sans-serif;
+	--gi-global-font: 'GI_Global_Web', 'GI_JA_Web', 'GI_TH_Web', 'GI_TH_Web', 'GI_ZH_Web', Arial,
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
 	--gi-ja-font: 'GI_JA_Web', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--gi-ko-font: 'GI_KO_Web', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--gi-th-font: 'GI_TH_Web', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

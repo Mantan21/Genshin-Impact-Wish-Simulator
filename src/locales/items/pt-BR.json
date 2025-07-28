@@ -1,4 +1,5 @@
 {
+	"a-thousand-blazing-suns": "Mil Sóis Ardentes",
 	"a-thousand-floating-dreams": "Sonhos Flutuantes das Mil Noites",
 	"absolution": "Absolvição",
 	"akuoumaru": "Akuoumaru",
@@ -7,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Plumagem Escarlate do Abutre Astral",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
+	"azurelight": "Azul Brilhante",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
 	"bloodtained-greatsword": "Espadão Sangrento",
@@ -30,6 +32,7 @@
 	"favonius-warbow": "Arco de Favonius",
 	"ferrous-shadow": "Espadão de Ferro Branco",
 	"flower-wreathed-feathers": "Penas Cercadas de Flores",
+	"fractured-halo": "Resplendor Fragmentado",
 	"freedom-sworn": "Juramento pela Liberdade",
 	"fruitful-hook": "Gancho Frutífero",
 	"haran-geppaku-futsu": "Maremoto da Lua de Futsu",
@@ -79,9 +82,12 @@
 	"splendor-of-tranquil-waters": "Esplendor das Águas Silenciosas",
 	"staff-of-homa": "Báculo de Homa",
 	"staff-of-the-scarlet-sands": "Báculo das Areias Escarlates",
+	"starcallers-watch": "Observatório do Chamador de Estrelas",
 	"sturdy-bone": "Osso Robusto",
 	"summit-shaper": "Cortador de Montanhas",
+	"sunny-morning-sleep-in": "Hibernação Matinal do Ano Novo",
 	"surfs-up": "Hora do Surfe",
+	"symphonist-of-scents": "Sinfonista de Aromas",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
 	"the-dockhands-assistant": "A Doca",
@@ -96,6 +102,7 @@
 	"tulaytullah_s-remembrance": "Reminiscências de Tulaytullah",
 	"uraku-misugiri": "Urakugo Rensai",
 	"verdict": "Veredito",
+	"vivid-notions": "Coração Resplandecente",
 	"vortex-vanquisher": "Perfuradora Prismática",
 	"wavebreaker_s-fin": "Barbatana do Quebra Ondas",
 	"wandering-evenstar": "Estrela Itinerante",
@@ -163,6 +170,10 @@
 		"name": "Chongyun",
 		"title": "Pegadas na Neve"
 	},
+	"citlali": {
+		"name": "Citlali",
+		"title": "Estrela Branca e Obsidiana"
+	},
 	"clorinde": {
 		"name": "Clorinde",
 		"title": "Segurando a Vela, Espreitando as Sombras"
@@ -174,6 +185,10 @@
 	"cyno": {
 		"name": "Cyno",
 		"title": "Juiz dos Segredos"
+	},
+	"dahlia": {
+		"name": "Dahlia",
+		"title": "Ode and Oblation"
 	},
 	"dehya": {
 		"name": "Dehya",
@@ -194,6 +209,10 @@
 	"emilie": {
 		"name": "Emilie",
 		"title": "Vislumbres de Mil Aromas"
+	},
+	"escoffier": {
+		"name": "Escoffier",
+		"title": "Brilho de Mil Melodias"
 	},
 	"eula": {
 		"name": "Eula",
@@ -230,6 +249,18 @@
 	"hu-tao": {
 		"name": "Hu Tao",
 		"title": "Fragrância de Ameixa Descongelada"
+	},
+	"iansan": {
+		"name": "Iansan",
+		"title": "Forjada na Pedra Ardente"
+	},
+	"ifa": {
+		"name": "Ifa",
+		"title": "Brisa Espiritual"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Estrondo Trovejante"
 	},
 	"jean": {
 		"name": "Jean",
@@ -283,6 +314,10 @@
 		"name": "Kuki Shinobu",
 		"title": "Erradicadora das Preocupações"
 	},
+	"lan-yan": {
+		"name": "Lan Yan",
+		"title": "Jade Primaveril"
+	},
 	"layla": {
 		"name": "Layla",
 		"title": "Contemplações da Estrela Noturna"
@@ -298,6 +333,10 @@
 	"lyney": {
 		"name": "Lyney",
 		"title": "Espetáculo Fantasmagórico"
+	},
+	"mavuika": {
+		"name": "Mavuika",
+		"title": "Chama da Noite Ardente"
 	},
 	"mika": {
 		"name": "Mika",
@@ -379,6 +418,10 @@
 		"name": "Sigewinne",
 		"title": "A Filha Transmutada do Dragão"
 	},
+	"skirk": {
+		"name": "Skirk",
+		"title": "Diácono da Ode Divina"
+	},
 	"sucrose": {
 		"name": "Sucrose",
 		"title": "Doçura Inofensiva"
@@ -394,6 +437,10 @@
 	"tighnari": {
 		"name": "Tighnari",
 		"title": "Andarilho Verdejante"
+	},
+	"varesa": {
+		"name": "Varesa",
+		"title": "Ócio Vigoroso"
 	},
 	"venti": {
 		"name": "Venti",
@@ -450,6 +497,10 @@
 	"yoimiya": {
 		"name": "Yoimiya",
 		"title": "Dança das Chamas"
+	},
+	"yumemizuki-mizuki": {
+		"name": "Yumemizuki Mizuki",
+		"title": "Sonhos Entrelaçados"
 	},
 	"yun-jin": {
 		"name": "Yun Jin",

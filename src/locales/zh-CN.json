@@ -39,6 +39,8 @@
 		"ode-to-the-dawn-breeze": "#晨风#之诗",
 		"adrift-in-the-harbor": "#浮生#孰来",
 		"ambrosial-essence": "#凝露#轻芳",
+		"ancient-flame-ablaze": "#宿古#的赫炎",
+		"astral-actuation": "#聚星#源动",
 		"auric-blaze": "#烈阳#烁金",
 		"azure-excursion": "#苍流#踏花",
 		"ballad-in-goblets": "#杯装#之诗",
@@ -46,7 +48,9 @@
 		"caution-in-confidence": "#敕诫#枢谋",
 		"chanson-of-many-waters": "#众水#的颂诗",
 		"conjuring-chiaroscuro": "#光与影#的戏术",
+		"cornucopia-of-contention": "#饫宴#角戏",
 		"dance-of-lantern": "#鱼龙#灯昼",
+		"dawns-drifting-reverie": "#浮枕#朝颜",
 		"decree-of-the-deeps": "#渊海#界令",
 		"discerner-of-enigmas": "#素霓#伣天",
 		"drifting-luminescence": "#浮岳#虹珠",
@@ -59,17 +63,20 @@
 		"immaculate-pulse": "#心珠#循琅",
 		"in-the-name-of-the-rosula": "#刺玫#的铭誓",
 		"invitation-to-mundane-life": "#烟火#之邀",
+		"la-chanson-cerise": "#莓色#香颂",
 		"leaves-in-the-wind": "#叶落#风随",
 		"moment-of-bloom": "#赤团#开时",
 		"of-silken-clouds-woven": "#千云#绘羽织",
 		"oni_s-royale": "#鬼门#斗宴",
 		"piercing-shots-crimson-wake": "#饮羽#散红",
 		"reign-of-serenity": "#影寂#天下人",
+		"remembrance-of-jade-and-stone": "#玉岩#之忆",
 		"romaritime-meluserenity": "#柔柔#海露心",
 		"sharktacular-surfari": "#鲨鲨#逐浪游",
 		"secretum-secretorum": "#深秘#之息",
 		"seeker-of-flame-wrought-secrets": "#巡火#猎秘",
 		"sparkling-steps": "#闪焰#的驻足",
+		"starry-nights-whispers": "#星边#夜语",
 		"tapestry-of-golden-flames": "#焰色#天河",
 		"tempestuous-destiny": "#劫中#泛滥",
 		"the-crane-soars-skyward": "#云府#鹤行",
@@ -77,9 +84,11 @@
 		"the-heron_s-court": "#白鹭#之庭",
 		"the-moongrass-enlightenment": "#月草#的赐慧",
 		"the-transcendent-one-returns": "#出尘#入世",
+		"thunder-rends-the-plains-on-high": "#鸣雷#贯天原",
 		"twilight-arbiter": "#雳裁#冥昭",
 		"twirling-lotus": "#翩舞#歈莲",
-		"viridescent-vigil": "#巡御#蘙荟"
+		"viridescent-vigil": "#巡御#蘙荟",
+		"void-stars-advent": "#虚星#临渡"
 	},
 	"editor": {
 		"bannerConfig": "{banner} Configuration",
@@ -336,6 +345,22 @@
 			"breeze-of-sabaa": {
 				"name": "莎邦之息",
 				"description": "妮露的典雅服饰，千花编织般的轻盈裙装，如有黎明时的东风捎来淡香，承载着童话世界的美好祝福。"
+			},
+			"cherries-snow-laden": {
+				"name": "宿雪桃红",
+				"description": "胡桃的装扮款式。有别于往生堂深色仪服的素色连衣裙，是好友香菱为胡桃特别准备的礼物，墨镜则是她自己的收藏。"
+			},
+			"new-years-cheers": {
+				"name": "岁夜欢哗",
+				"description": "香菱的装扮款式。冷风中的一抹红色灶火，帽子在胡桃提议下根据锅巴的形象特别设计而成，很受香菱喜爱。"
+			},
+			"tranquil-banquet": {
+				"name": "静暇雅宴",
+				"description": "夜兰为假日时光所搭配的装束，典雅而不失利落，捎来悠暇的心境之余，也不失为一种「充满攻势」的伪装…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "炽绘奇旅",
+				"description": "班尼特的纳塔游历装束，主色调是幸运的湖蓝，以及炽热的黄橙，如同这片土地一般洋溢着勃勃生机。"
 			}
 		}
 	},

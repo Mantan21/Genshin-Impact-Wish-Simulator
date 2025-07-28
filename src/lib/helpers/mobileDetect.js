@@ -49,3 +49,10 @@ export const isSafari = () => {
 	const isSafariBrowser = safariAgent || iosDevice;
 	return isSafariBrowser;
 };
+
+export const isFirefox = () => {
+	const winNav = window.navigator;
+	const userAgent = winNav.userAgent;
+	const isFirefox = userAgent.indexOf('Firefox') > -1;
+	return isFirefox;
+}

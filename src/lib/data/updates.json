@@ -540,6 +540,71 @@
 				"Add New Weapon: <b> Astral Vulture's Crimson Plumage (5★)</b>",
 				"Add New Weapons: <b>Sturdy Bone</b>, <b>Flower-Wreathed Feathers</b> & <b>Waveriding Whirl</b> (4★)"
 			]
+		},
+		{
+			"date": "30 Dec 2024",
+			"description": [
+				"<b>HAPPY NEW YEAR!!</b>",
+				"Add New Character: <strong> Mavuika (5★)</strong>",
+				"Add New Character: <strong> Citlali (5★)</strong>",
+				"Add New Character: <strong> Lan Yan (4★)</strong>",
+				"Add New Outfit: <b> Cherries Snow-Laden (4★)</b>",
+				"Add New Outfit: <b> New Year's Cheers (4★)</b>"
+			]
+		},
+		{
+			"date": "11 Feb 2025",
+			"description": [
+				"Add New Character: <strong> Yumemizuki Mizuki (5★)</strong>",
+				"Add New Outfit: <b> Silvershower Heartstrings (5★)</b>"
+			]
+		},
+		{
+			"date": "04 Mar 2025",
+			"description": ["Add <strong> Wriothesley 1st rerun</strong>", "Add <b> Furina 2nd rerun</b>"]
+		},
+		{
+			"date": "24 Mar 2025",
+			"description": [
+				"Add New Character: <strong> Varesa (5★)</strong>",
+				"Add New Character: <strong> Iansan (4★)</strong>"
+			]
+		},
+		{
+			"date": "15 Apr 2025",
+			"description": ["Add <b> Xilonen 1st rerun</b>", "Add <strong> Venti 5th rerun</strong>"]
+		},
+		{
+			"date": "05 Apr 2025",
+			"description": [
+				"Add New Character: <strong> Escoffier (5★)</strong>",
+				"Add New Character: <strong> Ifa (4★)</strong>"
+			]
+		},
+		{
+			"date": "25 Mar 2025",
+			"description": [
+				"Add <strong> Raiden Shogun 5th rerun Banner</strong>",
+				"Add <strong> Kinich 1st rerun </strong>",
+				"Add <strong> Inazuma Chronicled Banned </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "16 Jun 2025",
+			"description": [
+				"Add New Character: <strong> Skirk (5★)</strong>",
+				"Add New Character: <strong> Dahlia (4★)</strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "27 Jul 2025",
+			"description": [
+				"Add New Character: <strong> Ineffa (5★)</strong>",
+				"Add New Yelan's Outfit: <b> Tranquil Banquet (4★)</b>",
+				"Add New Bennett's Outfit: <b> Adventures in Blazing Hue (4★)</b>"
+			]
 		}
 	]
 }
