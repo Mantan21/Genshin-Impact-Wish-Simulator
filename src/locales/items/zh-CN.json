@@ -32,6 +32,7 @@
 	"favonius-warbow": "西风猎弓",
 	"ferrous-shadow": "铁影阔剑",
 	"flower-wreathed-feathers": "缀花之翎",
+	"fractured-halo": "支离轮光",
 	"freedom-sworn": "苍古自由之誓",
 	"fruitful-hook": "硕果钩",
 	"haran-geppaku-futsu": "波乱月白经津",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "伊法",
 		"title": "蔚风引灵"
+	},
+	"ineffa": {
+		"name": "伊涅芙",
+		"title": "轰隆雷鸣波"
 	},
 	"jean": {
 		"name": "琴",

@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 13515,
+			"name": "fractured-halo",
+			"rarity": 5,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
 			"itemID": 11517,
 			"name": "azurelight",
 			"rarity": 5,

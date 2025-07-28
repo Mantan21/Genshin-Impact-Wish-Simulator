@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "Alla deriva nel porto",
 		"ambrosial-essence": "Essenza #d'ambrosia#",
 		"ancient-flame-ablaze": "Fiamma #ancestrale#",
+		"astral-actuation": "Attivazione #astrale#",
 		"auric-blaze": "Fiamma dorata",
 		"azure-excursion": "Azure Excursion",
 		"ballad-in-goblets": "Ballad in Goblets",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "Celebrazione per l'anno nuovo",
 				"description": "Il completo di Xiangling. Il cappotto rosso brilla come una stufetta nel vento gelido, e il cappello, suggerito da Hu Tao, è ispirato all'aspetto di Guoba. Un design perfetto per i gusti di Xiangling."
+			},
+			"tranquil-banquet": {
+				"name": "Banchetto sereno",
+				"description": "Il completo che Yelan ha preparato per la sua vacanza. Elegante e raffinato, trasmette un senso di tranquillità, ma ha anche un tocco nascosto di aggressività…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Avventure tra colori sfolgoranti",
+				"description": "L’abbigliamento da viaggio di Bennett per i suoi viaggi a Natlan. D’un blu lacustre portafortuna e con sfumature arancione acceso, questi vestiti emanano una vitalità che richiama la terra dove sono stati indossati."
 			}
 		}
 	},

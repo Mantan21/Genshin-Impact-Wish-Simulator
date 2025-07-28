@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#逸俗#逡巡",
 		"ambrosial-essence": "ひとしずくの#馨香#",
 		"ancient-flame-ablaze": "古に宿る#烈炎#",
+		"astral-actuation": "#新星#の駆動",
 		"auric-blaze": "黄金を熔かす#烈日#",
 		"azure-excursion": "花踏み歩む#蒼流#",
 		"ballad-in-goblets": "#杯に#注がれた詩",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "大つごもりの歓声",
 				"description": "香菱の衣装。冷たい風の中を燃えるかまどの炎のように暖かい。帽子は胡桃の提案により、グゥオパァーをイメージして特別にデザインされたもので、香菱のお気に入り。"
+			},
+			"tranquil-banquet": {
+				"name": "静謐の饗宴",
+				"description": "夜蘭が休暇のために選んだ衣装。スマートな優雅さがあり、余裕綽々な彼女の品位を一層引き立てている。 同時にそれは、「攻撃的な」偽装でもある…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "燃えろ！ラクガキ大冒険",
+				"description": "ベネットがナタの旅で着ていた衣装。ラッキーカラーのターコイズブルーと、燃えるようなオレンジ色は、生命力に満ち溢れたナタの地を彷彿とさせる。"
 			}
 		}
 	},

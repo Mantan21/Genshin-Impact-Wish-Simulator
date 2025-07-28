@@ -244,6 +244,31 @@
 				"splashArt": { "x": -4.253387533875339, "y": 3.2371273712737123, "scale": 1 },
 				"wishCard": { "x": -24.65011286681716, "y": 61.5801354401806, "scale": 6.99 }
 			}
+		},
+		{
+			"release": 5.8,
+			"name": "tranquil-banquet",
+			"characterName": "yelan",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"storeCard": { "l": -40, "w": 120, "t": -25 },
+				"splashArt": { "x": -1.58130081300813, "y": 2.1043360433604335, "scale": 1.47 },
+				"wishCard": { "x": -102.64430828764914, "y": 71.06772009029345, "scale": 12.02 }
+			}
+		},
+		{
+			"release": 5.3,
+			"name": "adventures-in-blazing-hue",
+			"characterName": "bennett",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"splashArt": { "x": -0.5230352303523036, "y": -0.6490514905149052, "scale": 1.24 },
+				"wishCard": { "x": -23.16027088036118, "y": 52.21896162528217, "scale": 8.42 }
+			}
 		}
 	]
 }

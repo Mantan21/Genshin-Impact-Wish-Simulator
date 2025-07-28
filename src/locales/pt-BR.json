@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "Perguntas Temporárias",
 		"ambrosial-essence": "#Fragrância do# Orvalho",
 		"ancient-flame-ablaze": "Chama Ancestral",
+		"astral-actuation": "Pulsar #Cósmico#",
 		"auric-blaze": "Fulgor Dourado",
 		"azure-excursion": "Correntes Florais",
 		"ballad-in-goblets": "#Poemas# em Taças",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "Alegria de Ano Novo",
 				"description": "Vestuário de Xiangling. O casaco vermelho brilha como um forno em meio a ventos gelados, combinado com um chapéu, sob sugestão de Hutao, ele tirou inspiração da aparência de Guoba — um design que está bem no estilo de Xiangling."
+			},
+			"tranquil-banquet": {
+				"name": "Banquete de Serenidade",
+				"description": "O vestuário que Yelan preparou para suas férias. Elegante, porém estilosa, transmite uma sensação de lazer enquanto ainda carrega um toque de agressão disfarçada…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Jornada das Chamas",
+				"description": "Vestuário de viagem de Natlan de Bennett. As cores principais são azul-lago e laranja flamejante, que exalam vitalidade, assim como essa terra."
 			}
 		}
 	},

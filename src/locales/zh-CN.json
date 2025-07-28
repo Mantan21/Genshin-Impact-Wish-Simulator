@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#浮生#孰来",
 		"ambrosial-essence": "#凝露#轻芳",
 		"ancient-flame-ablaze": "#宿古#的赫炎",
+		"astral-actuation": "#聚星#源动",
 		"auric-blaze": "#烈阳#烁金",
 		"azure-excursion": "#苍流#踏花",
 		"ballad-in-goblets": "#杯装#之诗",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "岁夜欢哗",
 				"description": "香菱的装扮款式。冷风中的一抹红色灶火，帽子在胡桃提议下根据锅巴的形象特别设计而成，很受香菱喜爱。"
+			},
+			"tranquil-banquet": {
+				"name": "静暇雅宴",
+				"description": "夜兰为假日时光所搭配的装束，典雅而不失利落，捎来悠暇的心境之余，也不失为一种「充满攻势」的伪装…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "炽绘奇旅",
+				"description": "班尼特的纳塔游历装束，主色调是幸运的湖蓝，以及炽热的黄橙，如同这片土地一般洋溢着勃勃生机。"
 			}
 		}
 	},

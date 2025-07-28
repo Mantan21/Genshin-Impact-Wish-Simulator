@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#Adrift# in The Harbor",
 		"ambrosial-essence": "Ambrosial Essence",
 		"ancient-flame-ablaze": "#Ancient# Flame Ablaze",
+		"astral-actuation": "Astral Actuation",
 		"auric-blaze": "#Auric# Blaze",
 		"azure-excursion": "#Azure# Excursion",
 		"ballad-in-goblets": "#Ballad# in Goblets",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "New Year's Cheers",
 				"description": "Xiangling's outfit. The red coat glows like a stove amidst cold winds, topped with a hat that, at Hu Tao's suggestion, took inspiration from Guoba's appearance — a design that's right up Xiangling's alley."
+			},
+			"tranquil-banquet": {
+				"name": "Tranquil Banquet",
+				"description": "The outfit Yelan has prepared for her holiday. Elegant yet neat, it conveys a sense of leisure while somehow still carrying a hint of concealed aggression…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Adventures in Blazing Hue",
+				"description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn."
 			}
 		}
 	},

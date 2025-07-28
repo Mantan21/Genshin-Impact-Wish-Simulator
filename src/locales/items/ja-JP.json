@@ -32,6 +32,7 @@
 	"favonius-warbow": "西風猟弓",
 	"ferrous-shadow": "鉄影段平",
 	"flower-wreathed-feathers": "花飾りの羽",
+	"fractured-halo": "砕け散る光輪",
 	"freedom-sworn": "蒼古なる自由への誓い",
 	"fruitful-hook": "フルートゥフル・フック",
 	"haran-geppaku-futsu": "波乱月白経津",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "イファ",
 		"title": "魂を導く疾風"
+	},
+	"ineffa": {
+		"name": "イネファ",
+		"title": "ブンブンサンダーウェーブ"
 	},
 	"jean": {
 		"name": "ジン",

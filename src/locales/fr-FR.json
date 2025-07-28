@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "Doute #passager#",
 		"ambrosial-essence": "Essence #ambrosiale#",
 		"ancient-flame-ablaze": "Embrasement du feu #ancien#",
+		"astral-actuation": "Exaltation #astrale#",
 		"auric-blaze": "Brasier #aurique#",
 		"azure-excursion": "Excursion #azurée#",
 		"ballad-in-goblets": "Ballade #en pintes#",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "Gaieté du Nouvel An",
 				"description": "Tenue de Xiangling. La tenue rouge brille comme un poêle au milieu des vents froids, surmontée d'un chapeau qui, à la suggestion de Hu Tao, est inspiré de l'apparence de Gooba... Un style qui convient parfaitement à Xiangling."
+			},
+			"tranquil-banquet": {
+				"name": "Banquet paisible",
+				"description": "La tenue que Yelan a préparée pour ses vacances. Élégante et soignée, elle évoque la détente tout en conservant un soupçon d’agressivité dissimulée…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Aventures en flamboyantes couleurs",
+				"description": "La tenue de voyage de Bennett pour ses péripéties à Natlan. Teints d’un bleu lacustre propice à la fortune, rehaussé de touches d’orange flamboyant, ces vêtements dégagent une vitalité débordante, à l’image du territoire où ils sont portés."
 			}
 		}
 	},

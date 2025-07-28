@@ -32,6 +32,7 @@
 	"favonius-warbow": "Favonius-Jagdbogen",
 	"ferrous-shadow": "Eiserner Schatten",
 	"flower-wreathed-feathers": "Mit Blumen gebundene Federn",
+	"fractured-halo": "Zerstreutes Licht",
 	"freedom-sworn": "Blasser Schwur der Freiheit",
 	"fruitful-hook": "Fruchtbarer Haken",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "In den Spuren schweifender Winde"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Krachend donnernde Welle"
 	},
 	"jean": {
 		"name": "Jean",

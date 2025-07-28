@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#Hội Ngộ# Nơi Trần Thế",
 		"ambrosial-essence": "#Làn Hương# Phảng Phất",
 		"ancient-flame-ablaze": "Nguồn Lửa Cổ Xưa",
+		"astral-actuation": "#Tinh Nguyên# Vận Hành",
 		"auric-blaze": "#Nắng Vàng# Rực Rỡ",
 		"azure-excursion": "#Dạo Bước# Bên Hoa",
 		"ballad-in-goblets": "#Bài Thơ# Cốc Thánh",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "Niềm Vui Xuân Về",
 				"description": "Phong cách của Xiangling. Chiếc áo khoác đỏ rực rỡ như bếp lò giữa những cơn gió lạnh. Theo góp ý của Hu Tao thì phần mũ được thiết kế dựa theo hình tượng Guoba, rất được Xiangling yêu thích."
+			},
+			"tranquil-banquet": {
+				"name": "Yến Tiệc Tĩnh Lặng",
+				"description": "Trang phục mà Yelan mặc cho ngày nghỉ, vừa trang nhã vừa không mất đi phong thái lạnh lùng, mang đến cảm giác nhàn nhã, nhưng cũng không kém phần “sắc bén”…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Hành Trình Sắc Lửa",
+				"description": "Trang phục du ngoạn Natlan của Bennett, màu chủ đạo là màu xanh lam may mắn cùng màu vàng cam rực rỡ, cũng giống như vùng đất tràn trề sức sống này vậy."
 			}
 		}
 	},

@@ -32,6 +32,7 @@
 	"favonius-warbow": "Боевой лук Фавония",
 	"ferrous-shadow": "Металлическая тень",
 	"flower-wreathed-feathers": "Украшенные цветами перья",
+	"fractured-halo": "Расколотый ореол",
 	"freedom-sworn": "Клятва свободы",
 	"fruitful-hook": "Плодотворный крюк",
 	"haran-geppaku-futsu": "Харан гэппаку фуцу",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "Вслед за блуждающим ветром"
+	},
+	"ineffa": {
+		"name": "Инеффа",
+		"title": "Взрывная громовая волна"
 	},
 	"jean": {
 		"name": "Джинн",

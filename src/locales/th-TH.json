@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "ม่านแห่งเมฆา",
 		"ambrosial-essence": "อวลกลิ่น#หยาดน้ำค้าง#",
 		"ancient-flame-ablaze": "#เพลิงอดีตกาล#สีชาด",
+		"astral-actuation": "#พลวัต#เคลื่อนดารา",
 		"auric-blaze": "สุริยันสีทอง#ที่แผดเผา#",
 		"azure-excursion": "#ย่ำบุปผา#ธาราคราม",
 		"ballad-in-goblets": "#ถ้วย#แห่งบทกวี",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "รื่นเริงส่งท้ายปี",
 				"description": "คอสตูมของ Xiangling ชุดที่ให้ความรู้สึกเหมือนเตาไฟสีแดงท่ามกลางลมหนาว หมวกใบนี้ได้รับแรงบันดาลใจจากรูปลักษณ์ของ Guoba ตามคำแนะนำของ Hu Tao ซึ่ง Xiangling ชื่นชอบมันอย่างมาก"
+			},
+			"tranquil-banquet": {
+				"name": "Tranquil Banquet",
+				"description": "The outfit Yelan has prepared for her holiday. Elegant yet neat, it conveys a sense of leisure while somehow still carrying a hint of concealed aggression…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Adventures in Blazing Hue",
+				"description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn."
 			}
 		}
 	},

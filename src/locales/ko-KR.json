@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#덧없는# 인생",
 		"ambrosial-essence": "향기로운 #이슬의 정수#",
 		"ancient-flame-ablaze": "#고대의# 불꽃",
+		"astral-actuation": "#별의# 구동",
 		"auric-blaze": "타오르는 #금빛 태양#",
 		"azure-excursion": "#푸른 물결 속# 가벼운 걸음",
 		"ballad-in-goblets": "#잔에 담긴# 시",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "제야의 환호",
 				"description": "Xiangling's outfit. The red coat glows like a stove amidst cold winds, topped with a hat that, at Hu Tao's suggestion, took inspiration from Guoba's appearance — a design that's right up Xiangling's alley."
+			},
+			"tranquil-banquet": {
+				"name": "고요한 밤의 연회",
+				"description": "야란이 휴일을 맞아 착용한 코스튬. 우아하면서도 단정하다. 여유로워 보이는 자태 뒤에는 「치명적인 공세」가 숨어 있다…"
+			},
+			"adventures-in-blazing-hue": {
+				"name": "뜨거운 색채",
+				"description": "베넷의 나타 여행 코스튬. 행운을 상징하는 호수를 닮은 푸른 빛과 뜨거운 주황색을 주요 색상으로 사용해, 이 땅처럼 생기가 흘러넘친다"
 			}
 		}
 	},

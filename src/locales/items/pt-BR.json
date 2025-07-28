@@ -32,6 +32,7 @@
 	"favonius-warbow": "Arco de Favonius",
 	"ferrous-shadow": "Espadão de Ferro Branco",
 	"flower-wreathed-feathers": "Penas Cercadas de Flores",
+	"fractured-halo": "Resplendor Fragmentado",
 	"freedom-sworn": "Juramento pela Liberdade",
 	"fruitful-hook": "Gancho Frutífero",
 	"haran-geppaku-futsu": "Maremoto da Lua de Futsu",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "Brisa Espiritual"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Estrondo Trovejante"
 	},
 	"jean": {
 		"name": "Jean",

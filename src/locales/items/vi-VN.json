@@ -32,6 +32,7 @@
 	"favonius-warbow": "Cung Tây Phong",
 	"ferrous-shadow": "Kiếm Thiết Ảnh",
 	"flower-wreathed-feathers": "Lông Vũ Thêu Hoa",
+	"fractured-halo": "Hào Quang Tách Rời",
 	"freedom-sworn": "Lời Thề Tự Do Cổ Xưa",
 	"fruitful-hook": "Móc Trĩu Quả",
 	"haran-geppaku-futsu": "Haran Geppaku Futsu",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "Gió Xanh Dẫn Lối"
+	},
+	"ineffa": {
+		"name": "Ineffa",
+		"title": "Sóng Điện Rền Vang"
 	},
 	"jean": {
 		"name": "Jean",

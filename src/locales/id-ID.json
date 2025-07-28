@@ -40,6 +40,7 @@
 		"adrift-in-the-harbor": "#Misteri# Keabadian",
 		"ambrosial-essence": "#Semerbak# Sari Wewangian",
 		"ancient-flame-ablaze": "#Golakan# Api Purbakala",
+		"astral-actuation": "Penggerak Bintang-Bintang",
 		"auric-blaze": "Kilauan Bara #Api Surya#",
 		"azure-excursion": "Ketenangan #Riak Air#",
 		"ballad-in-goblets": "Syair Dalam #Piala#",
@@ -352,6 +353,14 @@
 			"new-years-cheers": {
 				"name": "New Year's Cheers",
 				"description": "Model pakaian Xiangling. Jaketnya berwarna merah menyala bagai api di tengah dinginnya terpaan angin, dan topinya dibuat khusus berdasarkan penampilan Guoba atas saran Hu Tao. Xiangling sangat menyukai desain ini."
+			},
+			"tranquil-banquet": {
+				"name": "Tranquil Banquet",
+				"description": "Pakaian yang dikenakan Yelan saat liburan. Sangat elegan dan sama sekali tidak terkesan sembarangan. Bukan hanya menyampaikan suasana hati, tapi juga merupakan sebuah penyamaran yang “penuh dengan ancaman” …."
+			},
+			"adventures-in-blazing-hue": {
+				"name": "Adventures in Blazing Hue",
+				"description": "Pakaian Bennett untuk perjalanannya di Natlan. Diwarnai dengan warna biru air danau yang membawa keberuntungan dengan sedikit warna jingga menyala, pakaian ini memancarkan vitalitas yang meluap-luap, sesuai dengan tanah tempat pakaian itu dikenakan."
 			}
 		}
 	},

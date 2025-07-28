@@ -1,0 +1,46 @@
+{
+	"patch": 5.8,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "astral-actuation-1",
+							"character": "ineffa",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "starry-nights-whispers-2",
+							"character": "citlali",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["xingqiu", "fischl", "sethos"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-85",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "fractured-halo", "buttonPosition": { "l": 20, "t": 30 } },
+						{ "name": "starcallers-watch", "buttonPosition": { "l": 70, "t": 40 } }
+					],
+					"rateup": [
+						"mountain-bracing-bolt",
+						"favonius-warbow",
+						"favonius-codex",
+						"sturdy-bone",
+						"sacrificial-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 49.5, "t": 70 },
+						"rateup": { "l": 77, "b": 20, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+
