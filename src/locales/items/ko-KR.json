@@ -33,6 +33,7 @@
 	"ferrous-shadow": "불굴",
 	"flower-wreathed-feathers": "꽃장식 깃",
 	"freedom-sworn": "오래된 자유의 서약",
+	"fractured-halo": "파멸의 빛고리",
 	"fruitful-hook": "수확의 갈고리",
 	"haran-geppaku-futsu": "하란 월백의 후츠",
 	"harbinger-of-dawn": "여명신검",
@@ -256,6 +257,10 @@
 	"ifa": {
 		"name": "이파",
 		"title": "생명을 잇는 바람"
+	},
+	"ineffa": {
+		"name": "이네파",
+		"title": "쾅쾅 번개파"
 	},
 	"jean": {
 		"name": "진",
