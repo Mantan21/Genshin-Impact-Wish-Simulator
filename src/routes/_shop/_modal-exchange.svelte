@@ -19,7 +19,7 @@
 	import ModalBalance from './_modal-balance.svelte';
 
 	export let data = {};
-	const { itemToExchange, currency, price, rarity, isOutfit, isOwned } = data;
+	const { itemToExchange, currency, price, rarity, isOutfit, isOwned, isCharacter } = data;
 
 	const balanceList = {
 		starglitter: sg,
@@ -48,6 +48,7 @@
 
 	// Buy Button Clicked
 	const buyOutfit = getContext('buyOutfit');
+	const buyCharacter = getContext('buyCharacter');
 
 	const confirmPurchase = () => {
 		playSfx();
@@ -59,6 +60,7 @@
 		});
 
 		if (isOutfit) return buyOutfit();
+		if (isCharacter) return buyCharacter();
 
 		fates.update((v) => {
 			const newVal = v + value;
@@ -106,6 +108,12 @@
 						width="75%"
 						alt={$t(`outfit.item.${itemToExchange}.name`)}
 					/>
+				{:else if isCharacter}
+					<img
+						src={$assets[`exchange-card/${itemToExchange}`]}
+						width="70%"
+						alt={$t(`${itemToExchange}.name`)}
+					/>
 				{:else}
 					<Icon type={itemToExchange} width="70%" />
 				{/if}
@@ -115,6 +123,8 @@
 					<!-- Item Name -->
 					{#if isOutfit}
 						{$t(`outfit.item.${itemToExchange}.name`)}
+					{:else if isCharacter}
+						{$t(`${itemToExchange}.name`)}
 					{:else}
 						{$t(`shop.item.${itemToExchange}`)}
 					{/if}
@@ -129,6 +139,8 @@
 				<!-- Description -->
 				{#if isOutfit}
 					<p>{$t(`outfit.item.${itemToExchange}.description`)}</p>
+				{:else if isCharacter}
+					<p>{$t(`${itemToExchange}.title`)}</p>
 				{:else}
 					<p>{$t(`shop.description.${itemToExchange}`)}</p>
 				{/if}

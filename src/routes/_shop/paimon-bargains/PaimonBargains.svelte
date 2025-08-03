@@ -10,6 +10,8 @@
 	import ShopGroupItem from '../_shop-group-item.svelte';
 	import NavlinkTop from '../_navlink-top.svelte';
 	import NavlinkTopButton from '../_navlink-top-button.svelte';
+	import { lazyLoad } from '$lib/helpers/lazyload';
+	import { paimonBargainCharacters } from '$lib/data/paimon-bargain-characters.json'
 
 	let activeCurrency = 'starglitter';
 
@@ -27,6 +29,22 @@
 		const data = { itemToExchange, price, rarity, currency };
 		openExchangeModal(data);
 	};
+
+	const selectCharacterItem = (selectedCharacter) => {
+		playSfx();
+		const currency = 'starglitter';
+		const itemToExchange = selectedCharacter.name
+		const price = selectedCharacter.price;
+		const rarity = selectedCharacter.rarity;
+		const data = {
+			itemToExchange,
+			price,
+			rarity,
+			currency,
+			isCharacter: true
+		};
+		openExchangeModal(data);
+	}
 
 	const handlePaimonClick = ({ detail }) => {
 		if (activeCurrency === detail.selected) return;
@@ -67,6 +85,33 @@
 			</button>
 		</ShopGroupItem>
 	{/each}
+	{#if activeCurrency === "starglitter"}
+		{#each paimonBargainCharacters as character, i}
+			<ShopGroupItem>
+				<button
+					in:fade={{ duration: 300, delay: Math.sqrt((i+2) * 5000) }}
+					on:click={() => selectCharacterItem(character)}
+				>
+					<div class="content">
+						<picture style="background-image: url('{$assets['5star-bg.webp']}')">
+							<img
+								use:lazyLoad={$assets[`exchange-card/${character.name}`]}
+								data-placeholder={$assets['placeholder-face.webp']}
+								alt={$t(`${character.name}.name`)}
+								crossorigin="anonymous"
+								width="60%"
+							/>
+							<span> {$t(`${character.name}.name`)}</span>
+						</picture>
+						<div class="price">
+							<Icon type="starglitter" width="15%" />
+							<span style="margin-left: 5px">{character.price}</span>
+						</div>
+					</div>
+				</button>
+			</ShopGroupItem>
+		{/each}
+	{/if}
 </ShopGroup>
 
 <style>
