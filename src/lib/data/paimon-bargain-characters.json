@@ -1,0 +1,64 @@
+{
+    "paimonBargainCharacters": [
+		{
+			"name": "amber",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "barbara",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "beidou",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "bennett",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "fischl",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "kaeya",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "lisa",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "ningguang",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "noelle",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "razor",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "xiangling",
+			"price": 34,
+			"rarity": 4
+		},
+		{
+			"name": "xingqiu",
+			"price": 34,
+			"rarity": 4
+		}
+	]
+}

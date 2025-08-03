@@ -6,7 +6,7 @@
 	import hotkeys from 'hotkeys-js';
 
 	import { activeVersion } from '$lib/store/app-stores';
-	import { ownedOutfits } from '$lib/helpers/dataAPI/api-localstore';
+	import { ownedOutfits, owneditem } from '$lib/helpers/dataAPI/api-localstore';
 	import { getSplashArtData, outfitsForThisPatch } from '$lib/helpers/outfit';
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
@@ -22,6 +22,8 @@
 	import CharacterOutfits from './character-outfit/CharacterOutfits.svelte';
 	import WishResult from '../_wish/wish-result/WishResult.svelte';
 
+	import charsDB from '$lib/data/characters.json';
+
 	$: title = $t('title', { default: APP_TITLE });
 
 	// Exchange Modal
@@ -34,6 +36,7 @@
 		showExchangeModal = true;
 	};
 	setContext('openExchangeModal', openModal);
+
 
 	// Outfit Manager
 	const { patch } = $activeVersion;
@@ -63,6 +66,18 @@
 		showSplashArt = false;
 	};
 	setContext('closeResult', closeResult);
+
+	// Paimon's bargain character
+	const buyCharacter = () => {
+		const { itemToExchange: itemName } = exchangeData;
+		let charData = charsDB.data.find((char) => char.name == itemName)
+		splashArtData = {list: [charData]};
+
+		owneditem.put({ itemID: charData.itemID, source: "manual"})
+		showSplashArt = true;
+	}
+
+	setContext('buyCharacter', buyCharacter);
 
 	// Shop Group Navigation
 	let contentHeight;

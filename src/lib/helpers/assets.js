@@ -29,6 +29,8 @@ export const itemList = () => {
 			pathList[`thumbnail/${keyNoExt}`] = src;
 		} else if (key.match(/blank/)) {
 			pathList[`blank/${keyNoExt}`] = src;
+		} else if (key.match(/exchange-card/)) {
+			pathList[`exchange-card/${keyNoExt}`] = src;
 		} else if (key.match(/(banner|weapons)/)) {
 			pathList[keyNoExt] = src;
 		} else {
