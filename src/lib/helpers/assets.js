@@ -67,6 +67,7 @@ const images = [
 			'book-select-bg.webp',
 			'brand.png',
 			'button.webp',
+			'character-shop-frame.webp',
 			'chronicled-mondstadt.webp',
 			'epitomized-bg.webp',
 			'epitomized-half.webp',
