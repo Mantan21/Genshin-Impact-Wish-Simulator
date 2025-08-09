@@ -152,9 +152,9 @@
 			<div class="rangeInput">
 				<Range
 					{value}
-					min={max < 1 || isOutfit ? 0 : 1}
-					max={isOutfit ? 1 : max || 1}
-					disabled={max < 1 || isOutfit}
+					min={max < 1 || isOutfit || isCharacter ? 0 : 1}
+					max={isOutfit || isCharacter ? 1 : max || 1}
+					disabled={max < 1 || isOutfit || isCharacter}
 				/>
 				{#if isOwned}
 					<div class="error red">{$t('outfit.owned')}</div>
