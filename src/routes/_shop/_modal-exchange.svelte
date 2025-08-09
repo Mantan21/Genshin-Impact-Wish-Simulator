@@ -17,6 +17,7 @@
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Range from '$lib/components/Range.svelte';
 	import ModalBalance from './_modal-balance.svelte';
+	import CharacterItem from './paimon-bargains/_character-item.svelte';
 
 	export let data = {};
 	const { itemToExchange, currency, price, rarity, isOutfit, isOwned, isCharacter } = data;
@@ -109,11 +110,7 @@
 						alt={$t(`outfit.item.${itemToExchange}.name`)}
 					/>
 				{:else if isCharacter}
-					<img
-						src={$assets[`exchange-card/${itemToExchange}`]}
-						width="70%"
-						alt={$t(`${itemToExchange}.name`)}
-					/>
+					<CharacterItem name={itemToExchange} />
 				{:else}
 					<Icon type={itemToExchange} width="70%" />
 				{/if}

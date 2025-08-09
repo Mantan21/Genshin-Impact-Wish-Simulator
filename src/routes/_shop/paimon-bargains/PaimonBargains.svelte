@@ -4,14 +4,14 @@
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { paimonBargainCharacters } from '$lib/data/paimon-bargain-characters.json';
 
 	import Icon from '$lib/components/Icon.svelte';
 	import ShopGroup from '../_shop-group.svelte';
 	import ShopGroupItem from '../_shop-group-item.svelte';
 	import NavlinkTop from '../_navlink-top.svelte';
 	import NavlinkTopButton from '../_navlink-top-button.svelte';
-	import { lazyLoad } from '$lib/helpers/lazyload';
-	import { paimonBargainCharacters } from '$lib/data/paimon-bargain-characters.json'
+	import CharacterItem from './_character-item.svelte';
 
 	let activeCurrency = 'starglitter';
 
@@ -33,7 +33,7 @@
 	const selectCharacterItem = (selectedCharacter) => {
 		playSfx();
 		const currency = 'starglitter';
-		const itemToExchange = selectedCharacter.name
+		const itemToExchange = selectedCharacter.name;
 		const price = selectedCharacter.price;
 		const rarity = selectedCharacter.rarity;
 		const data = {
@@ -44,7 +44,7 @@
 			isCharacter: true
 		};
 		openExchangeModal(data);
-	}
+	};
 
 	const handlePaimonClick = ({ detail }) => {
 		if (activeCurrency === detail.selected) return;
@@ -69,10 +69,10 @@
 				in:fade={{ duration: 300, delay: Math.sqrt(i * 5000) }}
 			>
 				<div class="content">
-					<picture style="background-image: url('{$assets['5star-bg.webp']}')">
+					<div class="picture" style="background-image: url('{$assets['5star-bg.webp']}')">
 						<Icon type={fate} width="60%" />
 						<span> {$t(`shop.item.${fate}`)} </span>
-					</picture>
+					</div>
 					<div class="price">
 						{#each Object.keys(pricelist) as key}
 							{#if activeCurrency === key}
@@ -85,24 +85,18 @@
 			</button>
 		</ShopGroupItem>
 	{/each}
-	{#if activeCurrency === "starglitter"}
+	{#if activeCurrency === 'starglitter'}
 		{#each paimonBargainCharacters as character, i}
 			<ShopGroupItem>
 				<button
-					in:fade={{ duration: 300, delay: Math.sqrt((i+2) * 5000) }}
+					in:fade={{ duration: 300, delay: Math.sqrt((i + 2) * 5000) }}
 					on:click={() => selectCharacterItem(character)}
 				>
 					<div class="content">
-						<picture style="background-image: url('{$assets['5star-bg.webp']}')">
-							<img
-								use:lazyLoad={$assets[`exchange-card/${character.name}`]}
-								data-placeholder={$assets['placeholder-face.webp']}
-								alt={$t(`${character.name}.name`)}
-								crossorigin="anonymous"
-								width="60%"
-							/>
+						<div class="picture" style="background-image: url('{$assets['4star-bg.webp']}')">
+							<CharacterItem name={character.name} />
 							<span> {$t(`${character.name}.name`)}</span>
-						</picture>
+						</div>
 						<div class="price">
 							<Icon type="starglitter" width="15%" />
 							<span style="margin-left: 5px">{character.price}</span>
@@ -155,7 +149,8 @@
 		background-color: #596982;
 	}
 
-	.content picture {
+	.content .picture {
+		padding-top: 5%;
 		height: 100%;
 		width: 100%;
 		display: flex;
@@ -167,7 +162,7 @@
 		border-bottom-right-radius: 1.4rem;
 		overflow: hidden;
 	}
-	.content picture span {
+	.content .picture span {
 		position: absolute;
 		bottom: 0;
 		left: 0;
