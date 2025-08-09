@@ -485,6 +485,7 @@
 		"proceedPayment": "Tiến hành thanh toán",
 		"qty": "Số lượng",
 		"insufficient": "Không Đủ Tiền",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "Crystal Top-Up",
 		"initialBonus": "Initial Topup Bonus",
 		"bonus": "Bonus",

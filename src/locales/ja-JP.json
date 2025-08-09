@@ -485,6 +485,7 @@
 		"proceedPayment": "購入",
 		"qty": "数量",
 		"insufficient": "アイテム不足",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "結晶凝結",
 		"initialBonus": "初回2倍ボーナス",
 		"bonus": "おまけ",

@@ -485,6 +485,7 @@
 		"proceedPayment": "Оплатить",
 		"qty": "Количество",
 		"insufficient": "Недостаточно средств",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "Пополнение кристаллов",
 		"initialBonus": "Initial Topup Bonus",
 		"bonus": "Bonus",

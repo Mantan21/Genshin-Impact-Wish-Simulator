@@ -485,6 +485,7 @@
 		"proceedPayment": "Proses Pembayaran",
 		"qty": "Qty",
 		"insufficient": "Saldo Tidak Cukup",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "Top Up Crystal",
 		"initialBonus": "Bonus Topup Perdana",
 		"bonus": "Bonus",

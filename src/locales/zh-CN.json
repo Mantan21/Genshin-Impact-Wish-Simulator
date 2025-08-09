@@ -485,6 +485,7 @@
 		"proceedPayment": "确认交易",
 		"qty": "数量",
 		"insufficient": "货币不足",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "凝取结晶",
 		"initialBonus": "Initial Topup Bonus",
 		"bonus": "Bonus",

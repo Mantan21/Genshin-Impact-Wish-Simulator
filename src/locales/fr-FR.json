@@ -485,6 +485,7 @@
 		"proceedPayment": "Payer",
 		"qty": "Quantité",
 		"insufficient": "Vous n'avez pas assez de ressources.",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "Recharge cristaux",
 		"initialBonus": "Bonus d'achat initial",
 		"bonus": "Bonus",

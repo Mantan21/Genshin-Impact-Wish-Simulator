@@ -485,6 +485,7 @@
 		"proceedPayment": "결제하기",
 		"qty": "구매 개수",
 		"insufficient": "Insufficient Funds",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "결정 구매",
 		"initialBonus": "초회 보너스",
 		"doubleBonus": "2배",

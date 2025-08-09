@@ -485,6 +485,7 @@
 		"proceedPayment": "Zahlung abschließen",
 		"qty": "Anzahl",
 		"insufficient": "Unzureichende Zahlmittel",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "Kristalle aufladen",
 		"initialBonus": "Inklusive Bonus",
 		"bonus": "Bonus",

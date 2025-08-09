@@ -10,6 +10,8 @@
 	import { getSplashArtData, outfitsForThisPatch } from '$lib/helpers/outfit';
 	import { APP_TITLE } from '$lib/env';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
+	import { getDetails } from '$lib/helpers/gacha/itemdrop-base';
 
 	import Background from '$lib/components/RandomBackground.svelte';
 	import Header from './_header.svelte';
@@ -21,9 +23,6 @@
 	import Recomended from './recomended/Recomended.svelte';
 	import CharacterOutfits from './character-outfit/CharacterOutfits.svelte';
 	import WishResult from '../_wish/wish-result/WishResult.svelte';
-
-	import charsDB from '$lib/data/characters.json';
-	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
 	$: title = $t('title', { default: APP_TITLE });
 
@@ -37,7 +36,6 @@
 		showExchangeModal = true;
 	};
 	setContext('openExchangeModal', openModal);
-
 
 	// Outfit Manager
 	const { patch } = $activeVersion;
@@ -71,10 +69,9 @@
 	// Paimon's bargain character
 	const buyCharacter = (qty) => {
 		const { itemToExchange: itemName } = exchangeData;
-		let charData = charsDB.data.find((char) => char.name == itemName);
-		splashArtData = {list: [charData]};
-
-		owneditem.put({ itemID: charData.itemID, source: "manual", qty});
+		const charData = getDetails(itemName) || {};
+		splashArtData = { list: [charData] };
+		owneditem.put({ itemID: charData.itemID, source: 'manual', qty });
 
 		const d = new Date();
 		const time = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
@@ -90,7 +87,7 @@
 		});
 
 		showSplashArt = true;
-	}
+	};
 
 	setContext('buyCharacter', buyCharacter);
 

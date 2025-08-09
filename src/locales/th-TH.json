@@ -485,6 +485,7 @@
 		"proceedPayment": "ดำเนินการชำระเงิน",
 		"qty": "Qty",
 		"insufficient": "เงินทุนไม่เพียงพอ",
+		"maxCharacter": "Obtained the maximum possible amount of Stella Fortuna",
 		"crystalTopup": "คริสตัลเติมเงิน",
 		"initialBonus": "Initial Topup Bonus",
 		"bonus": "Bonus",

@@ -4,6 +4,8 @@
 	import { t } from 'svelte-i18n';
 	import { assets } from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
+	import { owneditem } from '$lib/helpers/dataAPI/api-localstore';
+	import { getDetails } from '$lib/helpers/gacha/itemdrop-base';
 	import { paimonBargainCharacters } from '$lib/data/paimon-bargain-characters.json';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -37,6 +39,7 @@
 		const price = selectedCharacter.price;
 		const rarity = selectedCharacter.rarity;
 		const data = {
+			isOwned: isCharMax(itemToExchange),
 			itemToExchange,
 			price,
 			rarity,
@@ -50,6 +53,13 @@
 		if (activeCurrency === detail.selected) return;
 		activeCurrency = detail.selected;
 		playSfx('shopsubnav');
+	};
+
+	const isCharMax = (name) => {
+		const { itemID } = getDetails(name) || {};
+		const { qty } = owneditem.get(itemID);
+		const isMax = qty >= 7;
+		return isMax;
 	};
 </script>
 
@@ -95,7 +105,13 @@
 					<div class="content">
 						<div class="picture" style="background-image: url('{$assets['4star-bg.webp']}')">
 							<CharacterItem name={character.name} />
-							<span> {$t(`${character.name}.name`)}</span>
+							{#if isCharMax(character.name)}
+								<span class="unpurchasable">
+									{$t('shop.maxCharacter')}
+								</span>
+							{:else}
+								<span> {$t(`${character.name}.name`)}</span>
+							{/if}
 						</div>
 						<div class="price">
 							<Icon type="starglitter" width="15%" />
@@ -164,13 +180,14 @@
 	}
 	.content .picture span {
 		position: absolute;
+		font-size: calc(var(--column-width) * 0.065);
+		margin-bottom: 3%;
+		padding: 0 2%;
 		bottom: 0;
 		left: 0;
 		width: 100%;
 		color: #fff;
-		transform: scale(0.9);
 		-webkit-text-stroke: 0.2px black;
-		text-transform: capitalize;
 	}
 	.price {
 		width: 100%;
@@ -180,5 +197,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.unpurchasable {
+		background-color: #ea6864;
+		padding-top: 0.2rem;
+		margin-bottom: 0 !important;
+		display: block;
+		width: 100%;
 	}
 </style>
