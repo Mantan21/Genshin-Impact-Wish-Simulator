@@ -60,7 +60,7 @@
 		});
 
 		if (isOutfit) return buyOutfit();
-		if (isCharacter) return buyCharacter();
+		if (isCharacter) return buyCharacter(value);
 
 		fates.update((v) => {
 			const newVal = v + value;

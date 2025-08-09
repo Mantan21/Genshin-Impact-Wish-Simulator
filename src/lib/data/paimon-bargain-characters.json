@@ -3,62 +3,74 @@
 		{
 			"name": "amber",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 4
 		},
 		{
 			"name": "barbara",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 6
 		},
 		{
 			"name": "beidou",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 2
 		},
 		{
 			"name": "bennett",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 5
 		},
 		{
 			"name": "fischl",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 1
 		},
 		{
 			"name": "kaeya",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 6
 		},
 		{
 			"name": "lisa",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 5
 		},
 		{
 			"name": "ningguang",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 3
 		},
 		{
 			"name": "noelle",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 2
 		},
 		{
 			"name": "razor",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 4
 		},
 		{
 			"name": "xiangling",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 1
 		},
 		{
 			"name": "xingqiu",
 			"price": 34,
-			"rarity": 4
+			"rarity": 4,
+			"month": 3
 		}
 	]
 }

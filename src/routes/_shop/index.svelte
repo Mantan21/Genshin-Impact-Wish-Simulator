@@ -23,6 +23,7 @@
 	import WishResult from '../_wish/wish-result/WishResult.svelte';
 
 	import charsDB from '$lib/data/characters.json';
+	import { HistoryManager } from '$lib/helpers/dataAPI/api-indexeddb';
 
 	$: title = $t('title', { default: APP_TITLE });
 
@@ -68,12 +69,26 @@
 	setContext('closeResult', closeResult);
 
 	// Paimon's bargain character
-	const buyCharacter = () => {
+	const buyCharacter = (qty) => {
 		const { itemToExchange: itemName } = exchangeData;
-		let charData = charsDB.data.find((char) => char.name == itemName)
+		let charData = charsDB.data.find((char) => char.name == itemName);
 		splashArtData = {list: [charData]};
 
-		owneditem.put({ itemID: charData.itemID, source: "manual"})
+		owneditem.put({ itemID: charData.itemID, source: "manual", qty});
+
+		const d = new Date();
+		const time = `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+
+		HistoryManager.addHistory({
+			time,
+			banner: 'paimon-bargains',
+			type: 'character',
+			itemID: charData.itemID,
+			name: charData.name,
+			vision: charData.vision,
+			rarity: charData.rarity
+		});
+
 		showSplashArt = true;
 	}
 
