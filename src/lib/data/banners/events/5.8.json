@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "sharktacular-surfari-2",
+							"character": "mualani",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "piercing-shots-crimson-wake-2",
+							"character": "chasca",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["bennett", "ororon", "ifa"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-86",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "surfs-up", "buttonPosition": { "l": 30, "t": 40 } },
+						{ "name": "astral-vultures-crimson-plumage", "buttonPosition": { "l": 70, "t": 10 } }
+					],
+					"rateup": [
+						"waveriding-whirl",
+						"favonius-lance",
+						"favonius-sword",
+						"flower-wreathed-feathers",
+						"fruitful-hook"
+					],
+					"textOffset": {
+						"featured": { "l": 51, "t": 65 },
+						"rateup": { "l": 77, "b": 20, "w": 20 }
+					}
+				}
+			}
 		}
 	]
 }

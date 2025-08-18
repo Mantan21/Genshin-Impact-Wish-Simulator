@@ -598,12 +598,19 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "27 Jul 2025",
 			"description": [
 				"Add New Character: <strong> Ineffa (5★)</strong>",
 				"Add New Yelan's Outfit: <b> Tranquil Banquet (4★)</b>",
 				"Add New Bennett's Outfit: <b> Adventures in Blazing Hue (4★)</b>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "18 Aug 2025",
+			"description": [
+				"Add <strong> Mualani 1st rerun Banner</strong>",
+				"Add <strong> Chasca 1st rerun </strong>"
 			]
 		}
 	]
