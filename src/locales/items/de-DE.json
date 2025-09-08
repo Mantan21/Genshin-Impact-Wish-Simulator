@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Mitternachtswalzer",
 	"mountain-bracing-bolt": "Bergschützer-Bolzen",
 	"mouun_s-moon": "Mouun-Mond",
+	"nightweavers-looking-glass": "Spiegel des Nachtwebers",
 	"peak-patrol-song": "Lied der Gipfelpatrouille",
 	"polar-star": "Polarstern",
 	"portable-power-saw": "Tragbare motorisierte Säge",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Lan Yan",
 		"title": "Aus Jade geflochtener Frühling"
+	},
+	"lauma": {
+		"name": "Lauma",
+		"title": "Sakrallied des Ewigmonds"
 	},
 	"layla": {
 		"name": "Layla",

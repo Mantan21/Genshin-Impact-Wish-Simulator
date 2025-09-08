@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "幽夜のワルツ",
 	"mountain-bracing-bolt": "鎮山の釘",
 	"mouun_s-moon": "曚雲の月",
+	"nightweavers-looking-glass": "夜を紡ぐ天鏡",
 	"peak-patrol-song": "岩峰巡礼の歌",
 	"polar-star": "冬極の白星",
 	"portable-power-saw": "携帯型チェーンソー",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "藍硯",
 		"title": "春を編む翦玉"
+	},
+	"lauma": {
+		"name": "ラウマ",
+		"title": "永月の祀り歌"
 	},
 	"layla": {
 		"name": "レイラ",

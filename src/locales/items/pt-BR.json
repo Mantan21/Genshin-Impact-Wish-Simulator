@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Valsa do Crepúsculo",
 	"mountain-bracing-bolt": "Prego Esmagador de Montanhas",
 	"mouun_s-moon": "Lua de Mouun",
+	"nightweavers-looking-glass": "Luneta do Tecedor da Noite",
 	"peak-patrol-song": "Canção da Patrulha do Pico",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Serra Elétrica Portátil",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Lan Yan",
 		"title": "Jade Primaveril"
+	},
+	"lauma": {
+		"name": "Lauma",
+		"title": "Eterna Canção Lunar"
 	},
 	"layla": {
 		"name": "Layla",

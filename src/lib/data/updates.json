@@ -606,11 +606,19 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "18 Aug 2025",
 			"description": [
 				"Add <strong> Mualani 1st rerun Banner</strong>",
 				"Add <strong> Chasca 1st rerun </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "18 Aug 2025",
+			"description": [
+				"Add New Character: <strong> Lauma (5★)</strong>",
+				"Add <strong> Nahida 4th rerun Banner</strong>",
+				"Add <strong> Sumeru Chronicle Banner </strong>"
 			]
 		}
 	]

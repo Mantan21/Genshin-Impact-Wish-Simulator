@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Mitternachts Waltz",
 	"mountain-bracing-bolt": "Mountain-Bracing Bolt",
 	"mouun_s-moon": "Mouun's Moon",
+	"nightweavers-looking-glass": "Nightweaver's Looking Glass",
 	"peak-patrol-song": "Peak Patrol Song",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Portable Power Saw",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Lan Yan",
 		"title": "Spring Woven From Jade"
+	},
+	"lauma": {
+		"name": "Lauma",
+		"title": "Evermoon’s Sacrament Song"
 	},
 	"layla": {
 		"name": "Layla",

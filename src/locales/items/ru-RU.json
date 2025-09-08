@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Вальс Нирваны Ночи",
 	"mountain-bracing-bolt": "Крепящий горы шип",
 	"mouun_s-moon": "Луна Моун",
+	"nightweavers-looking-glass": "Зеркало прядильщицы ночи",
 	"peak-patrol-song": "Песнь патруля пиков",
 	"polar-star": "Полярная звезда",
 	"portable-power-saw": "Переносная мотопила",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Лань Янь",
 		"title": "Нефритовая весна"
+	},
+	"lauma": {
+		"name": "Лаума",
+		"title": "Жертвенная песнь вечной Луне"
 	},
 	"layla": {
 		"name": "Лайла",

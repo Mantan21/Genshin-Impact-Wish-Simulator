@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 14520,
+			"name": "nightweavers-looking-glass",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 35 }
+			}
+		},
+		{
 			"itemID": 13515,
 			"name": "fractured-halo",
 			"rarity": 5,

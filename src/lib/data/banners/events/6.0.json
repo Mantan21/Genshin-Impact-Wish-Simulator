@@ -1,0 +1,84 @@
+{
+	"patch": 5.8,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "moonsong-of-the-groves-1",
+							"character": "lauma",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "the-moongrass-enlightenment-5",
+							"character": "nahida",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["xingqiu", "fischl", "sethos"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-87",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "nightweavers-looking-glass" },
+						{ "name": "a-thousand-floating-dreams", "buttonPosition": { "l": 70, "t": 40 } }
+					],
+					"rateup": [
+						"sacrificial-fragments",
+						"the-stringless",
+						"the-flute",
+						"dragon_s-bane",
+						"sacrificial-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 44.5, "t": 64 },
+						"rateup": { "l": 75.5, "b": 20, "w": 20 }
+					}
+				},
+				"chronicled": {
+					"bannerName": "roving-chalice-of-dewgrass-1",
+					"region": "sumeru",
+					"characters": {
+						"5star": ["dehya", "alhaitham", "wanderer", "cyno", "nilou", "tighnari"],
+						"4star": []
+					},
+					"weapons": {
+						"5star": [
+							"light-of-foliar-incision",
+							"key-of-khaj-nisut",
+							"beacon-of-the-reed-sea",
+							"staff-of-the-scarlet-sands",
+							"tulaytullah_s-remembrance",
+							"hunter_s-path"
+						],
+						"4star": [
+							"lion_s-roar",
+							"sacrificial-sword",
+							"the-flute",
+							"favonius-sword",
+							"rainslasher",
+							"sacrificial-greatsword",
+							"the-bell",
+							"favonius-greatsword",
+							"favonius-lance",
+							"dragon_s-bane",
+							"eye-of-perception",
+							"sacrificial-fragments",
+							"the-widsith",
+							"favonius-codex",
+							"rust",
+							"sacrificial-bow",
+							"the-stringless",
+							"favonius-warbow"
+						]
+					}
+				}
+			}
+		}
+	]
+}
+

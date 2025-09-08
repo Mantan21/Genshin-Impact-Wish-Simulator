@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Valzer notturno",
 	"mountain-bracing-bolt": "Chiodo reggimonti",
 	"mouun_s-moon": "Luna di Mouun",
+	"nightweavers-looking-glass": "Specchio dell’Intessinotte",
 	"peak-patrol-song": "Canzone della Pattuglia delle Sommità",
 	"polar-star": "Stella polare",
 	"portable-power-saw": "Sega elettrica portatile",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Lan Yan",
 		"title": "Intreccio di giada primaverile"
+	},
+	"lauma": {
+		"name": "Lauma",
+		"title": "Ode alla Luna imperitura"
 	},
 	"layla": {
 		"name": "Layla",

@@ -54,6 +54,7 @@
 	"mitternachts-waltz": "Điệu Van Ban Đêm",
 	"mountain-bracing-bolt": "Mũi Đinh Trấn Núi",
 	"mouun_s-moon": "Ánh Trăng Mouun",
+	"nightweavers-looking-glass": "Kính Dệt Màn Đêm",
 	"peak-patrol-song": "Khúc Ca Núi Đá",
 	"polar-star": "Ngôi Sao Cực Đông",
 	"portable-power-saw": "Máy Cưa Cầm Tay",
@@ -317,6 +318,10 @@
 	"lan-yan": {
 		"name": "Lan Yan",
 		"title": "Cắt Ngọc Đan Xuân"
+	},
+	"lauma": {
+		"name": "Lauma",
+		"title": "Tế Ca Vĩnh Nguyệt"
 	},
 	"layla": {
 		"name": "Layla",
