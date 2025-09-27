@@ -11,6 +11,7 @@
 	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海の標",
 	"black-tassel": "黒纓槍",
+	"bloodsoaked-ruins": "血染めの荒れ地",
 	"bloodtained-greatsword": "龍血を浴びた剣",
 	"calamity-queller": "息災",
 	"cashflow-supervision": "凛流の監視者",
@@ -111,6 +112,10 @@
 	"wine-and-song": "ダークアレイの酒と詩",
 	"wolf_s-gravestone": "狼の末路",
 	"xiphos-moonlight": "サイフォスの月明かり",
+	"aino": {
+		"name": "アイノ",
+		"title": "ドンドンワンダフルマシーン"
+	},
 	"albedo": {
 		"name": "アルベド",
 		"title": "白亜の申し子"
@@ -119,10 +124,6 @@
 		"name": "アルハイゼン",
 		"title": "権謀教戒"
 	},
-	"arlecchino": {
-		"name": "アルレッキーノ",
-		"title": "暝天の凶月"
-	},
 	"amber": {
 		"name": "アンバー",
 		"title": "飛行チャンピオン"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "荒瀧一斗",
 		"title": "花坂豪快"
+	},
+	"arlecchino": {
+		"name": "アルレッキーノ",
+		"title": "暝天の凶月"
 	},
 	"baizhu": {
 		"name": "白朮",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "フィッシュル",
 		"title": "断罪の皇女！！"
+	},
+	"flins": {
+		"name": "フリンズ",
+		"title": "闇影と灯り"
 	},
 	"freminet": {
 		"name": "フレミネ",

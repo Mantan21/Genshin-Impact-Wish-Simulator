@@ -11,6 +11,7 @@
 	"azurelight": "Azurelight",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
 	"black-tassel": "Black Tassel",
+	"bloodsoaked-ruins": "Bloodsoaked Ruins",
 	"bloodtained-greatsword": "Bloodtained Greatsword",
 	"calamity-queller": "Calamity Queller",
 	"cashflow-supervision": "Cashflow Supervision",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Wine and Song",
 	"wolf_s-gravestone": "Wolf's Gravestone",
 	"xiphos-moonlight": "Xiphos' Moonlight",
+	"aino": {
+		"name": "Aino",
+		"title": "Clinky-Clank Gadgets-A-Gogo"
+	},
 	"albedo": {
 		"name": "Albedo",
 		"title": "Kreideprinz"
@@ -119,10 +124,6 @@
 		"name": "Alhaitham",
 		"title": "Admonishing Instruction"
 	},
-	"arlecchino": {
-		"name": "Arlecchino",
-		"title": "Dire Balemoon"
-	},
 	"amber": {
 		"name": "Amber",
 		"title": "Outrider Knights of Favonius"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Hanamizaka Heroics"
+	},
+	"arlecchino": {
+		"name": "Arlecchino",
+		"title": "Dire Balemoon"
 	},
 	"baizhu": {
 		"name": "Baizhu",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Fischl",
 		"title": "Prinzessin der Verurteilung!"
+	},
+	"flins": {
+		"name": "Flins",
+		"title": "Shadowy Lights, Stranger Wights"
 	},
 	"freminet": {
 		"name": "Freminet",

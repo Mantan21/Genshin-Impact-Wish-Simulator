@@ -11,6 +11,7 @@
 	"azurelight": "Лазурное сияние",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
+	"bloodsoaked-ruins": "Окровавленные руины",
 	"bloodtained-greatsword": "Меч драконьей крови",
 	"calamity-queller": "Усмиритель бед",
 	"cashflow-supervision": "Казначейский надзор",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Вино и песни",
 	"wolf_s-gravestone": "Волчья погибель",
 	"xiphos-moonlight": "Лунное сияние ксифоса",
+	"aino": {
+		"name": "Айно",
+		"title": "Грохочущие чудо-машины"
+	},
 	"albedo": {
 		"name": "Альбедо",
 		"title": "Принц мела"
@@ -119,10 +124,6 @@
 		"name": "Аль-Хайтам",
 		"title": "Голос разума"
 	},
-	"arlecchino": {
-		"name": "Арлекино",
-		"title": "Роковая луна"
-	},
 	"amber": {
 		"name": "Эмбер",
 		"title": "Чемпион полётов"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "Итто",
 		"title": "Герой Ханамидзаки"
+	},
+	"arlecchino": {
+		"name": "Арлекино",
+		"title": "Роковая луна"
 	},
 	"baizhu": {
 		"name": "Бай Чжу",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Фишль",
 		"title": "Принцесса осуждения"
+	},
+	"flins": {
+		"name": "Флинс",
+		"title": "Дивный свет, неведомые тени"
 	},
 	"freminet": {
 		"name": "Фремине",

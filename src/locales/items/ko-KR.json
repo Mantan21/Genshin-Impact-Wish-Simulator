@@ -11,6 +11,7 @@
 	"azurelight": "창백한 섬광",
 	"beacon-of-the-reed-sea": "갈대 바다의 등대",
 	"black-tassel": "흑술창",
+	"bloodsoaked-ruins": "피로 물든 성",
 	"bloodtained-greatsword": "드래곤 블러드 소드",
 	"calamity-queller": "식재",
 	"cashflow-supervision": "현금 흐름 감독",
@@ -111,6 +112,10 @@
 	"wine-and-song": "뒷골목의 술과 시",
 	"wolf_s-gravestone": "늑대의 말로",
 	"xiphos-moonlight": "크시포스의 달빛",
+	"aino": {
+		"name": "아이노",
+		"title": "쾅쾅 발명가"
+	},
 	"albedo": {
 		"name": "알베도",
 		"title": "백악의 아이"
@@ -119,13 +124,13 @@
 		"name": "알하이탐",
 		"title": "충고와 직언"
 	},
-	"arlecchino": {
-		"name": "아를레키노",
-		"title": "어둠 속 재액의 달"
-	},
 	"amber": {
 		"name": "앰버",
 		"title": "비행 챔피언"
+	},
+	"arlecchino": {
+		"name": "아를레키노",
+		"title": "어둠 속 재액의 달"
 	},
 	"arataki-itto": {
 		"name": "아라타키 이토",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "피슬",
 		"title": "단죄의 황녀!!"
+	},
+	"flins": {
+		"name": "플린스",
+		"title": "등불의 그림자"
 	},
 	"freminet": {
 		"name": "프레미네",

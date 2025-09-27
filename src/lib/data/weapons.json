@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 13516,
+			"name": "bloodsoaked-ruins",
+			"rarity": 5,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
 			"itemID": 14520,
 			"name": "nightweavers-looking-glass",
 			"rarity": 5,

@@ -11,6 +11,7 @@
 	"azurelight": "Luce azzurra",
 	"beacon-of-the-reed-sea": "Faro del Mare dei Giunchi",
 	"black-tassel": "Pennacchio nero",
+	"bloodsoaked-ruins": "Rovine insanguinate",
 	"bloodtained-greatsword": "Spadone insanguinato",
 	"calamity-queller": "Flagello delle calamità",
 	"cashflow-supervision": "Supervisione pecuniaria",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Vino e musica",
 	"wolf_s-gravestone": "Trapasso ululante",
 	"xiphos-moonlight": "Chiarore di Xiphos",
+	"aino": {
+		"name": "Aino",
+		"title": "Magico tintinnio"
+	},
 	"albedo": {
 		"name": "Albedo",
 		"title": "Kreideprinz"
@@ -119,10 +124,6 @@
 		"name": "Alhaitham",
 		"title": "Insegnamento austero"
 	},
-	"arlecchino": {
-		"name": "Arlecchino",
-		"title": "Mezzaluna di presagi nefasti"
-	},
 	"amber": {
 		"name": "Amber",
 		"title": "Campionessa di volo a vela"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Eroe di Hanamizaka"
+	},
+	"arlecchino": {
+		"name": "Arlecchino",
+		"title": "Mezzaluna di presagi nefasti"
 	},
 	"baizhu": {
 		"name": "Baizhu",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Fischl",
 		"title": "Prinzessin der Verurteilung!"
+	},
+	"flins": {
+		"name": "Flins",
+		"title": "Ombre di luci ingannevoli"
 	},
 	"freminet": {
 		"name": "Freminet",

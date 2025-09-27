@@ -78,6 +78,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "the-lone-light-knocks-at-night-1",
+							"character": "flins",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "discerner-of-enigmas-5",
+							"character": "yelan",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["dori", "sucrose", "aino"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-88",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "bloodsoaked-ruins" },
+						{ "name": "aqua-simulacra", "buttonPosition": { "l": 75 } }
+					],
+					"rateup": [
+						"lion_s-roar",
+						"sacrificial-bow",
+						"favonius-codex",
+						"favonius-lance",
+						"favonius-greatsword"
+					],
+					"textOffset": {
+						"featured": { "l": 43.5, "t": 67 },
+						"rateup": { "l": 77, "b": 25 }
+					}
+				}
+			}
 		}
 	]
 }

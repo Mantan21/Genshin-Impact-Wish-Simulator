@@ -11,6 +11,7 @@
 	"azurelight": "Azurglanz",
 	"beacon-of-the-reed-sea": "Schilfmeer-Bake",
 	"black-tassel": "Schwarze Quaste",
+	"bloodsoaked-ruins": "Blutbefleckte Stadt",
 	"bloodtained-greatsword": "Drachenblutschwert",
 	"calamity-queller": "Ende des Unheils",
 	"cashflow-supervision": "Monetäre Aufsichtseinheit",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Wein und Gesang in den Gassen",
 	"wolf_s-gravestone": "Wolfsgrab",
 	"xiphos-moonlight": "Mondlicht von Xiphos",
+	"aino": {
+		"name": "Aino",
+		"title": "Scheppernde Wundermaschinen"
+	},
 	"albedo": {
 		"name": "Albedo",
 		"title": "Kreideprinz"
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Fischl",
 		"title": "Prinzessin der Verurteilung!"
+	},
+	"flins": {
+		"name": "Flins",
+		"title": "Schatten in trügerischem Licht"
 	},
 	"freminet": {
 		"name": "Freminet",

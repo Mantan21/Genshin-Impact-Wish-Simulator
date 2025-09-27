@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000121,
+			"name": "aino",
+			"vision": "hydro",
+			"rarity": 4,
+			"release": "6.0-2",
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": 0, "y": 0, "scale": 1 },
+				"wishCard": { "x": 7.1106094808126405, "y": 31.435665914221218, "scale": 5.75 }
+			}
+		},
+		{
+			"itemID": 10000120,
+			"name": "flins",
+			"vision": "electro",
+			"rarity": 5,
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": 10.117886178861788, "y": -0.9119241192411925, "scale": 1.64 },
+				"wishCard": { "x": 93.82134795227347, "y": 77.48984198645597, "scale": 12.4 },
+				"button": { "w": 125, "t": 20, "l": 75 }
+			}
+		},
+		{
 			"itemID": 10000119,
 			"name": "lauma",
 			"vision": "dendro",

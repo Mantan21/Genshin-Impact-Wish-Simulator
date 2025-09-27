@@ -11,6 +11,7 @@
 	"azurelight": "Azul Brilhante",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
+	"bloodsoaked-ruins": "Ruínas Ensanguentadas",
 	"bloodtained-greatsword": "Espadão Sangrento",
 	"calamity-queller": "Subjugadora de Calamidades",
 	"cashflow-supervision": "Supervisão de Caixa",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Vinho e Música",
 	"wolf_s-gravestone": "Túmulo do Lobo",
 	"xiphos-moonlight": "Luz Lunar de Xiphos",
+	"aino": {
+		"name": "Aino",
+		"title": "Máquinas Milagrosas Trim-Trim-Bum"
+	},
 	"albedo": {
 		"name": "Albedo",
 		"title": "Príncipe do Giz"
@@ -119,10 +124,6 @@
 		"name": "Alhaitham",
 		"title": "Reprimenda Instrutiva"
 	},
-	"arlecchino": {
-		"name": "Arlecchino",
-		"title": "Lua Solitária da Escuridão"
-	},
 	"amber": {
 		"name": "Amber",
 		"title": "Aventureira"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Heroísmo de Hanamizaka"
+	},
+	"arlecchino": {
+		"name": "Arlecchino",
+		"title": "Lua Solitária da Escuridão"
 	},
 	"baizhu": {
 		"name": "Baizhu",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Fischl",
 		"title": "Contemplações da Estrela Noturna"
+	},
+	"flins": {
+		"name": "Flins",
+		"title": "Sombra da Luz Ominosa"
 	},
 	"freminet": {
 		"name": "Freminet",

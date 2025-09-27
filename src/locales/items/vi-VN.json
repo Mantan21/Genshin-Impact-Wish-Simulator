@@ -11,6 +11,7 @@
 	"azurelight": "Thương Diệu",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
+	"bloodsoaked-ruins": "Tàn Tích Nhuốm Máu",
 	"bloodtained-greatsword": "Kiếm Huyết Rồng",
 	"calamity-queller": "Hủy Diệt",
 	"cashflow-supervision": "Quản Đốc Vàng Ròng",
@@ -111,6 +112,10 @@
 	"wine-and-song": "Rượu Và Thơ Nơi Hẻm Tối",
 	"wolf_s-gravestone": "Đường Cùng Của Sói",
 	"xiphos-moonlight": "Ánh Trăng Xiphos",
+	"aino": {
+		"name": "Aino",
+		"title": "Clinky-Clank Diệu Kỳ"
+	},
 	"albedo": {
 		"name": "Albedo",
 		"title": "Kreideprinz"
@@ -119,10 +124,6 @@
 		"name": "Alhaitham",
 		"title": "Lời Khuyên Tận Tình"
 	},
-	"arlecchino": {
-		"name": "Arlecchino",
-		"title": "Vầng Trăng Tai Họa"
-	},
 	"amber": {
 		"name": "Amber",
 		"title": "Quán Quân Bay Lượn"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "Arataki Itto",
 		"title": "Quái Kiệt Hanamizaka"
+	},
+	"arlecchino": {
+		"name": "Arlecchino",
+		"title": "Vầng Trăng Tai Họa"
 	},
 	"baizhu": {
 		"name": "Baizhu",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "Fischl",
 		"title": "Công Chúa Định Tội"
+	},
+	"flins": {
+		"name": "Flins",
+		"title": "Kỳ Ảnh Bên Đèn"
 	},
 	"freminet": {
 		"name": "Freminet",

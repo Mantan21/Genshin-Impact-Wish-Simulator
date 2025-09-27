@@ -11,6 +11,7 @@
 	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海信標",
 	"black-tassel": "黑纓槍",
+	"bloodsoaked-ruins": "血染荒城",
 	"bloodtained-greatsword": "沐浴龍血的劍",
 	"calamity-queller": "息災",
 	"cashflow-supervision": "金流監督",
@@ -111,6 +112,10 @@
 	"wine-and-song": "暗巷的酒與詩",
 	"wolf_s-gravestone": "狼的末路",
 	"xiphos-moonlight": "西福斯的月光",
+	"aino": {
+		"name": "愛諾",
+		"title": "妙械咣咣鐺"
+	},
 	"albedo": {
 		"name": "阿貝多",
 		"title": "白堊之子"
@@ -119,10 +124,6 @@
 		"name": "艾爾海森",
 		"title": "誨韜詤言"
 	},
-	"arlecchino": {
-		"name": "阿蕾奇諾",
-		"title": "孤暝厄月"
-	},
 	"amber": {
 		"name": "安柏",
 		"title": "飛行冠軍"
@@ -130,6 +131,10 @@
 	"arataki-itto": {
 		"name": "荒瀧一斗",
 		"title": "花坂豪快"
+	},
+	"arlecchino": {
+		"name": "阿蕾奇諾",
+		"title": "孤暝厄月"
 	},
 	"baizhu": {
 		"name": "白术",
@@ -226,6 +231,10 @@
 	"fischl": {
 		"name": "菲謝爾",
 		"title": "断罪皇女！！"
+	},
+	"flins": {
+		"name": "菲林斯",
+		"title": "詭燈陌影"
 	},
 	"freminet": {
 		"name": "菲米尼",
