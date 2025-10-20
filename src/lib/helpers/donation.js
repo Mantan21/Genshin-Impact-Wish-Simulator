@@ -28,6 +28,7 @@ const formatDate = (date) => {
 };
 
 export const supporterList = async () => {
-	const kofi = await getFromSheet();
-	return kofi;
+	const raw = await getFromSheet();
+	const supporter = raw.filter((_, i) => i < 30);
+	return supporter;
 };
