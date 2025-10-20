@@ -613,7 +613,6 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "30 Aug 2025",
 			"description": [
 				"Add New Character: <strong> Lauma (5★)</strong>",
@@ -622,11 +621,18 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "28 Sep 2025",
 			"description": [
 				"Add New Character: <strong> Flins (5★)</strong>",
 				"Add <strong> Yelan 4th rerun </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "20 Oct 2025",
+			"description": [
+				"Add New Character: <strong> Nefer (5★)</strong>",
+				"Add <strong> Navia 4th rerun </strong>"
 			]
 		}
 	]

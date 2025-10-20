@@ -18,6 +18,7 @@
 	"cool-steel": "冷刃",
 	"cranes-echoing-call": "鶴鳴の余韻",
 	"crimson_moon_s-semblance": "赤月のシルエット",
+	"dawning-frost": "霜辰",
 	"debate-club": "理屈責め",
 	"dragon_s-bane": "匣中滅龍",
 	"elegy-for-the-end": "終焉を嘆く詩",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "浮世の錠",
 	"mistsplitter-reforged": "霧切の廻光",
 	"mitternachts-waltz": "幽夜のワルツ",
+	"moonweavers-dawn": "月紡ぎの曙光",
 	"mountain-bracing-bolt": "鎮山の釘",
 	"mouun_s-moon": "曚雲の月",
 	"nightweavers-looking-glass": "夜を紡ぐ天鏡",
@@ -66,11 +68,13 @@
 	"range-gauge": "レンジゲージ",
 	"raven-bow": "鴉羽の弓",
 	"redhorn-stonethresher": "赤角石塵滅砕",
+	"reliquary-of-truth": "真言の匣",
 	"rust": "弓蔵",
 	"sacrificial-bow": "祭礼の弓",
 	"sacrificial-fragments": "祭礼の断片",
 	"sacrificial-greatsword": "祭礼の大剣",
 	"sacrificial-sword": "祭礼の剣",
+	"sacrificers-staff": "聖祭者の輝杖",
 	"sharpshooter_s-oath": "シャープシューターの誓い",
 	"silvershower-heartstrings": "白雨心弦",
 	"skyrider-sword": "飛天御剣",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "ナヴィア",
 		"title": "舵を這うラディアントローズ"
+	},
+	"nefer": {
+		"name": "ネフェル",
+		"title": "砂に埋もれた秘話"
 	},
 	"neuvillette": {
 		"name": "ヌヴィレット",

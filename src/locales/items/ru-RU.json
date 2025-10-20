@@ -18,6 +18,7 @@
 	"cool-steel": "Холодное лезвие",
 	"cranes-echoing-call": "Звонкий клич журавля",
 	"crimson_moon_s-semblance": "Очертания алой луны",
+	"dawning-frost": "Рассветный иней",
 	"debate-club": "Дубина переговоров",
 	"dragon_s-bane": "Гроза драконов",
 	"elegy-for-the-end": "Элегия погибели",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Память о пыли",
 	"mistsplitter-reforged": "Рассекающий туман",
 	"mitternachts-waltz": "Вальс Нирваны Ночи",
+	"moonweavers-dawn": "Рассвет прядильщицы луны",
 	"mountain-bracing-bolt": "Крепящий горы шип",
 	"mouun_s-moon": "Луна Моун",
 	"nightweavers-looking-glass": "Зеркало прядильщицы ночи",
@@ -66,11 +68,13 @@
 	"range-gauge": "Дальномер",
 	"raven-bow": "Лук ворона",
 	"redhorn-stonethresher": "Краснорогий камнеруб",
+	"reliquary-of-truth": "Шкатулка истин",
 	"rust": "Ржавый лук",
 	"sacrificial-bow": "Церемониальный лук",
 	"sacrificial-fragments": "Церемониальные мемуары",
 	"sacrificial-greatsword": "Церемониальный двуручный меч",
 	"sacrificial-sword": "Церемониальный меч",
+	"sacrificers-staff": "Посох жертвующей",
 	"sharpshooter_s-oath": "Клятва стрелка",
 	"silvershower-heartstrings": "Сердечные струны дождя",
 	"skyrider-sword": "Меч небесного всадника",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Навия",
 		"title": "Штурвал цветущей розы"
+	},
+	"nefer": {
+		"name": "Нефер",
+		"title": "Тайна, скрытая песками"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

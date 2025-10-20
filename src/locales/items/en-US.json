@@ -18,6 +18,7 @@
 	"cool-steel": "Cool Steel",
 	"cranes-echoing-call": "Crane's Echoing Call",
 	"crimson_moon_s-semblance": "Crimson Moon's Semblance",
+	"dawning-frost": "Dawning Frost",
 	"debate-club": "Debate Club",
 	"dragon_s-bane": "Dragon's Bane",
 	"elegy-for-the-end": "Elegy for the End",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Memory of Dust",
 	"mistsplitter-reforged": "Mistsplitter Reforged",
 	"mitternachts-waltz": "Mitternachts Waltz",
+	"moonweavers-dawn": "Moonweaver's Dawn",
 	"mountain-bracing-bolt": "Mountain-Bracing Bolt",
 	"mouun_s-moon": "Mouun's Moon",
 	"nightweavers-looking-glass": "Nightweaver's Looking Glass",
@@ -66,11 +68,13 @@
 	"range-gauge": "Range Gauge",
 	"raven-bow": "Raven Bow",
 	"redhorn-stonethresher": "Redhorn Stonethresher",
+	"reliquary-of-truth": "Reliquary of Truth",
 	"rust": "Rust",
 	"sacrificial-bow": "Sacrificial Bow",
 	"sacrificial-fragments": "Sacrificial Fragments",
 	"sacrificial-greatsword": "Sacrificial Greatsword",
 	"sacrificial-sword": "Sacrificial Sword",
+	"sacrificers-staff": "Sacrificer's Staff",
 	"sharpshooter_s-oath": "Sharpshooter's Oath",
 	"silvershower-heartstrings": "Silvershower Heartstrings",
 	"skyrider-sword": "Skyrider Sword",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Navia",
 		"title": "Helm of the Radiant Rose"
+	},
+	"nefer": {
+		"name": "Nefer",
+		"title": "Secret Beneath the Sands"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

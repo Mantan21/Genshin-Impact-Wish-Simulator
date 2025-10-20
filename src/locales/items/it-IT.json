@@ -18,6 +18,7 @@
 	"cool-steel": "Lama fredda",
 	"cranes-echoing-call": "Canto della gru echeggiante",
 	"crimson_moon_s-semblance": "Forma della Luna cremisi",
+	"dawning-frost": "Brina mattutina",
 	"debate-club": "Mazza della persuasione",
 	"dragon_s-bane": "Scacciadraghi",
 	"elegy-for-the-end": "Elegia finale",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Memorie terrene",
 	"mistsplitter-reforged": "Squarcianebbia riforgiata",
 	"mitternachts-waltz": "Valzer notturno",
+	"moonweavers-dawn": "Alba della Tessiluna",
 	"mountain-bracing-bolt": "Chiodo reggimonti",
 	"mouun_s-moon": "Luna di Mouun",
 	"nightweavers-looking-glass": "Specchio dell’Intessinotte",
@@ -66,11 +68,13 @@
 	"range-gauge": "Indicatore distanziometrico",
 	"raven-bow": "Arco corvino",
 	"redhorn-stonethresher": "Spaccarocce Cornorosso",
+	"reliquary-of-truth": "Reliquiario della verità",
 	"rust": "Ossidazione meschina",
 	"sacrificial-bow": "Arco sacrificale",
 	"sacrificial-fragments": "Frammenti sacrificali",
 	"sacrificial-greatsword": "Spadone sacrificale",
 	"sacrificial-sword": "Spada sacrificale",
+	"sacrificers-staff": "Sacrificer's Staff",
 	"sharpshooter_s-oath": "Patto del cecchino",
 	"silvershower-heartstrings": "Candido cuore della pioggia",
 	"skyrider-sword": "Spadone del Cavalcacieli",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Navia",
 		"title": "Timoniere della rosa splendente"
+	},
+	"nefer": {
+		"name": "Nefer",
+		"title": "Segreto insabbiato"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

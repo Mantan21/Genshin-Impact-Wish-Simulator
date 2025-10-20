@@ -18,6 +18,7 @@
 	"cool-steel": "Kühle Klinge",
 	"cranes-echoing-call": "Widerhallender Ruf des Kranichs",
 	"crimson_moon_s-semblance": "Form des scharlachroten Mondes",
+	"dawning-frost": "Froststern",
 	"debate-club": "Schlagfestes Argument",
 	"dragon_s-bane": "Drachenschreck",
 	"elegy-for-the-end": "Letzter Seufzer",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Ketten des Diesseits",
 	"mistsplitter-reforged": "Widerschein des Nebelsplitters",
 	"mitternachts-waltz": "Mitternachtswalzer",
+	"moonweavers-dawn": "Dämmerlicht des Mondwebers",
 	"mountain-bracing-bolt": "Bergschützer-Bolzen",
 	"mouun_s-moon": "Mouun-Mond",
 	"nightweavers-looking-glass": "Spiegel des Nachtwebers",
@@ -66,11 +68,13 @@
 	"range-gauge": "Entfernungsmesser",
 	"raven-bow": "Rabenbogen",
 	"redhorn-stonethresher": "Rothorn-Steinbrecher",
+	"reliquary-of-truth": "Kästchen der Wahrheit",
 	"rust": "Rostiger Bogen",
 	"sacrificial-bow": "Opferbogen",
 	"sacrificial-fragments": "Opferrituale",
 	"sacrificial-greatsword": "Opfergroßschwert",
 	"sacrificial-sword": "Opferschwert",
+	"sacrificers-staff": "Sacrificer's Staff",
 	"sharpshooter_s-oath": "Eid des Scharfschützen",
 	"silvershower-heartstrings": "Tröpfelnde Herzsaiten",
 	"skyrider-sword": "Himmelsflug-Schwert",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Navia",
 		"title": "Leiterin der leuchtenden Rose"
+	},
+	"nefer": {
+		"name": "Nefer",
+		"title": "Geheimnis unter den Sanden"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

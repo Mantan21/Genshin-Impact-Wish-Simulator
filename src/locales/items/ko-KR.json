@@ -18,6 +18,7 @@
 	"cool-steel": "차가운 칼날",
 	"cranes-echoing-call": "학의 여음",
 	"crimson_moon_s-semblance": "붉은 달의 형상",
+	"dawning-frost": "서릿빛 새벽",
 	"debate-club": "훌륭한 대화수단",
 	"dragon_s-bane": "용학살창",
 	"elegy-for-the-end": "종말 탄식의 노래",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "속세의 자물쇠",
 	"mistsplitter-reforged": "안개를 가르는 회광",
 	"mitternachts-waltz": "유야의 왈츠",
+	"moonweavers-dawn": "달을 엮는 자의 새벽빛",
 	"mountain-bracing-bolt": "산을 고정하는 못",
 	"mouun_s-moon": "모운의 달",
 	"nightweavers-looking-glass": "밤을 엮는 거울",
@@ -66,11 +68,13 @@
 	"range-gauge": "거리 측정기",
 	"raven-bow": "까마귀깃 활",
 	"redhorn-stonethresher": "쇄석의 붉은 뿔",
+	"reliquary-of-truth": "진실의 함",
 	"rust": "녹슨 활",
 	"sacrificial-bow": "제례활",
 	"sacrificial-fragments": "제례의 악장",
 	"sacrificial-greatsword": "제례 대검",
 	"sacrificial-sword": "제례검",
+	"sacrificers-staff": "신성한 제사의 지팡이",
 	"sharpshooter_s-oath": "신궁의 서약",
 	"silvershower-heartstrings": "심금을 울리는 하얀 비",
 	"skyrider-sword": "비천어검",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "나비아",
 		"title": "빛나는 장미의 타륜"
+	},
+	"nefer": {
+		"name": "네페르",
+		"title": "모래의 비밀"
 	},
 	"neuvillette": {
 		"name": "느비예트",

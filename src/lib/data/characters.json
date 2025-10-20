@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000122,
+			"name": "nefer",
+			"vision": "dendro",
+			"rarity": 5,
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": 2.4634146341463414, "y": -2.752032520325203, "scale": 1.56 },
+				"wishCard": { "x": 10.515962592712029, "y": 60.35665914221219, "scale": 11.98 },
+				"button": { "w": 125, "t": 30, "l": 52 }
+			}
+		},
+		{
 			"itemID": 10000121,
 			"name": "aino",
 			"vision": "hydro",

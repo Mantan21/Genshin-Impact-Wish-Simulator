@@ -18,6 +18,7 @@
 	"cool-steel": "Lãnh Nhẫn",
 	"cranes-echoing-call": "Dư Âm Tiếng Hạc",
 	"crimson_moon_s-semblance": "Hình Thái Xích Nguyệt",
+	"dawning-frost": "Sương Mai",
 	"debate-club": "Gậy Thu Phục",
 	"dragon_s-bane": "Tai Ương Của Rồng",
 	"elegy-for-the-end": "Tiếng Thở Dài Vô Tận",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Khóa Trần Thế",
 	"mistsplitter-reforged": "Ánh Sáng Đêm Sương Mù",
 	"mitternachts-waltz": "Điệu Van Ban Đêm",
+	"moonweavers-dawn": "Bình Minh Của Người Dệt Trăng",
 	"mountain-bracing-bolt": "Mũi Đinh Trấn Núi",
 	"mouun_s-moon": "Ánh Trăng Mouun",
 	"nightweavers-looking-glass": "Kính Dệt Màn Đêm",
@@ -66,11 +68,13 @@
 	"range-gauge": "Máy Đo Cự Ly",
 	"raven-bow": "Cung Lông Vịt",
 	"redhorn-stonethresher": "Xích Giác Phá Thạch Đao",
+	"reliquary-of-truth": "Chân Ngôn Bí Hạp",
 	"rust": "Cung Rỉ Sét",
 	"sacrificial-bow": "Cung Tế Lễ",
 	"sacrificial-fragments": "Mảnh Chương Tế Lễ",
 	"sacrificial-greatsword": "Đại Kiếm Tế Lễ",
 	"sacrificial-sword": "Kiếm Tế Lễ",
+	"sacrificers-staff": "Quyền Trượng Kẻ Thánh Tế",
 	"sharpshooter_s-oath": "Lời Thề Xạ Thủ Thần",
 	"silvershower-heartstrings": "Màn Mưa Tơ Lòng",
 	"skyrider-sword": "Kiếm Phi Thiên",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Navia",
 		"title": "Bánh Lái Hoa Lệ"
+	},
+	"nefer": {
+		"name": "Nefer",
+		"title": "Bí Mật Cát Phủ"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

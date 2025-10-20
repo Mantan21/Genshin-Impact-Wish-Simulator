@@ -1,0 +1,46 @@
+{
+	"patch": 6.1,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "temptation-of-the-crimson-sands-1",
+							"character": "nefer",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "chanson-of-many-waters-4",
+							"character": "furina",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["collei", "xingqiu", "yaoyao"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-89",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "reliquary-of-truth" },
+						{ "name": "splendor-of-tranquil-waters", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"dawning-frost",
+						"sacrificial-bow",
+						"the-bell",
+						"sacrificers-staff",
+						"moonweavers-dawn"
+					],
+					"textOffset": {
+						"featured": { "l": 36.5, "t": 64, "w": 35 },
+						"rateup": { "l": 75.5, "b": 23, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

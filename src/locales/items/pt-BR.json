@@ -18,6 +18,7 @@
 	"cool-steel": "Lâmina Fria",
 	"cranes-echoing-call": "Chamado Ecoante da Garça",
 	"crimson_moon_s-semblance": "Semblante da Lua Carmesim",
+	"dawning-frost": "Estrela Gelada",
 	"debate-club": "Pacifista",
 	"dragon_s-bane": "Perdição do Dragão",
 	"elegy-for-the-end": "Elegia do Suspiro Final",
@@ -53,6 +54,7 @@
 	"memory-of-dust": "Memória da Poeira",
 	"mistsplitter-reforged": "Cortadora da Neblina Reforjada",
 	"mitternachts-waltz": "Valsa do Crepúsculo",
+	"moonweavers-dawn": "Alvorada do Tecedor do Luar",
 	"mountain-bracing-bolt": "Prego Esmagador de Montanhas",
 	"mouun_s-moon": "Lua de Mouun",
 	"nightweavers-looking-glass": "Luneta do Tecedor da Noite",
@@ -66,11 +68,13 @@
 	"range-gauge": "Medidor de Alcance",
 	"raven-bow": "Arco de Corvo",
 	"redhorn-stonethresher": "Chifres Vermelhos Destruidores de Pedras",
+	"reliquary-of-truth": "Relicário da Verdade",
 	"rust": "Enferrujado",
 	"sacrificial-bow": "Arco do Sacrifício",
 	"sacrificial-fragments": "Memórias de Sacrifício",
 	"sacrificial-greatsword": "Espadão do Sacrifício",
 	"sacrificial-sword": "Espada do Sacrifício",
+	"sacrificers-staff": "Cajado do Sacrificador",
 	"sharpshooter_s-oath": "Juramento de Sagitário",
 	"silvershower-heartstrings": "Cordas da Chuva Branca",
 	"skyrider-sword": "Espadão do Cavaleiro do Céu",
@@ -371,6 +375,10 @@
 	"navia": {
 		"name": "Navia",
 		"title": "Leme da Rosa Radiante"
+	},
+	"nefer": {
+		"name": "Nefer",
+		"title": "Segredo Sob as Areias"
 	},
 	"neuvillette": {
 		"name": "Neuvillette",

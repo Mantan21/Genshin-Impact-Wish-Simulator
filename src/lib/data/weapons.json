@@ -1,6 +1,50 @@
 {
 	"data": [
 		{
+			"itemID": 11434,
+			"name": "moonweavers-dawn",
+			"rarity": 4,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
+			"itemID": 13434,
+			"name": "sacrificers-staff",
+			"rarity": 4,
+			"weaponType": "polearm",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "t": 15, "w": 95, "l": 30 }
+			}
+		},
+		{
+			"itemID": 14434,
+			"name": "dawning-frost",
+			"rarity": 4,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 35 }
+			}
+		},
+		{
+			"itemID": 14521,
+			"name": "reliquary-of-truth",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 35 }
+			}
+		},
+		{
 			"itemID": 13516,
 			"name": "bloodsoaked-ruins",
 			"rarity": 5,
