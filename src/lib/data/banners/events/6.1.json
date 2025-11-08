@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "the-hearths-ashen-shadow-3",
+							"character": "arlecchino",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "gentry-of-hermitage-7",
+							"character": "zhongli",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["collei", "xingqiu", "yaoyao"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-90",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "crimson_moon_s-semblance" },
+						{ "name": "vortex-vanquisher", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"the-dockhands-assistant",
+						"dragon_s-bane",
+						"portable-power-saw",
+						"sacrificial-fragments",
+						"range-gauge"
+					],
+					"textOffset": {
+						"featured": { "l": 36.5, "t": 64, "w": 35 },
+						"rateup": { "l": 72.5, "b": 23, "w": 20 }
+					}
+				}
+			}
 		}
 	]
 }

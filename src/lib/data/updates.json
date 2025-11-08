@@ -590,7 +590,6 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "16 Jun 2025",
 			"description": [
 				"Add New Character: <strong> Skirk (5★)</strong>",
@@ -628,11 +627,18 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "20 Oct 2025",
 			"description": [
 				"Add New Character: <strong> Nefer (5★)</strong>",
 				"Add <strong> Navia 4th rerun </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "08 Nov 2025",
+			"description": [
+				"Add <strong> Zhonly 6th rerun </strong>",
+				"Add <strong> Arlecchino 2nd rerun </strong>"
 			]
 		}
 	]
