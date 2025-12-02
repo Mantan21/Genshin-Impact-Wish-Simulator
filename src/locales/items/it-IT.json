@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Piuma cremisi dell'avvoltoio astrale",
 	"aqua-simulacra": "Aqua simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"athame-artis": "Athame Artis",
 	"azurelight": "Luce azzurra",
 	"beacon-of-the-reed-sea": "Faro del Mare dei Giunchi",
 	"black-tassel": "Pennacchio nero",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Sinfonista di fragranze",
 	"the-alley-flash": "Luce nei vicoli",
 	"the-bell": "Spadone del tempo",
+	"the-daybreak-chronicles": "Cronache dell'alba",
 	"the-dockhands-assistant": "Aiutante del porto",
 	"the-first-great-magic": "Prima grande magia",
 	"the-flute": "Flauto",
@@ -216,6 +218,10 @@
 		"name": "Dori",
 		"title": "Tesoro del giardino dei sogni"
 	},
+	"durin": {
+		"name": "Durin",
+		"title": "“Fiamma perpetua”"
+	},
 	"emilie": {
 		"name": "Émilie",
 		"title": "Scie di mille profumi"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Ineffa",
 		"title": "Fulmine roboante"
+	},
+	"jahoda": {
+		"name": "Jahoda",
+		"title": "Ombra tessivento"
 	},
 	"jean": {
 		"name": "Jean",

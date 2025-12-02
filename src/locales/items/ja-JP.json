@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鷲の紅き羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "風鷹剣",
+	"athame-artis": "黒蝕",
 	"azurelight": "蒼耀",
 	"beacon-of-the-reed-sea": "葦海の標",
 	"black-tassel": "黒纓槍",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "香りのシンフォニスト",
 	"the-alley-flash": "ダークアレイの閃光",
 	"the-bell": "鐘の剣",
+	"the-daybreak-chronicles": "暁を告げる歴史",
 	"the-dockhands-assistant": "船渠剣",
 	"the-first-great-magic": "最初の大魔術",
 	"the-flute": "笛の剣",
@@ -216,6 +218,10 @@
 		"name": "ドリー",
 		"title": "夢の庭に隠せし財宝"
 	},
+	"durin": {
+		"name": "ドゥリン",
+		"title": "消えない炎"
+	},
 	"emilie": {
 		"name": "エミリエ",
 		"title": "千の跡を辿って"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "イネファ",
 		"title": "ブンブンサンダーウェーブ"
+	},
+	"jahoda": {
+		"name": "ヤフォダ",
+		"title": "風を繋ぎ、影を捕らえる"
 	},
 	"jean": {
 		"name": "ジン",

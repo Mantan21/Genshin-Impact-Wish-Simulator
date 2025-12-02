@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "붉은 깃 별독수리",
 	"aqua-simulacra": "약수",
 	"aquila-favonia": "매의 검",
+	"athame-artis": "검은 침식",
 	"azurelight": "창백한 섬광",
 	"beacon-of-the-reed-sea": "갈대 바다의 등대",
 	"black-tassel": "흑술창",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "맛의 지휘자",
 	"the-alley-flash": "뒷골목의 섬광",
 	"the-bell": "시간의 검",
+	"the-daybreak-chronicles": "여명이 트는 역사",
 	"the-dockhands-assistant": "뱃도랑 장검",
 	"the-first-great-magic": "최초의 대마술",
 	"the-flute": "피리검",
@@ -216,6 +218,10 @@
 		"name": "도리",
 		"title": "꿈의 정원에 감춰진 보물"
 	},
+	"durin": {
+		"name": "두린",
+		"title": "「꺼지지 않는 불」"
+	},
 	"emilie": {
 		"name": "에밀리",
 		"title": "천 갈래 향의 자취"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "이네파",
 		"title": "쾅쾅 번개파"
+	},
+	"jahoda": {
+		"name": "야호다",
+		"title": "바람을 묶는 그림자"
 	},
 	"jean": {
 		"name": "진",

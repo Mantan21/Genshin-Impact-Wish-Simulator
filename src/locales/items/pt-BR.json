@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Plumagem Escarlate do Abutre Astral",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Falcão",
+	"athame-artis": "Corrupção Sombria",
 	"azurelight": "Azul Brilhante",
 	"beacon-of-the-reed-sea": "Sinal dos Mares",
 	"black-tassel": "Borla Preta",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Sinfonista de Aromas",
 	"the-alley-flash": "Brilho do Beco",
 	"the-bell": "O Sino",
+	"the-daybreak-chronicles": "As Crônicas do Amanhecer",
 	"the-dockhands-assistant": "A Doca",
 	"the-first-great-magic": "Arcana Original",
 	"the-flute": "The Flute",
@@ -216,6 +218,10 @@
 		"name": "Dori",
 		"title": "Tesouro do Jardim dos Sonhos"
 	},
+	"durin": {
+		"name": "Durin",
+		"title": "“As Chamas Eternas”"
+	},
 	"emilie": {
 		"name": "Emilie",
 		"title": "Vislumbres de Mil Aromas"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Ineffa",
 		"title": "Estrondo Trovejante"
+	},
+	"jahoda": {
+		"name": "Jahoda",
+		"title": "Sombras da Ventania"
 	},
 	"jean": {
 		"name": "Jean",

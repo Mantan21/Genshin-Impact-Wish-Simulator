@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "星鹫赤羽",
 	"aqua-simulacra": "若水",
 	"aquila-favonia": "风鹰剑",
+	"athame-artis": "黑蚀",
 	"azurelight": "苍耀",
 	"beacon-of-the-reed-sea": "苇海信标",
 	"black-tassel": "黑缨枪",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "香韵奏者",
 	"the-alley-flash": "暗巷闪光",
 	"the-bell": "钟剑",
+	"the-daybreak-chronicles": "黎明破晓之史",
 	"the-dockhands-assistant": "船坞长剑",
 	"the-first-great-magic": "最初的大魔术",
 	"the-flute": "笛剑",
@@ -216,6 +218,10 @@
 		"name": "多莉",
 		"title": "梦园藏金"
 	},
+	"durin": {
+		"name": "杜林",
+		"title": "「不熄灭的火」"
+	},
 	"emilie": {
 		"name": "艾梅莉埃",
 		"title": "千缕之踪"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "伊涅芙",
 		"title": "轰隆雷鸣波"
+	},
+	"jahoda": {
+		"name": "雅珂达",
+		"title": "系风攘影"
 	},
 	"jean": {
 		"name": "琴",

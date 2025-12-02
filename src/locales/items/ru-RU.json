@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Алое перо звёздного грифа",
 	"aqua-simulacra": "Аква симулякрум",
 	"aquila-favonia": "Меч Сокола",
+	"athame-artis": "Атаме артис",
 	"azurelight": "Лазурное сияние",
 	"beacon-of-the-reed-sea": "Маяк тростникового моря",
 	"black-tassel": "Чёрная кисть",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Симфонист ароматов",
 	"the-alley-flash": "Вспышка во тьме",
 	"the-bell": "Меч-колокол",
+	"the-daybreak-chronicles": "Хроники рассвета",
 	"the-dockhands-assistant": "Верфь",
 	"the-first-great-magic": "Первый великий фокус",
 	"the-flute": "Меч-флейта",
@@ -216,6 +218,10 @@
 		"name": "Дори",
 		"title": "Сокровище сада снов"
 	},
+	"durin": {
+		"name": "Дурин",
+		"title": "Вечное пламя"
+	},
 	"emilie": {
 		"name": "Эмилия",
 		"title": "След тысячи ароматов"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Инеффа",
 		"title": "Взрывная громовая волна"
+	},
+	"jahoda": {
+		"name": "Ягода",
+		"title": "Охотница на ветер и тени"
 	},
 	"jean": {
 		"name": "Джинн",

@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Astral Vulture's Crimson Plumage",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Aquila Favonia",
+	"athame-artis": "Athame Artis",
 	"azurelight": "Azurelight",
 	"beacon-of-the-reed-sea": "Beacon of the Reed Sea",
 	"black-tassel": "Black Tassel",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Symphonist of Scents",
 	"the-alley-flash": "The Alley Flash",
 	"the-bell": "The Bell",
+	"the-daybreak-chronicles": "The Daybreak Chronicles",
 	"the-dockhands-assistant": "The Dockhand's Assistant",
 	"the-first-great-magic": "The First Great Magic",
 	"the-flute": "The Flute",
@@ -216,6 +218,10 @@
 		"name": "Dori",
 		"title": "Treasure of Dream Garden"
 	},
+	"durin": {
+		"name": "Durin",
+		"title": "“The Undying Fire”"
+	},
 	"emilie": {
 		"name": "Emilie",
 		"title": "A Thousand Scents Traced"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Ineffa",
 		"title": "Boom Boom Thunderwave"
+	},
+	"jahoda": {
+		"name": "Jahoda",
+		"title": "Windthreading Shadow"
 	},
 	"jean": {
 		"name": "Jean",

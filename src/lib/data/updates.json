@@ -634,11 +634,19 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "08 Nov 2025",
 			"description": [
 				"Add <strong> Zhonly 6th rerun </strong>",
 				"Add <strong> Arlecchino 2nd rerun </strong>"
+			]
+		},
+
+		{
+			"featured": true,
+			"date": "02 Dec 2025",
+			"description": [
+				"Add New Character <strong> Durin (5★) </strong>",
+				"Add <strong> Venti 6th rerun </strong>"
 			]
 		}
 	]

@@ -2,6 +2,30 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000123,
+			"name": "durin",
+			"vision": "pyro",
+			"rarity": 5,
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": -3.8563685636856366, "y": 1.28319783197832, "scale": 1.72 },
+				"wishCard": { "x": -41.12544340535311, "y": 64.91873589164786, "scale": 14.02 },
+				"button": { "w": 90, "t": 35, "l": 52 }
+			}
+		},
+		{
+			"itemID": 10000124,
+			"name": "jahoda",
+			"vision": "anemo",
+			"rarity": 4,
+			"release": "6.2-1",
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": 3.262872628726287, "y": -0.7506775067750677, "scale": 1.16 },
+				"wishCard": { "x": 40.525636891325384, "y": 51.686230248307, "scale": 7.45 }
+			}
+		},
+		{
 			"itemID": 10000122,
 			"name": "nefer",
 			"vision": "dendro",

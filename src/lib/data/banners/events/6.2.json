@@ -1,0 +1,46 @@
+{
+	"patch": 6.2,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "rubedo-of-white-stone-born-1",
+							"character": "durin",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "ballad-in-goblets-7",
+							"character": "venti",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["jahoda", "faruzan", "bennett"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-91",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "the-daybreak-chronicles" },
+						{ "name": "athame-artis", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"the-alley-flash",
+						"the-stringless",
+						"rainslasher",
+						"prospector-drill",
+						"wine-and-song"
+					],
+					"textOffset": {
+						"featured": { "l": 42.5, "t": 67, "w": 30 },
+						"rateup": { "l": 75.5, "b": 23, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

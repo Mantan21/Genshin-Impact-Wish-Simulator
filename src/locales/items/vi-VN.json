@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Xích Vũ Tinh Tựu",
 	"aqua-simulacra": "Nhược Thủy",
 	"aquila-favonia": "Phong Ưng Kiếm",
+	"athame-artis": "Hắc Ám Xâm Thực",
 	"azurelight": "Thương Diệu",
 	"beacon-of-the-reed-sea": "Hải Đăng Bờ Biển Lau",
 	"black-tassel": "Hắc Anh Thương",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Nhạc Sĩ Hương Thơm",
 	"the-alley-flash": "Tia Sáng Nơi Hẻm Tối",
 	"the-bell": "Kiếm Chuông",
+	"the-daybreak-chronicles": "Biên Niên Sử Bình Minh",
 	"the-dockhands-assistant": "Kiếm Bến Tàu",
 	"the-first-great-magic": "Màn Ảo Thuật Đầu Tiên",
 	"the-flute": "Kiếm Sáo",
@@ -216,6 +218,10 @@
 		"name": "Dori",
 		"title": "Kho Báu Vườn Mơ"
 	},
+	"durin": {
+		"name": "Durin",
+		"title": "“Ngọn Lửa Bất Diệt”"
+	},
 	"emilie": {
 		"name": "Emilie",
 		"title": "Muôn Ngàn Hương Thơm"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Ineffa",
 		"title": "Sóng Điện Rền Vang"
+	},
+	"jahoda": {
+		"name": "Jahoda",
+		"title": "Bóng Hình Đan Gió"
 	},
 	"jean": {
 		"name": "Jean",

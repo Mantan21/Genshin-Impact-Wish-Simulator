@@ -8,6 +8,7 @@
 	"astral-vultures-crimson-plumage": "Karmesinrotes Federkleid des Astralgeiers",
 	"aqua-simulacra": "Aqua Simulacra",
 	"aquila-favonia": "Windfalke",
+	"athame-artis": "Athame Artis",
 	"azurelight": "Azurglanz",
 	"beacon-of-the-reed-sea": "Schilfmeer-Bake",
 	"black-tassel": "Schwarze Quaste",
@@ -96,6 +97,7 @@
 	"symphonist-of-scents": "Sinfoniker der Düfte",
 	"the-alley-flash": "Gassenleuchte",
 	"the-bell": "Glocke",
+	"the-daybreak-chronicles": "Chroniken der Morgendämmerung",
 	"the-dockhands-assistant": "Werftklinge",
 	"the-first-great-magic": "Erste große Magie",
 	"the-flute": "Föte",
@@ -216,6 +218,10 @@
 		"name": "Dori",
 		"title": "Schatz im Schlummerland"
 	},
+	"durin": {
+		"name": "Durin",
+		"title": "„Unauslöschliches Feuer“"
+	},
 	"emilie": {
 		"name": "Emilie",
 		"title": "Spur der tausend Düfte"
@@ -275,6 +281,10 @@
 	"ineffa": {
 		"name": "Ineffa",
 		"title": "Krachend donnernde Welle"
+	},
+	"jahoda": {
+		"name": "Jahoda",
+		"title": "Den Wind zähmen, die Schatten bannen"
 	},
 	"jean": {
 		"name": "Jean",
