@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "cornucopia-of-contention-2",
+							"character": "varesa",
+							"textOffset": { "l": 50, "b": 10 }
+						},
+						{
+							"bannerName": "forgefires-blessing-3",
+							"character": "xilonen",
+							"textOffset": { "l": 50, "b": 10.5 }
+						}
+					],
+					"rateup": ["gaming", "chevreuse", "iansan"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-92",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "vivid-notions" },
+						{ "name": "peak-patrol-song", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"fruitful-hook",
+						"the-widsith",
+						"favonius-sword",
+						"favonius-lance",
+						"alley-hunter"
+					],
+					"textOffset": {
+						"featured": { "l": 48.5, "t": 67 },
+						"rateup": { "l": 75.5, "b": 23, "w": 20 }
+					}
+				}
+			}
 		}
 	]
 }
