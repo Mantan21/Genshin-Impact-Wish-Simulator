@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Chiodo reggimonti",
 	"mouun_s-moon": "Luna di Mouun",
 	"nightweavers-looking-glass": "Specchio dell’Intessinotte",
+	"nocturnes-curtain-call": "Sipario del notturno",
 	"peak-patrol-song": "Canzone della Pattuglia delle Sommità",
 	"polar-star": "Stella polare",
 	"portable-power-saw": "Sega elettrica portatile",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Germoglio di rinascita"
+	},
+	"columbina": {
+		"name": "Colombina",
+		"title": "Ritorno della Luna del firmamento"
 	},
 	"cyno": {
 		"name": "Cyno",

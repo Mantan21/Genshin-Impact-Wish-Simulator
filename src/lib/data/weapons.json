@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 14522,
+			"name": "nocturnes-curtain-call",
+			"rarity": 5,
+			"weaponType": "catalyst",
+			"limited": true,
+			"origin": "nordkrai",
+			"offset": {
+				"button": { "w": 70, "t": 30, "l": 35 }
+			}
+		},
+		{
 			"itemID": 11518,
 			"name": "athame-artis",
 			"rarity": 5,

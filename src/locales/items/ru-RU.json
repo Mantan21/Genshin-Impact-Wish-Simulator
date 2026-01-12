@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Крепящий горы шип",
 	"mouun_s-moon": "Луна Моун",
 	"nightweavers-looking-glass": "Зеркало прядильщицы ночи",
+	"nocturnes-curtain-call": "Вызов ноктюрна",
 	"peak-patrol-song": "Песнь патруля пиков",
 	"polar-star": "Полярная звезда",
 	"portable-power-saw": "Переносная мотопила",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Коллеи",
 		"title": "Росток возрождения"
+	},
+	"columbina": {
+		"name": "Коломбина",
+		"title": "Возвращение полой луны"
 	},
 	"cyno": {
 		"name": "Сайно",

@@ -2,6 +2,18 @@
 	"onlyStandard": ["amber", "kaeya", "lisa"],
 	"data": [
 		{
+			"itemID": 10000125,
+			"name": "columbina",
+			"vision": "hydro",
+			"rarity": 5,
+			"origin": "nodkrai",
+			"offset": {
+				"splashArt": { "x": 5.28551912568306, "y": -1.8114754098360657, "scale": 2.12 },
+				"wishCard": { "x": -7.448747152619589, "y": 37.83143507972665, "scale": 14.15 },
+				"button": { "w": 110, "t": 37.5, "l": 52 }
+			}
+		},
+		{
 			"itemID": 10000123,
 			"name": "durin",
 			"vision": "pyro",

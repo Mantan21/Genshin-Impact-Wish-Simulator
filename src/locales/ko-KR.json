@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "물살을 가르는 #샤크#",
 		"secretum-secretorum": "#심비의# 숨결",
 		"seeker-of-flame-wrought-secrets": "#불을 따르는# 비밀 사냥꾼",
+		"somnias-a-luna": "#달#과 함께 잠든 밤",
 		"sparkling-steps": "#번쩍이는# 화염",
 		"starry-nights-whispers": "#별빛# 속삭임",
 		"tapestry-of-golden-flames": "은하수를 물들인 #불꽃#",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "뜨거운 색채",
 				"description": "베넷의 나타 여행 코스튬. 행운을 상징하는 호수를 닮은 푸른 빛과 뜨거운 주황색을 주요 색상으로 사용해, 이 땅처럼 생기가 흘러넘친다"
+			},
+			"melusent-gift": {
+				"name": "멜뤼진의 선물",
+				"description": "느비예트를 위한 깜짝선물. 물론 선물 자체도 기쁘지만, 선물 제작을 돕기 위해 모인 작은 손길들이 그 기쁨을 더 크게 만들었다. 강이 바다로 모여들 듯, 이슬방울 또한 하나로 뭉쳐 일곱 빛깔로 반짝이는 기적이 되었다"
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "비와 대나무의 노래",
+				"description": "요요의 코스튬. 드리워진 새순의 그림자가 책상을 두드리네. 바람인가 하고 보니, 손님이구나"
 			}
 		}
 	},

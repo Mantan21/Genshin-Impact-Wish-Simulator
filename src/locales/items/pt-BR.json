@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Prego Esmagador de Montanhas",
 	"mouun_s-moon": "Lua de Mouun",
 	"nightweavers-looking-glass": "Luneta do Tecedor da Noite",
+	"nocturnes-curtain-call": "Cortinas Noturnas",
 	"peak-patrol-song": "Canção da Patrulha do Pico",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Serra Elétrica Portátil",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Broto de Renascimento"
+	},
+	"columbina": {
+		"name": "Columbina",
+		"title": "Retorno da Lua Nova"
 	},
 	"cyno": {
 		"name": "Cyno",

@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "Surfari #requinfini#",
 		"secretum-secretorum": "#Nouvelles# mystérieuses",
 		"seeker-of-flame-wrought-secrets": "#Recherche# de secrets nés du feu",
+		"somnias-a-luna": "Rêve sous l'#ombre lunaire#",
 		"sparkling-steps": "Foulées #étincelantes#",
 		"starry-nights-whispers": "Murmures d'une nuit #étoilée#",
 		"tapestry-of-golden-flames": "Draperie d'#étincelles dorées#",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Aventures en flamboyantes couleurs",
 				"description": "La tenue de voyage de Bennett pour ses péripéties à Natlan. Teints d’un bleu lacustre propice à la fortune, rehaussé de touches d’orange flamboyant, ces vêtements dégagent une vitalité débordante, à l’image du territoire où ils sont portés."
+			},
+			"melusent-gift": {
+				"name": "Cadeau mélusin",
+				"description": "Un cadeau surprise pour Neuvillette. Le plaisir ne vient pas seulement du cadeau lui-même, mais de chaque petite main qui a contribué à sa création. Comme les rivières se jettent dans l’immensité de la mer, les gouttes de rosée peuvent s’unir pour créer un miracle scintillant de mille reflets."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Rêverie de bambous sous la pluie",
+				"description": "Tenue de Yaoyao. Les jeunes pousses projettent leurs ombres mouvantes sur le bureau en désordre. Parfois, lorsqu’un visiteur entre, ce n’est pas forcément le vent."
 			}
 		}
 	},

@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "Surfari squalorditivo",
 		"secretum-secretorum": "Secretum Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Segreti# plasmati nel fuoco",
+		"somnias-a-luna": "Somnias a #Luna#",
 		"sparkling-steps": "Sparkling Steps",
 		"starry-nights-whispers": "#Sussurri della notte# stellata",
 		"tapestry-of-golden-flames": "Tapestry of Golden Flames",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Avventure tra colori sfolgoranti",
 				"description": "L’abbigliamento da viaggio di Bennett per i suoi viaggi a Natlan. D’un blu lacustre portafortuna e con sfumature arancione acceso, questi vestiti emanano una vitalità che richiama la terra dove sono stati indossati."
+			},
+			"melusent-gift": {
+				"name": "Dono melusino",
+				"description": "Una sorpresa per Neuvillette. La gioia non deriva solo dal dono in sé, ma da ogni manina che ha contribuito a crearlo. Come i fiumi sfociano nel mare sconfinato, così anche le gocce di rugiada possono unirsi per creare un miracolo luminoso come l’arcobaleno."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Fantasticheria di bambù nella pioggia",
+				"description": "Il completo di Yaoyao. Sulla babelica scrivania, nuovi germogli proiettano un’ombra mutevole; a volte, l’ospite a entrare non è il vento carezzevole."
 			}
 		}
 	},

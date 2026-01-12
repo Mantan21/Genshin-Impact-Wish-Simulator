@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "Haiterer Wellenritt",
 		"secretum-secretorum": "#Rätselhafte# Worte",
 		"seeker-of-flame-wrought-secrets": "#Flammenjäger# der Geheimnisse",
+		"somnias-a-luna": "Somnias a #Luna#",
 		"sparkling-steps": "#Flammende# Schritte",
 		"starry-nights-whispers": "#Flüstern der# Sternennacht",
 		"tapestry-of-golden-flames": "Flammengalaxie",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Feurige Wanderung",
 				"description": "Bennetts Kleidung für seine Reise durch Natlan. In einem glücksbringenden Seeblau mit einem Hauch von leuchtendem Orange gefärbt, strahlt diese Kleidung eine überbordende Vitalität aus, die zu dem Land passt, in dem sie getragen wird."
+			},
+			"melusent-gift": {
+				"name": "Geschenk der Melusinen",
+				"description": "Ein Überraschungsgeschenk für Neuvillette. Die Überraschung war nicht nur das Geschenk selbst, sondern auch die vielen kleinen helfenden Hände, die an seiner Herstellung beteiligt waren. Wie Flüsse ins weite Meer münden, können sich auch Tautropfen zu einem Wunder ansammeln, das in allen sieben Farben schimmert."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Ein Traum von Regen und Bambus",
+				"description": "Yaoyaos Kleidung. Klare Schatten der jungen Triebe fallen auf den Schreibtisch, manchmal ist der hereinkommende Gast nicht der spielerische Wind."
 			}
 		}
 	},

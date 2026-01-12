@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Bergschützer-Bolzen",
 	"mouun_s-moon": "Mouun-Mond",
 	"nightweavers-looking-glass": "Spiegel des Nachtwebers",
+	"nocturnes-curtain-call": "Nachtmusik im Schleier",
 	"peak-patrol-song": "Lied der Gipfelpatrouille",
 	"polar-star": "Polarstern",
 	"portable-power-saw": "Tragbare motorisierte Säge",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Taufrisches Keimblatt"
+	},
+	"columbina": {
+		"name": "Columbina",
+		"title": "Heimkehr des leeren Mondes"
 	},
 	"cyno": {
 		"name": "Cyno",

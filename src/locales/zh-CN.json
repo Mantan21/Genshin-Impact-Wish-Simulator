@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#鲨鲨#逐浪游",
 		"secretum-secretorum": "#深秘#之息",
 		"seeker-of-flame-wrought-secrets": "#巡火#猎秘",
+		"somnias-a-luna": "#伴月#同眠",
 		"sparkling-steps": "#闪焰#的驻足",
 		"starry-nights-whispers": "#星边#夜语",
 		"tapestry-of-golden-flames": "#焰色#天河",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "炽绘奇旅",
 				"description": "班尼特的纳塔游历装束，主色调是幸运的湖蓝，以及炽热的黄橙，如同这片土地一般洋溢着勃勃生机。"
+			},
+			"melusent-gift": {
+				"name": "莘露的赠礼",
+				"description": "那维莱特收到的惊喜礼物。惊喜不仅源于礼物本身，更来自于参与礼物制作的每一双小小援手。就像河流汇于大海，露水也凝聚成闪耀着七色光芒的奇迹。"
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "聆雨听竹",
+				"description": "瑶瑶的装扮款式。新梢清影叩书案，有时客来不是风。"
 			}
 		}
 	},

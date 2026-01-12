@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#Cá Mập# Lướt Sóng",
 		"secretum-secretorum": "#Hơi Thở# Thần Bí",
 		"seeker-of-flame-wrought-secrets": "#Đi Săn# Trong Lửa",
+		"somnias-a-luna": "Cùng Trăng #Say Giấc#",
 		"sparkling-steps": "Dấu Chân #Của Lửa#",
 		"starry-nights-whispers": "#Trời Sao# Thì Thầm",
 		"tapestry-of-golden-flames": "Thiên Hà #Rực Lửa#",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Hành Trình Sắc Lửa",
 				"description": "Trang phục du ngoạn Natlan của Bennett, màu chủ đạo là màu xanh lam may mắn cùng màu vàng cam rực rỡ, cũng giống như vùng đất tràn trề sức sống này vậy."
+			},
+			"melusent-gift": {
+				"name": "Quà Tặng Của Melusine",
+				"description": "Món quà bất ngờ mà Neuvillette nhận được. Bất ngờ không chỉ đến từ bản thân món quà, mà còn đến từ mỗi một đôi tay nhỏ giúp đỡ khi tham gia tạo ra. Giống như dòng sông hòa vào biển lớn, sương mai cũng ngưng tụ thành phép màu lấp lánh ánh sáng óng ánh."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Lắng Nghe Mưa Trúc",
+				"description": "Phong cách của Yaoyao. Bóng dáng cành non gõ án thư, đôi khi khách đến chẳng phải gió."
 			}
 		}
 	},

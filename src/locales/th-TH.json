@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#ฉลาม#ผจญคลื่น",
 		"secretum-secretorum": "ความลับในห้วงลึก",
 		"seeker-of-flame-wrought-secrets": "นักล่าปริศนา#แห่งเปลวเพลิง#",
+		"somnias-a-luna": "นิทรา#เคียงจันทร์#",
 		"sparkling-steps": "ก้าวย่างพร่างพราย",
 		"starry-nights-whispers": "#เสียงกระซิบ#ใต้แสงดาว",
 		"tapestry-of-golden-flames": "ทะเลดาวแห่ งเปลวเพลิง",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Adventures in Blazing Hue",
 				"description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn."
+			},
+			"melusent-gift": {
+				"name": "ของขวัญจากเมลูซีน",
+				"description": "ของขวัญเซอร์ไพรส์ที่ Neuvillette ได้รับมา เซอร์ไพรส์นั้นไม่ได้มาจากตัวของขวัญเท่านั้น แต่ยังมาจากมือน้อย ๆ แต่ละคู่ที่ร่วมกันรังสรรค์ของขวัญขึ้นมา ดังเช่นสายน้ำที่ไหลไปบรรจบกับท้องทะเล หยาดน้ำค้างได้ควบแน่นกลายเป็นปาฏิหาริย์ที่เปล่งประกายเจ็ดสี"
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "สดับเสียงฝนยลทิวไผ่",
+				"description": "คอสตูมของ Yaoyao เงายอดไม้อ่อนเคาะกระทบโต๊ะหนังสือ บางคราวผู้มาเยือนก็มิได้มีเพียงสายลม"
 			}
 		}
 	},

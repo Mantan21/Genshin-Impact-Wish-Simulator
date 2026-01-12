@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#Hiu# Penakluk Ombak Biru",
 		"secretum-secretorum": "#Enigma# Kehidupan",
 		"seeker-of-flame-wrought-secrets": "#Pengejar Rahasia# Dalam Bara Api",
+		"somnias-a-luna": "Somnias a #Luna#",
 		"sparkling-steps": "Percikan Langkah #Api#",
 		"starry-nights-whispers": "#Bisikan# Malam Berbintang",
 		"tapestry-of-golden-flames": "#Pijar Api# di Angkasa",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Adventures in Blazing Hue",
 				"description": "Pakaian Bennett untuk perjalanannya di Natlan. Diwarnai dengan warna biru air danau yang membawa keberuntungan dengan sedikit warna jingga menyala, pakaian ini memancarkan vitalitas yang meluap-luap, sesuai dengan tanah tempat pakaian itu dikenakan."
+			},
+			"melusent-gift": {
+				"name": "Melusent Gift",
+				"description": "Hadiah kejutan untuk Neuvillette. Kebahagiaan tak hanya datang dari hadiah itu sendiri, tapi dari setiap tangan kecil yang turut membuatnya. Layaknya sungai yang menyatu dengan lautan luas, begitu pula tetesan embun yang menyatu menciptakan keajaiban yang berkilauan dengan cahaya warna-warni."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Rainlit Bamboo Reverie",
+				"description": "Model pakaian Yaoyao. Bayangan tunas muda membelai meja, angin telah membawa tamu yang lain."
 			}
 		}
 	},

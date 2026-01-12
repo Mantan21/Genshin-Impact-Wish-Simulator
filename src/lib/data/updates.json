@@ -648,11 +648,18 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "31 Dec 2025",
 			"description": [
 				"Add <strong> Varesa 1st rerun </strong>",
 				"Add <strong> Xilonen 2nd rerun </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "12 Jan 2026",
+			"description": [
+				"Add New Character <strong> Columbina (5★) </strong>",
+				"Add <strong> Ineffa 1st rerun </strong>"
 			]
 		}
 	]

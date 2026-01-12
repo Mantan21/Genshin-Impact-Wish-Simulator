@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Mountain-Bracing Bolt",
 	"mouun_s-moon": "Mouun's Moon",
 	"nightweavers-looking-glass": "Nightweaver's Looking Glass",
+	"nocturnes-curtain-call": "Nocturne's Curtain Call",
 	"peak-patrol-song": "Peak Patrol Song",
 	"polar-star": "Polar Star",
 	"portable-power-saw": "Portable Power Saw",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Sprout of Rebirth"
+	},
+	"columbina": {
+		"name": "Columbina",
+		"title": "Welkin Moon’s Homecoming"
 	},
 	"cyno": {
 		"name": "Cyno",

@@ -259,7 +259,7 @@
 			}
 		},
 		{
-			"release": 5.3,
+			"release": 5.8,
 			"name": "adventures-in-blazing-hue",
 			"characterName": "bennett",
 			"rarity": 4,
@@ -268,6 +268,31 @@
 			"offset": {
 				"splashArt": { "x": -0.5230352303523036, "y": -0.6490514905149052, "scale": 1.24 },
 				"wishCard": { "x": -23.16027088036118, "y": 52.21896162528217, "scale": 8.42 }
+			}
+		},
+		{
+			"release": 6.3,
+			"name": "melusent-gift",
+			"characterName": "neuvillette",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"storeCard": { "l": -35, "w": 120, "t": -10 },
+				"splashArt": { "x": -1.2076502732240437, "y": 0.5259562841530054, "scale": 1.61 },
+				"wishCard": { "x": 3.6511552229092095, "y": 75.80410022779043, "scale": 12.94 }
+			}
+		},
+		{
+			"release": 6.3,
+			"name": "rainlit-bamboo-reverie",
+			"characterName": "yaoyao",
+			"rarity": 4,
+			"price": 1680,
+			"promoPrice": 1350,
+			"offset": {
+				"splashArt": { "x": -2.2431693989071038, "y": 0.778688524590164, "scale": 1.11 },
+				"wishCard": { "x": -3.270419785226163, "y": 31.760820045558084, "scale": 6.77 }
 			}
 		}
 	]

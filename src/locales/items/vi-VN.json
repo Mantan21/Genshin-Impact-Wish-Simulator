@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "Mũi Đinh Trấn Núi",
 	"mouun_s-moon": "Ánh Trăng Mouun",
 	"nightweavers-looking-glass": "Kính Dệt Màn Đêm",
+	"nocturnes-curtain-call": "Dạ Khúc Hạ Màn",
 	"peak-patrol-song": "Khúc Ca Núi Đá",
 	"polar-star": "Ngôi Sao Cực Đông",
 	"portable-power-saw": "Máy Cưa Cầm Tay",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "Collei",
 		"title": "Mầm Non Tái Sinh"
+	},
+	"columbina": {
+		"name": "Columbina",
+		"title": "Không Nguyệt Trở Về"
 	},
 	"cyno": {
 		"name": "Cyno",

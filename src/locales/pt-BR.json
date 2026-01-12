@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#Tubarão# Surfando nas Ondas",
 		"secretum-secretorum": "Noites Enigmáticas",
 		"seeker-of-flame-wrought-secrets": "#Caça aos Segredos# das Chamas",
+		"somnias-a-luna": "Sonhos da #Sombra da Lua#",
 		"sparkling-steps": "Passos #Flamejantes#",
 		"starry-nights-whispers": "#Sussurros# Estelares",
 		"tapestry-of-golden-flames": "#Chama# da Via Láctea",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Jornada das Chamas",
 				"description": "Vestuário de viagem de Natlan de Bennett. As cores principais são azul-lago e laranja flamejante, que exalam vitalidade, assim como essa terra."
+			},
+			"melusent-gift": {
+				"name": "Presente Melusente",
+				"description": "Um presente surpresa para Neuvillette. A alegria não apenas vem do próprio presente, mas de todas as pequenas mãos que ajudaram a fazê-lo. Assim como os rios se unem no mar infinito, as gotas de orvalho também podem se unir para criar um milagre que brilha com uma luz iridescente."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Canção do Bambu na Chuva",
+				"description": "Vestuário de Yaoyao. As sombras dos novos brotos roçam sobre a mesa, os ventos trouxeram outro convidado."
 			}
 		}
 	},

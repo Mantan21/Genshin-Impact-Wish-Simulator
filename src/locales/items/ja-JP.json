@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "鎮山の釘",
 	"mouun_s-moon": "曚雲の月",
 	"nightweavers-looking-glass": "夜を紡ぐ天鏡",
+	"nocturnes-curtain-call": "帳の夜曲",
 	"peak-patrol-song": "岩峰巡礼の歌",
 	"polar-star": "冬極の白星",
 	"portable-power-saw": "携帯型チェーンソー",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "コレイ",
 		"title": "純真を抱く萌蘖"
+	},
+	"columbina": {
+		"name": "コロンビーナ",
+		"title": "空月の帰郷"
 	},
 	"cyno": {
 		"name": "セノ",

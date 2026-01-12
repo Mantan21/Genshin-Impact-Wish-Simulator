@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#波追い#のサメ",
 		"secretum-secretorum": "#神秘#の生息",
 		"seeker-of-flame-wrought-secrets": "#火を巡る#秘の狩り人",
+		"somnias-a-luna": "#月#と共に眠る",
 		"sparkling-steps": "#フレア#の訪れ",
 		"starry-nights-whispers": "#星夜#のささやき",
 		"tapestry-of-golden-flames": "天の川に咲きし#大輪#",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "燃えろ！ラクガキ大冒険",
 				"description": "ベネットがナタの旅で着ていた衣装。ラッキーカラーのターコイズブルーと、燃えるようなオレンジ色は、生命力に満ち溢れたナタの地を彷彿とさせる。"
+			},
+			"melusent-gift": {
+				"name": "メリュジーヌの贈り物",
+				"description": "ヌヴィレットがメリュジーヌから受け取ったサプライズプレゼント。プレゼントそのものも嬉しいが、制作に携わってくれた沢山の小さな手を想像するとたまらない。まるで川が海へと注ぐように、露は結晶して七色に輝く奇跡になった。"
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "竹林に響く雨音",
+				"description": "ヨォーヨの衣装。新たな梢の清き影、響くは机を叩く音。客は風かと振り向けば、思いもよらぬ姿あり。"
 			}
 		}
 	},

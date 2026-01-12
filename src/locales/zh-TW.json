@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "#鯊鯊#逐浪遊",
 		"secretum-secretorum": "#深秘#之息",
 		"seeker-of-flame-wrought-secrets": "#巡火#獵秘",
+		"somnias-a-luna": "#伴月#同眠",
 		"sparkling-steps": "#閃焰#的駐足",
 		"starry-nights-whispers": "#星邊#夜語",
 		"tapestry-of-golden-flames": "#焰色#天河",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "熾繪奇旅",
 				"description": "班尼特的納塔遊歷裝束，主色調是幸運的湖藍，以及熾熱的黃橙，如同這片土地一般洋溢著勃勃生機。"
+			},
+			"melusent-gift": {
+				"name": "莘露的贈禮",
+				"description": "那維萊特收到的驚喜禮物。驚喜不僅源於禮物本身，更來自於參與禮物製作的每一雙小小援手。就像河流匯於大海，露水也凝聚成閃耀著七色光芒的奇蹟。"
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "聆雨聽竹",
+				"description": "瑤瑤的裝扮款式。新梢清影叩書案，有時客來不是風。"
 			}
 		}
 	},

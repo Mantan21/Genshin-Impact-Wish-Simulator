@@ -1,0 +1,46 @@
+{
+	"patch": 6.3,
+	"data": [
+		{
+			"phase": 1,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "somnias-a-luna-1",
+							"character": "columbina",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "astral-actuation-2",
+							"character": "ineffa",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						}
+					],
+					"rateup": ["fischl", "sethos", "ifa"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-93",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "nocturnes-curtain-call" },
+						{ "name": "fractured-halo", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"waveriding-whirl",
+						"the-flute",
+						"sacrificial-greatsword",
+						"mitternachts-waltz",
+						"mountain-bracing-bolt"
+					],
+					"textOffset": {
+						"featured": { "l": 42.5, "t": 70, "w": 30 },
+						"rateup": { "l": 75.5, "b": 20, "w": 20 }
+					}
+				}
+			}
+		}
+	]
+}
+

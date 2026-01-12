@@ -59,6 +59,7 @@
 	"mountain-bracing-bolt": "鎮山之釘",
 	"mouun_s-moon": "曚雲之月",
 	"nightweavers-looking-glass": "紡夜天鏡",
+	"nocturnes-curtain-call": "帷間夜曲",
 	"peak-patrol-song": "岩峰巡歌",
 	"polar-star": "冬極白星",
 	"portable-power-saw": "便攜動力鋸",
@@ -193,6 +194,10 @@
 	"collei": {
 		"name": "柯萊",
 		"title": "萃念初蘗"
+	},
+	"columbina": {
+		"name": "哥倫比婭",
+		"title": "空月歸鄉"
 	},
 	"cyno": {
 		"name": "賽諾",

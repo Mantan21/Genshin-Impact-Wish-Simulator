@@ -78,6 +78,7 @@
 		"sharktacular-surfari": "Sharktacular Surfari",
 		"secretum-secretorum": "#Secretum# Secretorum",
 		"seeker-of-flame-wrought-secrets": "#Seeker# of Flame-Wrought Secrets",
+		"somnias-a-luna": "Somnias a #Luna#",
 		"sparkling-steps": "#Sparkling# Steps",
 		"starry-nights-whispers": "#Starry# Night's Whispers",
 		"tapestry-of-golden-flames": "Tapestry of #Golden Flames#",
@@ -366,6 +367,14 @@
 			"adventures-in-blazing-hue": {
 				"name": "Adventures in Blazing Hue",
 				"description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn."
+			},
+			"melusent-gift": {
+				"name": "Melusent Gift",
+				"description": "A surprise gift for Neuvillette. The delight comes not just from the gift itself, but from every little hand that helped make it. As rivers merge into the boundless sea, so too shall dewdrops congregate to create a shimmering, iridescent miracle."
+			},
+			"rainlit-bamboo-reverie": {
+				"name": "Rainlit Bamboo Reverie",
+				"description": "Yaoyao's outfit. New shoots cast shifting shadows on the desk in disarray; at times the guest who enters is not the wind at play."
 			}
 		}
 	},
