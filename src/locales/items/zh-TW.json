@@ -44,6 +44,7 @@
 	"jadefall-splendor": "碧落之瓏",
 	"kagura_s-verity": "神樂之真意",
 	"key-of-khaj-nisut": "聖顯之鑰",
+	"lightbearing-moonshard": "朏魄含光",
 	"lion_s-roar": "匣裡龍吟",
 	"light-of-foliar-incision": "裁葉萃光",
 	"lithic-blade": "千巖古劍",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "伊法",
 		"title": "蔚風引靈"
+	},
+	"illuga": {
+		"name": "葉洛亞",
+		"title": "魘夜燃芯"
 	},
 	"ineffa": {
 		"name": "伊涅芙",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "鍾離",
 		"title": "塵世閒遊"
+	},
+	"zibai": {
+		"name": "茲白",
+		"title": "駒隙隱泉"
 	}
 }

@@ -44,6 +44,7 @@
 	"jadefall-splendor": "Ngọc Bích Huy Hoàng",
 	"kagura_s-verity": "Chân Ý Của Kagura",
 	"key-of-khaj-nisut": "Chìa Khóa Khaj-Nisut",
+	"lightbearing-moonshard": "Mảnh Trăng Ánh Sáng",
 	"lion_s-roar": "Tiếng Hét Của Rồng",
 	"light-of-foliar-incision": "Ánh Lá Phán Quyết",
 	"lithic-blade": "Thiên Nham Cổ Kiếm",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "Gió Xanh Dẫn Lối"
+	},
+	"illuga": {
+		"name": "Illuga",
+		"title": "Đốm Lửa Đêm Ác Mộng"
 	},
 	"ineffa": {
 		"name": "Ineffa",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "Zhongli",
 		"title": "Nham Vương Đế Quân"
+	},
+	"zibai": {
+		"name": "Zibai",
+		"title": "Ngựa Phi Suối Chảy"
 	}
 }

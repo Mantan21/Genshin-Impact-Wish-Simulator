@@ -44,6 +44,7 @@
 	"jadefall-splendor": "벽락의 옥",
 	"kagura_s-verity": "카구라의 진의",
 	"key-of-khaj-nisut": "성현의 열쇠",
+	"lightbearing-moonshard": "신월의 달빛",
 	"light-of-foliar-incision": "잎을 가르는 빛",
 	"lion_s-roar": "용의 포효",
 	"lithic-blade": "천암고검",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "이파",
 		"title": "생명을 잇는 바람"
+	},
+	"illuga": {
+		"name": "일루가",
+		"title": "악몽을 불태우는 심지"
 	},
 	"ineffa": {
 		"name": "이네파",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "종려",
 		"title": "속세 한유"
+	},
+	"zibai": {
+		"name": "자백",
+		"title": "샘물에 숨은 세월"
 	}
 }

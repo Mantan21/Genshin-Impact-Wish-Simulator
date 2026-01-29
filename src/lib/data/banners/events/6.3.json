@@ -40,6 +40,46 @@
 					}
 				}
 			}
+		},
+		{
+			"phase": 2,
+			"banners": {
+				"standardVersion": 5,
+				"events": {
+					"featured": [
+						{
+							"bannerName": "harmonious-abundance-1",
+							"character": "zibai",
+							"textOffset": { "l": 50.5, "b": 10.5 }
+						},
+						{
+							"bannerName": "decree-of-the-deeps-4",
+							"character": "neuvillette",
+							"textOffset": { "l": 46, "b": 10.5 }
+						}
+					],
+					"rateup": ["fischl", "sethos", "ifa"]
+				},
+				"weapons": {
+					"bannerName": "epitome-invocation-94",
+					"fatepointsystem": true,
+					"featured": [
+						{ "name": "lightbearing-moonshard" },
+						{ "name": "tome-of-the-eternal-flow", "buttonPosition": { "l": 70 } }
+					],
+					"rateup": [
+						"xiphos-moonlight",
+						"eye-of-perception",
+						"favonius-greatsword",
+						"favonius-warbow",
+						"dragon_s-bane"
+					],
+					"textOffset": {
+						"featured": { "l": 41.5, "t": 70, "w": 30 },
+						"rateup": { "l": 74.5, "b": 20, "w": 20 }
+					}
+				}
+			}
 		}
 	]
 }

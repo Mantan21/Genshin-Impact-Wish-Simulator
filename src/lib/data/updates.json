@@ -655,11 +655,19 @@
 			]
 		},
 		{
-			"featured": true,
 			"date": "12 Jan 2026",
 			"description": [
 				"Add New Character <strong> Columbina (5★) </strong>",
 				"Add <strong> Ineffa 1st rerun </strong>"
+			]
+		},
+		{
+			"featured": true,
+			"date": "30 Jan 2026",
+			"description": [
+				"Add New Character <strong> Zibai (5★) </strong>",
+				"Add New Character <strong> Illuga (4★) </strong>",
+				"Add <strong> Neuvillette 3rd rerun </strong>"
 			]
 		}
 	]

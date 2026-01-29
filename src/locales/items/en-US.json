@@ -44,6 +44,7 @@
 	"jadefall-splendor": "Jadefall's Splendor",
 	"kagura_s-verity": "Kagura's Verity",
 	"key-of-khaj-nisut": "Key of Khaj-Nisut",
+	"lightbearing-moonshard": "Lightbearing Moonshard",
 	"light-of-foliar-incision": "Light of Foliar Incision",
 	"lion_s-roar": "Lion's Roar",
 	"lithic-blade": "Lithic Blade",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "In the Wake of Wandering Winds"
+	},
+	"illuga": {
+		"name": "Illuga",
+		"title": "Nightmare’s Burning Heart"
 	},
 	"ineffa": {
 		"name": "Ineffa",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "Zhongli",
 		"title": "Vago Mundo"
+	},
+	"zibai": {
+		"name": "Zibai",
+		"title": "White Horse’s Fleeting Spring"
 	}
 }

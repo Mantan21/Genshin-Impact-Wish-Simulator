@@ -44,6 +44,7 @@
 	"jadefall-splendor": "Jadesturz-Pracht",
 	"kagura_s-verity": "Kaguras Wahrheit",
 	"key-of-khaj-nisut": "Khaj-Nisut-Schlüssel",
+	"lightbearing-moonshard": "Lichtbringende Mondscherbe",
 	"light-of-foliar-incision": "Licht der schneidenden Blätter",
 	"lion_s-roar": "Drachenschrei",
 	"lithic-blade": "Antikes Millelithenschwert",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "In den Spuren schweifender Winde"
+	},
+	"illuga": {
+		"name": "Illuga",
+		"title": "Im Albtraum loderndes Herz"
 	},
 	"ineffa": {
 		"name": "Ineffa",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "Zhongli",
 		"title": "Besucher bei den Sterblichen"
+	},
+	"zibai": {
+		"name": "Zibai",
+		"title": "Weißes Pferd und die reine Quelle"
 	}
 }

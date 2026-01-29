@@ -44,6 +44,7 @@
 	"jadefall-splendor": "Splendore del Giadiluvio",
 	"kagura_s-verity": "Verità della Kagura",
 	"key-of-khaj-nisut": "Chiave del Khaj-Nisut",
+	"lightbearing-moonshard": "Frammento lunare portaluce",
 	"light-of-foliar-incision": "Lume del Taglio frondoso",
 	"lion_s-roar": "Ruggito del leone",
 	"lithic-blade": "Lama litica",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "In balia di venti erranti"
+	},
+	"illuga": {
+		"name": "Illuga",
+		"title": "Cuore ardente dell’incubo"
 	},
 	"ineffa": {
 		"name": "Ineffa",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "Zhongli",
 		"title": "Vago mundo"
+	},
+	"zibai": {
+		"name": "Zibai",
+		"title": "Sorgente fugace del cavallo bianco"
 	}
 }

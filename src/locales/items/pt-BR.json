@@ -44,6 +44,7 @@
 	"jadefall-splendor": "Esplendor Índigo",
 	"kagura_s-verity": "Prova de Kagura",
 	"key-of-khaj-nisut": "Chave de Hierofania",
+	"lightbearing-moonshard": "Fragmento Lunar da Luz",
 	"light-of-foliar-incision": "Luz das Folhas Cortadas",
 	"lion_s-roar": "Rugido do Leão",
 	"lithic-blade": "Espada Antiga de Millelith",
@@ -282,6 +283,10 @@
 	"ifa": {
 		"name": "Ifa",
 		"title": "Brisa Espiritual"
+	},
+	"illuga": {
+		"name": "Illuga",
+		"title": "Coração em Chamas do Pesadelo"
 	},
 	"ineffa": {
 		"name": "Ineffa",
@@ -546,5 +551,9 @@
 	"zhongli": {
 		"name": "Zhongli",
 		"title": "Andarilho do Reino Mortal"
+	},
+	"zibai": {
+		"name": "Zibai",
+		"title": "Primavera Efêmera do Cavalo Branco"
 	}
 }

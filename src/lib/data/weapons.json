@@ -1,6 +1,17 @@
 {
 	"data": [
 		{
+			"itemID": 11519,
+			"name": "lightbearing-moonshard",
+			"rarity": 5,
+			"weaponType": "sword",
+			"limited": true,
+			"origin": "liyue",
+			"offset": {
+				"button": { "t": -15, "w": 90, "l": 30 }
+			}
+		},
+		{
 			"itemID": 14522,
 			"name": "nocturnes-curtain-call",
 			"rarity": 5,
